@@ -1,0 +1,18 @@
+#!/bin/sh -eux
+
+cd "$UB_OBJECTDIR"
+
+ub_install
+
+cp "$UB_COMPILEDIR"/other-licenses/branding/thunderbird/mailicon48.png "$UB_INSTALLDIR"/usr/share/pixmaps/thunderbird.png
+
+rm -f "$UB_INSTALLDIR"/usr/lib/thunderbird/thunderbird
+rm -f "$UB_INSTALLDIR"/usr/bin/thunderbird
+ln -s /usr/lib/thunderbird/thunderbird "$UB_INSTALLDIR"/usr/bin/thunderbird
+ln -s thunderbird "$UB_INSTALLDIR"/usr/lib/thunderbird-"$UB_VERSION"
+ln -s thunderbird-devel "$UB_INSTALLDIR"/usr/lib/thunderbird-devel-"$UB_VERSION"
+ln -s thunderbird-"$UB_VERSION" "$UB_INSTALLDIR"/usr/include/thunderbird
+ln -s thunderbird-"$UB_VERSION" "$UB_INSTALLDIR"/usr/share/idl/thunderbird
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/thunderbird/extensions/langpack-hu@thunderbird.mozilla.org
+cp -aR "$UB_COMPILEDIR"/langpack-hu/. "$UB_INSTALLDIR"/usr/lib/thunderbird/extensions/langpack-hu@thunderbird.mozilla.org/

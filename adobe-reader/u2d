@@ -1,0 +1,2 @@
+major=$(urllist ftp://ftp.adobe.com/pub/adobe/reader/unix/ | splitver '^([0-9])' | sort -V | tail -n 1)
+urllist ftp://ftp.adobe.com/pub/adobe/reader/unix/"$major"/ | splitver '^([0-9.]+)$' | sort -V | tail -n 1

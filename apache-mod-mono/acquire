@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mod_mono-${UB_VERSION}.tar.bz2 mod_mono-${UB_VERSION}/
+	http://download.mono-project.com/sources/mod_mono/

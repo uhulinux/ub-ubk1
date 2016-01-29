@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export GDK_NATIVE_WINDOWS=1
+cd /usr/lib/apache-directory-studio
+./ApacheDirectoryStudio

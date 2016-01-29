@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+vbetool-${UB_VERSION}.tar.bz2 vbetool-${UB_VERSION}/
+	http://www.codon.org.uk/~mjg59/vbetool/download/
+	http://www.srcf.ucam.org/~mjg59/vbetool/
+	ftp://ftp.uhulinux.hu/sources/vbetool/

@@ -1,0 +1,12 @@
+diff -Naurdp a/dpkg-deb/build.c b/dpkg-deb/build.c
+--- a/dpkg-deb/build.c	2011-11-25 11:18:08.000000000 +0100
++++ b/dpkg-deb/build.c	2011-12-23 15:47:01.342469022 +0100
+@@ -455,7 +455,7 @@ do_build(const char *const *argv)
+       ohshite(_("failed to chdir to `%.255s'"), dir);
+     if (chdir(BUILDCONTROLDIR))
+       ohshite(_("failed to chdir to `%.255s'"), ".../DEBIAN");
+-    execlp(TAR, "tar", "-cf", "-", "--format=gnu", ".", NULL);
++    execlp(TAR, "tar", "-cf", "-", "--format=gnu", "--owner=0", "--group=0", ".", NULL);
+     ohshite(_("unable to execute %s (%s)"), "tar -cf", TAR);
+   }
+   close(p1[1]);

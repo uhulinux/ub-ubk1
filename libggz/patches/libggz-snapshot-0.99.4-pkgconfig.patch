@@ -1,0 +1,25 @@
+diff -up libggz-snapshot-0.99.4/libggz.pc.in.pkgconfig libggz-snapshot-0.99.4/libggz.pc.in
+--- libggz-snapshot-0.99.4/libggz.pc.in.pkgconfig	2008-07-13 10:50:18.000000000 -0500
++++ libggz-snapshot-0.99.4/libggz.pc.in	2008-08-24 14:06:26.000000000 -0500
+@@ -1,7 +1,7 @@
+ prefix=@prefix@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
+-includedir=${prefix}/include
++libdir=@libdir@
++includedir=@includedir@
+ #datarootdir=${prefix}/share
+ #datadir=${datarootdir}
+ sysconfdir=@sysconfdir@
+diff -up libggz-snapshot-0.99.4/Makefile.in.pkgconfig libggz-snapshot-0.99.4/Makefile.in
+--- libggz-snapshot-0.99.4/Makefile.in.pkgconfig	2008-07-13 13:49:17.000000000 -0500
++++ libggz-snapshot-0.99.4/Makefile.in	2008-08-24 13:47:22.000000000 -0500
+@@ -206,7 +206,7 @@ top_srcdir = @top_srcdir@
+ EXTRA_DIST = README.GGZ QuickStart.GGZ Doxyfile
+ SUBDIRS = src tests man
+ ACLOCAL_AMFLAGS = -I m4 -I m4/ggz
+-pkgconfigdir = $(datadir)/pkgconfig
++pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = libggz.pc
+ all: config.h
+ 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

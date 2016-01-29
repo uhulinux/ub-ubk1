@@ -1,0 +1,9 @@
+diff -Naur kteatime-4.11.97-orig/src/kteatime.desktop kteatime-4.11.97/src/kteatime.desktop
+--- kteatime-4.11.97-orig/src/kteatime.desktop	2013-08-04 06:29:05.000000000 +0200
++++ kteatime-4.11.97/src/kteatime.desktop	2013-12-05 08:13:51.000000000 +0100
+@@ -138,4 +138,4 @@
+ X-DocPath=kteatime/index.html
+ X-KDE-StartupNotify=true
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Utility;
++Categories=Qt;KDE;Utility;X-UHU-Menu/Tools/Utilities;

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Coherence-${UB_VERSION}.tar.gz Coherence-${UB_VERSION}/
+	http://coherence.beebits.net/download/

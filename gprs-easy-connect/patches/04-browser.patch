@@ -1,0 +1,15 @@
+diff -Naur GPRS_Easy_Connect_300.orig/data/bin/gprsec GPRS_Easy_Connect_300/data/bin/gprsec
+--- GPRS_Easy_Connect_300.orig/data/bin/gprsec	2006-03-31 16:53:02.000000000 +0200
++++ GPRS_Easy_Connect_300/data/bin/gprsec	2006-05-03 17:32:06.000000000 +0200
+@@ -609,10 +609,9 @@
+ 
+ sub browser_find {
+ 	#finding browsers
+-	@browsers=qw (mozilla opera galeon konqueror netscape lynx links firefox amaya);
++	@browsers=qw (browser);
+ 	$def_path=$ENV{PATH};
+ 	@exec_path=split /\:/, $def_path;
+-	push (@exec_path, "/usr/local/netscape");
+ 	foreach (@browsers) {
+ 		foreach $temp_path (@exec_path) {
+ 			if (-d $temp_path && !$browser_path{$_}) {

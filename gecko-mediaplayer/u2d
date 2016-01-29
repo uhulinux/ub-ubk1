@@ -1,0 +1,1 @@
+urllist http://code.google.com/p/gecko-mediaplayer/downloads/ | splitver '^gecko-mediaplayer-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

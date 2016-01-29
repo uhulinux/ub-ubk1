@@ -1,0 +1,55 @@
+#!/bin/bash -eux
+
+KVER="$(ls -1 /lib/modules|grep i386)"
+moduldir="$UB_INSTALLDIR"/lib/modules/"$KVER"/kernel/drivers
+cellibdir="$UB_INSTALLDIR"/usr/lib
+xmoduldir="$cellibdir"/xorg/modules
+desktopdir="$UB_INSTALLDIR"/usr/share/applications
+mandir="$UB_INSTALLDIR"/usr/share/man/man1/
+vendordir="$UB_INSTALLDIR"/etc/OpenCL/vendors
+pixmapdir="$UB_INSTALLDIR"/usr/share/pixmaps/
+docdir="$UB_INSTALLDIR"/usr/share/doc/Packages/nvidia
+mkdir -p "$cellibdir"/nvidia \
+	"$moduldir" \
+	"$xmoduldir"/{drivers,extensions} \
+	"$desktopdir" \
+	"$mandir" \
+	"$vendordir" \
+	"$pixmapdir" \
+	"$docdir"
+cd NVIDIA-Linux-x86-"${UB_VERSION}"
+# kernelmodulok
+mv kernel/nvidia.ko kernel/uvm/nvidia-uvm.ko "$moduldir"/
+# meghajtó lib
+mv nvidia_drv.so "$xmoduldir"/drivers/
+# nvidia GL cuccok nem a végleges hely, a mesa konfliktus miatt 
+mv libglx.so."$UB_VERSION" libGL.so."$UB_VERSION" "$cellibdir"/nvidia/
+# tls
+mv tls libnvidia-tls.so.$UB_VERSION "$cellibdir"/
+# remove conflicting vdpau lib
+# ez szerintem felesleges
+rm "libvdpau.so.$UB_VERSION"
+rm "libvdpau_trace.so.$UB_VERSION"
+# összes többi lib
+mv *.so.* "$cellibdir"/
+# binárisok
+mv nvidia-xconfig nvidia-settings nvidia-bug-report.sh nvidia-smi tls_test tls_test_dso.so nvidia-debugdump "$UB_INSTALLDIR"/usr/bin/
+mv LICENSE README.txt NVIDIA_Changelog html "$docdir"/
+#desktop
+mv nvidia-settings.desktop "$desktopdir"/
+mv nvidia-settings.png "$pixmapdir"/
+#man
+gunzip *.1.gz
+mv *.1 "$mandir"/
+#vendor
+mkdir -p "$UB_INSTALLDIR"/etc/OpenCL/vendors/
+mv nvidia.icd "$UB_INSTALLDIR"/etc/OpenCL/vendors/
+# pár link
+cd "$cellibdir"
+ln -s libwfb.so xorg/modules/libnvidia-wfb.so."$UB_VERSION"
+ln -s "libvdpau_nvidia.so.$UB_VERSION" libvdpau_nvidia.so
+ln -s "libnvcuvid.so.$UB_VERSION" libnvcuvid.so.1
+ln -s "libnvidia-ml.so.$UB_VERSION" libnvidia-ml.so.1
+ln -s libnvidia-ml.so.1 libnvidia-ml.so
+ln -s libnvcuvid.so.1 libnvcuvid.so
+ln -s "libcuda.so.$UB_VERSION" libcuda.so

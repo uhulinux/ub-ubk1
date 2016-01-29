@@ -1,0 +1,105 @@
+diff -Naurd orig/iconmgr.c mod/iconmgr.c
+--- orig/iconmgr.c	1998-01-08 07:02:45.000000000 +0100
++++ mod/iconmgr.c	2009-03-16 16:38:54.000000000 +0100
+@@ -43,7 +43,7 @@
+ #include <X11/Xos.h>
+ #include <X11/Xmu/CharSet.h>
+ 
+-int strcmp();
++//int strcmp();
+ 
+ int iconmgr_textx = siconify_width+11;
+ WList *Active = NULL;
+diff -Naurd orig/icons.c mod/icons.c
+--- orig/icons.c	1998-01-08 07:00:35.000000000 +0100
++++ mod/icons.c	2009-03-16 16:39:47.000000000 +0100
+@@ -144,7 +144,7 @@
+     return ((v + multiple - 1) / multiple) * multiple;
+ }
+ 
+-static void
++void
+ PlaceIcon(TwmWindow *tmp_win, int def_x, int def_y, int *final_x, int *final_y)
+ {
+     IconRegion	*ir;
+diff -Naurd orig/Makefile mod/Makefile
+--- orig/Makefile	1998-01-08 06:08:58.000000000 +0100
++++ mod/Makefile	2009-12-06 19:21:13.000000000 +0100
+@@ -109,12 +109,12 @@
+          IMAKESRC = $(CONFIGSRC)/imake
+         DEPENDSRC = $(CONFIGSRC)/util
+ 
+-          INCROOT = /usr/X11R6/include
+-        USRLIBDIR = /usr/X11R6/lib
++          INCROOT = /usr/include
++        USRLIBDIR = /usr/lib
+         VARLIBDIR = /var/lib
+-         SHLIBDIR = /usr/X11R6/lib
++         SHLIBDIR = /usr/lib
+        LINTLIBDIR = $(USRLIBDIR)/lint
+-          MANPATH = /usr/X11R6/man
++          MANPATH = /usr/share/man
+     MANSOURCEPATH = $(MANPATH)/man
+            MANDIR = $(MANSOURCEPATH)1
+         LIBMANDIR = $(MANSOURCEPATH)3
+@@ -128,7 +128,7 @@
+ .SUFFIXES: .cxx
+ 
+               CXX = c++
+-    CXXDEBUGFLAGS = -O2 -fno-strength-reduce -m486
++    CXXDEBUGFLAGS = -O2 -fno-strength-reduce #-m486
+  CXXEXTRA_DEFINES =
+ CXXEXTRA_INCLUDES =
+    CXXSTD_DEFINES = -Dlinux -D__i386__ -D_POSIX_SOURCE -D_BSD_SOURCE -D_SVID_SOURCE -DX_LOCALE
+@@ -203,11 +203,11 @@
+      INSTDATFLAGS = -m 0444
+     INSTKMEMFLAGS = -m 4711
+ 
+-      PROJECTROOT = /usr/X11R6
++      PROJECTROOT = /usr
+ 
+      TOP_INCLUDES = -I$(INCROOT)
+ 
+-      CDEBUGFLAGS = -O2 -fno-strength-reduce -m486 -Wall -pedantic
++      CDEBUGFLAGS = -O2 -fno-strength-reduce -Wall -pedantic
+         CCOPTIONS =
+ 
+       ALLINCLUDES = $(INCLUDES) $(EXTRA_INCLUDES) $(TOP_INCLUDES) $(STD_INCLUDES)
+@@ -257,7 +257,7 @@
+ # -----------------------------------------------------------------------
+ # X Window System make variables; these need to be coordinated with rules
+ 
+-           BINDIR = /usr/X11R6/bin
++           BINDIR = /usr/bin
+      BUILDINCROOT = $(TOP)
+       BUILDINCDIR = $(BUILDINCROOT)/X11
+       BUILDINCTOP = ..
+@@ -540,8 +540,8 @@
+ # other image formats besides Xpm or Xbm)
+ #                                 Chris P. Ross
+ #                                 <cross@eng.umd.edu>
+-       PIEWMDIR = /usr/local/lib/piewm
+-    XLOADIM_DEF = -DXLOADIMAGE=\"/usr/local/bin/xloadimage\"
++       PIEWMDIR = /usr/lib/piewm
++    XLOADIM_DEF = -DXLOADIMAGE=\"/usr/bin/xloadimage\"
+         MATHLIB = -lm
+   LOCAL_DEFINES = -DSHAPE
+ 
+@@ -555,7 +555,7 @@
+ 
+            OBJS = gram.o lex.o deftwmrc.o add_window.o gc.o list.o twm.o 		parse.o menus.o events.o resize.o util.o version.o iconmgr.o 		cursor.o icons.o vdt.o move.o LocPixmap.o
+ 
+-all:: piewm ssetroot
++all:: piewm
+ 
+ parse.o:	 vdt.c
+ 	$(RM) $@
+@@ -569,7 +569,7 @@
+ 
+  PROGRAM = piewm
+ 
+-all:: piewm
++all:: piewm ssetroot
+ 
+ piewm: $(OBJS) $(DEPLIBS)
+ 	$(RM) $@

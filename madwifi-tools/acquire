@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+madwifi-${UB_VERSION}.tar.gz madwifi-${UB_VERSION}/
+	http://downloads.sourceforge.net/madwifi/

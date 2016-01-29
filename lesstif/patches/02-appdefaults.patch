@@ -1,0 +1,24 @@
+diff -Naurd 02-orig/clients/Motif-2.1/mwm/Makefile.in 02-mod/clients/Motif-2.1/mwm/Makefile.in
+--- 02-orig/clients/Motif-2.1/mwm/Makefile.in	2009-05-27 16:08:03.000000000 +0200
++++ 02-mod/clients/Motif-2.1/mwm/Makefile.in	2009-05-28 17:02:43.000000000 +0200
+@@ -306,7 +306,7 @@
+ LDADD = ../../../lib/Xm-2.1/libXm.la \
+ 		$(X_LIBS) $(XPLIB) -lXt $(X_PRE_LIBS) -lXext -lX11 $(X_EXTRA_LIBS)
+ 
+-appdir = $(libdir)/X11/app-defaults
++appdir = $(datadir)/X11/app-defaults
+ mwmddir = $(libdir)/X11/mwm
+ mwmd_DATA = system.mwmrc alt.map README
+ AM_YFLAGS = -d
+diff -Naurd 02-orig/doc/lessdox/clients/mwm.1 02-mod/doc/lessdox/clients/mwm.1
+--- 02-orig/doc/lessdox/clients/mwm.1	2009-04-29 14:23:30.000000000 +0200
++++ 02-mod/doc/lessdox/clients/mwm.1	2009-05-28 17:04:04.000000000 +0200
+@@ -88,7 +88,7 @@
+ 
+ The resources are documented in the app defaults file for
+ .BR mwm ,
+-.I usr/X11R6/lib/X11/app-defaults/Mwm .
++.I usr/usr/share/X11/app-defaults/Mwm .
+ 
+ .SH COPYING
+ See the file COPYING which accompanies this distribution of mwm.

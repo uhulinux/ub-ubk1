@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/foxit
+cp -a . "$UB_INSTALLDIR"/usr/share/foxit/
+ln -s ../share/foxit/FoxitReader "$UB_INSTALLDIR"/usr/bin/foxit

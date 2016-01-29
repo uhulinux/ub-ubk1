@@ -1,0 +1,1 @@
+urllist ftp://ftpthep.physik.uni-mainz.de/pub/gnu/ | splitver '^cln-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

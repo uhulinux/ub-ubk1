@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+c2070-${UB_VERSION}.tar.gz .
+	http://www.kornblum.i-p.com/2070/

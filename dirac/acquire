@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dirac-${UB_VERSION}.tar.gz dirac-${UB_VERSION}/
+	http://downloads.sourceforge.net/dirac/

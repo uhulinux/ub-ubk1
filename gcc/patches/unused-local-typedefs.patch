@@ -1,0 +1,12 @@
+diff -Naur orig/gcc/c-family/c.opt patched/gcc/c-family/c.opt
+--- orig/gcc/c-family/c.opt	2013-01-19 06:25:25.000000000 +0100
++++ patched/gcc/c-family/c.opt	2014-01-31 15:38:25.908002732 +0100
+@@ -754,7 +754,7 @@
+ ; documented in common.opt
+ 
+ Wunused-local-typedefs
+-C ObjC C++ ObjC++ Var(warn_unused_local_typedefs) Warning EnabledBy(Wunused)
++C ObjC C++ ObjC++ Var(warn_unused_local_typedefs) Warning
+ Warn when typedefs locally defined in a function are not used
+ 
+ Wunused-macros

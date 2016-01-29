@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+vte-${UB_VERSION}.tar.xz vte-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/vte/${UB_VERSION_HEAD2}/

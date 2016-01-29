@@ -1,0 +1,20 @@
+diff -Naur orig/src/vfs/extfs/helpers/iso9660.in patched/src/vfs/extfs/helpers/iso9660.in
+--- orig/src/vfs/extfs/helpers/iso9660.in	2011-12-12 10:15:38.000000000 +0100
++++ patched/src/vfs/extfs/helpers/iso9660.in	2011-12-15 17:36:00.000000000 +0100
+-    echo "$ISOINFO_D_I" | @GREP@ "UCS level 1\|NO Joliet" > /dev/null || ISOINFO="$ISOINFO $JOLIET_OPT"
++    echo "$ISOINFO_D_I" | @GREP@ "/NO Rock Ridge/" > /dev/null || ISOINFO="$ISOINFO -R"
+ 
+     if [ `echo "$ISOINFO_D_I" | @GREP@ "Joliet with UCS level 3 found" | wc -l` = 1 \
+         -a `echo "$ISOINFO_D_I" | @GREP@ "NO Rock Ridge" | wc -l` = 1 ] ; then
+@@ -49,9 +49,9 @@
+ $ISOINFO -l -i "$1" 2>/dev/null | @AWK@ -v SEMICOLON=$SEMICOLON '
+ BEGIN {
+   dir="";
+-  # Pattern to match 8 first fields.
++  # Pattern to match 9 first fields.
+   rx = "[^ 	]+[ 	]+";
+-  rx = "^" rx rx rx rx rx rx rx rx;
++  rx = "^" rx rx rx rx rx rx rx rx rx;
+   irx = "^\\[ *-?[0-9]* *[0-9]+\\] +";
+ }
+ /^$/ { next }

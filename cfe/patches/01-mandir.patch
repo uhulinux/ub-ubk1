@@ -1,0 +1,26 @@
+diff -Naur cfe-0.12.orig/Makefile.in cfe-0.12/Makefile.in
+--- cfe-0.12.orig/Makefile.in	2001-12-19 23:05:53.000000000 +0100
++++ cfe-0.12/Makefile.in	2002-12-31 14:12:43.000000000 +0100
+@@ -5,7 +5,7 @@
+ prefix          = @prefix@
+ exec_prefix     = @exec_prefix@
+ bindir          = @bindir@
+-mandir          = @mandir@/man1
++mandir          = @mandir@
+ 
+ INSTALL         = @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+@@ -24,11 +24,11 @@
+ 
+ install: cfe
+ 	$(INSTALL_PROGRAM) cfe $(bindir)
+-	$(INSTALL_DATA) cfe.1 $(mandir)
++	$(INSTALL_DATA) cfe.1 $(mandir)/man1
+ 
+ install-strip: cfe
+ 	$(INSTALL_PROGRAM) -s cfe $(bindir)
+-	$(INSTALL_DATA) cfe.1 $(mandir)
++	$(INSTALL_DATA) cfe.1 $(mandir)/man1
+ 
+ uninstall:
+ 	rm -f $(bindir)/cfe

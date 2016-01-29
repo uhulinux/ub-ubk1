@@ -1,0 +1,9 @@
+diff -Naur plasmate-1.0-orig/plasmate/plasmate.desktop plasmate-1.0/plasmate/plasmate.desktop
+--- plasmate-1.0-orig/plasmate/plasmate.desktop	2013-03-04 16:55:48.000000000 +0100
++++ plasmate-1.0/plasmate/plasmate.desktop	2013-03-11 18:19:44.000000000 +0100
+@@ -51,4 +51,4 @@
+ Icon=plasmagik
+ Type=Application
+ InitialPreference=7
+-Categories=Qt;KDE;Development;IDE;
++Categories=Qt;KDE;Development;IDE;X-UHU-Menu/Development/Programming;

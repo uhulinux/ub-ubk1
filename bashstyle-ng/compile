@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+export TERM=xterm
+ub_compile #--maint

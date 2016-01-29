@@ -1,0 +1,9 @@
+--- a/data/ghex.desktop.in.orig	2013-02-26 20:50:07.000000000 +0100
++++ a/data/ghex.desktop.in	2013-02-26 20:51:00.000000000 +0100
+@@ -8,5 +8,5 @@
+ Terminal=false
+ Type=Application
+ Icon=ghex
+-Categories=GNOME;GTK;Development;
++Categories=GNOME;GTK;Development;X-UHU-Menu/Development/Programming;
+ StartupNotify=true

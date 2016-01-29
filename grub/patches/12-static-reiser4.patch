@@ -1,0 +1,12 @@
+diff -Naurd a/configure b/configure
+--- a/configure	2006-03-30 12:14:24.000000000 +0200
++++ b/configure	2006-03-30 12:14:01.000000000 +0200
+@@ -5933,7 +5933,7 @@
+ 
+ if test x"$enable_reiser4" != xno; then
+   REISER4_CFLAGS="$REISER4_CFLAGS -DFSYS_REISER4=1"
+-  REISER4_LIBS=$LIBS
++  REISER4_LIBS="-Wl,-Bstatic $LIBS -Wl,-Bdynamic"
+ fi
+ 
+ if test x"$enable_reiser4" != xno; then

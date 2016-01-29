@@ -1,0 +1,9 @@
+diff -Naur kgeography-4.6.90-orig//src/kgeography.desktop kgeography-4.6.90//src/kgeography.desktop
+--- kgeography-4.6.90-orig//src/kgeography.desktop	2011-05-20 22:33:57.000000000 +0200
++++ kgeography-4.6.90//src/kgeography.desktop	2011-06-27 09:10:02.000000000 +0200
+@@ -183,4 +183,4 @@
+ Type=Application
+ X-DocPath=kgeography/index.html
+ Terminal=false
+-Categories=Qt;KDE;Education;Geography;
++Categories=Qt;KDE;Education;Geography;X-UHU-Menu/Edutainment/Miscellaneous;

@@ -1,0 +1,11 @@
+--- a/data/glade.desktop.in.in.orig	2012-09-12 19:22:42.000000000 +0200
++++ a/data/glade.desktop.in.in	2012-09-12 19:23:16.000000000 +0200
+@@ -8,7 +8,7 @@
+ StartupNotify=true
+ Type=Application
+ Icon=glade
+-Categories=GNOME;GTK;Development;GUIDesigner;
++Categories=GNOME;GTK;Development;GUIDesigner;X-UHU-Menu/Development/Programming;
+ MimeType=application/x-glade;
+ X-GNOME-DocPath=glade/glade.xml
+ X-GNOME-Bugzilla-Bugzilla=GNOME

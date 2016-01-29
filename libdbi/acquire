@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libdbi-${UB_VERSION}.tar.gz libdbi-${UB_VERSION}/
+	http://downloads.sourceforge.net/libdbi/

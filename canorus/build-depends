@@ -1,0 +1,5 @@
+alsa-lib-dev
+cmake
+python-dev
+qt4-dev
+swig

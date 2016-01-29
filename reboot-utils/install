@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cp disable-ctrlaltdel enable-ctrlaltdel hardhalt hardpoweroff hardreboot \
+	"${UB_INSTALLDIR}/sbin/"

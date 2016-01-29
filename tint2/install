@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_install
+rm "$UB_INSTALLDIR"/usr/share/doc/tint2/*
+rmdir "$UB_INSTALLDIR"/usr/share/doc/tint2

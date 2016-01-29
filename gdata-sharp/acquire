@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgoogle-data-mono-${UB_VERSION}.tar.gz libgoogle-data-mono-${UB_VERSION}/
+	http://google-gdata.googlecode.com/files/

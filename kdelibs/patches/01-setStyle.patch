@@ -1,0 +1,39 @@
+diff -Naur kdelibs-4.5.80-orig//kdeui/kernel/kglobalsettings.cpp kdelibs-4.5.80//kdeui/kernel/kglobalsettings.cpp
+--- kdelibs-4.5.80-orig//kdeui/kernel/kglobalsettings.cpp	2010-11-11 15:42:13.000000000 +0100
++++ kdelibs-4.5.80//kdeui/kernel/kglobalsettings.cpp	2010-11-25 15:10:18.000000000 +0100
+@@ -929,11 +929,15 @@
+         const KConfigGroup pConfig(KGlobal::config(), "General");
+         const QString &styleStr = pConfig.readEntry("widgetStyle", defaultStyle);
+ 
+-        if (styleStr.isEmpty() ||
+-                // check whether we already use the correct style to return then
+-                // (workaround for Qt misbehavior to avoid double style initialization)
+-                0 == (QString(styleStr + QLatin1String("Style"))).compare(currentStyleName, Qt::CaseInsensitive) ||
+-                0 == styleStr.compare(currentStyleName, Qt::CaseInsensitive)) {
++        // if we have no style set, don't bail out
++        if (styleStr.isEmpty()) {
++            ;
++        }
++
++        // check whether we already use the correct style to return then
++        // (workaround for Qt misbehavior to avoid double style initialization)
++        if (0 == (QString(styleStr + QLatin1String("Style"))).compare(currentStyleName, Qt::CaseInsensitive) ||
++            0 == styleStr.compare(currentStyleName, Qt::CaseInsensitive)) {
+             return;
+         }
+ 
+@@ -944,11 +948,10 @@
+         }
+ 
+         // If there is no default style available, try falling back any available style
+-        if ( !sp && styleStr != defaultStyle)
++        if ( !sp && styleStr != defaultStyle) {
+             sp = QStyleFactory::create( defaultStyle );
+-        if ( !sp )
+-            sp = QStyleFactory::create( QStyleFactory::keys().first() );
+-        qApp->setStyle(sp);
++            qApp->setStyle(sp);
++        }
+     } else if (0 != kde_overrideStyle.compare(currentStyleName, Qt::CaseInsensitive) &&
+             0 != (QString(kde_overrideStyle + QLatin1String("Style"))).compare(currentStyleName, Qt::CaseInsensitive)) {
+         qApp->setStyle(kde_overrideStyle);

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+flex-${UB_VERSION}.tar.gz flex-${UB_VERSION}/
+	http://download.sourceforge.net/flex/

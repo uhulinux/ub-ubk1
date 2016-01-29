@@ -1,0 +1,23 @@
+diff -urN gexif-0.5.orig/gexif/gexif-main.c gexif-0.5/gexif/gexif-main.c
+--- gexif-0.5.orig/gexif/gexif-main.c	2002-12-15 12:35:45.000000000 +0100
++++ gexif-0.5/gexif/gexif-main.c	2004-02-28 14:42:29.000000000 +0100
+@@ -281,7 +281,7 @@
+ action_about (gpointer callback_data, guint callback_action,
+ 	      GtkWidget *widget)
+ {
+-	g_warning ("Implement!");
++	//g_warning ("Implement!");
+ }
+ 
+ static void
+@@ -311,9 +311,7 @@
+ 	{"/File/sep1", NULL, 0, 0, "<Separator>"},
+ 	{"/File/E_xit", NULL, action_exit, 0, "<StockItem>", GTK_STOCK_QUIT},
+ 	{"/_View", NULL, 0, 0, "<Branch>"},
+-	{"/View/_Thumbnail", NULL, action_thumbnail, 0, NULL, NULL},
+-	{"/_Help", NULL, 0, 0, "<Branch>"},
+-	{"/Help/About", NULL, action_about, 0, NULL, NULL}
++	{"/View/_Thumbnail", NULL, action_thumbnail, 0, NULL, NULL}
+ };
+ 
+ GtkWidget *

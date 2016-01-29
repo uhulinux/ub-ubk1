@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_configure
+touch -r po/Makefile po/stamp-it
+ub_compile

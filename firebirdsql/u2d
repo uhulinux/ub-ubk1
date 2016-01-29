@@ -1,0 +1,1 @@
+sflist firebird firebird/"$(sflist firebird firebird | sort -V | tail -n 1)" | splitver '^Firebird-([0-9]+\.[0-9]+(\.[0-9]+(\.[0-9]+)?)?)-[0-9]+.*' | sort -V | tail -n 1

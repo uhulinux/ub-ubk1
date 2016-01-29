@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/boot/themes
+cp uhu/uhu uhu-bootfloppy/uhu-bootfloppy uhu-installer/uhu-installer bg.png \
+	"$UB_INSTALLDIR"/boot/themes/

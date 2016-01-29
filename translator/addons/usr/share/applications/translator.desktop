@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Translator
+Comment=Translates text via Google Translate.
+Comment[hu]=szöveg fordító
+Icon=translator
+Exec=translator
+Terminal=false
+Categories=Qt;KDE;Development;Translation;

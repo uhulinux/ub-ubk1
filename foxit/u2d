@@ -1,0 +1,1 @@
+urllist http://cdn04.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/1.1/enu/ | splitver '^FoxitReader-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

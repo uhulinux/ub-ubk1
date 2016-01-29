@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/fonts/misc
+cp -a *.pcf "$UB_INSTALLDIR"/usr/share/fonts/misc/
+
+mkfontdir "$UB_INSTALLDIR"/usr/share/fonts/misc
+sed 1d < "$UB_INSTALLDIR"/usr/share/fonts/misc/fonts.dir | sort \
+       > "$UB_INSTALLDIR"/usr/share/fonts/misc/fonts.dir.efont
+rm "$UB_INSTALLDIR"/usr/share/fonts/misc/fonts.dir

@@ -1,0 +1,40 @@
+diff -Naur ORIG/Makefile UHU/Makefile
+--- ORIG/Makefile	2011-03-10 23:16:42.000000000 +0000
++++ UHU/Makefile	2014-04-10 13:43:33.331307579 +0000
+@@ -10,7 +10,7 @@
+ #DEFAULT_ARCHFLAGS = -m64
+ DEFAULT_CFLAGS = -Wall -Wextra -fPIC $(INCLUDE) $(DEFAULT_DEFINE) \
+ 	$(DEFAULT_ARCHFLAGS)
+-PREFIX = /usr/local
++PREFIX = /usr
+ OPTFLAGS = -fast -msse -DNDEBUG
+ DEBUGFLAGS = -O0 -g -DDEBUG
+ PGO1FLAGS = $(OPTFLAGS) -fprofile-generate
+@@ -30,8 +30,8 @@
+ 	compression/liblzf/lzf_c.c compression/liblzf/lzf_d.c
+ OBJFILES := $(patsubst %.c,%.o,$(SRCFILES))
+ PROFFILES := $(SRCFILES:.c=.gcno) $(SRCFILES:.c=.gcda)
+-LIBNAME := libgtb.a
+-SONAME :=libgtb.so
++LIBNAME := libgaviotatb.a
++SONAME :=libgaviotatb.so
+ SOVERSION := 1.0.1
+ SOMAJORVERSION := 1
+ 
+@@ -96,10 +96,12 @@
+ 	$(RM) -f $(PROFFILES)
+ 
+ install:
+-	install -m 755 -o root -g root $(LIBNAME) $(SONAME).$(SOVERSION) $(PREFIX)/lib
+-	ln -sf $(SONAME).$(SOMAJORVERSION) $(PREFIX)/lib/$(SONAME)
+-	install -m 644 -o root -g root gtb-probe.h $(PREFIX)/include
+-	ldconfig
++	install -m 644 -o root -g root gtb-probe.h $(UB_INSTALLDIR)/$(PREFIX)/include
++	install -m 755 -o root -g root $(LIBNAME) $(SONAME).$(SOVERSION) $(UB_INSTALLDIR)/$(PREFIX)/lib
++	cd $(UB_INSTALLDIR)/$(PREFIX)/lib
++	ln -sf $(SONAME).$(SOVERSION) $(SONAME).$(SOMAJORVERSION)
++	ln -sf $(SONAME).$(SOVERSION) $(SONAME)
++#	ldconfig
+ 
+ .depend:
+ 	$(CC) -MM $(DEFAULT_CFLAGS) $(SRCFILES) > $@

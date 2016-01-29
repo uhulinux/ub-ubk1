@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+bobcat_${UB_VERSION}.orig.tar.gz bobcat-${UB_VERSION}/
+	http://downloads.sourceforge.net/project/bobcat/bobcat/${UB_VERSION}/

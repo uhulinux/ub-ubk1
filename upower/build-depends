@@ -1,0 +1,10 @@
+dbus-glib-dev
+docbook-dtds
+docbook-xsl
+gobject-introspection-dev
+intltool
+libimobiledevice-dev
+libusb-dev
+libxslt
+polkit-dev
+systemd-dev

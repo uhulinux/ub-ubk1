@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+RELEASE_${UB_VERSION_MAJOR}_${UB_VERSION_MINOR}_${UB_VERSION_MICRO}.tar.gz libharu-RELEASE_${UB_VERSION_MAJOR}_${UB_VERSION_MINOR}_${UB_VERSION_MICRO}/
+	https://github.com/libharu/libharu/archive/

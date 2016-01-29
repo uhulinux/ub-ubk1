@@ -1,0 +1,6 @@
+dbus-glib-dev
+gtk-doc
+gtk2-dev
+libgnomeprintui2-dev
+libxml2-dev
+perl-xml-parser

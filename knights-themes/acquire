@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+knights-themepack-${UB_VERSION}.tar.gz knights-themepack/
+	http://download.sourceforge.net/knights/

@@ -1,0 +1,9 @@
+diff -Naur atapci-0.52.orig/atapci.h atapci-0.52/atapci.h
+--- atapci-0.52.orig/atapci.h	2002-05-31 10:47:58.000000000 +0200
++++ atapci-0.52/atapci.h	2002-11-10 14:58:33.000000000 +0100
+@@ -42,4 +42,4 @@
+ 
+ int generic_info(char *, struct pci_dev *);
+ 
+-#endif ATAPCI_H
++#endif /* ATAPCI_H */

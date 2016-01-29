@@ -1,0 +1,7 @@
+dbus-glib-dev
+glib-dev
+gtk-doc
+intltool
+libxml2-dev
+orbit2-dev
+popt-dev

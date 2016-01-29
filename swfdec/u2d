@@ -1,0 +1,2 @@
+alap=$(urllist http://swfdec.freedesktop.org/download/swfdec/ | grep -E '^([0-9.]+)$' | sort -V | tail -n 1)
+urllist http://swfdec.freedesktop.org/download/swfdec/"$alap"/ | parsever | sort -V | tail -n 1

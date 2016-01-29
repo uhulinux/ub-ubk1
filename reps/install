@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+mkdir -p ${UB_INSTALLDIR}/usr/lib/reps
+cp -a *.pl *.dat ${UB_INSTALLDIR}/usr/lib/reps/
+for i in *.pl; do
+	echo '#!/bin/sh --' > ${UB_INSTALLDIR}/usr/bin/$i
+	echo "exec /usr/lib/reps/$i \"\$@\"" >> ${UB_INSTALLDIR}/usr/bin/$i
+	chmod 755 ${UB_INSTALLDIR}/usr/bin/$i
+done
+

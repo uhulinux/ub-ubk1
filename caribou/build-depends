@@ -1,0 +1,15 @@
+clutter-dev
+gobject-introspection-dev
+gtk-dev
+gtk2-dev
+intltool
+libgee-dev
+libsm-dev
+libxkbfile-dev
+libxklavier-dev
+libxml2-dev
+libxslt
+libxtst-dev
+pygobject-dev
+python-dev
+vala-dev

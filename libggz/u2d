@@ -1,0 +1,1 @@
+urllist http://mirrors.ibiblio.org/pub/mirrors/ggzgamingzone/ggz/snapshots/ | splitver '^libggz-snapshot-([0-9.]+).tar.gz$' | sort -V | tail -n 1

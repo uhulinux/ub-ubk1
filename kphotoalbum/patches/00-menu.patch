@@ -1,0 +1,9 @@
+diff -Naur kphotoalbum-4.2-orig/kphotoalbum.desktop kphotoalbum-4.2/kphotoalbum.desktop
+--- kphotoalbum-4.2-orig/kphotoalbum.desktop	2012-03-31 20:18:24.000000000 +0200
++++ kphotoalbum-4.2/kphotoalbum.desktop	2012-04-27 09:40:38.000000000 +0200
+@@ -104,4 +104,4 @@
+ X-KDE-StartupNotify=true
+ Icon=kphotoalbum
+ X-DocPath=kphotoalbum/index.html
+-Categories=Qt;KDE;Graphics;Photography;
++Categories=Qt;KDE;Graphics;Photography;X-UHU-Menu/Graphics;

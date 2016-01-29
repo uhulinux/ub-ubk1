@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/perl5/vendor_perl/UHU
+cp -al src/. "$UB_INSTALLDIR"/usr/lib/perl5/vendor_perl/UHU/

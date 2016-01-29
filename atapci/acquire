@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+atapci-${UB_VERSION}.tar.bz2 atapci-${UB_VERSION}/
+	http://home.elka.pw.edu.pl/~bzolnier/atapci/

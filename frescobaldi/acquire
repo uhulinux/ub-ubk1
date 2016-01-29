@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+frescobaldi-${UB_VERSION}.tar.gz frescobaldi-${UB_VERSION}/
+	https://github.com/wbsoft/frescobaldi/releases/download/v${UB_VERSION}/

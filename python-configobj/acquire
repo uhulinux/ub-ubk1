@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+configobj-${UB_VERSION}.tar.gz configobj-${UB_VERSION}/
+	http://pypi.python.org/packages/source/c/configobj/

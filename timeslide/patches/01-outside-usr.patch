@@ -1,0 +1,27 @@
+diff -urN timeslide-0.2.orig/Makefile timeslide-0.2/Makefile
+--- timeslide-0.2.orig/Makefile	2003-11-04 13:04:38.000000000 +0100
++++ timeslide-0.2/Makefile	2003-11-04 13:06:32.000000000 +0100
+@@ -2,9 +2,9 @@
+ 	gcc -Wall -shared -ldl -o libtimeslide.so libtimeslide.c
+ 
+ install: libtimeslide.so
+-	mkdir -p $(DESTDIR)/usr/{bin,lib}
+-	cp -a timeslide $(DESTDIR)/usr/bin/
+-	cp -a libtimeslide.so $(DESTDIR)/usr/lib/
++	mkdir -p $(DESTDIR)/{bin,lib}
++	cp -a timeslide $(DESTDIR)/bin/
++	cp -a libtimeslide.so $(DESTDIR)/lib/
+ 
+ clean:
+ 	rm -f libtimeslide.so
+diff -urN timeslide-0.2.orig/timeslide timeslide-0.2/timeslide
+--- timeslide-0.2.orig/timeslide	2003-11-04 13:04:38.000000000 +0100
++++ timeslide-0.2/timeslide	2003-11-04 13:06:26.000000000 +0100
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-LIBTIMESLIDE="/usr/lib/libtimeslide.so"
++LIBTIMESLIDE="/lib/libtimeslide.so"
+ 
+ if [ ! -n "$LD_PRELOAD" ]; then
+ 	LD_PRELOAD="$LIBTIMESLIDE"

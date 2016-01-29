@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+ub_install
+
+## Bad newlines
+for i in "$UB_INSTALLDIR"/usr/share/kconf_update/*.pl; do
+	cat "$i" | sed "s,\r\n,\n," > "$i"x
+	rm "$i"
+	mv "$i"x "$i"
+done

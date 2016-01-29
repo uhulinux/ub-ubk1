@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pylint-${UB_VERSION}.tar.gz pylint-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pylint/

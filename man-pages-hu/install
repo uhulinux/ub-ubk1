@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/man/hu
+cp -avl "$UB_COMPILEDIR"/. "$UB_INSTALLDIR"/usr/share/man/hu/

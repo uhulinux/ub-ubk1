@@ -1,0 +1,32 @@
+diff -Naurdp a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+--- a/drivers/pci/quirks.c	2004-08-17 16:19:14.351006927 +0200
++++ b/drivers/pci/quirks.c	2004-08-17 16:39:01.665066727 +0200
+@@ -986,6 +986,28 @@ static void __devinit quirk_pciehp_msi(s
+ }
+ DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_INTEL,    PCI_DEVICE_ID_INTEL_SMCH,	quirk_pciehp_msi );
+ 
++/*
++ * Fix up IDE region of the ServerWorks OSB5 Chipset
++ * The Intel OEM SCB2 Board and the SR1200 Server seem
++ * to need this, else you will get only PIO on the builtin
++ * IDE interface.             -- hps 20020804
++ */
++
++static void __init quirk_osb5 (struct pci_dev * dev )
++{
++	struct resource *r;
++	int idx;
++	
++	printk(KERN_INFO "Checking ServerWorks OSB5 IDE BIOS Setup\n");
++
++	for(idx=0; idx<6; idx++) {
++		r = &dev->resource[idx];
++
++		if(!r->start && r->end)
++			pci_assign_resource(dev, idx);
++	}
++}
++DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_SERVERWORKS, PCI_DEVICE_ID_SERVERWORKS_CSB5IDE, quirk_osb5);
+ 
+ static void pci_do_fixups(struct pci_dev *dev, struct pci_fixup *f, struct pci_fixup *end)
+ {

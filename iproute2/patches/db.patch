@@ -1,0 +1,24 @@
+diff -Naurd iproute2-2.6.9.orig/misc/arpd.c iproute2-2.6.9/misc/arpd.c
+--- iproute2-2.6.9.orig/misc/arpd.c	2004-10-19 22:49:02.000000000 +0200
++++ iproute2-2.6.9/misc/arpd.c	2004-10-22 19:47:49.559533315 +0200
+@@ -16,7 +16,7 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <netdb.h>
+-#include <db_185.h>
++#include <db1/db.h>
+ #include <sys/ioctl.h>
+ #include <sys/poll.h>
+ #include <errno.h>
+diff -Naurd iproute2-2.6.9.orig/misc/Makefile iproute2-2.6.9/misc/Makefile
+--- iproute2-2.6.9.orig/misc/Makefile	2004-10-19 22:49:02.000000000 +0200
++++ iproute2-2.6.9/misc/Makefile	2004-10-22 19:49:01.837776821 +0200
+@@ -19,7 +19,7 @@
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o rtacct rtacct.c $(LIBNETLINK) -lm
+ 
+ arpd: arpd.c
+-	$(CC) $(CFLAGS) -I$(DBM_INCLUDE) $(LDFLAGS) -o arpd arpd.c $(LIBNETLINK) -ldb -lpthread
++	$(CC) $(CFLAGS) -I$(DBM_INCLUDE) $(LDFLAGS) -o arpd arpd.c $(LIBNETLINK) -ldb1 -lpthread
+ 
+ ssfilter.c: ssfilter.y
+ 	bison ssfilter.y -o ssfilter.c

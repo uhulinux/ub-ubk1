@@ -1,0 +1,1 @@
+urllist http://wayland.freedesktop.org/releases/ | splitver '^wayland-([0-9.]+).tar.xz$' | sort -V | tail -n 1

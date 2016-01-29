@@ -1,0 +1,15 @@
+cups-dev
+dbus-dev
+fontconfig-dev
+freetype2-dev
+ghostscript
+hpijs
+hplip
+ijs
+ijs-dev
+lcms-dev
+libjpeg-dev
+libpng-dev
+libtiff-dev
+poppler-dev
+qpdf-dev

@@ -1,0 +1,3 @@
+#!/bin/sh -eux
+
+install/linux/install.sh --install-prefix=$UB_INSTALLDIR

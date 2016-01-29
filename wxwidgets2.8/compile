@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--with-opengl \
+	--with-gtk \
+	--enable-gtk2 \
+	--enable-unicode
+
+ub_make -C contrib

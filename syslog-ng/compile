@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--with-systemdsystemunitdir=/usr/lib/systemd/system \
+	--with-embedded-crypto \
+	--enable-spoof-source \
+	--sysconfdir=/etc/syslog-ng \
+	--localstatedir=/var/lib/syslog-ng \
+	--datadir=/usr/share/syslog-ng

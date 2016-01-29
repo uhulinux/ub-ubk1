@@ -1,0 +1,16 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR/usr/lib/chromium/"
+cp -a out/Release/lib/*.so "$UB_INSTALLDIR/usr/lib/chromium/"
+rm -rf out/Release/{gen,lib,obj}
+cp -a out/Release/. "$UB_INSTALLDIR/usr/lib/chromium/"
+
+for size in 16 22 24 32 48 64 128 256; do
+	mkdir -p ${UB_INSTALLDIR}/usr/share/icons/hicolor/${size}x${size}/apps/
+	case ${size} in
+	    16|32) iconpath="chrome/app/theme/default_100_percent/chromium" ;;
+	    *) iconpath="chrome/app/theme/chromium" ;;
+	esac
+	cp ${iconpath}/product_logo_$size.png ${UB_INSTALLDIR}/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png
+done
+

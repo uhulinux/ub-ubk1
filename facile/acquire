@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+facile-${UB_VERSION}.tar.gz facile-${UB_VERSION}/
+	http://www.recherche.enac.fr/opti/facile/distrib/

@@ -1,0 +1,10 @@
+service telnet
+{
+	disable     = yes
+	socket_type = stream	
+	wait        = no
+	user        = root
+	bind        = 127.0.0.1
+	log_on_failure += USERID
+	server      = /usr/sbin/in.telnetd
+}

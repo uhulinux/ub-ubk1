@@ -1,0 +1,13 @@
+freetype2-dev
+libpng-dev
+pycairo-dev
+pygtk-dev
+python-dateutil
+python-dev
+python-numpy
+python-setuptools
+python-tkinter
+pytz
+tcl-dev
+tk-dev
+wxpython

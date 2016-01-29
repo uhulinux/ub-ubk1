@@ -1,0 +1,9 @@
+diff -Naur kapptemplate-4.10.80-orig/kapptemplate.desktop kapptemplate-4.10.80/kapptemplate.desktop
+--- kapptemplate-4.10.80-orig/kapptemplate.desktop	2013-06-10 20:55:24.000000000 +0200
++++ kapptemplate-4.10.80/kapptemplate.desktop	2013-06-14 11:19:28.000000000 +0200
+@@ -103,4 +103,4 @@
+ Name[x-test]=xxKAppTemplatexx
+ Name[zh_CN]=KAppTemplate
+ Name[zh_TW]=KAppTemplate
+-Categories=Qt;KDE;Development;
++Categories=Qt;KDE;Development;X-UHU-Menu/Development/Programming;

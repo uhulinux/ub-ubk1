@@ -1,0 +1,47 @@
+From 11248fb7484c56ecdf14f8f24f2322d887a7e48e Mon Sep 17 00:00:00 2001
+From: Nils Philippsen <nils@redhat.com>
+Date: Tue, 29 Oct 2013 14:19:16 +0100
+Subject: [PATCH] patch: pixma_bjnp-crash
+
+Squashed commit of the following:
+
+commit d7c1db0e79b9e6b1f7c08c16ef883ad414a12bc0
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Tue Oct 29 14:14:18 2013 +0100
+
+    pixmap: omitting curly braces considered harmful
+
+    The break being outside of the else block effectively made an if clause
+    out of the while loop. This caused long hostnames to not be shortened
+    sufficiently which subsequentely made strcpy() write beyond buffer
+    boundaries.
+
+    (cherry picked from commit d35d6326cb00fcbb19b41599bdff7faf5d79225e)
+---
+ backend/pixma_bjnp.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/backend/pixma_bjnp.c b/backend/pixma_bjnp.c
+index 3046e9d..a1730ad 100644
+--- a/backend/pixma_bjnp.c
++++ b/backend/pixma_bjnp.c
+@@ -364,11 +364,13 @@ determine_scanner_serial (const char *hostname, const char * mac_address, char *
+       /* if this is a FQDN, not an ip-address, remove domain part of the name */
+       if ((dot = strchr (copy, '.')) != NULL)
+         {
+-	*dot = '\0';
++          *dot = '\0';
+         }
+       else
+-        strcpy(copy, mac_address);
+-	break;
++        {
++          strcpy(copy, mac_address);
++          break;
++        }
+     }
+   strcpy( serial, copy );
+   return serial;
+-- 
+1.8.3.1
+

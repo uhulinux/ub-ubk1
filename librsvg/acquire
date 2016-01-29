@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+librsvg-${UB_VERSION}.tar.xz librsvg-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/librsvg/${UB_VERSION_HEAD2}/

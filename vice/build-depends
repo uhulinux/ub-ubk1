@@ -1,0 +1,10 @@
+alsa-lib-dev
+glu-dev
+libgnomeui2-dev
+libjpeg-dev
+libpcap-dev
+libungif-dev
+libxxf86vm-dev
+pulseaudio-dev
+vte2-dev
+x.org-font-utils

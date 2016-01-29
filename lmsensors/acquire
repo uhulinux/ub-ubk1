@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lm_sensors-${UB_VERSION}.tar.bz2 lm_sensors-${UB_VERSION}/
+	http://dl.lm-sensors.org/lm-sensors/releases/

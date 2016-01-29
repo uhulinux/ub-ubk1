@@ -1,0 +1,27 @@
+diff -Naurd a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2006-05-25 16:05:26.000000000 +0200
++++ b/Makefile.in	2006-05-25 16:06:14.000000000 +0200
+@@ -31,7 +31,7 @@
+ # Pathname of directory to install the man page
+ MANDEST = @mandir@
+ # Pathname of directory to install database file
+-ARPDIR = $(prefix)/var/lib/arpwatch
++ARPDIR = /var/lib/arpwatch
+ ETHERCODESDIR = $(prefix)/share/arpwatch
+ 
+ # VPATH
+@@ -120,10 +120,10 @@
+ 	$(INSTALL) -d -m 750 $(DESTDIR)$(BINDEST)
+ 	$(INSTALL) -m 750 arpwatch $(DESTDIR)$(BINDEST)
+ 	$(INSTALL) -m 750 arpsnmp $(DESTDIR)$(BINDEST)
+-	$(INSTALL) -d -m 750 $(ARPDIR)
+-	$(INSTALL) -d -m 750 $(ETHERCODESDIR)
+-	$(INSTALL) -m 440 ethercodes.dat $(ETHERCODESDIR)
+-	$(INSTALL) -m 640 arp.dat $(ARPDIR)
++	$(INSTALL) -d -m 750 $(DESTDIR)$(ARPDIR)
++	$(INSTALL) -d -m 750 $(DESTDIR)$(ETHERCODESDIR)
++	$(INSTALL) -m 440 ethercodes.dat $(DESTDIR)$(ETHERCODESDIR)
++	$(INSTALL) -m 640 arp.dat $(DESTDIR)$(ARPDIR)
+ 
+ install-man: force
+ 	$(INSTALL) -m 444 $(srcdir)/arpwatch.8 \

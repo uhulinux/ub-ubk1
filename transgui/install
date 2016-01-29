@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_install
+
+cp transgui.png "$UB_INSTALLDIR"/usr/share/pixmaps/transgui.png

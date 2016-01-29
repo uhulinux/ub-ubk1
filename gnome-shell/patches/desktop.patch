@@ -1,0 +1,11 @@
+--- gnome-shell.orig/data/gnome-shell.desktop.in.in	2011-03-21 21:46:45.000000000 +0100
++++ gnome-shell/data/gnome-shell.desktop.in.in	2011-04-20 17:22:43.000000000 +0200
+@@ -2,7 +2,7 @@
+ Type=Application
+ _Name=GNOME Shell
+ _Comment=Window management and application launching
+-Exec=@bindir@/gnome-shell
++Exec=gnome-shell
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=gnome-shell
+ X-GNOME-Bugzilla-Component=general

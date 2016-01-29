@@ -1,0 +1,12 @@
+diff -urN LVM2.2.02.112.orig/scripts/lvm2_monitoring_systemd_red_hat.service.in LVM2.2.02.112/scripts/lvm2_monitoring_systemd_red_hat.service.in
+--- LVM2.2.02.112.orig/scripts/lvm2_monitoring_systemd_red_hat.service.in	2014-11-11 15:15:56.000000000 +0100
++++ LVM2.2.02.112/scripts/lvm2_monitoring_systemd_red_hat.service.in	2014-11-20 17:05:17.119400236 +0100
+@@ -10,6 +10,8 @@
+ [Service]
+ Type=oneshot
+ Environment=LVM_SUPPRESS_LOCKING_FAILURE_MESSAGES=1
++ExecStartPost=/usr/bin/udevadm trigger --type=devices
++ExecStartPost=-/sbin/vgmknodes --refresh
+ ExecStart=@sbindir@/lvm vgchange --monitor y --ignoreskippedcluster
+ ExecStop=@sbindir@/lvm vgchange --monitor n --ignoreskippedcluster
+ RemainAfterExit=yes

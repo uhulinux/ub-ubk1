@@ -1,0 +1,12 @@
+diff -Naur sympa-5.3.orig/Makefile.in sympa-5.3/Makefile.in
+--- sympa-5.3.orig/Makefile.in	2007-05-31 11:48:31.000000000 +0200
++++ sympa-5.3/Makefile.in	2007-05-31 15:31:07.000000000 +0200
+@@ -215,7 +215,7 @@
+ target_cpu = @target_cpu@
+ target_os = @target_os@
+ target_vendor = @target_vendor@
+-HOST = `$(PERL) -MSys::Hostname -e "printf '%s', Sys::Hostname::hostname();"`
++HOST = example.uhulinux.hu
+ COOKIE = `$(PERL) -e " print int(rand ( time ))  "`
+ PERL_VERSION = `$(PERL) -e ' print $$]'`
+ SYMPA_VERSION = @VERSION@

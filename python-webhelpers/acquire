@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+WebHelpers-${UB_VERSION/~/}.tar.gz WebHelpers-${UB_VERSION/~/}/
+	http://pypi.python.org/packages/source/W/WebHelpers/

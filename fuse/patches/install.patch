@@ -1,0 +1,24 @@
+diff -Naur fuse-2.9.1-orig/util/Makefile.in fuse-2.9.1/util/Makefile.in
+--- fuse-2.9.1-orig/util/Makefile.in	2012-07-19 14:53:28.000000000 +0200
++++ fuse-2.9.1/util/Makefile.in	2012-09-13 13:52:51.000000000 +0200
+@@ -641,11 +641,6 @@
+ 
+ install-exec-hook:
+ 	-chmod u+s $(DESTDIR)$(bindir)/fusermount
+-	@if test ! -e $(DESTDIR)/dev/fuse; then \
+-		$(MKDIR_P) $(DESTDIR)/dev; \
+-		echo "mknod $(DESTDIR)/dev/fuse -m 0666 c 10 229 || true"; \
+-		mknod $(DESTDIR)/dev/fuse -m 0666 c 10 229 || true; \
+-	fi
+ 
+ install-exec-local:
+ 	$(MKDIR_P) $(DESTDIR)$(MOUNT_FUSE_PATH)
+@@ -658,8 +653,6 @@
+ 	fi
+ 
+ install-data-local:
+-	$(MKDIR_P) $(DESTDIR)$(UDEV_RULES_PATH)
+-	$(INSTALL_DATA) $(srcdir)/udev.rules $(DESTDIR)$(UDEV_RULES_PATH)/99-fuse.rules
+ 
+ uninstall-local:
+ 	rm -f $(DESTDIR)$(MOUNT_FUSE_PATH)/mount.fuse

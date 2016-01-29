@@ -1,0 +1,62 @@
+# /etc/apt/sources.list
+
+##########################################################################
+#                                                                        #
+#       FIGYELEM!                                                        #
+#                                                                        #
+# Ennek a fájlnak az eredeti, UHU-Linux által szállított változata a     #
+# hivatalos, erre a gépre telepített UHU-Linux verzióhoz illeszkedő      #
+# csomagok lelőhelyeire tartalmaz bejegyzéseket.                         #
+#                                                                        #
+# A fájl bővítése, új lelőhely felvétele esetén fontos tudnunk, hogy az  #
+# ott megtalálható csomagok minden bizonnyal nem hivatalos UHU-Linux     #
+# csomagok, vagy éppenséggel instabil fejlesztői változatok. Ezeknek     #
+# nemcsak saját működésükkel adódhat gond, hanem bizonyos esetekben más  #
+# csomagok helyes működését is elronthatják.                             #
+#                                                                        #
+# Éppen ezért jelen fájl bővítése csak saját felelősségre történhet,     #
+# az UHU-Linux csapata semmiféle garanciát nem vállal a nem hivatalos,   #
+# illetve fejlesztői csomagok lelőhelyének hozzáadását követően.         #
+#                                                                        #
+# Kérjük továbbá, hogy ilyen nem hivatalos csomaggal kapcsolatos         #
+# probléma esetén NE írj a kezdo@uhulinux.hu levelezési listára!         #
+# A halado@uhulinux.hu-ra írj, vagy keresd meg a csomag készítőjét!      #
+#                                                                        #
+##########################################################################
+
+##########################################################################
+#                                                                        #
+#       WARNING!                                                         #
+#                                                                        #
+# The original version of this file only contains URLs for official      #
+# UHU-Linux packages that fit this particular release of UHU-Linux.      #
+#                                                                        #
+# If you add or modify some entries, it is important to know that those  #
+# packages are most likely either not official UHU-Linux packages or not #
+# stable ones. Installing such packages might not only fail to run       #
+# themselves but may also cause other software to misbehave.             #
+#                                                                        #
+# Hence only add or modify lines at your own risk, and please understand #
+# that the UHU-Linux Team cannot give you any warranty if you do so.     #
+#                                                                        #
+##########################################################################
+
+# Hivatalos ftp és http lelőhelyek
+# Official ftp and http locations
+
+#deb ftp://ftp.uhulinux.hu/pub/uhu/dev/packages ./
+deb http://download.uhulinux.hu/pub/uhu/3 ./
+
+# Hivatalos rsync lelőhely
+# Használata előtt olvassuk el a /usr/share/doc/Packages/apt/RSYNC_HU fájlt.
+# Official rsync location
+# Please read /usr/share/doc/Packages/apt/RSYNC before enabling it.
+
+#deb rsync://rsync.uhulinux.hu/ftp/uhu/2.1 ./
+
+# Tükörszerverek
+# Mirror sites
+
+#deb ftp://ftp3.uhulinux.hu/uhu/2.1 ./
+#deb ftp://ftp.linuxforum.hu/uhulinux/pub/uhu/2.1 ./
+#deb ftp://linuxonline.hu/uhulinux/uhu/2.1 ./

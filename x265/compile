@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+cd multicoreware-x265-*/build/linux
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr ../../source
+ub_make

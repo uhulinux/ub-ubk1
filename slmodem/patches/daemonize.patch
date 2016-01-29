@@ -1,0 +1,89 @@
+diff -Naur slmodem-2.9.11-20090222-orig/modem/modem.c slmodem-2.9.11-20090222/modem/modem.c
+--- slmodem-2.9.11-20090222-orig/modem/modem.c	2008-03-29 13:04:16.000000000 +0100
++++ slmodem-2.9.11-20090222/modem/modem.c	2009-06-07 19:20:24.000000000 +0200
+@@ -98,6 +98,7 @@
+ extern int FAX_process(void *obj, void *in, void *out, int count);
+ extern void FAX_delete(void *obj);
+ #endif
++extern int daemonize;
+ 
+ /* local prototypes */
+ int modem_answer(struct modem *m);
+@@ -1870,6 +1871,7 @@
+ 
+ void modem_print_version()
+ {
++	if (!daemonize)
+ 	MODEM_INFO("%s: version %s %s\n",
+ 		   modem_name,modem_version,modem_date);
+ }
+diff -Naur slmodem-2.9.11-20090222-orig/modem/modem_cmdline.c slmodem-2.9.11-20090222/modem/modem_cmdline.c
+--- slmodem-2.9.11-20090222-orig/modem/modem_cmdline.c	2009-06-07 19:15:45.000000000 +0200
++++ slmodem-2.9.11-20090222/modem/modem_cmdline.c	2009-06-07 19:25:20.000000000 +0200
+@@ -77,7 +77,7 @@
+ unsigned int use_short_buffer = 0;
+ const char *modem_group = "uucp";
+ mode_t modem_perm  = 0660;
+-
++int daemonize = 1;
+ 
+ enum {
+ 	OPT_HELP = 0,
+@@ -95,6 +95,7 @@
+ 	OPT_SHORTBUF,
+ 	OPT_DEBUG,
+ 	OPT_LOG,
++	OPT_DAEMON,
+ 	OPT_LAST
+ };
+ 
+@@ -122,6 +123,7 @@
+ 	{'s',"shortbuffer","use short buffer (4 periods length)"},
+ 	{'d',"debug","debug level",OPTIONAL,INTEGER,"0"},
+ 	{'l',"log","logging mode",OPTIONAL,INTEGER,"5"},
++	{'D',"daemon","enter daemon mode"},
+ 	{}
+ };
+ 
+@@ -280,6 +282,10 @@
+ 		   (val= strtol(opt_list[OPT_LOG].arg_val,NULL,0)) > 0 )
+ 			modem_debug_logging = val;
+ 	}
++		if(opt_list[OPT_DAEMON].found) {
++		   daemonize = 1;
++	}
++
+ 	if(!modem_dev_name) {
+ 		modem_dev_name = use_alsa ? modem_alsa_dev_name : modem_default_dev_name;
+ 	}
+diff -Naur slmodem-2.9.11-20090222-orig/modem/modem_main.c slmodem-2.9.11-20090222/modem/modem_main.c
+--- slmodem-2.9.11-20090222-orig/modem/modem_main.c	2008-08-04 03:40:13.000000000 +0200
++++ slmodem-2.9.11-20090222/modem/modem_main.c	2009-06-07 19:28:17.000000000 +0200
+@@ -70,7 +70,7 @@
+ #include <modem.h>
+ #include <modem_debug.h>
+ 
+-#define INFO(fmt,args...) fprintf(stderr, fmt , ##args );
++#define INFO(fmt,args...) if (!daemonize) fprintf(stderr, fmt , ##args );
+ #define ERR(fmt,args...) fprintf(stderr, "error: " fmt , ##args );
+ 
+ #define DBG(fmt,args...) dprintf("main: " fmt, ##args)
+@@ -97,7 +97,7 @@
+ extern const char *modem_group;
+ extern mode_t modem_perm;
+ extern unsigned int use_short_buffer;
+-
++extern int daemonize;
+ 
+ struct device_struct {
+ 	int num;
+@@ -987,6 +987,9 @@
+ 	INFO("Use `%s' as modem device, Ctrl+C for termination.\n",
+ 	     *link_name ? link_name : m->pty_name);
+ 
++	if (daemonize)
++		daemon(0, 0);
++
+ 	/* main loop here */
+ 	ret = modem_run(m,&device);
+ 

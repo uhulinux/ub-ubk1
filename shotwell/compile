@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+./configure \
+	--disable-schemas-compile \
+	--disable-desktop-update \
+	--disable-desktop-validate \
+	--disable-icon-update \
+	--prefix=/usr
+
+ub_make

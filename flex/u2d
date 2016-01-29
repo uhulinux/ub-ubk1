@@ -1,0 +1,1 @@
+sflist flex . | splitver '^flex[-_]([0-9.]+).tar.gz$' | sort -V | tail -n 1

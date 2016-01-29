@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+astroid-"$UB_VERSION".tar.gz astroid-"$UB_VERSION"/
+	http://pypi.python.org/packages/source/a/astroid/

@@ -1,0 +1,14 @@
+diff -Naurd perl-5.8.1.orig/hints/linux.sh perl-5.8.1/hints/linux.sh
+--- perl-5.8.1.orig/hints/linux.sh	2003-09-23 15:59:01.000000000 +0200
++++ perl-5.8.1/hints/linux.sh	2003-09-28 02:34:26.000000000 +0200
+@@ -95,6 +95,10 @@
+     ;;
+ esac
+ 
++man1dir=/usr/share/man/man1
++man3dir=/usr/share/man/man3
++man3ext=3pm
++
+ # Are we using ELF?  Thanks to Kenneth Albanowski <kjahds@kjahds.com>
+ # for this test.
+ cat >try.c <<'EOM'

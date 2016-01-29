@@ -1,0 +1,53 @@
+diff -urN boo-0.8.2.2960.orig/bin/Makefile.in boo-0.8.2.2960/bin/Makefile.in
+--- boo-0.8.2.2960.orig/bin/Makefile.in	2008-05-20 02:34:38.000000000 +0200
++++ boo-0.8.2.2960/bin/Makefile.in	2008-10-17 20:06:01.000000000 +0200
+@@ -126,7 +126,7 @@
+ target_alias = @target_alias@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-boodir = $(prefix)/lib/boo
++boodir = $(libdir)/boo
+ boo_DATA = booc.exe booi.exe booish.exe booc.rsp booc.exe.config booi.exe.config booish.exe.config
+ BOO_GAC_DLLS = Boo.Lang.dll \
+                Boo.Lang.Useful.dll \
+diff -urN boo-0.8.2.2960.orig/configure boo-0.8.2.2960/configure
+--- boo-0.8.2.2960.orig/configure	2008-05-20 02:34:38.000000000 +0200
++++ boo-0.8.2.2960/configure	2008-10-17 20:05:08.000000000 +0200
+@@ -2262,7 +2262,7 @@
+ 
+ 
+ 
+-GACUTIL_FLAGS='/package $(PACKAGE) /gacdir $(DESTDIR)/$(prefix)/lib'
++GACUTIL_FLAGS='/package $(PACKAGE) /gacdir $(DESTDIR)/$(libdir)'
+ 
+ 
+ ac_config_files="$ac_config_files Makefile bin/Makefile extras/Makefile extras/booc extras/booi extras/booish extras/boo.pc"
+diff -urN boo-0.8.2.2960.orig/extras/boo.pc.in boo-0.8.2.2960/extras/boo.pc.in
+--- boo-0.8.2.2960.orig/extras/boo.pc.in	2007-07-05 16:10:58.000000000 +0200
++++ boo-0.8.2.2960/extras/boo.pc.in	2008-10-17 20:06:37.000000000 +0200
+@@ -1,6 +1,6 @@
+ prefix=@prefix@
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib
++libdir=@libdir@/mono
+ 
+ 
+ Name: Boo
+diff -urN boo-0.8.2.2960.orig/extras/Makefile.in boo-0.8.2.2960/extras/Makefile.in
+--- boo-0.8.2.2960.orig/extras/Makefile.in	2008-05-20 02:34:39.000000000 +0200
++++ boo-0.8.2.2960/extras/Makefile.in	2008-10-17 20:12:31.000000000 +0200
+@@ -135,11 +135,11 @@
+ target_alias = @target_alias@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-pkgconfigdir = $(prefix)/lib/pkgconfig
++pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = boo.pc
+-gtksourceviewdir = $(GTKSOURCEVIEW_PREFIX)/share/gtksourceview-1.0/language-specs/
++gtksourceviewdir = $(pkgdatadir)/share/gtksourceview-1.0/language-specs/
+ gtksourceview_DATA = boo.lang
+-mimepackagesdir = $(MIME_PREFIX)/share/mime/packages/
++mimepackagesdir = $(pkgdatadir)/share/mime/packages/
+ mimepackages_DATA = boo-mime-info.xml
+ bin_SCRIPTS = booc booi booish
+ DISTCLEANFILES = booc booi booish boo.pc

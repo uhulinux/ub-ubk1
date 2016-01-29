@@ -1,0 +1,12 @@
+diff -Naurd ncpfs-2.2.4.orig/Makefile.in ncpfs-2.2.4/Makefile.in
+--- ncpfs-2.2.4.orig/Makefile.in	2004-02-10 19:28:47.000000000 +0100
++++ ncpfs-2.2.4/Makefile.in	2004-08-17 12:30:13.424571277 +0200
+@@ -10,7 +10,7 @@
+ .PHONY : all dep install install-dev clean mrproper distclean
+ .PHONY : tags TAGS clean_me dist tgz
+ 
+-BASE_SUBDIRS := lib sutil util man @ADDON_SUBDIRS@
++BASE_SUBDIRS := lib sutil util man @ADDON_SUBDIRS@ ipxdump
+ EXECSUBDIRS = intl @POSUB@ $(BASE_SUBDIRS)
+ SUBDIRS := $(EXECSUBDIRS)
+ INSTALL_SUBDIRS := $(SUBDIRS)

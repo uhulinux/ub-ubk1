@@ -1,0 +1,9 @@
+diff -Naurdp opera-10.53-6330.i386.linux/opera opera-10.53-6330.i386.linux.launcher/opera
+--- opera-10.53-6330.i386.linux/opera	2010-04-30 15:46:44.000000000 +0200
++++ opera-10.53-6330.i386.linux.launcher/opera	2010-05-22 12:34:17.000000000 +0200
+@@ -1,4 +1,2 @@
+ #!/bin/sh
+-export OPERA_DIR=${OPERA_DIR:-"${0%/*}"/share/opera}
+-export OPERA_PERSONALDIR=${OPERA_PERSONALDIR:-"${0%/*}"/profile}
+-exec "${0%/*}"/lib/opera/opera "$@"
++exec /usr/lib/opera/opera -sd /usr/share/opera -pd "$HOME"/.opera "$@"

@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cp -p pixmaps/computer.png ${UB_INSTALLDIR}/usr/share/pixmaps/cuiterm.png
+ub_install

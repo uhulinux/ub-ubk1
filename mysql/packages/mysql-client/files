@@ -1,0 +1,17 @@
+	/usr/bin/mysql
+	/usr/bin/mysql_find_rows
+	/usr/bin/mysqlaccess
+	/usr/bin/mysqladmin
+	/usr/bin/mysqlbug
+	/usr/bin/mysqlcheck
+	/usr/bin/mysqldump
+	/usr/bin/mysqldumpslow
+	/usr/bin/mysqlimport
+	/usr/bin/mysqlshow
+	/usr/share/man/man1/mysql.1
+	/usr/share/man/man1/mysqlaccess.1
+	/usr/share/man/man1/mysqladmin.1
+	/usr/share/man/man1/mysqlcheck.1
+	/usr/share/man/man1/mysqldump.1
+	/usr/share/man/man1/mysqlimport.1
+	/usr/share/man/man1/mysqlshow.1

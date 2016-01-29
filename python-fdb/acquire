@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+fdb-${UB_VERSION}.tar.gz fdb-${UB_VERSION}/
+	https://pypi.python.org/packages/source/f/fdb/

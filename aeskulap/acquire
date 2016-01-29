@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+aeskulap-${UB_VERSION/~/-}.tar.gz aeskulap-${UB_VERSION/~/-}/
+	http://www.bms-austria.com/~pipelka/aeskulap/

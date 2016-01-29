@@ -1,0 +1,10 @@
+acl-dev
+docbook-xsl
+expat-dev
+gobject-introspection-dev
+intltool
+libatasmart-dev
+libxslt
+polkit-dev
+python-dev
+systemd-dev

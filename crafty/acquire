@@ -1,0 +1,13 @@
+#!/usr/bin/env dl
+
+crafty-${UB_VERSION}.zip crafty-${UB_VERSION}/
+	http://www.craftychess.com/
+	ftp://ftp.cis.uab.edu/pub/hyatt/source/
+
+books.bin
+	http://www.craftychess.com/
+	ftp://ftp.cis.uab.edu/pub/hyatt/book/
+
+book.bin
+	http://www.craftychess.com/
+	ftp://ftp.cis.uab.edu/pub/hyatt/book/

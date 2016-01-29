@@ -1,0 +1,6 @@
+imake
+libx11-dev
+libxext-dev
+libxt-dev
+sharutils
+tk

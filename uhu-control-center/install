@@ -1,0 +1,27 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR/usr/share/uhu-control-center"
+cp -av "src/modules/"* "$UB_INSTALLDIR/usr/sbin/"
+cp -av "src/uhu-control-center" "$UB_INSTALLDIR/usr/sbin/"
+cp -av "ui/uhu-control-center.glade2" \
+	"$UB_INSTALLDIR/usr/share/uhu-control-center/"
+
+for i in ui/modules/*; do
+	tmp=$(basename $i)
+	filename=${tmp%%.glade2}
+	mkdir -p "$UB_INSTALLDIR/usr/share/uhu-control-center/$filename"
+	cp -av "$i" \
+		"$UB_INSTALLDIR/usr/share/uhu-control-center/$filename/$filename.glade2"
+done
+
+rm -rf "$UB_INSTALLDIR/usr/share/uhu-control-center/uhu-control-center/"
+
+cp -av "data/samba-config/smb.conf" \
+	"$UB_INSTALLDIR/usr/share/uhu-control-center/samba-config/"
+
+chmod +x "$UB_INSTALLDIR/usr/sbin/"*
+
+mkdir -p "$UB_INSTALLDIR/usr/share/locale/hu/LC_MESSAGES/"
+msgfmt po/hu.po
+cp -av messages.mo \
+		"$UB_INSTALLDIR/usr/share/locale/hu/LC_MESSAGES/uhu-control-center.mo"

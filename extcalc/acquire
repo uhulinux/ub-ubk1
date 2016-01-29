@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+extcalc-${UB_VERSION}-1.tar.gz extcalc-${UB_VERSION}-1/
+	http://downloads.sourceforge.net/extcalc-linux/

@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+zip${UB_VERSION//./}.tgz zip${UB_VERSION//./}
+	ftp://ftp.info-zip.org/pub/infozip/src/
+
+zcrypt29.zip .
+	ftp://ftp.info-zip.org/pub/infozip/src/

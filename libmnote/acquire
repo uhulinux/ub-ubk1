@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libmnote-${UB_VERSION}.tar.gz libmnote-${UB_VERSION}/
+	http://download.sourceforge.net/libexif/

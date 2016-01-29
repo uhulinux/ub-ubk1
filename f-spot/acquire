@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+f-spot-${UB_VERSION}.tar.gz f-spot-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/f-spot/${UB_VERSION_HEAD2}/

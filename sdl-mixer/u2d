@@ -1,0 +1,1 @@
+urllist http://www.libsdl.org/projects/SDL_mixer/release/ | splitver '^SDL_mixer-([0-9.]+).tar.gz$' | sort -V | tail -n 1

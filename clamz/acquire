@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+clamz-${UB_VERSION}.tar.gz clamz-${UB_VERSION}/
+	http://clamz.googlecode.com/files/

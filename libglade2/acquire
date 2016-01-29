@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libglade-${UB_VERSION}.tar.gz libglade-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libglade/${UB_VERSION_HEAD2}/

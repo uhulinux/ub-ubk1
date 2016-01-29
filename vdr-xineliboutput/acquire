@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+vdr-plugin-xineliboutput_${UB_VERSION/~/+}.orig.tar.gz xineliboutput-${UB_VERSION}/
+	http://ftp.debian.org/debian/pool/main/v/vdr-plugin-xineliboutput/

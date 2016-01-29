@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+make \
+	OPTS="-O2 -g -DCONFIG_FILE=\\\"/etc/whois.conf\\\""

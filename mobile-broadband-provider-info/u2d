@@ -1,0 +1,2 @@
+year="$(urllist ftp://ftp.gnome.org/pub/GNOME/sources/mobile-broadband-provider-info/ | sort -V | grep -E '^[0-9]+$' | tail -n 1)"
+urllist "ftp://ftp.gnome.org/pub/GNOME/sources/mobile-broadband-provider-info/$year" | splitver '^mobile-broadband-provider-info-([0-9.]+).tar.xz$'

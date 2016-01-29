@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Audio-Beep-${UB_VERSION}.tar.gz Audio-Beep-${UB_VERSION}/
+	http://cpan.metacpan.org/modules/by-module/Audio/

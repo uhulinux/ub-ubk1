@@ -1,0 +1,1 @@
+urllist http://gnupg.org/download/index.en.html | splitver '^libgcrypt-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

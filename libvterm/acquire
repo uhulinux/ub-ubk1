@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+libvterm-${UB_VERSION}.tar.gz libvterm/
+	http://downloads.sourceforge.net/libvterm/
+	http://www.mediafire.com/download/07m1ene6s2nzstw/

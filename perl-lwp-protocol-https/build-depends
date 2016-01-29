@@ -1,0 +1,5 @@
+perl-crypt-ssleay
+perl-io-socket-ssl
+perl-libwww
+perl-mozilla-ca
+perl-net-http

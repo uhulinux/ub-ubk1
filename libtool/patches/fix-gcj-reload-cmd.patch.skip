@@ -1,0 +1,24 @@
+From e95ba51d6fdb6b0e77c45e10c8883719046cf783 Mon Sep 17 00:00:00 2001
+From: Pixel <pixel@n4.mandriva.com>
+Date: Mon, 26 Jan 2009 10:49:50 +0100
+Subject: [PATCH 4/6] fix-gcj-reload-cmd
+
+---
+ tests/tagdemo/aclocal.m4 |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/tests/tagdemo/aclocal.m4 b/tests/tagdemo/aclocal.m4
+index 9760fcc..5233723 100644
+--- a/tests/tagdemo/aclocal.m4
++++ b/tests/tagdemo/aclocal.m4
+@@ -4227,6 +4227,7 @@ CC=${GCJ-"gcj"}
+ compiler=$CC
+ _LT_AC_TAGVAR(compiler, $1)=$CC
+ _LT_CC_BASENAME([$compiler])
++_LT_AC_TAGVAR(LD, $1)="$LD"
+ 
+ # GCJ did not exist at the time GCC didn't implicitly link libc in.
+ _LT_AC_TAGVAR(archive_cmds_need_lc, $1)=no
+-- 
+1.6.1
+

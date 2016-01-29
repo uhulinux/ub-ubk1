@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Test-Exception-${UB_VERSION}.tar.gz Test-Exception-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/A/AD/ADIE/

@@ -1,0 +1,9 @@
+diff -Naurd tortoisehg-2.9.2/contrib/thg.desktop tortoisehg-2.9.2-menu/contrib/thg.desktop
+--- tortoisehg-2.9.2/contrib/thg.desktop	2013-09-06 02:45:26.000000000 +0200
++++ tortoisehg-2.9.2-menu/contrib/thg.desktop	2013-10-31 16:09:18.466181241 +0100
+@@ -5,4 +5,4 @@
+ Comment=GUI application for using Mercurial
+ Icon=thg_logo
+ Exec=thg --nofork
+-Categories=Development;RevisionControl;
++Categories=Development;RevisionControl;X-UHU-Menu/Development/Programming;

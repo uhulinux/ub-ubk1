@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+install -Dm755 bin/Translator "$UB_INSTALLDIR"/usr/bin/translator
+install -Dm644 src/res/icon-128.png "$UB_INSTALLDIR"/usr/share/pixmaps/translator.png

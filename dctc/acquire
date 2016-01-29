@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+dctc-${UB_VERSION}.tar.gz dctc-${UB_VERSION}/
+	http://ac2i.homelinux.com/dctc/
+	http://dc.tddm.se/clients/

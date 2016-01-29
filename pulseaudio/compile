@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--disable-solaris \
+	--with-udev-rules-dir=/usr/lib/udev/rules.d/

@@ -1,0 +1,2 @@
+urllist 'https://pypi.python.org/packages/source/G/Geraldo/' | splitver '^Geraldo-([0-9a-z.-]+).tar.gz$' | sort -V | tail -n 1
+

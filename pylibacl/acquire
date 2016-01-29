@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pylibacl-${UB_VERSION}.tar.gz pylibacl-${UB_VERSION}/
+	http://downloads.sourceforge.net/pylibacl/

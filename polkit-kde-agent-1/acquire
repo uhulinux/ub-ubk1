@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+polkit-kde-agent-1-${UB_VERSION}.tar.bz2 polkit-kde-agent-1-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/apps/KDE4.x/admin/

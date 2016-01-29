@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kde-gtk-config-${UB_VERSION}.tar.xz kde-gtk-config-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/kde-gtk-config/${UB_VERSION}/src/

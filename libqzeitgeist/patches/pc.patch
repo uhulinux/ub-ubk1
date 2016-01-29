@@ -1,0 +1,10 @@
+diff -Naur libqzeitgeist-0.8.0-orig/QZeitgeist.pc.in libqzeitgeist-0.8.0/QZeitgeist.pc.in
+--- libqzeitgeist-0.8.0-orig/QZeitgeist.pc.in	2011-10-27 16:08:58.000000000 +0200
++++ libqzeitgeist-0.8.0/QZeitgeist.pc.in	2011-12-20 09:00:24.000000000 +0100
+@@ -7,5 +7,5 @@
+ Description: Qt Zeitgeist library
+ Version: ${CPACK_PACKAGE_VERSION}
+ Requires: QtCore QtDBus
+-Libs: -L${libdir} -lQZeitgeist
++Libs: -L/usr/lib -lqzeitgeist
+ Cflags: -I${CMAKE_INSTALL_PREFIX}/include/

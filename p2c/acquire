@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+p2c-${UB_VERSION}.tar.gz .
+	http://schneider.ncifcrf.gov/p2c/

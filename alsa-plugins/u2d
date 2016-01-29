@@ -1,0 +1,1 @@
+urllist ftp://ftp.alsa-project.org/pub/plugins/ | splitver '^alsa-plugins-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

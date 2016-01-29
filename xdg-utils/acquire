@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+xdg-utils-${UB_VERSION/~/-}.tar.gz xdg-utils-${UB_VERSION/~/-}/
+	http://cgit.freedesktop.org/xdg/xdg-utils/snapshot/
+	http://portland.freedesktop.org/download/

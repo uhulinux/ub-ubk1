@@ -1,0 +1,10 @@
+diff -Naur okular-4.6.90-orig//shell/okular.desktop okular-4.6.90//shell/okular.desktop
+--- okular-4.6.90-orig//shell/okular.desktop	2011-06-22 16:15:08.000000000 +0200
++++ okular-4.6.90//shell/okular.desktop	2011-06-25 16:42:03.000000000 +0200
+@@ -123,5 +123,5 @@
+ Type=Application
+ X-DocPath=okular/index.html
+ InitialPreference=7
+-Categories=Qt;KDE;Graphics;Office;Viewer;
++Categories=Qt;KDE;Graphics;Office;Viewer;X-UHU-Menu/Tools/Viewers;
+ MimeType=application/vnd.kde.okular-archive;

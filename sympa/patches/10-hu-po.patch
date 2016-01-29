@@ -1,0 +1,11 @@
+diff -Naurdp a/po/hu.po b/po/hu.po
+--- a/po/hu.po	2007-06-04 13:54:50.000000000 +0200
++++ b/po/hu.po	2008-02-12 19:08:08.000000000 +0100
+@@ -233,7 +233,6 @@ msgstr "%1 adminisztrációs oldal"
+ 
+ #. (list.name,list.host,size,conf.host,conf.listmaster_email)
+ #: mail_tt2/listowner_notification.tt2:8
+-#, fuzzy
+ msgid ""
+ "%1 archive quota exceeded. \n"
+ "Total size used for %1@%2 archive is %3 Bytes. Messages\n"

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+TwistedWeb2-${UB_VERSION}.tar.bz2 TwistedWeb2-${UB_VERSION}/
+	http://tmrc.mit.edu/mirror/twisted/Web2/${UB_VERSION_HEAD2}/

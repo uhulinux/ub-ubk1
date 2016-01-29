@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libmpdclient-${UB_VERSION}.tar.bz2 libmpdclient-${UB_VERSION}/
+	http://sourceforge.net/projects/musicpd/files/libmpdclient/${UB_VERSION}/

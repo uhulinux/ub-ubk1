@@ -1,0 +1,23 @@
+diff -Naur xdtv-2.4.1cvs15-orig/configure xdtv-2.4.1cvs15/configure
+--- xdtv-2.4.1cvs15-orig/configure	2009-03-22 16:02:06.000000000 +0100
++++ xdtv-2.4.1cvs15/configure	2012-05-11 09:38:56.000000000 +0200
+@@ -24756,7 +24756,6 @@
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <sys/types.h>
+-                    #include <linux/videodev.h>
+                     #include <linux/videodev2.h>
+ int
+ main ()
+diff -Naur xdtv-2.4.1cvs15-orig/src/grab-v4l2.c xdtv-2.4.1cvs15/src/grab-v4l2.c
+--- xdtv-2.4.1cvs15-orig/src/grab-v4l2.c	2008-12-07 12:43:24.000000000 +0100
++++ xdtv-2.4.1cvs15/src/grab-v4l2.c	2012-05-11 09:43:49.000000000 +0200
+@@ -43,7 +43,7 @@
+ #include "grab.h"
+ #include "channel.h"
+ #ifdef HAVE_V4L_2
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ #include <linux/videodev2.h>
+ #include "colorspace.h"
+ #include "memcpy.h"

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+modernize3k-${UB_VERSION}.tar.gz modernize3k-${UB_VERSION}/
+	http://pypi.python.org/packages/source/m/modernize3k/

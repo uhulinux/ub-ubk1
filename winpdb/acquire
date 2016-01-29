@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+winpdb-${UB_VERSION}.tar.gz winpdb-${UB_VERSION}/
+	http://winpdb.googlecode.com/files/

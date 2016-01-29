@@ -1,0 +1,1 @@
+urllist http://distfiles.audacious-media-player.org/ | splitver '^audacious-plugins-([0-9.]+).tar.bz2' | sort -V | tail -n 1

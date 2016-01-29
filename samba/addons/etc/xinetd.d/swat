@@ -1,0 +1,9 @@
+service swat
+{
+	disable     = no
+	socket_type = stream
+	wait        = no
+	user        = root
+	bind        = 127.0.0.1
+	server      = /usr/sbin/swat
+}

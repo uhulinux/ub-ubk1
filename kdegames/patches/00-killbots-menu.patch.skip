@@ -1,0 +1,9 @@
+diff -Naur kdegames-orig/killbots-4.10.0/killbots.desktop kdegames/killbots-4.10.0/killbots.desktop
+--- kdegames-orig/killbots-4.13.0/killbots.desktop	2013-01-23 23:06:09.000000000 +0100
++++ kdegames/killbots-4.13.0/killbots.desktop	2013-02-28 11:18:48.000000000 +0100
+@@ -52,4 +52,4 @@
+ Type=Application
+ X-DocPath=killbots/index.html
+ Terminal=false
+-Categories=Qt;KDE;Game;StrategyGame;
++Categories=Qt;KDE;Game;StrategyGame;X-UHU-Menu/Games/TacticStrategy;

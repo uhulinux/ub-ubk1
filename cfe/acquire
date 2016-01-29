@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+cfe-${UB_VERSION}.tar.gz cfe-${UB_VERSION}/
+	http://lrn.ru/~osgene/files/
+	ftp://ftp.uhulinux.hu/pub/sources/cfe/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libtorrent-rasterbar-${UB_VERSION}.tar.gz libtorrent-rasterbar-${UB_VERSION}/
+	http://downloads.sourceforge.net/project/libtorrent/libtorrent/

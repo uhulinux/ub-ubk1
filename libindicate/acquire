@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libindicate-${UB_VERSION/~/-}.tar.gz libindicate-${UB_VERSION/~/-}/
+	http://launchpad.net/libindicate/${UB_VERSION_HEAD2}/${UB_VERSION}/+download/

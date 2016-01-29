@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+linuxx86-${UB_VERSION}.tar.gz .
+#	http://download2.citrix.com/files/en/products/client/ica/current/linuxx86.tar.gz
+	http://152.66.28.72/files/client/linux/linuxx86.tar.gz
+#	http://neptun.bme.hu/download/

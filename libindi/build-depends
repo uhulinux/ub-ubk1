@@ -1,0 +1,8 @@
+boost-dev
+cmake
+gsl-dev
+libcfitsio
+libfli
+libjpeg-dev
+libnova
+libusb-compat-dev

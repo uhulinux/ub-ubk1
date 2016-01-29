@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+ccbuild-$UB_VERSION.tar.gz ccbuild-$UB_VERSION/
+	http://downloads.sourceforge.net/ccbuild/
+	http://www.logfish.net/pr/ccbuild/downloads/

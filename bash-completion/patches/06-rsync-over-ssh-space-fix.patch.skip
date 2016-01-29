@@ -1,0 +1,11 @@
+diff -Naurd bash_completion.orig/bash_completion bash_completion/bash_completion
+--- bash_completion.orig/bash_completion	2003-08-11 22:36:19.000000000 +0200
++++ bash_completion/bash_completion	2003-08-18 23:48:04.000000000 +0200
+@@ -2184,6 +2184,7 @@
+ 			fi
+ 			# escape spaces; remove executables, aliases, pipes
+ 			# and sockets; add space at end of file names
++			local IFS=$'\n'
+ 			COMPREPLY=( $( ssh -o 'Batchmode yes' $userhost \
+ 				command ls -aF1d "$path*" 2>/dev/null | \
+ 				sed -e 's/ /\\\\\\\ /g' -e 's/[*@|=]$//g' \

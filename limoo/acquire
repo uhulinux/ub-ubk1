@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+limoo-src-${UB_VERSION}.tar.gz limoo-src-${UB_VERSION}/
+	http://getsilicon.org/download/limoo/

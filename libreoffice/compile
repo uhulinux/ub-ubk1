@@ -1,0 +1,95 @@
+#!/bin/sh -eux
+
+if [ $((`stat -f -c "%a" .`*`stat -f -c "%s" .`/(1024*1024*1024))) -lt 12 ]; then
+	echo "At least 12 GB free space is required!"
+	exit 1
+fi
+
+# extra samples, templates kiakad az install fázisban: nincs en-GB, en-US
+
+# ha nincs configure, egy autogen.input vagy autogen.lastrun fájlba kell tenni
+# az összes opciót, és meghívni vele az autogen.sh-t.
+# 4.2-től az autogen.input a preferált (egyelőre az autogen.lastrun is jó),
+# csak ne legyenek idézőjelek az opciókban (pl. --prefix="/usr"), attól kiakad!
+
+export QT4DIR=/usr/lib/qt4
+
+./configure \
+	--build=i686-linux \
+	--host=i686-linux \
+	--prefix=/usr             \
+	--sysconfdir=/etc         \
+	--localstatedir=/var      \
+	--mandir=/usr/share/man   \
+	--infodir=/usr/share/info \
+	--with-lang='en-GB hu' \
+	--with-vendor=uhulinux.hu \
+	--with-help \
+	--with-fonts \
+	--with-external-tar=src \
+	--with-system-libs \
+	--with-system-headers \
+	--without-java \
+	--without-ppds \
+	--without-system-npapi-headers \
+	--without-system-jars \
+	--without-system-altlinuxhyph \
+	--without-system-bluez \
+	--without-system-clucene \
+	--without-system-glm \
+  	--without-system-graphite \
+  	--without-system-libabw \
+  	--without-system-libcdr \
+  	--without-system-libcmis \
+	--without-system-libebook \
+  	--without-system-libexttextcat \
+  	--without-system-libfreehand \
+  	--without-system-libmspub \
+  	--without-system-libmwaw \
+  	--without-system-lpsolve \
+  	--without-system-mdds \
+  	--without-system-mysql-cppconn \
+  	--without-system-mythes \
+  	--without-system-orcus \
+	--disable-fetch-external \
+	--disable-coinmp \
+	--disable-dbgutil \
+	--disable-debug \
+	--disable-gconf \
+	--disable-gltf \
+	--disable-gnome-vfs \
+	--disable-gstreamer-0-10 \
+	--disable-kde \
+	--disable-kdeab \
+	--disable-tde \
+	--disable-tdeab \
+	--disable-liblangtag \
+	--disable-lockdown \
+	--disable-odk \
+	--disable-firebird-sdbc \
+	--enable-postgresql-sdbc \
+	--enable-crashdump \
+	--enable-gstreamer \
+	--enable-python \
+	--enable-extra-font \
+	--enable-ext-mariadb-connector \
+	--enable-ext-nlpsolver \
+	--enable-gio \
+	--enable-gtk3 \
+	--enable-kde4 \
+	--enable-verbose \
+	--enable-release-build
+
+# --disable-gnome-vfs van...
+sed -i 's/uses_gnomevfs=true/uses_gnomevfs=false/g' sysui/desktop/mimetypes/openoffice.applications
+
+# átpakolunk az /src alá mindent, mert
+# ott fogja keresni a letöltött forráscsomagokat
+if [ ! -d src ]; then
+mkdir src
+fi
+mv *.{gz,zip,bz2,tgz} src/
+
+# az unitcheck és a slowcheck nem kell
+make build-nocheck
+

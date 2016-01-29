@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+babl-${UB_VERSION}.tar.bz2 babl-${UB_VERSION}/
+	ftp://ftp.gimp.org/pub/babl/${UB_VERSION_HEAD2}/

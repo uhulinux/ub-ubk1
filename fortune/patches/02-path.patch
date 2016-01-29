@@ -1,0 +1,12 @@
+diff -urN fortune-1.0.orig/fortune.c fortune-1.0/fortune.c
+--- fortune-1.0.orig/fortune.c	2001-06-25 22:22:26.000000000 +0200
++++ fortune-1.0/fortune.c	2002-12-29 22:06:03.000000000 +0100
+@@ -50,7 +50,7 @@
+ #endif
+ 
+ #define VERSION "1.0"
+-#define FORTUNEDIR "/usr/share/games/fortunes"
++#define FORTUNEDIR "/usr/share/games/fortune"
+ 
+ struct option const long_options[] =
+ {

@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_install
+
+#remove libkipi mo file
+rm -rf "$UB_INSTALLDIR"/usr/share/locale/*/LC_MESSAGES/libkipi.mo
+
+#remove conflicting icons
+rm -rf "$UB_INSTALLDIR"/usr/share/icons/hicolor/*/actions/black-white.png
+rm -rf "$UB_INSTALLDIR"/usr/share/icons/hicolor/*/actions/color.png
+rm -rf "$UB_INSTALLDIR"/usr/share/icons/hicolor/*/actions/gray-scale.png

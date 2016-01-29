@@ -1,0 +1,11 @@
+dbus-dev
+dbus-python-dev
+libxml2-dev
+libxslt-dev
+openssl-dev
+pulseaudio-dev
+python-dev
+qscintilla2
+qt5-dev
+sip
+sqlite-dev

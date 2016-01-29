@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mod_auth_mysql-${UB_VERSION}.tar.gz mod_auth_mysql-${UB_VERSION}/
+	http://downloads.sourceforge.net/modauthmysql/

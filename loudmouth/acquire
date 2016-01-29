@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+loudmouth-${UB_VERSION}.tar.gz loudmouth-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/loudmouth/${UB_VERSION_HEAD2}/

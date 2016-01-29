@@ -1,0 +1,1 @@
+urllist http://www.pdflib.com/download/free-software/pdflib-lite-7/ | splitver '^PDFlib-Lite-([0-9.p0-9]+).tar.gz$' | sort -V | tail -n 1

@@ -1,0 +1,14 @@
+# Ez a fájl, az /etc/issue.net a netkit-telnetd csomag része az UHU-Linuxban.
+# Más disztribúciókban más csomagban (is) szerepelhet.
+# Ami ebben a fájlban van, az a login előtt jelenik meg a kliensen, kivétel
+# a '#' jellel kezdődő sorok, melyek megjegyzésnek számítanak.
+# A használható különleges jelölések:
+# %t - az aktuális tty
+# %h - az aktuális system node neve (FQDN)
+# %D - NIS domain neve
+# %d - Az aktuális dátum és idő
+# %s - Az operációs rendszer neve
+# %m - A számítógép típusa (machine type)
+# %r - Az operációs rendszer kiadási száma (release)
+# %v - Az operációs rendszer verziószáma (version)
+# %% - Egy egyszerű '%' jel

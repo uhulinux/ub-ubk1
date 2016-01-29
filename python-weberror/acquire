@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+WebError-${UB_VERSION}.tar.gz WebError-${UB_VERSION}/
+	http://pypi.python.org/packages/source/W/WebError/

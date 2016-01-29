@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+akonadi-${UB_VERSION}.tar.bz2 akonadi-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/akonadi/src/

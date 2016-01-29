@@ -1,0 +1,2 @@
+version=$(urllist ftp://ftp.freedesktop.org/pub/mesa/ | splitver '^([0-9.]+)' | sort -V | tail -n 1)
+urllist ftp://ftp.freedesktop.org/pub/mesa/$version/ | splitver '^MesaLib-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

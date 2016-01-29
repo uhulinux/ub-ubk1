@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+phpize
+
+ub_compile
+

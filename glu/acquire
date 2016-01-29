@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+glu-${UB_VERSION}.tar.gz glu-${UB_VERSION}/
+	http://cgit.freedesktop.org/mesa/glu/snapshot/

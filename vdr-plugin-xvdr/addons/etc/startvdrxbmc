@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#vdr indító szkript xbmc felülethez
+
+# minimálisan szükséges pluginok
+VDRPLUGINS=" -\"Psc\" \
+	-\"Pxvdr\"
+  "
+VDRPRG="/usr/bin/vdr"
+VDRCMD="$VDRPRG $VDRPLUGINS $*"
+
+# vdr indítás, majd várakozás után az xbmc indítása
+eval "$VDRCMD 2>&1" &
+sleep 5
+xbmc
+killall -q -TERM vdr

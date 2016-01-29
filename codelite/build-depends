@@ -1,0 +1,5 @@
+cmake
+curl-dev
+gtk-dev
+libssh-dev
+wxwidgets-dev

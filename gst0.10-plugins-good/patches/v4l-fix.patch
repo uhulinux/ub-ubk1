@@ -1,0 +1,16 @@
+diff -Naur orig/sys/v4l2/v4l2_calls.c mod/sys/v4l2/v4l2_calls.c
+--- orig/sys/v4l2/v4l2_calls.c	2012-02-17 11:48:47.000000000 +0100
++++ mod/sys/v4l2/v4l2_calls.c	2014-02-18 10:06:27.154582852 +0100
+@@ -294,8 +294,12 @@
+         break;
+       case V4L2_CID_HFLIP:
+       case V4L2_CID_VFLIP:
++#ifndef V4L2_CID_PAN_RESET
+       case V4L2_CID_HCENTER:
++#endif
++#ifndef V4L2_CID_TILT_RESET
+       case V4L2_CID_VCENTER:
++#endif
+ #ifdef V4L2_CID_PAN_RESET
+       case V4L2_CID_PAN_RESET:
+ #endif

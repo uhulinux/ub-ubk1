@@ -1,0 +1,9 @@
+diff -Naur kalgebra-4.9.2-orig/src/kalgebra.desktop kalgebra-4.9.2/src/kalgebra.desktop
+--- kalgebra-4.9.2-orig/src/kalgebra.desktop	2012-09-28 02:19:59.000000000 +0200
++++ kalgebra-4.9.2/src/kalgebra.desktop	2012-10-02 20:04:29.000000000 +0200
+@@ -168,4 +168,4 @@
+ Type=Application
+ X-DocPath=kalgebra/index.html
+ Terminal=false
+-Categories=Qt;KDE;Education;Math;Science;
++Categories=Qt;KDE;Education;Math;Science;X-UHU-Menu/Edutainment/Mathematics;

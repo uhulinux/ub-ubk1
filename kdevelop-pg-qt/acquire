@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kdevelop-pg-qt-${UB_VERSION}.tar.bz2 kdevelop-pg-qt-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/kdevelop-pg-qt/${UB_VERSION}/src/

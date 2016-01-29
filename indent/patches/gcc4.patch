@@ -1,0 +1,13 @@
+diff -Naur indent-2.2.9.orig/src/indent.h indent-2.2.9/src/indent.h
+--- indent-2.2.9.orig/src/indent.h	2002-11-10 22:02:48.000000000 +0100
++++ indent-2.2.9/src/indent.h	2005-11-09 12:24:46.000000000 +0100
+@@ -96,9 +96,6 @@
+ /* Size of the input program, not including the ' \n\0' we add at the end */
+ extern unsigned long in_prog_size;
+ 
+-/* The output file. */
+-extern FILE *output;
+-
+ 
+ 
+ extern char *labbuf;            /* buffer for label */

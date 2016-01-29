@@ -1,0 +1,11 @@
+--- a/main/face/lmenu.cc
++++ a/main/face/lmenu.cc
+@@ -221,7 +221,7 @@
+ 			    GtkAccelFlags(0),
+ 			    GTK_OBJECT(ListMenuArray[LM_EDIT_COMMON]),
+ 			    "activate");
+-	_gtk_accel_group_attach(accel_group,G_OBJECT(MainWindow));
++	gtk_window_add_accel_group(GTK_WINDOW(MainWindow),accel_group);
+ */
+ 
+ 	gtk_widget_show_all(ListMenu);

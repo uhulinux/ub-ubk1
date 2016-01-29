@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+root-tail-${UB_VERSION}.tar.gz root-tail-${UB_VERSION}/
+	http://www.goof.com/pcg/marc/data/

@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+./icm_install all "$UB_INSTALLDIR"
+#rm -rf "$UB_INSTALLDIR"/usr/share/doc/icmake-doc/examples

@@ -1,0 +1,12 @@
+diff -Naur konsole-4.12.97-orig/desktop/konsole.desktop konsole-4.12.97/desktop/konsole.desktop
+--- konsole-4.12.97-orig/desktop/konsole.desktop	2014-03-24 04:27:53.000000000 +0000
++++ konsole-4.12.97/desktop/konsole.desktop	2014-04-03 09:13:34.761000661 +0000
+@@ -4,7 +4,7 @@
+ Exec=konsole
+ Icon=utilities-terminal
+ Terminal=false
+-Categories=Qt;KDE;System;TerminalEmulator;
++Categories=Qt;KDE;System;TerminalEmulator;X-UHU-Menu/Tools/Terminals;
+ Actions=NewWindow;
+ X-DocPath=konsole/index.html
+ X-DBUS-StartupType=Unique

@@ -1,0 +1,23 @@
+diff -Naur ORIG/Makefile UHU/Makefile
+--- ORIG/Makefile	2009-06-02 17:52:55.000000000 +0200
++++ UHU/Makefile	2009-12-14 10:55:14.000000000 +0100
+@@ -1,7 +1,7 @@
+ VERSION = 012
+ 
+ CC ?= cc
+-PREFIX ?= /usr/local
++PREFIX ?= $(DESTDIR)/usr
+ CFLAGS ?= -Os -fomit-frame-pointer
+ CFLAGS += -std=c99 -Wall -pedantic -D_BSD_SOURCE
+ LDFLAGS ?=
+@@ -24,8 +24,8 @@
+ install: all
+ 	-install -d -o 0 -g 0 -m 755 $(PREFIX)/bin/
+ 	-install -o 0 -g 0 -m 755 $(BIN) $(PREFIX)/bin/
+-	-install -d -o 0 -g 0 -m 755 $(PREFIX)/man/man1/
+-	-install -o 0 -g 0 -m 644 $(BIN).1 $(PREFIX)/man/man1/
++	-install -d -o 0 -g 0 -m 755 $(PREFIX)/share/man/man1/
++	-install -o 0 -g 0 -m 644 $(BIN).1 $(PREFIX)/share/man/man1/
+ 
+ clean:
+ 	-rm -f *.o $(BIN)

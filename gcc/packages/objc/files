@@ -1,0 +1,5 @@
+	/usr/lib/gcc/*/*/include/objc
+	/usr/lib/libobjc.a
+	/usr/lib/libobjc.la
+	/usr/lib/libobjc.so
+	/usr/libexec/gcc/*/*/cc1obj

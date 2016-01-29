@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+faulthandler-${UB_VERSION}.tar.gz faulthandler-${UB_VERSION}/
+	http://pypi.python.org/packages/source/f/faulthandler/

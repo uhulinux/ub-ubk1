@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+SoQt-${UB_VERSION}.tar.gz SoQt-${UB_VERSION}/
+	http://ftp.coin3d.org/coin/src/all/

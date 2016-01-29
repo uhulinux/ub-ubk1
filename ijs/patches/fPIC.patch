@@ -1,0 +1,12 @@
+diff -Naurd a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2004-09-28 16:56:31.012627084 +0200
++++ b/Makefile.in	2004-09-28 16:57:01.054280729 +0200
+@@ -1,7 +1,7 @@
+ # Unix
+ 
+ CC=@CC@
+-CFLAGS=-g -Wall -ansi -pedantic -Wmissing-prototypes
++CFLAGS=-g -Wall -ansi -pedantic -Wmissing-prototypes -fPIC
+ LDLIBS=
+ OBJ=.@OBJEXT@
+ EXE=@EXEEXT@

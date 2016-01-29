@@ -1,0 +1,20 @@
+diff -Naurdp isdn4k-utils.orig/capi20/capi20.h isdn4k-utils/capi20/capi20.h
+--- isdn4k-utils.orig/capi20/capi20.h	2000-05-11 12:55:00.000000000 +0200
++++ isdn4k-utils/capi20/capi20.h	2009-11-13 16:43:13.000000000 +0100
+@@ -21,6 +21,7 @@
+ #define __CAPI20_H__
+ 
+ #include <sys/time.h>
++#include <stddef.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+diff -Naurdp isdn4k-utils.orig/capi20/capidyn.c isdn4k-utils/capi20/capidyn.c
+--- isdn4k-utils.orig/capi20/capidyn.c	2001-06-21 18:34:45.000000000 +0200
++++ isdn4k-utils/capi20/capidyn.c	2009-11-13 16:39:57.000000000 +0100
+@@ -398,4 +398,4 @@ static int loadlib(void)
+ 	return 0;
+ }
+ 
+-#undef	resolv_sym(x)
++#undef	resolv_sym

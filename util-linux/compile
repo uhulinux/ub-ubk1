@@ -1,0 +1,17 @@
+#!/bin/sh -eux
+
+## Disables because of conflicts:
+# kill - procps
+# login, nologin - shadow
+
+ub_compile \
+	--with-fsprobe=builtin \
+	--enable-partx \
+	--enable-raw \
+	--enable-rdev \
+	--enable-write \
+	\
+	--disable-kill \
+	\
+	--disable-login \
+	--disable-nologin

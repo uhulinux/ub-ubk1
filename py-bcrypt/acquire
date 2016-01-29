@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+py-bcrypt-${UB_VERSION}.tar.gz py-bcrypt-${UB_VERSION}/
+	http://www.mindrot.org/files/py-bcrypt/

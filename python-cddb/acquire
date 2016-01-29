@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+CDDB-${UB_VERSION}.tar.gz CDDB-${UB_VERSION}/
+	http://download.sourceforge.net/cddb-py/

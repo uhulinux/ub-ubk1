@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pyPdf-${UB_VERSION}.tar.gz pyPdf-${UB_VERSION}/
+	http://pybrary.net/pyPdf/

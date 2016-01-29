@@ -1,0 +1,1 @@
+sflist lxde LXMusic%20%28music%20player%29 | splitver '^LXMusic%20([0-9.]+)$' | sort -V | tail -n 1

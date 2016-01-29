@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+SQLAlchemy-Defaults-${UB_VERSION}.tar.gz SQLAlchemy-Defaults-${UB_VERSION}/
+	http://pypi.python.org/packages/source/S/SQLAlchemy-Defaults/

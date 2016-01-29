@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pyvorbis-${UB_VERSION}.tar.gz pyvorbis-${UB_VERSION}/
+	http://ekyo.nerim.net/software/pyogg/

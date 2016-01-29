@@ -1,0 +1,1 @@
+sflist lxde LXShortcut%20%28edit%20app%20shortcut%29 | splitver '^LXShortcut%20([0-9.]+)$' | sort -V | tail -n 1

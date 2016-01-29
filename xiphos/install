@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+./waf install \
+	--destdir /var/uhubuild/work/install
+
+# remove duplicate doc files
+rm -rf "$UB_INSTALLDIR"/usr/share/doc/xiphos/{AUTHORS,COPYING,COPYING-DOCS,ChangeLog,INSTALL,README,RELEASE-NOTES,TODO}

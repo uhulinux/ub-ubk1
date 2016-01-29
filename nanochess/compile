@@ -1,0 +1,3 @@
+#!/bin/sh -eux
+
+gcc -O3 -fexpensive-optimizations toledo_nanochess.c -o toledo

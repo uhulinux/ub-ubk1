@@ -1,0 +1,1 @@
+urllist http://ftp.mozilla.org/pub/mozilla.org/js/ | splitver '^mozjs-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

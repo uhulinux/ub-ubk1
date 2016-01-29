@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+wvdial-${UB_VERSION}.tar.gz wvdial-${UB_VERSION}/
+	http://wvstreams.googlecode.com/files/

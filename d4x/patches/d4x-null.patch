@@ -1,0 +1,29 @@
+--- a/main/face/lod.cc
++++ a/main/face/lod.cc
+@@ -1340,7 +1340,7 @@
+ 		default:
+ 			renderer = gtk_cell_renderer_text_new ();
+ 			if (prefs.cols[i].type== DESCRIPTION_COL)
+-				g_object_set(G_OBJECT(renderer),"ellipsize",PANGO_ELLIPSIZE_END,0);
++				g_object_set(G_OBJECT(renderer),"ellipsize",PANGO_ELLIPSIZE_END,NULL);
+ 			g_object_set (G_OBJECT (renderer),
+ 				      "foreground-gdk", &LRED,
+ 				      NULL);
+--- a/main/face/log.cc
++++ a/main/face/log.cc
+@@ -377,13 +377,13 @@
+ 	gtk_tree_view_column_set_min_width (col,22);
+ 	gtk_tree_view_column_pack_start (col,renderer=gtk_cell_renderer_text_new(),false);
+ 	gtk_tree_view_column_add_attribute(col,renderer,"text",L_COL_NUM);
+-	g_object_set(G_OBJECT(renderer),"xalign",1.0,0);
++	g_object_set(G_OBJECT(renderer),"xalign",1.0,NULL);
+ //	gtk_tree_view_column_add_attribute(col,renderer,"background-gdk",L_COL_LAST+1);
+ //	gtk_tree_view_column_add_attribute(col,renderer,"foreground-gdk",L_COL_LAST);
+ 	for (int i=L_COL_NUM+1;i<L_COL_LAST;i++){
+ 		renderer = gtk_cell_renderer_text_new();
+ 		if (CFG.FIXED_LOG_FONT)
+-			g_object_set(G_OBJECT(renderer),"family","Fixed",0);
++			g_object_set(G_OBJECT(renderer),"family","Fixed",NULL);
+ 		col=gtk_tree_view_column_new_with_attributes("Tittle",
+ 							     renderer,
+ 							     "text",i,

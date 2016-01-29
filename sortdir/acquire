@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+sortdir-${UB_VERSION}.tar.gz sortdir-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/sortdir/

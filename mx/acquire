@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mx-${UB_VERSION}.tar.xz mx-${UB_VERSION}/
+	https://github.com/downloads/clutter-project/mx/

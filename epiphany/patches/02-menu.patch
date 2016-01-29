@@ -1,0 +1,10 @@
+diff -Naur a/data/epiphany.desktop.in.in b/data/epiphany.desktop.in.in
+--- a/data/epiphany.desktop.in.in	2008-09-01 13:58:34.000000000 +0200
++++ b/data/epiphany.desktop.in.in	2008-10-07 15:28:01.000000000 +0200
+@@ -12,5 +12,5 @@
+ X-GNOME-Bugzilla-Component=BugBuddyBugs
+ X-GNOME-Bugzilla-Version=@VERSION@
+ X-GNOME-UsesNotifications=true
+-Categories=Network;GNOME;GTK;WebBrowser;
++Categories=GTK;GNOME;Network;WebBrowser;X-UHU-Menu/Internet/Browsers;
+ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;

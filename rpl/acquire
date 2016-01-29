@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+rpl-$UB_VERSION.tar.gz rpl-$UB_VERSION/
+	ftp://ftp2.laffeycomputer.com/pub/current_builds/

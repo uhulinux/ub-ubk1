@@ -1,0 +1,61 @@
+diff -Naurd orig/tree.c mod/tree.c
+--- orig/tree.c	2009-01-22 16:02:51.000000000 +0100
++++ mod/tree.c	2009-09-30 23:47:21.000000000 +0200
+@@ -469,7 +469,7 @@
+ 
+     fprintf(outfile,"\t\t<meta name=\"Author\" content=\"Made by 'tree'\">\n");
+     fprintf(outfile,"\t\t<meta name=\"GENERATOR\" content=\"%s\">\n",version);
+-    fprintf(outfile,"\t\t<title>%s</title>\n",title);
++    fprintf(outfile,"\t\t<title>%s</title>\n",host);
+     fprintf(outfile,"\t\t<style type=\"text/css\">\n\t\t\t<!-- \n");
+     fprintf(outfile,"\t\t\tBODY { font-family : courier, monospace, sans-serif; }\n");
+     fprintf(outfile,"\t\t\tP { font-weight: normal; font-family : courier, monospace, sans-serif; color: black; background-color: transparent;}\n");
+@@ -493,7 +493,6 @@
+     fprintf(outfile,"\t\t\t-->\n\t\t</style>\n");
+     fprintf(outfile,"\t</head>\n");
+     fprintf(outfile,"\t<body>\n");
+-    fprintf(outfile,"\t\t<h1>%s</h1>\n\t\t\t<p>",title);
+ 
+     fflag = FALSE;
+     if (nolinks) {
+@@ -780,10 +779,38 @@
+       else if (!(*dir)->isdir && (*dir)->isexe) fprintf(outfile,"*");
+     }
+ 
+-    if ((*dir)->lnk && !Hflag) {
++    if ((*dir)->lnk) {
+       fprintf(outfile,"%s->%s",sp,sp);
+       if (colorize) colored = color((*dir)->lnkmode,(*dir)->lnk,(*dir)->orphan,TRUE);
+-      printit((*dir)->lnk);
++      if (Hflag) {
++	if (nolinks) {
++	  if (force_color) {
++	   /*
++	    * Note that the B element has been set to normal weight in the
++	    * style portion of the output. so using <b> will just gives us a element
++	    * for which we can assign a color class to.
++	    */
++	    fprintf(outfile, "<b class=\"%s\">%s</b>",
++		    (*dir)->isdir ?  "DIR"  :
++		    (*dir)->isexe ?  "EXEC" :
++		    (*dir)->isfifo ? "FIFO" :
++		    (*dir)->issok ?  "SOCK" : "NORM", (*dir)->lnk);
++	  } else
++	    fprintf(outfile,"%s%s",(*dir)->lnk,(*dir)->isdir? "/" : "");
++	} else {
++	  if (force_color) {
++	    sprintf(hclr, "%s",
++		    (*dir)->isdir ?  "DIR"  :
++		    (*dir)->isexe ?  "EXEC" :
++		    (*dir)->isfifo ? "FIFO" :
++		    (*dir)->issok ?  "SOCK" : "NORM");
++	    fprintf(outfile,"<a class=\"%s\" href=\"%s%s%s%s\">%s%s</a>", hclr, host,(*(d+1)?d+2:d+1),(*dir)->lnk,
++		    ((*dir)->isdir?"/":""),(*dir)->lnk,((*dir)->isdir?"/":""));
++	  } else fprintf(outfile,"<a href=\"%s%s%s%s\">%s%s</a>",host, (*(d+1)?d+2:d+1), (*dir)->lnk,
++			 (*dir)->isdir? "/" : "", (*dir)->lnk, (*dir)->isdir? "/" : "" );
++	}
++      } else
++	printit((*dir)->lnk);
+       if (colored) fprintf(outfile,"%s",endcode);
+       if (Fflag) {
+ 	m = (*dir)->lnkmode & S_IFMT;

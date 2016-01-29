@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+qoauth-${UB_VERSION}-src.tar.bz2 qoauth-${UB_VERSION}-src/
+	http://files.ayoy.net/qoauth/release/current/src/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ptlib-${UB_VERSION}.tar.xz ptlib-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/ptlib/${UB_VERSION_HEAD2}/

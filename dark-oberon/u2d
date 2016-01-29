@@ -1,0 +1,5 @@
+minor=$(sflist dark-oberon dark-oberon)
+for i in $minor; do
+ lista="$lista"$'\n'$(sflist dark-oberon dark-oberon/$i | grep -E gz)
+done
+echo "$lista" | sort -V | tail -1 | sed s/dark-oberon-//g | sed s/\.t.*//g | sed s/-/~/g

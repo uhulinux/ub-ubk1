@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mod_wsgi-${UB_VERSION}.tar.gz mod_wsgi-${UB_VERSION}/
+	http://modwsgi.googlecode.com/files/

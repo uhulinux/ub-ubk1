@@ -1,0 +1,12 @@
+--- ncpfs-2.2.3/contrib/pam/pam_ncp_auth.c
++++ ncpfs-2.2.3/contrib/pam/pam_ncp_auth.c
+@@ -2467,7 +2467,7 @@
+ bailoutctx:;
+ 	NWDSFreeContext(ctx);
+ bailout:;
+-	if (!err & (ui->qflag & QF_DEBUG))
++	if ((!err) && (ui->qflag & QF_DEBUG))
+ 		syslog(LOG_NOTICE, "%u %u %s %s %s\n", ui->uid, ui->gid, ui->dir, ui->gecos, ui->shell);
+ 	return err;
+ }
+

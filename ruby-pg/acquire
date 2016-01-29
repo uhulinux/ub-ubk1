@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pg-${UB_VERSION}.gem :.
+	http://rubygems.org/downloads/

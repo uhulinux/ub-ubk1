@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+hamcrest-${UB_VERSION}.tgz hamcrest-${UB_VERSION}/
+	https://hamcrest.googlecode.com/files/

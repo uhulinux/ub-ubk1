@@ -1,0 +1,30 @@
+diff -Naurdp LVM2.2.02.112.orig/lib/device/dev-io.c LVM2.2.02.112/lib/device/dev-io.c
+--- LVM2.2.02.112.orig/lib/device/dev-io.c	2014-11-11 15:15:56.000000000 +0100
++++ LVM2.2.02.112/lib/device/dev-io.c	2014-11-19 15:52:44.040376012 +0100
+@@ -295,6 +295,7 @@ static int _dev_get_size_dev(const struc
+ 	const char *name = dev_name(dev);
+ 
+ 	if ((fd = open(name, O_RDONLY)) < 0) {
++		if (errno != ENOMEDIUM)
+ 		log_sys_error("open", name);
+ 		return 0;
+ 	}
+diff -Naurdp LVM2.2.02.112.orig/tools/toollib.c LVM2.2.02.112/tools/toollib.c
+--- LVM2.2.02.112.orig/tools/toollib.c	2014-11-11 15:15:56.000000000 +0100
++++ LVM2.2.02.112/tools/toollib.c	2014-11-19 15:53:40.997786024 +0100
+@@ -1572,6 +1572,7 @@ int process_each_vg(struct cmd_context *
+ 
+ 	if (dm_list_empty(&arg_vgnames) && dm_list_empty(&vgnameids_on_system)) {
+ 		/* FIXME Should be log_print, but suppressed for reporting cmds */
++		if (cmd->current_settings.verbose >= 0)
+ 		log_error("No volume groups found");
+ 		return ECMD_PROCESSED;
+ 	}
+@@ -1910,6 +1911,7 @@ int process_each_lv(struct cmd_context *
+ 
+ 	if (dm_list_empty(&arg_vgnames) && dm_list_empty(&vgnameids_on_system)) {
+ 		/* FIXME Should be log_print, but suppressed for reporting cmds */
++		if (cmd->current_settings.verbose >= 0)
+ 		log_error("No volume groups found");
+ 		return ECMD_PROCESSED;
+ 	}

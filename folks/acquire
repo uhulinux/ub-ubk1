@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+folks-${UB_VERSION}.tar.xz folks-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/folks/${UB_VERSION_HEAD2}/

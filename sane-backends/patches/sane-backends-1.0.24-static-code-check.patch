@@ -1,0 +1,742 @@
+From 886208261b5b91b4a64efd8a203873ab85a07a2e Mon Sep 17 00:00:00 2001
+From: Nils Philippsen <nils@redhat.com>
+Date: Thu, 7 Nov 2013 12:48:23 +0100
+Subject: [PATCH] patch: static-code-check
+
+Fix problems found during static code check (Coverity).
+
+Squashed commit of the following:
+
+commit e24cea3bceb5dad2042dcd95f582d6c8acf4c9ee
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Thu Nov 7 14:29:28 2013 +0100
+
+    epson: don't leak memory if realloc() fails
+
+    (cherry picked from commit d835d9d565118d52c2339c2e79890f57d0616077)
+
+commit b0c14b86210c7615ea4d90723722a7430b175ae2
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Wed Nov 6 11:05:58 2013 +0100
+
+    genesys: check return values
+
+    (cherry picked from commit dc76e7cce464f04e46aab2bb0c269b4742161c59)
+
+commit b6e13be1c187790adfa50e81506533fbe21dca6f
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Tue Nov 5 14:48:09 2013 +0100
+
+    genesys: remove code which is never reached
+
+    The surrounding conditions always evaluate as FALSE because the
+    variables are set to different values before.
+
+    (cherry picked from commit 5d7f7ffefb22e7e64789e97af0356b7859d61814)
+
+commit 6d77e6f1ebb9eb0f47117a5790486a3b83c142d2
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Wed Nov 6 11:44:16 2013 +0100
+
+    rts8891: check return values
+
+    (cherry picked from commit 602d6ecdfe5f3146867799fabf3ac87582c26461)
+
+commit 0438b3f9aaa4ee8558185ad5e7a9c6a0bf1a3590
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Tue Nov 5 15:42:26 2013 +0100
+
+    genesys: compute MAX_SCANNERS from array length
+
+    ... of genesys_usb_device_list[]
+
+    (cherry picked from commit a3fe2c1ea5b4f6b1e55435f6abc44f402ff32b4d)
+
+commit ba746cc2a62cfb32ae6f8e22d6d36206959b7128
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Tue Nov 5 15:31:11 2013 +0100
+
+    kodakio: don't overrun option name array
+
+    (cherry picked from commit 2d89e37f365cb8e54ee44aa686a62320e2837b50)
+
+commit 87580bc5d07f983afa1db1e0e7c36287b85b5ecd
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Tue Nov 5 15:19:48 2013 +0100
+
+    pixma: document falling through to next switch case
+
+    (cherry picked from commit 101f76c516cd42cafe9e142aefe751094a125e73)
+
+commit 15f7322b94a1e895d6ab6e8fb0466ef920a946ad
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Tue Nov 5 15:15:17 2013 +0100
+
+    genesys: avoid infinite loop
+
+    The stray semicolon prevents executing the loop which could reset the
+    REG41_FEBUSY bit.
+
+    (cherry picked from commit b53a58c4b534b9e6897c1b0a6301d2bf76dc3499)
+
+commit bde7ee0c9e0bde21fc8b01af11270ca51110a89d
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Tue Nov 5 15:12:20 2013 +0100
+
+    pixma: avoid buffer overflows
+
+    (cherry picked from commit 575f40a0790bb5e20ffd7ccae1c9272e481bbe51)
+
+commit ee3953fb5b11a26a42bee3d75ee6b93da0bb112f
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Tue Nov 5 14:52:22 2013 +0100
+
+    pixma: u32tohex(): shift first, then cast to uint8_t
+
+    (cherry picked from commit cf9129d62fe7e84479e8daf6018cd2495d53bcc9)
+
+commit ef85481800383cf082ad6aa4a944765ee84027c0
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Tue Nov 5 14:47:27 2013 +0100
+
+    remove code which is never reached
+
+    (cherry picked from commit 66cb9b55c2e60503d537d7ed927f5a5aef3658d2)
+
+commit 0864f4d6203ba8f1306af0d39a09dff2f9d4706a
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Tue Nov 5 14:17:12 2013 +0100
+
+    genesys: fix some memory leaks
+
+    (cherry picked from commit 252ccdd926bb28bd6064da7b652e646664226572)
+
+commit a4d72c0e2ebb1f6352f21a300bbff67d439cd77f
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Tue Nov 5 13:56:28 2013 +0100
+
+    epson: ensure that command() allocates enough memory
+
+    (cherry picked from commit 8cd2d36f1e9a5b5633d4b8334acf5c8f68381415)
+
+commit 67af3b80508c0a0adb0fe89ead7c4cb570d7400c
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Tue Nov 5 11:39:56 2013 +0100
+
+    genesys: avoid dereferencing null pointer
+
+    (cherry picked from commit 56104b5329076d45caf2e04a2271f40a2699f71f)
+---
+ backend/epson.c           | 36 +++++++++++++++++++++----------
+ backend/genesys.c         |  9 +++++---
+ backend/genesys_devices.c |  3 +++
+ backend/genesys_gl124.c   | 21 ++++++++++++++++--
+ backend/genesys_gl843.c   | 20 +++++++++++++++--
+ backend/genesys_gl846.c   | 55 ++++++++++++++++++++++++++---------------------
+ backend/genesys_gl847.c   | 21 ++++++++++++++++--
+ backend/genesys_low.h     |  1 -
+ backend/kodakaio.c        |  6 +++---
+ backend/pixma_bjnp.c      | 18 ++++++++++------
+ backend/rts8891.c         | 16 ++++++--------
+ sanei/sanei_usb.c         |  2 --
+ tools/sane-find-scanner.c |  2 --
+ 13 files changed, 141 insertions(+), 69 deletions(-)
+
+diff --git a/backend/epson.c b/backend/epson.c
+index 2cae65a..3b063b9 100644
+--- a/backend/epson.c
++++ b/backend/epson.c
+@@ -818,6 +818,12 @@ typedef struct
+ 
+ } EpsonIdentRec, *EpsonIdent;
+ 
++typedef union
++{
++  EpsonHdrRec hdr;
++  EpsonIdentRec ident;
++} EpsonHdrUnionRec, *EpsonHdrUnion;
++
+ 
+ typedef struct
+ {
+@@ -843,7 +849,7 @@ typedef struct
+  *
+  */
+ 
+-static EpsonHdr command (Epson_Scanner * s, u_char * cmd, size_t cmd_size,
++static EpsonHdrUnion command (Epson_Scanner * s, u_char * cmd, size_t cmd_size,
+                          SANE_Status * status);
+ static SANE_Status get_identity_information (SANE_Handle handle);
+ static SANE_Status get_identity2_information (SANE_Handle handle);
+@@ -1844,21 +1850,24 @@ static Epson_Device *first_dev = NULL;  /* first EPSON scanner in list */
+ static Epson_Scanner *first_handle = NULL;
+ 
+ 
+-static EpsonHdr
++static EpsonHdrUnion
+ command (Epson_Scanner * s, u_char * cmd, size_t cmd_size,
+          SANE_Status * status)
+ {
++  EpsonHdrUnion hdrunion, hdrunion_bak;
+   EpsonHdr head;
+   u_char *buf;
+   int count;
+ 
+-  if (NULL == (head = walloc (EpsonHdrRec)))
++  if (NULL == (hdrunion = walloc (EpsonHdrUnionRec)))
+   {
+     DBG (1, "out of memory (line %d)\n", __LINE__);
+     *status = SANE_STATUS_NO_MEM;
+-    return (EpsonHdr) 0;
++    return (EpsonHdrUnion) 0;
+   }
+ 
++  head = &(hdrunion->hdr);
++
+   send (s, cmd, cmd_size, status);
+ 
+   if (SANE_STATUS_GOOD != *status)
+@@ -1869,7 +1878,7 @@ command (Epson_Scanner * s, u_char * cmd, size_t cmd_size,
+     *status = SANE_STATUS_GOOD;
+     send (s, cmd, cmd_size, status);
+     if (SANE_STATUS_GOOD != *status)
+-      return (EpsonHdr) 0;
++      return (EpsonHdrUnion) 0;
+   }
+ 
+   buf = (u_char *) head;
+@@ -1892,7 +1901,7 @@ command (Epson_Scanner * s, u_char * cmd, size_t cmd_size,
+   }
+ 
+   if (SANE_STATUS_GOOD != *status)
+-    return (EpsonHdr) 0;
++    return (EpsonHdrUnion) 0;
+ 
+   DBG (4, "code   %02x\n", (int) head->code);
+ 
+@@ -1921,25 +1930,30 @@ command (Epson_Scanner * s, u_char * cmd, size_t cmd_size,
+     }
+ 
+     if (SANE_STATUS_GOOD != *status)
+-      return (EpsonHdr) 0;
++      return (EpsonHdrUnion) 0;
+ 
+     DBG (4, "status %02x\n", (int) head->status);
+ 
+     count = head->count2 * 255 + head->count1;
+     DBG (4, "count  %d\n", count);
+ 
+-    if (NULL == (head = realloc (head, sizeof (EpsonHdrRec) + count)))
++    hdrunion_bak = hdrunion;
++    if (NULL == (hdrunion = realloc (hdrunion,
++            sizeof (EpsonHdrUnionRec) + count)))
+     {
++      free(hdrunion_bak);
+       DBG (1, "out of memory (line %d)\n", __LINE__);
+       *status = SANE_STATUS_NO_MEM;
+-      return (EpsonHdr) 0;
++      return (EpsonHdrUnion) 0;
+     }
+ 
++    head = &(hdrunion->hdr);
++
+     buf = head->buf;
+     receive (s, buf, count, status);
+ 
+     if (SANE_STATUS_GOOD != *status)
+-      return (EpsonHdr) 0;
++      return (EpsonHdrUnion) 0;
+ 
+     break;
+ 
+@@ -1953,7 +1967,7 @@ command (Epson_Scanner * s, u_char * cmd, size_t cmd_size,
+     break;
+   }
+ 
+-  return head;
++  return hdrunion;
+ }
+ 
+ 
+diff --git a/backend/genesys.c b/backend/genesys.c
+index 6e7caad..e2c92e7 100644
+--- a/backend/genesys.c
++++ b/backend/genesys.c
+@@ -5977,7 +5977,7 @@ attach (SANE_String_Const devname, Genesys_Device ** devp, SANE_Bool may_wait)
+   Genesys_Device *dev = 0;
+   SANE_Int dn, vendor, product;
+   SANE_Status status;
+-  int i;
++  unsigned int i;
+ 
+ 
+   DBG (DBG_proc, "attach: start: devp %s NULL, may_wait = %d\n",
+@@ -6061,7 +6061,10 @@ attach (SANE_String_Const devname, Genesys_Device ** devp, SANE_Bool may_wait)
+ 
+   dev->file_name = strdup (devname);
+   if (!dev->file_name)
+-    return SANE_STATUS_NO_MEM;
++    {
++      free(dev);
++      return SANE_STATUS_NO_MEM;
++    }
+ 
+   dev->model = genesys_usb_device_list[i].model;
+   dev->vendorId = genesys_usb_device_list[i].vendor;
+@@ -6630,7 +6633,7 @@ sane_get_devices (const SANE_Device *** device_list, SANE_Bool local_only)
+ 		  first_dev = dev->next;
+ 		  num_devices--;
+ 		  free (dev);
+-	          dev = prev->next;
++	          dev = first_dev;
+ 		}
+ 	    }
+ 	  /* case 2 : removed device is not first_dev */
+diff --git a/backend/genesys_devices.c b/backend/genesys_devices.c
+index fb3cd43..462c4a9 100644
+--- a/backend/genesys_devices.c
++++ b/backend/genesys_devices.c
+@@ -3413,3 +3413,6 @@ static Genesys_USB_Device_Entry genesys_usb_device_list[] = {
+   {0x04a9, 0x190a, &canon_lide_210_model},
+   {0, 0, NULL}
+ };
++
++#define MAX_SCANNERS (sizeof(genesys_usb_device_list) / \
++        sizeof(genesys_usb_device_list[0]))
+diff --git a/backend/genesys_gl124.c b/backend/genesys_gl124.c
+index 9e2fb8a..4a4b642 100644
+--- a/backend/genesys_gl124.c
++++ b/backend/genesys_gl124.c
+@@ -2246,7 +2246,7 @@ gl124_slow_back_home (Genesys_Device * dev, SANE_Bool wait_until_home)
+   /* TODO add scan_mode to the API */
+   scan_mode= dev->settings.scan_mode;
+   dev->settings.scan_mode=SCAN_MODE_GRAY;
+-  gl124_init_scan_regs (dev,
++  status = gl124_init_scan_regs (dev,
+ 			local_reg,
+ 			resolution,
+ 			resolution,
+@@ -2260,6 +2260,15 @@ gl124_slow_back_home (Genesys_Device * dev, SANE_Bool wait_until_home)
+ 			SCAN_FLAG_DISABLE_SHADING |
+ 			SCAN_FLAG_DISABLE_GAMMA |
+ 			SCAN_FLAG_IGNORE_LINE_DISTANCE);
++  if (status != SANE_STATUS_GOOD)
++    {
++      DBG (DBG_error,
++           "gl124_slow_back_home: failed to set up registers: %s\n",
++           sane_strstatus (status));
++      DBGCOMPLETED;
++      return status;
++    }
++
+   dev->settings.scan_mode=scan_mode;
+ 
+   /* clear scan and feed count */
+@@ -2348,7 +2357,7 @@ gl124_feed (Genesys_Device * dev, unsigned int steps)
+   memcpy (local_reg, dev->reg, GENESYS_GL124_MAX_REGS * sizeof (Genesys_Register_Set));
+ 
+   resolution=sanei_genesys_get_lowest_ydpi(dev);
+-  gl124_init_scan_regs (dev,
++  status = gl124_init_scan_regs (dev,
+ 			local_reg,
+ 			resolution,
+ 			resolution,
+@@ -2364,6 +2373,14 @@ gl124_feed (Genesys_Device * dev, unsigned int steps)
+                         SCAN_FLAG_FEEDING |
+ 			SCAN_FLAG_DISABLE_BUFFER_FULL_MOVE |
+ 			SCAN_FLAG_IGNORE_LINE_DISTANCE);
++  if (status != SANE_STATUS_GOOD)
++    {
++      DBG (DBG_error,
++           "gl124_feed: failed to set up registers: %s\n",
++           sane_strstatus (status));
++      DBGCOMPLETED;
++      return status;
++    }
+ 
+   /* set exposure to zero */
+   sanei_genesys_set_triple(local_reg,REG_EXPR,0);
+diff --git a/backend/genesys_gl843.c b/backend/genesys_gl843.c
+index 3648d09..6cddd4f 100644
+--- a/backend/genesys_gl843.c
++++ b/backend/genesys_gl843.c
+@@ -2591,7 +2591,7 @@ gl843_slow_back_home (Genesys_Device * dev, SANE_Bool wait_until_home)
+   memcpy (local_reg, dev->reg, GENESYS_GL843_MAX_REGS * sizeof (Genesys_Register_Set));
+   resolution=sanei_genesys_get_lowest_ydpi(dev);
+ 
+-  gl843_init_scan_regs (dev,
++  status = gl843_init_scan_regs (dev,
+ 			local_reg,
+ 			resolution,
+ 			resolution,
+@@ -2607,6 +2607,14 @@ gl843_slow_back_home (Genesys_Device * dev, SANE_Bool wait_until_home)
+ 			SCAN_FLAG_DISABLE_GAMMA |
+ 			SCAN_FLAG_DISABLE_BUFFER_FULL_MOVE |
+ 			SCAN_FLAG_IGNORE_LINE_DISTANCE);
++  if (status != SANE_STATUS_GOOD)
++    {
++      DBG (DBG_error,
++           "gl843_slow_back_home: failed to set up registers: %s\n",
++           sane_strstatus (status));
++      DBGCOMPLETED;
++      return status;
++    }
+ 
+   /* clear scan and feed count */
+   RIE (sanei_genesys_write_register (dev, REG0D, REG0D_CLRLNCNT | REG0D_CLRMCNT));
+@@ -2879,7 +2887,7 @@ gl843_feed (Genesys_Device * dev, unsigned int steps)
+   memcpy (local_reg, dev->reg, GENESYS_GL843_MAX_REGS * sizeof (Genesys_Register_Set));
+ 
+   resolution=sanei_genesys_get_lowest_ydpi(dev);
+-  gl843_init_scan_regs (dev,
++  status = gl843_init_scan_regs (dev,
+ 			local_reg,
+ 			resolution,
+ 			resolution,
+@@ -2895,6 +2903,14 @@ gl843_feed (Genesys_Device * dev, unsigned int steps)
+ 			SCAN_FLAG_DISABLE_GAMMA |
+                         SCAN_FLAG_FEEDING |
+ 			SCAN_FLAG_IGNORE_LINE_DISTANCE);
++  if (status != SANE_STATUS_GOOD)
++    {
++      DBG (DBG_error,
++           "gl843_feed: failed to set up registers: %s\n",
++           sane_strstatus (status));
++      DBGCOMPLETED;
++      return status;
++    }
+ 
+   /* clear scan and feed count */
+   RIE (sanei_genesys_write_register (dev, REG0D, REG0D_CLRLNCNT));
+diff --git a/backend/genesys_gl846.c b/backend/genesys_gl846.c
+index 5e1f0f4..c810604 100644
+--- a/backend/genesys_gl846.c
++++ b/backend/genesys_gl846.c
+@@ -633,7 +633,7 @@ gl846_set_adi_fe (Genesys_Device * dev, uint8_t set)
+ 
+   /* wait for FE to be ready */
+   status = sanei_genesys_get_status (dev, &val8);
+-  while (val8 & REG41_FEBUSY);
++  while (val8 & REG41_FEBUSY)
+     {
+       usleep (10000);
+       status = sanei_genesys_get_status (dev, &val8);
+@@ -1975,7 +1975,7 @@ gl846_slow_back_home (Genesys_Device * dev, SANE_Bool wait_until_home)
+   /* TODO add scan_mode to the API */
+   scan_mode= dev->settings.scan_mode;
+   dev->settings.scan_mode=SCAN_MODE_LINEART;
+-  gl846_init_scan_regs (dev,
++  status = gl846_init_scan_regs (dev,
+ 			local_reg,
+ 			resolution,
+ 			resolution,
+@@ -1989,6 +1989,14 @@ gl846_slow_back_home (Genesys_Device * dev, SANE_Bool wait_until_home)
+ 			SCAN_FLAG_DISABLE_SHADING |
+ 			SCAN_FLAG_DISABLE_GAMMA |
+ 			SCAN_FLAG_IGNORE_LINE_DISTANCE);
++  if (status != SANE_STATUS_GOOD)
++    {
++      DBG (DBG_error,
++           "gl846_slow_back_home: failed to set up registers: %s\n",
++           sane_strstatus (status));
++      DBGCOMPLETED;
++      return status;
++    }
+   dev->settings.scan_mode=scan_mode;
+ 
+   /* clear scan and feed count */
+@@ -2255,7 +2263,7 @@ gl846_feed (Genesys_Device * dev, unsigned int steps)
+   memcpy (local_reg, dev->reg, GENESYS_GL846_MAX_REGS * sizeof (Genesys_Register_Set));
+ 
+   resolution=sanei_genesys_get_lowest_ydpi(dev);
+-  gl846_init_scan_regs (dev,
++  status = gl846_init_scan_regs (dev,
+ 			local_reg,
+ 			resolution,
+ 			resolution,
+@@ -2270,6 +2278,14 @@ gl846_feed (Genesys_Device * dev, unsigned int steps)
+ 			SCAN_FLAG_DISABLE_GAMMA |
+                         SCAN_FLAG_FEEDING |
+ 			SCAN_FLAG_IGNORE_LINE_DISTANCE);
++  if (status != SANE_STATUS_GOOD)
++    {
++      DBG (DBG_error,
++           "gl846_feed: failed to set up registers: %s\n",
++           sane_strstatus (status));
++      DBGCOMPLETED;
++      return status;
++    }
+ 
+   /* set exposure to zero */
+   sanei_genesys_set_triple(local_reg,REG_EXPR,0);
+@@ -2583,13 +2599,14 @@ gl846_send_shading_data (Genesys_Device * dev, uint8_t * data, int size)
+           ptr+=4;
+         }
+ 
+-      RIE (sanei_genesys_read_register (dev, 0xd0+i, &val));
++      RIEF (sanei_genesys_read_register (dev, 0xd0+i, &val), buffer);
+       addr = val * 8192 + 0x10000000;
+       status = sanei_genesys_write_ahb (dev->dn, dev->usb_mode, addr, pixels, buffer);
+       if (status != SANE_STATUS_GOOD)
+         {
+           DBG (DBG_error, "gl846_send_shading_data; write to AHB failed (%s)\n",
+ 	      sane_strstatus (status));
++          free(buffer);
+           return status;
+         }
+     }
+@@ -3013,7 +3030,15 @@ gl846_search_strip (Genesys_Device * dev, SANE_Bool forward, SANE_Bool black)
+   DBG (DBG_proc, "gl846_search_strip %s %s\n", black ? "black" : "white",
+        forward ? "forward" : "reverse");
+ 
+-  gl846_set_fe (dev, AFE_SET);
++  status = gl846_set_fe (dev, AFE_SET);
++  if (status != SANE_STATUS_GOOD)
++    {
++      DBG (DBG_error,
++           "gl846_search_strip: gl846_set_fe() failed: %s\n",
++           sane_strstatus(status));
++      return status;
++    }
++
+   status = gl846_stop_action (dev);
+   if (status != SANE_STATUS_GOOD)
+     {
+@@ -3572,24 +3597,10 @@ gl846_coarse_gain_calibration (Genesys_Device * dev, int dpi)
+       max[j] = 0;
+       for (i = pixels/4; i < (pixels*3/4); i++)
+ 	{
+-          if(bpp==16)
+-            {
+-	  if (dev->model->is_cis)
+-	    val =
+-	      line[i * 2 + j * 2 * pixels + 1] * 256 +
+-	      line[i * 2 + j * 2 * pixels];
+-	  else
+-	    val =
+-	      line[i * 2 * channels + 2 * j + 1] * 256 +
+-	      line[i * 2 * channels + 2 * j];
+-            }
+-          else
+-            {
+ 	  if (dev->model->is_cis)
+ 	    val = line[i + j * pixels];
+ 	  else
+ 	    val = line[i * channels + j];
+-            }
+ 
+ 	    max[j] += val;
+ 	}
+@@ -3619,12 +3630,6 @@ gl846_coarse_gain_calibration (Genesys_Device * dev, int dpi)
+       dev->frontend.gain[2] = dev->frontend.gain[1] = dev->frontend.gain[0];
+     }
+ 
+-  if (channels == 1)
+-    {
+-      dev->frontend.gain[0] = dev->frontend.gain[1];
+-      dev->frontend.gain[2] = dev->frontend.gain[1];
+-    }
+-
+   free (line);
+ 
+   RIE (gl846_stop_action (dev));
+diff --git a/backend/genesys_gl847.c b/backend/genesys_gl847.c
+index 7c6a3c3..47171b9 100644
+--- a/backend/genesys_gl847.c
++++ b/backend/genesys_gl847.c
+@@ -1995,7 +1995,7 @@ gl847_slow_back_home (Genesys_Device * dev, SANE_Bool wait_until_home)
+   /* TODO add scan_mode to the API */
+   scan_mode= dev->settings.scan_mode;
+   dev->settings.scan_mode=SCAN_MODE_LINEART;
+-  gl847_init_scan_regs (dev,
++  status = gl847_init_scan_regs (dev,
+ 			local_reg,
+ 			resolution,
+ 			resolution,
+@@ -2009,6 +2009,15 @@ gl847_slow_back_home (Genesys_Device * dev, SANE_Bool wait_until_home)
+ 			SCAN_FLAG_DISABLE_SHADING |
+ 			SCAN_FLAG_DISABLE_GAMMA |
+ 			SCAN_FLAG_IGNORE_LINE_DISTANCE);
++  if (status != SANE_STATUS_GOOD)
++    {
++      DBG (DBG_error,
++           "gl847_slow_back_home: failed to set up registers: %s\n",
++           sane_strstatus (status));
++      DBGCOMPLETED;
++      return status;
++    }
++
+   dev->settings.scan_mode=scan_mode;
+ 
+   /* clear scan and feed count */
+@@ -2276,7 +2285,7 @@ gl847_feed (Genesys_Device * dev, unsigned int steps)
+   memcpy (local_reg, dev->reg, GENESYS_GL847_MAX_REGS * sizeof (Genesys_Register_Set));
+ 
+   resolution=sanei_genesys_get_lowest_ydpi(dev);
+-  gl847_init_scan_regs (dev,
++  status = gl847_init_scan_regs (dev,
+ 			local_reg,
+ 			resolution,
+ 			resolution,
+@@ -2291,6 +2300,14 @@ gl847_feed (Genesys_Device * dev, unsigned int steps)
+ 			SCAN_FLAG_DISABLE_GAMMA |
+                         SCAN_FLAG_FEEDING |
+ 			SCAN_FLAG_IGNORE_LINE_DISTANCE);
++  if (status != SANE_STATUS_GOOD)
++    {
++      DBG (DBG_error,
++           "gl847_feed: failed to set up registers: %s\n",
++           sane_strstatus (status));
++      DBGCOMPLETED;
++      return status;
++    }
+ 
+   /* set exposure to zero */
+   sanei_genesys_set_triple(local_reg,REG_EXPR,0);
+diff --git a/backend/genesys_low.h b/backend/genesys_low.h
+index 1d5ef22..31e0541 100644
+--- a/backend/genesys_low.h
++++ b/backend/genesys_low.h
+@@ -310,7 +310,6 @@ typedef enum Genesys_Color_Order
+ Genesys_Color_Order;
+ 
+ 
+-#define MAX_SCANNERS 50
+ #define MAX_RESOLUTIONS 13
+ #define MAX_DPI 4
+ 
+diff --git a/backend/kodakaio.c b/backend/kodakaio.c
+index 8c4583a..901f7a8 100644
+--- a/backend/kodakaio.c
++++ b/backend/kodakaio.c
+@@ -3131,14 +3131,14 @@ sane_control_option(SANE_Handle handle, SANE_Int option, SANE_Action action,
+ 		    void *value, SANE_Int *info)
+ {
+ 	KodakAio_Scanner *s = (KodakAio_Scanner *) handle;
+-	DBG(2, "%s: action = %x, option = %d %s\n", __func__, action, option, s->opt[option].name);
+-
+ 	if (option < 0 || option >= NUM_OPTIONS)
+ 	{
+-		DBG(1, "%s: option num = %d (%s) out of range\n", __func__, option, s->opt[option].name);
++		DBG(1, "%s: option num = %d out of range (0..%d)\n", __func__, option, NUM_OPTIONS - 1);
+ 		return SANE_STATUS_INVAL;
+ 	}
+ 
++	DBG(2, "%s: action = %x, option = %d %s\n", __func__, action, option, s->opt[option].name);
++
+ 	if (info != NULL)
+ 		*info = 0;
+ 
+diff --git a/backend/pixma_bjnp.c b/backend/pixma_bjnp.c
+index a1730ad..1020b8d 100644
+--- a/backend/pixma_bjnp.c
++++ b/backend/pixma_bjnp.c
+@@ -130,11 +130,11 @@ static void
+ u32tohex (uint32_t x, char *str)
+ {
+   uint8_t uint8[4];
+-   uint8[0]= (uint8_t) x >> 24;
+-   uint8[1] = (uint8_t)x >> 16;
+-   uint8[2] = (uint8_t)x >> 8;
+-   uint8[3] = (uint8_t)x ;
+-   u8tohex(str, uint8, 4);
++  uint8[0] = (uint8_t)(x >> 24);
++  uint8[1] = (uint8_t)(x >> 16);
++  uint8[2] = (uint8_t)(x >> 8);
++  uint8[3] = (uint8_t)x ;
++  u8tohex(str, uint8, 4);
+ }
+ 
+ static void
+@@ -284,7 +284,8 @@ parse_IEEE1284_to_model (char *scanner_id, char *model)
+   char s[BJNP_IEEE1284_MAX];
+   char *tok;
+ 
+-  strcpy (s, scanner_id);
++  strncpy (s, scanner_id, BJNP_IEEE1284_MAX);
++  s[BJNP_IEEE1284_MAX - 1] = '\0';
+   model[0] = '\0';
+ 
+   tok = strtok (s, ";");
+@@ -441,7 +442,8 @@ split_uri (const char *devname, char *method, char *host, char *port,
+   char next;
+   int i;
+ 
+-  strcpy (copy, devname);
++  strncpy (copy, devname, 1024);
++  copy[1023] = '\0';
+   start = copy;
+ 
+ /*
+@@ -2313,6 +2315,8 @@ sanei_bjnp_read_int (SANE_Int dn, SANE_Byte * buffer, size_t * size)
+         }
+       device[dn].polling_status = BJNP_POLL_STARTED;
+ 
++      /* fall through to BJNP_POLL_STARTED */
++
+     case BJNP_POLL_STARTED:
+       /* we use only seonds accuracy between poll attempts */
+       timeout = device[dn].bjnp_timeout /1000;
+diff --git a/backend/rts8891.c b/backend/rts8891.c
+index d86347b..bdb4011 100644
+--- a/backend/rts8891.c
++++ b/backend/rts8891.c
+@@ -2212,7 +2212,13 @@ sane_close (SANE_Handle handle)
+   /* switch off lamp and close usb */
+   if (dev->conf.allowsharing == SANE_TRUE)
+     {
+-      sanei_usb_claim_interface (dev->devnum, 0);
++      SANE_Status status = sanei_usb_claim_interface (dev->devnum, 0);
++      if (status != SANE_STATUS_GOOD)
++        {
++          DBG (DBG_warn, "sane_close: cannot claim usb interface: %s\n",
++               sane_strstatus(status));
++          DBG (DBG_warn, "sane_close: continuing anyway\n");
++        }
+     }
+   set_lamp_state (session, 0);
+   sanei_usb_close (dev->devnum);
+@@ -3197,14 +3203,6 @@ find_origin (struct Rts8891_Device *dev, SANE_Bool * changed)
+       return status;
+     }
+ 
+-  if (status != SANE_STATUS_GOOD)
+-    {
+-      free(image);
+-      free(data);
+-      DBG (DBG_error, "find_origin: failed to wait for data\n");
+-      return status;
+-    }
+-
+   if (DBG_LEVEL > DBG_io2)
+     {
+       write_gray_data (data, "find_origin.pnm", width, height);
+diff --git a/sanei/sanei_usb.c b/sanei/sanei_usb.c
+index 7401658..491ceeb 100644
+--- a/sanei/sanei_usb.c
++++ b/sanei/sanei_usb.c
+@@ -460,8 +460,6 @@ sanei_libusb_strerror (int errcode)
+       default:
+ 	return "Unknown libusb-1.0 error code";
+     }
+-
+-  return "Unknown libusb-1.0 error code";
+ }
+ #endif /* HAVE_LIBUSB_1_0 */
+ 
+diff --git a/tools/sane-find-scanner.c b/tools/sane-find-scanner.c
+index dbfd0da..ae0e116 100644
+--- a/tools/sane-find-scanner.c
++++ b/tools/sane-find-scanner.c
+@@ -757,8 +757,6 @@ sfs_libusb_strerror (int errcode)
+       default:
+ 	return "Unknown libusb-1.0 error code";
+     }
+-
+-  return "Unknown libusb-1.0 error code";
+ }
+ 
+ static char *
+-- 
+1.8.4.2
+

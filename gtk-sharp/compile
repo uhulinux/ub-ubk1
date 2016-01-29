@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+perl -pe 's,\Q../../gtk/gtk-sharp.dll ../../rsvg/rsvg-sharp.dll,../../gtk/gtk-sharp.dll ../../art/art-sharp.dll ../../rsvg/rsvg-sharp.dll,;' -i sample/rsvg/Makefile.in
+ub_compile

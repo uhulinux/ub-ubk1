@@ -1,0 +1,1 @@
+sflist libvisual libvisual-plugins | splitver '^libvisual-plugins-([0-9.]+)$'| sort -V | tail -n 1

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=UHU dialer
+Name[hu]=UHU tárcsázó
+Comment=Dial by modem, ISDN or ADSL
+Comment[hu]=ISDN, ADSL, modem tárcsázó
+Exec=uhu-dialer
+Terminal=false
+Icon=/usr/share/pixmaps/gnome-applications.png
+Type=Application
+Categories=X-UHU-Menu/Internet/Tools;

@@ -1,0 +1,32 @@
+diff -Naur syslinux-3.83-orig/core/isolinux.asm syslinux-3.83/core/isolinux.asm
+--- syslinux-3.83-orig/core/isolinux.asm	2009-10-06 00:06:06.000000000 +0200
++++ syslinux-3.83/core/isolinux.asm	2009-12-12 13:28:29.000000000 +0100
+@@ -1162,12 +1162,17 @@
+ 		; directory.
+ 		; Also copy the name of the directory to CurrentDirName
+ 		mov word [CurrentDirName],ROOT_DIR_WORD	; Write '/',0 to the CurrentDirName
+-		mov di,boot_dir			; Search for /boot/isolinux
++		mov di,boot_isolinux_dir			; Search for /boot/isolinux
+ 		mov al,02h
+ 		push di
+ 		call searchdir_iso
+ 		pop di
+ 		jnz .found_dir
++		mov di,boot_dir
++		mov al,02h			; Search for /boot
++		call searchdir_iso
++		pop di
++		jnz .found_dir
+ 		mov di,isolinux_dir
+ 		mov al,02h			; Search for /isolinux
+ 		push di
+@@ -1734,7 +1739,8 @@
+ 
+ default_str	db 'default', 0
+ default_len	equ ($-default_str)
+-boot_dir	db '/boot'			; /boot/isolinux
++boot_dir	db '/boot', 0			; /boot
++boot_isolinux_dir	db '/boot/isolinux', 0			; /boot/isolinux
+ isolinux_dir	db '/isolinux', 0
+ config_name	db 'isolinux.cfg', 0
+ err_disk_image	db 'Cannot load disk image (invalid file)?', CR, LF, 0

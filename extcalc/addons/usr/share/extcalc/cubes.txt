@@ -1,0 +1,76 @@
+#config gl		//gl initialization
+#config rasteroff
+#config axesoff
+
+glstartlist;		//generate list for a 3D-cube
+glbegin(trianglestrip);
+glpoint(-10,-10,10);
+glpoint(-10,10,10);
+glpoint(10,-10,10);
+glpoint(10,10,10);
+
+glpoint(10,-10,-10);
+glpoint(10,10,-10);
+
+
+glpoint(-10,-10,-10);
+glpoint(-10,10,-10);
+
+glpoint(-10,-10,10);
+glpoint(-10,10,10);
+glend;
+
+glbegin(quads);
+glpoint(-10,-10,10);
+glpoint(-10,-10,-10);
+glpoint(10,-10,-10);
+glpoint(10,-10,10);
+glend;
+glbegin(quads);
+glpoint(-10,10,10);
+glpoint(-10,10,-10);
+glpoint(10,10,-10);
+glpoint(10,10,10);
+glend;
+
+L=glendlist;		//end list and store list ID
+
+R=0.0;			//turn radius
+while(1)
+{
+  glclear;		//clear scene
+  glcolor(255,0,0);	//set cube color for first cube
+  glscale(0.5,0.5,0.5);	//resize cube a bit
+  glrotate(R,1,0,0);	//rotate cube
+  glcalllist(L);	//draw first cube
+  glcolor(0,255,0);	// the same with 5 other cubes
+  glscale(1.01,1.01,1.01);
+  glrotate(R,0,1,0);
+  glcalllist(L);
+  glcolor(0,0,255);
+  glscale(0.98,0.98,0.98);
+  glrotate(R,0,0,1);
+  glcalllist(L);
+
+  glcolor(255,255,0);
+  glscale(1.02,1.02,1.02);
+  glrotate(R,1,1,0);
+  glcalllist(L);
+  glcolor(0,255,255);
+  glscale(1.01,1.01,1.01);
+  glrotate(R,0,1,1);
+  glcalllist(L);
+  glcolor(255,0,255);
+  glscale(0.97,0.97,0.97);
+  glrotate(R,1,0,1);
+  glcalllist(L);
+
+  glshow;		//show scene
+
+  sleep(20000);		//wait a bit
+  R=R+1;		//change radius
+}
+
+
+
+

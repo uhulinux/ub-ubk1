@@ -1,0 +1,28 @@
+#!/bin/sh
+
+for i in "$@"; do
+	if [ -f "$i" ]; then
+	perltidy \
+		-ci=0 \
+		-i=4 \
+		-et=4 \
+		-syn \
+		-dcsc \
+		-ce \
+		-bar \
+		-nsfs \
+		-bbt=2 \
+		-pt=2 \
+		-sbt=2 \
+		-bt=2 \
+		-baa \
+		-nwrs="." \
+		-nwls="." \
+		-wba="." \
+		--mft=1 \
+		-noll \
+		-iob \
+		-cab=0 \
+		"$i" &&	mv "$i" "$i".bkp && mv "$i".tdy "$i"
+	fi
+done

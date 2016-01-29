@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+./configure \
+	--prefix=/usr \
+	--mandir=/usr/share/man
+make all

@@ -1,0 +1,23 @@
+diff -Naur TrueCurve-1.0.3.orig/default.theme TrueCurve-1.0.3/default.theme
+--- TrueCurve-1.0.3.orig/default.theme	2003-09-19 11:12:21.000000000 +0200
++++ TrueCurve-1.0.3/default.theme	2003-11-13 17:23:51.000000000 +0100
+@@ -89,19 +89,4 @@
+ ColorQuickSwitch="rgb:ce/ce/ce"
+ ColorQuickSwitchText="rgb:00/00/00"
+ 
+-# Font Specification
+-TitleFontName		=	"-monotype-arial-bold-o-normal-*-*-90-*-*-p-*-iso8859-15"
+-MenuFontName		=	"-monotype-arial-medium-r-normal-*-*-90-*-*-p-*-iso8859-15"
+-MinimizedWindowFontName	=	"-monotype-arial-medium-r-normal-*-*-90-*-*-p-*-iso8859-15"
+-ActiveButtonFontName	=	"-monotype-arial-medium-r-normal-*-*-90-*-*-p-*-iso8859-15"
+-NormalButtonFontName	=	"-monotype-arial-medium-r-normal-*-*-90-*-*-p-*-iso8859-15"
+-QuickSwitchFontName	=	"-monotype-arial-medium-r-normal-*-*-90-*-*-p-*-iso8859-15"
+-ListBoxFontName		=	"-monotype-arial-medium-r-normal-*-*-90-*-*-p-*-iso8859-15"
+-StatusFontName		=	"-monotype-arial-medium-r-normal-*-*-90-*-*-p-*-iso8859-15"
+-ToolTipFontName		=	"-monotype-arial-medium-r-normal-*-*-90-*-*-p-*-iso8859-15"
+-ActiveTaskBarFontName	=	"-monotype-arial-bold-r-normal-*-*-90-*-*-p-*-iso8859-15"
+-NormalTaskBarFontName	=	"-monotype-arial-medium-r-normal-*-*-90-*-*-p-*-iso8859-15"
+-ClockFontName		=	"-monotype-arial-bold-r-normal-*-*-90-*-*-p-*-iso8859-15"
+-InputFontName		=	"-monotype-arial-medium-r-normal-*-*-120-*-*-p-*-iso8859-15"
+-
+ TaskBarClockLeds=0

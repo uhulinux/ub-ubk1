@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cloog-${UB_VERSION}.tar.gz cloog-${UB_VERSION}/
+	http://www.bastoul.net/cloog/pages/download/count.php3?url=./

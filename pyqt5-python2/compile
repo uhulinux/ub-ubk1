@@ -1,0 +1,17 @@
+#!/bin/sh -eux
+
+export QTDIR=/usr/lib/qt5
+
+python configure.py --confirm-license \
+	-w \
+	-a \
+	-q $QTDIR/bin/qmake \
+	-s /usr/include/dbus-1.0 \
+	-b /usr/bin \
+	-d /usr/lib/python2.7/site-packages \
+	-n /usr/lib/qt5/qsci \
+	-v /usr/share/sip/PyQt5 \
+	--designer-plugindir /usr/lib/qt5/plugins/designer \
+	--qml-plugindir /usr/lib/qt5/plugins/PyQt5
+
+ub_make

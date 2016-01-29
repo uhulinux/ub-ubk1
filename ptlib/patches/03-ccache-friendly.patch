@@ -1,0 +1,11 @@
+--- ptlib-2.6.0.orig/make/common.mak	2009-02-24 04:21:57.000000000 +0100
++++ ptlib-2.6.0/make/common.mak	2009-03-03 17:39:12.000000000 +0100
+@@ -202,7 +202,7 @@
+ USE_PCH:=no
+ $(PTLIBDIR)/include/ptlib.h.gch/$(PT_OBJBASE): $(PTLIBDIR)/include/ptlib.h
+ 	@if [ ! -d `dirname $@` ] ; then mkdir -p `dirname $@` ; fi
+-	$(CXX) $(STDCCFLAGS) $(STDCXXFLAGS) $(CFLAGS) -x c++ -c $< -o $@
++	$(CXX) $(STDCCFLAGS) $(STDCXXFLAGS) $(CFLAGS) -c $< -o $@
+ 
+ ifeq ($(USE_PCH),yes)
+ PCH_FILES = $(PTLIBDIR)/include/ptlib.h.gch/$(PT_OBJBASE)

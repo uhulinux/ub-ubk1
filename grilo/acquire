@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+grilo-${UB_VERSION}.tar.xz grilo-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/grilo/${UB_VERSION_HEAD2}/

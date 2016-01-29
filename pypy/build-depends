@@ -1,0 +1,13 @@
+cffi
+db4-dev
+expat-dev
+gdbm-dev
+libffi-dev
+libxt-dev
+openssl-dev
+pypy
+sqlite-dev
+tcl
+tcl-dev
+tk
+tk-dev

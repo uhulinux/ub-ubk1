@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+emil-${UB_VERSION/~/-}.tar.gz emil-${UB_VERSION/~/-}/
+	ftp://ftp.sunet.se/pub/unix/mail/emil/

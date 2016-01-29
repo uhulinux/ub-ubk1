@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tortoisehg-${UB_VERSION}.tar.gz tortoisehg-${UB_VERSION}/
+	http://bitbucket.org/tortoisehg/targz/downloads/

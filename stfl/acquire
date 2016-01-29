@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+stfl-${UB_VERSION}.tar.gz stfl-${UB_VERSION}/
+	http://www.clifford.at/stfl/

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=UHU Control Center
+Name[hu]=UHU Vezérlőpult
+Comment=System Configurator
+Comment[hu]=Rendszerkonfiguráló eszköz
+Exec=uhu-control-center
+Terminal=false
+Icon=/usr/share/pixmaps/uhucc.png
+Type=Application
+Categories=X-UHU-Menu/Settings;

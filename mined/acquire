@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mined-"$UB_VERSION".tar.gz mined-"$UB_VERSION"/
+    http://towo.net/mined/download/

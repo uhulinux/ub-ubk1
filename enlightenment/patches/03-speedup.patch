@@ -1,0 +1,21 @@
+diff -Naur e16-0.16.8.9.orig/scripts/e_gen_menu e16-0.16.8.9/scripts/e_gen_menu
+--- e16-0.16.8.9.orig/scripts/e_gen_menu	2007-05-28 19:19:08.000000000 +0200
++++ e16-0.16.8.9/scripts/e_gen_menu	2007-08-13 12:10:19.000000000 +0200
+@@ -64,9 +64,6 @@
+ # Put EBIN first in path
+ $ENV{'PATH'} = "$EdirBin:$ENV{'PATH'}";
+ 
+-# Programs
+-$DoIconv = `which iconv`;
+-
+ @CatsRemove = (
+ 	"Qt",
+ 	"QT",
+@@ -230,7 +227,6 @@
+ 			if    ($Nam1) { $Name = $Nam1; }
+ 			elsif ($Nam2) { $Name = $Nam2; }
+ 			else          { $Name = $Nam3; }
+-			$Name = `echo "$Name" | iconv -f UTF-8` if $DoIconv;
+ 			chomp($Name);
+ 		}
+ 	}

@@ -1,0 +1,19 @@
+--- a/monodevelop.desktop.orig	2013-08-01 18:59:41.000000000 +0200
++++ a/monodevelop.desktop	2013-08-01 19:00:48.000000000 +0200
+@@ -4,6 +4,7 @@
+ Name=MonoDevelop
+ GenericName=Integrated Development Environment
+ Comment=Develop .NET applications in an Integrated Development Environment
++Comment[hu]=Integrált Fejlesztői Környezet a .NET keretrendszerhez
+ Exec=monodevelop %F
+ TryExec=monodevelop
+ Icon=monodevelop
+@@ -11,7 +12,7 @@
+ Terminal=false
+ Type=Application
+ MimeType=text/x-csharp;application/x-mds;application/x-mdp;application/x-cmbx;application/x-prjx;application/x-csproj;application/x-vbproj;application/x-sln;application/x-aspx;text/xml;application/xhtml+xml;text/html;text/plain;
+-Categories=GNOME;GTK;Development;IDE;
++Categories=GNOME;GTK;Development;IDE;X-UHU-Menu/Development/Programming;
+ X-GNOME-Bugzilla-Bugzilla=Ximian
+ X-GNOME-Bugzilla-Product=MonoDevelop
+ X-GNOME-Bugzilla-OtherBinaries=monodevelop

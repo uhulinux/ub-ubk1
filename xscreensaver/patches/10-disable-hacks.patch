@@ -1,0 +1,78 @@
+diff -Naurd xscreensaver-5.08.orig/driver/XScreenSaver_ad.h xscreensaver-5.08/driver/XScreenSaver_ad.h
+--- xscreensaver-5.08.orig/driver/XScreenSaver_ad.h	2008-12-28 08:59:19.000000000 +0100
++++ xscreensaver-5.08/driver/XScreenSaver_ad.h	2009-03-02 22:34:43.000000000 +0100
+@@ -129,7 +129,7 @@
+ -				loop -root				    \\n\
+ 				penetrate -root				    \\n\
+ 				petri -root				    \\n\
+-				phosphor -root				    \\n\
++-				phosphor -root				    \\n\
+   GL: 				pulsar -root				    \\n\
+ 				ripples -root				    \\n\
+ 				shadebobs -root				    \\n\
+@@ -150,7 +150,7 @@
+ - GL: 				dnalogo -root				    \\n\
+   GL: 				engine -root				    \\n\
+   GL: 				flipscreen3d -root			    \\n\
+-  GL: 				gltext -root				    \\n\
++-  GL: 				gltext -root				    \\n\
+   GL: 				menger -root				    \\n\
+   GL: 				molecule -root				    \\n\
+ 				rotzoomer -root				    \\n\
+@@ -191,7 +191,7 @@
+ 				eruption -root				    \\n\
+   GL: 				flipflop -root				    \\n\
+   GL: 				flyingtoasters -root			    \\n\
+-				fontglide -root				    \\n\
++-				fontglide -root				    \\n\
+   GL: 				gleidescope -root			    \\n\
+   GL: 				glknots -root				    \\n\
+   GL: 				glmatrix -root				    \\n\
+@@ -229,7 +229,7 @@
+   GL: 				crackberg -root				    \\n\
+   GL: 				cube21 -root				    \\n\
+ 				fiberlamp -root				    \\n\
+-  GL: 				fliptext -root				    \\n\
++-  GL: 				fliptext -root				    \\n\
+   GL: 				glhanoi -root				    \\n\
+   GL: 				juggler3d -root				    \\n\
+   GL: 				tangram -root				    \\n\
+diff -Naurd xscreensaver-5.08.orig/driver/XScreenSaver.ad.in xscreensaver-5.08/driver/XScreenSaver.ad.in
+--- xscreensaver-5.08.orig/driver/XScreenSaver.ad.in	2008-12-28 08:33:15.000000000 +0100
++++ xscreensaver-5.08/driver/XScreenSaver.ad.in	2009-03-02 22:37:43.000000000 +0100
+@@ -230,7 +230,7 @@
+ -				loop -root				    \n\
+ 				penetrate -root				    \n\
+ 				petri -root				    \n\
+-				phosphor -root				    \n\
++-				phosphor -root				    \n\
+ @GL_KLUDGE@ GL: 				pulsar -root				    \n\
+ 				ripples -root				    \n\
+ 				shadebobs -root				    \n\
+@@ -251,7 +251,7 @@
+ - GL: 				dnalogo -root				    \n\
+ @GL_KLUDGE@ GL: 				engine -root				    \n\
+ @GL_KLUDGE@ GL: 				flipscreen3d -root			    \n\
+-@GL_KLUDGE@ GL: 				gltext -root				    \n\
++-@GL_KLUDGE@ GL: 				gltext -root				    \n\
+ @GL_KLUDGE@ GL: 				menger -root				    \n\
+ @GL_KLUDGE@ GL: 				molecule -root				    \n\
+ 				rotzoomer -root				    \n\
+@@ -292,7 +292,7 @@
+ 				eruption -root				    \n\
+ @GL_KLUDGE@ GL: 				flipflop -root				    \n\
+ @GL_KLUDGE@ GL: 				flyingtoasters -root			    \n\
+-				fontglide -root				    \n\
++-				fontglide -root				    \n\
+ @GL_KLUDGE@ GL: 				gleidescope -root			    \n\
+ @GL_KLUDGE@ GL: 				glknots -root				    \n\
+ @GL_KLUDGE@ GL: 				glmatrix -root				    \n\
+@@ -330,7 +330,7 @@
+ @GL_KLUDGE@ GL: 				crackberg -root				    \n\
+ @GL_KLUDGE@ GL: 				cube21 -root				    \n\
+ 				fiberlamp -root				    \n\
+-@GL_KLUDGE@ GL: 				fliptext -root				    \n\
++-@GL_KLUDGE@ GL: 				fliptext -root				    \n\
+ @GL_KLUDGE@ GL: 				glhanoi -root				    \n\
+ @GL_KLUDGE@ GL: 				juggler3d -root				    \n\
+ @GL_KLUDGE@ GL: 				tangram -root				    \n\

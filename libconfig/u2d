@@ -1,0 +1,1 @@
+urllist http://www.hyperrealm.com/libconfig/ | splitver '^libconfig-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

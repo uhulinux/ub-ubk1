@@ -1,0 +1,6 @@
+COPYRIGHT
+README
+doc/*.html
+doc/*.mc
+doc/*.png
+doc/man

@@ -1,0 +1,1 @@
+urllist https://code.fluendo.com/pigment/trac/ | splitver '^pigment-([0-9.]+).tar.gz$'

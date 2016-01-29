@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+DST="$UB_INSTALLDIR"
+mkdir -p ${DST}/usr/bin ${DST}/usr/share/{icons,retext/locale,retext/templates}
+cp -a retext.py ${DST}/usr/bin/retext
+cp -a wpgen.py ${DST}/usr/bin/wpgen
+cp -a locale/*.qm ${DST}/usr/share/retext/locale/
+cp -a templates/* ${DST}/usr/share/retext/templates/
+cp -a icons/* ${DST}/usr/share/icons/

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+hidefile-${UB_VERSION}.tar.gz hidefile-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/hidefile/
+

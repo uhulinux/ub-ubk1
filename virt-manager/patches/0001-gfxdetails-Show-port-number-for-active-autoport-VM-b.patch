@@ -1,0 +1,36 @@
+From 5307267536c7c1f7bf09bae81bff9aec3ee2622a Mon Sep 17 00:00:00 2001
+From: Cole Robinson <crobinso@redhat.com>
+Date: Sun, 30 Mar 2014 17:34:26 -0400
+Subject: [PATCH] gfxdetails: Show port number for active autoport VM (bz
+ 1081614)
+
+(cherry picked from commit 7f802e287c21a6395a0e9f5435c1eab78b2ce6b5)
+---
+ virtManager/gfxdetails.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/virtManager/gfxdetails.py b/virtManager/gfxdetails.py
+index 0141f7e..d6865a8 100644
+--- a/virtManager/gfxdetails.py
++++ b/virtManager/gfxdetails.py
+@@ -154,15 +154,20 @@ class vmmGraphicsDetails(vmmGObjectUI):
+             auto = self.widget(basename + "-auto")
+             widget = self.widget(basename)
+             auto.set_inconsistent(False)
++            label = auto.get_label().split(" (")[0]
+ 
+             if val == -1 or gfx.autoport:
+                 auto.set_active(True)
++                if val and val != -1:
++                    label += " (%s %s)" % (_("Port"), val)
+             elif val is None:
+                 auto.set_inconsistent(True)
+             else:
+                 auto.set_active(False)
+                 widget.set_value(val)
+ 
++            auto.set_label(label)
++
+         gtype = gfx.type
+         is_vnc = (gtype == "vnc")
+         is_sdl = (gtype == "sdl")

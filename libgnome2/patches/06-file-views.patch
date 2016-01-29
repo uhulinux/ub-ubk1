@@ -1,0 +1,12 @@
+diff -Naur libgnome-2.8.0.orig/schemas/desktop_gnome_file_views.schemas.in libgnome-2.8.0/schemas/desktop_gnome_file_views.schemas.in
+--- libgnome-2.8.0.orig/schemas/desktop_gnome_file_views.schemas.in	2002-10-01 11:17:31.000000000 +0200
++++ libgnome-2.8.0/schemas/desktop_gnome_file_views.schemas.in	2004-09-20 19:23:46.828265232 +0200
+@@ -6,7 +6,7 @@
+       <applyto>/desktop/gnome/file_views/icon_theme</applyto>
+       <owner>gnome</owner>
+       <type>string</type>
+-      <default>crux_teal</default>
++      <default>UHU</default>
+       <locale name="C">
+         <short>File Icon Theme</short>
+         <long>Theme used for displaying file icons</long>

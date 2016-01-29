@@ -1,0 +1,1 @@
+sflist fuse fuse-2.X | splitver '^([0-9.]+)$' | sort -V | tail -n 1

@@ -1,0 +1,36 @@
+diff -Naurdp glibc-2.19.orig/resolv/res_debug.c glibc-2.19/resolv/res_debug.c
+--- glibc-2.19.orig/resolv/res_debug.c	2014-02-07 10:04:38.000000000 +0100
++++ glibc-2.19/resolv/res_debug.c	2014-06-23 13:44:49.335760049 +0200
+@@ -584,7 +584,7 @@ p_option(u_long option) {
+ 	case RES_INSECURE2:	return "insecure2";
+ 	case RES_NOALIASES:	return "noaliases";
+ 	case RES_USE_INET6:	return "inet6";
+-	case RES_ROTATE:	return "rotate";
++	case RES_ROTATE:	return "norotate";
+ 	case RES_NOCHECKNAME:	return "no-check-names(unimpl)";
+ 	case RES_KEEPTSIG:	return "keeptsig(unimpl)";
+ 	case RES_BLAST:		return "blast";
+diff -Naurdp glibc-2.19.orig/resolv/res_init.c glibc-2.19/resolv/res_init.c
+--- glibc-2.19.orig/resolv/res_init.c	2014-02-07 10:04:38.000000000 +0100
++++ glibc-2.19/resolv/res_init.c	2014-06-23 13:44:27.271761033 +0200
+@@ -535,7 +535,7 @@ res_setoptions(res_state statp, const ch
+ 		    { STRnLEN ("ip6-bytestring"), 0, RES_USEBSTRING },
+ 		    { STRnLEN ("no-ip6-dotint"), 0, RES_NOIP6DOTINT },
+ 		    { STRnLEN ("ip6-dotint"), 1, ~RES_NOIP6DOTINT },
+-		    { STRnLEN ("rotate"), 0, RES_ROTATE },
++		    { STRnLEN ("norotate"), 0, RES_ROTATE },
+ 		    { STRnLEN ("no-check-names"), 0, RES_NOCHECKNAME },
+ 		    { STRnLEN ("edns0"), 0, RES_USE_EDNS0 },
+ 		    { STRnLEN ("single-request-reopen"), 0, RES_SNGLKUPREOP },
+diff -Naurdp glibc-2.19.orig/resolv/res_send.c glibc-2.19/resolv/res_send.c
+--- glibc-2.19.orig/resolv/res_send.c	2014-02-07 10:04:38.000000000 +0100
++++ glibc-2.19/resolv/res_send.c	2014-06-23 13:27:35.979806120 +0200
+@@ -457,7 +457,7 @@ __libc_res_nsend(res_state statp, const
+ 	 * Some resolvers want to even out the load on their nameservers.
+ 	 * Note that RES_BLAST overrides RES_ROTATE.
+ 	 */
+-	if (__builtin_expect ((statp->options & RES_ROTATE) != 0, 0) &&
++	if (__builtin_expect ((statp->options & RES_ROTATE) == 0, 0) &&
+ 	    (statp->options & RES_BLAST) == 0) {
+ 		struct sockaddr_in6 *ina;
+ 		unsigned int map;

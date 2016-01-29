@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pyxattr-${UB_VERSION}.tar.gz pyxattr-${UB_VERSION}/
+	http://downloads.sourceforge.net/pyxattr/

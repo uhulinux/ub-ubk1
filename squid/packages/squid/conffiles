@@ -1,0 +1,4 @@
+/etc/squid/mime.conf
+/etc/squid/msntauth.conf
+/etc/squid/squid.conf
+/etc/sysconfig/squid

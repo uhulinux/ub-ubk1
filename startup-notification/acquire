@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+startup-notification-${UB_VERSION}.tar.gz startup-notification-${UB_VERSION}/
+	http://www.freedesktop.org/software/startup-notification/releases/
+	ftp://ftp.gnome.org/pub/GNOME/sources/startup-notification/${UB_VERSION}/

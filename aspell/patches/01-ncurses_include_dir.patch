@@ -1,0 +1,21 @@
+diff -urN aspell-0.60.4.orig/configure aspell-0.60.4/configure
+--- aspell-0.60.4.orig/configure	2005-10-19 10:36:26.000000000 +0200
++++ aspell-0.60.4/configure	2006-03-30 11:23:24.000000000 +0200
+@@ -23071,7 +23071,7 @@
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ int
+ main ()
+ {
+@@ -23105,7 +23105,7 @@
+   CURSES_LIB=-lncursesw
+ 
+ cat >>confdefs.h <<\_ACEOF
+-#define CURSES_HEADER <ncursesw/curses.h>
++#define CURSES_HEADER <curses.h>
+ _ACEOF
+ 
+ else

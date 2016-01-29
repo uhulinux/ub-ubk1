@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libsigc++-${UB_VERSION}.tar.xz libsigc++-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libsigc++/${UB_VERSION_HEAD2}/

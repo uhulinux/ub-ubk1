@@ -1,0 +1,7 @@
+chmlib-dev
+cmake
+gtk2-dev
+intltool
+libgcrypt-dev
+libglade2-dev
+xulrunner-dev

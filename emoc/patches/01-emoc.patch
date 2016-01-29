@@ -1,0 +1,20 @@
+diff -Naurd orig/emoc.desktop mod/emoc.desktop
+--- orig/emoc.desktop	2010-01-26 12:54:09.000000000 +0100
++++ mod/emoc.desktop	2010-01-29 00:46:34.000000000 +0100
+@@ -1,11 +1,13 @@
+ [Desktop Entry]
+-X-SuSE-translate=true
+-Encoding=UTF-8
++Version=1.1
++Type=Application
+ Name=EMoC
+ GenericName=Easy Movie Converter
++Comment=Front end for ffmpeg and mencoder
++Comment[hu]=ffmpeg/mencoder előtét
+ Icon=/usr/share/pixmaps/emoc.png
+ Type=Application
+-Categories=Qt;Multimedia;Converter;
++Categories=Qt;Multimedia;Converter;X-UHU-Menu/Multimedia/VideoEdit;
+ Exec=emoc
+ StartupNotify=true
+ Terminal=false

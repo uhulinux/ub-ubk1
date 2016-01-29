@@ -1,0 +1,11 @@
+	/lib/*.a
+	/lib/*.la
+@	/lib/*.so
+	/usr/include
+	/usr/lib/**/*.a
+	/usr/lib/**/*.la
+@	/usr/lib/**/*.so
+	/usr/lib/*Conf.sh
+	/usr/lib/pkgconfig
+	/usr/share/aclocal
+	/usr/share/man/**/man3

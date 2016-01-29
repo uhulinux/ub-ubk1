@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+spyder-${UB_VERSION}.zip spyder-${UB_VERSION}/
+	http://spyderlib.googlecode.com/files/

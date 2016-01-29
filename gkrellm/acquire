@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gkrellm-$UB_VERSION.tar.bz2 gkrellm-$UB_VERSION/
+	http://members.dslextreme.com/users/billw/gkrellm/

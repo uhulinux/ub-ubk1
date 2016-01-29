@@ -1,0 +1,47 @@
+diff -Naurd grub-cvs.orig/util/grub-install.in grub-cvs/util/grub-install.in
+--- grub-cvs.orig/util/grub-install.in	2003-08-13 04:14:46.000000000 +0200
++++ grub-cvs/util/grub-install.in	2004-01-12 21:06:05.000000000 +0100
+@@ -204,23 +204,6 @@
+ 	echo "$tmp_fname"
+ }
+ 
+-# Usage: find_device file
+-# Find block device on which the file resides.
+-find_device () {
+-    # For now, this uses the program `df' to get the device name, but is
+-    # this really portable?
+-    tmp_fname=`df $1/ | sed -n 's%.*\(/dev/[^ 	]*\).*%\1%p'`
+-
+-    if test -z "$tmp_fname"; then
+-	echo "Could not find device for $1" 2>&1
+-	exit 1
+-    fi
+-
+-	tmp_fname=`resolve_symlink $tmp_fname`
+-
+-    echo "$tmp_fname"
+-}
+-
+ # Check the arguments.
+ for option in "$@"; do
+     case "$option" in
+@@ -365,8 +348,8 @@
+ esac
+ 
+ # Get the root drive.
+-root_device=`find_device ${rootdir}`
+-bootdir_device=`find_device ${bootdir}`
++root_device=`getdev ${rootdir}`
++bootdir_device=`getdev ${bootdir}`
+ 
+ # Check if the boot directory is in the same device as the root directory.
+ if test "x$root_device" != "x$bootdir_device"; then
+@@ -383,7 +366,7 @@
+ 
+ # Check if the root directory exists in the same device as the grub
+ # directory.
+-grubdir_device=`find_device ${grubdir}`
++grubdir_device=`getdev ${grubdir}`
+ 
+ if test "x$grubdir_device" != "x$root_device"; then
+     # For now, cannot deal with this situation.

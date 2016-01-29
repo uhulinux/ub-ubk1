@@ -1,0 +1,8 @@
+#!/usr/bin/env dl
+
+#digger-${UB_VERSION}.tar.gz digger-${UB_VERSION}/
+#	http://www.digger.org/
+
+digger-${UB_VERSION}.tar.gz digger-${UB_VERSION}/
+	git://gitorious.org/digger/digger.git@${UB_VERSION}
+

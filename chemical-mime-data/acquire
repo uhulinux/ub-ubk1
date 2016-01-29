@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+chemical-mime-data-${UB_VERSION}.tar.bz2 chemical-mime-data-${UB_VERSION}/
+	http://downloads.sourceforge.net/chemical-mime/

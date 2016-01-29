@@ -1,0 +1,32 @@
+#!/bin/sh -eux
+
+# a make install kevés, az nem telepíti a wrapper scripteket,
+# a .desktop fájlokat, az ikonokat, a man-t és a mime adatokat.
+# ehhez a /bin/distro-install-desktop-integration script kell.
+# ezt a make distro-pack-install hívja meg.
+
+# biztos, ami biztos: a /bin/distro-install-desktop-integration
+# és a /sysui/desktop/share/create_tree.sh-nak szükséges értékeket
+# exportáljuk
+
+export APPDATA_SOURCE_DIR="$UB_COMPILEDIR"/sysui/desktop/appstream-appdata
+export DESTDIR="$UB_INSTALLDIR"
+export INSTALLDIRNAME=libreoffice
+export INSTALLDIR=/usr/lib/libreoffice
+export LIBDIR=/usr/lib
+export MANDIR=/usr/share/man
+export OFFICE_PREFIX=$LIBDIR
+export PREFIX=libreoffice
+export PREFIXDIR=/usr
+export PRODUCTNAME=LibreOffice
+export PRODUCTVERSION=$(grep "^ *export PRODUCTVERSION=" config_host.mk | sed -e "s/[^=]*=//")
+export SRC_ROOT="$UB_COMPILEDIR"
+
+make distro-pack-install
+
+# kipucoljuk a fájllistákat: a fájlrendszeren a / alá kerülnének... 
+rm -f "$UB_INSTALLDIR"/gid_Module*
+
+# a root*.dat fájlok sem kellenek semmire
+rm -f "$UB_INSTALLDIR"/usr/lib/libreoffice/program/root*.dat
+

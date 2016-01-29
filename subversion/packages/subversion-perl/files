@@ -1,0 +1,3 @@
+	/usr/lib/*swig_perl*
+	/usr/lib/perl5
+	/usr/share/man/man3/SVN::*

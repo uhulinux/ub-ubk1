@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+fcgi-${UB_VERSION%~*}-SNAP-${UB_VERSION#*~}.tar.gz fcgi-${UB_VERSION%~*}-SNAP-${UB_VERSION#*~}/
+	http://www.fastcgi.com/dist/

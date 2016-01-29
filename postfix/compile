@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+mv AAAREADME README
+
+make tidy
+make makefiles \
+	CCARGS="-DUSE_CYRUS_SASL -DHAS_PGSQL -DUSE_TLS -DMAX_DYNAMIC_MAPS -DHAS_LDAP -DUSE_SASL_AUTH -DHAS_MYSQL -DHAS_PCRE -I/usr/include/mysql -I/usr/include/sasl -I/usr/include/openssl -I/usr/include/postgresql" \
+	OPT="-O2" \
+	AUXLIBS="-lgdbm -lldap -llber -lsasl2 -lmysqlclient -lz -lm -lssl -lcrypto -lpcre -lpq"
+make

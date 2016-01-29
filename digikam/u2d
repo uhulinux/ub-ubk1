@@ -1,0 +1,1 @@
+urllist http://download.kde.org/stable/digikam/ | splitver '^digikam-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

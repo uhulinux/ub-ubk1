@@ -1,0 +1,9 @@
+diff -Naur kdegames-orig/lskat-4.10.0/lskat.desktop kdegames/lskat-4.10.0/lskat.desktop
+--- kdegames-orig/lskat-4.13.0/lskat.desktop	2013-01-23 23:08:06.000000000 +0100
++++ kdegames/lskat-4.13.0/lskat.desktop	2013-02-28 11:39:49.000000000 +0100
+@@ -131,4 +131,4 @@
+ Terminal=false
+ Type=Application
+ X-DocPath=lskat/index.html
+-Categories=Qt;KDE;Game;CardGame;
++Categories=Qt;KDE;Game;CardGame;X-UHU-Menu/Games/Card;

@@ -1,0 +1,11 @@
+	/usr/bin/dpkg-divert
+	/usr/bin/dpkg-statoverride
+	/usr/bin/update-alternatives
+	/usr/lib/dpkg/dpkg-gettext.pl
+	/usr/lib/dpkg/enoent
+	/usr/lib/dpkg/mksplit
+	/usr/sbin/cleanup-info
+	/usr/share/man/man8/cleanup-info.8
+	/usr/share/man/man8/dpkg-divert.8
+	/usr/share/man/man8/dpkg-statoverride.8
+	/usr/share/man/man8/update-alternatives.8

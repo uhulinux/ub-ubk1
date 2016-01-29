@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+molly-guard-${UB_VERSION}.tar.gz molly-guard-${UB_VERSION}/
+	git://anonscm.debian.org/collab-maint/molly-guard.git@tag:${UB_VERSION}

@@ -1,0 +1,21 @@
+--- SDL-1.2.10/include/SDL_endian.h.byteorder	2006-05-01 10:02:59.000000000 +0200
++++ SDL-1.2.10/include/SDL_endian.h	2006-05-19 11:53:07.000000000 +0200
+@@ -32,6 +32,10 @@
+ #define SDL_BIG_ENDIAN	4321
+ 
+ #ifndef SDL_BYTEORDER	/* Not defined in SDL_config.h? */
++#ifdef __linux__
++#include <endian.h>
++#define SDL_BYTEORDER  __BYTE_ORDER
++#else /* __linux __ */
+ #if defined(__hppa__) || \
+     defined(__m68k__) || defined(mc68000) || defined(_M_M68K) || \
+     (defined(__MIPS__) && defined(__MISPEB__)) || \
+@@ -41,6 +45,7 @@
+ #else
+ #define SDL_BYTEORDER	SDL_LIL_ENDIAN
+ #endif
++#endif /* __linux __ */
+ #endif /* !SDL_BYTEORDER */
+ 
+ 

@@ -1,0 +1,7 @@
+freetype2-dev
+libgd-dev
+libjpeg-dev
+libpng-dev
+libx11-dev
+libxext-dev
+zlib-dev

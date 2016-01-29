@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+intend-${UB_VERSION/~/-}.tar.bz2 intend/
+	http://downloads.sourceforge.net/intend/

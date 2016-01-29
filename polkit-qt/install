@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_install
+
+#install FindPolkitQt.cmake
+mkdir -p "$UB_INSTALLDIR"/usr/share/cmake/modules/
+cp -a cmake/modules/FindPolkitQt.cmake "$UB_INSTALLDIR"/usr/share/cmake/modules/
+cp -a cmake/modules/InstallSettings.cmake "$UB_INSTALLDIR"/usr/share/cmake/modules/

@@ -1,0 +1,14 @@
+perl-apache-logformat-compiler
+perl-devel-stacktrace
+perl-devel-stacktrace-ashtml
+perl-file-sharedir
+perl-file-sharedir-install
+perl-filesys-notify-simple
+perl-hash-multivalue
+perl-http-body
+perl-http-tiny
+perl-libwww
+perl-stream-buffered
+perl-test-tcp
+perl-try-tiny
+perl-uri

@@ -1,0 +1,16 @@
+diff -Naur orig/Makefile.in mod/Makefile.in
+--- orig/Makefile.in	2007-06-12 15:46:10.000000000 +0200
++++ mod/Makefile.in	2009-02-27 12:14:12.000000000 +0100
+@@ -656,10 +656,10 @@
+ install-data-local:
+ 	@$(NORMAL_INSTALL)
+ 	if test -d $(srcdir)/pixmaps; then \
+-	  $(mkinstalldirs) /usr/share/pixmaps/$(PACKAGE); \
++	  $(mkinstalldirs) $(DESTDIR)$(datadir)/pixmaps/$(PACKAGE); \
+ 	  for pixmap in $(srcdir)/pixmaps/*; do \
+ 	    if test -f $$pixmap; then \
+-	      $(INSTALL_DATA) $$pixmap /usr/share/pixmaps/$(PACKAGE); \
++	      $(INSTALL_DATA) $$pixmap $(DESTDIR)$(datadir)/pixmaps/$(PACKAGE); \
+ 	    fi \
+ 	  done \
+ 	fi

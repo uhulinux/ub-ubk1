@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+o3read-${UB_VERSION}.tar.gz o3read-${UB_VERSION}/
+	http://siag.nu/pub/o3read/

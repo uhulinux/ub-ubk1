@@ -1,0 +1,99 @@
+diff -NaurdP coreutils-8.22.orig/doc/coreutils.info coreutils-8.22/doc/coreutils.info
+--- coreutils-8.22.orig/doc/coreutils.info	2013-12-13 16:07:28.000000000 +0100
++++ coreutils-8.22/doc/coreutils.info	2014-05-09 08:15:57.594482859 +0200
+@@ -13236,6 +13236,8 @@
+      hours
+ 'd'
+      days
++'u'
++     microseconds
+ 
+    Historical implementations of 'sleep' have required that NUMBER be an
+ integer, and only accepted a single argument without a suffix.  However,
+diff -NaurdP coreutils-8.22.orig/doc/coreutils.texi coreutils-8.22/doc/coreutils.texi
+--- coreutils-8.22.orig/doc/coreutils.texi	2013-12-13 03:43:10.000000000 +0100
++++ coreutils-8.22/doc/coreutils.texi	2014-05-09 08:16:24.858481644 +0200
+@@ -16766,6 +16766,8 @@
+ hours
+ @item d
+ days
++@item u
++microseconds
+ @end table
+ 
+ Historical implementations of @command{sleep} have required that
+diff -NaurdP coreutils-8.22.orig/src/sleep.c coreutils-8.22/src/sleep.c
+--- coreutils-8.22.orig/src/sleep.c	2013-12-04 15:48:30.000000000 +0100
++++ coreutils-8.22/src/sleep.c	2014-05-09 10:09:49.910178246 +0200
+@@ -18,6 +18,8 @@
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <getopt.h>
++#include <libgen.h>
++#include <string.h>
+ 
+ #include "system.h"
+ #include "c-strtod.h"
+@@ -45,10 +47,10 @@
+ Usage: %s NUMBER[SUFFIX]...\n\
+   or:  %s OPTION\n\
+ Pause for NUMBER seconds.  SUFFIX may be 's' for seconds (the default),\n\
+-'m' for minutes, 'h' for hours or 'd' for days.  Unlike most implementations\n\
+-that require NUMBER be an integer, here NUMBER may be an arbitrary floating\n\
+-point number.  Given two or more arguments, pause for the amount of time\n\
+-specified by the sum of their values.\n\
++'m' for minutes, 'h' for hours, 'd' for days or 'u' for microseconds.\n\
++Unlike most implementations that require NUMBER be an integer, here NUMBER may\n\
++be an arbitrary floating point number.  Given two or more arguments, pause for\n\
++the amount of time specified by the sum of their values.\n\
+ \n\
+ "),
+               program_name, program_name);
+@@ -68,10 +70,13 @@
+ static bool
+ apply_suffix (double *x, char suffix_char)
+ {
+-  int multiplier;
++  double multiplier;
+ 
+   switch (suffix_char)
+     {
++    case 'u':
++      multiplier = 1.0 / 1000 / 1000;
++      break;
+     case 0:
+     case 's':
+       multiplier = 1;
+@@ -100,9 +105,18 @@
+   int i;
+   double seconds = 0.0;
+   bool ok = true;
++  char * basename;
++  char * program_name;
++  int usleep = 0;
+ 
+   initialize_main (&argc, &argv);
+   set_program_name (argv[0]);
++  
++  program_name = strdup(argv[0]);
++  basename = base_name(program_name);
++  if (!strcmp(basename, "usleep")) {
++  	usleep = 1;
++  }
+   setlocale (LC_ALL, "");
+   bindtextdomain (PACKAGE, LOCALEDIR);
+   textdomain (PACKAGE);
+@@ -135,8 +149,11 @@
+           error (0, 0, _("invalid time interval %s"), quote (argv[i]));
+           ok = false;
+         }
+-
+-      seconds += s;
++      if (usleep) {
++        seconds += s / 1000000;
++      } else {
++	    seconds += s;
++	  }
+     }
+ 
+   if (!ok)

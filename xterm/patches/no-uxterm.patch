@@ -1,0 +1,69 @@
+diff -Naur orig/Makefile.in mod/Makefile.in
+--- orig/Makefile.in	2014-03-01 16:15:26.000000000 +0100
++++ mod/Makefile.in	2014-03-03 19:12:42.000000000 +0100
+@@ -207,12 +207,10 @@
+ ################################################################################
+ actual_xterm  = `echo xterm|        sed '$(transform)'`
+ actual_resize = `echo resize|       sed '$(transform)'`
+-actual_uxterm = `echo uxterm|       sed '$(transform)'`
+ actual_k8term = `echo koi8rxterm|   sed '$(transform)'`
+ 
+ binary_xterm  = $(actual_xterm)$x
+ binary_resize = $(actual_resize)$x
+-binary_uxterm = $(actual_uxterm)
+ binary_k8term = $(actual_k8term)
+ 
+ install \
+@@ -229,12 +227,6 @@
+ install-scripts \
+ install-full ::
+ 	@$(SHELL) -c "name=\"$(binary_xterm)\"; \
+-		dest=\"$(binary_uxterm)\"; \
+-		echo \"... installing $(BINDIR)/\$$dest\"; \
+-		$(EDIT_SCRIPT) $(srcdir)/uxterm >uxterm.tmp; \
+-		$(INSTALL_SCRIPT) -m  755 uxterm.tmp $(BINDIR)/\$$dest; \
+-		rm -f uxterm.tmp"
+-	@$(SHELL) -c "name=\"$(binary_xterm)\"; \
+ 		dest=\"$(binary_k8term)\"; \
+ 		echo \"... installing $(BINDIR)/\$$dest\"; \
+ 		$(EDIT_SCRIPT) $(srcdir)/koi8rxterm >k8term.tmp; \
+@@ -252,7 +244,7 @@
+ install \
+ install-man \
+ install-full :: $(MANDIR)
+-	@-$(SHELL) -c "for app in xterm resize uxterm koi8rxterm ; \
++	@-$(SHELL) -c "for app in xterm resize koi8rxterm ; \
+ 		do \
+ 			actual=\`echo \"\$$app\" | sed '@program_transform_name@'\`; \
+ 			$(SHELL) ./minstall \"$(INSTALL_DATA)\" $(srcdir)/\$$app.man  $(MANDIR)/\$$actual.$(manext) $(appsdir) $(CLASS) \$$app \$$actual $(pixmapdir); \
+@@ -261,7 +253,7 @@
+ 	@-$(SHELL) -c "if test @XTERM_SYMLINK@ != NONE ; then cd $(MANDIR) && $(LN_S) $(actual_xterm).$(manext) @XTERM_SYMLINK@.$(manext) ; fi"
+ 	@-$(SHELL) -c "if test @XTERM_SYMLINK@ != NONE ; then cd $(MANDIR) && echo '... created symbolic link:' && ls -l $(actual_xterm).$(manext) @XTERM_SYMLINK@.$(manext) ; fi"
+ 
+-APP_NAMES = XTerm UXTerm KOI8RXTerm
++APP_NAMES = XTerm KOI8RXTerm
+ 
+ @no_appsdir@install \
+ @no_appsdir@install-app \
+@@ -420,7 +412,7 @@
+ @no_pixmapdir@	@echo "... removed icons"
+ ################################################################################
+ # Desktop-utils does not provide an uninstall, and is not uniformly available.
+-@desktop_utils@DESKTOP_FILES = $(srcdir)/xterm.desktop $(srcdir)/uxterm.desktop
++@desktop_utils@DESKTOP_FILES = $(srcdir)/xterm.desktop
+ @desktop_utils@DESKTOP_FLAGS = @DESKTOP_FLAGS@
+ @desktop_utils@install-desktop \
+ @desktop_utils@install-full ::
+@@ -483,12 +475,6 @@
+ xterm.ps : xterm.$(manext)
+ xterm.txt : xterm.$(manext)
+ ################################################################################
+-docs-uxterm \
+-docs ::  uxterm.txt @GROFF_NOTE@ uxterm.html uxterm.pdf uxterm.ps
+-uxterm.html : uxterm.$(manext)
+-uxterm.pdf : uxterm.ps
+-uxterm.ps : uxterm.$(manext)
+-uxterm.txt : uxterm.$(manext)
+ ################################################################################
+ docs-koi8rxterm \
+ docs ::  koi8rxterm.txt @GROFF_NOTE@ koi8rxterm.html koi8rxterm.pdf koi8rxterm.ps

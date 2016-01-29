@@ -1,0 +1,7 @@
+How to create this patch:
+
+- pam_utmp: take a similar Makefile.in, e.g. from pam_warn,
+  perform a search-replace and remove references to nonexistent files.
+
+- fedora modules: include them in configure.in and modules/Makefile.am,
+  run autoreconf and catch the resulting Makefile.in files.

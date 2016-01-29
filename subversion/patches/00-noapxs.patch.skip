@@ -1,0 +1,26 @@
+diff -Naur subversion-1.6.1-orig/build-outputs.mk subversion-1.6.1/build-outputs.mk
+--- subversion-1.6.1-orig/build-outputs.mk	2009-04-08 19:39:26.000000000 +0200
++++ subversion-1.6.1/build-outputs.mk	2009-04-13 18:16:23.000000000 +0200
+@@ -755,8 +755,8 @@
+ ########################################
+ 
+ install-mods-shared: subversion/mod_dav_svn/mod_dav_svn.la subversion/mod_authz_svn/mod_authz_svn.la
+-	cd subversion/mod_dav_svn ; $(MKDIR) "$(APACHE_LIBEXECDIR)" ; $(INSTALL_MOD_SHARED) -n dav_svn mod_dav_svn.la
+-	cd subversion/mod_authz_svn ; $(MKDIR) "$(APACHE_LIBEXECDIR)" ; $(INSTALL_MOD_SHARED) -n authz_svn mod_authz_svn.la
++	cd subversion/mod_dav_svn ; $(MKDIR) "$(APACHE_LIBEXECDIR)" ; $(INSTALL_MOD_SHARED) mod_dav_svn.la "$(APACHE_LIBEXECDIR)"
++	cd subversion/mod_authz_svn ; $(MKDIR) "$(APACHE_LIBEXECDIR)" ; $(INSTALL_MOD_SHARED) mod_authz_svn.la "$(APACHE_LIBEXECDIR)"
+ 
+ install-bdb-lib: subversion/libsvn_fs_base/libsvn_fs_base-1.la
+ 	$(MKDIR) $(DESTDIR)$(bdb_libdir)
+diff -Naur subversion-1.6.1-orig/Makefile.in subversion-1.6.1/Makefile.in
+--- subversion-1.6.1-orig/Makefile.in	2009-02-16 17:10:48.000000000 +0100
++++ subversion-1.6.1/Makefile.in	2009-04-13 18:17:42.000000000 +0200
+@@ -214,7 +214,7 @@
+ INSTALL_CONTRIB = $(LIBTOOL) --mode=install $(INSTALL)
+ INSTALL_TOOLS = $(LIBTOOL) --mode=install $(INSTALL)
+ INSTALL_INCLUDE = $(INSTALL) -m 644
+-INSTALL_MOD_SHARED = @APXS@ -i -S LIBEXECDIR="$(APACHE_LIBEXECDIR)" @MOD_ACTIVATION@
++INSTALL_MOD_SHARED = $(LIBTOOL) --mode=install $(INSTALL)
+ INSTALL_DATA = $(INSTALL) -m 644
+ INSTALL_LOCALE = $(INSTALL_DATA)
+ 

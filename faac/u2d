@@ -1,0 +1,1 @@
+sflist faac faac-src | splitver '^faac-([0-9.]+)$' | sort -V | tail -n 1

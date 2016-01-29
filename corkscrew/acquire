@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+corkscrew-${UB_VERSION}.tar.gz corkscrew-${UB_VERSION}/
+	http://www.agroman.net/corkscrew/

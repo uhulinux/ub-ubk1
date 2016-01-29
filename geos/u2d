@@ -1,0 +1,1 @@
+urllist http://download.osgeo.org/geos/ | splitver '^geos-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

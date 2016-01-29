@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+transfig.${UB_VERSION}.tar.gz transfig.${UB_VERSION}/
+	http://downloads.sourceforge.net/mcj/
+	http://www.ctan.org/tex-archive/graphics/transfig/
+	ftp://epb.lbl.gov/xfig/
+	http://www.xfig.org/xfigdist/

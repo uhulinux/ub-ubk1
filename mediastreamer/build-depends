@@ -1,0 +1,12 @@
+ffmpeg-dev
+glew-dev
+intltool
+libgsm-dev
+libortp-dev
+libupnp-dev
+libxv-dev
+mesa-dev
+opus-dev
+pulseaudio-dev
+speex-dev
+vim

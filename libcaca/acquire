@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libcaca-${UB_VERSION/~/.}.tar.gz libcaca-${UB_VERSION/~/.}/
+	http://caca.zoy.org/files/libcaca/

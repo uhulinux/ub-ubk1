@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=E-Szignó
+Name[hu]=E-Szignó
+Comment=MicroSec E-Szignó
+Comment[hu]=MicroSec E-Szignó
+Exec=e-szigno
+Categories=Office;

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgnome-media-profiles-${UB_VERSION}.tar.bz2 libgnome-media-profiles-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgnome-media-profiles/${UB_VERSION_HEAD2}/

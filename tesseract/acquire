@@ -1,0 +1,10 @@
+#!/usr/bin/env dl
+
+tesseract-${UB_VERSION}.tar.gz tesseract-${UB_VERSION}/
+	http://tesseract-ocr.googlecode.com/files/
+
+hun.traineddata.gz .
+	http://tesseract-ocr.googlecode.com/files/
+
+eng.traineddata.gz .
+	http://tesseract-ocr.googlecode.com/files/

@@ -1,0 +1,21 @@
+diff -Naurdp a/arch/x86/mm/init_32.c b/arch/x86/mm/init_32.c
+--- a/arch/x86/mm/init_32.c	2008-02-10 23:18:14.000000000 +0100
++++ b/arch/x86/mm/init_32.c	2008-02-16 19:44:42.000000000 +0100
+@@ -544,6 +544,7 @@ void __init paging_init(void)
+  */
+ static void __init test_wp_bit(void)
+ {
++#if defined(CONFIG_M386) || defined(CONFIG_M486)
+ 	printk(KERN_INFO
+   "Checking if this processor honours the WP bit even in supervisor mode...");
+ 
+@@ -561,6 +562,9 @@ static void __init test_wp_bit(void)
+ 	} else {
+ 		printk(KERN_CONT "Ok.\n");
+ 	}
++#else
++	boot_cpu_data.wp_works_ok = 1;
++#endif
+ }
+ 
+ static struct kcore_list kcore_mem, kcore_vmalloc;

@@ -1,0 +1,20 @@
+diff -Naur apt-0.6.25.orig/methods/rsync.cc apt-0.6.25/methods/rsync.cc
+--- apt-0.6.25.orig/methods/rsync.cc	2006-01-10 17:25:51.000000000 +0100
++++ apt-0.6.25/methods/rsync.cc	2006-01-10 17:27:02.000000000 +0100
+@@ -300,7 +300,7 @@
+ {
+    int p[2];
+    int res = 0;
+-   Argv argv(10);
++   Argv argv(11);
+ 
+    State = Starting;
+    if ( RsyncMethod::Debug )
+@@ -310,6 +310,7 @@
+    argv.add("-Lpt");
+    argv.add("--partial");
+    argv.add("--apt-support");
++   argv.add("--fuzzy");
+    if (RsyncMethod::Timeout>0) {
+ 	  argv.add("--timeout");
+ 	  char S[10];

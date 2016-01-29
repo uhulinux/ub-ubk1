@@ -1,0 +1,146 @@
+//initialisation
+S[0]=12;	//The snake
+S[1]=5;     // as coordinate pairs for x and y
+S[2]=13;    // S[0] and S[1] are the head
+S[3]=5;
+S[4]=14;
+S[5]=5;
+S[6]=15;
+S[7]=5;
+
+Z=0;
+L=1;
+M=6;
+
+//direction: up=0, right=1, down=2, left=3
+R=3;
+
+//printing borderline
+clear;
+setcursor(50,0); print("#");
+setcursor(50,1); print("#");
+setcursor(50,2); print("#");
+setcursor(50,3); print("#");
+setcursor(50,4); print("#");
+setcursor(50,5); print("#");
+setcursor(50,6); print("#");
+setcursor(50,7); print("#");
+setcursor(50,8); print("#");
+setcursor(50,9); print("#");
+setcursor(50,10); print("#");
+setcursor(50,11); print("#");
+setcursor(50,12); print("#");
+setcursor(50,13); print("#");
+setcursor(50,14); print("#");
+setcursor(0,15);
+print("###################################################");
+
+P[0]=7;     //the point to catch
+P[1]=7;
+
+while(1)
+{
+  for(C=M; C>=0; C=C-1)  //moving snake
+  {
+    S[2*(C+1)]=S[2*C];
+    S[2*(C+1)+1]=S[2*C+1];
+  }
+  
+  if(L<M)               //make snake longer (if needed)
+    L=L+1;
+
+  K=(int)keystate;      // get keyboard input
+  if(K==0);
+  else if(K==119)
+    R=0;
+  else if(K==100)
+    R=1;
+  else if(K==115)
+    R=2;
+  else if(K==97)
+    R=3;
+
+
+
+
+  if(R==0)
+  {
+    S[0]=S[2];
+    S[1]=S[3]-1;
+  }
+  else if(R==1)
+  {
+    S[1]=S[3];
+    S[0]=S[2]+1;
+  }
+  else if(R==2)
+  {
+    S[0]=S[2];
+    S[1]=S[3]+1;
+  }  
+  else if(R==3)
+  {
+    S[1]=S[3];
+    S[0]=S[2]-1;
+  }
+  sleep(100000);
+  
+
+  
+  setcursor(S[2*L],S[2*L+1]);   //printing everything
+  print(" ");
+  setcursor(S[0],S[1]);
+    print("O");
+    setcursor(S[2],S[3]);
+      print("o");
+  for(C=1; C<L; C=C+1)     //checking if you touched the snake
+  {
+    if(S[0]==S[2*C] && S[1]==S[2*C+1])
+      S[0]=-4;
+  }
+  setcursor(P[0],P[1]);
+    print("*");
+
+  if(S[0]==P[0] && S[1]==P[1])     //checking if you got the point
+  {
+    Z=Z+1;
+    G=1;
+    while(G==1)
+    {
+      P[0]=(int)rnd(49);
+      P[1]=(int)rnd(14);
+      G=0;
+      for(C=0; C<L; C=C+1)
+        if(P[0]==S[2*C] && P[1]==S[2*C+1])
+          G=1;
+     }
+    M=M+3;
+  }
+  setcursor(55,1);
+    print(Z);
+
+
+
+  if(S[0]<0 || S[0]>49)    //checking if you touched the wall
+    break;
+  if(S[1]<0 || S[1]>14)
+    break;
+  
+
+
+
+}
+sleep(500000);
+clear;
+print("You lose!\nScore: ");
+print(Z);
+print("\n");
+
+
+
+
+
+
+
+
+

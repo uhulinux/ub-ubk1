@@ -1,0 +1,11 @@
+diff -Naur ncpfs-2.2.3/lib/Makefile.in ncpfs-2.2.3-mod/lib/Makefile.in
+--- ncpfs-2.2.3/lib/Makefile.in	2003-03-13 15:54:46.000000000 +0100
++++ ncpfs-2.2.3-mod/lib/Makefile.in	2004-01-11 22:22:06.000000000 +0100
+@@ -98,7 +98,6 @@
+ install_shared: $(SHARED_NCPLIB_BIN)
+ 	$(INSTALL) -d $(DESTDIR)$(libsodir)
+ 	$(INSTALL) $(SHARED_NCPLIB_BIN) $(DESTDIR)$(libsodir)
+-	-ldconfig
+ 
+ install-dev: install_shared install_static
+ 	ln -sf $(SHARED_NCPLIB_SONAME) $(DESTDIR)$(libsodir)/$(SHARED_NCPLIB)

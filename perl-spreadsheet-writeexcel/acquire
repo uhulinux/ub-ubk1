@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Spreadsheet-WriteExcel-${UB_VERSION}.tar.gz Spreadsheet-WriteExcel-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/

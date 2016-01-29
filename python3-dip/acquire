@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dip-gpl-${UB_VERSION}.tar.gz dip-gpl-${UB_VERSION}/
+	http://www.riverbankcomputing.co.uk/static/Downloads/dip/

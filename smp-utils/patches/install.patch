@@ -1,0 +1,11 @@
+diff -Naurd a/Makefile b/Makefile
+--- a/Makefile	2006-06-11 21:05:50.000000000 +0200
++++ b/Makefile	2006-07-03 13:45:50.000000000 +0200
+@@ -1,6 +1,6 @@
+ SHELL = /bin/sh
+ 
+-PREFIX=/usr/local
++PREFIX=/usr
+ INSTDIR=$(DESTDIR)/$(PREFIX)/bin
+ MANDIR=$(DESTDIR)/$(PREFIX)/share/man
+ 

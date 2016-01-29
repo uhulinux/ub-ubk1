@@ -1,0 +1,19 @@
+diff -Naur orig/wireshark.desktop mod/wireshark.desktop
+--- orig/wireshark.desktop	2013-04-22 20:05:29.000000000 +0200
++++ mod/wireshark.desktop	2013-10-15 08:41:53.705432072 +0200
+@@ -68,6 +68,7 @@
+ Comment=Network traffic analyzer
+ Comment[fi]=Verkkoliikenne analysaattori
+ Comment[fr]=Analyseur de trafic réseau
++Comment[hu]=Profi hálózati forgalomfigyelő- és elemző
+ Comment[sv]=Nätverkstrafikanalysator
+ Icon=wireshark
+ TryExec=wireshark
+@@ -76,4 +77,6 @@
+ MimeType=application/vnd.tcpdump.pcap;application/x-pcapng;application/x-snoop;application/x-iptrace;application/x-lanalyzer;application/x-nettl;application/x-radcom;application/x-etherpeek;application/x-visualnetworks;application/x-netinstobserver;application/x-5view;
+ # Category entry according to:
+ # http://standards.freedesktop.org/menu-spec/1.0/
+-Categories=System;Monitor;GTK;
++Categories=System;Monitor;GTK;X-UHU-Menu/Internet/Tools;
++StartupNotify=false
++

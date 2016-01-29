@@ -1,0 +1,20 @@
+diff -urN blast-1.0.orig/Imakefile blast-1.0/Imakefile
+--- blast-1.0.orig/Imakefile	Fri Jan  3 17:15:03 1997
++++ blast-1.0./Imakefile	Mon Feb 22 21:28:58 1999
+@@ -1,5 +1,5 @@
+-CCOPTIONS =-Ae
+-SYS_LIBRARIES =/usr/lib/libdld.sl -lm
++CCOPTIONS =
++SYS_LIBRARIES = -lm
+ LOCAL_LIBRARIES = $(XLIB)
+ DEPLIB =
+ SRCS =blast.c
+@@ -7,7 +7,7 @@
+ 
+ ComplexProgramTarget(blast)
+ 
+-#ifndef __hpux
++#if 0
+ blast: shooting.au
+ #endif
+ 

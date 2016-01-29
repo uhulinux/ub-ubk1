@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gupnp-igd-${UB_VERSION}.tar.xz gupnp-igd-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gupnp-igd/${UB_VERSION_HEAD2}/

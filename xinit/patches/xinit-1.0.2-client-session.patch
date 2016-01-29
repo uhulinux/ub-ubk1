@@ -1,0 +1,38 @@
+diff -Naur orig/xinit.c patched/xinit.c
+--- orig/xinit.c	2013-09-08 18:37:33.000000000 +0200
++++ patched/xinit.c	2014-01-30 00:57:34.704868896 +0100
+@@ -89,6 +89,8 @@
+ 
+ #define TRUE 1
+ #define FALSE 0
++#define OK_EXIT 0
++#define ERR_EXIT 1
+ 
+ static char *default_server = "X";
+ static char *default_display = ":0";        /* choose most efficient */
+@@ -560,6 +562,7 @@
+ {
+     clientpid = fork();
+     if (clientpid == 0) {
++ 		int fd;
+         set_environment();
+         setWindowPath();
+ 
+@@ -567,7 +570,16 @@
+             Error("cannot change uid");
+             _exit(EXIT_FAILURE);
+         }
+-        setpgid(0, getpid());
++ 		fd = open ("/dev/null", O_RDONLY);
++
++ 		if (fd < 0) {
++ 			Error("cannot open /dev/null: %s\n", strerror(errno));
++ 			_exit(ERR_EXIT);
++ 		}
++ 		close (STDIN_FILENO);
++ 		dup2 (fd, STDIN_FILENO);
++ 		close (fd);
++ 		setsid();
+         Execute(client);
+         Error("Unable to run program \"%s\"", client[0]);
+ 

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gqview-${UB_VERSION}.tar.gz gqview-${UB_VERSION}/
+	http://download.sourceforge.net/gqview/

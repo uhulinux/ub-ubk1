@@ -1,0 +1,11 @@
+diff -Naur ORIG/src/main.cpp UHU/src/main.cpp
+--- ORIG/src/main.cpp	2008-12-19 23:39:38.000000000 +0100
++++ UHU/src/main.cpp	2009-12-01 10:50:15.000000000 +0100
+@@ -21,6 +21,7 @@
+ //// Includes
+ ////
+ 
++#include <cstdio>
+ #include <cstdlib>
+ #include <iostream>
+ 

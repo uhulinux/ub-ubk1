@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+zoo-${UB_VERSION}-3.src.rpm zoo-${UB_VERSION}.tar.gz zoo-${UB_VERSION}/
+	ftp://ftp.metalab.unc.edu/pub/linux/utils/compress/

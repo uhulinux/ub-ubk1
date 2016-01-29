@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+scsh-${UB_VERSION}.tar.gz scsh-${UB_VERSION}/
+	ftp://ftp.scsh.net/pub/scsh/${UB_VERSION_HEAD2}/

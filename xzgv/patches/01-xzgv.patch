@@ -1,0 +1,30 @@
+diff -Naurd orig/config.mk mod/config.mk
+--- orig/config.mk	2007-08-12 12:14:42.000000000 +0200
++++ mod/config.mk	2009-05-01 06:37:01.000000000 +0200
+@@ -24,10 +24,10 @@
+ # MANDIR to directory for man page.
+ # Usually it will be simpler to just set PREFIX.
+ #
+-PREFIX=/usr/local
+-BINDIR=$(PREFIX)/bin
+-INFODIR=$(PREFIX)/share/info
+-MANDIR=$(PREFIX)/share/man/man1
++PREFIX=/usr
++BINDIR=$(DESTDIR)$(PREFIX)/bin
++INFODIR=$(DESTDIR)$(PREFIX)/share/info
++MANDIR=$(DESTDIR)$(PREFIX)/share/man/man1
+ 
+ # -------------------- Miscellaneous options -----------------------
+ 
+diff -Naurd orig/Makefile mod/Makefile
+--- orig/Makefile	2009-04-30 23:58:36.000000000 +0200
++++ mod/Makefile	2009-05-01 06:58:33.000000000 +0200
+@@ -23,7 +23,7 @@
+ 
+ 
+ 
+-all: src man
++all: src man info
+ 
+ src: xzgv
+ 

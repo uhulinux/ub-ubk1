@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+for i in xorg-cf-files-*; do
+	if [ ! -f $i/host.def ]; then
+		echo "Please update uhu-config.patch to reflect the current path!" >&2
+		exit 1
+	fi
+done
+
+for i in *; do
+	cd $i
+	ub_compile
+	cd ..
+done

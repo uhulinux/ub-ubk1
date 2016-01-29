@@ -1,0 +1,1 @@
+urllist http://www.andre-simon.de/zip/download.html | splitver '^ansifilter-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

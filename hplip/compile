@@ -1,0 +1,18 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--enable-scan-build \
+	--enable-gui-build \
+	--enable-fax-build \
+	--enable-hpijs-install \
+	--enable-policykit \
+	--enable-foomatic-ppd-install \
+	--enable-foomatic-drv-install \
+	--enable-cups-ppd-install \
+	--enable-foomatic-rip-hplip-install \
+	--enable-udev-acl-rules \
+	--enable-qt4 \
+	--enable-pp-build \
+    --enable-hpcups-install \
+    --enable-cups-drv-install \
+	--enable-new-hpcups

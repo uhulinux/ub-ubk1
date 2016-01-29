@@ -1,0 +1,14 @@
+cheese-dev
+db4-dev
+evolution-data-server-dev
+folks-dev
+gnome-desktop-dev
+gnome-online-accounts-dev
+gobject-introspection-dev
+gst-plugins-bad-dev
+intltool
+itstool
+libnotify-dev
+librsvg-dev
+systemd-dev
+vala-dev

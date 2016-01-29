@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+elfutils-${UB_VERSION}.tar.bz2 elfutils-${UB_VERSION}/
+	https://fedorahosted.org/releases/e/l/elfutils/${UB_VERSION}/

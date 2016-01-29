@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+knights-${UB_VERSION}.tar.bz2 knights-${UB_VERSION}/
+	http://dl.dropbox.com/u/2888238/Knights/
+	http://downloads.sourceforge.net/knights/

@@ -1,0 +1,38 @@
+#!/bin/bash -e
+
+usage ()
+{
+	echo "Usage: $0 [-o outputfile] inputfile lang" >&2
+	exit 1
+}
+
+out=""
+if [ $# -lt 2 ]; then
+	usage
+fi
+if [ "$1" = "-o" ]; then
+	out="$2"
+	shift 2
+fi
+if [ $# -ne 2 ]; then
+	usage
+fi
+in="$1"
+lang="$2"
+if [ -z "$out" ]; then
+	out="$in"_"$lang"
+fi
+
+dir="$(mktemp -d /tmp/gfxmenu.XXXXXX)"
+trap "rm -rf $dir" EXIT
+
+( cd "$dir"; cpio -i --no-absolute-filenames --quiet ) <"$in"
+
+if ! fgrep -qx -- "$lang" "$dir/languages"; then
+	echo "Language \"$lang\" not supported by graphical theme!" >&2
+	exit 1
+fi
+
+printf "%s\n" "$lang" >"$dir/lang"
+
+ls "$dir" | ( cd "$dir"; cpio -o --quiet ) >"$out"

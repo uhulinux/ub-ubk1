@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lynx${UB_VERSION}.tar.gz lynx${UB_VERSION//./-}/
+	http://lynx.isc.org/lynx${UB_VERSION}/

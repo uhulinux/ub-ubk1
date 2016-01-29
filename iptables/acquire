@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+iptables-${UB_VERSION}.tar.bz2 iptables-${UB_VERSION}/
+	ftp://ftp.iasi.roedu.net/mirrors/ftp.netfilter.org/iptables/
+	ftp://ftp.netfilter.org/pub/iptables/
+	http://ftp.netfilter.org/pub/iptables/

@@ -1,0 +1,13 @@
+diff -Naurd orig/configure mod/configure
+--- orig/configure	2004-04-18 11:48:10.000000000 +0200
++++ mod/configure	2010-02-14 09:30:04.000000000 +0100
+@@ -7,7 +7,8 @@
+ # modify it under the terms of the GNU General Public License.
+ # See LICENSE file in the doc directory.
+ 
+-PROCESSOR=`uname -m` || exit
++#PROCESSOR=`uname -m` || exit
++PROCESSOR=i686
+ # Compatability translation (stollen from rpm macros)
+ COMPAT_PROCESSOR="$PROCESSOR"
+ case "$PROCESSOR" in

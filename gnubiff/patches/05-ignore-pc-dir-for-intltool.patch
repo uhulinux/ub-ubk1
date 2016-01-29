@@ -1,0 +1,11 @@
+Description: Ignore .pc directory for intltool tests
+ This patch excludes .pc/ from test runs (e.g. "make check") when looking for
+ new source files to be translated
+Author: Roland Stigge <stigge@antcom.de>
+
+Index: gnubiff-2.2.14/po/POTFILES.skip
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gnubiff-2.2.14/po/POTFILES.skip	2012-02-13 21:10:50.000000000 +0100
+@@ -0,0 +1 @@
++.pc

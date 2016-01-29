@@ -1,0 +1,30 @@
+diff -Naurd scsh-0.6.4.orig/Makefile.in scsh-0.6.4/Makefile.in
+--- scsh-0.6.4.orig/Makefile.in	2003-03-10 13:13:19.000000000 +0100
++++ scsh-0.6.4/Makefile.in	2003-07-21 10:22:20.000000000 +0200
+@@ -28,7 +28,7 @@
+ libdir = @libdir@
+ incdir = @includedir@
+ manext = 1
+-mandir = @mandir@/man$(manext)
++mandir = @mandir@
+ ### End of `configure' section###
+ 
+ htmldir = $(libdir)/scsh/doc/scsh-manual/html
+@@ -324,14 +324,14 @@
+ 	$(INSTALL_PROGRAM) $(VM) $(LIB)
+ 
+ inst-man:
+-	if [ -d $(mandir) -a -w $(mandir) ]; then			   \
++	if [ -d $(mandir)/man$(manext) -a -w $(mandir)/man$(manext) ]; then \
+ 		sed 's=LBIN=$(bindir)=g' doc/scsh.man |		   \
+ 			sed 's=LLIB=$(LIB)=g' |				   \
+ 			sed 's=LSCSH=$(RUNNABLE)=g' >$(MANPAGE) &&	   \
+-		$(INSTALL_DATA) $(MANPAGE) $(mandir) &&			   \
++		$(INSTALL_DATA) $(MANPAGE) $(mandir)/man$(manext) && \
+ 		$(RM) $(MANPAGE);					   \
+ 	else								   \
+-		echo "$(mandir) not writable dir, not installing man page" \
++		echo "$(mandir)/man$(manext) not writable dir, not installing man page" \
+ 			>&2;						   \
+ 	fi
+ 

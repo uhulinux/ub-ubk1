@@ -1,0 +1,10 @@
+cairo-dev
+fontconfig-dev
+freetype2-dev
+glib-dev
+libexif-dev
+libjpeg-dev
+libpng-dev
+libtiff-dev
+libxrender-dev
+pango-dev

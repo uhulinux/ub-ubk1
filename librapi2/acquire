@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+librapi2-"$UB_VERSION".tar.gz librapi2-"$UB_VERSION"/
+	http://downloads.sourceforge.net/synce/

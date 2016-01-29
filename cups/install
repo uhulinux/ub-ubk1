@@ -1,0 +1,24 @@
+#!/bin/sh -eux
+
+make \
+	BUILDROOT="$UB_INSTALLDIR" \
+	install
+
+rm -rf "$UB_INSTALLDIR"/usr/share/man/cat*
+rm -rf "$UB_INSTALLDIR"/usr/share/man/*/cat*
+#rm -rf "$UB_INSTALLDIR"/cups
+rm -rf "$UB_INSTALLDIR"/etc/rc0.d
+rm -rf "$UB_INSTALLDIR"/etc/rc2.d
+rm -rf "$UB_INSTALLDIR"/etc/rc3.d
+rm -rf "$UB_INSTALLDIR"/etc/rc5.d
+rm -rf "$UB_INSTALLDIR"/etc/init.d/cups
+
+# Nem kell a francia, német doksi
+rm -rf "$UB_INSTALLDIR"/usr/share/doc/cups/{de,fr}
+
+# create empty config file
+mkdir -p "$UB_INSTALLDIR"/etc/cups
+touch "$UB_INSTALLDIR"/etc/cups/printers.conf
+
+rm -rf ${UB_INSTALLDIR}/usr/share/cups/banners
+rm -f ${UB_INSTALLDIR}/usr/share/cups/data/testprint

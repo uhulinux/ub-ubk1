@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgnomecups-${UB_VERSION}.tar.gz libgnomecups-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgnomecups/${UB_VERSION_HEAD2}/

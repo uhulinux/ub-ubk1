@@ -1,0 +1,38 @@
+diff -up ggz-client-libs-snapshot-0.99.4/ggzcore.pc.in.pkgconfig ggz-client-libs-snapshot-0.99.4/ggzcore.pc.in
+--- ggz-client-libs-snapshot-0.99.4/ggzcore.pc.in.pkgconfig	2008-07-13 10:50:04.000000000 -0500
++++ ggz-client-libs-snapshot-0.99.4/ggzcore.pc.in	2008-08-24 14:00:56.000000000 -0500
+@@ -1,7 +1,7 @@
+ prefix=@prefix@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
+-includedir=${prefix}/include
++libdir=@libdir@
++includedir=@includedir@
+ #datarootdir=${prefix}/share
+ #datadir=${datarootdir}
+ sysconfdir=@sysconfdir@
+diff -up ggz-client-libs-snapshot-0.99.4/ggzmod.pc.in.pkgconfig ggz-client-libs-snapshot-0.99.4/ggzmod.pc.in
+--- ggz-client-libs-snapshot-0.99.4/ggzmod.pc.in.pkgconfig	2008-07-13 10:50:04.000000000 -0500
++++ ggz-client-libs-snapshot-0.99.4/ggzmod.pc.in	2008-08-24 14:01:10.000000000 -0500
+@@ -1,7 +1,7 @@
+ prefix=@prefix@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
+-includedir=${prefix}/include
++libdir=@libdir@
++includedir=@includedir@
+ #datarootdir=${prefix}/share
+ #datadir=${datarootdir}
+ sysconfdir=@sysconfdir@
+diff -up ggz-client-libs-snapshot-0.99.4/Makefile.in.pkgconfig ggz-client-libs-snapshot-0.99.4/Makefile.in
+--- ggz-client-libs-snapshot-0.99.4/Makefile.in.pkgconfig	2008-07-13 13:50:12.000000000 -0500
++++ ggz-client-libs-snapshot-0.99.4/Makefile.in	2008-08-24 13:58:49.000000000 -0500
+@@ -216,7 +216,7 @@ SUBDIRS = $(base_subdirs) $(ggzwrap_subd
+ DIST_SUBDIRS = $(base_subdirs) $(ggzwrap_dirs)
+ EXTRA_DIST = README.GGZ QuickStart.GGZ indent.pro
+ ACLOCAL_AMFLAGS = -I m4 -I m4/ggz
+-pkgconfigdir = $(datadir)/pkgconfig
++pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = ggzmod.pc ggzcore.pc
+ all: config.h
+ 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

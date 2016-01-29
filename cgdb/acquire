@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+cgdb-${UB_VERSION}.tar.gz cgdb-${UB_VERSION}/
+	http://downloads.sourceforge.net/cgdb/
+	http://cgdb.me/files/

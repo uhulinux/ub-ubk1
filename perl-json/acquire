@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+JSON-${UB_VERSION}.tar.gz JSON-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/M/MA/MAKAMAKA/

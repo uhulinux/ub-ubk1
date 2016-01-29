@@ -1,0 +1,26 @@
+diff -Naur ortp-0.20.0-orig/src/stun.c ortp-0.20.0/src/stun.c
+--- ortp-0.20.0-orig/src/stun.c	2012-02-22 17:19:51.000000000 +0100
++++ ortp-0.20.0/src/stun.c	2012-04-07 08:58:09.000000000 +0200
+@@ -1196,7 +1196,8 @@
+ 	int maxFd=0;
+ 	struct timeval tv;
+ 	int e;
+-
++	int res;
++	
+         int fd=open("/dev/random",O_RDONLY);
+ 
+ 	if (fd<0)
+@@ -1218,7 +1219,11 @@
+            closesocket(fd);
+ 	   return random();
+ 	}
+-	e=read(fd,&tick,sizeof(tick));
++	res = read(fd,&tick,sizeof(tick));
++	if (res == -1)
++	{
++	        ortp_error("stun: Failed to get data from random device\n");
++	}
+ 	closesocket(fd);
+       }
+ #else

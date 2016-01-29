@@ -1,0 +1,5 @@
+cmake
+java-jdk
+libjpeg-dev
+libpng-dev
+libtiff-dev

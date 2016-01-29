@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libdvdread-${UB_VERSION}.tar.xz libdvdread-${UB_VERSION}/
+	http://dvdnav.mplayerhq.hu/releases/

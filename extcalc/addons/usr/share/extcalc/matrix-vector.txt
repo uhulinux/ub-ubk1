@@ -1,0 +1,164 @@
+#config clearmemory
+#config complexoff
+
+// This script can be used to multiply a matrix
+// with a vector.
+// To use it, first press the run button here.
+// Then you can run the script as often as you want by
+// pressing the run button of the script console
+//
+// Feel free to read or modify this code.
+// For further examples and more information, please
+// visit http://extcalc-linux.sourceforge.net/
+//
+
+
+
+A=0;           //matrix
+B=0;           //Vector
+
+C=0;           //lines matrix
+D=0;           //rows matrix
+
+E=0;           //vector dimensions
+F=0;           //result vector
+
+G=0;           //general loop counter
+H=0;           //general status variable
+I=0;           //general input variable
+
+J=0;           //print height
+K=0;           //absolute result
+
+//request lines first matrix
+clear;
+print("\n********** Matrix-Vector Product **********\n");
+print("\nInsert number of lines for first matrix: ");
+while(1)
+{
+  C=(int)getline;
+  if(C<1 || C>=20)
+    print("\nLine number must be greather than 0 and less than 20\n");
+  else break;
+}
+
+print("\nInsert number of rows for first matrix: ");
+while(1)
+{
+  D=(int)getline;
+  if(D<1 || D>=20)
+    print("\nRow number must be greather than 0 and less than 20\n");
+  else break;
+}
+
+print("\n\nSize of Vector set to ");
+E=D;
+print(E);
+print("\nPress any key to continue ...");
+getkey;
+clear;
+
+if(E>C)
+  J=E;
+else J=C;
+
+G[0]=0;
+G[1]=0;
+G[2]=0;
+G[3]=0;
+H=0;
+while(1)
+{
+  setcursor(0,0);
+  print("\n********** Matrix-Vector Product **********\n");
+
+  for(G[0]=0; G[0]<C; G[0]=G[0]+1)
+  {
+    for(G[1]=0; G[1]<D; G[1]=G[1]+1)
+    {
+      setcursor(G[1]*12,G[0]+3);
+      if(G[0]==G[2] && G[1]==G[3] && H==0)
+        print("---");
+      else print(A[G[0]][G[1]]);
+    }
+  }
+
+  setcursor(12*D,3+C/2);
+  print("x");
+
+  for(G[0]=0; G[0]<E; G[0]=G[0]+1)
+  {
+      setcursor(12*D+2,G[0]+3);
+      if(G[0]==G[2] && H==1)
+        print("---");
+      else print(B[G[0]]);
+  }
+  setcursor(1,J+5);
+  print("\n\nInsert Element ");
+  if(H==0)
+  {
+    print(G[2]+1);
+    print(" ");
+    print(G[3]+1);
+    print(" of the Matrix: ");
+  }
+  else
+  {
+    print(G[2]+1);
+    print(" of the Vector: ");
+  }
+
+  I=getline;
+  clear;
+  if(I[0]!=0)
+  {
+    if(H==0)
+      A[G[2]][G[3]]=(float)I;
+    else B[G[2]]=(float)I;
+  }
+
+  G[2]=G[2]+1;
+
+  if(H==0)
+  {
+    if(G[2]==C)
+    {
+      G[2]=0;
+      G[3]=G[3]+1;
+    }    
+    if(G[3]==D)
+    {
+      G[3]=0;
+      G[2]=0;
+      H=1;
+    }
+
+  }
+  else 
+  {
+    if(G[2]==E)
+    {
+      G[2]=0;
+      G[3]=0;
+      H=0;
+    }
+  }
+
+  setcursor(0,9+J);
+  print("Result: ");
+  F=A[][]*B[];
+  K=0;
+
+  for(G[0]=0; G[0]<E; G[0]=G[0]+1)
+  {
+    setcursor(8,G[0]+J+9);
+    print(F[G[0]]);
+    K=K+F[G[0]]^2;
+  }
+  K=sqrtK;
+  setcursor(25,9+J);
+  print("Absolute Result:\t");
+  print(K);
+
+}
+

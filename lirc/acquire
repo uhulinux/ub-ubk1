@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+lirc-${UB_VERSION}.tar.bz2 lirc-${UB_VERSION}/
+	http://downloads.sourceforge.net/lirc/
+
+remotes-2009-12-01.tar.bz2 .
+	ftp://ftp.uhulinux.hu/sources/lirc/

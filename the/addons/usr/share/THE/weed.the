@@ -1,0 +1,99 @@
+/*
+ *
+ *  -----------------------------------------------------------------
+ *  Execution of this macro requires a license for uni-XEDIT Extended
+ *  for each concurrent user of the macro.
+ *  -----------------------------------------------------------------
+ *
+ *  weed - macro to extend the uni-XEDIT ALL command
+ *
+ *  Syntax and operands described below in the "help" subroutine.
+ *  To view help while in an edit session, type
+ *
+ *      weed ?
+ *
+ *  on the uni-XEDIT command line.
+ *
+ *  This macro calls the macro "every.xedit", also in the Sample
+ *  Library.
+ *
+ *
+ *
+ *  Modification History:
+ *
+ *  -- --- --     Macro originally contributed by Dan Hofferth, Allison
+ *                  Engine Company
+ *  09 Feb 96 twg Standard TWG comments added
+ *
+ *
+ */
+
+/*--------------------------------------------------------------------*
+ * weed - Remove lines that do not match given criteria     -iedh1    *
+ *        (or remove existing shadow lines if no args)                *
+ *--------------------------------------------------------------------*/
+
+Parse Arg argstring
+If argstring = '?' Then Signal Help
+
+'COMMAND EXTRACT /DISPLAY/SCOPE'
+
+If argstring = '' Then Call Invert
+Else Do
+   'MACRO every 'argstring
+   If rc ^= 0 Then Exit rc
+   End
+
+'COMMAND :0'
+'COMMAND SET SCOPE DISPLAY'
+'COMMAND DELETE *'
+'COMMAND SET SCOPE 'scope.1
+'COMMAND :0'
+
+'MACRO every'
+
+Exit
+
+Invert:
+
+   If display.1 = 0 & display.2 = 0 Then Do
+      'COMMAND SET DISPLAY 1 1'
+      Return
+      End
+   If display.1 = 1 & display.2 = 1 Then Do
+      'COMMAND SET DISPLAY 0 0'
+      Return
+      End
+   If display.1 = 0 & display.2 = 1 Then Do
+      'COMMAND SET DISPLAY 0 *'
+      'COMMAND :0'
+      'COMMAND SET SELECT 0 *'
+      'COMMAND SET DISPLAY 1 1'
+      Return
+      End
+
+   'COMMAND EMSG ** Display settings not recognized.  WEED cancelled. **'
+
+   Exit 1
+
+Help:
+
+   Say '----'
+   Say 'WEED - Removes all lines from your file that match given search criteria,'
+   Say '----   or it removes existing shadow lines if no search criteria is given.'
+   Say ' '
+   Say 'WEED  < rtarget [+n] [-n]>'
+   Say ' '
+   Say '    Where "rtarget [+n] [-n]" is described in the "EVERY ?" help screen.'
+   Say ' '
+   Say 'WEED uses EVERY to locate all lines in your file that match the given search'
+   Say 'criteria and deletes only those lines.  If you do not specify any arguments,'
+   Say 'WEED removes all existing "shadow" lines from your file instead.'
+   Say ' '
+   Say 'Note: 1) EVERY rtarget   Displays all lines that satisfy rtarget'
+   Say '      2) WEED  rtarget   Deletes all lines that satisfy rtarget'
+   Say '      3) EVERY rtarget   Followed by just ...'
+   Say '         WEED             ... deletes all lines that do NOT satisfy rtarget.'
+   Say ' '
+
+   Exit

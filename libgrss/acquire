@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgrss-${UB_VERSION}.tar.gz libgrss-${UB_VERSION}/
+	http://gtk.mplat.es/libgrss/tarballs/

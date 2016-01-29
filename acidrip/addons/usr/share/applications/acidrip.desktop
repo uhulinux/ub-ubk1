@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AcidRip
+Name[hu]=AcidRip
+Comment=DVD ripper
+Comment[hu]=DVD sávok mentése
+Exec=acidrip
+Terminal=false
+Type=Application
+Categories=AudioVideo;X-UHU-Menu/Multimedia/Rippers;

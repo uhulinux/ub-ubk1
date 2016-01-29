@@ -1,0 +1,5 @@
+glib-networking
+gobject-introspection-dev
+intltool
+libxml2-dev
+sqlite-dev

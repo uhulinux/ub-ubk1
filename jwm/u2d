@@ -1,0 +1,1 @@
+urllist http://joewing.net/programs/jwm/releases/ | splitver '^jwm-([0-9.]+).tar.xz$' | sort -V | tail -n 1

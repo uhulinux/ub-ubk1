@@ -1,0 +1,12 @@
+diff -Naurdp a/plugins/rtjpeg/RTjpeg.c b/plugins/rtjpeg/RTjpeg.c
+--- a/plugins/rtjpeg/RTjpeg.c	2005-08-31 22:37:32.000000000 +0200
++++ b/plugins/rtjpeg/RTjpeg.c	2006-01-04 18:50:33.000000000 +0100
+@@ -88,7 +88,7 @@ int RTjpeg_b2s(int16_t *data, int8_t *st
+  register int ci, co=1, tmp;
+  register int16_t ZZvalue;
+  
+- *((uint8_t*)strm)=(uint8_t)(data[RTjpeg_ZZ[0]]>254) ? 254:((data[RTjpeg_ZZ[0]]<0)?0:data[RTjpeg_ZZ[0]]);
++ *strm=(uint8_t)(data[RTjpeg_ZZ[0]]>254) ? 254:((data[RTjpeg_ZZ[0]]<0)?0:data[RTjpeg_ZZ[0]]);
+  
+  for(ci=1; ci<=bt8; ci++) 
+  {

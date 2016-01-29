@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--sysconfdir=/etc/ssh \
+	--datadir=/usr/share/openssh \
+	--with-kerberos5=/usr \
+	--with-xauth=/usr/bin/xauth \
+	--with-pam

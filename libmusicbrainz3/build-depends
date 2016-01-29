@@ -1,0 +1,5 @@
+cmake
+cppunit-dev
+expat-dev
+libdiscid
+neon-dev

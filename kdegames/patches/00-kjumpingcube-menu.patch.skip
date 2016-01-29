@@ -1,0 +1,9 @@
+diff -Naur kdegames-orig/kjumpingcube-4.10.0/kjumpingcube.desktop kdegames/kjumpingcube-4.10.0/kjumpingcube.desktop
+--- kdegames-orig/kjumpingcube-4.13.0/kjumpingcube.desktop	2013-01-23 23:06:12.000000000 +0100
++++ kdegames/kjumpingcube-4.13.0/kjumpingcube.desktop	2013-02-28 11:21:01.000000000 +0100
+@@ -119,4 +119,4 @@
+ Terminal=false
+ X-KDE-StartupNotify=true
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Game;StrategyGame;
++Categories=Qt;KDE;Game;StrategyGame;X-UHU-Menu/Games/TacticStrategy;

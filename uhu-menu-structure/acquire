@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+uhu-menu-structure-$UB_VERSION.tar.gz uhu-menu-structure-$UB_VERSION/
+	ftp://ftp.uhulinux.hu/pub/sources/uhu-menu-structure/

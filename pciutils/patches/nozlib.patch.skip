@@ -1,0 +1,31 @@
+diff -Naurdp a/lib/configure b/lib/configure
+--- a/lib/configure	2008-04-10 21:15:47.000000000 +0200
++++ b/lib/configure	2008-09-04 19:09:16.000000000 +0200
+@@ -113,26 +113,7 @@ esac
+ echo >>$c '#define PCI_HAVE_PM_DUMP'
+ echo " dump"
+ 
+-echo_n "Checking for zlib support... "
+-if [ "$ZLIB" = yes -o "$ZLIB" = no ] ; then
+-	echo "$ZLIB (set manually)"
+-else
+-	if [ -f /usr/include/zlib.h -o -f /usr/local/include/zlib.h ] ; then
+-		ZLIB=yes
+-	else
+-		ZLIB=no
+-	fi
+-	echo "$ZLIB (auto-detected)"
+-fi
+-if [ "$ZLIB" = yes ] ; then
+-	echo >>$c '#define PCI_COMPRESSED_IDS'
+-	echo >>$c '#define PCI_IDS "pci.ids.gz"'
+-	echo >>$m 'LIBZ=-lz'
+-	echo >>$m 'WITH_LIBS+=$(LIBZ)'
+-else
+-	echo >>$c '#define PCI_IDS "pci.ids"'
+-fi
+-echo >>$c "#define PCI_PATH_IDS_DIR \"$IDSDIR\""
++ZLIB=no
+ 
+ echo_n "Checking for DNS support... "
+ if [ "$DNS" = yes -o "$DNS" = no ] ; then

@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/hyphenation
+cp -a huhyphn.tex hyph_hu.dic "$UB_INSTALLDIR"/usr/share/hyphenation/

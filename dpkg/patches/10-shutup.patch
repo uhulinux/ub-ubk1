@@ -1,0 +1,14 @@
+diff -Naur orig/dpkg-deb/build.c patched/dpkg-deb/build.c
+--- orig/dpkg-deb/build.c	2012-07-20 00:38:55.000000000 +0200
++++ patched/dpkg-deb/build.c	2012-10-12 15:10:18.585940335 +0200
+@@ -438,8 +440,10 @@
+     pkg = check_new_pkg(dir);
+     if (subdir)
+       debar = pkg_get_pathname(debar, pkg);
++    /*
+     printf(_("dpkg-deb: building package `%s' in `%s'.\n"),
+            pkg->set->name, debar);
++    */
+   }
+   m_output(stdout, _("<standard output>"));
+ 

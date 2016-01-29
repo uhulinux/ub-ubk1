@@ -1,0 +1,75 @@
+diff -Naur kde-workspace-4.6.80-orig//kinfocenter/kinfocenter.desktop kde-workspace-4.6.80//kinfocenter/kinfocenter.desktop
+--- kde-workspace-4.6.80-orig//kinfocenter/kinfocenter.desktop	2011-05-20 22:32:07.000000000 +0200
++++ kde-workspace-4.6.80//kinfocenter/kinfocenter.desktop	2011-05-31 21:53:01.000000000 +0200
+@@ -187,4 +187,4 @@
+ GenericName[zh_TW]=資訊中心
+ 
+ X-DBUS-StartupType=Unique
+-Categories=Qt;KDE;System;
++Categories=Qt;KDE;System;X-UHU-Menu/Tools/Utilities;
+diff -Naur kde-workspace-4.6.80-orig//klipper/klipper.desktop kde-workspace-4.6.80//klipper/klipper.desktop
+--- kde-workspace-4.6.80-orig//klipper/klipper.desktop	2011-05-20 22:32:07.000000000 +0200
++++ kde-workspace-4.6.80//klipper/klipper.desktop	2011-05-31 21:53:21.000000000 +0200
+@@ -185,7 +185,7 @@
+ X-KDE-UniqueApplet=true
+ X-KDE-autostart-condition=klipperrc:General:AutoStart:true
+ OnlyShowIn=KDE;
+-Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;
++Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;X-UHU-Menu/Tools/Utilities;
+ Comment=A cut & paste history utility
+ Comment[af]='n Knip & plak geskiedenis program
+ Comment[ar]=أداة تاريخ القص واللصق
+diff -Naur kde-workspace-4.6.80-orig//ksysguard/gui/ksysguard.desktop kde-workspace-4.6.80//ksysguard/gui/ksysguard.desktop
+--- kde-workspace-4.6.80-orig//ksysguard/gui/ksysguard.desktop	2011-05-20 22:32:07.000000000 +0200
++++ kde-workspace-4.6.80//ksysguard/gui/ksysguard.desktop	2011-05-31 21:53:58.000000000 +0200
+@@ -184,4 +184,4 @@
+ Terminal=false
+ X-KDE-StartupNotify=true
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;System;
++Categories=Qt;KDE;System;X-UHU-Menu/Tools/Utilities;
+diff -Naur kde-workspace-4.6.80-orig//systemsettings/app/systemsettings.desktop kde-workspace-4.6.80//systemsettings/app/systemsettings.desktop
+--- kde-workspace-4.6.80-orig//systemsettings/app/systemsettings.desktop	2011-05-20 22:32:08.000000000 +0200
++++ kde-workspace-4.6.80//systemsettings/app/systemsettings.desktop	2011-05-31 21:55:57.000000000 +0200
+@@ -20,7 +20,7 @@
+ GenericName[da]=Systemindstillinger
+ GenericName[de]=Systemeinstellungen
+ GenericName[el]=Ρυθμίσεις συστήματος
+-GenericName[en_GB]=System Settings
++GenericName[en_GB]=KDE System Settings
+ GenericName[eo]=Sistema agordo
+ GenericName[es]=Preferencias del sistema
+ GenericName[et]=Süsteemi seadistused
+@@ -35,7 +35,7 @@
+ GenericName[hi]=तंत्र विन्यास
+ GenericName[hne]=तंत्र सेटिंग
+ GenericName[hr]=Postavke sustava
+-GenericName[hu]=Rendszerbeállítások
++GenericName[hu]=KDE Rendszerbeállítások
+ GenericName[ia]=Preferentias de systema
+ GenericName[id]=Pengaturan Sistem
+ GenericName[is]=Kerfisstillingar
+@@ -104,7 +104,7 @@
+ Name[da]=Systemindstillinger
+ Name[de]=Systemeinstellungen
+ Name[el]=Ρυθμίσεις συστήματος
+-Name[en_GB]=System Settings
++Name[en_GB]=KDE System Settings
+ Name[eo]=Sistema agordo
+ Name[es]=Preferencias del sistema
+ Name[et]=Süsteemi seadistused
+@@ -120,7 +120,7 @@
+ Name[hi]=तंत्र विन्यास
+ Name[hne]=तंत्र सेटिंग
+ Name[hr]=Postavke sustava
+-Name[hu]=Rendszerbeállítások
++Name[hu]=KDE Rendszerbeállítások
+ Name[ia]=Preferentias de systema
+ Name[id]=Pengaturan Sistem
+ Name[is]=Kerfisstillingar
+@@ -174,4 +174,4 @@
+ Name[zh_TW]=系統設定
+ 
+ X-DBUS-StartupType=Unique
+-Categories=Qt;KDE;Settings;
++Categories=Qt;KDE;Settings;X-UHU-Menu/Settings; 

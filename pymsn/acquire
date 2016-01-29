@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pymsn-${UB_VERSION}.tar.gz pymsn-${UB_VERSION}/
+	http://telepathy.freedesktop.org/releases/pymsn/

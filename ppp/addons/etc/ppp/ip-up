@@ -1,0 +1,30 @@
+#!/bin/sh
+
+interface="$1"
+tty="$2"
+speed="$3"
+localip="$4"
+remoteip="$5"
+param="$6"
+
+[ "$USEPEERDNS" ] && [ "$DNS1" -o "$DNS2" ] && {
+	cat >/etc/resolv.conf <<EOF
+# /etc/resolv.conf
+
+# Ez a file a PPP kapcsolat letrehozasakor jott letre, automatikusan generalt.
+
+EOF
+
+	[ "$DNS1" ] && echo "nameserver $DNS1" >>/etc/resolv.conf
+	[ "$DNS2" ] && echo "nameserver $DNS2" >>/etc/resolv.conf
+}
+
+chmod 644 /etc/resolv.conf
+
+case "$param" in
+	uhu-dialer:*)
+		kill -USR1 "${param#uhu-dialer:}"
+		;;
+esac
+
+exit 0

@@ -1,0 +1,12 @@
+diff -urN azureus.orig/azureus azureus/azureus
+--- a.orig/vuze	2007-09-21 01:54:27.000000000 +0200
++++ a/vuze	2007-12-12 17:11:45.000000000 +0100
+@@ -3,7 +3,7 @@
+ ######## CONFIGURATION OPTIONS ########
+ SCRIPT_NOT_CHANGED=0	# change this to 1 if you don't want your script overwritten!
+ JAVA_PROGRAM_DIR=""	# use full path to java bin dir, ex. "/usr/java/j2sdk1.4.2/bin/"
+-#PROGRAM_DIR="/home/username/apps/azureus"	# use full path to Azureus bin dir
++PROGRAM_DIR="/usr/lib/azureus"	# use full path to Azureus bin dir
+ JAVA_ARGS="-Xmx128m"
+ 
+ #export MOZILLA_FIVE_HOME="/path/to/gre"	# Full path to GRE/Mozilla. When commenting out this line, also comment out the next line

@@ -1,0 +1,37 @@
+diff -Naur kdewebdev-4.7.44-orig//kfilereplace/kfilereplace.desktop kdewebdev-4.7.44//kfilereplace/kfilereplace.desktop
+--- kdewebdev-4.7.44-orig//kfilereplace/kfilereplace.desktop	2011-08-22 15:33:05.000000000 +0200
++++ kdewebdev-4.7.44//kfilereplace/kfilereplace.desktop	2011-10-14 14:35:22.000000000 +0200
+@@ -110,4 +110,4 @@
+ GenericName[zh_CN]=搜索替换工具
+ GenericName[zh_HK]=搜尋及取代工具
+ GenericName[zh_TW]=搜尋及取代工具
+-Categories=Qt;KDE;Utility;X-KDE-Utilities-File;
++Categories=Qt;KDE;Utility;X-KDE-Utilities-File;X-UHU-Menu/Tools/Utilities;
+diff -Naur kdewebdev-4.7.44-orig//kimagemapeditor/kimagemapeditor.desktop kdewebdev-4.7.44//kimagemapeditor/kimagemapeditor.desktop
+--- kdewebdev-4.7.44-orig//kimagemapeditor/kimagemapeditor.desktop	2011-08-22 15:33:05.000000000 +0200
++++ kdewebdev-4.7.44//kimagemapeditor/kimagemapeditor.desktop	2011-10-14 14:35:39.000000000 +0200
+@@ -108,4 +108,4 @@
+ GenericName[zh_CN]=HTML 图像映射编辑器
+ GenericName[zh_HK]=HTML 影像地圖編輯器
+ GenericName[zh_TW]=HTML 影像地圖編輯器
+-Categories=Qt;KDE;Development;WebDevelopment;
++Categories=Qt;KDE;Development;WebDevelopment;X-UHU-Menu/Development/Web;
+diff -Naur kdewebdev-4.7.44-orig//klinkstatus/src/klinkstatus.desktop kdewebdev-4.7.44//klinkstatus/src/klinkstatus.desktop
+--- kdewebdev-4.7.44-orig//klinkstatus/src/klinkstatus.desktop	2011-10-11 16:52:40.000000000 +0200
++++ kdewebdev-4.7.44//klinkstatus/src/klinkstatus.desktop	2011-10-14 14:36:15.000000000 +0200
+@@ -110,5 +110,5 @@
+ GenericName[zh_CN]=链接检查器
+ GenericName[zh_HK]=連結檢查程式
+ GenericName[zh_TW]=連結檢查程式
+-Categories=Qt;KDE;Development;WebDevelopment;
++Categories=Qt;KDE;Development;WebDevelopment;X-UHU-Menu/Development/Web;
+ 
+diff -Naur kdewebdev-4.7.44-orig//kommander/editor/kmdr-editor.desktop kdewebdev-4.7.44//kommander/editor/kmdr-editor.desktop
+--- kdewebdev-4.7.44-orig//kommander/editor/kmdr-editor.desktop	2011-08-22 15:33:05.000000000 +0200
++++ kdewebdev-4.7.44//kommander/editor/kmdr-editor.desktop	2011-10-14 14:37:54.000000000 +0200
+@@ -162,4 +162,4 @@
+ Comment[zh_TW]=動態對話盒編輯器
+ MimeType=application/x-kommander;
+ X-DocPath=kommander/index.html
+-Categories=Qt;KDE;Development;
++Categories=Qt;KDE;Development;X-UHU-Menu/Development/Programming;

@@ -1,0 +1,9 @@
+alsa-lib-dev
+db4-dev
+jack-dev
+ladspa-dev
+liblo-dev
+libsamplerate-dev
+libsndfile-dev
+libvorbis-dev
+qt4-dev

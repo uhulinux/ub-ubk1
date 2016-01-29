@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+awka-${UB_VERSION}.tar.gz awka-${UB_VERSION}/
+	http://awka.sourceforge.net/

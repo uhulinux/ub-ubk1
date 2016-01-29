@@ -1,0 +1,16 @@
+#!/usr/bin/env dl
+
+gccmakedep-1.0.2.tar.gz .
+	http://xorg.freedesktop.org/releases/individual/util/
+
+imake-1.0.5.tar.bz2 .
+	http://xorg.freedesktop.org/releases/individual/util/
+
+lndir-1.0.3.tar.bz2 .
+	http://xorg.freedesktop.org/releases/individual/util/
+
+makedepend-1.0.4.tar.bz2 .
+	http://xorg.freedesktop.org/releases/individual/util/
+
+xorg-cf-files-1.0.4.tar.bz2 .
+	http://xorg.freedesktop.org/releases/individual/util/

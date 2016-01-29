@@ -1,0 +1,13 @@
+diff -Naur orig/powermanga.desktop mod/powermanga.desktop
+--- orig/powermanga.desktop	2009-06-20 15:57:32.000000000 +0200
++++ mod/powermanga.desktop	2014-04-03 19:49:57.000000000 +0200
+@@ -3,7 +3,8 @@
+ Name=Powermanga
+ GenericName=PowerManga
+ Comment=Play a vertical shoot 'em up game
++Comment[hu]=Lövöldözős játék
+ Icon=powermanga
+ Exec=powermanga
+ Terminal=false
+-Categories=Game;ArcadeGame;
++Categories=Game;ArcadeGame;X-UHU-Menu/Games/Action;

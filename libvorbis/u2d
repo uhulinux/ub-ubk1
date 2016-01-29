@@ -1,0 +1,1 @@
+urllist http://downloads.xiph.org/releases/vorbis/ | splitver '^libvorbis-([0-9.]+).tar.gz$' | sort -V | tail -n 1

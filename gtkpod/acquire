@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gtkpod-${UB_VERSION}.tar.gz gtkpod-${UB_VERSION}/
+	http://downloads.sourceforge.net/gtkpod/

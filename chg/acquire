@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+chg-${UB_VERSION}.tar.gz chg-${UB_VERSION/*+r/}/
+	hg://bitbucket.org/yuja/chg/@${UB_VERSION/*+r/}

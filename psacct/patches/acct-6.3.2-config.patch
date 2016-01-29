@@ -1,0 +1,29 @@
+--- a/configure.ac.sopwith	Tue Mar 10 13:09:45 1998
++++ a/configure.ac	Thu Feb  3 13:50:40 2000
+@@ -167,7 +167,7 @@
+ 
+ #ifndef ACCT_FILE
+ #  if defined(__FreeBSD__) || defined(__linux__)
+-#    define ACCT_FILE "/var/account/pacct"
++#    define ACCT_FILE "/var/log/pacct"
+ #  else
+ #    if defined(__NetBSD__)
+ #      define ACCT_FILE "/var/account/acct"
+@@ -187,7 +187,7 @@
+ 
+ #ifndef SAVACCT_FILE
+ #  if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__linux__)
+-#    define SAVACCT_FILE "/var/account/savacct"
++#    define SAVACCT_FILE "/var/log/savacct"
+ #  else
+ #    if defined(sun) || defined(AMIX)
+ #      define SAVACCT_FILE "/var/adm/savacct"
+@@ -203,7 +203,7 @@
+ 
+ #ifndef USRACCT_FILE
+ #  if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__linux__)
+-#    define USRACCT_FILE "/var/account/usracct"
++#    define USRACCT_FILE "/var/log/usracct"
+ #  else
+ #    if defined(sun) || defined(AMIX)
+ #      define USRACCT_FILE "/var/adm/usracct"

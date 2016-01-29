@@ -1,0 +1,2 @@
+minor=$(urllist http://www.cmake.org/files/ | splitver '^v([0-9.]+)' | sort -V | tail -n 1)
+urllist http://www.cmake.org/files/v$minor/ | splitver '^cmake-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

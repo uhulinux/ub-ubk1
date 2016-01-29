@@ -1,0 +1,17 @@
+--- a/net.sf.liferea.gschema.xml.in.orig	2013-10-06 12:08:32.000000000 +0200
++++ a/net.sf.liferea.gschema.xml.in	2013-10-06 12:08:52.000000000 +0200
+@@ -13,12 +13,12 @@
+       <description>Selects which key to use to pagedown or go to the next unread item. Set to 0 to use space, 1 to use ctrl-space, or 2 to use alt-space.</description>
+     </key>
+     <key name="browser" type="s">
+-      <default>'mozilla %s'</default>
++      <default>'browser %s'</default>
+       <summary>Selects the browser command to use when browser_module is set to manual</summary>
+       <description>Selects the browser command to use when browser_module is set to manual.</description>
+     </key>
+     <key name="browser-id" type="s">
+-      <default>'gnome'</default>
++      <default>'manual'</default>
+       <summary>Selects which browser to use to open external links</summary>
+       <description>Selects which browser to use to open external links. The choices include "gnome", "mozilla", "firefox", "netscape", "opera", "konqueror", and "manual".</description>
+     </key>

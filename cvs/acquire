@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cvs-${UB_VERSION}.tar.bz2 cvs-${UB_VERSION}/
+	http://ftp.gnu.org/non-gnu/cvs/source/stable/${UB_VERSION}/

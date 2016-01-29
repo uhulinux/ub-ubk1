@@ -1,0 +1,11 @@
+diff -Naur aeskulap-0.2.2-beta1-orig/configuration/aconfiguration-gconf.cpp aeskulap-0.2.2-beta1/configuration/aconfiguration-gconf.cpp
+--- aeskulap-0.2.2-beta1-orig/configuration/aconfiguration-gconf.cpp	2007-05-10 18:44:00.000000000 +0200
++++ aeskulap-0.2.2-beta1/configuration/aconfiguration-gconf.cpp	2009-12-04 22:04:15.000000000 +0100
+@@ -27,6 +27,7 @@
+ */
+ 
+ #include <gconfmm.h>
++#include <cstdio>
+ #include <iostream>
+ 
+ namespace Aeskulap {

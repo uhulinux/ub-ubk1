@@ -1,0 +1,32 @@
+diff -Naur tcpdump-4.1.1-orig/print-rsvp.c tcpdump-4.1.1/print-rsvp.c
+--- tcpdump-4.1.1-orig/print-rsvp.c	2010-03-12 02:56:44.000000000 +0100
++++ tcpdump-4.1.1/print-rsvp.c	2010-04-20 21:22:25.000000000 +0200
+@@ -1057,6 +1057,8 @@
+ 
+         case RSVP_OBJ_RRO:
+         case RSVP_OBJ_ERO:
++            {
++            int step;
+             switch(rsvp_obj_ctype) {
+             case RSVP_CTYPE_IPV4:
+                 while(obj_tlen >= 4 ) {
+@@ -1094,15 +1096,16 @@
+                                *(obj_tptr+3),
+                                EXTRACT_32BITS(obj_tptr+4));
+                     }
+-                    obj_tlen-=*(obj_tptr+1);
+-                    obj_tptr+=*(obj_tptr+1);
++                    step = *(obj_tptr+1) ? *(obj_tptr+1) : obj_tlen;
++                    obj_tlen -= step;
++                    obj_tptr += step;
+                 }
+                 break;
+             default:
+                 hexdump=TRUE;
+             }
+             break;
+-
++	}
+         case RSVP_OBJ_HELLO:
+             switch(rsvp_obj_ctype) {
+             case RSVP_CTYPE_1:

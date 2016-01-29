@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+systemd-${UB_VERSION}.tar.xz systemd-${UB_VERSION}/
+	http://www.freedesktop.org/software/systemd/

@@ -1,0 +1,27 @@
+diff -Naurd Gtk2-Html2-0.04.orig/examples/mupzilla Gtk2-Html2-0.04/examples/mupzilla
+--- Gtk2-Html2-0.04.orig/examples/mupzilla	2004-04-25 02:50:04.000000000 +0200
++++ Gtk2-Html2-0.04/examples/mupzilla	2006-02-08 18:56:23.000000000 +0100
+@@ -7,6 +7,7 @@
+ use Gtk2;
+ use Gtk2::Html2;
+ use Gnome2::VFS;
++use Encode;
+ 
+ my $gnomevfsinitialized = FALSE;
+ 
+@@ -169,6 +170,7 @@
+ 				});
+ 			},
+ 			read_chunk => sub {
++				Encode::_utf8_on($_[1]);
+ 				$stream->write ($_[1])
+ 					if length $_[1] > 0;
+ 				Gtk2->main_iteration
+@@ -215,6 +217,7 @@
+ 				Gnome2::VFS::URI->new ($uri);
+ 		},
+ 		read_chunk => sub {
++			Encode::_utf8_on($_[1]);
+ 			$self->{doc}->write_stream ($_[1])
+ 				if length $_[1];
+ 			Gtk2->main_iteration

@@ -1,0 +1,12 @@
+diff -Naur gfxboot-2.4.orig/bincode.asm gfxboot-2.4/bincode.asm
+--- gfxboot-2.4.orig/bincode.asm	2004-04-02 17:47:45.000000000 +0200
++++ gfxboot-2.4/bincode.asm	2004-05-09 13:40:58.000000000 +0200
+@@ -6822,8 +6822,6 @@
+ 		add ecx,ecx
+ 		xor edx,edx
+ 		div ecx
+-		or eax,eax
+-		jz prim_usleep_90
+ 		mov ecx,eax
+ 		push ecx
+ 		call get_time

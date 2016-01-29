@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+konversation-${UB_VERSION}.tar.xz konversation-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/konversation/${UB_VERSION}/src/
+	http://download.berlios.de/konversation/

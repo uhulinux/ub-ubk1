@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+WebService-MusicBrainz-${UB_VERSION}.tar.gz WebService-MusicBrainz-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/B/BF/BFAIST/

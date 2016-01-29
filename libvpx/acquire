@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libvpx-v${UB_VERSION/~/-}.tar.bz2 libvpx-v${UB_VERSION/~/-}/
+	http://webm.googlecode.com/files/

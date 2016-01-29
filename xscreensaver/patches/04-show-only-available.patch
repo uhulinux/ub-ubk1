@@ -1,0 +1,91 @@
+diff -ru xscreensaver-4.01-old/driver/prefs.c xscreensaver-4.01/driver/prefs.c
+--- xscreensaver-4.01-old/driver/prefs.c	Thu Jan 17 05:29:04 2002
++++ xscreensaver-4.01/driver/prefs.c	Thu Mar 14 17:32:46 2002
+@@ -1239,6 +1239,53 @@
+   return h;
+ }
+ 
++static int is_available(screenhack *hack)
++{
++	char *cmd, *path, *ppath, *tmp, *test;
++	struct stat sbuf;
++	static const char *def_path =
++#ifdef DEFAULT_PATH_PREFIX
++		DEFAULT_PATH_PREFIX;
++#else
++	"";
++#endif
++	
++	
++	
++	ppath = path = strdup(getenv("PATH"));
++	if (!path) return 0;
++	tmp = cmd = strdup(hack->command);
++	while (*tmp && !isspace(*tmp)) tmp++;
++	if (*tmp)
++		*tmp = '\0';
++	tmp = path;
++	while (path && *path) {
++		while (*tmp && *tmp != ':') tmp++;
++		if (*tmp == ':') {
++			*tmp = '\0';
++			tmp++;
++		}
++		test = alloca(strlen(path)+strlen(cmd)+2);
++		sprintf(test,"%s/%s",path,cmd);
++		if (!stat(test,&sbuf)) {
++			free(ppath);
++			free(cmd);
++			return 1;
++		}
++		path = tmp;
++	}
++	test = alloca(strlen(def_path)+strlen(cmd)+2);
++	sprintf(test,"%s/%s",def_path,cmd);
++	if (!stat(test,&sbuf)) {
++		free(cmd);
++		free(ppath);
++		return 1;
++	}
++	free(ppath);
++	free(cmd);
++	return 0;
++}
++
+ 
+ static char *
+ format_command (const char *cmd, Bool wrap_p)
+@@ -1462,6 +1513,8 @@
+   p->screenhacks_count = 0;
+   while (start < size)
+     {
++      screenhack *hack;
++
+       /* skip forward over whitespace. */
+       while (d[start] == ' ' || d[start] == '\t' || d[start] == '\n')
+ 	start++;
+@@ -1474,7 +1527,9 @@
+       /* null terminate. */
+       d[end] = 0;
+ 
+-      p->screenhacks[p->screenhacks_count++] = parse_screenhack (d + start);
++      hack = parse_screenhack(d + start);
++      if (is_available(hack))
++        p->screenhacks[p->screenhacks_count++] = hack;
+       if (p->screenhacks_count >= i)
+ 	abort();
+ 
+--- xscreensaver-4.01/driver/Makefile.in.foo	Thu Mar 14 17:47:04 2002
++++ xscreensaver-4.01/driver/Makefile.in	Thu Mar 14 17:47:21 2002
+@@ -729,6 +729,11 @@
+ 	$(CC) -c $(INCLUDES) $(SUBP_DEFS) $(CFLAGS) $(X_CFLAGS) \
+ 	  $(srcdir)/subprocs.c
+ 
++# prefs takes an extra -D option.
++prefs.o: prefs.c
++	$(CC) -c $(INCLUDES) $(SUBP_DEFS) $(CFLAGS) $(X_CFLAGS) \
++	  $(srcdir)/prefs.c
++
+ # demo-Gtk takes extra -D options, and an extra -I option.
+ demo-Gtk.o: demo-Gtk.c
+ 	$(CC) -c $(INCLUDES) $(SUBP_DEFS) -I$(ICON_SRC) \

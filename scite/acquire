@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+scite${UB_VERSION//./}.tgz .
+	http://downloads.sourceforge.net/scintilla/

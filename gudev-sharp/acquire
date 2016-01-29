@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gudev-sharp-1.0-${UB_VERSION}.tar.gz gudev-sharp-1.0-${UB_VERSION}/
+	http://launchpad.net/gudev-sharp/trunk/${UB_VERSION}/+download/

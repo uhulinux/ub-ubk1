@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gtkglextmm-$UB_VERSION.tar.gz gtkglextmm-$UB_VERSION/
+	http://downloads.sourceforge.net/gtkglext/

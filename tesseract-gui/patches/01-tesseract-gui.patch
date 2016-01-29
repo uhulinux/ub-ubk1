@@ -1,0 +1,38 @@
+diff -Naurd a/Makefile b/Makefile
+--- a/Makefile	2010-02-27 18:15:43.000000000 +0100
++++ b/Makefile	2011-09-05 19:17:21.000000000 +0200
+@@ -1,7 +1,7 @@
+ # Makefile install script for linuxsms
+ 
+ SCRIPT  = tesseract-gui.py
+-BASEDIR = /usr/
++BASEDIR = $(DESTDIR)/usr/
+ 
+ DESKTOPDIR = share/applications/
+ ICONDIR  = share/icons/
+@@ -20,7 +20,7 @@
+ 	@echo  "copying "$(BASEDIR)$(BINDIR)
+ 	@cp -f $(DESKTOPDIR)tesseract-gui.desktop $(BASEDIR)$(DESKTOPDIR)
+ 	@echo  "copying "$(BASEDIR)$(DESKTOPDIR)
+-	@cp -f $(ICONDIR)tesseract-gui-icon.svg $(BASEDIR)$(ICONDIR)
++	@cp -f $(ICONDIR)tesseract-gui-icon.svg $(BASEDIR)share/pixmaps/
+ 	@echo  "copying "$(BASEDIR)$(ICONDIR)
+ 	@cp -fr $(FILESDIR)tesseract-gui/ $(BASEDIR)$(FILESDIR)
+ 	@echo  "copying "$(BASEDIR)$(FILESDIR)
+diff -Naurd a/share/applications/tesseract-gui.desktop b/share/applications/tesseract-gui.desktop
+--- a/share/applications/tesseract-gui.desktop	2009-10-24 12:36:05.000000000 +0200
++++ b/share/applications/tesseract-gui.desktop	2014-05-06 20:20:00.000000000 +0200
+@@ -1,6 +1,7 @@
+ [Desktop Entry]
+ Name[es_ES]=TesseractGUI
+ Name=TesseractGUI
++Comment[hu]=OCR program
+ Exec=tesseract-gui.py
+ Categories=GNOME;GTK;Office;
+ Icon=tesseract-gui-icon.svg
+@@ -8,5 +9,3 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-
+-

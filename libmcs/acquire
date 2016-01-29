@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libmcs-${UB_VERSION}.tgz libmcs-${UB_VERSION}/
+	http://distfiles.atheme.org/

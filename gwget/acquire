@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gwget-${UB_VERSION}.tar.bz2 gwget-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gwget/${UB_VERSION_HEAD2}/

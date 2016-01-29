@@ -1,0 +1,74 @@
+diff -Naur grub-0.97.orig/netboot/rpc.c grub-0.97/netboot/rpc.c
+--- grub-0.97.orig/netboot/rpc.c	2007-08-14 21:21:02.000000000 +0200
++++ grub-0.97/netboot/rpc.c	2007-08-14 21:30:41.000000000 +0200
+@@ -109,7 +109,7 @@
+ 	    ((char *)xdrs->x_base + len ))
+ 		return NULL;
+ 	retval = (int32_t *)xdrs->x_base;
+-	(char *)xdrs->x_base += len;
++	xdrs->x_base = (char *)xdrs->x_base + len;
+ 	xdrs->x_handy -= len;
+ 
+ 	return retval;
+diff -Naur grub-0.97.orig/netboot/rpc.h grub-0.97/netboot/rpc.h
+--- grub-0.97.orig/netboot/rpc.h	2007-08-14 21:21:02.000000000 +0200
++++ grub-0.97/netboot/rpc.h	2007-08-14 21:50:30.000000000 +0200
+@@ -46,9 +46,11 @@
+  * in the RPC code will not work on 64bit Solaris platforms !
+  */
+ #define IXDR_GET_LONG(buf) \
+-	((long)ntohl((u_long)*__extension__((uint32_t*)(buf))++))
++	(buf = ((uint32_t*)(buf)) + 1, \
++	 (long)ntohl((u_long)*__extension__(((uint32_t*)(buf)) - 1)))
+ #define IXDR_PUT_LONG(buf, v) \
+-	(*__extension__((uint32_t*)(buf))++ = (long)htonl((u_long)(v)))
++	(buf = ((uint32_t*)(buf)) + 1, \
++	 *__extension__(((uint32_t*)(buf)) - 1) = (long)htonl((u_long)(v)))
+ #define IXDR_GET_U_LONG(buf)	      ((u_long)IXDR_GET_LONG(buf))
+ #define IXDR_PUT_U_LONG(buf, v)	      IXDR_PUT_LONG(buf, (long)(v))
+ 
+diff -Naur grub-0.97.orig/netboot/sis900.c grub-0.97/netboot/sis900.c
+--- grub-0.97.orig/netboot/sis900.c	2007-08-14 21:21:02.000000000 +0200
++++ grub-0.97/netboot/sis900.c	2007-08-14 21:41:54.000000000 +0200
+@@ -1068,7 +1068,7 @@
+                 const char  *p)     /* Packet */
+ {
+     u32 to, nstype;
+-    u32 tx_status;
++    volatile u32 tx_status;
+     
+     /* Stop the transmitter */
+     outl(TxDIS | inl(ioaddr + cr), ioaddr + cr);
+@@ -1107,7 +1107,7 @@
+ 
+     to = currticks() + TX_TIMEOUT;
+ 
+-    while ((((volatile u32) tx_status=txd.cmdsts) & OWN) && (currticks() < to))
++    while (((tx_status=(volatile u32) txd.cmdsts) & OWN) && (currticks() < to))
+         /* wait */ ;
+ 
+     if (currticks() >= to) {
+diff -Naur grub-0.97.orig/stage2/char_io.c grub-0.97/stage2/char_io.c
+--- grub-0.97.orig/stage2/char_io.c	2007-08-14 21:47:09.000000000 +0200
++++ grub-0.97/stage2/char_io.c	2007-08-14 21:42:45.000000000 +0200
+@@ -150,7 +150,7 @@
+ }
+ 
+ void
+-grub_printf (char *format,...)
++grub_printf (const char *format,...)
+ {
+   int *dataptr = (int *) &format;
+   char c, str[16];
+diff -Naur grub-0.97.orig/stage2/shared.h grub-0.97/stage2/shared.h
+--- grub-0.97.orig/stage2/shared.h	2007-08-14 21:47:14.000000000 +0200
++++ grub-0.97/stage2/shared.h	2007-08-14 21:26:26.000000000 +0200
+@@ -869,7 +869,7 @@
+ #endif
+ 
+ /* C library replacement functions with identical semantics. */
+-void grub_printf (char *format,...);
++void grub_printf (const char *format,...);
+ int grub_sprintf (char *buffer, const char *format, ...);
+ int grub_tolower (int c);
+ int grub_isspace (int c);

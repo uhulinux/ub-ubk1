@@ -1,0 +1,118 @@
+diff -Naurdp a/curs_main.c b/curs_main.c
+--- a/curs_main.c	2005-02-12 00:38:41.261324316 +0100
++++ b/curs_main.c	2005-02-12 00:38:41.382304345 +0100
+@@ -108,6 +108,19 @@ static const char *No_visible = N_("No v
+ extern const char *ReleaseDate;
+ extern size_t UngetCount;
+ 
++#define ASCII_CTRL_G                  0x07
++#define ASCII_CTRL_OPEN_SQUARE_BRAKET 0x1b
++ 
++static void set_xterm_title_bar(char *title)
++{
++fprintf(stderr ,"%c]2;%s%c", ASCII_CTRL_OPEN_SQUARE_BRAKET, title, ASCII_CTRL_G);
++}
++
++static void set_xterm_icon_name(char *name)
++{
++fprintf(stderr, "%c]1;%s%c", ASCII_CTRL_OPEN_SQUARE_BRAKET, name, ASCII_CTRL_G);
++}
++
+ void index_make_entry (char *s, size_t l, MUTTMENU *menu, int num)
+ {
+   format_flag flag = M_FORMAT_MAKEPRINT | M_FORMAT_ARROWCURSOR | M_FORMAT_INDEX;
+@@ -697,6 +710,13 @@ int mutt_index_menu (void)
+ 	mutt_draw_statusline(COLS, buf);
+ 	SETCOLOR (MT_COLOR_NORMAL);
+ 	menu->redraw &= ~REDRAW_STATUS;
++        if (option(OPTXTERMSETTITLES))
++        {
++          menu_status_line (buf, sizeof (buf), menu, NONULL (XtermTitle));
++          set_xterm_title_bar(buf);
++          menu_status_line (buf, sizeof (buf), menu, NONULL (XtermIcon));
++          set_xterm_icon_name(buf);
++        }
+       }
+ 
+       menu->redraw = 0;
+diff -Naurdp a/globals.h b/globals.h
+--- a/globals.h	2005-02-12 00:38:41.239327947 +0100
++++ b/globals.h	2005-02-12 00:38:41.383304180 +0100
+@@ -137,6 +137,8 @@ WHERE char *Tempdir;
+ WHERE char *Tochars;
+ WHERE char *Username;
+ WHERE char *Visual;
++WHERE char *XtermTitle;
++WHERE char *XtermIcon;
+ 
+ WHERE char *LastFolder;
+ 
+diff -Naurdp a/init.c b/init.c
+--- a/init.c	2005-02-12 00:38:41.185336860 +0100
++++ b/init.c	2005-02-12 00:38:41.384304014 +0100
+@@ -1226,6 +1226,23 @@ static int parse_set (BUFFER *tmp, BUFFE
+ 	toggle_option (MuttVars[idx].data);
+       else
+ 	set_option (MuttVars[idx].data);
++
++      /* sanity check for xterm */
++      if ((mutt_strcmp (MuttVars[idx].option, "xterm_set_titles") == 0) && option
++ (OPTXTERMSETTITLES))
++      {
++        char *ep = getenv ("TERM");
++        /* Make sure that the terminal can take the control codes */
++        if (ep == NULL) unset_option (MuttVars[idx].data);
++	else if (mutt_strncasecmp (ep, "xterm", 5) &&
++		 mutt_strncasecmp (ep, "color-xterm", 11) &&
++		 mutt_strncasecmp (ep, "eterm", 5) &&
++		 mutt_strncasecmp (ep, "kterm", 5) &&
++		 mutt_strncasecmp (ep, "nxterm", 6) &&
++		 mutt_strncasecmp (ep, "rxvt", 4) )
++	  unset_option (MuttVars[idx].  data);
++
++      }
+     }
+     else if (DTYPE (MuttVars[idx].type) == DT_STR ||
+ 	     DTYPE (MuttVars[idx].type) == DT_PATH ||
+diff -Naurdp a/init.h b/init.h
+--- a/init.h	2005-02-12 00:38:41.288319859 +0100
++++ b/init.h	2005-02-12 00:39:23.815290604 +0100
+@@ -2995,6 +2995,27 @@ struct option_t MuttVars[] = {
+   */
+ #endif
+   /*--*/
++  {"xterm_icon",       DT_STR,   R_BOTH, UL &XtermIcon,  UL "M%?n?AIL&ail?"},
++  /*
++  ** .pp
++  ** Controls the format of the icon title, as long as xterm_set_titles
++  ** is enabled. This string is identical in formatting to the one used by
++  ** ``$$status_format''.
++  */
++  {"xterm_set_titles", DT_BOOL,  R_BOTH, OPTXTERMSETTITLES, 0},
++  /*
++  ** .pp
++  ** Controls whether mutt sets the xterm title bar and icon name
++  ** (as long as you're in an appropriate terminal). The default must
++  ** be off to force in the validity checking.
++  */
++  {"xterm_title",      DT_STR,   R_BOTH, UL &XtermTitle, UL "Mutt with %?m?%m messages&no messages?%?n? [%n NEW]?"},
++  /*
++  ** .pp
++  ** Controls the format of the title bar of the xterm provided that
++  ** xterm_set_titles has been set. This string is identical in formatting
++  ** to the one used by ``$$status_format''.
++  */
+   { NULL }
+ };
+ 
+diff -Naurdp a/mutt.h b/mutt.h
+--- a/mutt.h	2005-02-12 00:38:41.244327122 +0100
++++ b/mutt.h	2005-02-12 00:38:41.388303354 +0100
+@@ -466,6 +466,7 @@ enum
+   OPTWRAPSEARCH,
+   OPTWRITEBCC,		/* write out a bcc header? */
+   OPTXMAILER,
++  OPTXTERMSETTITLES,
+ 
+   OPTCRYPTUSEGPGME,
+ 

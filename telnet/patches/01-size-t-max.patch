@@ -1,0 +1,11 @@
+diff -urN netkit-telnet-0.18-pre1a.orig/telnet/telnet.c netkit-telnet-0.18-pre1a/telnet/telnet.c
+--- netkit-telnet-0.18-pre1a.orig/telnet/telnet.c	2002-08-12 01:23:32.000000000 +0200
++++ netkit-telnet-0.18-pre1a/telnet/telnet.c	2003-07-01 01:23:20.000000000 +0200
+@@ -558,7 +558,6 @@
+ 	 newalloced = (newalloced+1)*2;
+       }
+ 
+-      assert(SIZE_T_MAX/sizeof(struct stringentry) > newalloced);
+       allocsize = newalloced*sizeof(struct stringentry);
+ 
+       newentries = (struct stringentry *)realloc(ar->entries, allocsize);

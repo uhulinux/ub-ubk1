@@ -1,0 +1,11 @@
+diff -Naurd a/drivers/scsi/scsi_devinfo.c b/drivers/scsi/scsi_devinfo.c
+--- a/drivers/scsi/scsi_devinfo.c	2004-10-18 23:53:46.000000000 +0200
++++ b/drivers/scsi/scsi_devinfo.c	2005-01-14 18:54:52.804538880 +0100
+@@ -163,6 +163,7 @@
+ 	{"LASOUND", "CDX7405", "3.10", BLIST_MAX5LUN | BLIST_SINGLELUN},
+ 	{"MATSHITA", "PD-1", NULL, BLIST_FORCELUN | BLIST_SINGLELUN},
+ 	{"MATSHITA", "DMC-LC5", NULL, BLIST_NOT_LOCKABLE | BLIST_INQUIRY_36},
++	{"MATSHITA", "DMC-LC33", NULL, BLIST_NOT_LOCKABLE | BLIST_INQUIRY_36},
+ 	{"MATSHITA", "DMC-LC40", NULL, BLIST_NOT_LOCKABLE | BLIST_INQUIRY_36},
+ 	{"Medion", "Flash XL  MMC/SD", "2.6D", BLIST_FORCELUN},
+ 	{"MegaRAID", "LD", NULL, BLIST_FORCELUN},

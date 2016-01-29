@@ -1,0 +1,12 @@
+diff -Naur transfig.3.2.5e-orig/fig2dev/Imakefile transfig.3.2.5e/fig2dev/Imakefile
+--- transfig.3.2.5e-orig/fig2dev/Imakefile	2013-11-23 13:38:00.743649951 +0100
++++ transfig.3.2.5e/fig2dev/Imakefile	2013-11-23 13:42:35.427953342 +0100
+@@ -141,7 +141,7 @@
+ 
+ #ifdef I18N
+ I18N_DEFS = -DI18N 
+-FIG2DEV_LIBDIR = /usr/local/lib/fig2dev
++FIG2DEV_LIBDIR = /usr/share/fig2dev
+ I18N_DEV_DEFS = $(I18N_DEFS) -DFIG2DEV_LIBDIR=$(FIG2DEV_LIBDIR) -DFIG2DEV_LIBDIR_STR=\\\"$(FIG2DEV_LIBDIR)\\\"
+ 
+ #endif /* I18N */

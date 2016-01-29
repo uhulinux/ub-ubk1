@@ -1,0 +1,12 @@
+diff -Naurd orig/Makefile mod/Makefile
+--- orig/Makefile	2009-05-20 15:53:38.000000000 +0200
++++ mod/Makefile	2009-05-20 19:48:21.000000000 +0200
+@@ -21,7 +21,7 @@
+ 	mkdir -p $(DESTDIR)/$(PREFIX)/share/$(NAME)-$(VERSION)
+ 	cp -a data/* $(DESTDIR)/$(PREFIX)/share/$(NAME)-$(VERSION)
+ 
+-install: install-bin install-docs install-data
++install: install-bin install-data
+ 
+ dist:
+ 	@EXCLUDE=`mktemp` && find . -name .svn > $EXCLUDE \

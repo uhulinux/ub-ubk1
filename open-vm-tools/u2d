@@ -1,0 +1,2 @@
+dir=$(sflist open-vm-tools open-vm-tools | splitver '^stable-([0-9.]+\.x)$' | sort -V | tail -n 1)
+sflist open-vm-tools open-vm-tools/stable-$dir/ | splitver '^open-vm-tools-([0-9.-]+).tar.gz$' |  sed -r 's/-([^-]+)$/+\1/'

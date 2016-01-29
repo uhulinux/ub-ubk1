@@ -1,0 +1,24 @@
+diff -Naurdp a/doc/Makefile.in b/doc/Makefile.in
+--- a/doc/Makefile.in	2007-12-04 00:01:11.000000000 +0100
++++ b/doc/Makefile.in	2007-12-05 21:32:33.000000000 +0100
+@@ -148,7 +148,7 @@ PYTHON_PLATFORM = @PYTHON_PLATFORM@
+ PYTHON_PREFIX = @PYTHON_PREFIX@
+ PYTHON_VERSION = @PYTHON_VERSION@
+ RANLIB = @RANLIB@
+-RRDDOCDIR = @RRDDOCDIR@
++RRDDOCDIR = $(prefix)/share/doc/Packages/rrdtool
+ RRDGRAPH_YLEGEND_ANGLE = @RRDGRAPH_YLEGEND_ANGLE@
+ RRD_DEFAULT_FONT = @RRD_DEFAULT_FONT@
+ RUBY = @RUBY@
+diff -Naurdp a/examples/Makefile.in b/examples/Makefile.in
+--- a/examples/Makefile.in	2007-12-04 00:01:11.000000000 +0100
++++ b/examples/Makefile.in	2007-12-05 21:32:56.000000000 +0100
+@@ -227,7 +227,7 @@ target_cpu = @target_cpu@
+ target_os = @target_os@
+ target_vendor = @target_vendor@
+ EXTRA_DIST = cgi-demo.cgi.in
+-examplesdir = $(pkgdatadir)/examples
++examplesdir = $(prefix)/share/doc/Packages/rrdtool/examples
+ examples_SCRIPTS = cgi-demo.cgi piped-demo.pl shared-demo.pl \
+ 	stripes.pl bigtops.pl minmax.pl 4charts.pl perftest.pl
+ 

@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+cp -p xwpe.1_eng ${UB_INSTALLDIR}/usr/share/man/man1/xwpe.1
+ln -s xwpe.1 ${UB_INSTALLDIR}/usr/share/man/man1/xwe.1
+ln -s xwpe.1 ${UB_INSTALLDIR}/usr/share/man/man1/wpe.1
+ln -s xwpe.1 ${UB_INSTALLDIR}/usr/share/man/man1/we.1
+
+ub_install

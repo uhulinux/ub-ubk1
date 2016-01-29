@@ -1,0 +1,9 @@
+diff -Naur kdegames-orig/kbounce-4.10.0/kbounce.desktop kdegames/kbounce-4.10.0/kbounce.desktop
+--- kdegames-orig/kbounce-4.13.0/kbounce.desktop	2013-01-23 23:05:34.000000000 +0100
++++ kdegames/kbounce-4.13.0/kbounce.desktop	2013-02-28 11:09:56.000000000 +0100
+@@ -124,4 +124,4 @@
+ GenericName[zh_CN]=弹球游戏
+ GenericName[zh_TW]=彈力球遊戲
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Game;ArcadeGame;
++Categories=Qt;KDE;Game;ArcadeGame;X-UHU-Menu/Games/Arcade;

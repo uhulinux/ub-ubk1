@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+epydoc-${UB_VERSION}.tar.gz epydoc-${UB_VERSION}/
+	http://downloads.sourceforge.net/epydoc/

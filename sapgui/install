@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+/usr/lib/java/jre/bin/java -jar PlatinGUI-Linux-"$UB_VERSION".jar install \
+	-disableui \
+	-installdir /var/uhubuild/work/install/usr/lib \
+	-noshortcuts \
+	-registerapplication \
+	-logfile /var/uhubuild/work/compile/guiinstall.log
+
+cp -a "$UB_INSTALLDIR"/usr/lib/SAPGUI/bin/{guilogon,guistart} "$UB_INSTALLDIR"/usr/bin/
+mv "$UB_INSTALLDIR"/usr/lib/SAPGUI"$UB_VERSION"/inst "$UB_INSTALLDIR"/usr/share/icons/

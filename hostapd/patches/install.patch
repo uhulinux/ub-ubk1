@@ -1,0 +1,12 @@
+diff -Naurd a/hostapd/Makefile b/hostapd/Makefile
+--- a/hostapd/Makefile	2008-08-10 19:33:12.000000000 +0200
++++ b/hostapd/Makefile	2008-09-04 18:02:33.000000000 +0200
+@@ -477,7 +477,7 @@
+ 	fi
+ 
+ install: all
+-	for i in $(ALL); do cp $$i /usr/local/bin/$$i; done
++	for i in $(ALL); do cp $$i $(DESTDIR)/usr/bin/$$i; done
+ 
+ hostapd: $(OBJS)
+ 	$(CC) -o hostapd $(OBJS) $(LIBS)

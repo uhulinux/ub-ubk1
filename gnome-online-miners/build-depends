@@ -1,0 +1,13 @@
+grilo-dev
+intltool
+itstool
+libgdata-dev
+libgfbgraph-dev
+libsecret-dev
+libsoup-gnome-dev
+libzapojit-dev
+networkmanager-dev
+tracker-dev
+systemd-dev
+util-linux-dev
+xz-dev

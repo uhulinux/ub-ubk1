@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+export DESTDIR="$UB_INSTALLDIR"
+make \
+	-f makefile_original_install install

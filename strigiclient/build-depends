@@ -1,0 +1,4 @@
+cmake
+libstreamanalyzer-dev
+qt4-dev
+strigidaemon-dev

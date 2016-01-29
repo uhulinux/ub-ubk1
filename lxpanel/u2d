@@ -1,0 +1,1 @@
+sflist lxde LXPanel%20%28desktop%20panel%29 | splitver '^LXPanel%20([0-9.]+)$' | sort -V | tail -n 1

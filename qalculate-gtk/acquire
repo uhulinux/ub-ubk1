@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+qalculate-gtk-${UB_VERSION}.tar.gz qalculate-gtk-${UB_VERSION}/
+	http://downloads.sourceforge.net/qalculate/

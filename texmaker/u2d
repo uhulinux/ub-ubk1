@@ -1,0 +1,1 @@
+urllist http://www.xm1math.net/texmaker/download.html#source/ | splitver '^texmaker-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

@@ -1,0 +1,16 @@
+diff -Naur orig/data/tuxcmd.desktop mod/data/tuxcmd.desktop
+--- orig/data/tuxcmd.desktop	2009-11-15 17:00:35.000000000 +0100
++++ mod/data/tuxcmd.desktop	2011-08-11 20:27:46.522962618 +0200
+@@ -1,9 +1,11 @@
+ [Desktop Entry]
++Encoding=UTF-8
+ Name=Tux Commander
+ Comment=A two panel file manager
++Comment[hu]=kétpaneles fájlkezelő
+ Exec=tuxcmd
+ Icon=tuxcmd
+ Terminal=false
+ Type=Application
+-Categories=GTK;Utility;
++Categories=GTK;Utility;X-UHU-Menu/Tools/File_Managers;
+ StartupNotify=true

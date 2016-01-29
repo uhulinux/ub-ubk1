@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gst-ffmpeg-${UB_VERSION}.tar.bz2 gst-ffmpeg-${UB_VERSION}/
+	http://gstreamer.freedesktop.org/src/gst-ffmpeg/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+bleachbit-${UB_VERSION}.tar.gz bleachbit-${UB_VERSION}/
+	http://downloads.sourceforge.net/sourceforge/bleachbit/

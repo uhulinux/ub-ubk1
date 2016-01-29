@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_install
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/llvm/
+mv "$UB_INSTALLDIR"/usr/docs/llvm "$UB_INSTALLDIR"/usr/share/llvm/docs
+rm -R "$UB_INSTALLDIR"/usr/docs
+rm -f "$UB_INSTALLDIR"/usr/share/llvm/docs/html.tar.gz

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Fuse-${UB_VERSION}.tar.gz Fuse-${UB_VERSION}/
+	http://cpan.metacpan.org/authors/id/D/DP/DPATES/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kdev-python-${UB_VERSION}.tar.xz kdev-python-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/kdevelop/${UB_VERSION/1/4}/src/

@@ -1,0 +1,12 @@
+diff -Naur gwenview-4.10.95-orig/app/gwenview.desktop gwenview-4.10.95/app/gwenview.desktop
+--- gwenview-4.10.95-orig/app/gwenview.desktop	2013-07-14 12:02:25.000000000 +0200
++++ gwenview-4.10.95/app/gwenview.desktop	2013-07-17 10:32:55.000000000 +0200
+@@ -170,7 +170,7 @@
+ Terminal=false
+ Icon=gwenview
+ Type=Application
+-Categories=Qt;KDE;Graphics;Viewer;Photography;
++Categories=Qt;KDE;Graphics;Viewer;Photography;X-UHU-Menu/Graphics;
+ MimeType=inode/directory;image/gif;image/jpeg;image/png;image/bmp;image/x-eps;image/x-ico;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-xbitmap;image/x-xpixmap;image/tiff;image/x-psd;image/x-webp;
+ X-DocPath=gwenview/index.html
+ # InitialPreference should be greater than Okular so that Gwenview is the

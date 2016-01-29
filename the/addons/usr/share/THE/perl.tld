@@ -1,0 +1,262 @@
+* PERL.KLD - KEDIT Language Definition for Perl programs
+* Version 1.0 - February 2000
+
+:case
+ respect
+:option
+ preprocessor #
+:identifier
+*  [@$%&*]  [a-zA-Z0-9_]
+ [@$%&*a-zA-z]  [a-zA-Z0-9_]
+:comment
+ line # any
+:string
+ single backslash
+ double backslash
+ delimiter ` backslash
+:number
+ c
+:label
+ delimiter : firstnonblank
+:match
+ ( )
+ { }
+ [ ]
+:keyword
+* operators
+ and
+ or
+ not
+ eq
+ ne
+ lt
+ le
+ gt
+ ge
+ cmp
+* flow control
+ continue        alternate 4
+ die             alternate 4
+ do              alternate 4
+ else            alternate 4
+ elsif           alternate 4
+ exit            alternate 4
+ for             alternate 4
+ foreach         alternate 4
+ goto            alternate 4
+ if              alternate 4
+ last            alternate 4
+ next            alternate 4
+ return          alternate 4
+ unless          alternate 4
+ while           alternate 4
+* other
+ abs
+ accept
+ alarm
+ atan2
+ AUTOLOAD
+ BEGIN
+ bind
+ binmode
+ bless
+ c
+ caller
+ chdir
+ chmod
+ chomp
+ chop
+ chown
+ chr
+ chroot
+ close
+ closedir
+ connect
+ CORE
+ cos
+ crypt
+ dbmclose
+ dbmopen
+ defined
+ delete
+ DESTROY
+ dump
+ each
+ END
+ endgrent
+ endhostent
+ endnetent
+ endprotoent
+ endpwent
+ endservent
+ eof
+ eval
+ exec
+ exists
+ exp
+ fcntl
+ fileno
+ flock
+ fork
+ format
+ formline
+ glob
+ gmtime
+ grent
+ grep
+ grgid
+ grnam
+ hex
+ hostbyaddr
+ hostbyname
+ hostent
+ index
+ INIT
+ int
+ ioctl
+ join
+ keys
+ kill
+ lc
+ lcfirst
+ length
+ link
+ listen
+ local
+ localtime
+ lock
+ log
+ login
+ lstat
+ map
+ mkdir
+ msgctl
+ msgget
+ msgrcv
+ msgsnd
+ my
+ netbyaddr
+ netbyname
+ netent
+ no
+ oct
+ open
+ opendir
+ ord
+ our
+ pack
+ package
+ peername
+ pgrp
+ pipe
+ pop
+ pos
+ ppid
+ print
+ printf
+ priority
+ protobyname
+ protobynumber
+ protoent
+ prototype
+ push
+ pwent
+ pwnam
+ pwuid
+ q
+ qq
+ qr
+ quotemeta
+ qw
+ qx
+ rand
+ read
+ readdir
+ readline
+ readlink
+ readpipe
+ recv
+ redo
+ ref
+ rename
+ require
+ reset
+ reverse
+ rewinddir
+ rindex
+ rmdir
+ scalar
+ seek
+ seekdir
+ select
+ semctl
+ semget
+ semop
+ send
+ servbyname
+ servbyport
+ servent
+ setgrent
+ sethostent
+ setnetent
+ setpgrp
+ setpriority
+ setprotoent
+ setpwent
+ setservent
+ setsockopt
+ shift
+ shmctl
+ shmget
+ shmread
+ shmwrite
+ shutdown
+ sin
+ sleep
+ socket
+ socketpair
+ sockname
+ sockopt
+ sort
+ splice
+ split
+ sprintf
+ sqrt
+ srand
+ stat
+ study
+ sub
+ substr
+ symlink
+ syscall
+ sysopen
+ sysread
+ sysseek
+ system
+ syswrite
+ tell
+ telldir
+ tie
+ tied
+ time
+ times
+ tr
+ truncate
+ uc
+ ucfirst
+ umask
+ undef
+ unlink
+ unpack
+ unshift
+ untie
+ until
+ use
+ utime
+ values
+ vec
+ wait
+ waitpid
+ wantarray
+ warn
+ write

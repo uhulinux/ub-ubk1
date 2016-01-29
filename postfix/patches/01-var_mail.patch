@@ -1,0 +1,76 @@
+diff -Naurdp a/conf/main.cf b/conf/main.cf
+--- a/conf/main.cf	2005-03-04 18:48:25.000000000 +0100
++++ b/conf/main.cf	2006-01-26 18:23:59.000000000 +0100
+@@ -401,8 +401,8 @@ unknown_local_recipient_reject_code = 55
+ #
+ # The home_mailbox parameter specifies the optional pathname of a
+ # mailbox file relative to a user's home directory. The default
+-# mailbox file is /var/spool/mail/user or /var/mail/user.  Specify
+-# "Maildir/" for qmail-style delivery (the / is required).
++# mailbox file is /var/mail/user.  Specify "Maildir/" for qmail-style
++# delivery (the / is required).
+ #
+ #home_mailbox = Mailbox
+ #home_mailbox = Maildir/
+@@ -412,7 +412,6 @@ unknown_local_recipient_reject_code = 55
+ # system type.
+ #
+ #mail_spool_directory = /var/mail
+-#mail_spool_directory = /var/spool/mail
+ 
+ # The mailbox_command parameter specifies the optional external
+ # command to use instead of mailbox delivery. The command is run as
+diff -Naurdp a/html/local.8.html b/html/local.8.html
+--- a/html/local.8.html	2005-03-09 18:44:00.000000000 +0100
++++ b/html/local.8.html	2006-01-26 18:24:52.000000000 +0100
+@@ -566,7 +566,7 @@ LOCAL(8)                                
+        The following are examples; details differ between systems.
+        $HOME/.forward, per-user aliasing
+        /etc/aliases, system-wide alias database
+-       /var/spool/mail, system mailboxes
++       /var/mail, system mailboxes
+ 
+ <b>SEE ALSO</b>
+        <a href="qmgr.8.html">qmgr(8)</a>, queue manager
+diff -Naurdp a/man/man8/local.8 b/man/man8/local.8
+--- a/man/man8/local.8	2005-03-09 18:43:59.000000000 +0100
++++ b/man/man8/local.8	2006-01-26 18:25:08.000000000 +0100
+@@ -102,7 +102,7 @@ mail arrives for a recipient that is alr
+ .ad
+ .fi
+ The default per-user mailbox is a file in the UNIX mail spool
+-directory (\fB/var/mail/\fIuser\fR or \fB/var/spool/mail/\fIuser\fR);
++directory (\fB/var/mail/\fIuser\fR);
+ the location can be specified with the \fBmail_spool_directory\fR
+ configuration parameter. Specify a name ending in \fB/\fR for
+ \fBqmail\fR-compatible \fBmaildir\fR delivery.
+@@ -538,7 +538,7 @@ records, so that "smtpd" becomes, for ex
+ The following are examples; details differ between systems.
+ $HOME/.forward, per-user aliasing
+ /etc/aliases, system-wide alias database
+-/var/spool/mail, system mailboxes
++/var/mail, system mailboxes
+ .SH "SEE ALSO"
+ .na
+ .nf
+diff -Naurdp a/src/local/local.c b/src/local/local.c
+--- a/src/local/local.c	2005-03-09 18:43:16.000000000 +0100
++++ b/src/local/local.c	2006-01-26 18:25:23.000000000 +0100
+@@ -90,7 +90,7 @@
+ /* .ad
+ /* .fi
+ /*	The default per-user mailbox is a file in the UNIX mail spool
+-/*	directory (\fB/var/mail/\fIuser\fR or \fB/var/spool/mail/\fIuser\fR);
++/*	directory (\fB/var/mail/\fIuser\fR);
+ /*	the location can be specified with the \fBmail_spool_directory\fR
+ /*	configuration parameter. Specify a name ending in \fB/\fR for
+ /*	\fBqmail\fR-compatible \fBmaildir\fR delivery.
+@@ -494,7 +494,7 @@
+ /*	The following are examples; details differ between systems.
+ /*	$HOME/.forward, per-user aliasing
+ /*	/etc/aliases, system-wide alias database
+-/*	/var/spool/mail, system mailboxes
++/*	/var/mail, system mailboxes
+ /* SEE ALSO
+ /*	qmgr(8), queue manager
+ /*	bounce(8), delivery status reports

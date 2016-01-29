@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/jdictionary/Plugins
+cp *.jar "$UB_INSTALLDIR"/usr/share/jdictionary/Plugins/

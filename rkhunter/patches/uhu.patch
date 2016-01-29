@@ -1,0 +1,28 @@
+diff -Naurd a/files/os.dat b/files/os.dat
+--- a/files/os.dat	2004-09-11 19:02:48.000000000 +0200
++++ b/files/os.dat	2004-11-08 13:33:36.546834984 +0100
+@@ -88,3 +88,4 @@
+ 404:IBM AIX 4.3.3:/bin/ls:/bin:
+ 405:IBM AIX 4.3.2:/bin/ls:/bin:
+ 500:Mac OS X:/sbin/md5:/bin:
++999:UHU-Linux 1.2:/usr/bin/md5sum:/bin:
+diff -Naurd a/files/rkhunter b/files/rkhunter
+--- a/files/rkhunter	2004-11-08 13:33:49.518052783 +0100
++++ b/files/rkhunter	2004-11-08 13:39:07.826318322 +0100
+@@ -1885,6 +1885,16 @@
+ 	    echo "Info: Found /etc/yellowdog-release" >> ${DEBUGFILE}
+ 	fi
+ 
++	# UHU?
++	if [ -e "/etc/uhu-release" ]
++	  then
++	    full_osname="UHU-Linux $(cat /etc/uhu-release|cut -d- -f1)"
++	    valid_os="1"
++
++	    debugdate >> ${DEBUGFILE}
++	    echo "Info: Found /etc/uhu-release" >> ${DEBUGFILE}
++	fi
++
+ 	# Gentoo?
+ 	if [ -e "/etc/gentoo-release" ]
+ 	  then

@@ -1,0 +1,9 @@
+diff -Naur kdegames-orig/picmi-4.10.0/picmi.desktop kdegames/picmi-4.10.0/picmi.desktop
+--- kdegames-orig/picmi-4.13.0/picmi.desktop	2013-01-30 21:38:08.000000000 +0100
++++ kdegames/picmi-4.13.0/picmi.desktop	2013-02-28 11:40:38.000000000 +0100
+@@ -96,4 +96,4 @@
+ Terminal=false
+ Type=Application
+ X-KDE-StartupNotify=true
+-Categories=Qt;KDE;Game;LogicGame;
++Categories=Qt;KDE;Game;LogicGame;X-UHU-Menu/Games/TacticStrategy;

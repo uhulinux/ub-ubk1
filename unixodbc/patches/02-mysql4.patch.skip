@@ -1,0 +1,12 @@
+diff -urN unixODBC-2.2.5.orig/Drivers/MySQL/options.c unixODBC-2.2.5/Drivers/MySQL/options.c
+--- unixODBC-2.2.5.orig/Drivers/MySQL/options.c	2002-04-10 16:14:08.000000000 +0200
++++ unixODBC-2.2.5/Drivers/MySQL/options.c	2003-06-02 17:00:58.000000000 +0200
+@@ -412,7 +412,7 @@
+     break;
+ 
+   case SQL_ATTR_CONNECTION_TIMEOUT:
+-    *((SQLUINTEGER *) ValuePtr)= dbc->mysql.net.timeout;
++    *((SQLUINTEGER *) ValuePtr)= dbc->mysql.net.read_timeout;
+     break;
+ 
+   case SQL_ATTR_CURRENT_CATALOG:

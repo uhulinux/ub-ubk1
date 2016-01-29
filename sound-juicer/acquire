@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+sound-juicer-${UB_VERSION}.tar.xz sound-juicer-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/sound-juicer/${UB_VERSION_HEAD2}/

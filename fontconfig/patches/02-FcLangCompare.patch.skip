@@ -1,0 +1,17 @@
+http://lists.freedesktop.org/archives/fontconfig/2006-March/002151.html
+I have no real fix, but this works quite well as a workaround, and
+gnome-terminal (vte) chooses a usable font (9x15B.pcf) even for en_US.UTF-8,
+not only for hu_HU.UTF-8 as it did before :-)
+
+diff -Naur fontconfig-2.3.94.orig/src/fclang.c fontconfig-2.3.94/src/fclang.c
+--- fontconfig-2.3.94.orig/src/fclang.c	2006-02-05 20:32:53.000000000 +0100
++++ fontconfig-2.3.94/src/fclang.c	2006-04-13 17:07:01.000000000 +0200
+@@ -145,7 +145,7 @@
+ 	if (c1 != c2)
+ 	{
+ 	    if (FcLangEnd (c1) && FcLangEnd (c2))
+-		result = FcLangDifferentCountry;
++		result = FcLangEqual; /* cheat :-) */
+ 	    return result;
+ 	}
+ 	else if (!c1)

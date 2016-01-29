@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+autopep8-${UB_VERSION}.tar.gz autopep8-${UB_VERSION}/
+	http://pypi.python.org/packages/source/a/autopep8/

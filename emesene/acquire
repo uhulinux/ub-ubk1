@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+emesene-emesene-v${UB_VERSION}-0-gfec821b.tar.gz emesene-emesene-e604df2/
+	https://github.com/emesene/emesene/tarball/v${UB_VERSION}/

@@ -1,0 +1,119 @@
+/******************************************************************/
+/* Table.x  V2  Line up rows of data neatly.                      */
+/* Mark lines to process, then do "table" from the command line.  */
+/*                                                                */
+/* >Ä table ÄÄÂÄÄÄÄÄÄÄÄÄÄÄÂÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄ><   */
+/*            ÀÄÄ delim ÄÄÙ ÀÄÄ ( ÄÄ arrange string ÄÄ ) ÄÄÙ      */
+/*                                                                */
+/* delim:  either a string that delimits the "cells" or a number. */
+/* A number means "use this number of blanks".  Default is 2.     */
+/* arrange string:  any sequence of "l", "r" or "c", one for each */
+/* column in the table indicating how you want the columns lined  */
+/* up (left, centre or right).  By default, TABLE.X will work out */
+/* how to line them up for you.  Use the default normally.        */
+/* For example: table :c. (l r r r)  or  table (c c c)            */
+/* Toby Thurston - 16 Jan 1997                                    */
+/******************************************************************/
+Table:
+ignore_chars = "œ$%*,"              /* number prefixes & suffixes */
+/* strings consisting of [0-9] plus any of these characters are   */
+/* treated as numbers and aligned accordingly, add chars as needed*/
+/******************************************************************/
+parse arg delim "(" arrange ")" .
+delim = strip(delim)
+if delim = "" then delim = 2
+if datatype(delim,"W") then delim = copies(" ",delim)
+"extract /block/cursor/"
+select
+  when block.0 = 1 then do
+    "msg Nothing marked! Mark the lines you want me to line up"
+  end
+  when block.1 <> 'BOX' then do
+    "msg I need a line mark not a block mark!"
+  end
+  when block.0 = 6  then do
+    cell. = ""                         /* holds the cells         */
+    longest_cell. = 0                  /* attribute arrays        */
+    leading_number. = 0
+    longest_number. = 0
+    longest_tail. = 0
+    cells = 0                          /* cells in each row       */
+    lines_in_mark = 1 + block.4 - block.2
+    ':'block.2                         /* go to start of mark     */
+    do i = 1 to lines_in_mark
+      "extract /curline/"              /* read the line           */
+      line = strip(curline.3)          /* strip blanks            */
+      do j = 1 while length(line) > 0  /* if line is not blank... */
+        parse var line cell.i.j (delim) line   /* read a cell     */
+        line = strip(line)             /* strip blanks again      */
+        cell.i.j = strip(cell.i.j)     /* strip blanks again      */
+        longest_cell.j = max(longest_cell.j,length(cell.i.j))
+        if arrange = "" then
+          if leading_number(cell.i.j) then do /* if has leading num... */
+          leading_number.j = leading_number.j + 1     /* count it */
+          que = lastnumpos(cell.i.j)   /* the right most number   */
+          longest_number.j = max(que,longest_number.j)
+          longest_tail.j   = max(length(substr(cell.i.j,que+1)),longest_tail.j)
+          longest_cell.j   = max(longest_cell.j,longest_number.j+longest_tail.j)
+          end
+      end
+      cells = max(cells,j-1)
+      "down"                           /* next line               */
+    end
+    ':'block.2                         /* back to start of mark   */
+    "delete" lines_in_mark             /* delete the mark         */
+    ':'block.2 - 1                     /* back up a line          */
+    do i = 1 to lines_in_mark          /* insert the cells        */
+      newline = ""
+      do j = 1 to cells
+        if arrange = ""
+          then do
+            if leading_number.j > lines_in_mark * 0.4
+              then do    /* if most cells have leading numbers... */
+                que = lastnumpos(cell.i.j) /* que <- rightmost number */
+                if que = 0            /* odd cells with no number */
+                  then do
+                    longest_number.j = max(longest_number.j,length(cell.i.j))
+                    longest_cell.j = max(longest_cell.j,longest_number.j+longest_tail.j)
+                    cell.i.j = right(cell.i.j,longest_number.j)
+                  end
+                  else do
+                    number = right(substr(cell.i.j,1,que),longest_number.j)
+                    tail   = left(substr(cell.i.j,1+que),longest_tail.j)
+                    cell.i.j = number || tail
+                  end
+              end
+            newline = newline || left(cell.i.j,longest_cell.j) || delim
+          end
+          else select
+            when translate(left(word(arrange,j),1)) = "R"
+              then newline = newline || right(cell.i.j,longest_cell.j) || delim
+            when translate(left(word(arrange,j),1)) = "C"
+              then newline = newline || centre(cell.i.j,longest_cell.j) || delim
+          otherwise
+            newline = newline || left(cell.i.j,longest_cell.j) || delim
+          end
+      end
+      newline = substr(newline,1,length(newline)-length(delim))
+      if delim = " " then newline = delim || newline
+      else if delim = ":c."
+        then if translate(left(newline,8)) <> ":ROW.:C."
+          then newline = ":row.:c."newline
+      "input" newline
+    end
+  end
+otherwise
+  "msg Mark exists off screen in" block.1
+end
+exit
+
+lastnumpos: procedure
+   arg string
+   que = verify(reverse(string),"0123456789","M")
+   if que > 0 then que = length(string) - que + 1
+return que
+
+leading_number:
+return datatype(space(translate(word(arg(1),1),,ignore_chars),0),"N")
+
+

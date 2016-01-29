@@ -1,0 +1,14 @@
+--- ncpfs-2.2.3/include/ncp/ncplib.h.arr	Mon Feb  2 05:51:07 2004
++++ ncpfs-2.2.3/include/ncp/ncplib.h	Mon Feb  2 05:51:37 2004
+@@ -455,9 +455,9 @@
+ 
+ struct ncp_file_server_info_2 {
+ #ifdef SWIG
+-	fixedArray ServerName[49];
++	fixedArray ServerName[50];
+ #else
+-	u_int8_t ServerName[49];
++	u_int8_t ServerName[50];
+ #endif	
+ 	u_int8_t FileServiceVersion;
+ 	u_int8_t FileServiceSubVersion;

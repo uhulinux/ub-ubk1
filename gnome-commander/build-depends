@@ -1,0 +1,17 @@
+chmlib-dev
+docbook-dtds
+exiv2-dev
+gnome-doc-utils
+gtk2-dev
+intltool
+lcms-dev
+libgcrypt-dev
+libgnomeui2-dev
+libgsf-dev
+libtiff-dev
+libunique1-dev
+openjpeg1-dev
+openssl-dev
+poppler-glib-dev
+python-dev
+taglib-dev

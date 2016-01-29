@@ -1,0 +1,21 @@
+diff -Naur zapping-0.10cvs4.orig/zapping.desktop.in.in zapping-0.10cvs4/zapping.desktop.in.in
+--- zapping-0.10cvs4.orig/zapping.desktop.in.in	2005-07-29 01:22:42.000000000 +0200
++++ zapping-0.10cvs4/zapping.desktop.in.in	2006-06-02 14:25:49.000000000 +0200
+@@ -1,14 +1,14 @@
+ [Desktop Entry]
+ Version=0.9
+ Encoding=UTF-8
+-_Name=Zapping TV Viewer
++_Name=Zapping
+ _Comment=Lets you watch TV in a window
+ Type=Application
+ Exec=zapping
+-Icon=zapping/gnome-television.png
++Icon=uhu/zapping.png
+ Terminal=false
+ StartupNotify=true
+-Categories=GNOME;Application;Multimedia;AudioVideo;Video;TV;
++Categories=GNOME;Application;Multimedia;AudioVideo;Video;TV;X-UHU-Menu/Multimedia/TVRadio;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=Zapping
+ X-GNOME-Bugzilla-Version=@VERSION@

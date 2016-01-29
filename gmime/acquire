@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gmime-${UB_VERSION}.tar.xz gmime-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gmime/${UB_VERSION_HEAD2}/

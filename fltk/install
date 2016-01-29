@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+ub_install \
+	install-desktop
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/doc/fltk/
+cd documentation
+ub_install
+#for i in html/* ; do
+#	install -m644 $i "$UB_INSTALLDIR"/usr/share/doc/fltk/
+#done
+cd ../test
+ub_install

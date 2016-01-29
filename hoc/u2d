@@ -1,0 +1,1 @@
+urllist http://nadav.harel.org.il/homepage/hoc/ | splitver '^hoc-([0-9.]+).tgz$' | sort -V | tail -n 1

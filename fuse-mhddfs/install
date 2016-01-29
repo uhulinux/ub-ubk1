@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+cp -a mhddfs "$UB_INSTALLDIR"/usr/bin
+ln -s ../usr/bin/mhddfs "$UB_INSTALLDIR"/sbin/mount.mhddfs
+cp -a mhddfs.1 "$UB_INSTALLDIR"/usr/share/man/man1

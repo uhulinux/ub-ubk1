@@ -1,0 +1,16 @@
+--- a/src/seahorse.desktop.in.in.orig	2013-02-16 19:00:43.000000000 +0100
++++ a/src/seahorse.desktop.in.in	2013-02-16 19:01:43.000000000 +0100
+@@ -2,11 +2,11 @@
+ _Name=Passwords and Keys
+ _Comment=Manage your passwords and encryption keys
+ _Keywords=keyring;encryption;security;sign;ssh;
+-Exec=@bindir@/seahorse
++Exec=seahorse
+ Terminal=false
+ Type=Application
+ Icon=seahorse
+-Categories=GNOME;GTK;Security;Utility;DesktopSettings;X-XFCE-SettingsDialog;
++Categories=GNOME;GTK;Security;Utility;DesktopSettings;X-XFCE-SettingsDialog;X-UHU-Menu/Tools/Utilities;
+ StartupNotify=true
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=seahorse

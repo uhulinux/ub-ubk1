@@ -1,0 +1,6 @@
+cmake
+libpng-dev
+libx11-dev
+openssl-dev
+qt4-dev
+tigervnc

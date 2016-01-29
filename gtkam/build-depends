@@ -1,0 +1,12 @@
+gimp-dev
+gtk2-dev
+icu-dev
+libexif-dev
+libexif-gtk-dev
+libgcrypt-dev
+libgnomeui2-dev
+libgphoto2-dev
+libusb-dev
+openssl-dev
+perl-xml-parser
+tdb-dev

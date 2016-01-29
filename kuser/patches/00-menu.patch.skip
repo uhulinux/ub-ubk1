@@ -1,0 +1,9 @@
+diff -Naur kuser-4.10.80-orig/kuser.desktop kuser-4.10.80/kuser.desktop
+--- kuser-4.10.80-orig/kuser.desktop	2013-06-10 22:02:19.000000000 +0200
++++ kuser-4.10.80/kuser.desktop	2013-06-24 20:04:43.000000000 +0200
+@@ -163,4 +163,4 @@
+ Terminal=false
+ X-KDE-StartupNotify=true
+ X-KDE-SubstituteUID=true
+-Categories=Qt;KDE;System;
++Categories=Qt;KDE;System;X-UHU-Menu/Settings;

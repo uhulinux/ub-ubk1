@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cp unix/Makefile Makefile
+make generic

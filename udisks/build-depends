@@ -1,0 +1,13 @@
+dbus-glib-dev
+docbook-xsl
+expat-dev
+glib-dev
+intltool
+libatasmart-dev
+libsgutils
+libsm-dev
+libxslt
+lvm-dev
+parted-dev
+polkit-dev
+systemd-dev

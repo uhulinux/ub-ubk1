@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Firebird-${UB_VERSION}-0.tar.bz2 Firebird-${UB_VERSION}-0/
+	http://downloads.sourceforge.net/firebird/

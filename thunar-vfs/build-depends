@@ -1,0 +1,9 @@
+dbus-glib-dev
+gamin-dev
+gconf2-dev
+intltool
+libexo-dev
+libjpeg-dev
+libsm-dev
+startup-notification-dev
+xcb-util-dev

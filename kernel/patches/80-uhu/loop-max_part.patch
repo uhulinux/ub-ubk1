@@ -1,0 +1,12 @@
+diff -Naurd a/drivers/block/loop.c b/drivers/block/loop.c
+--- a/drivers/block/loop.c	2013-03-14 19:27:14.000000000 +0100
++++ b/drivers/block/loop.c	2013-03-31 21:45:37.920323111 +0200
+@@ -82,7 +82,7 @@
+ static DEFINE_IDR(loop_index_idr);
+ static DEFINE_MUTEX(loop_index_mutex);
+ 
+-static int max_part;
++static int max_part = 32;
+ static int part_shift;
+ 
+ /*

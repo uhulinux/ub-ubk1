@@ -1,0 +1,19 @@
+diff -Naur netkit-ftp-0.17-orig/ftp/glob.c netkit-ftp-0.17/ftp/glob.c
+--- netkit-ftp-0.17-orig/ftp/glob.c	1999-10-02 15:25:23.000000000 +0200
++++ netkit-ftp-0.17/ftp/glob.c	2009-10-06 14:20:47.000000000 +0200
+@@ -54,6 +54,15 @@
+ #include "ftp_var.h"  /* for protos only */
+ #include "glob.h"
+ 
++#include <unistd.h>
++
++#if defined(_SC_ARG_MAX)
++# if defined(ARG_MAX)
++#    undef ARG_MAX
++# endif
++# define ARG_MAX sysconf (_SC_ARG_MAX)
++#endif
++
+ #define	QUOTE 0200
+ #define	TRIM 0177
+ #define	eq(a,b)		(strcmp(a, b)==0)

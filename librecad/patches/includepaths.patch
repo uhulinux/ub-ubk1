@@ -1,0 +1,19 @@
+diff -Naur orig/common.pro mod/common.pro
+--- orig/common.pro	2013-04-14 22:37:18.000000000 +0200
++++ mod/common.pro	2013-06-01 14:35:33.493279300 +0200
+@@ -24,6 +24,7 @@
+ 
+ 
+ # Boost
++BOOST_DIR = "/usr"
+ exists($${BOOST_DIR}){
+     INCLUDEPATH += "$${BOOST_DIR}"
+     LIBS += -L"$${BOOST_LIBDIR}" $${BOOST_LIBS}
+@@ -39,6 +40,7 @@
+ # muParser
+ # ********
+ 
++MUPARSER_DIR = "/usr"
+ exists($${MUPARSER_DIR}){
+     INCLUDEPATH += "$${MUPARSER_DIR}"/include
+     LIBS += -L"$${MUPARSER_DIR}"/lib

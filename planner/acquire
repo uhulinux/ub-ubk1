@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+planner-${UB_VERSION}.tar.xz planner-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/planner/${UB_VERSION_HEAD2}/

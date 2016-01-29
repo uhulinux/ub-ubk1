@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+mkdir -p ${UB_INSTALLDIR}/usr/lib/pypy/bin
+
+mv pypy-c "$UB_INSTALLDIR"/usr/lib/pypy/bin/pypy
+mv include "$UB_INSTALLDIR"/usr/lib/pypy/include
+mv lib-python "$UB_INSTALLDIR"/usr/lib/pypy/lib-python
+mv lib_pypy "$UB_INSTALLDIR"/usr/lib/pypy/lib_pypy
+mv site-packages "$UB_INSTALLDIR"/usr/lib/pypy/site-packages
+ln -s /usr/lib/pypy/bin/pypy "$UB_INSTALLDIR"/usr/bin/pypy

@@ -1,0 +1,12 @@
+diff -Naurd lame-3.93.1.orig/frontend/Makefile.in lame-3.93.1/frontend/Makefile.in
+--- lame-3.93.1.orig/frontend/Makefile.in	2002-12-01 17:18:27.000000000 +0100
++++ lame-3.93.1/frontend/Makefile.in	2003-08-15 09:44:14.000000000 +0200
+@@ -162,7 +162,7 @@
+ @WITH_BRHIST_FALSE@mp3x__EXEEXT__SOURCES = mp3x.c gtkanal.c gpkplotting.c $(common_sources)
+ 
+ CFLAGS = @CFLAGS@ @GTK_CFLAGS@ @FRONTEND_CFLAGS@
+-LDFLAGS = @LDFLAGS@ @FRONTEND_LDFLAGS@ -static
++LDFLAGS = @LDFLAGS@ @FRONTEND_LDFLAGS@
+ 
+ mp3x__EXEEXT__LDADD = $(LDADD) @GTK_LIBS@
+ 

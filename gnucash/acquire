@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+gnucash-${UB_VERSION}.tar.gz gnucash-${UB_VERSION}/
+	http://www.gnucash.org/pub/gnucash/sources/stable/
+	http://downloads.sourceforge.net/gnucash/

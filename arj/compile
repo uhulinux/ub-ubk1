@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+cd gnu
+autoconf
+ub_configure
+cd ..
+export UB_MAKE_PROCS=1
+ub_make

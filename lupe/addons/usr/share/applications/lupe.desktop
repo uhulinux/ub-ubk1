@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=lupe
+Comment=magnifier
+Name[hu]=lupe
+Comment[hu]=nagyító
+Exec=lupe
+Terminal=false
+Icon=lupe
+Categories=Utility;

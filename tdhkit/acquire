@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tdhkit$UB_VERSION.tar.gz tdhkit$UB_VERSION/
+	http://quisp.sourceforge.net/tdhkit/

@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+export LIBLEPT_HEADERSDIR='/usr/include/leptonica'
+
+./autogen.sh
+ub_compile

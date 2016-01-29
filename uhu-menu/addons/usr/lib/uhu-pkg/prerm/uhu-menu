@@ -1,0 +1,9 @@
+#!/bin/sh -e
+
+if [ ! -f /var/lib/uhu-pkg/uhu-menu ]; then
+	exit 0
+fi
+
+if egrep -q '^(/usr/share/desktop-directories/|/usr/share/applications/)' /var/lib/dpkg/info/"$1".list; then
+	rm -f /var/lib/uhu-pkg/uhu-menu
+fi

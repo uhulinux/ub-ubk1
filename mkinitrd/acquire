@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mkinitrd-${UB_VERSION}.tar.gz mkinitrd-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/mkinitrd/

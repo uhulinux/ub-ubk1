@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+efont-unicode-bdf-${UB_VERSION}-src.tar.bz2 efont-unicode-bdf-${UB_VERSION}-src/
+	http://openlab.ring.gr.jp/efont/dist/unicode-bdf/

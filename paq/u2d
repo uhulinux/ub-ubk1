@@ -1,0 +1,1 @@
+urllist http://www.cs.fit.edu/~mmahoney/compression/ | splitver '^paq([0-9.abcd]+).zip$' | sort -V | tail -n 1

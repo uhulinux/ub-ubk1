@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+metacity-${UB_VERSION}.tar.xz metacity-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/metacity/${UB_VERSION_HEAD2}/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libtermkey-${UB_VERSION}.tar.gz libtermkey-${UB_VERSION}/
+	http://www.leonerd.org.uk/code/libtermkey/

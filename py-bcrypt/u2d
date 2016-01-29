@@ -1,0 +1,2 @@
+urllist http://www.mindrot.org/files/py-bcrypt/ | splitver '^py.bcrypt-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+

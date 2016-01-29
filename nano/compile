@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+mv "$UB_COMPILEDIR"/doc/man/fr/nanorc.5 "$UB_COMPILEDIR"/doc/man/fr/nanorc
+groff -Tutf8 "$UB_COMPILEDIR"/doc/man/fr/nanorc > "$UB_COMPILEDIR"/doc/man/fr/nanorc.5
+mv "$UB_COMPILEDIR"/doc/man/fr/nano.1 "$UB_COMPILEDIR"/doc/man/fr/nano
+groff -Tutf8 "$UB_COMPILEDIR"/doc/man/fr/nano > "$UB_COMPILEDIR"/doc/man/fr/nano.1
+mv "$UB_COMPILEDIR"/doc/man/fr/rnano.1 "$UB_COMPILEDIR"/doc/man/fr/rnano
+groff -Tutf8 "$UB_COMPILEDIR"/doc/man/fr/rnano > "$UB_COMPILEDIR"/doc/man/fr/rnano.1
+
+ub_compile \
+	--enable-color \
+	--enable-utf8 \
+	--enable-nls \
+	--disable-wrapping-as-root

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tls-$UB_VERSION-linux-x86.tar.gz .
+    http://downloads.sourceforge.net/amsn/

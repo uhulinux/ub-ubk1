@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+totem-${UB_VERSION}.tar.xz totem-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/totem/${UB_VERSION_HEAD2}/

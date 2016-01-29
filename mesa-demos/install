@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+install -m0755 src/demos/{teapot,tunnel,morph3d,singlebuffer,cubemap,gearbox} "$UB_INSTALLDIR"/usr/bin/
+install -m0755 src/xdemos/{glxgears,glxinfo} "$UB_INSTALLDIR"/usr/bin/
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/mesa-demos/
+install -m0644 src/data/{tile,bw}.rgb "$UB_INSTALLDIR"/usr/share/mesa-demos/

@@ -1,0 +1,27 @@
+#!/bin/sh -eux
+
+make INSTALL_ROOT="$UB_INSTALLDIR" install
+
+# kiszedjük a static lib utalásokat (QTBUG-12058)
+sed -i -e 's#-L\.\./\.\./WebCore/release ##g;s#-L\.\./\.\./JavaScriptCore/release ##g;s#-lwebcore ##g;s#-ljscore ##g' \
+	"$UB_INSTALLDIR"/usr/lib/qt4/lib/libQtWebKit.la \
+	"$UB_INSTALLDIR"/usr/lib/qt4/lib/pkgconfig/QtWebKit.pc
+
+# a desktop fájlok kedvéért szimlinkelünk az /usr/bin-be - robert
+
+ln -s ../lib/qt4/bin/assistant "$UB_INSTALLDIR"/usr/bin/assistant-qt4
+ln -s ../lib/qt4/bin/qtconfig "$UB_INSTALLDIR"/usr/bin/qt4config
+ln -s ../lib/qt4/bin/designer "$UB_INSTALLDIR"/usr/bin/designer-qt4
+ln -s ../lib/qt4/bin/linguist "$UB_INSTALLDIR"/usr/bin/linguist-qt4
+ln -s ../lib/qt4/bin/moc "$UB_INSTALLDIR"/usr/bin/moc-qt4
+ln -s ../lib/qt4/bin/uic "$UB_INSTALLDIR"/usr/bin/uic-qt4
+ln -s ../lib/qt4/bin/qdbus "$UB_INSTALLDIR"/usr/bin/qdbus
+ln -s ../lib/qt4/bin/qdbusviewer "$UB_INSTALLDIR"/usr/bin/qdbusviewer
+ln -s ../lib/qt4/bin/qtdemo "$UB_INSTALLDIR"/usr/bin/qtdemo
+ln -s ../lib/qt4/bin/qmake "$UB_INSTALLDIR"/usr/bin/qmake-qt4
+
+# pkgconfig linkek
+mkdir -p "$UB_INSTALLDIR"/usr/lib/pkgconfig
+for pc in "$UB_INSTALLDIR"/usr/lib/qt4/lib/pkgconfig/*.pc; do
+	ln -s ../../lib/qt4/lib/pkgconfig/`basename $pc` "$UB_INSTALLDIR"/usr/lib/pkgconfig/`basename $pc`
+done

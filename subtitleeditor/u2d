@@ -1,0 +1,2 @@
+minor=$(urllist http://download.gna.org/subtitleeditor/ | grep -E '^([0-9.]+)$' | sort -V | tail -n 1)
+urllist http://download.gna.org/subtitleeditor/"$minor"/ | parsever | sort -V | tail -n 1

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pyxdg-${UB_VERSION}.tar.gz pyxdg-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pyxdg/

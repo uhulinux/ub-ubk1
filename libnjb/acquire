@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libnjb-"$UB_VERSION".tar.gz libnjb-"$UB_VERSION"/
+	http://downloads.sourceforge.net/libnjb/

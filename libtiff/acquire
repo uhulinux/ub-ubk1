@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+tiff-"$UB_VERSION".tar.gz tiff-"$UB_VERSION"/
+	ftp://ftp.remotesensing.org/pub/libtiff/
+	ftp://ftp.remotesensing.org/pub/libtiff/old/
+	http://dl.maptools.org/dl/libtiff/
+	http://dl.maptools.org/dl/libtiff/old/

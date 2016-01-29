@@ -1,0 +1,2 @@
+dir=$(urllist http://download.documentfoundation.org/libreoffice/src/ | grep -E '^[0-9.]+$' | sort -V | tail -n 1)
+urllist http://download.documentfoundation.org/libreoffice/src/$dir/ | splitver '^libreoffice-([0-9.]+).tar.xz$' | sort -V | tail -n 1

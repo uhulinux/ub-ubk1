@@ -1,0 +1,43 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/include/d/druntime
+mkdir -p "$UB_INSTALLDIR"/usr/share/doc/d/phobos
+
+cp -a linux/bin32/dmd "$UB_INSTALLDIR"/usr/bin/
+cp -a linux/bin32/dumpobj "$UB_INSTALLDIR"/usr/bin/
+cp -a linux/bin32/obj2asm "$UB_INSTALLDIR"/usr/bin/
+cp -a linux/bin32/rdmd "$UB_INSTALLDIR"/usr/bin/
+
+echo -e "[Environment]\nDFLAGS=-m32 -I/usr/include/d -I/usr/include/d/druntime/import -L-L/usr/lib -L-lrt" > linux/bin32/dmd.conf
+cp -a linux/bin32/dmd.conf "$UB_INSTALLDIR"/etc/
+
+cp -Rf src/phobos/std "$UB_INSTALLDIR"/usr/include/d
+cp -Rf src/phobos/etc "$UB_INSTALLDIR"/usr/include/d
+cp -f src/phobos/{index,unittest}.d "$UB_INSTALLDIR"/usr/include/d/
+
+cp -Rf src/druntime/import "$UB_INSTALLDIR"/usr/include/d/druntime
+
+install -Dm644 linux/lib32/libphobos2.a "$UB_INSTALLDIR"/usr/lib/libphobos2.a
+install -Dm644 src/druntime/lib/libdruntime-linux32.a "$UB_INSTALLDIR"/usr/lib/libdruntime-linux32.a
+ln -s libdruntime-linux32.a "$UB_INSTALLDIR"/usr/lib/libdruntime.a
+
+for x in man/man1/*.1; do
+	install -Dm644 $x "$UB_INSTALLDIR/usr/share/man/man1/$(basename $x)"
+done
+
+for x in man/man5/*.5; do
+	install -Dm644 $x "$UB_INSTALLDIR/usr/share/man/man5/$(basename $x)"
+done
+
+docs="html/d"
+for x in $(find $docs/*.html $docs/*.gif $docs/*.ico $docs/*.jpg $docs/*.css); do
+	install -Dm644 $x "$UB_INSTALLDIR/usr/share/doc/d/$(basename $x)"
+done
+
+for x in $(find $docs/phobos/*.html $docs/phobos/*.gif $docs/phobos/*.css); do
+	install -Dm644 $x "$UB_INSTALLDIR/usr/share/doc/d/phobos/$(basename $x)"
+done
+
+cp -a html/dmlogo.gif "$UB_INSTALLDIR"/usr/share/doc/d/
+
+cp -Rf samples "$UB_INSTALLDIR"/usr/share/doc/d/

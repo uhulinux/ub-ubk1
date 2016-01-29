@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+feedparser-${UB_VERSION}.tar.gz feedparser-${UB_VERSION}/
+	http://pypi.python.org/packages/source/f/feedparser/

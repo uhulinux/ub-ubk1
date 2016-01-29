@@ -1,0 +1,8 @@
+--- ORIG/setup.py	2011-11-12 21:07:06.000000000 +0100
++++ UHU/setup.py	2011-11-22 23:07:49.868000349 +0100
+@@ -129,4 +129,5 @@
+     ]
+ 
+     setup(data_files = _data_files,
++    	scripts=['emesene/emesene'],
+         packages = find_packages(), **setup_info)

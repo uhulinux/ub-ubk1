@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+# ffmpeg >= 0.11 nem támogatott
+export WX_CONFIG=/usr/bin/wx-config2
+UB_CONFIGURE_NO_DISABLE_STATIC=yes \
+ub_compile \
+	--without-ffmpeg

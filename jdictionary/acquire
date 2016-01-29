@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+jdictionary-${UB_VERSION//./_}.zip jdictionary/
+	http://download.sourceforge.net/jdictionary/

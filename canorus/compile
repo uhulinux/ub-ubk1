@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+export QTDIR=/usr/lib/qt4
+export LDFLAGS="-lpthread -lz"
+
+cmake \
+	-DCMAKE_INSTALL_PREFIX:PATH="$UB_INSTALLDIR"/usr \
+	-DDEFAULT_DATA_DIR=/usr/share/canorus \
+	-DNO_SWIG=ON \
+	.
+ub_make

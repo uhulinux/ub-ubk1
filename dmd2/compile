@@ -1,0 +1,19 @@
+#!/bin/sh -eux
+
+cd src/dmd
+ub_make \
+	-f posix.mak \
+	MODEL="32"
+cd ../..
+
+cd src/druntime
+ub_make \
+	-f posix.mak \
+	MODEL="32"
+cd ../..
+
+cd src/phobos
+ub_make \
+	-f posix.mak \
+	MODEL="32"
+cd ../..

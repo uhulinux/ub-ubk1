@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+#cd marave/highlight
+#python configure.py
+#ub_make
+
+#cd ../..
+
+python setup.py build_hl
+ub_compile

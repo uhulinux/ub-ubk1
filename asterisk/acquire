@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+asterisk-${UB_VERSION//~/-}.tar.gz asterisk-${UB_VERSION//~/-}/
+	http://downloads.digium.com/pub/asterisk/releases/

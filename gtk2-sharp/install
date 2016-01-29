@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 \
+ub_install
+

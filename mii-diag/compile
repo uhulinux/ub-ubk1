@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+for i in "${UB_VERSION}-"*; do
+	mv "$i" "${i#${UB_VERSION}-}"
+done
+
+gcc -O2 -Wall -Wstrict-prototypes mii-diag.c -DLIBMII libmii.c -o mii-diag

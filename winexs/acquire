@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+winexs-${UB_VERSION}.tgz winexs/
+	http://tsx.nl/files/

@@ -1,0 +1,11 @@
+--- devhelp-0.15.orig/data/devhelp.desktop.in.in	2007-05-28 09:31:51.000000000 +0200
++++ devhelp-0.15/data/devhelp.desktop.in.in	2007-08-24 21:59:13.000000000 +0200
+@@ -7,7 +7,7 @@
+ Terminal=false
+ Type=Application
+ Icon=devhelp
+-Categories=GNOME;GTK;Development;
++Categories=GTK;GNOME;Development;X-UHU-Menu/Development/Programming;
+ StartupNotify=true
+ MimeType=application/x-devhelp;
+ X-GNOME-Bugzilla-Bugzilla=GNOME

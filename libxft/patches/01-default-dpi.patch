@@ -1,0 +1,44 @@
+diff -Naur libXft-2.1.8.2.orig/src/xftdpy.c libXft-2.1.8.2/src/xftdpy.c
+--- libXft-2.1.8.2.orig/src/xftdpy.c	2005-07-03 09:00:57.000000000 +0200
++++ libXft-2.1.8.2/src/xftdpy.c	2006-04-25 22:00:00.000000000 +0200
+@@ -336,6 +336,31 @@
+     return True;
+ }
+ 
++/* Hack:
++ *  - if the Xft.dpi resource is unset, assume the value 96,
++ *  - if it is set to 0, ask from the X server.
++ * A similar patch is maintained in gtk2.
++ */
++static Bool
++_XftDefaultInitDoubleDpiHack (Display *dpy, FcPattern *pat, char *option)
++{
++    char    *v, *e;
++    double  d;
++
++    v = XGetDefault (dpy, "Xft", option);
++    if (v)
++    {
++	d = strtod (v, &e);
++	if (e != v && d != 0.0)
++	    return FcPatternAddDouble (pat, option, d);
++    }
++    else
++    {
++	return FcPatternAddDouble (pat, option, 96.0);
++    }
++    return True;
++}
++
+ static Bool
+ _XftDefaultInitInteger (Display *dpy, FcPattern *pat, char *option)
+ {
+@@ -365,7 +390,7 @@
+ 
+     if (!_XftDefaultInitDouble (dpy, pat, FC_SCALE))
+ 	goto bail1;
+-    if (!_XftDefaultInitDouble (dpy, pat, FC_DPI))
++    if (!_XftDefaultInitDoubleDpiHack (dpy, pat, FC_DPI))
+ 	goto bail1;
+     if (!_XftDefaultInitBool (dpy, pat, XFT_RENDER))
+ 	goto bail1;

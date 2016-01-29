@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+export PYTHON=/usr/bin/python3
+
+ub_compile

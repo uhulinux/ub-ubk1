@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+uhubuild-$UB_VERSION.tar.gz uhubuild-$UB_VERSION/
+	ftp://ftp.uhulinux.hu/pub/sources/uhubuild/

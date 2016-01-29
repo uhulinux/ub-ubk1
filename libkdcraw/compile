@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_compile \
+	-DENABLE_LCMS2=on \
+	-DENABLE_RAWSPEED=on

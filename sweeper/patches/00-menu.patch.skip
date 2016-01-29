@@ -1,0 +1,12 @@
+diff -Naur sweeper-4.7.44-orig//sweeper.desktop sweeper-4.7.44//sweeper.desktop
+--- sweeper-4.7.44-orig//sweeper.desktop	2011-08-22 15:26:17.000000000 +0200
++++ sweeper-4.7.44//sweeper.desktop	2011-10-13 19:55:01.000000000 +0200
+@@ -6,7 +6,7 @@
+ Terminal=false
+ X-KDE-StartupNotify=true
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Utility;
++Categories=Qt;KDE;Utility;X-UHU-Menu/Tools/Utilities;
+ Name=Sweeper
+ Name[ar]=الكناس
+ Name[ast]=Barrenderu

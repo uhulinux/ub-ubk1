@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+cp -v mku "$UB_INSTALLDIR"/usr/bin/
+if uname -m | grep -q -E "amd64|x86_64" ; then
+  cp -v installwatch64.so "$UB_INSTALLDIR"/usr/lib/installwatch.so
+else
+  cp -v installwatch.so "$UB_INSTALLDIR"/usr/lib
+fi
+
+chmod 755 "$UB_INSTALLDIR"/usr/lib/installwatch.so
+chmod 755 "$UB_INSTALLDIR"/usr/bin/mku

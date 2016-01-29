@@ -1,0 +1,12 @@
+dbus-glib-dev
+ffmpeg-thumbnailer-dev
+freetype2-dev
+gdk-pixbuf-dev
+gstreamer0.10-dev
+intltool
+lcms-dev
+libjpeg-dev
+libpng-dev
+libtiff-dev
+openjpeg-dev
+poppler-glib-dev

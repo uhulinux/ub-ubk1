@@ -1,0 +1,10 @@
+dconf-dev
+gconf2
+gobject-introspection-dev
+gtk-dev
+gtk2-dev
+intltool
+iso-codes
+libnotify-dev
+pygobject-dev
+vala-dev

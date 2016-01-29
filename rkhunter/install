@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+./installer.sh
+ln -s ../../share/doc/Packages/rkhunter "$UB_INSTALLDIR"/usr/lib/rkhunter/docs

@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+export UB_MAKE_PROCS=1
+export QTDIR="/usr/lib/qt4"
+ub_compile
+

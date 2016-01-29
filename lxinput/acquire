@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxinput-$UB_VERSION.tar.gz lxinput-$UB_VERSION/
+	http://downloads.sourceforge.net/lxde/

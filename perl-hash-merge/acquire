@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Hash-Merge-${UB_VERSION}.tar.gz Hash-Merge-${UB_VERSION}/
+	http://cpan.metacpan.org/authors/id/R/RE/REHSACK/

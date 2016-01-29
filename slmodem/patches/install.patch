@@ -1,0 +1,21 @@
+diff -Naur slmodem-2.9.11-20090222-orig/drivers/Makefile slmodem-2.9.11-20090222/drivers/Makefile
+--- slmodem-2.9.11-20090222-orig/drivers/Makefile	2009-06-07 19:17:18.000000000 +0200
++++ slmodem-2.9.11-20090222/drivers/Makefile	2009-06-07 19:41:25.000000000 +0200
+@@ -47,7 +47,7 @@
+ all install uninstall: kernel-ver
+ 	$(MAKE) $@ KERNEL_VER=$(shell ls -1 /lib/modules)
+ 
+-install: install-devices
++install:
+ uninstall: remove-devices
+ 
+ kernel-ver::
+@@ -134,7 +134,7 @@
+ ifneq ($(AGE), NEW)
+ 	install -D -m 644 slusb.ko $(module-dir)/slusb.ko
+ endif
+-	/sbin/depmod -a
++
+ 
+ uninstall:
+ ifeq ($(ARCH64), 0)

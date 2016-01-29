@@ -1,0 +1,37 @@
+diff -Naur grub-cvs.orig/util/grub-install.in grub-cvs/util/grub-install.in
+--- grub-cvs.orig/util/grub-install.in	2004-01-12 21:16:20.000000000 +0100
++++ grub-cvs/util/grub-install.in	2004-01-12 21:18:38.000000000 +0100
+@@ -41,6 +41,7 @@
+ recheck=no
+ debug=no
+ stage2=stage2
++menu_lst=/boot/grub/menu.lst
+ 
+ # look for secure tempfile creation wrappers on this platform
+ if test -x /bin/tempfile; then
+@@ -71,6 +72,7 @@
+                           BIOS
+   --recheck               probe a device map even if it already exists
+   --net                   install netboot-enabled stage2
++  --menu-lst=FILE         use this file instead of /boot/grub/menu.lst
+ 
+ INSTALL_DEVICE can be a GRUB device name or a system device filename.
+ 
+@@ -135,6 +137,8 @@
+ 	recheck=yes ;;
+     --net)
+ 	stage2=stage2.net ;;
++    --menu-lst=*)
++	menu_lst=`echo "$option" | sed 's/--menu-lst=//'` ;;
+     # This is an undocumented feature...
+     --debug)
+ 	debug=yes ;;
+@@ -333,7 +337,7 @@
+ # Now perform the installation.
+ $grub_shell --batch $no_floppy --device-map=$device_map <<EOF >$log_file
+ root $root_drive
+-install $force_lba --stage2=$grubdir/$stage2 $grub_prefix/stage1 $d $install_drive $grub_prefix/$stage2 p /boot/grub/menu.lst
++install $force_lba --stage2=$grubdir/$stage2 $grub_prefix/stage1 $d $install_drive $grub_prefix/$stage2 p $menu_lst
+ quit
+ EOF
+ 

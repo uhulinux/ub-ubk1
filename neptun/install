@@ -1,0 +1,18 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib
+
+PAGER_CMD=cat \
+./setupwfc <<END
+1
+$UB_INSTALLDIR/usr/lib/ICAClient
+y
+y
+n
+n
+3
+END
+
+chmod -R a+rX,u+w,go-w "$UB_INSTALLDIR"
+
+ln -s ../lib/ICAClient/wfcmgr "$UB_INSTALLDIR"/usr/bin/neptun

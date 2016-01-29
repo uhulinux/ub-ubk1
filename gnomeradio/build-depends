@@ -1,0 +1,9 @@
+dbus-glib-dev
+gconf2-dev
+gnome-doc-utils
+gnome2-vfs-dev
+gst0.10-plugins-base-dev
+gtk-dev
+libgnome-media-profiles-dev
+lirc-dev
+perl-xml-parser

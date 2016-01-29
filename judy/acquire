@@ -1,0 +1,10 @@
+#!/usr/bin/env dl
+
+shop_interm.pdf
+	http://judy.sourceforge.net/application/
+
+judy3b.c
+	http://judyarray.googlecode.com/files/
+
+Judy-${UB_VERSION}.tar.gz judy-${UB_VERSION}/
+	http://downloads.sourceforge.net/judy/

@@ -1,0 +1,10 @@
+diff -Naur k3b-2.0.2-orig//src/k3b.desktop k3b-2.0.2//src/k3b.desktop
+--- k3b-2.0.2-orig//src/k3b.desktop	2011-01-15 21:47:30.000000000 +0100
++++ k3b-2.0.2//src/k3b.desktop	2011-01-31 08:11:17.000000000 +0100
+@@ -140,5 +140,5 @@
+ MimeType=application/x-k3b;application/x-iso;application/x-cd-image;application/x-cue;
+ X-KDE-StartupNotify=true
+ X-KDE-NativeMimeType=application/x-k3b;
+-Categories=KDE;Qt;AudioVideo;DiscBurning;System;Filesystem;
++Categories=KDE;Qt;AudioVideo;DiscBurning;System;Filesystem;X-UHU-Menu/Multimedia/CDwriters;
+ X-DBUS-ServiceType=Unique

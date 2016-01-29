@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+python-ldap-${UB_VERSION}.tar.gz python-ldap-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/python-ldap/
+	http://download.sourceforge.net/python-ldap/

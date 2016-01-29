@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+MP3-Info-${UB_VERSION}.tar.gz MP3-Info-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/D/DA/DANIEL/

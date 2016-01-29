@@ -1,0 +1,11 @@
+diff -Naur Linux-PAM-0.99.3.0.orig/modules/pam_console/sed-static Linux-PAM-0.99.3.0/modules/pam_console/sed-static
+--- Linux-PAM-0.99.3.0.orig/modules/pam_console/sed-static	2005-12-15 13:16:13.000000000 +0100
++++ Linux-PAM-0.99.3.0/modules/pam_console/sed-static	2006-02-07 21:22:38.000000000 +0100
+@@ -13,6 +13,7 @@
+ /^YY_BUFFER_STATE yy_scan_buffer/s/^/STATIC /
+ /^YY_BUFFER_STATE yy_scan_string/s/^/STATIC /
+ /^void yy_switch_to_buffer/s/^/STATIC /
++/extern int yylex/s/extern /STATIC /
+ /define YY_DECL int yylex/s/YY_DECL /YY_DECL STATIC /
+ /^int yyparse/s/^/STATIC /
+ /^void yyrestart/s/^/STATIC /

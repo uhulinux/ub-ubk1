@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--enable-sslv3 \
+	--enable-sslwatchdog \
+	--enable-i18n \
+	--localstatedir=/var/lib \
+	--with-tcpwrap

@@ -1,0 +1,11 @@
+--- a/main/dlist.cc
++++ a/main/dlist.cc
+@@ -1232,7 +1232,7 @@
+ };
+ 
+ void tDownload::http_check_redirect(bool removefiles){
+-	char *newurl=newurl=who->get_new_url();
++	char *newurl=who->get_new_url();
+ 	if (config->change_links && (config->http_recurse_depth!=1 ||
+ 	    config->http_recursing)){
+ 		/* wtrite simply HTML file for redirection */

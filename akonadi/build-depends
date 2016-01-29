@@ -1,0 +1,10 @@
+automoc4
+boost-dev
+cmake
+dbus-dev
+libxslt-dev
+mysql-server
+qt4-dev
+qt4-plugin-mysql
+shared-mime-info
+soprano-dev

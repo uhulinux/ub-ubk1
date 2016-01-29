@@ -1,0 +1,1 @@
+urllist http://www.jave.de/developer/ | splitver '^milestone([0-9]rc[0-9]).html$' | sort -V | tail -n 1 | sed 's/rc/.0~RC/'

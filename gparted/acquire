@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gparted-${UB_VERSION}.tar.bz2 gparted-${UB_VERSION}/
+	http://downloads.sourceforge.net/gparted/

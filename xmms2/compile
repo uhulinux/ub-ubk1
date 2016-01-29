@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+./waf configure \
+	--prefix=/usr \
+	--with-optionals=python,launcher,xmmsclient++,xmmsclient++-glib,perl,ruby,nycli
+./waf build

@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+# XXX FIXME ARRGHH: miért is kell neki a latex2html útvonalkomponens,
+# ha a default értékben a ./configure fájlban az nincs ott???
+ub_configure \
+	--shlibdir=/usr/share/latex2html
+ub_make
+

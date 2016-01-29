@@ -1,0 +1,18 @@
+diff -Naur kdf-4.7.44-orig//kdf.desktop kdf-4.7.44//kdf.desktop
+--- kdf-4.7.44-orig//kdf.desktop	2011-08-22 15:26:08.000000000 +0200
++++ kdf-4.7.44//kdf.desktop	2011-10-13 10:09:51.000000000 +0200
+@@ -142,4 +142,4 @@
+ X-DocPath=kdf/index.html
+ X-KDE-StartupNotify=true
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;System;
++Categories=Qt;KDE;System;X-UHU-Menu/Tools/Utilities;
+diff -Naur kdf-4.7.44-orig//kwikdisk.desktop kdf-4.7.44//kwikdisk.desktop
+--- kdf-4.7.44-orig//kwikdisk.desktop	2011-08-22 15:26:08.000000000 +0200
++++ kdf-4.7.44//kwikdisk.desktop	2011-10-13 10:10:11.000000000 +0200
+@@ -141,4 +141,4 @@
+ GenericName[zh_CN]=可移动介质工具
+ GenericName[zh_TW]=可移動媒體公用程式
+ Terminal=false
+-Categories=Qt;KDE;System;
++Categories=Qt;KDE;System;X-UHU-Menu/Tools/Utilities;

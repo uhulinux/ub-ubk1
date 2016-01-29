@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Perl-Version-${UB_VERSION}.tar.gz Perl-Version-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/Perl/

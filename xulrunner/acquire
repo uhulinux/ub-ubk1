@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xulrunner-${UB_VERSION}.source.tar.bz2 mozilla-release/
+	ftp://ftp.mozilla.org/pub/xulrunner/releases/${UB_VERSION}/source/

@@ -1,0 +1,9 @@
+gtk2-dev
+intltool
+libglade2-dev
+libice-dev
+libsm-dev
+libuser
+libuser-dev
+libxml2-dev
+perl-xml-parser

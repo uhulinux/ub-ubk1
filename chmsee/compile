@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+cd src
+mv Makefile.fedora Makefile
+export UB_MAKE_PROCS=1
+ub_compile

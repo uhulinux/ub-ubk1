@@ -1,0 +1,49 @@
+From e99370e30b845b4ca645c9ace040f80356264e9e Mon Sep 17 00:00:00 2001
+From: Cole Robinson <crobinso@redhat.com>
+Date: Thu, 3 Apr 2014 11:19:03 -0400
+Subject: [PATCH] createpool: Clarify iscsi IQN fields (bz 1084011)
+
+(cherry picked from commit 8fa2aad1d31f811bb09505595c6401bdf6b90d78)
+---
+ ui/createpool.ui          | 4 ++--
+ virtManager/createpool.py | 5 +++++
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/ui/createpool.ui b/ui/createpool.ui
+index 5f3972f..21693a9 100644
+--- a/ui/createpool.ui
++++ b/ui/createpool.ui
+@@ -315,7 +315,7 @@
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
+                             <property name="xalign">1</property>
+-                            <property name="label" translatable="yes">_Source Path:</property>
++                            <property name="label" translatable="yes">sourcep:</property>
+                             <property name="use_underline">True</property>
+                           </object>
+                           <packing>
+@@ -330,7 +330,7 @@
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
+                             <property name="xalign">1</property>
+-                            <property name="label" translatable="yes">_IQN:</property>
++                            <property name="label" translatable="yes">Initiator _IQN:</property>
+                             <property name="use_underline">True</property>
+                             <property name="mnemonic_widget">pool-iqn-chk</property>
+                           </object>
+diff --git a/virtManager/createpool.py b/virtManager/createpool.py
+index abc35fb..ae94e35 100644
+--- a/virtManager/createpool.py
++++ b/virtManager/createpool.py
+@@ -277,6 +277,11 @@ class vmmCreatePool(vmmGObjectUI):
+         show_row("pool-iqn", iqn)
+         show_row("pool-source-name", src_name)
+ 
++        if iqn:
++            self.widget("pool-source-label").set_label(_("_Source IQN:"))
++        else:
++            self.widget("pool-source-label").set_label(_("_Source Path:"))
++
+         if tgt:
+             self.widget("pool-target-path").get_child().set_text(
+                 self._pool.target_path)

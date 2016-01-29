@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kdoc-snapshot.tar.gz kdoc/
+	http://www.ph.unimelb.edu.au/~ssk/kde/kdoc/

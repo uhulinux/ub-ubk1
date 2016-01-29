@@ -1,0 +1,24 @@
+diff -Naur logrotate-3.8.1-orig/config.h logrotate-3.8.1/config.h
+--- logrotate-3.8.1-orig/config.h	2011-08-31 14:39:04.000000000 +0200
++++ logrotate-3.8.1/config.h	2011-09-23 17:15:41.000000000 +0200
+@@ -29,7 +29,7 @@
+  * Default settings for Linux - leave these last.
+  */
+ #ifndef DEFAULT_MAIL_COMMAND
+-#define DEFAULT_MAIL_COMMAND "/bin/mail"
++#define DEFAULT_MAIL_COMMAND "/usr/bin/mail"
+ #endif
+ 
+ #ifndef COMPRESS_COMMAND
+diff -Naur logrotate-3.8.1-orig/logrotate.8 logrotate-3.8.1/logrotate.8
+--- logrotate-3.8.1-orig/logrotate.8	2011-08-31 14:39:04.000000000 +0200
++++ logrotate-3.8.1/logrotate.8	2011-09-23 17:16:33.000000000 +0200
+@@ -52,7 +52,7 @@
+ Tells \fBlogrotate\fR which command to use when mailing logs. This
+ command should accept two arguments: 1) the subject of the message, and
+ 2) the recipient. The command must then read a message on standard input
+-and mail it to the recipient. The default mail command is \fB/bin/mail
++and mail it to the recipient. The default mail command is \fB/usr/bin/mail
+ -s\fR.
+ 
+ .TP

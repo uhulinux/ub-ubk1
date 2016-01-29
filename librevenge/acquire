@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+librevenge-${UB_VERSION}.tar.xz librevenge-${UB_VERSION}/
+	http://downloads.sourceforge.net/libwpd/

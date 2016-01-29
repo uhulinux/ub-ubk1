@@ -1,0 +1,12 @@
+diff -Naur orig/share/opera/locale/hu/search.ini patched/share/opera/locale/hu/search.ini
+--- orig/share/opera/locale/hu/search.ini	2011-06-27 12:53:33.000000000 +0200
++++ patched/share/opera/locale/hu/search.ini	2011-06-28 13:48:08.259887721 +0200
+@@ -7,7 +7,7 @@
+ 
+ [Options] 
+ Default Search=7A8CADE6677811DDBA4B5E9D55D89593
+-Speed Dial Search=FEAF2EF45FCC11DD8287529456D89593
++Speed Dial Search=7A8CADE6677811DDBA4B5E9D55D89593
+ Error Search=7A8CADE6677811DDBA4B5E9D55D89593
+ 
+ [Search Engine 1]

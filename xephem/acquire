@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+xephem-${UB_VERSION}.tar.gz xephem-${UB_VERSION}/
+	http://www.clearskyinstitute.com/cgi-bin/download/
+	ftp://ftp.linuxforum.hu/uhulinux/mirror/http:/www.clearskyinstitute.com/cgi-bin/download/

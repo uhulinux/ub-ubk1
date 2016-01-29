@@ -1,0 +1,11 @@
+--- orig/src/glHelp.cc.orig	2010-03-07 17:24:16.000000000 +0100
++++ patched/src/glHelp.cc	2010-03-07 17:24:28.000000000 +0100
+@@ -759,7 +759,7 @@ void useMatrix(Matrix4d A,const double B
+ void useMatrix(Matrix3d A,const double B[3],double C[3]) {
+   int i,k;
+   for(i=0;i<3;i++) {
+-    C[i] = A[i][3];
++    C[i] = A[i][2];
+     for(k=0;k<3;k++)
+       C[i] += A[i][k] * B[k];
+   }

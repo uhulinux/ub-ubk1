@@ -1,0 +1,5 @@
+	/usr/bin/libkgeomap_demo
+	/usr/lib/libkgeomap*.so.*
+	/usr/share/cmake/modules/FindKGeoMap.cmake
+	/usr/share/libkgeomap
+	/usr/share/locale/*/LC_MESSAGES/libkgeomap.mo

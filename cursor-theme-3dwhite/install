@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+find . -type f | xargs chmod 644
+mkdir -p "$UB_INSTALLDIR"/usr/share/icons
+cp -a * "$UB_INSTALLDIR"/usr/share/icons/

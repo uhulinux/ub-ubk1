@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Clutter-${UB_VERSION}.tar.gz Clutter-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/E/EB/EBASSI/

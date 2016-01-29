@@ -1,0 +1,22 @@
+diff -Naur tcptrack-1.4.2-orig/src/Makefile.am tcptrack-1.4.2/src/Makefile.am
+--- tcptrack-1.4.2-orig/src/Makefile.am	2010-09-28 01:02:01.000000000 +0200
++++ tcptrack-1.4.2/src/Makefile.am	2011-09-30 22:38:31.000000000 +0200
+@@ -25,5 +25,5 @@
+ EXTRA_DIST = tcptrack.1
+ 
+ # no-deprecated required due to hash_map
+-AM_CXXFLAGS = -Werror -Wno-deprecated -Wall
++AM_CXXFLAGS = -Wno-deprecated -Wall
+ 
+diff -Naur tcptrack-1.4.2-orig/src/Makefile.in tcptrack-1.4.2/src/Makefile.in
+--- tcptrack-1.4.2-orig/src/Makefile.in	2011-08-03 19:37:02.000000000 +0200
++++ tcptrack-1.4.2/src/Makefile.in	2011-09-30 22:40:32.000000000 +0200
+@@ -211,7 +211,7 @@
+ EXTRA_DIST = tcptrack.1
+ 
+ # no-deprecated required due to hash_map
+-AM_CXXFLAGS = -Werror -Wno-deprecated -Wall
++AM_CXXFLAGS = -Wno-deprecated -Wall
+ all: all-am
+ 
+ .SUFFIXES:

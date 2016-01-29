@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tse3-$UB_VERSION.tar.gz tse3-$UB_VERSION/
+	http://downloads.sourceforge.net/tse3/

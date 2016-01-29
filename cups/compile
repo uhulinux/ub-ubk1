@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+aclocal -I config-scripts
+autoconf -I config-scripts
+ub_compile \
+	--exec_prefix=/usr \
+	--disable-pam \
+	--enable-raw-printing

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_install \
+	MANDIR="${UB_INSTALLDIR}/usr/share/man" \
+	RAISE_SETFCAP=no

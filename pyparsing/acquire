@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pyparsing-${UB_VERSION}.tar.gz pyparsing-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pyparsing/

@@ -1,0 +1,57 @@
+diff -Naur orig/configure patched/configure
+--- orig/configure	2012-05-08 08:19:35.000000000 +0200
++++ patched/configure	2012-05-10 21:21:07.246924297 +0200
+@@ -6496,7 +6496,7 @@
+   $APXS -q -S CFLAGS="$APXS_CFLAGS" CFLAGS >/dev/null 2>&1
+ 
+   if test "$?" != "0"; then
+-    APACHE_INSTALL="$APXS -i -a -n php5 $SAPI_SHARED" # Old apxs does not have -S option
++    APACHE_INSTALL="$APXS -i -n php5 $SAPI_SHARED" # Old apxs does not have -S option
+   else
+     APXS_LIBEXECDIR='$(INSTALL_ROOT)'`$APXS -q LIBEXECDIR`
+     if test -z `$APXS -q SYSCONFDIR`; then
+@@ -6509,7 +6509,7 @@
+                       \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                        $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                              -S SYSCONFDIR='$APXS_SYSCONFDIR' \
+-                             -i -a -n php5 $SAPI_SHARED"
++                             -i -n php5 $SAPI_SHARED"
+     fi
+   fi
+ 
+@@ -7603,7 +7603,7 @@
+                 \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                        -S SYSCONFDIR='$APXS_SYSCONFDIR' \
+-                       -i -a -n php5"
++                       -i -n php5"
+   fi
+ 
+   case $host_alias in
+@@ -8427,7 +8427,7 @@
+                 \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                  $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                        -S SYSCONFDIR='$APXS_SYSCONFDIR' \
+-                       -i -a -n php5"
++                       -i -n php5"
+   fi
+ 
+   case $host_alias in
+@@ -9409,7 +9409,7 @@
+   $APXS -q -S CFLAGS="$APXS_CFLAGS" CFLAGS >/dev/null 2>&1
+ 
+   if test "$?" != "0"; then
+-    APACHE_HOOKS_INSTALL="$APXS -i -a -n php5 $SAPI_SHARED" # Old apxs does not have -S option
++    APACHE_HOOKS_INSTALL="$APXS -i -n php5 $SAPI_SHARED" # Old apxs does not have -S option
+   else
+     APXS_LIBEXECDIR='$(INSTALL_ROOT)'`$APXS -q LIBEXECDIR`
+     if test -z `$APXS -q SYSCONFDIR`; then
+@@ -9422,7 +9422,7 @@
+                       \$(mkinstalldirs) '$APXS_SYSCONFDIR' && \
+                        $APXS -S LIBEXECDIR='$APXS_LIBEXECDIR' \
+                              -S SYSCONFDIR='$APXS_SYSCONFDIR' \
+-                             -i -a -n php5 $SAPI_SHARED"
++                             -i -n php5 $SAPI_SHARED"
+     fi
+   fi
+ 

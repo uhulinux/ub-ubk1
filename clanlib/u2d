@@ -1,0 +1,2 @@
+minor=$(urllist http://www.clanlib.org/download/ | splitver '^releases-([0-9.]+)' | sort -V | tail -n 1)
+urllist http://www.clanlib.org/download/releases-"$minor"/ | splitver '^ClanLib-([0-9.]+).tgz' | sort -V | tail -n 1

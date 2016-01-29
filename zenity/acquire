@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+zenity-${UB_VERSION}.tar.xz zenity-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/zenity/${UB_VERSION_HEAD2}/

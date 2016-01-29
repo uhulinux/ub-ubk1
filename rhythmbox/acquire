@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+rhythmbox-${UB_VERSION}.tar.xz rhythmbox-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/rhythmbox/${UB_VERSION_HEAD2}/

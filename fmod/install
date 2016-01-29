@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+mkdir -p ${UB_INSTALLDIR}/usr/lib
+mkdir -p ${UB_INSTALLDIR}/usr/include/fmodex
+mkdir -p ${UB_INSTALLDIR}/usr/share/doc/fmodex
+cp -d api/lib/* "$UB_INSTALLDIR"/usr/lib/
+cp -d api/inc/* "$UB_INSTALLDIR"/usr/include/fmodex
+cp -r documentation examples ${UB_INSTALLDIR}/usr/share/doc/fmodex/
+rm "$UB_INSTALLDIR"/usr/lib/*64*
+ln -s "$UB_INSTALLDIR"/usr/lib/libfmodex-${UB_VERSION}.so "$UB_INSTALLDIR"/usr/lib/libfmodex.so.4
+ln -s "$UB_INSTALLDIR"/usr/lib/libfmodexL-${UB_VERSION}.so "$UB_INSTALLDIR"/usr/lib/libfmodexL.so.4

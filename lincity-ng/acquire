@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lincity-ng-${UB_VERSION}.tar.bz2 lincity-ng-${UB_VERSION}/
+	http://download.berlios.de/lincity-ng/

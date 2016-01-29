@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+qmake-qt4 -recursive prefix=/usr
+make

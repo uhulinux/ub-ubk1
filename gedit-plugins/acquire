@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gedit-plugins-${UB_VERSION}.tar.xz gedit-plugins-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gedit-plugins/${UB_VERSION_HEAD2}/

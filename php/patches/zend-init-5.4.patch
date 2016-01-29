@@ -1,0 +1,12 @@
+diff -Naur orig/Zend/zend.h patched/Zend/zend.h
+--- orig/Zend/zend.h	2012-05-08 07:22:56.000000000 +0200
++++ patched/Zend/zend.h	2012-05-10 21:37:18.923875677 +0200
+@@ -728,7 +728,7 @@
+ 	(z)->refcount__gc = 1;	\
+ 	(z)->is_ref__gc = 0;
+ 
+-#define INIT_ZVAL(z) z = zval_used_for_init;
++#define INIT_ZVAL(z) memcpy(&z, &zval_used_for_init, sizeof(zval_used_for_init))
+ 
+ #define ALLOC_INIT_ZVAL(zp)						\
+ 	ALLOC_ZVAL(zp);		\

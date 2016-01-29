@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gtkimageview-${UB_VERSION}.tar.gz gtkimageview-${UB_VERSION}/
+  http://trac.bjourne.webfactional.com/chrome/common/releases/

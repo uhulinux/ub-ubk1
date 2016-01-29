@@ -1,0 +1,3 @@
+lm_sensors.init
+sensord.init
+fancontrol init

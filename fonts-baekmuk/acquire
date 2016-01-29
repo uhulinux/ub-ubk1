@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+baekmuk-ttf-${UB_VERSION}.tar.gz baekmuk-ttf-${UB_VERSION}/
+	http://kldp.net/frs/download.php/1429/

@@ -1,0 +1,12 @@
+diff -Naur kdegames-orig/kajongg-4.10.0/kajongg.desktop kdegames/kajongg-4.10.0/kajongg.desktop
+--- kdegames-orig/kajongg-4.13.0/kajongg.desktop	2013-01-23 23:05:14.000000000 +0100
++++ kdegames/kajongg-4.13.0/kajongg.desktop	2013-02-28 10:24:09.000000000 +0100
+@@ -131,7 +131,7 @@
+ TryExec=kajongg
+ Exec=kajongg
+ Icon=kajongg
+-Categories=Qt;KDE;Game;BoardGame;
++Categories=Qt;KDE;Game;BoardGame;X-UHU-Menu/Games/Board;
+ X-KDE-StartupNotify=true
+ X-DBUS-StartupType=Multi
+ X-DocPath=kajongg/index.html

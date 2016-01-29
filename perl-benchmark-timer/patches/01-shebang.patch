@@ -1,0 +1,9 @@
+diff -urN Benchmark-Timer-0.7101.orig/delta.pl Benchmark-Timer-0.7101/delta.pl
+--- Benchmark-Timer-0.7101.orig/delta.pl	2008-07-15 13:45:45.000000000 +0200
++++ Benchmark-Timer-0.7101/delta.pl	2008-09-11 17:57:37.000000000 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl -w
++#!/usr/bin/perl -w
+ # ========================================================================
+ # delta.pl - calculate Benchmark::Timer object call overhead
+ # Andrew Ho (andrew@zeuscat.com)

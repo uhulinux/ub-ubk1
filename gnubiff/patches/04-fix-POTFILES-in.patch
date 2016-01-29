@@ -1,0 +1,43 @@
+Description: Fix upstream's po/POTFILES.in
+ This patch corrects the po/POTFILES.in file list, necessary for automatic
+ tests (make check)
+Author: Roland Stigge <stigge@antcom.de>
+
+Index: gnubiff-2.2.15/po/POTFILES.in
+===================================================================
+--- gnubiff-2.2.15.orig/po/POTFILES.in	2009-01-02 01:45:38.000000000 +0100
++++ gnubiff-2.2.15/po/POTFILES.in	2012-02-27 22:16:15.000000000 +0100
+@@ -16,7 +16,7 @@
+ src/options.cc
+ src/gnubiff_options.cc
+ src/gui.cc
+-src/ui-applet.cc	
++src/ui-applet.cc
+ src/ui-applet-gtk.cc
+ src/ui-preferences.cc
+ src/ui-authentication.cc
+@@ -26,13 +26,14 @@
+ src/ui-popup.cc
+ src/support.cc
+ src/GNOME_gnubiffApplet.xml
+-src/GNOME_gnubiffApplet.xml.h
+-src/GNOME_gnubiffApplet.server.in
+-src/GNOME_gnubiffApplet.server.in.h
+-ui/applet-gtk.glade
+-ui/preferences.glade
+-ui/properties.glade
+-ui/authentication.glade
+-ui/certificate.glade
+-ui/popup.glade
+-
++ui/applet-gtk.ui
++ui/preferences.ui
++ui/properties.ui
++ui/authentication.ui
++ui/certificate.ui
++ui/popup.ui
++src/eggtrayicon.c
++src/local.cc
++src/mh_basic.cc
++src/mh_sylpheed.cc
++ui/gnubiff.desktop.in

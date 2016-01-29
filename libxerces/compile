@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+export XERCESCROOT="$UB_COMPILEDIR"
+
+cd src/xercesc
+./runConfigure \
+	-plinux \
+	-P/usr
+
+UB_MAKE_PROCS=1 \
+ub_make

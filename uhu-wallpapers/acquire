@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+uhu-wallpapers-${UB_VERSION}.tar.gz uhu-wallpapers-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/uhu-wallpapers/

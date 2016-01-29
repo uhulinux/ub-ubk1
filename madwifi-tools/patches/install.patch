@@ -1,0 +1,14 @@
+diff -Naurd a/tools/Makefile b/tools/Makefile
+--- a/tools/Makefile	2007-02-07 04:18:49.000000000 +0100
++++ b/tools/Makefile	2007-11-26 21:18:14.000000000 +0100
+@@ -34,8 +34,8 @@
+ STRIP ?= $(USER_CROSS_COMPILE)strip
+ CC = $(USER_CROSS_COMPILE)gcc
+ 
+-BINDIR ?= /usr/local/bin
+-MANDIR ?= /usr/local/man
++BINDIR ?= /usr/bin
++MANDIR ?= /usr/share/man
+ 
+ #
+ # Path to the HAL source code.

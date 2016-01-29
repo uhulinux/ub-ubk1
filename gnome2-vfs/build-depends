@@ -1,0 +1,14 @@
+avahi-dev
+cdparanoia-dev
+dbus-glib-dev
+gamin-dev
+gconf2-dev
+glib-dev
+gnome2-mime-data
+gtk-doc
+intltool
+libusb-dev
+libxml2-dev
+openssl-dev
+samba-dev
+util-linux-dev

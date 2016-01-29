@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pyenchant-${UB_VERSION}.tar.gz pyenchant-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pyenchant/

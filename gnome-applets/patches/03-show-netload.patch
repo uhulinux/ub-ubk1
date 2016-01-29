@@ -1,0 +1,12 @@
+diff -Naur gnome-applets-2.4.1.orig/multiload/multiload.schemas.in gnome-applets-2.4.1/multiload/multiload.schemas.in
+--- gnome-applets-2.4.1.orig/multiload/multiload.schemas.in	2003-08-08 16:50:57.000000000 +0200
++++ gnome-applets-2.4.1/multiload/multiload.schemas.in	2003-11-23 01:08:14.000000000 +0100
+@@ -23,7 +23,7 @@
+ 	<key>/schemas/apps/multiload/prefs/view_netload</key>
+ 	<owner>multiload-applet-2</owner>
+ 	<type>bool</type>
+-	<default>false</default>
++	<default>true</default>
+ 	<locale name="C">
+ 		<short>Enable network load graph</short>
+ 	</locale>

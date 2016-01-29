@@ -1,0 +1,9 @@
+alsa-lib-dev
+glib-dev
+gtk2-dev
+intltool
+libwnck2-dev
+lxmenu-data
+menu-cache-dev
+wireless-tools-dev
+xcb-util-dev

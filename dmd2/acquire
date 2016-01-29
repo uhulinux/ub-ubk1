@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dmd.${UB_VERSION}.zip dmd2/
+	http://ftp.digitalmars.com/

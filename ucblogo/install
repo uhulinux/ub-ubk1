@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_install
+
+cp -a ucblogo.png "$UB_INSTALLDIR"/usr/share/pixmaps

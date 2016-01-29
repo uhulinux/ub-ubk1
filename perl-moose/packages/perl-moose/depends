@@ -1,0 +1,13 @@
+perl-class-load
+perl-data-optlist
+perl-devel-globaldestruction
+perl-devel-stacktrace
+perl-dist-checkconflicts
+perl-eval-closure
+perl-list-moreutils
+perl-package-deprecationmanager
+perl-package-stash
+perl-package-stash-xs
+perl-sub-exporter
+perl-sub-name
+perl-try-tiny

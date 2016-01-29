@@ -1,0 +1,12 @@
+diff -Naur orig/setup.py mod/setup.py
+--- orig/setup.py	2008-06-06 08:58:55.000000000 +0200
++++ mod/setup.py	2013-12-02 16:34:01.000000000 +0100
+@@ -47,7 +47,7 @@
+     for l in ('ru', 'ru_RU'):
+         data_files.append(('share/locale/%s/LC_MESSAGES' % l,
+                            ['locale/%s/LC_MESSAGES/pysol.mo' % l]))
+-    data_files.append((data_dir, ['data/pysolfc.glade']))
++###    data_files.append((data_dir, ['data/pysolfc.glade']))
+     data_files.append(('share/applications', ['data/pysol.desktop']))
+ 
+ ##from pprint import pprint; pprint(data_files)

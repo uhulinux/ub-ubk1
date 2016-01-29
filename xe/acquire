@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gxe-${UB_VERSION/+*/}.tar.gz gxe-${UB_VERSION/+*/}/
+	http://www.geocities.jp/sakachin2/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+msilbc-2.0.0.tar.gz msilbc-2.0.0/ilbc-rfc3951.tar.gz ilbc-rfc3951/
+	http://download.savannah.gnu.org/releases/linphone/plugins/sources/

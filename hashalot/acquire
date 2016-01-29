@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+hashalot-${UB_VERSION}.tar.gz hashalot-${UB_VERSION}/
+	http://www.paranoiacs.org/~sluskyb/hacks/hashalot/
+	http://www.paranoiacs.org/~sluskyb/hacks/hashalot/old/

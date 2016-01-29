@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+# install the dll file with gacutil
+cd FlickrNet
+gacutil -i FlickrNet.dll -package flickrnet -root "$UB_INSTALLDIR"/usr/lib

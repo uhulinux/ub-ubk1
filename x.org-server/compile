@@ -1,0 +1,19 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--disable-static \
+	--enable-xvfb \
+	--enable-xnest \
+	--enable-dmx \
+	--enable-kdrive \
+	--enable-xephyr \
+	--enable-record \
+	--with-fontdir="/usr/share/fonts" \
+	--with-default-font-path="/usr/share/fonts/local,/usr/share/fonts/misc,/usr/share/fonts/75dpi,/usr/share/fonts/100dpi,/usr/share/fonts/TTF,/usr/share/fonts/Type1,/usr/share/fonts/ghostscript,/usr/share/fonts/unifont,/usr/share/fonts/freefont,/usr/share/fonts/jmk" \
+	--with-xkb-output="/var/lib/xkb" \
+	--with-builder-addr="maintainer@uhulinux.hu" \
+	--with-os-name="UHU-Linux" \
+	--with-os-vendor="UHU Systems Kft."
+
+cd rgb-*
+ub_compile

@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+cd src
+sed -i 's/struct siginfo/siginfo_t/' racket/gc2/sighand.c
+ub_compile \
+	--disable-pthread

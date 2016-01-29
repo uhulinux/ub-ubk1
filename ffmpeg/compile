@@ -1,0 +1,71 @@
+#!/bin/sh -eux
+
+./configure \
+        --prefix=/usr \
+        --mandir=/usr/share/man \
+	--disable-debug \
+        --disable-static \
+	--enable-avfilter\
+	--enable-avisynth \
+	--enable-avresample \
+	--enable-dxva2 \
+	--enable-frei0r \
+	--enable-fontconfig \
+	--enable-gnutls \
+	--enable-gpl \
+	--enable-gray \
+	--enable-hwaccel=h263_vaapi \
+	--enable-hwaccel=h263_vdpau \
+	--enable-hwaccel=h264_vaapi \
+	--enable-hwaccel=h264_vaapi \
+	--enable-hwaccel=h264_vda \
+	--enable-hwaccel=mpeg1_vdpau \
+	--enable-hwaccel=mpeg2_vaapi \
+	--enable-hwaccel=mpeg2_vdpau \
+	--enable-hwaccel=mpeg4_vaapi \
+	--enable-hwaccel=mpeg4_vdpau \
+	--enable-hwaccel=vc1_vaapi \
+	--enable-hwaccel=vc1_vdpau \
+	--enable-hwaccel=wmv3_vaapi \
+	--enable-hwaccel=wmv3_vdpau \
+	--enable-libass \
+	--enable-libbluray \
+	--enable-libcdio \
+	--enable-libcaca \
+	--enable-libcelt \
+	--enable-libdc1394 \
+	--enable-libfreetype \
+	--enable-libfaac \
+	--enable-libgsm \
+	--enable-libmodplug \
+	--enable-libmp3lame \
+	--enable-libopencore-amrnb \
+	--enable-libopencore-amrwb \
+	--enable-libopencv \
+	--enable-libopenjpeg \
+	--enable-libpulse \
+	--enable-libschroedinger \
+	--enable-libspeex \
+	--enable-libtheora \
+	--enable-libv4l2 \
+	--enable-libvorbis \
+	--enable-libvpx \
+	--enable-libx264 \
+	--enable-libx265 \
+	--enable-libxvid \
+	--enable-libzvbi \
+	--enable-nonfree \
+	--enable-openal \
+	--enable-openssl \
+	--enable-pic \
+	--enable-pthreads \
+	--enable-postproc \
+        --enable-shared \
+	--enable-swresample \
+	--enable-swscale \
+	--enable-vaapi \
+	--enable-vdpau \
+	--enable-version3 \
+	--enable-x11grab
+ub_make
+ub_make tools/qt-faststart

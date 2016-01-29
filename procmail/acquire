@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+procmail-${UB_VERSION}.tar.gz procmail-${UB_VERSION}/
+	http://www.procmail.org/
+

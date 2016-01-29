@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xqed-${UB_VERSION}.tar.gz xqed-${UB_VERSION}/
+	http://xqed.sourceforge.net/

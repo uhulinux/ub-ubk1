@@ -1,0 +1,67 @@
+http://savannah.nongnu.org/bugs/index.php?20074
+
+diff -Naur MHonArc-2.6.16.orig/lib/readmail.pl MHonArc-2.6.16/lib/readmail.pl
+--- MHonArc-2.6.16.orig/lib/readmail.pl	2005-12-20 21:54:50.000000000 +0100
++++ MHonArc-2.6.16/lib/readmail.pl	2007-06-05 12:56:41.000000000 +0200
+@@ -840,7 +840,7 @@
+     my $fields = { };
+     my $label = '';
+     my $header = '';
+-    my($value, $tmp, $pos);
++    my($value, $tmp, $pos, $mimemaycont, $mimecont);
+ 
+     my $encfunc = load_textencoder();
+ 
+@@ -860,6 +860,12 @@
+ 	    $header .= $tmp;
+ 	}
+ 
++	## Check if MIME header is continued from the previous line
++	$mimecont = $mimemaycont && ($tmp =~ m/^\s=\?/);
++
++	## Check if current MIME header may be continued
++	$mimemaycont = ($tmp =~ m/\?=$/);
++
+ 	## Decode text if requested
+ 	if (defined($encfunc)) {
+ 	    $tmp = &MAILdecode_1522_str($tmp,TEXT_ENCODE);
+@@ -869,7 +875,7 @@
+ 
+ 	## Check for continuation of a field
+ 	if ($tmp =~ /^\s/) {
+-	    $fields->{$label}[-1] .= $tmp  if $label;
++	    $fields->{$label}[-1] .= ($mimecont ? $' : $tmp)  if $label;
+ 	    next;
+ 	}
+ 
+@@ -904,7 +910,7 @@
+     my $fields = { };
+     local $/   = "\n";
+ 
+-    my($value, $tmp);
++    my($value, $tmp, $mimemaycont, $mimecont);
+     while (($tmp = <$handle>) !~ /^[\r]?$/) {
+ 	## Save raw text
+ 	$header .= $tmp;
+@@ -912,6 +918,12 @@
+ 	## Delete eol characters
+ 	$tmp =~ s/[\r\n]//g;
+ 
++	## Check if MIME header is continued from the previous line
++	$mimecont = $mimemaycont && ($tmp =~ m/^\s=\?/);
++
++	## Check if current MIME header may be continued
++	$mimemaycont = ($tmp =~ m/\?=$/);
++
+ 	## Decode text if requested
+ 	if (defined($encfunc)) {
+ 	    $tmp = &MAILdecode_1522_str($tmp,TEXT_ENCODE);
+@@ -921,7 +933,7 @@
+ 
+ 	## Check for continuation of a field
+ 	if ($tmp =~ /^\s/) {
+-	    $fields->{$label}[-1] .= $tmp  if $label;
++	    $fields->{$label}[-1] .= ($mimecont ? $' : $tmp)  if $label;
+ 	    next;
+ 	}
+ 

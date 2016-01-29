@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=XmBDFEd
+Comment=BDF font editor
+Comment[hu]=BDF karakterkészlet-szerkesztő
+Icon=xmbdfed
+Exec=xmbdfed
+Terminal=false
+StartupNotify=false
+Categories=Utility;

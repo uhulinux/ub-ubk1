@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+PerlIO-gzip-${UB_VERSION}.tar.gz PerlIO-gzip-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/PerlIO/
+	http://search.cpan.org/CPAN/authors/id/N/NW/NWCLARK/

@@ -1,0 +1,19 @@
+diff -Naurd a/tools/data/unix/monkeystudio.desktop b/tools/data/unix/monkeystudio.desktop
+--- a/tools/data/unix/monkeystudio.desktop	2012-05-09 21:37:22.000000000 +0200
++++ b/tools/data/unix/monkeystudio.desktop	2013-08-03 07:18:25.000000000 +0200
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Version=1.0
++Version=1.1
+ Terminal=false
+ Type=Application
+ Name=Monkey Studio IDE
+@@ -9,7 +9,7 @@
+ Icon=monkeystudio
+ MimeType=text/*;inode/directory;
+ Actions=Open;
+-Categories=Development;Qt;IDE;
++Categories=Development;Qt;IDE;X-UHU-Menu/Development/Programming;
+ 
+ [Desktop Action Open]
+ Exec=monkeystudio %F

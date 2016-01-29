@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+libtoolize
+aclocal
+autoconf
+autoheader
+automake -a -c -f
+ub_compile

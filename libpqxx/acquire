@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libpqxx-${UB_VERSION/~/-}.tar.gz libpqxx-${UB_VERSION/~/-}/
+	http://pqxx.org/download/software/libpqxx/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+numlockx-${UB_VERSION}.tar.gz numlockx-${UB_VERSION}/
+	http://ktown.kde.org/~seli/numlockx/

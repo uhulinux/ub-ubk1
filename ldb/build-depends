@@ -1,0 +1,6 @@
+openldap-dev
+python-dev
+python-tdb
+talloc-dev
+tdb-dev
+tevent-dev

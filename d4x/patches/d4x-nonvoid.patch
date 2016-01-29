@@ -1,0 +1,51 @@
+--- a/main/face/list.cc
++++ a/main/face/list.cc
+@@ -1217,6 +1217,7 @@
+ 		gtk_widget_set_sensitive(D4X_TOOL_DOWN,TRUE);
+ 	else
+ 		gtk_widget_set_sensitive(D4X_TOOL_DOWN,FALSE);
++	return 0;
+ };
+ 
+ static gint d4x_main_vtoolbar_up(GtkWidget *button,GtkAdjustment *adj){
+@@ -1225,6 +1226,7 @@
+ 		adj->value=adj->lower;
+ 	gtk_adjustment_value_changed(adj);
+ 	gtk_adjustment_changed(adj);
++	return 0;
+ };
+ 
+ static gint d4x_main_vtoolbar_down(GtkWidget *button,GtkAdjustment *adj){
+@@ -1233,6 +1235,7 @@
+ 		adj->value=adj->upper-adj->page_size;
+ 	gtk_adjustment_value_changed(adj);
+ 	gtk_adjustment_changed(adj);
++	return 0;
+ };
+ 
+ static gint d4x_main_fsearch_activate(GtkWidget *entry){
+--- a/main/face/lod.cc
++++ a/main/face/lod.cc
+@@ -838,12 +838,14 @@
+ 					  GtkTreeIter *iter,gpointer data){
+ 	d4xQueueView *qv=(d4xQueueView *)data;
+ 	qv->select_by_wildcard(iter);
++	return TRUE;
+ };
+ 
+ static gboolean _real_unselect_by_wildcard_(GtkTreeModel *model,GtkTreePath *path,
+ 					  GtkTreeIter *iter,gpointer data){
+ 	d4xQueueView *qv=(d4xQueueView *)data;
+ 	qv->unselect_by_wildcard(iter);
++	return TRUE;
+ };
+ 
+ void d4xQueueView::real_select(int type,char *w){
+@@ -1604,6 +1606,7 @@
+ 					   GtkTreeIter *iter,gpointer data){
+ 	d4xQueueView *qv=(d4xQueueView *)data;
+ 	qv->invert_sel(iter);
++	return TRUE;
+ };
+ 
+ void d4xQueueView::invert_selection(){

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+allegro-${UB_VERSION}.tar.gz allegro-${UB_VERSION}/
+	http://downloads.sourceforge.net/alleg/

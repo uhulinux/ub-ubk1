@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_compile \
+	COMPILED_BY='UHU Maintainer Team <maintainer@uhulinux.hu>' \
+	--disable-optimiz

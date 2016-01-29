@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+ub_install \
+	iconsdir="$UB_INSTALLDIR"/usr/share/icons/hicolor \
+	docdir="$UB_INSTALLDIR"/usr/share/doc \
+	pixmapsdir="$UB_INSTALLDIR"/usr/share/pixmaps \
+	applicationsdir=/usr/share/applications \
+	localedir=/usr/share/locale \
+	desktopdir=/usr/share/applications \
+	with_highscores=/var/games/trackballs/highScores
+
+mkdir -p "$UB_INSTALLDIR"/var/games/trackballs
+install -o root --group=users --mode=0664 share/highScores "$UB_INSTALLDIR"/var/games/trackballs/

@@ -1,0 +1,1 @@
+_geturl http://www.oracle.com/technetwork/java/javase/downloads/index.html | grep -E 'Java Platform \(JDK\) ([0-9]+u[0-9]+)' | sed -r 's/^.*Java Platform \(JDK\) ([0-9]+)u([0-9]+)$/\1.0.\2/'

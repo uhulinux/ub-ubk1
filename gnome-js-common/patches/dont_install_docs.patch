@@ -1,0 +1,11 @@
+--- gnome-js-common.orig/Makefile.in	2009-07-11 01:33:02.000000000 +0200
++++ gnome-js-common/Makefile.in	2009-09-29 11:59:48.000000000 +0200
+@@ -681,7 +681,7 @@
+ 
+ info-am:
+ 
+-install-data-am: install-gnome_js_commondocDATA install-pkgconfigDATA
++install-data-am: install-pkgconfigDATA
+ 
+ install-dvi: install-dvi-recursive
+ 

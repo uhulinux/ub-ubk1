@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+automake-${UB_VERSION}.tar.xz automake-${UB_VERSION}/
+	ftp://sources.redhat.com/pub/automake/
+	ftp://ftp.gnu.org/gnu/automake/

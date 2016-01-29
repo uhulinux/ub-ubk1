@@ -1,0 +1,9 @@
+diff -Naur blinken-4.6.90-orig//src/blinken.desktop blinken-4.6.90//src/blinken.desktop
+--- blinken-4.6.90-orig//src/blinken.desktop	2011-05-20 22:33:48.000000000 +0200
++++ blinken-4.6.90//src/blinken.desktop	2011-06-26 08:16:50.000000000 +0200
+@@ -152,4 +152,4 @@
+ Comment[zh_CN]=记忆强化游戏
+ Comment[zh_TW]=加強記憶力的遊戲
+ Terminal=false
+-Categories=Qt;KDE;Education;Game;KidsGame;
++Categories=Qt;KDE;Education;Game;KidsGame;X-UHU-Menu/Edutainment/Miscellaneous;

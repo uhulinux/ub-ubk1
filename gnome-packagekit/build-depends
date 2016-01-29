@@ -1,0 +1,11 @@
+dbus-glib-dev
+docbook2man
+gtk-dev
+gtk-doc
+intltool
+itstool
+libcanberra-dev
+libnotify-dev
+packagekit-dev
+polkit-dev
+systemd-dev

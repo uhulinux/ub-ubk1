@@ -1,0 +1,10 @@
+alsa-lib-dev
+audiofile-dev
+cmake
+esound-dev
+libusb-dev
+libxrandr-dev
+libxt-dev
+mesa-dev
+pulseaudio-dev
+wayland-dev

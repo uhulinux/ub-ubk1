@@ -1,0 +1,39 @@
+diff -Naur grub-20040119.orig/configure grub-20040119/configure
+--- grub-20040119.orig/configure	2003-10-19 19:36:29.000000000 +0200
++++ grub-20040119/configure	2004-01-19 17:23:37.000000000 +0100
+@@ -2620,13 +2620,13 @@
+   CFLAGS=$ac_save_CFLAGS
+ elif test $ac_cv_prog_cc_g = yes; then
+   if test "$GCC" = yes; then
+-    CFLAGS="-g -O2"
++    CFLAGS="-g -Os"
+   else
+     CFLAGS="-g"
+   fi
+ else
+   if test "$GCC" = yes; then
+-    CFLAGS="-O2"
++    CFLAGS="-Os"
+   else
+     CFLAGS=
+   fi
+@@ -3231,8 +3231,8 @@
+     if test "x$with_binutils" != x; then
+       CFLAGS="-B$with_binutils/ $CFLAGS"
+     fi
+-    STAGE1_CFLAGS="-O2"
+-    GRUB_CFLAGS="-O2"
++    STAGE1_CFLAGS="-Os"
++    GRUB_CFLAGS="-Os"
+ 
+ echo "$as_me:$LINENO: checking whether optimization for size works" >&5
+ echo $ECHO_N "checking whether optimization for size works... $ECHO_C" >&6
+@@ -3286,7 +3286,7 @@
+     if test "x$size_flag" = xyes; then
+       STAGE2_CFLAGS="-Os"
+     else
+-      STAGE2_CFLAGS="-O2 -fno-strength-reduce -fno-unroll-loops"
++      STAGE2_CFLAGS="-Os -fno-strength-reduce -fno-unroll-loops"
+     fi
+   fi
+ fi

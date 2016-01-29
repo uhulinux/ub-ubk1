@@ -1,0 +1,10 @@
+cairo-dev
+emacs
+libice-dev
+libjpeg-dev
+libpng-dev
+libungif-dev
+lua-dev
+pango-dev
+plotutils
+wxwidgets-dev

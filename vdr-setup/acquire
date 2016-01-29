@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+vdr-setup-${UB_VERSION_HEAD3}-zulu-edition.tgz setup-${UB_VERSION_HEAD3}-zulu-edition/
+  http://www.zulu-entertainment.de/files/vdr-setup/

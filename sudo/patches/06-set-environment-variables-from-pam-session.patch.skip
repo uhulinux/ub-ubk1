@@ -1,0 +1,51 @@
+diff -Naur sudo-1.6.8p12.orig/auth/pam.c sudo-1.6.8p12/auth/pam.c
+--- sudo-1.6.8p12.orig/auth/pam.c	2006-04-26 17:46:26.000000000 +0200
++++ sudo-1.6.8p12/auth/pam.c	2006-04-26 17:49:58.000000000 +0200
+@@ -176,6 +176,7 @@
+     struct passwd *pw;
+ {
+     int error;
++    char **env;
+ 
+     if (pamh == NULL)
+ 	pam_init(pw, NULL, NULL);
+@@ -206,6 +207,16 @@
+ 	    return(AUTH_FAILURE);
+     }
+     /*
++     * Copy PAM environment to real env.
++     */
++    env = pam_getenvlist(pamh);
++    if (env) {
++	while (*env) {
++	    putenv(*env);
++	    env++;
++	}
++    }
++    /*
+      * For example settings from pam_limits are persistent after pam_session_close() and
+      * it's probably more clean call pam_close_session() than omit it.
+      */
+diff -Naur sudo-1.6.8p12.orig/sudo.c sudo-1.6.8p12/sudo.c
+--- sudo-1.6.8p12.orig/sudo.c	2005-06-19 22:35:46.000000000 +0200
++++ sudo-1.6.8p12/sudo.c	2006-04-26 17:46:44.000000000 +0200
+@@ -402,6 +402,9 @@
+ 	(void) setrlimit(RLIMIT_CORE, &corelimit);
+ #endif /* RLIMIT_CORE && !SUDO_DEVEL */
+ 
++	/* Install the real environment. */
++	environ = new_environ;
++
+ 	/* Become specified user or root if executing a command. */
+ 	if (ISSET(sudo_mode, MODE_RUN))
+ 	    set_perms(PERM_FULL_RUNAS);
+@@ -410,9 +413,6 @@
+ 	endpwent();
+ 	endgrent();
+ 
+-	/* Install the real environment. */
+-	environ = new_environ;
+-
+ 	if (ISSET(sudo_mode, MODE_LOGIN_SHELL)) {
+ 	    char *p;
+ 

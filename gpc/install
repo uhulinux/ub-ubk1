@@ -1,0 +1,25 @@
+#!/bin/sh -eux
+
+cd "$UB_OBJECTDIR"
+
+make \
+	prefix="$UB_INSTALLDIR"/usr \
+	infodir="$UB_INSTALLDIR"/usr/share/info \
+	mandir="$UB_INSTALLDIR"/usr/share/man \
+	install
+
+for i in $(dpkg -L cpp gcc gcc-lib libstdc++ libstdc++-dev); do
+	rm "$UB_INSTALLDIR/$i" 2>/dev/null || true
+done
+
+rm "$UB_INSTALLDIR"/usr/doc/gpc/INSTALL
+mkdir -p "$UB_INSTALLDIR"/usr/share/doc/Packages
+mv "$UB_INSTALLDIR"/usr/doc/gpc "$UB_INSTALLDIR"/usr/share/doc/Packages/
+rmdir "$UB_INSTALLDIR"/usr/doc
+
+# avoid error message:
+# install-info: menu item `Pascal Coding Standards' already exists, for file `gpcs-de'
+rm "$UB_INSTALLDIR"/usr/share/info/gpcs-{de,es,hr}.info
+
+# maradék .mo fájlok törlése
+rm -Rf "$UB_INSTALLDIR"/usr/share/locale

@@ -1,0 +1,20 @@
+--- gst-plugins-bad.orig/configure	2009-06-17 22:22:18.000000000 +0200
++++ gst-plugins-bad/configure	2009-07-20 18:51:43.000000000 +0200
+@@ -44966,16 +44966,7 @@
+     HAVE_TIMIDITY="yes",
+ 	{ $as_echo "$as_me:$LINENO: checking for timidity.cfg" >&5
+ $as_echo_n "checking for timidity.cfg... " >&6; }
+-	timidity_cfg=""
+-	if test -r /etc/timidity.cfg; then
+-	  timidity_cfg=/etc/timidity.cfg
+-	elif test -r /etc/timidity/timidity.cfg; then
+-	  timidity_cfg=/etc/timidity/timidity.cfg
+-	elif test -r /usr/share/timidity/timidity.cfg; then
+-	  timidity_cfg=/usr/share/timidity/timidity.cfg
+-	elif test -r /usr/local/share/timidity/timidity.cfg; then
+-	  timidity_cfg=/usr/local/share/timidity/timidity.cfg
+-	fi
++	timidity_cfg="/etc/timidity.cfg"
+ 	if test "x$timidity_cfg" != "x"; then
+ 	  { $as_echo "$as_me:$LINENO: result: $timidity_cfg" >&5
+ $as_echo "$timidity_cfg" >&6; }

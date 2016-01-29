@@ -1,0 +1,15 @@
+#!/bin/sh -eux
+
+for file in filters/{rclchm,rclexecm.py,rclics,rclpython,rclzip,rclaudio,rclinfo,rclkar,rcllatinclass.py,rclwar,rclrar} doc/user/usermanual.html; do
+  sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' "$file"
+done
+sed -i 's_#!/usr/bin/python_#!/usr/bin/python2_' desktop/hotrecoll.py
+sed -i 's_python _python2 _' python/recoll/Makefile recollinstall*
+sed -i '1,1i#include <unistd.h>' utils/rclionice.cpp
+
+export QTDIR="/usr/lib/qt4"
+
+QMAKE=qmake-qt4 ./configure \
+	--prefix=/usr \
+	--mandir=/usr/share/man
+make

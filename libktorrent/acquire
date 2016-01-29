@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libktorrent-${UB_VERSION}.tar.bz2 libktorrent-${UB_VERSION}/
+	http://ktorrent.org/downloads/${UB_VERSION/1/4}/

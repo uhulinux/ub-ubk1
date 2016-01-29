@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+IMAP-Admin-${UB_VERSION}.tar.gz IMAP-Admin-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/IMAP/
+

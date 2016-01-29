@@ -1,0 +1,20 @@
+diff -urN dcraw.orig/install dcraw/install
+--- dcraw.orig/install	2014-01-16 22:26:18.000000000 +0100
++++ dcraw/install	2014-02-25 10:30:28.518659571 +0100
+@@ -1,13 +1,13 @@
+-#!/bin/sh
++#!/bin/sh -x
+ # Simple installer for dcraw executable, manpages, and message catalogs.
+ # Dave Coffin, dcoffin a cybercom o net
+ 
+ # You will need these:
+ # apt-get install libjasper-dev libjpeg-dev liblcms2-dev gettext
+ 
+-prefix=/usr/local
++prefix="$DESTDIR"/usr/
+ 
+-gcc -O4 -march=native -o $prefix/bin/dcraw dcraw.c \
++gcc -O4 -march=i686 -o $prefix/bin/dcraw dcraw.c \
+ 	-Wall -Wno-unused-result -Wno-array-bounds -Wno-maybe-uninitialized \
+ 	-Wno-aggressive-loop-optimizations -Wno-unused-but-set-variable \
+ 	-lm -ljasper -ljpeg -llcms2 -s -DLOCALEDIR=\"$prefix/share/locale/\"

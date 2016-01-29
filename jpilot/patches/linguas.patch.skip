@@ -1,0 +1,12 @@
+diff -Naurdp a/configure b/configure
+--- a/configure	2008-05-25 21:05:58.000000000 +0200
++++ b/configure	2008-09-05 17:17:21.000000000 +0200
+@@ -20538,7 +20538,7 @@ LIBTOOL='$(SHELL) $(top_builddir)/libtoo
+ 
+ 
+ 
+-ALL_LINGUAS="ca cs da de es fr it ja ko nl nb pt_BR ru rw sv tr uk vi zh_CN zh_TW"
++ALL_LINGUAS="ca cs da de es fr hu it ja ko nl nb pt_BR ru rw sv tr uk vi zh_CN zh_TW"
+ 
+ GETTEXT_PACKAGE=jpilot
+ 

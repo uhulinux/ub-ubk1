@@ -1,0 +1,12 @@
+Index: libgrss-0.5.0/src/utils.h
+===================================================================
+--- libgrss-0.5.0.orig/src/utils.h
++++ libgrss-0.5.0/src/utils.h
+@@ -34,6 +34,7 @@
+ #include <errno.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <arpa/inet.h>
+ 
+ #include "libgrss.h"
+ 

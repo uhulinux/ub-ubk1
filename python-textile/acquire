@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+textile-${UB_VERSION}.tar.gz textile-${UB_VERSION}/
+	http://pypi.python.org/packages/source/t/textile/

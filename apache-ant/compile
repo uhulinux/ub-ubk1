@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cp -a /usr/share/java/junit* lib/optional/
+./build.sh

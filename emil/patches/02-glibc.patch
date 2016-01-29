@@ -1,0 +1,127 @@
+diff -Naurdp emil-2.1.0-beta9.orig/func.h emil-2.1.0-beta9/func.h
+--- emil-2.1.0-beta9.orig/func.h	1996-06-04 15:37:04.000000000 +0200
++++ emil-2.1.0-beta9/func.h	2009-10-01 16:42:04.000000000 +0200
+@@ -166,7 +166,7 @@ int     check_encoding(struct message *)
+ int     boundary_check(struct message *);
+ int     is_bound(struct data *, char *);
+ struct message * copy_mstruct(struct message *, int);
+-int     getline(struct data *);
++int     emil_getline(struct data *);
+ int     set_end_by_boundary(struct message *, char *);
+ int     set_end_by_lines(struct message *, int);
+ 
+diff -Naurdp emil-2.1.0-beta9.orig/header.c emil-2.1.0-beta9/header.c
+--- emil-2.1.0-beta9.orig/header.c	1996-06-04 15:36:56.000000000 +0200
++++ emil-2.1.0-beta9/header.c	2009-10-01 16:43:41.000000000 +0200
+@@ -75,7 +75,7 @@ load_header(struct message *m)
+     {
+       buf = indata->contents + indata->offset;
+ 
+-      if ((linelen = getline(indata)) == 0)
++      if ((linelen = emil_getline(indata)) == 0)
+ 	{
+ 	  /* End of data, illegal header */
+ 	  indata->offset = startoffset; /* Rewind */
+diff -Naurdp emil-2.1.0-beta9.orig/message.c emil-2.1.0-beta9/message.c
+--- emil-2.1.0-beta9.orig/message.c	1996-06-04 15:36:59.000000000 +0200
++++ emil-2.1.0-beta9/message.c	2009-10-01 16:47:36.000000000 +0200
+@@ -93,7 +93,7 @@ move_past_boundary(struct message *m, ch
+   /* Find start boundary */
+   while (is_bound(inbuf, boundary) != TRUE)
+     {
+-      if ((linelen = getline(inbuf)) == 0)
++      if ((linelen = emil_getline(inbuf)) == 0)
+ 	{
+ #ifdef DEBUG
+ 	  if (edebug)
+@@ -115,7 +115,7 @@ move_past_boundary(struct message *m, ch
+       inbuf->loffset += 1;
+     }
+   /* Move past boundary */
+-  inbuf->offset += getline(inbuf);
++  inbuf->offset += emil_getline(inbuf);
+   inbuf->loffset += 1;
+ #ifdef DEBUG
+   if (edebug)
+@@ -388,13 +388,13 @@ copy_mstruct(struct message *m, int forc
+ 
+ /*
+  * int
+- * getline(inbuf)
++ * emil_getline(inbuf)
+  *
+  * Move pointer to next line of inbuf. Return line length.
+  */
+ 
+ int
+-getline(struct data *inbuf)
++emil_getline(struct data *inbuf)
+ {
+   unsigned char *tmp;
+   if (inbuf == NULL || inbuf->contents == NULL ||
+@@ -423,7 +423,7 @@ set_end_by_boundary(struct message *m, c
+   loffset = inbuf->loffset;
+   while (is_bound(inbuf, boundary) != TRUE)
+     {
+-      if ((linelen = getline(inbuf)) == 0)
++      if ((linelen = emil_getline(inbuf)) == 0)
+ 	{
+ 	  if (m->parent)
+ 	    inbuf->bodyend = m->parent->sd->bodyend;
+@@ -471,7 +471,7 @@ set_end_by_lines(struct message *m, int 
+   offset = inbuf->offset;
+   loffset = inbuf->loffset;
+   lineend = loffset + lines;
+-  while ((linelen = getline(inbuf)) != 0 && lineend > inbuf->loffset)
++  while ((linelen = emil_getline(inbuf)) != 0 && lineend > inbuf->loffset)
+ 	{
+ 	  inbuf->offset += linelen;
+ 	  inbuf->loffset += 1;
+diff -Naurdp emil-2.1.0-beta9.orig/mimeparse.c emil-2.1.0-beta9/mimeparse.c
+--- emil-2.1.0-beta9.orig/mimeparse.c	1996-06-04 15:36:59.000000000 +0200
++++ emil-2.1.0-beta9/mimeparse.c	2009-10-01 16:48:07.000000000 +0200
+@@ -221,7 +221,7 @@ parse_mime_siblings(struct message *m)
+ #endif
+ 
+   m->sd->offset = m->sd->bodyend;
+-  if (getline(m->sd) == 0)
++  if (emil_getline(m->sd) == 0)
+     return(OK);
+   if (m->sd->offset < m->sd->end)
+     {
+diff -Naurdp emil-2.1.0-beta9.orig/out.c emil-2.1.0-beta9/out.c
+--- emil-2.1.0-beta9.orig/out.c	1996-06-04 15:37:00.000000000 +0200
++++ emil-2.1.0-beta9/out.c	2009-10-01 17:06:27.000000000 +0200
+@@ -143,7 +143,7 @@ void	print_body(struct data *d, struct m
+ #endif
+     }
+   d->offset = d->bodystart;
+-  while ((len = getline(d)) != 0)
++  while ((len = emil_getline(d)) != 0)
+     {
+       line->end = 0;
+       append_data(line, (d->contents + d->offset), len, MED_BUF);
+diff -Naurdp emil-2.1.0-beta9.orig/rfc822parse.c emil-2.1.0-beta9/rfc822parse.c
+--- emil-2.1.0-beta9.orig/rfc822parse.c	1996-06-04 15:37:01.000000000 +0200
++++ emil-2.1.0-beta9/rfc822parse.c	2009-10-01 17:06:56.000000000 +0200
+@@ -86,7 +86,7 @@ parse_rfc822_message(struct message *m)
+ 
+ 
+   /* Loop through rest of the message */
+-  while ((linelen = getline(inbuf)) != 0)
++  while ((linelen = emil_getline(inbuf)) != 0)
+     {
+       if (inbuf->bodyend <= inbuf->offset &&
+ 	  inbuf->lineend <= inbuf->loffset)
+diff -Naurdp emil-2.1.0-beta9.orig/uuencode.c emil-2.1.0-beta9/uuencode.c
+--- emil-2.1.0-beta9.orig/uuencode.c	1996-06-04 15:37:02.000000000 +0200
++++ emil-2.1.0-beta9/uuencode.c	2009-10-01 17:07:23.000000000 +0200
+@@ -290,7 +290,7 @@ decode_uuencode(struct message *m)
+ 	  /* Check for end */
+ 	  if (strncmp(inb, "end", 3) == 0)
+ 	    {
+-	      inbuf->offset += getline(inbuf);
++	      inbuf->offset += emil_getline(inbuf);
+ 	      inbuf->loffset += 1;
+ 	      inbuf->bodyend = inbuf->offset;
+ 	      if (process)

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libglademm-${UB_VERSION}.tar.gz libglademm-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libglademm/${UB_VERSION_HEAD2}/

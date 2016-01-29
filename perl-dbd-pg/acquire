@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+DBD-Pg-${UB_VERSION}.tar.gz DBD-Pg-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/DBD/
+	http://search.cpan.org/CPAN/authors/id/T/TU/TURNSTEP/

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=SAP Client
+Name[hu]=SAP kliens
+Comment=JAVA based client for SAP system
+Comment[hu]=JAVA alapú kliens az SAP rendszerhez
+Exec=guilogon
+Icon=guilogon
+Type=Application
+Terminal=false
+StartupNotify=false
+Categories=Office;Database;X-UHU-Menu/Tools/Databases;

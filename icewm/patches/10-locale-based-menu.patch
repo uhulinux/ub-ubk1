@@ -1,0 +1,99 @@
+diff -Naurd orig/src/wmprog.cc mod/src/wmprog.cc
+--- orig/src/wmprog.cc	2009-01-25 15:39:51.000000000 +0100
++++ mod/src/wmprog.cc	2009-12-02 22:22:17.000000000 +0100
+@@ -219,9 +219,7 @@
+         return p;
+     }
+ 
+-    char *path = *filename != '/'
+-               ? YApplication::findConfigFile(filename)
+-               : filename;
++    char *path = YApplication::findConfigFile(filename);
+ 
+     if (path) {
+         loadMenus(path, container);
+diff -Naurd orig/src/yapp.cc mod/src/yapp.cc
+--- orig/src/yapp.cc	2009-01-25 15:39:51.000000000 +0100
++++ mod/src/yapp.cc	2009-12-02 22:46:32.000000000 +0100
+@@ -63,9 +63,69 @@
+ 
+ char *YApplication::findConfigFile(const char *name, int mode) {
+     char *p;
+-
++    int len;
++    len = strlen(name);
++    if (len >= 8 && !strcmp(&name[len-7], "[.LANG]")) {
++        /* if filename is "foobar[.LANG]" then... */
++        char *base;
++        char *locale;
++        len -= 7;
++        base = newstr(name, len+20);
++        if ((locale = setlocale(LC_MESSAGES, NULL)) != NULL) {
++            int i;
++            /* ... try "foobar.<language_TERRITORY>" first ... */
++            i = strcspn(locale, ".@");
++            if (i <= 16) {
++                base[len] = '.';
++                memcpy(&base[len+1], locale, i);
++                base[len+1+i] = '\0';
++                p = findConfigFile2(base, mode);
++                if (p) {
++                    delete[] base;
++                    return p;
++                }
++            }
++            /* ... then try "foobar.<language>" ... */
++            i = strcspn(locale, "_.@");
++            if (i <= 16) {
++                base[len] = '.';
++                memcpy(&base[len+1], locale, i);
++                base[len+1+i] = '\0';
++                p = findConfigFile2(base, mode);
++                if (p) {
++                    delete[] base;
++                    return p;
++                }
++            }
++        }
++        /* ... and finally try "foobar" */
++        base[len] = '\0';
++        p = findConfigFile2(base, mode);
++        if (p) {
++            delete[] base;
++            return p;
++        }
++    } else {
++        p = findConfigFile2(name, mode);
++        if (p) return p;
++    }
++    /* not found... the original behavior is to return the path if it is
++       absolute, otherwise return NULL. */
+     if (name[0] == '/')
+         return newstr(name);
++    return 0;
++}
++
++/* this is nearly the original function, except that it does not immediately
++   return the original string if it's absolute, rather it checks for its
++   presence just as for relative paths */
++char *YApplication::findConfigFile2(const char *name, int mode) {
++    char *p;
++
++    if (name[0] == '/') {
++        if (access(name, mode) == 0) return newstr(name);
++        return 0;
++    }
+ 
+     p = strJoin(getPrivConfDir(), "/", name, NULL);
+     if (access(p, mode) == 0) return p;
+diff -Naurd orig/src/yapp.h mod/src/yapp.h
+--- orig/src/yapp.h	2009-01-25 15:39:51.000000000 +0100
++++ mod/src/yapp.h	2009-12-02 22:28:26.000000000 +0100
+@@ -35,6 +35,7 @@
+ 
+     static char *findConfigFile(const char *name);
+     static char *findConfigFile(const char *name, int mode);
++    static char *findConfigFile2(const char *name, int mode);
+     static bool loadConfig(struct cfoption *options, const char *name);
+ 
+     virtual int readFdCheckSM() { return -1; }

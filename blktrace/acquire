@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+btrace-${UB_VERSION}.tar.bz2 btrace-${UB_VERSION}/
+	http://lug.oregonstate.edu/cs411/

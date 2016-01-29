@@ -1,0 +1,6 @@
+libxslt
+networkmanager-dev
+python-dev
+systemd-dev
+telepathy-glib-dev
+util-linux-dev

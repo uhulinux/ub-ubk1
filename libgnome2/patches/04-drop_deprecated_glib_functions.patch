@@ -1,0 +1,24 @@
+--- a/libgnome/gnome-program.c.orig	2013-03-06 19:53:20.000000000 +0100
++++ a/libgnome/gnome-program.c	2013-03-06 19:57:55.000000000 +0100
+@@ -1878,12 +1878,6 @@
+     GnomeProgram *program;
+     va_list args;
+ 
+-    /* g_thread_init() has to be the first GLib function called ever */
+-    if (!g_threads_got_initialized)
+-        g_thread_init (NULL);
+-
+-    g_type_init ();
+-
+     va_start(args, first_property_name);
+     program = gnome_program_initv (GNOME_TYPE_PROGRAM,
+ 				   app_id, app_version, module_info,
+@@ -1913,8 +1907,6 @@
+     g_print ("Starting gnome_program_init:\n\n");
+ #endif
+ 
+-    g_type_init ();
+-
+     klass = g_type_class_ref (type);
+ 
+     if (!program_initialized) {

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+agedu-r${UB_VERSION}.tar.gz agedu-r${UB_VERSION}/
+	http://www.chiark.greenend.org.uk/~sgtatham/agedu/

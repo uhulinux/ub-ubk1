@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+digikam-${UB_VERSION/~/-}.tar.bz2 digikam-${UB_VERSION/~/-}/
+	http://download.kde.org/stable/digikam/
+
+#kipi-plugins-${UB_VERSION/~/-}.tar.gz kipi-plugins-v${UB_VERSION/~/-}/
+#	git://anongit.kde.org/kipi-plugins.git@tag:v${UB_VERSION/~/-}

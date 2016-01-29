@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+microcode_ctl-${UB_VERSION}.tar.gz microcode_ctl-${UB_VERSION}/
+	http://urbanmyth.org/microcode/

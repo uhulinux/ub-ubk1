@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+ub_install
+
+#install other files
+cp -a Packaging/fontforge.desktop "$UB_INSTALLDIR"/usr/share/applications/
+cp -a Packaging/icons-old/fontforge.png "$UB_INSTALLDIR"/usr/share/pixmaps/
+mkdir -p "$UB_INSTALLDIR"/usr/share/mime/packages
+cp -a Packaging/fontforge.xml "$UB_INSTALLDIR"/usr/share/mime/packages/

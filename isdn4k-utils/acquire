@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+isdn4k-utils.v${UB_VERSION}.tar.bz2 isdn4k-utils/
+	ftp://ftp.isdn4linux.de/pub/isdn4linux/utils/
+

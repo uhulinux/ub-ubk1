@@ -1,0 +1,12 @@
+diff -Naur coreutils-5.2.1.orig/src/stty.c coreutils-5.2.1/src/stty.c
+--- coreutils-5.2.1.orig/src/stty.c	2004-06-16 23:03:34.000000000 +0200
++++ coreutils-5.2.1/src/stty.c	2004-06-16 23:03:57.000000000 +0200
+@@ -735,7 +735,7 @@
+   int recoverable_output;
+ #ifdef TIOCGWINSZ
+   int size_was_set = 0;
+-  int cols, rows;
++  int cols = -1, rows = -1;
+ #endif
+   int k;
+   int noargs = 1;

@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+sed -i 's/\r$//' sources/pyside-tools/pyside-uic # CRLF sucks
+
+python3 setup.py install --root="$UB_INSTALLDIR" --qmake=/usr/lib/qt4/bin/qmake
+
+mv "${UB_INSTALLDIR}"/usr/bin/pyside-uic "${UB_INSTALLDIR}"/usr/bin/pyside-uic3
+mv "${UB_INSTALLDIR}"/usr/bin/pyside_postinstall.py "${UB_INSTALLDIR}"/usr/bin/pyside_postinstall3.py

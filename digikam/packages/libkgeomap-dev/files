@@ -1,0 +1,3 @@
+	/usr/include/libkgeomap
+@	/usr/lib/libkgeomap*.so
+	/usr/lib/pkgconfig/libkgeomap.pc

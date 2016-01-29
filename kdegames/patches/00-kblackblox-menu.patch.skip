@@ -1,0 +1,9 @@
+diff -Naur kdegames-orig/kblackbox-4.10.0/kblackbox.desktop kdegames/kblackbox-4.10.0/kblackbox.desktop
+--- kdegames-orig/kblackbox-4.13.0/kblackbox.desktop	2013-01-23 23:05:27.000000000 +0100
++++ kdegames/kblackbox-4.13.0/kblackbox.desktop	2013-02-28 11:09:18.000000000 +0100
+@@ -136,4 +136,4 @@
+ Terminal=false
+ X-KDE-StartupNotify=true
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Game;BoardGame;
++Categories=Qt;KDE;Game;BoardGame;X-UHU-Menu/Games/Board;

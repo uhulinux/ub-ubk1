@@ -1,0 +1,9 @@
+diff -Naur bluedevil-1.2-orig//src/monolithic/bluedevil-monolithic.desktop bluedevil-1.2//src/monolithic/bluedevil-monolithic.desktop
+--- bluedevil-1.2-orig//src/monolithic/bluedevil-monolithic.desktop	2011-09-10 16:38:29.000000000 +0200
++++ bluedevil-1.2//src/monolithic/bluedevil-monolithic.desktop	2011-09-12 08:35:58.000000000 +0200
+@@ -113,4 +113,4 @@
+ Comment[zh_TW]=KDE 藍芽支援
+ Icon=preferences-system-bluetooth
+ Terminal=false
+-Categories=Qt;KDE;X-Bluetooth;Network;
++Categories=Qt;KDE;X-Bluetooth;Network;X-UHU-Menu/Internet/Tools;

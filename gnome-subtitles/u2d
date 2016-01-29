@@ -1,0 +1,1 @@
+sflist gnome-subtitles gnome-subtitles | sort -V | tail -n 1

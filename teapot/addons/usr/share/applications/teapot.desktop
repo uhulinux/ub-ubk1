@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=teapot
+Name[hu]=teapot
+Comment=Spreadsheet
+Comment[hu]=Táblázatkezelő
+Icon=teapot
+Exec=teapot-sc
+Categories=Office;Spreadsheet;
+Terminal=true

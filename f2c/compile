@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+cd src
+make clean
+ub_make
+rm -f xsum
+make xsum
+
+cd ../libf2c
+ub_make

@@ -1,0 +1,11 @@
+--- lives/Makefile.in.orig	2012-06-06 20:35:12.000000000 +0200
++++ lives/Makefile.in	2012-06-06 20:35:39.000000000 +0200
+@@ -355,7 +355,7 @@
+ builddir = @builddir@
+ datadir = @datadir@
+ datarootdir = @datarootdir@
+-docdir = "$(prefix)/share/doc/$(PACKAGE)-$(VERSION)"
++docdir = "$(prefix)/share/doc/Packages/$(PACKAGE)"
+ dvidir = @dvidir@
+ exec_prefix = @exec_prefix@
+ host = @host@

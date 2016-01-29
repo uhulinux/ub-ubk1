@@ -1,0 +1,11 @@
+diff -Naur orig/src/plugins/avcodec/avcodec.c patched/src/plugins/avcodec/avcodec.c
+--- orig/src/plugins/avcodec/avcodec.c	2011-10-20 21:26:08.000000000 +0200
++++ patched/src/plugins/avcodec/avcodec.c	2013-10-12 21:07:53.520768159 +0200
+@@ -27,6 +27,7 @@
+ #include "avcodec_compat.h"
+ 
+ #define AVCODEC_BUFFER_SIZE 16384
++#define AVCODEC_MAX_AUDIO_FRAME_SIZE 192000
+ 
+ typedef struct {
+ 	AVCodecContext *codecctx;

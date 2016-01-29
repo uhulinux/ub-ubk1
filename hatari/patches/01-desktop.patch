@@ -1,0 +1,9 @@
+diff -Naur orig/python-ui/hatariui.desktop mod/python-ui/hatariui.desktop
+--- orig/python-ui/hatariui.desktop	2010-06-12 13:04:40.000000000 +0200
++++ mod/python-ui/hatariui.desktop	2010-10-01 23:12:53.000000000 +0200
+@@ -5,3 +5,5 @@
+ Name=Hatari UI
+ Exec=hatariui
+ Icon=hatari-icon
++Comment[hu]=nagyszerű atari emulátor
++Categories=Game;Emulator;

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+open-vm-tools-${UB_VERSION/+/-}.tar.gz open-vm-tools-${UB_VERSION/+/-}/
+	http://download.sourceforge.net/open-vm-tools/open-vm-tools/stable-${UB_VERSION_HEAD2}.x/

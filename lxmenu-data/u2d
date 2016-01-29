@@ -1,0 +1,1 @@
+sflist lxde lxmenu-data%20%28desktop%20menu%29 | splitver '^lxmenu-data%20([0-9.]+)$' | sort -V | tail -n 1

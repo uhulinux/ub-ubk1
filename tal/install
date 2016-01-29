@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cp -a tal "$UB_INSTALLDIR"/usr/bin/
+cp -a tal.1 "$UB_INSTALLDIR"/usr/share/man/man1/

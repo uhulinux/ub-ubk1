@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+mathomatic-${UB_VERSION}.tar.bz2 mathomatic-${UB_VERSION}/
+	http://mathomatic.org/
+	http://mathomatic.orgserve.de/

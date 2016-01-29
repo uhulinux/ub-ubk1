@@ -1,0 +1,83 @@
+#!/bin/sh -eux
+
+export LD_LIBRARY_PATH="$(pwd)"/lib
+
+yes yes | ./configure \
+	-platform linux-g++-32 \
+	-prefix /usr/lib/qt5 \
+	\
+	-release            \
+	-opensource         \
+	-shared             \
+	-largefile          \
+	-c++11              \
+	-no-qml-debug       \
+	\
+	-accessibility      \
+	\
+	-plugin-sql-mysql -I/usr/include/mysql \
+	-plugin-sql-psql -I/usr/include/postgresql -I/usr/include/postgresql/server \
+	-plugin-sql-odbc    \
+	-plugin-sql-sqlite  \
+	-system-sqlite      \
+	\
+	-audio-backend      \
+	\
+	-javascript-jit     \
+	\
+	-system-zlib        \
+	-system-libpng      \
+	-system-libjpeg     \
+	-system-xcb         \
+	\
+	-openssl-linked     \
+	\
+	-rpath              \
+	-verbose            \
+	-silent             \
+	-optimized-qmake    \
+	\
+	-no-nis             \
+	-cups               \
+	-iconv              \
+	-no-pch             \
+	-dbus-linked        \
+	\
+	-reduce-relocations \
+	-no-separate-debug-info \
+	\
+	-glib               \
+	-gtkstyle           \
+	-opengl             \
+	-no-linuxfb         \
+	-no-openvg          \
+	-no-eglfs           \
+	-no-kms             \
+	\
+	-sm                 \
+	-xshape             \
+	-xsync              \
+	-xinerama           \
+	-xcursor            \
+	-xfixes             \
+	-xrandr             \
+	-xrender            \
+	-mitshm             \
+	-fontconfig         \
+	-xinput             \
+	-xkb                \
+	\
+	-lcrypto            \
+	-lcrypt             \
+	-lssl               \
+
+ub_make
+
+#some options we may want to use in the future
+#	-phonon-backend     \
+#	-phonon             \
+#	-multimedia         \
+#	-audio-backend      \
+#	-nomake demos       \
+#	-nomake examples    \
+#	-nomake docs

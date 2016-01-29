@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Image-Info-${UB_VERSION}.tar.gz Image-Info-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/S/SR/SREZIC/

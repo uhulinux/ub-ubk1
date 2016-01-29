@@ -1,0 +1,12 @@
+diff -Naur ppp-2.4.5-orig/pppd/auth.c ppp-2.4.5/pppd/auth.c
+--- ppp-2.4.5-orig/pppd/auth.c	2009-11-16 23:26:07.000000000 +0100
++++ ppp-2.4.5/pppd/auth.c	2012-03-30 17:45:20.000000000 +0200
+@@ -281,7 +281,7 @@
+     { "auth", o_bool, &auth_required,
+       "Require authentication from peer", OPT_PRIO | 1 },
+     { "noauth", o_bool, &auth_required,
+-      "Don't require peer to authenticate", OPT_PRIOSUB | OPT_PRIV,
++      "Don't require peer to authenticate", OPT_PRIOSUB,
+       &allow_any_ip },
+     { "require-pap", o_bool, &lcp_wantoptions[0].neg_upap,
+       "Require PAP authentication from peer",

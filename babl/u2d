@@ -1,0 +1,2 @@
+alap=$(urllist ftp://ftp.gimp.org/pub/babl/| grep -E '^([0-9.]+)$' | sort -V | tail -n 1)
+urllist ftp://ftp.gimp.org/pub/babl/"$alap"/ | parsever | sort -V | tail -n 1

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+librcps-${UB_VERSION}.tar.gz librcps-${UB_VERSION}/
+	http://www.librcps.org/

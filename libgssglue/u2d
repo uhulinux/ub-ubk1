@@ -1,0 +1,1 @@
+urllist http://www.citi.umich.edu/projects/nfsv4/linux/libgssglue/ | splitver '^libgssglue-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

@@ -1,0 +1,6 @@
+dbus-glib-dev
+gtk2-dev
+libsexy-dev
+openssl-dev
+python-dev
+tcl-dev

@@ -1,0 +1,2 @@
+ver="$(urllist http://cyberelk.net/tim/data/system-config-printer/ | grep -E '^[0-9.]+$' | sort -V | tail -n 1)"
+urllist "http://cyberelk.net/tim/data/system-config-printer/$ver" | splitver | sort -V | tail -n 1

@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+ub_make \
+	NE_GLOBAL_DIR=/usr/lib/ne

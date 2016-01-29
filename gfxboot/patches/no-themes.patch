@@ -1,0 +1,11 @@
+diff -Naur gfxboot-2.4.orig/Makefile gfxboot-2.4/Makefile
+--- gfxboot-2.4.orig/Makefile	2004-05-04 16:59:59.000000000 +0200
++++ gfxboot-2.4/Makefile	2004-05-04 17:00:42.000000000 +0200
+@@ -36,7 +36,6 @@
+ 	install -d -m 755 $(DESTDIR)/usr/bin $(DESTDIR)/usr/share/gfxboot
+ 	install -m 755 mkbootmsg getx11font help2txt addblack keytab $(DESTDIR)/usr/bin
+ #	install -m 644 $(LIBFILES) $(DESTDIR)/usr/share/gfxboot
+-	cp -a themes $(DESTDIR)/usr/share/gfxboot
+ 
+ clean: themes
+ 	@rm -f mkbootmsg bincode getx11font addblack bincode.h bin2c *.lst vocabulary.inc vocabulary.h *~

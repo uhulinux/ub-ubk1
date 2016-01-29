@@ -1,0 +1,99 @@
+//initialisation
+if(Z!=(int)Z)
+  Z=0;
+
+S=0;
+P=7;
+X=29;
+Y=7;
+L=60000;
+clear;
+
+//setting start position of the star array
+for(C=0; C<30; C=C+1)
+  E[C]=0;
+
+
+
+while(1)
+{
+  S=S+1;
+  setcursor(0,E[0]);
+  print(" ");
+  for(C=0; C<29; C=C+1)
+    E[C]=E[C+1];
+  E[29]=(int)rnd(15);
+
+  setcursor(35,1);
+  print(S);
+
+  //print stars
+  for(C=0; C<30; C=C+1)
+  {
+     setcursor(C+1,E[C]);
+     print(" ");
+     setcursor(C,E[C]);
+     print("*");
+  }
+//manual control
+  K=keystate;
+  K=(int)K;
+  setcursor(0,P);
+  print(" ");
+  if(K == 119 && P>0)
+    P=P-1;
+  else if(K==115 && P<14)
+    P=P+1;
+//manual control
+
+//automatic control
+//  K=(int)keystate;
+
+//  if(P==E[0] && K!=113)
+//  {
+//    K=(int)rnd(2);
+//    if(P>1 && K==0 || P>13)
+//      P=P-1;
+//    else P=P+1;
+//  }
+//automatic control
+
+  setcursor(0,P);
+  print(">");
+  if(P == E[0])
+    break;
+
+  //the game becomes faster, when you play
+  if(L>5000)
+    L=L-50;
+
+  sleep(L);
+}
+sleep(1000000);
+
+// printing
+clear;
+if(S>Z)
+{
+  Z=S;
+  print("********** End  **********\n\n");
+  print("*** New Highscore: ********");
+  setcursor(18,2);
+  print(Z);
+  print("\n\n**************************");
+  print("\n\n");
+
+}
+else
+{
+  print("******** You loose ********\n\n");
+  print("****** Points: ***********\n\n");
+  setcursor(15,2);
+  print(S);
+  print("\n\n****** Highscore: ***********");
+  setcursor(18,4);
+  print(Z);
+  print("\n\n");
+
+}
+

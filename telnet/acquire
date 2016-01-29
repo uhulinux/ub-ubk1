@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+netkit-telnet-${UB_VERSION/~/-}.tar.gz netkit-telnet-${UB_VERSION/~/-}/
+	ftp://ftp.uk.linux.org/pub/linux/Networking/netkit-devel/
+	ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/
+

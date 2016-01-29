@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PlatinGUI-Linux-${UB_VERSION}.jar
+	ftp://ftp.sap.com/pub/sapgui/java/${UB_VERSION}/

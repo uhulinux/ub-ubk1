@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=BitTorrent
+Comment=Distributed Downloader
+Comment[hu]=Elosztott fájlletöltő
+Icon=bittorrent
+Exec=bittorrent
+Categories=Network;FileTransfer;

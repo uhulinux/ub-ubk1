@@ -1,0 +1,41 @@
+#!/bin/sh -eux
+
+make \
+	INSTALL_ROOT="$UB_INSTALLDIR" \
+	install
+
+install -m 644 php.ini-production "$UB_INSTALLDIR"/etc/php.ini
+install -m 644 php.ini-development "$UB_INSTALLDIR"/etc/
+
+mkdir -p "$UB_INSTALLDIR"/etc/php.d
+for mod in bz2 curl dba gd gmp imap ldap mcrypt mssql mysql mysqli odbc pdo_dblib pdo_mysql pdo_odbc pdo_pgsql pdo_sqlite pgsql pspell snmp tidy xmlrpc opcache; do
+	if [ ! -f "$UB_INSTALLDIR"/usr/lib/php/"$mod".so ]; then
+		echo "/usr/lib/php/$mod.so is missing!"
+		exit 1
+	fi
+	{
+		echo "; Enable $mod extension module"
+		echo "extension=$mod.so"
+	} > "$UB_INSTALLDIR"/etc/php.d/"$mod".ini
+done
+
+for mod in "$UB_INSTALLDIR"/usr/lib/php/*.so; do
+	mod="${mod##*/}"
+	mod="${mod%.so}"
+	if [ ! -f "$UB_INSTALLDIR"/etc/php.d/"$mod".ini ]; then
+		echo "No ini file for $mod!"
+		exit 1
+	fi
+done
+
+mv "$UB_INSTALLDIR"/usr/lib/apache/{lib,mod_}php$UB_VERSION_MAJOR.so
+
+ln -s php "$UB_INSTALLDIR"/usr/bin/php$UB_VERSION_MAJOR
+
+rm -rf "$UB_INSTALLDIR"/.channels
+rm -rf "$UB_INSTALLDIR"/.registry
+rm "$UB_INSTALLDIR"/.filemap
+rm "$UB_INSTALLDIR"/.lock
+rm "$UB_INSTALLDIR"/.depdblock
+rm "$UB_INSTALLDIR"/.depdb
+

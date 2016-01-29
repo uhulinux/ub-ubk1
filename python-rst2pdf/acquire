@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+rst2pdf-${UB_VERSION}.tar.gz rst2pdf-${UB_VERSION}/
+	http://rst2pdf.googlecode.com/files/

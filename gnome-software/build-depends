@@ -1,0 +1,11 @@
+docbook-dtds
+docbook-xsl
+gnome-desktop-dev
+gtk-dev
+intltool
+itstool
+libarchive-dev
+libnotify-dev
+libsoup-dev
+libxslt
+packagekit-dev

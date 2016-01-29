@@ -1,0 +1,12 @@
+diff -urN grub-2.00.orig/configure grub-2.00/configure
+--- grub-2.00.orig/configure	2012-06-26 13:59:16.000000000 +0200
++++ grub-2.00/configure	2014-02-10 13:24:41.462488997 +0100
+@@ -21766,7 +21766,7 @@
+ 
+ if test x"$starfield_excuse" = x; then
+    for ext in pcf pcf.gz bdf bdf.gz ttf ttf.gz; do
+-     for dir in . /usr/src /usr/share/fonts/X11/misc /usr/share/fonts/truetype/ttf-dejavu /usr/share/fonts/dejavu; do
++     for dir in . /usr/src /usr/share/fonts/X11/misc /usr/share/fonts/truetype/ttf-dejavu /usr/share/fonts/dejavu /usr/share/fonts/TTF; do
+         if test -f "$dir/DejaVuSans.$ext"; then
+           DJVU_FONT_SOURCE="$dir/DejaVuSans.$ext"
+           break 2

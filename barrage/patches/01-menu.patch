@@ -1,0 +1,14 @@
+diff -Naurdp a/barrage.desktop b/barrage.desktop
+--- a/barrage.desktop	2011-07-28 17:00:11.000000000 +0200
++++ b/barrage.desktop	2012-05-09 20:43:43.622993139 +0200
+@@ -1,7 +1,9 @@
+ [Desktop Entry]
++Encoding=UTF-8
+ Name=Barrage
+ Comment=A rather destructive action game.
++Comment[hu]=Semmisíts meg minél több célpontot 3 perc alatt
+ Exec=barrage
+ Icon=barrage.png
+ Type=Application
+-Categories=Game;
++Categories=Game;X-UHU-Menu/Games/Action;

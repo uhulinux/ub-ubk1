@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+ub_install
+
+ln -s ../usr/sbin/dhclient "$UB_INSTALLDIR"/sbin/
+
+# create empty leases file
+mkdir -p "$UB_INSTALLDIR"/var/db/
+touch "$UB_INSTALLDIR"/var/db/dhcpd.leases

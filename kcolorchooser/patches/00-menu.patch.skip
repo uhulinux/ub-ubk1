@@ -1,0 +1,9 @@
+diff -Naur kcolorchooser-4.6.90-orig//kcolorchooser.desktop kcolorchooser-4.6.90//kcolorchooser.desktop
+--- kcolorchooser-4.6.90-orig//kcolorchooser.desktop	2011-05-20 22:36:16.000000000 +0200
++++ kcolorchooser-4.6.90//kcolorchooser.desktop	2011-06-27 08:38:35.000000000 +0200
+@@ -152,4 +152,4 @@
+ Name[zh_TW]=KColorChooser 顏色選擇器
+ 
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Graphics;X-KDE-More;
++Categories=Qt;KDE;Graphics;X-KDE-More;X-UHU-Menu/Graphics/More;

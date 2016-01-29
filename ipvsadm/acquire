@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ipvsadm-${UB_VERSION}.tar.gz ipvsadm-${UB_VERSION}/
+	http://www.linuxvirtualserver.org/software/kernel-2.6/

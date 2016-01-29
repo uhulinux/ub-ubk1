@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+attica-${UB_VERSION/~/-}.tar.bz2 attica-${UB_VERSION#*~}/
+	ftp://ftp.kde.org/pub/kde/stable/attica/

@@ -1,0 +1,41 @@
+diff -Naurdp a/lib/dpkg/pkg-show.c b/lib/dpkg/pkg-show.c
+--- a/lib/dpkg/pkg-show.c	2012-10-20 06:34:16.000000000 +0200
++++ b/lib/dpkg/pkg-show.c	2013-03-06 16:12:01.443043748 +0100
+@@ -134,17 +134,31 @@ const char *
+ pkg_summary(const struct pkginfo *pkg, const struct pkgbin *pkgbin, int *len_ret)
+ {
+ 	const char *pdesc;
+-	size_t len;
++	int l = 0, lc = 0;
++	int maxl = 0;
++	unsigned char c;
++
+ 
+ 	pdesc = pkgbin->description;
+ 	if (!pdesc)
+ 		pdesc = _("(no description available)");
+ 
+-	len = strcspn(pdesc, "\n");
+-	if (len == 0)
+-		len = strlen(pdesc);
+-
+-	*len_ret = len;
++	/* Count UTF-8 length. We'd actually need UTF-8 width which might be
++	different for non-European languages. */
++	maxl = strlen(pdesc);
++	while (1) {
++		c = pdesc[l];
++		if (c == 0 || c == '\n') break;
++		if (c >= 128 && c < 192) {
++			l++;
++			continue;
++		}
++		if (lc == maxl) break;
++		l++;
++		lc++;
++	}
++	
++	*len_ret = l;
+ 
+ 	return pdesc;
+ }

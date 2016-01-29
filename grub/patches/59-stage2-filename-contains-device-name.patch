@@ -1,0 +1,46 @@
+diff -Naur grub-0.97.orig/util/grub-install.in grub-0.97/util/grub-install.in
+--- grub-0.97.orig/util/grub-install.in	2007-08-14 19:23:21.000000000 +0200
++++ grub-0.97/util/grub-install.in	2007-08-14 19:25:34.000000000 +0200
+@@ -272,6 +272,7 @@
+     usage
+     exit 1 ;;
+ esac
++stage2_install="stage2.${install_drive//[()]/}"
+ 
+ # Get the root drive.
+ root_device=`getdev ${rootdir}`
+@@ -304,13 +305,11 @@
+ fi
+ 
+ # Copy the GRUB images to the GRUB directory.
+-for file in ${grubdir}/stage1 ${grubdir}/$stage2; do
++for file in ${grubdir}/stage1 ${grubdir}/$stage2_install; do
+     rm -f $file || exit 1
+ done
+-for file in \
+-    ${pkglibdir}/stage1 ${pkglibdir}/$stage2; do
+-    cp -f $file ${grubdir} || exit 1
+-done
++cp -f ${pkglibdir}/stage1 ${grubdir}
++cp -f ${pkglibdir}/$stage2 ${grubdir}/$stage2_install
+ 
+ # Make a default file.
+ ${grub_set_default} --root-directory=${rootdir} default
+@@ -319,7 +318,7 @@
+ test -n "$mkimg" && img_file=`$mkimg`
+ test -n "$mklog" && log_file=`$mklog`
+ 
+-for file in ${grubdir}/stage1 ${grubdir}/$stage2; do
++for file in ${grubdir}/stage1 ${grubdir}/$stage2_install; do
+     count=5
+     tmp=`echo $file | sed "s|^${grubdir}|${grub_prefix}|"`
+     while test $count -gt 0; do
+@@ -353,7 +352,7 @@
+ # Now perform the installation.
+ $grub_shell --batch $no_floppy --device-map=$device_map <<EOF >$log_file
+ root $root_drive
+-install $force_lba --stage2=$grubdir/$stage2 $grub_prefix/stage1 $d $install_drive $grub_prefix/$stage2 p $menu_lst
++install $force_lba --stage2=$grubdir/$stage2_install $grub_prefix/stage1 $d $install_drive $grub_prefix/$stage2_install p $menu_lst
+ quit
+ EOF
+ 

@@ -1,0 +1,16 @@
+alsa-lib-dev
+dbus-glib-dev
+gst0.10-plugins-base-dev
+gstreamer0.10-dev
+gtk2-dev
+intltool
+libunique1-dev
+libxfce4ui-dev
+libxfce4util-dev
+libxinerama-dev
+libxt-dev
+perl-xml-parser
+startup-notification-dev
+xcb-util-dev
+xfce4-panel-dev
+xfconf-dev

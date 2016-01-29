@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+wireshark-${UB_VERSION}.tar.bz2 wireshark-${UB_VERSION}/
+	http://wiresharkdownloads.riverbed.com/wireshark/src/

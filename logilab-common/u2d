@@ -1,0 +1,1 @@
+urllist http://pypi.python.org/packages/source/l/logilab-common/ | splitver '^logilab-common-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

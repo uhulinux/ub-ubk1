@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+datadir="$UB_INSTALLDIR"/usr/share/games/Alien8
+install -d -m 777 $datadir
+cp -r images $datadir/
+cp *.dat $datadir/
+install -m 755 alien8 $datadir/

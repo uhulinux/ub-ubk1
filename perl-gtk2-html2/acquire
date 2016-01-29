@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+Gtk2-Html2-${UB_VERSION}.tar.gz Gtk2-Html2-${UB_VERSION}/
+	http://downloads.sourceforge.net/gtk2-perl/
+	http://asofyet.org/muppet/software/gtk2-perl/

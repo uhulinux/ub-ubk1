@@ -1,0 +1,12 @@
+diff -Naurd ide-smart-1.4.orig/Makefile ide-smart-1.4/Makefile
+--- ide-smart-1.4.orig/Makefile	1999-08-04 23:55:01.000000000 +0200
++++ ide-smart-1.4/Makefile	2003-04-08 11:11:06.000000000 +0200
+@@ -16,6 +16,6 @@
+ 		rm -f $(OBJECTS) $(TARGET)
+ install:
+ 		install -d $(INSTALL_PREFIX)/sbin
+-		install -d $(INSTALL_PREFIX)/man/man8
++		install -d $(INSTALL_PREFIX)/share/man/man8
+ 		install -s $(TARGET) $(INSTALL_PREFIX)/sbin
+-		install ide-smart.8 $(INSTALL_PREFIX)/man/man8
++		install ide-smart.8 $(INSTALL_PREFIX)/share/man/man8

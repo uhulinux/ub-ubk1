@@ -1,0 +1,7 @@
+gobject-introspection-dev
+gtk-dev
+intltool
+libgsf-dev
+librsvg-dev
+libxslt-dev
+xz-dev

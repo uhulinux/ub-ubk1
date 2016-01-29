@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+jedit_${UB_VERSION/~/}_all.deb .
+	http://download.sourceforge.net/jedit/

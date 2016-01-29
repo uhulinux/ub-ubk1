@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gmanedit-${UB_VERSION}.tar.gz gmanedit-${UB_VERSION}/
+	http://downloads.sourceforge.net/gmanedit2/

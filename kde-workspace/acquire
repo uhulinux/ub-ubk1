@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+kde-workspace-${UB_VERSION}.tar.xz kde-workspace-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/4.13.2/src/
+	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgnomeprintui-${UB_VERSION}.tar.gz libgnomeprintui-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgnomeprintui/${UB_VERSION_HEAD2}/

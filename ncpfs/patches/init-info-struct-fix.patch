@@ -1,0 +1,12 @@
+diff -Naurd ncpfs-2.2.4.orig/sutil/ncpm_common.c ncpfs-2.2.4/sutil/ncpm_common.c
+--- ncpfs-2.2.4.orig/sutil/ncpm_common.c	2004-02-10 19:28:48.000000000 +0100
++++ ncpfs-2.2.4/sutil/ncpm_common.c	2004-08-17 12:18:59.286958832 +0200
+@@ -550,6 +550,8 @@
+ 
+ 	myuid = getuid();
+ 
++	info->tree = NULL;
++	info->server = NULL;
+ 	info->version = -1;
+ 	info->flags = MS_MGC_VAL;
+ 	info->sig_level = -1;

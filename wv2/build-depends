@@ -1,0 +1,4 @@
+cmake
+glib-dev
+libgsf-dev
+libxml2-dev

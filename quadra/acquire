@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+quadra-${UB_VERSION}.tar.gz quadra-${UB_VERSION}/
+	http://quadra.googlecode.com/files/

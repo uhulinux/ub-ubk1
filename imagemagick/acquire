@@ -1,0 +1,8 @@
+#!/usr/bin/env dl
+
+ImageMagick-${UB_VERSION_HEAD3}-${UB_VERSION_TAIL1}.tar.xz ImageMagick-${UB_VERSION_HEAD3}-${UB_VERSION_TAIL1}/
+	http://www.imagemagick.net/download/
+	ftp://ftp.imagemagick.org/pub/ImageMagick/
+	ftp://ftp.imagemagick.net/pub/ImageMagick/
+	ftp://ftp.nluug.nl/pub/ImageMagick/
+	http://downloads.sourceforge.net/imagemagick/

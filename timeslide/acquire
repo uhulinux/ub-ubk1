@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+timeslide-$UB_VERSION.tar.gz timeslide-$UB_VERSION/
+	ftp://ftp.uhulinux.hu/pub/sources/timeslide/

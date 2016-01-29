@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PyQt-gpl-${UB_VERSION}.tar.gz PyQt-gpl-${UB_VERSION}/
+	http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-${UB_VERSION}/

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+#export FLTK_DIR=/usr/lib/fltk
+cmake CMakeLists.txt
+make teapot

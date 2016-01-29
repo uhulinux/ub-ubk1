@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+seahorse-${UB_VERSION}.tar.xz seahorse-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/seahorse/${UB_VERSION_HEAD2}/

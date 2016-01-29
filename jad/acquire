@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+jadls${UB_VERSION//./}.zip .
+	http://www.kpdus.com/jad/linux/

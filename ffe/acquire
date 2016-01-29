@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ffe-${UB_VERSION}.tar.gz ffe-${UB_VERSION}/
+	http://downloads.sourceforge.net/ff-extractor/

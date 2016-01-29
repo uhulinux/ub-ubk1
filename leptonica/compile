@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+./autobuild
+
+ub_compile \
+	--with-pic \
+	--with-zlib \
+	--enable-static

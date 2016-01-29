@@ -1,0 +1,34 @@
+diff -Naur ndisgtk-0.8.5-orig/ndisgtk.desktop.in ndisgtk-0.8.5/ndisgtk.desktop.in
+--- ndisgtk-0.8.5-orig/ndisgtk.desktop.in	2010-01-28 17:26:32.000000000 +0100
++++ ndisgtk-0.8.5/ndisgtk.desktop.in	2011-09-23 20:01:17.000000000 +0200
+@@ -1,11 +1,11 @@
+ [Desktop Entry]
+ _Name=Windows Wireless Drivers
+ _Comment=Ndiswrapper driver installation tool
+-Exec=gksu /usr/sbin/ndisgtk
++Exec=ndisgtk
+ NotShowIn=KDE;
+ Icon=ndisgtk.png
+ Terminal=false
+ Type=Application
+-Categories=System;Settings;
++Categories=System;Settings;X-UHU-Menu/Settings;
+ X-Ubuntu-Gettext-Domain=ndisgtk
+ 
+diff -Naur ndisgtk-0.8.5-orig/ndisgtk-kde.desktop.in ndisgtk-0.8.5/ndisgtk-kde.desktop.in
+--- ndisgtk-0.8.5-orig/ndisgtk-kde.desktop.in	2010-01-28 17:26:32.000000000 +0100
++++ ndisgtk-0.8.5/ndisgtk-kde.desktop.in	2011-09-23 20:02:17.000000000 +0200
+@@ -1,11 +1,11 @@
+ [Desktop Entry]
+ _Name=Windows Wireless Drivers
+ _Comment=Ndiswrapper driver installation tool
+-Exec=kdesu /usr/sbin/ndisgtk -- --kde
++Exec=ndisgtk -- --kde
+ Icon=ndisgtk.png
+ Terminal=false
+ Type=Application
+ OnlyShowIn=KDE;
+-Categories=System;Settings;
++Categories=System;Settings;X-UHU-Menu/Settings;
+ X-Ubuntu-Gettext-Domain=ndisgtk
+ 

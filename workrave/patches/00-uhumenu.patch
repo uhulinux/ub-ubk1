@@ -1,0 +1,12 @@
+--- a/frontend/gtkmm/src/workrave.desktop.in.orig	2013-04-19 19:26:45.000000000 +0200
++++ a/frontend/gtkmm/src/workrave.desktop.in	2013-04-19 19:28:02.000000000 +0200
+@@ -1,6 +1,8 @@
+ [Desktop Entry]
+ Type=Application
+-Categories=Utility;GTK;Accessibility
++Terminal=false
++StartupNotify=true
++Categories=Utility;GTK;Accessibility;X-UHU-Menu/Tools/Utilities;
+ Exec=workrave
+ Icon=workrave
+ _Comment=Assists in the prevention and recovery of Repetitive Strain Injury (RSI)

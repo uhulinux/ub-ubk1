@@ -1,0 +1,96 @@
+#config gl		//GL initialisation
+#config rasteroff
+#config axeson
+#config labelsoff
+
+
+
+glstartlist;		//Generation of a display list
+glbegin(quads);		//for a colored cube
+glcolor(255,0,0);
+glpoint(-1,-1,-1);
+glcolor(0,255,0);
+glpoint(1,-1,-1);
+glcolor(0,0,255);
+glpoint(1,1,-1);
+glcolor(0,255,255);
+glpoint(-1,1,-1);
+
+glcolor(255,0,255);
+glpoint(-1,-1,1);
+glcolor(255,255,0);
+glpoint(1,-1,1);
+glcolor(100,100,100);
+glpoint(1,1,1);
+glcolor(200,100,0);
+glpoint(-1,1,1);
+
+glcolor(255,0,0);
+glpoint(-1,-1,-1);
+glcolor(255,0,255);
+glpoint(-1,-1,1);
+glcolor(200,100,0);
+glpoint(-1,1,1);
+glcolor(0,255,255);
+glpoint(-1,1,-1);
+
+glcolor(0,255,0);
+glpoint(1,-1,-1);
+glcolor(255,255,0);
+glpoint(1,-1,1);
+glcolor(100,100,100);
+glpoint(1,1,1);
+glcolor(0,0,255);
+glpoint(1,1,-1);
+
+glcolor(255,0,0);
+glpoint(-1,-1,-1);
+glcolor(255,0,255);
+glpoint(-1,-1,1);
+glcolor(255,255,0);
+glpoint(1,-1,1);
+glcolor(0,255,0);
+glpoint(1,-1,-1);
+
+glcolor(0,255,255);
+glpoint(-1,1,-1);
+glcolor(200,100,0);
+glpoint(-1,1,1);
+glcolor(100,100,100);
+glpoint(1,1,1);
+glcolor(0,0,255);
+glpoint(1,1,-1);
+glend;
+L=glendlist;	//End list and save list ID
+
+R=0.0;		//turn radius
+V=0.1;		//move variable
+W=0.003;	//move direction
+
+
+while(1)
+{
+  
+  R=R+1; 	//dynamic moving
+  if(R>=360)
+    R=0.0;
+  V=V+W;
+  if(V>5)
+    W=-0.003;
+  if(V<-5)
+    W=0.003;
+
+  glclear;	//clear gl scene
+
+  glloadidentity;	//reset transformation
+  glscale(5,5,5); 	//resize cube
+  glrotate(R,1,0,0);	//rotate cube around x-axes
+  glrotate(R,0,1,0);	//rotate cube around y-axes
+
+  glcalllist(L);	//draw list
+  glshow;		//show scene
+  sleep(30000);		//wait a bit (30ms for a nice view)
+}
+
+
+

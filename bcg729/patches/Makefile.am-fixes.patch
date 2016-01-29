@@ -1,0 +1,26 @@
+diff -Naurdp bcg729-1.0.0/msbcg729/Makefile.am bcg729-1.0.0-fixes/msbcg729/Makefile.am
+--- bcg729-1.0.0/msbcg729/Makefile.am	2012-02-24 15:47:00.000000000 +0100
++++ bcg729-1.0.0-fixes/msbcg729/Makefile.am	2012-12-06 14:50:41.837364217 +0100
+@@ -11,8 +11,8 @@ libmsbcg729_la_LIBADD=\
+         $(MEDIASTREAMER_LIBS) \
+ 	$(top_builddir)/src/libbcg729.la
+ 
+-libmsbcg729_la_LDFLAGS=-module -no-undefined
++libmsbcg729_la_LDFLAGS=-module -no-undefined -lortp -lmediastreamer
+ INCLUDES = -I$(top_srcdir)/include
+-libmsbcg729_la_CFLAGS=  $(ORTP_CFLAGS) $(MEDIASTREMER2_CFLAGS)
++libmsbcg729_la_CFLAGS=  $(ORTP_CFLAGS) $(MEDIASTREAMER_CFLAGS)
+ 
+ 
+diff -Naurdp bcg729-1.0.0/src/Makefile.am bcg729-1.0.0-fixes/src/Makefile.am
+--- bcg729-1.0.0/src/Makefile.am	2012-02-24 15:51:09.000000000 +0100
++++ bcg729-1.0.0-fixes/src/Makefile.am	2012-12-06 14:50:59.798584677 +0100
+@@ -24,7 +24,7 @@ libbcg729_la_SOURCES=	LP2LSPConversion.c
+ 			qLSP2LP.c \
+ 			utils.c 
+ 
+-libbcg729_la_LDFLAGS=-fvisibility=hidden
++libbcg729_la_LDFLAGS=-fvisibility=hidden -no-undefined
+ 
+ INCLUDES= -I$(top_srcdir)/include
+ 

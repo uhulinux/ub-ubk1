@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Starman-${UB_VERSION}.tar.gz Starman-${UB_VERSION}/
+	http://cpan.metacpan.org/modules/by-module/Plack/

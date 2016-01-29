@@ -1,0 +1,17 @@
+--- planner.orig/data/planner.desktop.in.in	2009-03-21 19:10:37.000000000 +0100
++++ planner/data/planner.desktop.in.in	2009-04-17 01:23:20.000000000 +0200
+@@ -1,11 +1,12 @@
+ [Desktop Entry]
+-_Name=Project Management
++_Name=Planner
++_GenericName=Project Management
+ _Comment=Planner Project Management
+ Exec=planner %F
+ Icon=gnome-planner.png
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Application;Office;ProjectManagement;
++Categories=GNOME;GTK;Office;ProjectManagement;X-UHU-Menu/Tools/Organizer;
+ StartupNotify=true
+ MimeType=application/x-planner;
+ X-GNOME-Bugzilla-Bugzilla=GNOME

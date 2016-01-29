@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libxdg-basedir-${UB_VERSION}.tar.gz libxdg-basedir-${UB_VERSION}/
+	http://n.ethz.ch/~nevillm/download/libxdg-basedir/

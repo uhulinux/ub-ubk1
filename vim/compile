@@ -1,0 +1,39 @@
+#!/bin/sh -eux
+
+# Először a totál bugyuta verzió (leendő /bin/vi): se gpm, se X.
+
+ub_configure \
+	--enable-multibyte \
+	--disable-gpm \
+	--without-x \
+	--enable-gui=no
+ub_make \
+	VIMRCLOC=/etc \
+	VIMRUNTIMEDIR='$(VIMRTLOC)' \
+	MAKE="make -e"
+
+mkdir Install
+install src/vim Install/vi
+
+# Utána a kevésbé bugyuta verzió (leendő /usr/bin/vim): gpm-mel, de X nélkül.
+
+ub_configure \
+	--enable-multibyte \
+	--without-x \
+	--enable-gui=no
+ub_make \
+	VIMRCLOC=/etc \
+	VIMRUNTIMEDIR='$(VIMRTLOC)' \
+	MAKE="make -e"
+
+install src/vim Install/vim
+
+# Végül a komoly verzió (leendő /usr/bin/gvim): gpm, X, gtk.
+
+ub_configure \
+	--enable-multibyte
+ub_make \
+	VIMRCLOC=/etc \
+	VIMRUNTIMEDIR='$(VIMRTLOC)' \
+	MAKE="make -e"
+

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+iperf-${UB_VERSION}.tar.gz iperf-${UB_VERSION}/
+	http://downloads.sourceforge.net/iperf/

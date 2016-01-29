@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libart_lgpl-${UB_VERSION}.tar.gz libart_lgpl-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libart_lgpl/${UB_VERSION_HEAD2}/

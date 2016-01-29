@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+ntp-${UB_VERSION}.tar.gz ntp-${UB_VERSION}/
+	http://www.eecis.udel.edu/~ntp/ntp_spool/ntp${UB_VERSION_HEAD1}/
+	ftp://ftp.udel.edu/pub/ntp/ntp${UB_VERSION_HEAD1}/

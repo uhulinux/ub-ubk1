@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Mako-${UB_VERSION}.tar.gz Mako-${UB_VERSION}/
+	http://pypi.python.org/packages/source/M/Mako/

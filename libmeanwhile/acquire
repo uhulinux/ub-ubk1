@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+meanwhile-${UB_VERSION}.tar.gz meanwhile-${UB_VERSION}/
+	http://downloads.sourceforge.net/meanwhile/

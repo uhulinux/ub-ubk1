@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mock-${UB_VERSION}.tar.gz mock-${UB_VERSION}/
+	http://pypi.python.org/packages/source/m/mock/

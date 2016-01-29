@@ -1,0 +1,22 @@
+--- a/data/Makefile.in.orig	2014-03-29 15:40:40.000000000 +0100
++++ a/data/Makefile.in	2014-03-29 15:41:30.000000000 +0100
+@@ -345,7 +345,7 @@
+ systemdservice_in_files = systemd/udisks.service.in
+ @HAVE_SYSTEMD_TRUE@systemdservicedir = $(systemdsystemunitdir)
+ @HAVE_SYSTEMD_TRUE@systemdservice_DATA = $(systemdservice_in_files:.service.in=.service)
+-udevrulesdir = $(slashlibdir)/udev/rules.d
++udevrulesdir = $(libdir)/udev/rules.d
+ udevrules_DATA = 80-udisks.rules
+ pkgconfigdir = $(datadir)/pkgconfig
+ pkgconfig_DATA = udisks.pc
+--- a/src/probers/Makefile.in.orig	2014-03-29 15:40:51.000000000 +0100
++++ a/src/probers/Makefile.in	2014-03-29 15:41:04.000000000 +0100
+@@ -395,7 +395,7 @@
+ 
+ # TODO: ideally move most of this to udev and/or util-linux
+ #
+-udevhelperdir = $(slashlibdir)/udev
++udevhelperdir = $(libdir)/udev
+ udisks_part_id_SOURCES = part-id.c
+ udisks_part_id_CPPFLAGS = $(AM_CPPFLAGS) $(LIBUDEV_CFLAGS)
+ udisks_part_id_LDADD = $(GLIB_LIBS) $(LIBUDEV_LIBS) $(top_builddir)/src/helpers/libpartutil.la

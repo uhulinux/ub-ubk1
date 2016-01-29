@@ -1,0 +1,34 @@
+diff -urN oneko-1.2.orig/oneko.man oneko-1.2/oneko.man
+--- oneko-1.2.orig/oneko.man	1995-09-28 08:55:27.000000000 +0100
++++ oneko-1.2/oneko.man	2003-02-13 14:03:46.000000000 +0100
+@@ -1,15 +1,4 @@
+ .TH ONEKO 6
+-.ad b
+-.SH "/USR/CONTRIBUTED CAVEAT"
+-The software and documentation in /usr/contributed are supported by
+-users on campus rather than by the central support organizations.
+-That is, they are *not* supported by Academic Computing and Media or
+-Computing and Communications.  Questions or comments about the
+-contents of /usr/contributed should be sent to the support person for
+-the particular application, library, or information file.  The support
+-person is cited in the Support Person field at the end of the
+-documentation for the particular topic.
+-.sp 0
+ .SH NAME oneko
+ The program oneko creates a cute cat chasing around your mouse cursor.
+ .SH SYNOPSIS
+@@ -101,14 +90,3 @@
+ (kato@ntts.co.jp).  Send bug fixes and enhancements to kato@ntts.co.jp
+ .SH MAINTAINER
+ Send questions or problems to ea08@andrew.cmu.edu
+-.ad b
+-.SH "/USR/CONTRIBUTED CAVEAT"
+-The software and documentation in /usr/contributed are supported by
+-users on campus rather than by the central support organizations.
+-That is, they are *not* supported by Academic Computing and Media or
+-Computing and Communications.  Questions or comments about the
+-contents of /usr/contributed should be sent to the support person for
+-the particular application, library, or information file.  The support
+-person is cited in the Support Person field at the end of the
+-documentation for the particular topic.
+-.sp 0

@@ -1,0 +1,8 @@
+#!/usr/bin/env dl
+
+xfsdump-${UB_VERSION}.tar.gz xfsdump-${UB_VERSION}/
+	ftp://oss.sgi.com/projects/xfs/cmd_tars/
+	ftp://oss.sgi.com/projects/xfs/previous/
+	ftp://oss.sgi.com/projects/xfs/previous/cmd_tars/
+	ftp://oss.sgi.com/projects/xfs/download/cmd_tars/
+	ftp://oss.sgi.com/projects/xfs/download/previous/cmd_tars/

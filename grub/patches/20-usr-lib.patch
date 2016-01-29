@@ -1,0 +1,24 @@
+diff -Nar -U0 grub-0.97.orig/stage1/Makefile.in grub-0.97/stage1/Makefile.in
+--- grub-0.97.orig/stage1/Makefile.in	2005-05-08 04:42:36.000000000 +0200
++++ grub-0.97/stage1/Makefile.in	2007-08-14 20:45:54.000000000 +0200
+@@ -76 +76 @@
+-pkglibdir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
++pkglibdir = $(libdir)/$(PACKAGE)
+diff -Nar -U0 grub-0.97.orig/stage2/Makefile.in grub-0.97/stage2/Makefile.in
+--- grub-0.97.orig/stage2/Makefile.in	2005-05-08 04:42:39.000000000 +0200
++++ grub-0.97/stage2/Makefile.in	2007-08-14 20:45:54.000000000 +0200
+@@ -318 +318 @@
+-pkglibdir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
++pkglibdir = $(libdir)/$(PACKAGE)
+diff -Nar -U0 grub-0.97.orig/util/grub-image.in grub-0.97/util/grub-image.in
+--- grub-0.97.orig/util/grub-image.in	2004-07-16 13:44:56.000000000 +0200
++++ grub-0.97/util/grub-image.in	2007-08-14 20:46:57.000000000 +0200
+@@ -30 +30 @@
+-pkglibdir=${libdir}/${PACKAGE}/${context}
++pkglibdir=${libdir}/${PACKAGE}
+diff -Nar -U0 grub-0.97.orig/util/grub-install.in grub-0.97/util/grub-install.in
+--- grub-0.97.orig/util/grub-install.in	2004-07-24 20:57:31.000000000 +0200
++++ grub-0.97/util/grub-install.in	2007-08-14 20:46:57.000000000 +0200
+@@ -30 +30 @@
+-pkglibdir=${libdir}/${PACKAGE}/${host_cpu}-${host_vendor}
++pkglibdir=${libdir}/${PACKAGE}

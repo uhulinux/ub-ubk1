@@ -1,0 +1,16 @@
+------------------------------------------------------------------------------
+
+Ez a könyvtár tartalmazza az init szkript rendszer felhasználó által
+beállított egyéni tulajdonságait.
+
+A fájlok elvileg kézzel is szerkeszthetők, de ehelyett ajánlott az srvmgr
+programot használni.
+
+------------------------------------------------------------------------------
+
+This directory holds the user editable properties of the init script system.
+
+Even though you can manually edit these files, it's recommended to use the
+srvmgr utility for this purpose.
+
+------------------------------------------------------------------------------

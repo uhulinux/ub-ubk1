@@ -1,0 +1,22 @@
+/*
+   Find the longest line in a file.
+*/
+Longest:
+  'EXTRACT /SIZE/'
+  'TOP'
+  max_len = 0
+  best_line = 0
+  Do i = 1 to size.1
+    'EXTRACT /CURLINE/'
+    curlen = length(curline.3)
+    If curlen > max_len
+      Then Do                   /* This line is longer*/
+        max_len = curlen
+        best_line = i-1
+      End                       /* End if*/
+    'DOWN'
+  End                           /* End do*/
+  ':'best_line                  /* Go to longest line*/
+  'MSG Longest line is' max_len 'bytes long'
+Exit
+

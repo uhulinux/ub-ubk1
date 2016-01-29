@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+sexy-python-${UB_VERSION}.tar.gz sexy-python-${UB_VERSION}/
+	http://releases.chipx86.com/libsexy/sexy-python/

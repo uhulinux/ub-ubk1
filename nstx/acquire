@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+nstx-${UB_VERSION/~/-}.tar.gz nstx-${UB_VERSION/~/-}/
+	http://nstx.dereference.de/nstx/
+	http://download.savannah.nongnu.org/releases/nstx/
+	ftp://ftp.debian.org/debian/pool/main/n/nstx/nstx_${UB_VERSION/~/-}.orig.tar.gz

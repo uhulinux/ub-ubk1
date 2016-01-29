@@ -1,0 +1,11 @@
+--- sound-juicer.orig/data/sound-juicer.desktop.in.in	2008-09-24 23:47:05.000000000 +0200
++++ sound-juicer/data/sound-juicer.desktop.in.in	2009-03-21 10:31:50.000000000 +0100
+@@ -7,7 +8,7 @@
+ MimeType=x-content/audio-cdda;
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;AudioVideo;Audio;
++Categories=GTK;GNOME;AudioVideo;Audio;X-UHU-Menu/Multimedia/Rippers;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=sound-juicer
+ X-GNOME-Bugzilla-Component=general

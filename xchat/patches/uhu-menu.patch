@@ -1,0 +1,24 @@
+--- y/xchat.desktop	2010-05-30 08:08:48.000000000 +0200
++++ x/xchat.desktop	2010-05-30 16:04:11.000000000 +0200
+@@ -1,12 +1,11 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+-Name=XChat IRC
++Name=XChat
+ Name[zh_TW]=網路清談
+ Comment[de]=IRC-Client
+ Comment[es]=Aplicación de IRC
+ Comment[fi]=IRC-sovellus
+ Comment[fr]=Client IRC
+-Comment[hu]=IRC-kliens
++Comment[hu]=Csevegés az interneten az IRC protokollt használva
+ Comment[lt]=IRC klientas
+ Comment[no]=IRC-klient
+ Comment[pt_BR]=Cliente de IRC
+@@ -19,5 +18,5 @@
+ Icon=xchat
+ Terminal=false
+ Type=Application
+-Categories=Network;
++Categories=GTK;Network;IRCClient;X-UHU-Menu/Internet/Messengers;
+ StartupNotify=true

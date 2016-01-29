@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libesmtp-"$UB_VERSION".tar.gz libesmtp-"$UB_VERSION"/
+	http://www.stafford.uklinux.net/libesmtp/

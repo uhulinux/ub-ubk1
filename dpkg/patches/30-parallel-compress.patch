@@ -1,0 +1,21 @@
+diff -Naurdp a/lib/dpkg/compress.c b/lib/dpkg/compress.c
+--- a/lib/dpkg/compress.c	2012-10-20 06:34:16.000000000 +0200
++++ b/lib/dpkg/compress.c	2013-03-06 16:15:42.687428901 +0100
+@@ -237,7 +237,7 @@ compress_gzip(int fd_in, int fd_out, str
+ #endif
+ 
+ static const struct compressor compressor_gzip = {
+-	.name = "gzip",
++	.name = "pigz",
+ 	.extension = ".gz",
+ 	.default_level = 9,
+ 	.fixup_params = fixup_gzip_params,
+@@ -361,7 +361,7 @@ compress_bzip2(int fd_in, int fd_out, st
+ #endif
+ 
+ static const struct compressor compressor_bzip2 = {
+-	.name = "bzip2",
++	.name = "pbzip2",
+ 	.extension = ".bz2",
+ 	.default_level = 9,
+ 	.fixup_params = fixup_bzip2_params,

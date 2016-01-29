@@ -1,0 +1,10 @@
+diff -Naur kde-gtk-config-2.2-orig/kde-gtk-config.desktop kde-gtk-config-2.2/kde-gtk-config.desktop
+--- kde-gtk-config-2.2-orig/kde-gtk-config.desktop	2013-03-01 08:44:37.000000000 +0100
++++ kde-gtk-config-2.2/kde-gtk-config.desktop	2013-03-14 09:28:33.000000000 +0100
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Categories=Qt;KDE;X-KDE-settings-looknfeel;
++Categories=Qt;KDE;X-KDE-settings-looknfeel;X-UHU-Menu/Settings;
+ Comment=Configuration of the style of GTK applications
+ Comment[ca]=Configuració de l'estil de les aplicacions GTK
+ Comment[cs]=Nastavení stylu aplikací GTK

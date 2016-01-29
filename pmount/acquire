@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pmount-${UB_VERSION}.tar.bz2 pmount-${UB_VERSION}/
+	https://alioth.debian.org/frs/download.php/3310/

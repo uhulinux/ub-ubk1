@@ -1,0 +1,34 @@
+diff -Naur grub-0.95.orig/lib/device.c grub-0.95/lib/device.c
+--- grub-0.95.orig/lib/device.c	2004-05-23 18:34:29.000000000 +0200
++++ grub-0.95/lib/device.c	2004-07-20 16:53:37.312814959 +0200
+@@ -675,6 +675,7 @@
+ #ifdef __linux__
+   if (have_devfs ())
+     {
++      int num_hd2 = 0;
+       while (1)
+ 	{
+ 	  char discn[32];
+@@ -683,12 +684,13 @@
+ 
+ 	  /* Linux creates symlinks "/dev/discs/discN" for convenience.
+ 	     The way to number disks is the same as GRUB's.  */
+-	  sprintf (discn, "/dev/discs/disc%d", num_hd);
++	  sprintf (discn, "/dev/discs/disc%d", num_hd2);
+ 	  if (stat (discn, &st) < 0)
+ 	    break;
+ 	  
+ 	  if (realpath (discn, name))
+ 	    {
++	      if (!strcmp(name, "/dev")) { num_hd2++; continue; }
+ 	      strcat (name, "/disc");
+ 	      (*map)[num_hd + 0x80] = strdup (name);
+ 	      assert ((*map)[num_hd + 0x80]);
+@@ -698,6 +700,7 @@
+ 		fprintf (fp, "(hd%d)\t%s\n", num_hd, name);
+ 	    }
+ 	  
++	  num_hd2++;
+ 	  num_hd++;
+ 	}
+       

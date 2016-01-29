@@ -1,0 +1,7 @@
+gtk2-dev
+libgtkhtml2
+libgtkhtml2-dev
+libxml2-dev
+perl-extutils-depends
+perl-extutils-pkgconfig
+perl-gtk2

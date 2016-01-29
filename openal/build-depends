@@ -1,0 +1,6 @@
+alsa-lib-dev
+cmake
+esound-dev
+libvorbis-dev
+pulseaudio-dev
+sdl-dev

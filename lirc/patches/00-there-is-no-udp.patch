@@ -1,0 +1,19 @@
+diff -Naur orig/daemons/hw-types.c patched/daemons/hw-types.c
+--- orig/daemons/hw-types.c	2011-03-25 23:28:18.000000000 +0100
++++ patched/daemons/hw-types.c	2012-01-09 19:55:40.408070110 +0100
+@@ -54,7 +54,6 @@
+ extern struct hardware hw_srm7500libusb;
+ extern struct hardware hw_tira;
+ extern struct hardware hw_tira_raw;
+-extern struct hardware hw_udp;
+ extern struct hardware hw_uirt2;
+ extern struct hardware hw_uirt2_raw;
+ extern struct hardware hw_usb_uirt_raw;
+@@ -168,7 +167,6 @@
+ 	/*      &hw_slinke, */
+ 	&hw_tira,
+ 	&hw_tira_raw,
+-	&hw_udp,
+ 	&hw_uirt2,
+ 	&hw_uirt2_raw,
+ 	&hw_usb_uirt_raw,

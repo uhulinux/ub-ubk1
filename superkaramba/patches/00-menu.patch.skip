@@ -1,0 +1,11 @@
+diff -Naur superkaramba-4.8.80-orig/src/superkaramba.desktop superkaramba-4.8.80/src/superkaramba.desktop
+--- superkaramba-4.8.80-orig/src/superkaramba.desktop	2012-05-23 02:39:19.000000000 +0200
++++ superkaramba-4.8.80/src/superkaramba.desktop	2012-06-05 10:17:05.000000000 +0200
+@@ -189,6 +189,6 @@
+ GenericName[x-test]=xxDesktop Widgetsxx
+ GenericName[zh_CN]=桌面部件
+ GenericName[zh_TW]=桌面元件
+-Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;
++Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;X-UHU-Menu/Tools/Utilities;
+ OnlyShowIn=KDE;
+ X-DBUS-StartupType=Unique

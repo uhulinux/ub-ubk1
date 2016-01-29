@@ -1,0 +1,13 @@
+diff -Naurd a/setup.cfg b/setup.cfg
+--- a/setup.cfg	2010-10-26 17:07:52.000000000 +0200
++++ b/setup.cfg	2011-03-02 18:33:59.000000000 +0100
+@@ -1,6 +1,6 @@
+ [build_ext]
+-#define=
+-#include_dirs=/usr/local/include
+-#library_dirs=/usr/local/lib
++define=
++include_dirs=/usr/include
++library_dirs=/usr/lib
+ libraries=sqlite3
+ define=SQLITE_OMIT_LOAD_EXTENSION

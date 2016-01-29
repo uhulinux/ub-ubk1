@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+export QT4DIR=/usr/lib/qt4
+ub_compile

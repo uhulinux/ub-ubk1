@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+QtViews-${UB_VERSION}.tar.gz QtViews-${UB_VERSION}/
+	http://pypi.python.org/packages/source/Q/QtViews/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pyhyphen-${UB_VERSION}.zip PyHyphen-${UB_VERSION}/
+	http://pypi.python.org/packages/source/P/PyHyphen/

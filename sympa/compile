@@ -1,0 +1,26 @@
+#!/bin/sh -eux
+
+DESTDIR="$UB_INSTALLDIR" \
+ub_compile \
+	--prefix=/var/lib/sympa \
+	--with-confdir=/etc \
+	--with-cgidir=/srv/www/fcgi-bin/sympa \
+	--with-iconsdir=/srv/www/html/sympa/icons \
+	--with-bindir=/usr/bin \
+	--with-sbindir=/usr/sbin \
+	--with-libexecdir=/usr/lib/sympa/libexec \
+	--with-libdir=/usr/lib/sympa/lib \
+	--with-datadir=/usr/share/sympa/default \
+	--with-expldir=/var/lib/sympa/expl \
+	--with-mandir=/usr/share/man \
+	--with-initdir=/etc/init.d \
+	--with-lockdir=/var/lock/sympa \
+	--with-piddir=/var/run/sympa \
+	--with-etcdir=/etc/sympa \
+	--with-localedir=/usr/share/locale \
+	--with-docdir=/usr/share/doc/Packages/sympa \
+	--with-scriptdir=/usr/lib/sympa/bin \
+	--with-sampledir=/usr/share/sympa/sample \
+	--with-spooldir=/var/spool/sympa \
+	--with-sendmail-aliases=/etc/aliases \
+	--enable-secure

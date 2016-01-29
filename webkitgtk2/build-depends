@@ -1,0 +1,17 @@
+dbus-dev
+enchant-dev
+geoclue1-dev
+gobject-introspection-dev
+gperf
+gst0.10-plugins-base-dev
+gtk-doc
+gtk2-dev
+icu-dev
+libjpeg-dev
+libsoup-dev
+libxml2-dev
+libxslt-dev
+libxt-dev
+mesa-dev
+ruby
+sqlite-dev

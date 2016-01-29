@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+bbe-${UB_VERSION}.tar.gz bbe-${UB_VERSION}/
+	http://downloads.sourceforge.net/bbe~/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+CherryPy-${UB_VERSION}.tar.gz CherryPy-${UB_VERSION}/
+	http://pypi.python.org/packages/source/C/CherryPy/

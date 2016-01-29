@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+krename-${UB_VERSION/~/-}.tar.bz2 krename-${UB_VERSION}/
+	http://downloads.sourceforge.net/krename/

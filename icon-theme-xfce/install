@@ -1,0 +1,66 @@
+#!/bin/sh -eux
+
+ub_install
+
+for theme in Rodent Tango; do
+	for i in 16x16 22x22 24x24 32x32; do
+		mkdir -p "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories
+
+		ln -s /usr/share/icons/Tango/$i/categories/applications-accessories.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-applications.png
+		ln -s /usr/share/icons/Tango/$i/categories/applications-other.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-development.png
+		ln -s /usr/share/icons/Tango/$i/categories/applications-games.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-games.png
+		ln -s /usr/share/icons/Tango/$i/categories/applications-graphics.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-gfx.png
+		ln -s /usr/share/icons/Tango/$i/categories/applications-internet.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/stock-panel-internet.png
+		ln -s /usr/share/icons/Tango/$i/categories/applications-multimedia.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-media.png
+		ln -s /usr/share/icons/Tango/$i/mimetypes/x-office-address-book.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-documentation.png
+		ln -s /usr/share/icons/Tango/$i/categories/applications-system.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/package_edutainment.png
+		ln -s /usr/share/icons/Tango/$i/categories/preferences-desktop.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-configuration.png
+		ln -s /usr/share/icons/Tango/$i/apps/gnome-calculator.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-accessories.png
+		ln -s /usr/share/icons/Tango/$i/devices/computer.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-computer.png
+		ln -s /usr/share/icons/Tango/$i/apps/system-file-manager.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-filemanager.png
+		ln -s /usr/share/icons/Tango/$i/apps/accessories-text-editor.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-notepad.png
+		ln -s /usr/share/icons/Tango/$i/places/desktop.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-network.png
+		ln -s /usr/share/icons/Tango/$i/status/network-error.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-network-firewall.png
+		ln -s /usr/share/icons/Tango/$i/status/network-transmit.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-network-system.png
+		ln -s /usr/share/icons/Tango/$i/actions/document-print.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/stock-print.png
+		ln -s /usr/share/icons/Tango/$i/mimetypes/text-html.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-html.png
+		ln -s /usr/share/icons/Tango/$i/apps/utilities-system-monitor.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-monitor.png
+		ln -s /usr/share/icons/Tango/$i/apps/accessories-character-map.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-launcher.png
+		ln -s /usr/share/icons/Tango/$i/apps/accessories-calculator.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-calculator.png
+		ln -s /usr/share/icons/Tango/$i/mimetypes/x-office-calendar.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-date.png
+		ln -s /usr/share/icons/Tango/$i/mimetypes/x-office-calendar.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-datetime.png
+		ln -s /usr/share/icons/Tango/$i/mimetypes/x-office-document-template.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-office.png
+		ln -s /usr/share/icons/Tango/$i/mimetypes/x-office-address-book.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/stock-book.png
+		ln -s /usr/share/icons/Tango/$i/mimetypes/x-office-document.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-office-wordprocessor.png
+		ln -s /usr/share/icons/Tango/$i/mimetypes/x-office-presentation.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-office-presentation.png
+		ln -s /usr/share/icons/Tango/$i/mimetypes/x-office-spreadsheet.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-office-spreadsheet.png
+		ln -s /usr/share/icons/Tango/$i/apps/utilities-terminal.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-terminal.png
+		ln -s /usr/share/icons/Tango/$i/apps/config-language.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/stock-convert.png
+		ln -s /usr/share/icons/Tango/$i/mimetypes/ascii.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/file-devel.png
+		ln -s /usr/share/icons/Tango/$i/devices/camera-photo.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/stock-panel-screenshot.png
+		ln -s /usr/share/icons/Tango/$i/apps/internet-news-reader.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/news.png
+		ln -s /usr/share/icons/Tango/$i/apps/internet-web-browser.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-web-browser.png
+		ln -s /usr/share/icons/Tango/$i/actions/go-jump.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-update.png
+		ln -s /usr/share/icons/Tango/$i/apps/internet-mail.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-email.png
+		ln -s /usr/share/icons/Tango/$i/apps/internet-group-chat.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-instantmessage.png
+		ln -s /usr/share/icons/Tango/$i/emotes/face-monkey.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/package_games_arcade.png
+		ln -s /usr/share/icons/Tango/$i/mimetypes/application-x-executable.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/package_games_board.png
+		ln -s /usr/share/icons/Tango/$i/emblems/emblem-favorite.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/package_games_card.png
+		ln -s /usr/share/icons/Tango/$i/actions/gohome.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/package_games_strategy.png
+		ln -s /usr/share/icons/Tango/$i/emotes/face-angel.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/package_toys.png
+		ln -s /usr/share/icons/Tango/$i/devices/media-optical.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/cd.png
+		ln -s /usr/share/icons/Tango/$i/devices/audio-input-microphone.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-mixer.png
+		ln -s /usr/share/icons/Tango/$i/status/audio-volume-high.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-sound.png
+		ln -s /usr/share/icons/Tango/$i/devices/camera-video.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/emblem-video.png
+		ln -s /usr/share/icons/Tango/$i/apps/utilities-system-monitor.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-television.png
+		ln -s /usr/share/icons/Tango/$i/apps/config-language.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/edu_languages.png
+		ln -s /usr/share/icons/Tango/$i/actions/list-add.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/edu_mathematics.png
+		ln -s /usr/share/icons/Tango/$i/actions/list-remove.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/edu_miscellaneous.png
+		ln -s /usr/share/icons/Tango/$i/emblems/emblem-system.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/edu_science.png
+		ln -s /usr/share/icons/Tango/$i/mimetypes/x-office-address-book.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/icon-logbook.png
+		if [ $theme = "Rodent" ]
+		then
+			ln -s /usr/share/icons/Tango/$i/devices/input-gaming.png "$UB_INSTALLDIR"/usr/share/icons/$theme/$i/categories/package_games.png
+		fi
+	done
+done

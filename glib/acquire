@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+glib-${UB_VERSION}.tar.xz glib-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/glib/${UB_VERSION_HEAD2}/

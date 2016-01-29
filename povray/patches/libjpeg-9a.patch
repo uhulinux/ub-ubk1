@@ -1,0 +1,43 @@
+diff -Naur orig/source/jpeg_pov.cpp mod/source/jpeg_pov.cpp
+--- orig/source/jpeg_pov.cpp	2004-08-03 01:11:36.000000000 +0200
++++ mod/source/jpeg_pov.cpp	2014-03-15 00:01:38.000000000 +0100
+@@ -267,7 +267,7 @@
+ 	bufptr->jsrc.bytes_in_buffer = i;
+ 	bufptr->jsrc.next_input_byte = (unsigned char *)(&(bufptr->buffer[0]));
+ 
+-	return true;
++	return TRUE;
+ }
+ 
+ METHODDEF(void) my_skip_input_data(j_decompress_ptr cinfo, long num_bytes)
+@@ -301,7 +301,7 @@
+ 	bufptr->jdest.next_output_byte = (unsigned char *)(&(bufptr->buffer[0]));
+ 	bufptr->jdest.free_in_buffer = POV_JPEG_BUFFER_SIZE;
+ 
+-	return true;
++	return TRUE;
+ }
+ 
+ METHODDEF(void) my_term_destination(j_compress_ptr cinfo)
+@@ -394,10 +394,10 @@
+ 			// NOTE: Default color space is JCS_YCbCr!!! [trf]
+ 			jpeg_set_colorspace(&bufptr->cinfo, JCS_RGB);
+ 
+-			jpeg_set_quality(&bufptr->cinfo, opts.OutputQuality, true); // quality (range 0 to 100!)
++			jpeg_set_quality(&bufptr->cinfo, opts.OutputQuality, TRUE); // quality (range 0 to 100!)
+ 
+ 			// begin compression
+-			jpeg_start_compress(&bufptr->cinfo, true);
++			jpeg_start_compress(&bufptr->cinfo, TRUE);
+ 
+ 			bufptr->row_stride = w * 3;
+ 
+@@ -609,7 +609,7 @@
+ 	 *   (b) we passed true to reject a tables-only JPEG file as an error.
+ 	 * See libjpeg.doc for more info.
+ 	 */
+-	(void)jpeg_read_header(&bufptr.cinfo, true);
++	(void)jpeg_read_header(&bufptr.cinfo, TRUE);
+ 
+ 	// check for unsupported formats
+ 	if((bufptr.cinfo.output_components != 1) && (bufptr.cinfo.output_components != 3) &&

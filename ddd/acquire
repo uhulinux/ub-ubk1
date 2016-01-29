@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+ddd-${UB_VERSION}.tar.gz ddd-${UB_VERSION}/
+	http://downloads.sourceforge.net/ddd/
+	ftp://ftp.gnu.org/gnu/ddd/

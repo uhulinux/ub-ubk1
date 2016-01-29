@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=vdr
+GenericName=Video Disk Recorder
+Comment=VDR launcher
+Comment[hu]=vdr indító
+Exec=vdrlaunch
+Type=Application
+Categories=AudioVideo;Video;TV;Player;
+Icon=vdr
+Terminal=true

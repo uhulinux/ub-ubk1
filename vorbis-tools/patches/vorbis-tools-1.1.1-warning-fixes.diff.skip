@@ -1,0 +1,87 @@
+--- a/ogginfo/theora.c
++++ a/ogginfo/theora.c
+@@ -112,21 +112,21 @@ void theora_comment_clear(theora_comment
+ }
+ 
+ static int _theora_unpack_comment(theora_comment *tc, oggpack_buffer *opb){
+-  int i;
+-  int len;
++  long i;
++  long len;
+ 
+-   _tp_readlsbint(opb,(long *) &len);
++   _tp_readlsbint(opb, &len);
+   if(len<0)return(OC_BADHEADER);
+   tc->vendor=_ogg_calloc(1,len+1);
+   _tp_readbuffer(opb,tc->vendor, len);
+   tc->vendor[len]='\0';
+ 
+-  _tp_readlsbint(opb,(long *) &tc->comments);
++  _tp_readlsbint(opb, &tc->comments);
+   if(tc->comments<0)goto parse_err;
+   tc->user_comments=_ogg_calloc(tc->comments,sizeof(*tc->user_comments));
+   tc->comment_lengths=_ogg_calloc(tc->comments,sizeof(*tc->comment_lengths));
+   for(i=0;i<tc->comments;i++){
+-    _tp_readlsbint(opb,(long *)&len);
++    _tp_readlsbint(opb, &len);
+     if(len<0)goto parse_err;
+     tc->user_comments[i]=_ogg_calloc(1,len+1);
+     _tp_readbuffer(opb,tc->user_comments[i],len);
+--- a/ogginfo/ogginfo2.c
++++ a/ogginfo/ogginfo2.c
+@@ -306,7 +306,8 @@ static void theora_process(stream_proces
+ {
+     ogg_packet packet;
+     misc_theora_info *inf = stream->data;
+-    int i, header=0;
++    int header=0;
++    long i;
+ 
+     ogg_stream_pagein(&stream->os, page);
+     if(inf->doneheaders < 3)
+@@ -453,8 +454,8 @@ static void vorbis_process(stream_proces
+ {
+     ogg_packet packet;
+     misc_vorbis_info *inf = stream->data;
+-    int i, header=0;
+-    int k;
++    int k, header=0;
++    long i;
+ 
+     ogg_stream_pagein(&stream->os, page);
+     if(inf->doneheaders < 3)
+--- a/ogginfo/theora.h
++++ a/ogginfo/theora.h
+@@ -122,7 +122,7 @@ typedef struct {
+ typedef struct theora_comment{
+   char **user_comments;		/**< an array of comment string vectors */
+   int   *comment_lengths;	/**< an array of corresponding string vector lengths in bytes */
+-  int    comments;		/**< the total number of comment string vectors */
++  long    comments;		/**< the total number of comment string vectors */
+   char  *vendor;		/**< the vendor string identifying the encoder, null terminated */
+ 
+ } theora_comment;
+--- a/oggenc/oggenc.c
++++ a/oggenc/oggenc.c
+@@ -752,8 +752,8 @@ static void parse_options(int argc, char
+ 				opt->namefmt = strdup(optarg);
+ 				break;
+             case 'X':
+-				if(opt->namefmt_remove && opt->namefmt_remove != 
+-                        DEFAULT_NAMEFMT_REMOVE)
++				if(opt->namefmt_remove && strcmp(opt->namefmt_remove,
++                        DEFAULT_NAMEFMT_REMOVE) != 0)
+ 				{
+ 					fprintf(stderr, _("WARNING: Multiple name format filters specified, using final\n"));
+ 					free(opt->namefmt_remove);
+--- a/oggenc/resample.c
++++ a/oggenc/resample.c
+@@ -170,7 +170,7 @@ int res_init(res_state *state, int chann
+ 				assert(beta > 2.0);
+ 				break;
+ 			default:
+-				assert("arglist" == "valid");
++				assert(!"arglist not valid");
+ 				return -1;
+ 			}
+ 			op1 = va_arg(argp, res_parameter);

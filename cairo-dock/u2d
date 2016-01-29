@@ -1,0 +1,1 @@
+urllist https://launchpad.net/cairo-dock-core/+download | parsever | sort -V | tail -n 1

@@ -1,0 +1,16 @@
+--- swfdec-gnome-2.26.0.orig/data/swfdec-player.desktop.in	2008-07-31 23:37:06.000000000 +0200
++++ swfdec-gnome-2.26.0/data/swfdec-player.desktop.in	2009-03-18 19:08:41.000000000 +0100
+@@ -1,11 +1,11 @@
+ [Desktop Entry]
+-_Name=Swfdec Flash Player
++Name=Swfdec Player
+ _Comment=Play Adobe Flash files
+ Exec=swfdec-player %U
+ Icon=swfdec-gnome
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=GNOME;GTK;AudioVideo;Video;Player;
++Categories=GTK;GNOME;AudioVideo;Video;Player;X-UHU-Menu/Multimedia/VideoPlayers;
+ MimeType=application/x-shockwave-flash;application/futuresplash;
+ 

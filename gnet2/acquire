@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnet-${UB_VERSION}.tar.gz gnet-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnet/${UB_VERSION_HEAD2}/

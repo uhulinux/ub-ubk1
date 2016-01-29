@@ -1,0 +1,18 @@
+#!/bin/sh -eux
+
+ub_install
+
+sed -i \
+  -e 's|"Vera/6"|"-*-lucida-medium-r-normal-*-*-80-*-*-p-*-*-*"|g' \
+  -e 's|"Vera/7"|"-*-lucida-medium-r-normal-*-*-100-*-*-p-*-*-*"|g' \
+  -e 's|"Vera/8"|"-*-lucida-medium-r-normal-*-*-100-*-*-p-*-*-*"|g' \
+  -e 's|"Vera/10"|"-*-lucida-medium-r-normal-*-*-120-*-*-p-*-*-*"|g' \
+  -e 's|"VeraBd/6"|"-*-lucida-bold-r-normal-*-*-80-*-*-p-*-*-*"|g' \
+  -e 's|"VeraBd/7"|"-*-lucida-bold-r-normal-*-*-100-*-*-p-*-*-*"|g' \
+  -e 's|"VeraBd/8"|"-*-lucida-bold-r-normal-*-*-100-*-*-p-*-*-*"|g' \
+  -e 's|"VeraBd/10"|"-*-lucida-bold-r-normal-*-*-120-*-*-p-*-*-*"|g' \
+  "$UB_INSTALLDIR"/usr/share/e16/themes/winter/fonts.cfg
+rm "$UB_INSTALLDIR"/usr/share/e16/themes/winter/fonts.cfg.*
+rm -r "$UB_INSTALLDIR"/usr/share/e16/themes/winter/ttfonts
+
+chown -Rh 0:0 "$UB_INSTALLDIR"

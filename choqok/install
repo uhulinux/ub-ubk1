@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_install
+
+## Collision with KDEPimLibs >= 4.9.95
+rm -rf "${UB_INSTALLDIR}"/usr/share/cmake/modules/FindQtOAuth.cmake

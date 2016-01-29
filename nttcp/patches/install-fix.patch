@@ -1,0 +1,15 @@
+diff -Naurd nttcp-1.47.orig/Makefile nttcp-1.47/Makefile
+--- nttcp-1.47.orig/Makefile	2000-12-18 11:17:20.000000000 +0100
++++ nttcp-1.47/Makefile	2003-08-17 19:43:09.000000000 +0200
+@@ -173,9 +173,9 @@
+ 
+ install:	nttcp
+ 		-mkdir -p $(prefix)/bin
+-		-mkdir -p $(prefix)/man/man1
++		-mkdir -p $(prefix)/share/man/man1
+ 		cp nttcp $(prefix)/bin
+-		cp nttcp.1 $(prefix)/man/man1
++		cp nttcp.1 $(prefix)/share/man/man1
+ 
+ clean:
+ 		rm -f *.o

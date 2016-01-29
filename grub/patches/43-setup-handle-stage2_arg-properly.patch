@@ -1,0 +1,15 @@
+diff -Naurdp grub-0.93.orig/stage2/builtins.c grub-0.93/stage2/builtins.c
+--- grub-0.93.orig/stage2/builtins.c	2003-08-30 13:27:03.000000000 +0200
++++ grub-0.93/stage2/builtins.c	2003-08-30 13:34:46.000000000 +0200
+@@ -3837,7 +3837,10 @@ setup_func (char *arg, int flags)
+     }
+ 
+   /* The prefix was determined.  */
+-  grub_sprintf (stage2, "%s%s", prefix, "/stage2");
++  if (stage2_arg)
++    grub_sprintf (stage2, "%s", stage2_arg + sizeof("--stage2=") - 1);
++  else
++    grub_sprintf (stage2, "%s%s", prefix, "/stage2");
+   grub_sprintf (config_filename, "%s%s", prefix, "/menu.lst");
+   *real_config_filename = 0;
+ 

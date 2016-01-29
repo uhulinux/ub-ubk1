@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mesa-demos-${UB_VERSION}.tar.gz mesa-demos-${UB_VERSION}/
+	ftp://ftp.freedesktop.org/pub/mesa/demos/${UB_VERSION}/

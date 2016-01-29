@@ -1,0 +1,9 @@
+	/usr/bin/designer-qt5
+	/usr/bin/linguist-qt5
+	/usr/lib/qt5/bin/designer
+	/usr/lib/qt5/bin/designer.debug
+	/usr/lib/qt5/bin/linguist
+	/usr/lib/qt5/bin/linguist.debug
+	/usr/lib/qt5/plugins/designer
+	/usr/share/applications/qt5-designer.desktop
+	/usr/share/applications/qt5-linguist.desktop

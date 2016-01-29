@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+ub_install
+cp example/.libs/fusexmp{,_fh} "$UB_INSTALLDIR"/usr/bin/

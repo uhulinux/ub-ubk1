@@ -1,0 +1,4 @@
+A manapság egyik legjobban használható levelezési lista szerver, saját webes
+felülettel. A felhasználókat egy adatbázisban tárolja, ezért szüksége van
+adatbázisszerverre a működéséhez. Támogatja az &LDAP-ot, az &i18n-t és még
+nagyon sok mindent.

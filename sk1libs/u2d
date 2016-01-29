@@ -1,0 +1,2 @@
+#urllist 'http://sk1project.org/modules.php?name=Products&product=sk1&op=download' | splitver '^dc2.php\?target=sk1libs-(.*).tar.gz$' | tr '_' '-' | sort -V | tail -n 1
+urllist https://code.google.com/p/sk1/downloads/list | splitver '^sk1libs-(.*).tar.gz$' | tr '_' '+' | sort -V | tail -n 1

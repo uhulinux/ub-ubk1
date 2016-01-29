@@ -1,0 +1,23 @@
+diff -Naurd a/stage2/start_eltorito.S b/stage2/start_eltorito.S
+--- a/stage2/start_eltorito.S	2004-09-06 12:11:25.390855710 +0200
++++ b/stage2/start_eltorito.S	2004-09-06 12:12:22.462586694 +0200
+@@ -118,7 +118,10 @@
+ 	ljmp	$0, $(STAGE_ADDR+SECTOR_SIZE)  /* jump to main() in asm.S */
+ 
+ /* go here when you need to stop the machine hard after an error condition */
+-stop:	jmp	stop
++stop:
++	MSG(notification_stop)
++stoploop:
++	jmp	stoploop
+ 
+ 
+ /*
+@@ -272,6 +275,7 @@
+ #endif
+ 
+ notification_step:	.string "."
++notification_stop:	.string "halted."
+ notification_done:	.string "\r\n"
+ 
+ read_error_string:	.string "Read error 0x"

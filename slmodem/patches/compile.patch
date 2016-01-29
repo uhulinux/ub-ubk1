@@ -1,0 +1,35 @@
+diff -Naur slmodem-2.9.11-20090222-orig/drivers/Makefile slmodem-2.9.11-20090222/drivers/Makefile
+--- slmodem-2.9.11-20090222-orig/drivers/Makefile	2009-02-22 23:20:58.000000000 +0100
++++ slmodem-2.9.11-20090222/drivers/Makefile	2009-06-07 19:12:19.000000000 +0200
+@@ -15,8 +15,7 @@
+ 
+ #KBUILD_VERBOSE=1
+ #export KBUILD_VERBOSE
+-
+-KERNEL_DIR:=/lib/modules/$(shell uname -r)/build
++KERNEL_DIR:=/lib/modules/$(shell ls -1 /lib/modules)/build
+ SUBLEVEL:=$(shell echo $(KERNEL_DIR) | cut -d. -f3 | cut -d. -f1 | cut -d-  -f1)
+ # slusb support ends at 2.6.24
+ 
+@@ -46,7 +45,7 @@
+ ifndef KERNEL_VER
+ 
+ all install uninstall: kernel-ver
+-	$(MAKE) $@ KERNEL_VER=$(shell ./kernel-ver)
++	$(MAKE) $@ KERNEL_VER=$(shell ls -1 /lib/modules)
+ 
+ install: install-devices
+ uninstall: remove-devices
+diff -Naur slmodem-2.9.11-20090222-orig/Makefile slmodem-2.9.11-20090222/Makefile
+--- slmodem-2.9.11-20090222-orig/Makefile	2008-03-29 13:04:16.000000000 +0100
++++ slmodem-2.9.11-20090222/Makefile	2009-06-07 19:13:38.000000000 +0200
+@@ -13,8 +13,7 @@
+ #
+ ###########################################################################
+ 
+-KERNEL_DIR:=/lib/modules/$(shell uname -r)/build
+-
++KERNEL_DIR:=/lib/modules/$(shell ls -1 /lib/modules)/build
+ # tools
+ INSTALL:=install
+ 

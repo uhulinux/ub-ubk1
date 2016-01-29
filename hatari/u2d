@@ -1,0 +1,2 @@
+minor=$(urllist http://download.tuxfamily.org/hatari/ | grep -E '^[0-9]+' | sort -V | tail -n 1) 
+urllist http://download.tuxfamily.org/hatari/$minor | splitver '^hatari-([0-9.]+).tar.bz2$'

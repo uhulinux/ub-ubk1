@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PyICU-${UB_VERSION}.tar.gz PyICU-${UB_VERSION}/
+	https://pypi.python.org/packages/source/P/PyICU/

@@ -1,0 +1,25 @@
+diff -Naurd hfsutils-3.2.6.orig/Makefile.in hfsutils-3.2.6/Makefile.in
+--- hfsutils-3.2.6.orig/Makefile.in	1998-08-31 20:40:14.000000000 +0200
++++ hfsutils-3.2.6/Makefile.in	2004-10-26 14:04:00.634457426 +0200
+@@ -36,7 +36,7 @@
+ INSTALL =	@INSTALL@
+ BININSTALL =	@INSTALL_PROGRAM@ -m 755
+ LIBINSTALL =	@INSTALL_DATA@
+-HARDLINK =	ln -f
++HARDLINK =	ln -fs
+ 
+ CC =		@CC@
+ INCLUDES =	@CPPFLAGS@ -Ilibhfs @TCL_INCLUDES@ @TK_INCLUDES@
+@@ -114,11 +114,9 @@
+ 	$(BININSTALL) $(HFSUTIL) "$(BINDEST)/."
+ 
+ 	for file in $(CLITARGETS); do  \
+-		$(HARDLINK) "$(BINDEST)/$(HFSUTIL)" "$(BINDEST)/$$file";  \
++		$(HARDLINK) "$(HFSUTIL)" "$(BINDEST)/$$file";  \
+ 	done
+ 
+-	rm -f "$(BINDEST)/$(HFSUTIL)"
+-
+ 	for file in $(GENERALDOCS) $(CLIDOCS); do  \
+ 		$(LIBINSTALL) doc/man/$$file  \
+ 		"$(MANDEST)/man$(MANEXT)/`basename $$file .1`.$(MANEXT)";  \

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+strigidaemon-${UB_VERSION}.tar.gz strigidaemon-v${UB_VERSION}/
+	git://anongit.kde.org/strigidaemon.git@tag:v${UB_VERSION}

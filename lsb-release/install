@@ -1,0 +1,15 @@
+#!/bin/sh -eux
+
+ub_install
+
+distid=`cat /etc/uhu-release`
+mkdir -p "${UB_INSTALLDIR}/etc"
+becenev=`cat /etc/uhu-release | cut -f2 -d' '`
+release=`cat /etc/uhu-release | cut -f1 -d' '`
+cat > "${UB_INSTALLDIR}/etc/lsb-release" <<- EOF
+	LSB_VERSION=$UB_VERSION
+	DISTRIB_ID=UHU
+	DISTRIB_RELEASE=$release
+	DISTRIB_DESCRIPTION=UHU-linux
+	DISTRIB_CODENAME=$becenev
+	EOF

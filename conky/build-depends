@@ -1,0 +1,11 @@
+alsa-lib-dev
+curl-dev
+glib-dev
+imlib2-dev
+libx11-dev
+libxdamage-dev
+libxext-dev
+libxft-dev
+libxml2-dev
+lua-dev
+wireless-tools-dev

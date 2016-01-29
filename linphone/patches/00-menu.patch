@@ -1,0 +1,16 @@
+diff -Naur linphone-3.4.3-orig/share/linphone.desktop.in linphone-3.4.3/share/linphone.desktop.in
+--- linphone-3.4.3-orig/share/linphone.desktop.in	2011-02-15 21:36:43.000000000 +0100
++++ linphone-3.4.3/share/linphone.desktop.in	2011-11-09 19:00:26.000000000 +0100
+@@ -1,10 +1,11 @@
+ [Desktop Entry]
+ Name=Linphone
+ Comment=Linphone is a web-phone
++Comment[hu]=Csevegés másokkal az interneten keresztül
+ Comment[fr]=Linphone est un web-phone.
+ Comment[de]=Linphone ist ein web-phone.
+ Type=Application
+ Exec=linphone
+ Icon=@prefix@/share/pixmaps/linphone/linphone.png
+ Terminal=false
+-Categories=Network;Telephony;
++Categories=Network;Telephony;X-UHU-Menu/Internet/Messengers;

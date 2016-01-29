@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+make \
+	-C src \
+	RPM_INSTALL_ROOT="$UB_INSTALLDIR" \
+	install
+
+rm -rf "$UB_INSTALLDIR"/usr/doc
+
+install -c -m 755 configs/firewall-masq "$UB_INSTALLDIR"/etc/ppp/
+install -c -m 755 configs/firewall-standalone "$UB_INSTALLDIR"/etc/ppp/
+install -c -m 644 configs/pppoe-server-options "$UB_INSTALLDIR"/etc/ppp/
+install -c -m 644 configs/pppoe.conf "$UB_INSTALLDIR"/etc/ppp/

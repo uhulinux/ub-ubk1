@@ -1,0 +1,2 @@
+minor=$(urllist http://sourceforge.net/projects/gimp-print/files/ | splitver '^gutenprint-([0-9.]+)' | sort -V | tail -n 1)
+sflist gimp-print gutenprint-"$minor" | splitver '^([0-9.]+)' | sort -V | tail -n 1

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PollyReports-${UB_VERSION}.tar.gz PollyReports-${UB_VERSION}/
+	http://pypi.python.org/packages/source/P/PollyReports/

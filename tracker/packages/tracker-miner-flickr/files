@@ -1,0 +1,5 @@
+	/etc/xdg/autostart/tracker-miner-flickr.desktop
+	/usr/libexec/tracker-miner-flickr
+	/usr/share/dbus-1/services/*.Flickr.service
+	/usr/share/tracker/icons/tracker-miner-flickr.svg
+	/usr/share/tracker/miners/tracker-miner-flickr.desktop

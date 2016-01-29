@@ -1,0 +1,1 @@
+urllist http://www.stafford.uklinux.net/libesmtp/download.html | splitver '^libesmtp-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

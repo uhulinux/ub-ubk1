@@ -1,0 +1,18 @@
+diff -Naur orig/brushOp.c mod/brushOp.c
+--- orig/brushOp.c	2010-09-26 19:48:24.000000000 +0200
++++ mod/brushOp.c	2014-04-29 19:16:01.000000000 +0200
+@@ -23,10 +23,10 @@
+ #include <X11/Shell.h>
+ #include <X11/xpm.h>
+ 
+-#include "xaw_incdir/Box.h"
+-#include "xaw_incdir/Form.h"
+-#include "xaw_incdir/Command.h"
+-#include "xaw_incdir/Toggle.h"
++#include "/usr/include/X11/Xaw3d/Box.h"
++#include "/usr/include/X11/Xaw3d/Form.h"
++#include "/usr/include/X11/Xaw3d/Command.h"
++#include "/usr/include/X11/Xaw3d/Toggle.h"
+ 
+ #include "xpaint.h"
+ #include "misc.h"

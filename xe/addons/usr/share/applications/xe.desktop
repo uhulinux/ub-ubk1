@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=xe
+Comment=SPF editor
+Comment[hu]=SPF editor
+GenericName=Hybrid editor xe
+GenericName[hu]=Hybrid editor xe
+Exec=gxe
+Icon=/usr/share/pixmaps/gxe/wxe.png
+Terminal=true
+Categories=Utility;TextEditor;ConsoleOnly;

@@ -1,0 +1,9 @@
+flac-dev
+libmikmod-dev
+libmodplug-dev
+libogg-dev
+libvorbis-dev
+physfs-dev
+sdl-dev
+smpeg-dev
+speex-dev

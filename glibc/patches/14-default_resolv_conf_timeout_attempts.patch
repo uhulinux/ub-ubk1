@@ -1,0 +1,18 @@
+diff -Naurdp glibc-2.19.orig/resolv/resolv.h glibc-2.19/resolv/resolv.h
+--- glibc-2.19.orig/resolv/resolv.h	2014-02-07 10:04:38.000000000 +0100
++++ glibc-2.19/resolv/resolv.h	2014-06-23 13:44:19.423761382 +0200
+@@ -93,12 +93,12 @@ typedef res_sendhookact (*res_send_rhook
+ # define MAXDNSRCH		6	/* max # domains in search path */
+ # define LOCALDOMAINPARTS	2	/* min levels in name that is "local" */
+ 
+-# define RES_TIMEOUT		5	/* min. seconds between retries */
++# define RES_TIMEOUT		2	/* min. seconds between retries */
+ # define MAXRESOLVSORT		10	/* number of net to sort on */
+ # define RES_MAXNDOTS		15	/* should reflect bit field size */
+ # define RES_MAXRETRANS		30	/* only for resolv.conf/RES_OPTIONS */
+ # define RES_MAXRETRY		5	/* only for resolv.conf/RES_OPTIONS */
+-# define RES_DFLRETRY		2	/* Default #/tries. */
++# define RES_DFLRETRY		1	/* Default #/tries. */
+ # define RES_MAXTIME		65535	/* Infinity, in milliseconds. */
+ 
+ struct __res_state {

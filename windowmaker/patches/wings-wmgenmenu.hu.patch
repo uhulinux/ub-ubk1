@@ -1,0 +1,882 @@
+diff -Naur orig/configure.ac mod/configure.ac
+--- orig/configure.ac	2013-09-12 23:43:54.000000000 +0200
++++ mod/configure.ac	2014-06-22 19:19:18.000000000 +0200
+@@ -313,8 +313,8 @@
+ dnl =========================
+ supported_locales="be bg bs ca cs da de el es et fi fr gl hr hu hy it ja ko ms nl no pl pt ro ru sk sv tr zh_CN zh_TW"
+ supported_wprefs_locales="bg ca cs de es et fi fr hr hu it ja ko pt ru sk zh_CN zh_TW"
+-supported_wings_locales="bg ca cs de fr sk"
+-supported_util_locales="de es fr pt"
++supported_wings_locales="bg ca cs de fr sk hu"
++supported_util_locales="de es fr pt hu"
+ 
+ for lang in $LINGUAS; do
+ 	ok=0
+diff -Naur orig/util/po/hu.po mod/util/po/hu.po
+--- orig/util/po/hu.po	1970-01-01 01:00:00.000000000 +0100
++++ mod/util/po/hu.po	2014-06-16 19:46:40.000000000 +0200
+@@ -0,0 +1,209 @@
++# wmgenmenu German translation
++# Copyright (C) 2010 Carlos R. Mafra
++# This file is distributed under the same license as the Window Maker package.
++# Carlos R. Mafra <crmafra@gmail.com>, 2010.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: wmgenmenu\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2010-01-27 12:57+0100\n"
++"PO-Revision-Date: 2014-06-16 19:46+0100\n"
++"Last-Translator: Kiss Attila <attus@enterpriseforever.com>\n"
++"Language-Team: Hungarian <attus@enterpriseforever.com>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Language: hu_HU\n"
++"X-Generator: Poedit 1.6.5\n"
++
++#: ../../util/wmgenmenu.c:78 ../../util/wmgenmenu.c:91
++msgid "Window Maker"
++msgstr "Window Maker"
++
++#: ../../util/wmgenmenu.c:79
++msgid "Applications"
++msgstr "Alkalmazások"
++
++#. Submenus in Applications
++#: ../../util/wmgenmenu.c:82
++msgid "Terminals"
++msgstr "Terminálok"
++
++#: ../../util/wmgenmenu.c:83
++msgid "Internet"
++msgstr "Világháló"
++
++#: ../../util/wmgenmenu.c:84
++msgid "Email"
++msgstr "E-Mail"
++
++#: ../../util/wmgenmenu.c:85
++msgid "Mathematics"
++msgstr "Matematika"
++
++#: ../../util/wmgenmenu.c:86
++msgid "File Managers"
++msgstr "Fájlkezelők"
++
++#: ../../util/wmgenmenu.c:87
++msgid "Graphics"
++msgstr "Grafika"
++
++#: ../../util/wmgenmenu.c:88
++msgid "Multimedia"
++msgstr "Multimédia"
++
++#: ../../util/wmgenmenu.c:89
++msgid "Editors"
++msgstr "Szöveg írók"
++
++#: ../../util/wmgenmenu.c:90
++msgid "Development"
++msgstr "Fejlesztés"
++
++#: ../../util/wmgenmenu.c:92
++msgid "Office"
++msgstr "Hivatal"
++
++#: ../../util/wmgenmenu.c:93
++msgid "Astronomy"
++msgstr "Csillagászat"
++
++#: ../../util/wmgenmenu.c:94
++msgid "Sound"
++msgstr "Hang"
++
++#: ../../util/wmgenmenu.c:95
++msgid "Comics"
++msgstr "Vicces"
++
++#: ../../util/wmgenmenu.c:96
++msgid "Viewers"
++msgstr "Iratnézők"
++
++#: ../../util/wmgenmenu.c:97
++msgid "Utilities"
++msgstr "Segédprogramok"
++
++#: ../../util/wmgenmenu.c:98
++msgid "System"
++msgstr "Rendszer"
++
++#: ../../util/wmgenmenu.c:99
++msgid "Video"
++msgstr "Videó"
++
++#: ../../util/wmgenmenu.c:100
++msgid "Chat and Talk"
++msgstr "Chat és duma"
++
++#: ../../util/wmgenmenu.c:101
++msgid "P2P-Network"
++msgstr "P2P hálózat"
++
++#: ../../util/wmgenmenu.c:102
++msgid "Games"
++msgstr "Játékok"
++
++#: ../../util/wmgenmenu.c:103
++msgid "OpenSUSE"
++msgstr ""
++
++#: ../../util/wmgenmenu.c:104
++msgid "Mandriva"
++msgstr ""
++
++#: ../../util/wmgenmenu.c:110
++msgid "Run..."
++msgstr "Futtatás..."
++
++#: ../../util/wmgenmenu.c:112
++msgid "%A(Run, Type command:)"
++msgstr "%A(Futtatás, Parancs:)"
++
++#. Appearance-related items
++#: ../../util/wmgenmenu.c:118
++msgid "Appearance"
++msgstr "Megjelenés"
++
++#: ../../util/wmgenmenu.c:120
++msgid "Themes"
++msgstr "Témák"
++
++#: ../../util/wmgenmenu.c:128
++msgid "Icons"
++msgstr "Ikonok"
++
++#: ../../util/wmgenmenu.c:136
++msgid "Background"
++msgstr "Háttér"
++
++#: ../../util/wmgenmenu.c:144
++msgid "Save Theme"
++msgstr "Téma mentés"
++
++#: ../../util/wmgenmenu.c:152
++msgid "Save Icons"
++msgstr "Ikonok mentése"
++
++#: ../../util/wmgenmenu.c:162
++msgid "Workspaces"
++msgstr "Munkaterületek"
++
++#: ../../util/wmgenmenu.c:168
++msgid "Workspace"
++msgstr "Munkaterület"
++
++#: ../../util/wmgenmenu.c:170
++msgid "Hide Others"
++msgstr "Többi elrejtése"
++
++#: ../../util/wmgenmenu.c:176
++msgid "Show All"
++msgstr "Mindent mutat"
++
++#: ../../util/wmgenmenu.c:182
++msgid "Arrange Icons"
++msgstr "Ikonok rendezése"
++
++#: ../../util/wmgenmenu.c:189
++msgid "Refresh"
++msgstr "Frissítés"
++
++#: ../../util/wmgenmenu.c:195
++msgid "Save Session"
++msgstr "Munkamenet mentés"
++
++#: ../../util/wmgenmenu.c:201
++msgid "Clear Session"
++msgstr "X menet kiürítése"
++
++#: ../../util/wmgenmenu.c:209
++msgid "Configure Window Maker"
++msgstr "Window Maker beállításai"
++
++#: ../../util/wmgenmenu.c:217
++msgid "Info Panel"
++msgstr "Információ"
++
++#: ../../util/wmgenmenu.c:224
++msgid "Restart"
++msgstr "Újraindítás"
++
++#: ../../util/wmgenmenu.c:237
++msgid "Lock Screen"
++msgstr "Képernyőzár"
++
++#: ../../util/wmgenmenu.c:248
++msgid "Exit Window Maker"
++msgstr "Window Maker befejezése"
++
++#: ../../util/wmgenmenu.c:317
++#, c-format
++msgid "Start %s"
++msgstr "%s indítás"
++
++#: ../../util/wmgenmenu.c:325
++msgid "Other Window Managers"
++msgstr "Más ablakkezelők"
+diff -Naur orig/util/po/Makefile.am mod/util/po/Makefile.am
+--- orig/util/po/Makefile.am	2013-09-12 23:43:54.000000000 +0200
++++ mod/util/po/Makefile.am	2014-06-16 19:52:09.000000000 +0200
+@@ -4,7 +4,7 @@
+ 
+ CLEANFILES = wmgenmenu.pot $(CATALOGS)
+ 
+-EXTRA_DIST = de.po es.po fr.po pt.po
++EXTRA_DIST = de.po es.po fr.po pt.po hu.po
+ 
+ POTFILES  = \
+ 	$(top_srcdir)/util/wmgenmenu.c \
+diff -Naur orig/WINGs/po/hu.po mod/WINGs/po/hu.po
+--- orig/WINGs/po/hu.po	1970-01-01 01:00:00.000000000 +0100
++++ mod/WINGs/po/hu.po	2014-06-22 16:00:44.000000000 +0200
+@@ -0,0 +1,627 @@
++#
++# German Message Catalog for WINGs
++#
++# Initial translation
++#   Gudio Scholz <guido.scholz@bayernline.de>
++#
++# Adapted to versions 0.80 ff.
++#   Torsten Marek <shlomme@gmx.net>
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: WINGs\n"
++"POT-Creation-Date: 2004-11-01 16:24+0100\n"
++"PO-Revision-Date: 2014-06-22 16:00+0100\n"
++"Last-Translator: Kiss Attila <attus@enterpriseforever.com>\n"
++"Language-Team: ubk <attus@enterpriseforever.com>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Language: hu_HU\n"
++"X-Generator: Poedit 1.6.5\n"
++
++#: ../../WINGs/connection.c:471 ../../WINGs/connection.c:536
++#: ../../WINGs/connection.c:579
++msgid "Bad address-service-protocol combination"
++msgstr "Hibás address-service-protocoll kombináció"
++
++#: ../../WINGs/error.c:54
++#, c-format
++msgid "Unknown error %d"
++msgstr "Ismeretlen hiba %d"
++
++#: ../../WINGs/error.c:59
++#, c-format
++msgid "Error %d"
++msgstr "Hiba %d"
++
++#: ../../WINGs/error.c:110
++msgid " warning: "
++msgstr "figyelmeztetés: "
++
++#: ../../WINGs/error.c:137
++msgid " fatal error: "
++msgstr "végzetes hiba: "
++
++#: ../../WINGs/error.c:163 ../../WINGs/error.c:192
++msgid " error: "
++msgstr "hiba: "
++
++#: ../../WINGs/findfile.c:48
++#, c-format
++msgid "could not get password entry for UID %i"
++msgstr "Az UID %i jelszava elérhetetlen"
++
++#: ../../WINGs/findfile.c:66
++#, c-format
++msgid "could not get password entry for user %s"
++msgstr "A %s felhasználó jelszava nem elérhető"
++
++#: ../../WINGs/host.c:114
++msgid "Cannot get current host name"
++msgstr "Az aktuális Hostname elérhetetlen"
++
++#: ../../WINGs/proplist.c:91
++#, c-format
++msgid "syntax error in %s %s, line %i: %s"
++msgstr "Szintaxis hiba: %s %s, sor %i: %s"
++
++#: ../../WINGs/proplist.c:150
++msgid "Only string or data is supported for a proplist dictionary key"
++msgstr ""
++"A Proplist dictionary -ban csak string vagy bináris szerepelhet kulcsként"
++
++#: ../../WINGs/proplist.c:184 ../../WINGs/proplist.c:236
++#: ../../WINGs/proplist.c:394 ../../WINGs/proplist.c:474
++#: ../../WINGs/proplist.c:1075 ../../WINGs/proplist.c:1127
++#: ../../WINGs/proplist.c:1293 ../../WINGs/proplist.c:1372
++#: ../../WINGs/proplist.c:1493 ../../WINGs/proplist.c:1540
++msgid "Used proplist functions on non-WMPropLists objects"
++msgstr "Proplist funkcók nem WMProplist objektumoknál."
++
++#: ../../WINGs/proplist.c:630
++msgid "unterminated PropList string"
++msgstr "Befejezetlen PropList string"
++
++#: ../../WINGs/proplist.c:670
++msgid "unterminated PropList data"
++msgstr "A PropList befejezetlen"
++
++#: ../../WINGs/proplist.c:678
++msgid "unterminated PropList data (missing hexdigit)"
++msgstr "A PropList befejezetlen(hiányzó hexa szám)"
++
++#: ../../WINGs/proplist.c:690 ../../WINGs/proplist.c:695
++msgid "non hexdigit character in PropList data"
++msgstr "A PropList halmazban nem hexadecimális karakter van"
++
++#: ../../WINGs/proplist.c:729
++msgid "unterminated PropList array"
++msgstr "Befejezetlen PropList tömb"
++
++#: ../../WINGs/proplist.c:737
++msgid "missing or unterminated PropList array"
++msgstr "Hiányzó, vagy befejezetlen PropList-Array"
++
++#: ../../WINGs/proplist.c:747
++msgid "could not get PropList array element"
++msgstr "A PropList tömbelem olvashatatlan"
++
++#: ../../WINGs/proplist.c:776
++msgid "unterminated PropList dictionary"
++msgstr "Befejezlen PropList dictionary"
++
++#: ../../WINGs/proplist.c:793
++msgid "missing PropList dictionary key"
++msgstr "hiányzó PropList-Dictionary kulcs"
++
++#: ../../WINGs/proplist.c:795
++msgid "missing PropList dictionary entry key or unterminated dictionary"
++msgstr "hiányzó PropList-Dictionary kulcs, vagy vég"
++
++#: ../../WINGs/proplist.c:803
++msgid "error parsing PropList dictionary key"
++msgstr "Hiba egy PropList-Dictionary kulcs azonosításakor."
++
++#: ../../WINGs/proplist.c:811
++msgid "missing = in PropList dictionary entry"
++msgstr "hiányzó \"=\" a PropList-Dictionary kulcsban"
++
++#: ../../WINGs/proplist.c:819
++msgid "error parsing PropList dictionary entry value"
++msgstr "Hiba egy PropList-Dictionary érték azonosításakor."
++
++#: ../../WINGs/proplist.c:827
++msgid "missing ; in PropList dictionary entry"
++msgstr "Hiányzó \";\" a PropList-Dictionary bejegyzésben"
++
++#: ../../WINGs/proplist.c:888
++msgid ""
++"was expecting a string, data, array or dictionary. If it's a string, try "
++"enclosing it with \"."
++msgstr ""
++"String, bináris, tömb vagy dictionary adat kell. Stinget \" -ek közé kell "
++"zárni."
++
++#: ../../WINGs/proplist.c:892
++msgid "Comments are not allowed inside WindowMaker owned domain files."
++msgstr "A WindowMaker domain fájljaiban megjegyzések nem lehetnek."
++
++#: ../../WINGs/proplist.c:1563 ../../WINGs/proplist.c:1630
++msgid "extra data after end of property list"
++msgstr "A tulajdonságlista végén extra adatok vannak"
++
++#: ../../WINGs/proplist.c:1606
++#, c-format
++msgid "could not get size for file '%s'"
++msgstr "A '%s' fájl nagysága ismeretlen"
++
++#: ../../WINGs/proplist.c:1619
++#, c-format
++msgid "error reading from file '%s'"
++msgstr "A '%s' fájl olvasása hibás"
++
++#: ../../WINGs/proplist.c:1671
++#, c-format
++msgid "mkstemp (%s) failed"
++msgstr "mkstemp (%s) sikertelen"
++
++#: ../../WINGs/proplist.c:1682
++#, c-format
++msgid "mktemp (%s) failed"
++msgstr "mktemp (%s) sikertelen"
++
++#: ../../WINGs/proplist.c:1693
++#, c-format
++msgid "open (%s) failed"
++msgstr "A (%s) nyitása sikertelen"
++
++#: ../../WINGs/proplist.c:1700
++#, c-format
++msgid "writing to file: %s failed"
++msgstr "A %s fájl írása sikertelen"
++
++#: ../../WINGs/proplist.c:1708
++#, c-format
++msgid "fclose (%s) failed"
++msgstr "fclose (%s) sikertelen"
++
++#: ../../WINGs/proplist.c:1717
++#, c-format
++msgid "rename ('%s' to '%s') failed"
++msgstr "átnevezési hiba ('%s'  '%s' névre)"
++
++#. something happened with the file. just overwrite it
++#: ../../WINGs/userdefaults.c:188 ../../WINGs/userdefaults.c:204
++#, c-format
++msgid "cannot read domain from file '%s' when syncing"
++msgstr "A szinkronizálákor a '%s' fájl olvasása sikertelen"
++
++#: ../../WINGs/wcolor.c:237 ../../WINGs/wcolor.c:249 ../../WINGs/wcolor.c:288
++#: ../../WINGs/wcolor.c:329
++#, c-format
++msgid "could not allocate %s color"
++msgstr "A %s szín létrehozhatatlan"
++
++#: ../../WINGs/wcolor.c:237
++msgid "white"
++msgstr "fehér"
++
++#: ../../WINGs/wcolor.c:249
++msgid "black"
++msgstr "fekete"
++
++#: ../../WINGs/wcolor.c:288
++msgid "gray"
++msgstr "szürke"
++
++#: ../../WINGs/wcolor.c:329
++msgid "dark gray"
++msgstr "sötétszürke"
++
++#: ../../WINGs/wcolorpanel.c:420
++msgid "Colors"
++msgstr "Színek"
++
++#: ../../WINGs/wcolorpanel.c:610 ../../WINGs/wcolorpanel.c:2829
++msgid "Brightness"
++msgstr "Világosság"
++
++#: ../../WINGs/wcolorpanel.c:612 ../../WINGs/wcolorpanel.c:688
++#: ../../WINGs/wcolorpanel.c:721 ../../WINGs/wcolorpanel.c:755
++#: ../../WINGs/wcolorpanel.c:815 ../../WINGs/wcolorpanel.c:849
++#: ../../WINGs/wcolorpanel.c:883 ../../WINGs/wcolorpanel.c:918
++#: ../../WINGs/wcolorpanel.c:2169 ../../WINGs/wcolorpanel.c:2831
++#: ../../WINGs/wcolorpanel.c:2867 ../../WINGs/wcolorpanel.c:2903
++#: ../../WINGs/wcolorpanel.c:3745
++msgid "Color Panel: Could not allocate memory"
++msgstr "Színpanel: Memórafoglalás sikertelen"
++
++#: ../../WINGs/wcolorpanel.c:685 ../../WINGs/wcolorpanel.c:686
++msgid "Red"
++msgstr "Piros"
++
++#: ../../WINGs/wcolorpanel.c:718 ../../WINGs/wcolorpanel.c:719
++msgid "Green"
++msgstr "Zöld"
++
++#: ../../WINGs/wcolorpanel.c:752 ../../WINGs/wcolorpanel.c:753
++msgid "Blue"
++msgstr "Kék"
++
++#: ../../WINGs/wcolorpanel.c:812 ../../WINGs/wcolorpanel.c:813
++msgid "Cyan"
++msgstr "Cián"
++
++#: ../../WINGs/wcolorpanel.c:846 ../../WINGs/wcolorpanel.c:847
++msgid "Magenta"
++msgstr "Bíbor"
++
++#: ../../WINGs/wcolorpanel.c:880 ../../WINGs/wcolorpanel.c:881
++msgid "Yellow"
++msgstr "Sárga"
++
++#: ../../WINGs/wcolorpanel.c:915 ../../WINGs/wcolorpanel.c:916
++msgid "Black"
++msgstr "Fekete"
++
++#: ../../WINGs/wcolorpanel.c:996
++msgid "Spectrum"
++msgstr "Spektrum"
++
++#: ../../WINGs/wcolorpanel.c:1026
++msgid "Palette"
++msgstr "Paletta"
++
++#: ../../WINGs/wcolorpanel.c:1032
++msgid "New from File..."
++msgstr "Új egy fájlból..."
++
++#: ../../WINGs/wcolorpanel.c:1033 ../../WINGs/wcolorpanel.c:1081
++#: ../../WINGs/wcolorpanel.c:1098
++msgid "Rename..."
++msgstr "Átnevezés..."
++
++#: ../../WINGs/wcolorpanel.c:1034 ../../WINGs/wcolorpanel.c:1082
++#: ../../WINGs/wcolorpanel.c:1099 ../../WINGs/wcolorpanel.c:3326
++msgid "Remove"
++msgstr "Eltávolítani"
++
++#: ../../WINGs/wcolorpanel.c:1035
++msgid "Copy"
++msgstr "Másolás"
++
++#: ../../WINGs/wcolorpanel.c:1036
++msgid "New from Clipboard"
++msgstr "Új a vágólapról"
++
++#: ../../WINGs/wcolorpanel.c:1057
++msgid "X11-Colors"
++msgstr "X11-színek"
++
++#: ../../WINGs/wcolorpanel.c:1074
++msgid "Color"
++msgstr "Szín"
++
++#: ../../WINGs/wcolorpanel.c:1080
++msgid "Add..."
++msgstr "Hozzáad..."
++
++#: ../../WINGs/wcolorpanel.c:1090
++msgid "List"
++msgstr "Lista"
++
++#: ../../WINGs/wcolorpanel.c:1097
++msgid "New..."
++msgstr "Új..."
++
++#: ../../WINGs/wcolorpanel.c:1236
++#, c-format
++msgid ""
++"Color Panel: Could not create directory %s needed to store configurations"
++msgstr "Színpanel: A konfiguráláshoz a %s mappa létrehozása sikertelen"
++
++#. Delete the file, it doesn't belong here
++#: ../../WINGs/wcolorpanel.c:1242 ../../WINGs/wcolorpanel.c:3212
++#: ../../WINGs/wcolorpanel.c:3216
++msgid "File Error"
++msgstr "Fájlhiba"
++
++#: ../../WINGs/wcolorpanel.c:1243
++msgid "Could not create ColorPanel configuration directory"
++msgstr "A színpanel konfigurációs mappája létrehozhatatlan"
++
++#: ../../WINGs/wcolorpanel.c:1244 ../../WINGs/wcolorpanel.c:3213
++#: ../../WINGs/wcolorpanel.c:3218 ../../WINGs/wcolorpanel.c:3245
++#: ../../WINGs/wfilepanel.c:250 ../../WINGs/wfilepanel.c:650
++#: ../../WINGs/wfilepanel.c:662 ../../WINGs/wfilepanel.c:763
++#: ../../WINGs/wfilepanel.c:974 ../../WINGs/wfontpanel.c:591
++msgid "OK"
++msgstr ""
++
++#: ../../WINGs/wcolorpanel.c:1250 ../../WINGs/wcolorpanel.c:1286
++#: ../../WINGs/wcolorpanel.c:1304
++msgid "Color Panel: Could not find file"
++msgstr "Színpanel: A fájl nincs meg"
++
++#: ../../WINGs/wcolorpanel.c:1491 ../../WINGs/wcolorpanel.c:1556
++#: ../../WINGs/wcolorpanel.c:1620
++msgid "Color Panel: X failed request"
++msgstr "Színpanel: X lekérdezési hiba"
++
++#: ../../WINGs/wcolorpanel.c:2865
++msgid "Saturation"
++msgstr "Telítettség"
++
++#: ../../WINGs/wcolorpanel.c:2901
++msgid "Hue"
++msgstr "Színegyensúly"
++
++#: ../../WINGs/wcolorpanel.c:3151
++msgid "Open Palette"
++msgstr "Palettea megnyitás"
++
++#: ../../WINGs/wcolorpanel.c:3213
++msgid "Invalid file format !"
++msgstr "Érvénytelen fájlnév!"
++
++#: ../../WINGs/wcolorpanel.c:3215
++#, c-format
++msgid "can't remove file %s"
++msgstr "A %s fájl törlése sikertelen"
++
++#: ../../WINGs/wcolorpanel.c:3217
++msgid "Couldn't remove file from Configuration Directory !"
++msgstr "A konfigurációs mappából a fájl törölhetetlen!"
++
++#: ../../WINGs/wcolorpanel.c:3244
++msgid "Rename"
++msgstr "Átnevezés"
++
++#: ../../WINGs/wcolorpanel.c:3244
++msgid "Rename palette to:"
++msgstr "Paletta átnevezés:"
++
++#: ../../WINGs/wcolorpanel.c:3245 ../../WINGs/wfilepanel.c:259
++#: ../../WINGs/wfilepanel.c:662 ../../WINGs/wfilepanel.c:763
++msgid "Cancel"
++msgstr "Félbehagy"
++
++#. Careful, this palette exists already
++#: ../../WINGs/wcolorpanel.c:3261 ../../WINGs/wfilepanel.c:763
++msgid "Warning"
++msgstr "Vigyázat"
++
++#: ../../WINGs/wcolorpanel.c:3262
++msgid ""
++"Palette already exists !\n"
++"\n"
++"Overwrite ?"
++msgstr ""
++"A paletta létezik!\n"
++"\n"
++"Felülírni?"
++
++#: ../../WINGs/wcolorpanel.c:3262 ../../WINGs/wcolorpanel.c:3326
++msgid "No"
++msgstr "Nem"
++
++#: ../../WINGs/wcolorpanel.c:3262 ../../WINGs/wcolorpanel.c:3326
++msgid "Yes"
++msgstr "Igen"
++
++#: ../../WINGs/wcolorpanel.c:3294
++#, c-format
++msgid "Couldn't rename palette %s to %s\n"
++msgstr "A %s paletta új neve nem lehet %s\n"
++
++#: ../../WINGs/wcolorpanel.c:3320
++msgid "This will permanently remove the palette "
++msgstr "A paletta visszavonhatatlanul törlődik"
++
++#: ../../WINGs/wcolorpanel.c:3323
++msgid ""
++".\n"
++"\n"
++"Are you sure you want to remove this palette ?"
++msgstr ""
++".\n"
++"\n"
++"Biztosan törlendő ez a paletta?"
++
++#: ../../WINGs/wcolorpanel.c:3348
++#, c-format
++msgid "Couldn't remove palette %s\n"
++msgstr "A %s paletta törlése sikertelen\n"
++
++#: ../../WINGs/wcolorpanel.c:3647
++#, c-format
++msgid "Could not open %s"
++msgstr "A %s megnyithatatlan"
++
++#: ../../WINGs/wcolorpanel.c:3654
++#, c-format
++msgid "Could not create %s"
++msgstr "A %s létrehozhatatlan"
++
++#: ../../WINGs/wcolorpanel.c:3665
++#, c-format
++msgid "Write error on file %s"
++msgstr "A %s fájl írása hibás"
++
++#: ../../WINGs/wcolorpanel.c:3710
++msgid "Color Panel: Color unspecified"
++msgstr "Színpanel: A szín nem meghatározott"
++
++#: ../../WINGs/wfilepanel.c:235
++msgid "Name:"
++msgstr "Név:"
++
++#: ../../WINGs/wfilepanel.c:332 ../../WINGs/wfilepanel.c:396
++msgid "Open"
++msgstr "Megnyitás"
++
++#: ../../WINGs/wfilepanel.c:350 ../../WINGs/wfilepanel.c:402
++msgid "Save"
++msgstr "Ment"
++
++#: ../../WINGs/wfilepanel.c:565
++#, c-format
++msgid "WINGs: could not open directory %s\n"
++msgstr "WINGs: A %s mappa nyitása sikertelen\n"
++
++#: ../../WINGs/wfilepanel.c:583
++#, c-format
++msgid "WINGs: could not stat %s\n"
++msgstr "WINGs: A %s meghatározhatatlan\n"
++
++#: ../../WINGs/wfilepanel.c:650 ../../WINGs/wfilepanel.c:973
++#: ../../WINGs/wfontpanel.c:590
++msgid "Error"
++msgstr "Hiba"
++
++#: ../../WINGs/wfilepanel.c:661
++msgid "Create Directory"
++msgstr "Mappa létrehozás"
++
++#: ../../WINGs/wfilepanel.c:662
++msgid "Enter directory name"
++msgstr "Mappa neve"
++
++#: ../../WINGs/wfilepanel.c:698 ../../WINGs/wfilepanel.c:737
++#: ../../WINGs/wfilepanel.c:768 ../../WINGs/wfilepanel.c:796
++msgid "Permission denied."
++msgstr "Hozzáférési hiba."
++
++#: ../../WINGs/wfilepanel.c:701
++#, c-format
++msgid "'%s' already exists."
++msgstr "'%s' már van."
++
++#: ../../WINGs/wfilepanel.c:704
++msgid "Path does not exist."
++msgstr "Nincs ilyen útvonal."
++
++#: ../../WINGs/wfilepanel.c:734 ../../WINGs/wfilepanel.c:793
++#, c-format
++msgid "'%s' does not exist."
++msgstr "'%s' nincs."
++
++#: ../../WINGs/wfilepanel.c:741 ../../WINGs/wfilepanel.c:800
++msgid "Insufficient memory available."
++msgstr "Nincs elég memória."
++
++#: ../../WINGs/wfilepanel.c:745 ../../WINGs/wfilepanel.c:804
++#, c-format
++msgid "'%s' is on a read-only filesystem."
++msgstr "A '%s' csak olvasható."
++
++#: ../../WINGs/wfilepanel.c:748 ../../WINGs/wfilepanel.c:780
++#: ../../WINGs/wfilepanel.c:807
++#, c-format
++msgid "Can not delete '%s'."
++msgstr "A %s törölhetetlen."
++
++#: ../../WINGs/wfilepanel.c:755
++#, c-format
++msgid "Delete directory %s ?"
++msgstr "A %s mappa törlendő?"
++
++#: ../../WINGs/wfilepanel.c:759
++#, c-format
++msgid "Delete file %s ?"
++msgstr "A %s fájl törlendő?"
++
++#: ../../WINGs/wfilepanel.c:771
++#, c-format
++msgid "Directory '%s' does not exist."
++msgstr "Nincs '%s' mappa."
++
++#: ../../WINGs/wfilepanel.c:774
++#, c-format
++msgid "Directory '%s' is not empty."
++msgstr "A '%s' mappa nem üres."
++
++#: ../../WINGs/wfilepanel.c:777
++#, c-format
++msgid "Directory '%s' is busy."
++msgstr "A '%s' mappát használják."
++
++#: ../../WINGs/wfilepanel.c:790
++#, c-format
++msgid "'%s' is a directory."
++msgstr "A '%s' egy mappa."
++
++#: ../../WINGs/wfilepanel.c:832
++#, c-format
++msgid "An error occured browsing '%s'."
++msgstr "A '%s' olvasása hibás."
++
++#: ../../WINGs/wfilepanel.c:836
++#, c-format
++msgid "'%s' is not a directory."
++msgstr "A '%s' nem mappa."
++
++#: ../../WINGs/wfilepanel.c:973
++msgid "File does not exist."
++msgstr "A fájl nem létezik."
++
++#: ../../WINGs/wfont.c:40
++#, c-format
++msgid "invalid font: %s. Trying '%s'"
++msgstr "Érvénytelen betű: %s. Helyettesítve erre: %s."
++
++#: ../../WINGs/wfont.c:257 ../../WINGs/wfont.c:277
++#, c-format
++msgid "could not load font: %s."
++msgstr "A %s betűtípus betölthetetlen"
++
++#. WMSetWidgetBackgroundColor(panel->win, WMWhiteColor(scr));
++#: ../../WINGs/wfontpanel.c:203
++msgid "Font Panel"
++msgstr "Betűtípus panel"
++
++#: ../../WINGs/wfontpanel.c:239
++msgid "The quick brown fox jumps over the lazy dog"
++msgstr ""
++
++#: ../../WINGs/wfontpanel.c:245
++msgid "Family"
++msgstr "Család"
++
++#: ../../WINGs/wfontpanel.c:256
++msgid "Typeface"
++msgstr "Betűtípus"
++
++#: ../../WINGs/wfontpanel.c:267
++msgid "Size"
++msgstr "Méret"
++
++#: ../../WINGs/wfontpanel.c:286
++msgid "Set"
++msgstr "Beállít"
++
++#: ../../WINGs/wfontpanel.c:292
++msgid "Revert"
++msgstr "Visszavon"
++
++#: ../../WINGs/wfontpanel.c:591
++msgid "Could not init font config library\n"
++msgstr "\"font-config\"-függvénytár indíthatatlan\n"
++
++#: ../../WINGs/widgets.c:419
++#, c-format
++msgid "WINGs: could not load widget images file: %s"
++msgstr "WINGs: A Widget fájl betöltése sikertelen: %s"
++
++#: ../../WINGs/widgets.c:767
++msgid ""
++"could not load any fonts. Make sure your font installation and locale "
++"settings are correct."
++msgstr ""
++"Betűkészletek elérhetetlenek. A betűkészletek telepítések, vagy a nyelvi "
++"beállítások biztos nem jók."
++
++#: ../../WINGs/wruler.c:192
++msgid "0   inches"
++msgstr "0   Coll"
+diff -Naur orig/WINGs/po/Makefile.am mod/WINGs/po/Makefile.am
+--- orig/WINGs/po/Makefile.am	2013-09-12 23:43:54.000000000 +0200
++++ mod/WINGs/po/Makefile.am	2014-06-22 14:54:16.000000000 +0200
+@@ -4,7 +4,7 @@
+ 
+ CLEANFILES = $(CATALOGS) WINGs.pot
+ 
+-EXTRA_DIST = bg.po ca.po cs.po de.po fr.po sk.po
++EXTRA_DIST = bg.po ca.po cs.po de.po fr.po sk.po hu.po
+ 
+ POTFILES  = \
+ 	$(top_builddir)/WINGs/error.c \

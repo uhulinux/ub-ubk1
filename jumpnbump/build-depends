@@ -1,0 +1,5 @@
+%sdl
+%sdl-mixer
+%sdl-net
+%x
+tk

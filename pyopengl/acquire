@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PyOpenGL-${UB_VERSION}.tar.gz PyOpenGL-${UB_VERSION}/
+	http://pypi.python.org/packages/source/P/PyOpenGL/

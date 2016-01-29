@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxde-icon-theme-$UB_VERSION.tar.bz2 lxde-icon-theme-$UB_VERSION/
+	http://downloads.sourceforge.net/lxde/

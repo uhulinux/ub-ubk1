@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+DMCRadio-${UB_VERSION}.tar.gz DMCRadio-${UB_VERSION}/
+	http://download.sourceforge.net/dmcradio/

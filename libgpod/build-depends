@@ -1,0 +1,17 @@
+gdk-pixbuf-dev
+gtk2-sharp
+intltool
+libid3tag-dev
+libplist-dev
+libsgutils
+libusb-dev
+libxml2-dev
+mono-dev
+mutagen
+perl-xml-parser
+pygobject-dev
+python-dev
+sqlite-dev
+swig
+systemd-dev
+taglib-dev

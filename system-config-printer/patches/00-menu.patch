@@ -1,0 +1,22 @@
+diff -Naur system-config-printer-1.1.7-orig/Makefile.am system-config-printer-1.1.7/Makefile.am
+--- system-config-printer-1.1.7-orig/Makefile.am	2009-04-14 15:26:17.000000000 +0200
++++ system-config-printer-1.1.7/Makefile.am	2009-04-15 10:57:10.000000000 +0200
+@@ -163,6 +163,7 @@
+ 	mkdir -p $(DESTDIR)$(desktopdir)
+ 	desktop-file-install $(DESKTOP_VENDOR)	\
+ 	  --dir $(DESTDIR)$(desktopdir)		\
++	  --add-category X-UHU-Menu/Settings\
+ 	  --add-category System			\
+ 	  --add-category Settings		\
+ 	  --add-category HardwareSettings	\
+diff -Naur system-config-printer-1.1.7-orig/Makefile.in system-config-printer-1.1.7/Makefile.in
+--- system-config-printer-1.1.7-orig/Makefile.in	2009-04-14 17:11:14.000000000 +0200
++++ system-config-printer-1.1.7/Makefile.in	2009-04-15 11:01:07.000000000 +0200
+@@ -1070,6 +1070,7 @@
+ 	mkdir -p $(DESTDIR)$(desktopdir)
+ 	desktop-file-install $(DESKTOP_VENDOR)	\
+ 	  --dir $(DESTDIR)$(desktopdir)		\
++	  --add-category X-UHU-Menu/Settings\
+ 	  --add-category System			\
+ 	  --add-category Settings		\
+ 	  --add-category HardwareSettings	\

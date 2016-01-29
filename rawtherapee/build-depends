@@ -1,0 +1,9 @@
+cmake
+fftw3-dev
+gtk2-dev
+gtkmm2-dev
+lcms2-dev
+libcanberra-dev
+libiptcdata-dev
+libjpeg-dev
+libtiff-dev

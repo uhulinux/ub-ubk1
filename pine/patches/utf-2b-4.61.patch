@@ -1,0 +1,2961 @@
+diff -Naurdp a/pico/composer.c b/pico/composer.c
+--- a/pico/composer.c	2004-10-04 10:03:30.656451265 +0200
++++ b/pico/composer.c	2004-10-04 10:03:31.357332966 +0200
+@@ -344,7 +344,187 @@ struct headerentry *e;
+       return(TRUE);
+ }
+ 
++/*
++ * check_utf8 - check for UTF-8 bytes 
++ * Takes two arguments:
++ *   char *c		- a byte of the stream
++ *   char *utf_seq	- a status array holding the function's state
++ * utf_seq must be provided by the caller this way:
++ *  (static) char utf_seq[7] = ""; (content must be retained over calls)
++ *  and must be initialized at start using: utf_seq[0] = 0;
++ *
++ * Returns NULL if an UTF-8 sequence has been started and is not completed.
++ * If an UTF-8 sequence is complete, it returns a pointer to a static string
++ * which is valid until the next use of the function.
++ * If the character is a double width character, a space(' ') is prepended
++ * to the returned string.
++ * If a character < 128 is passed, the UTF-8 state in utf_seq[] is cleared,
++ * because a valid UTF-8 sequence only consists of bytes >= 0x80. The pointer
++ * returned points to the address of the passed character to indicate this.
++ * Features: Supports UTF-8 seqencies up to 4 bytes.
++ * Todo: Instead of passing a pointer to the char and comparing the returned
++ *       pointer to this address afterwards, the Interface could be changed
++ *       to just pass the character as simple char(thus not requesting the
++ *       address of a variable which might be declared as register) and replace
++ *       the check of the return value with a check of (c & 0x80) and if this
++ *       is not the case, assuming that (utf_seq[0] == 0) means that this last
++ *       non-ASCII byte completed the UTF-8 sequence, while having
++ *       utf_seq[0] != 0 means having an incomplete UTF-8 sequence.
++ */
++char *
++check_utf8(c, utf_seq)
++     char *c;
++     char *utf_seq;
++{
++    static   char char_string[8]; /* (six UTF-8 sequence bytes + ' ' + '\0') */
++    int      ix;
++    unsigned char dbl_wide[7][2][4] = {0xe1,0x84,0x80,0x00, 0xe1,0x85,0x9F,0x00,
++				       0xe2,0x8c,0xa9,0x00, 0xe2,0x8c,0xaa,0x00,
++				       0xe2,0xba,0x80,0x00, 0xed,0x9e,0xa3,0x00,
++				       0xef,0xa4,0x80,0x00, 0xef,0xa9,0xaa,0x00,
++				       0xef,0xb8,0xb0,0x00, 0xef,0xb9,0xa8,0x00,
++				       0xef,0xbc,0x81,0x00, 0xef,0xbd,0xad,0x00,
++				       0xef,0xbf,0xa0,0x00, 0xef,0xbf,0xa6,0x00};
++    if (*c & 0x80) {
++       char_string[0] = *c;
++       char_string[1] = 0;
++       if (strlen(utf_seq) == sizeof(utf_seq) - 1)
++	  utf_seq[0] = 0;          /* don't allow a overlong UTF-8 sequence   */
++       if ((*c & 0xF0) >= 0xC0) {
++	  strncpy(utf_seq, char_string, sizeof(utf_seq));
++	  return NULL;		   /* possible UTF-8 sequence, need next byte */
++       } else if (utf_seq[0]) {
++	  strncat(utf_seq, char_string, sizeof(utf_seq)); /* append to string */
++	  switch (utf_seq[0] & 0xF0) {
++	     case 0xC0 :
++	     case 0xD0 :
++		 strncpy(char_string, utf_seq, sizeof(char_string));
++		 utf_seq[0] = 0;	 /* sequence complete, clear for next */
++		 return char_string;     /* pass the new UTF-8 sequence on    */
++	     case 0xE0 :
++		 if (strlen(utf_seq) < 3)
++		    return NULL; // 3-byte UTF-8, need next byte
++		 char_string[0] = '\0'; // init
++		 for (ix = 0; ix < 7; ix++)
++		       if (strcmp(utf_seq, &dbl_wide[ix][0][0]) >= 0
++			&& strcmp(utf_seq, &dbl_wide[ix][1][0]) <= 0) {
++			  char_string[0] = ' ';  /* flag as double-width char */
++		 	  break;
++		 }
++		 strncat(char_string, utf_seq, sizeof(char_string));
++		 utf_seq[0] = 0; // this sequence is over, clear for restart
++		 return char_string; // process this UTF-8 char...
++	     case 0xF0 :
++		 if (strlen(utf_seq) < 4)
++		    return NULL;     /* 4-byte UTF-8 sequence, need next byte */
++		 char_string[0] = '\0';            /* init the sequence space */
++		 if ((utf_seq[1] & 0xF0) == 0xA0)
++		    char_string[0] = ' ';  /* flag as double-width UTF-8 char */
++		 strncat(char_string, utf_seq, sizeof(char_string));
++		 utf_seq[0] = 0;	 /* sequence complete, clear for next */
++		 return char_string;	 /* pass the new UTF-8 sequence on    */
++	  }
++       }
++    }
++    utf_seq[0] = 0;  /* clear sequence buffer in case of an invalid sequence */
++    return c;        /* single-byte, NON-UTF-8 chars are process it as usual */
++}
+ 
++/*
++ * wrapper to check_utf8 for pico, if not in UTF-8 mode, do not check UTF-8
++ */
++char *
++pico_check_utf8(c, utf_seq)
++     char *c;
++     char *utf_seq;
++{
++    if(!(Pmaster->pine_flags & P_UNICODE))
++	return c;
++    return check_utf8(c, utf_seq);
++}
++
++/*
++ * Get the number of columns which are filled by the text in the current
++ * line of LineEdit(from the start of the line to the current position)
++ */
++static int
++count_screencols(void)
++{
++ 	char utf_seq[7] = "", *cp, *r;
++	int seq = 0, w = 0;
++
++	for(cp = ods.cur_l->text; *cp && cp < ods.cur_l->text + ods.p_off;
++			cp++) {
++		if (!(r = pico_check_utf8(cp, utf_seq))) {
++			seq = 1;
++			continue;
++		}
++		if (seq)
++			w++;
++		seq = 0;
++		if (r == cp)
++			w++;
++		else if (*r == ' ')
++			w++;
++	}
++	return w;
++}
++
++/*
++ * Get the offset in screen positions which must be subsctracted from the
++ * byte count in the LineEdit line in order to reach the line position on
++ * screen(because of double wide characters and multible UTF-8 bytes)
++ */
++static int
++offset_on_screen(void)
++{
++	return ods.p_off - count_screencols();
++}
++
++/*
++ * Move current position in LineEdit one character left, return the number
++ * of byte positons which were neccesary to jump left in order to
++ * arrive at the start of the previous multibyte character(UTF-8).
++ */
++static int
++LineEditCharLeft()
++{
++    int col_right = ods.p_off, cols = count_screencols();
++
++    do
++	if (--ods.p_off < 0)
++		break;
++    while (count_screencols() - cols == -1);
++
++    ods.p_off++;
++	
++    if (col_right - ods.p_off > 0)
++    	return col_right - ods.p_off;
++
++    do
++	if (--ods.p_off < 0)
++		break;
++    while (count_screencols() - cols == -2);
++
++    ods.p_off++;
++	
++    return col_right - ods.p_off;
++}
++
++/*
++ * Move current position in LineEdit one character right, if UTF-8
++ * mode is active, the ods.p_off is assumed to be at the start of
++ * a UTF-8 sequence or at a normal ASCII character. It is moved to
++ * the next character, jumping past the end of the current UTF-8
++ * sequence, if UTF8 mode is active.
++ */
++static void
++LineEditCharRight()
++{
++    char utf_seq[7] = "";
++    while(ods.p_off < ods.p_len && ods.cur_l->text[ods.p_off] &&
++	!pico_check_utf8(ods.cur_l->text + ods.p_off++, utf_seq));
++}
+ 
+ /*
+  *  ResizeHeader - Handle resizing display when SIGWINCH received.
+@@ -397,7 +577,7 @@ ResizeHeader()
+     PaintBody(0);
+ 
+     if(ComposerEditing)
+-      movecursor(ods.p_line, ods.p_off+headents[ods.cur_e].prlen);
++      HeaderPaintCursor();
+ 
+     (*term.t_flush)();
+     return(TRUE);
+@@ -1584,6 +1764,7 @@ int	allowedit;
+ 	     int	skipmove = 0;
+              char	*strng;
+     int      last_key;				/* last keystroke  */
++    unsigned char	utf_seq[7] = "";
+ 
+     strng   = ods.cur_l->text;			/* initialize offsets */
+     ods.p_len = strlen(strng);
+@@ -1666,7 +1847,7 @@ int	allowedit;
+ 	    }
+ 
+ 	    clearcursor();
+-	    movecursor(ods.p_line, ods.p_off+headents[ods.cur_e].prlen);
++	    HeaderPaintCursor();
+ 	    if(ch == NODATA)			/* GetKey timed out */
+ 	      continue;
+ 
+@@ -1676,7 +1857,7 @@ int	allowedit;
+         if(mpresf){				/* blast old messages */
+ 	    if(mpresf++ > NMMESSDELAY){		/* every few keystrokes */
+ 		mlerase();
+-		movecursor(ods.p_line, ods.p_off+headents[ods.cur_e].prlen);
++		HeaderPaintCursor();
+ 	    }
+         }
+ 
+@@ -1722,12 +1903,38 @@ insert_char:/*
+ 
+ 		/*
+ 		 * then find out where things fit...
++		 *
++		 * For UTF-8, the < LINELEN check should need to do it's
++		 * calculation based on count_screencols() plus the width
++		 * of the new char as provided by pico_check_utf8.
++		 * The buffer size may need to be increased for this.
+ 		 */
+ 		if(ods.p_len < LINELEN()){
+ 		    CELL c;
+ 
+-		    c.c = ch;
+ 		    c.a = 0;
++		    if(Pmaster->pine_flags & P_UNICODE) {
++		    	char * chp = pico_check_utf8(&ch, utf_seq);
++			if (chp == NULL)
++			    continue; 		/* on to the next! */
++			if (chp != (char *)&ch && *chp == ' ')
++			    chp++;
++			if (*chp & 0x80) {
++			    while (*chp && ods.p_len < LINELEN()) {
++				c.c = *chp++;
++		    		pinsert(c);	/* add char to str */
++			    }
++			    /* update the display: */
++			    PaintHeader(COMPOSER_TOP_LINE, TRUE);
++			    /* If end char was inserted, set physical .. */
++			    if (ods.p_off == ods.p_len)
++			        /* cursor pos on next movecursor_offset: */
++				movecursor_offset(-1, 0, 0);
++			    continue; 		/* on to the next! */
++			}
++		    }
++
++		    c.c = ch;
+ 		    if(pinsert(c)){		/* add char to str */
+ 			skipmove++;		/* must'a been optimal */
+ 			continue; 		/* on to the next! */
+@@ -1764,6 +1971,7 @@ insert_char:/*
+             } 
+         }
+         else {					/* interpret ch as a command */
++	    utf_seq[0] = '\0';
+             switch (ch = normalize_cmd(ch, ckm, 2)) {
+ 	      case (CTRL|'\\') :
+ 		if (ch = GetAccent())
+@@ -1856,9 +2064,7 @@ insert_char:/*
+ 	      case (CTRL|'F') :
+ 	      case KEY_RIGHT:			/* move character right */
+ 		if(ods.p_off < ods.p_len){
+-		    pputc(pscr(ods.p_line, 
+-			       (ods.p_off++)+headents[ods.cur_e].prlen)->c,0);
+-		    skipmove++;
++		    LineEditCharRight();
+ 		    continue;
+ 		}
+ 		else if(gmode & MDHDRONLY)
+@@ -1870,7 +2076,7 @@ insert_char:/*
+ 	      case (CTRL|'B') :
+ 	      case KEY_LEFT	:		/* move character left */
+ 		if(ods.p_off > 0){
+-		    ods.p_off--;
++		    LineEditCharLeft();
+ 		    continue;
+ 		}
+ 		if(ods.p_line != COMPOSER_TOP_LINE)
+@@ -1905,7 +2111,8 @@ insert_char:/*
+ 		    continue;
+ 		}
+ 
+-		pputc(strng[ods.p_off++], 0); 	/* drop through and rubout */
++		LineEditCharRight(); /* jump to next char */
++		/* and fall thru */
+ 
+ 	      case DEL        :			/* blast previous char */
+ 	      case (CTRL|'H') :
+@@ -1919,20 +2126,27 @@ insert_char:/*
+ 		    continue;
+ 		}
+ 
+-		if(ods.p_off > 0){		/* just shift left one char */
+-		    ods.p_len--;
++		if(ods.p_off > 0){		/* shift left one char */
++		    int todelete = LineEditCharLeft();
++
++		    ods.p_len -= todelete;
++
+ 		    headents[ods.cur_e].dirty  = 1;
+ 		    if(ods.p_len == 0)
+ 		      headents[ods.cur_e].sticky = 0;
+ 		    else
+ 		      headents[ods.cur_e].sticky = 1;
+ 
+-		    tbufp = &strng[--ods.p_off];
+-		    while(*tbufp++ != '\0')
+-		      tbufp[-1] = *tbufp;
+ 		    tbufp = &strng[ods.p_off];
++
++		    while(*tbufp++ != '\0')
++		      tbufp[-1] = tbufp[todelete-1];
++
+ 		    if(pdel())			/* physical screen delete */
+ 		      skipmove++;		/* must'a been optimal */
++
++		    /* needed if pine bgcolor != terminal background color */
++		    PaintHeader(ods.p_line, TRUE);
+ 		}
+ 		else{				/* may have work to do */
+ 		    if(ods.cur_l->prev == NULL){  
+@@ -1943,18 +2157,16 @@ insert_char:/*
+ 		    ods.p_line--;
+ 		    ods.cur_l = ods.cur_l->prev;
+ 		    strng = ods.cur_l->text;
+-		    if((i=strlen(strng)) > 0){
+-			strng[i-1] = '\0';	/* erase the character */
+-			ods.p_off = i-1;
++		    if((ods.p_off=strlen(strng)) > 0){
++		        ods.p_off -= LineEditCharLeft() - 1;
++			strng[ods.p_off] = '\0'; /* erase the character */
+ 		    }
+-		    else{
++		    else
+ 			headents[ods.cur_e].sticky = 0;
+-			ods.p_off = 0;
+-		    }
+-		    
+-		    tbufp = &strng[ods.p_off];
+ 		}
+ 
++		tbufp = &strng[ods.p_off];
++
+ 		if((status = FormatLines(ods.cur_l, "", LINELEN(), 
+ 				   headents[ods.cur_e].break_on_comma,0))==-1){
+ 		    (*term.t_beep)();
+@@ -1979,7 +2191,7 @@ insert_char:/*
+ 		      PaintBody(1);
+ 		}
+ 
+-		movecursor(ods.p_line, ods.p_off+headents[ods.cur_e].prlen);
++		HeaderPaintCursor();
+ 
+ 		if(skipmove)
+ 		  continue;
+@@ -2004,7 +2216,8 @@ insert_char:/*
+ void
+ HeaderPaintCursor()
+ {
+-    movecursor(ods.p_line, ods.p_off+headents[ods.cur_e].prlen);
++    movecursor_offset(ods.p_line, ods.p_off + headents[ods.cur_e].prlen,
++		offset_on_screen());
+ }
+ 
+ 
+diff -Naurdp a/pico/display.c b/pico/display.c
+--- a/pico/display.c	2004-10-04 10:03:30.658450927 +0200
++++ b/pico/display.c	2004-10-04 10:03:31.358332797 +0200
+@@ -1089,7 +1089,22 @@ WINDOW *wp;
+     }
+ }
+ 
++void
++movecursor_offset(row, col, offs)
++int row, col, offs;
++{
++    static int force_next = 0;
+ 
++    if(row == -1) {
++   	force_next = row;
++	return;
++    }
++    if(row!=ttrow || col!=ttcol || force_next) {
++        (*term.t_move)(row, col - offs);
++        ttrow = row;
++        ttcol = col;
++    }
++}
+ 
+ /*
+  * Send a command to the terminal to move the hardware cursor to row "row"
+diff -Naurdp a/pico/efunc.h b/pico/efunc.h
+--- a/pico/efunc.h	2004-10-04 10:03:30.659450758 +0200
++++ b/pico/efunc.h	2004-10-04 10:03:31.359332628 +0200
+@@ -118,6 +118,7 @@ extern	void display_for_send PROTO((void
+ extern	VARS_TO_SAVE *save_pico_state PROTO((void));
+ extern	void restore_pico_state PROTO((VARS_TO_SAVE *));
+ extern	void free_pico_state PROTO((VARS_TO_SAVE *));
++extern  char *check_utf8 PROTO((char *, char *));
+ extern	void HeaderPaintCursor PROTO((void));
+ extern	void PaintBody PROTO((int));
+ 
+diff -Naurdp a/pico/estruct.h b/pico/estruct.h
+--- a/pico/estruct.h	2004-06-16 00:22:58.000000000 +0200
++++ b/pico/estruct.h	2004-10-04 10:03:31.359332628 +0200
+@@ -290,7 +290,7 @@ typedef struct  {
+  * and short if there are problems...
+  */
+ typedef	struct CELL {
+-	unsigned int c : 8;		/* Character value in cell      */
++	unsigned int c : 32;		/* Character value in cell      */
+ 	unsigned int a : 8;		/* Its attributes               */
+ } CELL;
+ 
+@@ -354,6 +354,7 @@ typedef struct  LINE {
+ #define lgetc(lp, n)    ((lp)->l_text[(n)])
+ #define lputc(lp, n, c) ((lp)->l_text[(n)]=(c))
+ #define llength(lp)     ((lp)->l_used)
++#define cell_isspace(lp,n) Pisspace(lgetc(lp, n).c)
+ 
+ /*
+  * The editor communicates with the display using a high level interface. A
+diff -Naurdp a/pico/file.c b/pico/file.c
+--- a/pico/file.c	2004-06-11 23:49:48.000000000 +0200
++++ b/pico/file.c	2004-10-04 10:03:31.360332460 +0200
+@@ -425,11 +425,11 @@ insmsgchar(c)
+ 	for(p = (glo_quote_str ? glo_quote_str
+ 		 : (Pmaster ? Pmaster->quote_str : NULL));
+ 	    p && *p; p++)
+-	  if(!linsert(1, *p))
++	  if(!linsert_byte(1, *p))
+ 	    return(0);
+     }
+     else if(c != '\r')			/* ignore CR (likely CR of CRLF) */
+-      return(linsert(1, c));
++      return(linsert_byte(1, c));
+ 
+     return(1);
+ }
+@@ -493,7 +493,7 @@ int     rename;         /* don't rename 
+ 
+ 		    case FIOLNG :
+ 		      for(linep = line; charsread-- > 0; linep++)
+-			linsert(1, (unsigned char) *linep);
++			linsert_byte(1, *linep);
+ 
+ 		      break;
+ 
+@@ -910,7 +910,7 @@ char    fname[];
+ 
+ 		case FIOLNG :
+ 		  for(linep = line; charsread-- > 0; linep++)
+-		    linsert(1, (unsigned char) *linep);
++		    linsert_byte(1, *linep);
+ 
+ 		  break;
+ 
+diff -Naurdp a/pico/fileio.c b/pico/fileio.c
+--- a/pico/fileio.c	2002-02-12 23:54:21.000000000 +0100
++++ b/pico/fileio.c	2004-10-04 10:03:31.360332460 +0200
+@@ -71,9 +71,20 @@ ffputline(buf, nbuf)
+ {
+     register int    i;
+ 
+-    for (i = 0; i < nbuf; ++i)
++    for (i = 0; i < nbuf; ++i) {
++      if (gmode & P_UNICODE && buf[i].c > 127) {
++	    if (buf[i].c & 0xf800) {
++		fputc(0xe0 | (buf[i].c >> 12), g_pico_fio.fp);
++		fputc(0x80 | ((buf[i].c >> 6) & 0x3f), g_pico_fio.fp);
++	    }
++	    else
++		fputc(0xc0 | ((buf[i].c >> 6) & 0x3f), g_pico_fio.fp);
++	    if (fputc(0x80 | (buf[i].c & 0x3f), g_pico_fio.fp) == EOF)
++	 	break;
++      } else
+        if(fputc(buf[i].c&0xFF, g_pico_fio.fp) == EOF)
+ 	 break;
++   }
+ 
+    if(i == nbuf)
+       fputc('\n', g_pico_fio.fp);
+diff -Naurdp a/pico/line.c b/pico/line.c
+--- a/pico/line.c	2004-10-04 10:03:30.660450590 +0200
++++ b/pico/line.c	2004-10-04 10:03:31.361332291 +0200
+@@ -51,7 +51,7 @@ static char rcsid[] = "$Id: line.c,v 4.3
+  */
+ struct pkchunk {
+     short	    used;		/* # of bytes used in this buffer*/
+-    char	    bufp[KBLOCK];	/* buffer containing text        */
++    int	    bufp[KBLOCK];	/* buffer containing text        */
+     struct pkchunk *next;		/* pointer to next chunk	 */
+ };
+ 
+@@ -210,6 +210,83 @@ int f, n;
+     backchar(f, n);
+ }
+ 
++/* Return UCS-4 character from UTF-8 string
++ * (Based on code from pine-4.61/imap/src/c-client/utf8.c)
++ * Accepts: pointer to string, remaining octets in string
++ * Returns: UCS-4 character or negative if error
++ */
++unsigned int utf8_get_ucs_string(unsigned char **s, unsigned int i)
++{
++  unsigned char c;
++  unsigned int ret = 0;
++  int more = 0;
++  while (i--) {		
++    if (((c = *(*s)++) > 0x7f) && (c < 0xc0)) { /* UTF-8 continuation? */
++       if (!more)              /* continuation outside of UTF-8 sequence? */
++	   return '?';		/* bad sequence, put replacement character */
++	ret <<= 6;
++	ret |= c & 0x3f;
++	if (!--more)		/* last octet reached? */
++	    return ret;         /* return UTC-4 code   */
++    }
++    else if (more)		/* in sequence, but not a continuation byte */
++	return '?';		/* bad sequence, put replacement character  */
++    else if (c < 0x80)		/* U+0000 - U+007f */
++	return c;
++    else if (c < 0xe0) {	/* U+0080 - U+07ff               */
++      ret = c & 0x1f;		/* first 5 bits of 12            */
++      more = 1;
++    }
++    else if (c < 0xf0) {	/* U+1000 - U+ffff               */
++      ret = c & 0x0f;		/* first 4 bits of 16            */
++      more = 2;
++    }				/* non-BMP Unicode               */
++    else if (c < 0xf8) {	/* U+10000 - U+10ffff (U+1fffff) */
++      ret = c & 0x07;		/* first 3 bits of 20.5 (21)     */
++      more = 3;
++    }
++    else if (c < 0xfc) {	/* ISO 10646 200000 - 3fffffff   */
++      ret = c & 0x03;		/* first 2 bits of 26            */
++      more = 4;
++    }
++    else if (c < 0xfe) {	/* ISO 10646 4000000-7fffffff    */
++      ret = c & 0x01;		/* first bit of 31               */
++      more = 5;
++    } else
++      return '?';		/* not in ISO 10646 -> replacement character */
++  }				/* end of input, but sequnece not complete   */
++  return 0;
++}
++unsigned int utf8_get_ucs(unsigned char *s, unsigned int i)
++{
++   unsigned char *l = s;
++   return utf8_get_ucs_string(&l, i);
++}
++ 
++/*
++ * Insert "n" copies of the character "c" at the current location of dot.
++ * The real work is done by linsert(). This is a wrapper does:
++ * In UTF-8 mode, decode byte sequencies and if an sequence is complete,
++ * pass it's UCS-4 to linsert for inserting it as cell value into the buffer.
++ */
++int linsert_byte(n, c)
++unsigned int n, c;
++{
++    static char linsert_buf[6], linsert_buf_count = 0;
++    if (n == 1 && gmode & P_UNICODE && c & 0x80) {
++	if (linsert_buf_count >= sizeof(linsert_buf))
++	    linsert_buf_count = 0;
++	linsert_buf[linsert_buf_count++] = c;
++	c = 0;
++	if (linsert_buf_count > 1)
++	    c = utf8_get_ucs(linsert_buf, linsert_buf_count);
++	if (!c)
++	    return 1;
++    }
++    linsert_buf_count = 0;
++    return linsert(n, c);
++}
++
+ /*
+  * Insert "n" copies of the character "c" at the current location of dot. In
+  * the easy case all that happens is the text is stored in the line. In the
+@@ -294,7 +371,7 @@ long  *lines;
+ 	lp1->l_bp = lp2;
+ 	*doto = n;
+ 	*dotp = lp1;
+-	ac.c  = ((char)c & 0xff);
++	ac.c  = c;
+ 	cp1   = &(*dotp)->l_text[0];
+         while(n--)
+ 	  *cp1++ = ac;
+@@ -342,7 +419,7 @@ long  *lines;
+ 	  *--cp2 = *--cp1;
+     }
+ 
+-    ac.c = ((char)c & 0xff);
++    ac.c  = c;
+     while(n--)					/* add the chars */
+       (*dotp)->l_text[(*doto)++] = ac;
+ 
+@@ -767,7 +844,7 @@ pkbufremove(n, buf)
+ 	  if(!(p = p->next))
+ 	    return(-1);
+ 
+-	return(p->bufp[n % KBLOCK] & 0xff);
++	return(p->bufp[n % KBLOCK]);
+     }
+     else
+       return(-1);
+diff -Naurdp a/pico/main.c b/pico/main.c
+--- a/pico/main.c	2004-10-04 10:03:30.661450421 +0200
++++ b/pico/main.c	2004-10-04 10:03:31.362332122 +0200
+@@ -119,7 +119,7 @@ char *args_pico_args[] = {
+ #endif
+ "\t +[line#] \tLine - start on line# line, default=1",
+ "\t -v \t\tView - view file",
+-"\t -setlocale_ctype\tdo setlocale(LC_CTYPE) if available",
++"\t -no_setlocale_ctype\tdo not do setlocale(LC_CTYPE) (forces Unicode support off)",
+ "\t -no_setlocale_collate\tdo not do setlocale(LC_COLLATE)",
+ "\t -version\tPico version number",
+ "", 
+@@ -146,7 +146,7 @@ char    *argv[];
+     int	     viewflag = FALSE;		/* are we starting in view mode?*/
+     int	     starton = 0;		/* where's dot to begin with?	*/
+     int      setlocale_collate = 1;
+-    int      setlocale_ctype = 0;
++    int      setlocale_ctype = 1;       /* thousands of programs call it */
+     char     bname[NBUFN];		/* buffer name of file to read	*/
+     char    *file_to_edit = NULL;
+     int line_information_on = FALSE;
+@@ -425,6 +425,10 @@ Loop:
+ 	    *setlocale_ctype = 1;
+ 	    goto Loop;
+ 	}
++	else if(strcmp(*av, "no_setlocale_ctype") == 0){
++	    *setlocale_ctype = 0;
++	    goto Loop;
++	}
+ 	else if(strcmp(*av, "no_setlocale_collate") == 0){
+ 	    *setlocale_collate = 0;
+ 	    goto Loop;
+diff -Naurdp a/pico/osdep/unix b/pico/osdep/unix
+--- a/pico/osdep/unix	2004-10-04 10:03:30.664449915 +0200
++++ b/pico/osdep/unix	2004-10-04 10:03:31.364331785 +0200
+@@ -1,3 +1,7 @@
++#ifdef LC_CTYPE
++#include <langinfo.h>
++#endif
++
+ int timeo = 0;
+ time_t time_of_last_input;
+ int (*pcollator)();
+@@ -222,6 +226,15 @@ ttgetwinsz(row, col)
+  */
+ ttputc(c)
+ {
++    if (gmode & P_UNICODE && c > 127) {
++	if (c & 0xf800) {
++	    putc(0xe0 | (c >> 12), stdout);
++	    putc(0x80 | ((c >> 6) & 0x3f), stdout);
++	}
++	else
++	    putc(0xc0 | ((c >> 6) & 0x3f), stdout);
++	return putc(0x80 | (c & 0x3f), stdout);
++    }
+     return(putc(c, stdout));
+ }
+ 
+@@ -3912,6 +3925,9 @@ set_collation(collation, ctype)
+ #ifdef LC_CTYPE
+   if(ctype){
+     (void)setlocale(LC_CTYPE, "");
++    /* For reference, see: "The Single UNIX® Specification, Version 2" */
++    if (!strcmp(nl_langinfo(CODESET), "UTF-8"))
++       gmode ^= P_UNICODE;
+   }
+ #endif
+ }
+diff -Naurdp a/pico/pico.c b/pico/pico.c
+--- a/pico/pico.c	2004-10-04 10:03:30.665449746 +0200
++++ b/pico/pico.c	2004-10-04 10:03:31.365331616 +0200
+@@ -548,7 +548,7 @@ int c, f, n;
+ 
+ 	/* do the appropriate insertion */
+ 	/* pico never does C mode, this is simple */
+-	status = linsert(n, c);
++	status = linsert_byte(n, c);
+ 
+ 	/*
+ 	 * Check to make sure we didn't go off of the screen
+@@ -560,7 +560,7 @@ int c, f, n;
+ 	    register int k;
+ 
+ 	    for(j = k = 0; j < llength(curwp->w_dotp); j++, k++)
+-	      if(isspace((unsigned char)lgetc(curwp->w_dotp, j).c)){
++	      if(cell_isspace(curwp->w_dotp, j)){
+ 		  if(lgetc(curwp->w_dotp, j).c == TAB)
+ 		    while(k+1 & 0x07)
+ 		      k++;
+@@ -810,7 +810,7 @@ cleanwhitespace()
+ 	    is_cursor_line = (cursor_dotp == (*lp));
+ 	    /* trim trailing whitespace, to be added back if flowing */
+ 	    for(i = llength(*lp); i; i--)
+-	      if(!isspace(lgetc(*lp, i - 1).c))
++	      if(!cell_isspace(*lp, i - 1))
+ 		break;
+ 	    if(i != llength(*lp)){
+ 		int flow_line = 0;
+@@ -818,7 +818,7 @@ cleanwhitespace()
+ 		if(Pmaster && !Pmaster->strip_ws_before_send
+ 		   && lforw(*lp) != curbp->b_linep
+ 		   && llength(lforw(*lp))
+-		   && !isspace(lgetc(lforw(*lp), 0).c)
++		   && !cell_isspace(lforw(*lp), 0)
+ 		   && !(llength(lforw(*lp)) == 3
+ 			&& lgetc(lforw(*lp), 0).c == '-'
+ 			&& lgetc(lforw(*lp), 1).c == '-'
+@@ -832,7 +832,7 @@ cleanwhitespace()
+ 			ldelete(llength(*lp) - i, NULL);
+ 		    }
+ 		}
+-		else if(flow_line && i && isspace(lgetc(*lp, i).c)){
++		else if(flow_line && i && cell_isspace(*lp, i)){
+ 		    /* flowed line ending with whitespace other than space*/
+ 		    curwp->w_doto = i;
+ 		    ldelete(llength(*lp) - i, NULL);
+@@ -844,7 +844,7 @@ cleanwhitespace()
+ 		}
+ 	    }
+ 	    if(Pmaster && Pmaster->allow_flowed_text
+-	       && llength(*lp) && isspace(lgetc(*lp, 0).c)){
++	       && llength(*lp) && cell_isspace(*lp, 0)){
+ 		/* space-stuff only if flowed */
+ 		curwp->w_doto = 0;
+ 		if(is_cursor_line && cursor_doto)
+@@ -866,30 +866,6 @@ cleanwhitespace()
+ }
+ 
+ /*
+- * Remove all trailing white space from the text
+- */
+-int
+-stripwhitespace()
+-{
+-    int i;
+-    LINE *cur_line = lforw(curbp->b_linep);
+-
+-    do{
+-      /* we gotta test for the sigdash case here */
+-      if(!(cur_line->l_used == 3 && 
+-	   lgetc(cur_line, 0).c == '-' &&
+-	   lgetc(cur_line, 1).c == '-' &&
+-	   lgetc(cur_line, 2).c == ' '))
+-	for(i = cur_line->l_used - 1; i >= 0; i--)
+-	  if(isspace(lgetc(cur_line, i).c))
+-	    cur_line->l_used--;
+-	  else
+-	    break;
+-    }while((cur_line = lforw(cur_line)) != curbp->b_linep);
+-    return 0;
+-}
+-
+-/*
+  * Abort.
+  * Beep the beeper. Kill off any keyboard macro, etc., that is in progress.
+  * Sometimes called as a routine, to do general aborting of stuff.
+@@ -1450,6 +1426,7 @@ typedef struct picotext {
+     LINE *dotp;
+     int doto;
+     short crinread;
++    char readch[6];
+ } PICOTEXT;
+ 
+ #define PT(X)	((PICOTEXT *)(X))
+@@ -1503,6 +1480,8 @@ void *w;
+  * pico_readc - return char at current point.  Up to calling routines
+  *              to keep cumulative count of chars.
+  */
++#define PUTC(w, c) PT(w)->readch[PT(w)->crinread++] = c;
++#define GETC(w)    PT(w)->readch[--PT(w)->crinread];
+ int
+ pico_readc(w, c)
+ void          *w;
+@@ -1511,12 +1490,20 @@ unsigned char *c;
+     int rv     = 0;
+ 
+     if(PT(w)->crinread){
+-	*c = '\012';				/* return LF */
+-	PT(w)->crinread = 0;
++	*c = GETC(w);
+ 	rv++;
+     }
+     else if(PT(w)->doto < llength(PT(w)->dotp)){ /* normal char to return */
+-        *c = (unsigned char) lgetc(PT(w)->dotp, (PT(w)->doto)++).c;
++	int ch = lgetc(PT(w)->dotp, (PT(w)->doto)++).c;
++	if (gmode & P_UNICODE && ch & 0xff80) {
++	    PUTC(w, 0x80 | (ch & 0x3f))
++	    if (ch & 0xf800) {           /* three byte code */
++		*c = 0xe0 | (ch >> 12);
++		PUTC(w, 0x80 | ((ch >> 6) & 0x3f))
++	    } else
++		*c = 0xc0 | ((ch >> 6) & 0x3f);
++	} else
++	    *c = ch;
+ 	rv++;
+     }
+     else if(PT(w)->dotp != PT(w)->linep){ /* return line break */
+@@ -1524,7 +1511,7 @@ unsigned char *c;
+ 	PT(w)->doto = 0;
+ #if	defined(DOS) || defined(OS2)
+ 	*c = '\015';
+-	PT(w)->crinread++;
++	PUTC(w, '\012')
+ #else
+ 	*c = '\012';				/* return local eol! */
+ #endif
+@@ -1583,8 +1570,20 @@ int   c;
+ 
+ 	rv++;
+     }
+-    else
++    else {
++      if (gmode & P_UNICODE && 127 < c && c < 256) {
++	    if (PT(w)->crinread >= 6)
++		PT(w)->crinread = 0;
++	    PUTC(w, c);
++	    c = 0;
++	    if (PT(w)->crinread > 1)
++		c = utf8_get_ucs(PT(w)->readch, PT(w)->crinread);
++	    if (!c)
++		return 1;
++      }
++      PT(w)->crinread = 0;
+       rv = geninsert(&PT(w)->dotp, &PT(w)->doto, PT(w)->linep, c, 0, 1, NULL);
++    }
+ 
+     return((rv) ? 1 : 0);			/* return number written */
+ }
+diff -Naurdp a/pico/pico.h b/pico/pico.h
+--- a/pico/pico.h	2004-10-04 10:03:30.666449577 +0200
++++ b/pico/pico.h	2004-10-04 10:03:31.366331447 +0200
+@@ -373,7 +373,7 @@ extern	void	kbdestroy PROTO((KBESC_T *))
+ #define P_HICTRL	0x80000000	/* overwrite mode		*/
+ #define	P_CHKPTNOW	0x40000000	/* do the checkpoint on entry      */
+ #define	P_DELRUBS	0x20000000	/* map ^H to forwdel		   */
+-#define	P_LOCALLF	0x10000000	/* use local vs. NVT EOL	   */
++#define	P_UNICODE	0x10000000	/* run in Unicode mode		   */
+ #define	P_BODY		0x08000000	/* start composer in body	   */
+ #define	P_HEADEND	0x04000000	/* start composer at end of header */
+ #define	P_VIEW		MDVIEW		/* read-only			   */
+diff -Naurdp a/pico/random.c b/pico/random.c
+--- a/pico/random.c	2004-10-04 10:03:30.666449577 +0200
++++ b/pico/random.c	2004-10-04 10:03:31.367331278 +0200
+@@ -141,6 +141,11 @@ tab(f, n)
+     return(linsert(tabsize - (getccol(FALSE) % tabsize), ' '));
+ }
+ 
++int Pisspace(int c) {
++    if (c > 256)
++	return 0;
++    return isspace(c);
++}
+ 
+ /*
+  * Insert a newline. Bound to "C-M".
+@@ -170,7 +175,7 @@ newline(f, n)
+     /* pico's never in C mode */
+ 
+     if(Pmaster && Pmaster->allow_flowed_text && curwp->w_doto
+-       && isspace(lgetc(curwp->w_dotp, curwp->w_doto - 1).c)
++       && cell_isspace(curwp->w_dotp, curwp->w_doto - 1)
+        && !(curwp->w_doto == 3
+ 	    && lgetc(curwp->w_dotp, 0).c == '-'
+ 	    && lgetc(curwp->w_dotp, 1).c == '-'
+@@ -181,7 +186,7 @@ newline(f, n)
+ 	 */
+ 	int i, dellen;
+ 	for(i = curwp->w_doto - 1;
+-	    i && isspace(lgetc(curwp->w_dotp, i - 1).c);
++	    i && cell_isspace(curwp->w_dotp, i - 1);
+ 	    i--);
+ 	dellen = curwp->w_doto - i;
+ 	curwp->w_doto = i;
+diff -Naurdp a/pico/search.c b/pico/search.c
+--- a/pico/search.c	2004-10-04 10:03:30.667449408 +0200
++++ b/pico/search.c	2004-10-04 10:05:31.837966384 +0200
+@@ -117,6 +117,8 @@ int pc;
+ forwsearch(f, n)
+     int f, n;
+ {
++  LINE             *lastline;		/* line position before scan */
++  int              lastoff;		/* last position within line */
+   register         int status;
+   int              wrapt = FALSE, wrapt2 = FALSE;
+   int              repl_mode = FALSE;
+@@ -268,26 +270,15 @@ forwsearch(f, n)
+ 	}
+     }
+ 
++    lastline = curwp->w_dotp;		/* line position before scan */
++    lastoff  = curwp->w_doto;		/* last position within line */
++
+     /*
+-     * This code is kind of dumb.  What I want is successive C-W 's to 
+-     * move dot to successive occurences of the pattern.  So, if dot is
+-     * already sitting at the beginning of the pattern, then we'll move
+-     * forward a char before beginning the search.  We'll let the
+-     * automatic wrapping handle putting the dot back in the right 
+-     * place...
++     * Successive C-W 's should move the dot to successive occurences
++     * of the pattern. So move the dot forward one char before the search
++     * and if the seach fails, put it back were it was.
+      */
+-    status = 0;		/* using "status" as int temporarily! */
+-    while(1){
+-	if(defpat[status] == '\0'){
+-	    forwchar(0, 1);
+-	    break;		/* find next occurence! */
+-	}
+-
+-	if(status + curwp->w_doto >= llength(curwp->w_dotp) ||
+-	   !eq((unsigned char)defpat[status],lgetc(curwp->w_dotp, curwp->w_doto + status).c))
+-	  break;		/* do nothing! */
+-	status++;
+-    }
++    forwchar(0, 1);
+ 
+     /* search for the pattern */
+     
+@@ -299,6 +290,8 @@ forwsearch(f, n)
+     /* and complain if not there */
+     if (status == FALSE){
+       emlwrite("\"%s\" not found", defpat);
++      curwp->w_dotp = lastline;	/* line position before scan */
++      curwp->w_doto = lastoff;		/* last position within line */
+     }
+     else if((gmode & MDREPLACE) && repl_mode == TRUE){
+         status = replace_pat(defpat, &wrapt2);    /* replace pattern */
+@@ -724,9 +717,14 @@ int leavep;		/* place to leave point
+     register int c;			/* character at current position */
+     register LINE *matchline;	/* current line during matching */
+     register int matchoff;		/* position in matching line */
+-    register char *patptr;		/* pointer into pattern */
++    register char *patptr = patrn;	/* pointer into pattern */
+     register int stopoff;		/* offset to stop search */
+     register LINE *stopline;	/* line to stop search */
++    unsigned int ucspat[NPAT], ucspos = 0, match;
++
++    while (gmode & P_UNICODE && *patptr != 0 && ucspos < NPAT)
++	ucspat[ucspos++] = utf8_get_ucs_string(&patptr, strlen(patptr));
++    ucspat[ucspos] = 0;
+ 
+     *wrapt = FALSE;
+ 
+@@ -778,15 +776,23 @@ int leavep;		/* place to leave point
+ 	else
+ 	  c = lgetc(curline, curoff++).c;	/* get the char */
+ 
++	if (gmode & P_UNICODE) {
++	    match = ucspat[ucspos=0];
++	} else
++	    match = patrn[0];
++
+ 	/* test it against first char in pattern */
+-	if (eq(c, (unsigned char) patrn[0]) != FALSE) {	/* if we find it..*/
++	if (eq(c, match) != FALSE) {	/* if we find it..*/
+ 	    /* setup match pointers */
+ 	    matchline = curline;
+ 	    matchoff = curoff;
+ 	    patptr = &patrn[0];
+ 
+ 	    /* scan through patrn for a match */
+-	    while (*++patptr != 0) {
++	    while (1) {
++		if (!(match = *++patptr) || (gmode & P_UNICODE &&
++					   !(match = ucspat[++ucspos])))
++		    break;
+ 		/* advance all the pointers */
+ 		if (matchoff == llength(matchline)) {
+ 		    /* advance past EOL */
+@@ -800,7 +806,7 @@ int leavep;		/* place to leave point
+ 		  return(FALSE);
+ 
+ 		/* and test it against the pattern */
+-		if (eq((unsigned char)*patptr, c) == FALSE)
++		if (eq(match, c) == FALSE)
+ 		  goto fail;
+ 	    }
+ 
+diff -Naurdp a/pico/word.c b/pico/word.c
+--- a/pico/word.c	2004-10-04 10:03:30.672448565 +0200
++++ b/pico/word.c	2004-10-04 10:03:31.370330772 +0200
+@@ -54,7 +54,7 @@ wrapword()
+       return(FALSE);
+ 
+     for(bp = cnt = i = 0; cnt < llength(curwp->w_dotp) && !bp; cnt++, i++){
+-	if(isspace((unsigned char) lgetc(curwp->w_dotp, cnt).c)){
++	if(cell_isspace(curwp->w_dotp, cnt)){
+ 	    first = 0;
+ 	    if(lgetc(curwp->w_dotp, cnt).c == TAB)
+ 	      while(i+1 & 0x07)
+@@ -84,7 +84,7 @@ wrapword()
+     if(!(curbp->b_flag & BFWRAPOPEN)
+        && lforw(curwp->w_dotp) != curbp->b_linep 
+        && llength(lforw(curwp->w_dotp)) 
+-       && !isspace((unsigned char) lgetc(lforw(curwp->w_dotp), 0).c)
++       && !cell_isspace(lforw(curwp->w_dotp), 0)
+        && (llength(curwp->w_dotp) + llength(lforw(curwp->w_dotp)) < fillcol)){
+ 	gotoeol(0, 1);			/* then pull text up from below */
+ 	if(lgetc(curwp->w_dotp, curwp->w_doto - 1).c != ' ')
+@@ -1654,13 +1654,13 @@ int f, n;	/* deFault flag and Numeric ar
+ 	    if(spaces){				/* flush word? */
+ 		if((line_len - qlenis > 0)
+ 		   && line_len + word_len + 1 > fillcol
+-		   && ((isspace((unsigned char)line_last))
++		   && ((Pisspace(line_last))
+ 		       || (linsert(1, ' ')))
+ 		   && (line_len = fpnewline(qstr)))
+ 		  line_last = ' ';	/* no word-flush space! */
+ 
+ 		if(word_len){			/* word to write? */
+-		    if(line_len && !isspace((unsigned char) line_last)){
++		    if(line_len && !Pisspace(line_last)){
+ 			linsert(1, ' ');	/* need padding? */
+ 			line_len++;
+ 		    }
+@@ -1683,7 +1683,7 @@ int f, n;	/* deFault flag and Numeric ar
+ 	    if(word_len + 1 >= NSTRING){
+ 		/* Magic!  Fake that we output a wrapped word */
+ 		if((line_len - qlenis > 0) && !same_word++){
+-		    if(!isspace((unsigned char) line_last))
++		    if(!Pisspace(line_last))
+ 		      linsert(1, ' ');
+ 		    line_len = fpnewline(qstr);
+ 		}
+@@ -1703,12 +1703,12 @@ int f, n;	/* deFault flag and Numeric ar
+ 
+     if(word_len){
+ 	if((line_len - qlenis > 0) && (line_len + word_len + 1 > fillcol)){
+-	    if(!isspace((unsigned char) line_last))
++	    if(!Pisspace(line_last))
+ 	      linsert(1, ' ');
+           if (line_len && (line_len != qlenis))
+              (void) fpnewline(qstr);
+ 	}
+-	else if(line_len && !isspace((unsigned char) line_last))
++	else if(line_len && !Pisspace(line_last))
+ 	  linsert(1, ' ');
+ 
+ 	for(j = 0; j < word_len; j++)
+diff -Naurdp a/pine/filter.c b/pine/filter.c
+--- a/pine/filter.c	2004-10-04 10:03:30.692445190 +0200
++++ b/pine/filter.c	2004-10-04 10:03:31.375329928 +0200
+@@ -65,6 +65,9 @@ static char rcsid[] = "$Id: filter.c,v 4
+ 
+ 
+ #include "headers.h"
++#ifdef HAVE_ICONV
++#include <iconv.h>
++#endif
+ 
+ 
+ /*
+@@ -708,6 +711,7 @@ static	jmp_buf   gf_error_state;
+ #define	FL_STF	16
+ #define	FL_SIG	17
+ #define	STOP_DECODING	18
++#define	UTF8	19
+ 
+ 
+ 
+@@ -2274,6 +2278,110 @@ gf_convert_8bit_charset(f, flg)
+     }
+ }
+ 
++#ifdef HAVE_ICONV
++/*
++ * This filter converts the input buffer in the MIME charset of 
++ * a message, for example) to another (the user's display charset)
++ * using iconv(3), POSIX/Single Unix Standard API. 
++ */
++void
++gf_convert_utf8_charset(f, flg)
++    FILTER_S *f;
++    int       flg;
++{
++    static iconv_t iconv_desc;
++    static int einval_inbytesleft;
++    GF_INIT(f, f->next);
++
++    switch (flg) {
++    case GF_DATA: {
++	size_t conv, inbytesleft = eob - op, outbytesleft = eib - ip;
++	/*
++	 * If einval_inbytesleft is set, iconv() encountered an incomplete
++	 * multibyte sequence and we asked for more input. In case the number
++	 * of chars left to convert did not change, we should be at the end
++	 * of input and we have an incomplete multibyte sequence at the end
++	 * end of input. We only mark this and ignore the incomplete data.
++	 */
++	if (inbytesleft == einval_inbytesleft) {
++		char *einval_error = "[invalid multibyte seq at end of input]";
++		dprint(8,(debugfile, "inval multibyte seq at end of input\n"));
++		for (;*einval_error;einval_error++)
++		    GF_PUTC(f->next, *einval_error);
++		GF_FLUSH(f->next);
++		op = eob; /* throw the remaing unusable bytes away */
++		GF_CH_RESET(f);
++		break;
++	}
++	while (1) {
++	    if (!outbytesleft || !inbytesleft) {
++		GF_FLUSH(f->next);
++		outbytesleft = eib - ip;
++	    }
++	    if (!inbytesleft) {
++		GF_CH_RESET(f);
++		break;
++	    }
++	    einval_inbytesleft = -1;
++	    conv = iconv(iconv_desc, (char **)&op, &inbytesleft,
++				      (char **)&ip, &outbytesleft);
++	    if (conv != (size_t) (-1)) { /* iconv succeeded */
++		dprint(9,(debugfile, "irres. conv. count: %d, il: %d, ol: %d\n",
++			  conv, inbytesleft, outbytesleft));
++	    /* iconv failed. check errno */
++	    } else if (errno == E2BIG){
++		dprint(9,(debugfile, "e2big: outbytesleft=%d\n", outbytesleft));
++		outbytesleft = 0;
++	    } else if (errno == EILSEQ){
++		char hexout[3];
++		dprint(9,(debugfile, "eilseq: ill.octet=0x%02x, il=%d, ol=%d\n",
++			  *op, inbytesleft, outbytesleft));
++		sprintf(hexout, "%2x", *op++);
++		inbytesleft--;
++		GF_PUTC(f->next, '[');
++		GF_PUTC(f->next, hexout[0]);
++		GF_PUTC(f->next, hexout[1]);
++		GF_PUTC(f->next, ']');
++		outbytesleft = eib - ip;
++		iconv(iconv_desc, NULL, NULL, NULL, NULL);
++	    } else if (errno == EINVAL){
++		/* 
++		 * We have to return from this function now because our input
++		 * buffer contains an incomplete multibyte character which we
++		 * can't complete without the next bytes of input.
++		 */
++		dprint(9,(debugfile,
++			  "einval: %d, ol: %d, incomplete input: 0x%02x\n",
++			  inbytesleft, outbytesleft, (unsigned char) *op));
++		/*
++		 * Before we abort here, we need to flush already converted
++		 * output to the filter chain, otherwise we may loose this
++		 * already converted content.
++                 */
++		GF_FLUSH(f->next);
++		/*
++		 * In case we are at the end of all input, and we have
++		 * an incomplete multibyte sequence left, we must find
++		 * a way to not fall into a loop, remember the bytes left:
++		 */
++		einval_inbytesleft = inbytesleft;
++		break;		/* Take the straigt way out now */
++	    } /* errno check */
++	} /*  while (1) */
++	GF_END(f, f->next);
++	break;
++    } /* GF_DATA */
++    case GF_RESET:
++	iconv_desc = (iconv_t)(f->opt);
++	iconv(iconv_desc, NULL, NULL, NULL, NULL);
++    	einval_inbytesleft = -1;
++	break;
++    case GF_EOD:
++	GF_FLUSH(f->next);
++	(*f->next->f)(f->next, GF_EOD);
++    } /* switch (flg) */
++}
++#else
+ 
+ /*
+  * This filter converts characters in UTF-8 to an 8-bit or 16-bit charset.
+@@ -2377,6 +2485,7 @@ gf_convert_utf8_charset(f, flg)
+ 	 f->n = 0L;
+     }
+ }
++#endif
+ 
+ 
+ /*
+@@ -6770,7 +6879,9 @@ typedef struct wrap_col_s {
+ 		wrap_max,
+ 		margin_l,
+ 		margin_r,
++		offset,
+ 		indent;
++    char	utf_seq[8];
+     char	special[256];
+     long	curlinenum;	/* current line number */
+     int		curqstrpos;	/* current position in quote string */
+@@ -6796,6 +6907,7 @@ typedef struct wrap_col_s {
+ #define	WRAP_USE_CLR(F)	(((WRAP_S *)(F)->opt)->use_color)
+ #define	WRAP_STATE(F)	(((WRAP_S *)(F)->opt)->state)
+ #define	WRAP_QUOTED(F)	(((WRAP_S *)(F)->opt)->quoted)
++#define	WRAP_UTF_SEQ(F) (((WRAP_S *)(F)->opt)->utf_seq)
+ #define	WRAP_TAGS(F)	(((WRAP_S *)(F)->opt)->tags)
+ #define	WRAP_BOLD(F)	(((WRAP_S *)(F)->opt)->bold)
+ #define	WRAP_ULINE(F)	(((WRAP_S *)(F)->opt)->uline)
+@@ -6874,7 +6986,7 @@ gf_wrap(f, flg)
+     GF_INIT(f, f->next);
+ 
+     if(flg == GF_DATA){
+-	register unsigned char c;
++	unsigned char c, *ch, *cm;
+ 	register int state = f->f1;
+ 	register int x;
+ 
+@@ -7309,8 +7421,42 @@ gf_wrap(f, flg)
+ 
+ 		break;
+ 
++	      case UTF8 :
++		if(!(ch = cm = pine_check_utf8(&c, WRAP_UTF_SEQ(f))))
++		  break;	    /* sequence not complete, need next byte */
++		state = DFL;	    /* end of sequence, leave the UTF-8 mode */
++		if(ch != &c) {		/* seq. complete, wrap and write it  */
++		  if(f->n + f->f2 + WRAP_SPC_LEN(f)
++			> WRAP_COL(f) - (*ch == ' '?2:1)) {
++		    dprint(8, (debugfile, "UTF8: newline\n"));
++		    wrap_flush(f, &ip, &eib, &op, &eob); /* write everything */
++		    wrap_eol(f, 0, &ip, &eib, &op, &eob); /* no fit, the end */
++		    wrap_bol(f,1,1, &ip, &eib, &op, &eob); /* start w/prefix */
++		  }
++		  f->n++;
++		  if(*ch == ' ') {   /* double-wide UTF-8 char, check space  */
++		    ch++;            /* ' ' was just a flag, skip over it    */
++		    f->n++;
++		  }
++		  dprint(9, (debugfile, "UTF8: free room: %02d char: '%s'\n",
++			(WRAP_COL(f) - f->n - f->f2 - WRAP_SPC_LEN(f)), ch));
++		  f->n -= strlen(ch);
++		  WRAP_PUTC(f, *ch++, 1);
++		  while(*ch)
++		    WRAP_PUTC(f, *ch++, 1);
++		  if(*cm == ' ')
++		    wrap_flush(f, &ip, &eib, &op, &eob); /* write everything */
++		  break;
++		}
++		WRAP_PUTC(f, '?', 1);	/* in place of invalid sequence    */
++					/* fall thru to process new char   */
++		wrap_flush(f, &ip, &eib, &op, &eob);   /* write everything */
+ 	      case_dfl :
+ 	      case DFL :
++		if (!pine_check_utf8(&c, WRAP_UTF_SEQ(f))) {
++		  state = UTF8;		/* Change to UTF-8 mode            */
++		  break;		/* Process next char in UTF-8 mode */
++		}
+ 		if(WRAP_SPEC(f, c)){
+ 		    switch(c){
+ 		      default :
+diff -Naurdp a/pine/init.c b/pine/init.c
+--- a/pine/init.c	2004-10-04 10:03:30.710442152 +0200
++++ b/pine/init.c	2004-10-04 10:03:31.382328747 +0200
+@@ -66,6 +66,9 @@ static char rcsid[] = "$Id: init.c,v 4.7
+ 
+ #include "headers.h"
+ #include "../c-client/imap4r1.h"  /* for LEVELSTATUS() */
++#ifdef LC_CTYPE
++# include <langinfo.h>
++#endif
+ 
+ 
+ typedef enum {Sapling, Seedling, Seasoned} FeatureLevel;
+@@ -253,6 +256,16 @@ CONF_TXT_T cf_text_startup_rules[] =	"Al
+ 
+ CONF_TXT_T cf_text_character_set[] =	"Reflects capabilities of the display you have. Default: US-ASCII.\n# Typical alternatives include ISO-8859-x, (x is a number between 1 and 9).";
+ 
++CONF_TXT_T cf_text_assumed_charset[] =	"When MIME charset information is missing in Content-Type header field.\n# Message is assumed to be in this charset. Default: US-ASCII. Typical values\n# include ISO-8859-x, ISO-2022-JP, EUC-KR, GB2312, and Big5. The value of\n# header fields which are not encoded per RFC 2047\n# is also assumed to be\n# in this charset."; 
++
++CONF_TXT_T cf_text_charset_aliases[] =	"List of charset aliases. Each alias is a pair of charsets delimetered by a\n# single colon, the first one being an alias to the second one. The latter is\n# usually standard/prefered MIME name while the former is non-standard name used\n# by some email clients. For instance, you may have 'x-big5:big5,euc-cn:gb2312'";
++
++#ifdef HAVE_ICONV
++CONF_TXT_T cf_text_iconv_aliases[] =	"List of charset aliases to use with iconv(). Each alias is a pair of\n# charsets delimetered by a single colon, the first one being an alias to the\n# second one. The former is usually standard/prefered MIME name while the\n# latter is non-standard name used by iconv(3) on your system.\n#For example,\n# your iconv may use non-standard 'UTF8' for the standard 'UTF-8'. In that\n# case, you can put 'UTF-8:UTF8' here.";
++
++CONF_TXT_T cf_text_send_charset[] =	"Specifies the MIME charset that a message will be sent in. If not set,\n# the value of character set will be used.";
++#endif
++
+ CONF_TXT_T cf_text_editor[] =		"Specifies the program invoked by ^_ in the Composer,\n# or the \"enable-alternate-editor-implicitly\" feature.";
+ 
+ CONF_TXT_T cf_text_speller[] =		"Specifies the program invoked by ^T in the Composer.";
+@@ -599,6 +612,18 @@ static struct variable variables[] = {
+ 				cf_text_startup_rules},
+ {"character-set",			0, 1, 0, 1, 1, 0, 0, 0, 0, 0,
+ 				cf_text_character_set},
++#ifdef ENABLE_SEND_CHARSET
++{"send-charset",	 		0, 1, 0, 1, 1, 0, 0, 0, 0, 0,
++				cf_text_send_charset},
++#endif
++{"assumed-charset",			0, 1, 0, 1, 1, 0, 0, 0, 0, 0,
++				cf_text_assumed_charset},
++{"charset-aliases",			0, 1, 0, 1, 1, 1, 0, 0, 0, 0,
++				cf_text_charset_aliases},
++#ifdef HAVE_ICONV
++{"iconv-aliases",			0, 1, 0, 1, 1, 1, 0, 0, 0, 0,
++				cf_text_iconv_aliases},
++#endif
+ {"editor",				0, 1, 0, 1, 1, 1, 0, 0, 0, 1,
+ 				cf_text_editor},
+ {"speller",				0, 1, 0, 1, 1, 0, 0, 0, 0, 0,
+@@ -1540,6 +1565,15 @@ init_vars(ps)
+ 
+     /*--- The defaults here are defined in os-xxx.h so they can vary
+           per machine ---*/
++#ifdef LC_CTYPE
++    setlocale(LC_CTYPE, "");     /* needed for using nl_langinfo */
++    GLO_CHAR_SET = cpystr(nl_langinfo(CODESET));
++    /* if codeset indicates that we are in an US-ASCII locale,   */
++    if (!strcmp(GLO_CHAR_SET, "ANSI_X3.4-1968")) {
++	fs_give((void **) &(GLO_CHAR_SET));
++	cpystr("US-ASCII");		   /* default to US-ASCII */
++    }
++#endif
+ 
+     GLO_PRINTER			= cpystr(DF_DEFAULT_PRINTER);
+     GLO_ELM_STYLE_SAVE		= cpystr(DF_ELM_STYLE_SAVE);
+@@ -2193,6 +2227,9 @@ init_vars(ps)
+     set_current_val(&vars[V_OLD_STYLE_REPLY], TRUE, TRUE);
+     obs_old_style_reply = !strucmp(VAR_OLD_STYLE_REPLY, "yes");
+ 
++    /* needed in process_feature_list */
++    set_current_val(&vars[V_CHAR_SET], TRUE, TRUE);
++
+     set_feature_list_current_val(&vars[V_FEATURE_LIST]);
+     process_feature_list(ps, VAR_FEATURE_LIST,
+            (obs_feature_level == Seasoned) ? 1 : 0,
+@@ -2201,6 +2238,14 @@ init_vars(ps)
+     set_current_val(&vars[V_SIGNATURE_FILE], TRUE, TRUE);
+     set_current_val(&vars[V_LITERAL_SIG], TRUE, TRUE);
+     set_current_val(&vars[V_CHAR_SET], TRUE, TRUE);
++#ifdef ENABLE_SEND_CHARSET
++    set_current_val(&vars[V_SEND_CHARSET], TRUE, TRUE);
++#endif
++    set_current_val(&vars[V_ASSUMED_CHAR_SET], TRUE, TRUE);
++    set_current_val(&vars[V_CHAR_SET_ALIASES], TRUE, TRUE);
++#ifdef HAVE_ICONV
++    set_current_val(&vars[V_ICONV_ALIASES], TRUE, TRUE);
++#endif
+     set_current_val(&vars[V_GLOB_ADDRBOOK], TRUE, TRUE);
+     set_current_val(&vars[V_ADDRESSBOOK], TRUE, TRUE);
+     set_current_val(&vars[V_FORCED_ABOOK_ENTRY], TRUE, TRUE);
+@@ -3231,6 +3276,12 @@ process_feature_list(ps, list, old_growt
+ #ifdef	_WINDOWS
+     ps->pass_ctrl_chars = 1;
+ #else
++    if(ps_global->VAR_CHAR_SET
++       && !strucmp(ps_global->VAR_CHAR_SET, "UTF-8")) {
++	  F_TURN_ON(F_PASS_C1_CONTROL_CHARS, ps);  /* until parsing is done  */
++	  /* F_TURN_ON(F_QUELL_CHARSET_WARNING, ps); for now kept for information */
++	  F_TURN_ON(F_ENABLE_SETLOCALE_CTYPE, ps); /* also needed for gmode  */
++    }
+     ps->pass_ctrl_chars = F_ON(F_PASS_CONTROL_CHARS,ps_global) ? 1 : 0;
+     ps->pass_c1_ctrl_chars = F_ON(F_PASS_C1_CONTROL_CHARS,ps_global) ? 1 : 0;
+ 
+diff -Naurdp a/pine/mailindx.c b/pine/mailindx.c
+--- a/pine/mailindx.c	2004-10-04 10:03:30.733438271 +0200
++++ b/pine/mailindx.c	2004-10-04 10:03:31.389327566 +0200
+@@ -2217,6 +2217,8 @@ paint_index_line(msg, hline, line, scol,
+ 	else{
+ 	    char *draw = h->line, save_schar, save_pchar, save;
+ 	    int   uc, i, drew_X = 0, cols = ps_global->ttyo->screen_cols;
++	    int   seq = 0, w = 0;
++	    char  utf_seq[7], *cp, *r;
+ 
+ 	    if(uc=pico_usingcolor())
+ 	      lastc = pico_get_cur_color();
+@@ -2257,9 +2259,26 @@ paint_index_line(msg, hline, line, scol,
+ 		drew_X++;
+ 	    }
+ 
++	    cp = NULL;
+ 	    if(pcol >= 0 && pcol < cols){
+-		save_pchar = draw[pcol];
+-		draw[pcol] = h->plus;
++		memset(utf_seq, 0, sizeof(utf_seq));
++		for(cp = draw; *cp; cp++) { 
++		    if (!(r = pine_check_utf8(cp, utf_seq))) {
++			seq = 1;
++			continue;
++		    }
++		    if (seq)
++			w++;
++		    seq = 0;
++		    if (r == cp)
++			w++;
++		    else if (*r == ' ')
++			w++;
++		    if (w > pcol)
++			break;
++		}
++		save_pchar = *cp;
++		*cp = h->plus;
+ 	    }
+ 
+ 	    if(h->offs[0].offset < 0 || h->offs[0].offset >= cols){
+@@ -2378,8 +2397,8 @@ done_drawing:
+ 	    if(cur)
+ 	      EndInverse();
+ 
+-	    if(pcol >= 0 && pcol < cols)
+-	      draw[pcol] = save_pchar;
++	    if(cp)
++	      *cp = save_pchar;
+ 	}
+ 
+ 	if(base_color && base_color != lastc && base_color != &h->linecolor)
+@@ -4471,6 +4490,58 @@ day_of_year(d)
+     return(doy);
+ }
+ 
++static char *
++rfc_1522_check_charset(chp)
++    char *chp;
++{
++    static char *subj_cs = NULL;
++    char *cs, *enc;
++
++    while(chp && (chp = strstr(chp, "=?")))
++	if(rfc1522_valid(chp++, 1, &cs, &enc, NULL, NULL)){
++	    int cs_len = enc - cs - 1;
++
++	    if(subj_cs)
++		fs_give((void **)&subj_cs);
++
++	    strncpy(subj_cs = fs_get(cs_len + 1), cs, cs_len);
++	    subj_cs[cs_len] = 0;
++
++	    return subj_cs;
++	}
++    return NULL;
++}
++
++static void
++rfc1522_decode_width(dest, source, width, idata)
++    char	*dest;
++    char	*source;
++    int		 width;
++    INDEXDATA_S *idata;
++{
++    char *subj_cs, *assumed_save = NULL, *dummy = NULL, *tmp;
++
++    if(idata && (subj_cs = rfc_1522_check_charset(fetch_subject(idata)))){
++	assumed_save = ps_global->VAR_ASSUMED_CHAR_SET;
++	ps_global->VAR_ASSUMED_CHAR_SET = subj_cs;
++    }
++
++    tmp = (char *) rfc1522_decode((unsigned char *) tmp_20k_buf,
++				   SIZEOF_20KBUF, source, &dummy);
++    if(idata){
++	if(tmp == source)
++	    strncpy(tmp = tmp_20k_buf, source, SIZEOF_20KBUF);
++
++	removing_leading_and_trailing_white_space(tmp);
++
++	if(subj_cs)
++	    ps_global->VAR_ASSUMED_CHAR_SET = assumed_save;
++    }
++    charset_istrncpy(dest, tmp, width, 0);
++	
++    if(dummy)
++	fs_give((void **)&dummy);
++}
+ 
+ 
+ /*----------------------------------------------------------------------
+@@ -4487,7 +4558,8 @@ HLINE_S *
+ format_index_index_line(idata)
+     INDEXDATA_S	*idata;
+ {
+-    char          str_buf[MAXIFLDS][MAX_SCREEN_COLS+1], to_us, status, *field,
++#define STRLEN MAX_SCREEN_COLS*6
++    char          str_buf[MAXIFLDS][STRLEN+1], to_us, status, *field,
+ 		 *buffer, *s_tmp, *p, *str, *newsgroups;
+     int		  width, offsets_set = 0, i, j, smallest, which_array = 0;
+     int           plus_off = -1, imp_off = -1, del_off = -1, ans_off = -1,
+@@ -4794,7 +4866,7 @@ format_index_index_line(idata)
+ 	      case iFrom:
+ 	      case iAddress:
+ 	      case iMailbox:
+-		from_str(cdesc->ctype, idata, width, str);
++		from_str(cdesc->ctype, idata, min(width*6,STRLEN), str);
+ 	        break;
+ 
+ 	      case iTo:
+@@ -5111,11 +5183,11 @@ getsize:
+ 		break;
+ 
+ 	      case iSubject:
+-		subj_str(idata, width, str, 0);
++		subj_str(idata, min(width*6,STRLEN), str, 0);
+ 		break;
+ 
+ 	      case iSubjKey:
+-		subj_str(idata, width, str, 1);
++		subj_str(idata, min(width*6,STRLEN), str, 1);
+ 		break;
+ 
+ 	      case iNews:
+@@ -5260,34 +5332,11 @@ getsize:
+ 	  }
+ 
+ 	  if(cdesc->adjustment == Left)
+-	    sprintf(p, "%-*.*s", width, width, str);
++	    charset_istrncpy(p, str, width, 1);
+ 	  else
+ 	    sprintf(p, "%*.*s", width, width, str);
+ 
+-	  /*
+-	   * Make sure there are no nulls in the part we were supposed to
+-	   * have just written. This may happen if sprintf returns an
+-	   * error, but we don't want to check for that because some
+-	   * sprintfs don't return anything. If there are nulls, rewrite it.
+-	   */
+-	  for(q = p; q < p+width; q++)
+-	    if(*q == '\0')
+-	      break;
+-	    
+-	  if(q < p+width){
+-	      strncpy(p, repeat_char(width, ' '), width);
+-	      p[width] = '\0';
+-	      /* throw a ? in there too */
+-	      if(width > 4){
+-		  p[(width-1)/2 - 1] = '?';
+-		  p[(width-1)/2    ] = '?';
+-		  p[(width-1)/2 + 1] = '?';
+-	      }
+-	      else if(width > 2)
+-		p[(width-1)/2] = '?';
+-	  }
+-
+-	  p += width;
++	  p += strlen(p);
+       }
+ 
+     for(i = 0; i < OFFS; i++)
+@@ -5389,7 +5438,7 @@ getsize:
+     }
+ 
+     /* Truncate it to be sure not too wide */
+-    buffer[min(ps_global->ttyo->screen_cols, i_cache_width())] = '\0';
++    buffer[i_cache_width()] = '\0';
+     hline->id = line_hash(buffer);
+     dprint(9, (debugfile, "INDEX(%p) -->%s<-- (%d), 0x%lx>\n",
+ 	       hline,
+@@ -6237,21 +6286,12 @@ set_index_addr(idata, field, addr, prefi
+     if(addr && !addr->next		/* only one address */
+        && addr->host			/* not group syntax */
+        && addr->personal && addr->personal[0]){	/* there is a personal name */
+-	char *dummy = NULL;
+-	char  buftmp[MAILTMPLEN];
+ 	int   l;
+ 
+ 	if(l = prefix ? strlen(prefix) : 0)
+ 	  strcpy(s, prefix);
+ 
+-	sprintf(buftmp, "%.75s", addr->personal);
+-	p = (char *) rfc1522_decode((unsigned char *) tmp_20k_buf,
+-				    SIZEOF_20KBUF, buftmp, &dummy);
+-	removing_leading_and_trailing_white_space(p);
+-	istrncpy(s + l, p, width - l);
+-	s[width] = '\0';
+-	if(dummy)
+-	  fs_give((void **)&dummy);
++	rfc1522_decode_width(s + l, addr->personal, width - l, idata);
+ 	
+ 	if(*(s+l))
+ 	  return(TRUE);
+@@ -6272,8 +6312,13 @@ set_index_addr(idata, field, addr, prefi
+ 	if(l = prefix ? strlen(prefix) : 0)
+ 	  strcpy(s, prefix);
+ 
+-	istrncpy(s + l, a_string, width - l);
+-	s[width] = '\0';
++	if (p = rfc_1522_check_charset(fetch_subject(idata))) {
++		char *dest = s + l;
++		conv_sstrncpy(p, NULL, &dest, a_string, width);
++	} else {
++		istrncpy(s + l, a_string, width - l);
++		s[width] = '\0';
++	}
+ 
+ 	fs_give((void **)&a_string);
+ 	return(TRUE);
+@@ -7069,24 +7114,14 @@ subj_str(idata, width, str, kw)
+ 
+ 	    if(do_subj){
+ 		width = (str + width) - sptr;
+-		len = strlen(subject)+1;
+-		tmp = fs_get(len * sizeof(unsigned char));
+-		istrncpy(sptr, (char *) rfc1522_decode(tmp, len,
+-						       subject, NULL),
+-			 width);
+-		fs_give((void **) &tmp);
++		rfc1522_decode_width(sptr, subject, width, NULL);
+ 	    }
+ 	    else if(ps_global->thread_disp_style == THREAD_MUTTLIKE)
+ 	      sptr[0] = '>';
+ 	}
+     }
+     else{
+-	len = strlen(subject)+1;
+-	tmp = fs_get(len * sizeof(unsigned char));
+-	istrncpy(str,
+-		 (char *) rfc1522_decode(tmp, len, subject, NULL),
+-		 width);
+-	fs_give((void **) &tmp);
++	rfc1522_decode_width(str, subject, width, NULL);
+     }
+ 
+     if(free_subj)
+@@ -9925,7 +9960,7 @@ i_cache_size(indx)
+ {
+     long j;
+     size_t  newsize = sizeof(HLINE_S)
+-		 + ((max(ps_global->ttyo->screen_cols, 80)+1) * sizeof(char));
++		 + ((max(ps_global->ttyo->screen_cols, 80)+1)*6*sizeof(char));
+ 
+     if(j = (newsize % sizeof(long)))		/* alignment hack */
+       newsize += (sizeof(long) - (size_t)j);
+@@ -10003,7 +10038,7 @@ get_index_cache(msgno)
+ 
+ 	dprint(2, (debugfile, "Called get_index_cache with msgno=%ld\n",
+ 		msgno));
+-	big_enough = sizeof(HLINE_S) + (MAX_SCREEN_COLS * sizeof(char))
++	big_enough = sizeof(HLINE_S) + (MAX_SCREEN_COLS * sizeof(char) * 6)
+ 		     + sizeof(long);
+ 	if(!dummy_to_protect_ourselves)
+ 	  dummy_to_protect_ourselves = (HLINE_S *) fs_get(big_enough);
+diff -Naurdp a/pine/mailpart.c b/pine/mailpart.c
+--- a/pine/mailpart.c	2004-10-04 10:03:30.737437596 +0200
++++ b/pine/mailpart.c	2004-10-04 10:03:31.392327059 +0200
+@@ -4127,7 +4127,8 @@ df_valid_test(body, test)
+ 		    fs_give((void **) &p);
+ 		}
+ 		else
+-		  passed = !strucmp(test + 9, "us-ascii");
++		  passed = !strucmp(test + 9, 
++		    ps_global->VAR_ASSUMED_CHAR_SET ? ps_global->VAR_ASSUMED_CHAR_SET : "us-ascii");
+ 	    }
+ 	    else
+ 	      dprint(1, (debugfile,
+diff -Naurdp a/pine/mailview.c b/pine/mailview.c
+--- a/pine/mailview.c	2004-10-04 10:03:30.745436246 +0200
++++ b/pine/mailview.c	2004-10-04 10:03:31.398326047 +0200
+@@ -6253,16 +6253,12 @@ decode_text(att, msgno, pc, handlesp, st
+     else if(!strucmp(att->body->subtype, "html")
+ 	    && ps_global->full_header < 2){
+ /*BUG:	    sniff the params for "version=2.0" ala draft-ietf-html-spec-01 */
+-	int opts = 0;
++	/* html-internal wrap isn't aware of UTF-8, let gf_wrap do wrapping */
++	int opts = GFHP_NOWRAP;
+ 
+-	if(flags & FM_DISPLAY){
+-	    if(handlesp)		/* pass on handles awareness */
+-	      opts |= GFHP_HANDLES;
+-	}
+-	else
++	if(!(flags & FM_DISPLAY))
+ 	  opts |= GFHP_STRIPPED;	/* don't embed anything! */
+ 
+-	wrapit = 0;		/* wrap already handled! */
+ 	filters[filtcnt].filter = gf_html2plain;
+ 	filters[filtcnt++].data = gf_html2plain_opt(NULL, column,
+ 						    format_view_margin(),
+diff -Naurdp a/pine/osdep/os-lnx.h b/pine/osdep/os-lnx.h
+--- a/pine/osdep/os-lnx.h	2004-10-04 10:03:30.406493453 +0200
++++ b/pine/osdep/os-lnx.h	2004-10-04 10:03:31.398326047 +0200
+@@ -214,6 +214,9 @@
+  ----*/
+ #define DF_DEFAULT_PRINTER        ANSI_PRINTER
+ 
++/* all recent Linux distributions come with glibc 2.x. with an excellent
++ * iconv implementation */
++#define HAVE_ICONV
+ 
+ 
+ /*----- The usual sendmail configuration for sending mail on Unix ------*/
+diff -Naurdp a/pine/osdep/termout.unx b/pine/osdep/termout.unx
+--- a/pine/osdep/termout.unx	2004-10-04 10:03:30.752435064 +0200
++++ b/pine/osdep/termout.unx	2004-10-04 10:03:31.399325878 +0200
+@@ -743,7 +743,16 @@ Writechar(ch, new_esc_len)
+      register unsigned int ch;
+      int      new_esc_len;
+ {
+-    static   int esc_len = 0;
++    static   int esc_len = 0, seq = 0;
++    static   unsigned char utf_seq[7] = "";
++    int      ix;
++    unsigned char dbl_wide[7][2][4] = {0xe1,0x84,0x80,0x00, 0xe1,0x85,0x9F,0x00,
++				       0xe2,0x8c,0xa9,0x00, 0xe2,0x8c,0xaa,0x00,
++				       0xe2,0xba,0x80,0x00, 0xed,0x9e,0xa3,0x00,
++				       0xef,0xa4,0x80,0x00, 0xef,0xa9,0xaa,0x00,
++				       0xef,0xb8,0xb0,0x00, 0xef,0xb9,0xa8,0x00,
++				       0xef,0xbc,0x81,0x00, 0xef,0xbd,0xad,0x00,
++				       0xef,0xbf,0xa0,0x00, 0xef,0xbf,0xa6,0x00};
+ 
+     if(ps_global->in_init_seq				/* silent */
+        || (F_ON(F_BLANK_KEYMENU, ps_global)		/* or bottom, */
+@@ -752,6 +761,33 @@ Writechar(ch, new_esc_len)
+ 	   && _col + 1 == ps_global->ttyo->screen_cols))
+       return;
+ 
++    /* Treat UTF-8 sequences if we are not in a special escape sequence */
++    if(esc_len <= 0) {
++	unsigned char *chp;
++	if ((chp = pine_check_utf8(&ch, utf_seq)) == NULL) {
++	    seq = 1; /* flag that we are in a open UTF-8 sequence   */
++	    return;  /* UTF-8 sequence not complete, need next char */
++	}
++	if (chp != &ch) {
++	    seq = 0; /* flag that we are not in a open UTF-8 sequence */
++	    _col++;
++	    if (*chp == ' ') {
++		if(++_col > ps_global->ttyo->screen_cols) {
++		    printf("\342\200\246"); /* UTF-8 points... */
++		    goto wrap;
++		}
++		chp++;
++	    }
++	    while(*chp)
++		putchar(*chp++);
++	    return;
++	}
++	if (seq) {	/* incomplete UTF-8 sequence */
++	   seq = 0;	/* flag that we are not in a open UTF-8 sequence */
++	   putchar('?');     /* print question mark at place of sequence */
++	}
++    }
++
+     if(ch == LINE_FEED || ch == RETURN || ch == BACKSPACE || ch == BELL
+        || ch == TAB || ch == ESCAPE){
+ 	switch(ch){
+@@ -829,7 +865,9 @@ Writechar(ch, new_esc_len)
+        like case 1. A little expensive but worth it to avoid problems
+        with terminals configured so they don't match termcap
+        */
+-    if(_col == ps_global->ttyo->screen_cols) {
++    if(_col >= ps_global->ttyo->screen_cols) {
++wrap:
++	dprint(9, (debugfile, "%d,%02d, wrap(%x)\n",_line,_col,ch));
+         _col = 0;
+         if(_line + 1 < ps_global->ttyo->screen_rows)
+ 	  _line++;
+diff -Naurdp a/pine/other.c b/pine/other.c
+--- a/pine/other.c	2004-10-04 10:03:30.766432702 +0200
++++ b/pine/other.c	2004-10-04 10:03:31.411323853 +0200
+@@ -7446,6 +7446,18 @@ config_help(var, feature)
+ 	return(h_config_startup_rules);
+       case V_CHAR_SET :
+ 	return(h_config_char_set);
++#ifdef ENABLE_SEND_CHARSET
++      case V_SEND_CHARSET :
++	return(h_config_send_char_set);
++#endif
++      case V_ASSUMED_CHAR_SET :
++	return(h_config_assumed_charset);
++      case V_CHAR_SET_ALIASES :
++	return(h_config_charset_aliases);
++#ifdef HAVE_ICONV
++      case V_ICONV_ALIASES :
++	return(h_config_iconv_aliases);
++#endif
+       case V_EDITOR :
+ 	return(h_config_editor);
+       case V_SPELLER :
+@@ -11974,6 +11986,9 @@ toggle_feature_bit(ps, index, var, cl, j
+       case F_PASS_C1_CONTROL_CHARS :
+ 	ps->pass_c1_ctrl_chars = F_ON(F_PASS_C1_CONTROL_CHARS,ps_global)
+ 								    ? 1 : 0;
++	if(ps_global->VAR_CHAR_SET
++	 && !strucmp(ps_global->VAR_CHAR_SET, "UTF-8"))
++	  ps->pass_c1_ctrl_chars = 1;
+ 	break;
+ #endif
+ #ifdef	MOUSE
+diff -Naurdp a/pine/pine.h b/pine/pine.h
+--- a/pine/pine.h	2004-10-04 10:03:30.777430845 +0200
++++ b/pine/pine.h	2004-10-04 10:03:31.415323178 +0200
+@@ -68,6 +68,7 @@
+ #define	PHONE_HOME_HOST		"docserver.cac.washington.edu"
+ 
+ #define UNKNOWN_CHARSET		"X-UNKNOWN"
++#define US_ASCII_CHARSET	"US-ASCII"
+ 
+ #define OUR_HDRS_LIST		"X-Our-Headers"
+ 
+@@ -175,7 +176,7 @@
+ #define GER_ALLPARTS		0x04	/* AllParts toggle is on            */
+ 
+ #define GFHP_STRIPPED		0x01
+-#define GFHP_HANDLES		0x02
++#define GFHP_NOWRAP		0x02
+ #define GFHP_LOCAL_HANDLES	0x04
+ 
+ #define	GFW_HANDLES		0x01
+@@ -647,6 +648,14 @@ typedef	enum {    V_PERSONAL_NAME = 0
+ 		, V_SORT_RULES
+ 		, V_STARTUP_RULES
+ 		, V_CHAR_SET
++#ifdef ENABLE_SEND_CHARSET
++		, V_SEND_CHARSET
++#endif
++		, V_ASSUMED_CHAR_SET
++		, V_CHAR_SET_ALIASES
++#ifdef HAVE_ICONV
++		, V_ICONV_ALIASES
++#endif
+ 		, V_EDITOR
+ 		, V_SPELLER
+ 		, V_FILLCOL
+@@ -934,6 +943,14 @@ typedef	enum {    V_PERSONAL_NAME = 0
+ #define USR_STARTUP_RULES	     vars[V_STARTUP_RULES].user_val.l
+ #define VAR_CHAR_SET		     vars[V_CHAR_SET].current_val.p
+ #define GLO_CHAR_SET		     vars[V_CHAR_SET].global_val.p
++#ifdef ENABLE_SEND_CHARSET
++#define VAR_SEND_CHARSET	     vars[V_SEND_CHARSET].current_val.p
++#endif
++#define VAR_ASSUMED_CHAR_SET	     vars[V_ASSUMED_CHAR_SET].current_val.p
++#define VAR_CHAR_SET_ALIASES	     vars[V_CHAR_SET_ALIASES].current_val.l
++#ifdef HAVE_ICONV
++#define VAR_ICONV_ALIASES 	     vars[V_ICONV_ALIASES].current_val.l
++#endif
+ #define VAR_EDITOR		     vars[V_EDITOR].current_val.l
+ #define GLO_EDITOR		     vars[V_EDITOR].global_val.l
+ #define VAR_SPELLER		     vars[V_SPELLER].current_val.p
+@@ -3588,6 +3605,7 @@ typedef struct reply_s {
+     } data;
+ } REPLY_S;
+ 
++#define pico(F) call_pico(F)
+ #define	REPLY_PSEUDO	1
+ #define	REPLY_FORW	2	/* very similar to REPLY_PSEUDO */
+ #define	REPLY_MSGNO	3
+@@ -4069,7 +4087,6 @@ typedef struct atable_s {	/* a stands fo
+ } ATABLE_S;
+ 
+ 
+-#define TAG_EMBED	'\377'	/* Announces embedded data in text string */
+ #define	TAG_INVON	'\001'	/* Supported character attributes	  */
+ #define	TAG_INVOFF	'\002'
+ #define	TAG_BOLDON	'\003'
+@@ -4079,6 +4096,7 @@ typedef struct atable_s {	/* a stands fo
+ #define	TAG_FGCOLOR	'\010'	/* Change to this foreground color	  */
+ #define	TAG_BGCOLOR	'\011'	/* Change to this background color	  */
+ #define	TAG_HANDLE	'\020'	/* indicate's a handle to an action	  */
++#define	TAG_EMBED       '\021'	/* Announces embedded data in text string */
+ #define	TAG_HANDLEOFF	'\030'	/* indicate's end of handle text	  */
+ 
+ 
+@@ -5497,6 +5515,9 @@ char	  **rfc2369_hdrs PROTO((char **));
+ int	    rfc2369_parse_fields PROTO((char *, RFC2369_S *));
+ unsigned char *trans_euc_to_2022_jp PROTO((unsigned char *));
+ unsigned char *trans_2022_jp_to_euc PROTO((unsigned char *));
++unsigned char* resolve_charset_alias PROTO((char *, char **));
++char          *pine_check_utf8 PROTO((char *, char *));
++unsigned char *trans_with_iconv PROTO((unsigned char *, char *, char *));
+ 
+ 
+ /*-- takeaddr.c --*/
+diff -Naurdp a/pine/pine.hlp b/pine/pine.hlp
+--- a/pine/pine.hlp	2004-10-04 10:03:30.800426964 +0200
++++ b/pine/pine.hlp	2004-10-04 10:03:31.433320140 +0200
+@@ -20753,6 +20753,110 @@ will label the text as &quot;X-UNKNOWN&q
+ &lt;End of help on this topic&gt;
+ </BODY>
+ </HTML>
++====== h_config_charset_aliases =====
++<HTML>
++<HEAD>
++<TITLE>OPTION: Charset-Aliases</TITLE>
++</HEAD>
++<BODY>
++<H1>OPTION: Charset-Aliases</H1>
++
++List of charset aliases.
++
++<P>
++Each alias is a pair of charsets delimetered by a single colon,
++the first one being an alias to the second one.
++
++<P>
++The latter is usually standard/prefered MIME name while the former
++is a non-standard name used by some email clients.
++
++<P>
++For instance, you may set it to: 'x-big5:big5,euc-cn:gb2312'
++
++<P>
++<UL>
++<LI><A HREF="h_finding_help">Finding more information and requesting
++help</A>
++</UL><P>
++&lt;End of help on this topic&gt;
++</BODY>
++</HTML>
++====== h_config_iconv_aliases =====
++<HTML>
++<HEAD>
++<TITLE>OPTION: Iconv-Aliases</TITLE>
++</HEAD>
++<BODY>
++<H1>OPTION: Iconv-Aliases</H1>
++
++List of charset aliases to use with iconv().
++
++<P>
++Each alias is a pair of charsets delimetered by a single colon,
++the first one being an alias to the second one.
++
++<P>
++The former is usually standard/prefered MIME name while the latter
++is a non-standard name used by iconv(3) on your system.
++
++<P>
++For example, your iconv may use non-standard 'UTF8' for the standard
++'UTF-8'. In that case, you can put 'UTF-8:UTF8' here.
++
++<P>
++<UL>
++<LI><A HREF="h_finding_help">Finding more information and requesting
++help</A>
++</UL><P>
++&lt;End of help on this topic&gt;
++</BODY>
++</HTML>
++====== h_config_assumed_charset =====
++<HTML>
++<HEAD>
++<TITLE>OPTION: Assumed-Charset</TITLE>
++</HEAD>
++<BODY>
++<H1>OPTION: Assumed-Charset</H1>
++
++When MIME charset information is missing in Content-Type header field
++the Message is assumed to be in this charset. Default: US-ASCII.
++Typical values include ISO-8859-x, ISO-2022-JP, EUC-KR, GB2312, and Big5.
++Header fields which are not encoded per RFC 2047 is also assumed to be
++in this charset.
++
++<P>
++<UL>
++<LI><A HREF="h_finding_help">Finding more information and requesting
++help</A>
++</UL><P>
++&lt;End of help on this topic&gt;
++</BODY>
++</HTML>
++====== h_config_send_char_set =====
++<HTML>
++<HEAD>
++<TITLE>OPTION: Send-Charset</TITLE>
++</HEAD>
++<BODY>
++<H1>OPTION: Send-Charset</H1>
++
++If it's set, the headers and the body of an outgoing message is converted
++from the value of character-set (display/terminal charset) to the value
++of this option. You have to set this option if your terminal/display charset
++(say, UTF-8) is different from the charset you want your outgoing messsages
++to be in (say, ISO-8859-1, EUC-KR, Big5, GB2312) because your correspondents
++can't handle emails in UTF-8.
++
++<P>
++<UL>
++<LI><A HREF="h_finding_help">Finding more information and requesting
++help</A>
++</UL><P>
++&lt;End of help on this topic&gt;
++</BODY>
++</HTML>
+ ====== h_config_editor =====
+ <HTML>
+ <HEAD>
+diff -Naurdp a/pine/reply.c b/pine/reply.c
+--- a/pine/reply.c	2004-10-04 10:03:30.805426120 +0200
++++ b/pine/reply.c	2004-10-04 10:03:31.436319634 +0200
+@@ -1615,18 +1615,32 @@ reply_subject(subject, buf, buflen)
+        && (decoded[0] == 'R' || decoded[0] == 'r')
+        && (decoded[1] == 'E' || decoded[1] == 'e')){
+ 
+-        if(decoded[2] == ':')
+-	  sprintf(buf, "%.*s", buflen-1, subject);
++	if(decoded[2] == ':'){
++	    strncpy(buf, subject, l);  
++	    buf[l]='\0';
++	}
+ 	else if((decoded[2] == '[') && (p = strchr(decoded, ']'))){
+ 	    p++;
+ 	    while(*p && isspace((unsigned char)*p)) p++;
+-	    if(p[0] == ':')
+-	      sprintf(buf, "%.*s", buflen-1, subject);
++	    if(p[0] == ':'){
++		strncpy(buf, subject, l);  
++		buf[l]='\0';
++	    }   
+ 	}
+     }
+-    if(!buf[0])
+-      sprintf(buf, "Re: %.*s", buflen-1,
+-	      (subject && *subject) ? subject : "your mail");
++    if(!buf[0]) {
++	/*
++	 * Used to be 
++	 * sprintf(buf, "Re: %.200s", (subject && *subject) ? subject : 
++	 * 	"your mail"); 		 
++	 * Some implementations of sprintf() are locale-dependent and
++	 * don't pass through an invalid sequence of bytes blindly. 
++	 * Use strncpy() instead:
++	 */
++	strcpy(buf,"Re: ");
++	strncpy(buf+4, (subject && *subject) ? subject : "your mail", l);  
++	buf[l+4]='\0';
++    }
+ 
+     fs_give((void **) &tmp);
+     return(buf);
+@@ -4856,6 +4870,9 @@ bounce_msg(stream, rawno, part, role, to
+     ENVELOPE *outgoing;
+     BODY     *body = NULL;
+     MESSAGECACHE *mc;
++#ifdef ENABLE_SEND_CHARSET
++    char     *temp_send_cset = NULL;
++#endif
+ 
+     outgoing		 = mail_newenvelope();
+     outgoing->message_id = generate_message_id();
+@@ -4939,6 +4956,17 @@ bounce_msg(stream, rawno, part, role, to
+ 
+     gf_clear_so_writec((STORE_S *) msgtext);
+ 
++#ifdef ENABLE_SEND_CHARSET
++    /*
++     * reset VAR_SEND_CHARSET to '' temporarily NOT to 
++     * apply  the charset conversion to a bounced message.
++     */
++    if (ps_global->VAR_SEND_CHARSET && *(ps_global->VAR_SEND_CHARSET)){
++	temp_send_cset = (char *)fs_get(strlen(ps_global->VAR_SEND_CHARSET)+1);
++	strcpy(temp_send_cset, ps_global->VAR_SEND_CHARSET);
++	(ps_global->VAR_SEND_CHARSET)[0] = '\0'; 
++    }
++#endif
+     if(pine_simple_send(outgoing, &body, role, pmt_who, pmt_cnf, to,
+ 			!(to && *to) ? SS_PROMPTFORTO : 0) < 0){
+ 	errstr = "";		/* p_s_s() better have explained! */
+@@ -4949,6 +4977,12 @@ bounce_msg(stream, rawno, part, role, to
+ 	  mail_flag(stream, long2string(rawno), "\\SEEN", 0);
+     }
+ 
++#ifdef ENABLE_SEND_CHARSET
++    if (temp_send_cset){
++	strcpy(ps_global->VAR_SEND_CHARSET, temp_send_cset);
++	fs_give((void **)&temp_send_cset);
++    }
++#endif
+     /* Just for good measure... */
+     mail_free_envelope(&outgoing);
+     pine_free_body(&body);
+@@ -6625,6 +6659,9 @@ standard_picobuf_setup(pbf)
+ 	       && ps_global->VAR_EDITOR[0]
+ 	       && ps_global->VAR_EDITOR[0][0]))
+ 							? P_ADVANCED	: 0L)
++       | ((ps_global->VAR_CHAR_SET
++	   && !strucmp(ps_global->VAR_CHAR_SET, "UTF-8"))
++							? P_UNICODE	: 0L)
+        | ((!ps_global->VAR_CHAR_SET
+            || !strucmp(ps_global->VAR_CHAR_SET, "US-ASCII"))
+ 							? P_HIBITIGN	: 0L));
+diff -Naurdp a/pine/send.c b/pine/send.c
+--- a/pine/send.c	2004-10-04 10:03:30.817424095 +0200
++++ b/pine/send.c	2004-10-04 10:03:31.442318621 +0200
+@@ -6574,6 +6574,54 @@ post_compose_filters(body)
+     }
+ }
+ 
++#ifdef ENABLE_SEND_CHARSET
++/*
++ * Take the PicoText pointed to and replace it with PicoText which has been
++ * filtered to change the 'character-set' (display/terminal-charset) to 
++ * 'send-charset'. (based on filter_msgtxt_euc_to_2022_jp, above)
++ */
++void
++filter_msgtxt_to_send_charset(body)
++    BODY *body;
++{
++    STORE_S **so = (STORE_S **)((body->type == TYPEMULTIPART)
++				? &body->nested.part->body.contents.text.data
++				: &body->contents.text.data);
++    STORE_S  *filtered_so = NULL; 
++    gf_io_t   pc, gc;
++    char     *errstr;
++    CONV_TABLE *ct;
++    char * assumed_save = ps_global->VAR_ASSUMED_CHAR_SET;
++
++    ps_global->VAR_ASSUMED_CHAR_SET = NULL;
++    ct = conversion_table(ps_global->VAR_CHAR_SET, ps_global->VAR_SEND_CHARSET);
++    ps_global->VAR_ASSUMED_CHAR_SET = assumed_save;
++
++    if(ct->table && (filtered_so = so_get(PicoText, NULL, EDIT_ACCESS))){
++	so_seek(*so, 0L, 0);
++	gf_filter_init();
++	gf_link_filter(ct->convert, ct->table);
++	gf_set_so_readc(&gc, *so);
++	gf_set_so_writec(&pc, filtered_so);
++	if(errstr = gf_pipe(gc, pc)){
++	    so_give(&filtered_so);
++	    dprint(1, (debugfile,
++		       "Error with converting to send-charset %s:%s\n", 
++		       ps_global->VAR_SEND_CHARSET, errstr));
++	    return;
++	}
++
++	gf_clear_so_readc(*so);
++	gf_clear_so_writec(filtered_so);
++
++	so_give(so);
++	*so = filtered_so;
++    }
++    dprint(5, (debugfile,
++	       "Succeeded in converting %s to %s for outgoing email\n",
++	       ps_global->VAR_CHAR_SET, ps_global->VAR_SEND_CHARSET));
++}
++#endif
+ 
+ /*----------------------------------------------------------------------
+     Pass the first text segment of the message thru the "send filter"
+@@ -7843,7 +7891,12 @@ outgoing2strings(header, bod, text, pico
+ 		src = pf->scratch ? pf->scratch
+ 				  : (*pf->text) ? *pf->text : "";
+ 
++#ifndef ENABLE_SEND_CHARSET
+ 		len = strlen(src)+1;
++#else
++		/* multiplyer 5 should be enough for EUC-JP -> ISO-2022-JP */
++		len = strlen(src)*5+1;  
++#endif
+ 		p = (char *)fs_get(len * sizeof(char));
+ 		if(rfc1522_decode((unsigned char *)p, len, src, &charset)
+ 						   == (unsigned char *) p){
+@@ -7979,6 +8032,13 @@ strings2outgoing(header, bod, attach, ch
+ 		         !strucmp(ps_global->VAR_CHAR_SET, "iso-2022-jp"))
+ 		        *pf->text =
+ 			 (char *) trans_euc_to_2022_jp((unsigned char *) (pf->scratch));
++#ifdef ENABLE_SEND_CHARSET
++		      else if(ps_global->VAR_CHAR_SET && ps_global->VAR_SEND_CHARSET &&
++		         !strucmp(ps_global->VAR_CHAR_SET, ps_global->VAR_SEND_CHARSET))
++		        *pf->text =
++			 (char *) trans_with_iconv((unsigned char *) (pf->scratch),
++			   ps_global->VAR_CHAR_SET, ps_global->VAR_SEND_CHARSET);  
++#endif
+ 		      else
+ 		        *pf->text = cpystr(pf->scratch);
+ 		  }
+@@ -8029,6 +8089,10 @@ resolve_encoded_entries(new, old)
+ 					  SIZEOF_20KBUF, buftmp, &charset);
+ 
+ 	      q = (char *) trans_euc_to_2022_jp((unsigned char *)(a->personal));
++#ifdef ENABLE_SEND_CHARSET
++	      q = (char *) trans_with_iconv((unsigned char *)(a->personal),
++		      ps_global->VAR_CHAR_SET, ps_global->VAR_SEND_CHARSET);
++#endif
+ 
+ 	      if(p == tmp_20k_buf		/* personal was decoded */
+ 		 && !strcmp(q, p)){		/* still matches what it was */
+@@ -8153,6 +8217,10 @@ create_message_body(b, attach, charset, 
+ 			   rfc1522_encode(tmp_20k_buf,
+ 					  SIZEOF_20KBUF,
+ 					  (unsigned char *) pa->description,
++#ifdef ENABLE_SEND_CHARSET
++					   ps_global->VAR_SEND_CHARSET ? 
++					   ps_global->VAR_SEND_CHARSET :
++#endif
+ 					  ps_global->VAR_CHAR_SET));
+ 	      }
+ 	      if(charset)
+@@ -8217,6 +8285,10 @@ create_message_body(b, attach, charset, 
+         p->body.description = cpystr(rfc1522_encode(tmp_20k_buf,
+ 					   SIZEOF_20KBUF,
+ 				           (unsigned char *) pa->description,
++#ifdef ENABLE_SEND_CHARSET
++					   ps_global->VAR_SEND_CHARSET ? 
++					   ps_global->VAR_SEND_CHARSET :
++#endif
+ 					   ps_global->VAR_CHAR_SET));
+ 
+ 	/* Add name attribute for backward compatibility */
+@@ -8627,6 +8699,22 @@ set_mime_type_by_grope(body, charset)
+ 	    if(new_encoding != ENCBINARY)
+ 	      new_encoding = ENC8BIT;  /* short lines, < 30% 8 bit chars */
+ 	}
++	else if(max_line < 300L || (eight_bit_chars * 100L)/len < 80L){
++	    /*
++	     * The previous test misses East Asian, Greek and Russian text
++	     * in ISO-8859-7, KOI8-R, EUC-KR, Big5, and GB2312
++	     * with a lot higher percentage of 8bit chars than Western European text
++	     * in ISO-8859-x. For them, use a relaxed condition for the 
++	     * percentage of 8bit chars along with a more strict condition
++	     * on the maximum line length. 
++	     */
++	    can_be_ascii--;
++	    if(body->type == TYPEOTHER)
++	      body->type = TYPETEXT;
++
++	    if(new_encoding != ENCBINARY)
++	      new_encoding = ENC8BIT;  /* short lines, < 30% 8 bit chars */
++	}
+ 	else{
+ 	    can_be_ascii--;
+ 	    if(body->type == TYPEOTHER){
+@@ -8690,7 +8778,11 @@ set_mime_type_by_grope(body, charset)
+ 	else
+ 	  set_mime_charset(pm,
+ 			   can_be_ascii > 0,
++#ifndef ENABLE_SEND_CHARSET
+ 			   charset ? charset : ps_global->VAR_CHAR_SET);
++#else
++			   charset);
++#endif
+     }
+ 
+     if(body->encoding == ENCOTHER)
+@@ -8775,7 +8867,11 @@ set_only_charset_by_grope(body, charset)
+ 
+     set_mime_charset(pm,
+ 		     can_be_ascii > 0,
++#ifndef ENABLE_SEND_CHARSET
+ 		     charset ? charset : ps_global->VAR_CHAR_SET);
++#else
++		     charset);
++#endif
+ 
+     if(we_cancel)
+       cancel_busy_alarm(-1);
+@@ -8806,6 +8902,11 @@ set_mime_charset(pm, ascii_ok, cs)
+     if(pm->value && (!*pm->value || strucmp(pm->value, us_ascii) == 0))
+       fs_give((void **)&pm->value);
+ 
++    cs = cs ? cs
++#ifdef ENABLE_SEND_CHARSET
++	: ps_global->VAR_SEND_CHARSET ? ps_global->VAR_SEND_CHARSET
++#endif
++	: ps_global->VAR_CHAR_SET;
+     /* see if cs is a special non_ascii charset */
+     for(excl = non_ascii; cs && *excl && strucmp(*excl, cs); excl++)
+       ;
+@@ -8890,8 +8991,16 @@ pine_header_line(field, header, text, f,
+     char *value, *folded = NULL;
+ 
+ 
++#ifdef ENABLE_SEND_CHARSET
++    text = (char *) trans_with_iconv(text, ps_global->VAR_CHAR_SET,
++			    ps_global->VAR_SEND_CHARSET);
++#endif
+     value = encode_header_value(tmp_20k_buf, SIZEOF_20KBUF,
+ 				(unsigned char *) text,
++#ifdef ENABLE_SEND_CHARSET
++			        ps_global->VAR_SEND_CHARSET ?
++			        ps_global->VAR_SEND_CHARSET :
++#endif
+ 			        ps_global->VAR_CHAR_SET,
+ 				encode_whole_header(field, header));
+     
+@@ -8956,6 +9065,10 @@ pine_header_line(field, header, text, f,
+ 	  fs_give((void **)&folded);
+     }
+     
++#ifdef ENABLE_SEND_CHARSET
++    if (text)
++	fs_give((void **)&text);
++#endif
+     return(ret);
+ }
+ 
+@@ -11033,3 +11146,16 @@ piped_port(stream)
+ {
+     return(0L);
+ }
++
++int
++call_pico (ps)
++	struct pico_struct * ps;
++{
++	int ret;
++	char * assumed_save = ps_global->VAR_ASSUMED_CHAR_SET;
++	ps_global->VAR_ASSUMED_CHAR_SET = NULL;
++#undef pico
++	ret = pico(ps);
++	ps_global->VAR_ASSUMED_CHAR_SET = assumed_save;
++	return ret;
++}
+diff -Naurdp a/pine/strings.c b/pine/strings.c
+--- a/pine/strings.c	2004-10-04 10:03:30.826422576 +0200
++++ b/pine/strings.c	2004-10-04 10:03:31.448317609 +0200
+@@ -82,6 +82,9 @@ static char rcsid[] = "$Id: strings.c,v 
+ 
+ #include "headers.h"
+ #include "../c-client/utf8.h"
++#ifdef HAVE_ICONV
++#include <iconv.h>
++#endif
+ 
+ typedef struct role_args {
+     char    *ourcharset;
+@@ -668,6 +671,150 @@ sstrncpy(d, s, n)
+       (*d)++;
+ }
+ 
++/* ------------------------- UTF-8 functions -------------------------- */
++
++char *
++pine_check_utf8(c, utf_seq)
++    char *c;
++    char *utf_seq;
++{
++    if(!ps_global->VAR_CHAR_SET
++       || strucmp(ps_global->VAR_CHAR_SET, "UTF-8"))
++	return c;
++    return check_utf8(c, utf_seq);
++}
++
++/*
++ * Like istrncpy but since it's used in the mail index, it also converts
++ * line feed and tab to space to prevent odd effects in mail index paint.
++ *
++ * If charset is UTF-8, do not count bytes for the string width but real
++ * screen widths. The control char and escape sequence filter is also not
++ * active inside UTF-8 sequencies there because UTF-8 requires bytes in
++ * the range from 0x80 to 0x9f to be processed. If a series of not recognized
++ * characters in the range of 0x80 to 0xff is encountered, '?' is copied.
++ */
++void
++charset_istrncpy(dest, source, width, padding)
++    char *dest;
++    char *source; /* const */
++    int   width;
++    int   padding;
++{
++    char *cp, *chp, *destp = dest;
++    int seq = 0, screencols=0;
++    unsigned char utf_seq[10] = "";
++
++    for(cp = source; *cp && screencols < width; cp++){
++	if((chp = pine_check_utf8(cp, utf_seq)) == NULL){
++	    seq = 1;
++	    continue;
++	}
++	if(chp != cp){
++	    seq = 0;
++	    screencols++;
++	    if(*chp == ' '){
++		if(screencols >= width){
++		    sstrcpy(&destp, "\342\200\246");
++		    break;	 /* UTF-8 points... */
++		}
++		screencols++;
++		chp++;
++	    }
++	    while(*chp)
++		*destp++ = *chp++;
++	    *destp = '\0';
++	    continue;
++	}
++	if(seq){
++	    seq = 0;
++	    screencols++;
++	    *destp++ = '?';
++	}
++	screencols++;
++        if(*cp && FILTER_THIS(*cp)
++	 && !(*(cp+1) && *cp == ESCAPE && match_escapes(cp+1))){
++	    *destp++ = '^';
++	    if(screencols < width){
++		screencols++;
++		*destp++ = (*cp & 0x7f) + '@';
++	    }
++	}
++	else if(*cp == '\n' || *cp == '\t')
++		*destp++ = ' ';
++	    else
++		*destp++ = *cp;
++	*destp = '\0';
++    }
++    if(padding == 1)
++	while(screencols < width){
++	    screencols++;
++	    *destp++ = ' ';
++	}
++    *destp = '\0';
++}
++
++/*
++ * Like istrncpy but do not remove UTF-8 sequencies.
++ *
++ * The control char and escape sequence filter is also not active inside
++ * UTF-8 sequencies because UTF-8 requires bytes in the range from 0x80
++ * to 0x9f to be processed. If a series of not recognized characters in
++ * the range of 0x80 to 0xff is encountered, '?' is copied.
++ */
++static char *
++utf8_istrncpy(dest, cp, length)
++    char *dest;
++    char *cp; /* const */
++    int   length;
++{
++    char *chp, *destp = dest;
++    int seq = 0;
++    unsigned char utf_seq[7] = "";
++
++    *destp = '\0';
++    for(; length > 0 && *cp; cp++){
++	if((chp = check_utf8(cp, utf_seq)) == NULL) {
++		seq = 1;
++		continue;
++	}
++	if(chp != cp){
++	    seq = 0;
++	    if(*chp == ' ')
++		chp++;
++	    if(strlen(chp) < length){
++		while(*chp && length--)
++		    *destp++ = *chp++;
++		*destp = '\0';
++		continue;
++	    }
++	    while(length--)
++		*destp++ = '.';
++	    *destp = '\0';
++	    break;
++	}
++	if(seq){
++	    *destp++ = '?';
++	    length--;
++	    seq = 0;
++	}
++        if(*cp && FILTER_THIS(*cp)
++	   && !(*(cp+1) && *cp == ESCAPE && match_escapes(cp+1))){
++	    if(length-- > 0){
++		*destp++ = '^';
++
++		if(length-- > 0)
++		    *destp++ = (*cp & 0x7f) + '@';
++	    }
++	}
++	else if(length-- > 0)
++	    *destp++ = *cp;
++	*destp = '\0';
++    }
++
++    return dest;
++}
++
+ 
+ /*----------------------------------------------------------------------
+   copy at most n chars of the source string onto the destination string
+@@ -685,6 +832,10 @@ istrncpy(d, s, n)
+     if(!d || !s)
+       return(NULL);
+     
++    if(!ps_global->pass_ctrl_chars && ps_global->VAR_CHAR_SET
++       && !strucmp(ps_global->VAR_CHAR_SET, "UTF-8"))
++      return utf8_istrncpy(d, s, n);
++
+     do
+       if(*s && FILTER_THIS(*s)
+ 	 && !(*(s+1) && *s == ESCAPE && match_escapes(s+1))){
+@@ -709,6 +860,205 @@ istrncpy(d, s, n)
+ 
+ 
+ /*
++ *  * * * * * *  Character set translation helpers  * * * * * * * *
++ */
++
++#ifdef HAVE_ICONV
++static iconv_t
++make_iconv_d(toset, fromset)
++    char *toset;
++    char *fromset;
++{
++    iconv_t iconv_d;
++    char * tocode = NULL;
++
++    /* make private copy of toset and append //TRANSLIT if feasible */
++    if(strucmp(toset, "UTF-8")){
++	tocode = (char *)fs_get((size_t)(strlen(toset)) + 11);
++	strcpy(tocode, toset);
++	strcat(tocode, "//TRANSLIT");
++    }
++
++    if((iconv_d = iconv_open(tocode?tocode:toset, fromset)) == (iconv_t)-1){
++       dprint(7, (debugfile,"iconv open failed:"));
++       iconv_d = NULL;
++    }    
++    dprint(7, (debugfile, "from %s to %s\n", fromset, toset));
++
++    /* free local copy for //TRANSLIT */
++    if(tocode)
++	fs_give((void **) &tocode);
++
++    return iconv_d;
++}
++
++static
++iconv_t
++get_iconv_d(tocset, fromcset, local_iconvd)
++    char *tocset;
++    char *fromcset;
++    iconv_t *local_iconvd;
++{
++    static char    *s_fromcset = NULL, *s_tocset  = NULL;
++    static iconv_t  s_iconv_d = 0;
++
++    /* no conversion if charset missing, from=ASCII or charets are equal */
++    if(!tocset || (fromcset && tocset && !strucmp(fromcset, tocset)))
++	return NULL; 
++
++    dprint(6, (debugfile,"charsets %s -> %s\n", fromcset, tocset));
++
++    fromcset = resolve_charset_alias(fromcset,
++				     ps_global->VAR_CHAR_SET_ALIASES);
++    fromcset = resolve_charset_alias(fromcset,
++				     ps_global->VAR_ICONV_ALIASES);
++    tocset   = resolve_charset_alias(tocset,
++				     ps_global->VAR_CHAR_SET_ALIASES);
++    tocset   = resolve_charset_alias(tocset,
++				     ps_global->VAR_ICONV_ALIASES);
++
++    if(local_iconvd){
++	if (strucmp(fromcset, US_ASCII_CHARSET))
++	   *local_iconvd  = make_iconv_d(tocset, fromcset);
++	return NULL;
++    }
++
++    if(s_iconv_d && !strucmp(fromcset, US_ASCII_CHARSET)
++       && s_tocset && !strucmp(s_tocset, tocset)) {
++	dprint(6, (debugfile,"use charsets %s -> %s\n", s_fromcset, tocset));
++	iconv(s_iconv_d, NULL, NULL, NULL, NULL);
++    } else {
++
++      if (ps_global->VAR_ASSUMED_CHAR_SET
++	&& (!fromcset || !*fromcset || !strucmp(UNKNOWN_CHARSET, fromcset)))
++	    fromcset = ps_global->VAR_ASSUMED_CHAR_SET;
++
++      if(!strucmp(fromcset, US_ASCII_CHARSET))
++	return NULL; 
++
++      if(s_fromcset && strucmp(s_fromcset, fromcset))
++	fs_give((void **)&s_fromcset);
++
++      if(s_tocset   && strucmp(s_tocset,   tocset))
++	fs_give((void **)&s_tocset);
++    
++      if(!s_fromcset || !s_tocset) {
++	if (s_iconv_d)
++	    iconv_close(s_iconv_d);
++	s_fromcset = cpystr(fromcset);
++	s_tocset   = cpystr(tocset);
++	s_iconv_d  = make_iconv_d(tocset, fromcset);
++      }
++      else if(s_iconv_d)
++	iconv(s_iconv_d, NULL, NULL, NULL, NULL);
++    }
++
++    return s_iconv_d;
++}
++#endif
++
++/*
++ * Like sstrncpy, but with charset conversion(if possible) and null termination.
++ * *dest is left pointing a the terminating zero byte. It will not write
++ * more than length bytes. To copy the whole string, the output buffer and
++ * the length passed must be strlen(source)+1 in order to get a full copy.
++ *
++ * fromcset -- charset to convert from
++ * tocset   -- charset ro convert to
++ * **dest   -- address of a pointer which points to the destination buffer
++ * *src     -- address of the start of the rfc2047-decoded source buffer
++ * len      -- maximum number of bytes to write at **dest and increase *dest
++ *             __including__ the terminating null. 
++ */ 
++void
++conv_sstrncpy(fromcset, tocset, dest, src, length)
++    char  *fromcset;
++    char  *tocset;
++    char **dest;
++    char  *src;
++    size_t length;
++{
++#ifdef HAVE_ICONV
++    iconv_t iconv_desc = NULL;
++
++    if((!fromcset || !*fromcset) && (!tocset || !*tocset))
++	goto noconv;
++
++    fromcset = (fromcset && *fromcset) ? fromcset : ps_global->VAR_CHAR_SET;
++    tocset   = (tocset   && *tocset)   ? tocset   : ps_global->VAR_CHAR_SET;
++
++    iconv_desc = get_iconv_d(tocset, fromcset, NULL);
++
++    if(iconv_desc){
++	size_t inbytesleft = strlen(src);
++	char * buf = *dest; int ret;
++
++	length--;			/* reserve a byte for '\0' */
++	ret = iconv(iconv_desc, &src, &inbytesleft, dest, &length);
++	**dest = '\0';			/* terminate the output string */
++	dprint(9, (debugfile, "iconv ret=%3d: >%s<\n", ret, buf));
++	return;
++    }
++#endif
++noconv:
++    dprint(9, (debugfile,"no convert: >%s<(%d)\n", src, length));
++    sstrncpy(dest, src, length);
++    **dest = '\0'; /* ensure that the output string is terminated */
++}
++
++unsigned char*
++resolve_charset_alias(cs, aliases)
++    char  *cs;
++    char **aliases;
++{
++    int i;
++    char *bdry;
++
++    if(!aliases)
++	return cs;
++    for(i=0; aliases[i] && *(aliases[i]); i++)
++	if(bdry=strchr(aliases[i],':')){
++	    *bdry='\0';
++	    if (!strucmp(aliases[i], cs)) {
++	  	*bdry=':';
++	  	return *(bdry+1) ? bdry+1 : cs;
++	    }
++	    *bdry=':';
++	}
++    return cs;
++}
++
++#ifdef HAVE_ICONV
++/*
++ * Converts the source string in fromcset to tocset and copy the result
++ * into allocated space.
++ * Caller is responsible for freeing the result.
++ */
++unsigned char *
++trans_with_iconv(src, fromcset, tocset)
++    unsigned char *src;
++    char *fromcset;
++    char *tocset;
++{
++    size_t len;
++    unsigned char *rv, *pstr;
++    if (!src)
++	return NULL;
++
++    dprint(5, (debugfile, "translating from %s to %s\n",fromcset, tocset));
++
++    /* 
++     * XXX: multiplier of 5 should be sufficient for virtually all
++     * cases (EUC-JP -> ISO-2022-JP)
++     */
++    len = strlen((char *) src) * 5 + 1;
++    pstr = rv = (unsigned char *) fs_get(sizeof(char) * len);
++    conv_sstrncpy(fromcset, tocset, (char **) &pstr, src, len);
++    return rv;
++}
++#endif
++
++/*
+  * Copies the source string into allocated space with the 8-bit EUC codes
+  * (on Unix) or the Shift-JIS (on PC) converted into ISO-2022-JP.
+  * Caller is responsible for freeing the result.
+@@ -3052,12 +3402,35 @@ int	       rfc1522_token PROTO((char *, 
+ 				    char **));
+ int	       rfc1522_valtok PROTO((int));
+ int	       rfc1522_valenc PROTO((int));
+-int	       rfc1522_valid PROTO((char *, char **, char **, char **,
++int	       rfc1522_valid PROTO((char *, int, char **, char **, char **,
+ 				    char **));
+ char	      *rfc1522_8bit PROTO((void *, int));
+ char	      *rfc1522_binary PROTO((void *, int));
+ unsigned char *rfc1522_encoded_word PROTO((unsigned char *, int, char *));
+ 
++unsigned char *
++rfc2047_decode(d, len, s, charset)
++    unsigned char  *d;
++    size_t          len;	/* length of d */
++    char	   *s;
++    char	  **charset;
++{
++    unsigned char *t;
++    char *assumed_charset = NULL;
++#ifdef HAVE_ICONV
++    /*
++     * reset VAR_ASSUMED_CHAR_SET temporarily avoid double conversions:
++     */
++    assumed_charset = ps_global->VAR_ASSUMED_CHAR_SET;
++    if (ps_global->VAR_ASSUMED_CHAR_SET && *(ps_global->VAR_ASSUMED_CHAR_SET))
++	ps_global->VAR_ASSUMED_CHAR_SET = UNKNOWN_CHARSET; 
++#endif
++    t = rfc1522_decode(d, len, s, charset);
++#ifdef HAVE_ICONV
++    ps_global->VAR_ASSUMED_CHAR_SET = assumed_charset;
++#endif
++    return t;
++}
+ 
+ /*
+  * rfc1522_decode - try to decode the given source string ala RFC 2047
+@@ -3100,6 +3473,7 @@ rfc1522_decode(d, len, s, charset)
+     unsigned long  l;
+     int		   i, described_charset_once = 0;
+     int            translate_2022_jp = 0;
++    unsigned char *cset_r;    /* cset with alias resolution */
+ 
+     *d = '\0';					/* init destination */
+     if(charset)
+@@ -3107,7 +3481,7 @@ rfc1522_decode(d, len, s, charset)
+ 
+     while(s && (sw = strstr(s, RFC1522_INIT))){
+ 	/* validate the rest of the encoded-word */
+-	if(rfc1522_valid(sw, &cset, &enc, &txt, &ew)){
++	if(rfc1522_valid(sw, 1, &cset, &enc, &txt, &ew)){
+ 	    if(!rv)
+ 	      rv = d;				/* remember start of dest */
+ 
+@@ -3126,6 +3500,7 @@ rfc1522_decode(d, len, s, charset)
+ 	    if(lang = strchr(cset, '*'))
+ 	      *lang++ = '\0';
+ 
++	    cset_r =resolve_charset_alias(cset,ps_global->VAR_CHAR_SET_ALIASES);
+ 	    /* Insert text explaining charset if we don't know what it is */
+ 	    if(F_OFF(F_DISABLE_2022_JP_CONVERSIONS, ps_global)
+ 	       && !strucmp((char *) cset, "iso-2022-jp")){
+@@ -3159,6 +3534,8 @@ rfc1522_decode(d, len, s, charset)
+ 		if(!cs)
+ 		  cs = cpystr(cset);
+ 
++	       if (!ps_global->VAR_CHAR_SET) {
++		/* We don't know where to convert to, so do a charset tag: */
+ 		if(charset){
+ 		    if(!*charset)		/* only write first charset */
+ 		      *charset = cpystr(cset);
+@@ -3173,6 +3550,7 @@ rfc1522_decode(d, len, s, charset)
+ 		    if(d-rv<len-1)
+ 		      *d++ = SPACE;
+ 		}
++	       }
+ 	    }
+ 
+ 	    /* based on encoding, write the encoded text to output buffer */
+@@ -3198,12 +3576,8 @@ rfc1522_decode(d, len, s, charset)
+ 		  q = NULL;
+ 
+ 		if(p = rfc822_qprint((unsigned char *)txt, strlen(txt), &l)){
+-		    strncpy((char *) d, (char *) p, len-1-(d-rv));
+-		    d[len-1-(d-rv)] = '\0';
++		    conv_sstrncpy(cset_r, NULL, &d, p, len-(d-rv));
+ 		    fs_give((void **)&p);	/* free encoded buf */
+-		    d += l;			/* advance dest ptr to EOL */
+-		    if(d-rv > len-1)
+-		      d = rv+len-1;
+ 		}
+ 		else{
+ 		    if(q)
+@@ -3224,12 +3598,8 @@ rfc1522_decode(d, len, s, charset)
+ 	      case 'B' :			/* 'B' encoding */
+ 	      case 'b' :
+ 		if(p = rfc822_base64((unsigned char *) txt, strlen(txt), &l)){
+-		    strncpy((char *) d, (char *) p, len-1-(d-rv));
+-		    d[len-1-(d-rv)] = '\0';
++		    conv_sstrncpy(cset_r, NULL, &d, p, len-(d-rv));
+ 		    fs_give((void **)&p);	/* free encoded buf */
+-		    d += l;			/* advance dest ptr to EOL */
+-		    if(d-rv > len-1)
+-		      d = rv+len-1;
+ 		}
+ 		else
+ 		  goto bogus;
+@@ -3254,30 +3624,31 @@ rfc1522_decode(d, len, s, charset)
+ 	      lang[-1] = '*';
+ 	}
+ 	else{
+-
+-	    /*
+-	     * Found intro, but bogus data followed, treat it as normal text.
+-	     */
+-
++	    /* Found intro, but bogus data followed, copy it and continue */
++#ifdef HAVE_ICONV
++	    if (!rv)
++		rv=d; /* remember start of dest */
++#endif
++	    l = min(len-(d-rv),(sw-s)+ RFC1522_INIT_L); /* data to copy */
+ 	    /* if already copying to destn, copy it */
+-	    if(rv){
+-		strncpy((char *) d, s,
+-			(int) min((l = (sw - s) + RFC1522_INIT_L),
+-			len-1-(d-rv)));
+-		d += l;				/* advance d, tie off text */
+-		if(d-rv > len-1)
+-		  d = rv+len-1;
+-		*d = '\0';
+-		s += l;				/* advance s beyond intro */
+-	    }
+-	    else
+-	      s += ((sw - s) + RFC1522_INIT_L);
++	    if(rv)
++		conv_sstrncpy(ps_global->VAR_ASSUMED_CHAR_SET, NULL,
++			(char **)&d, s, (int) l);
++	    s += l; /* advance s beyond intro */
+ 	}
+     }
+ 
+-    if(rv && *s)				/* copy remaining text */
+-      strncat((char *) rv, s, len - 1 - strlen((char *) rv));
++    if (s && *s) { /* copy remaining text */
++#ifdef HAVE_ICONV
++	if (!rv)
++	    rv=d; /* remember start of dest */
++#endif
++	if (rv)
++	    conv_sstrncpy(ps_global->VAR_ASSUMED_CHAR_SET, NULL,
++		(char **)&d, s, len - strlen((char *)rv));
++    }
+ 
++#ifndef HAVE_ICONV /* with iconv, we are done, we have converted during copy */
+     if(translate_2022_jp){
+ 	unsigned char *trans;
+ 
+@@ -3339,6 +3710,7 @@ rfc1522_decode(d, len, s, charset)
+ 	    }
+ 	}
+     }
++#endif
+ 
+     if(cs)
+       fs_give((void **) &cs);
+@@ -3408,10 +3780,14 @@ rfc1522_valenc(c)
+ 
+ /*
+  * rfc1522_valid - validate the given string as to it's rfc1522-ness
++ * if relaxchk is true, double the maximum length of an encoded word.
++ * this is necessary to decode overlong encoded words generated by 
++ * numerous non-compliant implementations of RFC 2047 (1522).
+  */
+ int
+-rfc1522_valid(s, charset, enc, txt, endp)
++rfc1522_valid(s, relaxchk, charset, enc, txt, endp)
+     char  *s;
++    int  relaxchk;
+     char **charset;
+     char **enc;
+     char **txt;
+@@ -3423,7 +3799,11 @@ rfc1522_valid(s, charset, enc, txt, endp
+     rv = rfc1522_token(c = s+RFC1522_INIT_L, rfc1522_valtok, RFC1522_DLIM, &e)
+ 	   && rfc1522_token(++e, rfc1522_valtok, RFC1522_DLIM, &t)
+ 	   && rfc1522_token(++t, rfc1522_valenc, RFC1522_TERM, &p)
+-	   && p - s <= RFC1522_MAXW;
++	   && p - s <= RFC1522_MAXW * (relaxchk ? 2 : 1);
++    /*
++     * relax the length condition by doubling the max length of an
++     * encoded word. It's is needed for some longer encoded words.
++     */
+ 
+     if(charset)
+       *charset = c;
+@@ -3474,7 +3854,7 @@ rfc1522_encode(d, len, s, charset)
+       }
+       else if(*p == RFC1522_INIT[0]
+ 	      && !strncmp((char *) p, RFC1522_INIT, RFC1522_INIT_L)){
+-	  if(rfc1522_valid((char *) p, NULL, NULL, NULL, (char **) &q))
++	  if(rfc1522_valid((char *) p, 0, NULL, NULL, NULL, (char **) &q))
+ 	    p = q + RFC1522_TERM_L - 1;		/* advance past encoded gunk */
+       }
+       else if(*p == ESCAPE && match_escapes((char *)(p+1))){
+@@ -3651,6 +4031,27 @@ conversion_table(from_cs, to_cs)
+     CHARSET          *from, *to;
+     static CONV_TABLE null_tab;
+ 
++#ifndef HAVE_ICONV
++    /*
++     * Another idea would be to check if the subject had charset tags
++     * and use this charset (we could use the last charset variable from
++     * conv_sstrcpy() in mailview.c)
++     */
++    if (ps_global->VAR_ASSUMED_CHAR_SET
++	&& (!from_cs || !*from_cs || !strucmp(UNKNOWN_CHARSET, from_cs)
++				  || !strucmp(US_ASCII_CHARSET, from_cs)))
++	    from_cs = ps_global->VAR_ASSUMED_CHAR_SET;
++
++    /*
++     * Lets do user-specified charset aliasing before starting work:
++     */
++    from_cs = resolve_charset_alias(from_cs, ps_global->VAR_CHAR_SET_ALIASES);
++    to_cs   = resolve_charset_alias(to_cs,   ps_global->VAR_CHAR_SET_ALIASES);
++#endif
++
++    /*
++     * Check if we need conversion for this pair. If not, it's easy:
++     */
+     if(!(from_cs && *from_cs && to_cs && *to_cs) || !strucmp(from_cs, to_cs)){
+ 	memset(&null_tab, 0, sizeof(null_tab));
+ 	null_tab.quality = CV_NO_TRANSLATE_NEEDED;
+@@ -3682,6 +4083,12 @@ conversion_table(from_cs, to_cs)
+     if(ct){
+ 	if(ct->table && (ct->convert != gf_convert_utf8_charset))
+ 	  fs_give((void **) &ct->table);
++#ifdef HAVE_ICONV
++	if(ct->table && (ct->convert == gf_convert_utf8_charset)) {
++	  iconv_close((iconv_t)ct->table);
++	  ct->table = NULL;
++        }
++#endif
+ 	
+ 	if(ct->from_charset)
+ 	  fs_give((void **) &ct->from_charset);
+@@ -3696,6 +4103,16 @@ conversion_table(from_cs, to_cs)
+ 
+     ct->from_charset = cpystr(from_cs);
+     ct->to_charset   = cpystr(to_cs);
++#ifdef HAVE_ICONV
++    ct->quality = CV_LOSES_SPECIAL_CHARS;
++    ct->convert = gf_convert_utf8_charset;
++    get_iconv_d(to_cs, from_cs, (iconv_t *)&ct->table);
++//  The code could be changed to falls thru if iconv fails for some reason, but
++//  this should be also changed to use the quality info from the c-client
++//  as a hint.
++//    if (ct->table)
++//	return(ct);
++#else
+     ct->quality = CV_NO_TRANSLATE_POSSIBLE;
+ 
+     /*
+@@ -3829,6 +4246,7 @@ conversion_table(from_cs, to_cs)
+ 	    }
+ 	}
+     }
++#endif
+ 
+     return(ct);
+ }

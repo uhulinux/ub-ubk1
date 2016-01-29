@@ -1,0 +1,1 @@
+urllist http://www.pygame.org/ftp/ | splitver '^pygame-([0-9.]+)release.tar.gz$' | sort -V | tail -n 1

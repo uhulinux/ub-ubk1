@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tomboy-${UB_VERSION}.tar.xz tomboy-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/tomboy/${UB_VERSION_HEAD2}/

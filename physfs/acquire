@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+physfs-${UB_VERSION}.tar.gz physfs-${UB_VERSION}/
+	http://www.icculus.org/physfs/downloads/

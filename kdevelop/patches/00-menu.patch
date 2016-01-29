@@ -1,0 +1,9 @@
+diff -Naur kdevelop-orig/app/kdevelop.desktop kdevelop/app/kdevelop.desktop
+--- kdevelop-orig/app/kdevelop.desktop	2009-03-24 20:59:48.000000000 +0100
++++ kdevelop/app/kdevelop.desktop	2009-03-24 21:06:14.000000000 +0100
+@@ -31,4 +31,4 @@
+ GenericName[x-test]=xxIntegrated Development Environmentxx
+ GenericName[zh_CN]=集成开发环境
+ GenericName[zh_TW]=整合開發環境
+-Categories=Qt;KDE;Development;IDE;
++Categories=Qt;KDE;Development;IDE;X-UHU-Menu/Development/Programming;

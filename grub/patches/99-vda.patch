@@ -1,0 +1,39 @@
+diff -urN compile.orig/util/grub-convert.in compile/util/grub-convert.in
+--- compile.orig/util/grub-convert.in	2012-04-23 11:14:54.341331433 +0200
++++ compile/util/grub-convert.in	2012-04-23 11:24:46.868762775 +0200
+@@ -49,12 +49,12 @@
+     # Break the device name into the disk part and the partition part.
+     case "$host_os" in
+     linux*)
+-	tmp_disk=`echo "$1" | sed -e 's%\([sh]d[a-z]\)[0-9]*$%\1%' \
++	tmp_disk=`echo "$1" | sed -e 's%\([shv]d[a-z]\)[0-9]*$%\1%' \
+ 				  -e 's%\(d[0-9]*\)p[0-9]*$%\1%' \
+ 				  -e 's%\(fd[0-9]*\)$%\1%' \
+ 				  -e 's%/part[0-9]*$%/disc%' \
+ 				  -e 's%\(c[0-7]d[0-9]*\).*$%\1%'`
+-	tmp_part=`echo "$1" | sed -e 's%.*/[sh]d[a-z]\([0-9]*\)$%\1%' \
++	tmp_part=`echo "$1" | sed -e 's%.*/[shv]d[a-z]\([0-9]*\)$%\1%' \
+ 				  -e 's%.*d[0-9]*p%%' \
+ 				  -e 's%.*/fd[0-9]*$%%' \
+ 				  -e 's%.*/floppy/[0-9]*$%%' \
+@@ -64,7 +64,7 @@
+ 				  -e 's%.*c[0-7]d[0-9]*p%%'`
+ 	;;
+     gnu*)
+-	tmp_disk=`echo "$1" | sed 's%\([sh]d[0-9]*\).*%\1%'`
++	tmp_disk=`echo "$1" | sed 's%\([shv]d[0-9]*\).*%\1%'`
+ 	tmp_part=`echo "$1" | sed "s%$tmp_disk%%"` ;;
+     freebsd* | kfreebsd*-gnu)
+ 	tmp_disk=`echo "$1" | sed 's%r\{0,1\}\([saw]d[0-9]*\).*$%r\1%' \
+diff -urN compile.orig/util/grub-install.in compile/util/grub-install.in
+--- compile.orig/util/grub-install.in	2012-04-23 11:14:54.873233976 +0200
++++ compile/util/grub-install.in	2012-04-23 11:15:45.939877362 +0200
+@@ -237,7 +237,7 @@
+ 		echo -e "(fd0)\t/dev/fd0" >>/boot/grub/device.map
+ 	fi
+ 	shopt -s nullglob
+-	for i in /dev/sd?; do
++	for i in /dev/[shv]d?; do
+ 		echo -e "(hd$c)\t$i" >>/boot/grub/device.map
+ 		c=$((c+1))
+ 	done

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pdfminer-${UB_VERSION}.tar.gz pdfminer-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pdfminer/

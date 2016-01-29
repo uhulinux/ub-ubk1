@@ -1,0 +1,10 @@
+diff -Naur cantor-4.9.2-orig/src/cantor.desktop cantor-4.9.2/src/cantor.desktop
+--- cantor-4.9.2-orig/src/cantor.desktop	2012-09-28 02:19:38.000000000 +0200
++++ cantor-4.9.2/src/cantor.desktop	2012-10-02 18:20:29.000000000 +0200
+@@ -85,5 +85,5 @@
+ GenericName[zh_CN]=数学软件的 KDE 前端
+ GenericName[zh_TW]=KDE 數學軟體的前端介面
+ Terminal=false
+-Categories=Qt;KDE;Education;Math;Science;
++Categories=Qt;KDE;Education;Math;Science;X-UHU-Menu/Edutainment/Mathematics;
+ MimeType=application/x-cantor;

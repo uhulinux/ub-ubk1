@@ -1,0 +1,12 @@
+diff -Naur mutt-1.5.6.orig/configure mutt-1.5.6/configure
+--- mutt-1.5.6.orig/configure	2004-02-01 19:22:06.000000000 +0100
++++ mutt-1.5.6/configure	2004-09-25 17:29:28.915197727 +0200
+@@ -2434,7 +2434,7 @@
+   echo "$ac_t""no" 1>&6
+ 
+ 	cf_ncurses="ncurses"
+-	for lib in ncurses ncursesw
++	for lib in ncursesw
+ 	do
+ 		echo $ac_n "checking for waddnwstr in -l$lib""... $ac_c" 1>&6
+ echo "configure:2441: checking for waddnwstr in -l$lib" >&5

@@ -1,0 +1,17 @@
+diff -Naurdp stellarium-0.12.4/data/stellarium.desktop stellarium-0.12.4-menu/data/stellarium.desktop
+--- stellarium-0.12.4/data/stellarium.desktop	2013-08-04 08:20:27.000000000 +0200
++++ stellarium-0.12.4-menu/data/stellarium.desktop	2013-10-10 15:09:09.152801991 +0200
+@@ -9,11 +9,12 @@ Exec=stellarium
+ Icon=stellarium
+ StartupNotify=false
+ Terminal=false
+-Categories=Astronomy;Education;Science;
++Categories=Astronomy;Education;Science;X-UHU-Menu/Edutainment/Science;
+ Comment=Planetarium
+ Comment[es]=Planetario
+ Comment[fr]=Planétarium
+ Comment[ru]=Планетарий
++Comment[hu]=Égboltnézegető
+ Keywords=astronomy;planetarium;
+ 
+ Actions=Window;Fullscreen;Safemode;

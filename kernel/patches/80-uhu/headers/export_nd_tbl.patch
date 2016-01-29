@@ -1,0 +1,11 @@
+diff -Naurd a/net/ipv6/ndisc.c b/net/ipv6/ndisc.c
+--- a/net/ipv6/ndisc.c	2004-10-18 23:54:32.000000000 +0200
++++ b/net/ipv6/ndisc.c	2005-01-14 21:40:49.381654832 +0100
+@@ -153,6 +153,7 @@
+ 	.gc_thresh2 =	 512,
+ 	.gc_thresh3 =	1024,
+ };
++EXPORT_SYMBOL(nd_tbl);
+ 
+ /* ND options */
+ struct ndisc_options {

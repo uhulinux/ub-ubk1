@@ -1,0 +1,2 @@
+dir=$(urllist http://archive.xfce.org/src/apps/ristretto/ | grep -E '^([0-9.]+)?$' | sort -V | tail -n 1)
+urllist http://archive.xfce.org/src/apps/ristretto/$dir/ | splitver '^ristretto-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

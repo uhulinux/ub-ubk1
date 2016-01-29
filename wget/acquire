@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+wget-${UB_VERSION}.tar.xz wget-${UB_VERSION}/
+	ftp://ftp.gnu.org/gnu/wget/

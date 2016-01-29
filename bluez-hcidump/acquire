@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+bluez-hcidump-${UB_VERSION}.tar.gz bluez-hcidump-${UB_VERSION}/
+	ftp://ftp.kernel.org/pub/linux/bluetooth/
+	http://www.kernel.org/pub/linux/bluetooth/
+	http://mirror.nexcess.net/kernel.org/linux/bluetooth/

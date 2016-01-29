@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pcspk-${UB_VERSION}.tar.gz pcspk-${UB_VERSION}/
+	http://old.przemoc.net/?download=pcspk

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+media-player-info-${UB_VERSION}.tar.bz2 media-player-info-${UB_VERSION}/
+	http://cgit.freedesktop.org/media-player-info/snapshot/

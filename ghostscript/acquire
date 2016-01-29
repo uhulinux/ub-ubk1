@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+ghostscript-${UB_VERSION}.tar.gz ghostscript-${UB_VERSION}/
+	http://ghostscript.com/releases/
+	http://downloads.ghostscript.com/public/

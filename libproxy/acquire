@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libproxy-${UB_VERSION}.tar.gz libproxy-${UB_VERSION}/
+	http://libproxy.googlecode.com/files/

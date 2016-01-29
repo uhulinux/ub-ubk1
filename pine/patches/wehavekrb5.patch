@@ -1,0 +1,58 @@
+diff -Naurd a/contrib/krb5-setup b/contrib/krb5-setup
+--- a/contrib/krb5-setup	2000-02-04 21:06:29.000000000 +0100
++++ b/contrib/krb5-setup	2005-11-28 15:35:26.000000000 +0100
+@@ -72,53 +72,4 @@
+     btarget=$2
+ fi
+ 
+-
+-# This is where c-client expects the libraries to be.
+-if [ \( -f krb5/lib/libgssapi_krb5.a -o -f krb5/lib/libgssapi_krb5.so \) -a \
+-     \( -f krb5/lib/libkrb5.a        -o -f krb5/lib/libkrb5.so \)        -a \
+-     \( -f krb5/lib/libcrypto.a      -o -f krb5/lib/libk5crypto.a    -o \
+-        -f krb5/lib/libcrypto.so     -o -f krb5/lib/libk5crypto.so \)    -a \
+-     \( -f krb5/lib/libcom_err.a     -o -f krb5/lib/libcom_err.so \) ]
+-then
+-    exit 0
+-fi
+-
+-if [ $exitval -eq 1 ]
+-then
+-    echo "If you are attempting to use a Kerberos5 library other than the one"
+-    echo "from MIT then the pine build script won't be able to help much."
+-    echo "Instead, you will have to modify c-client/Makefile and set the GSS"
+-    echo "macros correctly. In order to build pine without Kerberos5"
+-    echo "functionality you may rename or remove the directory \"krb5\" and"
+-    echo "run the pine \"build $btarget\" command again."
+-    exit 1
+-fi
+-
+-
+-if [ ! -f krb5/lib/libgssapi_krb5.a ]
+-then
+-    echo "The Kerberos5 library \"krb5/lib/libgssapi_krb5.a\""
+-fi
+-if [ ! -f krb5/lib/libkrb5.a ]
+-then
+-    echo "The Kerberos5 library \"krb5/lib/libkrb5.a\""
+-fi
+-if [ ! -f krb5/lib/libcrypto.a ]
+-then
+-    echo "The Kerberos5 library \"krb5/lib/libcrypto.a\""
+-fi
+-if [ ! -f krb5/lib/libcom_err.a ]
+-then
+-    echo "The Kerberos5 library \"krb5/lib/libcom_err.a\""
+-fi
+-
+-echo "doesn't appear to be built yet."
+-
+-echo ""
+-echo "After you've successfully built the libraries"
+-echo "you can try the \"build $btarget\" command again."
+-echo ""
+-echo "In order to build pine without Kerberos5 functionality you may rename or"
+-echo "remove the directory \"krb5\" and run the \"build $btarget\" command again."
+-
+-exit 1
++exit 0

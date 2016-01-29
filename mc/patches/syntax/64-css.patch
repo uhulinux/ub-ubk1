@@ -1,0 +1,12 @@
+diff -Naur orig/misc/syntax/Syntax.in patched/misc/syntax/Syntax.in
+--- orig/misc/syntax/Syntax.in	2012-12-10 22:04:32.000000000 +0100
++++ patched/misc/syntax/Syntax.in	2012-12-29 11:19:10.585449061 +0100
+@@ -154,7 +154,7 @@
+ file ..\*\\.(awk)$ AWK\sFile
+ include awk.syntax
+ 
+-file ..\*\\.(css|qss|CSS|QSS)$ CSS\sFile
++file ..\*\\.([cC][sS][sS]|[qQ][sS][sS])$ CSS\sFile
+ include css.syntax
+ 
+ file .\*ChangeLog[\\\.A-Za-z0-9_]\*$ GNU\sChangeLog\sFile

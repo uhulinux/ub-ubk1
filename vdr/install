@@ -1,0 +1,31 @@
+#!/bin/sh -eux
+
+vdrcucc="$UB_INSTALLDIR"/var/vdr
+install -d -m 777 "$vdrcucc"/{video,config/plugins}
+make \
+  PREFIX=$UB_INSTALLDIR/usr \
+  MANDIR=$UB_INSTALLDIR/usr/share/man \
+  VDR_USER=users \
+  VIDEODIR=$UB_INSTALLDIR/var/vdr/video \
+  CONFDIR=$UB_INSTALLDIR/var/vdr/config \
+  CACHEDIR=$UB_INSTALLDIR/var/cache/vdr \
+  RESDIR=$UB_INSTALLDIR/usr/share/vdr \
+  INCDIR=$UB_INSTALLDIR/usr/include \
+  LOCDIR=$UB_INSTALLDIR/usr/share/locale \
+  LIBDIR=$UB_INSTALLDIR/usr/lib/vdr \
+install-bin install-dirs install-conf install-doc install-plugins install-i18n install-includes
+make \
+  BINDIR=/usr/bin \
+  CONFDIR=/var/vdr/config \
+  PREFIX=/usr \
+  LIBDIR=/usr/lib/vdr \
+  MANDIR=/usr/share/man \
+  CONFDIRDEF=/var/vdr/config \
+  VIDEODIR=/var/vdr/video \
+  CACHEDIRDEF=/var/cache/vdr \
+  RESDIRDEF=/usr/share/vdr \
+  LOCDIR=/usr/share/locale \
+  LIBDIR=/usr/lib/vdr \
+  INCDIR=/usr/include \
+  DESTDIR=$UB_INSTALLDIR \
+install-pc

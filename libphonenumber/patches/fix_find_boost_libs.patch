@@ -1,0 +1,20 @@
+--- a/cpp/CMakeLists.txt.orig	2013-03-16 13:16:25.000000000 +0100
++++ a/cpp/CMakeLists.txt	2013-03-16 14:12:49.000000000 +0100
+@@ -79,7 +79,7 @@
+ if (WIN32)
+   set (Boost_USE_STATIC_LIBS ON)
+ endif ()
+-find_package (Boost 1.40.0 COMPONENTS date_time thread)
++find_package (Boost 1.50.0 COMPONENTS date_time thread system)
+ if (NOT Boost_FOUND)
+   print_error ("Boost Datetime/Thread" "Boost")
+ endif ()
+@@ -305,7 +305,7 @@
+ endif ()
+ 
+ if (NOT WIN32)
+-  add_definitions ("-Wall -Werror")
++  add_definitions ("-Wall")
+ endif ()
+ 
+ include_directories ("src")

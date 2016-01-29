@@ -1,0 +1,10 @@
+--- kerneloops-0.12+git20090217.orig/configfile.c
++++ kerneloops-0.12+git20090217/configfile.c
+@@ -27,6 +27,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <ctype.h>
+ 
+ #include "kerneloops.h"
+ 

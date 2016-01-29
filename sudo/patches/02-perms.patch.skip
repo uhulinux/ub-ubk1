@@ -1,0 +1,32 @@
+diff -Naur sudo-1.6.8p12.orig/Makefile.in sudo-1.6.8p12/Makefile.in
+--- sudo-1.6.8p12.orig/Makefile.in	2005-11-08 19:21:58.000000000 +0100
++++ sudo-1.6.8p12/Makefile.in	2006-04-26 19:07:51.000000000 +0200
+@@ -301,11 +301,11 @@
+ 	    $(DESTDIR)$(noexecdir)
+ 
+ install-binaries: $(PROGS)
+-	$(INSTALL) -O $(install_uid) -G $(install_gid) -M 4111 -s sudo $(DESTDIR)$(sudodir)/sudo
++	$(INSTALL) -O $(install_uid) -G $(install_gid) -M 4755 -s sudo $(DESTDIR)$(sudodir)/sudo
+ 	rm -f $(DESTDIR)$(sudodir)/sudoedit
+ 	ln $(DESTDIR)$(sudodir)/sudo $(DESTDIR)$(sudodir)/sudoedit
+ 
+-	$(INSTALL) -O $(install_uid) -G $(install_gid) -M 0111 -s visudo $(DESTDIR)$(visudodir)/visudo
++	$(INSTALL) -O $(install_uid) -G $(install_gid) -M 0755 -s visudo $(DESTDIR)$(visudodir)/visudo
+ 
+ install-noexec: sudo_noexec.la
+ 	$(LIBTOOL) --mode=install $(INSTALL) sudo_noexec.la $(DESTDIR)$(noexecdir)
+@@ -319,11 +319,11 @@
+ 		$(srcdir)/sudoers $(DESTDIR)$(sudoersdir)/sudoers
+ 
+ install-man:
+-	$(INSTALL) -O $(install_uid) -G $(install_gid) -M 0444 @mansrcdir@/sudo.$(mantype) $(DESTDIR)$(mandirsu)/sudo.$(mansectsu)
++	$(INSTALL) -O $(install_uid) -G $(install_gid) -M 0644 @mansrcdir@/sudo.$(mantype) $(DESTDIR)$(mandirsu)/sudo.$(mansectsu)
+ 	@rm -f $(DESTDIR)$(mandirsu)/sudoedit.$(mansectsu)
+ 	ln $(DESTDIR)$(mandirsu)/sudo.$(mansectsu) $(DESTDIR)$(mandirsu)/sudoedit.$(mansectsu)
+-	$(INSTALL) -O $(install_uid) -G $(install_gid) -M 0444 @mansrcdir@/visudo.$(mantype) $(DESTDIR)$(mandirsu)/visudo.$(mansectsu)
+-	$(INSTALL) -O $(install_uid) -G $(install_gid) -M 0444 @mansrcdir@/sudoers.$(mantype) $(DESTDIR)$(mandirform)/sudoers.$(mansectform)
++	$(INSTALL) -O $(install_uid) -G $(install_gid) -M 0644 @mansrcdir@/visudo.$(mantype) $(DESTDIR)$(mandirsu)/visudo.$(mansectsu)
++	$(INSTALL) -O $(install_uid) -G $(install_gid) -M 0644 @mansrcdir@/sudoers.$(mantype) $(DESTDIR)$(mandirform)/sudoers.$(mansectform)
+ @MAN_POSTINSTALL@
+ 
+ check:

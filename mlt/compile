@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--enable-gpl \
+	--enable-gpl3 \
+	--qimage-libdir=/usr/lib/qt4/lib \
+	--qimage-includedir=/usr/lib/qt4/include \
+	--avformat-swscale \
+	--avformat-vdpau \
+	--target-arch=i386

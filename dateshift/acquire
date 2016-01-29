@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dateshift-$UB_VERSION.tar.gz dateshift-$UB_VERSION/
+	http://hornby.byethost5.com/dateshift/

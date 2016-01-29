@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xpn-${UB_VERSION}.tar.gz xpn-${UB_VERSION}/
+	http://xpn.altervista.org/codice/

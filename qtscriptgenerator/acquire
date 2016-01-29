@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+qtscriptgenerator-src-${UB_VERSION}.tar.gz qtscriptgenerator-src-${UB_VERSION}/
+	http://qtscriptgenerator.googlecode.com/files/

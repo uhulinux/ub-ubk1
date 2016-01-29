@@ -1,0 +1,1 @@
+urllist http://lav.yar.ru/download/le/ | splitver '^le-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

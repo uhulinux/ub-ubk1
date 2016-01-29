@@ -1,0 +1,12 @@
+diff -Naur atomix-2.14.0.orig/atomix.desktop.in atomix-2.14.0/atomix.desktop.in
+--- atomix-2.14.0.orig/atomix.desktop.in	2006-03-04 08:18:38.000000000 +0100
++++ atomix-2.14.0/atomix.desktop.in	2006-03-17 16:53:43.000000000 +0100
+@@ -6,7 +6,7 @@
+ Icon=atomix-icon.png
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Game;PuzzleGame;
++Categories=GNOME;GTK;Game;PuzzleGame;X-UHU-Menu/Games/TacticStrategy;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=atomix
+ X-GNOME-Bugzilla-Component=atomix

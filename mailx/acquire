@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mailx-${UB_VERSION}.tar.bz2 mailx-${UB_VERSION}/
+	http://downloads.sourceforge.net/heirloom/

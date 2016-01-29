@@ -1,0 +1,17 @@
+#!/bin/sh -eux
+
+cd data
+
+# install gprsec
+cp bin/gprsec "$UB_INSTALLDIR"/usr/bin/
+cp share/gprsec/images/icons/gprsec.png "$UB_INSTALLDIR"/usr/share/pixmaps/
+cp -R share/gprsec "$UB_INSTALLDIR"/usr/share/
+rm -r "$UB_INSTALLDIR"/usr/share/gprsec/themes
+rm "$UB_INSTALLDIR"/usr/share/gprsec/COPYING
+rm "$UB_INSTALLDIR"/usr/share/gprsec/GNU_GPL_HU
+rm "$UB_INSTALLDIR"/usr/share/gprsec/README
+
+# install Script Generator
+chmod +x src/SG-1.0.1/bin/SG
+cp src/SG-1.0.1/bin/SG "$UB_INSTALLDIR"/usr/bin/
+cp src/SG-1.0.1/lng/* "$UB_INSTALLDIR"/usr/share/gprsec/languages/

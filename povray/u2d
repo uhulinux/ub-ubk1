@@ -1,0 +1,2 @@
+alap=$(urllist ftp://ftp.povray.org/pub/povray/Old-Versions/ | grep -E '^Official-' | sort | tail -n 1)
+urllist ftp://ftp.povray.org/pub/povray/Old-Versions/"$alap"/Unix/ | parsever | sort -V | tail -n 1

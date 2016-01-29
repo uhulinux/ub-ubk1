@@ -1,0 +1,25 @@
+#!/bin/sh -eux
+
+ub_install DESTDIR="$UB_INSTALLDIR"
+
+# ldb ütközések
+rm -f "$UB_INSTALLDIR"/usr/bin/tdbbackup
+rm -f "$UB_INSTALLDIR"/usr/bin/tdbdump
+rm -f "$UB_INSTALLDIR"/usr/bin/tdbrestore
+rm -f "$UB_INSTALLDIR"/usr/bin/tdbtool
+rm -f "$UB_INSTALLDIR"/usr/lib/python2.7/site-packages/talloc.so
+rm -f "$UB_INSTALLDIR"/usr/lib/python2.7/site-packages/tdb.so
+
+# systemd
+cd packaging/systemd
+cp -a {samba,nmb,smb,winbind}.service "$UB_INSTALLDIR"/usr/lib/systemd/system
+mkdir "$UB_INSTALLDIR"/usr/lib/tmpfiles.d
+cp -a samba.conf.tmp "$UB_INSTALLDIR"/usr/lib/tmpfiles.d/samba.conf
+cp -a samba.sysconfig "$UB_INSTALLDIR"/etc/sysconfig/samba
+cd -
+
+cd docs/manpages
+for i in *; do
+	m="${i##*.}"
+	cp -a "$i" "$UB_INSTALLDIR"/usr/share/man/man${m}/
+done

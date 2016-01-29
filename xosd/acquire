@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xosd-${UB_VERSION}.tar.bz2 xosd-${UB_VERSION}/
+	http://www.ignavus.net/

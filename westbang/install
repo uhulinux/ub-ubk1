@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+celdir="$UB_INSTALLDIR"/usr/share/games/westbang
+install -d -m 755 $celdir
+cp -r data $celdir
+install -m 677 setup.cfg top.txt allegro.cfg setup.dat $celdir/
+install -m 755 westbang $celdir/

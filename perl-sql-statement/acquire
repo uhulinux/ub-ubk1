@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+SQL-Statement-${UB_VERSION}.tar.gz SQL-Statement-${UB_VERSION}/
+	http://search.cpan.org/CPAN/modules/by-module/SQL/

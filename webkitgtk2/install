@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_install
+
+# remove conflicting gtk-doc files, webkitgtk-dev package contains them too
+rm -rf "$UB_INSTALLDIR"/usr/share/gtk-doc

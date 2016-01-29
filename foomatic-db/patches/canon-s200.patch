@@ -1,0 +1,17 @@
+diff -Naur ORIG/db/source/printer/Canon-S200.xml UHU/db/source/printer/Canon-S200.xml
+--- ORIG/db/source/printer/Canon-S200.xml	2010-02-18 09:21:48.000000000 +0100
++++ UHU/db/source/printer/Canon-S200.xml	2010-05-09 12:30:08.000000000 +0200
+@@ -15,11 +15,10 @@
+   <lang>
+     <proprietary />
+   </lang>
+-  <functionality>F</functionality>
++  <functionality>D</functionality>
++  <driver>gutenprint-ijs</driver>
+   <comments>
+     <en>
+-    Nothing known about its compatibility to free software. The information on Canon's web pages does not show any similarity to a supported model. Perhaps it works with the commercial TurboPrint driver.&lt;p&gt;
+-
+       Consumables/Refills: BCI-24 Black (130 pages w/ 5% coverage), BCI-24 Colour (120 pages w/ 5% coverage per colour)&lt;p&gt;
+     </en>
+   </comments>

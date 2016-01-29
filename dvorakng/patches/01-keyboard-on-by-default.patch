@@ -1,0 +1,21 @@
+diff -urN dvorakng.orig/dvorakng.cpp dvorakng/dvorakng.cpp
+--- dvorakng.orig/dvorakng.cpp	2003-03-18 13:18:23.000000000 +0100
++++ dvorakng/dvorakng.cpp	2003-03-18 14:44:47.000000000 +0100
+@@ -1462,7 +1462,7 @@
+ 	SetParameter( FLASHES_PARAM, false );
+ 	SetParameter( NASTINESS_PARAM, false );
+ 	SetParameter( PRETTY_PARAM, true );
+-	SetParameter( KEYBOARD_PARAM, false );
++	SetParameter( KEYBOARD_PARAM, true );
+ 	SetParameter( COLOR_PARAM, true );
+ 	SetParameter( REPETITION_PARAM, false );
+ 	Config[ RANDOMIZE_SMALL_WEIGHT ] = "20";
+@@ -1509,7 +1509,7 @@
+ 				break;
+ 
+ 			case 'k':
+-				SetParameter( KEYBOARD_PARAM, true );
++				SetParameter( KEYBOARD_PARAM, false );
+ 				break;
+ 
+ 			case 'r':

@@ -1,0 +1,8 @@
+--- discwrapper.orig/discwrapper.desktop	2009-06-21 16:35:19.000000000 +0200
++++ discwrapper/discwrapper.desktop	2009-07-24 18:18:50.000000000 +0200
+@@ -12,4 +12,4 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=Graphics;2DGraphics;
++Categories=Graphics;2DGraphics;X-UHU-Menu/Graphics;

@@ -1,0 +1,9 @@
+--- a/data/lightsoff.desktop.in.orig	2013-03-01 18:57:11.000000000 +0100
++++ a/data/lightsoff.desktop.in	2013-03-01 18:58:19.000000000 +0100
+@@ -6,5 +6,5 @@
+ Exec=lightsoff
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Game;LogicGame;
++Categories=GNOME;GTK;Game;LogicGame;X-UHU-Menu/Games/Board;
+ StartupNotify=true

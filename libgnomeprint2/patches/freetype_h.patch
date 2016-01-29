@@ -1,0 +1,26 @@
+diff -urN libgnomeprint-2.18.8.orig/libgnomeprint/gnome-font-face.c libgnomeprint-2.18.8/libgnomeprint/gnome-font-face.c
+--- libgnomeprint-2.18.8.orig/libgnomeprint/gnome-font-face.c	2010-02-09 13:32:51.000000000 +0100
++++ libgnomeprint-2.18.8/libgnomeprint/gnome-font-face.c	2014-02-17 14:14:23.312151520 +0100
+@@ -36,7 +36,7 @@
+ #include <stdarg.h>
+ #include <locale.h>
+ 
+-#include <freetype/ftoutln.h>
++#include <freetype2/ftoutln.h>
+ 
+ #include <libgnomeprint/gnome-print-private.h>
+ #include <libgnomeprint/gnome-font-private.h>
+diff -urN libgnomeprint-2.18.8.orig/libgnomeprint/gnome-rfont.c libgnomeprint-2.18.8/libgnomeprint/gnome-rfont.c
+--- libgnomeprint-2.18.8.orig/libgnomeprint/gnome-rfont.c	2010-02-09 13:32:51.000000000 +0100
++++ libgnomeprint-2.18.8/libgnomeprint/gnome-rfont.c	2014-02-17 14:15:46.388332673 +0100
+@@ -28,8 +28,8 @@
+ 
+ #include <ft2build.h>
+ #include FT_FREETYPE_H
+-#include <freetype/ftglyph.h>
+-#include <freetype/ftbbox.h>
++#include <freetype2/ftglyph.h>
++#include <freetype2/ftbbox.h>
+ #include <libart_lgpl/art_misc.h>
+ #include <libart_lgpl/art_affine.h>
+ #include <libart_lgpl/art_vpath.h>

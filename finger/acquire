@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+bsd-finger-${UB_VERSION}.tar.gz bsd-finger-${UB_VERSION}/
+	ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/
+

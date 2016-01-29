@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+virtualmount-${UB_VERSION}.tar.gz virtualmount-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/virtualmount/
+

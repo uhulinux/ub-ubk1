@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ggz-client-libs-snapshot-${UB_VERSION}.tar.gz ggz-client-libs-snapshot-${UB_VERSION}/
+	http://mirrors.ibiblio.org/pub/mirrors/ggzgamingzone/ggz/snapshots/

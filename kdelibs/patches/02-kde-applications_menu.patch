@@ -1,0 +1,12 @@
+diff -Naur kdelibs-4.13.0-orig/kded/kbuildsycoca.cpp kdelibs-4.13.0/kded/kbuildsycoca.cpp
+--- kdelibs-4.13.0-orig/kded/kbuildsycoca.cpp	2014-04-10 08:11:45.000000000 +0000
++++ kdelibs-4.13.0/kded/kbuildsycoca.cpp	2014-04-16 16:35:34.374787649 +0000
+@@ -311,7 +311,7 @@
+      if (!m_trackId.isEmpty())
+         g_vfolder->setTrackId(m_trackId);
+ 
+-     VFolderMenu::SubMenu *kdeMenu = g_vfolder->parseMenu("applications.menu", true);
++     VFolderMenu::SubMenu *kdeMenu = g_vfolder->parseMenu("kde-applications.menu", true);
+ 
+      KServiceGroup::Ptr entry = g_buildServiceGroupFactory->addNew("/", kdeMenu->directoryFile, KServiceGroup::Ptr(), false);
+      entry->setLayoutInfo(kdeMenu->layoutList);

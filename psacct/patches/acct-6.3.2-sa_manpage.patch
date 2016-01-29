@@ -1,0 +1,12 @@
+diff -up acct-6.3.2/sa.8.pom acct-6.3.2/sa.8
+--- acct-6.3.2/sa.8.pom	2008-11-13 13:08:54.000000000 +0100
++++ acct-6.3.2/sa.8	2008-11-13 13:09:38.000000000 +0100
+@@ -323,8 +323,6 @@ file.
+ .I acct
+ The raw system wide process accounting file. See
+ .BR acct (5)
+-(or
+-.BR pacct (5))
+ for further details.
+ .TP
+ .I savacct

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+atomix-${UB_VERSION}.tar.gz atomix-${UB_VERSION}/
+	http://triq.net/~jens/download/
+	ftp://ftp.gnome.org/pub/GNOME/sources/atomix/${UB_VERSION_HEAD2}/

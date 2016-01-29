@@ -1,0 +1,96 @@
+diff -Naurdp a/drivers/message/i2o/i2o_block.c b/drivers/message/i2o/i2o_block.c
+--- a/drivers/message/i2o/i2o_block.c	2012-07-21 22:58:29.000000000 +0200
++++ b/drivers/message/i2o/i2o_block.c	2012-07-29 11:15:30.949250485 +0200
+@@ -1230,3 +1230,13 @@ MODULE_VERSION(OSM_VERSION);
+ 
+ module_init(i2o_block_init);
+ module_exit(i2o_block_exit);
++
++static struct pci_device_id i2o_block_pci_table[] = {
++	{0x8086, 0x3092, PCI_ANY_ID, PCI_ANY_ID},
++	{0x8086, 0x9621, PCI_ANY_ID, PCI_ANY_ID},
++	{0x8086, 0x9622, PCI_ANY_ID, PCI_ANY_ID},
++	{0x8086, 0x9641, PCI_ANY_ID, PCI_ANY_ID},
++	{0x8086, 0x96a1, PCI_ANY_ID, PCI_ANY_ID},
++	{0}
++};
++MODULE_DEVICE_TABLE(pci, i2o_block_pci_table);
+diff -Naurdp a/drivers/net/ethernet/dec/tulip/xircom_cb.c b/drivers/net/ethernet/dec/tulip/xircom_cb.c
+--- a/drivers/net/ethernet/dec/tulip/xircom_cb.c	2012-07-21 22:58:29.000000000 +0200
++++ b/drivers/net/ethernet/dec/tulip/xircom_cb.c	2012-07-29 11:16:38.813322454 +0200
+@@ -140,6 +140,12 @@ static int link_status(struct xircom_pri
+ 
+ static DEFINE_PCI_DEVICE_TABLE(xircom_pci_table) = {
+ 	{ PCI_VDEVICE(XIRCOM, 0x0003), },
++	{ PCI_VDEVICE(XIRCOM, 0x0005), },
++	{ PCI_VDEVICE(XIRCOM, 0x0007), },
++	{ PCI_VDEVICE(XIRCOM, 0x000b), },
++	{ PCI_VDEVICE(XIRCOM, 0x000f), },
++	{ PCI_VDEVICE(XIRCOM, 0x0101), },
++	{ PCI_VDEVICE(XIRCOM, 0x0103), },
+ 	{0,},
+ };
+ MODULE_DEVICE_TABLE(pci, xircom_pci_table);
+diff -Naurdp a/drivers/net/ethernet/via/via-rhine.c b/drivers/net/ethernet/via/via-rhine.c
+--- a/drivers/net/ethernet/via/via-rhine.c	2012-07-21 22:58:29.000000000 +0200
++++ b/drivers/net/ethernet/via/via-rhine.c	2012-07-29 11:15:30.949250485 +0200
+@@ -275,6 +275,7 @@ static DEFINE_PCI_DEVICE_TABLE(rhine_pci
+ 	{ 0x1106, 0x3065, PCI_ANY_ID, PCI_ANY_ID, },	/* VT6102 */
+ 	{ 0x1106, 0x3106, PCI_ANY_ID, PCI_ANY_ID, },	/* 6105{,L,LOM} */
+ 	{ 0x1106, 0x3053, PCI_ANY_ID, PCI_ANY_ID, },	/* VT6105M */
++	{ 0x1106, 0x6100, PCI_ANY_ID, PCI_ANY_ID, },
+ 	{ }	/* terminate list */
+ };
+ MODULE_DEVICE_TABLE(pci, rhine_pci_tbl);
+diff -Naurdp a/drivers/scsi/aacraid/linit.c b/drivers/scsi/aacraid/linit.c
+--- a/drivers/scsi/aacraid/linit.c	2012-07-21 22:58:29.000000000 +0200
++++ b/drivers/scsi/aacraid/linit.c	2012-07-29 11:15:30.949250485 +0200
+@@ -155,6 +155,7 @@ static const struct pci_device_id aac_pc
+ 	{ 0x1011, 0x0046, 0x9005, 0x0365, 0, 0, 53 }, /* Adaptec 5400S (Mustang)*/
+ 	{ 0x1011, 0x0046, 0x9005, 0x0364, 0, 0, 54 }, /* Adaptec 5400S (Mustang)*/
+ 	{ 0x1011, 0x0046, 0x9005, 0x1364, 0, 0, 55 }, /* Dell PERC2/QC */
++	{ 0x1011, 0x0046, 0x9005, 0x1365, 0, 0, 39 },
+ 	{ 0x1011, 0x0046, 0x103c, 0x10c2, 0, 0, 56 }, /* HP NetRAID-4M */
+ 
+ 	{ 0x9005, 0x0285, 0x1028, PCI_ANY_ID, 0, 0, 57 }, /* Dell Catchall */
+diff -Naurdp a/sound/pci/ymfpci/ymfpci.c b/sound/pci/ymfpci/ymfpci.c
+--- a/sound/pci/ymfpci/ymfpci.c	2012-07-21 22:58:29.000000000 +0200
++++ b/sound/pci/ymfpci/ymfpci.c	2012-07-29 11:15:30.949250485 +0200
+@@ -67,12 +67,17 @@ module_param_array(rear_switch, bool, NU
+ MODULE_PARM_DESC(rear_switch, "Enable shared rear/line-in switch");
+ 
+ static DEFINE_PCI_DEVICE_TABLE(snd_ymfpci_ids) = {
++	{ PCI_VDEVICE(YAMAHA, 0x0003), 0, },   /* YMF740 */
+ 	{ PCI_VDEVICE(YAMAHA, 0x0004), 0, },   /* YMF724 */
+-	{ PCI_VDEVICE(YAMAHA, 0x000d), 0, },   /* YMF724F */
++	{ PCI_VDEVICE(YAMAHA, 0x0005), 0, },
++	{ PCI_VDEVICE(YAMAHA, 0x0006), 0, },
++	{ PCI_VDEVICE(YAMAHA, 0x0008), 0, },
+ 	{ PCI_VDEVICE(YAMAHA, 0x000a), 0, },   /* YMF740 */
+ 	{ PCI_VDEVICE(YAMAHA, 0x000c), 0, },   /* YMF740C */
++	{ PCI_VDEVICE(YAMAHA, 0x000d), 0, },   /* YMF724F */
+ 	{ PCI_VDEVICE(YAMAHA, 0x0010), 0, },   /* YMF744 */
+ 	{ PCI_VDEVICE(YAMAHA, 0x0012), 0, },   /* YMF754 */
++	{ PCI_VDEVICE(YAMAHA, 0x0020), 0, },
+ 	{ 0, }
+ };
+ 
+@@ -192,12 +197,17 @@ static int __devinit snd_card_ymfpci_pro
+ 		return err;
+ 
+ 	switch (pci_id->device) {
++	case 0x0003: str = "YMF740";  model = "DS-1"; break;
+ 	case 0x0004: str = "YMF724";  model = "DS-1"; break;
+-	case 0x000d: str = "YMF724F"; model = "DS-1"; break;
++	case 0x0005: str = "YMF???";  model = "DS-1"; break;
++	case 0x0006: str = "YMF???";  model = "DS-1"; break;
++	case 0x0008: str = "YMF???";  model = "DS-1"; break;
+ 	case 0x000a: str = "YMF740";  model = "DS-1L"; break;
+ 	case 0x000c: str = "YMF740C"; model = "DS-1L"; break;
++	case 0x000d: str = "YMF724F"; model = "DS-1"; break;
+ 	case 0x0010: str = "YMF744";  model = "DS-1S"; break;
+ 	case 0x0012: str = "YMF754";  model = "DS-1E"; break;
++	case 0x0020: str = "YMF???";  model = "DS-1"; break;
+ 	default: model = str = "???"; break;
+ 	}
+ 

@@ -1,0 +1,23 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--with-dynamic \
+	--with-x11 \
+	--without-postgresql \
+	--with-athena=xaw \
+	--enable-database=berkdb \
+	--without-ldap \
+	--enable-menubars=lucid \
+	--enable-scrollbars=lucid \
+	--enable-widgets=athena \
+	--enable-dialogs=athena \
+	--enable-external-widget \
+	--with-jpeg \
+	--with-png \
+	--with-tiff \
+	--with-ncurses \
+	--with-pop \
+	--with-xfs \
+	--disable-sound \
+	--with-mule \
+	--without-debug

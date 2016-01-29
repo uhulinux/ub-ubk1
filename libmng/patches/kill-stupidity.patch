@@ -1,0 +1,11 @@
+diff -Naurd a/unmaintained/autogen.sh b/unmaintained/autogen.sh
+--- a/unmaintained/autogen.sh	2005-01-30 11:28:00.000000000 +0100
++++ b/unmaintained/autogen.sh	2007-10-24 20:19:11.000000000 +0200
+@@ -45,6 +45,6 @@
+ autoconf
+ 
+ # and finally invoke our new configure
+-./configure $*
++./configure "$@"
+ 
+ # end

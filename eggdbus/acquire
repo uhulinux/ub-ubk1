@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+eggdbus-${UB_VERSION}.tar.bz2 eggdbus-${UB_VERSION}/
+	http://cgit.freedesktop.org/~david/eggdbus/snapshot/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+yelp-${UB_VERSION}.tar.xz yelp-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/yelp/${UB_VERSION_HEAD2}/

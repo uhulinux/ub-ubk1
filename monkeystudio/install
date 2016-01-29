@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/monkeystudio/
+cp -f -r bin/plugins/* "$UB_INSTALLDIR"/usr/lib/monkeystudio/
+mkdir -p "$UB_INSTALLDIR"/usr/share/monkeystudio/
+cp -f -r datas/* "$UB_INSTALLDIR"/usr/share/monkeystudio/
+install -m 755 -p bin/monkeystudio "$UB_INSTALLDIR"/usr/bin/
+strip "$UB_INSTALLDIR"/usr/bin/monkeystudio
+install -m 644 -p tools/data/unix/monkeystudio.desktop "$UB_INSTALLDIR"/usr/share/applications/
+install -m 644 -p tools/data/unix/monkeystudio.png "$UB_INSTALLDIR"/usr/share/pixmaps/

@@ -1,0 +1,10 @@
+diff -Naur limoo-src-0.8-orig/Files/limoo.desktop limoo-src-0.8/Files/limoo.desktop
+--- limoo-src-0.8-orig/Files/limoo.desktop	2012-03-28 17:07:38.000000000 +0200
++++ limoo-src-0.8/Files/limoo.desktop	2012-04-20 09:44:46.000000000 +0200
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Categories=Qt;KDE;Graphics;Viewer;Photography;
++Categories=Qt;KDE;Graphics;Viewer;Photography;X-UHU-Menu/Graphics;
+ Comment[en_US]=A simple image viewer
+ Comment=A simple image viewer
+ Comment[ar]=عارض صور بسيط

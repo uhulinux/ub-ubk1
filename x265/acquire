@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+${UB_VERSION}.tar.bz2 .
+	https://bitbucket.org/multicoreware/x265/get/

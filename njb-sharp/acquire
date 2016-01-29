@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+njb-sharp-${UB_VERSION}.tar.gz njb-sharp-${UB_VERSION}/
+	 http://banshee-project.org/files/njb-sharp/
+	 ftp://ftp.spline.inf.fu-berlin.de/pub/gentoo/distfiles/

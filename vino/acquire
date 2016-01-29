@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+vino-${UB_VERSION}.tar.xz vino-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/vino/${UB_VERSION_HEAD2}/

@@ -1,0 +1,12 @@
+diff -urN LVM2.2.02.112.orig/scripts/blk_availability_systemd_red_hat.service.in LVM2.2.02.112/scripts/blk_availability_systemd_red_hat.service.in
+--- LVM2.2.02.112.orig/scripts/blk_availability_systemd_red_hat.service.in	2014-11-11 15:15:56.000000000 +0100
++++ LVM2.2.02.112/scripts/blk_availability_systemd_red_hat.service.in	2014-11-20 17:11:39.653035377 +0100
+@@ -6,7 +6,7 @@
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/usr/bin/true
++ExecStart=/bin/true
+ ExecStop=@sbindir@/blkdeactivate -u -l wholevg
+ RemainAfterExit=yes
+ 

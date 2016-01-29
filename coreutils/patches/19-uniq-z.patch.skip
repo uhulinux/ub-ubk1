@@ -1,0 +1,154 @@
+diff -Naur coreutils-5.94.orig/lib/linebuffer.c coreutils-5.94/lib/linebuffer.c
+--- coreutils-5.94.orig/lib/linebuffer.c	2005-05-14 09:58:06.000000000 +0200
++++ coreutils-5.94/lib/linebuffer.c	2006-05-05 13:21:42.000000000 +0200
+@@ -52,7 +52,7 @@
+    invoking ferror (stream).
+    Otherwise, return LINEBUFFER.  */
+ struct linebuffer *
+-readlinebuffer (struct linebuffer *linebuffer, FILE *stream)
++readlinebufferd (struct linebuffer *linebuffer, FILE *stream, const char delim)
+ {
+   int c;
+   char *buffer = linebuffer->buffer;
+@@ -69,9 +69,9 @@
+ 	{
+ 	  if (p == buffer || ferror (stream))
+ 	    return NULL;
+-	  if (p[-1] == '\n')
++	  if (p[-1] == delim)
+ 	    break;
+-	  c = '\n';
++	  c = delim;
+ 	}
+       if (p == end)
+ 	{
+@@ -83,12 +83,18 @@
+ 	}
+       *p++ = c;
+     }
+-  while (c != '\n');
++  while (c != delim);
+ 
+   linebuffer->length = p - buffer;
+   return linebuffer;
+ }
+ 
++struct linebuffer *
++readlinebuffer (struct linebuffer *linebuffer, FILE *stream)
++{
++  return readlinebufferd(linebuffer, stream, '\n');
++}
++
+ /* Free the buffer that was allocated for linebuffer LINEBUFFER.  */
+ 
+ void
+diff -Naur coreutils-5.94.orig/lib/linebuffer.h coreutils-5.94/lib/linebuffer.h
+--- coreutils-5.94.orig/lib/linebuffer.h	2006-05-05 13:20:24.000000000 +0200
++++ coreutils-5.94/lib/linebuffer.h	2006-05-05 13:21:42.000000000 +0200
+@@ -46,6 +46,7 @@
+    Keep the newline; append a newline if it's the last line of a file
+    that ends in a non-newline character.  Do not null terminate.
+    Return LINEBUFFER, except at end of file return 0.  */
++struct linebuffer *readlinebufferd (struct linebuffer *linebuffer, FILE *stream, const char delim);
+ struct linebuffer *readlinebuffer (struct linebuffer *linebuffer, FILE *stream);
+ 
+ /* Free linebuffer LINEBUFFER and its data, all allocated with malloc. */
+diff -Naur coreutils-5.94.orig/man/uniq.1 coreutils-5.94/man/uniq.1
+--- coreutils-5.94.orig/man/uniq.1	2006-02-13 13:53:41.000000000 +0100
++++ coreutils-5.94/man/uniq.1	2006-05-05 13:21:42.000000000 +0200
+@@ -38,6 +38,9 @@
+ \fB\-w\fR, \fB\-\-check\-chars\fR=\fIN\fR
+ compare no more than N characters in lines
+ .TP
++\fB\-z\fR, \fB\-\-zero\-terminated\fR
++end lines with 0 byte, not newline
++.TP
+ \fB\-\-help\fR
+ display this help and exit
+ .TP
+diff -Naur coreutils-5.94.orig/src/uniq.c coreutils-5.94/src/uniq.c
+--- coreutils-5.94.orig/src/uniq.c	2006-05-05 13:20:24.000000000 +0200
++++ coreutils-5.94/src/uniq.c	2006-05-05 13:22:58.000000000 +0200
+@@ -135,6 +135,8 @@
+ static char *
+ (*find_field) (struct linebuffer *line);
+ 
++static char delimiter = '\n';
++
+ static struct option const longopts[] =
+ {
+   {"count", no_argument, NULL, 'c'},
+@@ -145,6 +147,7 @@
+   {"skip-fields", required_argument, NULL, 'f'},
+   {"skip-chars", required_argument, NULL, 's'},
+   {"check-chars", required_argument, NULL, 'w'},
++  {"zero-terminated", no_argument, NULL, 'z'},
+   {GETOPT_HELP_OPTION_DECL},
+   {GETOPT_VERSION_OPTION_DECL},
+   {NULL, 0, NULL, 0}
+@@ -186,6 +189,9 @@
+      fputs (_("\
+   -w, --check-chars=N   compare no more than N characters in lines\n\
+ "), stdout);
++     fputs (_("\
++  -z, --zero-terminated end lines with 0 byte, not newline\n\
++"), stdout);
+      fputs (HELP_OPTION_DESCRIPTION, stdout);
+      fputs (VERSION_OPTION_DESCRIPTION, stdout);
+      fputs (_("\
+@@ -483,7 +489,7 @@
+ 	  mbstate_t thisstate;
+ #endif
+ 
+-	  if (readlinebuffer (thisline, stdin) == 0)
++	  if (readlinebufferd (thisline, stdin, delimiter) == 0)
+ 	    break;
+ 	  thisfield = find_field (thisline);
+ 	  thislen = thisline->length - 1 - (thisfield - thisline->buffer);
+@@ -528,7 +534,7 @@
+       mbstate_t prevstate;
+ #endif
+ 
+-      if (readlinebuffer (prevline, stdin) == 0)
++      if (readlinebufferd (prevline, stdin, delimiter) == 0)
+ 	goto closefiles;
+       prevfield = find_field (prevline);
+       prevlen = prevline->length - 1 - (prevfield - prevline->buffer);
+@@ -544,7 +550,7 @@
+ #if HAVE_MBRTOWC
+ 	  mbstate_t thisstate;
+ #endif
+-	  if (readlinebuffer (thisline, stdin) == 0)
++	  if (readlinebufferd (thisline, stdin, delimiter) == 0)
+ 	    {
+ 	      if (ferror (stdin))
+ 		goto closefiles;
+@@ -583,7 +589,7 @@
+ 		  if ((delimit_groups == DM_PREPEND)
+ 		      || (delimit_groups == DM_SEPARATE
+ 			  && !first_delimiter))
+-		    putchar ('\n');
++		    putchar (delimiter);
+ 		}
+ 	    }
+ 
+@@ -670,7 +676,7 @@
+       if (optc == -1
+ 	  || (posixly_correct && nfiles != 0)
+ 	  || ((optc = getopt_long (argc, argv,
+-				   "-0123456789Dcdf:is:uw:", longopts, NULL))
++				   "-0123456789Dcdf:is:uw:z", longopts, NULL))
+ 	      == -1))
+ 	{
+ 	  if (argc <= optind)
+@@ -766,6 +772,10 @@
+ 				  N_("invalid number of bytes to compare"));
+ 	  break;
+ 
++	case 'z':
++	  delimiter = '\0';
++	  break;
++
+ 	case_GETOPT_HELP_CHAR;
+ 
+ 	case_GETOPT_VERSION_CHAR (PROGRAM_NAME, AUTHORS);

@@ -1,0 +1,20 @@
+#!/bin/sh -eux
+
+cd Adobe/Reader9
+mv Resource/Icons/192x192/AdobeReader9.png "$UB_INSTALLDIR"/usr/share/pixmaps/AdobeReader.png
+mv Resource/Support/AdobeReader.desktop "$UB_INSTALLDIR"/usr/share/applications/AdobeReader.desktop
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/Adobe-Reader
+
+mv bin Browser Reader Resource "$UB_INSTALLDIR"/usr/lib/Adobe-Reader/
+
+ln -s ../lib/Adobe-Reader/bin/acroread "$UB_INSTALLDIR"/usr/bin/acroread
+ln -s ../lib/Adobe-Reader/bin/acroread "$UB_INSTALLDIR"/usr/bin/adobe-reader
+
+# install firefox plugin
+mkdir -p "$UB_INSTALLDIR"/usr/lib/firefox/plugins
+ln -s ../../Adobe-Reader/Browser/intellinux/nppdf.so "$UB_INSTALLDIR"/usr/lib/firefox/plugins/
+
+# install mozilla plugin
+mkdir -p "$UB_INSTALLDIR"/usr/lib/mozilla/plugins
+ln -s ../../Adobe-Reader/Browser/intellinux/nppdf.so "$UB_INSTALLDIR"/usr/lib/mozilla/plugins/

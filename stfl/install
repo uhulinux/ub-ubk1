@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+ub_install
+chmod 755 "$UB_INSTALLDIR"/usr/lib/libstfl.so."$UB_VERSION"

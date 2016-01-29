@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--with-openldap=yes \
+	--with-krb5=/usr \
+	--enable-vala-bindings \
+	--disable-uoa

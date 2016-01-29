@@ -1,0 +1,272 @@
+:case
+  ignore
+:option
+  rexx
+  function ( noblank
+:number
+  rexx
+:identifier
+  [a-zA-Z!?_@#$] [a-zA-Z0-9.!?_@#$]
+:string
+  single
+  double
+:comment
+  paired /* */ nest
+  line -- any
+:label
+  delimiter : any
+:match
+  ( )
+  do,select end when,otherwise
+:header
+  line #! column 1
+:keyword
+address type 5
+arg type 7
+by type 2
+call type 5
+digits type 2
+do type 5
+drop type 1
+else type 1
+end type 1
+engineering type 2
+exit type 1
+expose type 2
+for type 2
+forever type 2
+form type 2
+fuzz type 2
+if type 1
+interpret type 1
+iterate type 1
+leave type 1
+loop type 1
+name type 2
+nop type 1
+novalue
+numeric type 5
+off type 2
+on type 2
+options type 1
+otherwise type 1
+parse type 5
+procedure type 5
+pull type 7
+push type 1
+queue type 1
+return type 1
+say type 1
+scientific type 2
+select type 1
+signal type 5
+source type 2
+syntax
+to type 2
+then type 1
+trace type 5
+until type 2
+upper type 2
+value type 2
+var type 2
+version type 2
+when type 1
+while type 2
+with type 2
+:function
+abbrev
+center
+changestr
+compare
+copies
+countstr
+datatype
+delstr
+delword
+insert
+lastpos
+left
+length
+overlay
+pos
+reverse
+right
+space
+strip
+substr
+subword
+translate
+verify
+word
+wordindex
+wordlength
+wordpos
+words
+xrange
+abs
+format
+max
+min
+sign
+trunc
+address
+arg
+condition
+digits
+errortext
+form
+fuzz
+sourceline
+trace
+b2x
+bitand
+bitor
+bitxor
+c2d
+c2x
+d2c
+d2x
+x2b
+x2c
+x2d
+charin
+charout
+chars
+linein
+lineout
+lines
+qualify
+stream
+date
+queued
+random
+symbol
+time
+value
+
+* THE
+alert
+alt
+arbchar
+autocolor
+autosave
+autoscroll
+backup
+beep
+block
+case
+clearerrorkey
+clearscreen
+clock
+cmdarrows
+cmdline
+color
+coloring
+column
+compat
+ctlchar
+curline
+cursor
+cursorstay
+define
+defsort
+dialog
+dirfileid
+dirinclude
+display
+ecolor
+eof
+eolout
+equivchar
+etmode
+fext
+field
+filename
+filestatus
+fmode
+fname
+fpath
+ftype
+fullfname
+getenv
+header
+hex
+hexdisplay
+hexshow
+highlight
+idline
+impmacro
+impos
+in
+inputmode
+lastkey
+lastmsg
+lastrc
+*length
+line
+lineflag
+linend
+lscreen
+macro
+macroext
+macropath
+margins
+monitor
+mouse
+msgline
+msgmode
+nbfile
+nbscope
+newlines
+nondisp
+number
+out
+pagewrap
+parser
+pending
+point
+popup
+position
+prefix
+printer
+readonly
+readv
+reprofile
+reserved
+rexx
+rexxoutput
+ring
+scale
+scope
+screen
+*select
+shadow
+showkey
+size
+statusline
+stay
+synonym
+tabkey
+tabline
+tabs
+tabsin
+tabsout
+targetsave
+terminal
+thighlight
+timecheck
+tof
+tofeof
+typeahead
+undoing
+untaa
+*verify
+vershift
+*version
+width
+*word
+wordwrap
+wrap
+xterminal
+zone
+

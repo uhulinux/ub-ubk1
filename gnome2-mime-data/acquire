@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-mime-data-${UB_VERSION}.tar.gz gnome-mime-data-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-mime-data/${UB_VERSION_HEAD2}/

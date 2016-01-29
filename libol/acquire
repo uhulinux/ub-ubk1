@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libol-${UB_VERSION}.tar.gz libol-${UB_VERSION}/
+	http://www.balabit.hu/downloads/files/syslog-ng/sources/libol/${UB_VERSION_HEAD2}/

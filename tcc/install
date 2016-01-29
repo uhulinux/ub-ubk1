@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_install
+install -D -m 755 libtcc.so "$UB_INSTALLDIR"/usr/lib/libtcc.so
+mkdir -p "$UB_INSTALLDIR"/usr/share/doc/tcc/examples
+cp -p examples/*.c "$UB_INSTALLDIR"/usr/share/doc/tcc/examples/

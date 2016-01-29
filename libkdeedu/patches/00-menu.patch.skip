@@ -1,0 +1,189 @@
+diff -Naur kdeedu-4.5.90-orig//blinken/src/blinken.desktop kdeedu-4.5.90//blinken/src/blinken.desktop
+--- kdeedu-4.5.90-orig//blinken/src/blinken.desktop	2010-12-22 10:55:29.000000000 +0100
++++ kdeedu-4.5.90//blinken/src/blinken.desktop	2010-12-23 11:20:35.000000000 +0100
+@@ -148,4 +148,4 @@
+ Comment[zh_CN]=记忆强化游戏
+ Comment[zh_TW]=加強記憶力的遊戲
+ Terminal=false
+-Categories=Qt;KDE;Education;Game;KidsGame;
++Categories=Qt;KDE;Education;Game;KidsGame;X-UHU-Menu/Edutainment/Miscellaneous;
+diff -Naur kdeedu-4.5.90-orig//cantor/src/cantor.desktop kdeedu-4.5.90//cantor/src/cantor.desktop
+--- kdeedu-4.5.90-orig//cantor/src/cantor.desktop	2010-12-10 16:18:27.000000000 +0100
++++ kdeedu-4.5.90//cantor/src/cantor.desktop	2010-12-23 11:21:11.000000000 +0100
+@@ -63,5 +63,5 @@
+ GenericName[zh_CN]=数学软件的 KDE 前端
+ GenericName[zh_TW]=KDE 數學軟體的前端介面
+ Terminal=false
+-Categories=Qt;KDE;Education;Math;
++Categories=Qt;KDE;Education;Math;X-UHU-Menu/Edutainment/Mathematics;
+ MimeType=application/x-cantor;
+diff -Naur kdeedu-4.5.90-orig//kalgebra/src/kalgebra.desktop kdeedu-4.5.90//kalgebra/src/kalgebra.desktop
+--- kdeedu-4.5.90-orig//kalgebra/src/kalgebra.desktop	2010-12-22 10:55:34.000000000 +0100
++++ kdeedu-4.5.90//kalgebra/src/kalgebra.desktop	2010-12-23 11:21:29.000000000 +0100
+@@ -154,4 +154,4 @@
+ Type=Application
+ X-DocPath=kalgebra/index.html
+ Terminal=false
+-Categories=Qt;KDE;Education;Math;
++Categories=Qt;KDE;Education;Math;X-UHU-Menu/Edutainment/Mathematics;
+diff -Naur kdeedu-4.5.90-orig//kalzium/src/kalzium.desktop kdeedu-4.5.90//kalzium/src/kalzium.desktop
+--- kdeedu-4.5.90-orig//kalzium/src/kalzium.desktop	2010-12-22 10:55:34.000000000 +0100
++++ kdeedu-4.5.90//kalzium/src/kalzium.desktop	2010-12-23 11:22:07.000000000 +0100
+@@ -189,4 +189,4 @@
+ GenericName[x-test]=xxPeriodic Table of Elementsxx
+ GenericName[zh_CN]=化学元素周期表
+ GenericName[zh_TW]=元素週期表
+-Categories=Qt;KDE;Education;Science;Chemistry;
++Categories=Qt;KDE;Education;Science;Chemistry;X-UHU-Menu/Edutainment/Science;
+diff -Naur kdeedu-4.5.90-orig//kanagram/src/kanagram.desktop kdeedu-4.5.90//kanagram/src/kanagram.desktop
+--- kdeedu-4.5.90-orig//kanagram/src/kanagram.desktop	2010-12-22 10:55:33.000000000 +0100
++++ kdeedu-4.5.90//kanagram/src/kanagram.desktop	2010-12-23 11:22:37.000000000 +0100
+@@ -180,4 +180,4 @@
+ GenericName[x-test]=xxLetter Order Gamexx
+ GenericName[zh_CN]=字母顺序游戏
+ GenericName[zh_TW]=字母排序遊戲
+-Categories=Qt;KDE;Education;Languages;Game;KidsGame;
++Categories=Qt;KDE;Education;Languages;Game;KidsGame;X-UHU-Menu/Edutainment/Languages;
+diff -Naur kdeedu-4.5.90-orig//kbruch/src/kbruch.desktop kdeedu-4.5.90//kbruch/src/kbruch.desktop
+--- kdeedu-4.5.90-orig//kbruch/src/kbruch.desktop	2010-12-22 10:55:34.000000000 +0100
++++ kdeedu-4.5.90//kbruch/src/kbruch.desktop	2010-12-23 11:23:07.000000000 +0100
+@@ -191,4 +191,4 @@
+ Name[x-test]=xxKBruchxx
+ Name[zh_CN]=KBruch
+ Name[zh_TW]=數學_KBruch
+-Categories=Qt;KDE;Education;Math;
++Categories=Qt;KDE;Education;Math;X-UHU-Menu/Edutainment/Mathematics;
+diff -Naur kdeedu-4.5.90-orig//kgeography/src/kgeography.desktop kdeedu-4.5.90//kgeography/src/kgeography.desktop
+--- kdeedu-4.5.90-orig//kgeography/src/kgeography.desktop	2010-12-22 10:55:33.000000000 +0100
++++ kdeedu-4.5.90//kgeography/src/kgeography.desktop	2010-12-23 11:24:06.000000000 +0100
+@@ -180,4 +180,4 @@
+ Type=Application
+ X-DocPath=kgeography/index.html
+ Terminal=false
+-Categories=Qt;KDE;Education;Geography;
++Categories=Qt;KDE;Education;Geography;X-UHU-Menu/Edutainment/Miscellaneous;
+diff -Naur kdeedu-4.5.90-orig//khangman/src/khangman.desktop kdeedu-4.5.90//khangman/src/khangman.desktop
+--- kdeedu-4.5.90-orig//khangman/src/khangman.desktop	2010-12-22 10:55:29.000000000 +0100
++++ kdeedu-4.5.90//khangman/src/khangman.desktop	2010-12-23 11:24:27.000000000 +0100
+@@ -191,4 +191,4 @@
+ Name[x-test]=xxKHangManxx
+ Name[zh_CN]=KHangMan
+ Name[zh_TW]=語言_KHangMan
+-Categories=Qt;KDE;Education;Languages;Game;KidsGame;
++Categories=Qt;KDE;Education;Languages;Game;KidsGame;X-UHU-Menu/Edutainment/Languages;
+diff -Naur kdeedu-4.5.90-orig//kig/kig/kig.desktop kdeedu-4.5.90//kig/kig/kig.desktop
+--- kdeedu-4.5.90-orig//kig/kig/kig.desktop	2010-12-22 10:55:33.000000000 +0100
++++ kdeedu-4.5.90//kig/kig/kig.desktop	2010-12-23 11:24:53.000000000 +0100
+@@ -186,4 +186,4 @@
+ Type=Application
+ X-DocPath=kig/index.html
+ Terminal=false
+-Categories=Qt;KDE;Education;Math;
++Categories=Qt;KDE;Education;Math;X-UHU-Menu/Edutainment/Mathematics;
+diff -Naur kdeedu-4.5.90-orig//kiten/app/kiten.desktop kdeedu-4.5.90//kiten/app/kiten.desktop
+--- kdeedu-4.5.90-orig//kiten/app/kiten.desktop	2010-12-22 10:55:33.000000000 +0100
++++ kdeedu-4.5.90//kiten/app/kiten.desktop	2010-12-23 11:25:19.000000000 +0100
+@@ -183,4 +183,4 @@
+ Terminal=false
+ Type=Application
+ Icon=kiten
+-Categories=Qt;KDE;Education;Languages;
++Categories=Qt;KDE;Education;Languages;X-UHU-Menu/Edutainment/Languages;
+diff -Naur kdeedu-4.5.90-orig//klettres/src/klettres.desktop kdeedu-4.5.90//klettres/src/klettres.desktop
+--- kdeedu-4.5.90-orig//klettres/src/klettres.desktop	2010-12-22 10:55:29.000000000 +0100
++++ kdeedu-4.5.90//klettres/src/klettres.desktop	2010-12-23 11:25:31.000000000 +0100
+@@ -170,4 +170,4 @@
+ GenericName[x-test]=xxLearn The Alphabetxx
+ GenericName[zh_CN]=学习字母
+ GenericName[zh_TW]=學習字母
+-Categories=Qt;KDE;Education;Languages;
++Categories=Qt;KDE;Education;Languages;X-UHU-Menu/Edutainment/Languages;
+diff -Naur kdeedu-4.5.90-orig//kmplot/kmplot/kmplot.desktop kdeedu-4.5.90//kmplot/kmplot/kmplot.desktop
+--- kdeedu-4.5.90-orig//kmplot/kmplot/kmplot.desktop	2010-12-22 10:55:32.000000000 +0100
++++ kdeedu-4.5.90//kmplot/kmplot/kmplot.desktop	2010-12-23 11:26:02.000000000 +0100
+@@ -133,7 +133,7 @@
+ Name[x-test]=xxKmPlotxx
+ Name[zh_CN]=KmPlot
+ Name[zh_TW]=數學_KmPlot
+-Categories=Qt;KDE;Education;Math;
++Categories=Qt;KDE;Education;Math;X-UHU-Menu/Edutainment/Mathematics;
+ MimeType=application/x-kmplot;
+ GenericName=Mathematical Function Plotter
+ GenericName[ast]=Trazador de funciones matemátiques
+diff -Naur kdeedu-4.5.90-orig//kstars/kstars/kstars.desktop kdeedu-4.5.90//kstars/kstars/kstars.desktop
+--- kdeedu-4.5.90-orig//kstars/kstars/kstars.desktop	2010-12-22 10:55:33.000000000 +0100
++++ kdeedu-4.5.90//kstars/kstars/kstars.desktop	2010-12-23 11:26:31.000000000 +0100
+@@ -199,4 +199,4 @@
+ GenericName[zh_CN]=桌面天文馆
+ GenericName[zh_TW]=桌面星象儀
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Education;Science;Astronomy;
++Categories=Qt;KDE;Education;Science;Astronomy;X-UHU-Menu/Edutainment/Science;
+diff -Naur kdeedu-4.5.90-orig//ktouch/ktouch.desktop kdeedu-4.5.90//ktouch/ktouch.desktop
+--- kdeedu-4.5.90-orig//ktouch/ktouch.desktop	2010-12-22 10:55:33.000000000 +0100
++++ kdeedu-4.5.90//ktouch/ktouch.desktop	2010-12-23 11:27:11.000000000 +0100
+@@ -134,4 +134,4 @@
+ Name[x-test]=xxKTouchxx
+ Name[zh_CN]=KTouch
+ Name[zh_TW]=打字練習_KTouch
+-Categories=Qt;KDE;Education;X-KDE-Edu-Misc;
++Categories=Qt;KDE;Education;X-KDE-Edu-Misc;X-UHU-Menu/Edutainment/Miscellaneous;
+diff -Naur kdeedu-4.5.90-orig//kturtle/src/kturtle.desktop kdeedu-4.5.90//kturtle/src/kturtle.desktop
+--- kdeedu-4.5.90-orig//kturtle/src/kturtle.desktop	2010-12-22 10:55:29.000000000 +0100
++++ kdeedu-4.5.90//kturtle/src/kturtle.desktop	2010-12-23 11:27:32.000000000 +0100
+@@ -116,4 +116,4 @@
+ Icon=kturtle
+ X-DocPath=kturtle/index.html
+ Type=Application
+-Categories=Qt;KDE;Education;ComputerScience;X-KDE-Edu-Misc;
++Categories=Qt;KDE;Education;ComputerScience;X-KDE-Edu-Misc;X-UHU-Menu/Edutainment/Miscellaneous;
+diff -Naur kdeedu-4.5.90-orig//kwordquiz/src/kwordquiz.desktop kdeedu-4.5.90//kwordquiz/src/kwordquiz.desktop
+--- kdeedu-4.5.90-orig//kwordquiz/src/kwordquiz.desktop	2010-12-22 10:55:30.000000000 +0100
++++ kdeedu-4.5.90//kwordquiz/src/kwordquiz.desktop	2010-12-23 11:27:52.000000000 +0100
+@@ -173,5 +173,5 @@
+ GenericName[x-test]=xxFlash Card Trainerxx
+ GenericName[zh_CN]=卡片式训练程序
+ GenericName[zh_TW]=閃卡訓練師
+-Categories=Qt;KDE;Education;Languages;
++Categories=Qt;KDE;Education;Languages;X-UHU-Menu/Edutainment/Languages;
+ 
+diff -Naur kdeedu-4.5.90-orig//marble/src/marble.desktop kdeedu-4.5.90//marble/src/marble.desktop
+--- kdeedu-4.5.90-orig//marble/src/marble.desktop	2010-12-22 10:55:31.000000000 +0100
++++ kdeedu-4.5.90//marble/src/marble.desktop	2010-12-23 11:28:14.000000000 +0100
+@@ -108,5 +108,5 @@
+ GenericName[zh_TW]=桌面星象儀
+ Icon=marble
+ Terminal=false
+-Categories=Qt;KDE;Education;Geography;
++Categories=Qt;KDE;Education;Geography;X-UHU-Menu/Edutainment/Miscellaneous;
+ X-DocPath=marble/index.html
+diff -Naur kdeedu-4.5.90-orig//parley/src/parley.desktop kdeedu-4.5.90//parley/src/parley.desktop
+--- kdeedu-4.5.90-orig//parley/src/parley.desktop	2010-12-22 10:55:33.000000000 +0100
++++ kdeedu-4.5.90//parley/src/parley.desktop	2010-12-23 11:28:36.000000000 +0100
+@@ -54,7 +54,7 @@
+ X-DocPath=parley/index.html
+ Type=Application
+ Terminal=false
+-Categories=Qt;KDE;Education;Languages;
++Categories=Qt;KDE;Education;Languages;X-UHU-Menu/Edutainment/Languages;
+ GenericName=Vocabulary Trainer
+ GenericName[af]=Woordeskat-afrigter
+ GenericName[ast]=Tutor de vocabulariu
+diff -Naur kdeedu-4.5.90-orig//rocs/src/rocs.desktop kdeedu-4.5.90//rocs/src/rocs.desktop
+--- kdeedu-4.5.90-orig//rocs/src/rocs.desktop	2010-12-22 10:55:33.000000000 +0100
++++ kdeedu-4.5.90//rocs/src/rocs.desktop	2010-12-23 11:28:54.000000000 +0100
+@@ -89,4 +89,4 @@
+ Comment[zh_CN]=面向授课场合的图论工具。
+ Comment[zh_TW]=給教授與學生使用的圖形理論工具。
+ Terminal=false
+-Categories=Qt;KDE;Education;Science;
++Categories=Qt;KDE;Education;Science;X-UHU-Menu/Edutainment/Science;
+diff -Naur kdeedu-4.5.90-orig//step/step/step.desktop kdeedu-4.5.90//step/step/step.desktop
+--- kdeedu-4.5.90-orig//step/step/step.desktop	2010-12-22 10:55:34.000000000 +0100
++++ kdeedu-4.5.90//step/step/step.desktop	2010-12-23 11:29:08.000000000 +0100
+@@ -127,4 +127,4 @@
+ Comment[x-test]=xxSimulate physics experimentsxx
+ Comment[zh_CN]=物理实验模拟
+ Comment[zh_TW]=模擬物理實驗
+-Categories=Qt;KDE;Education;Physics;
++Categories=Qt;KDE;Education;Physics;X-UHU-Menu/Edutainment/Science;

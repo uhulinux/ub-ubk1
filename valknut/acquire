@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+valknut-${UB_VERSION}.tar.bz2 valknut-${UB_VERSION}/
+	http://downloads.sourceforge.net/wxdcgui/

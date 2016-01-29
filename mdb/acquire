@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mdb-${UB_VERSION}.zip mdb-${UB_VERSION}/
+	http://www.atbas.org/minidb/

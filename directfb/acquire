@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+DirectFB-${UB_VERSION}.tar.gz DirectFB-${UB_VERSION}/
+	http://directfb.org/downloads/Core/DirectFB-${UB_VERSION_HEAD2}/

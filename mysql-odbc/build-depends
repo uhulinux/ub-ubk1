@@ -1,0 +1,6 @@
+cmake
+mysql-common
+mysql-dev
+openssl-dev
+unixodbc
+unixodbc-dev

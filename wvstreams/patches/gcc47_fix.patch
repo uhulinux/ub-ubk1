@@ -1,0 +1,47 @@
+diff -Naur wvstreams-4.6.1-orig/crypto/wvx509.cc wvstreams-4.6.1/crypto/wvx509.cc
+--- wvstreams-4.6.1-orig/crypto/wvx509.cc	2008-10-23 22:23:49.000000000 +0200
++++ wvstreams-4.6.1/crypto/wvx509.cc	2012-06-12 10:10:45.000000000 +0200
+@@ -1157,7 +1157,7 @@
+         
+         if (ext)
+         {
+-            X509V3_EXT_METHOD *method = X509V3_EXT_get(ext);
++            X509V3_EXT_METHOD *method = (X509V3_EXT_METHOD *) X509V3_EXT_get(ext);
+             if (!method)
+             {
+                 WvDynBuf buf;
+diff -Naur wvstreams-4.6.1-orig/ipstreams/wvunixdgsocket.cc wvstreams-4.6.1/ipstreams/wvunixdgsocket.cc
+--- wvstreams-4.6.1-orig/ipstreams/wvunixdgsocket.cc	2009-05-13 23:42:52.000000000 +0200
++++ wvstreams-4.6.1/ipstreams/wvunixdgsocket.cc	2012-06-12 10:14:13.000000000 +0200
+@@ -1,5 +1,5 @@
+ #include "wvunixdgsocket.h"
+-#ifdef MACOS
++#if defined(MACOS) || defined(__GNUC__)
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #endif
+diff -Naur wvstreams-4.6.1-orig/streams/wvatomicfile.cc wvstreams-4.6.1/streams/wvatomicfile.cc
+--- wvstreams-4.6.1-orig/streams/wvatomicfile.cc	2009-05-13 23:42:52.000000000 +0200
++++ wvstreams-4.6.1/streams/wvatomicfile.cc	2012-06-12 10:15:07.000000000 +0200
+@@ -11,7 +11,8 @@
+ #include "wvfileutils.h"
+ #include "wvstrutils.h"
+ 
+-#ifdef MACOS
++#if defined(MACOS) || defined(__GNUC__)
++#include <sys/types.h>
+ #include <sys/stat.h>
+ #endif
+ 
+diff -Naur wvstreams-4.6.1-orig/utils/wvuid.cc wvstreams-4.6.1/utils/wvuid.cc
+--- wvstreams-4.6.1-orig/utils/wvuid.cc	2008-07-14 21:11:35.000000000 +0200
++++ wvstreams-4.6.1/utils/wvuid.cc	2012-06-12 10:15:34.000000000 +0200
+@@ -7,6 +7,8 @@
+ #include "wvautoconf.h"
+ #include "wvuid.h"
+ 
++#include <unistd.h>
++
+ #if WIN32
+ 
+ 

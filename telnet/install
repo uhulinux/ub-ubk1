@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+make \
+	INSTALLROOT=${UB_INSTALLDIR} \
+	MANDIR=/usr/share/man \
+	install
+
+ln -s in.telnetd ${UB_INSTALLDIR}/usr/sbin/telnetd
+

@@ -1,0 +1,271 @@
+diff -upr libbonobo-2.20.0-pre/activation-server/activation-server-main.c libbonobo-2.20.0-post/activation-server/activation-server-main.c
+--- libbonobo-2.20.0-pre/activation-server/activation-server-main.c	2007-09-17 06:38:36.000000000 -0500
++++ libbonobo-2.20.0-post/activation-server/activation-server-main.c	2007-10-31 19:55:34.000000000 -0600
+@@ -41,6 +41,10 @@
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/socket.h>
++#include <sys/un.h>
++#include <netinet/in.h>
++#include <netdb.h>
+ #include <fcntl.h>
+ #include <signal.h>
+ #include <stdio.h>
+@@ -49,6 +53,9 @@
+ #ifdef HAVE_SYSLOG_H
+ #include <syslog.h>
+ #endif
++#ifdef HAVE_ERRNO_H
++#include <errno.h>
++#endif
+ 
+ #include <libxml/parser.h>
+ 
+@@ -374,6 +381,169 @@ dump_ior (CORBA_ORB orb, int dev_null_fd
+ 	CORBA_free (ior);
+ }
+ 
++/* --- Begin D-Bus watcher --- */
++
++/* Our server most likely has a D-Bus bus reference in its env vars, which
++ * is passed on to activated children. Unfortunately, b-a-s tends to stick
++ * around between sessions, providing a stale D-Bus reference to children
++ * in subsequent sessions. To avoid this, we need to make b-a-s quit when
++ * its session's D-Bus does. The following code does this without linking
++ * to D-Bus. */
++
++#define SOCKET_PATH_MAX_LEN 99
++#define READ_BUF_LEN 128
++
++typedef struct
++{
++        GMainLoop *loop;
++        guint      source_id;
++}
++DBusWatcher;
++
++static gboolean add_quit_with_dbus_watch (GMainLoop *loop);
++
++static int
++connect_unix_socket (const char *path, gboolean abstract)
++{
++        int fd;
++        size_t path_len;
++        struct sockaddr_un addr;  
++        gint val;
++
++        fd = socket (PF_UNIX, SOCK_STREAM, 0);
++        if (fd < 0)
++                return -1;
++
++        memset (&addr, 0, sizeof (addr));
++        addr.sun_family = AF_UNIX;
++        path_len = strlen (path);
++
++        if (abstract)
++        {
++#ifdef HAVE_ABSTRACT_SOCKETS
++                addr.sun_path[0] = '\0'; /* this is what says "use abstract" */
++                path_len++; /* Account for the extra nul byte added to the start of sun_path */
++
++                if (path_len > SOCKET_PATH_MAX_LEN)
++                {
++                        close (fd);
++                        return -1;
++                }
++	
++                strncpy (&addr.sun_path[1], path, path_len);
++#else /* HAVE_ABSTRACT_SOCKETS */
++                close (fd);
++                return -1;
++#endif /* ! HAVE_ABSTRACT_SOCKETS */
++        }
++        else
++        {
++                if (path_len > SOCKET_PATH_MAX_LEN)
++                {
++                        close (fd);
++                        return -1;
++                }
++
++                strncpy (addr.sun_path, path, path_len);
++        }
++
++        if (connect (fd, (struct sockaddr*) &addr, G_STRUCT_OFFSET (struct sockaddr_un, sun_path) + path_len) < 0)
++        {
++                close (fd);
++                return -1;
++        }
++
++        val = fcntl (fd, F_GETFL, 0);
++        fcntl (fd, F_SETFL, val | O_NONBLOCK);
++
++        return fd;
++}
++
++static gboolean
++dbus_channel_activity (GIOChannel *channel, GIOCondition cond, DBusWatcher *watcher)
++{
++        gchar buf [READ_BUF_LEN];
++        gint result;
++        gint fd;
++
++        fd = g_io_channel_unix_get_fd (channel);
++        result = read (fd, buf, READ_BUF_LEN);
++
++        if (result == 0 ||
++            (result < 0 && errno != EINTR))
++        {
++                /* Channel closed - see if we can reconnect */
++
++                g_source_remove (watcher->source_id);
++
++                if (!add_quit_with_dbus_watch (watcher->loop))
++                {
++                        /* DBus daemon went away */
++                        g_main_loop_quit (watcher->loop);
++                }
++
++                g_free (watcher);
++        }
++
++        return TRUE;
++}
++
++static gboolean
++add_quit_with_dbus_watch (GMainLoop *loop)
++{
++        DBusWatcher *watcher;
++        GIOChannel *channel;
++        const gchar *env_path;
++        gchar *path;
++        gchar *p0;
++        gboolean abstract = FALSE;
++        gint fd;
++
++        env_path = g_getenv ("DBUS_SESSION_BUS_ADDRESS");
++        if (!env_path)
++                return FALSE;
++
++        if (g_str_has_prefix (env_path, "unix:abstract="))
++        {
++                abstract = TRUE;
++                path = g_strdup (env_path + strlen ("unix:abstract="));
++        }
++        else if (g_str_has_prefix (env_path, "unix:path="))
++        {
++                path = g_strdup (env_path + strlen ("unix:path="));
++        }
++        else
++        {
++                return FALSE;
++        }
++
++        p0 = strstr (path, ",guid");
++        if (p0)
++                *p0 = '\0';
++
++        fd = connect_unix_socket (path, abstract);
++        g_free (path);
++
++        if (fd < 0)
++                return FALSE;
++
++        watcher = g_new0 (DBusWatcher, 1);
++        watcher->loop = loop;
++
++        channel = g_io_channel_unix_new (fd);
++        g_io_channel_set_close_on_unref (channel, TRUE);
++
++        watcher->source_id = g_io_add_watch (channel,
++                                             G_IO_IN | G_IO_ERR | G_IO_HUP,
++                                             (GIOFunc) dbus_channel_activity,
++                                             watcher);
++        g_io_channel_unref (channel);
++
++        return TRUE;
++}
++
++/* --- End D-Bus watcher --- */
++
+ int
+ main (int argc, char *argv[])
+ {
+@@ -539,6 +709,7 @@ main (int argc, char *argv[])
+ 
+         server_unlock ();
+ 
++        add_quit_with_dbus_watch (main_loop);
+ 	g_main_loop_run (main_loop);
+ 
+         server_lock ();
+diff -upr libbonobo-2.20.0-pre/configure.in libbonobo-2.20.0-post/configure.in
+--- libbonobo-2.20.0-pre/configure.in	2007-09-17 06:22:23.000000000 -0500
++++ libbonobo-2.20.0-post/configure.in	2007-10-31 19:22:25.000000000 -0600
+@@ -97,7 +97,7 @@ dnl Checks for library functions
+ AC_CHECK_FUNCS(usleep nanosleep sigaction setsid)
+ 
+ dnl Checks for headers
+-AC_CHECK_HEADERS(sys/wait.h syslog.h)
++AC_CHECK_HEADERS(sys/wait.h syslog.h errno.h)
+ 
+ #
+ # Start of pkg-config checks
+@@ -162,6 +162,56 @@ if test x$enable_threads != xno; then
+   AC_DEFINE(HAVE_GTHREADS,,[whether we use gthreads])
+ fi
+ 
++# Check for abstract sockets
++
++AC_LANG_PUSH(C)
++AC_CACHE_CHECK([abstract socket namespace],
++		ac_cv_have_abstract_sockets,
++		[AC_RUN_IFELSE([AC_LANG_PROGRAM(
++[[
++#include <sys/types.h>
++#include <stdlib.h>
++#include <string.h>
++#include <stdio.h>
++#include <sys/socket.h>
++#include <sys/un.h>
++#include <errno.h>
++]],
++[[
++  int listen_fd;
++  struct sockaddr_un addr;
++  
++  listen_fd = socket (PF_UNIX, SOCK_STREAM, 0);
++  
++  if (listen_fd < 0)
++    {
++      fprintf (stderr, "socket() failed: %s\n", strerror (errno));
++      exit (1);
++    }
++
++  memset (&addr, '\0', sizeof (addr));
++  addr.sun_family = AF_UNIX;
++  strcpy (addr.sun_path, "X/tmp/fake-socket-path-used-in-configure-test");
++  addr.sun_path[0] = '\0'; /* this is what makes it abstract */
++  
++  if (bind (listen_fd, (struct sockaddr*) &addr, SUN_LEN (&addr)) < 0)
++    {
++       fprintf (stderr, "Abstract socket namespace bind() failed: %s\n", 
++                strerror (errno));
++       exit (1);
++    }
++  else 
++    exit (0);
++]])],
++              [ac_cv_have_abstract_sockets=yes],
++              [ac_cv_have_abstract_sockets=no]
++)])
++AC_LANG_POP(C)
++
++if test x$ac_cv_have_abstract_sockets = xyes ; then
++   AC_DEFINE(HAVE_ABSTRACT_SOCKETS,1,[Have abstract socket namespace])
++fi
++
+ # Checks for Apple Darwin
+ 
+ AC_CHECK_FUNC(_NSGetEnviron, have_ns_getenviron=yes)

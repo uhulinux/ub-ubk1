@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libkgapi-${UB_VERSION}.tar.bz2 libkgapi-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/libkgapi/${UB_VERSION}/src/

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+rm -f configure
+ub_compile \
+	-DHUPNP_ENABLED:BOOL=TRUE

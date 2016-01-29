@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+ub_make CFGDIR=/usr/share/cppcheck/cfg
+
+ub_make DB2MAN=/usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl man
+
+export QTDIR="/usr/lib/qt5"
+cd gui
+qmake-qt5 HAVE_RULES=yes CFGDIR=/usr/share/cppcheck/cfg
+ub_make CFGDIR=/usr/share/cppcheck/cfg

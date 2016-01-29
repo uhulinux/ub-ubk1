@@ -1,0 +1,18 @@
+--- chrpath/Makefile.in.orig	2004-09-19 10:42:53.000000000 +0200
++++ chrpath/Makefile.in	2011-10-30 20:33:53.000000000 +0100
+@@ -446,13 +446,13 @@
+ install-exec-am: install-binPROGRAMS
+ install-exec: install-exec-recursive
+ 
+-install-data-am: install-man install-docDATA
++install-data-am: install-man
+ install-data: install-data-recursive
+ 
+ install-am: all-am
+ 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+ install: install-recursive
+-uninstall-am: uninstall-binPROGRAMS uninstall-man uninstall-docDATA
++uninstall-am: uninstall-binPROGRAMS uninstall-man
+ uninstall: uninstall-recursive
+ all-am: Makefile $(PROGRAMS) $(MANS) $(DATA) config.h
+ all-redirect: all-recursive-am

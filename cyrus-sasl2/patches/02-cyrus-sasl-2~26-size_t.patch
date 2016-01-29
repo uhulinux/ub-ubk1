@@ -1,0 +1,12 @@
+diff -Naur cyrus-sasl-2.1.26-orig/include/sasl.h cyrus-sasl-2.1.26/include/sasl.h
+--- cyrus-sasl-2.1.26-orig/include/sasl.h	2012-10-12 16:05:48.000000000 +0200
++++ cyrus-sasl-2.1.26/include/sasl.h	2013-10-29 18:20:02.000000000 +0100
+@@ -223,6 +223,8 @@
+  * they must be called before all other SASL functions:
+  */
+ 
++#include <sys/types.h>
++
+ /* memory allocation functions which may optionally be replaced:
+  */
+ typedef void *sasl_malloc_t(size_t);

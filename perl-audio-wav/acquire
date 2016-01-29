@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Audio-Wav-${UB_VERSION}.tar.gz Audio-Wav-${UB_VERSION}/
+	http://search.cpan.org/CPAN/modules/by-module/Audio/

@@ -1,0 +1,28 @@
+--- imap-2004g/src/osdep/unix/Makefile.linux-patch	2006-01-05 09:21:19.000000000 -0500
++++ imap-2004g/src/osdep/unix/Makefile	2006-01-05 09:22:06.000000000 -0500
+@@ -83,12 +83,12 @@
+ LOGINPW=std
+ SIGTYPE=bsd
+ CRXTYPE=std
+-ACTIVEFILE=/usr/lib/news/active
+-SPOOLDIR=/usr/spool
++ACTIVEFILE=/var/lib/news/active
++SPOOLDIR=/var/spool
+ MAILSPOOL=$(SPOOLDIR)/mail
+ NEWSSPOOL=$(SPOOLDIR)/news
+-RSHPATH=/usr/ucb/rsh
+-LOCKPGM=/etc/mlock
++RSHPATH=/usr/bin/rsh
++#LOCKPGM=/etc/mlock
+ 
+ 
+ # Default formats for creating new mailboxes and for empty mailboxes in the
+@@ -455,7 +455,7 @@
+ 	 SPOOLDIR=/var/spool \
+ 	 ACTIVEFILE=/var/lib/news/active \
+ 	 RSHPATH=/usr/bin/rsh \
+-	 BASECFLAGS="-g -fno-omit-frame-pointer $(GCCOPTLEVEL)" \
++	 BASECFLAGS="-g ${RPM_OPT_FLAGS}" \
+ 	 BASELDFLAGS="$(PAMLDFLAGS)"
+ 
+ lnx:	# Linux non-shadow passwords

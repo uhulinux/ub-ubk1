@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ToscaWidgets-${UB_VERSION}.tar.gz ToscaWidgets-${UB_VERSION}/
+	http://pypi.python.org/packages/source/T/ToscaWidgets/

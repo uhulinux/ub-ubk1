@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cflow-${UB_VERSION}.tar.bz2 cflow-${UB_VERSION}/
+	ftp://download.gnu.org.ua/pub/release/cflow/

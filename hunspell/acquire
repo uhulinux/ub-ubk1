@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+hunspell-${UB_VERSION}.tar.gz hunspell-${UB_VERSION}/
+	http://download.sourceforge.net/hunspell/

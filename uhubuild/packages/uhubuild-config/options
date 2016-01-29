@@ -1,0 +1,4 @@
+skip-autodepend
+skip-postinst
+skip-postrm
+skip-prerm

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mono-addins-${UB_VERSION}.tar.bz2 mono-addins-${UB_VERSION}/
+	http://download.mono-project.com/sources/mono-addins/

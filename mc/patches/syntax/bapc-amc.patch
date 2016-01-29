@@ -1,0 +1,213 @@
+diff -Naurdp mc-4.6.1.orig/misc/syntax/bapc.syntax mc-4.6.1/misc/syntax/bapc.syntax
+--- mc-4.6.1.orig/misc/syntax/bapc.syntax	1970-01-01 01:00:00.000000000 +0100
++++ mc-4.6.1/misc/syntax/bapc.syntax	2005-09-05 19:04:31.194103171 +0200
+@@ -0,0 +1,209 @@
++# BAssPasC syntax definitions v1.0 for Midnight Commander 4.1.35 and 4.5.x
++# (C) 1999 by A'rpi/ESP-team  <arpi@esp-team.scene.hu>
++# BAPC is a programming language, visit http://esp-team.scene.hu for details!
++
++context default brightcyan
++
++# main BAPC commands:
++    keyword whole VAR white
++    keyword whole CONST white
++
++    keyword whole USES white
++    keyword whole INDIRECT white
++    keyword whole INDIRECTALL white
++    keyword whole INCLUDEPROC white
++    keyword whole INCLUDE white
++    keyword wholeleft INCLUDED white
++    keyword whole ALIGN white
++
++    keyword whole SMOV white
++    keyword whole RMOV white
++    keyword whole LDDM white
++    keyword whole SDDM white
++    keyword whole LDD white
++    keyword whole SDD white
++
++# IF-EQU
++    keyword whole if white
++    keyword whole ifn white
++    keyword whole else white
++    keyword whole endif white
++    
++# BAPC conditionals:
++    keyword whole IF white
++    keyword whole IFS white
++    keyword whole IFN white
++    keyword whole IFNS white
++    keyword whole DO white
++    keyword whole DOCMD white
++    keyword whole THEN white
++    keyword whole THENCMD white
++    keyword whole ELSE white
++    keyword whole ENDIF white
++    keyword whole WHILE white
++    keyword whole ENDWHILE white
++    keyword whole REPEAT white
++    keyword whole UNTIL white
++    keyword whole WITH white
++    keyword whole ENDWITH white
++    keyword whole CASE white
++    keyword whole END white
++    keyword whole ENDCASE white
++    keyword whole ENDM white
++# FOR is too complex, include only the most importants:
++    keyword whole FOR white
++    keyword whole FORL(+) white
++    keyword whole FORLP(+) white
++    keyword whole TO white
++    keyword whole STEP white
++    keyword whole NEXT white
++
++    keyword whole FLAG white
++    keyword whole CXZ white
++    keyword wholeright \s+:S white
++    keyword wholeright \s+:NS white
++    keyword whole AND white
++    keyword whole OR white
++    keyword whole NOT white
++    keyword whole IN[*] white
++    keyword whole NIN[*] white
++
++# one-line commands:
++    keyword wholeleft REP\*+\s white
++    keyword whole REP(+) white
++    keyword whole REP32 white
++    keyword whole PUSH(*) white
++    keyword whole PUSH white
++    keyword whole POP(*) white
++    keyword whole POP white
++
++# BAPC types:
++    keyword whole OFS white
++    keyword whole STROFS white
++    keyword whole OFSSTR white
++    keyword whole BPT white
++    keyword whole WPT white
++    keyword whole DPT white
++    keyword whole QPT white
++    keyword whole TPT white
++    keyword whole DB white
++    keyword whole DW white
++    keyword whole DD white
++    keyword whole DQ white
++    keyword whole DT white
++    keyword whole DT white
++    keyword whole PROC white
++    keyword whole NEAR white
++    keyword whole FAR white
++    keyword whole SHORT white
++
++# STDBAPC instructions
++    keyword whole WRITE yellow
++    keyword whole WRITELN yellow
++    keyword whole WRITESTR yellow
++    keyword whole GOTOXY yellow
++    keyword whole WHEREXY yellow
++    keyword whole UPCASE yellow
++    keyword whole ALDIV yellow
++    keyword whole DOSEXIT yellow
++    keyword whole EXIT yellow
++
++    keyword whole WAITKEY yellow
++    keyword whole READKEY yellow
++    keyword whole READSHIFT yellow
++    keyword wholeleft GETKEY yellow
++    keyword whole KEYPRESSED yellow
++    keyword whole KEYPRESSEDP yellow
++    
++    keyword whole FILEOPEN yellow
++    keyword whole FILEREAD yellow
++    keyword whole FILEWRITE yellow
++    keyword whole FILECLOSE yellow
++    keyword whole FILEPOS yellow
++    keyword whole FILEAPPEND yellow
++
++# BAPC library instructions
++# TOO MANY TO INCLUDE HERE :(
++
++# C-style comments:  /* ... */    
++    keyword /\* green
++    keyword \*/ green
++# BAPC1-style comments:					! fix it !
++    keyword whole linestart .COMMENT green
++    keyword whole linestart .ENDCOMM green
++    keyword whole linestart .ENDCOMMENT green
++    keyword whole linestart .comment green
++    keyword whole linestart .endcomm green
++    keyword whole linestart .endcomment green
++
++# BAPC command separator:
++    keyword // brightmagenta
++
++    keyword {+\s brightmagenta
++    keyword {+\n brightmagenta
++    keyword } brightmagenta
++
++# BAPC operators:
++    keyword := white
++    keyword equ white
++    keyword EQU white
++    keyword -> white
++    keyword => white
++    keyword ?= white
++    keyword >> white
++    keyword << white
++    keyword >0> white
++    keyword <0< white
++    keyword >C> white
++    keyword <C< white
++    keyword \+= white
++    keyword -= white
++    keyword \+\+ white
++    keyword -- white
++    keyword ! yellow
++
++# strings:
++    keyword '*' brightgreen
++
++# addressing:
++    keyword [*] cyan
++    
++# other operators:    
++    keyword \+ yellow
++    keyword > yellow
++    keyword < yellow
++    keyword \* yellow
++#    keyword / yellow
++    keyword % yellow
++    keyword != yellow
++    keyword == yellow
++
++    keyword ( white
++    keyword ) white
++
++    keyword = white
++    keyword - yellow
++    
++    keyword , white
++    keyword : white
++    
++# one-line comment:
++    keyword ;*\n lightgray
++
++context exclusive /\* \*/ lightgray
++
++# These rules don't work :(  but why?????
++# context exclusive linestart .COMMENT .ENDCOMM lightgray
++# context exclusive linestart .comment .endcomm lightgray
++
++# Compiler control:
++context linestart . \n brightred
++    keyword ;*\n lightgray
++    keyword \s+\n white
++    keyword \s+\s white
++
++# macro def.:
++context linestart # \n brightred
++
++
++###############################################################################

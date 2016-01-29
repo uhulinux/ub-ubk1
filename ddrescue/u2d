@@ -1,0 +1,1 @@
+urllist http://www.garloff.de/kurt/linux/ddrescue/ | splitver '^dd_rescue-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

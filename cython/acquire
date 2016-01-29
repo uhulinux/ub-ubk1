@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Cython-${UB_VERSION}.tar.gz Cython-${UB_VERSION}/
+	http://pypi.python.org/packages/source/C/Cython/

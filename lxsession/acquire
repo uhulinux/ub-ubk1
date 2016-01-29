@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxsession-$UB_VERSION.tar.gz lxsession-$UB_VERSION/
+	http://downloads.sourceforge.net/lxde/

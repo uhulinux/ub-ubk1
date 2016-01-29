@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+syncevolution-${UB_VERSION}.tar.gz syncevolution-${UB_VERSION}/
+	http://downloads.syncevolution.org/syncevolution/sources/

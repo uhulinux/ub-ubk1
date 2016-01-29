@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=sdedit
+Comment=sd_editor
+Comment[hu]=Folyamatábra szerkesztő
+Exec=sdedit.sh %F
+Icon=sdedit
+Terminal=false
+Type=Application
+Categories=Office;FlowChart;

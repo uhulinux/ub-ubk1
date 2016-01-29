@@ -1,0 +1,14 @@
+diff -urN cronie-1.4.11.orig/pam/crond cronie-1.4.11/pam/crond
+--- cronie-1.4.11.orig/pam/crond	2013-07-18 14:27:08.000000000 +0200
++++ cronie-1.4.11/pam/crond	2014-04-29 10:41:00.620325034 +0200
+@@ -4,7 +4,7 @@
+ #
+ # No PAM authentication called, auth modules not needed
+ account    required   pam_access.so
+-account    include    password-auth
++account    include    system-auth
+ session    required   pam_loginuid.so
+-session    include    password-auth
+-auth       include    password-auth
++session    include    system-auth
++auth       include    system-auth

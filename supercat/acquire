@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+supercat-$UB_VERSION.tar.gz supercat-$UB_VERSION/
+	http://supercat.nosredna.net/

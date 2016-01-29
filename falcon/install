@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_install
+
+ln -s /usr/include/falcon0.9.6/falcon "${UB_INSTALLDIR}/usr/include/falcon"

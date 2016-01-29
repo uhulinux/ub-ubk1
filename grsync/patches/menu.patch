@@ -1,0 +1,18 @@
+--- a/grsync.desktop.in.orig	2013-02-15 19:51:39.000000000 +0100
++++ a/grsync.desktop.in	2013-02-15 19:52:27.000000000 +0100
+@@ -4,7 +4,7 @@
+ Terminal=false
+ Type=Application
+ MimeType=application/x-grsync-session;
+-Categories=Application;System;
++Categories=GTK;System;X-UHU-Menu/Tools/File_Managers;
+ Comment=Synchronize files with rsync
+ Comment[fr]=Interface GTK pour rsync
+ Comment[it]=Sincronizza file con rsync
+@@ -12,5 +12,5 @@
+ Comment[ru]=GTK интерфейс для rsync
+ Comment[tr]=Rsync için bir GTK grafik arayüzü
+ Comment[hr]=Sinkronizacija datoteka pomoću rsync-a
+-Exec=@prefix@/bin/@PACKAGE@ -i %f
++Exec=@PACKAGE@ -i %f
+ @OTHER_DESKTOP_ENTRIES@

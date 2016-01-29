@@ -1,0 +1,1 @@
+urllist http://dist.codehaus.org/boo/distributions/ | splitver '^boo-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

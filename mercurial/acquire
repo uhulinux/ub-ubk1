@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mercurial-${UB_VERSION}.tar.gz mercurial-${UB_VERSION}/
+	http://www.selenic.com/mercurial/release/

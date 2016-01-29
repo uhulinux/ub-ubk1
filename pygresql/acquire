@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PyGreSQL-${UB_VERSION}.tgz PyGreSQL-${UB_VERSION}/
+	https://pypi.python.org/packages/source/P/PyGreSQL/

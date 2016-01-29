@@ -1,0 +1,1 @@
+urllist 'https://bitbucket.org/tortoisehg/targz/downloads' | splitver '^tortoisehg-([0-9]+\.[0-9]+(\.[0-9]+)?).*$' | sort -V | tail -n 1

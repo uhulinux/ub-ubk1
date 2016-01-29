@@ -1,0 +1,1 @@
+urllist http://www.freedesktop.org/software/desktop-file-utils/releases/ | splitver '^desktop-file-utils-([0-9.]+).tar.xz$' | sort -V | tail -n 1

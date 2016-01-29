@@ -1,0 +1,116 @@
+diff -Naurd orig/configure mod/configure
+--- orig/configure	2010-02-11 10:46:35.000000000 +0100
++++ mod/configure	2010-02-13 23:36:24.000000000 +0100
+@@ -5330,7 +5330,7 @@
+ am_cv_prog_cc_stdc=$ac_cv_prog_cc_stdc
+ 
+ 
+-HELP2MAN=${HELP2MAN-"${am_missing_run}help2man"}
++HELP2MAN="true"}
+ 
+ if test -n "$ac_tool_prefix"; then
+   # Extract the first word of "${ac_tool_prefix}ranlib", so it can be a program name with args.
+diff -Naurd orig/doc/diffutils.info mod/doc/diffutils.info
+--- orig/doc/diffutils.info	2010-02-11 10:26:31.000000000 +0100
++++ mod/doc/diffutils.info	2010-02-13 23:41:15.000000000 +0100
+@@ -1878,6 +1878,15 @@
+ the first time, you should break the link and replace it with a regular
+ copy.
+ 
++   In UHU-Linux, `diff' was modified to assume that two files are the
++same too if their size, modification timestamp, hard link count,
++permissions, owner and group are equal. This causes significant speedup
++on large trees that are a copy of each other (e.g. created by `cp -a'),
++but there is a chance that `diff' will miss different files if their
++timestamps were intentionally tampered with. The original behavior is
++reverted by setting the `DIFF_DONT_CHEAT' environment variable to any
++value.
++
+    You can also affect the performance of GNU `diff' by giving it
+ options that change the way it compares files.  Performance has more
+ than one dimension.  These options improve one aspect of performance at
+diff -Naurd orig/man/diff.1 mod/man/diff.1
+--- orig/man/diff.1	2010-02-11 10:47:00.000000000 +0100
++++ mod/man/diff.1	2010-02-13 23:44:09.000000000 +0100
+@@ -206,6 +206,24 @@
+ If \fB\-\-from\-file\fR or \fB\-\-to\-file\fR is given, there are no restrictions on FILES.
+ If a FILE is `\-', read standard input.
+ Exit status is 0 if inputs are the same, 1 if different, 2 if trouble.
++.SH NOTE
++Important note to the users of UHU-Linux:
++.PP
++The original
++.B diff
++utility assumes that two regular files are identical if their device and
++inode numbers are the same, i.e. they are hard links to each other. In
++UHU-Linux,
++.B diff
++assumes that two files are the same too if their size, modification
++timestamp, hard link count, permissions, owner and group are equal. This
++causes significant speedup on large trees that are a copy of each other
++(e.g. created by `cp -a'), but there is a chance that
++.B diff
++will miss different files if their timestamps were intentionally tampered
++with. The original behavior is reverted by setting the
++.B DIFF_DONT_CHEAT
++environment variable to any value.
+ .SH AUTHOR
+ Written by Paul Eggert, Mike Haertel, David Hayes,
+ Richard Stallman, and Len Tower.
+diff -Naurd orig/src/diff.c mod/src/diff.c
+--- orig/src/diff.c	2010-02-11 10:39:17.000000000 +0100
++++ mod/src/diff.c	2010-02-13 23:51:39.000000000 +0100
+@@ -104,7 +104,11 @@
+ /* Report files compared that are the same (-s).
+    Normally nothing is output when that happens.  */
+ static bool report_identical_files;
+-
++
++/* Cheat: assume that files with same size and timestamp and other stuff
++   are identical.  */
++static bool cheat;
++
+ static char const shortopts[] =
+ "0123456789abBcC:dD:eEfF:hHiI:lL:nNpPqrsS:tTuU:vwW:x:X:y";
+ 
+@@ -620,6 +624,7 @@
+ 	}
+       prev = c;
+     }
++  cheat = (getenv("DIFF_DONT_CHEAT") == NULL);
+ 
+   if (output_style == OUTPUT_UNSPECIFIED)
+     {
+@@ -1180,9 +1185,11 @@
+   else if ((same_files
+ 	    = (cmp.file[0].desc != NONEXISTENT
+ 	       && cmp.file[1].desc != NONEXISTENT
+-	       && 0 < same_file (&cmp.file[0].stat, &cmp.file[1].stat)
++	       && (( 0 < same_file (&cmp.file[0].stat, &cmp.file[1].stat)
+ 	       && same_file_attributes (&cmp.file[0].stat,
+-					&cmp.file[1].stat)))
++					&cmp.file[1].stat))
++	       || (cheat && most_likely_same_content (&cmp.file[0].stat,
++						      &cmp.file[1].stat)))))
+ 	   && no_diff_means_no_output)
+     {
+       /* The two named files are actually the same physical file.
+diff -Naurd orig/src/system.h mod/src/system.h
+--- orig/src/system.h	2010-02-05 09:10:15.000000000 +0100
++++ mod/src/system.h	2010-02-13 23:53:00.000000000 +0100
+@@ -227,4 +227,15 @@
+     && (s)->st_ctime == (t)->st_ctime)
+ #endif
+ 
++#ifndef most_likely_same_content
++# define most_likely_same_content(s, t) \
++   ((s)->st_mode == (t)->st_mode \
++    && S_ISREG ((s)->st_mode) \
++    && (s)->st_nlink == (t)->st_nlink \
++    && (s)->st_uid == (t)->st_uid \
++    && (s)->st_gid == (t)->st_gid \
++    && (s)->st_size == (t)->st_size \
++    && (s)->st_mtime == (t)->st_mtime)
++#endif
++
+ #define STREQ(a, b) (strcmp (a, b) == 0)

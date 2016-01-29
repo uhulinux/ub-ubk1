@@ -1,0 +1,4 @@
+	/usr/include/c++
+	/usr/lib/libstdc++*.a
+	/usr/lib/libstdc++*.la
+	/usr/lib/libstdc++*.so

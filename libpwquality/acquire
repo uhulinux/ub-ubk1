@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libpwquality-${UB_VERSION}.tar.bz2 libpwquality-${UB_VERSION}/
+	https://fedorahosted.org/releases/l/i/libpwquality/

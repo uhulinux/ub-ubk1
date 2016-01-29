@@ -1,0 +1,11 @@
+gtk-dev
+intltool
+itstool
+libsm-dev
+libxslt-dev
+libxt-dev
+pangox-compat-dev
+systemd-dev
+webkitgtk-dev
+xz-dev
+yelp-xsl

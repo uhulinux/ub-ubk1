@@ -1,0 +1,1 @@
+sflist ep128emu ep128emu2 | splitver 'ep128emu-([0-9.]+)$' | sort -V | tail -n 1

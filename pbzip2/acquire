@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+pbzip2-${UB_VERSION}.tar.gz pbzip2-${UB_VERSION}/
+	http://compression.ca/pbzip2/
+

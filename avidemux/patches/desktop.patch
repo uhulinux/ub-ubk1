@@ -1,0 +1,18 @@
+diff -Naur orig/avidemux2.desktop mod/avidemux2.desktop
+--- orig/avidemux2.desktop	2014-03-12 07:15:23.000000000 +0100
++++ mod/avidemux2.desktop	2014-03-18 16:02:12.494184625 +0100
+@@ -1,10 +1,11 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+-Name=avidemux2
++Name=avidemux
+ Comment=Video Editor
+-Exec=avidemux2_gtk
++Comment[hu]=Videó szerkesztő
++Exec=avidemux
+ MimeType=video/mpeg;video/quicktime;video/x-msvideo;video/x-anim;audio/x-mp3;audio/x-mp2;
+ Icon=avidemux
+ Terminal=false
+ Type=Application
+-Categories=Application;AudioVideo
++Categories=Application;AudioVideo;X-UHU-Menu/Multimedia/VideoEdit;

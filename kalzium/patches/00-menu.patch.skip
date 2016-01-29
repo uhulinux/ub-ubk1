@@ -1,0 +1,9 @@
+diff -Naur kalzium-4.6.90-orig//src/kalzium.desktop kalzium-4.6.90//src/kalzium.desktop
+--- kalzium-4.6.90-orig//src/kalzium.desktop	2011-05-20 22:33:53.000000000 +0200
++++ kalzium-4.6.90//src/kalzium.desktop	2011-06-26 09:00:12.000000000 +0200
+@@ -192,4 +192,4 @@
+ GenericName[x-test]=xxPeriodic Table of Elementsxx
+ GenericName[zh_CN]=化学元素周期表
+ GenericName[zh_TW]=元素週期表
+-Categories=Qt;KDE;Education;Science;Chemistry;
++Categories=Qt;KDE;Education;Science;Chemistry;X-UHU-Menu/Edutainment/Science;

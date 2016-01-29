@@ -1,0 +1,1 @@
+sflist squirrel squirrel2 | splitver '^squirrel%20([0-9.]+)%20stable$' | sort -V | tail -n 1

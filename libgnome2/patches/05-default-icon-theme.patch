@@ -1,0 +1,12 @@
+diff -Naur libgnome-2.8.0.orig/schemas/desktop_gnome_interface.schemas.in libgnome-2.8.0/schemas/desktop_gnome_interface.schemas.in
+--- libgnome-2.8.0.orig/schemas/desktop_gnome_interface.schemas.in.in	2004-08-18 09:21:38.000000000 +0200
++++ libgnome-2.8.0/schemas/desktop_gnome_interface.schemas.in.in	2004-09-20 19:23:20.275879510 +0200
+@@ -130,7 +130,7 @@
+       <applyto>/desktop/gnome/interface/icon_theme</applyto>
+       <owner>gnome</owner>
+       <type>string</type>
+-      <default>gnome</default>
++      <default>UHU</default>
+       <locale name="C">
+         <short>Icon Theme</short>
+         <long>Icon theme to use for the panel, nautilus etc.</long>

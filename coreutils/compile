@@ -1,0 +1,16 @@
+#!/bin/sh -eux
+
+# ouch!
+cd po
+msgfmt -o hu.gmo hu.po
+cd ..
+
+sed -e 's/|| @PRI_MACROS_BROKEN@//g' -i lib/inttypes.in.h
+
+autoreconf -fi
+ub_configure \
+	--enable-pam
+ub_make \
+	su_LDFLAGS="-lpam -lpam_misc"
+
+#make -C src usleep

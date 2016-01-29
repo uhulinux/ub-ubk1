@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+vdr-skinelchi-${UB_VERSION}.tar.bz2 skinelchi-${UB_VERSION}/
+  http://firefly.vdr-developer.org/skinelchi/

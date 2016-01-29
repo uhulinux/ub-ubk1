@@ -1,0 +1,11 @@
+--- a/data/rhythmbox.desktop.in.in.orig	2012-01-15 23:08:29.000000000 +0100
++++ a/data/rhythmbox.desktop.in.in	2012-01-15 23:08:58.000000000 +0100
+@@ -8,7 +8,7 @@
+ Type=Application
+ Icon=rhythmbox
+ X-GNOME-DocPath=rhythmbox/rhythmbox.xml
+-Categories=GNOME;GTK;AudioVideo;Audio;Player;
++Categories=GNOME;GTK;AudioVideo;Audio;Player;X-UHU-Menu/Multimedia/MusicPlayers;
+ MimeType=application/x-ogg;application/ogg;audio/x-vorbis+ogg;audio/x-scpls;audio/x-mp3;audio/x-mpeg;audio/mpeg;audio/x-mpegurl;audio/x-flac;audio/mp4;@ITMS_HANDLER@
+ StartupNotify=true
+ X-GNOME-Bugzilla-Bugzilla=GNOME

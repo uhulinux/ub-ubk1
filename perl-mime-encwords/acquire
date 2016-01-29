@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+MIME-EncWords-${UB_VERSION}.tar.gz MIME-EncWords-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/MIME/

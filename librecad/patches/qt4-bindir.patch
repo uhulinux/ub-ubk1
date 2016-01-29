@@ -1,0 +1,21 @@
+diff -Naur orig/scripts/postprocess-unix.sh patched/scripts/postprocess-unix.sh
+--- orig/scripts/postprocess-unix.sh	2013-06-09 03:05:04.000000000 +0200
++++ patched/scripts/postprocess-unix.sh	2013-08-05 02:37:26.416160927 +0200
+@@ -9,7 +9,7 @@
+ 
+ # Generate Help Files
+ cd "${DOCDIR}"
+-qcollectiongenerator LibreCADdoc.qhcp
++/usr/lib/qt4/bin/qcollectiongenerator LibreCADdoc.qhcp
+ 
+ cd "${THISDIR}"
+ 
+@@ -25,7 +25,7 @@
+ find "${SPTDIR}"/library -type f -iname *.dxf | sed 's/^.*support//' | xargs -IFILES  cp "${SPTDIR}"/FILES "${RESOURCEDIR}"/FILES
+ 
+ # Generate translations
+-lrelease "${LCDIR}"/src/src.pro
++/usr/lib/qt4/bin/lrelease "${LCDIR}"/src/src.pro
+ mkdir -p "${RESOURCEDIR}"/qm
+  
+ # Go into translations directory

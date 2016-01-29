@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR/etc"
+cp "microcode.dat" "$UB_INSTALLDIR/etc/"

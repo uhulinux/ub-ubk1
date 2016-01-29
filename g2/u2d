@@ -1,0 +1,1 @@
+sflist g2 g2 | splitver '^g2-([0-9.]+)$' | sort -V | tail -n 1

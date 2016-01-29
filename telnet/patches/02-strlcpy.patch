@@ -1,0 +1,19 @@
+diff -urN netkit-telnet-0.18-pre1a.orig/telnet/utilities.c netkit-telnet-0.18-pre1a/telnet/utilities.c
+--- netkit-telnet-0.18-pre1a.orig/telnet/utilities.c	2002-08-12 01:23:33.000000000 +0200
++++ netkit-telnet-0.18-pre1a/telnet/utilities.c	2003-07-01 01:26:31.000000000 +0200
+@@ -80,13 +80,13 @@
+     if (file && strcmp(file, "-")) {
+ 	NetTrace = fopen(file, "w");
+ 	if (NetTrace) {
+-	    strlcpy(NetTraceFile, file, sizeof(NetTraceFile));
++	    strncpy(NetTraceFile, file, sizeof(NetTraceFile));
+ 	    return;
+ 	}
+ 	fprintf(stderr, "Cannot open %s.\n", file);
+     }
+     NetTrace = stdout;
+-    strlcpy(NetTraceFile, "(standard output)", sizeof(NetTraceFile));
++    strncpy(NetTraceFile, "(standard output)", sizeof(NetTraceFile));
+ }
+ 
+ #define BYTES_PER_LINE	32

@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_install
+
+cd "$UB_INSTALLDIR"/usr/lib
+for i in libdca*; do
+	ln -sf "$i" "${i/dca/dts}"
+done

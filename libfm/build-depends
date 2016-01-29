@@ -1,0 +1,12 @@
+dbus-glib-dev
+desktop-file-utils
+exiv2-dev
+gettext
+glib-dev
+gtk2-dev
+intltool
+menu-cache-dev
+shared-mime-info
+systemd-dev
+udisks
+vala-dev

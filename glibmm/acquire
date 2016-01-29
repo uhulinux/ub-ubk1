@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+glibmm-${UB_VERSION}.tar.xz glibmm-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/glibmm/${UB_VERSION_HEAD2}/

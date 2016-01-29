@@ -1,0 +1,9 @@
+diff -Naur kanagram-4.8.80-orig/src/desktop/kanagram.desktop kanagram-4.8.80/src/desktop/kanagram.desktop
+--- kanagram-4.8.80-orig/src/desktop/kanagram.desktop	2012-05-23 02:19:40.000000000 +0200
++++ kanagram-4.8.80/src/desktop/kanagram.desktop	2012-06-05 11:52:31.000000000 +0200
+@@ -189,4 +189,4 @@
+ GenericName[x-test]=xxLetter Order Gamexx
+ GenericName[zh_CN]=字母顺序游戏
+ GenericName[zh_TW]=字母排序遊戲
+-Categories=Qt;KDE;Education;Languages;Game;KidsGame;
++Categories=Qt;KDE;Education;Languages;Game;KidsGame;X-UHU-Menu/Edutainment/Languages;

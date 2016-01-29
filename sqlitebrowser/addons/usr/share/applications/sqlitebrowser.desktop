@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=sqlitebrowser
+Comment=sqlite browser
+Comment[hu]=Sqlite grafikus felület
+Exec=sqlitebrowser
+Icon=sqlitebrowser
+Terminal=false
+Type=Application
+Categories=Office;Database;

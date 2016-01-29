@@ -1,0 +1,11 @@
+bash-completion
+dbus-dev
+gobject-introspection-dev
+intltool
+lcms2-dev
+libgusb-dev
+libusb-dev
+polkit-dev
+sqlite-dev
+systemd-dev
+vala-dev

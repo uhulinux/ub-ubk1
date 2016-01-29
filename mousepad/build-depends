@@ -1,0 +1,9 @@
+dbus-glib-dev
+expat-dev
+gtksourceview2-dev
+intltool
+libsm-dev
+libxfcegui4-dev
+perl-xml-parser
+startup-notification-dev
+xcb-util-dev

@@ -1,0 +1,12 @@
+diff -Naur easystroke-0.6.0-orig/easystroke.desktop.in easystroke-0.6.0/easystroke.desktop.in
+--- easystroke-0.6.0-orig/easystroke.desktop.in	2013-03-27 16:52:38.000000000 +0100
++++ easystroke-0.6.0/easystroke.desktop.in	2013-07-13 20:52:42.000000000 +0200
+@@ -5,7 +5,7 @@
+ Terminal=false
+ Exec=easystroke
+ Icon=easystroke
+-Categories=GTK;Utility;Accessibility;
++Categories=GTK;Utility;Accessibility;X-UHU-Menu/Settings;
+ Actions=About;Enable;Disable;Quit
+ _Comment=Control your desktop using mouse gestures
+ 

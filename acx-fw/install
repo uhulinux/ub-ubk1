@@ -1,0 +1,5 @@
+#!/bin/bash -eu
+
+mkdir -p "$UB_INSTALLDIR"/lib/firmware/
+
+cp {acx100_1.0.9-USB,acx100_1.9.8.b,acx111_2.3.1.31}/tiacx* "$UB_INSTALLDIR"/lib/firmware/

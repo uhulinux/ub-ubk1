@@ -1,0 +1,38 @@
+diff -Naurd ijs-v1.00-Sep092003.orig/Makefile.in ijs-v1.00-Sep092003/Makefile.in
+--- ijs-v1.00-Sep092003.orig/Makefile.in	2003-08-29 23:36:44.000000000 +0200
++++ ijs-v1.00-Sep092003/Makefile.in	2003-10-02 14:40:21.000000000 +0200
+@@ -13,7 +13,8 @@
+ #SHARED_OBJ=.dylib
+ 
+ FE=-o 
+-IJS_EXEC_SERVER=ijs_exec_unix$(OBJ)
++IJS_CLIENT_PLATFORM=ijs_client_unix$(OBJ)
++IJS_SERVER_PLATFORM=ijs_server_unix$(OBJ)
+ RM=rm -f
+ AR=ar
+ ARFLAGS=qc
+@@ -34,7 +35,7 @@
+ 
+ all:	libijs.a libijs$(SHARED_OBJ) ijs_client_example$(EXE) ijs_server_example$(EXE)
+ 
+-LIB_OBJS=ijs$(OBJ) ijs_client$(OBJ) ijs_server$(OBJ) $(IJS_EXEC_SERVER)
++LIB_OBJS=ijs$(OBJ) ijs_client$(OBJ) $(IJS_CLIENT_PLATFORM) ijs_server$(OBJ) $(IJS_SERVER_PLATFORM)
+ 
+ libijs.a:	$(LIB_OBJS)
+ 	rm -f $@
+@@ -47,11 +48,11 @@
+ libijs$(SHARED_OBJ):	$(LIB_OBJS)
+ 	$(CC) $(SHARED_LDFLAGS) $^ -o $@
+ 
+-ijs_client_example$(EXE):	ijs_client_example$(OBJ) ijs_client$(OBJ) $(IJS_COMMON_OBJ) $(IJS_EXEC_SERVER)
+-	$(CC) $(CFLAGS) $(FE)ijs_client_example$(EXE) ijs_client_example$(OBJ) ijs_client$(OBJ) $(IJS_COMMON_OBJ) $(IJS_EXEC_SERVER) $(LDLIBS)
++ijs_client_example$(EXE):	ijs_client_example$(OBJ) ijs_client$(OBJ) $(IJS_COMMON_OBJ) $(IJS_CLIENT_PLATFORM)
++	$(CC) $(CFLAGS) $(FE)ijs_client_example$(EXE) ijs_client_example$(OBJ) ijs_client$(OBJ) $(IJS_COMMON_OBJ) $(IJS_CLIENT_PLATFORM) $(LDLIBS)
+ 
+-ijs_server_example$(EXE):	ijs_server_example$(OBJ) ijs_server$(OBJ) $(IJS_COMMON_OBJ)
+-	$(CC) $(CFLAGS) $(FE)ijs_server_example$(EXE) ijs_server_example$(OBJ) ijs_server$(OBJ) $(IJS_COMMON_OBJ) $(LDLIBS)
++ijs_server_example$(EXE):	ijs_server_example$(OBJ) ijs_server$(OBJ) $(IJS_COMMON_OBJ) $(IJS_SERVER_PLATFORM)
++	$(CC) $(CFLAGS) $(FE)ijs_server_example$(EXE) ijs_server_example$(OBJ) ijs_server$(OBJ) $(IJS_COMMON_OBJ) $(IJS_SERVER_PLATFORM) $(LDLIBS)
+ 
+ common_clean:
+ 	$(RM) *$(OBJ) ijs_client_example$(EXE) ijs_server_example$(EXE)

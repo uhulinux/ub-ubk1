@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+gunzip console/hunglish*.gz
+sed -i '/Meta_[iI]acute/d' console/hunglish*

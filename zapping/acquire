@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+zapping-${UB_VERSION/~/}.tar.bz2 zapping-${UB_VERSION/~/}/
+	http://downloads.sourceforge.net/zapping/

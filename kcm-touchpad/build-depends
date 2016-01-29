@@ -1,0 +1,4 @@
+cmake
+kdelibs-dev
+x.org-input-synaptics
+x.org-server-dev

@@ -1,0 +1,60 @@
+diff -Naur xmacro-orig/xmacroplay.cpp xmacro/xmacroplay.cpp
+--- xmacro-orig/xmacroplay.cpp	2000-09-11 20:25:11.000000000 +0200
++++ xmacro/xmacroplay.cpp	2009-12-01 11:36:12.000000000 +0100
+@@ -53,13 +53,12 @@
+ #ifdef HAVE_IOSTREAM
+ #include <iostream>
+ #include <iomanip>
+-#else
+-#include <iostream.h>
+-#include <iomanip.h>
+ #endif
+ 
+ #define PROG "xmacroplay"
+-
++#include <iostream>
++#include <iomanip>
++using namespace std;
+ /***************************************************************************** 
+  * The delay in milliseconds when sending events to the remote display
+  ****************************************************************************/
+diff -Naur xmacro-orig/xmacrorec2.cpp xmacro/xmacrorec2.cpp
+--- xmacro-orig/xmacrorec2.cpp	2000-09-06 01:46:15.000000000 +0200
++++ xmacro/xmacrorec2.cpp	2009-12-01 11:36:38.000000000 +0100
+@@ -54,13 +54,12 @@
+ #ifdef HAVE_IOSTREAM
+ #include <iostream>
+ #include <iomanip>
+-#else
+-#include <iostream.h>
+-#include <iomanip.h>
+ #endif
+ 
+ #define PROG "xmacrorec2"
+-
++#include <iostream>
++#include <iomanip>
++using namespace std;
+ /***************************************************************************** 
+  * The delay in milliseconds when sending events to the remote display
+  ****************************************************************************/
+diff -Naur xmacro-orig/xmacrorec.cpp xmacro/xmacrorec.cpp
+--- xmacro-orig/xmacrorec.cpp	2000-09-05 22:21:23.000000000 +0200
++++ xmacro/xmacrorec.cpp	2009-12-01 11:36:48.000000000 +0100
+@@ -52,13 +52,12 @@
+ #ifdef HAVE_IOSTREAM
+ #include <iostream>
+ #include <iomanip>
+-#else
+-#include <iostream.h>
+-#include <iomanip.h>
+ #endif
+ 
+ #define PROG "xmacrorec"
+-
++#include <iostream>
++#include <iomanip>
++using namespace std;
+ /***************************************************************************** 
+  * The delay in milliseconds when sending events to the remote display
+  ****************************************************************************/

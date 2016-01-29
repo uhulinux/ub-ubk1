@@ -1,0 +1,21 @@
+diff -Naur d4x-2.5.5.orig/main/base64.cc d4x-2.5.5/main/base64.cc
+--- d4x-2.5.5.orig/main/base64.cc	2005-09-16 06:32:16.000000000 +0200
++++ d4x-2.5.5/main/base64.cc	2005-10-26 13:56:32.000000000 +0200
+@@ -47,7 +47,7 @@
+ 	while (len>=3) {
+ 		three_to_four((unsigned char *)what,four);
+ 		//*tmp=*four; *++tmp=four[1]; *++tmp=four[2]; *++tmp=four[3]; ++tmp;
+-		*((uint32_t *)tmp)=*((uint32_t*)four);
++		*((unsigned int *)tmp)=*((unsigned int*)four);
+ 		tmp+=4;
+ 		len-=3;
+ 		what+=3;
+@@ -59,7 +59,7 @@
+ 		three_to_four(three,four);
+ 		for (i+=1;i<4;four[i++]='=');
+ 		// *tmp=*four; *++tmp=four[1]; *++tmp=four[2]; *++tmp=four[3]; ++tmp;
+-		*((uint32_t *)tmp)=*((uint32_t*)four);
++		*((unsigned int *)tmp)=*((unsigned int*)four);
+ 		tmp+=4;
+ 	};
+ 	*tmp=0;

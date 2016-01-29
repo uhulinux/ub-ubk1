@@ -1,0 +1,11 @@
+diff -urN netkit-ntalk-0.17.orig/talkd/announce.c netkit-ntalk-0.17/talkd/announce.c
+--- netkit-ntalk-0.17.orig/talkd/announce.c	2000-07-22 17:27:39.000000000 +0200
++++ netkit-ntalk-0.17/talkd/announce.c	2002-12-05 21:18:08.000000000 +0100
+@@ -40,6 +40,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
++#include <time.h>
+ #include <sys/wait.h>
+ #include <sys/socket.h>
+ #include <errno.h>

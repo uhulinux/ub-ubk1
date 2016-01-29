@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+CGI-Session-${UB_VERSION}.tar.gz CGI-Session-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/M/MA/MARKSTOS/

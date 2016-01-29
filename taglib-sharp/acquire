@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+taglib-sharp-${UB_VERSION}.tar.bz2 taglib-sharp-${UB_VERSION}/
+	http://download.banshee-project.org/taglib-sharp/${UB_VERSION}/

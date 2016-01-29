@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_install
+
+chmod 755 "$UB_INSTALLDIR"/usr/lib/*.so
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/doc/pdflib-lite
+cp -a ./doc/pdflib/* "$UB_INSTALLDIR"/usr/share/doc/pdflib-lite/

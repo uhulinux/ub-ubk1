@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libotr-${UB_VERSION}.tar.gz libotr-${UB_VERSION}/
+	http://www.cypherpunks.ca/otr/

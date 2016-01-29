@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_makeinstall \
+	mandir=/usr/share/man
+
+cat >>${UB_INSTALLDIR}/usr/lib/libjpeg.la <<END
+
+# Is this an already installed library?
+installed=yes
+END
+

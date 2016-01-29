@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+export XERCESCROOT="$UB_COMPILEDIR"
+
+cd src/xercesc
+ub_install

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+upp-x11-src-$UB_VERSION.tar.gz upp-x11-src-$UB_VERSION/
+	http://downloads.sourceforge.net/upp/
+	http://upp-mirror.googlecode.com/files/

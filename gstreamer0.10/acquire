@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gstreamer-${UB_VERSION}.tar.bz2 gstreamer-${UB_VERSION}/
+	http://gstreamer.freedesktop.org/src/gstreamer/

@@ -1,0 +1,30 @@
+diff -Naur alsa-utils-1.0.25-orig/po/hu.po alsa-utils-1.0.25/po/hu.po
+--- alsa-utils-1.0.25-orig/po/hu.po	1970-01-01 01:00:00.000000000 +0100
++++ alsa-utils-1.0.25/po/hu.po	2012-03-21 21:50:27.000000000 +0100
+@@ -0,0 +1,20 @@
++# translation of alsa-utils.pot to Hungarian
++# Hungarian translations for alsa-utils package.
++# Copyright (C) 2006 the alsa-utils's copyright holder
++# This file is distributed under the same license as the alsa-utils package.
++# Koblinger Egmont <egmont@uhulinux.hu>, 2006.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: alsa-utils\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2006-05-22 20:30+0200\n"
++"PO-Revision-Date: 2006-05-22 20:30+0200\n"
++"Last-Translator: Koblinger Egmont <egmont@uhulinux.hu>\n"
++"Language-Team: Hungarian <hu@li.org>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++msgid "Storing Sound Card Settings"
++msgstr "Hangkártyabeállítások elmentése"
+diff -Naur alsa-utils-1.0.25-orig/po/LINGUAS alsa-utils-1.0.25/po/LINGUAS
+--- alsa-utils-1.0.25-orig/po/LINGUAS	2012-01-25 10:43:38.000000000 +0100
++++ alsa-utils-1.0.25/po/LINGUAS	2012-03-21 21:51:57.000000000 +0100
+@@ -1 +1 @@
+-de fr ja
++de fr hu ja

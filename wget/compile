@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+autoreconf
+ub_compile \
+	--disable-rpath \
+	--with-ssl=openssl

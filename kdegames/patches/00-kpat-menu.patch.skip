@@ -1,0 +1,10 @@
+diff -Naur kdegames-orig/kpat-4.10.0/kpat.desktop kdegames/kpat-4.10.0/kpat.desktop
+--- kdegames-orig/kpat-4.13.0/kpat.desktop	2013-01-23 23:07:06.000000000 +0100
++++ kdegames/kpat-4.13.0/kpat.desktop	2013-02-28 11:31:14.000000000 +0100
+@@ -118,5 +118,5 @@
+ GenericName[zh_CN]=考验耐心的牌类游戏
+ GenericName[zh_TW]=單人玩的紙牌遊戲
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Game;CardGame;
++Categories=Qt;KDE;Game;CardGame;X-UHU-Menu/Games/Card;
+ MimeType=application/vnd.kde.kpatience.savedstate;

@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+if [[ -L LICENSE ]]; then
+	LICENSE=`readlink LICENSE`
+	rm -f LICENSE
+	cp -a $LICENSE LICENSE
+fi
+
+mkdir -p "${UB_INSTALLDIR}/usr"
+cp -a lib "${UB_INSTALLDIR}/usr"
+cp -a share "${UB_INSTALLDIR}/usr"
+
+mkdir -p "${UB_INSTALLDIR}/usr/bin"
+cp -a opera "${UB_INSTALLDIR}/usr/bin"

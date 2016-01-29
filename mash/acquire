@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mash-${UB_VERSION}.tar.xz mash-${UB_VERSION}/
+	http://source.clutter-project.org/sources/mash/${UB_VERSION_HEAD2}/

@@ -1,0 +1,13 @@
+--- lincity-ng-2.0.orig/lincity-ng.desktop	2009-01-25 21:21:28.000000000 +0100
++++ lincity-ng-2.0/lincity-ng.desktop	2009-02-07 14:57:05.000000000 +0100
+@@ -6,8 +6,9 @@
+ GenericName=City Simulation Game
+ GenericName[de]=Stadtsimulationsspiel
+ Comment=Plan and Build a city and take care of transport, economics, electricityand others.
++Comment[hu]=Tervezz meg és építs egy várost, majd ügyelj a szállítmányozásra, a gazdaságra és másokra!
+ Icon=lincity-ng.png
+ Exec=lincity-ng
+ Terminal=false
+ StartupNotify=false
+-Categories=Game;Simulation;
++Categories=Game;Simulation;X-UHU-Menu/Games/TacticStrategy;

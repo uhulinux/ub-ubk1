@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pyquery-${UB_VERSION}.zip pyquery-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pyquery/

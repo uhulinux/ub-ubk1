@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+python-poppler-qt4-${UB_VERSION}.tar.gz python-poppler-qt4-${UB_VERSION}/
+	https://pypi.python.org/packages/source/p/python-poppler-qt4/

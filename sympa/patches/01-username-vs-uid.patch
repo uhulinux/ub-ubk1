@@ -1,0 +1,14 @@
+See the install script for explanation.
+
+diff -Naur sympa-5.3.orig/subst.pl sympa-5.3/subst.pl
+--- sympa-5.3.orig/subst.pl	2006-03-14 14:46:31.000000000 +0100
++++ sympa-5.3/subst.pl	2007-06-01 18:27:15.000000000 +0200
+@@ -59,7 +59,7 @@
+ #   }
+ 
+    while (<IN>) {
+-       s/--(\w+)--/$ENV{$1}/g;
++       s/--(\w+)--/$ENV{$1 eq "USER" ? "SYMPAUSER" : $1 eq "GROUP" ? "SYMPAGROUP" : $1}/g;
+        print OUT $_;
+    }
+    close(OUT);

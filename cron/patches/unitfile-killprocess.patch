@@ -1,0 +1,12 @@
+patch from fedora
+diff -up cronie-1.4.11/contrib/cronie.systemd.old2 cronie-1.4.11/contrib/cronie.systemd
+--- cronie-1.4.11/contrib/cronie.systemd.old2   2013-07-18 14:27:08.000000000 +0200
++++ cronie-1.4.11/contrib/cronie.systemd    2013-09-25 12:36:10.129374891 +0200
+@@ -5,6 +5,7 @@ After=syslog.target auditd.service syste
+ [Service]
+ EnvironmentFile=/etc/sysconfig/crond
+ ExecStart=/usr/sbin/crond -n $CRONDARGS
++KillMode=process
+
+ [Install]
+ WantedBy=multi-user.target

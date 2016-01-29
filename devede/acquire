@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+devede-${UB_VERSION}.tar.bz2 devede-${UB_VERSION}/
+	http://www.rastersoft.com/descargas/

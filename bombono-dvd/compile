@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+rm -Rf debian libs/boost-lib src/mlib/tests
+
+ub_compile \
+	USE_EXT_BOOST=true

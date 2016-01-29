@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/jdictionary
+cp -a jdictionary.{jar,ico} "$UB_INSTALLDIR"/usr/share/jdictionary/

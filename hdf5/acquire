@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+hdf5-${UB_VERSION}.tar.bz2 hdf5-${UB_VERSION}/
+	ftp://ftp.hdfgroup.org/HDF5/current/src/

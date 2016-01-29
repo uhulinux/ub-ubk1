@@ -1,0 +1,35 @@
+diff -ur BUILD/wpa_supplicant-0.6.3/wpa_supplicant/wpa_supplicant.c BUILD2/wpa_supplicant-0.6.3/wpa_supplicant/wpa_supplicant.c
+--- wpa_supplicant-0.6.3/wpa_supplicant/wpa_supplicant.c	2008-02-23 03:45:24.000000000 +0100
++++ wpa_supplicant-0.6.3/wpa_supplicant/wpa_supplicant.c	2008-08-04 11:43:25.000000000 +0200
+@@ -133,6 +133,22 @@
+ 	return set;
+ }
+ 
++static void wpa_supplicant_handle_sigusr1(int sig, void *eloop_ctx,
++				     void *signal_ctx)
++{
++	/* Increase verbosity (by decreasing the debug level) and wrap back
++	 * to MSG_INFO when needed.
++	 */
++	if (wpa_debug_level)
++		wpa_debug_level--;
++	else
++		wpa_debug_level = MSG_INFO;
++	
++	wpa_printf(MSG_INFO, "Signal %d received - changing debug level to %s", sig,
++	           (wpa_debug_level == MSG_INFO) ? "INFO" :
++	               ((wpa_debug_level == MSG_DEBUG) ? "DEBUG" :
++	                   ((wpa_debug_level == MSG_MSGDUMP) ? "MSGDUMP" : "UNKNOWN")));
++}
+ 
+ static int wpa_supplicant_set_wpa_none_key(struct wpa_supplicant *wpa_s,
+ 					   struct wpa_ssid *ssid)
+@@ -2016,6 +2032,8 @@
+ 	eloop_register_signal_terminate(wpa_supplicant_terminate, NULL);
+ 	eloop_register_signal_reconfig(wpa_supplicant_reconfig, NULL);
+ 
++	eloop_register_signal(SIGUSR1, wpa_supplicant_handle_sigusr1, NULL);
++
+ 	eloop_run();
+ 
+ 	return 0;

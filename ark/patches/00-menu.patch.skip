@@ -1,0 +1,10 @@
+diff -Naur ark-4.8.3-orig/app/ark.desktop.cmake ark-4.8.3/app/ark.desktop.cmake
+--- ark-4.8.3-orig/app/ark.desktop.cmake	2012-04-29 22:40:48.000000000 +0200
++++ ark-4.8.3/app/ark.desktop.cmake	2012-05-04 13:43:35.000000000 +0200
+@@ -152,5 +152,5 @@
+ Terminal=false
+ X-DBUS-StartupType=Unique
+ X-KDE-HasTempFileOption=true
+-Categories=Qt;KDE;Utility;Archiving;Compression;X-KDE-Utilities-File;
++Categories=Qt;KDE;Utility;Archiving;Compression;X-KDE-Utilities-File;X-UHU-Menu/Tools/Utilities;
+ InitialPreference=3

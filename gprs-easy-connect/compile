@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+for i in \
+  data/share/gprsec/AUTHORS \
+  data/share/gprsec/GNU_GPL_HU \
+  data/share/gprsec/README \
+  data/share/gprsec/history \
+  data/share/gprsec/version; do
+	if ! iconv -f UTF-8 -t UTF-8 < "$i" > /dev/null; then
+		iconv -f Latin2 -t UTF-8 < "$i" > "$i.tmp"
+		mv "$i.tmp" "$i"
+	fi
+done  

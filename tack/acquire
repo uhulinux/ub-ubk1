@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tack-${UB_VERSION}.tgz tack-${UB_VERSION}/
+	ftp://invisible-island.net/ncurses/

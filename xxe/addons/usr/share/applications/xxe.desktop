@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=xxe
+Comment=XMLmind XML Editor
+Comment[hu]=XML Editor
+Exec=xxe
+Icon=xxe
+Terminal=false
+Type=Application
+Categories=Utility;FileTools;

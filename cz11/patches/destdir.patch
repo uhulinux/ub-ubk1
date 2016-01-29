@@ -1,0 +1,18 @@
+diff -Naurd LexZ11-distro.orig/makefile LexZ11-distro/makefile
+--- LexZ11-distro.orig/makefile	2000-08-08 20:19:35.000000000 +0200
++++ LexZ11-distro/makefile	2004-01-12 16:43:16.000000000 +0100
+@@ -40,10 +40,10 @@
+ #install the driver
+ install: all
+ 	@echo "****** Installation of Files and Directories *****"
+-	cp cZ11 /usr/bin
+-	mkdir -p /etc/LexmarkZ11
+-	cp prolog.prn /etc/LexmarkZ11/prolog.prn
+-	chmod a+x /usr/bin/cZ11
++	cp cZ11 $(DESTDIR)/usr/bin
++	mkdir -p $(DESTDIR)/etc/LexmarkZ11
++	cp prolog.prn $(DESTDIR)/etc/LexmarkZ11/prolog.prn
++	chmod a+x $(DESTDIR)/usr/bin/cZ11
+ 	@echo "****** Installation successfully finished ********"
+ 
+ 

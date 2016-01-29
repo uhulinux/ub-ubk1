@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+trunc-${UB_VERSION}.tar.gz trunc-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/trunc/

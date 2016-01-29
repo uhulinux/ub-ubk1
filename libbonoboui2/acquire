@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libbonoboui-${UB_VERSION}.tar.gz libbonoboui-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libbonoboui/${UB_VERSION_HEAD2}/

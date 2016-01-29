@@ -1,0 +1,11 @@
+diff -Naur libpcap-1.2.1-orig/gencode.c libpcap-1.2.1/gencode.c
+--- libpcap-1.2.1-orig/gencode.c	2012-01-02 01:47:37.000000000 +0100
++++ libpcap-1.2.1/gencode.c	2012-03-26 18:20:56.000000000 +0200
+@@ -7483,6 +7483,7 @@
+ 	 */
+ 	switch (linktype) {
+ 	case DLT_SLIP:
++	case DLT_PPP:
+ 		b0 = gen_relation(BPF_JEQ,
+ 			  gen_load(Q_LINK, gen_loadi(0), 1),
+ 			  gen_loadi(0),

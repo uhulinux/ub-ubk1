@@ -1,0 +1,14 @@
+cairo-dev
+desktop-file-utils
+glib-dev
+libffi-dev
+libjpeg-dev
+libpng-dev
+libsigsegv-dev
+libx11-dev
+libxaw-dev
+libxft-dev
+libxmu-dev
+mesa-dev
+pango-dev
+tcsh

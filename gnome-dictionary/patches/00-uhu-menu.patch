@@ -1,0 +1,11 @@
+--- a/data/gnome-dictionary.desktop.in.in.orig	2013-03-07 20:07:39.000000000 +0100
++++ a/data/gnome-dictionary.desktop.in.in	2013-03-07 20:08:20.000000000 +0100
+@@ -6,7 +6,7 @@
+ Type=Application
+ Icon=accessories-dictionary
+ StartupNotify=true
+-Categories=GNOME;GTK;Office;Dictionary;
++Categories=GNOME;GTK;Office;Dictionary;X-UHU-Menu/Tools/Dictionaries;
+ NotShowIn=KDE;
+ X-GNOME-DocPath=gnome-dictionary/gnome-dictionary.xml
+ X-GNOME-Bugzilla-Bugzilla=GNOME

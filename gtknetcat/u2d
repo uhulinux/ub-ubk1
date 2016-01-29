@@ -1,0 +1,1 @@
+sflist lxde GtkNetCat%20%28GUI%20for%20netcat%29 | sort -V | tail -n 1 | sed 's/GtkNetCat%20//'

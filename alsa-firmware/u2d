@@ -1,0 +1,1 @@
+urllist ftp://ftp.alsa-project.org/pub/firmware/ | splitver '^alsa-firmware-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

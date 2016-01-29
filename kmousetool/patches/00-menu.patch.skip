@@ -1,0 +1,10 @@
+diff -Naur kmousetool-4.7.44-orig//kmousetool/kmousetool.desktop kmousetool-4.7.44//kmousetool/kmousetool.desktop
+--- kmousetool-4.7.44-orig//kmousetool/kmousetool.desktop	2011-08-22 15:34:15.000000000 +0200
++++ kmousetool-4.7.44//kmousetool/kmousetool.desktop	2011-10-13 20:40:41.000000000 +0200
+@@ -211,5 +211,5 @@
+ GenericName[x-test]=xxAutomatic Mouse Clickxx
+ GenericName[zh_CN]=自动鼠标点击
+ GenericName[zh_TW]=自動滑鼠點擊
+-Categories=Qt;KDE;Utility;Accessibility;
++Categories=Qt;KDE;Utility;Accessibility;X-UHU-Menu/Tools/Utilities;
+ 

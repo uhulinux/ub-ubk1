@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_install
+
+ln -s ../sbin/alsactl "$UB_INSTALLDIR"/usr/bin/

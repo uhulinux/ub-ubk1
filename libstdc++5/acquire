@@ -1,0 +1,11 @@
+#!/usr/bin/env dl
+
+gcc-core-${UB_VERSION}.tar.gz gcc-${UB_VERSION}/
+	ftp://gcc.gnu.org/pub/gcc/releases/gcc-${UB_VERSION}/
+	ftp://ftp.gnu.org/gnu/gcc/gcc-${UB_VERSION}/
+	ftp://sources.redhat.com/pub/gcc/releases/gcc-${UB_VERSION}/
+
+gcc-g++-${UB_VERSION}.tar.gz gcc-${UB_VERSION}/
+	ftp://gcc.gnu.org/pub/gcc/releases/gcc-${UB_VERSION}/
+	ftp://ftp.gnu.org/gnu/gcc/gcc-${UB_VERSION}/
+	ftp://sources.redhat.com/pub/gcc/releases/gcc-${UB_VERSION}/

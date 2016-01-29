@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+CDDB_get-${UB_VERSION}.tar.gz CDDB_get-${UB_VERSION}/
+	http://cpan.org/authors/id/F/FO/FONKIE/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+diffball-${UB_VERSION}.tar.bz2 diffball-${UB_VERSION}/
+	http://diffball.googlecode.com/files/

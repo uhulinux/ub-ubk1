@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pycparser-${UB_VERSION}.tar.gz pycparser-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pycparser/

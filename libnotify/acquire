@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libnotify-${UB_VERSION}.tar.xz libnotify-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libnotify/${UB_VERSION_HEAD2}/

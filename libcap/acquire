@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+libcap-${UB_VERSION}.tar.gz libcap-${UB_VERSION}/
+	https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/
+	http://www.kernel.org/pub/linux/libs/security/linux-privs/kernel-2.6/

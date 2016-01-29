@@ -1,0 +1,12 @@
+diff -Naur atomix-2.14.0.orig/Makefile.in atomix-2.14.0/Makefile.in
+--- atomix-2.14.0.orig/Makefile.in	2006-03-11 04:10:37.000000000 +0100
++++ atomix-2.14.0/Makefile.in	2006-03-17 16:54:32.000000000 +0100
+@@ -717,7 +717,7 @@
+ 	-$(mkinstalldirs) $(DESTDIR)$(scoredir)
+ 	-touch $(DESTDIR)$(scoredir)/atomix.scores
+ 	-chown games.games $(DESTDIR)$(scoredir)/atomix.scores
+-	-chmod 664 $(DESTDIR)$(scoredir)/atomix.scores
++	-chmod 644 $(DESTDIR)$(scoredir)/atomix.scores
+ 	-chgrp games $(DESTDIR)$(bindir)/atomix && chmod 2755 $(DESTDIR)$(bindir)/atomix
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

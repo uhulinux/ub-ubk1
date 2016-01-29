@@ -1,0 +1,24 @@
+--- inputattach-1.24.orig/inputattach-1.24.c
++++ inputattach-1.24/inputattach-1.24.c
+@@ -390,9 +390,9 @@
+         int fd;
+ 	char c;
+ 
+-        if (argc < 2 || argc > 3 || !strcmp("--help", argv[1])) {
++        if (argc < 2 || argc > 4 || (argc == 4 && strcmp(argv[3], "--daemon")) || !strcmp("--help", argv[1])) {
+                 puts("");
+-                puts("Usage: inputttach <mode> <device>");
++                puts("Usage: inputttach <mode> <device> [--daemon]");
+                 puts("");
+                 puts("Modes:");
+                 puts("  --sunkbd        -skb      Sun Type 4 and Type 5 keyboards");
+@@ -463,6 +463,9 @@
+ 		fprintf(stderr, "inputattach: can't set device type\n");
+ 		return 1;
+ 	}
++	
++	if (argc == 4 && !strcmp(argv[3],"--daemon"))
++		daemon(0,0);
+ 
+ 	read(fd, NULL, 0);
+ 

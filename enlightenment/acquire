@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+e16-${UB_VERSION}.tar.gz e16-${UB_VERSION}/
+	http://download.sourceforge.net/enlightenment/

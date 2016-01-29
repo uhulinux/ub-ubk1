@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+swfdec-gnome-${UB_VERSION}.tar.gz swfdec-gnome-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/swfdec-gnome/${UB_VERSION_HEAD2}/

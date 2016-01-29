@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--localstatedir=/var/lib \
+	--with-openldap=yes \
+	--enable-nss=yes \
+	--enable-smime=yes \
+	--enable-plugins=all

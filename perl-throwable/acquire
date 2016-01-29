@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Throwable-${UB_VERSION}.tar.gz Throwable-${UB_VERSION}/
+	http://cpan.metacpan.org/authors/id/R/RJ/RJBS/

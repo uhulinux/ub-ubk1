@@ -1,0 +1,29 @@
+diff -Naur AdobeReader-orig/Adobe/Reader9/bin/acroread AdobeReader/Adobe/Reader9/bin/acroread
+--- AdobeReader-orig/Adobe/Reader9/bin/acroread	2009-10-08 02:32:03.000000000 +0200
++++ AdobeReader/Adobe/Reader9/bin/acroread	2009-10-25 17:53:18.000000000 +0100
+@@ -3,7 +3,24 @@
+ # Copyright (c) 1996-2007, Adobe Systems Incorporated
+ # All Rights Reserved
+ #
+-
++ 
++if [ ! -f "$HOME/.adobe/Acrobat/9.0/Preferences/reader_prefs" ]; then
++	mkdir -p "$HOME/.adobe/Acroba/9.0/Preferences"
++	cat >"$HOME/.adobe/Acrobat/9.0/Preferences/reader_prefs" <<EOF
++<<
++/AVPrivate [/c <<
++	/ChooseLangAtStartup [/b false]
++	/EULAAcceptanceTime [/i 1127678459]
++	/SplashDisplayedAtStartup [/b true]
++	/UnixLanguageStartup [/i 4542037]
++	/showEULA [/b false]
++>>]
++/AdsInReader [/c <<
++	/AdsLastUpdate [/s (29990101000000Z)]
++>>]
++>>
++EOF
++fi
+ 
+ ver="9.2"
+ 

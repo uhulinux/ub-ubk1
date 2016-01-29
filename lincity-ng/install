@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+export prefix="$UB_INSTALLDIR"/usr
+
+jam install
+
+# remove duplicate docs
+rm -rf "$UB_INSTALLDIR"/usr/share/doc/lincity-ng-${UB_VERSION}/{COPYING*,CREDITS,README,RELNOTES,TODO}

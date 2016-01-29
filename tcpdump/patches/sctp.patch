@@ -1,0 +1,12 @@
+diff -Naur tcpdump-4.1.1-orig/print-sctp.c tcpdump-4.1.1/print-sctp.c
+--- tcpdump-4.1.1-orig/print-sctp.c	2010-03-12 02:56:44.000000000 +0100
++++ tcpdump-4.1.1/print-sctp.c	2010-04-20 21:32:29.000000000 +0200
+@@ -43,7 +43,7 @@
+ #endif
+ 
+ #include <tcpdump-stdinc.h>
+-
++#include <netinet/in.h>
+ #include "sctpHeader.h"
+ #include "sctpConstants.h"
+ #include <assert.h>

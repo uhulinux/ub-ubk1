@@ -1,0 +1,32 @@
+diff -Naurd orig/data/Makefile.in mod/data/Makefile.in
+--- orig/data/Makefile.in	2009-05-04 20:05:37.000000000 +0200
++++ mod/data/Makefile.in	2009-05-05 17:54:17.000000000 +0200
+@@ -180,7 +180,7 @@
+ 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
+ install-nobase_dist_pkgdataDATA: $(nobase_dist_pkgdata_DATA)
+ 	@$(NORMAL_INSTALL)
+-	test -z "$(pkgdatadir)" || $(MKDIR_P) "$(DESTDIR)$(pkgdatadir)"
++	$(MKDIR_P) "$(DESTDIR)$(pkgdatadir)"
+ 	@$(am__vpath_adj_setup) \
+ 	list='$(nobase_dist_pkgdata_DATA)'; for p in $$list; do \
+ 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+@@ -234,9 +234,7 @@
+ check: check-am
+ all-am: Makefile $(DATA)
+ installdirs:
+-	for dir in "$(DESTDIR)$(pkgdatadir)"; do \
+-	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
+-	done
++	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)
+ install: install-am
+ install-exec: install-exec-am
+ install-data: install-data-am
+@@ -336,7 +334,7 @@
+ 
+ # Install fonts, if they're not installed
+ install-data-hook:
+-	./install-fonts $(datadir)
++	./install-fonts $(DESTDIR)$(datadir)
+ 
+ # Uninstall fonts
+ uninstall-hook:

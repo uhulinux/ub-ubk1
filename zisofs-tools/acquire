@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+zisofs-tools-${UB_VERSION}.tar.gz zisofs-tools-${UB_VERSION}/
+	ftp://ftp.kernel.org/pub/linux/utils/fs/zisofs/

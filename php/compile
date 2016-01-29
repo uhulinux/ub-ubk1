@@ -1,0 +1,60 @@
+#!/bin/sh -eux
+
+EXTENSION_DIR=/usr/lib/php \
+LIBS+='-lssl -lcrypto' \
+ub_compile \
+	--with-layout=GNU \
+	--with-apxs2 \
+	--with-bz2=shared \
+	--with-curl=shared \
+	--with-db4=shared \
+	--with-freetype-dir=/usr \
+	--with-gdbm=shared \
+	--with-gd=shared \
+	--with-gettext \
+	--with-gmp=shared \
+	--with-imap=shared \
+	--with-imap-ssl \
+	--with-jpeg-dir=/usr \
+	--with-ldap-sasl \
+	--with-ldap=shared \
+	--with-mcrypt=shared \
+	--with-mhash=shared \
+	--with-mssql=shared \
+	--with-mysqli=shared \
+	--with-mysql=shared \
+	--with-openssl \
+	--with-openssl-dir=/usr \
+	--with-pdo-dblib=shared \
+	--with-pdo-mysql=shared \
+	--with-pdo-odbc=shared,unixODBC,/usr \
+	--with-pdo-pgsql=shared \
+	--with-pdo-sqlite=shared \
+	--with-pear=/usr/share/pear \
+	--with-pgsql=shared \
+	--with-png-dir=/usr \
+	--with-pspell=shared \
+	--with-snmp=shared \
+	--with-tidy=shared \
+	--with-unixODBC=shared,/usr \
+	--with-xmlrpc=shared \
+	--with-xpm-dir=/usr \
+	--with-xsl \
+	--with-zlib \
+	--with-zlib-dir=/usr \
+	--enable-bcmath \
+	--enable-calendar \
+	--enable-cli \
+	--enable-dba=shared \
+	--enable-exif \
+	--enable-ftp \
+	--enable-gd-native-ttf \
+	--enable-intl \
+	--enable-maintainer-zts \
+	--enable-mbstring \
+	--enable-soap \
+	--enable-sockets \
+	--disable-rpath \
+	--with-config-file-path=/etc \
+	--with-config-file-scan-dir=/etc/php.d
+

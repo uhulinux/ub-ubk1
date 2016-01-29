@@ -1,0 +1,140 @@
+--- dictionary.patch
++++ dictionary.patch
+@@ -0,0 +1,137 @@
++--- resources/dictionary/EngHunExpressions
+++++ resources/dictionary/EngHunExpressions
++@@ -1530,7 +1530,7 @@
++  analóg osztó | analog divider |
++  analóg-digitális átalakító | analogue-digital converter |
++  analógiájára | by analogy with ... |
++- analytical function generator | analitikusfüggvény-generátor |
+++ analitikusfüggvény-generátor | analytical function generator |
++  anamnézis (kórtörténet) | medical history |
++  anélkül, hogy teljességre törekednénk | without attempting to be comprehensive |
++  anélkül, hogy túl sokat törődött volna a dolog elméletével | without bothering overmuch with the theory behind it |
++@@ -1769,7 +1769,7 @@
++  aritmetikai léptetés | arithmetic shift |
++  aritmetikai sorozat | arithmetic sequence |
++  aritmetikai-logikai egység | arithmetic logic unit (ALU) |
++- árkategória | in the $ 10 to 25 range [$ helyett font] |
+++ árkategória | in the £ 10 to 25 range |
++  árkategória | price category |
++  árkedvezmény (nagybani rendelés esetén) | allows a good discount on bulk orders |
++  árleszállítás (50 %-os) | half-price sale |
++@@ -3460,8 +3460,8 @@
++  bölcsek köve | (to find) the philosopher's stone |
++  bölcsészettudományi kar (?) | the Faculty of Letters of the University of Budapest |
++  bölcsöde (?) | nursery |
++- bölcsöde | creche [balra döntött ékezet az elsõ e-n) |
++- bölcsöde | nurseries, or creches, [crEches with left slash] |
+++ bölcsöde | crèche |
+++ bölcsöde | nurseries, or crèches |
++  bölcsőtől a sírig | from the cradle to the grave |
++  böngészés az állományban | browsing through the collection |
++  bőrére megy | can mean his neck (our necks) |
++@@ -8307,7 +8307,7 @@
++  folytonosan elosztani | to divide (a number) successively (by 2) |
++  foncsorozott napszemüveg | one-directional sunglasses |
++  fonéma | phoneme |
++- font-jel (szimbólum) | pound sign (~#~) |
+++ font-jel (szimbólum) | pound sign (£) |
++  fontos :és talán még ennél is fontosabb volt a ... | more important, perhaps, was the ... |
++  fontos kérdéseket tesz fel a ...-val kapcsolatban | raises significant questions about ... |
++  fontos lépés ... felé | the most significant step towards ... |
++@@ -9896,7 +9896,7 @@
++  hát, ami azt illeti, ... | Well, as a matter of fact ... |
++  hát, az attól függ. | well, that depends. |
++  Hát, engem speciel ez hidegen hagy. | Well, personally I don't care much for it. |
++- hát, ez a legnaívabb kijelentés, amit hallottam az idén | now that is the most naive statement I have heard this year |
+++ hát, ez a legnaivabb kijelentés, amit hallottam az idén | now that is the most naïve statement I have heard this year |
++  Hát, ez kedves. (tőled) | Well, that's sweet. |
++  hát, ezek a problémák | these, then, are the problems |
++  hát, mondjuk. (nem egészen) | well, sort of. |
++@@ -10588,7 +10588,7 @@
++  hivatalos beváltási árfolyamon (valuta) | at the official exchange rate |
++  hivatalos kiadás (ETO) | (UDC) official edition |
++  hivatalos kiadás (ETO) | authorized UDC edition |
++- hivatalos kiadvány | government document [fõleg US] |
+++ hivatalos kiadvány | government document [főleg US] |
++  hivatalos kiadvány | official publication |
++  hivatalos kiadványok kezelője | government documents librarian |
++  hivatalos lap (közlöny) | Magyar Kozlony, the official gazette |
++@@ -12552,7 +12552,7 @@
++  kapcsos dosszií (3 fémgyűrűvel) | three-ring binder |
++  kápest :semmi ahhoz képest, amilyen 1980-ban volt | is nothing like what it was in 1980 |
++  kaphatnék egy pohár vizet? | do you think I could have a glass of water? |
++- kapható ( ...-tól; minimális ár) | priced from  2399 [font-jel] |
+++ kapható ( ...-tól; minimális ár) | priced from £ 2399 |
++  kapható (a ...-tól, ...-os áron) | obtainable from the ... at 25p |
++  kapható (kiadvány) | is in print |
++  kapitalista országokba menő export | Western export |
++@@ -19465,7 +19465,7 @@
++  nagy vonalakban (elmond) | I have permission t tell you--in broad lines--how ... |
++  nagy vonalakban | in broad outline |
++  nagy zűrben vagyok | I'm sunk. |
++- Nagy-London (peremkerületekkel együtt) | Greater London (névelõ nélkül) |
+++ Nagy-London (peremkerületekkel együtt) | Greater London (névelő nélkül) |
++  Nagy-Szíria (tört.) | Greater Syria |
++  nagyágyú; fejes | big wheel |
++  Nagyalföld | include Great Plain |
++@@ -19584,7 +19584,7 @@
++  nagyvárosi könyvtár (?) | big city library |
++  nagyvárosi környezetben | in the urban metropolitan setting (?) |
++  nahát! (megrőkönyödés) | now then! |
++- naív (együgyű) | simple-minded |
+++ naiv (együgyű) | simple-minded |
++  nálam (lakásomon) | at my place |
++  Nálam hajnali négy van. (az én órámon) | I've got 4 A.M. |
++  Naná! | (You fixed the tree?) You bet. |
++@@ -20354,7 +20354,7 @@
++  nevelésfilozófia (?) | philosophies of education |
++  nevelési célrendszer (?) | the objectives for teaching |
++  neveléspszichológia (oktatáspszichológia?) | educational psychology |
++- nevelkedett :tündérmesén nevelkedett elme (naív) | the fairy-tale conditioned mind |
+++ nevelkedett :tündérmesén nevelkedett elme (naiv) | the fairy-tale conditioned mind |
++  nevelő (?) | educator |
++  nevelőmunka (könyvtáré) | the educational work of libraries |
++  nevén :ismertebb nevén ... | better known as ... |
++@@ -20632,8 +20632,8 @@
++  nyelvtan :idegen nevek (intézmény) | Charles University Prague |
++  nyelvtan :idegen nevek (intézmények) | Universiteit van Amsterdam |
++  nyelvtan :idegen nevek (intézmények) | University of Amsterdam |
++- nyelvtan :idegen szavak | the role of the librarian [role francia írásmóddal!] |
++- nyelvtan :idegen szavak írásmódja | creche [balra döntött ékezet az elsõ e-n) |
+++ nyelvtan :idegen szavak | the rôle of the librarian |
+++ nyelvtan :idegen szavak írásmódja | crèche |
++  nyelvtan :idegen szavak írásmódja | object trouvé |
++  nyelvtan :ideidők | We'll both be working over the summer. |
++  nyelvtan :ideidők egyeztetése | He said the salary is no concern of security. |
++@@ -20646,9 +20646,9 @@
++  nyelvtan :intézménynevek | Kossuth Lajos University, Debrecen |
++  nyelvtan :intézménynevek | Loránd Eötvös University, Budapest |
++  nyelvtan :intézménynevek | Moscow State University |
++- nyelvtan :írásjelek (idegen neveknél) | Brasov [román s-sel is, angol s-sel is] |
+++ nyelvtan :írásjelek (idegen neveknél) | Braşov [román ş-sel is, angol s-sel is] |
++  nyelvtan :írásjelek (név kezdőbetűje) | A K D Campbell |
++- nyelvtan :írásjelek | not to say naively [két pont az i-n!] |
+++ nyelvtan :írásjelek | not to say naïvely |
++  nyelvtan :írásjelek | Since 1945, the ... |
++  nyelvtan :kérdés | Have you a car? |
++  nyelvtan :kérdés | He stayed behind? |
++@@ -28079,8 +28079,8 @@
++  tükörreflexes fényképezőgép | reflex camera |
++  tükröm, tükröm, mondd meg nélem ... | Mirror, mirror on the wall, who's the fairest of them all? |
++  tükrözött adatbázis (párhuzamos) | mirrored database |
++- tündérmesékkel táplált elme (naív) | the fairy-tale conditioned mind |
++- tündérmesén nevelkedett elme (naív) | the fairy-tale conditioned mind |
+++ tündérmesékkel táplált elme (naiv) | the fairy-tale conditioned mind |
+++ tündérmesén nevelkedett elme (naiv) | the fairy-tale conditioned mind |
++  Tűnés! (usgyi! kotródjon!) | Beat it. |
++  tűnik :első pillantásra úgy tűnik, hogy ... | at first glance it would seem that ... |
++  tűnjön el! | get lost! |
++@@ -29218,7 +29218,7 @@
++  vásárolni valók listája | shopping list |
++  vásárra vinni a bőrét | to risk my neck |
++  Vaskapu | the Iron Gate |
++- vaskor | the Iron Age [nagybetûvel] |
+++ vaskor | the Iron Age [nagybetűvel] |
++  vasoxid szalag (magnetofonnál) | ferric oxide tape |
++  vasököl (kemény kéz) | iron fist |
++  vastag vagyok. (pénzem van) | I'm loaded. |

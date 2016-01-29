@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+# unfortunately there is no Makefile, so first let's make the dll file from sources
+# build-depends must contains "mono-dev" !!!
+cd FlickrNet
+gmcs -debug -target:library -out:FlickrNet.dll -r:System.Web.dll -r:System.Drawing.dll *.cs

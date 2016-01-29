@@ -1,0 +1,12 @@
+mpath = macropath.1()
+mpath = left(mpath,length(mpath)-2)
+ispell_exe = mpath"ispell"
+ispell_public = "-d "mpath"ispell.dic"
+ispell_private = "-p "mpath"szotar.dic"
+'EXTRACT /FPATH/FNAME/FEXT/'
+if fext.1=='' then filename = fpath.1 || fname.1
+else filename = fpath.1 || fname.1'.'fext.1
+'ssave'
+'dosn 'ispell_exe ispell_public ispell_private filename
+'them old'
+'msg ISPELL complete.'

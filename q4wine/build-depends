@@ -1,0 +1,6 @@
+cmake
+icoutils
+openssl-dev
+qt4-dev
+sqlite-dev
+which

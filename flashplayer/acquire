@@ -1,0 +1,22 @@
+#!/usr/bin/env dl
+
+# The official download directory doesn't include the version number,
+# so don't use this URL as it'll lead to version number confuses.
+# Manually mirror and rename the desired versions on our homepage
+# and use that as the source.
+#
+# flash download page:
+# http://www.adobe.com/support/flashplayer/downloads.html
+
+install_flash_player_${UB_VERSION}_linux.tar.gz .
+	http://fpdownload.macromedia.com/get/flashplayer/pdc/${UB_VERSION}/install_flash_player_${UB_VERSION_MAJOR}_linux.i386.tar.gz
+
+flashplayer_${UB_VERSION}_plugin_debug.tar.gz .:debug/
+	http://fpdownload.macromedia.com/pub/flashplayer/updaters/${UB_VERSION_MAJOR}/flashplayer_${UB_VERSION_MAJOR}_plugin_debug.i386.tar.gz
+
+flashplayer_${UB_VERSION}_sa_debug.tar.gz .:sadebug/
+	http://fpdownload.macromedia.com/pub/flashplayer/updaters/${UB_VERSION_MAJOR}/flashplayer_${UB_VERSION_MAJOR}_sa_debug.i386.tar.gz
+	ftp://ftp.uhulinux.hu/sources/flashplayer/
+
+flashplayer_${UB_VERSION}_sa.tar.gz .:sa/
+	http://fpdownload.macromedia.com/pub/flashplayer/updaters/${UB_VERSION_MAJOR}/flashplayer_${UB_VERSION_MAJOR}_sa.i386.tar.gz

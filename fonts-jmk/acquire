@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+jmk-x11-fonts-${UB_VERSION}.tar.gz jmk-x11-fonts-${UB_VERSION}/
+	ftp://ftp.ibiblio.org/pub/Linux/X11/fonts/
+

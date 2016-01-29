@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+make \
+	DESTDIR="$UB_INSTALLDIR" \
+	BINDIR=/usr/bin \
+	MANDIR=/usr/share/man/man1 \
+	FIG2DEV_LIBDIR=/usr/share/fig2dev \
+	XFIGLIBDIR=/usr/share/xfig \
+	install \
+	install.man
+mv "$UB_INSTALLDIR"/usr/bin/fig2ps2tex.sh "$UB_INSTALLDIR"/usr/bin/fig2ps2tex
+chmod 644 "$UB_INSTALLDIR"/usr/share/fig2dev/*.ps
+chmod 644 "$UB_INSTALLDIR"/usr/share/xfig/bitmaps/*.bmp

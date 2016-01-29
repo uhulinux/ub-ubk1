@@ -1,0 +1,23 @@
+diff -rupN molly-guard-0.4.5.orig/Makefile molly-guard-0.4.5/Makefile
+--- molly-guard-0.4.5.orig/Makefile	2015-09-14 11:19:33.609663827 +0000
++++ molly-guard-0.4.5/Makefile	2015-09-14 11:21:43.440853566 +0000
+@@ -34,6 +34,7 @@ install: shutdown molly-guard.8.gz
+ 	ln -s ../../share/molly-guard/shutdown $(DST)/local/sbin/halt
+ 	ln -s ../../share/molly-guard/shutdown $(DST)/local/sbin/reboot
+ 	ln -s ../../share/molly-guard/shutdown $(DST)/local/sbin/shutdown
++	ln -s ../../share/molly-guard/shutdown $(DST)/local/sbin/init
+ 
+ 	mkdir -m755 --parent $(ETCDIR)
+ 	install -m644 -oroot -groot rc $(ETCDIR)
+diff -rupN molly-guard-0.4.5.orig/shutdown.in molly-guard-0.4.5/shutdown.in
+--- molly-guard-0.4.5.orig/shutdown.in	2015-09-14 11:19:33.613663833 +0000
++++ molly-guard-0.4.5/shutdown.in	2015-09-14 11:46:59.327277926 +0000
+@@ -24,7 +24,7 @@ CMD="${0##*/}"
+ EXEC="/usr/bin/$CMD"
+ 
+ case "$CMD" in
+-  halt|reboot|shutdown|poweroff)
++  halt|reboot|shutdown|poweroff|init)
+     if [ ! -e $EXEC ]; then
+       echo "E: not a regular file: $EXEC" >&2
+       exit 4

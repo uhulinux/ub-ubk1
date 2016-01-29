@@ -1,0 +1,9 @@
+diff -Naur kstars-4.6.90-orig//kstars/kstars.desktop kstars-4.6.90//kstars/kstars.desktop
+--- kstars-4.6.90-orig//kstars/kstars.desktop	2011-05-20 22:34:16.000000000 +0200
++++ kstars-4.6.90//kstars/kstars.desktop	2011-06-29 09:11:39.000000000 +0200
+@@ -204,4 +204,4 @@
+ GenericName[zh_CN]=桌面天文馆
+ GenericName[zh_TW]=桌面星象儀
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Education;Science;Astronomy;
++Categories=Qt;KDE;Education;Science;Astronomy;X-UHU-Menu/Edutainment/Science;

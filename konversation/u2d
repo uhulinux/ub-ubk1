@@ -1,0 +1,1 @@
+urllist ftp://ftp.kde.org/pub/kde/stable/konversation/| grep -E '^([0-9.]+)$' | sort -V | tail -n 1

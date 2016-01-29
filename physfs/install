@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_install
+
+# install manpages
+install -m0644 docs/man/man3/* "$UB_INSTALLDIR"/usr/share/man/man3
+
+# fix names of man pages because they conflict some other man pages
+for i in Deinit Free Init Malloc Realloc author description extension major minor opaque patch url; do
+	mv "$UB_INSTALLDIR"/usr/share/man/man3/{"$i",physfs-"$i"}.3
+done

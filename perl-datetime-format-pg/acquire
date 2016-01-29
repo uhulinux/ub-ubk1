@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+DateTime-Format-Pg-${UB_VERSION}.tar.gz DateTime-Format-Pg-${UB_VERSION}/
+	http://cpan.metacpan.org/authors/id/D/DM/DMAKI/

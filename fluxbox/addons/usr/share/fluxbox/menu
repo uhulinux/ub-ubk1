@@ -1,0 +1,5 @@
+[encoding] {UTF-8}
+	[begin] (Fluxbox)
+		[include] (/usr/share/fluxbox/menu2[.LANG])
+	[end]
+[endencoding]

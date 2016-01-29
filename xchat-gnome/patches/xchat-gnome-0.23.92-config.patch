@@ -1,0 +1,78 @@
+diff -urp xchat-gnome-0.23.92.OLD/plugins/perl/perl.c xchat-gnome-0.23.92/plugins/perl/perl.c
+--- xchat-gnome-0.23.92.OLD/plugins/perl/perl.c	2007-03-09 10:42:50.000000000 -0500
++++ xchat-gnome-0.23.92/plugins/perl/perl.c	2008-09-09 19:07:08.000000000 -0400
+@@ -92,7 +92,7 @@ perl_auto_load (void)
+ 	if (!xdir)						  /* xchatdirfs is new for 2.0.9, will fail on older */
+ 		xdir = xchat_get_info (ph, "xchatdir");
+ 
+-	/* autoload from ~/.xchat2/ or ${APPDATA}\X-Chat 2\ on win32 */
++	/* autoload from ~/.xchat-gnome/ or ${APPDATA}\X-Chat 2\ on win32 */
+ 	perl_auto_load_from_path (xdir);
+ 
+ #ifdef WIN32
+diff -urp xchat-gnome-0.23.92.OLD/plugins/python/python.c xchat-gnome-0.23.92/plugins/python/python.c
+--- xchat-gnome-0.23.92.OLD/plugins/python/python.c	2008-09-07 09:18:27.000000000 -0400
++++ xchat-gnome-0.23.92/plugins/python/python.c	2008-09-09 19:06:47.000000000 -0400
+@@ -421,7 +421,7 @@ Util_Expand(char *filename)
+ 		return expanded;
+ 	g_free(expanded);
+ 
+-	/* Check if ~/.xchat2/<filename> exists. */
++	/* Check if ~/.xchat-gnome/<filename> exists. */
+ 	expanded = g_build_filename(xchat_get_info(ph, "xchatdir"),
+ 				    filename, NULL);
+ 	if (g_file_test(expanded, G_FILE_TEST_EXISTS))
+diff -urp xchat-gnome-0.23.92.OLD/src/common/cfgfiles.c xchat-gnome-0.23.92/src/common/cfgfiles.c
+--- xchat-gnome-0.23.92.OLD/src/common/cfgfiles.c	2007-09-12 10:12:26.000000000 -0400
++++ xchat-gnome-0.23.92/src/common/cfgfiles.c	2008-09-09 19:05:01.000000000 -0400
+@@ -34,7 +34,7 @@
+ #ifdef WIN32
+ #define XCHAT_DIR "X-Chat 2"
+ #else
+-#define XCHAT_DIR ".xchat2"
++#define XCHAT_DIR ".xchat-gnome"
+ #endif
+ #define DEF_FONT "Monospace 9"
+ 
+@@ -351,7 +351,7 @@ check_prefs_dir (void)
+ #else
+ 		if (mkdir (dir, S_IRUSR | S_IWUSR | S_IXUSR) != 0)
+ #endif
+-			fe_message (_("Cannot create ~/.xchat2"), FE_MSG_ERROR);
++			fe_message (_("Cannot create ~/.xchat-gnome"), FE_MSG_ERROR);
+ 	}
+ }
+ 
+diff -urp xchat-gnome-0.23.92.OLD/src/common/fe.h xchat-gnome-0.23.92/src/common/fe.h
+--- xchat-gnome-0.23.92.OLD/src/common/fe.h	2007-07-09 05:30:58.000000000 -0400
++++ xchat-gnome-0.23.92/src/common/fe.h	2008-09-09 19:05:21.000000000 -0400
+@@ -106,7 +106,7 @@ void fe_get_str (char *prompt, char *def
+ void fe_get_int (char *prompt, int def, void *callback, void *ud);
+ #define FRF_WRITE 1	/* save file */
+ #define FRF_MULTIPLE 2	/* multi-select */
+-#define FRF_ADDFOLDER 4	/* add ~/.xchat2 to favourites */
++#define FRF_ADDFOLDER 4	/* add ~/.xchat-gnome to favourites */
+ #define FRF_CHOOSEFOLDER 8	/* choosing a folder only */
+ #define FRF_FILTERISINITIAL 16	/* unused */
+ #define FRF_NOASKOVERWRITE 32	/* don't ask to overwrite existing files */
+diff -urp xchat-gnome-0.23.92.OLD/src/fe-gnome/preferences-page-plugins.c xchat-gnome-0.23.92/src/fe-gnome/preferences-page-plugins.c
+--- xchat-gnome-0.23.92.OLD/src/fe-gnome/preferences-page-plugins.c	2007-07-24 05:24:39.000000000 -0400
++++ xchat-gnome-0.23.92/src/fe-gnome/preferences-page-plugins.c	2008-09-09 19:06:27.000000000 -0400
+@@ -242,7 +242,7 @@ open_plugin_clicked (GtkButton *button, 
+ 	file_selector = gtk_file_chooser_dialog_new (_("Open Plugin"), NULL, GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
+ 
+ 	homedir = g_get_home_dir();
+-	plugindir = g_strdup_printf ("%s/.xchat2/plugins", homedir);
++	plugindir = g_strdup_printf ("%s/.xchat-gnome/plugins", homedir);
+ 	gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (file_selector), plugindir);
+ 	g_free (plugindir);
+ 
+@@ -417,7 +417,7 @@ preferences_page_plugins_check_plugins (
+ 	xchat_plugin *plugin;
+ 
+ 	homedir = g_get_home_dir ();
+-	xchatdir = g_strdup_printf ("%s/.xchat2/plugins", homedir);
++	xchatdir = g_strdup_printf ("%s/.xchat-gnome/plugins", homedir);
+ 	for_files (XCHATLIBDIR "/plugins", "*.so", fe_plugin_add);
+ 	for_files (XCHATLIBDIR "/plugins", "*.sl", fe_plugin_add);
+ 	for_files (XCHATLIBDIR "/plugins", "*.py", fe_plugin_add);

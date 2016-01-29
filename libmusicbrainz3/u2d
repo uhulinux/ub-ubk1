@@ -1,0 +1,1 @@
+urllist https://github.com/metabrainz/libmusicbrainz/ | grep -E release-3 | splitver '^release-([0-9.]+)$' | sort -V | tail -n 1

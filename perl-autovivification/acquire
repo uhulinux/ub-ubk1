@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+autovivification-${UB_VERSION}.tar.gz autovivification-${UB_VERSION}/
+	http://cpan.metacpan.org/authors/id/V/VP/VPIT/

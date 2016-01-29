@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libcdaudio-${UB_VERSION}.tar.gz libcdaudio-${UB_VERSION}/
+	http://downloads.sourceforge.net/libcdaudio/

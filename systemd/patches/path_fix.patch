@@ -1,0 +1,18 @@
+diff -urN systemd-212.orig/configure.ac systemd-212/configure.ac
+--- systemd-212.orig/configure.ac	2014-03-25 23:37:44.912147346 +0100
++++ systemd-212/configure.ac	2014-04-28 12:49:06.324220932 +0200
+@@ -68,11 +68,11 @@
+ AC_PATH_PROG([QUOTAON], [quotaon], [/usr/sbin/quotaon], [$PATH:/usr/sbin:/sbin])
+ AC_PATH_PROG([QUOTACHECK], [quotacheck], [/usr/sbin/quotacheck], [$PATH:/usr/sbin:/sbin])
+ 
+-AC_PATH_PROG([SETCAP], [setcap], [/usr/sbin/setcap], [$PATH:/usr/sbin:/sbin])
++AC_PATH_PROG([SETCAP], [setcap], [/sbin/setcap], [$PATH:/usr/sbin:/sbin])
+ 
+-AC_PATH_PROG([KILL], [kill], [/usr/bin/kill], [$PATH:/usr/sbin:/sbin])
++AC_PATH_PROG([KILL], [kill], [/bin/kill], [$PATH:/usr/sbin:/sbin])
+ 
+-AC_PATH_PROG([KMOD], [kmod], [/usr/bin/kmod], [$PATH:/usr/sbin:/sbin])
++AC_PATH_PROG([KMOD], [kmod], [/bin/kmod], [$PATH:/usr/sbin:/sbin])
+ 
+ AC_PATH_PROG([KEXEC], [kexec], [/usr/sbin/kexec], [$PATH:/usr/sbin:/sbin])
+ 

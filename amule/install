@@ -1,0 +1,15 @@
+#!/bin/sh -eux
+
+mkdir -p /var/uhubuild/.local/share/mime/packages
+
+ub_install
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/applications/kde4
+mkdir -p "$UB_INSTALLDIR"/usr/share/mime/packages
+cp -a "$UB_INSTALLDIR"/var/uhubuild/.local/share/applications/plasmamule-engine-feeder.desktop "$UB_INSTALLDIR"/usr/share/applications/kde4/
+cp "$UB_INSTALLDIR"/var/uhubuild/.local/share/mime/amule.xml "$UB_INSTALLDIR"/usr/share/mime/packages/
+
+rm -r "$UB_INSTALLDIR"/var
+
+#conflicts with ktorrent
+rm -r "$UB_INSTALLDIR"/usr/share/kde4/services/magnet.protocol

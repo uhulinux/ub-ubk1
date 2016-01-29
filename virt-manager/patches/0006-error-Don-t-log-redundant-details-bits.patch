@@ -1,0 +1,35 @@
+From 5b6694efd7686684272c2d662bde52386ea1dc4f Mon Sep 17 00:00:00 2001
+From: Cole Robinson <crobinso@redhat.com>
+Date: Wed, 16 Apr 2014 12:12:07 -0400
+Subject: [PATCH] error: Don't log redundant details bits
+
+(cherry picked from commit 341a453d28e2b8dc97d22cd810d40bffac948af0)
+---
+ virtManager/error.py | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/virtManager/error.py b/virtManager/error.py
+index 8a788ce..1f77a1f 100644
+--- a/virtManager/error.py
++++ b/virtManager/error.py
+@@ -75,14 +75,16 @@ class vmmErrorDialog(vmmGObject):
+             if tb != "None":
+                 details += "\n\n" + tb
+ 
++        if debug:
++            debugmsg = "error dialog message:\nsummary=%s" % summary
++            if details and details != summary:
++                debugmsg += "\ndetails=%s" % details
++            logging.debug(debugmsg)
++
+         # Make sure we have consistent details for error dialogs
+         if (dialog_type == Gtk.MessageType.ERROR and not summary in details):
+             details = summary + "\n\n" + details
+ 
+-        if debug:
+-            logging.debug("error dialog message:\nsummary=%s\ndetails=%s",
+-                          summary, details)
+-
+         dialog = _errorDialog(parent=self.get_parent(),
+                               flags=0,
+                               message_type=dialog_type,

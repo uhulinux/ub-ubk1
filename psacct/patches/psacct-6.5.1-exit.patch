@@ -1,0 +1,12 @@
+diff -up acct-6.5.1/accton.c.pom acct-6.5.1/accton.c
+--- acct-6.5.1/accton.c.pom	2009-09-06 01:38:20.000000000 +0200
++++ acct-6.5.1/accton.c	2009-12-18 15:21:38.000000000 +0100
+@@ -203,7 +203,7 @@ int main(int argc, char *argv[])
+ 
+ 
+       /* did the system call return an error? */
+-      if (-1 == status_acct)
++      if (-1 == status_acct  && errno != ENOSYS)
+         {
+           int err = errno;
+           perror ("accton");

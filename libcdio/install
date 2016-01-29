@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_install
+sed -i "/LIBCDIO_SOURCE_PATH/s|.*|/* #undef LIBCDIO_SOURCE_PATH */|" \
+    $UB_INSTALLDIR/usr/include/cdio/cdio_config.h

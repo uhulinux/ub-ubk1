@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libsexy-${UB_VERSION}.tar.gz libsexy-${UB_VERSION}/
+	http://releases.chipx86.com/libsexy/libsexy/

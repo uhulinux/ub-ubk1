@@ -1,0 +1,9 @@
+diff -Naur artikulate-4.12.97-orig/artikulate.desktop artikulate-4.12.97/artikulate.desktop
+--- artikulate-4.12.97-orig/artikulate.desktop	2014-03-24 08:57:50.000000000 +0000
++++ artikulate-4.12.97/artikulate.desktop	2014-04-02 18:20:40.715659454 +0000
+@@ -64,4 +64,4 @@
+ Name[uk]=Artikulate
+ Name[x-test]=xxArtikulatexx
+ Name[zh_TW]=Artikulate
+-Categories=Qt;KDE;Education;X-KDE-Edu-Misc;
++Categories=Qt;KDE;Education;X-KDE-Edu-Misc;X-UHU-Menu/Edutainment/Miscellaneous;

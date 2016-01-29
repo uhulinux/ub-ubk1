@@ -1,0 +1,16 @@
+--- xiphos.orig/xiphos.desktop.in.in	2009-02-19 02:50:20.000000000 +0100
++++ xiphos/xiphos.desktop.in.in	2009-03-14 15:50:39.000000000 +0100
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+-_Name=Xiphos Bible Guide
++Name=Xiphos
+ _Comment=Study the Bible
+-Exec=@xiphos_exec@
++Exec=xiphos
+ TryExec=xiphos
+ Icon=xiphos
+ Terminal=false
+ Type=Application
+-Categories=Education;
++Categories=GTK;Education;Literature;
+ StartupNotify=true

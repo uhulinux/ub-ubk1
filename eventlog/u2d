@@ -1,0 +1,2 @@
+minor=$(urllist http://www.balabit.com/downloads/files/eventlog/ | grep -E '^([0-9.]+)$' | sort -V | tail -n 1)
+urllist http://www.balabit.com/downloads/files/eventlog/"$minor"/ | splitver '^eventlog_([0-9.]+).tar.gz$' | sort -V | tail -n 1

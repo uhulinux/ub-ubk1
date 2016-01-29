@@ -1,0 +1,22 @@
+diff -Naur orig/Hyena.Gui/Makefile.am patched/Hyena.Gui/Makefile.am
+--- orig/Hyena.Gui/Makefile.am	2010-07-11 21:41:59.000000000 +0200
++++ patched/Hyena.Gui/Makefile.am	2013-07-17 01:06:54.930924564 +0200
+@@ -1,5 +1,5 @@
+ ASSEMBLY = Hyena.Gui
+-ASSEMBLY_BUILD_FLAGS = -unsafe
++ASSEMBLY_BUILD_FLAGS = -unsafe -sdk:4
+ TARGET = library
+ LINK = -r:ICSharpCode.SharpZipLib -r:Mono.Posix -r:System -r:System.Core -r:Mono.Cairo \
+ 	   $(GTKSHARP_LIBS) $(GLIBSHARP_LIBS) \
+diff -Naur orig/Hyena.Gui/Makefile.in patched/Hyena.Gui/Makefile.in
+--- orig/Hyena.Gui/Makefile.in	2010-10-06 21:46:07.000000000 +0200
++++ patched/Hyena.Gui/Makefile.in	2013-07-17 01:06:42.954814026 +0200
+@@ -140,7 +140,7 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ ASSEMBLY = Hyena.Gui
+-ASSEMBLY_BUILD_FLAGS = -unsafe
++ASSEMBLY_BUILD_FLAGS = -unsafe -sdk:4
+ TARGET = library
+ LINK = -r:ICSharpCode.SharpZipLib -r:Mono.Posix -r:System \
+ 	-r:System.Core -r:Mono.Cairo $(GTKSHARP_LIBS) \

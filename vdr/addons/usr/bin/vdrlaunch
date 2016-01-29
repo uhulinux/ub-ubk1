@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if ! [ -f /var/vdr/config/vdrstart ]
+  then
+  cp /etc/vdrstart /var/vdr/config/
+  chmod +x /var/vdr/config/vdrstart
+  echo Az átszerkesztendő indító szkript a /var/vdr/config/vdrstart.
+  echo Ez hiba esetén letörölhető, hiány esetén újraindítva az eredetire frissül.
+  echo Nyomj meg egy billentyűt a vdr első indításához!
+  read
+	/var/vdr/config/vdrstart $*
+  else
+  /var/vdr/config/vdrstart $*
+fi
+
+

@@ -1,0 +1,53 @@
+diff -Naurd a/data/tazweb.desktop b/data/tazweb.desktop
+--- a/data/tazweb.desktop	2014-04-13 02:32:31.000000000 +0200
++++ b/data/tazweb.desktop	2014-05-06 20:19:10.000000000 +0200
+@@ -5,6 +5,7 @@
+ Name[pt_BR]=Navegador TazWeb
+ Name[ru]=Браузер TazWeb
+ Comment=SliTaz simple, fast and small Web Browser
++Comment[hu]=Böngésző
+ Comment[pt]=Navegador web simples e rápido do SliTaz
+ Comment[pt_BR]=Navegador web simples e rápido do SliTaz
+ Comment[ru]=Простой, быстрый и маленький браузер SliTaz
+diff -Naurd a/Makefile b/Makefile
+--- a/Makefile	2014-04-13 02:32:31.000000000 +0200
++++ b/Makefile	2014-04-15 21:10:59.000000000 +0200
+@@ -12,7 +12,7 @@
+ 
+ all:
+ 	$(CC) src/main.c -o $(PACKAGE) \
+-		`pkg-config --cflags --libs gtk+-2.0 webkit-1.0`
++		`pkg-config --cflags --libs gtk+-2.0 webkitgtk-3.0`
+ 	@du -sh $(PACKAGE)
+ 
+ qt:
+diff -Naurd a/src/main.c b/src/main.c
+--- a/src/main.c	2014-04-13 02:32:31.000000000 +0200
++++ b/src/main.c	2014-04-15 21:12:44.000000000 +0200
+@@ -421,7 +421,7 @@
+ 	/* URL entry */
+ 	item = gtk_tool_item_new();
+ 	gtk_tool_item_set_expand(item, TRUE);
+-	gtk_widget_set_size_request(urientry, 0, 20);
++	gtk_widget_set_size_request(urientry, 0, 33);
+ 	gtk_container_add(GTK_CONTAINER(item), urientry);
+ 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), item, -1);
+ 	g_signal_connect(G_OBJECT(urientry), "activate",
+@@ -433,7 +433,7 @@
+ 	
+ 	/* Search entry */
+ 	item = gtk_tool_item_new();
+-	gtk_widget_set_size_request(search, 160, 20);
++	gtk_widget_set_size_request(search, 160, 33);
+ 	gtk_container_add(GTK_CONTAINER(item), search);
+ 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), item, -1);
+ 	gtk_entry_set_icon_from_stock(GTK_ENTRY(search),
+@@ -464,7 +464,7 @@
+ 
+ 	/* Default TazWeb window */
+ 	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+-	gtk_window_set_default_size(GTK_WINDOW(window), 800, 600);
++	gtk_window_set_default_size(GTK_WINDOW(window), 1280, 1024);
+ 	gtk_window_set_icon(GTK_WINDOW(window),
+ 			create_pixbuf("/usr/share/pixmaps/tazweb.png"));
+ 	gtk_widget_set_name(window, "TazWeb");

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+uhu-installer-${UB_VERSION}.tar.gz uhu-installer-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/uhu-installer/

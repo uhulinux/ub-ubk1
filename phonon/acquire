@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+phonon-${UB_VERSION}.tar.xz phonon-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/phonon/${UB_VERSION}/

@@ -1,0 +1,10 @@
+diff -Naurd a/data/viewnior.desktop.in.in b/data/viewnior.desktop.in.in
+--- a/data/viewnior.desktop.in.in	2010-12-15 21:25:38.000000000 +0100
++++ b/data/viewnior.desktop.in.in	2011-01-03 17:11:44.000000000 +0100
+@@ -7,5 +7,5 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Graphics;Viewer;
++Categories=GNOME;GTK;Graphics;Viewer;X-UHU-Menu/Tools/Viewers;
+ MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/pjpeg;image/png;image/tiff;image/x-bmp;image/x-gray;image/x-icb;image/x-ico;image/x-png;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-xbitmap;image/x-xpixmap;image/x-pcx;image/svg+xml;image/svg+xml-compressed;image/vnd.wap.wbmp;

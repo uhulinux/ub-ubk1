@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+wv2-${UB_VERSION}.tar.bz2 wv2-${UB_VERSION}/
+	http://downloads.sourceforge.net/wvware/

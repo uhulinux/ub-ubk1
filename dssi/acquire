@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dssi-${UB_VERSION}.tar.gz dssi-${UB_VERSION}/
+	http://downloads.sourceforge.net/dssi/

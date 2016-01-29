@@ -1,0 +1,12 @@
+diff -urN virt-manager-1.0.0.orig/virtManager/console.py virt-manager-1.0.0/virtManager/console.py
+--- virt-manager-1.0.0.orig/virtManager/console.py	2014-02-10 23:29:24.000000000 +0100
++++ virt-manager-1.0.0/virtManager/console.py	2014-02-19 14:51:36.628316712 +0100
+@@ -502,7 +502,7 @@
+             elif cred == GtkVnc.DisplayCredential.USERNAME:
+                 withUsername = True
+             elif cred == GtkVnc.DisplayCredential.CLIENTNAME:
+-                self.display.set_credential(cred, "libvirt-vnc")
++                self.display.set_credential(cred, "libvirt-vnc-"+self.console.vm.conn.get_uri_hostname())
+ 
+         if withUsername or withPassword:
+             self.console.activate_auth_page(withPassword, withUsername)

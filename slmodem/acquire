@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+slmodem-${UB_VERSION/~/-}.tar.gz slmodem-${UB_VERSION/~/-}/
+	http://linmodems.technion.ac.il/packages/smartlink/
+	http://www.smlink.com/objects/

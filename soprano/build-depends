@@ -1,0 +1,10 @@
+clucene-core-dev
+cmake
+doxygen
+graphviz
+java-jdk
+libiodbc-dev
+qt4-dev
+raptor2-dev
+redland-dev
+unixodbc-dev

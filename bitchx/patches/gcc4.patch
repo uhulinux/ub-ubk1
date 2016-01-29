@@ -1,0 +1,77 @@
+diff -Naur BitchX.orig/dll/aim/toc/toc.h BitchX/dll/aim/toc/toc.h
+--- BitchX.orig/dll/aim/toc/toc.h	2003-04-11 03:09:06.000000000 +0200
++++ BitchX/dll/aim/toc/toc.h	2006-01-04 15:59:58.000000000 +0100
+@@ -150,9 +150,6 @@
+ void parse_toc_buddy_list(char *);
+ void translate_toc_error_code(char *c);
+ 
+-extern int toc_fd;
+-extern int seqno;
+-extern unsigned int peer_ver;
+ extern int state;
+ /* extern int inpa; */
+ 
+@@ -207,9 +204,7 @@
+ void serv_set_away(char *message);
+ 
+ extern int idle_timer;
+-extern time_t lastsent;
+ extern time_t login_time;
+-extern struct timeval lag_tv;
+ extern int is_idle;
+ extern int lag_ms;
+ extern int permdeny;
+diff -Naur BitchX.orig/include/ctcp.h BitchX/include/ctcp.h
+--- BitchX.orig/include/ctcp.h	2003-04-11 03:09:07.000000000 +0200
++++ BitchX/include/ctcp.h	2006-01-04 15:59:58.000000000 +0100
+@@ -56,7 +56,6 @@
+ extern CtcpEntryDll *dll_ctcp;
+ 
+ 
+-extern		char	*ctcp_type[];
+ extern		int	sed;
+ extern		int	in_ctcp_flag;
+ 
+diff -Naur BitchX.orig/include/modval.h BitchX/include/modval.h
+--- BitchX.orig/include/modval.h	2003-04-11 03:09:07.000000000 +0200
++++ BitchX/include/modval.h	2006-01-04 16:04:19.000000000 +0100
+@@ -650,7 +650,7 @@
+ #define start_time ((time_t) *((time_t *)global[START_TIME]))
+ #define idle_time() ((time_t) *((time_t *)global[IDLE_TIME]()))
+ 
+-#define loading_global ((int) *((int *)global[LOADING_GLOBAL]))
++#define loading_global (      *((int *)global[LOADING_GLOBAL]))
+ #define target_window (*((Window **)global[TARGET_WINDOW]))
+ #define current_window (*((Window **)global[CURRENT_WINDOW]))
+ #define invisible_list (*((Window **)global[INVISIBLE_LIST]))
+@@ -669,7 +669,7 @@
+ #define status_update_flag ((int) *((int *)global[STATUS_UPDATE_FLAG]))
+ #define tabkey_array (*((NickTab **)global[TABKEY_ARRAY]))
+ #define autoreply_array (*((NickTab *)global[AUTOREPLY_ARRAY]))
+-#define identd ((int) *((int *)global[IDENTD_SOCKET]))
++#define identd (      *((int *)global[IDENTD_SOCKET]))
+ #define doing_notice ((int) *((int *)global[DOING_NOTICE]))
+ #define last_sent_msg_body (*((char **)global[LAST_SENT_MSG_BODY]))
+ #define sent_nick (*((char **)global[SENT_NICK]))
+diff -Naur BitchX.orig/include/struct.h BitchX/include/struct.h
+--- BitchX.orig/include/struct.h	2003-04-11 03:09:07.000000000 +0200
++++ BitchX/include/struct.h	2006-01-04 15:59:58.000000000 +0100
+@@ -1064,7 +1064,6 @@
+ 	int	delete;
+ }	TimerList;
+ 
+-extern TimerList *PendingTimers;
+ typedef struct nicktab_stru
+ {
+ 	struct nicktab_stru *next;
+diff -Naur BitchX.orig/source/term.c BitchX/source/term.c
+--- BitchX.orig/source/term.c	2003-04-11 03:09:07.000000000 +0200
++++ BitchX/source/term.c	2006-01-04 15:59:58.000000000 +0100
+@@ -92,7 +92,6 @@
+ #endif
+ 
+ extern  char    *getenv();
+-extern	char	*tparm();
+ 
+ /*
+  * The old code assumed termcap. termcap is almost always present, but on

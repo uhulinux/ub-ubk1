@@ -1,0 +1,1 @@
+urllist http://mirror.lihnidos.org/GNU/savannah/attr/ | splitver '^attr-([0-9.]+).src.tar.(gz|bz2|xz)$' | sort -V | tail -n 1

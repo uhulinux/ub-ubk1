@@ -1,0 +1,1 @@
+urllist https://bitbucket.org/hroptatyr/dateutils/downloads/ | splitver '^dateutils-([0-9.]+).tar.xz$' | sort -V | tail -n 1

@@ -1,0 +1,11 @@
+diff -urN hplip-2.8.10.orig/hplip.desktop.in hplip-2.8.10/hplip.desktop.in
+--- hplip-2.8.10.orig/hplip.desktop.in	2008-10-31 23:25:17.000000000 +0100
++++ hplip-2.8.10/hplip.desktop.in	2008-12-01 22:09:44.000000000 +0100
+@@ -7,6 +7,6 @@
+ Exec=hp-toolbox
+ Icon=@abs_datadir@/hplip/data/images/48x48/prog.png
+ Terminal=false
+-Categories=Application;Utility;
++Categories=Application;Utility;X-UHU-Menu/Settings;
+ X-KDE-StartupNotify=false
+ StartupNotify=false

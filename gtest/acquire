@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gtest-${UB_VERSION}.zip gtest-${UB_VERSION}/
+	http://googletest.googlecode.com/files/

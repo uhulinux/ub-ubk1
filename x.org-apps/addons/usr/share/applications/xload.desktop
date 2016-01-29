@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=xload
+Comment=Watch system load average
+Comment[hu]=Processzor-terhelés figyelése
+Exec=xload
+Categories=Utility;

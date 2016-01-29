@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tcc-${UB_VERSION}.tar.bz2 tcc-${UB_VERSION}/
+	http://download.savannah.nongnu.org/releases/tinycc/

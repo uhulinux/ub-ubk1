@@ -1,0 +1,10 @@
+diff -Naur ORIG/src/qt-recordmydesktop.desktop UHU/src/qt-recordmydesktop.desktop
+--- ORIG/src/qt-recordmydesktop.desktop	2008-11-23 16:09:14.000000000 +0100
++++ UHU/src/qt-recordmydesktop.desktop	2009-09-22 22:15:15.000000000 +0200
+@@ -8,5 +8,5 @@
+ Terminal=false
+ Type=Application
+ Icon=qt-recordmydesktop.png
+-Categories=AudioVideo;Recorder;
++Categories=AudioVideo;Recorder;X-UHU-Menu/Multimedia;
+ StartupNotify=false

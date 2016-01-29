@@ -1,0 +1,1 @@
+urllist ftp://alpha.gnu.org/gnu/grub/ | splitver '^grub-([0-9.]+).tar.gz$' | sort -V | tail -n 1

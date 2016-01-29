@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+make \
+	INSTALL=${UB_INSTALLDIR}/usr/bin \
+	install
+

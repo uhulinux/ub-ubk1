@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+opera-${UB_VERSION%~*}-1467.i386.linux.tar.bz2 opera-${UB_VERSION%~*}-1467.i386.linux/
+	ftp://ftp.opera.com/pub/opera/linux/${UB_VERSION_MAJOR}${UB_VERSION_MINOR/~/}/
+	ftp://ftp.opera.com/pub/opera/linux/${UB_VERSION//./}/final/en/i386/shared/
+	ftp://ftp.sunet.se/pub/www/clients/Opera/linux/${UB_VERSION//./}/final/en/i386/shared/
+	http://mirrors.symetrix.net/pub/ftp.opera.com/linux/${UB_VERSION//./}/final/en/i386/shared/

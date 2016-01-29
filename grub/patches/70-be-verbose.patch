@@ -1,0 +1,136 @@
+diff -Naurd grub-0.93.orig/netboot/fsys_tftp.c grub-0.93/netboot/fsys_tftp.c
+--- grub-0.93.orig/netboot/fsys_tftp.c	2002-05-08 09:08:49.000000000 +0200
++++ grub-0.93/netboot/fsys_tftp.c	2003-10-27 17:33:00.000000000 +0100
+@@ -45,6 +45,7 @@
+ static int saved_filepos;
+ static unsigned short len, saved_len;
+ static char *buf;
++static unsigned read_counter = 0;
+ 
+ /* Fill the buffer by receiving the data via the TFTP protocol.  */
+ static int
+@@ -53,7 +54,7 @@
+ #ifdef TFTP_DEBUG
+   grub_printf ("buf_fill (%d)\n", abort);
+ #endif
+-  
++
+   while (! buf_eof && (buf_read + packetsize <= FSYS_BUFLEN))
+     {
+       struct tftp_t *tr;
+@@ -320,6 +321,7 @@
+ {
+   /* How many bytes is read?  */
+   int ret = 0;
++  read_counter = 0;
+ 
+ #ifdef TFTP_DEBUG
+   grub_printf ("tftp_read (0x%x, %d)\n", (int) addr, size);
+@@ -401,8 +403,13 @@
+ 	  errnum = ERR_READ;
+ 	  return 0;
+ 	}
++
++      if (!(read_counter++ & 3) && (read_counter > 63))
++	grub_printf (".");
+     }
+ 
++  if (read_counter > 63)
++    grub_printf ("\n");
+   return ret;
+ }
+ 
+diff -Naurd grub-0.93.orig/netboot/main.c grub-0.93/netboot/main.c
+--- grub-0.93.orig/netboot/main.c	2002-06-12 10:58:18.000000000 +0200
++++ grub-0.93/netboot/main.c	2003-10-27 16:53:21.000000000 +0100
+@@ -587,6 +587,8 @@
+ 
+ #ifdef DEBUG
+       grub_printf ("retry = %d\n", retry);
++#else
++      grub_printf (".");
+ #endif
+       
+       /* Clear out the Rx queue first.  It contains nothing of
+@@ -605,6 +607,9 @@
+       if (await_reply (AWAIT_BOOTP, 0, NULL, timeout))
+ 	{
+ 	  network_ready = 1;
++#ifndef DEBUG
++	  grub_printf ("\n");
++#endif
+ 	  return 1;
+ 	}
+ #else /* ! NO_DHCP_SUPPORT */
+@@ -613,6 +618,9 @@
+ 	  if (dhcp_reply != DHCPOFFER)
+ 	    {
+ 	      network_ready = 1;
++#ifndef DEBUG
++	      grub_printf ("\n");
++#endif
+ 	      return 1;
+ 	    }
+ 
+@@ -638,12 +646,16 @@
+ 			sizeof (in_addr));
+ #ifdef DEBUG
+ 	  grub_printf ("errnum = %d\n", errnum);
++#else
++	  grub_printf (".");
+ #endif
+ 	  for (reqretry = 0; reqretry < MAX_BOOTP_RETRIES;)
+ 	    {
+ 	      int ret;
+ #ifdef DEBUG
+ 	      grub_printf ("reqretry = %d\n", reqretry);
++#else
++	      grub_printf (".");
+ #endif
+ 	      
+ 	      ret = udp_transmit (IP_BROADCAST, BOOTP_CLIENT, BOOTP_SERVER,
+@@ -657,26 +669,42 @@
+ 		if (dhcp_reply == DHCPACK)
+ 		  {
+ 		    network_ready = 1;
++#ifndef DEBUG
++		    grub_printf ("\n");
++#endif
+ 		    return 1;
+ 		  }
+ 
+ #ifdef DEBUG
+ 	      grub_printf ("dhcp_reply = %d\n", dhcp_reply);
++#else
++	      grub_printf (".");
+ #endif
+ 	      
+-	      if (ip_abort)
++	      if (ip_abort) {
++#ifndef DEBUG
++		grub_printf ("\n");
++#endif
+ 		return 0;
++	      }
+ 	    }
+ 	}
+ #endif /* ! NO_DHCP_SUPPORT */
+       
+-      if (ip_abort)
++      if (ip_abort) {
++#ifndef DEBUG
++	grub_printf ("\n");
++#endif
+ 	return 0;
++      }
+       
+       ip.bp.bp_secs = htons ((currticks () - starttime) / TICKS_PER_SEC);
+     }
+ 
+   /* Timeout.  */
++#ifndef DEBUG
++  grub_printf ("\n");
++#endif
+   return 0;
+ }
+ 

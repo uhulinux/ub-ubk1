@@ -1,0 +1,45 @@
+diff -Naur orig/ksymoops.c patched/ksymoops.c
+--- orig/ksymoops.c	2005-01-08 14:30:36.000000000 +0100
++++ patched/ksymoops.c	2013-08-05 04:56:21.365089723 +0200
+@@ -9,8 +9,6 @@
+     Released under the GNU Public Licence, Version 2.
+ */
+ 
+-#define VERSION "2.4.11"
+-
+ #include "ksymoops.h"
+ #include <ctype.h>
+ #include <errno.h>
+@@ -157,7 +155,7 @@
+ #endif
+ 	   "\n"
+ 	  ;
+-    printf("Version " VERSION "\n");
++    printf("Version " PACKAGE_VERSION "\n");
+     printf("usage: %s\n", prefix);
+     printf("%s", usage_text);
+ }
+@@ -486,7 +484,7 @@
+     multi_opt(spec_l, spec_L, 'l', options->lsmod);
+     multi_opt(spec_m, spec_M, 'm', options->system_map);
+ 
+-    printf("ksymoops %s", VERSION);
++    printf("ksymoops %s", PACKAGE_VERSION);
+     if (uname(&buf) == 0)
+ 	printf(" on %s %s", buf.machine, buf.release);
+     printf(".  Options used\n");
+diff -Naur orig/ksymoops.h patched/ksymoops.h
+--- orig/ksymoops.h	2004-11-21 02:06:05.000000000 +0100
++++ patched/ksymoops.h	2013-08-05 05:04:01.873340066 +0200
+@@ -6,6 +6,11 @@
+ 
+ */
+ 
++// bogus binutils requies PACKAGE and PACKAGE_VERSION
++// (typically defined in config.h) before #include <bfd.h>
++#define PACKAGE "ksymoops"
++#define PACKAGE_VERSION "2.4.11"
++
+ #include <bfd.h>
+ #include <sys/types.h>
+ #include <regex.h>

@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+cd src
+chmod 755 configure
+ub_configure
+./Make.sh
+cd ..

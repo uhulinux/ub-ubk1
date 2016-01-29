@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+wine-${UB_VERSION}.tar.bz2 wine-${UB_VERSION}/
+	http://downloads.sourceforge.net/wine/
+	http://ibiblio.org/pub/linux/system/emulators/wine/

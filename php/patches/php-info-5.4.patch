@@ -1,0 +1,12 @@
+diff -Naur orig/ext/standard/info.c patched/ext/standard/info.c
+--- orig/ext/standard/info.c	2012-05-08 07:22:56.000000000 +0200
++++ patched/ext/standard/info.c	2012-05-10 21:32:07.394654567 +0200
+@@ -635,6 +635,8 @@
+ 	php_info_print("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"DTD/xhtml1-transitional.dtd\">\n");
+ 	php_info_print("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
+ 	php_info_print("<head>\n");
++	php_info_print("<meta http-equiv=\"pragma\" content=\"no-cache\" />\n");
++	php_info_print("<meta http-equiv=\"expires\" content=\"Thu, 1 Jan 1970 00:00:00 GMT\" />\n");
+ 	php_info_print_style(TSRMLS_C);
+ 	php_info_print("<title>phpinfo()</title>");
+ 	php_info_print("<meta name=\"ROBOTS\" content=\"NOINDEX,NOFOLLOW,NOARCHIVE\" />");

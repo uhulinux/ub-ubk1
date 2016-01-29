@@ -1,0 +1,12 @@
+diff -Naur zapping-0.10cvs6-orig/libvbi/exp-gfx.c zapping-0.10cvs6/libvbi/exp-gfx.c
+--- zapping-0.10cvs6-orig/libvbi/exp-gfx.c	2005-09-01 03:40:52.000000000 +0200
++++ zapping-0.10cvs6/libvbi/exp-gfx.c	2011-11-27 15:59:50.000000000 +0100
+@@ -1767,7 +1767,7 @@
+ 	unsigned int i;
+ 	unsigned int size;
+ 
+-	if (setjmp (png_ptr->jmpbuf))
++	if (setjmp (png_jmpbuf(png_ptr)))
+ 		return FALSE;
+ 
+ 	png_init_io (png_ptr, e->fp);

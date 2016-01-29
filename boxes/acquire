@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+boxes-${UB_VERSION}.src.tar.gz boxes-${UB_VERSION}/
+	http://boxes.thomasjensen.com/download/

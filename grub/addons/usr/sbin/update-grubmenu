@@ -1,0 +1,133 @@
+#!/bin/sh
+
+tmp="$(mktemp)"
+
+if [ -f /boot/grub/device.map ]; then
+	mv /boot/grub/device.map /boot/grub/device.map.bak
+fi
+
+if [ -f /boot/grub/menu.lst ]; then
+	mv /boot/grub/menu.lst /boot/grub/menu.lst.bak
+fi
+
+shopt -s extglob
+shopt -s nullglob
+if [ -n "$BOOTDEV" ]; then
+	bd="$BOOTDEV"
+else
+	bd="$(getdev /boot)"
+fi
+if [ -n "$BOOTDISK" ]; then
+	bdisk="$BOOTDISK"
+else
+	bdisk="${bd%%+([0-9])}"
+fi
+
+echo "(hd0) $bdisk" >/boot/grub/device.map
+echo "Boot device is $bdisk" >&2
+
+if [ -n "$ROOTDEV" ]; then
+	rd="$ROOTDEV"
+else
+	rd="$(getdev /)"
+fi
+
+case "$rd" in
+	/dev/dm-*)
+	for dev in /dev/mapper/*; do
+		if [ "$(readlink -f "$dev")" = "$rd" ]; then
+			volume="${dev#/dev/mapper/}"
+			case "$volume" in
+				live)
+					rd="/dev/$(ls -1 /sys/block/${rd#/dev/}/slaves | head -1)"
+					;;
+				*)
+					rd="lvm:${dev#/dev/mapper/}"
+					;;
+			esac
+			break
+		fi
+	done
+esac
+
+gbd="$(grub-convert "$bd")"
+
+exec 1>"$tmp"
+
+timeout=1
+hiddenmenu="hiddenmenu"
+
+cat <<EOF
+default 0
+EOF
+
+if [ -f /boot/themes/uhu -a -z "$_UPDATE_GRUBMENU_GFX" ]; then
+	if [ -n "$LC_ALL" ]; then
+		lang="${LC_ALL%%[_.@]*}"
+	elif [ -n "$LC_MESSAGES" ]; then
+		lang="${LC_MESSAGES%%[_.@]*}"
+	elif [ -n "$LANG" ]; then
+		lang="${LANG%%[_.@]*}"
+	else
+		lang="en"
+	fi
+	if [ "$lang" != "en" -a "$lang" != "C" -a "$lang" != "POSIX" ] \
+	  && gfxmenu-set-default-language /boot/themes/uhu "$lang" >/dev/null 2>&1; then
+		echo "gfxmenu $gbd/boot/themes/uhu_$lang"
+	else
+		echo "gfxmenu $gbd/boot/themes/uhu"
+	fi
+	hiddenmenu=""
+fi
+
+rm -f /etc/blkid.tab
+ru="/dev/disk/by-uuid/$(blkid -c /dev/null -o udev "$rd"|grep "^ID_FS_UUID="|cut -d= -f2)"
+
+echo
+echo "title UHU-Linux i386 (32-bit)"
+echo "kernel $gbd/boot/bzImage.i386 boot=$ru"
+echo "initrd $gbd/boot/initramfs.i386.cpio.gz"
+
+echo
+echo "title UHU-Linux x86_64 (64-bit)"
+echo "kernel $gbd/boot/bzImage.x86_64 boot=$ru"
+echo "initrd $gbd/boot/initramfs.x86_64.cpio.gz"
+
+echo
+echo "title UHU-Linux i386 (32-bit) nomodeset"
+echo "kernel $gbd/boot/bzImage.i386 boot=$ru nomodeset"
+echo "initrd $gbd/boot/initramfs.i386.cpio.gz"
+
+echo
+echo "title UHU-Linux x86_64 (64-bit) nomodeset"
+echo "kernel $gbd/boot/bzImage.x86_64 boot=$ru nomodeset"
+echo "initrd $gbd/boot/initramfs.x86_64.cpio.gz"
+
+for windev in $(sfdisk -l 2>/dev/null | grep '\*' | grep -E '(FAT|HPFS/NTFS)' | awk '{print $1}'); do
+	echo
+	echo "title Windows"
+	echo "-->" >&2
+	echo "windev=[$windev]" >&2
+	windrive="${windev%%[0-9]*}"
+	wingrubdrive="$(grub-convert $windrive)"
+	echo "windrive=[$windrive]" >&2
+	echo "wingrubdrive=[$wingrubdrive]" >&2
+	if [ "$wingrubdrive" != "(hd0)" ]; then
+		echo "map $wingrubdrive (hd0)"
+		echo "map (hd0) $wingrubdrive"
+	fi
+	echo "chainloader $(grub-convert $windev)+1"
+	timeout=10
+	hiddenmenu=""
+done
+
+if [ -f /boot/memtest.bin ]; then
+	echo
+	echo "title Memory Test"
+	echo "kernel $gbd/boot/memtest.bin"
+fi
+
+echo "timeout $timeout" >/boot/grub/menu.lst
+echo "$hiddenmenu" >>/boot/grub/menu.lst
+cat "$tmp" >>/boot/grub/menu.lst
+rm "$tmp"

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+shadow-${UB_VERSION}.tar.gz shadow-${UB_VERSION}/
+	ftp://ftp.pld.org.pl/software/shadow/
+	ftp://ftp.pld.org.pl/software/shadow/old/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gc-${UB_VERSION}.tar.gz gc-${UB_VERSION}/
+	http://www.hpl.hp.com/personal/Hans_Boehm/gc/gc_source/

@@ -1,0 +1,11 @@
+gnome-session
+gnome-settings-daemon
+gnome-shell
+icon-theme-gnome-symbolic
+iso-codes
+metacity
+polkit-gnome
+uhu-pixmaps
+x.org-server
+x.org-server-utils
+xkb-utils

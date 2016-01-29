@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+qca-${UB_VERSION}.tar.bz2 qca-${UB_VERSION}/
+	http://delta.affinix.com/download/qca/2.0/

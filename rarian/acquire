@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+rarian-${UB_VERSION}.tar.gz rarian-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/rarian/${UB_VERSION_HEAD2}/
+	http://rarian.freedesktop.org/Releases/

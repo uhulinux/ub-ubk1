@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-icon-theme-symbolic-${UB_VERSION}.tar.xz gnome-icon-theme-symbolic-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-icon-theme-symbolic/${UB_VERSION_HEAD2}/

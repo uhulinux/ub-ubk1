@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+frozen-bubble-${UB_VERSION}.tar.bz2 frozen-bubble-${UB_VERSION}/
+	http://www.frozen-bubble.org/data/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+linphone-${UB_VERSION}.tar.gz linphone-${UB_VERSION}/
+	http://download.savannah.gnu.org/releases/linphone/${UB_VERSION_HEAD2}.x/sources/

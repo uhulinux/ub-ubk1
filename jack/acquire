@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+jack-audio-connection-kit-"$UB_VERSION".tar.gz jack-audio-connection-kit-"$UB_VERSION"/
+	http://jackaudio.org/downloads/

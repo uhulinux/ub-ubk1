@@ -1,0 +1,7 @@
+cmake
+fltk-dev
+gnutls-dev
+libjpeg-dev
+libx11-dev
+libxext-dev
+libxtst-dev

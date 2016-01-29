@@ -1,0 +1,12 @@
+diff -Naurd orig/src/wmtaskbar.cc mod/src/wmtaskbar.cc
+--- orig/src/wmtaskbar.cc	2009-01-25 15:39:51.000000000 +0100
++++ mod/src/wmtaskbar.cc	2009-12-02 21:36:24.000000000 +0100
+@@ -498,7 +498,7 @@
+             fMailBoxStatus[0] = new MailBoxStatus(getenv("MAIL"), this);
+             fMailBoxStatus[1] = NULL;
+         } else if (getlogin()) {
+-            char * mbox = strJoin("/var/spool/mail/", getlogin(), NULL);
++            char * mbox = strJoin("/var/mail/", getlogin(), NULL);
+ 
+             if (!access(mbox, R_OK)) {
+                 fMailBoxStatus = new MailBoxStatus*[2];

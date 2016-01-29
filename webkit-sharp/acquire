@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+webkit-sharp-${UB_VERSION}.tar.bz2 webkit-sharp-${UB_VERSION}/
+	http://ftp.novell.com/pub/mono/sources/webkit-sharp/

@@ -1,0 +1,1 @@
+urllist http://dist.schmorp.de/rxvt-unicode/ | splitver '^rxvt-unicode-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

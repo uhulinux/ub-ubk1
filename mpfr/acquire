@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mpfr-${UB_VERSION}.tar.xz mpfr-${UB_VERSION}/
+	http://www.mpfr.org/mpfr-current/

@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+libtoolize --force --automake --copy
+aclocal --force
+autoheader --force
+automake \
+     --gnu \
+     --force-missing \
+     --add-missing \
+     --copy
+autoconf \
+     --force
+ub_compile

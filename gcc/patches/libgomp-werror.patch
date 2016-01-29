@@ -1,0 +1,12 @@
+diff -Naurd a/libgomp/configure b/libgomp/configure
+--- a/libgomp/configure	2009-10-15 09:55:16.000000000 +0200
++++ b/libgomp/configure	2009-11-29 14:49:20.624402833 +0100
+@@ -3334,7 +3334,7 @@
+ 
+ # Add -Wall -Werror if we are using GCC.
+ if test "x$GCC" = "xyes"; then
+-  XCFLAGS="$XCFLAGS -Wall -Werror"
++  XCFLAGS="$XCFLAGS -Wall"
+ fi
+ 
+ # Find other programs we need.

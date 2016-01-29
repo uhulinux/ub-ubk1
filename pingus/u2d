@@ -1,0 +1,1 @@
+urllist https://code.google.com/p/pingus/downloads/list | splitver '^pingus-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

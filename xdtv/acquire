@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xdtv-${UB_VERSION/~/}.tar.gz xdtv-${UB_VERSION/~/}/
+	http://downloads.sourceforge.net/xawdecode/

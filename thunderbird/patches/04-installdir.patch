@@ -1,0 +1,23 @@
+diff -Naur orig/config/baseconfig.mk patched/config/baseconfig.mk
+--- orig/config/baseconfig.mk	2014-07-18 02:04:05.000000000 +0200
++++ patched/config/baseconfig.mk	2014-07-29 00:22:54.634435990 +0200
+@@ -1,6 +1,6 @@
+ includedir := $(includedir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
+ idldir = $(datadir)/idl/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
+-installdir = $(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
++installdir = $(libdir)/$(MOZ_APP_NAME)
+ sdkdir = $(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION)
+ MOZILLA_SRCDIR = $(topsrcdir)/mozilla
+ MOZDEPTH = $(DEPTH)/mozilla
+diff -Naur orig/mozilla/config/baseconfig.mk patched/mozilla/config/baseconfig.mk
+--- orig/mozilla/config/baseconfig.mk	2014-07-18 02:05:10.000000000 +0200
++++ patched/mozilla/config/baseconfig.mk	2014-07-29 00:23:14.958607178 +0200
+@@ -4,7 +4,7 @@
+ # whether a normal build is happening or whether the check is running.
+ includedir := $(includedir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
+ idldir = $(datadir)/idl/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
+-installdir = $(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
++installdir = $(libdir)/$(MOZ_APP_NAME)
+ sdkdir = $(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION)
+ ifndef TOP_DIST
+ TOP_DIST = dist

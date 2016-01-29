@@ -1,0 +1,11 @@
+--- grub-0.92/util/grub-install.in	Tue May  7 15:00:20 2002
++++ grub-0.92-1/util/grub-install.in	Tue May  7 15:14:01 2002
+@@ -32,7 +32,7 @@
+ grub_shell=${sbindir}/grub
+ log_file=/tmp/grub-install.log.$$
+ img_file=/tmp/grub-install.img.$$
+-rootdir=
++rootdir=/
+ grub_prefix=/boot/grub
+ 
+ install_device=

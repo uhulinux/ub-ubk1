@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+xcdroast-${UB_VERSION/~/}.tar.gz xcdroast-${UB_VERSION/~/}/
+	http://xcdroast.sourceforge.net/RPMS/a${UB_VERSION#*alpha}/src/
+	http://www.mirrorservice.org/sites/download.sourceforge.net/pub/sourceforge/x/xc/xcdroast/

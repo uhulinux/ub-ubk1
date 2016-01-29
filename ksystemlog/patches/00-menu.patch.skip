@@ -1,0 +1,12 @@
+diff -Naur ksystemlog-4.10.80-orig/src/ksystemlog.desktop ksystemlog-4.10.80/src/ksystemlog.desktop
+--- ksystemlog-4.10.80-orig/src/ksystemlog.desktop	2013-06-10 22:02:14.000000000 +0200
++++ ksystemlog-4.10.80/src/ksystemlog.desktop	2013-06-24 19:45:31.000000000 +0200
+@@ -56,7 +56,7 @@
+ Name[x-test]=xxKSystemLogxx
+ Name[zh_CN]=KSystemLog
+ Name[zh_TW]=KSystemLog
+-Categories=Qt;KDE;System;Monitor;
++Categories=Qt;KDE;System;Monitor;X-UHU-Menu/Tools/Utilities;
+ X-KDE-SubstituteUID=true
+ Exec=ksystemlog %i -caption %c
+ Icon=utilities-log-viewer

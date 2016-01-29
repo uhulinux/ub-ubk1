@@ -1,0 +1,5 @@
+gpm
+libice
+libsm
+libx11-dev
+libxaw-dev

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ekiga-${UB_VERSION}.tar.xz ekiga-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/ekiga/${UB_VERSION_HEAD2}/

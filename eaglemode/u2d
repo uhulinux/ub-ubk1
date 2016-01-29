@@ -1,0 +1,1 @@
+sflist eaglemode . | sort -V | tail -n 1 | sed 's/eaglemode-//'

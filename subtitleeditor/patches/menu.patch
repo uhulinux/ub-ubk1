@@ -1,0 +1,10 @@
+--- x.orig/share/subtitleeditor.desktop.in	2009-12-21 14:49:55.000000000 +0100
++++ x/share/subtitleeditor.desktop.in	2010-05-02 16:09:28.000000000 +0200
+@@ -7,6 +6,6 @@
+ Terminal=false
+ Type=Application
+ Icon=subtitleeditor
+-Categories=Video;AudioVideo;AudioVideoEditing;
++Categories=GTK;Video;AudioVideo;AudioVideoEditing;X-UHU-Menu/Multimedia/VideoEdit;
+ StartupNotify=true
+ MimeType=application/x-microdvd;application/x-subrip;application/x-subviewer;text/x-mpsub;text/x-ssa;

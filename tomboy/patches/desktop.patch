@@ -1,0 +1,19 @@
+--- tomboy-0.14.0.orig/data/tomboy.desktop.in	2009-01-21 19:33:08.000000000 +0100
++++ tomboy-0.14.0/data/tomboy.desktop.in	2009-03-24 22:33:15.000000000 +0100
+@@ -1,6 +1,5 @@
+-
+ [Desktop Entry]
+-_Name=Tomboy Notes
++_Name=Tomboy
+ _Comment=Take notes, link ideas, and stay organized
+ _GenericName=Note-taker
+ Exec=tomboy --search
+@@ -9,7 +8,7 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Utility;
++Categories=GNOME;GTK;Utility;X-UHU-Menu/Tools/Utilities;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=tomboy
+ X-GNOME-Bugzilla-Component=General

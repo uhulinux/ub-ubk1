@@ -1,0 +1,1 @@
+urllist ftp://ftp.gnu.org/gnu/wget/ | splitver '^wget-([0-9.]+).tar.xz$' | sort -V | tail -n 1

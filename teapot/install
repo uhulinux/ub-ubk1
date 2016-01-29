@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cp -a teapot "$UB_INSTALLDIR"/usr/bin/teapot-sc
+cp -a teapot.1 "$UB_INSTALLDIR"/usr/share/man/man1/

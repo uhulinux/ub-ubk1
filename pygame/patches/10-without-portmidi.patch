@@ -1,0 +1,37 @@
+diff -Naur ORIG/config_unix.py UHU/config_unix.py
+--- ORIG/config_unix.py	2009-05-26 23:15:24.000000000 +0200
++++ UHU/config_unix.py	2009-12-23 19:37:51.000000000 +0100
+@@ -145,8 +145,8 @@
+         Dependency('PNG', 'png.h', 'libpng', ['png']),
+         Dependency('JPEG', 'jpeglib.h', 'libjpeg', ['jpeg']),
+         Dependency('SCRAP', '', 'libX11', ['X11']),
+-        Dependency('PORTMIDI', 'portmidi.h', 'libportmidi.so', ['portmidi']),
+-        Dependency('PORTTIME', 'porttime.h', 'libporttime.so', ['porttime']),
++#        Dependency('PORTMIDI', 'portmidi.h', 'libportmidi.so', ['portmidi']),
++#        Dependency('PORTTIME', 'porttime.h', 'libporttime.so', ['porttime']),
+         #Dependency('GFX', 'SDL_gfxPrimitives.h', 'libSDL_gfx.so', ['SDL_gfx']),
+     ]
+     if not DEPS[0].found:
+diff -Naur ORIG/Setup.in UHU/Setup.in
+--- ORIG/Setup.in	2009-07-02 06:41:56.000000000 +0200
++++ UHU/Setup.in	2009-12-23 19:40:49.000000000 +0100
+@@ -15,8 +15,8 @@
+ PNG = -lpng
+ JPEG = -ljpeg
+ SCRAP = -lX11
+-PORTMIDI = -lportmidi
+-PORTTIME = -lporttime
++#PORTMIDI = -lportmidi
++#PORTTIME = -lporttime
+ #--EndConfig
+ 
+ #DEBUG = -C-W -C-Wall
+@@ -35,7 +35,7 @@
+ movie src/movie.c $(SDL) $(SMPEG) $(DEBUG)
+ scrap src/scrap.c $(SDL) $(SCRAP) $(DEBUG)
+ _camera src/_camera.c src/camera_v4l2.c src/camera_v4l.c $(SDL) $(DEBUG)
+-pypm src/pypm.c $(SDL) $(PORTMIDI) $(PORTTIME) $(DEBUG)
++#pypm src/pypm.c $(SDL) $(PORTMIDI) $(PORTTIME) $(DEBUG)
+ 
+ GFX = src/SDL_gfx/SDL_gfxPrimitives.c 
+ #GFX = src/SDL_gfx/SDL_gfxBlitFunc.c src/SDL_gfx/SDL_gfxPrimitives.c 

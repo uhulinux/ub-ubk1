@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=xclock (digital)
+Name[hu]=xclock (digitális)
+Comment=Standard digital clock
+Comment[hu]=Hagyományos digitális óra
+Exec=xclock -digital -update 1
+Categories=Utility;Clock;

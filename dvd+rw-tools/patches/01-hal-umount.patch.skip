@@ -1,0 +1,50 @@
+diff -Naur dvd+rw-tools-5.21.4.10.8.orig/transport.hxx dvd+rw-tools-5.21.4.10.8/transport.hxx
+--- dvd+rw-tools-5.21.4.10.8.orig/transport.hxx	2004-08-25 01:36:29.000000000 +0200
++++ dvd+rw-tools-5.21.4.10.8/transport.hxx	2004-10-26 15:45:01.645365212 +0200
+@@ -279,22 +279,29 @@
+ 	return ret;
+     }
+     int umount(int f=-1)
+-    { struct stat    fsb,msb;
+-      struct mntent *mb;
+-      FILE          *fp;
++    { struct stat    fsb;
++      char           maj[32],min[32];
+       pid_t          pid,rpid;
+       int            ret=0,rval;
+ 
+ 	if (f==-1) f=fd;
+ 	if (fstat (f,&fsb) < 0)				return -1;
+-	if ((fp=setmntent ("/proc/mounts","r"))==NULL)	return -1;
++	if (!S_ISBLK(fsb.st_mode))			return -1;
++	sprintf(maj,"%u",major(fsb.st_rdev));
++	sprintf(min,"%u",minor(fsb.st_rdev));
+ 
+-	while ((mb=getmntent (fp))!=NULL)
+-	{   if (stat (mb->mnt_fsname,&msb) < 0) continue; // corrupted line?
+-	    if (msb.st_rdev == fsb.st_rdev)
++	while (1)
+ 	    {	ret = -1;
+ 		if ((pid = fork()) == (pid_t)-1)	break;
+-		if (pid == 0) execl ("/bin/umount","umount",mb->mnt_dir,NULL);
++		if (pid == 0)
++		{   int stderrfd;
++		    stderrfd = open("/dev/null",O_RDONLY);
++		    if (stderrfd > 2)
++		    {	dup2(stderrfd,2);
++			close(stderrfd);
++		    }
++		    execl ("/usr/bin/hal-umount","hal-umount","b",maj,min,NULL);
++		}
+ 		while (1)
+ 		{   rpid = waitpid (pid,&rval,0);
+ 		    if (rpid == (pid_t)-1)
+@@ -317,8 +324,6 @@
+ 		}
+ 		break;
+ 	    }
+-	}
+-	endmntent (fp);
+ 
+ 	return ret;
+     }

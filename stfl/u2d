@@ -1,0 +1,1 @@
+urllist http://www.clifford.at/stfl/ | splitver '^stfl-([0-9.]+).tar.gz$' | sort -V | tail -n 1

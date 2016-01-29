@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kphotoalbum-${UB_VERSION}.tar.bz2 kphotoalbum-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/kphotoalbum/${UB_VERSION}/src/

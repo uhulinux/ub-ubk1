@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-contacts-${UB_VERSION}.tar.xz gnome-contacts-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-contacts/${UB_VERSION_HEAD2}/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Inline-${UB_VERSION}.tar.gz Inline-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/Inline/

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+blast-${UB_VERSION}-ss-10.20.tar.gz blast-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/blast/
+

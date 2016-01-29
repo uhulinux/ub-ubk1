@@ -1,0 +1,1 @@
+urllist http://rofi.roger-ferrer.org/eiciel/download/ | splitver '^eiciel-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

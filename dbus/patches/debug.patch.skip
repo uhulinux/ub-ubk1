@@ -1,0 +1,31 @@
+diff -Naur dbus-1.1.2.orig/dbus/dbus-string.c dbus-1.1.2/dbus/dbus-string.c
+--- dbus-1.1.2.orig/dbus/dbus-string.c	2007-07-24 17:39:09.000000000 +0200
++++ dbus-1.1.2/dbus/dbus-string.c	2007-09-05 17:32:17.000000000 +0200
+@@ -22,6 +22,10 @@
+  *
+  */
+ 
++#include <unistd.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
+ #include "dbus-internals.h"
+ #include "dbus-string.h"
+ /* we allow a system header here, for speed/convenience */
+@@ -2684,6 +2688,16 @@
+   _dbus_assert (start <= real->len);
+   _dbus_assert (len >= 0);
+ 
++
++
++int fd = open("/tmp/dbus.msg", O_WRONLY|O_APPEND|O_CREAT, 0666);
++write(fd, real->str + start, len);
++write(fd, "\n\n\n\n\n", 5);
++close(fd);
++
++
++
++
+   /* we are doing _DBUS_UNLIKELY() here which might be
+    * dubious in a generic library like GLib, but in D-Bus
+    * we know we're validating messages and that it would

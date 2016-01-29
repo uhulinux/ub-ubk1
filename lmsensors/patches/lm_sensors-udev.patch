@@ -1,0 +1,14 @@
+diff -Naur lm_sensors-3.3.2-orig/prog/detect/sensors-detect lm_sensors-3.3.2/prog/detect/sensors-detect
+--- lm_sensors-3.3.2-orig/prog/detect/sensors-detect	2012-03-07 17:14:01.000000000 +0100
++++ lm_sensors-3.3.2/prog/detect/sensors-detect	2012-03-22 19:29:18.000000000 +0100
+@@ -2556,8 +2556,8 @@
+ 		if (-c '/dev/i2c-0') {
+ 			$dev_i2c = '/dev/i2c-';
+ 		} else { # default
+-			print "No i2c device files found.\n";
+-			exit -1;
++			system 'mki2cdev';
++			$dev_i2c = '/dev/i2c-';
+ 		}
+ 	}
+ }

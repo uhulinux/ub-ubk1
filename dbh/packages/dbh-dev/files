@@ -1,0 +1,15 @@
+	/lib/*.a
+	/lib/*.la
+@	/lib/*.so
+	/usr/bin/*-config
+	/usr/include
+	/usr/lib/**/*.a
+	/usr/lib/**/*.la
+@	/usr/lib/**/*.so
+	/usr/lib/*/include
+	/usr/lib/*Conf.sh
+	/usr/lib/pkgconfig
+	/usr/share/aclocal
+	/usr/share/doc/Packages/dbh/dbh-hash-tables.html
+	/usr/share/man/**/man1/*-config.1*
+	/usr/share/man/**/man3

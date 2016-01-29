@@ -1,0 +1,7 @@
+/*
+lp --- list progs
+Last update: 29/06/01
+*/
+qpath=macropath.1()
+qmask=left(qpath,length(qpath)-2)||'*.the'
+'ls 'qmask

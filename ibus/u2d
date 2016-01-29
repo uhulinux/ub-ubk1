@@ -1,0 +1,1 @@
+urllist http://code.google.com/p/ibus/downloads/list | splitver '^ibus-([0-9.]+).tar.gz$' | sort -V | tail -n 1

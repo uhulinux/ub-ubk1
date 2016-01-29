@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libxdiff-${UB_VERSION}.tar.gz libxdiff-${UB_VERSION}/
+	http://www.xmailserver.com/

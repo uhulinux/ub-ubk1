@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tmux-${UB_VERSION}.tar.gz tmux-${UB_VERSION}/
+	http://downloads.sourceforge.net/tmux/

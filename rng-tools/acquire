@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+rng-tools-${UB_VERSION}.tar.gz rng-tools-${UB_VERSION}/
+	http://download.sourceforge.net/gkernel/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gimp-help-${UB_VERSION}.tar.bz2 gimp-help-${UB_VERSION}/
+	ftp://ftp.gimp.org/pub/gimp/help/

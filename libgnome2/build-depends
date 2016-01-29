@@ -1,0 +1,10 @@
+alsa-lib-dev
+dbus-glib-dev
+gconf2-dev
+gnome2-vfs-dev
+intltool
+libbonobo2-dev
+libcanberra-dev
+libxml2-dev
+openssl-dev
+popt-dev

@@ -1,0 +1,36 @@
+diff -Naur zisofs-tools-1.0.8-orig/compress.c zisofs-tools-1.0.8/compress.c
+--- zisofs-tools-1.0.8-orig/compress.c	2007-05-17 07:49:47.000000000 +0200
++++ zisofs-tools-1.0.8/compress.c	2009-09-27 16:57:43.000000000 +0200
+@@ -18,7 +18,7 @@
+ #include <utime.h>
+ #include <unistd.h>
+ #include <zlib.h>
+-
++#include <string.h>
+ #include "iso9660.h"
+ 
+ 
+diff -Naur zisofs-tools-1.0.8-orig/hash.c zisofs-tools-1.0.8/hash.c
+--- zisofs-tools-1.0.8-orig/hash.c	2007-05-17 07:49:47.000000000 +0200
++++ zisofs-tools-1.0.8/hash.c	2009-09-27 16:58:53.000000000 +0200
+@@ -16,7 +16,7 @@
+  *
+  * Hash table used to find hard-linked files
+  */
+-
++#include <string.h>
+ #include "mkzftree.h"		/* Must be included first! */
+ 
+ #define HASH_BUCKETS 	  2683
+diff -Naur zisofs-tools-1.0.8-orig/uncompress.c zisofs-tools-1.0.8/uncompress.c
+--- zisofs-tools-1.0.8-orig/uncompress.c	2007-05-17 07:49:48.000000000 +0200
++++ zisofs-tools-1.0.8/uncompress.c	2009-09-27 16:59:20.000000000 +0200
+@@ -16,7 +16,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <zlib.h>
+-
++#include <string.h>
+ #include "iso9660.h"
+ 
+ int block_uncompress_file(FILE *input, FILE *output, off_t size)

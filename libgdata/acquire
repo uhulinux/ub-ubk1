@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgdata-${UB_VERSION}.tar.xz libgdata-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgdata/${UB_VERSION_HEAD2}/

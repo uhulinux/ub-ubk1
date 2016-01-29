@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ghex-${UB_VERSION}.tar.xz ghex-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/ghex/${UB_VERSION_HEAD2}/

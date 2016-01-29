@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Devel-Trace-${UB_VERSION}.tar.gz Devel-Trace-${UB_VERSION}/
+	http://cpan.metacpan.org/authors/id/M/MJ/MJD/

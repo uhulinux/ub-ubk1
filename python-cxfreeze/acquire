@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cx_Freeze-${UB_VERSION}.tar.gz cx_Freeze-${UB_VERSION}/
+	http://downloads.sourceforge.net/cx-freeze/

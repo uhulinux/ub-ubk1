@@ -1,0 +1,1 @@
+urllist http://poppler.freedesktop.org/ | splitver '^poppler-([0-9]+\.[0-9]+*[02468]\.[0-9]+).tar.(gz|xz)$' | sort -V | tail -n 1

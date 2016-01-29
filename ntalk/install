@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+make \
+	INSTALLROOT=${UB_INSTALLDIR} \
+	MANDIR=/usr/share/man \
+	install
+
+ln -s in.ntalkd ${UB_INSTALLDIR}/usr/sbin/ntalkd
+ln -s in.talkd  ${UB_INSTALLDIR}/usr/sbin/talkd
+

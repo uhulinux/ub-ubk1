@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxmenu-data-$UB_VERSION.tar.gz lxmenu-data-$UB_VERSION/
+	http://downloads.sourceforge.net/lxde/

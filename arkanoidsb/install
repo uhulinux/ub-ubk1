@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+dataroot="$UB_INSTALLDIR"/usr/share/games/arkanoidsb
+mkdir -p $dataroot
+cp -R * "$dataroot"/
+rm "$dataroot"/README #hogy ne legyen két helyen
+chmod +rx "$dataroot"/{*,res/*}

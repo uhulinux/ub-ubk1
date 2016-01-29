@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gexif-${UB_VERSION}.tar.gz gexif-${UB_VERSION}/
+	http://downloads.sourceforge.net/libexif/

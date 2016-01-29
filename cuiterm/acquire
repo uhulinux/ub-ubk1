@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cuiterm-${UB_VERSION}.tar.gz cuiterm-${UB_VERSION}/
+	ftp://linux.pte.hu/pub/CUI/

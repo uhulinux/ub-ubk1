@@ -1,0 +1,12 @@
+diff -urN gsettings-desktop-schemas-3.12.2.orig/schemas/org.gnome.desktop.input-sources.gschema.xml.in.in gsettings-desktop-schemas-3.12.2/schemas/org.gnome.desktop.input-sources.gschema.xml.in.in
+--- gsettings-desktop-schemas-3.12.2.orig/schemas/org.gnome.desktop.input-sources.gschema.xml.in.in	2013-01-09 18:56:25.000000000 +0100
++++ gsettings-desktop-schemas-3.12.2/schemas/org.gnome.desktop.input-sources.gschema.xml.in.in	2014-06-30 13:26:35.304327584 +0200
+@@ -12,7 +12,7 @@
+       </_description>
+     </key>
+     <key name="sources" type="a(ss)">
+-      <default>[]</default>
++      <default>[('xkb', 'hu'), ('xkb', 'us')]</default>
+       <_summary>List of input sources</_summary>
+       <_description>
+         List of input source identifiers available. Each source is

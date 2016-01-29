@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+export QTDIR="/usr/lib/qt4"
+sh bootStrap.bash \
+	--without-gtk \
+	--with-cli

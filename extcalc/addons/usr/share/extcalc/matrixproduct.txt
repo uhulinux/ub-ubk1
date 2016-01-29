@@ -1,0 +1,159 @@
+#config clearmemory
+#config complexoff
+
+// This script can be used to multiply two matrices
+// To use it, first press the run button here.
+// Then you can run the script as often as you want by
+// pressing the run button of the script console
+//
+// Feel free to read or modify this code.
+// For further examples and more information, please
+// visit http://extcalc-linux.sourceforge.net/
+//
+
+
+
+A=0;           //first matrix
+B=0;           //second matrix
+
+C=0;           //lines first matrix
+D=0;           //rows first matrix
+
+E=0;           //lines second matrix
+F=0;           //rows second matrix
+
+G=0;           //general loop counter
+H=0;           //general status variable
+I=0;           //general input variable
+
+//request lines first matrix
+clear;
+print("\n********** Matrix Product **********\n");
+print("\nInsert number of lines for first matrix: ");
+while(1)
+{
+  C=(int)getline;
+  if(C<1 || C>=20)
+    print("\nLine number must be greather than 0 and less than 20\n");
+  else break;
+}
+
+print("\nInsert number of rows for first matrix: ");
+while(1)
+{
+  D=(int)getline;
+  if(D<1 || D>=20)
+    print("\nRow number must be greather than 0 and less than 20\n");
+  else break;
+}
+
+print("\n\nLine number of second matrix set to ");
+E=D;
+print(E);
+
+print("\nInsert number of rows for second matrix: ");
+while(1)
+{
+  F=(int)getline;
+  if(F<1 || F>=20)
+    print("\nRow number must be greather than 0 and less than 20\n");
+  else break;
+}
+print("\n");
+
+while(1)
+{
+  G[2]=0;
+  G[3]=0;
+  while(1)
+  {
+    clear;
+    print("\n********** Matrix Product **********\n");
+    print("\n\tFirst Matrix");
+
+    for(G[0]=0; G[0]<C; G[0]=G[0]+1)
+    {
+      for(G[1]=0; G[1]<D; G[1]=G[1]+1)
+      {
+        setcursor(G[1]*12,G[0]+5);
+        if(G[0]==G[2] && G[1]==G[3])
+          print("---");
+        else print(A[G[0]][G[1]]);
+      }
+    }
+    print("\n\nInsert Element ");
+    print(G[2]+1);
+    print(" ");
+    print(G[3]+1);
+    print(" or e to continue: ");
+    I=getline;
+    if(I=="e" || I=="E")
+      break;
+    if(I[0]!=0)
+      A[G[2]][G[3]]=(float)I;
+
+    G[2]=G[2]+1;
+
+    if(G[2]==C)
+    {
+      G[2]=0;
+      G[3]=G[3]+1;
+    }
+    if(G[3]==D)
+      G[3]=0;
+  }
+
+
+  G[2]=0;
+  G[3]=0;
+  while(1)
+  {
+    clear;
+    print("\n********** Matrix Product **********\n");
+    print("\n\tSecond Matrix");
+
+    for(G[0]=0; G[0]<E; G[0]=G[0]+1)
+    {
+      for(G[1]=0; G[1]<F; G[1]=G[1]+1)
+      {
+        setcursor(G[1]*12,G[0]+5);
+        if(G[0]==G[2] && G[1]==G[3])
+          print("---");
+        else print(B[G[0]][G[1]]);
+      }
+    }
+    print("\n\nInsert Element ");
+    print(G[2]+1);
+    print(" ");
+    print(G[3]+1);
+    print(" or e to continue: ");
+    I=getline;
+    if(I=="e" || I=="E")
+      break;
+    if(I[0]!=0)
+      B[G[2]][G[3]]=(float)I;
+
+    G[2]=G[2]+1;
+
+    if(G[2]==E)
+    {
+      G[2]=0;
+      G[3]=G[3]+1;
+    }
+    if(G[3]==F)
+      G[3]=0;
+ }
+
+  clear;
+  print("\n********** Matrix Product **********\n");
+  print("\n\tInserted Matrices:\n");
+  print(A[][]);
+  print("\n");
+  print(B[][]);
+  print("\nProduct:\n");
+  print(A[][]*B[][]);
+  print("\nCalculate another matrix product with the same matrix sizes(y/n)? ");
+  I=getkey;
+  if(I[0]==78 || I[0]==110)
+    break;
+}

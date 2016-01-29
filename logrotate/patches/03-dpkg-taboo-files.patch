@@ -1,0 +1,13 @@
+diff -Naur logrotate-3.8.1-orig/config.c logrotate-3.8.1/config.c
+--- logrotate-3.8.1-orig/config.c	2011-08-31 14:39:04.000000000 +0200
++++ logrotate-3.8.1/config.c	2011-09-23 17:26:40.000000000 +0200
+@@ -110,7 +110,8 @@
+ static char *defTabooExts[] = { ".rpmsave", ".rpmorig", "~", ",v",
+     ".disabled", ".dpkg-old", ".dpkg-dist", ".dpkg-new", ".cfsaved",
+     ".ucf-old", ".ucf-dist", ".ucf-new",
+-    ".rpmnew", ".swp", ".cfsaved", ".rhn-cfg-tmp-*"
++    ".rpmnew", ".swp", ".cfsaved", ".rhn-cfg-tmp-*",
++    ".dpkg-old", ".dpkg-new", ".dpkg-dist", ".dpkg-tmp"
+ };
+ static int defTabooCount = sizeof(defTabooExts) / sizeof(char *);
+ 

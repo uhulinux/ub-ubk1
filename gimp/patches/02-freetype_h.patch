@@ -1,0 +1,13 @@
+diff -urN gimp-2.8.10.orig/app/text/gimpfont.c gimp-2.8.10/app/text/gimpfont.c
+--- gimp-2.8.10.orig/app/text/gimpfont.c	2012-05-08 08:05:46.000000000 +0200
++++ gimp-2.8.10/app/text/gimpfont.c	2014-02-17 12:24:40.154137316 +0100
+@@ -27,7 +27,8 @@
+ 
+ #define PANGO_ENABLE_ENGINE  1   /* Argh */
+ #include <pango/pango-ot.h>
+-#include <freetype/tttables.h>
++#include <ft2build.h>
++#include FT_TRUETYPE_TABLES_H
+ 
+ #include "text-types.h"
+ 

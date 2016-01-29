@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ed-${UB_VERSION}.tar.gz ed-${UB_VERSION}/
+	ftp://ftp.gnu.org/gnu/ed/

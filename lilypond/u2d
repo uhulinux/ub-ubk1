@@ -1,0 +1,2 @@
+minor=$(urllist http://lilypond.org/download/sources/ | tr -d 'v' | grep -E '^[0-9]+\.[0-9]*[02468](\.[0-9.]+)?$' | sort -V | tail -n 1)
+urllist http://lilypond.org/download/sources/v"$minor"/ | parsever | sort -V | tail -n 1

@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_install
+
+#mkdir -p "$UB_INSTALLDIR"/usr/share/tessdata
+cp -a *.traineddata "$UB_INSTALLDIR"/usr/share/tessdata/

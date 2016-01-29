@@ -1,0 +1,2 @@
+urllist http://download.gna.org/pychart/ | splitver '^PyChart-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+

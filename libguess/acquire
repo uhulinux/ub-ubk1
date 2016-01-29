@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+libguess-${UB_VERSION}.tar.bz2 libguess-${UB_VERSION}/
+	http://distfiles.atheme.org/
+	http://audacious-media-player.org/release/

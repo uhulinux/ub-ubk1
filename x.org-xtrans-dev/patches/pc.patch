@@ -1,0 +1,9 @@
+diff -Naur xtrans-0.99.2.orig/xtrans.pc.in xtrans-0.99.2/xtrans.pc.in
+--- xtrans-0.99.2.orig/xtrans.pc.in	2005-07-02 20:00:50.000000000 +0200
++++ xtrans-0.99.2/xtrans.pc.in	2005-11-28 14:19:48.000000000 +0100
+@@ -6,4 +6,5 @@
+ Name: XTrans
+ Description: Abstract network code for X
+ Version: @PACKAGE_VERSION@
++Requires: xproto
+ Cflags: -I${includedir} -D_BSD_SOURCE @fchown_define@ @sticky_bit_define@

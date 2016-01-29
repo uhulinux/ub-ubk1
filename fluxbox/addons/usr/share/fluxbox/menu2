@@ -1,0 +1,19 @@
+[encoding] {UTF-8}
+	[begin] (Fluxbox)
+		[include] (/usr/lib/menu/fluxbox/menu[.LANG])
+		[separator]
+		[config] (Configure)
+		[submenu] (System Styles) {Choose a style...}
+			[stylesdir] (/usr/share/fluxbox/styles)
+		[end]
+		[submenu] (User Styles) {Choose a style...}
+			[stylesdir] (~/.fluxbox/styles)
+		[end]
+		[workspaces] (Workspace List)
+		[commanddialog] (Fluxbox Command)
+		[separator]
+		[restart] (Restart)
+		[exit] (Exit)
+		[end]
+	[end]
+[endencoding]

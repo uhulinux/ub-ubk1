@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/apache
+install -m755 .libs/mod_auth_mysql.so "$UB_INSTALLDIR"/usr/lib/apache

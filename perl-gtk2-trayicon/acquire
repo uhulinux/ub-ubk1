@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Gtk2-TrayIcon-${UB_VERSION}.tar.gz Gtk2-TrayIcon-${UB_VERSION}/
+	http://download.sourceforge.net/gtk2-perl/

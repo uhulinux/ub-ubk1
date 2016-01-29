@@ -1,0 +1,12 @@
+#%PAM-1.0
+
+auth		include		system-auth
+
+account		include		system-auth
+
+password	include		system-auth
+
+session		optional	pam_console.so
+session		required	pam_env.so
+session		required	pam_envfeed.so
+session		required	pam_limits.so

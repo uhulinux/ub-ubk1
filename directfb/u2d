@@ -1,0 +1,2 @@
+alap=$(urllist http://directfb.org/downloads/Core/ | splitver '^DirectFB-([0-9.]+)$' | sort -V | tail -n 1)
+urllist http://directfb.org/downloads/Core/DirectFB-"$alap"/ | parsever | sort -V | tail -n 1

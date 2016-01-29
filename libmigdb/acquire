@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libmigdb-$UB_VERSION.tar.bz2 libmigdb/
+	http://downloads.sourceforge.net/libmigdb/

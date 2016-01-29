@@ -1,0 +1,14 @@
+diff -urN VirtualBox-3.1.2_OSE.orig/configure VirtualBox-3.1.2_OSE/configure
+--- VirtualBox-3.1.2_OSE.orig/configure	2009-12-17 15:23:05.000000000 +0100
++++ VirtualBox-3.1.2_OSE/configure	2010-01-21 23:56:45.322577824 +0100
+@@ -136,8 +136,8 @@
+ QT4UIC3DIR="/usr/bin"
+ KBUILDDIR="`cd \`dirname $0\`; pwd`/kBuild"
+ DEVDIR="`cd \`dirname $0\`; pwd`/tools"
+-if [ -d "/lib/modules/`uname -r`/build" ]; then
+- LINUX="/lib/modules/`uname -r`/build"
++if [ -d "/lib/modules/$(ls /lib/modules)/build" ]; then
++ LINUX="/lib/modules/$(ls /lib/modules)/build"
+ else
+  LINUX="/usr/src/linux"
+ fi

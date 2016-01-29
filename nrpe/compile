@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--libexecdir=/usr/lib/nagios \
+	--with-nrpe_user=nrpe \
+	--with-nrpe_group=nrpe

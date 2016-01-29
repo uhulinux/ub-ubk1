@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+k3b-${UB_VERSION/~/-}.tar.bz2 k3b-${UB_VERSION/rc?/}/
+	http://downloads.sourceforge.net/k3b/

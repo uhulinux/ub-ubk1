@@ -1,0 +1,12 @@
+diff -Naur coreutils-5.97.orig/src/df.c coreutils-5.97/src/df.c
+--- coreutils-5.97.orig/src/df.c	2006-05-07 16:28:21.000000000 +0200
++++ coreutils-5.97/src/df.c	2006-08-08 14:29:55.000000000 +0200
+@@ -302,6 +302,8 @@
+ 
+   if (get_fs_usage (stat_file, disk, &fsu))
+     {
++      if (!strncmp(stat_file, "/media/.fuse/", 13) && !show_all_fs && !show_listed_fs)
++        return;
+       error (0, errno, "%s", quote (stat_file));
+       exit_status = EXIT_FAILURE;
+       return;

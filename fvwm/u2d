@@ -1,0 +1,1 @@
+urllist ftp://ftp.fvwm.org/pub/fvwm/version-2/ | splitver '^fvwm-([0-9.]+).tar.bz2' | sort -V | tail -n 1

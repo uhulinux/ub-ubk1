@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ClanLib-${UB_VERSION}.tgz ClanLib-${UB_VERSION}/
+	http://www.clanlib.org/download/releases-${UB_VERSION_HEAD1}.0/

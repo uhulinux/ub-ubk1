@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+k9copy-${UB_VERSION/~/-}-Source.tar.gz k9copy-${UB_VERSION}-Source/
+	http://downloads.sourceforge.net/k9copy/k9copy-kde4/

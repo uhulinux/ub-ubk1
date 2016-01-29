@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+transgui-${UB_VERSION}-src.zip TransGUI/
+	https://transmisson-remote-gui.googlecode.com/files/

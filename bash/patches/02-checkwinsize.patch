@@ -1,0 +1,50 @@
+diff -Naurp bash-3.1.orig/bashline.c bash-3.1/bashline.c
+--- bash-3.1.orig/bashline.c	2005-11-05 21:07:02.000000000 +0100
++++ bash-3.1/bashline.c	2005-12-13 13:46:57.000000000 +0100
+@@ -500,6 +500,9 @@ initialize_readline ()
+     posix_readline_initialize (1);
+ #endif
+ 
++  /* Make sure editing of long lines is okay right after bash starts up. */
++  get_new_window_size (0, (int *)0, (int *)0);
++
+   bash_readline_initialized = 1;
+ }
+ 
+diff -Naurp bash-3.1.orig/builtins/shopt.def bash-3.1/builtins/shopt.def
+--- bash-3.1.orig/builtins/shopt.def	2005-02-19 23:25:03.000000000 +0100
++++ bash-3.1/builtins/shopt.def	2005-12-13 13:08:04.000000000 +0100
+@@ -252,7 +252,8 @@ reset_shopt_options ()
+   allow_null_glob_expansion = glob_dot_filenames = 0;
+   cdable_vars = mail_warning = 0;
+   no_exit_on_failed_exec = print_shift_error = 0;
+-  check_hashed_filenames = cdspelling = expand_aliases = check_window_size = 0;
++  check_hashed_filenames = cdspelling = expand_aliases = 0;
++  check_window_size = 1;
+ 
+   source_uses_path = promptvars = 1;
+ 
+diff -Naurp bash-3.1.orig/jobs.c bash-3.1/jobs.c
+--- bash-3.1.orig/jobs.c	2005-11-12 05:13:27.000000000 +0100
++++ bash-3.1/jobs.c	2005-12-13 13:08:04.000000000 +0100
+@@ -205,7 +205,7 @@ int already_making_children = 0;
+ 
+ /* If this is non-zero, $LINES and $COLUMNS are reset after every process
+    exits from get_tty_state(). */
+-int check_window_size;
++int check_window_size = 1;
+ 
+ /* Functions local to this file. */
+ 
+diff -Naurp bash-3.1.orig/nojobs.c bash-3.1/nojobs.c
+--- bash-3.1.orig/nojobs.c	2005-11-12 05:13:49.000000000 +0100
++++ bash-3.1/nojobs.c	2005-12-13 13:08:04.000000000 +0100
+@@ -93,7 +93,7 @@ int shell_tty = -1;
+ 
+ /* If this is non-zero, $LINES and $COLUMNS are reset after every process
+    exits from get_tty_state(). */
+-int check_window_size;
++int check_window_size = 1;
+ 
+ /* STATUS and FLAGS are only valid if pid != NO_PID
+    STATUS is only valid if (flags & PROC_RUNNING) == 0 */

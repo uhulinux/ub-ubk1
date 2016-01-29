@@ -1,0 +1,21 @@
+diff -Naurd Gtk2-Html2-0.04.orig/examples/mupzilla Gtk2-Html2-0.04/examples/mupzilla
+--- Gtk2-Html2-0.04.orig/examples/mupzilla	2006-02-08 18:56:23.000000000 +0100
++++ Gtk2-Html2-0.04/examples/mupzilla	2006-02-08 18:57:32.000000000 +0100
+@@ -42,7 +42,7 @@
+ 	$address->signal_connect (activate => sub {
+ 		my ($entry, $mupzilla) = @_;
+ 		my $uri = $entry->get_text;
+-		if ($uri !~ m{^https?://}) {
++		if ($uri !~ m{^(file|https?)://}) {
+ 			$uri = "http://".$uri;
+ 			$entry->set_text ($uri);
+ 		}
+@@ -132,7 +132,7 @@
+ sub mangle_uri {
+ 	my ($self, $uri) = @_;
+ 	# mangle it to be a full url.  FIXME this is terrible.
+-	return $uri if $uri =~ m{^\s*https?:};
++	return $uri if $uri =~ m{^\s*(file|https?):};
+ 	if ($self->{base_uri}) {
+ 		$uri = $self->{base_uri}->get_scheme . "://"
+ 		     . $self->{base_uri}->get_host_name

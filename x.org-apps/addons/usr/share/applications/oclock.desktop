@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=oclock
+Comment=Round Clock
+Comment[hu]=Kör alakú falióra
+Exec=oclock
+Categories=Utility;Clock;

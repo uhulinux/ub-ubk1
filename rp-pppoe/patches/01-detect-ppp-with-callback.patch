@@ -1,0 +1,12 @@
+diff -urN rp-pppoe-3.8.orig/src/configure rp-pppoe-3.8/src/configure
+--- rp-pppoe-3.8.orig/src/configure	2006-04-02 16:29:42.000000000 +0200
++++ rp-pppoe-3.8/src/configure	2006-04-04 13:23:16.000000000 +0200
+@@ -5707,7 +5707,7 @@
+ fi
+ 
+ 
+-PPPD_VERSION=`$PPPD --version 2>&1 | awk ' /version/ {print $NF}'`
++PPPD_VERSION=`$PPPD --version 2>&1 | awk ' /version/ {print $3}'`
+ 
+ case "$PPPD_VERSION" in
+ 1.*|2.0.*|2.1.*|2.2.*|2.3.0|2.3.1|2.3.2|2.3.3|2.3.4|2.3.5|2.3.6)

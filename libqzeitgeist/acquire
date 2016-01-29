@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libqzeitgeist-${UB_VERSION}.tar.bz2 libqzeitgeist-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/libqzeitgeist/${UB_VERSION}/src/

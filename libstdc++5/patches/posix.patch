@@ -1,0 +1,112 @@
+diff -Naur gcc-3.3.6.orig/configure gcc-3.3.6/configure
+--- gcc-3.3.6.orig/configure	2004-07-30 21:08:17.000000000 +0200
++++ gcc-3.3.6/configure	2006-03-07 21:22:40.000000000 +0100
+@@ -820,7 +820,7 @@
+ s/\\\n//g
+ t loop
+ /^CC[ 	]*=/ s/CC[ 	]*=[ 	]*\(.*\)/\1/p' < Makefile > Makefile.cc
+-  CC=`tail -1 Makefile.cc`
++  CC=`tail -n 1 Makefile.cc`
+   rm -f Makefile.cc
+ fi
+ 
+@@ -830,7 +830,7 @@
+ s/\\\n//g
+ t loop
+ /^CFLAGS[ 	]*=/ s/CFLAGS[ 	]*=[ 	]*\(.*\)/\1/p' < Makefile > Makefile.cc
+-  CFLAGS=`tail -1 Makefile.cc`
++  CFLAGS=`tail -n 1 Makefile.cc`
+   rm -f Makefile.cc
+ fi
+ 
+@@ -840,7 +840,7 @@
+ s/\\\n//g
+ t loop
+ /^CXX[ 	]*=/ s/CXX[ 	]*=[ 	]*\(.*\)/\1/p' < Makefile > Makefile.cc
+-  CXX=`tail -1 Makefile.cc`
++  CXX=`tail -n 1 Makefile.cc`
+   rm -f Makefile.cc
+ fi
+ 
+@@ -850,7 +850,7 @@
+ s/\\\n//g
+ t loop
+ /^CXXFLAGS[ 	]*=/ s/CXXFLAGS[ 	]*=[ 	]*\(.*\)/\1/p' < Makefile > Makefile.cc
+-  CXXFLAGS=`tail -1 Makefile.cc`
++  CXXFLAGS=`tail -n 1 Makefile.cc`
+   rm -f Makefile.cc
+ fi
+ 
+@@ -931,7 +931,7 @@
+ t loop
+ /^'"${var}"'[ 	]*=/ s/'"${var}"'[ 	]*=[ 	]*\(.*\)/\1/p' \
+ 	< Makefile > Makefile.v
+-      t=`tail -1 Makefile.v`
++      t=`tail -n 1 Makefile.v`
+       if [ -n "${t}" ]; then
+ 	eval "${var}=\${t}"
+       fi
+diff -Naur gcc-3.3.6.orig/contrib/test_summary gcc-3.3.6/contrib/test_summary
+--- gcc-3.3.6.orig/contrib/test_summary	2004-08-26 07:50:23.000000000 +0200
++++ gcc-3.3.6/contrib/test_summary	2006-03-07 21:22:39.000000000 +0100
+@@ -98,7 +98,7 @@
+     srcdir = $1;
+     gsub(/\/configure$/, "", srcdir);
+     printf "LAST_UPDATED: ";
+-    system("tail -1 " srcdir "/LAST_UPDATED");
++    system("tail -n 1 " srcdir "/LAST_UPDATED");
+     print "";
+ 
+     $1 = "configure flags:"; configflags = $0;
+diff -Naur gcc-3.3.6.orig/gcc/configure gcc-3.3.6/gcc/configure
+--- gcc-3.3.6.orig/gcc/configure	2004-12-04 02:51:43.000000000 +0100
++++ gcc-3.3.6/gcc/configure	2006-03-07 21:22:42.000000000 +0100
+@@ -7425,7 +7425,7 @@
+ 		# and we got the correct data, then succeed.
+ 		if $gcc_cv_as -o conftest.o conftest.s > /dev/null 2>&1 \
+ 		   && $gcc_cv_objdump -s -j .eh_frame conftest.o 2>/dev/null \
+-		      | tail -3 > conftest.got \
++		      | tail -n 3 > conftest.got \
+ 		   && { cmp conftest.lit conftest.got > /dev/null 2>&1 \
+ 		        || cmp conftest.big conftest.got > /dev/null 2>&1; }
+ 		then
+diff -Naur gcc-3.3.6.orig/gcc/Makefile.in gcc-3.3.6/gcc/Makefile.in
+--- gcc-3.3.6.orig/gcc/Makefile.in	2004-04-01 18:55:23.000000000 +0200
++++ gcc-3.3.6/gcc/Makefile.in	2006-03-07 21:23:32.000000000 +0100
+@@ -3486,16 +3486,16 @@
+ 	-rm -f .bad_compare
+ 	case "$@" in compare | compare-lean ) stage=2 ;; * ) stage=`echo $@ | sed -e 's,^compare\([0-9][0-9]*\).*,\1,'` ;; esac; \
+ 	for file in *$(objext); do \
+-	  tail +16c ./$$file > tmp-foo1; \
+-	  tail +16c stage$$stage/$$file > tmp-foo2 \
++	  tail -c +16 ./$$file > tmp-foo1; \
++	  tail -c +16 stage$$stage/$$file > tmp-foo2 \
+ 	    && (cmp tmp-foo1 tmp-foo2 > /dev/null 2>&1 || echo $$file differs >> .bad_compare) || true; \
+ 	done
+ 	case "$@" in compare | compare-lean ) stage=2 ;; * ) stage=`echo $@ | sed -e 's,^compare\([0-9][0-9]*\).*,\1,'` ;; esac; \
+ 	for dir in tmp-foo intl $(SUBDIRS); do \
+ 	  if [ "`echo $$dir/*$(objext)`" != "$$dir/*$(objext)" ] ; then \
+ 	    for file in $$dir/*$(objext); do \
+-	      tail +16c ./$$file > tmp-foo1; \
+-	      tail +16c stage$$stage/$$file > tmp-foo2 \
++	      tail -c +16 ./$$file > tmp-foo1; \
++	      tail -c +16 stage$$stage/$$file > tmp-foo2 \
+ 	        && (cmp tmp-foo1 tmp-foo2 > /dev/null 2>&1 || echo $$file differs >> .bad_compare) || true; \
+ 	    done; \
+ 	  else true; fi; \
+diff -Naur gcc-3.3.6.orig/libstdc++-v3/mkcheck.in gcc-3.3.6/libstdc++-v3/mkcheck.in
+--- gcc-3.3.6.orig/libstdc++-v3/mkcheck.in	2002-06-07 22:25:04.000000000 +0200
++++ gcc-3.3.6/libstdc++-v3/mkcheck.in	2006-03-07 21:22:33.000000000 +0100
+@@ -181,9 +181,9 @@
+     function size_command()
+     {
+       case $1 in
+-        TEXT)  TEXT=$(size -B $EXENAME | tail -1 | awk '{print $1}')  ;;
+-        DATA)  DATA=$(size -B $EXENAME | tail -1 | awk '{print $2}')  ;;
+-        SIZE)  SIZE=$(size -B $EXENAME | tail -1 | awk '{print $4}')  ;;
++        TEXT)  TEXT=$(size -B $EXENAME | tail -n 1 | awk '{print $1}')  ;;
++        DATA)  DATA=$(size -B $EXENAME | tail -n 1 | awk '{print $2}')  ;;
++        SIZE)  SIZE=$(size -B $EXENAME | tail -n 1 | awk '{print $4}')  ;;
+       esac
+     }
+   else

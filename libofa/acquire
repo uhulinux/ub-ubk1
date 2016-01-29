@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libofa-${UB_VERSION}.tar.gz libofa-${UB_VERSION}/
+	http://musicip-libofa.googlecode.com/files/

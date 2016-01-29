@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CUIterm
+Comment=Composite User Interface
+Comment[hu]=grafikus parancssor
+Exec=cuiterm
+Terminal=false
+Type=Application
+Icon=cuiterm
+Categories=System;TerminalEmulator;

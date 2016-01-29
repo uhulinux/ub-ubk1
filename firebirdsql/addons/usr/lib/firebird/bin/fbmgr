@@ -1,0 +1,4 @@
+#!/bin/sh
+FIREBIRD=/usr/lib/firebird
+export FIREBIRD
+exec $FIREBIRD/bin/fbmgr.bin $@

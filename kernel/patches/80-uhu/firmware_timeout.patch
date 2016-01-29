@@ -1,0 +1,12 @@
+diff -Naurd a/drivers/base/firmware_class.c b/drivers/base/firmware_class.c
+--- a/drivers/base/firmware_class.c	2010-02-24 19:52:17.000000000 +0100
++++ b/drivers/base/firmware_class.c	2010-03-04 19:27:42.619145771 +0100
+@@ -33,7 +33,7 @@
+ 	FW_STATUS_ABORT,
+ };
+ 
+-static int loading_timeout = 60;	/* In seconds */
++static int loading_timeout = 10;	/* In seconds */
+ 
+ /* fw_lock could be moved to 'struct firmware_priv' but since it is just
+  * guarding for corner cases a global lock should be OK */

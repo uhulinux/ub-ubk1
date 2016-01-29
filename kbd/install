@@ -1,0 +1,12 @@
+#!/bin/sh -eux
+
+make KEYCODES_PROGS=yes RESIZECONS_PROGS=yes DESTDIR="$UB_INSTALLDIR" install
+
+mv "$UB_INSTALLDIR"/usr/bin/kbd_mode "$UB_INSTALLDIR"/bin/
+mv "$UB_INSTALLDIR"/usr/bin/setfont  "$UB_INSTALLDIR"/bin/
+mv "$UB_INSTALLDIR"/usr/bin/setleds  "$UB_INSTALLDIR"/bin/
+
+ln -s ../../bin/kbd_mode "$UB_INSTALLDIR"/usr/bin/
+ln -s ../../bin/setfont  "$UB_INSTALLDIR"/usr/bin/
+ln -s ../../bin/setleds  "$UB_INSTALLDIR"/usr/bin/
+

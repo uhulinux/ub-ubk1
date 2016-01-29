@@ -1,0 +1,35 @@
+diff -Naurd a/configure b/configure
+--- a/configure	2006-12-15 16:06:33.000000000 +0100
++++ b/configure	2012-04-16 18:36:51.000000000 +0200
+@@ -335,8 +335,8 @@
+ lib_def=( "${lib_def[@]}" "-DARCH_${unamem}" "-DARCH=${unamem}" )
+ pgm_def=( "${pgm_def[@]}" "-DARCH_${unamem}" "-DARCH=${unamem}" )
+ 
+-lib_warn=( -Werror -Wall -Wnested-externs -Wno-cast-qual -Wno-trigraphs -Wuninitialized -Wwrite-strings )
+-pgm_warn=( -Werror -Wall -Wnested-externs -Wno-cast-qual -Wno-trigraphs -Wuninitialized -Wwrite-strings )
++lib_warn=( -Wall -Wnested-externs -Wno-cast-qual -Wno-trigraphs -Wuninitialized -Wwrite-strings )
++pgm_warn=( -Wall -Wnested-externs -Wno-cast-qual -Wno-trigraphs -Wuninitialized -Wwrite-strings )
+ 
+ if [[ -n "${warninline}" ]]; then
+     lib_warn=( "${lib_warn[@]}" -Winline )
+diff -Naurd a/io/src/lib/h/msg_vfprintf.c b/io/src/lib/h/msg_vfprintf.c
+--- a/io/src/lib/h/msg_vfprintf.c	2003-12-05 22:17:00.000000000 +0100
++++ b/io/src/lib/h/msg_vfprintf.c	2012-04-16 21:08:01.000000000 +0200
+@@ -371,7 +371,7 @@
+     //--------------------------------------------------
+     // If the time stamp is registered, format that now.
+     //--------------------------------------------------
+-    if ( time_format ) {
++    /*if ( time_format )*/ {
+ 	struct tm	tm_now	;
+ 	long		usec	;
+ 	int		len	;
+@@ -429,7 +429,7 @@
+     //----------------------------------------------------
+     // If the program name is registered, append that now.
+     //----------------------------------------------------
+-    if ( program_name ) {
++    /*if ( program_name )*/ {
+ 	int len;
+ 
+ 	len = snprintf( msg_ptr, msg_len, "%s: ", program_name );

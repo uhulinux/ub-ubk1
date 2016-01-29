@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cdtest-$UB_VERSION.tar.gz cdtest-$UB_VERSION/
+	ftp://ftp.uhulinux.hu/pub/sources/cdtest/

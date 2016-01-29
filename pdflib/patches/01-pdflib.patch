@@ -1,0 +1,12 @@
+diff -Naurd a/config/mkcommon.inc.in b/config/mkcommon.inc.in
+--- a/config/mkcommon.inc.in	2012-06-06 13:58:57.000000000 +0200
++++ b/config/mkcommon.inc.in	2013-06-26 21:12:08.000000000 +0200
+@@ -70,6 +70,8 @@
+ 
+ # Java
+ JAVA_COMPATIBILITY	= @JAVA_COMPATIBILITY@
++JAVAC 	= /usr/lib/java/bin/javac
++JAR 	= /usr/lib/java/bin/jar
+ 
+ # Perl
+ PERLLIBDIR	= @PERLLIBDIR@

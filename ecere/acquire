@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+#ecere-sdk-${UB_VERSION/~/}.tar.gz ecere-sdk-8d8ca99/
+#	http://downloads.sourceforge.net/ecere/
+${UB_VERSION/~/}.tar.gz ecere-sdk-${UB_VERSION}/
+	https://github.com/ecere/sdk/archive/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pangox-compat-${UB_VERSION}.tar.xz pangox-compat-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/pangox-compat/${UB_VERSION_HEAD2}/

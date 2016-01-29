@@ -1,0 +1,12 @@
+diff -Naur orig/rtf-fix/rtf2rtf.l patched/rtf-fix/rtf2rtf.l
+--- orig/rtf-fix/rtf2rtf.l	2008-05-28 18:16:36.000000000 +0200
++++ patched/rtf-fix/rtf2rtf.l	2013-03-08 17:51:05.162779215 +0100
+@@ -72,7 +72,7 @@
+ int skipnewline = 0;
+ 
+ extern char *yytext;
+-extern int yyleng;
++extern size_t yyleng;
+ 
+ #define CHAPTER 1
+ #define SECTION 2

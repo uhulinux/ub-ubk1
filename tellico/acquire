@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+tellico-${UB_VERSION}.tar.bz2 tellico-${UB_VERSION}/
+	http://tellico-project.org/files/
+

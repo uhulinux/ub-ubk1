@@ -1,0 +1,14 @@
+diff -Naur orig/CMakeLists.txt patched/CMakeLists.txt
+--- orig/CMakeLists.txt	2014-01-30 11:18:58.000000000 +0100
++++ patched/CMakeLists.txt	2014-02-20 23:24:31.462349868 +0100
+@@ -5,8 +5,8 @@
+ #These versions match the Lucene version
+ SET(LUCENE++_VERSION_MAJOR "3")
+ SET(LUCENE++_VERSION_MINOR "0")
+-SET(LUCENE++_VERSION_REVISION "3")
+-SET(LUCENE++_VERSION_PATCH "4")
++SET(LUCENE++_VERSION_REVISION "5")
++SET(LUCENE++_VERSION_PATCH "0")
+ 
+ # SOVERSION information
+ #Must be incremented for releases if the api is not backwards compatible

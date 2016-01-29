@@ -1,0 +1,5 @@
+attr-dev
+gobject-introspection-dev
+intltool
+itstool
+systemd-dev

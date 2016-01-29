@@ -1,0 +1,15 @@
+diff -Naur cdrdao-1.2.1.orig/xdao/gcdmaster.desktop cdrdao-1.2.1/xdao/gcdmaster.desktop
+--- cdrdao-1.2.1.orig/xdao/gcdmaster.desktop	2004-06-28 20:05:57.000000000 +0200
++++ cdrdao-1.2.1/xdao/gcdmaster.desktop	2006-01-04 16:14:45.000000000 +0100
+@@ -2,9 +2,10 @@
+ Encoding=UTF-8
+ Name=Gnome CD Master
+ Comment=Gnome Audio CD editor and burner
++Comment[hu]=Gnome CD-író program
+ Exec=gcdmaster %F
+ Icon=gcdmaster.png
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=GNOME;AudioVideo;Application;X-Fedora;
++Categories=GNOME;AudioVideo;Application;X-Fedora;X-UHU-Menu/Multimedia/CDwriters;

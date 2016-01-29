@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+colord-kde-${UB_VERSION}.tar.bz2 colord-kde-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/colord-kde/${UB_VERSION}/src/

@@ -1,0 +1,8 @@
+--- ORIG/wammu.desktop.in	2009-12-08 15:38:19.000000000 +0100
++++ UHU/wammu.desktop.in	2009-12-08 17:58:34.000000000 +0100
+@@ -6,4 +6,4 @@
+ Icon=wammu
+ Terminal=false
+ Type=Application
+-Categories=Utility;TelephonyTools;GTK;
++Categories=Utility;TelephonyTools;GTK;X-UHU-Menu/Tools/Utilities;

@@ -1,0 +1,16 @@
+diff -Naurdp opera-10.53-6330.i386.linux/share/opera/defaults/font.ini opera-10.53-6330.i386.linux.prefs/share/opera/defaults/font.ini
+--- opera-10.53-6330.i386.linux/share/opera/defaults/font.ini	2010-04-30 15:46:42.000000000 +0200
++++ opera-10.53-6330.i386.linux.prefs/share/opera/defaults/font.ini	2010-05-22 12:05:53.000000000 +0200
+@@ -13,9 +13,9 @@
+ ;foundry:urw|abiword|ultimo=bad
+ 
+ ; Generic settings - families with known glyph types
+-family:times|nimbus roman no9 l|times new roman|bitstream vera serif=serif
+-family:helvetica|nimbus sans l|arial|bitstream vera sans=sans-serif
+-family:courier|courier new|bitstream vera sans mono=monospace
++family:dejavu serif|liberation serif|droid serif|times|nimbus roman no9 l|times new roman|bitstream vera serif=serif
++family:dejavu sans|liberation sans|droid sans|helvetica|nimbus sans l|arial|bitstream vera sans=sans-serif
++family:dejavu sans mono|liberation mono|droid sans mono|courier|courier new|bitstream vera sans mono=monospace
+ 
+ ; Generic settings - generic families which have good, readable designs,
+ ; but where we can't be sure the implementation is any good.

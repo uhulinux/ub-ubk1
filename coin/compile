@@ -1,0 +1,16 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--enable-optimization \
+	--enable-3ds-import \
+	--enable-javascript-api \
+	--enable-threadsafe \
+	--enable-exceptions \
+	--enable-man \
+	--with-mesa \
+	--disable-debug \
+	--disable-maintainer-mode \
+	--disable-dependency-tracking \
+	--enable-system-expat
+
+rm -f man/man3/_*.*

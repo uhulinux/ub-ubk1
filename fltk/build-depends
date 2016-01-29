@@ -1,0 +1,10 @@
+alsa-lib-dev
+cmake
+desktop-file-utils
+icon-theme-hicolor
+libjpeg-dev
+libpng-dev
+libxdg-basedir-dev
+libxft-dev
+libxinerama-dev
+mesa-dev

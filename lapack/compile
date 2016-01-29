@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+install -d build
+cd build
+cmake .. \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_SKIP_RPATH=ON \
+	-DBUILD_SHARED_LIBS=ON \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_Fortran_COMPILER=gfortran
+make

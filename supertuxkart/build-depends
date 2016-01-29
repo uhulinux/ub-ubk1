@@ -1,0 +1,15 @@
+cmake
+curl-dev
+freealut-dev
+fribidi-dev
+glu-dev
+libjpeg-dev
+libogg-dev
+libpng-dev
+libvorbis-dev
+libxt-dev
+mesa-dev
+openal-dev
+plib
+plib-dev
+sdl-dev

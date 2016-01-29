@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+export DESTDIR="$UB_INSTALLDIR"
+jam install
+cp -a ede-about/icons/ede.xpm "$UB_INSTALLDIR"/usr/share/pixmaps/

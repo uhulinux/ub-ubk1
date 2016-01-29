@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cffi-${UB_VERSION}.tar.gz cffi-${UB_VERSION}/
+	http://pypi.python.org/packages/source/c/cffi/

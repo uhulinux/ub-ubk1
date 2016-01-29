@@ -1,0 +1,1 @@
+urllist http://ftp.penguin.cz/pub/users/utx/amr/ | splitver '^amrwb-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

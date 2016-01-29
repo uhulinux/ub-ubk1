@@ -1,0 +1,27 @@
+diff -Naur boo-0.9.2.3383-orig/extras/boo.pc.in boo-0.9.2.3383/extras/boo.pc.in
+--- boo-0.9.2.3383-orig/extras/boo.pc.in	2009-01-22 02:04:26.000000000 +0100
++++ boo-0.9.2.3383/extras/boo.pc.in	2009-10-30 21:56:42.000000000 +0100
+@@ -1,7 +1,6 @@
+ prefix=@prefix@
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib
+-
++libdir=@libdir@/mono
+ 
+ Name: Boo
+ Description: A wrist friendly language for the CLI
+diff -Naur boo-0.9.2.3383-orig/extras/Makefile.in boo-0.9.2.3383/extras/Makefile.in
+--- boo-0.9.2.3383-orig/extras/Makefile.in	2009-09-02 14:41:50.000000000 +0200
++++ boo-0.9.2.3383/extras/Makefile.in	2009-10-30 21:59:54.000000000 +0100
+@@ -152,9 +152,9 @@
+ top_srcdir = @top_srcdir@
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = boo.pc
+-gtksourceviewdir = $(GTKSOURCEVIEW_PREFIX)/share/gtksourceview-1.0/language-specs/
++gtksourceviewdir = $(pkgdatadir)/share/gtksourceview-1.0/language-specs/
+ gtksourceview_DATA = boo.lang
+-mimepackagesdir = $(MIME_PREFIX)/share/mime/packages/
++mimepackagesdir = $(pkgdatadir)/share/mime/packages/
+ mimepackages_DATA = boo-mime-info.xml
+ bin_SCRIPTS = booc booi booish
+ DISTCLEANFILES = booc booi booish boo.pc

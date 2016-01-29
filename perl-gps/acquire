@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+perl-GPS-${UB_VERSION}.tar.gz perl-GPS-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/GPS/

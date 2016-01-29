@@ -1,0 +1,1 @@
+sflist sqlitebrowser sqlitebrowser | sort -V | tail -n 1 | sed 's/%20beta/~b/'

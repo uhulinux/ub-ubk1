@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+mkdir build
+cd build
+../bootstrap \
+	--system-libs \
+	--prefix=/usr \
+	--mandir=/share/man \
+	--docdir=/share/doc/Packages/cmake
+
+ub_make

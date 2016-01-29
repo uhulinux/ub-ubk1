@@ -1,0 +1,14 @@
+http://debian-ppc64.alioth.debian.org/gcc4/patches/arj_3.10.22-1.0.0.1.gcc4.patch
+
+diff -urN ../tmp-orig/arj-3.10.21/postproc.c ./postproc.c
+--- ../tmp-orig/arj-3.10.21/postproc.c	2003-06-22 13:12:28.000000000 +0200
++++ ./postproc.c	2004-08-14 21:21:42.192431553 +0200
+@@ -71,7 +71,7 @@
+   if((bytes_read=fread(buf, 1, PROC_BLOCK_SIZE, stream))==0)
+   {
+    printf("Patch not found\n");
+-   return(POSTPROC_ERL_BAD_EXE);
++   break; //   return(POSTPROC_ERL_BAD_EXE);
+   }
+   bytes_read-=rp_len;
+   pb_ptr=buf;

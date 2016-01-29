@@ -1,0 +1,12 @@
+diff -Naur synaptic-0.52.orig/gtk/gsynaptic.cc synaptic-0.52/gtk/gsynaptic.cc
+--- synaptic-0.52.orig/gtk/gsynaptic.cc	2004-06-27 18:45:29.000000000 +0200
++++ synaptic-0.52/gtk/gsynaptic.cc	2004-08-02 16:54:25.528375101 +0200
+@@ -48,7 +48,7 @@
+ {
+    std::cout <<
+ #ifndef HAVE_RPM
+-      PACKAGE " for Debian " VERSION
++      PACKAGE " for UHU " VERSION
+ #else
+       _config->Find("Synaptic::MyName", PACKAGE) + " " VERSION
+ #endif

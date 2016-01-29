@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libconio-${UB_VERSION}.tar.gz conio-release/
+	http://downloads.sourceforge.net/conioforlinux/

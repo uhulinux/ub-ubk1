@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+uhu-dialer-${UB_VERSION}.tar.gz uhu-dialer-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/uhu-dialer/

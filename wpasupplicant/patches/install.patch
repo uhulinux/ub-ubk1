@@ -1,0 +1,14 @@
+diff -Naurd a/wpa_supplicant/Makefile b/wpa_supplicant/Makefile
+--- a/wpa_supplicant/Makefile	2010-01-12 15:55:02.000000000 +0100
++++ b/wpa_supplicant/Makefile	2010-02-20 23:24:47.974925326 +0100
+@@ -6,8 +6,8 @@
+ CFLAGS = -MMD -O2 -Wall -g
+ endif
+ 
+-export LIBDIR ?= /usr/local/lib/
+-export BINDIR ?= /usr/local/sbin/
++export LIBDIR ?= /usr/lib/
++export BINDIR ?= /usr/sbin/
+ PKG_CONFIG ?= pkg-config
+ 
+ CFLAGS += -I../src

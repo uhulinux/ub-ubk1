@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_compile \
+	      -DWITH_KDE=ON \
+	      -DWITH_OPENSSL=ON \
+	      -DLINGUAS="hu_HU en_US"

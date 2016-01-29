@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+python3 ./waf \
+	--destdir="$UB_INSTALLDIR" \
+	install

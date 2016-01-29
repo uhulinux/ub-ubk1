@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+
+ub_configure \
+	--enable-vala \
+	--with-usb-acl-helper-dir=/usr/libexec
+
+ub_make

@@ -1,0 +1,12 @@
+diff -Naur zapping-0.10cvs6.orig/configure zapping-0.10cvs6/configure
+--- zapping-0.10cvs6.orig/configure	2006-06-10 19:01:30.000000000 +0200
++++ zapping-0.10cvs6/configure	2006-07-20 16:42:49.000000000 +0200
+@@ -27311,7 +27311,7 @@
+ _ACEOF
+ 
+ 
+-ALL_LINGUAS="cs de es fr it ja nl"
++ALL_LINGUAS="cs de es fr hu it ja nl"
+ 
+ 
+ 

@@ -1,0 +1,12 @@
+#!/bin/sh -eux
+
+cd "$UB_OBJECTDIR"
+
+make \
+	prefix="$UB_INSTALLDIR"/usr \
+	infodir="$UB_INSTALLDIR"/usr/share/info \
+	mandir="$UB_INSTALLDIR"/usr/share/man \
+	install
+
+# Purge anything but libstdc++.so.5
+find "$UB_INSTALLDIR" \( -type f -o -type l \) ! -name 'libstdc++.so.5*' | xargs rm

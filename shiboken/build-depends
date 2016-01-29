@@ -1,0 +1,7 @@
+cmake
+icu-dev
+libxml2-dev
+libxslt-dev
+python-dev
+python-sphinx
+qt4-dev

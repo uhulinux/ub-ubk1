@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Mail-SPF-Query-${UB_VERSION}.tar.gz Mail-SPF-Query-${UB_VERSION}/
+	http://cpan.uwinnipeg.ca/cpan/authors/id/J/JM/JMEHNLE/mail-spf-query/

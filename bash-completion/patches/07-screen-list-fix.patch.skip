@@ -1,0 +1,25 @@
+diff -Naur bash_completion.orig/bash_completion bash_completion/bash_completion
+--- bash_completion.orig/bash_completion	2005-07-12 21:13:02.000000000 +0200
++++ bash_completion/bash_completion	2005-07-14 16:53:19.133042305 +0200
+@@ -3807,18 +3807,18 @@
+ 	     "$prev" = "-R" ]; then
+ 		# list all
+ 		COMPREPLY=( $( command screen -ls | \
+-				sed -ne 's|^['$'\t'']\+\('$cur'[0-9]\+\.[^'$'\t'']\+\).*$|\1|p' ) )
++				sed -ne 's|^['$'\t'']\+\('$cur'[^'$'\t'']\+\).*$|\1|p' ) )
+ 	else
+ 		case "$prev" in
+ 		-[rR])
+ 			# list detached
+ 			COMPREPLY=( $( command screen -ls | \
+-					sed -ne 's|^['$'\t'']\+\('$cur'[0-9]\+\.[^'$'\t'']\+\).*Detached.*$|\1|p' ) )
++					sed -ne 's|^['$'\t'']\+\('$cur'[^'$'\t'']\+\).*Detached.*$|\1|p' ) )
+ 			;;
+ 		-[dDx])
+ 			# list attached
+ 			COMPREPLY=( $( command screen -ls | \
+-					sed -ne 's|^['$'\t'']\+\('$cur'[0-9]\+\.[^'$'\t'']\+\).*Attached.*$|\1|p' ) )
++					sed -ne 's|^['$'\t'']\+\('$cur'[^'$'\t'']\+\).*Attached.*$|\1|p' ) )
+ 			;;
+ 		-s)
+ 			# shells

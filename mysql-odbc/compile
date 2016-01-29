@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_compile \
+	-DWITH_UNIXODBC=1 \
+	-DDISABLE_GUI=1 \
+	-DMYSQL_LINK_FLAGS='-L/usr/lib'

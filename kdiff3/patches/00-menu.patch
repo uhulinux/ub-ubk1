@@ -1,0 +1,9 @@
+diff -Naur kdiff-old//src/kdiff3.desktop kdiff//src/kdiff3.desktop
+--- kdiff-old//src/kdiff3.desktop	2010-02-12 00:15:32.000000000 +0100
++++ kdiff//src/kdiff3.desktop	2010-03-01 20:23:46.000000000 +0100
+@@ -112,4 +112,4 @@
+ Comment[zh_CN]=一个文件和目录的比较和合并的工具
+ Comment[zh_TW]=一個檔案與目錄比較與合併的工具
+ Terminal=false
+-Categories=Qt;KDE;Development;
++Categories=Qt;KDE;Development;X-UHU-Menu/Tools/Utilities;

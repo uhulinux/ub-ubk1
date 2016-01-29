@@ -1,0 +1,1 @@
+urllist http://pkgconfig.freedesktop.org/releases/ | splitver '^pkg-config-([0-9.]+).tar.gz$' | sort -V | tail -n 1

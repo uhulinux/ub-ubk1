@@ -1,0 +1,11 @@
+dbh-dev
+gtk2-dev
+intltool
+libglade2-dev
+libxfce4util-dev
+libxinerama-dev
+libxml2-dev
+libxt-dev
+startup-notification-dev
+xcb-util-dev
+xfconf-dev

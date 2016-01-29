@@ -1,0 +1,1 @@
+urllist http://www.xvid.org/Downloads.43.0.html | splitver '^xvidcore-([0-9.]+).tar.gz$' | sort -V | tail -n 1

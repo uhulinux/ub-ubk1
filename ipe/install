@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+cd src
+ub_install \
+	INSTALL_ROOT="$UB_INSTALLDIR" \
+	IPEPREFIX=/usr
+cd ..
+cp -a figtoipe-20091205/figtoipe "$UB_INSTALLDIR"/usr/bin/
+cp -a pdftoipe-20130124-src/pdftoipe "$UB_INSTALLDIR"/usr/bin/
+cp -a svgtoipe-20100608/svgtoipe "$UB_INSTALLDIR"/usr/bin/
+#cp -a IpePresenter-6e21d1f3b806/ipepresenter "$UB_INSTALLDIR"/usr/bin/
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/lua/5.1
+ln -s ../../libipelua.so "$UB_INSTALLDIR"/usr/lib/lua/5.1/ipe.so

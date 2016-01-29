@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+fmodapi${UB_VERSION_HEAD2/./}${UB_VERSION_TAIL1}linux.tar.gz fmodapi${UB_VERSION_HEAD2/./}${UB_VERSION_TAIL1}linux/
+	 http://www.fmod.org/download/fmodex/api/Linux/

@@ -1,0 +1,240 @@
+diff -urN d4x-2.5.7.orig/po/hu.po d4x-2.5.7/po/hu.po
+--- d4x-2.5.7.orig/po/hu.po	2006-04-09 19:34:48.000000000 +0200
++++ d4x-2.5.7/po/hu.po	2006-04-10 18:12:15.000000000 +0200
+@@ -32,9 +32,8 @@
+ msgstr "Hiba a SOCKET olvasása közben!"
+ 
+ #: main/client.cc:456
+-#, fuzzy, c-format
+ msgid "Trying to connect to %s:%i..."
+-msgstr "Kapcsolódás..."
++msgstr "Kapcsolódás a(z) %s:%i-hoz..."
+ 
+ #: main/client.cc:458
+ msgid "Socket was opened!"
+@@ -82,18 +81,16 @@
+ msgstr "URL-t várok paraméternek a '--stop' opcióra"
+ 
+ #: main/config.cc:92
+-#, fuzzy
+ msgid "Expect URL as parameter for '--referer' option"
+-msgstr "URL-t várok paraméternek '--del' opcióra"
++msgstr "URL-t várok paraméternek '--referer' opcióra"
+ 
+ #: main/config.cc:94
+ msgid "Expect URL as parameter for '-a' option"
+ msgstr "URL-t várok paraméternek a '-a' opcióra"
+ 
+ #: main/config.cc:95
+-#, fuzzy
+ msgid "Expect at least one URL as parameter for '--al' option"
+-msgstr "URL-t várok paraméternek a '--ls' opcióra"
++msgstr "Legalább egy URL-t várok paraméternek a '--al' opcióra"
+ 
+ #: main/config.cc:287
+ #, c-format
+@@ -581,7 +578,7 @@
+ 
+ #: main/face/columns.cc:23
+ msgid "type of file"
+-msgstr "fájl tipus"
++msgstr "fájl típus"
+ 
+ #: main/face/columns.cc:24
+ msgid "size of file"
+@@ -747,7 +744,7 @@
+ #: main/face/edit.cc:80 main/face/edit.cc:564 main/face/prefs.cc:268
+ msgid "Compare date/time of remote file with local one"
+ msgstr ""
+-"Helyi fájl dátumának/időpontjának összehasonlítása a távoli álományéval"
++"Helyi fájl dátumának/időpontjának összehasonlítása a távoli állományéval"
+ 
+ #: main/face/edit.cc:81 main/face/edit.cc:560 main/face/prefs.cc:256
+ msgid "Sleep before completing"
+@@ -868,7 +865,7 @@
+ 
+ #: main/face/edit.cc:529 main/face/prefs.cc:317
+ msgid "Maximum attempts (0 for unlimited)"
+-msgstr "Maximális kisérletek száma (0, ha végtelen)"
++msgstr "Maximális kísérletek száma (0, ha végtelen)"
+ 
+ #: main/face/edit.cc:535 main/face/prefs.cc:323
+ msgid "Rollback after reconnecting (in bytes)"
+@@ -876,7 +873,7 @@
+ 
+ #: main/face/edit.cc:541 main/face/prefs.cc:329
+ msgid "Speed limitation in Bytes/sec (0 for unlimited)"
+-msgstr "Sebesség korlátozása Byte/sec-ben (0 a korlátozattlan)"
++msgstr "Sebesség korlátozása Byte/sec-ben (0 a korlátozatlan)"
+ 
+ #: main/face/edit.cc:568
+ msgid "Save log to file"
+@@ -930,7 +927,7 @@
+ 
+ #: main/face/edit.cc:1507
+ msgid "FTP proxy type"
+-msgstr "FTP Proxy Tipus"
++msgstr "FTP Proxy Típus"
+ 
+ #: main/face/edit.cc:1518 main/face/mywidget.cc:1397
+ msgid "FTP (wingate)"
+@@ -992,7 +989,7 @@
+ 
+ #: main/face/fsched.cc:33
+ msgid "limit speed"
+-msgstr "sebbeség korlátozás"
++msgstr "sebeség korlátozás"
+ 
+ #: main/face/fsched.cc:34
+ msgid "popup main window"
+@@ -1080,7 +1077,7 @@
+ 
+ #: main/face/fsched.cc:761
+ msgid "times to repeat (-1 unlimited)"
+-msgstr "maximális kisérletek száma (-1, ha végtelen)"
++msgstr "maximális kísérletek száma (-1, ha végtelen)"
+ 
+ #: main/face/fsched.cc:765
+ msgid "period (day/hour:min)"
+@@ -1407,7 +1404,7 @@
+ 
+ #: main/face/lod.cc:44
+ msgid "Type"
+-msgstr "Tipus"
++msgstr "Típus"
+ 
+ #: main/face/lod.cc:45
+ msgid "Full Size"
+@@ -1527,18 +1524,16 @@
+ msgstr "Hozzáad"
+ 
+ #: main/face/mywidget.cc:1185
+-#, fuzzy
+ msgid "Referer:"
+-msgstr "Azonosító"
++msgstr "Hivatkozó:"
+ 
+ #: main/face/mywidget.cc:1190
+-#, fuzzy
+ msgid "Store into directory:"
+-msgstr "Könyvtár választás"
++msgstr "Cél könyvtár:"
+ 
+ #: main/face/mywidget.cc:1394
+ msgid "proxy type"
+-msgstr "proxy tipus"
++msgstr "proxy típus"
+ 
+ #: main/face/mywidget.cc:1409
+ msgid "Use different proxy for this alternate"
+@@ -1562,7 +1557,7 @@
+ 
+ #: main/face/prefs.cc:260
+ msgid "Optimize recursive downloads"
+-msgstr "Rekurzív letöltések optimallizálása"
++msgstr "Rekurzív letöltések optimalizálása"
+ 
+ #: main/face/prefs.cc:275
+ msgid "Default permissions of local file"
+@@ -1590,7 +1585,7 @@
+ 
+ #: main/face/prefs.cc:388
+ msgid "Output FTP dirs in logs"
+-msgstr "FTP könyvtárak irása a naplóban"
++msgstr "FTP könyvtárak írása a naplóba"
+ 
+ #: main/face/prefs.cc:399
+ msgid "default anonymous password"
+@@ -1610,7 +1605,7 @@
+ 
+ #: main/face/prefs.cc:531
+ msgid "Using title"
+-msgstr "Fejléc használada"
++msgstr "Fejléc használata"
+ 
+ #: main/face/prefs.cc:535
+ msgid "Use title of main window for info"
+@@ -1698,7 +1693,7 @@
+ 
+ #: main/face/prefs.cc:685
+ msgid "Maximum size for file of main log (in KBytes)"
+-msgstr "Maximális fő napló méret (KByteban)"
++msgstr "Maximális fő napló méret (KByte-ban)"
+ 
+ #: main/face/prefs.cc:690
+ msgid "Append to file"
+@@ -1822,7 +1817,7 @@
+ 
+ #: main/face/prefs.cc:941
+ msgid "Color for total speed"
+-msgstr "Teljessebesség színe"
++msgstr "Teljes sebesség színe"
+ 
+ #: main/face/prefs.cc:942
+ msgid "Color for current speed value"
+@@ -1925,9 +1920,8 @@
+ msgstr "Aktív letöltések maximális száma"
+ 
+ #: main/face/qtree.cc:605
+-#, fuzzy
+ msgid "Speed limitation per queue (Bytes/sec, 0 unlimited)"
+-msgstr "Sebesség korlátozása Byte/sec-ben (0 a korlátozattlan)"
++msgstr "Sebesség korlátozása letöltésenként (Byte/sec-ben, 0 a korlátozatlan)"
+ 
+ #: main/face/qtree.cc:610
+ msgid "Automatically delete completed downloads"
+@@ -2141,9 +2135,8 @@
+ msgstr "Hibás válasz!"
+ 
+ #: main/httpd.cc:386
+-#, fuzzy
+ msgid "Size for download is %ll bytes"
+-msgstr "Letöltés mérete: %i bytes"
++msgstr "Letöltés mérete: %ll byte"
+ 
+ #: main/httpd.cc:408 main/httpd.cc:437
+ msgid "Sending HTTP request..."
+@@ -2151,11 +2144,11 @@
+ 
+ #: main/httpd.cc:485
+ msgid "It is seemed REGET not supported! Loading from begin.."
+-msgstr "REGET nem támogatott! Kezdem előlről..."
++msgstr "REGET nem támogatott! Kezdem elölről..."
+ 
+ #: main/httpd.cc:488
+ msgid "ETag was changed, restarting again..."
+-msgstr "ETag megváltozott, előről kezdem..."
++msgstr "ETag megváltozott, elölről kezdem..."
+ 
+ #: main/httpd.cc:503
+ msgid "%ll bytes loaded."
+@@ -2167,7 +2160,7 @@
+ 
+ #: main/main.cc:145
+ msgid "Can't init control socket!\n"
+-msgstr "Nem tudom inicializálzni a vezérlő socketet\n"
++msgstr "Nem tudom inicializálni a vezérlő socketet\n"
+ 
+ #: main/main.cc:198
+ msgid "Loading default list of downloads"
+@@ -2206,7 +2199,7 @@
+ #: main/main.cc:564
+ #, c-format
+ msgid "Continue downloading of file %s from %s..."
+-msgstr "A(z) %s fájl letöltésésnek folytatása a(z) %s címről..."
++msgstr "A(z) %s fájl letöltésének folytatása a(z) %s címről..."
+ 
+ #: main/main.cc:655
+ msgid "file"
+@@ -2249,10 +2242,9 @@
+ msgstr "A(z) %z könyvtár letöltése befejeződött"
+ 
+ #: main/main.cc:882
+-#, fuzzy
+ msgid "Downloading of file %z (%ll bytes) was completed at speed %ll bytes/sec"
+ msgstr ""
+-"A(z) %z fájl (%i byte) letöltése befejeződött. Átlagsebesség: %i byte/sec"
++"A(z) %z fájl (%ll byte) letöltése befejeződött. Átlagsebesség: %i byte/sec"
+ 
+ #: main/main.cc:889
+ msgid "%z was deleted from queue of downloads as completed download"

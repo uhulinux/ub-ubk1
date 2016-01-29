@@ -1,0 +1,16 @@
+diff -Naur glibc-2.3.3-200405070341.orig/elf/ldconfig.c glibc-2.3.3-200405070341/elf/ldconfig.c
+--- glibc-2.3.3-200405070341.orig/elf/ldconfig.c	2004-03-18 22:28:29.000000000 +0100
++++ glibc-2.3.3-200405070341/elf/ldconfig.c	2004-05-22 23:20:54.000000000 +0200
+@@ -1204,9 +1204,9 @@
+       parse_conf (config_file, true);
+ 
+       /* Always add the standard search paths.  */
+-      add_system_dir (SLIBDIR);
+-      if (strcmp (SLIBDIR, LIBDIR))
+-	add_system_dir (LIBDIR);
++      add_system_dir ("/usr/local/lib");
++      add_system_dir (SLIBDIR); /* /lib */
++      add_system_dir (LIBDIR); /* /usr/lib */
+     }
+ 
+   search_dirs ();

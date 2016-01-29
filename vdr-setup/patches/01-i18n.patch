@@ -1,0 +1,56 @@
+diff -Naur orig/i18n.c mod/i18n.c
+--- orig/i18n.c	2009-01-13 11:30:35.000000000 +0100
++++ mod/i18n.c	2012-11-26 00:03:22.000000000 +0100
+@@ -8,7 +8,7 @@
+  *
+  * Copyright (C) 2004 by Ralf Dotzert 
+  ****************************************************************************/
+-#include "i18n.h"
++
+ 
+ const tI18nPhrase Phrases[] = {
+   { "VDR-Setup Extension", // English
+diff -Naur orig/setup.c mod/setup.c
+--- orig/setup.c	2008-01-16 21:51:27.000000000 +0100
++++ mod/setup.c	2012-11-25 23:59:02.000000000 +0100
+@@ -12,7 +12,7 @@
+ #include <vdr/plugin.h>
+ #include "setupmenu.h"
+ #include "setupsetup.h"
+-#include "i18n.h"
++
+ 
+ static const char *VERSION        = "0.3.1-zulu-edition";
+ static const char *DESCRIPTION    = trNOOP("VDR-Setup Extension");
+@@ -69,7 +69,7 @@
+ {
+   // Initialize any background activities the plugin shall perform.
+ #if VDRVERSNUM < 10507
+-  RegisterI18n(Phrases);
++//  RegisterI18n(Phrases);
+ #endif
+   return true;
+ }
+diff -Naur orig/setupmenu.c mod/setupmenu.c
+--- orig/setupmenu.c	2009-01-13 11:30:35.000000000 +0100
++++ mod/setupmenu.c	2012-11-25 23:41:33.000000000 +0100
+@@ -20,7 +20,6 @@
+ #include "config.h"
+ #include "plugins.h"
+ #include "debug.h"
+-#include "i18n.h"
+ #include "setupsetup.h"
+ #include "setupsystemmenu.h"
+ 
+diff -Naur orig/setupsetup.h mod/setupsetup.h
+--- orig/setupsetup.h	2008-01-29 23:19:13.000000000 +0100
++++ mod/setupsetup.h	2012-11-25 23:42:36.000000000 +0100
+@@ -14,7 +14,7 @@
+ #define SETUPSETUP_H
+ 
+ #include <vdr/plugin.h>
+-#include "i18n.h"
++
+ 
+ /**
+ @author Ralf Dotzert

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-python-${UB_VERSION}.tar.gz gnome-python-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-python/${UB_VERSION_HEAD2}/

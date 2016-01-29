@@ -1,0 +1,1 @@
+urllist http://code.google.com/p/tesseract-ocr/downloads/list | splitver '^tesseract-ocr-([0-9.]+).tar.gz$' | sort -V | tail -n 1

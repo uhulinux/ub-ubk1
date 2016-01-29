@@ -1,0 +1,8 @@
+--- gnokii/xgnokii/xgnokii.desktop.in.orig	2012-04-23 21:27:43.000000000 +0200
++++ gnokii/xgnokii/xgnokii.desktop.in	2012-04-23 21:28:03.000000000 +0200
+@@ -6,4 +6,4 @@
+ Exec=xgnokii
+ Terminal=false
+ Type=Application
+-Categories=Utility;TelephonyTools;Calendar;ContactManagement;Office;GTK;
++Categories=Utility;TelephonyTools;Calendar;ContactManagement;Office;GTK;X-UHU-Menu/Tools/Utilities;

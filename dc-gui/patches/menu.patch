@@ -1,0 +1,18 @@
+diff -Naur dc_gui2-0.80.orig/dc_gui2.desktop dc_gui2-0.80/dc_gui2.desktop
+--- dc_gui2-0.80.orig/dc_gui2.desktop	2003-07-23 07:56:28.000000000 +0200
++++ dc_gui2-0.80/dc_gui2.desktop	2006-02-01 15:23:37.000000000 +0100
+@@ -1,9 +1,11 @@
+ [Desktop Entry]
+-Name=dc_gui2
++Encoding=UTF-8
++Name=DC
+ Comment=Direct Connect for Linux
++Comment[hu]=Kliens a Direct Connect fájlmegosztó hálózathoz
+ Exec=dc_gui2
+ Icon=dc_gui2.xpm
+-Terminal=false
++Terminal=0
+ Type=Application
+-Categories=Application;Network;
++Categories=Application;Network;X-UHU-Menu/Internet/Downloaders;
+ 

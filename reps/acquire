@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+rePS-${UB_VERSION}.tar.gz rePS-${UB_VERSION}/
+	http://www.inf.bme.hu/~pts/rePS/
+

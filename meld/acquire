@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+meld-${UB_VERSION}.tar.xz meld-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/meld/${UB_VERSION_HEAD2}/

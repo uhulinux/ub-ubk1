@@ -1,0 +1,36 @@
+diff -Naur orig/pppd/main.c patched/pppd/main.c
+--- orig/pppd/main.c	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/main.c	2012-03-31 12:06:15.357317476 +0200
+@@ -1659,7 +1659,7 @@
+ 	    forget_child(pid, status);
+ 	    --conn_running;
+ 	}
+-	return (status == 0 ? 0 : -1);
++	return (status == 0 ? 0 : (WIFEXITED(status) ? -WEXITSTATUS(status) : -1));
+     }
+ 
+     /* here we are executing in the child */
+diff -Naur orig/pppd/tty.c patched/pppd/tty.c
+--- orig/pppd/tty.c	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/tty.c	2012-03-31 12:07:17.972739061 +0200
+@@ -133,6 +133,7 @@
+ int charshunt_pid;		/* Process ID for charshunt */
+ int locked;			/* lock() has succeeded */
+ struct stat devstat;		/* result of stat() on devnam */
++int ret;
+ 
+ /* option variables */
+ int	crtscts = 0;		/* Use hardware flow control */
+@@ -685,9 +686,10 @@
+ 		}
+ 
+ 		if (initializer && initializer[0]) {
+-			if (device_script(initializer, ttyfd, ttyfd, 0) < 0) {
++			ret = device_script(initializer, ttyfd, ttyfd, 0);
++			if (ret < 0) {
+ 				error("Initializer script failed");
+-				status = EXIT_INIT_FAILED;
++				status = 32 - ret;
+ 				goto errretf;
+ 			}
+ 			if (got_sigterm) {

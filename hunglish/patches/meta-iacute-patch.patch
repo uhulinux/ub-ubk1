@@ -1,0 +1,156 @@
+diff -Naur a/meta-iacute.patch b/meta-iacute.patch
+--- a/meta-iacute.patch	1970-01-01 01:00:00.000000000 +0100
++++ b/meta-iacute.patch	2005-12-15 15:58:42.000000000 +0100
+@@ -0,0 +1,152 @@
++diff -Naur hunglish-1.13.orig/console/hunglish-pc101.kmap hunglish-1.13/console/hunglish-pc101.kmap
++--- hunglish-1.13.orig/console/hunglish-pc101.kmap	2005-10-13 00:48:37.000000000 +0200
+++++ hunglish-1.13/console/hunglish-pc101.kmap	2005-12-15 15:56:07.000000000 +0100
++@@ -1053,7 +1053,6 @@
++ shiftl             control alt keycode 23 = Meta_Control_i
++ shiftl shift       control alt keycode 23 = Meta_Control_i
++ shiftl       altgr             keycode 23 = Iacute
++-shiftl       altgr         alt keycode 23 = Meta_Iacute
++ 
++ # Letter O.
++                                keycode 24 = nul
++@@ -1379,7 +1378,6 @@
++ shiftl             control alt keycode 36 = Meta_Control_j
++ shiftl shift       control alt keycode 36 = Meta_Control_j
++ shiftl       altgr             keycode 36 = iacute
++-shiftl       altgr         alt keycode 36 = Meta_iacute
++ 
++ # Letter K.
++                                keycode 37 = nul
++diff -Naur hunglish-1.13.orig/console/hunglish-pc101qwertz.kmap hunglish-1.13/console/hunglish-pc101qwertz.kmap
++--- hunglish-1.13.orig/console/hunglish-pc101qwertz.kmap	2005-10-13 00:48:39.000000000 +0200
+++++ hunglish-1.13/console/hunglish-pc101qwertz.kmap	2005-12-15 15:56:14.000000000 +0100
++@@ -1053,7 +1053,6 @@
++ shiftl             control alt keycode 23 = Meta_Control_i
++ shiftl shift       control alt keycode 23 = Meta_Control_i
++ shiftl       altgr             keycode 23 = Iacute
++-shiftl       altgr         alt keycode 23 = Meta_Iacute
++ 
++ # Letter O.
++                                keycode 24 = nul
++@@ -1379,7 +1378,6 @@
++ shiftl             control alt keycode 36 = Meta_Control_j
++ shiftl shift       control alt keycode 36 = Meta_Control_j
++ shiftl       altgr             keycode 36 = iacute
++-shiftl       altgr         alt keycode 36 = Meta_iacute
++ 
++ # Letter K.
++                                keycode 37 = nul
++diff -Naur hunglish-1.13.orig/console/hunglish-pc102.kmap hunglish-1.13/console/hunglish-pc102.kmap
++--- hunglish-1.13.orig/console/hunglish-pc102.kmap	2005-10-13 00:48:38.000000000 +0200
+++++ hunglish-1.13/console/hunglish-pc102.kmap	2005-12-15 15:56:17.000000000 +0100
++@@ -1055,7 +1055,6 @@
++ shiftl             control alt keycode 23 = Meta_Control_i
++ shiftl shift       control alt keycode 23 = Meta_Control_i
++ shiftl       altgr             keycode 23 = Iacute
++-shiftl       altgr         alt keycode 23 = Meta_Iacute
++ 
++ # Letter O.
++                                keycode 24 = nul
++@@ -1381,7 +1380,6 @@
++ shiftl             control alt keycode 36 = Meta_Control_j
++ shiftl shift       control alt keycode 36 = Meta_Control_j
++ shiftl       altgr             keycode 36 = iacute
++-shiftl       altgr         alt keycode 36 = Meta_iacute
++ 
++ # Letter K.
++                                keycode 37 = nul
++diff -Naur hunglish-1.13.orig/console/hunglish-pc102qwertz.kmap hunglish-1.13/console/hunglish-pc102qwertz.kmap
++--- hunglish-1.13.orig/console/hunglish-pc102qwertz.kmap	2005-10-13 00:48:39.000000000 +0200
+++++ hunglish-1.13/console/hunglish-pc102qwertz.kmap	2005-12-15 15:56:19.000000000 +0100
++@@ -1055,7 +1055,6 @@
++ shiftl             control alt keycode 23 = Meta_Control_i
++ shiftl shift       control alt keycode 23 = Meta_Control_i
++ shiftl       altgr             keycode 23 = Iacute
++-shiftl       altgr         alt keycode 23 = Meta_Iacute
++ 
++ # Letter O.
++                                keycode 24 = nul
++@@ -1381,7 +1380,6 @@
++ shiftl             control alt keycode 36 = Meta_Control_j
++ shiftl shift       control alt keycode 36 = Meta_Control_j
++ shiftl       altgr             keycode 36 = iacute
++-shiftl       altgr         alt keycode 36 = Meta_iacute
++ 
++ # Letter K.
++                                keycode 37 = nul
++diff -Naur hunglish-1.13.orig/console/hunglish-pc104.kmap hunglish-1.13/console/hunglish-pc104.kmap
++--- hunglish-1.13.orig/console/hunglish-pc104.kmap	2005-10-13 00:48:38.000000000 +0200
+++++ hunglish-1.13/console/hunglish-pc104.kmap	2005-12-15 15:56:21.000000000 +0100
++@@ -1053,7 +1053,6 @@
++ shiftl             control alt keycode 23 = Meta_Control_i
++ shiftl shift       control alt keycode 23 = Meta_Control_i
++ shiftl       altgr             keycode 23 = Iacute
++-shiftl       altgr         alt keycode 23 = Meta_Iacute
++ 
++ # Letter O.
++                                keycode 24 = nul
++@@ -1379,7 +1378,6 @@
++ shiftl             control alt keycode 36 = Meta_Control_j
++ shiftl shift       control alt keycode 36 = Meta_Control_j
++ shiftl       altgr             keycode 36 = iacute
++-shiftl       altgr         alt keycode 36 = Meta_iacute
++ 
++ # Letter K.
++                                keycode 37 = nul
++diff -Naur hunglish-1.13.orig/console/hunglish-pc104qwertz.kmap hunglish-1.13/console/hunglish-pc104qwertz.kmap
++--- hunglish-1.13.orig/console/hunglish-pc104qwertz.kmap	2005-10-13 00:48:39.000000000 +0200
+++++ hunglish-1.13/console/hunglish-pc104qwertz.kmap	2005-12-15 15:56:23.000000000 +0100
++@@ -1053,7 +1053,6 @@
++ shiftl             control alt keycode 23 = Meta_Control_i
++ shiftl shift       control alt keycode 23 = Meta_Control_i
++ shiftl       altgr             keycode 23 = Iacute
++-shiftl       altgr         alt keycode 23 = Meta_Iacute
++ 
++ # Letter O.
++                                keycode 24 = nul
++@@ -1379,7 +1378,6 @@
++ shiftl             control alt keycode 36 = Meta_Control_j
++ shiftl shift       control alt keycode 36 = Meta_Control_j
++ shiftl       altgr             keycode 36 = iacute
++-shiftl       altgr         alt keycode 36 = Meta_iacute
++ 
++ # Letter K.
++                                keycode 37 = nul
++diff -Naur hunglish-1.13.orig/console/hunglish-pc105.kmap hunglish-1.13/console/hunglish-pc105.kmap
++--- hunglish-1.13.orig/console/hunglish-pc105.kmap	2005-10-13 00:48:38.000000000 +0200
+++++ hunglish-1.13/console/hunglish-pc105.kmap	2005-12-15 15:56:25.000000000 +0100
++@@ -1055,7 +1055,6 @@
++ shiftl             control alt keycode 23 = Meta_Control_i
++ shiftl shift       control alt keycode 23 = Meta_Control_i
++ shiftl       altgr             keycode 23 = Iacute
++-shiftl       altgr         alt keycode 23 = Meta_Iacute
++ 
++ # Letter O.
++                                keycode 24 = nul
++@@ -1381,7 +1380,6 @@
++ shiftl             control alt keycode 36 = Meta_Control_j
++ shiftl shift       control alt keycode 36 = Meta_Control_j
++ shiftl       altgr             keycode 36 = iacute
++-shiftl       altgr         alt keycode 36 = Meta_iacute
++ 
++ # Letter K.
++                                keycode 37 = nul
++diff -Naur hunglish-1.13.orig/console/hunglish-pc105qwertz.kmap hunglish-1.13/console/hunglish-pc105qwertz.kmap
++--- hunglish-1.13.orig/console/hunglish-pc105qwertz.kmap	2005-10-13 00:48:39.000000000 +0200
+++++ hunglish-1.13/console/hunglish-pc105qwertz.kmap	2005-12-15 15:56:27.000000000 +0100
++@@ -1055,7 +1055,6 @@
++ shiftl             control alt keycode 23 = Meta_Control_i
++ shiftl shift       control alt keycode 23 = Meta_Control_i
++ shiftl       altgr             keycode 23 = Iacute
++-shiftl       altgr         alt keycode 23 = Meta_Iacute
++ 
++ # Letter O.
++                                keycode 24 = nul
++@@ -1381,7 +1380,6 @@
++ shiftl             control alt keycode 36 = Meta_Control_j
++ shiftl shift       control alt keycode 36 = Meta_Control_j
++ shiftl       altgr             keycode 36 = iacute
++-shiftl       altgr         alt keycode 36 = Meta_iacute
++ 
++ # Letter K.
++                                keycode 37 = nul

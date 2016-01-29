@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+python3 setup.py install --root="$UB_INSTALLDIR"
+
+python setup.py build --force
+python setup.py install --root="$UB_INSTALLDIR"

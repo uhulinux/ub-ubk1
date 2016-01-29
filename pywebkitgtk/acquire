@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pywebkitgtk-${UB_VERSION}.tar.bz2 pywebkitgtk-${UB_VERSION}/
+	http://pywebkitgtk.googlecode.com/files/

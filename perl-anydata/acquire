@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+AnyData-${UB_VERSION}.tar.gz AnyData-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/S/SD/SDOWIDEIT/

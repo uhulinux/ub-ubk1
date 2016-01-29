@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+mkdir -p ${UB_INSTALLDIR}/usr/lib/php/
+cp modules/xdiff.so ${UB_INSTALLDIR}/usr/lib/php/
+

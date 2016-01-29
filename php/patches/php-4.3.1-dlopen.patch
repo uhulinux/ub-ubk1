@@ -1,0 +1,22 @@
+
+Don't open extension modules with RTLD_LAZY: better to fail obviously at
+load-time rather than obscurely at run-time if they have undefined 
+symbols.
+
+--- php-5.0.5.orig/Zend/zend.h	2005-08-25 19:41:08.000000000 +0200
++++ php-5.0.5/Zend/zend.h	2005-10-24 20:47:10.000000000 +0200
+@@ -102,11 +102,11 @@
+ # endif
+ 
+ # if defined(RTLD_GROUP) && defined(RTLD_WORLD) && defined(RTLD_PARENT)
+-#  define DL_LOAD(libname)			dlopen(libname, RTLD_LAZY | RTLD_GLOBAL | RTLD_GROUP | RTLD_WORLD | RTLD_PARENT)
++#  define DL_LOAD(libname)			dlopen(libname, RTLD_NOW  | RTLD_GLOBAL | RTLD_GROUP | RTLD_WORLD | RTLD_PARENT)
+ # elif defined(RTLD_DEEPBIND)
+-#  define DL_LOAD(libname)			dlopen(libname, RTLD_LAZY | RTLD_GLOBAL | RTLD_DEEPBIND)
++#  define DL_LOAD(libname)			dlopen(libname, RTLD_NOW  | RTLD_GLOBAL | RTLD_DEEPBIND)
+ # else
+-#  define DL_LOAD(libname)			dlopen(libname, RTLD_LAZY | RTLD_GLOBAL)
++#  define DL_LOAD(libname)			dlopen(libname, RTLD_NOW  | RTLD_GLOBAL)
+ # endif
+ # define DL_UNLOAD					dlclose
+ # if defined(DLSYM_NEEDS_UNDERSCORE)

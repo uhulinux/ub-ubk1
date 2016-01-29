@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+qtalchemy-${UB_VERSION}.tar.gz qtalchemy-${UB_VERSION}/
+	http://pypi.python.org/packages/source/q/qtalchemy/

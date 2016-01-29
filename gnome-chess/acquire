@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-chess-${UB_VERSION}.tar.xz gnome-chess-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-chess/${UB_VERSION_HEAD2}/

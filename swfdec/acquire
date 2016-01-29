@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+swfdec-${UB_VERSION}.tar.gz swfdec-${UB_VERSION}/
+	http://swfdec.freedesktop.org/download/swfdec/${UB_VERSION_HEAD2}/

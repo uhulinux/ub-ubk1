@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Crypt-OpenSSL-Random-${UB_VERSION}.tar.gz Crypt-OpenSSL-Random-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/I/IR/IROBERTS/

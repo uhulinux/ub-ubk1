@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgnomeui-${UB_VERSION}.tar.gz libgnomeui-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgnomeui/${UB_VERSION_HEAD2}/

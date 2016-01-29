@@ -1,0 +1,16 @@
+#!/bin/sh -eux
+
+echo \#!/usr/bin/wish >tkpaint
+echo set LIBDIR \"/usr/lib/tkpaint\" >>tkpaint
+echo set CONFIGDIR \"/usr/lib/tkpaint\" >>tkpaint
+echo set PS_VIEWER \"\" >>tkpaint
+cat tkpaint.tcl >>tkpaint
+cp -p tkpaint $UB_INSTALLDIR/usr/bin/tkpaint
+chmod 775 $UB_INSTALLDIR/usr/bin/tkpaint
+rm tkpaint.tcl
+mkdir -p $UB_INSTALLDIR/usr/lib/tkpaint/gifs
+cp -p *.* $UB_INSTALLDIR/usr/lib/tkpaint
+cp -p gifs/*.gif $UB_INSTALLDIR/usr/lib/tkpaint/gifs
+cp -p TclIndex $UB_INSTALLDIR/usr/lib/tkpaint
+mkdir -p $UB_INSTALLDIR/etc/X11/tkpaint
+cp -p tkpaint.ini $UB_INSTALLDIR/etc/X11/tkpaint

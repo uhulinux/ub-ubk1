@@ -1,0 +1,15 @@
+diff -urN o3read-0.0.4.orig/Makefile o3read-0.0.4/Makefile
+--- o3read-0.0.4.orig/Makefile	2005-01-07 09:28:47.000000000 +0100
++++ o3read-0.0.4/Makefile	2006-05-11 12:26:41.000000000 +0200
+@@ -4,9 +4,9 @@
+ 
+ CC = gcc
+ CFLAGS = -Wall -ansi -pedantic -O -g
+-PREFIX = /usr/local
++PREFIX = $(DESTDIR)/usr
+ BINDIR = $(PREFIX)/bin
+-MANDIR = $(PREFIX)/man/man1
++MANDIR = $(PREFIX)/share/man/man1
+ DOCS = COPYING INSTALL README TODO ChangeLog filformat.sxw
+ BINS = o3read o3totxt o3tohtml utf8tolatin1
+ SRCS = o3read.h main.c o3read.c o3totxt.c o3tohtml.c utf8tolatin1.c

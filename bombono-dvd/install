@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+ub_install \
+	PREFIX=/usr
+	
+install -m 755 build/bin/* "$UB_INSTALLDIR"/usr/bin
+cp -r docs/man "$UB_INSTALLDIR"/usr/share
+mkdir -p "$UB_INSTALLDIR"/usr/share/bombono/resources
+cp -r resources "$UB_INSTALLDIR"/usr/share/bombono

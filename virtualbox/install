@@ -1,0 +1,34 @@
+#!/bin/bash -eux
+
+source ./env.sh
+
+# we install the kernel module
+cd ./out/linux.x86/release/bin/src
+make \
+	DESTDIR="$UB_INSTALLDIR" \
+	INSTALL_MOD_PATH="$UB_INSTALLDIR" \
+	KERN_DIR="/usr/src/`readlink /usr/src/linux`" \
+	MODULE_DIR="${UB_INSTALLDIR}`ls -1d /lib/modules/*.i386`/kernel/drivers/misc/" \
+	install
+
+# install the other files
+cd ..
+mkdir -p "$UB_INSTALLDIR"/usr/lib/virtualbox
+rm -rf sdk src tst* testcase additions/src SUPInstall SUPUninstall
+cp -a . "$UB_INSTALLDIR"/usr/lib/virtualbox
+
+# install desktop file
+mv "$UB_INSTALLDIR"/usr/lib/virtualbox/virtualbox.desktop "$UB_INSTALLDIR"/usr/share/applications/
+
+# install VBoxAddIF, VBoxDeleteIF and VBoxTunctl
+cd ../../../..
+ln -s ../lib/virtualbox/VBoxTunctl "$UB_INSTALLDIR"/usr/bin/VBoxTunctl
+
+#create wrapper scripts
+for file in VBoxManage VBoxSDL VBoxSVC VirtualBox
+do
+    echo '#!/bin/bash' > "$UB_INSTALLDIR"/usr/bin/$file
+    echo 'export QT_NO_KDE_INTEGRATION=1' >> "$UB_INSTALLDIR"/usr/bin/$file
+    echo "LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH:/usr/lib/virtualbox\" /usr/lib/virtualbox/$file \$@" >> "$UB_INSTALLDIR"/usr/bin/$file
+    chmod +x "$UB_INSTALLDIR"/usr/bin/$file
+done

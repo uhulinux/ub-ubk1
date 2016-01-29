@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gecko-mediaplayer-${UB_VERSION}.tar.gz gecko-mediaplayer-${UB_VERSION}/
+	http://gecko-mediaplayer.googlecode.com/files/

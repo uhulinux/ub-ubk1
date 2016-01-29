@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+sympa-${UB_VERSION}.tar.gz sympa-${UB_VERSION}/
+	http://www.sympa.org/distribution/
+	http://www.sympa.org/distribution/old/

@@ -1,0 +1,1 @@
+urllist http://xsisqox.github.io/Viewnior/download.html | splitver '^viewnior-([0-9._a-z]+).tar.gz$' | sort -V | tail -n 1

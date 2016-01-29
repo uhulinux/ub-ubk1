@@ -1,0 +1,12 @@
+diff -Naurdp samba-3.3.3.orig/nsswitch/winbind_struct_protocol.h samba-3.3.3/nsswitch/winbind_struct_protocol.h
+--- samba-3.3.3.orig/nsswitch/winbind_struct_protocol.h	2009-04-01 13:48:54.000000000 +0200
++++ samba-3.3.3/nsswitch/winbind_struct_protocol.h	2009-04-16 16:15:27.000000000 +0200
+@@ -24,7 +24,7 @@
+  * is needed for launchd support -- jpeach.
+  */
+ #ifndef WINBINDD_SOCKET_DIR
+-#define WINBINDD_SOCKET_DIR  "/tmp/.winbindd"  /* Name of PF_UNIX dir */
++#define WINBINDD_SOCKET_DIR  "/var/run/winbindd"  /* Name of PF_UNIX dir */
+ #endif
+ 
+ /*

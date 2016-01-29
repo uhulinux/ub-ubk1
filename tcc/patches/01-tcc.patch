@@ -1,0 +1,13 @@
+diff -Naurd a/configure b/configure
+--- a/configure	2013-02-15 15:24:00.000000000 +0100
++++ b/configure	2013-04-04 23:32:59.000000000 +0200
+@@ -46,7 +46,8 @@
+ tcc_lddir=
+ confvars=
+ 
+-cpu=`uname -m`
++#cpu=`uname -m`
++cpu='i386'
+ 
+ # OS specific
+ targetos=`uname -s`

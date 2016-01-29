@@ -1,0 +1,11 @@
+diff -Naurd a/activation-server/activation-server-main.c b/activation-server/activation-server-main.c
+--- a/activation-server/activation-server-main.c	2008-02-16 20:57:42.000000000 +0100
++++ b/activation-server/activation-server-main.c	2008-02-16 20:58:09.000000000 +0100
+@@ -26,6 +26,7 @@
+ #include <config.h>
+ #include <unistd.h>
+ #include <stdlib.h>
++#include <errno.h>
+ 
+ #include <glib/gi18n.h>
+ #include <ORBitservices/CosNaming.h>

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pyserial-${UB_VERSION}.tar.gz pyserial-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pyserial/

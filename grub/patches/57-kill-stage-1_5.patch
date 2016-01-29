@@ -1,0 +1,38 @@
+diff -Naur grub-0.97.orig/util/grub-image.in grub-0.97/util/grub-image.in
+--- grub-0.97.orig/util/grub-image.in	2004-07-16 13:44:56.000000000 +0200
++++ grub-0.97/util/grub-image.in	2007-08-14 19:20:15.000000000 +0200
+@@ -62,7 +62,7 @@
+ if test ! -f $bootdir.tar.gz; then
+   echo "# Creating \`$bootdir.tar.gz'"
+   mkdir -p $bootdir/boot/grub
+-  cp -p $stage1dir/stage1 $stage2dir/*_stage1_5 $stage2dir/stage2 \
++  cp -p $stage1dir/stage1 $stage2dir/stage2 \
+     $bootdir/boot/grub
+   test ! -f menu.lst || cp -p menu.lst $bootdir/boot/grub
+   trap "rm -f $bootdir.tar.gz" 0
+diff -Naur grub-0.97.orig/util/grub-install.in grub-0.97/util/grub-install.in
+--- grub-0.97.orig/util/grub-install.in	2007-08-14 19:19:39.000000000 +0200
++++ grub-0.97/util/grub-install.in	2007-08-14 19:21:25.000000000 +0200
+@@ -300,11 +300,11 @@
+ fi
+ 
+ # Copy the GRUB images to the GRUB directory.
+-for file in ${grubdir}/stage1 ${grubdir}/$stage2 ${grubdir}/*stage1_5; do
++for file in ${grubdir}/stage1 ${grubdir}/$stage2; do
+     rm -f $file || exit 1
+ done
+ for file in \
+-    ${pkglibdir}/stage1 ${pkglibdir}/$stage2 ${pkglibdir}/*stage1_5; do
++    ${pkglibdir}/stage1 ${pkglibdir}/$stage2; do
+     cp -f $file ${grubdir} || exit 1
+ done
+ 
+@@ -315,7 +315,7 @@
+ test -n "$mkimg" && img_file=`$mkimg`
+ test -n "$mklog" && log_file=`$mklog`
+ 
+-for file in ${grubdir}/stage1 ${grubdir}/$stage2 ${grubdir}/*stage1_5; do
++for file in ${grubdir}/stage1 ${grubdir}/$stage2; do
+     count=5
+     tmp=`echo $file | sed "s|^${grubdir}|${grub_prefix}|"`
+     while test $count -gt 0; do

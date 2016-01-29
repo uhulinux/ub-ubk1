@@ -1,0 +1,38 @@
+diff -Naurd a/stage2/builtins.c b/stage2/builtins.c
+--- a/stage2/builtins.c	2004-10-26 20:18:12.000000000 +0200
++++ b/stage2/builtins.c	2004-10-26 20:25:34.832680954 +0200
+@@ -4805,6 +4805,24 @@
+   "cdinfohack STATE",
+   "Turn get_cdinfo() hack on/off. STATE should be 0 or 1."
+ };
++
++
++/* showbootdrive */
++static int
++showbootdrive_func (char *arg, int flags)
++{
++  grub_printf ("boot_drive=%d\n", boot_drive);
++  return 0;
++}
++
++static struct builtin builtin_showbootdrive =
++{
++  "showbootdrive",
++  showbootdrive_func,
++  BUILTIN_CMDLINE | BUILTIN_HELP_LIST,
++  "showbootdrive",
++  "Show value of boot_drive."
++};
+ #endif /* GRUB_UTIL */
+ 
+ 
+@@ -4888,6 +4906,9 @@
+ #endif /* SUPPORT_SERIAL */
+   &builtin_setkey,
+   &builtin_setup,
++#ifndef GRUB_UTIL
++  &builtin_showbootdrive,
++#endif /* GRUB_UTIL */
+  #if defined(SUPPORT_SERIAL) || defined(SUPPORT_HERCULES)
+   &builtin_terminal,
+ #endif /* SUPPORT_SERIAL || SUPPORT_HERCULES */

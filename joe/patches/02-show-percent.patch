@@ -1,0 +1,60 @@
+diff -Naur joe-3.4.orig/rc/jmacsrc.in joe-3.4/rc/jmacsrc.in
+--- joe-3.4.orig/rc/jmacsrc.in	2006-05-30 17:16:35.000000000 +0200
++++ joe-3.4/rc/jmacsrc.in	2006-06-02 19:51:33.000000000 +0200
+@@ -194,7 +194,7 @@
+   \f  Blink
+ 
+ -lmsg \i%k%T%W%I%X %* [%n] %y %M
+--rmsg  %S Row %r Col %c %t  ^X^H for help
++-rmsg  %S Row %r Col %c %p%%  Ctrl-X H for help
+ 
+  SECOND SECTION: File name dependant local option settings:
+ 
+diff -Naur joe-3.4.orig/rc/joerc.in joe-3.4/rc/joerc.in
+--- joe-3.4.orig/rc/joerc.in	2006-05-30 17:15:32.000000000 +0200
++++ joe-3.4/rc/joerc.in	2006-06-02 19:51:33.000000000 +0200
+@@ -226,7 +226,7 @@
+   \f  Blink
+ 
+ -lmsg \i%k%T%W%I%X %n %m%y%R %M %x
+--rmsg  %S Row %r Col %c %t  Ctrl-K H for help
++-rmsg  %S Row %r Col %c %p%%  Ctrl-K H for help
+ 
+  SECOND SECTION: File name dependant local option settings:
+ 
+diff -Naur joe-3.4.orig/rc/jpicorc.in joe-3.4/rc/jpicorc.in
+--- joe-3.4.orig/rc/jpicorc.in	2006-05-30 17:15:48.000000000 +0200
++++ joe-3.4/rc/jpicorc.in	2006-06-02 19:51:33.000000000 +0200
+@@ -220,7 +220,7 @@
+   \f  Blink
+ 
+ -lmsg \i%k%T%W%I%X %n %m%y%R %M
+--rmsg  %S Row %r Col %c %t  Ctrl-G for help
++-rmsg  %S Row %r Col %c %p%%  Ctrl-G for help
+ 
+  SECOND SECTION: File name dependant local option settings:
+ 
+diff -Naur joe-3.4.orig/rc/jstarrc.in joe-3.4/rc/jstarrc.in
+--- joe-3.4.orig/rc/jstarrc.in	2006-05-30 17:15:53.000000000 +0200
++++ joe-3.4/rc/jstarrc.in	2006-06-02 19:51:33.000000000 +0200
+@@ -195,7 +195,7 @@
+   \f  Blink
+ 
+ -lmsg \i%k%T%W%I%X %n %m%y%R %M
+--rmsg  %S Row %r Col %c %t  Ctrl-J for help
++-rmsg  %S Row %r Col %c %p%%  Ctrl-J for help
+ 
+  SECOND SECTION: File name dependant local option settings:
+ 
+diff -Naur joe-3.4.orig/rc/rjoerc.in joe-3.4/rc/rjoerc.in
+--- joe-3.4.orig/rc/rjoerc.in	2006-05-30 17:16:00.000000000 +0200
++++ joe-3.4/rc/rjoerc.in	2006-06-02 19:51:33.000000000 +0200
+@@ -220,7 +220,7 @@
+   \f  Blink
+ 
+ -lmsg \i%k%T%W%I%X %n %m%y%R %M
+--rmsg  %S Row %r Col %c %t  Ctrl-K H for help
++-rmsg  %S Row %r Col %c %p%%  Ctrl-K H for help
+ 
+  SECOND SECTION: File name dependant local option settings:
+ 

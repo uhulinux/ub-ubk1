@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+bluecurve-icon-theme-${UB_VERSION/[~+]/-}.fc11.src.rpm bluecurve-icon-theme-${UB_VERSION%[~+]*}.tar.bz2 bluecurve-icon-theme-${UB_VERSION%[~+]*}/
+	rsync://www.jur-linux.org/fedora/development/source/SRPMS/

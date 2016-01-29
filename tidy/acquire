@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tidy_src-${UB_VERSION}.tgz ./tidy/
+	http://tidy.sourceforge.net/src/tidy_src.tgz

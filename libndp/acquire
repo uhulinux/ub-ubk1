@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libndp-${UB_VERSION}.tar.gz libndp-${UB_VERSION}/
+	http://libndp.org/files/

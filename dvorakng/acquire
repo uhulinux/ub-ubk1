@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+dvorakng-${UB_VERSION}.tar.bz2 dvorakng/
+	http://www.free.of.pl/n/nopik/
+

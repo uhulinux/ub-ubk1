@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+CFLAGS="-lpthread" \
+ub_compile \
+	--with-ldap=openldap \
+	--enable-schema-mapping \
+	--enable-rfc2307bis \
+	--enable-configurable-krb5-ccname-gssapi \
+	--prefix=/ \
+	--with-ldap-conf-file=/etc/ldap.conf \
+	--with-ldap-secret-file=/etc/ldap.secret

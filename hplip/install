@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+ub_install
+
+ln -s /usr/share/hplip/toolbox.py "$UB_INSTALLDIR"/usr/bin/toolbox.py
+rm -rf "$UB_INSTALLDIR"/etc/sane.d/
+
+mv "$UB_INSTALLDIR"/usr/share/doc/hplip{-"$UB_VERSION",}
+
+# rm "$UB_INSTALLDIR"/etc/udev/rules.d/56-hpmud_support.rules

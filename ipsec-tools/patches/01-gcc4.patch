@@ -1,0 +1,39 @@
+diff -Naur ipsec-tools-0.8.0-orig/configure ipsec-tools-0.8.0/configure
+--- ipsec-tools-0.8.0-orig/configure	2011-03-18 14:27:41.000000000 +0100
++++ ipsec-tools-0.8.0/configure	2011-05-02 20:17:24.813472693 +0200
+@@ -11535,7 +11535,7 @@
+ 
+ 
+ 
+-CFLAGS_ADD="$CFLAGS_ADD -Wall -Werror -Wno-unused"
++CFLAGS_ADD="$CFLAGS_ADD -Wall -Wno-unused"
+ 
+ case $host in
+ *netbsd*)
+@@ -12286,7 +12286,7 @@
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking if printf accepts %z" >&5
+ $as_echo_n "checking if printf accepts %z... " >&6; }
+ saved_CFLAGS=$CFLAGS
+-CFLAGS="$CFLAGS -Wall -Werror"
++CFLAGS="$CFLAGS -Wall"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -13739,7 +13739,7 @@
+ 	LIBS="$LIBS -L$libldap_dir/lib -R$libldap_dir/lib -lldap"
+ 
+ 	saved_CFLAGS=$CFLAGS
+-	CFLAGS="$CFLAGS -Wall -Werror"
++	CFLAGS="$CFLAGS -Wall"
+ 	saved_CPPFLAGS=$CPPFLAGS
+         CPPFLAGS="$CPPFLAGS $CPPFLAGS_ADD"
+ 	cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -13852,7 +13852,7 @@
+ 
+ 	# Check if iconv 2nd argument needs const
+ 	saved_CFLAGS=$CFLAGS
+-	CFLAGS="$CFLAGS -Wall -Werror"
++	CFLAGS="$CFLAGS -Wall"
+ 	saved_CPPFLAGS=$CPPFLAGS
+         CPPFLAGS="$CPPFLAGS $CPPFLAGS_ADD"
+ 	ac_fn_c_check_header_mongrel "$LINENO" "iconv.h" "ac_cv_header_iconv_h" "$ac_includes_default"

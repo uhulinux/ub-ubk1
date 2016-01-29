@@ -1,0 +1,1 @@
+urllist ftp://ftp.eng.auburn.edu/pub/grasp/jgrasp/ | splitver '^jgrasp([0-9_a-z]+).zip$' | sort -V | tail -n 1 | sed 's/00/\.0\.0/' | sed 's/_/+/'

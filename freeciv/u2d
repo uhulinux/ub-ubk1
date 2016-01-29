@@ -1,0 +1,2 @@
+branch=$(sflist freeciv | sort -V | tail -n 1)
+sflist freeciv "$branch" | splitver '^([0-9]+\.[0-9]+\.[0-9]+)$' | sort -V | tail -n 1

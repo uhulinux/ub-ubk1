@@ -1,0 +1,12 @@
+dl
+libice-dev
+libsm-dev
+libx11-dev
+libxau-dev
+libxaw-dev
+libxcb-dev
+libxext-dev
+libxmu-dev
+libxpm-dev
+libxt-dev
+xaw3d-dev

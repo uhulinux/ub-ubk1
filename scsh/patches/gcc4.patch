@@ -1,0 +1,56 @@
+diff -Naur scsh-0.6.4.orig/c/unix/io.c scsh-0.6.4/c/unix/io.c
+--- scsh-0.6.4.orig/c/unix/io.c	1999-09-14 14:44:54.000000000 +0200
++++ scsh-0.6.4/c/unix/io.c	2005-11-16 18:22:04.000000000 +0100
+@@ -146,13 +146,27 @@
+       return 0; }
+ }
+ 
++static long
++write_integer(unsigned long n, FILE *port)
++{
++  char ch;
++  long status;
++
++  if (n == 0)
++    status = 0;
++  else {
++    status = write_integer(n / 10, port);
++    if (status == 0) {
++      ch = (n % 10) + '0';
++      WRITE_CHAR(ch, port,status); } }
++  return status;
++}
++
+ long
+ ps_write_integer(long n, FILE *port)
+ {
+   int status;
+ 
+-  static long write_integer(unsigned long n, FILE *port);
+-
+   if (n == 0) {
+     WRITE_CHAR('0', port, status);
+     return status; }
+@@ -166,22 +180,6 @@
+       return status; }
+ }
+ 
+-static long
+-write_integer(unsigned long n, FILE *port)
+-{
+-  char ch;
+-  long status;
+-
+-  if (n == 0)
+-    status = 0;
+-  else {
+-    status = write_integer(n / 10, port);
+-    if (status == 0) {
+-      ch = (n % 10) + '0';
+-      WRITE_CHAR(ch, port,status); } }
+-  return status;
+-}
+-
+ long
+ ps_write_string(char *string, FILE *port)
+ {

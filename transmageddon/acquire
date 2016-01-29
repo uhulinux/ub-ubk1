@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+transmageddon-${UB_VERSION}.tar.xz transmageddon-${UB_VERSION}/
+	http://www.linuxrising.org/files/

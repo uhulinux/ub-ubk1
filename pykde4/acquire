@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+pykde4-${UB_VERSION}.tar.xz pykde4-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
+	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/

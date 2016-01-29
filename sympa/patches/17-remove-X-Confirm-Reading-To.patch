@@ -1,0 +1,12 @@
+diff -Naur sympa-5.3.orig/src/Conf.pm sympa-5.3/src/Conf.pm
+--- sympa-5.3.orig/src/Conf.pm	2007-04-26 16:54:39.000000000 +0200
++++ sympa-5.3/src/Conf.pm	2007-05-31 15:42:17.000000000 +0200
+@@ -170,7 +170,7 @@
+      'loop_command_decrease_factor' => 0.5,
+      'loop_prevention_regex' => 'mailer-daemon|sympa|listserv|majordomo|smartlist|mailman',
+      'rfc2369_header_fields' => 'help,subscribe,unsubscribe,post,owner,archive',
+-     'remove_headers' => 'Return-Receipt-To,Precedence,X-Sequence,Disposition-Notification-To',
++     'remove_headers' => 'Return-Receipt-To,Precedence,X-Sequence,Disposition-Notification-To,X-Confirm-Reading-To',
+      'antivirus_path' => '',
+      'antivirus_args' => '',
+      'antivirus_notify' => 'sender',

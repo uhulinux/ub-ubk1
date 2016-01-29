@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+GPRS_Easy_Connect_${UB_VERSION//./}.tar.bz2 GPRS_Easy_Connect_${UB_VERSION//./}/
+	http://www.gprsec.hu/downloads/

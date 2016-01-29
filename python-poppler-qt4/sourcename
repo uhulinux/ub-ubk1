@@ -1,0 +1,1 @@
+python-poppler-qt4

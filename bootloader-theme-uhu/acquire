@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+bootloader-theme-uhu-$UB_VERSION.tar.gz bootloader-theme-uhu-$UB_VERSION/
+	ftp://ftp.uhulinux.hu/pub/sources/bootloader-theme-uhu/

@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+# compile static lib
+./configure \
+	--prefix=/usr \
+	--libdir=/lib
+make
+
+# compile shared lib
+./configure \
+	--prefix=/usr \
+	--libdir=/lib \
+	--shared
+make

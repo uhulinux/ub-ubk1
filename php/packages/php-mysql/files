@@ -1,0 +1,4 @@
+	/etc/php.d/mysql.ini
+	/etc/php.d/pdo_mysql.ini
+	/usr/lib/php/mysql.so
+	/usr/lib/php/pdo_mysql.so

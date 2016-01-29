@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--prefix=/ \
+	--with-ldap-conf-file=/etc/ldap.conf \
+	--with-ldap-secret-file=/etc/ldap.secret

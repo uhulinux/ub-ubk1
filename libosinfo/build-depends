@@ -1,0 +1,7 @@
+check-dev
+gobject-introspection-dev
+intltool
+libsoup-gnome-dev
+libxslt-dev
+vala-dev
+xz-dev

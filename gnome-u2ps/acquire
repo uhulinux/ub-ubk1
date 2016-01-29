@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-u2ps-${UB_VERSION}.tar.gz gnome-u2ps-${UB_VERSION}/
+	http://bonobo.gnome.gr.jp/~nakai/u2ps/

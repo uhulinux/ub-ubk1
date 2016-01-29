@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mixer-${UB_VERSION}.tar.gz mixer-${UB_VERSION}/
+	http://pypi.python.org/packages/source/m/mixer/

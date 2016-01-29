@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libsexymm-${UB_VERSION}.tar.gz libsexymm-${UB_VERSION}/
+	http://releases.chipx86.com/libsexy/libsexymm/

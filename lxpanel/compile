@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+CFLAGS+=" -lgmodule-2.0"
+ub_compile

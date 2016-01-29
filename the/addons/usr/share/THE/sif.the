@@ -1,0 +1,92 @@
+/**      SIF macro     ****/
+/*
+Date:         Fri, 15 Nov 1996 11:39:23 +0100
+Reply-To:     "Th. de Boo" <thdeboo@BASERV.UCI.KUN.NL>
+Sender:       "THELIST list: for discussion about The Hessling Editor (THE)"
+              <THELIST@POSTOFFICE.CSO.UIUC.EDU>
+   
+   search-macro, a bit like ALL
+   (small (stripped) portion of a more complex macro)   
+   
+If in this data set you give the command "sif yes", then
+all lines with "yes" in them should stay on the screen and the rest not.
+If you should say "sif ^ yes" , the lines NOT containing yes (i.e. no)
+should appear.
+
+-------- below this line start of sample data set ---------
+yes
+ yes
+  yes
+   no
+    no
+     yes
+      yes
+       yes
+        no
+         no
+
+(macro reformatted by fjw)
+*/
+   
+trace off;
+
+input = arg(1)
+
+'extract /size/'
+'display 0 *'
+'scope display'
+'shadow off'
+'top'
+'select 0 *'
+'top'
+'msgmode off' /* this wasn't quoted (fjw) */
+
+nfound = 0
+in. = input
+size = size.1
+
+w1 = word( in.1, 1)
+target = in.1
+if (w1 = '^') then
+   target = substr( in.1, 3)
+
+lt = length(target)
+if (lt > 0) then
+   target = '@'target'@'
+
+'top'
+'cfirst'
+'display 0'
+'top'
+
+thisisit = 0
+'locate 'target
+if (rc = 0) then
+do
+   do forever
+      if (rc \= 0) then /* changed NOT char from ^ to \ (for OS/2-rexx, fjw) */
+	 leave
+      thisisit= thisisit + 1
+      'select 2'
+      'up 1'
+      'locate' target;
+   end
+end
+
+if (w1 = '^') then
+do
+   thisisit = size - thisisit
+   'top'
+   'display 2'
+   'top'
+   'select -1 *'
+   'top'
+   'display 0'
+   'top'
+   'select +2 *'
+end
+'top'
+'display 2'
+'top'
+exit
+

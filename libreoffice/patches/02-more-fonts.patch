@@ -1,0 +1,205 @@
+diff -Naur orig/external/more_fonts/ExternalPackage_dejavu.mk patched/external/more_fonts/ExternalPackage_dejavu.mk
+--- orig/external/more_fonts/ExternalPackage_dejavu.mk	2014-04-30 21:49:45.000000000 +0200
++++ patched/external/more_fonts/ExternalPackage_dejavu.mk	1970-01-01 01:00:00.000000000 +0100
+@@ -1,36 +0,0 @@
+-# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
+-#
+-# This file is part of the LibreOffice project.
+-#
+-# This Source Code Form is subject to the terms of the Mozilla Public
+-# License, v. 2.0. If a copy of the MPL was not distributed with this
+-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-#
+-
+-$(eval $(call gb_ExternalPackage_ExternalPackage,fonts_dejavu,font_dejavu))
+-
+-$(eval $(call gb_ExternalPackage_add_unpacked_files,fonts_dejavu,$(LIBO_SHARE_FOLDER)/fonts/truetype,\
+-	ttf/DejaVuSans-Bold.ttf \
+-	ttf/DejaVuSans-BoldOblique.ttf \
+-	ttf/DejaVuSans-ExtraLight.ttf \
+-	ttf/DejaVuSans-Oblique.ttf \
+-	ttf/DejaVuSans.ttf \
+-	ttf/DejaVuSansCondensed-Bold.ttf \
+-	ttf/DejaVuSansCondensed-BoldOblique.ttf \
+-	ttf/DejaVuSansCondensed-Oblique.ttf \
+-	ttf/DejaVuSansCondensed.ttf \
+-	ttf/DejaVuSansMono-Bold.ttf \
+-	ttf/DejaVuSansMono-BoldOblique.ttf \
+-	ttf/DejaVuSansMono-Oblique.ttf \
+-	ttf/DejaVuSansMono.ttf \
+-	ttf/DejaVuSerif-Bold.ttf \
+-	ttf/DejaVuSerif-BoldItalic.ttf \
+-	ttf/DejaVuSerif-Italic.ttf \
+-	ttf/DejaVuSerif.ttf \
+-	ttf/DejaVuSerifCondensed-Bold.ttf \
+-	ttf/DejaVuSerifCondensed-BoldItalic.ttf \
+-	ttf/DejaVuSerifCondensed-Italic.ttf \
+-	ttf/DejaVuSerifCondensed.ttf \
+-))
+-
+-# vim: set noet sw=4 ts=4:
+diff -Naur orig/external/more_fonts/ExternalPackage_liberation.mk patched/external/more_fonts/ExternalPackage_liberation.mk
+--- orig/external/more_fonts/ExternalPackage_liberation.mk	2014-04-30 21:49:45.000000000 +0200
++++ patched/external/more_fonts/ExternalPackage_liberation.mk	1970-01-01 01:00:00.000000000 +0100
+@@ -1,27 +0,0 @@
+-# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
+-#
+-# This file is part of the LibreOffice project.
+-#
+-# This Source Code Form is subject to the terms of the Mozilla Public
+-# License, v. 2.0. If a copy of the MPL was not distributed with this
+-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-#
+-
+-$(eval $(call gb_ExternalPackage_ExternalPackage,fonts_liberation,font_liberation))
+-
+-$(eval $(call gb_ExternalPackage_add_unpacked_files,fonts_liberation,$(LIBO_SHARE_FOLDER)/fonts/truetype,\
+-	LiberationMono-Bold.ttf \
+-	LiberationMono-BoldItalic.ttf \
+-	LiberationMono-Italic.ttf \
+-	LiberationMono-Regular.ttf \
+-	LiberationSans-Bold.ttf \
+-	LiberationSans-BoldItalic.ttf \
+-	LiberationSans-Italic.ttf \
+-	LiberationSans-Regular.ttf \
+-	LiberationSerif-Bold.ttf \
+-	LiberationSerif-BoldItalic.ttf \
+-	LiberationSerif-Italic.ttf \
+-	LiberationSerif-Regular.ttf \
+-))
+-
+-# vim: set noet sw=4 ts=4:
+diff -Naur orig/external/more_fonts/ExternalPackage_libertineg.mk patched/external/more_fonts/ExternalPackage_libertineg.mk
+--- orig/external/more_fonts/ExternalPackage_libertineg.mk	2014-04-30 21:49:45.000000000 +0200
++++ patched/external/more_fonts/ExternalPackage_libertineg.mk	1970-01-01 01:00:00.000000000 +0100
+@@ -1,25 +0,0 @@
+-# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
+-#
+-# This file is part of the LibreOffice project.
+-#
+-# This Source Code Form is subject to the terms of the Mozilla Public
+-# License, v. 2.0. If a copy of the MPL was not distributed with this
+-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-#
+-
+-$(eval $(call gb_ExternalPackage_ExternalPackage,fonts_libertineg,font_libertineg))
+-
+-$(eval $(call gb_ExternalPackage_add_unpacked_files,fonts_libertineg,$(LIBO_SHARE_FOLDER)/fonts/truetype,\
+-	LinBiolinum_RB_G.ttf \
+-	LinBiolinum_RI_G.ttf \
+-	LinBiolinum_R_G.ttf \
+-	LinLibertine_DR_G.ttf \
+-	LinLibertine_RBI_G.ttf \
+-	LinLibertine_RB_G.ttf \
+-	LinLibertine_RI_G.ttf \
+-	LinLibertine_RZI_G.ttf \
+-	LinLibertine_RZ_G.ttf \
+-	LinLibertine_R_G.ttf \
+-))
+-
+-# vim: set noet sw=4 ts=4:
+diff -Naur orig/external/more_fonts/Module_more_fonts.mk patched/external/more_fonts/Module_more_fonts.mk
+--- orig/external/more_fonts/Module_more_fonts.mk	2014-04-30 21:49:45.000000000 +0200
++++ patched/external/more_fonts/Module_more_fonts.mk	2014-05-13 09:21:50.205332079 +0200
+@@ -13,22 +13,16 @@
+ 	Package_conf \
+ 	ExternalPackage_caladea \
+ 	ExternalPackage_carlito \
+-	ExternalPackage_dejavu \
+ 	ExternalPackage_gentium \
+-	ExternalPackage_liberation \
+ 	ExternalPackage_liberation_narrow \
+-	ExternalPackage_libertineg \
+ 	ExternalPackage_opensans \
+ 	ExternalPackage_ptserif \
+ 	ExternalPackage_sourcecode \
+ 	ExternalPackage_sourcesans \
+ 	UnpackedTarball_caladea \
+ 	UnpackedTarball_carlito \
+-	UnpackedTarball_dejavu \
+ 	UnpackedTarball_gentium \
+-	UnpackedTarball_liberation \
+ 	UnpackedTarball_liberation_narrow \
+-	UnpackedTarball_libertineg \
+ 	UnpackedTarball_opensans \
+ 	UnpackedTarball_ptserif \
+ 	UnpackedTarball_sourcecode \
+diff -Naur orig/external/more_fonts/UnpackedTarball_dejavu.mk patched/external/more_fonts/UnpackedTarball_dejavu.mk
+--- orig/external/more_fonts/UnpackedTarball_dejavu.mk	2014-04-30 21:49:45.000000000 +0200
++++ patched/external/more_fonts/UnpackedTarball_dejavu.mk	1970-01-01 01:00:00.000000000 +0100
+@@ -1,14 +0,0 @@
+-# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
+-#
+-# This file is part of the LibreOffice project.
+-#
+-# This Source Code Form is subject to the terms of the Mozilla Public
+-# License, v. 2.0. If a copy of the MPL was not distributed with this
+-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-#
+-
+-$(eval $(call gb_UnpackedTarball_UnpackedTarball,font_dejavu))
+-
+-$(eval $(call gb_UnpackedTarball_set_tarball,font_dejavu,$(FONT_DEJAVU_TARBALL)))
+-
+-# vim: set noet sw=4 ts=4:
+diff -Naur orig/external/more_fonts/UnpackedTarball_liberation.mk patched/external/more_fonts/UnpackedTarball_liberation.mk
+--- orig/external/more_fonts/UnpackedTarball_liberation.mk	2014-04-30 21:49:45.000000000 +0200
++++ patched/external/more_fonts/UnpackedTarball_liberation.mk	1970-01-01 01:00:00.000000000 +0100
+@@ -1,14 +0,0 @@
+-# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
+-#
+-# This file is part of the LibreOffice project.
+-#
+-# This Source Code Form is subject to the terms of the Mozilla Public
+-# License, v. 2.0. If a copy of the MPL was not distributed with this
+-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-#
+-
+-$(eval $(call gb_UnpackedTarball_UnpackedTarball,font_liberation))
+-
+-$(eval $(call gb_UnpackedTarball_set_tarball,font_liberation,$(FONT_LIBERATION_TARBALL)))
+-
+-# vim: set noet sw=4 ts=4:
+diff -Naur orig/external/more_fonts/UnpackedTarball_libertineg.mk patched/external/more_fonts/UnpackedTarball_libertineg.mk
+--- orig/external/more_fonts/UnpackedTarball_libertineg.mk	2014-04-30 21:49:45.000000000 +0200
++++ patched/external/more_fonts/UnpackedTarball_libertineg.mk	1970-01-01 01:00:00.000000000 +0100
+@@ -1,15 +0,0 @@
+-# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
+-#
+-# This file is part of the LibreOffice project.
+-#
+-# This Source Code Form is subject to the terms of the Mozilla Public
+-# License, v. 2.0. If a copy of the MPL was not distributed with this
+-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-#
+-
+-$(eval $(call gb_UnpackedTarball_UnpackedTarball,font_libertineg))
+-
+-$(eval $(call gb_UnpackedTarball_set_tarball,font_libertineg,$(FONT_LINLIBERTINEG_TARBALL)))
+-
+-# vim: set noet sw=4 ts=4:
+-
+diff -Naur orig/scp2/source/ooo/file_font_ooo.scp patched/scp2/source/ooo/file_font_ooo.scp
+--- orig/scp2/source/ooo/file_font_ooo.scp	2014-04-30 21:49:45.000000000 +0200
++++ patched/scp2/source/ooo/file_font_ooo.scp	2014-05-13 09:22:42.081810883 +0200
+@@ -34,17 +34,17 @@
+ #ifndef WITHOUT_FONTS 
+ 
+ // DejaVu fonts
+-STD_FONT_FILELIST(gid_File_Fnt_DejaVu, "fonts_dejavu.filelist")
++// STD_FONT_FILELIST(gid_File_Fnt_DejaVu, "fonts_dejavu.filelist")
+ 
+ // Liberation fonts
+ STD_FONT_FILELIST(gid_File_Fnt_LibSansNarrow, "fonts_liberation_narrow.filelist")
+-STD_FONT_FILELIST(gid_File_Fnt_Liberation, "fonts_liberation.filelist")
++// STD_FONT_FILELIST(gid_File_Fnt_Liberation, "fonts_liberation.filelist")
+ 
+ // Gentium fonts
+ STD_FONT_FILELIST(gid_File_Fnt_Gentium, "fonts_gentium.filelist")
+ 
+ // Linux Libertine G and Linux Biolinum G fonts
+-STD_FONT_FILELIST(gid_File_Fnt_LinuxLibertineG, "fonts_libertineg.filelist")
++// STD_FONT_FILELIST(gid_File_Fnt_LinuxLibertineG, "fonts_libertineg.filelist")
+ 
+ // PT Serif fonts
+ STD_FONT_FILELIST(gid_File_Fnt_PtSerif, "fonts_ptserif.filelist")

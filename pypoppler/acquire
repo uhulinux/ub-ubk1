@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pypoppler-${UB_VERSION}.tar.gz pypoppler-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pypoppler/

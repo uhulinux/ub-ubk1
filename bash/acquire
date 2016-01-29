@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+bash-${UB_VERSION}.tar.gz bash-${UB_VERSION}/
+	ftp://ftp.cwru.edu/pub/bash/
+	ftp://ftp.gnu.org/gnu/bash/

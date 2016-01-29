@@ -1,0 +1,27 @@
+diff -urN screen-3.9.15.orig/Makefile.in screen-3.9.15/Makefile.in
+--- screen-3.9.15.orig/Makefile.in	2003-03-13 12:19:53.000000000 +0100
++++ screen-3.9.15/Makefile.in	2003-06-03 15:32:05.000000000 +0200
+@@ -18,7 +18,7 @@
+ bindir  = $(exec_prefix)/bin
+ 
+ VERSION = @VERSION@
+-SCREEN = screen-$(VERSION)
++SCREEN = screen
+ 
+ ETCSCREENRC = `sed < config.h -n -e '/define ETCSCREENRC/s/^.*"\([^"]*\)"/\1/p'`
+ SCREENENCODINGS = `sed < config.h -n -e '/define SCREENENCODINGS/s/^.*"\([^"]*\)"/\1/p'`
+@@ -74,12 +74,9 @@
+ 	-if [ -f $(DESTDIR)$(bindir)/$(SCREEN) ] && [ ! -f $(DESTDIR)$(bindir)/$(SCREEN).old ]; \
+ 		then mv $(DESTDIR)$(bindir)/$(SCREEN) $(DESTDIR)$(bindir)/$(SCREEN).old; fi
+ 	$(INSTALL_PROGRAM) screen $(DESTDIR)$(bindir)/$(SCREEN)
+-	-chown root $(DESTDIR)$(bindir)/$(SCREEN) && chmod 4755 $(DESTDIR)$(bindir)/$(SCREEN)
+-# This doesn't work if $(bindir)/screen is a symlink
+-	-if [ -f $(DESTDIR)$(bindir)/screen ] && [ ! -f $(DESTDIR)$(bindir)/screen.old ]; then mv $(DESTDIR)$(bindir)/screen $(DESTDIR)$(bindir)/screen.old; fi
+-	rm -f $(DESTDIR)$(bindir)/screen
+-	(cd $(DESTDIR)$(bindir) && ln -sf $(SCREEN) screen)
++	-chown root $(DESTDIR)$(bindir)/$(SCREEN) && chmod 0755 $(DESTDIR)$(bindir)/$(SCREEN)
+ 	cp $(srcdir)/utf8encodings/?? $(DESTDIR)$(SCREENENCODINGS)
++	$(INSTALL_DATA) etc/screenrc $(DESTDIR)$(ETCSCREENRC)
+ 
+ ###############################################################################
+ install: installdirs install_bin

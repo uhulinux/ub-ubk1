@@ -1,0 +1,41 @@
+--- kerneloops-0.12+git20090217.orig/kerneloops-applet.c
++++ kerneloops-0.12+git20090217/kerneloops-applet.c
+@@ -51,6 +51,10 @@
+ #include <gtk/gtk.h>
+ 
+ #include <libnotify/notify.h>
++#ifndef NOTIFY_CHECK_VERSION
++#define NOTIFY_CHECK_VERSION(x,y,z) 0
++#endif
++
+ 
+ static DBusConnection *bus;
+ 
+@@ -240,8 +244,13 @@ static void got_a_message(void)
+ 	/* if there's a notification active already, close it first */
+ 	close_notification();
+ 
++#if NOTIFY_CHECK_VERSION(0,7,0)
++	notify = notify_notification_new(summary, message,
++				"/usr/share/kerneloops/icon.png");
++#else
+ 	notify = notify_notification_new(summary, message,
+ 				"/usr/share/kerneloops/icon.png", NULL);
++#endif
+ 
+ 	notify_notification_set_timeout(notify, 0);
+ 	notify_notification_set_urgency(notify, NOTIFY_URGENCY_CRITICAL);
+@@ -306,8 +315,13 @@ static void sent_an_oops(void)
+ 
+ 	url_to_oops[0] = 0;
+ 
++#if NOTIFY_CHECK_VERSION(0,7,0)
++	notify = notify_notification_new(summary, message,
++				"/usr/share/kerneloops/icon.png");
++#else
+ 	notify = notify_notification_new(summary, message,
+ 				"/usr/share/kerneloops/icon.png", NULL);
++#endif
+ 
+ 	notify_notification_set_timeout(notify, 5000);
+ 	notify_notification_set_urgency(notify, NOTIFY_URGENCY_LOW);

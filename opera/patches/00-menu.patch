@@ -1,0 +1,27 @@
+diff -Naur orig/share/applications/opera-browser.desktop patched/share/applications/opera-browser.desktop
+--- orig/share/applications/opera-browser.desktop	2012-06-13 10:33:07.000000000 +0200
++++ patched/share/applications/opera-browser.desktop	2012-06-17 02:25:27.546223704 +0200
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Version=1.0
+-Name=Opera@@{_SUFFIX}
++Name=Opera
+ GenericName=Web browser
+ GenericName[bs]=Web preglednik
+ GenericName[de]=Web-Browser
+@@ -25,10 +25,10 @@
+ GenericName[xh]=Umkhangeli Zincwadi Zokubhaliweyo
+ GenericName[zu]=Umkhangeli zincwadi we Web
+ Comment=Fast and secure web browser and Internet suite
+-Icon=opera@@{SUFFIX}-browser
+-TryExec=@@{PREFIX}/bin/opera@@{SUFFIX}
+-Exec=@@{PREFIX}/bin/opera@@{SUFFIX} %U
++Icon=opera-browser
++TryExec=opera
++Exec=opera %U
+ Terminal=false
+ MimeType=text/html;text/xml;application/xhtml+xml;text/vnd.wap.wml;text/wml;application/x-mimearchive;application/mime;application/xml;application/rss+xml;application/rdf+xml;image/svg+xml;application/x-opera-extension;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/mailto;video/ogg;audio/ogg;video/webm;image/webp;
+-Categories=Network;WebBrowser;
++Categories=Network;WebBrowser;X-UHU-Menu/Internet/Browsers;
+ StartupNotify=true

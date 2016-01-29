@@ -1,0 +1,20 @@
+diff -Naurdp wget-1.15.orig/src/init.c wget-1.15/src/init.c
+--- wget-1.15.orig/src/init.c	2014-01-04 13:49:47.000000000 +0100
++++ wget-1.15/src/init.c	2014-07-03 17:51:52.099561116 +0200
+@@ -324,6 +324,8 @@ command_by_name (const char *cmdname)
+   return -1;
+ }
+ 
++
++const char *default_ca_cert = "/usr/lib/ssl/certs/ca-cert.pem";
+ /* Reset the variables to default values.  */
+ void
+ defaults (void)
+@@ -367,6 +369,7 @@ defaults (void)
+ 
+ #ifdef HAVE_SSL
+   opt.check_cert = true;
++  opt.ca_cert = xstrdup(default_ca_cert);
+ #endif
+ 
+   /* The default for file name restriction defaults to the OS type. */

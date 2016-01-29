@@ -1,0 +1,16 @@
+#!/bin/sh -eux
+
+rm -Rf ./plugins/address_book
+rm -Rf ./plugins/chameleon
+rm -Rf ./plugins/growl
+
+cd ${UB_COMPILEDIR}/plugins/amsnplus
+rm -f snapshot
+#rm -f Snapshot.exe
+make all
+cd ${UB_COMPILEDIR}
+
+autoreconf
+
+ub_compile \
+	--enable-debug

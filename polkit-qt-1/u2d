@@ -1,0 +1,1 @@
+urllist ftp://ftp.kde.org/pub/kde/stable/apps/KDE4.x/admin/ | splitver '^polkit-qt-1-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

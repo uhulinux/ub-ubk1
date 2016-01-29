@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Pico
+Comment=Pine's text editor
+Comment[hu]=A Pine szövegszerkesztője
+Exec=pico %f
+Terminal=true
+Categories=Utility;TextEditor;ConsoleOnly;
+X-UHU-Major=-1

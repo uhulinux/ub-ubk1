@@ -1,0 +1,12 @@
+diff -urN fpc-2.6.2.i386-linux.orig/install.sh fpc-2.6.2.i386-linux/install.sh
+--- fpc-2.6.2.i386-linux.orig/install.sh	2013-02-16 19:51:46.000000000 +0100
++++ fpc-2.6.2.i386-linux/install.sh	2014-02-25 11:38:46.870465177 +0100
+@@ -304,7 +304,7 @@
+ 
+ # Install /etc/fpc.cfg, this is done using the samplecfg script
+ if [ "$cross" = "" ]; then
+-  "$LIBDIR/samplecfg" "$LIBDIR"
++  "$LIBDIR/samplecfg" "$LIBDIR" "$UB_INSTALLDIR/etc"
+ else
+   echo "No fpc.cfg created because a cross installation has been done."
+ fi

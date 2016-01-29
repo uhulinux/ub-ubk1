@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dialog_${UB_VERSION/~/-}.orig.tar.gz dialog-${UB_VERSION/~/-}/
+	ftp://ftp.us.debian.org/debian/pool/main/d/dialog/

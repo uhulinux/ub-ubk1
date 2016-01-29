@@ -1,0 +1,1 @@
+sflist joe-editor JOE%20sources | splitver '^joe-([0-9.]+)$' | sort -V | tail -n 1

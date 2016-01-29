@@ -1,0 +1,2 @@
+minor=$(urllist http://download.savannah.gnu.org/releases/linphone/ | grep -E '^[0-9]+' | sort -V | tail -n 1)
+urllist http://download.savannah.gnu.org/releases/linphone/"$minor"/sources/ | parsever | sort -V | tail -n 1

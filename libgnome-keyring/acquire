@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgnome-keyring-${UB_VERSION}.tar.xz libgnome-keyring-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgnome-keyring/${UB_VERSION_HEAD2}/

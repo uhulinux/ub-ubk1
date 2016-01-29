@@ -1,0 +1,17 @@
+--- imap/src/osdep/unix/Makefile.ssl-patch	2003-07-15 04:24:24.000000000 +0300
++++ imap/src/osdep/unix/Makefile	2004-02-14 03:46:51.785826763 +0200
+@@ -28,11 +28,11 @@
+ 
+ # Extended flags needed for SSL.  You may need to modify.
+ 
+-SSLDIR=/usr/local/ssl
++SSLDIR=/etc/pki/tls
+ SSLCERTS=$(SSLDIR)/certs
+ SSLKEYS=$(SSLCERTS)
+-SSLINCLUDE=$(SSLDIR)/include
+-SSLLIB=$(SSLDIR)/lib
++SSLINCLUDE=/usr/include/openssl
++SSLLIB=.
+ 
+ SSLCRYPTO=-lcrypto
+ 

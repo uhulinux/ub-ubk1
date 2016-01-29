@@ -1,0 +1,12 @@
+diff -urN apt-0.9.16.1.orig/doc/manpage-style.xsl apt-0.9.16.1/doc/manpage-style.xsl
+--- apt-0.9.16.1.orig/doc/manpage-style.xsl	2013-09-09 03:04:34.000000000 +0200
++++ apt-0.9.16.1/doc/manpage-style.xsl	2014-03-25 13:01:05.634564316 +0100
+@@ -2,7 +2,7 @@
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  version="1.0">
+ 
+-<xsl:import href="/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl" />
++<xsl:import href="/usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl" />
+ 
+ <xsl:param name="man.output.encoding" select="'UTF-8'" />
+ <!-- LANGUAGE -->

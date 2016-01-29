@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+hfsutils-${UB_VERSION}.tar.gz hfsutils-${UB_VERSION}/
+	ftp://ftp.mars.org/pub/hfs/

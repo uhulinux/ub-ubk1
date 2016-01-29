@@ -1,0 +1,12 @@
+diff -urN root-tail-0.2.orig/config.h root-tail-0.2/config.h
+--- root-tail-0.2.orig/config.h	2002-09-04 17:23:58.000000000 +0200
++++ root-tail-0.2/config.h	2003-05-06 23:32:56.000000000 +0200
+@@ -3,7 +3,7 @@
+ #define DEF_COLOR       "white"
+ 
+ //default font.. -font at runtime should work
+-#define USE_FONT        "*"
++#define USE_FONT        "-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-*"
+ 
+ //default positions.. can be changed with -g at runtime
+ #define STD_WIDTH       160

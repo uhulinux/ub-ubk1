@@ -1,0 +1,98 @@
+diff -Naurd orig/po/hu.po mod/po/hu.po
+--- orig/po/hu.po	2009-01-25 15:39:51.000000000 +0100
++++ mod/po/hu.po	2009-12-02 22:00:45.000000000 +0100
+@@ -80,10 +80,11 @@
+ "  Online time:\t%ld:%02ld:%02ld%s%s"
+ msgstr ""
+ "Eszköz: %s\n"
+-"  Pillanatnyi átvitel (be/ki):\t%lli %s/%lli %s\n"
+-"  Átlagos átvitel (be/ki):\t%lli %s/%lli %s\n"
++"  Pillanatnyi átvitel (be/ki):\t%li %s/%li %s\n"
++"  Pillanatnyi átlagos átvitel (be/ki):\t%lli %s/%lli %s\n"
++"  Össz átlagos átvitel (be/ki):\t%li %s/%li %s\n"
+ "  Összforgalom (be/ki):\t%lli %s/%lli %s\n"
+-"  Online idő:\t%d:%02d:%02d%s%s"
++"  Online idő:\t%ld:%02ld:%02ld%s%s"
+ 
+ msgid ""
+ "\n"
+@@ -226,7 +227,7 @@
+ msgid "Workspace out of range: %d"
+ msgstr "Munkaterület tartományon kívül: %d"
+ 
+-#, fuzzy, c-format
++#, c-format
+ msgid ""
+ "Usage: %s [OPTIONS] ACTIONS\n"
+ "\n"
+@@ -289,19 +290,20 @@
+ "                              levő ablak. \n"
+ "  -class WM_CLASS             A kezelendő ablakok ablakkezelő-osztálya. Ha "
+ "a\n"
+-"    \t    \t    \t      WM_CLASS tartalmaz pontot, csak azok az ablakok\n"
++"                              WM_CLASS tartalmaz pontot, csak azok az ablakok\n"
+ "    \t    \t              számítanak, amelyeknek pontosan ugyanaz a "
+ "WM_CLASS \n"
+-"\t\t\t      tulajdonságuk. Ha nincs pont, az azonos osztályba és az\n"
+-"\t\t\t      azonos példányhoz (azaz `-name') tartozó ablakok lesznek\n"
+-"\t\t\t      kiválasztva.\n"
++"                              tulajdonságuk. Ha nincs pont, az azonos osztályba és az\n"
++"                              azonos példányhoz (azaz `-name') tartozó ablakok lesznek\n"
++"                              kiválasztva.\n"
+ "\n"
+ "Műveletek:\n"
+ "  setIconTitle CÍM            Az ikon címének beállítása.\n"
+ "  setWindowTitle CÍM          Az ablak címének beállítása.\n"
++"  setGeometry geometria       Az ablak geometriájának beállítása.\n"
+ "  setState MASZK ÁLLAPOT      A GNOME-ablak beállítása az ÁLLAPOT "
+ "állapotba.\n"
+-"  \t\t\t      Csak a MASZK által kiválasztott bitek érintettek.\n"
++"                              Csak a MASZK által kiválasztott bitek érintettek.\n"
+ "                              Az ÁLLAPOT és a MASZK a `GNOME windows "
+ "state' \n"
+ "                              tartomány kifejezései.\n"
+@@ -417,7 +419,7 @@
+ msgstr "Audiomód-váltás észlelve, a \"%s\" audiomód tovább már nem elérhető."
+ 
+ msgid "Audio mode switch detected, automatic audio mode changing disabled."
+-msgstr "Audiomód-váltás észlelve, automata audiomód-víáltás kikapcsolva."
++msgstr "Audiomód-váltás észlelve, automata audiomód-váltás kikapcsolva."
+ 
+ #, c-format
+ msgid "Overriding previous audio mode `%s'."
+@@ -567,7 +569,7 @@
+ # ../src/wmwinlist.cc:236
+ #, fuzzy
+ msgid "Default"
+-msgstr "Törlés"
++msgstr	"Alapértelmezett"
+ 
+ # ../src/wmabout.cc:26 ../src/wmabout.cc:27
+ msgid "(C)"
+@@ -982,7 +984,7 @@
+ # ../src/wmstatus.cc:170
+ #, fuzzy
+ msgid "All Workspaces"
+-msgstr "Munkaterület: "
++msgstr	"Minden munkaterület"
+ 
+ # ../src/wmwinlist.cc:236
+ #, fuzzy
+@@ -1041,7 +1043,7 @@
+ # ../src/wmconfig.cc:355
+ #, c-format
+ msgid "Bad option: %s"
+-msgstr "Rossz beállítás : %s"
++msgstr	"Rossz beállítás: %s"
+ 
+ # ../src/ycursor.cc:110
+ #, c-format
+@@ -1389,7 +1391,7 @@
+ #~ msgstr "Névtelen cső létrehozása sikertelen: %s"
+ 
+ #~ msgid "Failed to duplicate file descriptor: %s"
+-#~ msgstr "A deszkriptor duplázása sikertelen: %s"
++#~ msgstr	"A fájlleíró duplázása sikertelen: %s"
+ 
+ #~ msgid "%s:%d: Failed to copy drawable 0x%x to pixel buffer"
+ #~ msgstr "Hiba a %s:%d másolásakor 0x%x területre."

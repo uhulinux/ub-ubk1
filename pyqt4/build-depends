@@ -1,0 +1,10 @@
+dbus-dev
+dbus-python-dev
+openssl-dev
+phonon-dev
+python-dev
+python3-dev
+qscintilla2
+qt4-dev
+sip
+sqlite-dev

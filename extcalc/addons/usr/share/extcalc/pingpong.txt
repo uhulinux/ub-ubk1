@@ -1,0 +1,116 @@
+ //initialization
+//variables for ball movement
+4->A;
+1->B;
+1->C;
+1->D;
+
+//variable for player movement
+10->E;
+
+//stop variable
+0->S;
+
+//counter for ball movement
+//the ball moves only ervery fifth run
+0->I;
+
+//variables to store old drawing coordinates
+//needed that it redraws only if needed
+//and that the screen can be cleared without
+//flickering
+4->G;
+4->H;
+9->J;
+0->X;
+
+clear;
+
+for(;S==0;I+1->I)
+{
+
+  //move ball every fith time
+  if(I==5)
+  {
+  0->I;
+  A->G;
+  B->H;
+  A+C->A;
+  B+D->B;
+  if(A>50)
+    -1->C;
+  else if(A<1)
+    1->C;
+  if(B<1)
+    1->D;
+  else if(B>12)
+  {
+    if(A>E-3 && A<E+3)
+    {
+      -1->D;
+      X+1->X;
+    }
+    else 1->S;
+    }
+    //long break for ball movement
+    sleep(30000);
+  }
+
+  //read keystate and move player
+  keystate->K;
+  1+K-1->K;
+  if(K==100 && E<48)
+    E+1->E;
+  if(K==97 && E>2)
+    E-1->E;
+
+  //short break
+  //needed that player can move fast
+  sleep(5000);
+
+  //print ball if needed
+  if(A!=G || B!=H)
+  {
+    setcursor(G,H);
+    print(" ");
+    setcursor(A,B);
+    print("*");
+  }
+
+  //print payer if needed
+  if(E!=J)
+  {
+    if(E>J)
+    {
+      setcursor(J-2,14);
+      print(" ");
+      setcursor(E-2,14);
+      print("#####");
+    }
+    else 
+    {
+      setcursor(J+2,14);
+      print(" ");
+      setcursor(E-2,14);
+      print("#####");
+    }
+  }
+
+
+  //print score
+  setcursor(51,1);
+  print(X);
+  E->J;
+}
+
+//loop finished
+//because player didn't get the ball
+//print score
+sleep(300000);
+clear;
+print("\n\n\n***********End************\n");
+print("********Points: **********");
+setcursor(16,4);
+print(X);
+print("\n\n");
+

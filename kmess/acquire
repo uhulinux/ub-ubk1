@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kmess-${UB_VERSION}.tar.bz2 kmess-${UB_VERSION}/
+	http://downloads.sourceforge.net/project/kmess/Latest%20versions/${UB_VERSION}/

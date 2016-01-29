@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+pushd beep-1.2.2
+	chmod u+s beep
+	ub_install \
+		INSTALL_DIR="${UB_INSTALLDIR}/usr/bin" \
+		MAN_DIR="${UB_INSTALLDIR}/usr/share/man/man1"
+popd
+
+ub_install

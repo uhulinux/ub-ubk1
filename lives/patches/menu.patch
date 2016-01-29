@@ -1,0 +1,15 @@
+diff -Naur orig/menu-entries/LiVES.desktop mod/menu-entries/LiVES.desktop
+--- orig/menu-entries/LiVES.desktop	2013-03-04 15:47:14.000000000 +0100
++++ mod/menu-entries/LiVES.desktop	2013-12-10 08:15:02.426555158 +0100
+@@ -1,8 +1,9 @@
+ [Desktop Entry]
+ Name=LiVES 
+ Comment=Video Editor/VJ tool
+-Categories=AudioVideo;AudioVideoEditing;
++Comment[hu]=Videószerkesztő alkalmazás
++Categories=GTK;AudioVideo;AudioVideoEditing;
+ Exec=lives
+-Icon=lives.xpm
++Icon=/usr/share/pixmaps/lives.xpm
+ Type=Application
+ Terminal=false

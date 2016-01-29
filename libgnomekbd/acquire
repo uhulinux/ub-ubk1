@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgnomekbd-${UB_VERSION}.tar.xz libgnomekbd-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgnomekbd/${UB_VERSION_HEAD2}/

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+cp -a . -- "$UB_INSTALLDIR"/usr/share/Phun/
+ln -sf Magyar.png "$UB_INSTALLDIR"/usr/share/Phun/data/language/Hungarian.png
+rm -rf "$UB_INSTALLDIR"/usr/share/Phun/*.txt

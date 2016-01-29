@@ -1,0 +1,72 @@
+diff -Naur smb4k-0.4.1a.orig/smb4k/icons/Makefile.in smb4k-0.4.1a/smb4k/icons/Makefile.in
+--- smb4k-0.4.1a.orig/smb4k/icons/Makefile.in	2004-09-04 20:17:05.000000000 +0200
++++ smb4k-0.4.1a/smb4k/icons/Makefile.in	2004-10-15 16:41:23.426329689 +0200
+@@ -454,44 +454,44 @@
+ 
+ 
+ install-data-local:
+-#>- 	$(mkinstalldirs) $(kde_icondir)/crystalsvg/16x16/apps/
++#>- 	$(mkinstalldirs) $(kde_icondir)/hicolor/16x16/apps/
+ #>+ 1
+-	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/crystalsvg/16x16/apps/
+-#>- 	$(INSTALL_DATA) $(srcdir)/cr16-app-smb4k.png $(kde_icondir)/crystalsvg/16x16/apps/smb4k.png
++	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/hicolor/16x16/apps/
++#>- 	$(INSTALL_DATA) $(srcdir)/cr16-app-smb4k.png $(kde_icondir)/hicolor/16x16/apps/smb4k.png
+ #>+ 1
+-	$(INSTALL_DATA) $(srcdir)/cr16-app-smb4k.png $(DESTDIR)$(kde_icondir)/crystalsvg/16x16/apps/smb4k.png
+-#>- 	$(mkinstalldirs) $(kde_icondir)/crystalsvg/32x32/apps/
++	$(INSTALL_DATA) $(srcdir)/cr16-app-smb4k.png $(DESTDIR)$(kde_icondir)/hicolor/16x16/apps/smb4k.png
++#>- 	$(mkinstalldirs) $(kde_icondir)/hicolor/32x32/apps/
+ #>+ 1
+-	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/crystalsvg/32x32/apps/
+-#>- 	$(INSTALL_DATA) $(srcdir)/cr32-app-smb4k.png $(kde_icondir)/crystalsvg/32x32/apps/smb4k.png
++	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/hicolor/32x32/apps/
++#>- 	$(INSTALL_DATA) $(srcdir)/cr32-app-smb4k.png $(kde_icondir)/hicolor/32x32/apps/smb4k.png
+ #>+ 1
+-	$(INSTALL_DATA) $(srcdir)/cr32-app-smb4k.png $(DESTDIR)$(kde_icondir)/crystalsvg/32x32/apps/smb4k.png
+-#>- 	$(mkinstalldirs) $(kde_icondir)/crystalsvg/48x48/apps/
++	$(INSTALL_DATA) $(srcdir)/cr32-app-smb4k.png $(DESTDIR)$(kde_icondir)/hicolor/32x32/apps/smb4k.png
++#>- 	$(mkinstalldirs) $(kde_icondir)/hicolor/48x48/apps/
+ #>+ 1
+-	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/crystalsvg/48x48/apps/
+-#>- 	$(INSTALL_DATA) $(srcdir)/cr48-app-smb4k.png $(kde_icondir)/crystalsvg/48x48/apps/smb4k.png
++	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/hicolor/48x48/apps/
++#>- 	$(INSTALL_DATA) $(srcdir)/cr48-app-smb4k.png $(kde_icondir)/hicolor/48x48/apps/smb4k.png
+ #>+ 1
+-	$(INSTALL_DATA) $(srcdir)/cr48-app-smb4k.png $(DESTDIR)$(kde_icondir)/crystalsvg/48x48/apps/smb4k.png
+-#>- 	$(mkinstalldirs) $(kde_icondir)/crystalsvg/64x64/apps/
++	$(INSTALL_DATA) $(srcdir)/cr48-app-smb4k.png $(DESTDIR)$(kde_icondir)/hicolor/48x48/apps/smb4k.png
++#>- 	$(mkinstalldirs) $(kde_icondir)/hicolor/64x64/apps/
+ #>+ 1
+-	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps/
+-#>- 	$(INSTALL_DATA) $(srcdir)/cr64-app-smb4k.png $(kde_icondir)/crystalsvg/64x64/apps/smb4k.png
++	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/hicolor/64x64/apps/
++#>- 	$(INSTALL_DATA) $(srcdir)/cr64-app-smb4k.png $(kde_icondir)/hicolor/64x64/apps/smb4k.png
+ #>+ 1
+-	$(INSTALL_DATA) $(srcdir)/cr64-app-smb4k.png $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps/smb4k.png
++	$(INSTALL_DATA) $(srcdir)/cr64-app-smb4k.png $(DESTDIR)$(kde_icondir)/hicolor/64x64/apps/smb4k.png
+ 
+ uninstall-local:
+-#>- 	-rm -f $(kde_icondir)/crystalsvg/16x16/apps/smb4k.png
++#>- 	-rm -f $(kde_icondir)/hicolor/16x16/apps/smb4k.png
+ #>+ 1
+-	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/16x16/apps/smb4k.png
+-#>- 	-rm -f $(kde_icondir)/crystalsvg/32x32/apps/smb4k.png
++	-rm -f $(DESTDIR)$(kde_icondir)/hicolor/16x16/apps/smb4k.png
++#>- 	-rm -f $(kde_icondir)/hicolor/32x32/apps/smb4k.png
+ #>+ 1
+-	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/32x32/apps/smb4k.png
+-#>- 	-rm -f $(kde_icondir)/crystalsvg/48x48/apps/smb4k.png
++	-rm -f $(DESTDIR)$(kde_icondir)/hicolor/32x32/apps/smb4k.png
++#>- 	-rm -f $(kde_icondir)/hicolor/48x48/apps/smb4k.png
+ #>+ 1
+-	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/48x48/apps/smb4k.png
+-#>- 	-rm -f $(kde_icondir)/crystalsvg/64x64/apps/smb4k.png
++	-rm -f $(DESTDIR)$(kde_icondir)/hicolor/48x48/apps/smb4k.png
++#>- 	-rm -f $(kde_icondir)/hicolor/64x64/apps/smb4k.png
+ #>+ 1
+-	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps/smb4k.png
++	-rm -f $(DESTDIR)$(kde_icondir)/hicolor/64x64/apps/smb4k.png
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.

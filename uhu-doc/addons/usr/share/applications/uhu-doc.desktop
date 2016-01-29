@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=UHU Documentation
+Name[hu]=UHU dokumentáció
+Comment=Some important information
+Comment[hu]=Néhány fontosabb tudnivaló
+Exec=browser /usr/share/doc/UHU/index.html
+Icon=uhu
+NotShowIn=KDE;
+Categories=Utility;Documentation;

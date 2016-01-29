@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Gtk2-Notify-${UB_VERSION}.tar.gz Gtk2-Notify-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/

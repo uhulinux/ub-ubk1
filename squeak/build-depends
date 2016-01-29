@@ -1,0 +1,5 @@
+alsa-lib-dev
+cmake
+dbus-dev
+libxrender-dev
+mesa-dev

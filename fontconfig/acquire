@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+fontconfig-${UB_VERSION}.tar.gz fontconfig-${UB_VERSION}/
+	http://fontconfig.org/release/

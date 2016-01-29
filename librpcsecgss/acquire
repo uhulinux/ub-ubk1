@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+librpcsecgss-${UB_VERSION}.tar.gz librpcsecgss-${UB_VERSION}/
+	http://www.citi.umich.edu/projects/nfsv4/linux/librpcsecgss/

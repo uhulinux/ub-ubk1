@@ -1,0 +1,240 @@
+* PASCAL.KLD - KEDIT Language Definition for Pascal and Delphi programs
+* Version 1.2 - October 1997
+
+:case
+ ignore
+:option
+ preprocessor #
+ function ( blank
+:number
+ C
+:identifier
+ [a-zA-Z_]  [a-zA-Z0-9_]
+:string
+ single
+:comment
+ paired  (* *) nonest
+ paired  { } nonest
+* from Delphi:
+ line    //    any
+:label
+ * Borland!
+ delimiter @ firstnonblank
+:match
+ (. .)
+ (   )
+ [   ]
+:header
+ line program firstnonblank
+ line unit firstnonblank
+ line interface firstnonblank
+ line implementation firstnonblank
+ line procedure firstnonblank
+ line function firstnonblank
+* the following match specification is commented out because Pascal uses
+* 'case' within variant recordds without requiring a matching end,
+* and :match only works when all items to be matched always have a matching
+* equivalent.
+* If don`t use variant records, and you want to use :match handling on the
+* following Pascal/Delphi keywords, you can un-comment the following line:
+* begin,case,record,asm,class,try   end
+:keyword
+* standard Pascal reserved words:
+ and
+ array
+ begin
+ case
+ const
+ div
+ do
+ downto
+ else
+ end
+ file
+ for
+ function
+ goto
+ if
+ in
+ label
+ mod
+ nil
+ not
+ of
+ or
+ packed
+ procedure
+ program
+ record
+ repeat
+ set
+ then
+ to
+ type
+ until
+ var
+ while
+ with
+* common data types:
+ boolean
+ byte
+ char
+ extended
+ integer
+ longint
+ pointer
+ real
+ shortint
+ string
+ word
+* Boolean constants:
+ true
+ false
+* additional Borland Pascal 7 reserved words:
+ asm
+ break
+ constructor
+ continue
+ destructor
+ exit
+ exports
+ halt
+ implementation
+ inherited
+ inline
+ interface
+ library
+ object
+ private
+ public
+ shl
+ shr
+ unit
+ uses
+ xor
+* additional Delphi reserved words:
+ as
+ automated
+ class
+ dispinterface
+ except
+ finalization
+ finally
+ initialization
+ is
+ out
+ property
+ raise
+ resourcestring
+ threadvar
+ try
+* Delphi standard directives
+ absolute
+ abstract
+ assembler
+ at
+ cdecl
+ default
+ dispid
+ dynamic
+ export
+ external
+ far
+ forward
+ index
+ interrupt
+ message
+ name
+ near
+ nodefault
+ on
+ override
+ pascal
+ protected
+ published
+ read
+ readln
+ readonly
+ register
+ resident
+ safecall
+ stdcall
+ stored
+ virtual
+ write
+ writeln
+ writeonly
+:function
+ abs
+ addr
+ append
+ arctan
+ assign
+ assigned
+ chr
+ close
+ concat
+ copy
+ cos
+ dec
+ delete
+ dispose
+ double
+ eof
+ eoln
+ exp
+ fillchar
+ flush
+ frac
+ freemem
+ getmem
+ hi
+ inc
+ insert
+ int
+ ioresult
+ length
+ ln
+ lo
+ mark
+ maxavail
+ maxint
+ maxlongint
+ mem
+ memavail
+ memw
+ move
+ new
+ odd
+ ofs
+ ord
+ paramcount
+ paramstr
+ pchar
+ pi
+ port
+ portw
+ pos
+ pred
+ ptr
+ random
+ randomize
+ release
+ reset
+ rewrite
+ round
+ seek
+ settextbuf
+ sin
+ sizeof
+ sqr
+ sqrt
+ str
+ succ
+ swap
+ text
+ trunc
+ typeof
+ upcase
+ val
+

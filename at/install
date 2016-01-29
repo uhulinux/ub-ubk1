@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+make \
+	IROOT="$UB_INSTALLDIR" \
+	install
+
+rm -rf "$UB_INSTALLDIR"/usr/doc

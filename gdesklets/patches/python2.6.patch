@@ -1,0 +1,15 @@
+diff -Naur ORIG/utils/ErrorFormatter.py UHU/utils/ErrorFormatter.py
+--- ORIG/utils/ErrorFormatter.py	2008-03-20 00:00:59.000000000 +0100
++++ UHU/utils/ErrorFormatter.py	2009-09-08 14:01:05.000000000 +0200
+@@ -113,9 +113,9 @@
+ # give us an absolute path.
+ #
+ _old_imp = __import__
+-def _new_imp(name, globs = {}, locls = {}, fromlist = []):
++def _new_imp(*args, **kwargs):
+ 
+-    module = _old_imp(name, globs, locls, fromlist)
++    module = _old_imp(*args, **kwargs)
+     # builtin modules have no "__file__" attribute, so we have to check for it
+     if (module):
+         if (hasattr(module, "__file__")):

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+pycurl-${UB_VERSION}.tar.gz pycurl-${UB_VERSION}/
+	http://pycurl.sourceforge.net/download/
+

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+scons-${UB_VERSION}.tar.gz scons-${UB_VERSION}/
+	http://downloads.sourceforge.net/scons/

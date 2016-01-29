@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Benchmark-Timer-${UB_VERSION}.tar.gz Benchmark-Timer-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/D/DC/DCOPPIT/

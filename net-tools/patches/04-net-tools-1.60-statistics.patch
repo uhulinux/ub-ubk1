@@ -1,0 +1,13 @@
+diff --git a/statistics.c b/statistics.c
+index a878df8..51beb8a 100644
+--- a/statistics.c
++++ b/statistics.c
+@@ -291,7 +291,7 @@ struct tabtab *newtable(struct tabtab *tabs, char *title)
+ 
+ void process_fd(FILE *f)
+ {
+-    char buf1[1024], buf2[1024];
++    char buf1[2048], buf2[2048];
+     char *sp, *np, *p;
+     while (fgets(buf1, sizeof buf1, f)) {
+ 	int endflag;

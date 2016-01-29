@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libmodplug-${UB_VERSION/~/-}.tar.gz libmodplug-${UB_VERSION/~/-}/
+	http://downloads.sourceforge.net/project/modplug-xmms/libmodplug/${UB_VERSION}/

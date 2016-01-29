@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--enable-introspection \
+	--with-gtk=3.0

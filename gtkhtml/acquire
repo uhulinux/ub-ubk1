@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gtkhtml-${UB_VERSION}.tar.xz gtkhtml-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gtkhtml/${UB_VERSION_HEAD2}/

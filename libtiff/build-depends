@@ -1,0 +1,5 @@
+libice-dev
+libjpeg-dev
+libx11-dev
+libxext-dev
+mesa-dev

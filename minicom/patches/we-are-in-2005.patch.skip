@@ -1,0 +1,80 @@
+diff -Naurd minicom-2.1.orig/src/minicom.c minicom-2.1/src/minicom.c
+--- minicom-2.1.orig/src/minicom.c	2003-05-16 22:33:19.000000000 +0200
++++ minicom-2.1/src/minicom.c	2005-06-18 14:34:03.000000000 +0200
+@@ -850,7 +850,8 @@
+   printf(_("  -L, --iso              : Ditto, but assume screen uses ISO8859\n")); 
+   printf(_("  -w, --wrap             : Linewrap on\n"));
+   printf(_("  -z, --statline         : try to use terminal's status line\n"));
+-  printf(_("  -8, --8bit             : 8bit clean mode (for Japanese, etc)\n"));
++  printf(_("  -0, --stupid           : do not assume 8bit or ansi capable terminal\n"));
++  printf(_("  -8, --8bit             : 8bit clean mode (default)\n"));
+   printf(_("  -c, --color=on/off     : ANSI style color usage on or off\n"));
+   printf(_("  -a, --attrib=on/off    : use reverse or highlight attributes on or off\n"));
+   printf(_("  -t, --term=TERM        : override TERM environment variable\n"));
+@@ -914,6 +915,7 @@
+ 	  { "statline", no_argument, NULL, 'z' },
+ 	  { "capturefile", required_argument, NULL, 'C' },
+ 	  { "script", required_argument, NULL, 'S' },
++	  { "stupid", no_argument, NULL, '0' },
+ 	  { "8bit", no_argument, NULL, '8' },
+ 	  { "version", no_argument, NULL, 'v' },
+ 	  { "wrap", no_argument, NULL, 'w' },
+@@ -947,8 +949,8 @@
+   us = NIL_WIN;
+   bogus_dcd = 0;
+   usecolor = 0;
+-  screen_ibmpc = 0;
+-  screen_iso = 0;
++  screen_ibmpc = 1;
++  screen_iso = 1;
+   useattr = 1;
+   strncpy(termtype, getenv("TERM") ? getenv("TERM") : "dumb", sizeof(termtype));
+   stdattr = XA_NORMAL;
+@@ -979,36 +981,6 @@
+   sbcolor = RED;
+   st_attr = XA_NORMAL;
+   
+-/* acme@conectiva.com.br 28/02/1998 */
+-  /*  if (console_encoding != NULL)
+-    if (strncmp (console_encoding, "ISO-8859", 8) == 0)
+-    screen_iso++; */
+-
+-/* kubota@debian.or.jp 12/07/1998 */
+-  {
+-    /* Boah, a hack .... should we switch to 8bit for all
+-     * and supply a 7bit option? Adam */
+-    char *v[] = { "LANG", "LC_ALL" };
+-    char *l[] = { "ja", "ko", "ru" };
+-    unsigned int i;
+-    int done = 0;
+-
+-    for (i = 0; !done && i < sizeof(v)/sizeof(*v); i++) {
+-      char *lang = getenv(v[i]);
+-      if (lang != NULL) {
+-	unsigned int j = 0;
+-	for (; j < sizeof(l)/sizeof(*l); j++) {
+-	  printf("%s/%s\n", v[i], l[j]);
+-	  if (!strncmp(lang, l[j], strlen(l[j]))) {
+-	    args[argk++] = "-8";
+-	    done = 1;
+-	    break;
+-	  }
+-	}
+-      }
+-    }
+-  }
+-
+ /* MARK updated 02/17/95 default history buffer size */
+   num_hist_lines = 256;
+ 
+@@ -1150,6 +1122,10 @@
+ 		case 'S': /* start Script */
+ 			strncpy(scr_name, optarg, 33);
+ 			break;
++		case '0':
++			screen_ibmpc = 0;
++			screen_iso = 0;
++			break;
+ 		case '8': /* 8bit clean mode */
+ 			vt_set(-1, -1, (FILE*)NULL, -1, -1, -1, -1, 1);
+ 			screen_ibmpc++; screen_iso++;

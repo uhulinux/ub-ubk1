@@ -1,0 +1,49 @@
+diff -urN fpc-2.6.2.i386-linux.orig/install.sh fpc-2.6.2.i386-linux/install.sh
+--- fpc-2.6.2.i386-linux.orig/install.sh	2013-02-16 19:51:46.000000000 +0100
++++ fpc-2.6.2.i386-linux/install.sh	2014-02-25 11:42:55.987000025 +0100
+@@ -189,45 +189,6 @@
+ 
+ OSNAME=`uname -s | tr A-Z a-z`
+ 
+-case "$OSNAME" in
+-  haiku)
+-     # Install in /boot/common or /boot/home/config ?
+-     if checkpath /boot/common/bin; then
+-         PREFIX=/boot/common
+-     else
+-         PREFIX=/boot/home/config
+-     fi
+-  ;;
+-  freebsd)
+-     PREFIX=/usr/local
+-  ;;
+-  *)
+-     # Install in /usr/local or /usr ?
+-     if checkpath /usr/local/bin; then
+-         PREFIX=/usr/local
+-     else
+-         PREFIX=/usr
+-     fi
+-  ;;
+-esac
+-
+-# If we can't write on prefix, select subdir of home dir
+-if [ ! -w "$PREFIX" ]; then
+-  PREFIX="$HOME/fpc-$VERSION"
+-fi
+-
+-case "$OSNAME" in
+-  haiku)
+-     ask "Install prefix (/boot/common or /boot/home/config) " PREFIX
+-  ;;
+-  *)
+-     ask "Install prefix (/usr or /usr/local) " PREFIX
+-  ;;
+-esac
+-
+-# Support ~ expansion
+-PREFIX=`eval echo $PREFIX`
+-export PREFIX
+ makedirhierarch "$PREFIX"
+ 
+ # Set some defaults.

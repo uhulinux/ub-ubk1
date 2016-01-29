@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+expat-${UB_VERSION}.tar.gz expat-${UB_VERSION}/
+	http://downloads.sourceforge.net/expat/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+File-Copy-Link-${UB_VERSION}.tar.gz File-Copy-Link-${UB_VERSION}/
+	http://cpan.metacpan.org/authors/id/R/RM/RMBARKER/

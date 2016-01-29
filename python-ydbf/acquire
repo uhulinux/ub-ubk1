@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+YDbf-${UB_VERSION/~/}.tar.gz YDbf-${UB_VERSION/~/}/
+	http://pypi.python.org/packages/source/Y/YDbf/

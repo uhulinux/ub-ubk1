@@ -1,0 +1,12 @@
+diff -Naur transfig.3.2.5e-orig/fig2dev/Imakefile transfig.3.2.5e/fig2dev/Imakefile
+--- transfig.3.2.5e-orig/fig2dev/Imakefile	2010-06-02 21:18:16.000000000 +0200
++++ transfig.3.2.5e/fig2dev/Imakefile	2013-11-23 13:35:46.877172681 +0100
+@@ -97,7 +97,7 @@
+ 
+ XCOMM ****************
+ XCOMM Uncomment the following to set default paper size to A4
+-XCOMM DDA4 = -DA4
++DDA4 = -DA4
+ 
+ XCOMM ****************
+ XCOMM Uncomment the following to set IBM Graphics Enhancement Cartridge

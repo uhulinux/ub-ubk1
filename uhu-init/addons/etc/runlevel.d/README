@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+
+Az /etc/runlevel.d könyvtár tartalmáról a /usr/share/doc/Packages/uhu-init
+könyvtár alatt található részletes dokumentáció.
+
+A "default" könyvtár alatt soha semmit ne módosítsunk!!!
+
+Az egyéni beállítások a "custom" könyvtár alatt ejthetők meg, a kézi
+módosítás helyett erősen ajánlott az srvmgr programot használni.
+
+------------------------------------------------------------------------------
+
+Documentation about the content of /etc/runlevel.d can be found under
+/usr/share/doc/Packages/uhu-init.
+
+Please do not ever change anything under the "default" directory!!!
+
+Individual wishes can be configured under the directory called "custom".
+It's recommended to use "srvmgr" instead of manually editing the files.
+
+------------------------------------------------------------------------------

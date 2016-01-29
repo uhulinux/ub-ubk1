@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xerces-c-src_${UB_VERSION//./_}.tar.gz xerces-c-src_${UB_VERSION//./_}/
+	http://xenia.sote.hu/ftp/mirrors/www.apache.org/xerces/c/${UB_VERSION_HEAD1}/sources/

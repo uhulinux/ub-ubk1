@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+xmkmf -a
+make \
+	FIG2DEV_LIBDIR=/usr/share/fig2dev \
+	XFIGLIBDIR=/usr/share/xfig

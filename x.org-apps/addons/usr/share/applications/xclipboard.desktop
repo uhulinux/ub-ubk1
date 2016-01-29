@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=xclipboard
+Comment=X clipboard
+Comment[hu]=X vágólap
+Exec=xclipboard
+Categories=Utility;

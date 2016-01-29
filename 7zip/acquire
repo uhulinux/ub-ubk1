@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+p7zip_${UB_VERSION}_src_all.tar.bz2 p7zip_${UB_VERSION}/
+	http://downloads.sourceforge.net/p7zip/

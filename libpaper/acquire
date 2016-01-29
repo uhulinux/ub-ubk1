@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libpaper_${UB_VERSION}.tar.gz libpaper-${UB_VERSION}/
+	http://ftp.hu.debian.org/debian/pool/main/libp/libpaper/

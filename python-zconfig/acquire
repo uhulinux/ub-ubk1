@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ZConfig-${UB_VERSION}.tar.gz ZConfig-${UB_VERSION}/
+	http://pypi.python.org/packages/source/Z/ZConfig/

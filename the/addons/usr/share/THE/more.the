@@ -1,0 +1,88 @@
+/*
+ *
+ *  MORE - restore selected hidden lines to the display
+ *
+ *  Syntax:  MORE rtarget [-n] [+n]
+ *
+ *           rtarget   is a normal string target
+ *           n         is the number of lines before (-) or
+ *                       after (+) the string to include in
+ *                       the display
+ *
+ *
+ *
+ *  From a macro by Dan Hofferth, Allison Engine Company
+ */
+
+If Arg(1) = '' Then Do
+   'MSG Type "MORE rtarget [-n] [+n]" to restore selected hidden lines to display.'
+   Exit
+   End
+
+'EXTRACT /DISPLAY/WRAP/STAY/LINE/MSGMODE'
+
+If  ( display.1 = 0 & display.2 = 0 ) | ,
+    ( display.1 = 0 & display.2 = 1 ) Then Exit
+If \( display.1 = 1 & display.2 = 1 ) Then Do
+   'EMSG ** Display settings not recognized.  MORE cancelled. **'
+   Exit 1
+   End
+
+Parse Arg a
+k = line.1(); 'SET DISPLAY 0 *'; ':0'
+reply = valid_target(a,etc); 'SET DISPLAY 'display.1 display.2; ':'k
+if reply = 'ERROR' then call Errstop 'Invalid target'
+if reply = 'NOTFOUND' then call Errstop 'Target not found'
+parse var reply . . deltas
+c1 = verify(a, ' ')
+c2 = length(a) - length(deltas) + 1
+parse var a =(c1) rtarget =(c2) .
+
+plus = 0; minus = 0
+Do i = 1 to Words( deltas )
+   delta = Word( deltas, i )
+   If Datatype( delta, 'W' ) Then Do
+      If delta >= 0 Then plus  = 0 + delta
+      Else               minus = 0 - delta
+      End
+   End
+
+'SET DISPLAY 0 *'
+':0'
+
+'LOCATE' rtarget
+If rc \= 0 Then Do
+   save_rc = rc
+   ':'line.1
+   'SET DISPLAY 'display.1 display.2
+   Exit save_rc
+   End
+
+'SET WRAP OFF'
+'SET STAY ON'
+
+'SET MSGMODE OFF'
+Do Forever
+   'SET SELECT 1 -'minus+1
+   'SET SELECT 1 +'plus+1
+   'LOCATE' rtarget
+   If rc \= 0 Then Leave
+   End
+'SET MSGMODE 'msgmode.1
+
+'SET STAY 'stay.1
+'SET WRAP 'wrap.1
+
+':'line.1
+'SET DISPLAY 1 1'
+
+Exit
+
+Errstop:
+   parse arg m
+   'SET MSGMODE ON'
+   'EMSG' m
+   'SET MSGMODE 'msgmode.1
+   exit 1
+
+

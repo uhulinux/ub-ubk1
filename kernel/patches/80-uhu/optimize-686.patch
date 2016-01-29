@@ -1,0 +1,16 @@
+diff -Naurdp a/arch/x86/Makefile b/arch/x86/Makefile
+--- a/arch/x86/Makefile	2008-02-10 23:18:14.000000000 +0100
++++ b/arch/x86/Makefile	2008-02-16 20:02:46.000000000 +0100
+@@ -37,6 +37,12 @@ ifeq ($(CONFIG_X86_32),y)
+         KBUILD_CFLAGS += $(shell if [ $(call cc-version) -lt 0400 ] ; then \
+                 echo $(call cc-option,-fno-unit-at-a-time); fi ;)
+ 
++# m586 and genericarch is likely a distribution kernel. optimize for the
++# most common CPU (686)
++ifeq ($(CONFIG_X86_GENERICARCH),y)
++cflags-$(CONFIG_M586) += $(call cc-option,-mtune=i686)
++endif
++
+         # CPU-specific tuning. Anything which can be shared with UML should go here.
+         include $(srctree)/arch/x86/Makefile_32.cpu
+         KBUILD_CFLAGS += $(cflags-y)

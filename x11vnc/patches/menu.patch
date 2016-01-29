@@ -1,0 +1,15 @@
+--- x11vnc-0.9.6.orig/x11vnc/x11vnc.desktop	2008-11-13 13:50:50.000000000 +0100
++++ x11vnc-0.9.6/x11vnc/x11vnc.desktop	2009-02-08 14:39:50.000000000 +0100
+@@ -1,10 +1,11 @@
+ [Desktop Entry]
+ Name=X11VNC Server
+ Comment=Share this desktop by VNC
++Comment[hu]=Asztal megosztása a hálózaton VNC segítségével
+ Exec=x11vnc -gui tray=setpass -rfbport PROMPT -bg -o %%HOME/.x11vnc.log.%%VNCDISPLAY
+ Icon=computer
+ Terminal=false
+ Type=Application
+ StartupNotify=false
+ #StartupWMClass=x11vnc_port_prompt
+-Categories=Network;RemoteAccess;
++Categories=Network;RemoteAccess;X-UHU-Menu/Internet/Tools;

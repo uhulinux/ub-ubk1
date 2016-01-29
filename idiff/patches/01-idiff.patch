@@ -1,0 +1,136 @@
+diff -Naur orig/idiff.c mod/idiff.c
+--- orig/idiff.c	1998-09-16 21:58:16.000000000 +0200
++++ mod/idiff.c	2008-09-10 08:33:35.000000000 +0200
+@@ -2,7 +2,12 @@
+ 
+ #include <stdio.h>
+ #include <ctype.h>
++#include <assert.h>
++
+ char	*progname;
++char *DIFFOUT =	"/tmp/idiff.XXXXXXXX";
++char *TEMPFILE = "/tmp/idiff.XXXXXXXX";
++char *diffout, *tempfile;
+ #define	HUGE	10000	/* large number of lines */
+ 
+ main(argc, argv)
+@@ -10,8 +15,8 @@
+ 	char *argv[];
+ {
+ 	FILE *fin, *fout, *f1, *f2, *efopen();
+-	char buf[BUFSIZ], *mktemp();
+-	char *diffout = "idiff.XXXXXX";
++	char buf[BUFSIZ], *mkstemp();
++/*	char *diffout = "idiff.XXXXXXXXXX";*/
+ 
+ 	progname = argv[0];
+ 	if (argc != 3) {
+@@ -21,8 +26,13 @@
+ 	f1 = efopen(argv[1], "r");
+ 	f2 = efopen(argv[2], "r");
+ 	fout = efopen("idiff.out", "w");
+-	mktemp(diffout);
+-	sprintf(buf,"diff %s %s >%s",argv[1],argv[2],diffout);
++/*	mkstemp(diffout);*/
++	if ((diffout = mktemp(strdup(DIFFOUT))) == NULL)
++	{
++		fprintf(stderr, "Can't mktemp(%s)", diffout);
++		exit(1);
++	}
++	sprintf(buf, "diff %s %s >%s", argv[1], argv[2], diffout);
+ 	system(buf);
+ 	fin = efopen(diffout, "r");
+ 	idiff(f1, f2, fin, fout);
+@@ -34,12 +44,27 @@
+ idiff(f1, f2, fin, fout)	/* process diffs */
+ 	FILE *f1, *f2, *fin, *fout;
+ {
+-	char *tempfile = "idiff.XXXXXX";
+-	char buf[BUFSIZ], buf2[BUFSIZ], *mktemp();
++/*	char *tempfile = "idiff.XXXXXXXXXX";*/
++	char buf[BUFSIZ], buf2[BUFSIZ], *mkstemp();
++	char *ed, *getenv();
+ 	FILE *ft, *efopen();
+ 	int cmd, n, from1, to1, from2, to2, nf1, nf2;
++	int rc = 0;
+ 
+-	mktemp(tempfile);
++	assert(f1 != NULL);
++	assert(f2 != NULL);
++	assert(fin != NULL);
++	assert(fout != NULL);
++
++/*	rc = mkstemp(tempfile);*/
++	if ((tempfile =	mktemp(strdup(TEMPFILE))) == NULL)
++	{
++/*		  err(1, "Can't mktemp(%s)", tempfile);*/
++		fprintf(stderr,	"Can't mktemp(%s)", tempfile);
++		exit(1);
++	}
++	if ((ed=getenv("EDITOR")) == NULL)
++		ed = "/bin/vi";
+ 	nf1 = nf2 = 0;
+ 	while (fgets(buf, sizeof buf, fin) != NULL) {
+ 		parse(buf, &from1, &to1, &cmd, &from2, &to2);
+@@ -76,7 +101,7 @@
+ 				fprintf(ft, "---\n");
+ 				ncopy(f2, to2+1-from2, ft);
+ 				fclose(ft);
+-				sprintf(buf2, "ed %s", tempfile);	
++				sprintf(buf2, "%s %s", ed, tempfile);
+ 				system(buf2);
+ 				ft = efopen(tempfile, "r");
+ 				ncopy(ft, HUGE, fout);
+@@ -86,14 +111,32 @@
+ 				system(buf+1);
+ 				printf("!\n");
+ 				break;
++			case 'q':
++				switch (buf[1])	{
++				case '>' :
++					nskip(f1, HUGE);
++					ncopy(f2, HUGE,	fout);
++					goto out;
++					break;
++				case '<' :
++					nskip(f2, HUGE);
++					ncopy(f1, HUGE,	fout);
++					goto out;
++					break;
++				default:
++					fprintf(stderr,	"%s: q must be followed by a < or a >!\n", progname);
++					break;
++				}
++				break;
+ 			default:
+-				printf("< or > or e or !\n");
++				fprintf(stderr,	"%s: >, q>, <, q<, ! or e only!\n", progname);
+ 				break;
+ 			}
+-		} while (buf[0]!='<' && buf[0]!='>' && buf[0]!='e');
++		} while (buf[0] != '<' && buf[0] !='>' && buf[0] != 'e');
+ 		nf1 = to1;
+ 		nf2 = to2;
+ 	}
++out:
+ 	ncopy(f1, HUGE, fout);	/* can fail on very long files */
+ 	unlink(tempfile);
+ }
+@@ -102,7 +145,7 @@
+ 	char *s;
+ 	int *pcmd, *pfrom1, *pto1, *pfrom2, *pto2;
+ {
+-#define a2i(p) while (isdigit(*s)) p = 10*(p) + *s++ - '0'
++#define a2i(p) while (isdigit(*s)) p = 10 * (p) + *s++ - '0'
+ 
+ 	*pfrom1 = *pto1 = *pfrom2 = *pto2 = 0;
+ 	a2i(*pfrom1);
+@@ -134,6 +177,8 @@
+ {
+ 	char buf[BUFSIZ];
+ 
++	assert(fin != NULL);
++	assert(fout != NULL);
+ 	while (n-- > 0) {
+ 		if (fgets(buf, sizeof buf, fin) == NULL)
+ 			return;

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+jam-${UB_VERSION}.tar jam-${UB_VERSION}/
+	ftp://ftp.perforce.com/jam/

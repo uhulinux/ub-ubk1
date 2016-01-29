@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-subtitles-${UB_VERSION}.tar.gz gnome-subtitles-${UB_VERSION}/
+	http://downloads.sourceforge.net/gnome-subtitles/

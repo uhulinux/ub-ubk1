@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+ub_configure \
+	--disable-dependecy-tracking \
+	--enable-udisks \
+	--with-gnu-ld \
+	--with-html-dir=/usr/share/doc/libfm/html
+
+ub_make \
+	LDFLAGS+=' -lgobject-2.0 -lglib-2.0'

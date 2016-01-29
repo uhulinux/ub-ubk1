@@ -1,0 +1,10 @@
+--- a/server/Makefile.orig	2008-07-02 23:07:28.000000000 +0200
++++ a/server/Makefile	2011-11-03 21:04:04.000000000 +0100
+@@ -1,6 +1,6 @@
+ include ../settings.mk
+ 
+-CFLAGS ?= -g -Wall -Werror -pipe
++CFLAGS ?= -g -pipe
+ CPPFLAGS += -I. `pkg-config glib-2.0 --cflags` -DVERSION=\"$(shell cat ../VERSION)\"
+ LDLIBS = `pkg-config glib-2.0 --libs`
+ 

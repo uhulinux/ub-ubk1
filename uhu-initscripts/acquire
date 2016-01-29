@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+uhu-initscripts-${UB_VERSION}.tar.gz uhu-initscripts-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/uhu-initscripts/

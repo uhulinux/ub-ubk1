@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=DrRacket
+GenericName=IDE for Racket
+Comment=PLT Scheme Environment
+Comment[hu]=PLT Scheme programnyelv
+Exec=drracket
+Icon=drracket
+Terminal=false
+Type=Application
+Categories=Development;IDE;

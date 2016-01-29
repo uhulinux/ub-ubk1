@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+chmod 644 run
+ub_compile

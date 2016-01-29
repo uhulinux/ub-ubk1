@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+xcalib-source-${UB_VERSION}.tar.gz xcalib-${UB_VERSION}/
+	http://www.etg.e-technik.uni-erlangen.de/web/doe/xcalib/
+	http://downloads.sourceforge.net/xcalib/

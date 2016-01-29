@@ -1,0 +1,1 @@
+urllist http://caca.zoy.org/attachment/wiki/toilet/ | splitver '^toilet-([0-9.]+).tar.gz$' | sort -V | tail -n 1

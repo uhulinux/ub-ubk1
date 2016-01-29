@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+fuse-exfat-${UB_VERSION}.tar.gz fuse-exfat-${UB_VERSION}/
+	https://docs.google.com/uc?export=download&id=0B7CLI-REKbE3VTdaa0EzTkhYdU0
+	http://pkgbuild.com/~giovanni/exfat/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pyglet-${UB_VERSION}.tar.gz pyglet-${UB_VERSION}/
+	http://pyglet.googlecode.com/files/

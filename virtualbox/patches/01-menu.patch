@@ -1,0 +1,14 @@
+diff -Naur orig/src/VBox/Installer/common/virtualbox.desktop.in patched/src/VBox/Installer/common/virtualbox.desktop.in
+--- orig/src/VBox/Installer/common/virtualbox.desktop.in	2011-07-15 17:34:05.000000000 +0200
++++ patched/src/VBox/Installer/common/virtualbox.desktop.in	2011-07-25 16:59:00.956910044 +0200
+@@ -8,8 +8,8 @@
+ TryExec=VirtualBox
+ MimeType=application/x-virtualbox-vbox;application/x-virtualbox-vbox-extpack;application/x-virtualbox-ovf;application/x-virtualbox-ova;
+ DocPath=file://@VBOX_DOC_PATH@/UserManual.pdf
+-Icon=virtualbox
+-Categories=Emulator;System;X-MandrivaLinux-System;Application;
++Icon=/usr/lib/virtualbox/VBox.png
++Categories=Emulator;System;X-MandrivaLinux-System;Application;X-UHU-Menu/Tools/Emulators;
+ Comment=Run several virtual systems on a single host computer
+ Comment[de]=Mehrere virtuelle Maschinen auf einem einzigen Rechner ausführen
+ Comment[it]=Esegui più macchine virtuali su un singolo computer

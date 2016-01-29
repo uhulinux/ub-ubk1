@@ -1,0 +1,51 @@
+diff -urN linuxdoc-tools-0.9.21.orig/lib/LinuxDocTools/Lang.pm linuxdoc-tools-0.9.21/lib/LinuxDocTools/Lang.pm
+--- linuxdoc-tools-0.9.21.orig/lib/LinuxDocTools/Lang.pm	2001-05-24 17:57:41.000000000 +0200
++++ linuxdoc-tools-0.9.21/lib/LinuxDocTools/Lang.pm	2003-08-28 12:20:50.000000000 +0200
+@@ -64,6 +64,7 @@
+   ja japanese japanese
+   pl polski polish
+   ko korean korean
++  hu magyar hungarian
+ );
+ 
+ 
+@@ -170,7 +171,8 @@
+      "ro" => "Înapoi",
+      "ja" => "Á°¤Î¥Ú¡¼¥¸",
+      "pl" => "Poprzedni",
+-     "ko" => "ÀÌÀü"
++     "ko" => "ÀÌÀü",
++     "hu" => "Elõzõ"
+   },
+   "Next" => {
+      "nl" => "Verder",
+@@ -186,7 +188,8 @@
+      "ro" => "Înainte",
+      "ja" => "¼¡¤Î¥Ú¡¼¥¸",
+      "pl" => "Nastny",
+-     "ko" => "´ÙÀ½"
++     "ko" => "´ÙÀ½",
++     "hu" => "Következõ"
+   },
+   "Contents" => {
+      "nl" => "Inhoud",
+@@ -202,7 +205,8 @@
+      "ro" => "Cuprins",
+      "ja" => "ÌÜ¼¡¤Ø",
+      "pl" => "Spis Trei",
+-     "ko" => "Â÷·Ê"
++     "ko" => "Â÷·Ê",
++     "hu" => "Tartalom"
+   },
+   "Table of Contents" => {
+      "nl" => "Inhoudsopgave",
+@@ -218,7 +222,8 @@
+      "ro" => "Cuprins",
+      "ja" => "ÌÜ¼¡",
+      "pl" => "Spis Trei",
+-     "ko" => "Â÷·Ê"
++     "ko" => "Â÷·Ê",
++     "hu" => "Tartalomjegyzék"
+   }
+ };
+ 

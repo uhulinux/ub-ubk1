@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+g++ -Wall -o paq${UB_VERSION} paq${UB_VERSION}.cpp
+strip paq${UB_VERSION}

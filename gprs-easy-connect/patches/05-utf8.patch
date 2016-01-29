@@ -1,0 +1,27 @@
+diff -Naur GPRS_Easy_Connect_300.orig/data/bin/gprsec GPRS_Easy_Connect_300/data/bin/gprsec
+--- GPRS_Easy_Connect_300.orig/data/bin/gprsec	2006-03-31 16:53:02.000000000 +0200
++++ GPRS_Easy_Connect_300/data/bin/gprsec	2006-05-03 17:51:58.000000000 +0200
+@@ -1189,6 +1189,7 @@
+ 	if (-e "$gprs_shared_path/gprsec/AUTHORS")  {
+ 		$mainwin_made_by_file="$gprs_shared_path/gprsec/AUTHORS";
+ 		open (FILE, "<$mainwin_made_by_file");
++		binmode (FILE, ':utf8');
+ 		while ($mainwin_sor=<FILE>) {
+ 			$mainwin_other_TextView1_text.=$mainwin_sor;
+ 		}
+@@ -1213,6 +1214,7 @@
+ 	$mainwin_his_path="$gprs_shared_path/gprsec/history";
+ 	if (-e $mainwin_his_path) {
+ 		open (FILE, "<$mainwin_his_path");
++		binmode (FILE, ':utf8');
+ 		while ($mainwin_sor=<FILE>) {
+ 			$mainwin_other_TextView1_text.=$mainwin_sor;
+ 		}
+@@ -2923,6 +2925,7 @@
+ 	$upgrade_win_connbutt->can_focus(1 );
+ 	
+ 		open (FILE, "<$gprs_shared_path/gprsec/version");
++		binmode (FILE, ':utf8');
+ 		$ver_GPRSEC=<FILE>;
+ 		$ver_GPRSEC=~tr /\.\(\)pre//d; #/
+ 		chomp $ver_GPRSEC;

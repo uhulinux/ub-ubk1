@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+zd1211-firmware-${UB_VERSION}.tar.bz2 zd1211-firmware/
+	http://downloads.sourceforge.net/zd1211/

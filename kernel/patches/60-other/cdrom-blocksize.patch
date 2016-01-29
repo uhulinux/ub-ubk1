@@ -1,0 +1,23 @@
+diff -Naur linux-2.6.15.orig/drivers/cdrom/cdrom.c linux-2.6.15/drivers/cdrom/cdrom.c
+--- linux-2.6.15.orig/drivers/cdrom/cdrom.c	2006-01-03 04:21:10.000000000 +0100
++++ linux-2.6.15/drivers/cdrom/cdrom.c	2006-02-08 14:05:08.000000000 +0100
+@@ -344,6 +344,7 @@
+ 			 struct cdrom_device_ops * cdo);
+ static void sanitize_format(union cdrom_addr *addr, 
+ 		u_char * curr, u_char requested);
++static int cdrom_switch_blocksize(struct cdrom_device_info *cdi, int size);
+ static int mmc_ioctl(struct cdrom_device_info *cdi, unsigned int cmd,
+ 		     unsigned long arg);
+ 
+@@ -1021,6 +1022,11 @@
+ 	if (ret)
+ 		goto err;
+ 
++	if (cdi->use_count == 1) {
++		/* reset blocksize in case it's wrong */
++		cdrom_switch_blocksize(cdi, CD_FRAMESIZE);
++	}
++
+ 	cdinfo(CD_OPEN, "Use count for \"/dev/%s\" now %d\n",
+ 			cdi->name, cdi->use_count);
+ 	/* Do this on open.  Don't wait for mount, because they might

@@ -1,0 +1,12 @@
+diff -Naur sympa-5.3.orig/src/List.pm sympa-5.3/src/List.pm
+--- sympa-5.3.orig/src/List.pm	2007-05-24 18:05:21.000000000 +0200
++++ sympa-5.3/src/List.pm	2007-05-31 15:24:57.000000000 +0200
+@@ -10221,7 +10221,7 @@
+     }
+     #$msg->head->delete('Received') if ($msg->head->get('received'));
+     $msg->print(\*OUT);
+-    printf OUT "\n%s\n\n", &tools::get_separator();
++    printf OUT "\n\n%s\n\n", &tools::get_separator();
+     close(OUT);
+     
+     #replace the old time

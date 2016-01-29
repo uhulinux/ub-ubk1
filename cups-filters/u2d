@@ -1,0 +1,1 @@
+urllist http://openprinting.org/download/cups-filters/ | splitver '^cups-filters-([0-9.]+).tar.xz$' | sort -V | tail -n 1

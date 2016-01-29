@@ -1,0 +1,10 @@
+diff -Naur kdegames-orig/kapman-4.10.0/kapman.desktop kdegames/kapman-4.10.0/kapman.desktop
+--- kdegames-orig/kapman-4.13.0/kapman.desktop	2013-01-23 23:05:20.000000000 +0100
++++ kdegames/kapman-4.13.0/kapman.desktop	2013-02-28 10:35:03.000000000 +0100
+@@ -143,5 +143,5 @@
+ Icon=kapman
+ TryExec=kapman
+ Exec=kapman
+-Categories=Qt;KDE;Game;ArcadeGame;
++Categories=Qt;KDE;Game;ArcadeGame;X-UHU-Menu/Games/Arcade;
+ X-DocPath=kapman/index.html

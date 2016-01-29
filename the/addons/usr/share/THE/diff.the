@@ -1,0 +1,30 @@
+/**/
+'extract /nbfile'
+If nbfile.1 \= 2 Then Call Abort 'Must be 2 files in ring'
+'extract /curline/line'
+this_lineno = line.1
+'nextwindow'
+'extract /curline/line'
+that_lineno = line.1
+'nextwindow'
+Do Forever
+   'sos qcmnd'
+   'n'
+   If rc \= 0 Then Leave
+   'extract /curline'
+   this_line = curline.3
+   'nextwindow'
+   'sos qcmnd'
+   'n'
+   If rc \= 0 Then Leave
+   'extract /curline'
+   that_line = curline.3
+   'nextwindow'
+   If this_line \= that_line Then Leave
+End
+Return 0
+
+Abort: Procedure
+Parse Arg msg
+'emsg' msg
+Exit 0

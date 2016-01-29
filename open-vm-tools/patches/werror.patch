@@ -1,0 +1,11 @@
+diff -Naurd open-vm-tools-2011.12.20-562307.orig/configure open-vm-tools-2011.12.20-562307/configure
+--- open-vm-tools-2011.12.20-562307.orig/configure	2011-12-22 01:56:32.000000000 +0100
++++ open-vm-tools-2011.12.20-562307/configure	2012-02-27 11:08:54.485063141 +0100
+@@ -21554,7 +21554,6 @@
+ 
+ ### General flags / actions
+ CFLAGS="$CFLAGS -Wall"
+-CFLAGS="$CFLAGS -Werror"
+ 
+ # -Wno-unknown-pragmas is due to gcc not understanding '#pragma ident' in Xlib.h on OpenSolaris.
+ for TEST_CFLAG in -Wno-pointer-sign -Wno-unused-value -fno-strict-aliasing \

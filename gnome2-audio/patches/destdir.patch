@@ -1,0 +1,10 @@
+diff -urN gnome-audio-2.22.2.orig/Makefile gnome-audio-2.22.2/Makefile
+--- gnome-audio-2.22.2.orig/Makefile	2008-10-21 21:48:35.000000000 +0200
++++ gnome-audio-2.22.2/Makefile	2008-10-21 21:48:43.000000000 +0200
+@@ -1,5 +1,6 @@
+ VERSION=2.22.2
+ DD=gnome-audio-$(VERSION)
++DSTDIR=$(DESTDIR)
+ 
+ all: gnome-audio.spec
+ 

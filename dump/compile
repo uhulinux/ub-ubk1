@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+ub_replace termcap ncurses configure
+ub_compile \
+	--sbindir=/sbin \
+	--with-binowner=root \
+	--with-bingrp=root \
+	--with-manowner=root \
+	--with-mangrp=root
+

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pyOpenSSL-${UB_VERSION}.tar.gz pyOpenSSL-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pyOpenSSL/

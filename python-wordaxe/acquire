@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+wordaxe-${UB_VERSION}.zip wordaxe-${UB_VERSION}/
+	http://downloads.sourceforge.net/deco-cow/

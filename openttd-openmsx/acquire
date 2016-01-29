@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+openmsx-${UB_VERSION}.zip openmsx-${UB_VERSION}/
+	http://bundles.openttdcoop.org/openmsx/releases/${UB_VERSION}/

@@ -1,0 +1,11 @@
+--- a/Makefile.orig	2011-07-28 20:15:09.000000000 +0200
++++ a/Makefile	2011-09-25 11:59:18.000000000 +0200
+@@ -4,7 +4,7 @@
+ DEFINES=/d:TRACE
+ 
+ VERSION=$(shell egrep AssemblyVersion version/AssemblyVersion.cs | egrep -o \([[:digit:]]\.\)+[[:digit:]]+)
+-PREFIX=/usr/local
++PREFIX=/usr
+ PKGCONFIGDIR = $(PREFIX)/lib/pkgconfig
+ 
+ CORELIBS=\

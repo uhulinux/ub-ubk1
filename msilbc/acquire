@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+msilbc-${UB_VERSION}.tar.gz msilbc-${UB_VERSION}/
+	http://download.savannah.gnu.org/releases/linphone/plugins/sources/

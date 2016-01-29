@@ -1,0 +1,12 @@
+diff -Naur a/skrooge/skrooge.desktop b/skrooge/skrooge.desktop
+--- a/skrooge/skrooge.desktop	2013-05-09 22:33:29.000000000 +0200
++++ b/skrooge/skrooge.desktop	2013-06-23 17:19:29.847327118 +0200
+@@ -66,7 +66,7 @@
+ GenericName[zh_TW]=管理您的金錢
+ Terminal=false
+ X-KDE-StartupNotify=true
+-Categories=Qt;KDE;Office;Finance;
++Categories=Qt;KDE;Office;Finance;X-UHU-Menu/Tools/Organizer;
+ MimeType=application/x-skg;application/x-skgc;application/x-kmymoney;application/vnd.intu.qfx;application/x-ofx;application/x-homebank;application/x-gnc;application/x-gnucash;application/x-gsb;
+ X-DBUS-StartupType=Unique
+ X-DBUS-ServiceName=org.skrooge

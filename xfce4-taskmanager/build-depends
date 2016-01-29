@@ -1,0 +1,6 @@
+gtk2-dev
+intltool
+libsm-dev
+libwnck2-dev
+libxfcegui4-dev
+xcb-util-dev

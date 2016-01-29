@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+emelfm2-${UB_VERSION}.tar.bz2 emelfm2-${UB_VERSION}/
+	http://emelfm2.net/rel/

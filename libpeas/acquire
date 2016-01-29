@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libpeas-${UB_VERSION}.tar.xz libpeas-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libpeas/${UB_VERSION_HEAD2}/

@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+gemdir="$(ruby -rubygems -e 'puts Gem::dir')"
+
+gem install --local --install-dir="$UB_INSTALLDIR/$gemdir" pg-"$UB_VERSION".gem
+
+ub_replace 'ruby1.9.1' 'ruby' "$UB_INSTALLDIR/$gemdir"/gems/pg-"$UB_VERSION"/sample/test_binary_values.rb
+ub_replace '#!/usr/bin/env rspec' '#!/usr/bin/env ruby' "$UB_INSTALLDIR/$gemdir"/gems/pg-"$UB_VERSION"/spec/pg/connection_spec.rb

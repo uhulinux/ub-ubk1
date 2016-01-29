@@ -1,0 +1,16 @@
+diff -Naur dctc-0.85.7.orig/src/user_manage.h dctc-0.85.7/src/user_manage.h
+--- dctc-0.85.7.orig/src/user_manage.h	2003-05-17 08:12:50.000000000 +0200
++++ dctc-0.85.7/src/user_manage.h	2005-11-09 19:31:44.000000000 +0100
+@@ -27,12 +27,6 @@
+ extern GPtrArray *hub_user_list;    /* list of all users connected to the hub */
+ extern GPtrArray *hub_op_list;      /* list of all ops connected to the hub (ops are also in the user_list) */
+ 
+-extern GPtrArray *hub_user_xtra_info;			/* array of extra data stored for each hub user */
+-                                    /* the nth pointer of this array is for the nth user of the hub_user_list */
+-												/* a user having no extra info has a null pointer as extra info */
+-
+-extern GPtrArray *hub_user_uinfo;     /* it is the result of /UINFO command for each user */
+-
+ typedef enum
+ {
+ 	UNDEFINED=0,

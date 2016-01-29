@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+iagno-${UB_VERSION}.tar.xz iagno-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/iagno/${UB_VERSION_HEAD2}/

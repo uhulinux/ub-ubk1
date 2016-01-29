@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+netkit-ntalk-${UB_VERSION}.tar.gz netkit-ntalk-${UB_VERSION}/
+	ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/
+

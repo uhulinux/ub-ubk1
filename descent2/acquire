@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+d2x-${UB_VERSION}.tar.gz d2x-${UB_VERSION}/
+	http://icculus.org/d2x/src/
+
+d2shar10.tar.gz .
+	http://icculus.org/d2x/data/

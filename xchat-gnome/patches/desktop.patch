@@ -1,0 +1,11 @@
+--- xchat-gnome.orig/data/xchat-gnome.desktop.in.in	2008-09-01 14:02:56.000000000 +0200
++++ xchat-gnome/data/xchat-gnome.desktop.in.in	2009-05-30 20:29:37.000000000 +0200
+@@ -8,7 +8,7 @@
+ Terminal=false
+ StartupNotify=true
+ Type=Application
+-Categories=GNOME;GTK;Network;IRCClient;
++Categories=GTK;GNOME;Network;IRCClient;X-UHU-Menu/Internet/Messengers;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=xchat-gnome
+ X-GNOME-Bugzilla-Component=general

@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_configure \
+	--sysconfdir=/etc/openmpi \
+	--enable-mpi-f90 \
+	--libdir=/usr/lib/openmpi \
+	--enable-static \
+	--without-xgrid \
+	FC=/usr/bin/gfortran
+
+ub_make

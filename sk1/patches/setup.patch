@@ -1,0 +1,14 @@
+diff -Naur ORIG/setup.py UHU/setup.py
+--- ORIG/setup.py	2010-01-10 07:24:54.000000000 +0100
++++ UHU/setup.py	2010-04-26 17:44:38.000000000 +0200
+@@ -149,8 +149,8 @@
+ 					filter_src+'stringfilter.c', filter_src+'binfile.c', filter_src+'hexfilter.c'])
+ 	
+ 	#Fix for Debian based distros
+-	tcl_include_dirs = []
+-	tcl_ver=''
++	tcl_include_dirs = ['/usr/include']
++	tcl_ver='8.6'
+ 	if os.path.isdir('/usr/include/tcl8.5'):
+ 		tcl_include_dirs = ['/usr/include/tcl8.5']
+ 		tcl_ver ='8.5'

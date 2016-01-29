@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+./hex2bdf < unifont.hex | bdftopcf > unifont.pcf
+./hex2bdf y < unifont.hex | bdftopcf > unifont-double.pcf
+
+mkfontdir .

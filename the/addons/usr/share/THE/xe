@@ -1,0 +1,35 @@
+#!/usr/bin/rexx
+/*
+ *  ----------------------------------------------------------------
+ *  Execution of this program requires a license for uni-REXX on
+ *  the host computer where it is to be run.  It also requires at
+ *  minimum a license for uni-XEDIT Basic for each concurrent user.
+ *  If editing options include the execution of complex macros, a
+ *  license for uni-XEDIT Extended is required for each such user.
+ *  ----------------------------------------------------------------
+ *
+ *
+ * X
+ *
+ * The X program invokes uni-XEDIT to edit a file.  When you end the
+ * edit session, X then checks to see if the first line in the file
+ * contains "#!/...".  If the file begins with "#!...", it is marked
+ * as executable through a "chmod +x" Unix command.  This is useful when
+ * creating uni-REXX programs.
+ *
+ *
+ * Execute the X program by typing
+ *
+ *          x <filename> <options>
+ *
+ * where <filename> is the file to be edited, the <filename> may be
+ * system independent and <options> may be other uni-XEDIT options
+ * such as a profile.
+ *
+ */
+parse arg file options
+file=fn(file)
+"the" file options
+if left(linein(file),3)="#!/"
+then "chmod +x" file
+

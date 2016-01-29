@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+iptraf-ng-${UB_VERSION}.tar.gz iptraf-ng-${UB_VERSION}/
+	https://fedorahosted.org/releases/i/p/iptraf-ng/

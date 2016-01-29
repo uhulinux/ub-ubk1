@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xchat-${UB_VERSION}.tar.bz2 xchat-${UB_VERSION}/
+	http://www.xchat.org/files/source/${UB_VERSION_HEAD2}/

@@ -1,0 +1,16 @@
+diff -Naur d4x-2.5.7.1.orig/share/nt.desktop d4x-2.5.7.1/share/nt.desktop
+--- d4x-2.5.7.1.orig/share/nt.desktop	2005-08-31 15:32:13.000000000 +0200
++++ d4x-2.5.7.1/share/nt.desktop	2006-06-15 14:20:31.000000000 +0200
+@@ -13,9 +13,11 @@
+ Comment[de]=Programm zum Downloaden von Dateien
+ Comment[pl]=Program do pobierania plików z Internetu.
+ Comment[ru]=программа для скачивания файлов
+-Icon=nt.png
++Comment[hu]=Webszivattyú
++Icon=/usr/share/pixmaps/uhu/d4x.png
+ Exec=d4x
+ TryExec=d4x
+ Terminal=false
+ Type=Application
+ Encoding=UTF-8
++Categories=Application;Network;X-UHU-Menu/Internet/Downloaders;

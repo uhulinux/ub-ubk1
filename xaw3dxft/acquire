@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libXaw3dXft-${UB_VERSION}.tar.bz2 libXaw3dXft-${UB_VERSION}/
+	http://sourceforge.net/projects/sf-xpaint/files/libxaw3dxft/

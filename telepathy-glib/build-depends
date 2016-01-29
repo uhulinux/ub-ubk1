@@ -1,0 +1,5 @@
+dbus-glib-dev
+gobject-introspection-dev
+libxslt
+python-dev
+vala-dev

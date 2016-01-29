@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pixman-${UB_VERSION}.tar.gz pixman-${UB_VERSION}/
+	http://cairographics.org/releases/

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec /usr/lib/chromium/chrome --disable-setuid-sandbox --disable-bundled-ppapi-flash "$@"

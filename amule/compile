@@ -1,0 +1,17 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--enable-ccache \
+	--enable-amule-daemon \
+	--enable-amulecmd \
+	--enable-plasmamule \
+	--enable-kde-in-home=no \
+	--enable-amule-gui \
+	--enable-wxcas \
+	--enable-cas \
+	--enable-webserver \
+	--enable-alc \
+	--enable-alcc \
+	--enable-fileview \
+	--enable-optimize \
+	--with-wx-config=/usr/bin/wx-config2

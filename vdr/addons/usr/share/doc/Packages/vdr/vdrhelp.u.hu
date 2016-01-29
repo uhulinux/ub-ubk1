@@ -1,0 +1,9 @@
+A VDR indító szkriptje a /usr/bin/vdrlaunch.
+
+Ezt hívja meg a menü desktop fájlja is, mely, a /var/vdr/vdrstart fájlt indítja.
+Ha a vdrstart nincs ott, vagy letörölték, akkor újra odamásolja a /etc könyvtárból az archív példányt és a terminálba figyelmeztetést ír.
+Ha van, akkor az abban felsorolt paraméterekkel indítja a VDR-t.
+
+Ez a vdrstart fájl a használni kívánt pluginok és paraméterek szerint igény szerint átszerkesztendő, hiba esetén törölhető.
+
+A menü desktop fájlja terminált hagyva indít, hogy a vdr üzenetei abban láthatóak legyenek.

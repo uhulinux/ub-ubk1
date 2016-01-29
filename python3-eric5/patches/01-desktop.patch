@@ -1,0 +1,19 @@
+diff -Naur orig/eric/eric5.desktop patched/eric/eric5.desktop
+--- orig/eric/eric5.desktop	2013-02-03 14:01:41.000000000 +0100
++++ patched/eric/eric5.desktop	2013-07-17 01:26:44.185900989 +0200
+@@ -3,7 +3,7 @@
+ Type=Application
+ Exec=eric5
+ MimeType=text/x-python;
+-Icon=eric
++Icon=eric5
+ Terminal=false
+ Name=eric5
+ Name[de]=eric5
+@@ -11,5 +11,5 @@
+ Comment[de]=Integrierte Entwicklungsumgebung für Python
+ GenericName=Integrated Development Environment for Python
+ GenericName[de]=Integrierte Entwicklungsumgebung für Python
+-Categories=Qt;Python;Development;IDE;
++Categories=Qt;Python;Development;IDE;X-UHU-Menu/Development/Programming;
+ StartupNotify=true

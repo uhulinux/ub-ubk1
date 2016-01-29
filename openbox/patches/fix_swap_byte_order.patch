@@ -1,0 +1,12 @@
+diff -Naurd a/obrender/color.c b/obrender/color.c
+--- a/obrender/color.c	2013-08-12 03:33:24.000000000 +0200
++++ b/obrender/color.c	2013-08-13 18:19:51.000000000 +0200
+@@ -239,7 +239,7 @@
+ 
+     di = 0;
+     for (y = 0; y < im->height; ++y) {
+-        for (x = 0; x < im->height; ++x) {
++        for (x = 0; x < im->width; ++x) {
+             gchar *c = &im->data[di + x * im->bits_per_pixel / 8];
+             gchar t;
+ 

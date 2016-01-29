@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-control-center-${UB_VERSION}.tar.xz gnome-control-center-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/${UB_VERSION_HEAD2}/

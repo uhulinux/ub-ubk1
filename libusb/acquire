@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libusbx-${UB_VERSION}.tar.bz2 libusbx-${UB_VERSION}/
+	http://downloads.sourceforge.net/libusbx/

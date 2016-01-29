@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=MakeTorrent
+Comment=BitTorrent torrent file creator
+Comment[hu]=BitTorrent torrentfájlkészítő
+Icon=bittorrent
+Exec=maketorrent
+Categories=Network;FileTransfer;

@@ -1,0 +1,64 @@
+Index: strace-4.8/process.c
+===================================================================
+--- strace-4.8.orig/process.c
++++ strace-4.8/process.c
+@@ -63,9 +63,11 @@
+ # ifdef HAVE_STRUCT_PT_ALL_USER_REGS
+ #  define pt_all_user_regs XXX_pt_all_user_regs
+ # endif
++# define ptrace_peeksiginfo_args XXX_ptrace_peeksiginfo_args
+ # include <linux/ptrace.h>
+ # undef ia64_fpreg
+ # undef pt_all_user_regs
++# undef ptrace_peeksiginfo_args
+ #endif
+ 
+ #if defined(SPARC64)
+Index: strace-4.8/signal.c
+===================================================================
+--- strace-4.8.orig/signal.c
++++ strace-4.8/signal.c
+@@ -51,9 +51,11 @@
+ # ifdef HAVE_STRUCT_PT_ALL_USER_REGS
+ #  define pt_all_user_regs XXX_pt_all_user_regs
+ # endif
++# define ptrace_peeksiginfo_args XXX_ptrace_peeksiginfo_args
+ # include <linux/ptrace.h>
+ # undef ia64_fpreg
+ # undef pt_all_user_regs
++# undef ptrace_peeksiginfo_args
+ #endif
+ 
+ #ifdef IA64
+Index: strace-4.8/syscall.c
+===================================================================
+--- strace-4.8.orig/syscall.c
++++ strace-4.8/syscall.c
+@@ -48,9 +48,11 @@
+ # ifdef HAVE_STRUCT_PT_ALL_USER_REGS
+ #  define pt_all_user_regs XXX_pt_all_user_regs
+ # endif
++# define ptrace_peeksiginfo_args XXX_ptrace_peeksiginfo_args
+ # include <linux/ptrace.h>
+ # undef ia64_fpreg
+ # undef pt_all_user_regs
++# undef ptrace_peeksiginfo_args
+ #endif
+ 
+ #if defined(SPARC64)
+Index: strace-4.8/util.c
+===================================================================
+--- strace-4.8.orig/util.c
++++ strace-4.8/util.c
+@@ -55,9 +55,11 @@
+ # ifdef HAVE_STRUCT_PT_ALL_USER_REGS
+ #  define pt_all_user_regs XXX_pt_all_user_regs
+ # endif
++# define ptrace_peeksiginfo_args XXX_ptrace_peeksiginfo_args
+ # include <linux/ptrace.h>
+ # undef ia64_fpreg
+ # undef pt_all_user_regs
++# undef ptrace_peeksiginfo_args
+ #endif
+ 
+ int

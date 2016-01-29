@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+rest-${UB_VERSION}.tar.xz rest-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/rest/${UB_VERSION_HEAD2}/

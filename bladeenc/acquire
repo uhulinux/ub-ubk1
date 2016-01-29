@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+bladeenc-${UB_VERSION}-src-stable.tar.gz bladeenc-${UB_VERSION}/
+	http://bladeenc.mp3.no/source/

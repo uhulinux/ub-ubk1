@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pygtkimageview-${UB_VERSION}.tar.gz pygtkimageview-${UB_VERSION}/
+  http://trac.bjourne.webfactional.com/chrome/common/releases/

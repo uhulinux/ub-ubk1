@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+./Build install \
+      --destdir "$UB_INSTALLDIR"

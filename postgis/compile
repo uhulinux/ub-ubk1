@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+UB_CONFIGURE_NO_DISABLE_STATIC=1 \
+ub_compile

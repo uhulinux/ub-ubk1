@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Baker-${UB_VERSION}.tar.gz Baker-${UB_VERSION}/
+	http://pypi.python.org/packages/source/B/Baker/

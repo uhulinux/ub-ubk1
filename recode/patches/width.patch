@@ -1,0 +1,12 @@
+diff -Naurdp recode-3.6.orig/src/recodext.h recode-3.6/src/recodext.h
+--- recode-3.6.orig/src/recodext.h	2001-01-04 15:36:54.000000000 +0100
++++ recode-3.6/src/recodext.h	2009-12-01 18:35:13.000000000 +0100
+@@ -218,7 +218,7 @@ struct recode_symbol
+     enum recode_symbol_type type : 3;
+ 
+     /* Non zero if this one should be ignored.  */
+-    bool ignore : 2;
++    bool ignore;
+   };
+ 
+ struct recode_surface_list

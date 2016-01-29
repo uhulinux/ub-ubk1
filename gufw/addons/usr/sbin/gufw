@@ -1,0 +1,3 @@
+#!/bin/bash
+# This script starts Gufw from the console
+python /usr/share/gufw/gufw.py

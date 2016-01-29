@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=xeyes
+Comment=Eyes following the cursor
+Comment[hu]=Egérkurzort követő szemek
+Exec=xeyes
+Categories=Utility;

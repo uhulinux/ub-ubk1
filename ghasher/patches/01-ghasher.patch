@@ -1,0 +1,29 @@
+diff -Naur orig/Makefile mod/Makefile
+--- orig/Makefile	2005-11-22 18:24:41.000000000 +0100
++++ mod/Makefile	2009-02-28 17:34:32.000000000 +0100
+@@ -2,9 +2,9 @@
+ CFLAGS +=`pkg-config gtk+-2.0 libglade-2.0 --cflags`
+ LDFLAGS =`pkg-config gtk+-2.0 libglade-2.0 --libs` -lcrypto -Wl,-O2
+ OBJECTS = gui.o util.o list.o verify.o
+-BINDIR=/usr/bin
+-PIXMAPDIR=/usr/share/pixmaps
+-DESKTOPFILEDIR=/usr/share/applications/
++BINDIR=$(DESTDIR)/usr/bin
++PIXMAPDIR=$(DESTDIR)/usr/share/pixmaps
++#DESKTOPFILEDIR=/usr/share/applications/
+ 
+ ghasher: ${OBJECTS} 
+ 	${CC} -o ghasher ${OBJECTS} ${LDFLAGS} 
+@@ -24,9 +24,9 @@
+ .PHONY: install clean
+ 
+ install: ghasher
+-	install -c -o root ./ghasher ${BINDIR}/ghasher
+-	install -c -m 444 -o root ghasher.desktop ${DESKTOPFILEDIR}/utelsystems-ghasher.desktop
+-	install -c -m 444 -o root hash.xpm ${PIXMAPDIR}/hash.xpm
++	install -m 755 -o root ./ghasher ${BINDIR}/ghasher
++#	install -c -m 444 -o root ghasher.desktop ${DESKTOPFILEDIR}/utelsystems-ghasher.desktop
++	install -m 644 -o root hash.xpm ${PIXMAPDIR}/hash.xpm
+ 
+ clean:
+ 	rm -f  *.o ghasher ghasher-glade.c text2cstring

@@ -1,0 +1,17 @@
+--- gsmartcontrol.orig/data/gsmartcontrol.desktop.in	2008-11-15 11:01:06.000000000 +0100
++++ gsmartcontrol/data/gsmartcontrol.desktop.in	2009-09-06 12:07:05.000000000 +0200
+@@ -4,7 +4,7 @@
+ Version=1.0
+ Type=Application
+ 
+-Categories=System;Monitor;
++Categories=System;Monitor;X-UHU-Menu/Settings;
+ 
+ Name=GSmartControl
+ # short description, usually shown in parentheses after Name
+@@ -23,4 +23,4 @@
+ #X-KDE-RootOnly=true
+ 
+ # Run with root permissions.
+-Exec="@prefix@/bin/gsmartcontrol-root"
++Exec=gsmartcontrol

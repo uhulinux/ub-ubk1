@@ -1,0 +1,4250 @@
+diff -Naur orig/addons/library.xbmc.addon/libXBMC_addon.h mod/addons/library.xbmc.addon/libXBMC_addon.h
+--- orig/addons/library.xbmc.addon/libXBMC_addon.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/library.xbmc.addon/libXBMC_addon.h	2014-06-20 21:31:38.000000000 +0200
+@@ -1,6 +1,6 @@
+ #pragma once
+ /*
+- *      Copyright (C) 2005-2010 Team XBMC
++ *      Copyright (C) 2005-2013 Team XBMC
+  *      http://www.xbmc.org
+  *
+  *  This Program is free software; you can redistribute it and/or modify
+@@ -158,6 +158,10 @@
+         dlsym(m_libXBMC_addon, "XBMC_queue_notification");
+       if (XBMC_queue_notification == NULL) { fprintf(stderr, "Unable to assign function %s\n", dlerror()); return false; }
+ 
++      XBMC_wake_on_lan = (bool (*)(void* HANDLE, void *CB, const char *mac))
++        dlsym(m_libXBMC_addon, "XBMC_wake_on_lan");
++      if (XBMC_wake_on_lan == NULL) { fprintf(stderr, "Unable to assign function %s\n", dlerror()); return false; }
++
+       XBMC_unknown_to_utf8 = (char* (*)(void* HANDLE, void* CB, const char* str))
+         dlsym(m_libXBMC_addon, "XBMC_unknown_to_utf8");
+       if (XBMC_unknown_to_utf8 == NULL) { fprintf(stderr, "Unable to assign function %s\n", dlerror()); return false; }
+@@ -296,6 +300,16 @@
+     }
+ 
+     /*!
++     * @brief Send WakeOnLan magic packet.
++     * @param mac Network address of the host to wake.
++     * @return True if the magic packet was successfully sent, false otherwise.
++     */
++    bool WakeOnLan(const char* mac)
++    {
++      return XBMC_wake_on_lan(m_Handle, m_Callbacks, mac);
++    }
++
++    /*!
+      * @brief Translate a string with an unknown encoding to UTF8.
+      * @param str The string to translate.
+      * @return The string translated to UTF8. Must be freed by calling FreeString() when done.
+@@ -541,6 +555,7 @@
+     void (*XBMC_log)(void *HANDLE, void* CB, const addon_log_t loglevel, const char *msg);
+     bool (*XBMC_get_setting)(void *HANDLE, void* CB, const char* settingName, void *settingValue);
+     void (*XBMC_queue_notification)(void *HANDLE, void* CB, const queue_msg_t type, const char *msg);
++    bool (*XBMC_wake_on_lan)(void *HANDLE, void* CB, const char* mac);
+     char* (*XBMC_unknown_to_utf8)(void *HANDLE, void* CB, const char* str);
+     char* (*XBMC_get_localized_string)(void *HANDLE, void* CB, int dwCode);
+     char* (*XBMC_get_dvd_menu_language)(void *HANDLE, void* CB);
+diff -Naur orig/addons/library.xbmc.codec/libXBMC_codec.h mod/addons/library.xbmc.codec/libXBMC_codec.h
+--- orig/addons/library.xbmc.codec/libXBMC_codec.h	1970-01-01 01:00:00.000000000 +0100
++++ mod/addons/library.xbmc.codec/libXBMC_codec.h	2014-06-20 21:31:38.000000000 +0200
+@@ -0,0 +1,124 @@
++#pragma once
++/*
++ *      Copyright (C) 2005-2013 Team XBMC
++ *      http://www.xbmc.org
++ *
++ *  This Program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2, or (at your option)
++ *  any later version.
++ *
++ *  This Program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with XBMC; see the file COPYING.  If not, see
++ *  <http://www.gnu.org/licenses/>.
++ *
++ */
++
++#include <string>
++#include <vector>
++#include <string.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include "xbmc_codec_types.h"
++#include "libXBMC_addon.h"
++
++#ifdef _WIN32
++#define CODEC_HELPER_DLL "\\library.xbmc.codec\\libXBMC_codec" ADDON_HELPER_EXT
++#else
++#define CODEC_HELPER_DLL_NAME "libXBMC_codec-" ADDON_HELPER_ARCH ADDON_HELPER_EXT
++#define CODEC_HELPER_DLL "/library.xbmc.codec/" CODEC_HELPER_DLL_NAME
++#endif
++
++class CHelper_libXBMC_codec
++{
++public:
++  CHelper_libXBMC_codec(void)
++  {
++    m_libXBMC_codec = NULL;
++    m_Handle        = NULL;
++  }
++
++  ~CHelper_libXBMC_codec(void)
++  {
++    if (m_libXBMC_codec)
++    {
++      CODEC_unregister_me(m_Handle, m_Callbacks);
++      dlclose(m_libXBMC_codec);
++    }
++  }
++
++  /*!
++   * @brief Resolve all callback methods
++   * @param handle Pointer to the add-on
++   * @return True when all methods were resolved, false otherwise.
++   */
++  bool RegisterMe(void* handle)
++  {
++    m_Handle = handle;
++
++    std::string libBasePath;
++    libBasePath  = ((cb_array*)m_Handle)->libPath;
++    libBasePath += CODEC_HELPER_DLL;
++
++#if defined(ANDROID)
++      struct stat st;
++      if(stat(libBasePath.c_str(),&st) != 0)
++      {
++        std::string tempbin = getenv("XBMC_ANDROID_LIBS");
++        libBasePath = tempbin + "/" + CODEC_HELPER_DLL_NAME;
++      }
++#endif
++
++    m_libXBMC_codec = dlopen(libBasePath.c_str(), RTLD_LAZY);
++    if (m_libXBMC_codec == NULL)
++    {
++      fprintf(stderr, "Unable to load %s\n", dlerror());
++      return false;
++    }
++
++    CODEC_register_me = (void* (*)(void *HANDLE))
++      dlsym(m_libXBMC_codec, "CODEC_register_me");
++    if (CODEC_register_me == NULL) { fprintf(stderr, "Unable to assign function %s\n", dlerror()); return false; }
++
++    CODEC_unregister_me = (void (*)(void* HANDLE, void* CB))
++      dlsym(m_libXBMC_codec, "CODEC_unregister_me");
++    if (CODEC_unregister_me == NULL) { fprintf(stderr, "Unable to assign function %s\n", dlerror()); return false; }
++
++    CODEC_get_codec_by_name = (xbmc_codec_t (*)(void* HANDLE, void* CB, const char* strCodecName))
++        dlsym(m_libXBMC_codec, "CODEC_get_codec_by_name");
++    if (CODEC_get_codec_by_name == NULL) { fprintf(stderr, "Unable to assign function %s\n", dlerror()); return false; }
++
++    m_Callbacks = CODEC_register_me(m_Handle);
++    return m_Callbacks != NULL;
++  }
++
++  /*!
++   * @brief Get the codec id used by XBMC
++   * @param strCodecName The name of the codec
++   * @return The codec_id, or a codec_id with 0 values when not supported
++   */
++  xbmc_codec_t GetCodecByName(const char* strCodecName)
++  {
++    return CODEC_get_codec_by_name(m_Handle, m_Callbacks, strCodecName);
++  }
++
++protected:
++  void* (*CODEC_register_me)(void*);
++  void (*CODEC_unregister_me)(void*, void*);
++  xbmc_codec_t (*CODEC_get_codec_by_name)(void *HANDLE, void* CB, const char* strCodecName);
++
++private:
++  void* m_libXBMC_codec;
++  void* m_Handle;
++  void* m_Callbacks;
++  struct cb_array
++  {
++    const char* libPath;
++  };
++};
++
+diff -Naur orig/addons/library.xbmc.gui/libXBMC_gui.h mod/addons/library.xbmc.gui/libXBMC_gui.h
+--- orig/addons/library.xbmc.gui/libXBMC_gui.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/library.xbmc.gui/libXBMC_gui.h	2014-06-20 21:31:38.000000000 +0200
+@@ -1,6 +1,6 @@
+ #pragma once
+ /*
+- *      Copyright (C) 2005-2010 Team XBMC
++ *      Copyright (C) 2005-2013 Team XBMC
+  *      http://www.xbmc.org
+  *
+  *  This Program is free software; you can redistribute it and/or modify
+@@ -24,7 +24,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+-#include "../library.xbmc.addon/libXBMC_addon.h"
++#include "libXBMC_addon.h"
+ 
+ typedef void* GUIHANDLE;
+ 
+@@ -35,6 +35,12 @@
+ #define GUI_HELPER_DLL "/library.xbmc.gui/" GUI_HELPER_DLL_NAME
+ #endif
+ 
++/* current ADDONGUI API version */
++#define XBMC_GUI_API_VERSION "5.0.1"
++
++/* min. ADDONGUI API version */
++#define XBMC_GUI_MIN_API_VERSION "5.0.1"
++
+ #define ADDON_ACTION_PREVIOUS_MENU          10
+ #define ADDON_ACTION_CLOSE_DIALOG           51
+ 
+@@ -43,6 +49,7 @@
+ class CAddonGUIRadioButton;
+ class CAddonGUIProgressControl;
+ class CAddonListItem;
++class CAddonGUIRenderingControl;
+ 
+ class CHelper_libXBMC_gui
+ {
+@@ -154,6 +161,14 @@
+       dlsym(m_libXBMC_gui, "GUI_ListItem_destroy");
+     if (GUI_ListItem_destroy == NULL) { fprintf(stderr, "Unable to assign function %s\n", dlerror()); return false; }
+ 
++    GUI_control_get_rendering = (CAddonGUIRenderingControl* (*)(void *HANDLE, void *CB, CAddonGUIWindow *window, int controlId))
++      dlsym(m_libXBMC_gui, "GUI_control_get_rendering");
++    if (GUI_control_get_rendering == NULL) { fprintf(stderr, "Unable to assign function %s\n", dlerror()); return false; }
++
++    GUI_control_release_rendering = (void (*)(CAddonGUIRenderingControl* p))
++      dlsym(m_libXBMC_gui, "GUI_control_release_rendering");
++    if (GUI_control_release_rendering == NULL) { fprintf(stderr, "Unable to assign function %s\n", dlerror()); return false; }
++
+ 
+     m_Callbacks = GUI_register_me(m_Handle);
+     return m_Callbacks != NULL;
+@@ -234,6 +249,16 @@
+     return GUI_ListItem_destroy(p);
+   }
+ 
++  CAddonGUIRenderingControl* Control_getRendering(CAddonGUIWindow *window, int controlId)
++  {
++    return GUI_control_get_rendering(m_Handle, m_Callbacks, window, controlId);
++  }
++
++  void Control_releaseRendering(CAddonGUIRenderingControl* p)
++  {
++    return GUI_control_release_rendering(p);
++  }
++
+ protected:
+   void* (*GUI_register_me)(void *HANDLE);
+   void (*GUI_unregister_me)(void *HANDLE, void* CB);
+@@ -252,6 +277,8 @@
+   void (*GUI_control_release_progress)(CAddonGUIProgressControl* p);
+   CAddonListItem* (*GUI_ListItem_create)(void *HANDLE, void* CB, const char *label, const char *label2, const char *iconImage, const char *thumbnailImage, const char *path);
+   void (*GUI_ListItem_destroy)(CAddonListItem* p);
++  CAddonGUIRenderingControl* (*GUI_control_get_rendering)(void *HANDLE, void* CB, CAddonGUIWindow *window, int controlId);
++  void (*GUI_control_release_rendering)(CAddonGUIRenderingControl* p);
+ 
+ private:
+   void *m_libXBMC_gui;
+@@ -355,6 +382,7 @@
+ friend class CAddonGUISpinControl;
+ friend class CAddonGUIRadioButton;
+ friend class CAddonGUIProgressControl;
++friend class CAddonGUIRenderingControl;
+ 
+ public:
+   CAddonGUIWindow(void *hdl, void *cb, const char *xmlFilename, const char *defaultSkin, bool forceFallback, bool asDialog);
+@@ -385,6 +413,7 @@
+   virtual void         SetCurrentListPosition(int listPos);
+   virtual int          GetCurrentListPosition();
+   virtual void         SetControlLabel(int controlId, const char *label);
++  virtual void         MarkDirtyRegion();
+ 
+   virtual bool         OnClick(int controlId);
+   virtual bool         OnFocus(int controlId);
+@@ -402,3 +431,29 @@
+   void *m_Handle;
+   void *m_cb;
+ };
++
++class CAddonGUIRenderingControl
++{
++public:
++  CAddonGUIRenderingControl(void *hdl, void *cb, CAddonGUIWindow *window, int controlId);
++  virtual ~CAddonGUIRenderingControl();
++  virtual void Init();
++
++  virtual bool Create(int x, int y, int w, int h, void *device);
++  virtual void Render();
++  virtual void Stop();
++  virtual bool Dirty();
++
++  GUIHANDLE m_cbhdl;
++  bool (*CBCreate)(GUIHANDLE cbhdl, int x, int y, int w, int h, void *device);
++  void (*CBRender)(GUIHANDLE cbhdl);
++  void (*CBStop)(GUIHANDLE cbhdl);
++  bool (*CBDirty)(GUIHANDLE cbhdl);
++
++private:
++  CAddonGUIWindow *m_Window;
++  int         m_ControlId;
++  GUIHANDLE   m_RenderingHandle;
++  void *m_Handle;
++  void *m_cb;
++};
+diff -Naur orig/addons/library.xbmc.pvr/libXBMC_pvr.h mod/addons/library.xbmc.pvr/libXBMC_pvr.h
+--- orig/addons/library.xbmc.pvr/libXBMC_pvr.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/library.xbmc.pvr/libXBMC_pvr.h	2014-06-20 21:31:38.000000000 +0200
+@@ -1,6 +1,6 @@
+ #pragma once
+ /*
+- *      Copyright (C) 2005-2010 Team XBMC
++ *      Copyright (C) 2005-2013 Team XBMC
+  *      http://www.xbmc.org
+  *
+  *  This Program is free software; you can redistribute it and/or modify
+@@ -25,7 +25,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include "xbmc_pvr_types.h"
+-#include "../library.xbmc.addon/libXBMC_addon.h"
++#include "libXBMC_addon.h"
+ 
+ #ifdef _WIN32
+ #define PVR_HELPER_DLL "\\library.xbmc.pvr\\libXBMC_pvr" ADDON_HELPER_EXT
+diff -Naur orig/addons/Makefile.am mod/addons/Makefile.am
+--- orig/addons/Makefile.am	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/Makefile.am	2014-06-20 21:31:38.000000000 +0200
+@@ -10,6 +10,7 @@
+ 	library.xbmc.addon/libXBMC_addon.h \
+ 	library.xbmc.pvr/libXBMC_pvr.h \
+ 	library.xbmc.gui/libXBMC_gui.h \
++	library.xbmc.codec/libXBMC_codec.h \
+ 	repository.xvdr.linux32/addon.xml \
+ 	repository.xvdr.linux32/icon.png \
+ 	repository.xvdr.linux64/addon.xml \
+diff -Naur orig/addons/pvr.vdr.xvdr/Makefile.am mod/addons/pvr.vdr.xvdr/Makefile.am
+--- orig/addons/pvr.vdr.xvdr/Makefile.am	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/pvr.vdr.xvdr/Makefile.am	2014-06-20 21:31:38.000000000 +0200
+@@ -14,11 +14,11 @@
+ 	make -C ../../src
+ 
+ install-data-hook: $(ADDONNAME)
+-	-cp -Rf $(srcdir)/resources $(DESTDIR)$(addondir)
+-	chmod -R +w $(DESTDIR)$(addondir)/resources
++	cp -Rf "$(srcdir)/resources" "$(DESTDIR)$(addondir)"
++	chmod -R +w "$(DESTDIR)$(addondir)/resources"
+ 
+ uninstall-hook:
+-	rm -Rf $(DESTDIR)$(addondir)/resources
++	rm -Rf "$(DESTDIR)$(addondir)/resources"
+ 
+ EXTRA_DIST = \
+ 	resources \
+diff -Naur orig/addons/pvr.vdr.xvdr/resources/language/English/strings.xml mod/addons/pvr.vdr.xvdr/resources/language/English/strings.xml
+--- orig/addons/pvr.vdr.xvdr/resources/language/English/strings.xml	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/pvr.vdr.xvdr/resources/language/English/strings.xml	2014-06-20 21:31:38.000000000 +0200
+@@ -78,4 +78,15 @@
+     <string id="30074">Failed to load scanner setup !</string>
+     <string id="30075">Your TV channel list is currently empty.</string>
+     <string id="30076">Do you want to start a channel scan ?</string>
++    <string id="30077">Picons</string>
++    <string id="30078">Time Shifting</string>
++    <string id="30079">Memorybuffer size (Mb)</string>
++    <string id="30080">Buffer folder</string>
++    <string id="30081">Method</string>
++    <string id="30082">Simple timeshift (Pause LiveTV)</string>
++    <string id="30083">Full timeshift (RAM)</string>
++    <string id="30084">Full timeshift (HDD)</string>
++    <string id="30085">HDD Buffer size (Mb)</string>
++    <string id="30086">Start with I-Frame (Raspberry Pi)</string>
++    <string id="30087">Clientname</string>
+ </strings>
+diff -Naur orig/addons/pvr.vdr.xvdr/resources/language/Finnish/strings.xml mod/addons/pvr.vdr.xvdr/resources/language/Finnish/strings.xml
+--- orig/addons/pvr.vdr.xvdr/resources/language/Finnish/strings.xml	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/pvr.vdr.xvdr/resources/language/Finnish/strings.xml	2014-06-20 21:31:38.000000000 +0200
+@@ -2,13 +2,16 @@
+ <strings>
+     <!-- settings labels -->
+     <string id="30000">VDR-palvelimen nimi tai IP-osoite</string>
++    <string id="30001">Protokollan pakkaus</string>
+     <string id="30002">Tärkeysaste</string>
+     <string id="30003">Kirjainmerkistön muunnos</string>
+     <string id="30004">Yhteyden aikakatkaisu (s)</string>
+     <string id="30005">Salli VDR-palvelimen viestit</string>
+-    <string id="30006">Lue nauhoitukset kansiosta</string>
+-    <string id="30007">VDR-nauhoitusten kansio</string>
++    <string id="30006">Lue tallenteet hakemisto</string>
++    <string id="30007">VDR-tallenteiden hakemisto</string>
+     <string id="30008">XVDR Kanavahaku</string>
++    <string id="30009">Pysäytä</string>
++    <string id="30010">Käynnistä</string>
+     <string id="30011">Lähteen tyyppi</string>
+     <string id="30012">TV-kanavat</string>
+     <string id="30013">Radiokanavat</string>
+@@ -36,9 +39,54 @@
+     <string id="30035">Uudet kanavat</string>
+     <string id="30036">Kanavahaku valmis</string>
+     <string id="30037">Ei laitetta saatavilla - lopetetaan</string>
++    <string id="30038">%i%% valmiina / %i kanavaa</string>
+     <string id="30039">Käynnissä</string>
+     <string id="30040">Pysäytetty</string>
+     <string id="30041">Valmis</string>
+     <string id="30042">Kanavahaku peruutettu</string>
+     <string id="30043">Kanavahaku virhe</string>
++    <string id="30044">Yhteys VDR-palvelimeen katkesi</string>
++    <string id="30045">Yhteys VDR-palvelimeen palautettu</string>
++    <string id="30046">Luo kanavaryhmät automaattisesti</string>
++    <string id="30047">TV signaali kadotettu</string>
++    <string id="30048">TV signaali palautettu</string>
++    <string id="30049">Haluttu äänikanava</string>
++    <string id="30050">Yhteys</string>
++    <string id="30051">VDR</string>
++    <string id="30052">Kanavapäivitys</string>
++    <string id="30053">Ei mitään</string>
++    <string id="30054">Vain nimet</string>
++    <string id="30055">Vain PIDit</string>
++    <string id="30056">Nimet ja PIDit</string>
++    <string id="30057">Lisää uusia kanavia</string>
++    <string id="30058">Lisää uusia transpondereita</string>
++    <string id="30059">Matala</string>
++    <string id="30060">Keskitaso</string>
++    <string id="30061">Korkea</string>
++    <string id="30062">Tallennus käynnissä. Kanavanvaihto epäonnistui</string>
++    <string id="30063">Kaikki vastaanottimet käytössä</string>
++    <string id="30064">Virhe kanavanvaihdossa</string>
++    <string id="30065">Tuntematon kanava '%s'</string>
++    <string id="30066">Salattu kanava</string>
++    <string id="30067">Kanavasuodatus</string>
++    <string id="30068">Ilmaiskanavat</string>
++    <string id="30069">Vain alkuperäinen kieli</string>
++    <string id="30070">Tuetut CaID:t</string>
++    <string id="30071">Salatut kanavat</string>
++    <string id="30072">Kanavahaku aloitettu</string>
++    <string id="30073">Pysäytetään kanavahakua...</string>
++    <string id="30074">Kanavahakuasetusten lataus epäonnistui!</string>
++    <string id="30075">TV-kanavalistasi on tyhjä.</string>
++    <string id="30076">Haluatko aloittaa kanavahaun?</string>
++    <string id="30077">Picons</string>
++    <string id="30078">Ajansiirto</string>
++    <string id="30079">Muistipuskurin koko (Mb)</string>
++    <string id="30080">Puskurin hakemisto</string>
++    <string id="30081">Menetelmä</string>
++    <string id="30082">Yksinkertainen ajansiirto (Pysäytä LiveTV)</string>
++    <string id="30083">Täysi ajansiirto (RAM)</string>
++    <string id="30084">Täysi ajansiirto (HDD)</string>
++    <string id="30085">HDD puskurin koko (Mb)</string>
++    <string id="30086">Aloita I-kuvasta (Raspberry Pi)</string>
++    <string id="30087">Asiakasnimi</string>
+ </strings>
+diff -Naur orig/addons/pvr.vdr.xvdr/resources/language/German/strings.xml mod/addons/pvr.vdr.xvdr/resources/language/German/strings.xml
+--- orig/addons/pvr.vdr.xvdr/resources/language/German/strings.xml	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/pvr.vdr.xvdr/resources/language/German/strings.xml	2014-06-20 21:31:38.000000000 +0200
+@@ -78,4 +78,15 @@
+     <string id="30074">Einstellungen für Sendersuchlauf konnten nicht geladen werden !</string>
+     <string id="30075">Ihre TV Kanalliste ist leer.</string>
+     <string id="30076">Wollen Sie den Sendersuchlauf starten ?</string>
++    <string id="30077">Picons</string>
++    <string id="30078">Timeshift</string>
++    <string id="30079">Puffergröße RAM (Mb)</string>
++    <string id="30080">Pufferverzeichnis</string>
++    <string id="30081">Methode</string>
++    <string id="30082">Einfach (Pause LiveTV)</string>
++    <string id="30083">Vollständig (RAM)</string>
++    <string id="30084">Vollständig (HDD)</string>
++    <string id="30085">Puffergröße HDD (Mb)</string>
++    <string id="30086">Video startet mit I-Frame (Raspberry Pi)</string>
++    <string id="30087">Gerätename</string>
+ </strings>
+diff -Naur orig/addons/pvr.vdr.xvdr/resources/settings.xml mod/addons/pvr.vdr.xvdr/resources/settings.xml
+--- orig/addons/pvr.vdr.xvdr/resources/settings.xml	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/pvr.vdr.xvdr/resources/settings.xml	2014-06-20 21:31:38.000000000 +0200
+@@ -7,6 +7,8 @@
+         <setting id="compression" type="enum" label="30001" lvalues="30053|30059|30060|30061" default="2" />
+         <setting id="priority" type="enum" label="30002" values="0|5|10|15|20|25|30|35|40|45|50|55|60|65|70|75|80|85|90|95|99|100" default="10"/>
+         <setting id="handlemessages" type="bool" label="30005" default="true" />
++        <setting id="piconpath" type="folder" label="30077" default="" />
++        <setting id="clientname" type="text" label="30087" default="XBMC Mediacenter" />
+     </category>
+ 
+     <!-- VDR -->
+@@ -14,6 +16,7 @@
+         <setting id="autochannelgroups" type="bool" label="30046" default="false" />
+         <setting id="audiotype" type="enum" label="30049" values="NONE|MP2|AC3|EAC3|AAC|LATM" default="1" />
+         <setting id="updatechannels" type="enum" label="30052" lvalues="30053|30054|30055|30056|30057|30058" default="3" />
++        <setting id="iframe" type="bool" label="30086" default="false" />
+     </category>
+ 
+     <!-- ChannelFilter -->
+@@ -23,4 +26,12 @@
+         <setting id="encryptedchannels" type="bool" label="30071" default="true" />
+         <setting id="caids" type="text" label="30070" default="" />
+     </category>
++
++    <!-- Time Shifting -->
++    <category label="30078">
++        <setting id="tsmethod" type="enum" label="30081" lvalues="30082|30083|30084" default="0" />
++        <setting id="tsbuffersize" type="number" label="30079" default="200" />
++        <setting id="tsbuffersizehdd" type="number" label="30085" default="1024" />
++        <setting id="tsfolder" type="folder" label="30080" default="" />
++    </category>
+ </settings>
+diff -Naur orig/addons/repository.xvdr.linux32/addon.xml mod/addons/repository.xvdr.linux32/addon.xml
+--- orig/addons/repository.xvdr.linux32/addon.xml	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/repository.xvdr.linux32/addon.xml	2014-06-20 21:31:38.000000000 +0200
+@@ -1,9 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ <addon id="repository.xvdr.linux32" name="XVDR Updates (32bit)" version="1.0.0" provider-name="Alexander Pipelka">
+ 	<extension point="xbmc.addon.repository" name="XVDR Add-on Repository (Linux 32bit)">
+-		<info compressed="false">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/32bit/addons.xml</info>
+-		<checksum>http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/32bit/addons.xml.md5</checksum>
+-		<datadir zip="true">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/32bit</datadir>
++		<info compressed="false">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/32bit/addons.xml</info>
++		<checksum>http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/32bit/addons.xml.md5</checksum>
++		<datadir zip="true">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/32bit</datadir>
+ 	</extension>
+ 	<extension point="xbmc.addon.metadata">
+ 		<summary>XVDR Addon Repository for 32Bit Linux clients</summary>
+diff -Naur orig/addons/repository.xvdr.linux64/addon.xml mod/addons/repository.xvdr.linux64/addon.xml
+--- orig/addons/repository.xvdr.linux64/addon.xml	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/repository.xvdr.linux64/addon.xml	2014-06-20 21:31:38.000000000 +0200
+@@ -1,9 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ <addon id="repository.xvdr.linux64" name="XVDR Updates (64bit)" version="1.0.0" provider-name="Alexander Pipelka">
+ 	<extension point="xbmc.addon.repository" name="XVDR Add-on Repository (Linux 64bit)">
+-		<info compressed="false">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/64bit/addons.xml</info>
+-		<checksum>http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/64bit/addons.xml.md5</checksum>
+-		<datadir zip="true">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/64bit</datadir>
++		<info compressed="false">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/64bit/addons.xml</info>
++		<checksum>http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/64bit/addons.xml.md5</checksum>
++		<datadir zip="true">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/64bit</datadir>
+ 	</extension>
+ 	<extension point="xbmc.addon.metadata">
+ 		<summary>XVDR Addon Repository for 64Bit Linux clients</summary>
+diff -Naur orig/addons/repository.xvdr.osx/addon.xml mod/addons/repository.xvdr.osx/addon.xml
+--- orig/addons/repository.xvdr.osx/addon.xml	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/repository.xvdr.osx/addon.xml	2014-06-20 21:31:38.000000000 +0200
+@@ -1,9 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ <addon id="repository.xvdr.osx" name="XVDR Updates (32bit)" version="1.0.0" provider-name="Alexander Pipelka">
+ 	<extension point="xbmc.addon.repository" name="XVDR Add-on Repository (Apple MacOS X)">
+-		<info compressed="false">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/osx/addons.xml</info>
+-		<checksum>http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/osx/addons.xml.md5</checksum>
+-		<datadir zip="true">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/osx</datadir>
++		<info compressed="false">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/osx/addons.xml</info>
++		<checksum>http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/osx/addons.xml.md5</checksum>
++		<datadir zip="true">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/osx</datadir>
+ 	</extension>
+ 	<extension point="xbmc.addon.metadata">
+ 		<summary>XVDR Addon Repository for Apple MacOS X clients</summary>
+diff -Naur orig/addons/repository.xvdr.osx64/addon.xml mod/addons/repository.xvdr.osx64/addon.xml
+--- orig/addons/repository.xvdr.osx64/addon.xml	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/repository.xvdr.osx64/addon.xml	2014-06-20 21:31:38.000000000 +0200
+@@ -1,9 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ <addon id="repository.xvdr.osx64" name="XVDR Updates (64bit)" version="1.0.0" provider-name="Alexander Pipelka">
+ 	<extension point="xbmc.addon.repository" name="XVDR Add-on Repository (Apple MacOS X 64bit)">
+-		<info compressed="false">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/osx64/addons.xml</info>
+-		<checksum>http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/osx64/addons.xml.md5</checksum>
+-		<datadir zip="true">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/osx64</datadir>
++		<info compressed="false">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/osx64/addons.xml</info>
++		<checksum>http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/osx64/addons.xml.md5</checksum>
++		<datadir zip="true">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/osx64</datadir>
+ 	</extension>
+ 	<extension point="xbmc.addon.metadata">
+ 		<summary>XVDR Addon Repository for Apple MacOS X (64bit) clients</summary>
+diff -Naur orig/addons/repository.xvdr.rpi/addon.xml mod/addons/repository.xvdr.rpi/addon.xml
+--- orig/addons/repository.xvdr.rpi/addon.xml	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/repository.xvdr.rpi/addon.xml	2014-06-20 21:31:38.000000000 +0200
+@@ -1,9 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ <addon id="repository.xvdr.rpi" name="XVDR Updates (32bit)" version="1.0.0" provider-name="Alexander Pipelka">
+ 	<extension point="xbmc.addon.repository" name="XVDR Add-on Repository (Raspberry Pi)">
+-		<info compressed="false">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/rpi/addons.xml</info>
+-		<checksum>http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/rpi/addons.xml.md5</checksum>
+-		<datadir zip="true">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/rpi</datadir>
++		<info compressed="false">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/rpi/addons.xml</info>
++		<checksum>http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/rpi/addons.xml.md5</checksum>
++		<datadir zip="true">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/rpi</datadir>
+ 	</extension>
+ 	<extension point="xbmc.addon.metadata">
+ 		<summary>XVDR Addon Repository for Raspberry Pi clients</summary>
+diff -Naur orig/addons/repository.xvdr.win32/addon.xml mod/addons/repository.xvdr.win32/addon.xml
+--- orig/addons/repository.xvdr.win32/addon.xml	2013-02-21 20:17:06.000000000 +0100
++++ mod/addons/repository.xvdr.win32/addon.xml	2014-06-20 21:31:38.000000000 +0200
+@@ -1,9 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ <addon id="repository.xvdr.win32" name="XVDR Updates (Windows 32bit)" version="1.0.0" provider-name="Alexander Pipelka">
+ 	<extension point="xbmc.addon.repository" name="XVDR Add-on Repository (Windows 32bit)">
+-		<info compressed="false">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/win32/addons.xml</info>
+-		<checksum>http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/win32/addons.xml.md5</checksum>
+-		<datadir zip="true">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr/win32</datadir>
++		<info compressed="false">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/win32/addons.xml</info>
++		<checksum>http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/win32/addons.xml.md5</checksum>
++		<datadir zip="true">http://dl.dropbox.com/u/240579/xbmc-addon-xvdr-gotham/win32</datadir>
+ 	</extension>
+ 	<extension point="xbmc.addon.metadata">
+ 		<summary>XVDR Addon Repository for 32Bit Windows clients</summary>
+diff -Naur orig/autogen.sh mod/autogen.sh
+--- orig/autogen.sh	2013-02-21 20:17:06.000000000 +0100
++++ mod/autogen.sh	2014-06-20 21:31:38.000000000 +0200
+@@ -1,75 +1,3 @@
+-found_bin=""
++#!/bin/sh
+ 
+-checkbin() {
+-  echo -n "Checking for $1 ... "
+-  found_bin=`which $1`
+-
+-  if [ "x$found_bin" != "x" ] ; then
+-    echo $found_bin
+-    return 0
+-  fi
+-
+-  echo "not found !"
+-  return 1
+-}
+-
+-# check for libtoolize
+-
+-checkbin libtoolize || {
+-  checkbin glibtoolize || {
+-    echo "neither \"libtoolize\" nor \"glibtoolize\" found !"
+-    exit 1
+-  }
+-}
+-LIBTOOLIZE=$found_bin
+-
+-# check for aclocal
+-
+-checkbin aclocal || {
+-  exit 1
+-}
+-ACLOCAL=$found_bin
+-
+-# check for automake
+-
+-checkbin automake || {
+-  exit 1
+-}
+-AUTOMAKE=$found_bin
+-
+-# check for autoconf
+-
+-checkbin autoconf || {
+-  exit 1
+-}
+-AUTOCONF=$found_bin
+-
+-echo
+-
+-echo "Generating build information ..."
+-cd `dirname $0`
+-aclocalinclude="$ACLOCAL_FLAGS"
+-mkdir -p autotools
+-
+-echo "Running libtoolize ..."
+-$LIBTOOLIZE --copy --force --automake || exit 1
+-
+-echo "Running aclocal $aclocalinclude ..."
+-$ACLOCAL $aclocalinclude || {
+-    echo
+-    echo "**Error**: aclocal failed. This may mean that you have not"
+-    echo "installed all of the packages you need, or you may need to"
+-    echo "set ACLOCAL_FLAGS to include \"-I \$prefix/share/aclocal\""
+-    echo "for the prefix where you installed the packages whose"
+-    echo "macros were not found"
+-    exit 1
+-}
+-
+-echo "Running automake ..."
+-$AUTOMAKE -c -a --foreign || ( echo "***ERROR*** automake failed." ; exit 1 )
+-
+-echo "Running autoconf ..."
+-$AUTOCONF || ( echo "***ERROR*** autoconf failed." ; exit 1 )
+-
+-echo
+-echo "Please run ./configure now."
++autoreconf -f -i
+diff -Naur orig/configure.ac mod/configure.ac
+--- orig/configure.ac	1970-01-01 01:00:00.000000000 +0100
++++ mod/configure.ac	2014-06-20 21:31:38.000000000 +0200
+@@ -0,0 +1,100 @@
++m4_define([MAJOR], 0)
++m4_define([MINOR], 9)
++m4_define([MICRO], 8)
++
++dnl Process this file with autoconf to produce a configure script.
++AC_INIT([xbmc-addon-xvdr], [MAJOR.MINOR.MICRO], [alexander.pipelka@gmail.com])
++
++AC_CONFIG_AUX_DIR(autotools)
++AC_PREFIX_DEFAULT(/usr/lib/xbmc)
++
++AC_CANONICAL_HOST
++AC_CANONICAL_TARGET
++
++dnl Setup for automake
++AM_INIT_AUTOMAKE([foreign])
++
++dnl Check for tools
++
++AC_LIBTOOL_WIN32_DLL
++AM_PROG_LIBTOOL
++AC_PROG_MAKE_SET
++AC_PROG_CXX
++AC_PROG_CPP
++AC_PROG_INSTALL
++AC_EXEEXT
++
++dnl Check for zlib
++zlib_found=yes
++ZLIB_LIBS=
++AC_CHECK_HEADER(zlib.h,,[zlib_found="no"])
++if test x$zlib_found = xyes; then
++        AC_SEARCH_LIBS(compress, z, [AC_DEFINE([HAVE_ZLIB], 1, [haev zlib compression library installed])])
++        ZLIB_LIBS="-lz"
++        AC_SUBST(ZLIB_LIBS)
++fi
++
++dnl Check for libpthread
++PTHREAD_LIBS=
++AC_SEARCH_LIBS(pthread_create, pthread, [if test "$ac_res" != "none required"; then PTHREAD_LIBS="-lpthread"; fi])
++AC_SUBST(PTHREAD_LIBS)
++
++AC_SUBST(VERSIONEXT)
++
++ISMINGW32=false
++ADDONNAME=XBMC_VDR_xvdr.pvr
++SOEXT=so
++ISAPPLE=false
++
++case $host in
++  *-*-cygwin* | *-*-mingw32*)
++    LDFLAGS+="-no-undefined -no-cygwin"
++    ISMINGW32=true
++    ADDONNAME=XBMC_VDR_xvdr_WIN32.pvr
++    SOEXT=dll
++    AC_DEFINE(TARGET_WINDOWS, 1)
++    ;;
++  arm*-*-linux-gnu*)
++    AC_SUBST(ARCH_DEFINES, "-D_ARMEL")
++    ;;
++  powerpc-*-linux-gnu*)
++    AC_SUBST(ARCH_DEFINES, "-D_POWERPC")
++    ;;
++  powerpc64-*-linux-gnu*)
++    AC_SUBST(ARCH_DEFINES, "-D_POWERPC64")
++    ;;
++  *-apple-*)
++    ADDONNAME=XBMC_VDR_xvdr_OSX.pvr
++    SOEXT=dylib
++    ISAPPLE=true
++    ;;
++  *-androideabi)
++    AC_MSG_ERROR([for Android please use the "xvdr-addon-android" repository !
++
++You may clone the repository with:
++git clone --recursive git://github.com/pipelka/xvdr-addon-android.git
++]);
++    ;;
++esac
++
++AM_CONDITIONAL([MINGW32], $ISMINGW32)
++AM_CONDITIONAL([APPLE], $ISAPPLE)
++AC_SUBST(ADDONNAME)
++AC_SUBST(SOEXT)
++
++# Finally create all the generated files
++AC_OUTPUT([
++Makefile
++addons/Makefile
++addons/pvr.vdr.xvdr/Makefile
++addons/pvr.vdr.xvdr/addon.xml
++data/addons.xml
++data/Makefile
++src/Makefile
++src/libxvdr/Makefile
++src/libxvdr/include/Makefile
++src/libxvdr/src/Makefile
++src/libxvdr/tests/Makefile
++src/xvdr/dialogs/Makefile
++src/xvdr/Makefile
++])
+diff -Naur orig/configure.in mod/configure.in
+--- orig/configure.in	2013-02-21 20:17:06.000000000 +0100
++++ mod/configure.in	1970-01-01 01:00:00.000000000 +0100
+@@ -1,99 +0,0 @@
+-m4_define([MAJOR], 0)
+-m4_define([MINOR], 9)
+-m4_define([MICRO], 8)
+-
+-dnl Process this file with autoconf to produce a configure script.
+-AC_INIT([xbmc-addon-xvdr], [MAJOR.MINOR.MICRO], [alexander.pipelka@gmail.com])
+-
+-AC_CONFIG_AUX_DIR(autotools)
+-AC_PREFIX_DEFAULT(/usr/lib/xbmc)
+-
+-AC_CANONICAL_HOST
+-AC_CANONICAL_TARGET
+-
+-dnl Setup for automake
+-AM_INIT_AUTOMAKE
+-
+-dnl Check for tools
+-
+-AC_LIBTOOL_WIN32_DLL
+-AM_PROG_LIBTOOL
+-AC_PROG_MAKE_SET
+-AC_PROG_CXX
+-AC_PROG_CPP
+-AC_PROG_INSTALL
+-AC_EXEEXT
+-
+-dnl Check for zlib
+-zlib_found=yes
+-ZLIB_LIBS=
+-AC_CHECK_HEADER(zlib.h,,[zlib_found="no"])
+-if test x$zlib_found = xyes; then
+-        AC_SEARCH_LIBS(compress, z, [AC_DEFINE([HAVE_ZLIB], 1, [haev zlib compression library installed])])
+-        ZLIB_LIBS="-lz"
+-        AC_SUBST(ZLIB_LIBS)
+-fi
+-
+-dnl Check for libpthread
+-PTHREAD_LIBS=
+-AC_SEARCH_LIBS(pthread_create, pthread, [if test "$ac_res" != "none required"; then PTHREAD_LIBS="-lpthread"; fi])
+-AC_SUBST(PTHREAD_LIBS)
+-
+-AC_SUBST(VERSIONEXT)
+-
+-ISMINGW32=false
+-ADDONNAME=XBMC_VDR_xvdr.pvr
+-SOEXT=so
+-ISAPPLE=false
+-
+-case $host in
+-  *-*-cygwin* | *-*-mingw32*)
+-    LDFLAGS+="-no-undefined -no-cygwin"
+-    ISMINGW32=true
+-    ADDONNAME=XBMC_VDR_xvdr_WIN32.pvr
+-    SOEXT=dll
+-    ;;
+-  arm*-*-linux-gnu*)
+-    AC_SUBST(ARCH_DEFINES, "-D_ARMEL")
+-    ;;
+-  powerpc-*-linux-gnu*)
+-    AC_SUBST(ARCH_DEFINES, "-D_POWERPC")
+-    ;;
+-  powerpc64-*-linux-gnu*)
+-    AC_SUBST(ARCH_DEFINES, "-D_POWERPC64")
+-    ;;
+-  *-apple-*)
+-    ADDONNAME=XBMC_VDR_xvdr_OSX.pvr
+-    SOEXT=dylib
+-    ISAPPLE=true
+-    ;;
+-  *-androideabi)
+-    AC_MSG_ERROR([for Android please use the "xvdr-addon-android" repository !
+-
+-You may clone the repository with:
+-git clone --recursive git://github.com/pipelka/xvdr-addon-android.git
+-]);
+-    ;;
+-esac
+-
+-AM_CONDITIONAL([MINGW32], $ISMINGW32)
+-AM_CONDITIONAL([APPLE], $ISAPPLE)
+-AC_SUBST(ADDONNAME)
+-AC_SUBST(SOEXT)
+-
+-# Finally create all the generated files
+-AC_OUTPUT([
+-Makefile
+-addons/Makefile
+-addons/pvr.vdr.xvdr/Makefile
+-addons/pvr.vdr.xvdr/addon.xml
+-data/addons.xml
+-data/Makefile
+-src/Makefile
+-src/libxvdr/Makefile
+-src/libxvdr/include/Makefile
+-src/libxvdr/src/Makefile
+-src/libxvdr/tests/Makefile
+-src/xvdr/dialogs/Makefile
+-src/xvdr/Makefile
+-])
+diff -Naur orig/debian/control mod/debian/control
+--- orig/debian/control	2013-02-21 20:17:06.000000000 +0100
++++ mod/debian/control	2014-06-20 21:31:38.000000000 +0200
+@@ -2,7 +2,7 @@
+ Section: misc
+ Priority: extra
+ Maintainer: Alexander Pipelka <alexander.pipelka@gmail.com>
+-Build-Depends: debhelper (>= 5), cdbs
++Build-Depends: debhelper (>= 5), cdbs, zlib1g-dev, autotools-dev, libtool
+ Standards-Version: 3.8.0
+ 
+ Package: xbmc-addon-xvdr
+diff -Naur orig/debian/rules mod/debian/rules
+--- orig/debian/rules	2013-02-21 20:17:06.000000000 +0100
++++ mod/debian/rules	2014-06-20 21:31:38.000000000 +0200
+@@ -7,13 +7,14 @@
+ 	dh $@
+ 
+ override_dh_auto_configure:
++	sh autogen.sh
+ 	dh_auto_configure -- --prefix=/usr/lib/xbmc
+ 
+ override_dh_auto_build:
+ 	dh_auto_build -- all $(MAKE_OPTIONS)
+ 
+ override_dh_auto_clean:
+-	$(MAKE) -o .dependencies clean $(MAKE_OPTIONS)
++	$(MAKE) -o .dependencies clean $(MAKE_OPTIONS) ||:
+ 
+ override_dh_shlibdeps:
+ 	dpkg-shlibdeps -Tdebian/xbmc-addon-xvdr.substvars $(CURDIR)/debian/xbmc-addon-xvdr/usr/lib/xbmc/addons/pvr.vdr.xvdr/XBMC_VDR_xvdr.pvr
+diff -Naur orig/README mod/README
+--- orig/README	2013-02-21 20:17:06.000000000 +0100
++++ mod/README	2014-06-20 21:31:38.000000000 +0200
+@@ -11,7 +11,7 @@
+ 
+ ------------------------------------------
+ 
+-This is a PVR add-on for XBMC to add VDR (http://www.cadsoft.de/vdr) as a TV/PVR Backend to XBMC.
++This is a PVR add-on for XBMC to add VDR (http://tvdr.de/) as a TV/PVR Backend to XBMC.
+ 
+ It adds support for Live TV watching, replaying of Recordings, programming Timers and
+ EPG TV Guide to use on same computer or over the Network.
+@@ -39,6 +39,21 @@
+ 
+ 
+ ---------------------------------------------
++BRANCHES
++
++Unfortunately XBMC PVR ABI versions aren't backward compatible.
++So we need to maintain different addon versions for XBMC.
++
++Currently there are the following branches:
++
++master        XBMC development version (currently 13)
++xbmc-frodo    XBMC frodo (12.x)
++
++Please check that you are using the correct addon version matching
++your XBMC version !
++
++
++---------------------------------------------
+ ADDON COMPILATION & INSTALLATION INSTRUCTIONS
+ 
+ IMPORTANT:
+diff -Naur orig/src/libxvdr/include/Makefile.am mod/src/libxvdr/include/Makefile.am
+--- orig/src/libxvdr/include/Makefile.am	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/include/Makefile.am	2014-06-20 21:31:38.000000000 +0200
+@@ -8,7 +8,8 @@
+ 	xvdr/demux.h \
+ 	xvdr/msgpacket.h \
+ 	xvdr/session.h \
+-	xvdr/thread.h
++	xvdr/thread.h \
++	xvdr/packetbuffer.h
+ 
+ EXTRA_DIST = \
+ 	$(libxvdrinclude_HEADERS)
+diff -Naur orig/src/libxvdr/include/xvdr/clientinterface.h mod/src/libxvdr/include/xvdr/clientinterface.h
+--- orig/src/libxvdr/include/xvdr/clientinterface.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/include/xvdr/clientinterface.h	2014-06-20 21:31:38.000000000 +0200
+@@ -70,6 +70,10 @@
+ 
+   virtual void OnSignalRestored();
+ 
++  // server detach
++
++  virtual void OnDetach();
++
+   // scanner status
+ 
+   virtual void OnChannelScannerStatus(const ChannelScannerStatus& status);
+@@ -104,20 +108,26 @@
+ 
+   virtual Packet* AllocatePacket(int length) = 0;
+ 
+-  virtual void SetPacketData(Packet* packet, uint8_t* data = NULL, int streamid = 0, uint64_t dts = 0, uint64_t pts = 0) = 0;
++  virtual void SetPacketData(Packet* packet, uint8_t* data = NULL, int streamid = 0, uint64_t dts = 0, uint64_t pts = 0, uint32_t duration = 0) = 0;
+ 
+   virtual void FreePacket(Packet* p) = 0;
+ 
+   virtual Packet* StreamChange(const StreamProperties& p);
+ 
+-  virtual Packet* ContentInfo(const StreamProperties& p);
+-
+   // access locking
+ 
+   void Lock();
+ 
+   void Unlock();
+ 
++  // filepath functions
++
++  static char GetPathSeparator();
++
++  static void TrimPath(std::string& path, bool addseparator = false);
++
++  static bool GetTempFolder(std::string& path);
++
+ protected:
+ 
+   virtual void OnLog(LOGLEVEL level, const char* msg);
+diff -Naur orig/src/libxvdr/include/xvdr/command.h mod/src/libxvdr/include/xvdr/command.h
+--- orig/src/libxvdr/include/xvdr/command.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/include/xvdr/command.h	2014-06-20 21:31:38.000000000 +0200
+@@ -28,7 +28,7 @@
+ #define XVDR_COMMAND_H
+ 
+ /** Current XVDR Protocol Version number */
+-#define XVDRPROTOCOLVERSION      4
++#define XVDRPROTOCOLVERSION      5
+ 
+ 
+ /** Packet types */
+@@ -87,6 +87,7 @@
+ #define XVDR_RECORDINGS_SETPLAYCOUNT 105
+ #define XVDR_RECORDINGS_SETPOSITION  106
+ #define XVDR_RECORDINGS_GETPOSITION  107
++#define XVDR_RECORDINGS_GETMARKS     108
+ 
+ /* OPCODE 120 - 139: XVDR network functions for epg access and manipulating */
+ #define XVDR_EPG_GETFORCHANNEL     120
+@@ -105,7 +106,6 @@
+ #define XVDR_STREAM_QUEUESTATUS  3
+ #define XVDR_STREAM_MUXPKT       4
+ #define XVDR_STREAM_SIGNALINFO   5
+-#define XVDR_STREAM_CONTENTINFO  6
+ #define XVDR_STREAM_DETACH       7
+ 
+ /** Stream status codes */
+diff -Naur orig/src/libxvdr/include/xvdr/connection.h mod/src/libxvdr/include/xvdr/connection.h
+--- orig/src/libxvdr/include/xvdr/connection.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/include/xvdr/connection.h	2014-06-20 21:31:38.000000000 +0200
+@@ -99,6 +99,7 @@
+   long long SeekRecording(long long pos, uint32_t whence);
+   long long RecordingPosition(void);
+   long long RecordingLength(void);
++  bool LoadRecordingEdl(const std::string& recid, RecordingEdl& edl);
+ 
+   // Channelscanner
+ 
+@@ -112,7 +113,7 @@
+ protected:
+ 
+   virtual void Action(void);
+-  virtual void OnResponsePacket(MsgPacket *pkt);
++  virtual bool OnResponsePacket(MsgPacket *pkt);
+   virtual bool TryReconnect();
+ 
+   void SignalConnectionLost();
+@@ -146,7 +147,6 @@
+ 
+   std::string m_recid;
+   uint64_t m_currentPlayingRecordBytes;
+-  uint32_t m_currentPlayingRecordFrames;
+   uint64_t m_currentPlayingRecordPosition;
+ 
+   std::string m_server;
+diff -Naur orig/src/libxvdr/include/xvdr/dataset.h mod/src/libxvdr/include/xvdr/dataset.h
+--- orig/src/libxvdr/include/xvdr/dataset.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/include/xvdr/dataset.h	2014-06-20 21:31:38.000000000 +0200
+@@ -27,6 +27,7 @@
+ #include <string>
+ #include <sstream>
+ #include <map>
++#include <list>
+ 
+ class MsgPacket;
+ 
+@@ -66,6 +67,7 @@
+   std::string IconPath;
+   bool        IsHidden;
+   bool        IsRadio;
++  std::string ServiceReference;
+ };
+ 
+ Channel& operator<< (Channel& lhs, MsgPacket* rhs);
+@@ -123,6 +125,26 @@
+ RecordingEntry& operator<< (RecordingEntry& lhs, MsgPacket* rhs);
+ 
+ 
++class RecordingCutMark {
++public:
++
++  RecordingCutMark();
++  RecordingCutMark(MsgPacket* p);
++
++  double      Fps;
++  uint64_t    FrameBegin;
++  uint64_t    FrameEnd;
++  std::string Type;
++  std::string Description;
++};
++
++RecordingCutMark& operator<< (RecordingCutMark& lhs, MsgPacket* rhs);
++
++
++class RecordingEdl : public std::list<RecordingCutMark> {
++};
++
++
+ class ChannelGroup {
+ public:
+ 
+@@ -162,6 +184,8 @@
+   uint32_t    Strength;
+   uint32_t    BER;
+   uint32_t    UNC;
++  std::string ProviderName;
++  std::string ServiceName;
+ };
+ 
+ SignalStatus& operator<< (SignalStatus& lhs, MsgPacket* rhs);
+@@ -175,8 +199,6 @@
+   int         Index;
+   int         Identifier;
+   uint32_t    PhysicalId;
+-  int         CodecId;
+-  int         CodecType;
+   std::string Language;
+   uint32_t    FpsScale;
+   uint32_t    FpsRate;
+@@ -189,6 +211,7 @@
+   uint32_t    BitRate;
+   uint32_t    BitsPerSample;
+   std::string Type;
++  std::string Content;
+ };
+ 
+ class StreamProperties : public std::map<uint32_t, Stream> {
+@@ -266,8 +289,8 @@
+     FLAG_TV = 1,
+     FLAG_RADIO = 2,
+     FLAG_FTA = 4,
+-    FLAG_SCRAMBLED = 16,
+-    FLAG_HDTV = 32
++    FLAG_SCRAMBLED = 8,
++    FLAG_HDTV = 16
+   } Flags;
+ 
+   Verbosity verbosity;
+diff -Naur orig/src/libxvdr/include/xvdr/demux.h mod/src/libxvdr/include/xvdr/demux.h
+--- orig/src/libxvdr/include/xvdr/demux.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/include/xvdr/demux.h	2014-06-20 21:31:38.000000000 +0200
+@@ -31,6 +31,7 @@
+ #include "xvdr/connection.h"
+ #include "xvdr/dataset.h"
+ #include "xvdr/command.h"
++#include "xvdr/packetbuffer.h"
+ 
+ class MsgPacket;
+ 
+@@ -54,10 +55,10 @@
+ 
+ public:
+ 
+-  Demux(ClientInterface* client);
++  Demux(ClientInterface* client, PacketBuffer* buffer);
+   ~Demux();
+ 
+-  SwitchStatus OpenChannel(const std::string& hostname, uint32_t channeluid);
++  SwitchStatus OpenChannel(const std::string& hostname, uint32_t channeluid, const std::string& clientname = "");
+   void CloseChannel();
+ 
+   void Abort();
+@@ -70,6 +71,7 @@
+ 
+   SwitchStatus SwitchChannel(uint32_t channeluid);
+   void SetPriority(int priority);
++  void SetStartWithIFrame(bool on);
+ 
+   StreamProperties GetStreamProperties();
+   SignalStatus GetSignalStatus();
+@@ -78,20 +80,25 @@
+ 
+   void RequestSignalInfo();
+ 
++  bool CanSeekStream();
++
++  bool SeekTime(int time, bool backwards, double *startpts);
++
+ protected:
+ 
+   void OnDisconnect();
+   void OnReconnect();
+ 
+-  void OnResponsePacket(MsgPacket *resp);
++  bool OnResponsePacket(MsgPacket *resp);
+ 
+   void StreamChange(MsgPacket *resp);
+   void StreamStatus(MsgPacket *resp);
+   void StreamSignalInfo(MsgPacket *resp);
+-  bool StreamContentInfo(MsgPacket *resp);
+ 
+ private:
+ 
++  void GetContentFromType(const std::string& type, std::string& content);
++
+   void CleanupPacketQueue();
+ 
+   StreamProperties m_streams;
+@@ -99,12 +106,14 @@
+   int m_priority;
+   uint32_t m_channeluid;
+   std::queue<Packet*> m_queue;
++  PacketBuffer* m_buffer;
+   Mutex m_lock;
+   CondWait m_cond;
+   bool m_queuelocked;
+   bool m_paused;
+   bool m_timeshiftmode;
+   TimeMs m_lastsignal;
++  bool m_iframestart;
+ };
+ 
+ } // namespace XVDR
+diff -Naur orig/src/libxvdr/include/xvdr/packetbuffer.h mod/src/libxvdr/include/xvdr/packetbuffer.h
+--- orig/src/libxvdr/include/xvdr/packetbuffer.h	1970-01-01 01:00:00.000000000 +0100
++++ mod/src/libxvdr/include/xvdr/packetbuffer.h	2014-06-20 21:31:38.000000000 +0200
+@@ -0,0 +1,109 @@
++#pragma once
++/*
++ *      xbmc-addon-xvdr - XVDR addon for XBMC
++ *
++ *      Copyright (C) 2013 Andrey Pavlenko
++ *      Copyright (C) 2013 Alexander Pipelka
++ *
++ *      https://github.com/pipelka/xbmc-addon-xvdr
++ *
++ *  This Program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2, or (at your option)
++ *  any later version.
++ *
++ *  This Program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, write to the Free Software
++ *  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
++ *  http://www.gnu.org/copyleft/gpl.html
++ *
++ */
++
++#ifndef XVDR_PACKETBUFFER_H
++#define XVDR_PACKETBUFFER_H
++
++#include "xvdr/msgpacket.h"
++
++namespace XVDR {
++
++class PacketBuffer {
++
++public:
++
++  virtual ~PacketBuffer(){}
++
++  /**
++   * Create new PacketBuffer.
++   *
++   * @param max_size  Maximum buffer size in bytes.
++   * @param file      Path to a file to store buffer data in.
++   *                  If omitted or empty - in-memory storage will be used.
++   */
++  static PacketBuffer* create(size_t max_size, const std::string& file = "");
++
++  /**
++   * Put packet into the buffer.
++   */
++  virtual void put(MsgPacket* p) = 0;
++
++  /**
++   * Get next packet from the buffer,
++   */
++  virtual MsgPacket* get() = 0;
++
++  /**
++   * Signal the buffer that this packet isn't needed currently
++   */
++  virtual void release(MsgPacket* packet) {}
++
++  /**
++   * Try to seek to a position in the buffer
++   */
++  virtual bool seek(int time, bool backwards, double* startpts) = 0;
++
++  /**
++   * Clear the buffer.
++   */
++  virtual void clear() = 0;
++
++  /**
++   * Returns buffer's size in bytes.
++   */
++  virtual size_t size() = 0;
++
++  /**
++   * Returns number of packets in the buffer.
++   */
++  virtual size_t count() = 0;
++
++  /**
++   * Set maximum buffer size in bytes.
++   */
++  inline void set_max_size(size_t max_size) {
++    _max_size = max_size;
++  }
++
++  /**
++   * Returns the maximum buffer size.
++   */
++  inline size_t get_max_size() {
++    return _max_size;
++  }
++
++protected:
++
++  /**
++   * Maximum buffer size.
++   */
++  size_t _max_size;
++
++};
++
++} // namespace XVDR
++
++#endif // XVDR_PACKETBUFFER_H
+diff -Naur orig/src/libxvdr/src/avcodec.h mod/src/libxvdr/src/avcodec.h
+--- orig/src/libxvdr/src/avcodec.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/src/avcodec.h	1970-01-01 01:00:00.000000000 +0100
+@@ -1,364 +0,0 @@
+-/*
+- * copyright (c) 2001 Fabrice Bellard
+- *
+- * Parts of this file are taken from FFmpeg.
+- *
+- * FFmpeg is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Lesser General Public
+- * License as published by the Free Software Foundation; either
+- * version 2.1 of the License, or (at your option) any later version.
+- *
+- * FFmpeg is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * Lesser General Public License for more details.
+- *
+- * You should have received a copy of the GNU Lesser General Public
+- * License along with FFmpeg; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+- */
+-
+-#ifndef CODECIDS_H
+-#define CODECIDS_H
+-
+-#define LIBAVCODEC_VERSION_MAJOR 52
+-#define LIBAVCODEC_VERSION_MINOR 108
+-#define LIBAVCODEC_VERSION_MICRO  0
+-
+-enum AVMediaType {
+-    AVMEDIA_TYPE_UNKNOWN = -1,
+-    AVMEDIA_TYPE_VIDEO,
+-    AVMEDIA_TYPE_AUDIO,
+-    AVMEDIA_TYPE_DATA,
+-    AVMEDIA_TYPE_SUBTITLE,
+-    AVMEDIA_TYPE_ATTACHMENT,
+-    AVMEDIA_TYPE_NB
+-};
+-
+-/**
+- * Identify the syntax and semantics of the bitstream.
+- * The principle is roughly:
+- * Two decoders with the same ID can decode the same streams.
+- * Two encoders with the same ID can encode compatible streams.
+- * There may be slight deviations from the principle due to implementation
+- * details.
+- *
+- * If you add a codec ID to this list, add it so that
+- * 1. no value of a existing codec ID changes (that would break ABI),
+- * 2. it is as close as possible to similar codecs.
+- */
+-enum CodecID {
+-    CODEC_ID_NONE,
+-
+-    /* video codecs */
+-    CODEC_ID_MPEG1VIDEO,
+-    CODEC_ID_MPEG2VIDEO, ///< preferred ID for MPEG-1/2 video decoding
+-    CODEC_ID_MPEG2VIDEO_XVMC,
+-    CODEC_ID_H261,
+-    CODEC_ID_H263,
+-    CODEC_ID_RV10,
+-    CODEC_ID_RV20,
+-    CODEC_ID_MJPEG,
+-    CODEC_ID_MJPEGB,
+-    CODEC_ID_LJPEG,
+-    CODEC_ID_SP5X,
+-    CODEC_ID_JPEGLS,
+-    CODEC_ID_MPEG4,
+-    CODEC_ID_RAWVIDEO,
+-    CODEC_ID_MSMPEG4V1,
+-    CODEC_ID_MSMPEG4V2,
+-    CODEC_ID_MSMPEG4V3,
+-    CODEC_ID_WMV1,
+-    CODEC_ID_WMV2,
+-    CODEC_ID_H263P,
+-    CODEC_ID_H263I,
+-    CODEC_ID_FLV1,
+-    CODEC_ID_SVQ1,
+-    CODEC_ID_SVQ3,
+-    CODEC_ID_DVVIDEO,
+-    CODEC_ID_HUFFYUV,
+-    CODEC_ID_CYUV,
+-    CODEC_ID_H264,
+-    CODEC_ID_INDEO3,
+-    CODEC_ID_VP3,
+-    CODEC_ID_THEORA,
+-    CODEC_ID_ASV1,
+-    CODEC_ID_ASV2,
+-    CODEC_ID_FFV1,
+-    CODEC_ID_4XM,
+-    CODEC_ID_VCR1,
+-    CODEC_ID_CLJR,
+-    CODEC_ID_MDEC,
+-    CODEC_ID_ROQ,
+-    CODEC_ID_INTERPLAY_VIDEO,
+-    CODEC_ID_XAN_WC3,
+-    CODEC_ID_XAN_WC4,
+-    CODEC_ID_RPZA,
+-    CODEC_ID_CINEPAK,
+-    CODEC_ID_WS_VQA,
+-    CODEC_ID_MSRLE,
+-    CODEC_ID_MSVIDEO1,
+-    CODEC_ID_IDCIN,
+-    CODEC_ID_8BPS,
+-    CODEC_ID_SMC,
+-    CODEC_ID_FLIC,
+-    CODEC_ID_TRUEMOTION1,
+-    CODEC_ID_VMDVIDEO,
+-    CODEC_ID_MSZH,
+-    CODEC_ID_ZLIB,
+-    CODEC_ID_QTRLE,
+-    CODEC_ID_SNOW,
+-    CODEC_ID_TSCC,
+-    CODEC_ID_ULTI,
+-    CODEC_ID_QDRAW,
+-    CODEC_ID_VIXL,
+-    CODEC_ID_QPEG,
+-#if LIBAVCODEC_VERSION_MAJOR < 53
+-    CODEC_ID_XVID,
+-#endif
+-    CODEC_ID_PNG,
+-    CODEC_ID_PPM,
+-    CODEC_ID_PBM,
+-    CODEC_ID_PGM,
+-    CODEC_ID_PGMYUV,
+-    CODEC_ID_PAM,
+-    CODEC_ID_FFVHUFF,
+-    CODEC_ID_RV30,
+-    CODEC_ID_RV40,
+-    CODEC_ID_VC1,
+-    CODEC_ID_WMV3,
+-    CODEC_ID_LOCO,
+-    CODEC_ID_WNV1,
+-    CODEC_ID_AASC,
+-    CODEC_ID_INDEO2,
+-    CODEC_ID_FRAPS,
+-    CODEC_ID_TRUEMOTION2,
+-    CODEC_ID_BMP,
+-    CODEC_ID_CSCD,
+-    CODEC_ID_MMVIDEO,
+-    CODEC_ID_ZMBV,
+-    CODEC_ID_AVS,
+-    CODEC_ID_SMACKVIDEO,
+-    CODEC_ID_NUV,
+-    CODEC_ID_KMVC,
+-    CODEC_ID_FLASHSV,
+-    CODEC_ID_CAVS,
+-    CODEC_ID_JPEG2000,
+-    CODEC_ID_VMNC,
+-    CODEC_ID_VP5,
+-    CODEC_ID_VP6,
+-    CODEC_ID_VP6F,
+-    CODEC_ID_TARGA,
+-    CODEC_ID_DSICINVIDEO,
+-    CODEC_ID_TIERTEXSEQVIDEO,
+-    CODEC_ID_TIFF,
+-    CODEC_ID_GIF,
+-    CODEC_ID_FFH264,
+-    CODEC_ID_DXA,
+-    CODEC_ID_DNXHD,
+-    CODEC_ID_THP,
+-    CODEC_ID_SGI,
+-    CODEC_ID_C93,
+-    CODEC_ID_BETHSOFTVID,
+-    CODEC_ID_PTX,
+-    CODEC_ID_TXD,
+-    CODEC_ID_VP6A,
+-    CODEC_ID_AMV,
+-    CODEC_ID_VB,
+-    CODEC_ID_PCX,
+-    CODEC_ID_SUNRAST,
+-    CODEC_ID_INDEO4,
+-    CODEC_ID_INDEO5,
+-    CODEC_ID_MIMIC,
+-    CODEC_ID_RL2,
+-    CODEC_ID_8SVX_EXP,
+-    CODEC_ID_8SVX_FIB,
+-    CODEC_ID_ESCAPE124,
+-    CODEC_ID_DIRAC,
+-    CODEC_ID_BFI,
+-    CODEC_ID_CMV,
+-    CODEC_ID_MOTIONPIXELS,
+-    CODEC_ID_TGV,
+-    CODEC_ID_TGQ,
+-    CODEC_ID_TQI,
+-    CODEC_ID_AURA,
+-    CODEC_ID_AURA2,
+-    CODEC_ID_V210X,
+-    CODEC_ID_TMV,
+-    CODEC_ID_V210,
+-    CODEC_ID_DPX,
+-    CODEC_ID_MAD,
+-    CODEC_ID_FRWU,
+-    CODEC_ID_FLASHSV2,
+-    CODEC_ID_CDGRAPHICS,
+-    CODEC_ID_R210,
+-    CODEC_ID_ANM,
+-    CODEC_ID_BINKVIDEO,
+-    CODEC_ID_IFF_ILBM,
+-    CODEC_ID_IFF_BYTERUN1,
+-    CODEC_ID_KGV1,
+-    CODEC_ID_YOP,
+-    CODEC_ID_VP8,
+-    CODEC_ID_PICTOR,
+-    CODEC_ID_ANSI,
+-    CODEC_ID_A64_MULTI,
+-    CODEC_ID_A64_MULTI5,
+-    CODEC_ID_R10K,
+-    CODEC_ID_MXPEG,
+-    CODEC_ID_LAGARITH,
+-
+-    /* various PCM "codecs" */
+-    CODEC_ID_PCM_S16LE= 0x10000,
+-    CODEC_ID_PCM_S16BE,
+-    CODEC_ID_PCM_U16LE,
+-    CODEC_ID_PCM_U16BE,
+-    CODEC_ID_PCM_S8,
+-    CODEC_ID_PCM_U8,
+-    CODEC_ID_PCM_MULAW,
+-    CODEC_ID_PCM_ALAW,
+-    CODEC_ID_PCM_S32LE,
+-    CODEC_ID_PCM_S32BE,
+-    CODEC_ID_PCM_U32LE,
+-    CODEC_ID_PCM_U32BE,
+-    CODEC_ID_PCM_S24LE,
+-    CODEC_ID_PCM_S24BE,
+-    CODEC_ID_PCM_U24LE,
+-    CODEC_ID_PCM_U24BE,
+-    CODEC_ID_PCM_S24DAUD,
+-    CODEC_ID_PCM_ZORK,
+-    CODEC_ID_PCM_S16LE_PLANAR,
+-    CODEC_ID_PCM_DVD,
+-    CODEC_ID_PCM_F32BE,
+-    CODEC_ID_PCM_F32LE,
+-    CODEC_ID_PCM_F64BE,
+-    CODEC_ID_PCM_F64LE,
+-    CODEC_ID_PCM_BLURAY,
+-    CODEC_ID_PCM_LXF,
+-
+-    /* various ADPCM codecs */
+-    CODEC_ID_ADPCM_IMA_QT= 0x11000,
+-    CODEC_ID_ADPCM_IMA_WAV,
+-    CODEC_ID_ADPCM_IMA_DK3,
+-    CODEC_ID_ADPCM_IMA_DK4,
+-    CODEC_ID_ADPCM_IMA_WS,
+-    CODEC_ID_ADPCM_IMA_SMJPEG,
+-    CODEC_ID_ADPCM_MS,
+-    CODEC_ID_ADPCM_4XM,
+-    CODEC_ID_ADPCM_XA,
+-    CODEC_ID_ADPCM_ADX,
+-    CODEC_ID_ADPCM_EA,
+-    CODEC_ID_ADPCM_G726,
+-    CODEC_ID_ADPCM_CT,
+-    CODEC_ID_ADPCM_SWF,
+-    CODEC_ID_ADPCM_YAMAHA,
+-    CODEC_ID_ADPCM_SBPRO_4,
+-    CODEC_ID_ADPCM_SBPRO_3,
+-    CODEC_ID_ADPCM_SBPRO_2,
+-    CODEC_ID_ADPCM_THP,
+-    CODEC_ID_ADPCM_IMA_AMV,
+-    CODEC_ID_ADPCM_EA_R1,
+-    CODEC_ID_ADPCM_EA_R3,
+-    CODEC_ID_ADPCM_EA_R2,
+-    CODEC_ID_ADPCM_IMA_EA_SEAD,
+-    CODEC_ID_ADPCM_IMA_EA_EACS,
+-    CODEC_ID_ADPCM_EA_XAS,
+-    CODEC_ID_ADPCM_EA_MAXIS_XA,
+-    CODEC_ID_ADPCM_IMA_ISS,
+-    CODEC_ID_ADPCM_G722,
+-
+-    /* AMR */
+-    CODEC_ID_AMR_NB= 0x12000,
+-    CODEC_ID_AMR_WB,
+-
+-    /* RealAudio codecs*/
+-    CODEC_ID_RA_144= 0x13000,
+-    CODEC_ID_RA_288,
+-
+-    /* various DPCM codecs */
+-    CODEC_ID_ROQ_DPCM= 0x14000,
+-    CODEC_ID_INTERPLAY_DPCM,
+-    CODEC_ID_XAN_DPCM,
+-    CODEC_ID_SOL_DPCM,
+-
+-    /* audio codecs */
+-    CODEC_ID_MP2= 0x15000,
+-    CODEC_ID_MP3, ///< preferred ID for decoding MPEG audio layer 1, 2 or 3
+-    CODEC_ID_AAC,
+-    CODEC_ID_AC3,
+-    CODEC_ID_DTS,
+-    CODEC_ID_VORBIS,
+-    CODEC_ID_DVAUDIO,
+-    CODEC_ID_WMAV1,
+-    CODEC_ID_WMAV2,
+-    CODEC_ID_MACE3,
+-    CODEC_ID_MACE6,
+-    CODEC_ID_VMDAUDIO,
+-    CODEC_ID_SONIC,
+-    CODEC_ID_SONIC_LS,
+-    CODEC_ID_FLAC,
+-    CODEC_ID_MP3ADU,
+-    CODEC_ID_MP3ON4,
+-    CODEC_ID_SHORTEN,
+-    CODEC_ID_ALAC,
+-    CODEC_ID_WESTWOOD_SND1,
+-    CODEC_ID_GSM, ///< as in Berlin toast format
+-    CODEC_ID_QDM2,
+-    CODEC_ID_COOK,
+-    CODEC_ID_TRUESPEECH,
+-    CODEC_ID_TTA,
+-    CODEC_ID_SMACKAUDIO,
+-    CODEC_ID_QCELP,
+-    CODEC_ID_WAVPACK,
+-    CODEC_ID_DSICINAUDIO,
+-    CODEC_ID_IMC,
+-    CODEC_ID_MUSEPACK7,
+-    CODEC_ID_MLP,
+-    CODEC_ID_GSM_MS, /* as found in WAV */
+-    CODEC_ID_ATRAC3,
+-    CODEC_ID_VOXWARE,
+-    CODEC_ID_APE,
+-    CODEC_ID_NELLYMOSER,
+-    CODEC_ID_MUSEPACK8,
+-    CODEC_ID_SPEEX,
+-    CODEC_ID_WMAVOICE,
+-    CODEC_ID_WMAPRO,
+-    CODEC_ID_WMALOSSLESS,
+-    CODEC_ID_ATRAC3P,
+-    CODEC_ID_EAC3,
+-    CODEC_ID_SIPR,
+-    CODEC_ID_MP1,
+-    CODEC_ID_TWINVQ,
+-    CODEC_ID_TRUEHD,
+-    CODEC_ID_MP4ALS,
+-    CODEC_ID_ATRAC1,
+-    CODEC_ID_BINKAUDIO_RDFT,
+-    CODEC_ID_BINKAUDIO_DCT,
+-    CODEC_ID_AAC_LATM,
+-
+-    /* subtitle codecs */
+-    CODEC_ID_DVD_SUBTITLE= 0x17000,
+-    CODEC_ID_DVB_SUBTITLE,
+-    CODEC_ID_TEXT,  ///< raw UTF-8 text
+-    CODEC_ID_XSUB,
+-    CODEC_ID_SSA,
+-    CODEC_ID_MOV_TEXT,
+-    CODEC_ID_HDMV_PGS_SUBTITLE,
+-    CODEC_ID_DVB_TELETEXT,
+-    CODEC_ID_SRT,
+-
+-    /* data codecs */
+-    CODEC_ID_VBI_DATA= 0x17500,
+-    CODEC_ID_VBI_TELETEXT,
+-
+-    /* other specific kind of codecs (generally used for attachments) */
+-    CODEC_ID_TTF= 0x18000,
+-
+-    CODEC_ID_PROBE= 0x19000, ///< codec_id is not known (like CODEC_ID_NONE) but lavf should attempt to identify it
+-
+-    CODEC_ID_MPEG2TS= 0x20000, /**< _FAKE_ codec to indicate a raw MPEG-2 TS
+-                                * stream (only used by libavformat) */
+-    CODEC_ID_FFMETADATA=0x21000,   ///< Dummy codec for streams containing only metadata information.
+-};
+-
+-#endif // CODECIDS_H
+-
+diff -Naur orig/src/libxvdr/src/clientinterface.cpp mod/src/libxvdr/src/clientinterface.cpp
+--- orig/src/libxvdr/src/clientinterface.cpp	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/src/clientinterface.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -24,6 +24,7 @@
+ 
+ #include <stdarg.h>
+ #include "xvdr/clientinterface.h"
++#include "os-config.h"
+ 
+ using namespace XVDR;
+ 
+@@ -88,10 +89,6 @@
+ 	return NULL;
+ }
+ 
+-Packet* ClientInterface::ContentInfo(const StreamProperties& p) {
+-	return NULL;
+-}
+-
+ void ClientInterface::OnDisconnect() {
+   Log(FAILURE, "connection lost!");
+ }
+@@ -108,6 +105,10 @@
+   Log(INFO, "signal restored.");
+ }
+ 
++void ClientInterface::OnDetach() {
++  Log(INFO, "received detach command. aborting session ...");
++}
++
+ void ClientInterface::OnChannelScannerStatus(const ChannelScannerStatus& status) {
+   Log(INFO, "Scanner: %i%% done (%i new channels)", status.progress, status.newChannels);
+ }
+@@ -120,3 +121,31 @@
+   m_mutex.Unlock();
+ }
+ 
++char ClientInterface::GetPathSeparator() {
++  return OS_PATH_SEPARATOR;
++}
++
++void ClientInterface::TrimPath(std::string& path, bool addseparator) {
++  // remove separators at the end
++  if(!addseparator) {
++    while(path.size() > 1 && path[path.size() - 1] == GetPathSeparator()) {
++      path = path.substr(0, path.size() - 1);
++    }
++
++    return;
++  }
++
++  TrimPath(path, false);
++  path += GetPathSeparator();
++}
++
++bool ClientInterface::GetTempFolder(std::string& tempfolder) {
++  const char* temp = os_gettempfolder();
++
++  if(temp == NULL) {
++    return false;
++  }
++
++  tempfolder = temp;
++  return true;
++}
+diff -Naur orig/src/libxvdr/src/connection.cpp mod/src/libxvdr/src/connection.cpp
+--- orig/src/libxvdr/src/connection.cpp	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/src/connection.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -593,8 +593,9 @@
+   return returnCode;
+ }
+ 
+-void Connection::OnResponsePacket(MsgPacket* pkt)
++bool Connection::OnResponsePacket(MsgPacket* pkt)
+ {
++  return false;
+ }
+ 
+ void Connection::Action()
+@@ -656,7 +657,6 @@
+         const char* str2 = vresp->get_String();
+ 
+         m_client->Recording(str1, str2, on);
+-        m_client->TriggerTimerUpdate();
+       }
+       else if (vresp->getMsgID() == XVDR_STATUS_TIMERCHANGE)
+       {
+@@ -683,12 +683,10 @@
+ 
+     // OTHER CHANNELID
+ 
+-    else
++    else if (!OnResponsePacket(vresp))
+     {
+-      OnResponsePacket(vresp);
++      delete vresp;
+     }
+-
+-    delete vresp;
+   }
+ }
+ 
+@@ -776,7 +774,7 @@
+   uint32_t returnCode = vresp->get_U32();
+   if (returnCode == XVDR_RET_OK)
+   {
+-    m_currentPlayingRecordFrames    = vresp->get_U32();
++    vresp->get_U32(); // number of frames is unused
+     m_currentPlayingRecordBytes     = vresp->get_U64();
+     m_currentPlayingRecordPosition  = 0;
+     m_recid = recid;
+@@ -823,14 +821,12 @@
+   MsgPacket vrp1(XVDR_RECSTREAM_UPDATE);
+   if ((vresp = ReadResult(&vrp1)) != NULL)
+   {
+-    uint32_t frames = vresp->get_U32();
++    vresp->get_U32(); // number of frames is unused
+     uint64_t bytes  = vresp->get_U64();
+ 
+-    if(frames != m_currentPlayingRecordFrames || bytes != m_currentPlayingRecordBytes)
+-    {
+-      m_currentPlayingRecordFrames = frames;
++    if(bytes != m_currentPlayingRecordBytes) {
+       m_currentPlayingRecordBytes  = bytes;
+-      m_client->Log(DEBUG, "Size of recording changed: %lu bytes (%u frames)", bytes, frames);
++      m_client->Log(DEBUG, "Size of recording changed: %lu bytes", bytes);
+     }
+     delete vresp;
+   }
+@@ -910,6 +906,34 @@
+   return m_currentPlayingRecordBytes;
+ }
+ 
++bool Connection::LoadRecordingEdl(const std::string& recid, RecordingEdl& edl)
++{
++  MsgPacket vrp(XVDR_RECORDINGS_GETMARKS);
++  vrp.put_String(recid.c_str());
++
++  MsgPacket* vresp = ReadResult(&vrp);
++
++  if (vresp == NULL || vresp->eop()) {
++    delete vresp;
++    return false;
++  }
++
++  if(vresp->get_U32() != XVDR_RET_OK) {
++    delete vresp;
++    return false;
++  }
++
++  double fps = (double)vresp->get_U64() / 10000.0;
++
++  while(!vresp->eop()) {
++    RecordingCutMark mark(vresp);
++    mark.Fps = fps;
++    edl.push_back(mark);
++  }
++
++  return true;
++}
++
+ bool Connection::TryReconnect() {
+   if(!Open(m_hostname))
+     return false;
+diff -Naur orig/src/libxvdr/src/dataset.cpp mod/src/libxvdr/src/dataset.cpp
+--- orig/src/libxvdr/src/dataset.cpp	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/src/dataset.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -64,6 +64,7 @@
+   lhs.UID = rhs->get_U32();
+   lhs.EncryptionSystem = rhs->get_U32();
+   lhs.IconPath = rhs->get_String();
++  lhs.ServiceReference = rhs->get_String();
+   lhs.IsHidden = false;
+ 
+   return lhs;
+@@ -203,6 +204,26 @@
+   return lhs;
+ }
+ 
++RecordingCutMark::RecordingCutMark() {
++  Fps = 0;
++  FrameBegin = 0;
++  FrameEnd = 0;
++}
++
++RecordingCutMark::RecordingCutMark(MsgPacket* p) {
++  (*this) << p;
++}
++
++RecordingCutMark& XVDR::operator<< (RecordingCutMark& lhs, MsgPacket* rhs) {
++  lhs.Type = rhs->get_String();
++  lhs.FrameBegin = rhs->get_U64();
++  lhs.FrameEnd = rhs->get_U64();
++  lhs.Description = rhs->get_String();
++
++  return lhs;
++}
++
++
+ ChannelGroup::ChannelGroup() : IsRadio(false) {
+ }
+ 
+@@ -250,6 +271,11 @@
+   lhs.BER = rhs->get_U32();
+   lhs.UNC = rhs->get_U32();
+ 
++  if(!rhs->eop()) {
++    lhs.ProviderName = rhs->get_String();
++    lhs.ServiceName = rhs->get_String();
++  }
++
+   return lhs;
+ }
+ 
+@@ -257,8 +283,6 @@
+   Index = 0;
+   Identifier = 0;
+   PhysicalId = 0;
+-  CodecId = 0;
+-  CodecType = 0;
+   FpsScale = 0;
+   FpsRate = 0;
+   Aspect = 0.0;
+@@ -277,8 +301,7 @@
+     lhs.Index == rhs.Index &&
+     lhs.Identifier == rhs.Identifier &&
+     lhs.PhysicalId == rhs.PhysicalId &&
+-    lhs.CodecId == rhs.CodecId &&
+-    lhs.CodecType == rhs.CodecType &&
++    lhs.Type == rhs.Type &&
+     lhs.Language == rhs.Language &&
+     lhs.FpsScale == rhs.FpsScale &&
+     lhs.FpsRate == rhs.FpsRate &&
+diff -Naur orig/src/libxvdr/src/demux.cpp mod/src/libxvdr/src/demux.cpp
+--- orig/src/libxvdr/src/demux.cpp	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/src/demux.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -28,14 +28,15 @@
+ #include <limits.h>
+ #include <string.h>
+ 
+-#include "avcodec.h"
+ #include "xvdr/demux.h"
+ #include "xvdr/msgpacket.h"
+ #include "xvdr/command.h"
+ 
+ using namespace XVDR;
+ 
+-Demux::Demux(ClientInterface* client) : Connection(client), m_priority(50), m_queuelocked(false), m_paused(false), m_timeshiftmode(false)
++Demux::Demux(ClientInterface* client, PacketBuffer* buffer) : Connection(client), m_priority(50),
++    m_queuelocked(false), m_paused(false), m_timeshiftmode(false), m_channeluid(0), m_buffer(buffer),
++    m_iframestart(false)
+ {
+ }
+ 
+@@ -43,11 +44,15 @@
+ {
+   // wait for pending requests
+   MutexLock lock(&m_lock);
++
++  if (m_buffer != NULL) {
++    delete m_buffer;
++  }
+ }
+ 
+-Demux::SwitchStatus Demux::OpenChannel(const std::string& hostname, uint32_t channeluid)
++Demux::SwitchStatus Demux::OpenChannel(const std::string& hostname, uint32_t channeluid, const std::string& clientname)
+ {
+-  if(!Open(hostname))
++  if(!Open(hostname, clientname))
+     return SC_ERROR;
+ 
+   m_paused = false;
+@@ -68,6 +73,11 @@
+ void Demux::CleanupPacketQueue()
+ {
+   MutexLock lock(&m_lock);
++
++  if (m_buffer != NULL) {
++    m_buffer->clear();
++  }
++
+   Packet* p = NULL;
+ 
+   while(!m_queue.empty())
+@@ -93,6 +103,7 @@
+   }
+ 
+   Packet* p = NULL;
++  MsgPacket* pkt = NULL;
+   m_lock.Lock();
+ 
+   if(m_queuelocked) {
+@@ -100,6 +111,55 @@
+       return m_client->AllocatePacket(0);
+   }
+ 
++  if (m_buffer != NULL) {
++    pkt = m_buffer->get();
++
++    if (pkt == NULL) {
++      m_lock.Unlock();
++      m_cond.Wait(100);
++      m_lock.Lock();
++      pkt = m_buffer->get();
++    }
++
++    if (pkt != NULL) {
++      pkt->rewind();
++
++      switch (pkt->getMsgID()) {
++      case XVDR_STREAM_MUXPKT: {
++        uint16_t id = pkt->get_U16();
++        int64_t pts = pkt->get_S64();
++        int64_t dts = pkt->get_S64();
++        uint32_t duration = pkt->get_U32();
++        uint32_t length = pkt->get_U32();
++        uint8_t* payload = pkt->consume(length);
++        Stream& stream = m_streams[id];
++
++        if (stream.PhysicalId != id) {
++          m_client->Log(DEBUG, "stream id %i not found", id);
++        } else {
++          p = m_client->AllocatePacket(length);
++          m_client->SetPacketData(p, payload, stream.Index, dts, pts, duration);
++        }
++        break;
++      }
++      case XVDR_STREAM_CHANGE: {
++        StreamChange(pkt);
++        p = m_client->StreamChange(m_streams);
++        break;
++      }
++      }
++    }
++
++    if (p == NULL) {
++      p = m_client->AllocatePacket(0);
++    }
++
++    m_buffer->release(pkt);
++
++    m_lock.Unlock();
++    return p;
++  }
++
+   bool bEmpty = m_queue.empty();
+ 
+   // empty queue -> wait for packet
+@@ -114,7 +174,7 @@
+              return NULL;
+          }
+ 
+-         m_cond.Wait(1000);
++         m_cond.Wait(100);
+ 
+          m_lock.Lock();
+          bEmpty = m_queue.empty();
+@@ -135,15 +195,15 @@
+   return p;
+ }
+ 
+-void Demux::OnResponsePacket(MsgPacket *resp) {
++bool Demux::OnResponsePacket(MsgPacket *resp) {
+   {
+     MutexLock lock(&m_lock);
+     if(m_queuelocked)
+-      return;
++      return false;
+   }
+ 
+   if (resp->getType() != XVDR_CHANNEL_STREAM)
+-    return;
++    return false;
+ 
+   Packet* pkt = NULL;
+   int iStreamId = -1;
+@@ -151,11 +211,19 @@
+   switch (resp->getMsgID())
+   {
+     case XVDR_STREAM_DETACH:
+-      m_client->Log(INFO, "received detach command. aborting session ...");
++      m_client->OnDetach();
+       Abort();
+       break;
+ 
+     case XVDR_STREAM_CHANGE:
++      if (m_buffer != NULL) {
++        m_lock.Lock();
++        m_buffer->put(resp);
++        m_lock.Unlock();
++        m_cond.Signal();
++        return true;
++      }
++
+       StreamChange(resp);
+       pkt = m_client->StreamChange(m_streams);
+       break;
+@@ -168,32 +236,39 @@
+       StreamSignalInfo(resp);
+       break;
+ 
+-    case XVDR_STREAM_CONTENTINFO:
+-      // send stream updates only if there are changes
+-      if(!StreamContentInfo(resp))
+-        break;
+-
+-      pkt = m_client->ContentInfo(m_streams);
+-      break;
+-
+     case XVDR_STREAM_MUXPKT:
+-      // figure out the stream for this packet
+-      uint16_t id = resp->get_U16();
+-      int64_t pts = resp->get_S64();
+-      int64_t dts = resp->get_S64();
+-      uint32_t length = resp->get_U32();
+-      uint8_t* payload = resp->consume(length);
+-
+-      Stream& stream = m_streams[id];
+-
+-      if(stream.PhysicalId != id) {
+-          m_client->Log(DEBUG, "stream id %i not found", id);
+-          break;
++      {
++        if (m_buffer != NULL) {
++          m_lock.Lock();
++          m_buffer->put(resp);
++          m_lock.Unlock();
++          m_cond.Signal();
++          return true;
++        }
++
++        // figure out the stream for this packet
++        uint16_t id = resp->get_U16();
++        Stream& stream = m_streams[id];
++
++        if(stream.PhysicalId != id) {
++            m_client->Log(DEBUG, "stream id %i not found", id);
++            break;
++        }
++
++        int64_t pts = resp->get_S64();
++        int64_t dts = resp->get_S64();
++        uint32_t duration = resp->get_U32();
++        uint32_t length = resp->get_U32();
++        uint8_t* payload = resp->consume(length);
++        pkt = m_client->AllocatePacket(length);
++        m_client->SetPacketData(pkt, payload, stream.Index, dts, pts, duration);
+       }
+-
+-      pkt = m_client->AllocatePacket(length);
+-      m_client->SetPacketData(pkt, payload, stream.Index, dts, pts);
+       break;
++
++    // discard unknown packet types
++    default:
++      pkt = NULL;
++      return false;
+   }
+ 
+   if(pkt != NULL) {
+@@ -204,7 +279,7 @@
+ 	    if(m_queue.size() > 200)
+ 	    {
+ 	      m_client->FreePacket(pkt);
+-	      return;
++	      return false;
+ 	    }
+ 
+       m_queue.push(pkt);
+@@ -212,7 +287,7 @@
+ 	  m_cond.Signal();
+   }
+ 
+-  return;
++  return false;
+ }
+ 
+ Demux::SwitchStatus Demux::SwitchChannel(uint32_t channeluid)
+@@ -230,6 +305,7 @@
+   MsgPacket vrp(XVDR_CHANNELSTREAM_OPEN);
+   vrp.put_U32(channeluid);
+   vrp.put_S32(m_priority);
++  vrp.put_U8(m_iframestart);
+ 
+   MsgPacket* vresp = ReadResult(&vrp);
+ 
+@@ -268,12 +344,44 @@
+   return m_signal;
+ }
+ 
++void Demux::GetContentFromType(const std::string& type, std::string& content) {
++  if(type == "AC3") {
++    content = "AUDIO";
++  }
++  else if(type == "MPEG2AUDIO") {
++    content = "AUDIO";
++  }
++  else if(type == "AAC") {
++    content = "AUDIO";
++  }
++  else if(type == "EAC3") {
++    content = "AUDIO";
++  }
++  else if(type == "MPEG2VIDEO") {
++    content = "VIDEO";
++  }
++  else if(type == "H264") {
++    content = "VIDEO";
++  }
++  else if(type == "DVBSUB") {
++    content = "SUBTITLE";
++  }
++  else if(type == "TELETEXT") {
++    content = "TELETEXT";
++  }
++  else {
++    content = "UNKNOWN";
++  }
++}
++
+ void Demux::StreamChange(MsgPacket *resp)
+ {
+   MutexLock lock(&m_lock);
+   m_streams.clear();
+ 
+   int index = 0;
++  uint32_t composition_id;
++  uint32_t ancillary_id;
+ 
+   while (!resp->eop())
+   {
+@@ -283,80 +391,31 @@
+     stream.PhysicalId = resp->get_U32();
+     stream.Type = resp->get_String();
+ 
++    GetContentFromType(stream.Type, stream.Content);
++
+     stream.Identifier = -1;
+ 
+-    if(stream.Type == "AC3")
+-    {
+-      stream.Language = resp->get_String();
+-      stream.CodecType = AVMEDIA_TYPE_AUDIO;
+-      stream.CodecId = CODEC_ID_AC3;
+-    }
+-    else if(stream.Type == "MPEG2AUDIO")
+-    {
+-      stream.Language = resp->get_String();
+-      stream.CodecType = AVMEDIA_TYPE_AUDIO;
+-      stream.CodecId = CODEC_ID_MP2;
+-    }
+-    else if(stream.Type == "AAC")
+-    {
+-      stream.Language = resp->get_String();
+-      stream.CodecType = AVMEDIA_TYPE_AUDIO;
+-      stream.CodecId = CODEC_ID_AAC;
+-    }
+-    else if(stream.Type == "LATM")
+-    {
++    if(stream.Content == "AUDIO") {
+       stream.Language = resp->get_String();
+-      stream.CodecType = AVMEDIA_TYPE_AUDIO;
+-      stream.CodecId = CODEC_ID_AAC_LATM;
++      stream.Channels = resp->get_U32();
++      stream.SampleRate = resp->get_U32();
++      stream.BlockAlign = resp->get_U32();
++      stream.BitRate = resp->get_U32();
++      stream.BitsPerSample = resp->get_U32();
+     }
+-    else if(stream.Type == "DTS")
+-    {
+-      stream.Language = resp->get_String();
+-      stream.CodecType = AVMEDIA_TYPE_AUDIO;
+-      stream.CodecId = CODEC_ID_DTS;
+-    }
+-    else if(stream.Type == "EAC3")
+-    {
+-      stream.Language = resp->get_String();
+-      stream.CodecType = AVMEDIA_TYPE_AUDIO;
+-      stream.CodecId = CODEC_ID_EAC3;
+-    }
+-    else if(stream.Type == "MPEG2VIDEO")
+-    {
+-      stream.CodecType = AVMEDIA_TYPE_VIDEO;
+-      stream.CodecId = CODEC_ID_MPEG2VIDEO;
+-      stream.FpsScale = resp->get_U32();
+-      stream.FpsRate = resp->get_U32();
+-      stream.Height = resp->get_U32();
+-      stream.Width = resp->get_U32();
+-      stream.Aspect = (double)resp->get_S64() / 10000.0;
+-    }
+-    else if(stream.Type == "H264")
+-    {
+-      stream.CodecType = AVMEDIA_TYPE_VIDEO;
+-      stream.CodecId = CODEC_ID_H264;
++    else if(stream.Content == "VIDEO") {
+       stream.FpsScale = resp->get_U32();
+       stream.FpsRate = resp->get_U32();
+       stream.Height = resp->get_U32();
+       stream.Width = resp->get_U32();
+       stream.Aspect = (double)resp->get_S64() / 10000.0;
+     }
+-    else if(stream.Type == "DVBSUB")
+-    {
++    else if(stream.Content == "SUBTITLE") {
+       stream.Language = resp->get_String();
+-      stream.CodecType = AVMEDIA_TYPE_SUBTITLE;
+-      stream.CodecId = CODEC_ID_DVB_SUBTITLE;
+-
+-      uint32_t composition_id = resp->get_U32();
+-      uint32_t ancillary_id   = resp->get_U32();
+-
++      composition_id = resp->get_U32();
++      ancillary_id   = resp->get_U32();
+       stream.Identifier = (composition_id & 0xffff) | ((ancillary_id & 0xffff) << 16);
+     }
+-    else if(stream.Type == "TELETEXT")
+-    {
+-      stream.CodecType = AVMEDIA_TYPE_SUBTITLE;
+-      stream.CodecId = CODEC_ID_DVB_TELETEXT;
+-    }
+ 
+     if (index > 16)
+     {
+@@ -390,60 +449,6 @@
+   m_signal << resp;
+ }
+ 
+-bool Demux::StreamContentInfo(MsgPacket *resp)
+-{
+-  MutexLock lock(&m_lock);
+-  StreamProperties old = m_streams;
+-
+-  for (unsigned int i = 0; i < m_streams.size() && !resp->eop(); i++)
+-  {
+-    uint32_t id = resp->get_U32();
+-
+-    if(m_streams.find(id) == m_streams.end())
+-      continue;
+-
+-    Stream& stream = m_streams[id];
+-
+-    const char* language    = NULL;
+-    uint32_t composition_id = 0;
+-    uint32_t ancillary_id   = 0;
+-
+-    switch (stream.CodecType)
+-    {
+-      case AVMEDIA_TYPE_AUDIO:
+-    	  stream.Language = resp->get_String();
+-        stream.Channels = resp->get_U32();
+-        stream.SampleRate = resp->get_U32();
+-        stream.BlockAlign = resp->get_U32();
+-        stream.BitRate = resp->get_U32();
+-        stream.BitsPerSample = resp->get_U32();
+-        break;
+-
+-      case AVMEDIA_TYPE_VIDEO:
+-        stream.FpsScale = resp->get_U32();
+-        stream.FpsRate = resp->get_U32();
+-        stream.Height = resp->get_U32();
+-        stream.Width = resp->get_U32();
+-        stream.Aspect = (double)resp->get_S64() / 10000.0;
+-        break;
+-
+-      case AVMEDIA_TYPE_SUBTITLE:
+-      	stream.Language = resp->get_String();
+-
+-        composition_id = resp->get_U32();
+-        ancillary_id   = resp->get_U32();
+-
+-        stream.Identifier = (composition_id & 0xffff) | ((ancillary_id & 0xffff) << 16);
+-        break;
+-
+-      default:
+-        break;
+-    }
+-  }
+-
+-  return (old != m_streams);
+-}
+-
+ void Demux::OnDisconnect()
+ {
+ }
+@@ -462,6 +467,10 @@
+ 
+ void Demux::Pause(bool on)
+ {
++  if (m_buffer != NULL) {
++    return;
++  }
++
+   MsgPacket req(XVDR_CHANNELSTREAM_PAUSE);
+   req.put_U32(on);
+ 
+@@ -491,3 +500,21 @@
+   // signal status timeout
+   m_lastsignal.Set(5000);
+ }
++
++bool Demux::CanSeekStream() {
++  return m_buffer != NULL;
++}
++
++bool Demux::SeekTime(int time, bool backwards, double *startpts) {
++  MutexLock lock(&m_lock);
++
++  if (m_buffer == NULL) {
++    return false;
++  }
++
++  return m_buffer->seek(time, backwards, startpts);
++}
++
++void Demux::SetStartWithIFrame(bool on) {
++  m_iframestart = on;
++}
+diff -Naur orig/src/libxvdr/src/Makefile.am mod/src/libxvdr/src/Makefile.am
+--- orig/src/libxvdr/src/Makefile.am	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/src/Makefile.am	2014-06-20 21:31:38.000000000 +0200
+@@ -8,7 +8,6 @@
+ SOURCEFILES = \
+ 	os-config.cpp \
+ 	os-config.h \
+-	avcodec.h \
+ 	iso639.cpp \
+ 	iso639.h \
+ 	clientinterface.cpp \
+@@ -17,7 +16,9 @@
+ 	demux.cpp \
+ 	msgpacket.cpp \
+ 	session.cpp \
+-	thread.cpp
++	thread.cpp \
++	packetbuffer.cpp \
++	packetbuffermodel.h
+ 
+ 
+ noinst_LTLIBRARIES = libxvdrstatic.la
+diff -Naur orig/src/libxvdr/src/os-config.cpp mod/src/libxvdr/src/os-config.cpp
+--- orig/src/libxvdr/src/os-config.cpp	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/src/os-config.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -24,10 +24,12 @@
+ 
+ #include "os-config.h"
+ #include <unistd.h>
++#include <stdio.h>
++#include <stdlib.h>
+ 
+ // WINDOWS
+ 
+-#ifdef WIN32
++#ifdef TARGET_WINDOWS
+ 
+ #if !defined(SIO_KEEPALIVE_VALS)
+ #define SIO_KEEPALIVE_VALS  _WSAIOW(IOC_VENDOR,4)
+@@ -137,7 +139,7 @@
+ // GENERAL
+ 
+ bool setsock_nonblock(int fd, bool nonblock) {
+-#ifdef WIN32
++#ifdef TARGET_WINDOWS
+ 	u_long sval = nonblock;
+ 	return (ioctlsocket(fd, FIONBIO, &sval) == 0);
+ #else
+@@ -176,3 +178,24 @@
+         return 0;
+ }
+ 
++const char* os_gettempfolder() {
++  char* temp = NULL;
++
++#if defined(TARGET_WINDOWS)
++  temp = getenv("APPDATA");
++  if(temp == NULL) {
++    temp = getenv("TEMP");
++  }
++
++#elif defined(__APPLE__) || defined(__FreeBSD__)
++  temp = getenv("TMPDIR");
++  if(temp == NULL) {
++    temp = getenv("DARWIN_USER_TEMP_DIR");
++  }
++
++#else
++  temp = P_tmpdir;
++#endif
++
++  return temp;
++}
+diff -Naur orig/src/libxvdr/src/os-config.h mod/src/libxvdr/src/os-config.h
+--- orig/src/libxvdr/src/os-config.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/src/os-config.h	2014-06-20 21:31:38.000000000 +0200
+@@ -41,6 +41,8 @@
+ #define MSG_DONTWAIT 0
+ #define MSG_NOSIGNAL 0
+ 
++#define OS_PATH_SEPARATOR '\\'
++
+ #include <iostream>
+ #include <winsock2.h>
+ #include <ws2spi.h>
+@@ -58,6 +60,8 @@
+ // LINUX / OTHER
+ #else
+ 
++#define OS_PATH_SEPARATOR '/'
++
+ #ifdef __FreeBSD__
+ #include <sys/types.h>
+ #include <sys/endian.h>
+@@ -110,3 +114,4 @@
+ bool setsock_nonblock(int fd, bool nonblock = true);
+ void setsock_keepalive(int fd);
+ int socketread(int fd, uint8_t* data, int datalen, int timeout_ms);
++const char* os_gettempfolder();
+diff -Naur orig/src/libxvdr/src/packetbuffer.cpp mod/src/libxvdr/src/packetbuffer.cpp
+--- orig/src/libxvdr/src/packetbuffer.cpp	1970-01-01 01:00:00.000000000 +0100
++++ mod/src/libxvdr/src/packetbuffer.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -0,0 +1,258 @@
++/*
++ *      xbmc-addon-xvdr - XVDR addon for XBMC
++ *
++ *      Copyright (C) 2013 Andrey Pavlenko
++ *      Copyright (C) 2013 Alexander Pipelka
++ *
++ *      https://github.com/pipelka/xbmc-addon-xvdr
++ *
++ *  This Program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2, or (at your option)
++ *  any later version.
++ *
++ *  This Program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, write to the Free Software
++ *  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
++ *  http://www.gnu.org/copyleft/gpl.html
++ *
++ */
++
++#include <cstddef>
++#include <stdio.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
++#include <unistd.h>
++
++#include <set>
++
++#include "packetbuffermodel.h"
++
++template<class PBufferType>
++class FileNode : public Node {
++protected:
++
++  int64_t m_offset;
++  PBufferType m_buffer;
++  size_t m_size;
++  uint8_t m_frametype;
++  int64_t m_pts;
++  int64_t m_dts;
++
++public:
++
++  FileNode(MsgPacket* packet, PacketBuffer* buffer) :
++  Node(packet, buffer),
++  m_offset(0),
++  m_buffer((PBufferType)buffer),
++  m_pts(0),
++  m_dts(0) {
++    m_frametype = packet->getClientID() & 0xFF;
++    m_size = packet->getPacketLength();
++
++    if(packet->getMsgID() == XVDR_STREAM_MUXPKT) {
++      packet->rewind();
++      packet->get_U16();
++      m_pts = packet->get_S64();
++      m_dts = packet->get_S64();
++      packet->rewind();
++    }
++
++    // get offset
++    if(m_buffer->tail() != NULL) {
++      m_offset = m_buffer->tail()->m_offset + m_buffer->tail()->size();
++    }
++
++    // check for ring-buffer wrap
++    if(m_offset > m_buffer->get_max_size()) {
++      m_offset = 0;
++    }
++
++    // set file position
++    if(lseek(m_buffer->fd(), m_offset, SEEK_SET) == -1) {
++      return;
++    }
++
++    // write packet to buffer
++    packet->write(m_buffer->fd(), m_buffer->timeout());
++    release();
++  }
++
++  MsgPacket* packet() {
++    if(_packet == NULL) {
++      if(lseek(m_buffer->fd(), m_offset, SEEK_SET) == -1) {
++        return NULL;
++      }
++      _packet = MsgPacket::read(m_buffer->fd(), m_buffer->timeout());
++    }
++
++    return _packet;
++  }
++
++  void release() {
++    delete _packet;
++    _packet = NULL;
++  }
++
++  size_t size() {
++      return m_size;
++  }
++
++  uint8_t frametype() {
++    return m_frametype;
++  }
++
++  int64_t pts() {
++    return m_pts;
++  }
++
++  int64_t dts() {
++    return m_dts;
++  }
++
++};
++
++
++class DiskPacketBuffer;
++typedef FileNode<DiskPacketBuffer*> DiskNode;
++
++class DiskPacketBuffer : public PacketBufferModel<DiskNode> {
++public:
++
++  DiskPacketBuffer(size_t max_mem, const std::string& file, int timeout_ms = 3000) :
++  PacketBufferModel<DiskNode>::PacketBufferModel(max_mem),
++  m_fd(-1),
++  m_timeout(timeout_ms) {
++    m_filename = file;
++    m_fd = open(m_filename.c_str(), O_CREAT | O_TRUNC | O_RDWR, 0644);
++  }
++
++  virtual ~DiskPacketBuffer() {
++    if(m_fd != -1) {
++      close(m_fd);
++      unlink(m_filename.c_str());
++    }
++  }
++
++  MsgPacket* get() {
++    DiskNode* n = current();
++    MsgPacket* p = PacketBufferModel<DiskNode>::get();
++
++    if(p != NULL) {
++      m_used.insert(n);
++    }
++
++    return p;
++  }
++
++  void release(MsgPacket* p) {
++    std::set<DiskNode*>::iterator i = m_used.begin();
++    while(i != m_used.end()) {
++      if((*i)->packet() == p) {
++        (*i)->release();
++        m_used.erase(i);
++        return;
++      }
++    }
++  }
++
++  inline int fd() {
++    return m_fd;
++  }
++
++  inline int timeout() {
++    return m_timeout;
++  }
++
++private:
++
++  std::string m_filename;
++
++  int m_fd;
++
++  int m_timeout;
++
++  std::set<DiskNode*> m_used;
++};
++
++
++class MemNode : public Node {
++public:
++
++  MemNode(MsgPacket* packet, PacketBuffer* buffer) : Node(packet, buffer) {}
++
++  size_t size() {
++    if(_packet == NULL) {
++      return 0;
++    }
++    return _packet->getPacketLength();
++  }
++
++  uint8_t frametype() {
++    if(_packet == NULL) {
++      return 0;
++    }
++    return _packet->getClientID() && 0xFF;
++  }
++
++  int64_t pts() {
++    if(_packet == NULL) {
++      return 0;
++    }
++
++    if(_packet->getMsgID() == XVDR_STREAM_MUXPKT) {
++      _packet->rewind();
++      _packet->get_U16();
++      int64_t pts = _packet->get_S64();
++      _packet->rewind();
++      return pts;
++    }
++
++    return 0;
++  }
++
++  int64_t dts() {
++    if(_packet == NULL) {
++      return 0;
++    }
++
++    if(_packet->getMsgID() == XVDR_STREAM_MUXPKT) {
++      _packet->rewind();
++      _packet->get_U16();
++      _packet->get_S64();
++      int64_t dts = _packet->get_S64();
++      _packet->rewind();
++      return dts;
++    }
++
++    return 0;
++  }
++};
++
++class MemPacketBuffer : public PacketBufferModel<MemNode> {
++public:
++  MemPacketBuffer(size_t max_mem) : PacketBufferModel<MemNode>::PacketBufferModel(max_mem) {};
++};
++
++
++namespace XVDR {
++
++PacketBuffer* PacketBuffer::create(size_t max_size, const std::string& file) {
++  PacketBuffer* buf = NULL;
++
++  if (!file.empty()) {
++    buf = new DiskPacketBuffer(max_size, file);
++  } else {
++    buf = new MemPacketBuffer(max_size);
++  }
++
++  return buf;
++}
++
++} // namespace XVDR
+diff -Naur orig/src/libxvdr/src/packetbuffermodel.h mod/src/libxvdr/src/packetbuffermodel.h
+--- orig/src/libxvdr/src/packetbuffermodel.h	1970-01-01 01:00:00.000000000 +0100
++++ mod/src/libxvdr/src/packetbuffermodel.h	2014-06-20 21:31:38.000000000 +0200
+@@ -0,0 +1,237 @@
++#pragma once
++/*
++ *      xbmc-addon-xvdr - XVDR addon for XBMC
++ *
++ *      Copyright (C) 2013 Andrey Pavlenko
++ *      Copyright (C) 2013 Alexander Pipelka
++ *
++ *      https://github.com/pipelka/xbmc-addon-xvdr
++ *
++ *  This Program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2, or (at your option)
++ *  any later version.
++ *
++ *  This Program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, write to the Free Software
++ *  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
++ *  http://www.gnu.org/copyleft/gpl.html
++ *
++ */
++
++#include "xvdr/packetbuffer.h"
++#include "xvdr/command.h"
++
++using namespace XVDR;
++
++class Node {
++public:
++  Node* _next;
++  Node* _prev;
++  MsgPacket* _packet;
++
++  Node(MsgPacket* packet, PacketBuffer* buffer) {
++    _packet = packet;
++    _prev = NULL;
++    _next = NULL;
++  }
++
++  virtual ~Node() {
++    delete _packet;
++  }
++
++  virtual size_t size() = 0;
++
++  virtual uint8_t frametype() = 0;
++
++  virtual int64_t pts() = 0;
++
++  virtual int64_t dts() = 0;
++
++  virtual MsgPacket* packet() {
++    return _packet;
++  }
++
++  virtual void release() {
++  }
++};
++
++template<class NodeType>
++class PacketBufferModel: public PacketBuffer {
++
++public:
++
++  PacketBufferModel(size_t max_size) {
++    _size = 0;
++    _count = 0;
++    _head = NULL;
++    _tail = NULL;
++    _current = NULL;
++    _current_last = NULL;
++    _max_size = max_size;
++  }
++
++  ~PacketBufferModel() {
++    clear();
++  }
++
++  void put(MsgPacket* p) {
++    NodeType* n = new NodeType(p, this);
++
++    size_t size = n->size();
++    ensure_size(size);
++
++    if (_tail == NULL) {
++      _head = _tail = _current = n;
++    }
++    else {
++      n->_prev = _tail;
++      _tail->_next = n;
++      _tail = n;
++
++      if (_current == NULL) {
++        _current = n;
++      }
++    }
++
++    _count++;
++    _size += size;
++  }
++
++  virtual MsgPacket* get() {
++    MsgPacket* p = NULL;
++    if (_current != NULL) {
++      p = _current->packet();
++      next();
++    }
++    return p;
++  }
++
++  NodeType* next() {
++    if (_current != NULL) {
++      _current = (NodeType*)_current->_next;
++    }
++    return _current;
++  }
++
++  NodeType* prev() {
++    if (_current != NULL) {
++      if (_current != _head) {
++        _current = (NodeType*)_current->_prev;
++        return _current;
++      }
++    }
++    else if (_tail != NULL) {
++      _current = (NodeType*)_tail;
++      return _current;
++    }
++    return NULL;
++  }
++
++  void current_push() {
++    _current_last = _current;
++  }
++
++  void current_pop() {
++    _current = _current_last;
++    _current_last = NULL;
++  }
++
++  bool seek(int time, bool backwards, double *startpts) {
++    NodeType* p = NULL;
++
++    int64_t t = (int64_t)time * 1000;
++    *startpts = t;
++
++    current_push();
++
++    // rewind
++    if (backwards) {
++      while((p = prev()) != NULL) {
++        if(p->frametype() == 1 && t >= p->pts()) {
++          *startpts = p->dts();
++          return true;
++        }
++      }
++
++      current_pop();
++      return true;
++    }
++
++    // fast-forward
++    while((p = next()) != NULL) {
++      if(p->frametype() == 1 && t <= p->pts()) {
++        *startpts = p->dts();
++        return true;
++      }
++    }
++
++    current_pop();
++    return true;
++  }
++
++  void clear() {
++    for (NodeType* n = _head; n != NULL;) {
++      NodeType* next = (NodeType*)n->_next;
++      delete n;
++      n = next;
++    }
++
++    _size = _count = 0;
++    _head = _tail = _current = NULL;
++  }
++
++  inline size_t size() {
++    return _size;
++  }
++
++  inline size_t count() {
++    return _count;
++  }
++
++  inline NodeType* tail() {
++    return _tail;
++  }
++
++protected:
++
++  inline NodeType* current() {
++    return _current;
++  }
++
++private:
++  size_t _size;
++  size_t _count;
++  NodeType* _head;
++  NodeType* _tail;
++  NodeType* _current;
++  NodeType* _current_last;
++
++  void ensure_size(uint32_t size) {
++    size_t max = get_max_size();
++
++    for (NodeType* n = _head; (n != NULL) && (_size + size) > max; n = _head) {
++      size_t node_size = n->size();
++      _head = (NodeType*)n->_next;
++
++      if (_current == n) {
++        _current = _head;
++      }
++      if (_tail == n) {
++        _tail = _head;
++      }
++      if (_head != NULL) {
++        _head->_prev = NULL;
++      }
++
++      delete n;
++      _count--;
++      _size -= node_size;
++    }
++  }
++};
+diff -Naur orig/src/libxvdr/tests/ac3analyze.cpp mod/src/libxvdr/tests/ac3analyze.cpp
+--- orig/src/libxvdr/tests/ac3analyze.cpp	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/tests/ac3analyze.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -54,7 +54,7 @@
+ 
+   Channel c = client.m_channels[channel_number];
+ 
+-  Demux demux(&client);
++  Demux demux(&client, NULL);
+ 
+   client.Log(INFO, "Opening channel #%i", channel_number);
+ 
+diff -Naur orig/src/libxvdr/tests/consoleclient.cpp mod/src/libxvdr/tests/consoleclient.cpp
+--- orig/src/libxvdr/tests/consoleclient.cpp	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/tests/consoleclient.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -69,11 +69,12 @@
+   return (XVDR::Packet*)p;
+ }
+ 
+-void ConsoleClient::SetPacketData(XVDR::Packet* packet, uint8_t* data, int index, uint64_t pts, uint64_t dts) {
++void ConsoleClient::SetPacketData(XVDR::Packet* packet, uint8_t* data, int index, uint64_t pts, uint64_t dts, uint32_t duration) {
+   Packet* p = (Packet*)packet;
+ 
+   p->pts = pts;
+   p->dts = dts;
++  p->duration = duration;
+   p->index = index;
+ 
+   memcpy(p->data, data, p->length);
+diff -Naur orig/src/libxvdr/tests/consoleclient.h mod/src/libxvdr/tests/consoleclient.h
+--- orig/src/libxvdr/tests/consoleclient.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/tests/consoleclient.h	2014-06-20 21:31:38.000000000 +0200
+@@ -53,7 +53,7 @@
+   XVDR::Packet* StreamChange(const XVDR::StreamProperties& streams);
+ 
+   XVDR::Packet* AllocatePacket(int length);
+-  void SetPacketData(XVDR::Packet* packet, uint8_t* data, int index, uint64_t pts, uint64_t dts);
++  void SetPacketData(XVDR::Packet* packet, uint8_t* data, int index, uint64_t pts, uint64_t dts, uint32_t duration);
+   void FreePacket(XVDR::Packet* packet);
+ 
+   std::map<int, XVDR::Channel> m_channels;
+@@ -63,11 +63,13 @@
+ 
+     uint64_t pts;
+     uint64_t dts;
++    uint32_t duration;
+     int index;
+     int pid;
+     uint8_t* data;
+     int length;
+   };
++
+ };
+ 
+ #endif // CONSOLECLIENT_H
+diff -Naur orig/src/libxvdr/tests/demux.cpp mod/src/libxvdr/tests/demux.cpp
+--- orig/src/libxvdr/tests/demux.cpp	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/tests/demux.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -58,9 +58,10 @@
+ 
+   Channel c = client.m_channels[channel_number];
+ 
+-  Demux demux(&client);
++  Demux demux(&client, NULL);
+ 
+-  client.Log(INFO, "Opening channel #%i", channel_number);
++  TimeMs t;
++  client.Log(INFO, "Opening channel #%i (%s)", channel_number, c.Name.c_str());
+ 
+   if(demux.OpenChannel(hostname, c.UID) != Demux::SC_OK) {
+     client.Log(FAILURE, "Unable to open channel !");
+@@ -68,9 +69,13 @@
+   }
+ 
+   ConsoleClient::Packet* p = NULL;
++  int firstVideoPacket = 0;
++  int firstPacket = 0;
++  int switchTime = t.Elapsed();
++
++  client.Log(INFO, "Switched to channel after %i ms", switchTime);
+ 
+   for(int i = 0; i < 100; i++) {
+-  //while(true) {
+     p = demux.Read<ConsoleClient::Packet>();
+ 
+     if(p == NULL) {
+@@ -78,6 +83,14 @@
+     }
+ 
+     if(p->data != NULL) {
++      if(firstPacket == 0) {
++        firstPacket = t.Elapsed();
++        client.Log(INFO, "Received first packet after %i ms", firstPacket);
++      }
++      if(firstVideoPacket == 0 && p->index == 0) {
++        firstVideoPacket = t.Elapsed();
++        client.Log(INFO, "Received first video packet after %i ms", firstVideoPacket);
++      }
+       uint32_t header = p->data[0] << 24 | p->data[1] << 16 | p->data[2] << 8 | p->data[3];
+       client.Log(INFO, "Demux (index: %i length: %i bytes) Header: %08X PTS: %lli", p->index, p->length, header, p->pts);
+     }
+@@ -85,14 +98,25 @@
+     client.FreePacket(p);
+   }
+ 
+-  demux.CloseChannel();
++  client.Log(INFO, "Stopping ...");
++  t.Set(0);
+ 
+   // wait for pending notifications
+   if(p == NULL) {
+     CondWait::SleepMs(5000);
+   }
+ 
++  demux.CloseChannel();
+   client.Close();
+ 
++  int stopTime = t.Elapsed();
++
++  client.Log(INFO, "");
++  client.Log(INFO, "Stream summary:");
++  client.Log(INFO, "Channel: %i - %s", channel_number, c.Name.c_str());
++  client.Log(INFO, "Switch time: %i ms", switchTime);
++  client.Log(INFO, "First packet after: %i ms", firstPacket);
++  client.Log(INFO, "First video after: %i ms", firstVideoPacket);
++
+   return 0;
+ }
+diff -Naur orig/src/libxvdr/tests/.gitignore mod/src/libxvdr/tests/.gitignore
+--- orig/src/libxvdr/tests/.gitignore	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/libxvdr/tests/.gitignore	2014-06-20 21:31:38.000000000 +0200
+@@ -3,3 +3,4 @@
+ demux
+ listener
+ ac3analyze
++scanner
+diff -Naur orig/src/xvdr/dialogs/GUIDialogBase.cpp mod/src/xvdr/dialogs/GUIDialogBase.cpp
+--- orig/src/xvdr/dialogs/GUIDialogBase.cpp	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/dialogs/GUIDialogBase.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -95,6 +95,7 @@
+ bool CGUIDialogBase::OnAction(int actionId) {
+   if (actionId == ADDON_ACTION_CLOSE_DIALOG || actionId == ADDON_ACTION_PREVIOUS_MENU) {
+     Close();
++    return true;
+   }
+-  return true;
++  return false;
+ }
+diff -Naur orig/src/xvdr/dialogs/Makefile.am mod/src/xvdr/dialogs/Makefile.am
+--- orig/src/xvdr/dialogs/Makefile.am	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/dialogs/Makefile.am	2014-06-20 21:31:38.000000000 +0200
+@@ -20,4 +20,5 @@
+ 	-I$(top_srcdir) \
+ 	-I$(top_srcdir)/src/libxvdr/include \
+ 	-I$(srcdir)/.. \
+-	-I$(srcdir)/../include
++	-I$(srcdir)/../include \
++	-I$(top_srcdir)/addons/library.xbmc.addon
+diff -Naur orig/src/xvdr/include/DVDDemuxPacket.h mod/src/xvdr/include/DVDDemuxPacket.h
+--- orig/src/xvdr/include/DVDDemuxPacket.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/include/DVDDemuxPacket.h	2014-06-20 21:31:38.000000000 +0200
+@@ -1,7 +1,7 @@
+ #pragma once
+ 
+ /*
+- *      Copyright (C) 2012 Team XBMC
++ *      Copyright (C) 2012-2013 Team XBMC
+  *      http://www.xbmc.org
+  *
+  *  This Program is free software; you can redistribute it and/or modify
+diff -Naur orig/src/xvdr/include/xbmc_addon_cpp_dll.h mod/src/xvdr/include/xbmc_addon_cpp_dll.h
+--- orig/src/xvdr/include/xbmc_addon_cpp_dll.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/include/xbmc_addon_cpp_dll.h	2014-06-20 21:31:38.000000000 +0200
+@@ -2,8 +2,8 @@
+ #define __XBMC_ADDON_CPP_H__
+ 
+ /*
+- *      Copyright (C) 2005-2012 Team XBMC
+- *      http://www.xbmc.org
++ *      Copyright (C) 2005-2013 Team XBMC
++ *      http://xbmc.org
+  *
+  *  This Program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+diff -Naur orig/src/xvdr/include/xbmc_addon_dll.h mod/src/xvdr/include/xbmc_addon_dll.h
+--- orig/src/xvdr/include/xbmc_addon_dll.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/include/xbmc_addon_dll.h	2014-06-20 21:31:38.000000000 +0200
+@@ -2,8 +2,8 @@
+ #define __XBMC_ADDON_DLL_H__
+ 
+ /*
+- *      Copyright (C) 2005-2012 Team XBMC
+- *      http://www.xbmc.org
++ *      Copyright (C) 2005-2013 Team XBMC
++ *      http://xbmc.org
+  *
+  *  This Program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -21,7 +21,7 @@
+  *
+  */
+ 
+-#ifdef _WIN32
++#ifdef TARGET_WINDOWS
+ #include <windows.h>
+ #else
+ #ifndef __cdecl
+@@ -46,6 +46,7 @@
+   unsigned int __declspec(dllexport) ADDON_GetSettings(ADDON_StructSetting ***sSet);
+   ADDON_STATUS __declspec(dllexport) ADDON_SetSetting(const char *settingName, const void *settingValue);
+   void         __declspec(dllexport) ADDON_FreeSettings();
++  void         __declspec(dllexport) ADDON_Announce(const char *flag, const char *sender, const char *message, const void *data);
+ 
+ #ifdef __cplusplus
+ };
+diff -Naur orig/src/xvdr/include/xbmc_addon_types.h mod/src/xvdr/include/xbmc_addon_types.h
+--- orig/src/xvdr/include/xbmc_addon_types.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/include/xbmc_addon_types.h	2014-06-20 21:31:38.000000000 +0200
+@@ -2,8 +2,8 @@
+ #define __XBMC_ADDON_TYPES_H__
+ 
+ /*
+- *      Copyright (C) 2005-2012 Team XBMC
+- *      http://www.xbmc.org
++ *      Copyright (C) 2005-2013 Team XBMC
++ *      http://xbmc.org
+  *
+  *  This Program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+diff -Naur orig/src/xvdr/include/xbmc_codec_types.h mod/src/xvdr/include/xbmc_codec_types.h
+--- orig/src/xvdr/include/xbmc_codec_types.h	1970-01-01 01:00:00.000000000 +0100
++++ mod/src/xvdr/include/xbmc_codec_types.h	2014-06-20 21:31:38.000000000 +0200
+@@ -0,0 +1,54 @@
++#ifndef __XBMC_CODEC_TYPES_H__
++#define __XBMC_CODEC_TYPES_H__
++
++/*
++ *      Copyright (C) 2005-2013 Team XBMC
++ *      http://xbmc.org
++ *
++ *  This Program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2, or (at your option)
++ *  any later version.
++ *
++ *  This Program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with XBMC; see the file COPYING.  If not, see
++ *  <http://www.gnu.org/licenses/>.
++ *
++ */
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++typedef unsigned int xbmc_codec_id_t;
++
++typedef enum
++{
++    XBMC_CODEC_TYPE_UNKNOWN = -1,
++    XBMC_CODEC_TYPE_VIDEO,
++    XBMC_CODEC_TYPE_AUDIO,
++    XBMC_CODEC_TYPE_DATA,
++    XBMC_CODEC_TYPE_SUBTITLE,
++    XBMC_CODEC_TYPE_NB
++} xbmc_codec_type_t;
++
++typedef struct
++{
++  xbmc_codec_type_t codec_type;
++  xbmc_codec_id_t   codec_id;
++} xbmc_codec_t;
++
++#define XBMC_INVALID_CODEC_ID   0
++#define XBMC_INVALID_CODEC      { XBMC_CODEC_TYPE_UNKNOWN, XBMC_INVALID_CODEC_ID }
++
++#ifdef __cplusplus
++};
++#endif
++
++#endif
++
+diff -Naur orig/src/xvdr/include/xbmc_epg_types.h mod/src/xvdr/include/xbmc_epg_types.h
+--- orig/src/xvdr/include/xbmc_epg_types.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/include/xbmc_epg_types.h	2014-06-20 21:31:38.000000000 +0200
+@@ -1,7 +1,7 @@
+ #pragma once
+ /*
+- *      Copyright (C) 2005-2012 Team XBMC
+- *      http://www.xbmc.org
++ *      Copyright (C) 2005-2013 Team XBMC
++ *      http://xbmc.org
+  *
+  *  This Program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+diff -Naur orig/src/xvdr/include/xbmc_pvr_dll.h mod/src/xvdr/include/xbmc_pvr_dll.h
+--- orig/src/xvdr/include/xbmc_pvr_dll.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/include/xbmc_pvr_dll.h	2014-06-20 21:31:38.000000000 +0200
+@@ -1,6 +1,6 @@
+ /*
+- *      Copyright (C) 2005-2012 Team XBMC
+- *      http://www.xbmc.org
++ *      Copyright (C) 2005-2013 Team XBMC
++ *      http://xbmc.org
+  *
+  *  This Program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -51,6 +51,22 @@
+   const char* GetMininumPVRAPIVersion(void);
+ 
+   /*!
++   * Get the XBMC_GUI_API_VERSION that was used to compile this add-on.
++   * Used to check if this add-on is compatible with XBMC.
++   * @return The XBMC_GUI_API_VERSION that was used to compile this add-on.
++   * @remarks Valid implementation required.
++   */
++  const char* GetGUIAPIVersion(void);
++
++  /*!
++   * Get the XBMC_GUI_MIN_API_VERSION that was used to compile this add-on.
++   * Used to check if this add-on is compatible with XBMC.
++   * @return The XBMC_GUI_MIN_API_VERSION that was used to compile this add-on.
++   * @remarks Valid implementation required.
++   */
++  const char* GetMininumGUIAPIVersion(void);
++
++  /*!
+    * Get the list of features that this add-on provides.
+    * Called by XBMC to query the add-on's capabilities.
+    * Used to check which options should be presented in the UI, which methods to call, etc.
+@@ -92,10 +108,11 @@
+    * Call one of the menu hooks (if supported).
+    * Supported PVR_MENUHOOK instances have to be added in ADDON_Create(), by calling AddMenuHook() on the callback.
+    * @param menuhook The hook to call.
++   * @param item The selected item for which the hook was called.
+    * @return PVR_ERROR_NO_ERROR if the hook was called successfully.
+    * @remarks Optional. Return PVR_ERROR_NOT_IMPLEMENTED if this add-on won't provide this function.
+    */
+-  PVR_ERROR CallMenuHook(const PVR_MENUHOOK& menuhook);
++  PVR_ERROR CallMenuHook(const PVR_MENUHOOK& menuhook, const PVR_MENUHOOK_DATA &item);
+   //@}
+ 
+   /*! @name PVR EPG methods
+@@ -284,6 +301,16 @@
+   */
+   int GetRecordingLastPlayedPosition(const PVR_RECORDING& recording);
+ 
++  /*!
++  * Retrieve the edit decision list (EDL) of a recording on the backend.
++  * @param recording The recording.
++  * @param edl out: The function has to write the EDL list into this array.
++  * @param size in: The maximum size of the EDL, out: the actual size of the EDL.
++  * @return PVR_ERROR_NO_ERROR if the EDL was successfully read.
++  * @remarks Required if bSupportsRecordingEdl is set to true. Return PVR_ERROR_NOT_IMPLEMENTED if this add-on won't provide this function.
++  */
++  PVR_ERROR GetRecordingEdl(const PVR_RECORDING&, PVR_EDL_ENTRY edl[], int *size);
++
+   //@}
+   /** @name PVR timer methods
+    *  @remarks Only used by XBMC is bSupportsTimers is set to true.
+@@ -549,6 +576,25 @@
+   void SetSpeed(int speed);
+ 
+   /*!
++   *  Get actual playing time from addon. With timeshift enabled this is
++   *  different to live.
++   *  @return time as UTC
++   */
++  time_t GetPlayingTime();
++
++  /*!
++   *  Get time of oldest packet in timeshift buffer
++   *  @return time as UTC
++   */
++  time_t GetBufferTimeStart();
++
++  /*!
++   *  Get time of latest packet in timeshift buffer
++   *  @return time as UTC
++   */
++  time_t GetBufferTimeEnd();
++
++  /*!
+    * Called by XBMC to assign the function pointers of this add-on to pClient.
+    * @param pClient The struct to assign the function pointers to.
+    */
+@@ -556,6 +602,8 @@
+   {
+     pClient->GetPVRAPIVersion               = GetPVRAPIVersion;
+     pClient->GetMininumPVRAPIVersion        = GetMininumPVRAPIVersion;
++    pClient->GetGUIAPIVersion               = GetGUIAPIVersion;
++    pClient->GetMininumGUIAPIVersion        = GetMininumGUIAPIVersion;
+     pClient->GetAddonCapabilities           = GetAddonCapabilities;
+     pClient->GetStreamProperties            = GetStreamProperties;
+     pClient->GetConnectionString            = GetConnectionString;
+@@ -586,6 +634,7 @@
+     pClient->SetRecordingPlayCount          = SetRecordingPlayCount;
+     pClient->SetRecordingLastPlayedPosition = SetRecordingLastPlayedPosition;
+     pClient->GetRecordingLastPlayedPosition = GetRecordingLastPlayedPosition;
++    pClient->GetRecordingEdl                = GetRecordingEdl;
+ 
+     pClient->GetTimersAmount                = GetTimersAmount;
+     pClient->GetTimers                      = GetTimers;
+@@ -621,6 +670,10 @@
+     pClient->DemuxAbort                     = DemuxAbort;
+     pClient->DemuxFlush                     = DemuxFlush;
+     pClient->DemuxRead                      = DemuxRead;
++
++    pClient->GetPlayingTime                 = GetPlayingTime;
++    pClient->GetBufferTimeStart             = GetBufferTimeStart;
++    pClient->GetBufferTimeEnd               = GetBufferTimeEnd;
+   };
+ };
+ 
+diff -Naur orig/src/xvdr/include/xbmc_pvr_types.h mod/src/xvdr/include/xbmc_pvr_types.h
+--- orig/src/xvdr/include/xbmc_pvr_types.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/include/xbmc_pvr_types.h	2014-06-20 21:31:38.000000000 +0200
+@@ -1,7 +1,7 @@
+ #pragma once
+ /*
+- *      Copyright (C) 2005-2012 Team XBMC
+- *      http://www.xbmc.org
++ *      Copyright (C) 2005-2013 Team XBMC
++ *      http://xbmc.org
+  *
+  *  This Program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -22,7 +22,7 @@
+ #ifndef __PVRCLIENT_TYPES_H__
+ #define __PVRCLIENT_TYPES_H__
+ 
+-#ifdef _WIN32
++#ifdef TARGET_WINDOWS
+ #include <windows.h>
+ #else
+ #ifndef __cdecl
+@@ -33,9 +33,11 @@
+ #endif
+ #endif
+ #include <string.h>
++#include <stdint.h>
+ 
+ #include "xbmc_addon_types.h"
+ #include "xbmc_epg_types.h"
++#include "xbmc_codec_types.h"
+ 
+ /*! @note Define "USE_DEMUX" at compile time if demuxing in the PVR add-on is used.
+  *        Also XBMC's "DVDDemuxPacket.h" file must be in the include path of the add-on,
+@@ -67,15 +69,16 @@
+ #define PVR_ADDON_URL_STRING_LENGTH          1024
+ #define PVR_ADDON_DESC_STRING_LENGTH         1024
+ #define PVR_ADDON_INPUT_FORMAT_STRING_LENGTH 32
++#define PVR_ADDON_EDL_LENGTH                 32
+ 
+ /* using the default avformat's MAX_STREAMS value to be safe */
+ #define PVR_STREAM_MAX_STREAMS 20
+ 
+ /* current PVR API version */
+-#define XBMC_PVR_API_VERSION "1.6.0"
++#define XBMC_PVR_API_VERSION "1.9.0"
+ 
+ /* min. PVR API version */
+-#define XBMC_PVR_MIN_API_VERSION "1.6.0"
++#define XBMC_PVR_MIN_API_VERSION "1.9.0"
+ 
+ #ifdef __cplusplus
+ extern "C" {
+@@ -119,6 +122,7 @@
+    */
+   typedef enum
+   {
++    PVR_MENUHOOK_UNKNOWN         =-1, /*!< @brief unknown menu hook */
+     PVR_MENUHOOK_ALL             = 0, /*!< @brief all categories */
+     PVR_MENUHOOK_CHANNEL         = 1, /*!< @brief for channels */
+     PVR_MENUHOOK_TIMER           = 2, /*!< @brief for timers */
+@@ -154,6 +158,7 @@
+     bool bSupportsRecordingFolders;     /*!< @brief true if the backend supports timers / recordings in folders. */
+     bool bSupportsRecordingPlayCount;   /*!< @brief true if the backend supports play count for recordings. */
+     bool bSupportsLastPlayedPosition;   /*!< @brief true if the backend supports store/retrieve of last played position for recordings. */
++    bool bSupportsRecordingEdl;         /*!< @brief true if the backend supports retrieving an edit decision list for recordings. */
+   } ATTRIBUTE_PACKED PVR_ADDON_CAPABILITIES;
+ 
+   /*!
+@@ -164,22 +169,22 @@
+     unsigned int iStreamCount;
+     struct PVR_STREAM
+     {
+-      unsigned int iPhysicalId;        /*!< @brief (required) physical index */
+-      unsigned int iCodecType;         /*!< @brief (required) codec type id */
+-      unsigned int iCodecId;           /*!< @brief (required) codec id */
+-      char         strLanguage[4];     /*!< @brief (required) language id */
+-      int          iIdentifier;        /*!< @brief (required) stream id */
+-      int          iFPSScale;          /*!< @brief (required) scale of 1000 and a rate of 29970 will result in 29.97 fps */
+-      int          iFPSRate;           /*!< @brief (required) FPS rate */
+-      int          iHeight;            /*!< @brief (required) height of the stream reported by the demuxer */
+-      int          iWidth;             /*!< @brief (required) width of the stream reported by the demuxer */
+-      float        fAspect;            /*!< @brief (required) display aspect ratio of the stream */
+-      int          iChannels;          /*!< @brief (required) amount of channels */
+-      int          iSampleRate;        /*!< @brief (required) sample rate */
+-      int          iBlockAlign;        /*!< @brief (required) block alignment */
+-      int          iBitRate;           /*!< @brief (required) bit rate */
+-      int          iBitsPerSample;     /*!< @brief (required) bits per sample */
+-     } stream[PVR_STREAM_MAX_STREAMS]; /*!< @brief (required) the streams */
++      unsigned int      iPhysicalId;        /*!< @brief (required) physical index */
++      xbmc_codec_type_t iCodecType;         /*!< @brief (required) codec type this stream */
++      xbmc_codec_id_t   iCodecId;           /*!< @brief (required) codec id of this stream */
++      char              strLanguage[4];     /*!< @brief (required) language id */
++      int               iIdentifier;        /*!< @brief (required) stream id */
++      int               iFPSScale;          /*!< @brief (required) scale of 1000 and a rate of 29970 will result in 29.97 fps */
++      int               iFPSRate;           /*!< @brief (required) FPS rate */
++      int               iHeight;            /*!< @brief (required) height of the stream reported by the demuxer */
++      int               iWidth;             /*!< @brief (required) width of the stream reported by the demuxer */
++      float             fAspect;            /*!< @brief (required) display aspect ratio of the stream */
++      int               iChannels;          /*!< @brief (required) amount of channels */
++      int               iSampleRate;        /*!< @brief (required) sample rate */
++      int               iBlockAlign;        /*!< @brief (required) block alignment */
++      int               iBitRate;           /*!< @brief (required) bit rate */
++      int               iBitsPerSample;     /*!< @brief (required) bits per sample */
++     } stream[PVR_STREAM_MAX_STREAMS];      /*!< @brief (required) the streams */
+    } ATTRIBUTE_PACKED PVR_STREAM_PROPERTIES;
+ 
+   /*!
+@@ -189,6 +194,9 @@
+   {
+     char   strAdapterName[PVR_ADDON_NAME_STRING_LENGTH];   /*!< @brief (optional) name of the adapter that's being used */
+     char   strAdapterStatus[PVR_ADDON_NAME_STRING_LENGTH]; /*!< @brief (optional) status of the adapter that's being used */
++    char   strServiceName[PVR_ADDON_NAME_STRING_LENGTH];   /*!< @brief (optional) name of the current service */
++    char   strProviderName[PVR_ADDON_NAME_STRING_LENGTH];  /*!< @brief (optional) name of the current service's provider */
++    char   strMuxName[PVR_ADDON_NAME_STRING_LENGTH];       /*!< @brief (optional) name of the current mux */
+     int    iSNR;                                           /*!< @brief (optional) signal/noise ratio */
+     int    iSignal;                                        /*!< @brief (optional) signal strength */
+     long   iBER;                                           /*!< @brief (optional) bit error rate */
+@@ -285,22 +293,57 @@
+     int    iGenreType;                                    /*!< @brief (optional) genre type */
+     int    iGenreSubType;                                 /*!< @brief (optional) genre sub type */
+     int    iPlayCount;                                    /*!< @brief (optional) play count of this recording on the client */
++    int    iLastPlayedPosition;                           /*!< @brief (optional) last played position of this recording on the client */
+   } ATTRIBUTE_PACKED PVR_RECORDING;
+ 
+   /*!
++   * @brief Edit definition list (EDL)
++   */
++  typedef enum
++  {
++    PVR_EDL_TYPE_CUT      = 0, /*!< @brief cut (completly remove content) */
++    PVR_EDL_TYPE_MUTE     = 1, /*!< @brief mute audio */
++    PVR_EDL_TYPE_SCENE    = 2, /*!< @brief scene markers (chapter seeking) */
++    PVR_EDL_TYPE_COMBREAK = 3  /*!< @brief commercial breaks */
++  } PVR_EDL_TYPE;
++
++  typedef struct PVR_EDL_ENTRY
++  {
++    int64_t start;     // ms
++    int64_t end;       // ms
++    PVR_EDL_TYPE type;
++  } ATTRIBUTE_PACKED PVR_EDL_ENTRY;
++
++  /*!
++   * @brief PVR menu hook data
++   */
++  typedef struct PVR_MENUHOOK_DATA
++  {
++    PVR_MENUHOOK_CAT cat;
++    union data {
++      int iEpgUid;
++      PVR_CHANNEL channel;
++      PVR_TIMER timer;
++      PVR_RECORDING recording;
++    } data;
++  } ATTRIBUTE_PACKED PVR_MENUHOOK_DATA;
++
++  /*!
+    * @brief Structure to transfer the methods from xbmc_pvr_dll.h to XBMC
+    */
+   typedef struct PVRClient
+   {
+     const char*  (__cdecl* GetPVRAPIVersion)(void);
+     const char*  (__cdecl* GetMininumPVRAPIVersion)(void);
++    const char*  (__cdecl* GetGUIAPIVersion)(void);
++    const char*  (__cdecl* GetMininumGUIAPIVersion)(void);
+     PVR_ERROR    (__cdecl* GetAddonCapabilities)(PVR_ADDON_CAPABILITIES*);
+     PVR_ERROR    (__cdecl* GetStreamProperties)(PVR_STREAM_PROPERTIES*);
+     const char*  (__cdecl* GetBackendName)(void);
+     const char*  (__cdecl* GetBackendVersion)(void);
+     const char*  (__cdecl* GetConnectionString)(void);
+     PVR_ERROR    (__cdecl* GetDriveSpace)(long long*, long long*);
+-    PVR_ERROR    (__cdecl* MenuHook)(const PVR_MENUHOOK&);
++    PVR_ERROR    (__cdecl* MenuHook)(const PVR_MENUHOOK&, const PVR_MENUHOOK_DATA&);
+     PVR_ERROR    (__cdecl* GetEpg)(ADDON_HANDLE, const PVR_CHANNEL&, time_t, time_t);
+     int          (__cdecl* GetChannelGroupsAmount)(void);
+     PVR_ERROR    (__cdecl* GetChannelGroups)(ADDON_HANDLE, bool);
+@@ -320,6 +363,7 @@
+     PVR_ERROR    (__cdecl* SetRecordingPlayCount)(const PVR_RECORDING&, int);
+     PVR_ERROR    (__cdecl* SetRecordingLastPlayedPosition)(const PVR_RECORDING&, int);
+     int          (__cdecl* GetRecordingLastPlayedPosition)(const PVR_RECORDING&);
++    PVR_ERROR    (__cdecl* GetRecordingEdl)(const PVR_RECORDING&, PVR_EDL_ENTRY[], int*);
+     int          (__cdecl* GetTimersAmount)(void);
+     PVR_ERROR    (__cdecl* GetTimers)(ADDON_HANDLE);
+     PVR_ERROR    (__cdecl* AddTimer)(const PVR_TIMER&);
+@@ -351,6 +395,9 @@
+     bool         (__cdecl* CanSeekStream)(void);
+     bool         (__cdecl* SeekTime)(int, bool, double*);
+     void         (__cdecl* SetSpeed)(int);
++    time_t       (__cdecl* GetPlayingTime)(void);
++    time_t       (__cdecl* GetBufferTimeStart)(void);
++    time_t       (__cdecl* GetBufferTimeEnd)(void);
+   } PVRClient;
+ 
+ #ifdef __cplusplus
+diff -Naur orig/src/xvdr/Makefile.am mod/src/xvdr/Makefile.am
+--- orig/src/xvdr/Makefile.am	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/Makefile.am	2014-06-20 21:31:38.000000000 +0200
+@@ -51,6 +51,8 @@
+ 	-I$(srcdir)/dialogs \
+ 	-I$(top_srcdir)/src/libxvdr/include \
+ 	-I$(top_srcdir) -I$(srcdir)/include \
++	-I$(top_srcdir)/addons/library.xbmc.addon \
++	-I$(top_srcdir)/addons/library.xbmc.codec \
+ 	-DUSE_DEMUX
+ 
+ EXTRA_DIST = \
+diff -Naur orig/src/xvdr/XBMCAddon.cpp mod/src/xvdr/XBMCAddon.cpp
+--- orig/src/xvdr/XBMCAddon.cpp	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/XBMCAddon.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -30,6 +30,7 @@
+ #include "xvdr/demux.h"
+ #include "xvdr/command.h"
+ #include "xvdr/connection.h"
++#include "xvdr/packetbuffer.h"
+ 
+ #include "xbmc_pvr_dll.h"
+ #include "xbmc_addon_types.h"
+@@ -48,6 +49,7 @@
+ CHelper_libXBMC_addon* XBMC = NULL;
+ CHelper_libXBMC_gui* GUI = NULL;
+ CHelper_libXBMC_pvr* PVR = NULL;
++CHelper_libXBMC_codec* CODEC = NULL;
+ 
+ Demux* mDemuxer = NULL;
+ cXBMCClient *mClient = NULL;
+@@ -57,6 +59,17 @@
+ 
+ static int priotable[] = { 0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,99,100 };
+ 
++void ADDON_Cleanup() {
++  delete GUI;
++  delete PVR;
++  delete XBMC;
++  delete CODEC;
++  GUI = NULL;
++  PVR = NULL;
++  XBMC = NULL;
++  CODEC = NULL;
++}
++
+ extern "C" {
+ 
+ /***********************************************************
+@@ -73,8 +86,7 @@
+   XBMC = new CHelper_libXBMC_addon;
+   if (!XBMC->RegisterMe(hdl))
+   {
+-    delete XBMC;
+-    XBMC = NULL;
++    ADDON_Cleanup();
+     return ADDON_STATUS_UNKNOWN;
+   }
+ 
+@@ -85,12 +97,14 @@
+   PVR = new CHelper_libXBMC_pvr;
+   if (!PVR->RegisterMe(hdl))
+   {
+-    delete GUI;
+-    delete PVR;
+-    delete XBMC;
+-    GUI = NULL;
+-    PVR = NULL;
+-    XBMC = NULL;
++    ADDON_Cleanup();
++    return ADDON_STATUS_UNKNOWN;
++  }
++
++  CODEC = new CHelper_libXBMC_codec;
++  if (!CODEC->RegisterMe(hdl))
++  {
++    ADDON_Cleanup();
+     return ADDON_STATUS_UNKNOWN;
+   }
+ 
+@@ -111,14 +125,7 @@
+ 	XVDR::CondWait::SleepMs(100);
+ 
+   if (!bConnected){
+-    delete mClient;
+-    delete GUI;
+-    delete PVR;
+-    delete XBMC;
+-    mClient = NULL;
+-    GUI = NULL;
+-    PVR = NULL;
+-    XBMC = NULL;
++    ADDON_Cleanup();
+     return ADDON_STATUS_LOST_CONNECTION;
+   }
+ 
+@@ -151,15 +158,11 @@
+ void ADDON_Destroy()
+ {
+   XVDR::MutexLock lock(&addonMutex);
+-  delete mClient;
+-  delete GUI;
+-  delete PVR;
+-  delete XBMC;
+ 
++  delete mClient;
+   mClient = NULL;
+-  GUI = NULL;
+-  PVR = NULL;
+-  XBMC = NULL;
++
++  ADDON_Cleanup();
+ }
+ 
+ bool ADDON_HasSettings()
+@@ -183,7 +186,7 @@
+   if(!bChanged)
+     return ADDON_STATUS_OK;
+ 
+-  if(strcmp(settingName, "host") == 0)
++  if(strcmp(settingName, "host") == 0 || strcmp(settingName, "piconpath") == 0)
+     return ADDON_STATUS_NEED_RESTART;
+ 
+   s.checkValues();
+@@ -210,6 +213,10 @@
+ {
+ }
+ 
++void ADDON_Announce(const char *flag, const char *sender, const char *message, const void *data)
++{
++}
++
+ /***********************************************************
+  * PVR Client AddOn specific public library functions
+  ***********************************************************/
+@@ -228,6 +235,7 @@
+ 
+   pCapabilities->bSupportsRecordingFolders   = true;
+   pCapabilities->bSupportsRecordingPlayCount = true;
++  pCapabilities->bSupportsRecordingEdl       = true;
+   pCapabilities->bSupportsLastPlayedPosition = true;
+ 
+   return PVR_ERROR_NO_ERROR;
+@@ -523,12 +531,51 @@
+     delete mDemuxer;
+   }
+ 
+-  mDemuxer = new Demux(mClient);
++  cXBMCSettings& s = cXBMCSettings::GetInstance();
++  PacketBuffer* buf = NULL;
++
++  // simple timeshift
++  if(s.TSMethod() == 0) {
++    XBMC->Log(LOG_NOTICE, "doing simple server-side timeshift");
++  }
++
++  // full-timeshift (ram)
++  else if(s.TSMethod() == 1) {
++    buf = (s.TSBufferSize() > 0) ? PacketBuffer::create(s.TSBufferSize() * 1024 * 1024) : NULL;
++    if(buf != NULL) {
++      XBMC->Log(LOG_NOTICE, "doing timeshift in memory using %f Mb RAM", s.TSBufferSize());
++    }
++  }
++
++  // full-timeshift (hdd)
++  else if(s.TSMethod() == 2) {
++    std::string tsfile = s.TSFolder();
++
++    // use temp folder if tsfolder is empty
++    if(tsfile.empty()) {
++      XVDR::ClientInterface::GetTempFolder(tsfile);
++    }
++
++    XVDR::ClientInterface::TrimPath(tsfile, true);
++    tsfile += "xvdr-timeshift.dat";
++
++    buf = (s.TSBufferSizeHDD() > 0) ? PacketBuffer::create(s.TSBufferSizeHDD() * 1024 * 1024, tsfile) : NULL;
++    if(buf != NULL) {
++      XBMC->Log(LOG_NOTICE, "doing timeshift on hdd at '%s' using %f Mb", tsfile.c_str(), s.TSBufferSizeHDD());
++    }
++  }
++
++  mDemuxer = new Demux(mClient, buf);
+   mDemuxer->SetTimeout(cXBMCSettings::GetInstance().ConnectTimeout() * 1000);
+   mDemuxer->SetAudioType(cXBMCSettings::GetInstance().AudioType());
+   mDemuxer->SetPriority(priotable[cXBMCSettings::GetInstance().Priority()]);
+ 
+-  Demux::SwitchStatus status = mDemuxer->OpenChannel(cXBMCSettings::GetInstance().Hostname(), channel.iUniqueId);
++  if(!channel.bIsRadio) {
++    mDemuxer->SetStartWithIFrame(cXBMCSettings::GetInstance().StartWithIFrame());
++  }
++
++  const cXBMCSettings& settings = cXBMCSettings::GetInstance();
++  Demux::SwitchStatus status = mDemuxer->OpenChannel(settings.Hostname(), channel.iUniqueId, settings.ClientName());
+ 
+   if (status == Demux::SC_OK)
+     CurrentChannel = channel.iChannelNumber;
+@@ -611,6 +658,10 @@
+   mDemuxer->SetAudioType(cXBMCSettings::GetInstance().AudioType());
+   mDemuxer->SetPriority(priotable[cXBMCSettings::GetInstance().Priority()]);
+ 
++  if(!channel.bIsRadio) {
++    mDemuxer->SetStartWithIFrame(cXBMCSettings::GetInstance().StartWithIFrame());
++  }
++
+   Demux::SwitchStatus status = mDemuxer->SwitchChannel(channel.iUniqueId);
+ 
+   if(status == Demux::SC_OK)
+@@ -705,7 +756,7 @@
+ bool CanSeekStream()
+ {
+   mClient->Lock();
+-  bool rc = (mDemuxer == NULL);
++  bool rc = (mDemuxer != NULL) && mDemuxer->CanSeekStream();
+   mClient->Unlock();
+ 
+   return rc;
+@@ -713,10 +764,20 @@
+ 
+ void PauseStream(bool bPaused)
+ {
+-  if(mDemuxer == NULL)
+-    return;
++  mClient->Lock();
+ 
+-  mDemuxer->Pause(bPaused);
++  if(mDemuxer != NULL)
++    mDemuxer->Pause(bPaused);
++
++  mClient->Unlock();
++}
++
++bool SeekTime(int time, bool backwards, double *startpts)
++{
++  mClient->Lock();
++  bool rc = (mDemuxer != NULL) && mDemuxer->SeekTime(time, backwards, startpts);
++  mClient->Unlock();
++  return rc;
+ }
+ 
+ const char* GetPVRAPIVersion(void)
+@@ -731,6 +792,18 @@
+   return strMinApiVersion;
+ }
+ 
++const char* GetGUIAPIVersion(void)
++{
++  static const char *strApiVersion = XBMC_GUI_API_VERSION;
++  return strApiVersion;
++}
++
++const char* GetMininumGUIAPIVersion(void)
++{
++  static const char *strMinApiVersion = XBMC_GUI_MIN_API_VERSION;
++  return strMinApiVersion;
++}
++
+ PVR_ERROR SetRecordingPlayCount(const PVR_RECORDING &recording, int count)
+ {
+   if (!mClient)
+@@ -758,7 +831,7 @@
+   return mClient->GetRecordingLastPosition(recording.strRecordingId);
+ }
+ 
+-PVR_ERROR CallMenuHook(const PVR_MENUHOOK &menuhook) {
++PVR_ERROR CallMenuHook(const PVR_MENUHOOK &menuhook, const PVR_MENUHOOK_DATA &item) {
+   switch(menuhook.iHookId) {
+     case XVDR_HOOK_SETTINGS_CHANNELSCAN:
+       DialogChannelScan();
+@@ -768,6 +841,53 @@
+   return PVR_ERROR_NOT_IMPLEMENTED;
+ }
+ 
++PVR_ERROR GetRecordingEdl(const PVR_RECORDING& recording, PVR_EDL_ENTRY edl[], int *size) {
++  if (!mClient)
++    return PVR_ERROR_SERVER_ERROR;
++
++  RecordingEdl list;
++
++  if(!mClient->LoadRecordingEdl(recording.strRecordingId, list)) {
++    XBMC->Log(LOG_DEBUG, "unable to load edl !");
++    *size = 0;
++    return PVR_ERROR_NO_ERROR;
++  }
++
++  int maxsize = *size;
++  *size = 0;
++
++  int64_t start = 0;
++  int64_t end = 0;
++
++  for(RecordingEdl::iterator i = list.begin(); i != list.end(); i++) {
++    if(*size == maxsize) {
++      break;
++    }
++
++    // convert in/out marks (scene) into cut marks
++    end = (int64_t)((double)(i->FrameBegin * 1000) / i->Fps);
++
++    if(start < end) {
++      edl[*size].type = PVR_EDL_TYPE_CUT;
++      edl[*size].start = start;
++      edl[*size].end = end;
++      (*size)++;
++    }
++
++    start = (int64_t)((double)(i->FrameEnd * 1000) / i->Fps);
++  }
++
++  // add last part
++  if(*size > 0) {
++    edl[*size].type = PVR_EDL_TYPE_CUT;
++    edl[*size].start = start;
++    edl[*size].end = 1000 * 60 * 60 * 24;
++    (*size)++;
++  }
++
++  return PVR_ERROR_NO_ERROR;
++}
++
+ /** UNUSED API FUNCTIONS */
+ PVR_ERROR DeleteChannel(const PVR_CHANNEL &channel) { return PVR_ERROR_NOT_IMPLEMENTED; }
+ PVR_ERROR RenameChannel(const PVR_CHANNEL &channel) { return PVR_ERROR_NOT_IMPLEMENTED; }
+@@ -780,6 +900,9 @@
+ long long LengthLiveStream(void) { return -1; }
+ const char * GetLiveStreamURL(const PVR_CHANNEL &channel) { return ""; }
+ unsigned int GetChannelSwitchDelay(void) { return 0; }
+-bool SeekTime(int time, bool backwards, double *startpts) { return false; }
+ void SetSpeed(int speed) {};
++
++time_t GetPlayingTime() { return 0; }
++time_t GetBufferTimeStart() { return 0; }
++time_t GetBufferTimeEnd() { return 0; }
+ }
+diff -Naur orig/src/xvdr/XBMCAddon.h mod/src/xvdr/XBMCAddon.h
+--- orig/src/xvdr/XBMCAddon.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/XBMCAddon.h	2014-06-20 21:31:38.000000000 +0200
+@@ -27,7 +27,9 @@
+ #include "addons/library.xbmc.addon/libXBMC_addon.h"
+ #include "addons/library.xbmc.gui/libXBMC_gui.h"
+ #include "addons/library.xbmc.pvr/libXBMC_pvr.h"
++#include "addons/library.xbmc.codec/libXBMC_codec.h"
+ 
+ extern ADDON::CHelper_libXBMC_addon *XBMC;
+ extern CHelper_libXBMC_gui *GUI;
+ extern CHelper_libXBMC_pvr *PVR;
++extern CHelper_libXBMC_codec *CODEC;
+diff -Naur orig/src/xvdr/XBMCClient.cpp mod/src/xvdr/XBMCClient.cpp
+--- orig/src/xvdr/XBMCClient.cpp	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/XBMCClient.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -31,13 +31,31 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "DVDDemuxPacket.h"
++#include "xbmc_pvr_types.h"
++#include "libXBMC_codec.h"
+ 
+ using namespace ADDON;
+ using namespace XVDR;
+ 
+ #define MSG_MAXLEN 512
+ 
+-cXBMCClient::cXBMCClient() : XVDR::Connection(this), m_handle(NULL), m_emptyChannelsSeen(false)
++static void GetContentFromType(const std::string& type, xbmc_codec_id_t& codecid, xbmc_codec_type_t& codectype)
++{
++  xbmc_codec_t codec = XBMC_INVALID_CODEC;
++
++  if(type == "MPEG2AUDIO") {
++    codec = CODEC->GetCodecByName("MP2");
++  }
++  else {
++    codec = CODEC->GetCodecByName(type.c_str());
++  }
++
++  codecid = codec.codec_id;
++  codectype = codec.codec_type;
++}
++
++
++cXBMCClient::cXBMCClient() : XVDR::Connection(this), m_handle(NULL), m_settings(cXBMCSettings::GetInstance()), m_emptyChannelsSeen(false)
+ {
+   m_scanner = new CGUIDialogChannelScanner(GUI, this);
+ }
+@@ -54,7 +72,7 @@
+   bool seen = m_emptyChannelsSeen;
+   Unlock();
+ 
+-  if(count > 0 || seen) {
++  if(!SupportChannelScan() || count > 0 || seen) {
+     return count;
+   }
+ 
+@@ -172,7 +190,20 @@
+ void cXBMCClient::TransferChannelEntry(const Channel& channel)
+ {
+   PVR_CHANNEL pvrchannel;
+-  pvrchannel << channel;
++
++  // local picons ?
++  if(!m_settings.PiconPath().empty()) {
++    Channel c(channel);
++    c.IconPath = m_settings.PiconPath();
++    if(c.IconPath[c.IconPath.length()-1] != '/') {
++      c.IconPath += "/";
++    }
++    c.IconPath += channel.ServiceReference + ".png";
++    pvrchannel << c;
++  }
++  else {
++    pvrchannel << channel;
++  }
+ 
+   PVR->TransferChannelEntry(m_handle, &pvrchannel);
+ }
+@@ -227,7 +258,7 @@
+   return (Packet*)d;
+ }
+ 
+-void cXBMCClient::SetPacketData(Packet* packet, uint8_t* data, int streamid, uint64_t dts, uint64_t pts)
++void cXBMCClient::SetPacketData(Packet* packet, uint8_t* data, int streamid, uint64_t dts, uint64_t pts, uint32_t duration)
+ {
+   if (packet == NULL)
+     return;
+@@ -235,7 +266,7 @@
+   DemuxPacket* d = static_cast<DemuxPacket*>(packet);
+ 
+   d->iStreamId = streamid;
+-  d->duration  = 0;
++  d->duration  = duration;
+   d->dts       = (double)dts * DVD_TIME_BASE / 1000000;
+   d->pts       = (double)pts * DVD_TIME_BASE / 1000000;
+ 
+@@ -262,7 +293,7 @@
+   if (pkt != NULL) {
+     PVR_STREAM_PROPERTIES props;
+     props << p;
+-    SetPacketData(pkt, (uint8_t*)&props, DMX_SPECIALID_STREAMINFO, 0, 0);
++    SetPacketData(pkt, (uint8_t*)&props, DMX_SPECIALID_STREAMCHANGE, 0, 0);
+   }
+ 
+   return pkt;
+@@ -350,12 +381,14 @@
+ 	lhs.Summary = rhs.strSummary;
+ 	lhs.Title = rhs.strTitle;
+ 
+-	if(rhs.state == PVR_TIMER_STATE_RECORDING)
++  lhs.State = 0;
++
++  if(rhs.state == PVR_TIMER_STATE_RECORDING) {
+ 	  lhs.State = 8;
+-  if(rhs.state == PVR_TIMER_STATE_SCHEDULED)
++  }
++  else if(rhs.state == PVR_TIMER_STATE_SCHEDULED) {
+     lhs.State = 1;
+-  if(rhs.state == PVR_TIMER_STATE_NEW)
+-    lhs.State = 0;
++  }
+ 
+ 	return lhs;
+ }
+@@ -376,16 +409,20 @@
+ 	lhs.iWeekdays = rhs.WeekDays;
+ 	lhs.startTime = rhs.StartTime;
+ 
+-  if(rhs.State == 0)
+-    lhs.state = PVR_TIMER_STATE_NEW;
+-  if(rhs.State & 1)
+-    lhs.state = PVR_TIMER_STATE_SCHEDULED;
+-  if(rhs.State & 1024)
+-    lhs.state = PVR_TIMER_STATE_CONFLICT_OK;
+-  if(rhs.State & 2048)
+-    lhs.state = PVR_TIMER_STATE_CONFLICT_NOK;
+-  if(rhs.State & 8)
++  lhs.state = PVR_TIMER_STATE_CANCELLED;
++
++  if(rhs.State & 8) {
+     lhs.state = PVR_TIMER_STATE_RECORDING;
++  }
++  else if(rhs.State & 2048) {
++    lhs.state = PVR_TIMER_STATE_CONFLICT_NOK;
++  }
++  else if(rhs.State & 1024) {
++    lhs.state = PVR_TIMER_STATE_CONFLICT_OK;
++  }
++  else if(rhs.State & 1) {
++    lhs.state = PVR_TIMER_STATE_SCHEDULED;
++  }
+ 
+ 	strncpy(lhs.strDirectory, rhs.Directory.c_str(), sizeof(lhs.strDirectory));
+ 	strncpy(lhs.strSummary, rhs.Summary.c_str(), sizeof(lhs.strSummary));
+@@ -460,8 +497,7 @@
+ 	lhs.iBitsPerSample = rhs.BitsPerSample;
+ 	lhs.iBlockAlign = rhs.BlockAlign;
+ 	lhs.iChannels = rhs.Channels;
+-	lhs.iCodecId = rhs.CodecId;
+-	lhs.iCodecType = rhs.CodecType;
++	GetContentFromType(rhs.Type, lhs.iCodecId, lhs.iCodecType);
+ 	lhs.iFPSRate = rhs.FpsRate;
+ 	lhs.iFPSScale = rhs.FpsScale;
+ 	lhs.iHeight = rhs.Height;
+@@ -497,6 +533,8 @@
+ 	lhs.iUNC = rhs.UNC;
+ 	strncpy(lhs.strAdapterName, rhs.AdapterName.c_str(), sizeof(lhs.strAdapterName));
+ 	strncpy(lhs.strAdapterStatus, rhs.AdapterStatus.c_str(), sizeof(lhs.strAdapterStatus));
++	strncpy(lhs.strProviderName, rhs.ProviderName.c_str(), sizeof(lhs.strProviderName));
++	strncpy(lhs.strServiceName, rhs.ServiceName.c_str(), sizeof(lhs.strServiceName));
+ 
+ 	return lhs;
+ }
+diff -Naur orig/src/xvdr/XBMCClient.h mod/src/xvdr/XBMCClient.h
+--- orig/src/xvdr/XBMCClient.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/XBMCClient.h	2014-06-20 21:31:38.000000000 +0200
+@@ -24,6 +24,7 @@
+  */
+ 
+ #include "XBMCAddon.h"
++#include "XBMCSettings.h"
+ #include "xvdr/clientinterface.h"
+ #include "xvdr/connection.h"
+ 
+@@ -85,7 +86,7 @@
+ 
+   XVDR::Packet* AllocatePacket(int length);
+ 
+-  void SetPacketData(XVDR::Packet* packet, uint8_t* data = NULL, int streamid = 0, uint64_t dts = 0, uint64_t pts = 0);
++  void SetPacketData(XVDR::Packet* packet, uint8_t* data = NULL, int streamid = 0, uint64_t dts = 0, uint64_t pts = 0, uint32_t duration = 0);
+ 
+   void FreePacket(XVDR::Packet* packet);
+ 
+@@ -105,6 +106,8 @@
+ 
+ private:
+ 
++  cXBMCSettings& m_settings;
++
+   ADDON_HANDLE m_handle;
+ 
+   XVDR::CGUIDialogChannelScanner* m_scanner;
+diff -Naur orig/src/xvdr/XBMCSettings.cpp mod/src/xvdr/XBMCSettings.cpp
+--- orig/src/xvdr/XBMCSettings.cpp	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/XBMCSettings.cpp	2014-06-20 21:31:38.000000000 +0200
+@@ -155,3 +155,16 @@
+   m_value = str;
+   return true;
+ }
++
++template<>
++bool cXBMCConfigParameter<float>::load() {
++  int intvalue;
++
++  if (XBMC->GetSetting(m_setting.c_str(), &intvalue)) {
++    m_value = intvalue;
++    return true;
++  }
++
++  m_value = m_default;
++  return true;
++}
+diff -Naur orig/src/xvdr/XBMCSettings.h mod/src/xvdr/XBMCSettings.h
+--- orig/src/xvdr/XBMCSettings.h	2013-02-21 20:17:06.000000000 +0100
++++ mod/src/xvdr/XBMCSettings.h	2014-06-20 21:31:38.000000000 +0200
+@@ -96,7 +96,7 @@
+     return true;
+   }
+ 
+-  T& operator()()
++  const T& operator()() const
+   {
+     return m_value;
+   }
+@@ -131,10 +131,17 @@
+   cXBMCConfigParameter<bool> AutoChannelGroups;
+   cXBMCConfigParameter<int> AudioType;
+   cXBMCConfigParameter<int> UpdateChannels;
++  cXBMCConfigParameter<bool> StartWithIFrame;
+   cXBMCConfigParameter<bool> FTAChannels;
+   cXBMCConfigParameter<bool> NativeLangOnly;
+   cXBMCConfigParameter<bool> EncryptedChannels;
+   cXBMCConfigParameter<std::string> caids;
++  cXBMCConfigParameter<std::string> PiconPath;
++  cXBMCConfigParameter<float> TSBufferSize;
++  cXBMCConfigParameter<float> TSBufferSizeHDD;
++  cXBMCConfigParameter<int> TSMethod;
++  cXBMCConfigParameter<std::string> TSFolder;
++  cXBMCConfigParameter<std::string> ClientName;
+   std::vector<int> vcaids;
+ 
+ protected:
+@@ -148,10 +155,17 @@
+   AutoChannelGroups("autochannelgroups", false),
+   AudioType("audiotype", 0),
+   UpdateChannels("updatechannels", 3),
++  StartWithIFrame("iframe", false),
+   FTAChannels("ftachannels", true),
+   NativeLangOnly("nativelangonly", false),
+   EncryptedChannels("encryptedchannels", true),
+-  caids("caids")
++  caids("caids"),
++  PiconPath("piconpath"),
++  TSBufferSize("tsbuffersize"),
++  TSMethod("tsmethod"),
++  TSBufferSizeHDD("tsbuffersizehdd"),
++  TSFolder("tsfolder"),
++  ClientName("clientname")
+   {}
+ 
+ private:
+@@ -159,3 +173,7 @@
+   void ReadCaIDs(const char* buffer, std::vector<int>& array);
+ 
+ };
++
++template<> bool cXBMCConfigParameter<std::string>::set(const void* value);
++template<> bool cXBMCConfigParameter<std::string>::load();
++template<> bool cXBMCConfigParameter<float>::load();

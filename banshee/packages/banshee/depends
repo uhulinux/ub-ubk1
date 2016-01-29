@@ -1,0 +1,11 @@
+gio-sharp
+gkeyfile-sharp
+gst-plugins-good
+gtk-sharp-beans
+gudev-sharp
+gvfs
+libgpod >=
+libmtp >=
+mono-zeroconf
+notify-sharp
+shared-mime-info

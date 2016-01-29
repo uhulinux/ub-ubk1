@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+ub_configure
+
+for i in scripts/xdg-*.in scripts/man/*.1 scripts/README; do \
+f=$${i%.in}; \
+if [ -e $$f ] && ! [ -e $$f.build-orig ]; then \
+	mv $$f $$f.build-orig; \
+fi; \
+done
+
+cd scripts
+ub_make scripts man

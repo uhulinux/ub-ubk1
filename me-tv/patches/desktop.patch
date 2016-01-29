@@ -1,0 +1,11 @@
+--- me-tv-0.8.11.orig/client/me-tv.desktop.in	2009-04-12 13:55:11.000000000 +0200
++++ me-tv-0.8.11/client/me-tv.desktop.in	2009-05-12 19:49:31.000000000 +0200
+@@ -9,7 +8,7 @@
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=AudioVideo;GTK;TV;
++Categories=GTK;AudioVideo;TV;X-UHU-Menu/Multimedia/TVRadio;
+ MimeType=video/mpeg;audio/x-mpeg;video/x-mpeg;
+ X-AppInstall-Package=me-tv
+ X-AppInstall-Section=universe

@@ -1,0 +1,113 @@
+#config clearmemory
+#config complexoff
+#config angledeg
+
+// This script can be used calculate the
+// crossproduct of two vectors.
+// To use it, first press the run button here.
+// Then you can run the script as often as you want by
+// pressing the run button of the script console.
+// Press the kill-button to stop the script.d
+//
+// Feel free to read or modify this code.
+// For further examples and more information, please
+// visit http://extcalc-linux.sourceforge.net/
+//
+
+
+
+A=0;           //first vector
+B=0;           //second vector
+C=0;           //result vector
+D=0;           //Absolute first vector
+E=0;           //Absolute second vector
+
+G=0;           //general loop counter
+H=0;           //general status variable
+I=0;           //general input variable
+
+//request lines first matrix
+clear;
+
+
+  G[1]=0;
+  H=0;
+  while(1)
+  {
+    setcursor(0,0);
+    print("\n********** Crossproduct **********\n");
+    print("\n     Vector 1     x      Vector2");
+
+    for(G[0]=0; G[0]<3; G[0]=G[0]+1)
+    {
+        setcursor(5,G[0]+5);
+        if(G[0]==G[1] && H==0)
+          print("---");
+        else print(A[G[0]]);
+    }
+
+    for(G[0]=0; G[0]<3; G[0]=G[0]+1)
+    {
+        setcursor(25,G[0]+5);
+        if(G[0]==G[1] && H==1)
+          print("---");
+        else print(B[G[0]]);
+    }
+    print("\n\nInsert Element ");
+    print(G[1]+1);
+    print(" of Vector ");
+    print(H+1);
+    print(" : ");
+    I=getline;
+    clear;
+    if(I[0]!=0)
+    {
+      if(H==0)
+        A[G[1]]=(float)I;
+      else B[G[1]]=(float)I;
+    }
+
+    G[1]=G[1]+1;
+
+    if(G[1]==3)
+    {
+      G[1]=0;
+      if(H==0)
+        H=1;
+      else H=0;
+    }
+    setcursor(1,11);
+    print("Result: ");
+    C=A[]*B[];
+
+    for(G[0]=0; G[0]<3; G[0]=G[0]+1)
+    {
+        setcursor(8,G[0]+11);
+        print(C[G[0]]);
+    }
+    setcursor(25,11);
+    print("Absolute Vector 1:\t");
+    D=sqrt(A[0]^2+A[1]^2+A[2]^2);
+    print(D);
+
+    setcursor(25,12);
+    print("Absolute Vector 2:\t");
+    E=sqrt(B[0]^2+B[1]^2+B[2]^2);
+    print(E);
+
+    setcursor(25,13);
+    print("Absolute Result:\t");
+    print(sqrt(C[0]^2+C[1]^2+C[1]^2));
+
+    setcursor(25,14);
+    print("Dotproductproduct:\t");
+    print(A[]sprodB[]);
+
+    setcursor(25,15);
+    print("Angle in degrees:\t");
+    print(acos((A[]sprodB[])/(D*E)));
+    
+
+
+  }
+

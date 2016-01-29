@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libmal-${UB_VERSION}.tar.gz libmal-${UB_VERSION}/
+	http://www.jlogday.com/code/libmal/

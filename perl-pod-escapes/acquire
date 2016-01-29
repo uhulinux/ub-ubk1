@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Pod-Escapes-${UB_VERSION}.tar.gz Pod-Escapes-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/Pod/

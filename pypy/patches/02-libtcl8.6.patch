@@ -1,0 +1,12 @@
+diff -Naur ORIG/lib_pypy/_tkinter/tklib.py UHU/lib_pypy/_tkinter/tklib.py
+--- ORIG/lib_pypy/_tkinter/tklib.py	2013-11-15 20:44:50.000000000 +0100
++++ UHU/lib_pypy/_tkinter/tklib.py	2014-05-09 21:13:35.018770895 +0200
+@@ -122,7 +122,7 @@
+     libdirs = []
+ else:
+     incdirs=['/usr/include/tcl']
+-    linklibs=['tcl', 'tk']
++    linklibs=['tcl8.6', 'tk8.6']
+     libdirs = []
+ 
+ tklib = tkffi.verify("""

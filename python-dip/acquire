@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dip-py2-gpl-${UB_VERSION}.tar.gz dip-py2-gpl-${UB_VERSION}/
+	http://www.riverbankcomputing.co.uk/static/Downloads/dip/

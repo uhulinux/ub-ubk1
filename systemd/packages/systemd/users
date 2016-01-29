@@ -1,0 +1,1 @@
+systemd-timesync  226  226  -d /tmp -s /bin/false

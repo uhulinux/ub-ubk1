@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pyorbit-${UB_VERSION}.tar.gz pyorbit-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/pyorbit/${UB_VERSION_HEAD2}/

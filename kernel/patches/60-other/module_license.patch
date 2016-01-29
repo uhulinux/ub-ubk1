@@ -1,0 +1,20 @@
+diff -Naurdp a/drivers/staging/comedi/drivers/ni_atmio.c b/drivers/staging/comedi/drivers/ni_atmio.c
+--- a/drivers/staging/comedi/drivers/ni_atmio.c	2012-07-21 22:58:29.000000000 +0200
++++ b/drivers/staging/comedi/drivers/ni_atmio.c	2012-07-30 00:23:24.644543141 +0200
+@@ -515,3 +515,5 @@ static struct comedi_driver ni_atmio_dri
+ 	.detach		= ni_atmio_detach,
+ };
+ module_comedi_driver(ni_atmio_driver);
++
++MODULE_LICENSE("GPL");
+diff -Naurdp a/net/nfc/nci/core.c b/net/nfc/nci/core.c
+--- a/net/nfc/nci/core.c	2012-07-30 00:23:22.884748436 +0200
++++ b/net/nfc/nci/core.c	2012-07-30 00:23:24.644543141 +0200
+@@ -35,6 +35,7 @@
+ #include <linux/sched.h>
+ #include <linux/bitops.h>
+ #include <linux/skbuff.h>
++#include <linux/module.h>
+ 
+ #include "../nfc.h"
+ #include <net/nfc/nci.h>

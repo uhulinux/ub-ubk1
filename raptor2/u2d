@@ -1,0 +1,1 @@
+urllist http://download.librdf.org/source/ | splitver '^raptor2-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

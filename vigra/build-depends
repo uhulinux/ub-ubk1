@@ -1,0 +1,11 @@
+boost-dev
+cmake
+doxygen
+fftw3-dev
+hdf5
+libpng-dev
+libtiff-dev
+openexr-dev
+python-nose
+python-numpy
+python-sphinx

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pydot-${UB_VERSION}.tar.gz pydot-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pydot/

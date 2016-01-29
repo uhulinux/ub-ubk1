@@ -1,0 +1,13 @@
+diff -Naurd a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+--- a/drivers/bluetooth/btusb.c	2010-01-29 22:57:50.000000000 +0100
++++ b/drivers/bluetooth/btusb.c	2010-02-02 15:24:10.351711766 +0100
+@@ -134,6 +134,9 @@
+ 	/* CSR BlueCore Bluetooth Sniffer */
+ 	{ USB_DEVICE(0x0a12, 0x0002), .driver_info = BTUSB_SNIFFER },
+ 
++	/* CSR BlueCore Bluetooth Sniffer */
++	{ USB_DEVICE(0x0a12, 0x0003), .driver_info = BTUSB_SNIFFER },
++
+ 	/* Frontline ComProbe Bluetooth Sniffer */
+ 	{ USB_DEVICE(0x16d3, 0x0002), .driver_info = BTUSB_SNIFFER },
+ 

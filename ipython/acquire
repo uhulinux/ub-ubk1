@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ipython-${UB_VERSION}.tar.gz ipython-${UB_VERSION}/
+	http://pypi.python.org/packages/source/i/ipython/

@@ -1,0 +1,3 @@
+cmake
+expat-dev
+libxml2-dev

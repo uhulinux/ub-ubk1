@@ -1,0 +1,1 @@
+urllist http://developer.berlios.de/project/showfiles.php?group_id=11812  | splitver '^motor_([0-9.]+).tar.bz2$' | sort -V | tail -n 1

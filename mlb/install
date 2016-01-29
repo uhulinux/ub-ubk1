@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+sed -i s'|\r||'g mlb2.h
+cp -a libmlb2.a "$UB_INSTALLDIR"/usr/lib/
+cp -a mlb2.h "$UB_INSTALLDIR"/usr/include/

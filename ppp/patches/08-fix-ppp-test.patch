@@ -1,0 +1,52 @@
+diff -Naur ppp-2.4.5-orig/pppd/sys-linux.c ppp-2.4.5/pppd/sys-linux.c
+--- ppp-2.4.5-orig/pppd/sys-linux.c	2012-03-30 12:57:24.000000000 +0200
++++ ppp-2.4.5/pppd/sys-linux.c	2012-03-30 14:01:18.000000000 +0200
+@@ -2038,6 +2038,7 @@
+     int    size;
+     int    my_version, my_modification, my_patch;
+     int osmaj, osmin, ospatch;
++    int tries;
+ 
+     /* get the kernel version now, since we are called before sys_init */
+     uname(&utsname);
+@@ -2045,7 +2046,17 @@
+     sscanf(utsname.release, "%d.%d.%d", &osmaj, &osmin, &ospatch);
+     kernel_version = KVERSION(osmaj, osmin, ospatch);
+ 
+-    fd = open("/dev/ppp", O_RDWR);
++    goto part1;
++
++part2:
++
++    tries = 50;
++    while (tries--) {
++	fd = open("/dev/ppp", O_RDWR);
++	if (!(fd < 0 && errno == ENOENT)) break;
++	usleep(100000);
++    }
++    
+     if (fd >= 0) {
+ 	new_style_driver = 1;
+ 
+@@ -2080,6 +2091,10 @@
+ 	"ppp.o exists in /lib/modules/`uname -r`/net.\n"
+ 	"See README.linux file in the ppp distribution for more details.\n";
+ 
++    goto part3;
++
++part1:
++
+ /*
+  * Open a socket for doing the ioctl operations.
+  */
+@@ -2160,6 +2175,10 @@
+ 	    }
+ 	}
+     }
++    
++    goto part2;
++
++part3:   
+     return ok;
+ }
+ 

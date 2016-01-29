@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+fa.jquery-${UB_VERSION}.tar.gz fa.jquery-${UB_VERSION}/
+	http://pypi.python.org/packages/source/f/fa.jquery/

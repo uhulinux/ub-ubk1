@@ -1,0 +1,23 @@
+diff -Naurd a/Makefile b/Makefile
+--- a/Makefile	2013-04-19 05:56:33.000000000 +0200
++++ b/Makefile	2013-07-07 18:43:32.000000000 +0200
+@@ -2,7 +2,7 @@
+ 
+ # Where to install
+ #
+-prefix = /usr/local
++prefix = /usr
+ version = 2.3
+ 
+ CC = gcc
+@@ -22,8 +22,8 @@
+ cppp.o    : cppp.c gen.h unixisms.h error.h symset.h ppproc.h
+ 
+ install:
+-	cp ./cppp $(prefix)/bin/.
+-	cp ./cppp.1 $(prefix)/share/man/man1/.
++	cp ./cppp $(DESTDIR)$(prefix)/bin/.
++	cp ./cppp.1 $(DESTDIR)$(prefix)/share/man/man1/.
+ 
+ clean:
+ 	rm -f $(OBJLIST) cppp

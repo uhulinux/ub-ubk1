@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+midori-${UB_VERSION}.tar.bz2 midori-${UB_VERSION}/
+	http://archive.xfce.org/src/apps/midori/${UB_VERSION_HEAD2}/

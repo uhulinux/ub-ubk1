@@ -1,0 +1,17 @@
+#!/bin/sh -eux
+
+for i in BasicUsageEnvironment UsageEnvironment groupsock liveMedia; do
+	mkdir -p "$UB_INSTALLDIR"/usr/lib/live/"$i"
+	cp -r "$i"/include "$i"/lib"$i".a "$UB_INSTALLDIR"/usr/lib/live/"$i"/
+done
+
+for i in MPEG2TransportStreamIndexer openRTSP playSIP sapWatch \
+  testAMRAudioStreamer testMP3Receiver testMP3Streamer \
+  testMPEG1or2AudioVideoStreamer \
+  testMPEG1or2ProgramToTransportStream testMPEG1or2Splitter \
+  testMPEG1or2VideoReceiver testMPEG1or2VideoStreamer \
+  testMPEG2TransportStreamTrickPlay testMPEG2TransportStreamer \
+  testMPEG4VideoStreamer \
+  testOnDemandRTSPServer testRelay testWAVAudioStreamer vobStreamer; do
+	cp testProgs/"$i" "$UB_INSTALLDIR"/usr/bin/
+done

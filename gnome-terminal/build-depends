@@ -1,0 +1,15 @@
+appdata-tools
+dconf-dev
+desktop-file-utils
+docbook-dtds
+gconf2-dev
+gnome-shell
+gsettings-desktop-schemas
+gtk-dev
+intltool
+itstool
+libsm-dev
+nautilus-dev
+python-dev
+rarian
+vte-dev

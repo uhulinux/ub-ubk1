@@ -1,0 +1,20 @@
+diff -Naur a/Drivers/Makefile.in b/Drivers/Makefile.in
+--- a/Drivers/Makefile.in	2003-02-26 18:41:22.000000000 +0100
++++ b/Drivers/Makefile.in	2003-03-04 21:26:47.000000000 +0100
+@@ -181,6 +181,7 @@
+ @DRIVERS_TRUE@    odbc \
+ @DRIVERS_TRUE@    template \
+ @DRIVERS_TRUE@    MiniSQL \
++@DRIVERS_TRUE@    MySQL \
+ @DRIVERS_TRUE@    nn 
+ 
+ subdir = Drivers
+@@ -194,7 +195,7 @@
+ 	installdirs-recursive install-recursive uninstall-recursive \
+ 	check-recursive installcheck-recursive
+ DIST_COMMON = README Makefile.am Makefile.in
+-DIST_SUBDIRS = PostgreSQL Postgre7.1 txt odbc template MiniSQL nn
++DIST_SUBDIRS = PostgreSQL Postgre7.1 txt odbc template MiniSQL MySQL nn
+ all: all-recursive
+ 
+ .SUFFIXES:

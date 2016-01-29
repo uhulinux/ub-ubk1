@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+gtk-sharp-${UB_VERSION}.tar.bz2 gtk-sharp-${UB_VERSION}/
+	http://download.mono-project.com/sources/gtk-sharp212/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gtk-sharp/${UB_VERSION_HEAD2}/

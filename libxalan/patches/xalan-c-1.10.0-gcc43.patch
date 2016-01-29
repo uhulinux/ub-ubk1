@@ -1,0 +1,61 @@
+The STL headers in gcc-4.3 have been cleaned up, so that the headers don't drag in
+unnecessary dependencies which aren't requested by the standard.
+This fixes build for gcc-4.3
+
+Lubomir Kundrak <lkundrak@redhat.com>
+
+diff -urp xml-xalan.orig/c/src/xalanc/PlatformSupport/DirectoryEnumerator.hpp xml-xalan/c/src/xalanc/PlatformSupport/DirectoryEnumerator.hpp
+--- xml-xalan.orig/c/src/xalanc/PlatformSupport/DirectoryEnumerator.hpp	2005-05-05 02:32:04.000000000 +0200
++++ xml-xalan/c/src/xalanc/PlatformSupport/DirectoryEnumerator.hpp	2008-01-04 23:15:13.000000000 +0100
+@@ -31,6 +31,7 @@
+ #include <sys/stat.h>
+ #include <errno.h>
+ #endif
++#include <cstring>
+ 
+ 
+ 
+diff -urp xml-xalan.orig/c/src/xalanc/XalanDOM/XalanDOMString.cpp xml-xalan/c/src/xalanc/XalanDOM/XalanDOMString.cpp
+--- xml-xalan.orig/c/src/xalanc/XalanDOM/XalanDOMString.cpp	2005-08-08 17:25:52.000000000 +0200
++++ xml-xalan/c/src/xalanc/XalanDOM/XalanDOMString.cpp	2008-01-04 23:17:08.000000000 +0100
+@@ -26,6 +26,7 @@
+ 
+ 
+ #include <cstdlib>
++#include <cstring>
+ 
+ 
+ 
+diff -urp xml-xalan.orig/c/src/xalanc/XalanExe/XalanExe.cpp xml-xalan/c/src/xalanc/XalanExe/XalanExe.cpp
+--- xml-xalan.orig/c/src/xalanc/XalanExe/XalanExe.cpp	2005-04-29 23:39:46.000000000 +0200
++++ xml-xalan/c/src/xalanc/XalanExe/XalanExe.cpp	2008-01-04 23:23:09.000000000 +0100
+@@ -24,6 +24,7 @@
+ #else
+ #include <iostream>
+ #endif
++#include <cstring>
+ 
+ 
+ 
+diff -urp xml-xalan.orig/c/src/xalanc/XMLSupport/FormatterToHTML.cpp xml-xalan/c/src/xalanc/XMLSupport/FormatterToHTML.cpp
+--- xml-xalan.orig/c/src/xalanc/XMLSupport/FormatterToHTML.cpp	2005-06-30 23:52:35.000000000 +0200
++++ xml-xalan/c/src/xalanc/XMLSupport/FormatterToHTML.cpp	2008-01-04 23:23:26.000000000 +0100
+@@ -26,6 +26,7 @@
+ 
+ 
+ #include <cassert>
++#include <cstring>
+ 
+ 
+ 
+diff -urp xml-xalan.orig/c/src/xalanc/XSLT/ElemNumber.cpp xml-xalan/c/src/xalanc/XSLT/ElemNumber.cpp
+--- xml-xalan.orig/c/src/xalanc/XSLT/ElemNumber.cpp	2005-07-26 22:09:17.000000000 +0200
++++ xml-xalan/c/src/xalanc/XSLT/ElemNumber.cpp	2008-01-04 23:24:01.000000000 +0100
+@@ -15,6 +15,7 @@
+  */
+ #include "ElemNumber.hpp"
+ 
++#include <cstring>
+ 
+ 
+ #include <xercesc/sax/AttributeList.hpp>

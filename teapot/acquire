@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+teapot-${UB_VERSION}.tar.gz teapot-${UB_VERSION}/
+	http://www.syntax-k.de/projekte/teapot/

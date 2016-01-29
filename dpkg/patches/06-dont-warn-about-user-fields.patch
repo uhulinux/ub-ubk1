@@ -1,0 +1,17 @@
+diff -urN dpkg-1.16.1.2.orig/dpkg-deb/build.c dpkg-1.16.1.2/dpkg-deb/build.c
+--- dpkg-1.16.1.2.orig/dpkg-deb/build.c	2011-11-25 11:18:08.000000000 +0100
++++ dpkg-1.16.1.2/dpkg-deb/build.c	2011-12-23 15:59:53.226540061 +0100
+@@ -340,13 +340,6 @@
+   if (pkg->priority == pri_other)
+     warning(_("'%s' contains user-defined Priority value '%s'"),
+             controlfile, pkg->otherpriority);
+-  for (field = pkg->available.arbs; field; field = field->next) {
+-    if (known_arbitrary_field(field))
+-      continue;
+-
+-    warning(_("'%s' contains user-defined field '%s'"), controlfile,
+-            field->name);
+-  }
+ 
+   free(controlfile);
+ 

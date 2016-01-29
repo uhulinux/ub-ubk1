@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+cp -a bin/. "$UB_INSTALLDIR"/usr/bin/
+cp -a man/mantdh/*.1 "$UB_INSTALLDIR"/usr/share/man/man1/
+
+cp -a *.h "$UB_INSTALLDIR"/usr/include/
+cp -a *.a "$UB_INSTALLDIR"/usr/lib/
+cp -a man/mantdh/*.3 "$UB_INSTALLDIR"/usr/share/man/man3/

@@ -1,0 +1,9 @@
+--- a/data/five-or-more.desktop.in.orig	2011-01-24 23:46:40.000000000 +0100
++++ a/data/five-or-more.desktop.in	2011-10-20 18:24:32.000000000 +0200
+@@ -6,5 +6,5 @@
+ Icon=five-or-more
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Game;LogicGame;
++Categories=GNOME;GTK;Game;LogicGame;X-UHU-Menu/Games/TacticStrategy;
+ StartupNotify=true

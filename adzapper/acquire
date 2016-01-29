@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+adzap-${UB_VERSION}.tar.gz adzap/
+	http://adzapper.sourceforge.net/

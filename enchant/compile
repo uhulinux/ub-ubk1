@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--with-ispell-dir=/usr/lib/ispell \
+	--with-myspell-dir=/usr/share/myspell

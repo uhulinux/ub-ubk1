@@ -1,0 +1,57 @@
+diff -Naur orig/pppd/auth.c patched/pppd/auth.c
+--- orig/pppd/auth.c	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/auth.c	2012-03-31 19:49:48.939599819 +0200
+@@ -1184,7 +1184,7 @@
+     time_t itime;
+     int tlim;
+ 
+-    if (!get_idle_time(0, &idle))
++    if (!get_idle_time(0, &idle));
+ 	return;
+     if (idle_time_hook != 0) {
+ 	tlim = idle_time_hook(&idle);
+@@ -2090,9 +2090,10 @@
+ 
+     if (fstat(fileno(f), &sbuf) < 0) {
+ 	warn("cannot stat secret file %s: %m", filename);
+-    } else if ((sbuf.st_mode & (S_IRWXG | S_IRWXO)) != 0) {
+-	warn("Warning - secret file %s has world and/or group access",
+-	     filename);
++    } else if ((sbuf.st_mode & S_IRWXO) != 0) {
++	warn("Warning - secret file %s has world access", filename);
++    } else if ((sbuf.st_mode & S_IRWXG) != 0 && sbuf.st_gid != 15) {
++	warn("Warning - secret file %s has group access", filename);
+     }
+ }
+ 
+diff -Naur orig/pppd/lcp.c patched/pppd/lcp.c
+--- orig/pppd/lcp.c	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/lcp.c	2012-03-31 19:49:48.939599819 +0200
+@@ -2293,7 +2293,7 @@
+     if (lcp_gotoptions[f->unit].neg_magicnumber
+ 	&& magic == lcp_gotoptions[f->unit].magicnumber) {
+ 	warn("appear to have received our own echo-reply!");
+-	return;
++	/* M$-Software did get this wrong so we also accept those packets. */
+     }
+ 
+     /* Reset the number of outstanding echo frames */
+diff -Naur orig/pppd/pppd.h patched/pppd/pppd.h
+--- orig/pppd/pppd.h	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/pppd.h	2012-03-31 19:49:48.939599819 +0200
+@@ -823,15 +823,7 @@
+ #define DEBUGCHAP	1
+ #endif
+ 
+-#ifndef LOG_PPP			/* we use LOG_LOCAL2 for syslog by default */
+-#if defined(DEBUGMAIN) || defined(DEBUGFSM) || defined(DEBUGSYS) \
+-  || defined(DEBUGLCP) || defined(DEBUGIPCP) || defined(DEBUGUPAP) \
+-  || defined(DEBUGCHAP) || defined(DEBUG) || defined(DEBUGIPV6CP)
+ #define LOG_PPP LOG_LOCAL2
+-#else
+-#define LOG_PPP LOG_DAEMON
+-#endif
+-#endif /* LOG_PPP */
+ 
+ #ifdef DEBUGMAIN
+ #define MAINDEBUG(x)	if (debug) dbglog x

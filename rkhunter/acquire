@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+rkhunter-${UB_VERSION}.tar.gz ./rkhunter/
+	http://downloads.rootkit.nl/

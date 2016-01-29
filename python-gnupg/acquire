@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+GnuPGInterface-${UB_VERSION}.tar.gz GnuPGInterface-${UB_VERSION}/
+	http://downloads.sourceforge.net/py-gnupg/

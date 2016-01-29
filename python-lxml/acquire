@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxml-${UB_VERSION}.tar.gz lxml-${UB_VERSION}/
+	http://pypi.python.org/packages/source/l/lxml/

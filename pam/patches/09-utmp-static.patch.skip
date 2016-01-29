@@ -1,0 +1,12 @@
+diff -Naur Linux-PAM-0.99.3.0.orig/modules/pam_utmp/pam_utmp.c Linux-PAM-0.99.3.0/modules/pam_utmp/pam_utmp.c
+--- Linux-PAM-0.99.3.0.orig/modules/pam_utmp/pam_utmp.c	2001-03-29 00:29:12.000000000 +0200
++++ Linux-PAM-0.99.3.0/modules/pam_utmp/pam_utmp.c	2006-02-07 16:12:11.000000000 +0100
+@@ -44,7 +45,7 @@
+ 	closelog();
+ }
+ 
+-int update_utmp(int add, const char *user, const char *device, const char *host)
++static int update_utmp(int add, const char *user, const char *device, const char *host)
+ {
+     struct utmpx utx;
+     struct passwd * pw;

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+schismtracker-${UB_VERSION_TAIL1}.tar.bz2 schismtracker-${UB_VERSION_TAIL1}/
+	http://schismtracker.org/hg/archive/
+	http://schismtracker.org/dl/

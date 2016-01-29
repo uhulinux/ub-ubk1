@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ltrace_${UB_VERSION}.orig.tar.gz ltrace-${UB_VERSION}/
+	ftp://ftp.debian.org/debian/pool/main/l/ltrace/

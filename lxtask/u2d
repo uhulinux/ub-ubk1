@@ -1,0 +1,1 @@
+sflist lxde LXTask%20%28task%20manager%29 | splitver '^LXTask%20([0-9.]+)$' | sort -V | tail -n 1

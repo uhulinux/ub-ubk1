@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+phpize
+export CFLAGS="-I/usr/inlude/php/main"
+ub_compile

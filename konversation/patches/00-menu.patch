@@ -1,0 +1,12 @@
+diff -Naur konversation-1.2-orig/data/konversation.desktop konversation-1.2/data/konversation.desktop
+--- konversation-1.2-orig/data/konversation.desktop	2009-10-09 13:24:35.000000000 +0200
++++ konversation-1.2/data/konversation.desktop	2009-11-02 19:38:52.000000000 +0100
+@@ -73,7 +73,7 @@
+ Name[x-test]=xxKonversationxx
+ Name[zh_CN]=Konversation
+ Name[zh_TW]=Konversation
+-Categories=Qt;KDE;Network;IRCClient;
++Categories=Qt;KDE;Network;IRCClient;X-UHU-Menu/Internet/Messengers;
+ X-KDE-ServiceTypes=DBUS/InstantMessenger
+ X-DBUS-StartupType=Unique
+ X-DBUS-ServiceName=org.kde.konversation

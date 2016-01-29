@@ -1,0 +1,105 @@
+diff -Naurdp a/hostapd/defconfig b/hostapd/defconfig
+--- a/hostapd/defconfig	2010-01-12 15:55:02.000000000 +0100
++++ b/hostapd/defconfig	2010-02-20 23:29:50.562959990 +0100
+@@ -13,7 +13,7 @@
+ CONFIG_DRIVER_HOSTAP=y
+ 
+ # Driver interface for wired authenticator
+-#CONFIG_DRIVER_WIRED=y
++CONFIG_DRIVER_WIRED=y
+ 
+ # Driver interface for madwifi driver
+ #CONFIG_DRIVER_MADWIFI=y
+@@ -52,7 +52,7 @@ CONFIG_PEERKEY=y
+ # This version is an experimental implementation based on IEEE 802.11w/D1.0
+ # draft and is subject to change since the standard has not yet been finalized.
+ # Driver support is also needed for IEEE 802.11w.
+-#CONFIG_IEEE80211W=y
++CONFIG_IEEE80211W=y
+ 
+ # Integrated EAP server
+ CONFIG_EAP=y
+@@ -76,46 +76,46 @@ CONFIG_EAP_GTC=y
+ CONFIG_EAP_TTLS=y
+ 
+ # EAP-SIM for the integrated EAP server
+-#CONFIG_EAP_SIM=y
++CONFIG_EAP_SIM=y
+ 
+ # EAP-AKA for the integrated EAP server
+-#CONFIG_EAP_AKA=y
++CONFIG_EAP_AKA=y
+ 
+ # EAP-AKA' for the integrated EAP server
+ # This requires CONFIG_EAP_AKA to be enabled, too.
+-#CONFIG_EAP_AKA_PRIME=y
++CONFIG_EAP_AKA_PRIME=y
+ 
+ # EAP-PAX for the integrated EAP server
+-#CONFIG_EAP_PAX=y
++CONFIG_EAP_PAX=y
+ 
+ # EAP-PSK for the integrated EAP server (this is _not_ needed for WPA-PSK)
+-#CONFIG_EAP_PSK=y
++CONFIG_EAP_PSK=y
+ 
+ # EAP-SAKE for the integrated EAP server
+-#CONFIG_EAP_SAKE=y
++CONFIG_EAP_SAKE=y
+ 
+ # EAP-GPSK for the integrated EAP server
+-#CONFIG_EAP_GPSK=y
++CONFIG_EAP_GPSK=y
+ # Include support for optional SHA256 cipher suite in EAP-GPSK
+-#CONFIG_EAP_GPSK_SHA256=y
++CONFIG_EAP_GPSK_SHA256=y
+ 
+ # EAP-FAST for the integrated EAP server
+ # Note: Default OpenSSL package does not include support for all the
+ # functionality needed for EAP-FAST. If EAP-FAST is enabled with OpenSSL,
+ # the OpenSSL library must be patched (openssl-0.9.9-session-ticket.patch)
+ # to add the needed functions.
+-#CONFIG_EAP_FAST=y
++CONFIG_EAP_FAST=y
+ 
+ # Wi-Fi Protected Setup (WPS)
+-#CONFIG_WPS=y
++CONFIG_WPS=y
+ # Enable UPnP support for external WPS Registrars
+-#CONFIG_WPS_UPNP=y
++CONFIG_WPS_UPNP=y
+ 
+ # EAP-IKEv2
+-#CONFIG_EAP_IKEV2=y
++CONFIG_EAP_IKEV2=y
+ 
+ # Trusted Network Connect (EAP-TNC)
+-#CONFIG_EAP_TNC=y
++CONFIG_EAP_TNC=y
+ 
+ # PKCS#12 (PFX) support (used to read private key and certificate file from
+ # a file that usually has extension .p12 or .pfx)
+@@ -123,20 +123,20 @@ CONFIG_PKCS12=y
+ 
+ # RADIUS authentication server. This provides access to the integrated EAP
+ # server from external hosts using RADIUS.
+-#CONFIG_RADIUS_SERVER=y
++CONFIG_RADIUS_SERVER=y
+ 
+ # Build IPv6 support for RADIUS operations
+ CONFIG_IPV6=y
+ 
+ # IEEE Std 802.11r-2008 (Fast BSS Transition)
+-#CONFIG_IEEE80211R=y
++CONFIG_IEEE80211R=y
+ 
+ # Use the hostapd's IEEE 802.11 authentication (ACL), but without
+ # the IEEE 802.11 Management capability (e.g., madwifi or FreeBSD/net80211)
+ #CONFIG_DRIVER_RADIUS_ACL=y
+ 
+ # IEEE 802.11n (High Throughput) support
+-#CONFIG_IEEE80211N=y
++CONFIG_IEEE80211N=y
+ 
+ # Remove debugging code that is printing out debug messages to stdout.
+ # This can be used to reduce the size of the hostapd considerably if debugging

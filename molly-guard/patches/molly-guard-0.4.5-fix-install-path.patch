@@ -1,0 +1,20 @@
+diff -rupN molly-guard-0.4.5.orig/Makefile molly-guard-0.4.5/Makefile
+--- molly-guard-0.4.5.orig/Makefile	2015-09-11 13:57:22.440184588 +0000
++++ molly-guard-0.4.5/Makefile	2015-09-11 14:02:57.291866188 +0000
+@@ -29,11 +29,11 @@ install: shutdown molly-guard.8.gz
+ 	mkdir -m755 --parent $(DST)/share/molly-guard
+ 	install -m755 -oroot -groot shutdown $(DST)/share/molly-guard
+ 
+-	mkdir -m755 --parent $(DST)/sbin
+-	ln -s ../share/molly-guard/shutdown $(DST)/sbin/poweroff
+-	ln -s ../share/molly-guard/shutdown $(DST)/sbin/halt
+-	ln -s ../share/molly-guard/shutdown $(DST)/sbin/reboot
+-	ln -s ../share/molly-guard/shutdown $(DST)/sbin/shutdown
++	mkdir -m755 --parent $(DST)/local/sbin
++	ln -s ../../share/molly-guard/shutdown $(DST)/local/sbin/poweroff
++	ln -s ../../share/molly-guard/shutdown $(DST)/local/sbin/halt
++	ln -s ../../share/molly-guard/shutdown $(DST)/local/sbin/reboot
++	ln -s ../../share/molly-guard/shutdown $(DST)/local/sbin/shutdown
+ 
+ 	mkdir -m755 --parent $(ETCDIR)
+ 	install -m644 -oroot -groot rc $(ETCDIR)

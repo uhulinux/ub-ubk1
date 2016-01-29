@@ -1,0 +1,1 @@
+urllist http://www.megastep.org/makeself/ | splitver '^makeself-([0-9.]+).run$' | sort -V | tail -n 1

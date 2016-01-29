@@ -1,0 +1,14 @@
+gconf2-dev
+glib-dev
+gnome-keyring-dev
+gobject-introspection-dev
+intltool
+json-glib-dev
+libsoup-gnome-dev
+libxslt
+networkmanager-dev
+rest-dev
+sqlite-dev
+systemd-dev
+util-linux-dev
+vala-dev

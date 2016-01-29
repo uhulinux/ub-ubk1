@@ -1,0 +1,14 @@
+diff -Naur rdate-1.4.orig/Makefile rdate-1.4/Makefile
+--- rdate-1.4.orig/Makefile	2004-04-21 20:44:22.000000000 +0200
++++ rdate-1.4/Makefile	2006-08-02 16:53:24.000000000 +0200
+@@ -14,8 +14,8 @@
+ install: all
+ 	install -d $(bindir)
+ 	install -d $(mandir)/man1
+-	install -m 555 rdate $(bindir)
+-	install -m 444 rdate.1 $(mandir)/man1
++	install -m 755 rdate $(bindir)
++	install -m 644 rdate.1 $(mandir)/man1
+ 
+ dist:
+ 	rm -rf $(PACKAGE)-$(VERSION)

@@ -1,0 +1,12 @@
+diff -Naurd a/doc/Makefile.in b/doc/Makefile.in
+--- a/doc/Makefile.in	2007-02-13 21:20:37.000000000 +0100
++++ b/doc/Makefile.in	2007-03-29 13:07:23.000000000 +0200
+@@ -173,7 +173,7 @@
+ build_vendor = @build_vendor@
+ confdir = @confdir@
+ confdir_exp = @confdir_exp@
+-datadir = $(prefix)/doc
++datadir = $(prefix)/share/doc/Packages/pcsc-lite
+ datarootdir = @datarootdir@
+ docdir = @docdir@
+ dvidir = @dvidir@

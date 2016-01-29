@@ -1,0 +1,33 @@
+--- tracker-0.15.1/data/tracker-miner-fs.desktop.in.in.orig	2012-12-14 08:27:16.000000000 +0000
++++ tracker-0.15.1/data/tracker-miner-fs.desktop.in.in	2013-01-26 16:34:28.202775189 +0000
+@@ -12,7 +12,7 @@
+ X-KDE-StartupNotify=false
+ X-KDE-UniqueApplet=true
+ NoDisplay=true
+-OnlyShowIn=GNOME;KDE;XFCE;X-MEEGO-HS;X-MEEGO-NB;X-IVI;Unity;
++OnlyShowIn=GNOME
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=tracker
+ X-GNOME-Bugzilla-Component=Miners
+--- tracker-0.15.1/data/tracker-miner-rss.desktop.in.in.orig	2013-01-26 16:31:20.410192713 +0000
++++ tracker-0.15.1/data/tracker-miner-rss.desktop.in.in	2013-01-26 16:31:26.841246912 +0000
+@@ -11,7 +11,7 @@
+ X-KDE-StartupNotify=false
+ X-KDE-UniqueApplet=true
+ NoDisplay=true
+-OnlyShowIn=GNOME;KDE;XFCE;Unity;
++OnlyShowIn=GNOME;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=tracker
+ X-GNOME-Bugzilla-Component=Miners
+--- tracker-0.15.1/data/tracker-store.desktop.in.in.orig	2012-12-14 08:27:16.000000000 +0000
++++ tracker-0.15.1/data/tracker-store.desktop.in.in	2013-01-26 16:34:52.310978315 +0000
+@@ -11,7 +11,7 @@
+ X-KDE-StartupNotify=false
+ X-KDE-UniqueApplet=true
+ NoDisplay=true
+-OnlyShowIn=GNOME;KDE;XFCE;X-MEEGO-HS;X-MEEGO-NB;X-IVI;Unity;
++OnlyShowIn=GNOME
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=tracker
+ X-GNOME-Bugzilla-Component=Store

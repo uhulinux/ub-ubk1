@@ -1,0 +1,11 @@
+diff -Naur ORIG/geany.desktop.in UHU/geany.desktop.in
+--- ORIG/geany.desktop.in	2010-04-15 20:12:25.000000000 +0200
++++ UHU/geany.desktop.in	2010-08-14 12:26:49.000000000 +0200
+@@ -7,6 +7,6 @@
+ Exec=geany %F
+ Icon=geany
+ Terminal=false
+-Categories=GTK;Development;IDE;
++Categories=GTK;Development;IDE;X-UHU-Menu/Development/Programming;
+ MimeType=text/plain;text/x-chdr;text/x-csrc;text/x-c++hdr;text/x-c++src;text/x-java;text/x-dsrc;text/x-pascal;text/x-perl;text/x-python;application/x-php;application/x-httpd-php3;application/x-httpd-php4;application/x-httpd-php5;application/xml;text/html;text/css;text/x-sql;text/x-diff;
+ StartupNotify=true

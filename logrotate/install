@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+make \
+	PREFIX="$UB_INSTALLDIR" \
+	BINDIR=/usr/sbin \
+	MANDIR=/usr/share/man \
+	install

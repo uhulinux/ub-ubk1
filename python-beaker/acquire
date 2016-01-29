@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Beaker-${UB_VERSION}.tar.gz Beaker-${UB_VERSION}/
+	http://pypi.python.org/packages/source/B/Beaker/

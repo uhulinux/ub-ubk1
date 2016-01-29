@@ -1,0 +1,14 @@
+clutter-gtk-dev
+colord-gtk-dev
+exiv2-dev
+gnome-desktop-dev
+gnome-doc-utils
+intltool
+itstool
+lcms2-dev
+libcanberra-dev
+libexif-dev
+libjpeg-dev
+libtiff-dev
+mash-dev
+vte-dev

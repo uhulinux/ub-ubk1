@@ -1,0 +1,240 @@
+diff -Naurd b/hw/xfree86/common/extramodes c/hw/xfree86/common/extramodes
+--- b/hw/xfree86/common/extramodes	2007-11-28 17:46:20.000000000 +0100
++++ c/hw/xfree86/common/extramodes	2007-11-28 19:22:25.000000000 +0100
+@@ -6,6 +6,18 @@
+ // NOTE:  Please keep all video modes sorted in order of X res, then Y res for
+ //        ease of maintenance and readability.
+ 
++# 640x480 @ 100.00 Hz (GTF) hsync: 50.90 kHz; pclk: 43.16 MHz
++Modeline "640x480"  43.16  640 680 744 848  480 481 484 509  -HSync +Vsync
++
++# 640x480 @ 120.00 Hz (GTF) hsync: 61.80 kHz; pclk: 52.41 MHz
++Modeline "640x480"  52.41  640 680 744 848  480 481 484 515  -HSync +Vsync
++
++# 640x480 @ 160.00 Hz (GTF) hsync: 84.32 kHz; pclk: 72.85 MHz
++Modeline "640x480"  72.85  640 680 752 864  480 481 484 527  -HSync +Vsync
++
++# 640x480 @ 200.00 Hz (GTF) hsync: 108.00 kHz; pclk: 95.04 MHz
++Modeline "640x480"  95.04  640 688 760 880  480 481 484 540  -HSync +Vsync
++
+ # 832x624 @ 75Hz (74.55Hz) (fix if the official/Apple spec is different) hsync: 49.725kHz
+ ModeLine "832x624" 57.284 832  864  928 1152  624  625  628  667 -Hsync -Vsync
+ 
+@@ -25,6 +39,30 @@
+ # 848x480 @ 85.00 Hz (GTF) hsync: 42.92 kHz; pclk: 47.39 MHz
+ # Modeline "848x480"  47.39  848 888 976 1104  480 481 484 505  -HSync +Vsync
+ 
++# 800x600 @ 100.00 Hz (GTF) hsync: 63.60 kHz; pclk: 68.18 MHz
++Modeline "800x600"  68.18  800 848 936 1072  600 601 604 636  -HSync +Vsync
++
++# 800x600 @ 120.00 Hz (GTF) hsync: 77.16 kHz; pclk: 83.95 MHz
++Modeline "800x600"  83.95  800 856 944 1088  600 601 604 643  -HSync +Vsync
++
++# 800x600 @ 160.00 Hz (GTF) hsync: 105.44 kHz; pclk: 116.41 MHz
++Modeline "800x600"  116.41  800 864 952 1104  600 601 604 659  -HSync +Vsync
++
++# 800x600 @ 200.00 Hz (GTF) hsync: 135.00 kHz; pclk: 149.04 MHz
++Modeline "800x600"  149.04  800 864 952 1104  600 601 604 675  -HSync +Vsync
++
++# 1024x768 @ 100.00 Hz (GTF) hsync: 81.40 kHz; pclk: 113.31 MHz
++Modeline "1024x768"  113.31  1024 1096 1208 1392  768 769 772 814  -HSync +Vsync
++
++# 1024x768 @ 120.00 Hz (GTF) hsync: 98.76 kHz; pclk: 139.05 MHz
++Modeline "1024x768"  139.05  1024 1104 1216 1408  768 769 772 823  -HSync +Vsync
++
++# 1024x768 @ 160.00 Hz (GTF) hsync: 134.88 kHz; pclk: 192.07 MHz
++Modeline "1024x768"  192.07  1024 1112 1224 1424  768 769 772 843  -HSync +Vsync
++
++# 1024x768 @ 200.00 Hz (GTF) hsync: 172.80 kHz; pclk: 246.07 MHz
++Modeline "1024x768"  246.07  1024 1112 1224 1424  768 769 772 864  -HSync +Vsync
++
+ # 1152x768 @ 54.8Hz (Titanium PowerBook) hsync: 44.2kHz
+ ModeLine "1152x768"   64.995 1152 1178 1314 1472  768  771  777  806 +hsync +vsync
+ 
+@@ -34,8 +72,8 @@
+ # 1152x864 @ 70.00 Hz (GTF) hsync: 63.00 kHz; pclk: 96.77 MHz
+ Modeline "1152x864"  96.77  1152 1224 1344 1536  864 865 868 900  -HSync +Vsync
+ 
+-# 1152x864 @ 75.00 Hz (GTF) hsync: 67.65 kHz; pclk: 104.99 MHz
+-Modeline "1152x864"  104.99  1152 1224 1352 1552  864 865 868 902  -HSync +Vsync
++# 1152x864 @ 72.00 Hz (GTF) hsync: 64.87 kHz; pclk: 99.64 MHz
++Modeline "1152x864"  99.64  1152 1224 1344 1536  864 865 868 901  -HSync +Vsync
+ 
+ # 1152x864 @ 85.00 Hz (GTF) hsync: 77.10 kHz; pclk: 119.65 MHz
+ Modeline "1152x864"  119.65  1152 1224 1352 1552  864 865 868 907  -HSync +Vsync
+@@ -46,6 +84,15 @@
+ # 1152x864 @ 100.00 Hz (GTF) hsync: 91.50 kHz; pclk: 143.47 MHz
+ Modeline "1152x864"  143.47  1152 1232 1360 1568  864 865 868 915  -HSync +Vsync
+ 
++# 1152x864 @ 120.00 Hz (GTF) hsync: 111.12 kHz; pclk: 176.01 MHz
++Modeline "1152x864"  176.01  1152 1240 1368 1584  864 865 868 926  -HSync +Vsync
++
++# 1152x864 @ 160.00 Hz (GTF) hsync: 151.68 kHz; pclk: 242.69 MHz
++Modeline "1152x864"  242.69  1152 1248 1376 1600  864 865 868 948  -HSync +Vsync
++
++# 1152x864 @ 200.00 Hz (GTF) hsync: 194.40 kHz; pclk: 314.15 MHz
++Modeline "1152x864"  314.15  1152 1256 1384 1616  864 865 868 972  -HSync +Vsync
++
+ # 1280x720 @ 60.00 Hz (GTF) hsync: 44.76 kHz; pclk: 74.48 MHz
+ Modeline "1280x720"  74.48  1280 1336 1472 1664  720 721 724 746  -HSync +Vsync
+ 
+@@ -58,29 +105,95 @@
+ # 1280x720 @ 85.00 Hz (GTF) hsync: 64.26 kHz; pclk: 110.01 MHz
+ Modeline "1280x720"  110.01  1280 1360 1496 1712  720 721 724 756  -HSync +Vsync
+ 
++# 1280x768 @ 60.00 Hz (GTF) hsync: 47.70 kHz; pclk: 80.14 MHz
++Modeline "1280x768"  80.14  1280 1344 1480 1680  768 769 772 795  -HSync +Vsync
++
++# 1280x768 @ 72.00 Hz (GTF) hsync: 57.67 kHz; pclk: 97.81 MHz
++Modeline "1280x768"  97.81  1280 1352 1488 1696  768 769 772 801  -HSync +Vsync
++
++# 1280x768 @ 75.00 Hz (GTF) hsync: 60.15 kHz; pclk: 102.98 MHz
++Modeline "1280x768"  102.98  1280 1360 1496 1712  768 769 772 802  -HSync +Vsync
++
++# 1280x768 @ 85.00 Hz (GTF) hsync: 68.60 kHz; pclk: 118.53 MHz
++Modeline "1280x768"  118.53  1280 1368 1504 1728  768 769 772 807  -HSync +Vsync
++
++# 1280x768 @ 100.00 Hz (GTF) hsync: 81.40 kHz; pclk: 141.96 MHz
++Modeline "1280x768"  141.96  1280 1376 1512 1744  768 769 772 814  -HSync +Vsync
++
++# 1280x768 @ 120.00 Hz (GTF) hsync: 98.76 kHz; pclk: 173.82 MHz
++Modeline "1280x768"  173.82  1280 1376 1520 1760  768 769 772 823  -HSync +Vsync
++
++# 1280x768 @ 160.00 Hz (GTF) hsync: 134.88 kHz; pclk: 239.55 MHz
++Modeline "1280x768"  239.55  1280 1384 1528 1776  768 769 772 843  -HSync +Vsync
++
++# 1280x768 @ 200.00 Hz (GTF) hsync: 172.80 kHz; pclk: 309.66 MHz
++Modeline "1280x768"  309.66  1280 1392 1536 1792  768 769 772 864  -HSync +Vsync
++
+ # 1280x800 @ 60.00 Hz (GTF) hsync: 49.68 kHz; pclk: 83.46 MHz
+ Modeline "1280x800"  83.46  1280 1344 1480 1680  800 801 804 828  -HSync +Vsync
+ 
+ # 1280x800 @ 70.00 Hz (GTF) hsync: 58.31 kHz; pclk: 98.89 MHz
+ Modeline "1280x800"  98.89  1280 1352 1488 1696  800 801 804 833  -HSync +Vsync
+ 
++# 1280x800 @ 72.00 Hz (GTF) hsync: 60.05 kHz; pclk: 102.80 MHz
++Modeline "1280x800"  102.80  1280 1360 1496 1712  800 801 804 834  -HSync +Vsync
++
+ # 1280x800 @ 75.00 Hz (GTF) hsync: 62.62 kHz; pclk: 107.21 MHz
+ Modeline "1280x800"  107.21  1280 1360 1496 1712  800 801 804 835  -HSync +Vsync
+ 
+ # 1280x800 @ 85.00 Hz (GTF) hsync: 71.40 kHz; pclk: 123.38 MHz
+ Modeline "1280x800"  123.38  1280 1368 1504 1728  800 801 804 840  -HSync +Vsync
+ 
+-# 1280x768 @ 60.00 Hz (GTF) hsync: 47.70 kHz; pclk: 80.14 MHz
+-Modeline "1280x768"  80.14  1280 1344 1480 1680  768 769 772 795  -HSync +Vsync
++# 1280x800 @ 100.00 Hz (GTF) hsync: 84.80 kHz; pclk: 147.89 MHz
++Modeline "1280x800"  147.89  1280 1376 1512 1744  800 801 804 848  -HSync +Vsync
+ 
+-# 1280x768 @ 70.00 Hz (GTF) hsync: 56.00 kHz; pclk: 94.98 MHz
+-Modeline "1280x768"  94.98  1280 1352 1488 1696  768 769 772 800  -HSync +Vsync
++# 1280x800 @ 120.00 Hz (GTF) hsync: 102.96 kHz; pclk: 181.21 MHz
++Modeline "1280x800"  181.21  1280 1376 1520 1760  800 801 804 858  -HSync +Vsync
+ 
+-# 1280x768 @ 75.00 Hz (GTF) hsync: 60.15 kHz; pclk: 102.98 MHz
+-Modeline "1280x768"  102.98  1280 1360 1496 1712  768 769 772 802  -HSync +Vsync
++# 1280x800 @ 160.00 Hz (GTF) hsync: 140.48 kHz; pclk: 249.49 MHz
++Modeline "1280x800"  249.49  1280 1384 1528 1776  800 801 804 878  -HSync +Vsync
+ 
+-# 1280x768 @ 85.00 Hz (GTF) hsync: 68.60 kHz; pclk: 118.53 MHz
+-Modeline "1280x768"  118.53  1280 1368 1504 1728  768 769 772 807  -HSync +Vsync
++# 1280x800 @ 200.00 Hz (GTF) hsync: 180.00 kHz; pclk: 322.56 MHz
++Modeline "1280x800"  322.56  1280 1392 1536 1792  800 801 804 900  -HSync +Vsync
++
++# 1280x960 @ 70.00 Hz (GTF) hsync: 69.93 kHz; pclk: 120.84 MHz
++Modeline "1280x960"  120.84  1280 1368 1504 1728  960 961 964 999  -HSync +Vsync
++
++# 1280x960 @ 72.00 Hz (GTF) hsync: 72.07 kHz; pclk: 124.54 MHz
++Modeline "1280x960"  124.54  1280 1368 1504 1728  960 961 964 1001  -HSync +Vsync
++
++# 1280x960 @ 75.00 Hz (GTF) hsync: 75.15 kHz; pclk: 129.86 MHz
++Modeline "1280x960"  129.86  1280 1368 1504 1728  960 961 964 1002  -HSync +Vsync
++
++# 1280x960 @ 100.00 Hz (GTF) hsync: 101.70 kHz; pclk: 178.99 MHz
++Modeline "1280x960"  178.99  1280 1376 1520 1760  960 961 964 1017  -HSync +Vsync
++
++# 1280x960 @ 120.00 Hz (GTF) hsync: 123.48 kHz; pclk: 217.32 MHz
++Modeline "1280x960"  217.32  1280 1376 1520 1760  960 961 964 1029  -HSync +Vsync
++
++# 1280x960 @ 160.00 Hz (GTF) hsync: 168.64 kHz; pclk: 299.50 MHz
++Modeline "1280x960"  299.50  1280 1384 1528 1776  960 961 964 1054  -HSync +Vsync
++
++# 1280x960 @ 200.00 Hz (GTF) hsync: 216.00 kHz; pclk: 387.07 MHz
++Modeline "1280x960"  387.07  1280 1392 1536 1792  960 961 964 1080  -HSync +Vsync
++
++# 1280x1024 @ 70.00 Hz (GTF) hsync: 74.62 kHz; pclk: 128.94 MHz
++Modeline "1280x1024"  128.94  1280 1368 1504 1728  1024 1025 1028 1066  -HSync +Vsync
++
++# 1280x1024 @ 72.00 Hz (GTF) hsync: 76.82 kHz; pclk: 132.75 MHz
++Modeline "1280x1024"  132.75  1280 1368 1504 1728  1024 1025 1028 1067  -HSync +Vsync
++
++# 1280x1024 @ 100.00 Hz (GTF) hsync: 108.50 kHz; pclk: 190.96 MHz
++Modeline "1280x1024"  190.96  1280 1376 1520 1760  1024 1025 1028 1085  -HSync +Vsync
++
++# 1280x1024 @ 120.00 Hz (GTF) hsync: 131.64 kHz; pclk: 233.79 MHz
++Modeline "1280x1024"  233.79  1280 1384 1528 1776  1024 1025 1028 1097  -HSync +Vsync
++
++# 1280x1024 @ 160.00 Hz (GTF) hsync: 179.84 kHz; pclk: 322.27 MHz
++Modeline "1280x1024"  322.27  1280 1392 1536 1792  1024 1025 1028 1124  -HSync +Vsync
++
++# 1280x1024 @ 200.00 Hz (GTF) hsync: 230.40 kHz; pclk: 412.88 MHz
++Modeline "1280x1024"  412.88  1280 1392 1536 1792  1024 1025 1028 1152  -HSync +Vsync
+ 
+ # 1360x768 59.96 Hz (CVT) hsync: 47.37 kHz; pclk: 72.00 MHz
+ Modeline "1360x768"   72.00  1360 1408 1440 1520  768 771 781 790 +hsync -vsync
+@@ -97,6 +210,9 @@
+ # 1400x1050 @ 70Hz (Red Hat custom modeline) hsync: 76.8kHz
+ ModeLine "1400x1050" 151.0 1400 1464 1656 1960   1050 1051 1054 1100 +hsync +vsync
+ 
++# 1400x1050 @ 72.00 Hz (GTF) hsync: 78.77 kHz; pclk: 149.34 MHz
++Modeline "1400x1050"  149.34  1400 1496 1648 1896  1050 1051 1054 1094  -HSync +Vsync
++
+ # 1400x1050 @ 75Hz (VESA GTF) hsync: 82.2kHz
+ ModeLine "1400x1050" 155.8 1400 1464 1784 1912   1050 1052 1064 1090 +hsync +vsync
+ 
+@@ -106,12 +222,45 @@
+ # 1400x1050 @ 85Hz (Red Hat custom modeline) hsync: 93.2 kHz
+ ModeLine "1400x1050" 184.0 1400 1464 1656 1960   1050 1051 1054 1100 +hsync +vsync
+ 
++# 1400x1050 @ 100.00 Hz (GTF) hsync: 111.20 kHz; pclk: 214.39 MHz
++Modeline "1400x1050"  214.39  1400 1512 1664 1928  1050 1051 1054 1112  -HSync +Vsync
++
++# 1400x1050 @ 120.00 Hz (GTF) hsync: 135.00 kHz; pclk: 262.44 MHz
++Modeline "1400x1050"  262.44  1400 1520 1672 1944  1050 1051 1054 1125  -HSync +Vsync
++
+ # 1440x900 @ 60.00 Hz (CVT) field rate 59.89 Hz; hsync: 55.93 kHz; pclk: 106.50 MHz
+ Modeline "1440x900"  106.50  1440 1520 1672 1904  900 903 909 934  -HSync +Vsync
+ 
++# 1440x900 @ 70.00 Hz (GTF) hsync: 65.59 kHz; pclk: 126.98 MHz
++Modeline "1440x900"  126.98  1440 1536 1688 1936  900 901 904 937  -HSync +Vsync
++
++# 1440x900 @ 72.00 Hz (GTF) hsync: 67.54 kHz; pclk: 130.75 MHz
++Modeline "1440x900"  130.75  1440 1536 1688 1936  900 901 904 938  -HSync +Vsync
++
++# 1440x900 @ 75.00 Hz (GTF) hsync: 70.50 kHz; pclk: 136.49 MHz
++Modeline "1440x900"  136.49  1440 1536 1688 1936  900 901 904 940  -HSync +Vsync
++
++# 1440x900 @ 85.00 Hz (GTF) hsync: 80.33 kHz; pclk: 156.79 MHz
++Modeline "1440x900"  156.79  1440 1536 1696 1952  900 901 904 945  -HSync +Vsync
++
++# 1440x900 @ 100.00 Hz (GTF) hsync: 95.30 kHz; pclk: 187.55 MHz
++Modeline "1440x900"  187.55  1440 1544 1704 1968  900 901 904 953  -HSync +Vsync
++
++# 1440x900 @ 120.00 Hz (GTF) hsync: 115.80 kHz; pclk: 229.75 MHz
++Modeline "1440x900"  229.75  1440 1552 1712 1984  900 901 904 965  -HSync +Vsync
++
+ # 1600x1024 for SGI 1600 SW
+ ModeLine "1600x1024" 103.125 1600 1600 1656 1664 1024 1024 1029 1030 +Hsync +Vsync
+ 
++# 1600x1200 @ 72.00 Hz (GTF) hsync: 90.07 kHz; pclk: 196.00 MHz
++Modeline "1600x1200"  196.00  1600 1712 1888 2176  1200 1201 1204 1251  -HSync +Vsync
++
++# 1600x1200 @ 100.00 Hz (GTF) hsync: 127.10 kHz; pclk: 280.64 MHz
++Modeline "1600x1200"  280.64  1600 1728 1904 2208  1200 1201 1204 1271  -HSync +Vsync
++
++# 1600x1200 @ 120.00 Hz (GTF) hsync: 154.32 kHz; pclk: 343.21 MHz
++Modeline "1600x1200"  343.21  1600 1736 1912 2224  1200 1201 1204 1286  -HSync +Vsync
++
+ # 1680x1050 59.88 Hz (CVT 1.76MA-R) hsync: 64.67 kHz; pclk: 119.00 MHz
+ Modeline "1680x1050"  119.00  1680 1728 1760 1840  1050 1053 1059 1080 +hsync -vsync
+ 

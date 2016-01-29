@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+supertuxkart-${UB_VERSION}-src.tar.bz2 ./SuperTuxKart-${UB_VERSION}/
+	http://downloads.sourceforge.net/supertuxkart/

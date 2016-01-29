@@ -1,0 +1,18 @@
+diff -urN libmimedir-0.5.orig/Makefile.in libmimedir-0.5/Makefile.in
+--- libmimedir-0.5.orig/Makefile.in	2005-10-17 01:19:55.000000000 +0200
++++ libmimedir-0.5/Makefile.in	2007-10-11 15:22:22.000000000 +0200
+@@ -55,9 +55,11 @@
+ 	./test
+ 
+ install: all
+-	${INSTALL} -m 444 libmimedir.h ${includedir}
+-	${INSTALL} -m 444 libmimedir.a ${libdir}
+-	$(LIBTOOL) --mode=install ${INSTALL} -c -m 444 libmimedir.la ${libdir}/libmimedir.la
++	${INSTALL} -d ${DESTDIR}${includedir}
++	${INSTALL} -d ${DESTDIR}${libdir}
++	${INSTALL} -m 644 libmimedir.h ${DESTDIR}${includedir}
++	${INSTALL} -m 644 libmimedir.a ${DESTDIR}${libdir}
++	$(LIBTOOL) --mode=install ${INSTALL} -c -m 644 libmimedir.la ${DESTDIR}${libdir}/libmimedir.la
+ 
+ clean:
+ 	rm -f $(OBJS) $(LOBJS) *.a *.la *.core

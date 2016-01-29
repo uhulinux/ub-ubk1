@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+picoc-${UB_VERSION}.tar.bz2 picoc/
+	http://picoc.googlecode.com/files/
+	http://code.google.com/p/picoc/downloads/

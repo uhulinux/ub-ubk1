@@ -1,0 +1,18 @@
+diff -urN pidgin-2.0.0.orig/pidgin.desktop.in pidgin-2.0.0/pidgin.desktop.in
+--- pidgin-2.0.0.orig/pidgin.desktop.in	2007-04-27 10:33:43.000000000 +0200
++++ pidgin-2.0.0/pidgin.desktop.in	2007-05-04 15:53:55.000000000 +0200
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-_Name=Pidgin Internet Messenger
++_Name=Pidgin
+ _GenericName=Internet Messenger
+ _Comment=Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, MSN, Yahoo and more
+ Exec=pidgin
+@@ -8,5 +8,5 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=Network;InstantMessaging;
++Categories=GTK;Network;InstantMessaging;X-UHU-Menu/Internet/Messengers;
+ 
+

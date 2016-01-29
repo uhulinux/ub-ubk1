@@ -1,0 +1,10 @@
+--- a/data/gnome-mines.desktop.in.orig	2011-08-22 00:23:56.000000000 +0200
++++ a/data/gnome-mines.desktop.in	2011-10-20 18:28:45.000000000 +0200
+@@ -5,6 +5,6 @@
+ Icon=gnome-mines
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Game;LogicGame;
++Categories=GNOME;GTK;Game;LogicGame;X-UHU-Menu/Games/TacticStrategy;
+ _Keywords=minesweeper;
+ StartupNotify=true

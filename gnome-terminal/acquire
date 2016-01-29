@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-terminal-${UB_VERSION}.tar.xz gnome-terminal-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-terminal/${UB_VERSION_HEAD2}/

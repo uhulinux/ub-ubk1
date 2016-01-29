@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libqalculate-${UB_VERSION}.tar.gz libqalculate-${UB_VERSION}/
+	http://downloads.sourceforge.net/qalculate/

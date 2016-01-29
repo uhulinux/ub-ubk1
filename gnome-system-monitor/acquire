@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-system-monitor-${UB_VERSION}.tar.xz gnome-system-monitor-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-system-monitor/${UB_VERSION_HEAD2}/

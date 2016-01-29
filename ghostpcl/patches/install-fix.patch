@@ -1,0 +1,21 @@
+diff -urN ghostpcl_1.41.orig/Makefile ghostpcl_1.41/Makefile
+--- ghostpcl_1.41.orig/Makefile	2005-02-28 22:24:28.000000000 +0100
++++ ghostpcl_1.41/Makefile	2006-04-10 12:55:04.000000000 +0200
+@@ -13,7 +13,7 @@
+ 	make -C main -f pcl6_gcc.mak pg-fp
+ 
+ install:
+-	install main/obj/pcl6 /usr/local/bin
++	install main/obj/pcl6 $(DESTDIR)/usr/bin
+ 
+ test: 
+ 	cd tools; ../main/obj/pcl6 -dTextAlphaBits=4 owl.pcl tiger.px3 # test with PCL and PXL test file 
+@@ -24,7 +24,7 @@
+ 
+ clean:
+ 	make -C main -f pcl6_gcc.mak clean
+-	rm -f fonts /usr/local/bin/pcl6
++	rm -f fonts $(DESTDIR)/usr/bin/pcl6
+ 
+ ####  LANGUAGE SWITCHING PRODUCT RULES ####
+ 

@@ -1,0 +1,38 @@
+diff -Naur orig/mail/app/profile/all-thunderbird.js patched/mail/app/profile/all-thunderbird.js
+--- orig/mail/app/profile/all-thunderbird.js	2014-01-31 21:48:40.000000000 +0100
++++ patched/mail/app/profile/all-thunderbird.js	2014-02-23 19:28:29.440114091 +0100
+@@ -11,6 +11,9 @@
+ #endif
+ #endif
+ 
++pref("intl.locale.matchOS", true);
++pref("shell.checkDefaultApps", 0);
++
+ pref("general.useragent.locale", "@AB_CD@");
+ pref("general.skins.selectedSkin", "classic/1.0");
+ 
+@@ -84,12 +87,12 @@
+ pref("app.update.certs.2.commonName", "aus3.mozilla.org");
+ 
+ // Whether or not app updates are enabled
+-pref("app.update.enabled", true);               
++pref("app.update.enabled", false);               
+ 
+ // This preference turns on app.update.mode and allows automatic download and
+ // install to take place. We use a separate boolean toggle for this to make     
+ // the UI easier to construct.
+-pref("app.update.auto", true);
++pref("app.update.auto", false);
+ 
+ // Defines how the Application Update Service notifies the user about updates:
+ //
+@@ -159,7 +162,8 @@
+ // Disable add-ons installed into the shared user and shared system areas by
+ // default. This does not include the application directory. See the SCOPE
+ // constants in AddonManager.jsm for values to use here
+-pref("extensions.autoDisableScopes", 15);
++pref("extensions.autoDisableScopes", 0);
++pref("extensions.shownSelectionUI", true);
+ 
+ // Preferences for AMO integration
+ pref("extensions.getAddons.cache.enabled", true);

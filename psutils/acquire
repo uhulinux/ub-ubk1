@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+psutils-p${UB_VERSION}.tar.gz psutils/
+	http://www.ctan.org/tex-archive/support/psutils/

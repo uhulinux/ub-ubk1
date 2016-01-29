@@ -1,0 +1,16 @@
+diff -Naur orig/src/Makefile mod/src/Makefile
+--- orig/src/Makefile	2005-05-12 22:03:26.000000000 +0200
++++ mod/src/Makefile	2009-03-25 07:30:17.000000000 +0100
+@@ -48,8 +48,8 @@
+ 	-@rm *.o *.a 2> /dev/null
+ 
+ install:
+-	install -d -m 755 $(PREFIX)/lib
+-	install -m 644 libmigdb.a $(PREFIX)/lib
+-	install -d -m 755 $(PREFIX)/include
+-	install -m 644 mi_gdb.h $(PREFIX)/include
++	install -d -m 755 $(DESTDIR)$(PREFIX)/lib
++	install -m 644 libmigdb.a $(DESTDIR)$(PREFIX)/lib
++	install -d -m 755 $(DESTDIR)$(PREFIX)/include
++	install -m 644 mi_gdb.h $(DESTDIR)$(PREFIX)/include
+ 

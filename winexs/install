@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/winexs
+cp -a winexs winetricks "winexs Libs" "$UB_INSTALLDIR"/usr/lib/winexs/

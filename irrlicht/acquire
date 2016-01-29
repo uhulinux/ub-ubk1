@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+irrlicht-${UB_VERSION}.zip irrlicht-${UB_VERSION}/
+	http://downloads.sourceforge.net/irrlicht/

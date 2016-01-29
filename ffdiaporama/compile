@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+cd ffDiaporama_rsc
+qmake-qt5 ffDiaporama_rsc.pro
+cd ..
+qmake-qt5 ffDiaporama.pro
+ub_make

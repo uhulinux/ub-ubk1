@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+sdparm-${UB_VERSION}.tgz sdparm-${UB_VERSION}/
+	http://sg.danny.cz/sg/p/

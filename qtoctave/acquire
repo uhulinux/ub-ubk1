@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+qtoctave-$UB_VERSION.tar.gz qtoctave-$UB_VERSION/
+	http://forja.rediris.es/frs/download.php/2054/

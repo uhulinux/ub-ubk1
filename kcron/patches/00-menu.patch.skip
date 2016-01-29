@@ -1,0 +1,9 @@
+diff -Naur kcron-4.10.80-orig/src/kcm_cron.desktop kcron-4.10.80/src/kcm_cron.desktop
+--- kcron-4.10.80-orig/src/kcm_cron.desktop	2013-06-10 22:02:08.000000000 +0200
++++ kcron-4.10.80/src/kcm_cron.desktop	2013-06-18 21:29:24.000000000 +0200
+@@ -167,4 +167,4 @@
+ X-KDE-Keywords[x-test]=xxcron,crontab,scheduled,tasks,task,schedule,vixiexx
+ X-KDE-Keywords[zh_CN]=cron,crontab,scheduled,tasks,task,schedule,vixie,计划,计划任务,任务
+ X-KDE-Keywords[zh_TW]=cron,crontab,scheduled,tasks,task,schedule,vixie
+-Categories=Qt;KDE;X-KDE-settings-system;
++Categories=Qt;KDE;X-KDE-settings-system;X-UHU-Menu/Settings;

@@ -1,0 +1,12 @@
+--- a/libgnome/gnome-init.c.orig	2013-03-06 20:25:19.000000000 +0100
++++ a/libgnome/gnome-init.c	2013-03-06 20:25:50.000000000 +0100
+@@ -115,9 +115,6 @@
+ static void
+ bonobo_activation_pre_args_parse (GnomeProgram *program, GnomeModuleInfo *mod_info)
+ {
+-        if (!g_thread_supported ())
+-		g_thread_init (NULL);
+-
+ 	if (!bonobo_activation_is_initialized ())
+ 		bonobo_activation_preinit (program, mod_info);
+ }

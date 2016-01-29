@@ -1,0 +1,17 @@
+--- dia.orig/dia.desktop.in.in	2009-04-17 10:25:23.000000000 +0200
++++ dia/dia.desktop.in.in	2009-05-03 23:12:52.000000000 +0200
+@@ -1,12 +1,11 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+-_Name=Dia Diagram Editor
++_Name=Dia
+ _Comment=Edit your Diagrams
+ Type=Application
+ Exec=dia %F
+ Icon=dia
+ Terminal=false
+-Categories=GNOME;Graphics;
++Categories=GTK;GNOME;Graphics;X-UHU-Menu/Graphics/Vectors;
+ StartupNotify=true
+ MimeType=application/x-dia-diagram;
+ X-GNOME-Bugzilla-Bugzilla=GNOME

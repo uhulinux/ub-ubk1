@@ -1,0 +1,7 @@
+/etc/NetworkManager
+/etc/NetworkManager/VPN
+/etc/NetworkManager/dispatcher.d
+/etc/NetworkManager/dnsmasq.d
+/etc/NetworkManager/system-connections
+/usr/share/gnome-vpn-properties
+/var/lib/NetworkManager

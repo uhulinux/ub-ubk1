@@ -1,0 +1,21 @@
+diff -Naur libgnome-2.14.1.orig/schemas/desktop_gnome_interface.schemas.in libgnome-2.14.1/schemas/desktop_gnome_interface.schemas.in
+--- libgnome-2.14.1.orig/schemas/desktop_gnome_interface.schemas.in.in	2006-01-11 08:01:48.000000000 +0100
++++ libgnome-2.14.1/schemas/desktop_gnome_interface.schemas.in.in	2006-04-18 14:43:23.000000000 +0200
+@@ -163,7 +163,7 @@
+       <applyto>/desktop/gnome/interface/font_name</applyto>
+       <owner>gnome</owner>
+       <type>string</type>
+-      <default>Sans 10</default>
++      <default>Nimbus Sans L, 10</default>
+       <locale name="C">
+ 	<short>Default font</short>
+ 	<long>Name of the default font used by gtk+.</long>
+@@ -196,7 +196,7 @@
+       <key>/schemas/desktop/gnome/interface/document_font_name</key>
+       <owner>gnome</owner>
+       <type>string</type>
+-      <default>Sans 10</default>
++      <default>Nimbus Sans L, 10</default>
+       <locale name="C">
+ 	<short>Document font</short>
+ 	<long>Name of the default font used for reading documents</long>

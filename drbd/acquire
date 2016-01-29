@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+drbd-${UB_VERSION}.tar.gz drbd-${UB_VERSION}/
+	http://oss.linbit.com/drbd/${UB_VERSION_HEAD2}/

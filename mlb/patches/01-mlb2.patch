@@ -1,0 +1,33 @@
+diff -Naurd a/mlb2.cpp b/mlb2.cpp
+--- a/mlb2.cpp	2002-06-27 21:34:44.000000000 +0200
++++ b/mlb2.cpp	2013-01-04 17:59:48.000000000 +0100
+@@ -39,6 +39,7 @@
+         }
+ }
+ 
++/*
+ int strcasecmp(char* s1, char* s2) {
+         char ms1[MLB_MAX_STRING_LENGTH];
+         char ms2[MLB_MAX_STRING_LENGTH];
+@@ -48,6 +49,7 @@
+         strcase(ms1); strcase(ms2);
+         return strcmp(ms1, ms2);
+ }
++*/
+ 
+ char* strcatchar(char dest[], char src) {
+         char tmp[2];
+@@ -2232,7 +2234,7 @@
+ 
+     fread(p, sizeof(char), 2, f);
+     p[2] = p[1]; p[1] = p[0]; p[0] = p[2];
+-    return (MLB_int2)p;
++    return (MLB_int2)(int)p;
+ }
+ 
+ MLB_int4 TMlb2::read_int4_from_other_endian(FILE* f) {
+@@ -2243,3 +2245,4 @@
+     p[4] = p[2]; p[2] = p[1]; p[1] = p[4];
+     return (MLB_int4)p;
+ }
++

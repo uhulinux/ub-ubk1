@@ -1,0 +1,1 @@
+sflist ipe7 ipe/7.1 | splitver '^ipe-([0-9.]+)-src.tar.gz$' | sort -V | tail -n 1

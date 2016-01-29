@@ -1,0 +1,2 @@
+minor=$(urllist http://rpm.org/releases/ | splitver '^rpm-([0-9.]+)' | sort -V | tail -n 1)
+urllist http://rpm.org/releases/rpm-$minor/ | splitver '^rpm-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

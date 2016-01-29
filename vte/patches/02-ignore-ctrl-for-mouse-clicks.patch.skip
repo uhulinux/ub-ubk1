@@ -1,0 +1,12 @@
+diff -urN vte-0.10.26.orig/src/vte.c vte-0.10.26/src/vte.c
+--- vte-0.10.26.orig/src/vte.c	2003-03-04 20:25:26.000000000 +0100
++++ vte-0.10.26/src/vte.c	2003-03-20 22:11:07.000000000 +0100
+@@ -8364,7 +8364,7 @@
+ 
+ 	/* Read the modifiers. */
+ 	if (gdk_event_get_state((GdkEvent*)event, &modifiers)) {
+-		terminal->pvt->modifiers = modifiers;
++		terminal->pvt->modifiers = modifiers & ~GDK_CONTROL_MASK;
+ 	}
+ 
+ 	/* Decide whether or not to do anything. */

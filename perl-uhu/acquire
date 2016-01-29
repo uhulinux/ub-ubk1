@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+uhu-perl-${UB_VERSION}.tar.gz uhu-perl-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/uhu-perl/

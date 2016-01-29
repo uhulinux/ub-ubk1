@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+./install.sh -s -I "$UB_INSTALLDIR"/usr/share/Komodo-Edit-"$UB_VERSION_MAJOR"
+ln -sf ../share/Komodo-Edit-"$UB_VERSION_MAJOR"/bin/komodo "$UB_INSTALLDIR"/usr/bin/komodo
+
+rm -f "$UB_INSTALLDIR"/usr/share/Komodo-Edit-"$UB_VERSION_MAJOR"/share/desktop/*.desktop
+rmdir "$UB_INSTALLDIR"/usr/share/Komodo-Edit-"$UB_VERSION_MAJOR"/share/desktop

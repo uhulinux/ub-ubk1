@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pygtkglext-${UB_VERSION}.tar.gz pygtkglext-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/pygtkglext/${UB_VERSION_HEAD2}/

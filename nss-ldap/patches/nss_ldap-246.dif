@@ -1,0 +1,24 @@
+Index: nss_ldap-246/ldap-nss.c
+===================================================================
+--- nss_ldap-246.orig/ldap-nss.c
++++ nss_ldap-246/ldap-nss.c
+@@ -90,6 +90,9 @@ static char rcsId[] =
+ #include "dnsconfig.h"
+ #include "pagectrl.h"
+ 
++#undef HAVE_LIBC_LOCK_H
++#undef HAVE_BITS_LIBC_LOCK_H
++
+ #if defined(HAVE_THREAD_H) && !defined(_AIX)
+ #ifdef HAVE_PTHREAD_ATFORK
+ #undef HAVE_PTHREAD_ATFORK
+@@ -2422,7 +2425,8 @@ do_with_reconnect (const char *base, int
+ 	   * If a soft reconnect policy is specified, then do not
+ 	   * try to reconnect to the LDAP server if it is down.
+ 	   */
+-	  if (__session.ls_config->ldc_reconnect_pol == LP_RECONNECT_SOFT)
++	  if ( (__session.ls_config->ldc_reconnect_pol == LP_RECONNECT_SOFT) &&
++               ( tries > 0 ) )
+ 	    hard = 0;
+ 
+ 	  ++tries;

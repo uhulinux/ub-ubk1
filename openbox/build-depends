@@ -1,0 +1,12 @@
+imlib2-dev
+libsm-dev
+libxcursor-dev
+libxinerama-dev
+libxml2-dev
+libxrandr-dev
+libxrender-dev
+pango-dev
+python-dev
+pyxdg
+startup-notification-dev
+xcb-util-dev

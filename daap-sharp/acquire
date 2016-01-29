@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+daap-sharp-${UB_VERSION}.tar.gz daap-sharp-${UB_VERSION}/
+	http://www.snorp.net/files/daap-sharp/

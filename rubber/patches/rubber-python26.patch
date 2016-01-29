@@ -1,0 +1,21 @@
+diff -ur rubber-1.1/src/util.py rubber-1.1.new/src/util.py
+--- rubber-1.1/src/util.py	2006-03-17 14:52:45.000000000 +0100
++++ rubber-1.1.new/src/util.py	2009-06-15 16:05:57.000000000 +0200
+@@ -5,7 +5,7 @@
+ by the modules for various tasks.
+ """
+ 
+-import md5
++import hashlib
+ import os, stat, time
+ import imp
+ import re, string
+@@ -19,7 +19,7 @@
+ 	"""
+ 	Compute the MD5 sum of a given file.
+ 	"""
+-	m = md5.new()
++	m = hashlib.md5()
+ 	file = open(fname)
+ 	for line in file.readlines():
+ 		m.update(line)

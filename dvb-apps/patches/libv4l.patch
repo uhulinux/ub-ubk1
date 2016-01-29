@@ -1,0 +1,12 @@
+diff -Naur linuxtv-dvb-apps-1.1.1-orig/test/video.c linuxtv-dvb-apps-1.1.1/test/video.c
+--- linuxtv-dvb-apps-1.1.1-orig/test/video.c	2004-01-17 17:59:46.000000000 +0100
++++ linuxtv-dvb-apps-1.1.1/test/video.c	2012-05-15 09:09:44.000000000 +0200
+@@ -21,7 +21,7 @@
+ #include <string.h>
+ 
+ #include <linux/fb.h>
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ 
+ #define VIDEO_DEV "/dev/video0"
+ #define FB_DEV "/dev/fb0"

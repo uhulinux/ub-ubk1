@@ -1,0 +1,1 @@
+urllist http://www.mpfr.org/mpfr-current/ | splitver '^mpfr-([0-9.]+).tar.xz$' | sort -V | tail -n 1

@@ -1,0 +1,12 @@
+diff -Naur slmodem-2.9.11-20090222-orig/drivers/amrmo_init.c slmodem-2.9.11-20090222/drivers/amrmo_init.c
+--- slmodem-2.9.11-20090222-orig/drivers/amrmo_init.c	2008-04-01 04:08:42.000000000 +0200
++++ slmodem-2.9.11-20090222/drivers/amrmo_init.c	2009-06-07 19:32:20.000000000 +0200
+@@ -286,6 +286,8 @@
+ 	 PCI_ANY_ID, PCI_ANY_ID, 0, 0, ICH_CARD},
+        	{PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_ICH4,          /* 8086:24c6 */
+ 	 PCI_ANY_ID, PCI_ANY_ID, 0, 0, ICH4_CARD},
++       	{PCI_VENDOR_ID_INTEL, 0x266d,                      /* 8086:266d */
++	 PCI_ANY_ID, PCI_ANY_ID, 0, 0, ICH4_CARD},
+        	{PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_ICH5,          /* 8086:24d6 */
+ 	 PCI_ANY_ID, PCI_ANY_ID, 0, 0, ICH4_CARD},
+        	{PCI_VENDOR_ID_INTEL, 0x266d,                      /* ICH6 */

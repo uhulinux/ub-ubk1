@@ -1,0 +1,1 @@
+urllist https://code.google.com/p/google-gdata/downloads/ | splitver '^libgoogle-data-mono-([0-9.]+).tar.gz$' | sort -V | tail -n 1

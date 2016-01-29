@@ -1,0 +1,1 @@
+sflist muparser muparser | splitver '^Version%20([0-9.]+)$' | sort -V | tail -n 1

@@ -1,0 +1,8 @@
+Summary=Mailing List Server
+Summary[hu]=Levelezőlista-szerver
+Description=Manages mailing lists and provides a web interface for them.
+Description[hu]=Levelezőlistákat kezelő szerver. Webes felülettel is rendelkezik.
+Script=/etc/init.d/sympa
+SupportsReload=no
+Runlevels=
+Sequence=20

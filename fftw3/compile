@@ -1,0 +1,16 @@
+#!/bin/sh -eux
+
+mv fftw-"$UB_VERSION" single
+cp -a single double
+cp -a single long
+
+cd double
+ub_compile
+cd ..
+
+cd single
+ub_compile --enable-single
+cd ..
+
+cd long
+ub_compile --enable-long-double

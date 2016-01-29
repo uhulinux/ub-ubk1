@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xiphos-${UB_VERSION}.tar.gz xiphos-${UB_VERSION}/
+	http://downloads.sourceforge.net/gnomesword/

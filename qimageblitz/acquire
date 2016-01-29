@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+qimageblitz-${UB_VERSION}.tar.bz2 qimageblitz-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/qimageblitz/

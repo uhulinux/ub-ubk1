@@ -1,0 +1,42 @@
+diff -urN screen-3.9.15.orig/config.h.in screen-3.9.15/config.h.in
+--- screen-3.9.15.orig/config.h.in	2003-03-13 12:19:53.000000000 +0100
++++ screen-3.9.15/config.h.in	2003-06-03 14:47:51.000000000 +0200
+@@ -204,7 +204,7 @@
+  * If screen is installed with permissions to update /etc/utmp (such
+  * as if it is installed set-uid root), define UTMPOK.
+  */
+-#define UTMPOK
++#undef UTMPOK
+ 
+ /* Set LOGINDEFAULT to one (1)
+  * if you want entries added to /etc/utmp by default, else set it to
+diff -urN screen-3.9.15.orig/etc/screenrc screen-3.9.15/etc/screenrc
+--- screen-3.9.15.orig/etc/screenrc	2003-03-13 12:19:54.000000000 +0100
++++ screen-3.9.15/etc/screenrc	2003-06-03 15:16:06.000000000 +0200
+@@ -119,8 +119,6 @@
+ bind h
+ #make them better
+ bind 'K' kill
+-bind 'I' login on
+-bind 'O' login off
+ bind '}' history
+ 
+ # Yet another hack:
+diff -urN screen-3.9.15.orig/Makefile.in screen-3.9.15/Makefile.in
+--- screen-3.9.15.orig/Makefile.in	2003-03-13 12:19:53.000000000 +0100
++++ screen-3.9.15/Makefile.in	2003-06-03 14:41:13.000000000 +0200
+@@ -52,12 +52,12 @@
+ SHELL=/bin/sh
+ 
+ CFILES=	screen.c ansi.c fileio.c mark.c misc.c resize.c socket.c \
+-	search.c tty.c term.c window.c utmp.c loadav.c putenv.c help.c \
++	search.c tty.c term.c window.c loadav.c putenv.c help.c \
+ 	termcap.c input.c attacher.c pty.c process.c display.c comm.c \
+ 	kmapdef.c acls.c braille.c braille_tsi.c logfile.c layer.c \
+ 	sched.c teln.c nethack.c encoding.c
+ OFILES=	screen.o ansi.o fileio.o mark.o misc.o resize.o socket.o \
+-	search.o tty.o term.o window.o utmp.o loadav.o putenv.o help.o \
++	search.o tty.o term.o window.o loadav.o putenv.o help.o \
+ 	termcap.o input.o attacher.o pty.o process.o display.o comm.o \
+ 	kmapdef.o acls.o braille.o braille_tsi.o logfile.o layer.o \
+ 	sched.o teln.o nethack.o encoding.o

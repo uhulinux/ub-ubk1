@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+vdr-plugin-softhddevice-${UB_VERSION}.tar.bz2 vdr-plugin-softhddevice-${UB_VERSION}/
+	 http://projects.vdr-developer.org/git/vdr-plugin-softhddevice.git/snapshot/

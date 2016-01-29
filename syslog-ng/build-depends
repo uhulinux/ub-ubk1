@@ -1,0 +1,13 @@
+eventlog-dev
+geoip-dev
+glib-dev
+json-c-dev
+libcap-dev
+libdbi
+libesmtp-dev
+libnet
+openssl-dev
+popt-dev
+systemd-dev
+tcp-wrappers-dev
+util-linux-dev

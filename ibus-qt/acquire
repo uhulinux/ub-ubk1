@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ibus-qt-${UB_VERSION}-Source.tar.gz ibus-qt-${UB_VERSION}-Source/
+	http://ibus.googlecode.com/files/

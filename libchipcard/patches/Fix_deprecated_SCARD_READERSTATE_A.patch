@@ -1,0 +1,32 @@
+--- libchipcard-5.0.1test.orig/src/lib/client/base/client.c
++++ libchipcard-5.0.1test/src/lib/client/base/client.c
+@@ -872,7 +872,7 @@ int LC_Client_UpdateReaderStates(LC_CLIE
+ 	DBG_INFO(LC_LOGDOMAIN, "Creating reader \"%s\"", p);
+ 	i=cl->readerCount;
+         /* preset */
+-	memset((void*) &(cl->readerStates[i]), 0, sizeof(SCARD_READERSTATE_A));
++	memset((void*) &(cl->readerStates[i]), 0, sizeof(SCARD_READERSTATE));
+ 	cl->readerStates[i].szReader=p;
+ 	cl->readerStates[i].dwCurrentState=SCARD_STATE_UNAWARE;
+ 	/* reader added */
+@@ -948,7 +948,7 @@ LC_CLIENT_RESULT LC_Client_Stop(LC_CLIEN
+   assert(cl);
+ 
+   /* clear reader list and reader status list */
+-  memset((void*) &cl->readerStates, 0, sizeof(SCARD_READERSTATE_A)*MAX_READERS);
++  memset((void*) &cl->readerStates, 0, sizeof(SCARD_READERSTATE)*MAX_READERS);
+   cl->readerCount=0;
+   free(cl->readerList);
+   cl->readerList=NULL;
+--- libchipcard-5.0.1test.orig/src/lib/client/base/client_p.h
++++ libchipcard-5.0.1test/src/lib/client/base/client_p.h
+@@ -42,7 +42,7 @@ struct LC_CLIENT {
+   SCARDCONTEXT scardContext;
+ 
+   int pnpAvailable;
+-  SCARD_READERSTATE_A readerStates[MAX_READERS];
++  SCARD_READERSTATE readerStates[MAX_READERS];
+   int readerCount;
+   int lastUsedReader;
+   LPSTR readerList;
+

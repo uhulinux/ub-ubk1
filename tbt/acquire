@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+tbt-${UB_VERSION}.tar.gz tbt-${UB_VERSION}/
+	ftp://ftp.dyne.org/tbt/releases/
+	http://files.dyne.org/tbt/releases/

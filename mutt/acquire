@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+# mutt-${UB_VERSION}.tar.gz mutt-${UB_VERSION}/
+mutt-20130620.tar.gz mutt-${UB_VERSION}hg/
+#	ftp://ftp.mutt.org/mutt/
+#	ftp://ftp.mutt.org/mutt/devel/
+	http://dev.mutt.org/nightlies/

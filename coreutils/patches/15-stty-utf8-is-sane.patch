@@ -1,0 +1,21 @@
+diff -Naur coreutils-5.93.orig/src/stty.c coreutils-5.93/src/stty.c
+--- coreutils-5.93.orig/src/stty.c	2005-07-09 09:39:04.000000000 +0200
++++ coreutils-5.93/src/stty.c	2006-02-02 18:55:37.000000000 +0100
+@@ -245,7 +245,7 @@
+   {"imaxbel", input, SANE_SET | REV, IMAXBEL, 0},
+ #endif
+ #ifdef IUTF8
+-  {"iutf8", input, SANE_UNSET | REV, IUTF8, 0},
++  {"iutf8", input, SANE_SET | REV, IUTF8, 0},
+ #endif
+ 
+   {"opost", output, SANE_SET | REV, OPOST, 0},
+@@ -707,7 +707,7 @@
+    -raw          same as cooked\n\
+ "), stdout);
+       fputs (_("\
+-   sane          same as cread -ignbrk brkint -inlcr -igncr icrnl -iutf8\n\
++   sane          same as cread -ignbrk brkint -inlcr -igncr icrnl\n\
+                  -ixoff -iuclc -ixany imaxbel opost -olcuc -ocrnl onlcr\n\
+                  -onocr -onlret -ofill -ofdel nl0 cr0 tab0 bs0 vt0 ff0\n\
+                  isig icanon iexten echo echoe echok -echonl -noflsh\n\

@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+cd me"$UB_VERSION"
+mkdir -p "$UB_INSTALLDIR"/usr/share/jasspa
+cp -a src/me "$UB_INSTALLDIR"/usr/share/jasspa/
+ln -s ../share/jasspa/me "$UB_INSTALLDIR"/usr/bin/me
+cp -a src/me32.bmp "$UB_INSTALLDIR"/usr/share/pixmaps/
+cd ../jasspa
+for i in company contrib macros pixmaps spelling; \
+	do cp -a $i/. "$UB_INSTALLDIR"/usr/share/jasspa/$i/; done;
+cd ..
+cp -a *.eaf "$UB_INSTALLDIR"/usr/share/jasspa/macros/
+cp -a *.emf "$UB_INSTALLDIR"/usr/share/jasspa/macros/
+cp -a *.etf "$UB_INSTALLDIR"/usr/share/jasspa/macros/

@@ -1,0 +1,49 @@
+print("Insert text: ");
+A=getline;
+print("\nInsert password (visible): ");
+B=getline;
+D=A;
+E=0;
+for(C=0; A[0][C+1]!=0; C=C+1)
+{
+  I=A[0][C];
+  if(I>47 && I<59)
+    I=I-48;
+  else if(I>64 && I<91)
+    I=I-55;
+  else if(I>96 && I<123)
+    I=I-61;
+  else if(I==32)
+    I=62;
+
+
+  J=B[0][E];
+  if(J>47 && J<59)
+    J=J-48;
+  else if(J>64 && J<91)
+    J=J-55;
+  else if(J>96 && J<123)
+    J=J-61;
+  else if(J==32)
+    J=62;
+
+  K=I+J;
+  K=K%63;
+
+  if(K>-1 && K<10)
+    K=K+48;
+  else if(K>9 && K<36)
+    K=K+55;
+  else if(K==62)
+    K=32;
+  else if(K>35)
+    K=K+61;
+
+  D[0][C]=K;
+  if(B[0][E+2]==0)
+    E=0;
+  else E=E+1;
+}
+print("\nEncoded Text: ");
+print(D);
+print("\n");

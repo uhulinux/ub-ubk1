@@ -1,0 +1,11 @@
+diff -Naurd orig/zforce.in mod/zforce.in
+--- orig/zforce.in	2010-01-03 18:26:02.000000000 +0100
++++ mod/zforce.in	2010-01-25 18:30:58.000000000 +0100
+@@ -63,6 +63,7 @@
+   fi
+ 
+   if gzip -lv < "$i" 2>/dev/null | grep '^defl' > /dev/null; then
++  if gzip -l < "$i" 2>/dev/null | grep '^compressed' > /dev/null; then
+ 
+     new="$i.gz"
+     if mv "$i" "$new"; then

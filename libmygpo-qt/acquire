@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libmygpo-qt.${UB_VERSION}.tar.gz libmygpo-qt.${UB_VERSION}/
+	http://stefan.derkits.at/files/libmygpo-qt/

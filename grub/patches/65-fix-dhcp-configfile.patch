@@ -1,0 +1,17 @@
+diff -Naur grub-0.95.orig/netboot/nic.c grub-0.95/netboot/nic.c
+--- grub-0.95.orig/netboot/nic.c	2004-06-14 15:31:27.000000000 +0200
++++ grub-0.95/netboot/nic.c	2004-06-14 15:39:27.000000000 +0200
+@@ -646,11 +646,10 @@
+ 		if (await_reply(await_dhcp, 0, NULL, timeout)) {
+ 			/* If not a DHCPOFFER then must be just a BOOTP reply,
+ 			   be backward compatible with BOOTP then */
+-			//if (dhcp_reply != DHCPOFFER){
+-		        //jscott: DODGY HACK: comment out this if: use the first offer as the IP!
++			if (dhcp_reply != DHCPOFFER){
+ 				network_ready = 1;
+ 				return(1);
+-			//}
++			}
+ 			dhcp_reply = 0;
+ 			memcpy(ip.bp.bp_vend, rfc1533_cookie_dhcp, sizeof rfc1533_cookie_dhcp);
+ 			memcpy(ip.bp.bp_vend + sizeof rfc1533_cookie_dhcp, dhcprequest, sizeof dhcprequest);

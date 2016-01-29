@@ -1,0 +1,19 @@
+diff -urN reiser4progs-1.0.5.orig/configure reiser4progs-1.0.5/configure
+--- reiser4progs-1.0.5.orig/configure	2005-08-05 15:33:51.000000000 +0200
++++ reiser4progs-1.0.5/configure	2007-10-25 18:55:27.000000000 +0200
+@@ -24246,7 +24246,6 @@
+     sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\3/'`
+ 
+ OLD_CFLAGS=$CFLAGS
+-CFLAGS="$CFLAGS -static"
+ 
+ # Compare MINIMUM-VERSION with libaal version
+ if test "$cross_compiling" = yes; then
+@@ -24636,7 +24636,6 @@
+     sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\3/'`
+ 
+ OLD_CFLAGS=$CFLAGS
+-CFLAGS="$CFLAGS -static"
+ 
+ # Compare MINIMUM-VERSION with libaal version
+ if test "$cross_compiling" = yes; then

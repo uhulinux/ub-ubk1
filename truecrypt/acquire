@@ -1,0 +1,8 @@
+#!/usr/bin/env dl
+
+truecrypt-${UB_VERSION}-source.tar.gz truecrypt-${UB_VERSION}-source/
+	http://www.packetstormsecurity.org/crypt/filesystem/
+	http://packetstorm.interhost.co.il/crypt/filesystem/
+
+#TrueCrypt%20${UB_VERSION}%20Source.zip	truecrypt-${UB_VERSION}-source/
+#	http://cyberside.dontexist.org/truecrypt/

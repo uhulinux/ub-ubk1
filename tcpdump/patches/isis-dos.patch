@@ -1,0 +1,24 @@
+diff -Naur tcpdump-4.1.1-orig/print-isoclns.c tcpdump-4.1.1/print-isoclns.c
+--- tcpdump-4.1.1-orig/print-isoclns.c	2010-03-12 02:56:44.000000000 +0100
++++ tcpdump-4.1.1/print-isoclns.c	2010-04-20 21:03:37.000000000 +0200
+@@ -2187,12 +2187,14 @@
+             }
+             tmp --;
+             printf("\n\t      LAN address length %u bytes ",lan_alen);
+-	    while (tmp >= lan_alen) {
+-                if (!TTEST2(*tptr, lan_alen))
+-                    goto trunctlv;
+-                printf("\n\t\tIS Neighbor: %s",isis_print_id(tptr,lan_alen));
+-                tmp -= lan_alen;
+-                tptr +=lan_alen;
++	    if(lan_alen >= SYSTEM_ID_LEN) {
++	        while (tmp >= lan_alen) {
++                    if (!TTEST2(*tptr, lan_alen))
++                        goto trunctlv;
++                    printf("\n\t\tIS Neighbor: %s",isis_print_id(tptr,lan_alen));
++                    tmp -= lan_alen;
++                    tptr +=lan_alen;
++                }
+             }
+             break;
+ 

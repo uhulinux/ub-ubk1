@@ -1,0 +1,1 @@
+urllist ftp://ftp.cs.berkeley.edu/pub/ucblogo/ | splitver '^ucblogo-([0-9.]+).tar.gz$' | sort -V | tail -n 1

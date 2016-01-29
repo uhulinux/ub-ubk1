@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Net-Syslog-${UB_VERSION}.tar.gz Net-Syslog-${UB_VERSION}/
+	http://cpan.uwinnipeg.ca/cpan/authors/id/L/LH/LHOWARD/

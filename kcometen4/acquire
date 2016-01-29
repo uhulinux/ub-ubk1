@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+87586-kcometen4-${UB_VERSION/~/-}.tar.gz kcometen4-${UB_VERSION}/
+	http://kde-look.org/CONTENT/content-files/

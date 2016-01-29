@@ -1,0 +1,4 @@
+grub2
+linux-firmware
+mkinitrd
+module-init-tools

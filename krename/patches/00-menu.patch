@@ -1,0 +1,14 @@
+diff -Naur krename-4.0.3-orig/src/krename.desktop krename-4.0.3/src/krename.desktop
+--- krename-4.0.3-orig/src/krename.desktop	2007-03-18 17:54:10.000000000 +0100
++++ krename-4.0.3/src/krename.desktop	2009-12-28 18:22:04.000000000 +0100
+@@ -6,6 +6,9 @@
+ DocPath=krename/index.html
+ Comment=A batch renamer
+ Comment[de]=Ein Batch Umbenenner
++Comment[hu]=Fájlok tömeges átnevezése
+ Terminal=false
+ Name=KRename
+-Categories=Qt;KDE;Utility;
++Name[hu]=KRename
++GenericName[hu]=Fájlok tömeges átnevezése
++Categories=Qt;KDE;Utility;X-UHU-Menu/Tools/Utilities;

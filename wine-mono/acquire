@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+wine-mono-${UB_VERSION}.msi
+	http://download.sourceforge.net/wine/
+
+

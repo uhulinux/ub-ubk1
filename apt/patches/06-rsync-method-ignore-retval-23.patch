@@ -1,0 +1,41 @@
+diff -Naur apt-0.6.25.orig/methods/rsync.cc apt-0.6.25/methods/rsync.cc
+--- apt-0.6.25.orig/methods/rsync.cc	2004-09-06 15:01:47.556210407 +0200
++++ apt-0.6.25/methods/rsync.cc	2004-09-06 15:08:03.474806134 +0200
+@@ -124,6 +124,7 @@
+ RsyncMethod::RsyncConnExec::RsyncConnExec(URI u, const string &_proxy, const string &prog)
+    : RsyncConn(u,_proxy), ChildPid(-1), ChildFd(-1)
+ {
++   ret23 = false;
+    program = prog.empty() ? RSYNC_PROGRAM : prog;
+ }
+ 
+@@ -214,6 +215,9 @@
+ 			case 0:
+ 			   return true;
+ 			   break;
++			case 23:
++			   ret23 = true;
++			   /* go on... */
+ 			default:
+ 			   if ( State != Failed ) {
+ 				  State = Failed;
+@@ -455,6 +459,7 @@
+ 	  URIDone(Res);
+ 	  return true;
+    }
++   if (!server->ret23)
+    Fail(true);
+    return false;
+ }
+diff -Naur apt-0.6.25.orig/methods/rsync-method.h apt-0.6.25/methods/rsync-method.h
+--- apt-0.6.25.orig/methods/rsync-method.h	2004-09-06 15:01:47.556210407 +0200
++++ apt-0.6.25/methods/rsync-method.h	2004-09-06 15:04:49.724659479 +0200
+@@ -56,6 +56,8 @@
+ 		 virtual ~RsyncConn() {}
+ 
+ 		 virtual bool Get(pkgAcqMethod *Owner, FetchResult &FRes, const char *From, const char *To) = 0;
++
++		 bool ret23;
+ 	  };
+ 
+    class RsyncConnExec: public RsyncConn

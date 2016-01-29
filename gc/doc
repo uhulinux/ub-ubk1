@@ -1,0 +1,8 @@
+doc/*.html
+doc/README
+doc/README.changes
+doc/README.contributors
+doc/README.environment
+doc/README.linux
+doc/README.macros
+doc/barrett_diagram

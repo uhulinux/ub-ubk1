@@ -1,0 +1,23 @@
+#!/bin/sh -e
+
+. /etc/init.d/common
+
+TEXTDOMAIN=alsa-utils
+
+if [ ! -f "/etc/sysconfig/mixer-settings-autosave" ] ||
+     [ "$(</etc/sysconfig/mixer-settings-autosave)" != "yes" ]; then
+	exit 0
+fi
+
+[ -x "/usr/sbin/alsactl" ] || exit 0
+[ -d "/proc/asound" ] || exit 0
+
+shopt -s nullglob
+for i in /dev/snd/pcmC?D??; do
+	echo -n $"Storing Sound Card Settings"
+	alsactl store
+	echo "$OK"
+	break # save only once
+done
+
+exit 0

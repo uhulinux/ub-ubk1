@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-screensaver-${UB_VERSION}.tar.xz gnome-screensaver-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-screensaver/${UB_VERSION_HEAD2}/

@@ -1,0 +1,10 @@
+diff -Naur kwallet-4.7.44-orig//kwalletmanager.desktop kwallet-4.7.44//kwalletmanager.desktop
+--- kwallet-4.7.44-orig//kwalletmanager.desktop	2011-08-22 15:26:15.000000000 +0200
++++ kwallet-4.7.44//kwalletmanager.desktop	2011-10-13 19:25:17.000000000 +0200
+@@ -115,5 +115,5 @@
+ Type=Application
+ Terminal=false
+ X-KDE-StartupNotify=false
+-Categories=Qt;KDE;System;Security;
++Categories=Qt;KDE;System;Security;X-UHU-Menu/Tools/Utilities;
+ X-DocPath=kwallet/index.html

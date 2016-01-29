@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+web-cyradm-${UB_VERSION}.tar.gz web-cyradm-${UB_VERSION}/ 
+	http://www.web-cyradm.org/

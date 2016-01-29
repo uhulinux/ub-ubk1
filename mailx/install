@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_install
+
+ln -s mailx "$UB_INSTALLDIR"/usr/bin/mail
+ln -s mailx.1 "$UB_INSTALLDIR"/usr/share/man/man1/mail.1
+
+# keep compatibility with old 'nail' name at least as long as the
+# config file is called nail.rc
+ln -s mailx "$UB_INSTALLDIR"/usr/bin/nail
+ln -s mailx.1 "$UB_INSTALLDIR"/usr/share/man/man1/nail.1

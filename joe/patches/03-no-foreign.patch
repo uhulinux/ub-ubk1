@@ -1,0 +1,36 @@
+diff -Naur joe-3.5.orig/Makefile.in joe-3.5/Makefile.in
+--- joe-3.5.orig/Makefile.in	2006-07-20 21:24:18.000000000 +0200
++++ joe-3.5/Makefile.in	2006-07-31 21:30:05.000000000 +0200
+@@ -208,7 +208,7 @@
+ target_os = @target_os@
+ target_vendor = @target_vendor@
+ AUTOMAKE_OPTIONS = foreign
+-SUBDIRS = man rc po syntax
++SUBDIRS = man rc syntax
+ EXTRA_DIST = COPYING LIST HACKING ChangeLog NEWS README INSTALL INSTALL.AMIGA INSTALL.cvs \
+ 	TODO docs/help-system.html dir.c charmaps/klingon.in HINTS \
+ 	cygbuild setup.hint xterm-patch xterm-readme autojoe
+diff -Naur joe-3.5.orig/man/Makefile.in joe-3.5/man/Makefile.in
+--- joe-3.5.orig/man/Makefile.in	2006-07-20 21:24:18.000000000 +0200
++++ joe-3.5/man/Makefile.in	2006-07-31 21:30:26.000000000 +0200
+@@ -151,7 +151,7 @@
+ sysconf_joedir = $(sysconfdir)/joe
+ data_joedir = $(datadir)/joe
+ data_docdir = $(docdir)
+-SUBDIRS = ru
++SUBDIRS =
+ man_MANS = joe.1
+ EXTRA_DIST = joe.1.in
+ MOSTLYCLEANFILES = $(man_MANS)
+diff -Naur joe-3.5.orig/rc/Makefile.in joe-3.5/rc/Makefile.in
+--- joe-3.5.orig/rc/Makefile.in	2006-07-20 21:24:20.000000000 +0200
++++ joe-3.5/rc/Makefile.in	2006-07-31 21:31:00.000000000 +0200
+@@ -148,7 +148,7 @@
+ sysconf_joedir = $(sysconfdir)/joe
+ data_joedir = $(datadir)/joe
+ data_docdir = $(docdir)
+-sysconf_joe_built = joerc jicerc.ru jmacsrc jstarrc rjoerc jpicorc
++sysconf_joe_built = joerc jmacsrc jstarrc rjoerc jpicorc
+ sysconf_joe_DATA = $(sysconf_joe_built) ftyperc
+ EXTRA_DIST = joerc.in jicerc.ru.in jmacsrc.in jstarrc.in jpicorc.in rjoerc.in ftyperc
+ MOSTLYCLEANFILES = $(sysconf_joe_built)

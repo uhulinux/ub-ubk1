@@ -1,0 +1,8 @@
+alsa-lib-dev
+gconf2-dev
+glib-dev
+gtk2-dev
+icu-dev
+intltool
+pulseaudio-dev
+systemd-dev

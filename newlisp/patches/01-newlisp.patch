@@ -1,0 +1,37 @@
+diff -Naurd a/makefile_linux_utf8_ffi b/makefile_linux_utf8_ffi
+--- a/makefile_linux_utf8_ffi	2014-04-04 16:19:23.000000000 +0200
++++ b/makefile_linux_utf8_ffi	2014-04-04 19:13:32.000000000 +0200
+@@ -6,7 +6,7 @@
+ OBJS = newlisp.o nl-symbol.o nl-math.o nl-list.o nl-liststr.o nl-string.o nl-filesys.o \
+ 	nl-sock.o nl-import.o nl-xml-json.o nl-web.o nl-matrix.o nl-debug.o nl-utf8.o pcre.o
+ 
+-CFLAGS = -m32 -Wall -Wno-strict-aliasing -Wno-long-long -c -O2 -g -DREADLINE -DSUPPORT_UTF8 -DLINUX -DFFI -I/usr/local/lib/libffi-3.0.13/include
++CFLAGS = -m32 -Wall -Wno-strict-aliasing -Wno-long-long -c -O2 -g -DREADLINE -DSUPPORT_UTF8 -DLINUX -DFFI -I/usr/lib/libffi-3.0.13/include
+ 
+ CC = gcc
+ 
+diff -Naurd a/makefile_original_install b/makefile_original_install
+--- a/makefile_original_install	2014-04-04 16:19:23.000000000 +0200
++++ b/makefile_original_install	2014-04-04 19:11:37.000000000 +0200
+@@ -6,7 +6,7 @@
+ # run in an environment, where NEWLISPDIR is predefined,
+ # else NEWLISPDIR will be defined during newlisp startup
+ # as /usr/share/newlisp which is hardcoded in newlisp.c
+-prefix=/usr
++prefix=$(DESTDIR)/usr
+ datadir=$(prefix)/share
+ bindir=$(prefix)/bin
+ mandir=$(prefix)/share/man
+diff -Naurd a/newlisp.c b/newlisp.c
+--- a/newlisp.c	2014-04-04 16:19:23.000000000 +0200
++++ b/newlisp.c	2014-04-04 19:17:16.000000000 +0200
+@@ -22,6 +22,9 @@
+ #include "protos.h"
+ #include "primes.h"
+ 
++typedef char *CPFunction();
++typedef char **CPPFunction();
++
+ #ifdef WINDOWS
+ #include <winsock2.h>
+ #else

@@ -1,0 +1,14 @@
+diff -Naur blackbox-0.70.0.orig/data/styles/Makefile.in blackbox-0.70.0/data/styles/Makefile.in
+--- blackbox-0.70.0.orig/data/styles/Makefile.in	2005-03-01 20:43:25.000000000 +0100
++++ blackbox-0.70.0/data/styles/Makefile.in	2005-09-15 13:00:00.000000000 +0200
+@@ -174,7 +174,9 @@
+ xft_LIBS = @xft_LIBS@
+ styledir = $(pkgdatadir)/styles
+ MAINTAINERCLEANFILES = Makefile.in
+-style_DATA = Blue Gray Green Purple Red
++style_DATA = Blue Gray Green Purple Red \
++  Artwiz Flux Minimal Nyz Operation Outcomes \
++  Rampage Rancor Results Shade Spiff TDF Twice
+ all: all-am
+ 
+ .SUFFIXES:

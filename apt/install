@@ -1,0 +1,33 @@
+#!/bin/sh -eux
+
+cd "$UB_OBJECTDIR"
+
+mkdir -p "$UB_INSTALLDIR"/usr/include/apt-pkg
+mkdir -p "$UB_INSTALLDIR"/usr/lib/apt/methods
+mkdir -p "$UB_INSTALLDIR"/usr/lib/dpkg/methods/apt
+
+cp -a bin/apt-*                  "$UB_INSTALLDIR"/usr/bin/
+cp -a bin/libapt*                "$UB_INSTALLDIR"/usr/lib/
+cp -a include/apt-pkg/.          "$UB_INSTALLDIR"/usr/include/apt-pkg/
+cp -a bin/methods/.              "$UB_INSTALLDIR"/usr/lib/apt/methods/
+cp -a scripts/dselect/.          "$UB_INSTALLDIR"/usr/lib/dpkg/methods/apt/
+
+#for i in docs/*.{es,pt_BR}.[1-8]; do
+#	base="${i##*/}"
+#	ext="${base##*.}"
+#	base="${base%.*}"
+#	lang="${base##*.}"
+#	base="${base%.*}"
+#	mkdir -p "$UB_INSTALLDIR/usr/share/man/$lang/man$ext"
+#	mv docs/"$base.$lang.$ext" "$UB_INSTALLDIR/usr/share/man/$lang/man$ext/$base.$ext"
+#done
+for i in "$UB_COMPILEDIR"/doc/en/*.[1-8]; do
+	base="${i##*/}"
+	ext="${base##*.}"
+	mkdir -p "$UB_INSTALLDIR/usr/share/man/man$ext"
+	mv "$i" "$UB_INSTALLDIR/usr/share/man/man$ext/"
+done
+#mv "$UB_COMPILEDIR"/doc/apt.8 "$UB_INSTALLDIR"/usr/share/man/man8/
+
+rm -rf "$UB_INSTALLDIR"/usr/share/locale
+mv locale "$UB_INSTALLDIR"/usr/share/

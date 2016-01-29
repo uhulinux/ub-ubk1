@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+#sed -i 's/\r$//' configure
+#sed -i 's/\r$//' plugins/configure
+#sed -i 's/\r$//' config.sub
+#chmod +x configure
+PTLIB_CONFIG=/usr/bin/ptlib-config \
+PTLIBDIR=/usr/share/ptlib \
+ub_compile

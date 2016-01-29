@@ -1,0 +1,22 @@
+diff -Naur grub-0.95.orig/lib/device.c grub-0.95/lib/device.c
+--- grub-0.95.orig/lib/device.c	2004-05-23 18:34:29.000000000 +0200
++++ grub-0.95/lib/device.c	2004-07-20 16:24:54.674878711 +0200
+@@ -699,6 +699,7 @@
+ 	    }
+ 	  
+ 	  num_hd++;
++	  if (num_hd == 0x40) break;
+ 	}
+       
+       /* OK, close the device map file if opened.  */
+@@ -794,8 +795,10 @@
+ 		  fprintf (fp, "(hd%d)\t%s\n", num_hd, name);
+ 		
+ 		num_hd++;
++		if (num_hd == 0x40) break;
+ 	      }
+ 	  }
++	if (num_hd == 0x40) break;
+       }
+   }
+ #endif /* __linux__ */

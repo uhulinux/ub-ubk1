@@ -1,0 +1,73 @@
+diff -Naur grub-0.97.orig/util/grub-install.in grub-0.97/util/grub-install.in
+--- grub-0.97.orig/util/grub-install.in	2007-08-14 19:11:49.000000000 +0200
++++ grub-0.97/util/grub-install.in	2007-08-14 19:18:51.000000000 +0200
+@@ -41,6 +41,7 @@
+ force_lba=
+ recheck=no
+ debug=no
++stage2=stage2
+ 
+ # look for secure tempfile creation wrappers on this platform
+ if test -x /bin/tempfile; then
+@@ -70,6 +71,7 @@
+   --force-lba             force GRUB to use LBA mode even for a buggy
+                           BIOS
+   --recheck               probe a device map even if it already exists
++  --net                   install netboot-enabled stage2
+ 
+ INSTALL_DEVICE can be a GRUB device name or a system device filename.
+ 
+@@ -136,6 +138,8 @@
+ 	force_lba="--force-lba" ;;
+     --recheck)
+ 	recheck=yes ;;
++    --net)
++	stage2=stage2.net ;;
+     # This is an undocumented feature...
+     --debug)
+ 	debug=yes ;;
+@@ -199,10 +203,10 @@
+     exit 1
+ fi
+ 
+-if test -f "$pkglibdir/stage2"; then
++if test -f "$pkglibdir/$stage2"; then
+     :
+ else
+-    echo "${pkglibdir}/stage2: Not found." 1>&2
++    echo "${pkglibdir}/$stage2: Not found." 1>&2
+     exit 1
+ fi
+ 
+@@ -296,11 +300,11 @@
+ fi
+ 
+ # Copy the GRUB images to the GRUB directory.
+-for file in ${grubdir}/stage1 ${grubdir}/stage2 ${grubdir}/*stage1_5; do
++for file in ${grubdir}/stage1 ${grubdir}/$stage2 ${grubdir}/*stage1_5; do
+     rm -f $file || exit 1
+ done
+ for file in \
+-    ${pkglibdir}/stage1 ${pkglibdir}/stage2 ${pkglibdir}/*stage1_5; do
++    ${pkglibdir}/stage1 ${pkglibdir}/$stage2 ${pkglibdir}/*stage1_5; do
+     cp -f $file ${grubdir} || exit 1
+ done
+ 
+@@ -311,7 +315,7 @@
+ test -n "$mkimg" && img_file=`$mkimg`
+ test -n "$mklog" && log_file=`$mklog`
+ 
+-for file in ${grubdir}/stage1 ${grubdir}/stage2 ${grubdir}/*stage1_5; do
++for file in ${grubdir}/stage1 ${grubdir}/$stage2 ${grubdir}/*stage1_5; do
+     count=5
+     tmp=`echo $file | sed "s|^${grubdir}|${grub_prefix}|"`
+     while test $count -gt 0; do
+@@ -345,7 +349,7 @@
+ # Now perform the installation.
+ $grub_shell --batch $no_floppy --device-map=$device_map <<EOF >$log_file
+ root $root_drive
+-install $force_lba --stage2=$grubdir/stage2 $grub_prefix/stage1 $d $install_drive $grub_prefix/stage2 p /boot/grub/menu.lst
++install $force_lba --stage2=$grubdir/$stage2 $grub_prefix/stage1 $d $install_drive $grub_prefix/$stage2 p /boot/grub/menu.lst
+ quit
+ EOF
+ 

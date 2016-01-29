@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+# kiszedjük a CRLF jeleket a scriptből
+sed -i 's/\r$//' Runtime/codelite_kill_children
+
+ub_compile

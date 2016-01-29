@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+flamerobin-${UB_VERSION}-src.tar.gz flamerobin-${UB_VERSION}-src/
+	http://downloads.sourceforge.net/flamerobin/

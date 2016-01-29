@@ -1,0 +1,11 @@
+--- gthumb/data/gthumb.desktop.in.in.orig	2010-07-15 20:45:38.000000000 +0200
++++ gthumb/data/gthumb.desktop.in.in	2011-10-02 22:24:54.000000000 +0200
+@@ -3,7 +3,7 @@
+ _GenericName=Image Viewer
+ _X-GNOME-FullName=gThumb Image Viewer
+ _Comment=View and organize your images
+-Categories=GNOME;GTK;Graphics;Viewer;RasterGraphics;2DGraphics;Photography;
++Categories=GNOME;GTK;Graphics;Viewer;RasterGraphics;2DGraphics;Photography;X-UHU-Menu/Graphics;
+ Exec=gthumb %U
+ Icon=gthumb
+ MimeType=image/bmp;image/jpeg;image/gif;image/png;image/tiff;image/x-bmp;image/x-ico;image/x-png;image/x-pcx;image/x-tga;image/xpm;image/svg+xml;

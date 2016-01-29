@@ -1,0 +1,49 @@
+diff -Naur ORIG/chess.h UHU/chess.h
+--- ORIG/chess.h	2010-11-08 19:07:43.000000000 +0100
++++ UHU/chess.h	2011-11-06 12:09:04.060000224 +0100
+@@ -67,7 +67,6 @@
+ #    define UNIX        /* system is unix-based                       */
+ #  endif
+ #  if defined(LINUX)
+-#    define HAS_64BITS  /* machine has 64-bit integers / operators    */
+ #    define UNIX        /* system is unix-based                       */
+ #  endif
+ #  if defined(MIPS)
+diff -Naur ORIG/Makefile UHU/Makefile
+--- ORIG/Makefile	2010-11-08 19:07:43.000000000 +0100
++++ UHU/Makefile	2011-11-06 12:20:35.996000225 +0100
+@@ -130,10 +130,10 @@
+ 	$(MAKE) target=LINUX \
+ 		CC=gcc CXX=g++ \
+ 		CFLAGS='-pg -Wwrite-strings -Wcast-qual -Wshadow \
+-		-Wconversion -W -Wall -ansi -pedantic -pipe' \
++		-Wconversion -W -Wall -pedantic -pipe' \
+ 		CXFLAGS='' \
+-		LDFLAGS='$(LDFLAGS) -pg -lstdc++ -lpthread' \
+-		opt='$(opt) -DTRACE -DINLINE64 -DCPUS=2' \
++		LDFLAGS='$(LDFLAGS) -lstdc++ -lpthread' \
++		opt='$(opt) -DTRACE -DINLINE32 -DCPUS=2 -DBOOKDIR="\"/usr/lib/crafty\""' \
+ 		crafty-make
+ 
+ linux-profile:
+@@ -335,7 +335,7 @@
+ crafty.o: *.c *.h
+ 
+ crafty:	$(objects) egtb.o
+-	$(CC) $(LDFLAGS) -o crafty $(objects) egtb.o -lm  $(LIBS)
++	$(CC) -o crafty $(objects) $(LDFLAGS) egtb.o -lm  $(LIBS)
+ 
+ egtb.o: egtb.cpp
+ 	$(CXX) -c $(CXFLAGS) $(opts) egtb.cpp
+diff -Naur ORIG/option.c UHU/option.c
+--- ORIG/option.c	2010-11-08 19:07:43.000000000 +0100
++++ UHU/option.c	2011-11-06 12:10:15.332000225 +0100
+@@ -1093,7 +1093,7 @@
+     char *readstat = (char *) -1;
+     int lines = 0;
+ 
+-    helpfile = fopen("crafty.hlp", "r");
++    helpfile = fopen("BBOKDIR/crafty.hlp", "r");
+     if (!helpfile) {
+       printf("ERROR.  Unable to open \"crafty.hlp\" -- help unavailable\n");
+       return (1);

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=WineTricks
+Comment=Filedownloader tool for Wine
+Comment[hu]=Fájlletöltő segédprogram a Wine nevű Windows emulátorhoz
+Type=Application
+Exec=winetricks
+Icon=winetricks
+Terminal=true
+StartupNotify=false
+Categories=System;Emulator;

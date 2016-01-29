@@ -1,0 +1,43 @@
+--- ptlib/Makefile.in.orig	2011-08-22 03:25:58.000000000 +0200
++++ ptlib/Makefile.in	2011-09-19 21:53:08.000000000 +0200
+@@ -116,7 +116,7 @@
+ 	              $(PT_LIBDIR)/lib$(PTLIB_BASE)_d_s.a ; \
+           do \
+ 	  ( if test -e $$lib ; then \
+-		$(INSTALL) -m 444 $$lib $(DESTDIR)$(LIBDIR); \
++		$(INSTALL) -m 755 $$lib $(DESTDIR)$(LIBDIR); \
+ 	  fi ) \
+ 	done )
+ 	( if test -e $(PT_LIBDIR)/$(LIB_SONAME); then \
+@@ -138,24 +138,24 @@
+ 		do mkdir -p $(DESTDIR)$(LIBDIR)/$(DEV_PLUGIN_DIR)/$$dir ; \
+ 		chmod 755 $(DESTDIR)$(LIBDIR)/$(DEV_PLUGIN_DIR)/$$dir ; \
+ 		(for fn in ./$$dir/*.so ; \
+-			do $(INSTALL) -m 444 $$fn $(DESTDIR)$(LIBDIR)/$(DEV_PLUGIN_DIR)/$$dir; \
++			do $(INSTALL) -m 755 $$fn $(DESTDIR)$(LIBDIR)/$(DEV_PLUGIN_DIR)/$$dir; \
+ 		done ); \
+ 	done ) ; \
+ 	fi
+ endif
+-	$(INSTALL) -m 444 include/ptlib.h                $(DESTDIR)$(PREFIX)/include
+-	$(INSTALL) -m 444 include/ptbuildopts.h          $(DESTDIR)$(PREFIX)/include
++	$(INSTALL) -m 644 include/ptlib.h                $(DESTDIR)$(PREFIX)/include
++	$(INSTALL) -m 644 include/ptbuildopts.h          $(DESTDIR)$(PREFIX)/include
+ 	(for fn in include/ptlib/*.h include/ptlib/*.inl; \
+-		do $(INSTALL) -m 444 $$fn $(DESTDIR)$(PREFIX)/include/ptlib; \
++		do $(INSTALL) -m 644 $$fn $(DESTDIR)$(PREFIX)/include/ptlib; \
+ 	done)
+ 	(for fn in include/ptlib/$(ARCH_INCLUDE)/ptlib/*.h include/ptlib/$(ARCH_INCLUDE)/ptlib/*.inl ; \
+-		do $(INSTALL) -m 444 $$fn $(DESTDIR)$(PREFIX)/include/ptlib/$(ARCH_INCLUDE)/ptlib ; \
++		do $(INSTALL) -m 644 $$fn $(DESTDIR)$(PREFIX)/include/ptlib/$(ARCH_INCLUDE)/ptlib ; \
+ 	done)
+ 	(for fn in include/ptclib/*.h ; \
+-		do $(INSTALL) -m 444 $$fn $(DESTDIR)$(PREFIX)/include/ptclib; \
++		do $(INSTALL) -m 644 $$fn $(DESTDIR)$(PREFIX)/include/ptclib; \
+ 	done)
+ 	(for fn in make/*.mak ; \
+-		do $(INSTALL) -m 444 $$fn $(DESTDIR)$(PREFIX)/share/ptlib/make; \
++		do $(INSTALL) -m 644 $$fn $(DESTDIR)$(PREFIX)/share/ptlib/make; \
+ 	done)
+ 	$(INSTALL) -m 755 make/ptlib-config $(DESTDIR)$(PREFIX)/share/ptlib/make/
+ 	(cd $(DESTDIR)$(PREFIX)/bin; rm -f ptlib-config ; ln -snf ../share/ptlib/make/ptlib-config ptlib-config)

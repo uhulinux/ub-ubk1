@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libass-${UB_VERSION}.tar.xz libass-${UB_VERSION}/
+	http://libass.googlecode.com/files/

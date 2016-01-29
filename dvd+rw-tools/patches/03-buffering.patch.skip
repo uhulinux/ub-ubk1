@@ -1,0 +1,217 @@
+diff -Naur dvd+rw-tools-5.21.4.10.8/growisofs.c dvd+rw-tools-5.21.4.10.8.new/growisofs.c
+--- dvd+rw-tools-5.21.4.10.8/growisofs.c	2004-08-25 01:02:29.000000000 +0200
++++ dvd+rw-tools-5.21.4.10.8.new/growisofs.c	2005-01-26 00:15:53.226835617 +0100
+@@ -426,6 +426,26 @@
+  * of current recording...
+  */
+ static char *the_buffer;
++
++
++/*
++ * Az olvasasi puffer, melyet csak akkor hasznalunk, ha a -use-the-force-luke
++ * parameterben szerepel bufsize=valami.
++ */
++static char *buffer;
++
++/*
++ * A fenti puffer merete. Ha nulla, akkor a program "kompatibilitasi" modban
++ * mukodik, vagyis mindent ugy csinal, mintha nem is lenne olvasasi puffer.
++ */
++static int bufSize = 0;
++
++/*
++ * Ebben a valtozoban taroljuk a kiirando image meretet. A read2() a statusz
++ * sor megjelenitesekor ebbol veszi ki a teljes meretet.
++ */
++static long long totalSize;
++
+ /*
+  * id_fd is passed to mkisofs, out_fd - to pwrite and ioctl_fd - to ioctl.
+  */
+@@ -1313,6 +1333,117 @@
+   return next_session;
+ }
+ 
++#ifndef MAX
++#define MAX(a, b) ((a) > (b) ? (a) : (b))
++#endif
++#ifndef MIN
++#define MIN(a, b) ((a) < (b) ? (a) : (b))
++#endif
++
++/*
++ * Lefoglalja a memoriaban a bufsize-ban megadott meretu olvasasi puffert.
++ * Ha nem sikerul a foglalas, akkor bufsize erteket 0-ra allitja, es ezzel
++ * visszalepunk a "kompatibilitasi" modba.
++ */
++int preparebuffer()
++{
++    if(bufSize == 0)
++	return 0;
++    if((buffer = malloc(bufSize)) == NULL)
++    {
++        bufSize = 0;
++        return 0;
++    }
++    else
++    {
++	fprintf (stderr, "Buffer size: %d MB\n", bufSize/1024/1024);
++	return 1;
++    }
++}
++
++/*
++ * Pufferelt olvasast vegzo fuggveny. Elvileg kompatibilis a read() hivassal,
++ * es ha a bufsize valtozo erteke 0, akkor csak meghivja a read()-et.
++ */
++ssize_t read2(int fd, void *buf, size_t count)
++{ static int bufPos = 0;
++  static int dataLen = 0;
++  static int eof = 0;
++  static int nonblock = 0;
++  static long long totalWritten = 0, lastTotalWritten = 0;
++  static struct timeval tv, last_tv;
++  
++  int readPos,maxLen;
++  int ret,len;
++
++    if(bufSize == 0) 
++	return read(fd, buf, count);
++    
++    if((dataLen == 0)&&(count > 0)&&(nonblock)) {
++	/* Put fd in blocking mode */
++	nonblock = 0;
++	if (fcntl(fd, F_SETFL, 0) < 0)
++	    return (ssize_t)-1;
++    }
++    
++    if(((dataLen > 0)||(count == 0))&&(!nonblock)) {
++	/* Put fd in non-blocking mode */
++	nonblock = 1;
++	if (fcntl(fd, F_SETFL, O_NONBLOCK) < 0)
++	    return (ssize_t)-1;
++    }
++
++    readPos = (bufPos + dataLen) % bufSize;
++    maxLen = MIN(bufSize - readPos, bufSize - dataLen);
++    ret = read(fd, &buffer[readPos], maxLen);
++    if (ret < 0) {
++	if (errno != EAGAIN) {
++	    return (ssize_t)-1;
++	}
++    } else if (ret == 0) {
++	eof = 1;
++    } else {
++	dataLen += ret;
++    }
++    
++    if(count == 0)
++	return (ssize_t)0;
++
++    maxLen = MIN(bufSize - bufPos, dataLen);
++    if(maxLen == 0)
++    	return (ssize_t)0;
++
++    len = MIN(maxLen, count);
++    memmove(buf, &buffer[bufPos], len);
++
++    totalWritten += len;
++    if(totalWritten/1024/1024 > (totalWritten-len)/1024/1024) {
++        int percent = 100 * (dataLen / 1024) / (bufSize / 1024);
++	double velocity, slept;
++
++	gettimeofday (&tv,NULL);
++	slept = (tv.tv_usec/1e6+tv.tv_sec) - (last_tv.tv_usec/1e6+last_tv.tv_sec);
++	velocity = (totalWritten-lastTotalWritten)/(slept*1024*1385);
++    
++	if(last_tv.tv_sec != 0) {
++    	    fprintf(stderr, "written: %lldMB/%lldMB @%.2fx, fill: %d%%\n",
++    	        totalWritten/1024/1024, totalSize/1024/1024, velocity, percent);
++	}
++
++    	last_tv.tv_usec = tv.tv_usec;
++    	last_tv.tv_sec = tv.tv_sec;
++	lastTotalWritten = totalWritten;
++    }
++
++    bufPos = (bufPos + len) % bufSize;
++    dataLen -= len;
++    
++    return len;
++}
++
++#undef MAX
++#undef MIN
++
+ int builtin_dd (int infd,int outfd,off64_t outoff)
+ { char		*s;
+   int		 n,fd;
+@@ -1362,7 +1493,23 @@
+     }
+     else progress->final=0;
+ 
+-    if (!dry_run && quiet<=0 && (pid=fork()) == 0)
++    /*
++     * Elrakjuk a kiirando adatok meretet a totalSize nevu valtozoba a
++     * read2() fuggveny szamara.
++     */
++    totalSize = progress->final;
++    
++    /*
++     * Elokeszitjuk az olvasasi puffert.
++     */
++    preparebuffer();
++
++    /*
++     * Itt inditjuk el a statusz sort megjelenito processzt. Ha pufferelt
++     * modban vagyunk, akkor nem kell ez a process, mert a read2() megoldja
++     * a statusz sor kiirasat is.
++     */
++    if (!dry_run && quiet<=0 && (bufSize == 0) && (pid=fork()) == 0)
+     { double		ratio,velocity,slept;
+       int		delta,nfirst=0;
+       off64_t		lastcurrent=outoff,current;
+@@ -1398,7 +1545,7 @@
+ 
+     /* suck in first 64K and examine ISO9660 Primary Descriptor if present */
+     off = 0;
+-    while ((n=read (infd,the_buffer+off,2*DVD_BLOCK-off)) > 0)
++    while ((n=read2 (infd,the_buffer+off,2*DVD_BLOCK-off)) > 0)
+     {	off += n;
+ 	if (off == 2*DVD_BLOCK)
+ 	{   if (!memcmp(the_buffer+DVD_BLOCK,"\1CD001",6))
+@@ -1507,11 +1654,17 @@
+     if (zero_image)
+ 	close(infd), infd=open64 ("/dev/zero",O_RDONLY);
+ 
++    /*
++     * Elrakjuk a kiirando adatok meretet a totalSize nevu valtozoba a
++     * read2() fuggveny szamara, mert lehet, hogy most mar megvaltozott.
++     */
++    totalSize = progress->final;
++
+     off = 0;
+     /*
+      * From now on only the first 32K of the_buffer are used!
+      */
+-    while ((n=read (infd,the_buffer+off,DVD_BLOCK-off)) > 0)
++    while ((n=read2 (infd,the_buffer+off,DVD_BLOCK-off)) > 0)
+     {	off += n;
+ 	if (off == DVD_BLOCK)
+ 	{   off = 0;
+@@ -1803,6 +1956,15 @@
+ 				exit(FATAL_START(EINVAL));
+ 			}
+ 		    }
++		    if ((o=strstr(s,"bufsize")))
++		    {	if (o[7]==':' || o[7]=='=')
++			{   bufSize=strtol(o+8,0,0)*1024*1024;
++			    if (bufSize<0 || bufSize>256*1024*1024)
++				fprintf (stderr,":-( insane bufsize%c%d option\n",
++						o[7],bufSize),
++				exit(FATAL_START(EINVAL));
++			}
++		    }
+ 		}
+ 		continue;
+ 	    }

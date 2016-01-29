@@ -1,0 +1,11 @@
+service shell
+{
+	disable     = yes
+	socket_type = stream
+	wait        = no
+	user        = root
+	instances   = UNLIMITED
+	flags       = IDONLY
+	log_on_success += USERID
+	server      = /usr/sbin/in.rshd
+}

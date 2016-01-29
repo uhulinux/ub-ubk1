@@ -1,0 +1,11 @@
+	/etc/gconf/schemas/gcdmaster.schemas
+	/usr/bin/gcdmaster
+	/usr/share/application-registry/gcdmaster.applications
+	/usr/share/applications/gcdmaster.desktop
+	/usr/share/gcdmaster/glade/*.glade
+	/usr/share/man/man1/gcdmaster.1*
+	/usr/share/mime-info/gcdmaster.keys
+	/usr/share/mime-info/gcdmaster.mime
+	/usr/share/mime/packages/gcdmaster.xml
+	/usr/share/pixmaps/gcdmaster-doc.png
+	/usr/share/pixmaps/gcdmaster.png

@@ -1,0 +1,69 @@
+diff -Naurdp a/stage2/stage2.c b/stage2/stage2.c
+--- a/stage2/stage2.c	2007-09-27 19:03:57.000000000 +0200
++++ b/stage2/stage2.c	2007-09-27 19:04:43.000000000 +0200
+@@ -236,6 +236,8 @@ run_menu (char *menu_entries, char *conf
+   int c, time1, time2 = -1, first_entry = 0;
+   char *cur_entry = 0;
+ 
++  cls();
++
+   /*
+    *  Main loop for menu UI.
+    */
+@@ -267,10 +269,11 @@ restart:
+       while (1)
+ 	{
+ 	  /* Check if ESC is pressed.  */
+-	  if (checkkey () != -1 && ASCII_CHAR (getkey ()) == '\e')
++	  if (checkkey () != -1)
+ 	    {
+ 	      grub_timeout = -1;
+ 	      show_menu = 1;
++	      getkey ();
+ 	      break;
+ 	    }
+ 
+@@ -287,10 +290,6 @@ restart:
+ 	      
+ 	      time2 = time1;
+ 	      grub_timeout--;
+-	      
+-	      /* Print a message.  */
+-	      grub_printf ("\rPress `ESC' to enter the menu... %d   ",
+-			   grub_timeout);
+ 	    }
+ 	}
+     }
+diff -Naurd a/stage1/stage1.S b/stage1/stage1.S
+--- a/stage1/stage1.S	2007-09-27 19:03:56.000000000 +0200
++++ b/stage1/stage1.S	2007-09-27 19:16:17.000000000 +0200
+@@ -404,7 +404,7 @@
+ /* go here when you need to stop the machine hard after an error condition */
+ stop:	jmp	stop
+ 
+-notification_string:	.string "GRUB "
++notification_string:	.string ""
+ geometry_error_string:	.string "Geom"
+ hd_probe_error_string:	.string "Hard Disk"
+ read_error_string:	.string "Read"
+diff -Naurd a/stage2/start.S b/stage2/start.S
+--- a/stage2/start.S	2003-07-09 13:45:53.000000000 +0200
++++ b/stage2/start.S	2007-09-27 19:15:35.000000000 +0200
+@@ -339,13 +339,13 @@
+ stop:	jmp	stop
+ 
+ #ifdef STAGE1_5
+-notification_string:	.string "Loading stage1.5"
++notification_string:	.string ""
+ #else
+-notification_string:	.string "Loading stage2"
++notification_string:	.string ""
+ #endif
+ 
+-notification_step:	.string "."
+-notification_done:	.string "\r\n"
++notification_step:	.string ""
++notification_done:	.string ""
+ 	
+ geometry_error_string:	.string "Geom"
+ read_error_string:	.string "Read"

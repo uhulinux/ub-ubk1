@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+make CONFDIR=/var/vdr/config \
+	LOCDIR=/usr/share/locale \
+	MANDIR="$UB_INSTALLDIR"/usr/share/man \
+	BINDIR=/usr/bin \
+	VIDEODIR=/var/vdr/video \
+	LIBDIR=/usr/lib/vdr \
+	INCDIR=/usr/iclude/vdr

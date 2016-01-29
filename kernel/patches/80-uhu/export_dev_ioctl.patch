@@ -1,0 +1,11 @@
+diff -Naurdp a/net/core/dev.c b/net/core/dev.c
+--- a/net/core/dev.c	2009-11-03 20:37:49.000000000 +0100
++++ b/net/core/dev.c	2009-11-11 15:48:09.000000000 +0100
+@@ -4607,6 +4607,7 @@ int dev_ioctl(struct net *net, unsigned 
+ 	}
+ }
+ 
++EXPORT_SYMBOL(dev_ioctl);
+ 
+ /**
+  *	dev_new_index	-	allocate an ifindex

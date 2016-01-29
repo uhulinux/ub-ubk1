@@ -1,0 +1,9 @@
+diff -urN efax-gtk-3.0.18.orig/efax-gtk.desktop efax-gtk-3.0.18/efax-gtk.desktop
+--- efax-gtk-3.0.18.orig/efax-gtk.desktop	2007-07-21 11:43:59.000000000 +0200
++++ efax-gtk-3.0.18/efax-gtk.desktop	2008-12-10 22:26:16.000000000 +0100
+@@ -12,4 +12,4 @@
+ Icon=efax-gtk.png
+ Terminal=false
+ Type=Application
+-Categories=GTK;Office;Telephony;
++Categories=GTK;Office;Telephony;X-UHU-Menu/Tools/Fax;

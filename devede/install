@@ -1,0 +1,3 @@
+#!/bin/sh -eux
+
+./install.sh --prefix="${UB_INSTALLDIR}/usr"

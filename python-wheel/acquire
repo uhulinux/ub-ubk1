@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+wheel-${UB_VERSION}.tar.gz wheel-${UB_VERSION}/
+	http://pypi.python.org/packages/source/w/wheel/

@@ -1,0 +1,18 @@
+diff -Naur poedit-1.5.1-orig/poedit.desktop poedit-1.5.1/poedit.desktop
+--- poedit-1.5.1-orig/poedit.desktop	2012-08-01 17:53:48.000000000 +0200
++++ poedit-1.5.1/poedit.desktop	2012-08-05 10:37:03.697645865 +0200
+@@ -4,6 +4,7 @@
+ Comment[de]=Katalogeditor für Gettext
+ Comment[eu]=Gettext katalogo editatzailea
+ Comment[fr]=Outil de traduction
++Comment[hu]=Nyelvi fájlokat szerkesztő program
+ Comment[lt]=Gettext katalogų redaktorius
+ Comment[nl]=Gettext-vertaalhulpmiddel
+ Comment[pl]=Edytor pakietów gettext
+@@ -27,5 +28,5 @@
+ Icon=/usr/share/pingus/images/core/editor/actions.png
+ Terminal=false
+ Type=Application
+-Categories=Development;Translation;
++Categories=GTK;Development;Translation;
+ StartupNotify=true

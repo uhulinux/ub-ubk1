@@ -1,0 +1,593 @@
+.\" -*- nroff -*-
+.\" This is part of the JASSPA MicroEmacs documentation files.
+.\" Copyright (c) 1988-2009 JASSPA (www.jasspa.com)
+.\" See the file "me.nrs" for copying and conditions.
+.\"
+.\" Created By: Jon Green
+.\"
+.\" $Id: tmac.ad,v 1.3 2009/08/29 17:14:34 jon Exp $
+.\"
+.\" Identification
+.de Id
+.\" Ignore
+..
+.\" Index definition
+.de Im
+.\" Ignore
+..
+.\" Reference definition.
+.de XI
+.\" Ignore
+..
+.\" Footer
+.de FH
+.\" Ignore
+..
+.\" Hyper-link to manual page.
+.de Ht
+\fB\\$1(\\$2)\fP\\$3
+..
+.\" Hyper-link to other item
+.de Hl 
+\fB\\$1\fP\\$4
+..
+.\" Hyper-reference to manual page.
+.de Hr
+\fB\\$1(\\$2)\fP\\$3
+..
+.\" MicroEmacs code.
+.de Me
+.\" Ignore
+..
+.\" Code start
+.de CS
+.sp \\$1
+.ft CW
+.nf
+.na
+..
+.\" Code end
+.de CE
+.ft R
+.fi
+.ad
+.sp \\$1
+..
+.\" Constant width
+.de C
+\fC\\$1\\$2\\$3\\$4\\$5\\$6\fP
+..
+.\" End of definitions.
+.\" No space on the end of the file please!
+.\" -*- nroff -*-
+.\" This is part of the JASSPA MicroEmacs documentation files.
+.\" Copyright (c) 1988-2009 JASSPA (www.jasspa.com)
+.\" See the file "me.nrs" for copying and conditions.
+.\"
+.\" Global abbreviations for MicroEmacs
+.\"
+.ds mE "MicroEmacs 2009
+.ds mS "MicroEmacs
+.ds nE "NanoEmacs 2009
+.ds nS "NanoEmacs
+.ds cX "C-x\ \&
+.ds cH "C-h\ \&
+.ds e  "esc \&
+.ds a  "A\-
+.ds s  "S\-
+.ds c  "C\-
+.ds m  "M\-
+.ds dE "delete
+.ds eS "esc
+.ds tA "tab
+.ds rE "return
+.ds sP "space
+.ds bS "backspace
+.ds iN "insert
+.ds pD "page-down
+.ds pU "page-up
+.ds hO "home
+.ds eN "end
+.ds cC "center
+.ds cU "up
+.ds cD "down
+.ds cR "right
+.ds cL "left
+.ds f1 "f1
+.ds f2 "f2
+.ds f3 "f3
+.ds f4 "f4
+.ds f5 "f5
+.ds f6 "f6
+.ds f7 "f7
+.ds f8 "f8
+.ds f9 "f9
+.ds fA "f10
+.ds fB "f11
+.ds fC "f12
+.ds mP "pick-mouse
+.ds mD "drop-mouse
+.ds mM "move-mouse
+.ds mG "drag-mouse
+.ds rD "redraw
+.ds sF "ISO-8859-1 (Latin 1)
+.ds aF "ISO-8859-1
+.ds iF "ISO-8859
+.\" No spaces on end of file please !!
+.\" -*- nroff -*-
+.\" This is part of the JASSPA MicroEmacs documentation files.
+.\" Copyright (c) 1988-2009 JASSPA (www.jasspa.com)
+.\" See the file "me.nrs" for copying and conditions.
+.\"
+.\" Created By: Jon Green
+.\"
+.Id $Id: m1cmd000.1,v 2.20 2009/08/29 17:13:08 jon Exp $
+.Im MicroEmacs function
+.\" Removed definition file inclusion
+.TH me 1
+.XI me - "\*(mE text editor"
+.SH NAME
+me - \*(mE text editor
+.SH SYNOPSIS
+.na
+.B me
+[\fIoptions\fR]
+[\fIfiles ...\fR]
+.sp
+.B me
+[\|\fB@\fR\|\fIstartupFile\fR\|]
+[\|\fB\-\fR\|]
+[\|\fB\-a\fR\|]
+[\|\fB\-b\fR\ \|\fIfile\fR\|]
+[\|\fB\-B\fR\|]
+[\|\fB\-c\fR\|[\|\fIsessionName\fR\|]]
+[\|\fB\-h\fR\|]
+[\|\fB\-i\fR\|]
+[\|\fB\-k\fR[\|\fIkey\fR\|]\ \|\fIfile\fR\|]
+[\|\fB\-l\fR\|\fIlineNo\fR\|[\fB:\fIcolumn\|\fR]]
+[\|\fB\-m\fR\|\fIcommand\fR\|]
+[\|\fB\-n\fR\|]
+[\|\fB\-o\fR\|]
+[\|\fB\-0\fR\|\fIfile\fR\|]
+[\|\fB\-p\fR\ [\|\fB\-P\fR\|]\ \|]
+[\|\fB\-R\fR\|]
+[\|\fB\-r\fR\|]
+[\|\fB\-s\fR\|\fIstring\fR\|]
+[\|\fB\-u\fR\|\fIusername\fR\|]
+[\|\fB\-v\fR\|\fIvariable=string\fR\|]
+[\|\fB\-V\fR\|]
+[\|\fB\-x\fR\|]
+[\|\fB\-y\fR\ \|\fIfile\fR\|]
+\fIfiles...\fR
+.ad
+.SH DESCRIPTION
+.B "\*(mE"
+is a cut  down  version  of the  \s-1EMACS\s0  text  editor,  based on  Danial
+Lawrences \*(mS.
+.B "\*(mE"
+is a tool for creating and changing documents,  programs, and other text files.
+It is both  relatively  easy for the novice to use, but also very  powerful in
+the hands of an expert. \*(mE can be extensively customized for the needs
+of the individual user.
+.PP
+.B "\*(mE"
+allows  multiple  files to be edited at the same time. The screen may be split
+into  different  windows and  screens,  and text may be moved  freely from one
+window on any screen to the next. Depending on the type of file being edited,
+.B "\*(mE"
+can change how it behaves to make editing simple. Editing standard text files,
+program files and word processing documents are all possible at the same time.
+.PP
+There are extensive  capabilities  to make word processing and editing easier.
+These  include   commands  for  string  searching  and  replacing,   paragraph
+reformatting  and deleting,  automatic  word  wrapping, word move and deletes,
+easy case controlling, and automatic word counts.
+.PP
+For complex and repetitive  editing tasks editing macros can be written. These
+macros  allow  the user a great  degree  of  flexibility  in  determining  how
+\fB\*(mE\fR  behaves.  Also, any and all the  commands can be used by any
+key stroke by changing, or re-binding, what commands various keys invoke.
+.PP
+Special  features  are also  available to perform a diverse set of  operations
+such as file  encryption,  automatic  backup file  generation,  en-tabbing and
+de-tabbing  lines, executing  operating  system commands and filtering of text
+through other programs.
+.PP
+The command line options to
+.B "\*(mE"
+are defined as follows:-
+.IP "\fB@\fR\|\fIstartFile\fR"
+Initialize  \*(mE using  \fIstartFile\fR\|[\fB.emf\fR].  The default when
+omitted is \fBme.emf\fR. See 
+.Ht start-up 3 
+and 
+.Hl "Command Line Filters" filters - 
+for more information.
+.IP \fB\-\fR
+Pipe  \fIstdin\fR  into  buffer  \fB*stdin*\fR,  when the  buffer is saved the
+output is written  \fIstdout\fR.  Following is a simple  example which changes
+\'\fCa\fR's to '\fCb\fR's:
+.Me $emf-scheme
+.CS
+        define-macro start-up
+            find-buffer "*stdin*"
+            beginning-of-buffer
+            replace-string "a" "b"
+            save-buffer
+            quick-exit
+        !emacro
+.CE 0
+.Me $ehf-scheme
+.IP
+This can be used in the following manner:
+.CS
+        me "@testpipe.emf" < foo.a > foo.b
+.CE 
+See \fB\-p\fR for disabling user interaction and the help page for command
+.Ht ml-write 2
+for a further example.
+.IP \fB-a\fR
+Toggle the auto-save mode, this toggles the 
+.Ht auto 2m 
+mode. 
+.IP
+\fBNote:\fR  that \*(nS  disables  auto save mode by default and \*(mS enables
+auto save mode by default.  The  behavior of \fB-a\fR is  therefore  different
+between the two editors. 
+.IP \fB\-b\fR
+Load next file as a binary file (binary editor mode, uses
+.Ht binary 2m
+buffer mode).
+.IP \fB-B\fR
+Toggle the backup mode, this toggles the 
+.Ht backup 2m 
+mode. 
+.IP
+\fBNote:\fR  that \*(nS  disables  backup  mode by default  and \*(mS  enables
+backup  mode by  default.  The  behavior  of \fB-B\fR is  therefore  different
+between the two editors. 
+.IP \fB\-c\fR[\fIsessionName\fR]
+Continuation  mode. Load the  \fB\*(mE\fR  last edit  session,  restoring  the
+buffers to their  previous  loaded  state when  history  mode is enabled.  The
+\fB\-c\fR    option   is   generally    used   with    windowing    interfaces
+(X-Windows/Microsoft Windows) as the shortcut icon invocation.
+.IP
+If the optional session name  \fIsessionName\fR  is specified then the session
+file  \fIsessionName\fR\|\fB.esf\fR  is loaded  restoring the previous editing
+session including the buffer window size, position and layout, the buffer mark
+and cursor  location,  main window size. When the  \fIsessionName\fR  includes
+space  characters  then the  command  line  option  should be  bracketed  e.g.
+\fC"-cFoo  Bar"\fR.  On a session  restore  then no  additional  files to load
+should be  included on the command  line as this will not enable the  original
+window  configuration to be restored as the window  configuration will change.
+See 
+.Ht read-session 3 
+for further information.
+.IP
+If  the   \fIsessionName\fR   is  omitted   then  the  default   session  file
+\fIusername\fR\|\fB.esf\fR is loaded (see 
+.Ht esf 8 )
+restoring the previously loaded buffers however the window layout and position
+is not restored. The default \fIsessionName\fR is the login name
+.Ht $MENAME 5 . 
+.IP \fB\-h\fR
+Show the help page (does not start the editor).
+.IP \fB\-i\fR
+\s-1MS-DOS\s0  versions of  \fB\*(mE\fR  only. Insert the contents of the
+current screen into the \fB*scratch*\fR buffer
+.IP \fB\-k\fR[\fIkey\fR]
+Load next file as an encrypted file (uses
+.Ht crypt 2m
+buffer  mode). The  optional  adjoining  argument  can be used to specify  the
+decrypting  key, if this argument is not specify the user will be prompted for
+it on start-up. 
+.IP \fB\-l\fR\|\fIlineNo\fR[\fB:\fIcolumn\fR]
+Go to line \fIlineNo\fR in the next given file and optionally to the specified
+column number. The column may be omitted if not required.  Typically used with
+utilities such a
+.Hr more 1
+where an external editor may be invoked from other viewer.
+.IP "\fB\-m\fR\|\fIcommand\fR"
+Sends a  
+.Hl client-server client-server 2
+command  to  an  existing   \*(mS   session.   The  command   takes  the  form
+"\fBC:\fR\|\fI<client>\fR\|\fB:\fR\|\fI<command>\fR"     i.e.     to     write
+"\fCHello\fR  \fCWorld\fR"  on the  message  line then a client  may issue the
+command:-
+.RS
+.CS
+; launch server
+me &
+; send message
+me -m "C:ME:ml-write \\"Hello world\\"
+.CE 0
+.RE
+.IP 
+Note that the  \fI<command>\fR  is a \*(mS macro command, the escape sequences
+must be adhered to. The  \fIclient-server\fR  interface  is typically  used to
+load a file, this may be performed as follows:-
+.RS
+.CS
+me -m "C:myutility:find-file \\"/path/foo.bar\\""
+.CE 0
+.RE
+.IP
+The  absolute  path is  specified in this type of  transaction  as the current
+working directory of the active \*(mS session is unknown. The \fB\-m\fR option
+de-iconize's the existing editor session and bring it to the foreground.
+.IP \fB\-n\fR
+\s-1UNIX\s0  X-Windows  environments  only and  MicroSoft  Windows  NT console
+versions.  Execute   \fB\*(mE\fR  using  termcap  rather  than  X-Windows  for
+\s-1UNIX\s0; typically used within an \fBxterm\fR shell to fire up \fB\*(mE\fR
+for a quick  edit. For  Microsoft  Windows,  a console  window is  started  as
+opposed to a GUI window.
+.IP "\fB\-o\fR\|\fI<file>\fR"
+Use already  running version of \*(mE to load the  \fI<file>\fR, if it exists,
+otherwise  start a new  editor  session.  This  uses  the  \fIclient-server\fR
+interface to push the new file into the existing editor session. Refer to the 
+.Hl "Client-Server Interface" client-server 2
+for details.
+.IP \fB\-p\fR
+Used with the  \fB\-\fR  which  inputs  from  \fIstdin\fR  and  disables  user
+interaction  within \*(mS. To debug then the  \fB\-P\fR  option may be used to
+enable debug on \fIstderr\fR. See the help pages for commands
+.Ht ml-write 2
+and
+.Ht command-wait 2
+for examples of this option's use.
+.IP \fB-P\fR
+Used with the \fB\-p\fR option and is used for debugging the pipe mode,
+.Ht ml-write 2
+messages are displayed on \fIstderr\fR.
+.IP \fB\-R\fR
+Reverse the default video color scheme. The default  foreground  color becomes
+the background color and vice versa. This only affects the built in scheme and
+not any schemes defined in any start-up file.
+.IP \fB\-r\fR
+Read-only, all buffers will be in view mode
+.IP \fB\-s\fR\|\fIstring\fR
+Search for string "\fIstring\fR" in the current buffer. e.g.
+.C "me -sfoo bar"
+starts  \fB\*(mE\fR,  loads file  \fCbar\fR  and  initiates  a search for
+\fIfoo\fR.  The cursor is left at the end of the string if located,  otherwise
+at the top of the buffer.
+.IP \fB\-u\fR\|\fIusername\fR
+Set the current user name
+.Ht $user-name 5 
+to \fIusername\fR before \*(mS is initialized. 
+.IP \fB\-v\fR\|\fIvariable=string\fR
+Assign the  \*(mE  \fIvariable\fR  with  \fIstring\fR.  The assignment is
+performed before the buffers are loaded. Typically used to change the start-up
+characteristics of the startup file(s).
+.IP \fB\-V\fR
+Print the name and version of \*(mS. i.e.
+.IP
+\fCorac% me -V\fR
+.br
+\fCMicroEmacs 06 - Date 2006/08/10 - sunos\fR
+.IP \fB\-x\fR
+\s-1UNIX\s0  environments. Disable the capture of signals. \fB\*(mE\fR by
+default  captures  an handles  all illicit  signal  interrupts.  The option is
+enabled when  debugging  the source code allowing  exception  conditions to be
+trapped within the debugger.
+.IP \fB\-y\fR
+Load next file as a reduced binary file (uses
+.Ht rbin 2m
+buffer mode).
+.SH ENVIRONMENT
+The following environment variables are used by \fB\*(mE\fR.
+.IP \fBDISPLAY\fR
+\s-1UNIX\s0 environments running X-Windows only. The identity of the X-Windows
+server. Typically set to \fBunix:0.0\fR, refer to the X-Windows  documentation
+for details of this environment variable.
+.IP "\fBMENAME\fR"
+.Ht $MENAME 5 
+is used to override the identity of the user
+.Ht $user-name 5 .
+The variable may be used to determine which start-up  configuration  to use in
+the initialization of \fB\*(mE\fR (\fI$user-name\fR.erf). This is ignored if 
+the \fB-u\fR option is specified on the command line.
+.IP
+Non-\s-1UNIX\s0  platforms  usually need to explicitly  set the  \fB$MENAME\fR
+environment  variable to identify the aforementioned  files. for \s-1MS-DOS\s0
+and early  versions of  Microsoft  Windows this is typically  performed in the
+\fCAUTOEXEC.BAT\fR file.
+.IP \fBPATH\fR
+The \fB$PATH\fR  environment  variable is used on most operating  systems as a
+search path for executable files. This \fB$PATH\fR  environment  variable must
+be defined with \fB\*(mE\fR on the search path. Under \s-1UNIX\s0 this is
+set in the \fC.login\fR, \fC.cshrc\fR or \fC.profile\fR file i.e.
+.RS
+.IP
+export PATH $PATH:/usr/name/me
+.RE
+.IP
+Within  \s-1MS-DOS\s0 or Microsoft  Windows  environments it is defined in the
+\fCAUTOEXEC.BAT\fR file. e.g.
+.RS
+.IP
+set PATH=%PATH%;c:\\me
+.RE
+.IP
+\fB\*(mE\fR  utilizes information in the \fB$PATH\fR environment variable
+to locate the start-up files, dictionaries etc.
+.IP \fBTERM\fR
+The terminal identification sting. In \s-1UNIX\s0 environments the environment
+variable  \fB$TERM\fR is set to "\fCvt...\fR", in this case it is assumed that
+the  machine is a server,  and the host  cannot  support X (see  command  line
+option \fB\-n\fR).
+.IP
+In  \s-1MS-DOS\s0  the  environment  variable  is  usually  set to define  the
+graphics  adapter mode.  \fB%TERM\fR  is assigned a string,  understood by the
+\fCme.emf\fR  start-up  file, to set the  graphics  mode.  Predefined  strings
+include:-
+.RS
+.IP \fBE80x50\fR
+Initiates an 80 column by 50 line screen.
+.IP \fBE80x25\fR
+Initiates an 80 column by 25 line screen.
+.IP \fIuserDefined\fR
+A user defined string to set an explicit  graphics card mode. The operation is
+dependent upon the support offered by the graphics adapter.
+.RE
+.IP \fBMEINSTALLPATH\fR
+.Ht $MEINSTALLPATH 5 
+is an environment  variable that overrides any internally  defined search path
+for \*(mS system macros and defines the root  directory(s) of the \*(mS system
+macros. The presence of the environment variable affects 
+.Ht $search-path 5 .
+.IP \fBMEUSERPATH\fR
+.Ht $MEUSERPATH 5
+is an  environment  variable  that defines the users  private  directory  
+where user configuration files such as
+.Hl $user-name $user-name 5 \fB.emf\fR,
+.Hl $user-name $user-name 5 \fB.erf\fR
+and personal spelling  dictionaries are stored. This is an absolute  directory
+path. The environment variable sets the \*(mS variable
+.Ht $user-path 5 .
+.IP \fBMEPATH\fR
+.Ht $MEPATH 5
+is an environment variable that may be used to define the absolute search path
+for \*(mS macro files and affects the setting of
+.BR $search-path .
+The path should include the system macros  location(s)  and should include the
+user directory location
+.Ht $user-path 5
+as the first path when the environment variable
+.Ht $MEUSERPATH 5
+is not defined. If  \fB$MEUSERPATH\fR  is defined  then this path name appears
+before the \fB$MEPATH\fR variable to define the user directory location.
+.B $MEPATH
+is not searching, so \s-1ALL\s0 directories to be searched must be included in
+the path specification.
+.IP
+.Ht $MEUSERPATH 5
+is the preferred method used to defined the user directory.
+.IP \fBINFOPATH\fR
+\*(mE uses the environment  variable  \fC$INFOPATH\fR as the directory(s) used
+to search for GNU \fBInfo\fR files. Within the \s-1UNIX\s0  \fC$INFOPATH\fR is
+a semi-colon  separated  list of directories  which are used to search for the
+\*(mE macro  files. The path is searched  from left to right. The  environment
+variable is  typically  defined in the in the  \fC.login\fR,  \fC.cshrc\fR  or
+\fC.profile\fR file i.e.
+.RS
+.IP
+export INFOPATH /usr/local/info:$HOME/info
+.RE
+.IP
+The default when omitted is \fC/usr/local/info\fR.
+.IP
+Within  \s-1MS-DOS\s0 or Microsoft  Windows  environments it is defined in the
+\fCAUTOEXEC.BAT\fR file. e.g.
+.RS
+.IP
+set MEPATH=c:\\usr\\local\\info
+.RE
+.IP
+There is no default  location in these  environments.  For  Microsoft  Windows
+environments refer to 
+.Ht me32.ini 8
+for a method of setting up the \fC$INFOPATH\fR from the windows  configuration
+file.
+.SH FILES
+All of the macro files and  dictionaries  are located in the  \fB\*(mS\fR
+home directory. The standard file extensions that are utilized are:-
+.IP "\fB.eaf\fR"
+\fB\*(mE\fR  abbreviation file, defines completion definitions for buffer
+dependent text expansion.
+.IP "\fB.edf\fR"
+A \fB\*(mE\fR spelling dictionary. \fI<language>\fR\fB.edf\fR provide language
+specific   dictionaries;   \fI$LOGNAME\fR\fB.edf\fR   is   personal   spelling
+dictionary.
+.IP "\fB.ehf\fR"
+\fB\*(mE\fR  help file  information.  On-line help information for emacs,
+the main file is \fCme.ehf\fR.
+.IP "\fB.emf\fR"
+A \fB\*(mE\fR macro file. The following classes of macro file exist:
+.RS
+.IP "\fBme.emf\fR"
+The default startup file.
+.IP \fI<platform>.emf\fR
+A  platform   specify   startup  file,  these  include   \s-1UNIX   generic\s0
+(\fCunixterm.emf\fR),  \s-1UNIX\s0 specific  (\fCirix.emf\fR,  \fChpux.emf\fR,
+\fCunixwr1.emf\fR,  \fClinux.emf\fR,  \fCsunos.emf\fR  etc), Microsoft Windows
+(\fCwin32.emf\fR), \s-1MS-DOS\s0 (\fCdos.emf\fR).
+.IP "\fBhk\fR\fIxxxxxx\fR\fB.emf\fR"
+Buffer  context  specific  hook files to  initialize  a buffer with macros and
+highlighting  appropriate  to the contents of the file type. e.g. 'C' language
+editing  (\fChkc.emf\fR),  N/Troff typesetting  (\fChknroff.emf\fR),  UNIX
+Manual page display (\fChkman.emf\fR), Makefiles (\fChkmake.emf\fR), etc.
+.RE
+.IP "\fB.erf\fR"
+Registry files, used to retain personal information, users history in the file
+etc.
+.IP "\fB.etf\fR"
+Template  files used to seed new files.  Typically  contains  standard  header
+information,  copyright notices etc. that are placed at the head of files. The
+\'C' programming language is called \fCc.etf\fR
+.SH "MICROSOFT WINDOWS"
+Microsoft  Windows environments should refer to 
+.Ht me32.ini 8
+for a method of  setting up the  environment  variables  without  editing  the
+\fCAUTOEXEC.BAT\fR configuration file.
+.PP
+Drag and drop  support  is  provided  in the  Windowing  version of \*(mS. The
+editor window is brought into focus following the drop.
+.SH UNIX
+Xdnd drag and drop support is provided in the X-Windows  version of \*(mS. The
+editor  window is not  raised or  brought  into  focus  following  the drop as
+expected in the \s-1UNIX\s0 environment. 
+.SH "SESSIONS"
+Reading a session is generally performed when a \*(mS session is started using
+the  "\fB-c\fR"  command line option rather than from the mode line or main
+menu, see
+.Ht read-session 3 .
+Invoking
+.IP
+\fBme -c\fR\|\fI<mySessionName>\fR
+.LP
+where \fI<mySessionName>\fR is the name of the session (the
+.Ht $MENAME 5
+or system  login name) will  restore all of of the  buffers,  windows  layout,
+point and mark  positions, main window size etc. at the point of the last shut
+down. e.g. given a system login name of \fIjasspa\fR then
+.IP
+\fBme -c\fR\|\fIjasspa\fR
+.LP
+restores  the  session  to the state  when  \fIjasspa\fR  last  exited  \*(mS.
+When the session name is specified then no other files should be specified, so
+the command line
+.IP
+\fBme -c\fR\|\fIjasspa\fR \fCmorefiles.txt\fR
+.LP
+restores the buffers but does not restore the window  layout  because this has
+been destroyed by the introduction of the new file "\fCmorefiles.txt\fR". This
+type of command  with  another  file behaves as the old "\fCme -c\fR"  command
+prior   to  the   2006   release   that   did   not   support   sessions.   If
+\fI<mySessionName>\fR  is not specified  then the buffers are restored but the
+window layout is not restored.
+.SH "HISTORY"
+The 2006 release  removed the \fC-d\fR  command line option for debugging (not
+used) and added  session  support by  extending  the  \fC-c\fR  option with an
+optional \fIsessionName\fR argument.
+.SH "SEE ALSO"
+.na
+.Ht read-session 3 ,
+.Ht $MEINSTALLPATH 5 ,
+.Ht $MENAME 5 ,
+.Ht $MEPATH 5 ,
+.Ht $MEUSERPATH 5 ,
+.Ht emf 8 ,
+.Ht erf 8 ,
+.Ht esf 8 ,
+.Ht $home 5 ,
+.Hr emacs 1 " [GNU],"
+.Hr more 1 ,
+.Ht ne 1 ,
+.Hr vi 1 .
+.br
+.Hl "Client-Server Interface" client-server 2 .
+.br
+.Hl "Command Line Filters" filters - .
+.ad
+.FH

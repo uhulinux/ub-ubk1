@@ -1,0 +1,13 @@
+alsa-lib-dev
+audiofile-dev
+esound-dev
+flac-dev
+gtk2-dev
+jack-dev
+libao-dev
+libogg-dev
+libvorbis-dev
+libxmu-dev
+tcl-dev
+tk-dev
+xaw3d-dev

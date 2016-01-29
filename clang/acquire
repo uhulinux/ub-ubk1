@@ -1,0 +1,13 @@
+#!/usr/bin/env dl
+
+cfe-${UB_VERSION}.src.tar.gz .
+	http://llvm.org/releases/${UB_VERSION}/
+
+clang-tools-extra-${UB_VERSION_HEAD2}.src.tar.gz .
+	http://llvm.org/releases/${UB_VERSION_HEAD2}/
+
+compiler-rt-${UB_VERSION_HEAD2}.src.tar.gz .
+	http://llvm.org/releases/${UB_VERSION_HEAD2}/
+
+llvm-${UB_VERSION}.src.tar.gz llvm-${UB_VERSION}.src/
+	http://llvm.org/releases/${UB_VERSION}/

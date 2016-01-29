@@ -1,0 +1,1 @@
+sflist mcj mcj-source | splitver '^transfig.([0-9.a-z]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

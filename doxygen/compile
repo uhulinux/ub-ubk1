@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+./configure \
+	--prefix /usr \
+	--shared \
+	--release
+ub_make

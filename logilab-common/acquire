@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+logilab-common-"$UB_VERSION".tar.gz logilab-common-"$UB_VERSION"/
+	http://pypi.python.org/packages/source/l/logilab-common/
+	http://download.logilab.org/pub/common/

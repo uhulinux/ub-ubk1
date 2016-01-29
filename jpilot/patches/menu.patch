@@ -1,0 +1,9 @@
+diff -Naurdp a/jpilot.desktop b/jpilot.desktop
+--- a/jpilot.desktop	2007-08-11 22:25:39.000000000 +0200
++++ b/jpilot.desktop	2008-09-05 17:17:33.000000000 +0200
+@@ -6,4 +6,4 @@ Exec=jpilot
+ Icon=jpilot.xpm
+ Terminal=false
+ Type=Application
+-Categories=Office;PDA;
++Categories=Office;PDA;X-UHU-Menu/Tools/Organizer;

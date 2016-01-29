@@ -1,0 +1,9 @@
+--- x.orig/geeqie.desktop.in	2010-02-17 22:21:23.000000000 +0100
++++ x/geeqie.desktop.in	2010-05-03 18:30:54.000000000 +0200
+@@ -10,5 +10,5 @@
+ #StartupNotify=false
+ #StartupWMClass=geeqie
+ NotShowIn=X-Geeqie;
+-Categories=Graphics;Viewer;
++Categories=GTK;Graphics;Viewer;X-UHU-Menu/Graphics;
+ MimeType=application/x-navi-animation;image/bmp;image/x-bmp;image/x-MS-bmp;image/gif;image/x-icon;image/jpeg;image/png;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-cmu-raster;image/x-sun-raster;image/x-tga;image/tiff;image/vnd.wap.wbmp;image/x-xbitmap;image/x-xpixmap;image/svg;image/svg+xml;image/x-png;image/xpm;image/x-ico;image/x-pcx;

@@ -1,0 +1,27 @@
+#!/bin/sh -eux
+
+rm -rf source
+mkdir -p "$UB_INSTALLDIR"/usr/share/icons
+cp -a * "$UB_INSTALLDIR"/usr/share/icons/
+
+# Sok azonos fájl helyett szimlinkek
+for dir in "$UB_INSTALLDIR"/usr/share/icons/*/*; do
+	cd "$dir"
+	cp -a left_ptr top_left_arrow
+	prevmd5=""
+	prevfile=""
+	md5sum $(ls | egrep -v -x '[0-9a-f]{32}'; ls | egrep -x	'[0-9a-f]{32}') | \
+	sort -k 1,1 -s | \
+	while read md5 file; do
+		if [ "$md5" = "$prevmd5" ]; then
+			rm "$file"
+			if [ -L "$prevfile" ]; then
+				cp -a "$prevfile" "$file"
+			else
+				ln -s "$prevfile" "$file"
+			fi
+		fi
+		prevmd5="$md5"
+	        prevfile="$file"
+	done
+done

@@ -1,0 +1,99 @@
+/*
+ *
+ *  -----------------------------------------------------------------
+ *  Execution of this macro requires a license for uni-XEDIT Extended
+ *  for each concurrent user of the macro.
+ *  -----------------------------------------------------------------
+ *
+ *  less - exclude additional lines from the current display set
+ *
+ *  Syntax:  less rtarget [-n] [+n]
+ *
+ *           rtarget   is a normal uni-XEDIT string target
+ *           n         is the number of additional lines 
+ *                       before (-) or after (+) the string 
+ *                       to exclude from the display
+ *
+ *
+ *
+ *
+ *  Modification History:
+ *
+ *  -- --- --     Macro originally contributed by Dan Hofferth, Allison
+ *                  Engine Company
+ *  09 Feb 96 twg Standard TWG comments added
+ *
+ *
+ */
+
+/* Hide additional lines from an "EVERY" restricted display.       -iedh1 */
+ 
+If Arg(1) = '' | Arg(1) = '?' Then Do
+   'COMMAND MSG Type "LESS rtarget [-n] [+n]" to hide selected lines from display.'
+   Exit
+   End
+ 
+'COMMAND EXTRACT /DISPLAY/WRAP/STAY/LINE/MSGMODE'
+ 
+If ^( display.1 = 0 & display.2 = 0 ) & ,
+   ^( display.1 = 0 & display.2 = 1 ) & ,
+   ^( display.1 = 1 & display.2 = 1 ) Then Do
+   'COMMAND EMSG ** Display settings not recognized.  LESS cancelled. **'
+   Exit 1
+   End
+ 
+Parse Arg argline
+delim = Left( argline, 1 )
+rt_start = 1
+Do While rt_start > 0
+   rt_end = Pos( delim, argline, rt_start+1)
+   If rt_end = 0 Then rt_end = Length( argline )
+   rt_start = Pos( delim, argline, rt_end+1 )
+   End
+rtarget = Left( argline, rt_end )
+                                                  
+deltas = Substr( argline, rt_end+1 )
+plus = 0; minus = 0
+Do i = 1 to Words( deltas )
+   delta = Word( deltas, i )
+   If Datatype( delta, 'W' ) Then Do
+      If delta >= 0 Then plus  = 0 + delta
+      Else               minus = 0 - delta
+      End
+   End
+ 
+'COMMAND SET DISPLAY 0 *'
+'COMMAND :0'
+ 
+'COMMAND LOCATE' rtarget
+If rc ^= 0 Then Do
+   save_rc = rc
+   'COMMAND :'line.1
+   'COMMAND SET DISPLAY 'display.1 display.2
+   Exit save_rc
+   End
+
+'COMMAND SET WRAP OFF'
+'COMMAND SET STAY ON'
+
+If ^( display.1 = 1 & display.2 = 1 ) Then Do
+   'COMMAND SET SELECT 1 :0'
+   'COMMAND SET SELECT 1 *'
+   End
+ 
+'COMMAND SET MSGMODE OFF'
+Do Forever
+   'COMMAND SET SELECT 0 -'minus+1
+   'COMMAND SET SELECT 0 +'plus+1
+   'COMMAND LOCATE' rtarget
+   If rc ^= 0 Then Leave
+   End
+'COMMAND SET MSGMODE 'msgmode.1
+
+'COMMAND SET STAY 'stay.1
+'COMMAND SET WRAP 'wrap.1
+
+'COMMAND :'line.1
+'COMMAND SET DISPLAY 1 1'
+ 
+Exit

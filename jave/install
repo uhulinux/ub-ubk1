@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+rm jave.bat
+mkdir -p "$UB_INSTALLDIR"/usr/share/java/jave
+cp -a . "$UB_INSTALLDIR"/usr/share/java/jave/

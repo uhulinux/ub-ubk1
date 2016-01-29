@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+Pod-Simple-${UB_VERSION}.tar.gz Pod-Simple-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/A/AR/ARANDAL/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/Pod/

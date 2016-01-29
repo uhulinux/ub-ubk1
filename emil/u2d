@@ -1,0 +1,1 @@
+urllist ftp://ftp.sunet.se/pub/unix/mail/emil/ | splitver '^emil-([0-9.]+).tar.gz$' | sort -V | tail -n 1

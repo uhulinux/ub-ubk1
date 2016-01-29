@@ -1,0 +1,4 @@
+-         -          755  /usr/bin/terminal
+-         -          755  /usr/lib/uhu-pkg/postinst/uhu-menu
+-         -          755  /usr/lib/uhu-pkg/postrm/uhu-menu
+-         -          755  /usr/lib/uhu-pkg/prerm/uhu-menu

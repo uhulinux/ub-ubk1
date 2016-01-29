@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+h323plus-v${UB_VERSION//./_}.tar.gz h323plus/
+	http://www.h323plus.org/source/download/

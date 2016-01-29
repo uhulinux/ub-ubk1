@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_install \
+	PKG_MAN_DIR="$UB_INSTALLDIR"/usr/share/man \
+	PKG_BIN_DIR="$UB_INSTALLDIR"/bin \
+	PKG_LIB_DIR="$UB_INSTALLDIR"/lib \
+	PKG_SBIN_DIR="$UB_INSTALLDIR"/sbin \
+	install-dev

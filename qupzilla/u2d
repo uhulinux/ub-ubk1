@@ -1,0 +1,1 @@
+urllist https://github.com/QupZilla/qupzilla | grep -E '^v[0-1.]' | sed s/v//g | sed s/-\.*//g | sort -V | tail -n 1

@@ -1,0 +1,140 @@
+diff -Naurdp a/drivers/pnp/card.c b/drivers/pnp/card.c
+--- a/drivers/pnp/card.c	2007-08-28 03:32:35.000000000 +0200
++++ b/drivers/pnp/card.c	2007-08-29 11:39:22.000000000 +0200
+@@ -6,6 +6,7 @@
+ 
+ #include <linux/module.h>
+ #include <linux/slab.h>
++#include <linux/sort.h>
+ #include <linux/pnp.h>
+ #include "base.h"
+ 
+@@ -170,6 +171,29 @@ static ssize_t pnp_show_card_ids(struct 
+ 
+ static DEVICE_ATTR(card_id, S_IRUGO, pnp_show_card_ids, NULL);
+ 
++static ssize_t pnp_card_modalias_show(struct device *dmdev, struct device_attribute *attr, char *buf)
++{
++	char *str = buf;
++	struct pnp_card *card = to_pnp_card(dmdev);
++	struct pnp_id * pos = card->id;
++	struct pnp_dev *dev;
++	int i, count = 0;
++	char ids[PNP_MAX_DEVICES][PNP_ID_LEN];
++
++	card_for_each_dev(card, dev) {
++		strcpy(&ids[count++], dev->id);
++	}
++	sort(ids, count, PNP_ID_LEN, strcmp, NULL);
++	str += sprintf(str, "pnp:c%s", pos->id);
++	for (i = 0; i < count; i++) {
++		str += sprintf(str, "d%s", ids[i]);
++	}
++	str += sprintf(str, "\n");
++	return (str - buf);
++}
++
++static DEVICE_ATTR(modalias,S_IRUGO,pnp_card_modalias_show,NULL);
++
+ static int pnp_interface_attach_card(struct pnp_card *card)
+ {
+ 	int rc = device_create_file(&card->dev, &dev_attr_name);
+@@ -181,8 +205,15 @@ static int pnp_interface_attach_card(str
+ 	if (rc)
+ 		goto err_name;
+ 
++	rc = device_create_file(&card->dev,&dev_attr_modalias);
++	if (rc) goto err_card_id;
++
+ 	return 0;
+ 
++err_card_id:
++	device_remove_file(&card->dev,&dev_attr_card_id);
++	return rc;
++
+ err_name:
+ 	device_remove_file(&card->dev, &dev_attr_name);
+ 	return rc;
+diff -Naurdp a/drivers/pnp/interface.c b/drivers/pnp/interface.c
+--- a/drivers/pnp/interface.c	2007-08-28 03:32:35.000000000 +0200
++++ b/drivers/pnp/interface.c	2007-08-29 11:44:31.000000000 +0200
+@@ -485,6 +485,23 @@ static ssize_t pnp_show_current_ids(stru
+ 
+ static DEVICE_ATTR(id, S_IRUGO, pnp_show_current_ids, NULL);
+ 
++static ssize_t pnp_modalias_show(struct device *dmdev, struct device_attribute *attr, char *buf)
++{
++	char *str = buf;
++	struct pnp_dev *dev = to_pnp_dev(dmdev);
++	struct pnp_id * pos = dev->id;
++
++	str += sprintf(str, "pnp:");
++	while (pos) {
++		str += sprintf(str,"d%s", pos->id);
++		pos = pos->next;
++	}
++	str += sprintf(str, "\n");
++	return (str - buf);
++}
++
++static DEVICE_ATTR(modalias,S_IRUGO,pnp_modalias_show,NULL);
++
+ int pnp_interface_attach_device(struct pnp_dev *dev)
+ {
+ 	int rc = device_create_file(&dev->dev, &dev_attr_options);
+@@ -497,9 +514,14 @@ int pnp_interface_attach_device(struct p
+ 	rc = device_create_file(&dev->dev, &dev_attr_id);
+ 	if (rc)
+ 		goto err_res;
++	rc = device_create_file(&dev->dev, &dev_attr_modalias);
++	if (rc)
++		goto err_id;
+ 
+ 	return 0;
+ 
++err_id:
++	device_remove_file(&dev->dev, &dev_attr_id);
+ err_res:
+ 	device_remove_file(&dev->dev, &dev_attr_resources);
+ err_opt:
+diff -Naurdp a/scripts/mod/file2alias.c b/scripts/mod/file2alias.c
+--- a/scripts/mod/file2alias.c	2007-08-28 03:32:35.000000000 +0200
++++ b/scripts/mod/file2alias.c	2007-08-29 11:39:22.000000000 +0200
+@@ -302,21 +302,31 @@ static int do_acpi_entry(const char *fil
+ static int do_pnp_entry(const char *filename,
+ 			struct pnp_device_id *id, char *alias)
+ {
+-	sprintf(alias, "pnp:d%s", id->id);
++	sprintf(alias, "pnp:*d%s", id->id);
+ 	return 1;
+ }
+ 
++static int _compare_pnp_id(const void *a, const void *b)
++{
++	const char *aa = a;
++	const char *bb = b;
++	return strcmp(aa, bb);
++}
++
+ /* looks like: "pnp:cCdD..." */
+ static int do_pnp_card_entry(const char *filename,
+ 			struct pnp_card_device_id *id, char *alias)
+ {
+-	int i;
++	int i, j;
+ 
+ 	sprintf(alias, "pnp:c%s", id->id);
+-	for (i = 0; i < PNP_MAX_DEVICES; i++) {
+-		if (! *id->devs[i].id)
+-			break;
+-		sprintf(alias + strlen(alias), "d%s", id->devs[i].id);
++	for (j = 0; j < PNP_MAX_DEVICES; j++) {
++		if (! *id->devs[j].id)
++		    break;
++	}
++	qsort(id->devs, j, sizeof(id->devs[0]), _compare_pnp_id);
++	for (i = 0; i < j; i++) {
++		sprintf(alias + strlen(alias), "*d%s", id->devs[i].id);
+ 	}
+ 	return 1;
+ }

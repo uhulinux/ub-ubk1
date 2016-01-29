@@ -1,0 +1,1 @@
+urllist http://delta.affinix.com/download/qca/2.0/ | splitver '^qca-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

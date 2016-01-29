@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+HTTP-Parser-XS-${UB_VERSION}.tar.gz HTTP-Parser-XS-${UB_VERSION}/
+	http://cpan.metacpan.org/modules/by-module/HTTP/

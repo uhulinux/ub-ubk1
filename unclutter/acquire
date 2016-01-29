@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+unclutter_${UB_VERSION_TAIL1}.orig.tar.gz unclutter/
+	ftp://ftp.debian.org/debian/pool/main/u/unclutter/
+

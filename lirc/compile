@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_configure \
+	--with-driver=userspace \
+	--disable-manage-devices
+
+find . -name Makefile | while read f; do
+	ub_replace "hw_udp.o" "" "$f";
+done
+export UB_MAKE_PROCS=1
+ub_make

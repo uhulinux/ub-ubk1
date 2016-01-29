@@ -1,0 +1,170 @@
+diff -Naur orig/comphelper/source/misc/stillreadwriteinteraction.cxx patched/comphelper/source/misc/stillreadwriteinteraction.cxx
+--- orig/comphelper/source/misc/stillreadwriteinteraction.cxx	2014-05-21 19:10:22.000000000 +0200
++++ patched/comphelper/source/misc/stillreadwriteinteraction.cxx	2014-05-25 20:05:31.164424388 +0200
+@@ -85,6 +85,7 @@
+             bAbort = (
+                 (exIO.Code == css::ucb::IOErrorCode_ACCESS_DENIED     )
+                 || (exIO.Code == css::ucb::IOErrorCode_LOCKING_VIOLATION )
++				|| (exIO.Code == css::ucb::IOErrorCode_NO_FILE )
+                 || (exIO.Code == css::ucb::IOErrorCode_NOT_EXISTING )
+ #ifdef MACOSX
+                 // this is a workaround for MAC, on this platform if the file is locked
+diff -Naur orig/ucbhelper/source/client/content.cxx patched/ucbhelper/source/client/content.cxx
+--- orig/ucbhelper/source/client/content.cxx	2014-05-21 19:10:22.000000000 +0200
++++ patched/ucbhelper/source/client/content.cxx	2014-05-25 20:18:43.153989066 +0200
+@@ -27,6 +27,7 @@
+ #include <cppuhelper/weak.hxx>
+ 
+ #include <cppuhelper/implbase1.hxx>
++#include <com/sun/star/beans/PropertyValue.hpp>
+ #include <com/sun/star/ucb/CheckinArgument.hpp>
+ #include <com/sun/star/ucb/ContentCreationError.hpp>
+ #include <com/sun/star/ucb/XCommandEnvironment.hpp>
+@@ -37,6 +38,8 @@
+ #include <com/sun/star/ucb/ContentAction.hpp>
+ #include <com/sun/star/ucb/OpenCommandArgument2.hpp>
+ #include <com/sun/star/ucb/InsertCommandArgument.hpp>
++#include <com/sun/star/ucb/IOErrorCode.hpp>
++#include <com/sun/star/ucb/InteractiveAugmentedIOException.hpp>
+ #include <com/sun/star/ucb/GlobalTransferCommandArgument2.hpp>
+ #include <com/sun/star/ucb/NameClash.hpp>
+ #include <com/sun/star/ucb/OpenMode.hpp>
+@@ -56,12 +59,18 @@
+ #include <com/sun/star/sdbc/XRow.hpp>
+ #include <com/sun/star/lang/IllegalArgumentException.hpp>
+ #include <com/sun/star/beans/UnknownPropertyException.hpp>
++#include <com/sun/star/task/XInteractionRequest.hpp>
++
+ #include <ucbhelper/macros.hxx>
+ #include <ucbhelper/content.hxx>
+ #include <ucbhelper/activedatasink.hxx>
+ #include <ucbhelper/activedatastreamer.hxx>
+ #include <ucbhelper/interactionrequest.hxx>
+ #include <ucbhelper/cancelcommandexecution.hxx>
++#include <ucbhelper/fileidentifierconverter.hxx>
++#include <ucbhelper/simpleinteractionrequest.hxx>
++
++#include <memory>
+ 
+ using namespace com::sun::star::container;
+ using namespace com::sun::star::beans;
+@@ -305,6 +314,53 @@
+ }
+ 
+ 
++namespace
++{
++void
++lcl_displayMessage(
++        const Reference<XComponentContext>& rContext,
++        const Reference<XCommandEnvironment>& rEnvironment,
++        const rtl::OUString& rUri)
++{
++    // Create exception
++    const Reference<XUniversalContentBroker> xBroker(UniversalContentBroker::create(rContext));
++    const PropertyValue aUriProperty(
++            rtl::OUString::createFromAscii("Uri"),
++            -1,
++            makeAny(getSystemPathFromFileURL(xBroker, rUri)),
++            PropertyState_DIRECT_VALUE)
++        ;
++    Sequence<Any> lArguments(1);
++    lArguments[0] <<= aUriProperty;
++    const InteractiveAugmentedIOException xError(
++            rtl::OUString(),
++            0,
++            InteractionClassification_ERROR,
++            IOErrorCode_NO_FILE,
++            lArguments)
++        ;
++
++    // Create interaction request
++    std::auto_ptr<ucbhelper::SimpleInteractionRequest> aRequest(
++            new ucbhelper::SimpleInteractionRequest(makeAny(xError), CONTINUATION_APPROVE));
++    {
++        Reference<XInteractionContinuation> xContinuation(
++                new ::ucbhelper::InteractionApprove(aRequest.get()));
++        Sequence<Reference<XInteractionContinuation> > lContinuations(1);
++        lContinuations[0].set(xContinuation);
++        aRequest->setContinuations(lContinuations);
++    }
++
++    Reference<XInteractionHandler> xInteraction(rEnvironment->getInteractionHandler());
++    if (xInteraction.is())
++    {
++        Reference<XInteractionRequest> xRequest(aRequest.release());
++        xInteraction->handle(xRequest);
++    }
++}
++    
++} // end namespace
++
+ 
+ 
+ // Content Implementation.
+@@ -718,7 +774,10 @@
+     throw( CommandAbortedException, RuntimeException, Exception )
+ {
+     if ( !isDocument() )
++    {
++        lcl_displayMessage(m_xImpl->getComponentContext(), m_xImpl->getEnvironment(), getURL());
+         return Reference< XInputStream >();
++    }
+ 
+     Reference< XActiveDataSink > xSink = new ActiveDataSink;
+ 
+@@ -743,7 +802,10 @@
+     throw( CommandAbortedException, RuntimeException, Exception )
+ {
+     if ( !isDocument() )
++    {
++        lcl_displayMessage(m_xImpl->getComponentContext(), m_xImpl->getEnvironment(), getURL());
+         return Reference< XInputStream >();
++    }
+ 
+     Reference< XActiveDataSink > xSink = new ActiveDataSink;
+ 
+@@ -768,7 +830,10 @@
+     throw( CommandAbortedException, RuntimeException, Exception )
+ {
+     if ( !isDocument() )
++    {
++        lcl_displayMessage(m_xImpl->getComponentContext(), m_xImpl->getEnvironment(), getURL());
+         return Reference< XStream >();
++    }
+ 
+     Reference< XActiveDataStreamer > xStreamer = new ActiveDataStreamer;
+ 
+@@ -793,7 +858,10 @@
+     throw( CommandAbortedException, RuntimeException, Exception )
+ {
+     if ( !isDocument() )
++    {
++        lcl_displayMessage(m_xImpl->getComponentContext(), m_xImpl->getEnvironment(), getURL());
+         return Reference< XStream >();
++    }
+ 
+     Reference< XActiveDataStreamer > xStreamer = new ActiveDataStreamer;
+ 
+@@ -818,7 +886,10 @@
+     throw( CommandAbortedException, RuntimeException, Exception )
+ {
+     if ( !isDocument() )
++    {
++        lcl_displayMessage(m_xImpl->getComponentContext(), m_xImpl->getEnvironment(), getURL());
+         return false;
++    }
+ 
+     OpenCommandArgument2 aArg;
+     aArg.Mode       = OpenMode::DOCUMENT;
+@@ -841,7 +912,10 @@
+     throw( CommandAbortedException, RuntimeException, Exception )
+ {
+     if ( !isDocument() )
++    {
++        lcl_displayMessage(m_xImpl->getComponentContext(), m_xImpl->getEnvironment(), getURL());
+         return false;
++    }
+ 
+     OpenCommandArgument2 aArg;
+     aArg.Mode       = OpenMode::DOCUMENT;

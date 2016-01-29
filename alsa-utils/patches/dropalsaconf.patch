@@ -1,0 +1,23 @@
+diff -Naur alsa-utils-1.0.25-orig/Makefile.in alsa-utils-1.0.25/Makefile.in
+--- alsa-utils-1.0.25-orig/Makefile.in	2012-01-25 10:43:52.000000000 +0100
++++ alsa-utils-1.0.25/Makefile.in	2012-03-21 21:42:54.000000000 +0100
+@@ -78,7 +78,7 @@
+ ETAGS = etags
+ CTAGS = ctags
+ DIST_SUBDIRS = include alsactl alsaucm utils m4 po alsamixer amixer \
+-	amidi alsaconf aplay iecset speaker-test alsaloop seq
++	amidi alsaconf aplay iecset speaker-test seq
+ DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+ distdir = $(PACKAGE)-$(VERSION)
+ top_distdir = $(distdir)
+@@ -246,8 +246,8 @@
+ xmlto = @xmlto@
+ INCLUDES = -I$(top_srcdir)/include
+ SUBDIRS = include alsactl alsaucm utils m4 po $(am__append_1) \
+-	$(am__append_2) $(am__append_3) $(am__append_4) \
+-	$(am__append_5) $(am__append_6) $(am__append_7)
++	$(am__append_2) $(am__append_3) \
++	$(am__append_5) $(am__append_6)
+ EXTRA_DIST = config.rpath  TODO gitcompile
+ AUTOMAKE_OPTIONS = foreign
+ ACLOCAL_AMFLAGS = -I m4

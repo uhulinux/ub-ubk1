@@ -1,0 +1,9 @@
+diff -Naur kmag-4.7.44-orig//kmag.desktop kmag-4.7.44//kmag.desktop
+--- kmag-4.7.44-orig//kmag.desktop	2011-08-22 15:34:18.000000000 +0200
++++ kmag-4.7.44//kmag.desktop	2011-10-13 20:34:50.000000000 +0200
+@@ -141,4 +141,4 @@
+ GenericName[x-test]=xxScreen Magnifierxx
+ GenericName[zh_CN]=屏幕放大镜
+ GenericName[zh_TW]=螢幕放大鏡
+-Categories=Qt;KDE;Utility;Accessibility;
++Categories=Qt;KDE;Utility;Accessibility;X-UHU-Menu/Tools/Utilities;

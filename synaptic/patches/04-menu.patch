@@ -1,0 +1,16 @@
+diff -Naur orig/data/synaptic.desktop.in patched/data/synaptic.desktop.in
+--- orig/data/synaptic.desktop.in	2012-06-11 17:31:11.000000000 +0200
++++ patched/data/synaptic.desktop.in	2012-12-18 14:53:17.607342033 +0100
+@@ -2,10 +2,9 @@
+ _Name=Synaptic Package Manager
+ _GenericName=Package Manager
+ _Comment=Install, remove and upgrade software packages
+-Exec=synaptic-pkexec
++Exec=synaptic
+ Icon=synaptic
+ Terminal=false
+ Type=Application
+-Categories=PackageManager;GTK;System;Settings;
+-NotShowIn=KDE;
++Categories=PackageManager;GTK;System;Settings;X-UHU-Menu/Settings;
+ X-Ubuntu-Gettext-Domain=synaptic

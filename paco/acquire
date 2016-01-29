@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+paco-${UB_VERSION}.tar.bz2 paco-${UB_VERSION}/
+	http://downloads.sourceforge.net/paco/

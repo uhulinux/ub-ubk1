@@ -1,0 +1,9 @@
+diff -Naurd kile-r959600.orig/src/kile.desktop kile-r959600/src/kile.desktop
+--- kile-r959600.orig/src/kile.desktop	2009-04-27 15:48:21.000000000 +0200
++++ kile-r959600/src/kile.desktop	2009-04-27 15:54:52.000000000 +0200
+@@ -101,4 +101,4 @@
+ GenericName[zh_CN]=LaTeX 前端
+ GenericName[zh_TW]=LaTeX 前端介面
+ MimeType=text/x-tex;text/x-kilepr;
+-Categories=Qt;KDE;Office;Publishing;
++Categories=Qt;KDE;Office;Publishing;X-UHU-Menu/Tools/Word_Processors;

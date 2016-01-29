@@ -1,0 +1,23 @@
+diff -Naurd a/library/tulip-core/src/TlpTools.cpp b/library/tulip-core/src/TlpTools.cpp
+--- a/library/tulip-core/src/TlpTools.cpp	2013-06-10 14:08:57.000000000 +0200
++++ b/library/tulip-core/src/TlpTools.cpp	2013-06-11 18:35:00.000000000 +0200
+@@ -53,7 +53,7 @@
+ #ifdef _WIN32
+ #define _TULIP_LIB_DIR "c:\\Tulip\\lib\\"
+ #else
+-#define _TULIP_LIB_DIR "/usr/local/lib/"
++#define _TULIP_LIB_DIR "/usr/lib/"
+ #endif
+ #endif
+ 
+diff -Naurd a/tulip-config.in b/tulip-config.in
+--- a/tulip-config.in	2013-06-10 14:09:07.000000000 +0200
++++ b/tulip-config.in	2013-06-11 18:36:26.000000000 +0200
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-thisdir=$(dirname "$0")
++thisdir=$( $(readlink -f dirname "$0"))
+ if test "$thisdir" = "." ; then
+   thisdir=$PWD
+ fi

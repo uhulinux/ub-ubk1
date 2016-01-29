@@ -1,0 +1,1 @@
+urllist http://aurelio.net/projects/txt2regex/ | splitver '^txt2regex-([0-9.]+).tgz$' | sort -V | tail -n 1

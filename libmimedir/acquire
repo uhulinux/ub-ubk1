@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libmimedir-${UB_VERSION}.tar.gz libmimedir-${UB_VERSION}/
+	http://downloads.sourceforge.net/libmimedir/

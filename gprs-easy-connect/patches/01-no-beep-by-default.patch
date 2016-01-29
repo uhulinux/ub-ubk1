@@ -1,0 +1,11 @@
+diff -Naur GPRS_Easy_Connect_300.orig/data/bin/gprsec GPRS_Easy_Connect_300/data/bin/gprsec
+--- GPRS_Easy_Connect_300.orig/data/bin/gprsec	2006-03-31 16:53:02.000000000 +0200
++++ GPRS_Easy_Connect_300/data/bin/gprsec	2006-05-03 17:21:07.000000000 +0200
+@@ -217,6 +217,7 @@
+ 			foreach ($phonetype,$sel_port,$co_pan,$brow,$br_on,$autocsat,$sel_lang,$cw_ic,$sel_szolg,$user,$passw,$reconn_on,$time_interval,$reg_time,$din_eng,$cid,$dns1,$dns2,$no_beep,$bg_rec,$reconn_db,$no_cgq,$other_numb,$havit_v,$monthlylimit_v,$weeklylimit_v,$mounth,$no_auth,$debug,$bsd_comp,$connspeed,$no_dev,$no_tel,$def_apn,$compact,$newly,$theme,$htmlcolor,$fg_color) {
+ 		undef $_;
+ 		}
++		$no_beep=1;
+ 	new_config_save();
+ 	}
+ 	

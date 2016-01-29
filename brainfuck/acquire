@@ -1,0 +1,10 @@
+#!/usr/bin/env dl
+
+bff-${UB_VERSION}.tar.gz bff-${UB_VERSION}/
+	http://swapped.cc/bf/files/
+
+mandelbrot.b
+	http://swapped.cc/bf/files/
+
+random.b
+	http://swapped.cc/bf/files/

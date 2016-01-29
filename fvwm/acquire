@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+fvwm-${UB_VERSION}.tar.gz fvwm-${UB_VERSION}/
+	ftp://ftp.fvwm.org/pub/fvwm/version-${UB_VERSION_MAJOR}/

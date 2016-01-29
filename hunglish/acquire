@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+hunglish_${UB_VERSION}.tar.gz hunglish-${UB_VERSION}/
+	http://lorentey.hu/downloads/hunglish/

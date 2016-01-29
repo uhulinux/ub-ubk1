@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+SmartGerHun-${UB_VERSION//./_}.jar
+	http://download.sourceforge.net/jdictionary/

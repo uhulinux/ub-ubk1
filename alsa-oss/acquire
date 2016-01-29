@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+alsa-oss-${UB_VERSION/~/}.tar.bz2 alsa-oss-${UB_VERSION/~/}/
+	ftp://ftp.alsa-project.org/pub/oss-lib/

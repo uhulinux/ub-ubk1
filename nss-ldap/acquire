@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+nss_ldap-${UB_VERSION}.tar.gz nss_ldap-${UB_VERSION}/
+	http://www.padl.com/download/

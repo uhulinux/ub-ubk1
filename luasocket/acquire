@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+v${UB_VERSION/~/-}.tar.gz luasocket-${UB_VERSION/~/-}/
+	https://github.com/diegonehab/luasocket/archive/

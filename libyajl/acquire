@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+yajl-${UB_VERSION}.tar.gz lloyd-yajl-fee1ebe/
+	https://github.com/lloyd/yajl/tarball/${UB_VERSION}/

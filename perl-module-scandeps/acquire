@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Module-ScanDeps-${UB_VERSION}.tar.gz Module-ScanDeps-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/Module/

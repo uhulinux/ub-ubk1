@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Pine
+Comment=Console mail utility
+Comment[hu]=Konzolos levelezőkliens
+Exec=pine
+Terminal=true
+Categories=Network;Email;ConsoleOnly;
+X-UHU-Major=-1

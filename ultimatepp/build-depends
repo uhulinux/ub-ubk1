@@ -1,0 +1,11 @@
+atk-dev
+cairo-dev
+expat-dev
+freetype2-dev
+glib-dev
+gtk2-dev
+libnotify-dev
+libxft-dev
+libxi-dev
+pango-dev
+valgrind

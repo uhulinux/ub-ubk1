@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xsnow-${UB_VERSION}.tar.gz xsnow-${UB_VERSION}/
+	http://www.euronet.nl/~rja/Xsnow/

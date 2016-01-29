@@ -1,0 +1,10 @@
+diff -Naur kompare-4.10.80-orig/kompare.desktop kompare-4.10.80/kompare.desktop
+--- kompare-4.10.80-orig/kompare.desktop	2013-06-10 20:55:34.000000000 +0200
++++ kompare-4.10.80/kompare.desktop	2013-06-22 07:13:22.000000000 +0200
+@@ -133,5 +133,5 @@
+ X-DocPath=kompare/index.html
+ Terminal=false
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Development;
++Categories=Qt;KDE;Development;X-UHU-Menu/Development/Programming;
+ InitialPreference=10

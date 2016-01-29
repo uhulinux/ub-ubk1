@@ -1,0 +1,3 @@
+#!/bin/sh -eux
+
+gcc -O2 -Wall -o inputattach inputattach-"$UB_VERSION".c

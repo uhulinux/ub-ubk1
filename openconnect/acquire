@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+openconnect-${UB_VERSION}.tar.gz openconnect-${UB_VERSION}/
+	ftp://ftp.infradead.org/pub/openconnect/

@@ -1,0 +1,9 @@
+dbus-glib-dev
+gtk-dev
+intltool
+libsecret-dev
+networkmanager-dev
+nm-applet-dev
+ppp-dev
+systemd-dev
+util-linux-dev

@@ -1,0 +1,12 @@
+diff -urN cdctl-0.15.orig/Makefile.in cdctl-0.15/Makefile.in
+--- cdctl-0.15.orig/Makefile.in	2000-03-27 03:06:53.000000000 +0200
++++ cdctl-0.15/Makefile.in	2002-10-19 22:49:15.000000000 +0200
+@@ -26,7 +26,7 @@
+ version.o: version.c
+ iso_header.o: iso_header.c
+ 
+-install: install-bins install-docs install-mans install-mos
++install: install-bins install-mans install-mos
+ 
+ install-bins: $(BINS)
+ 	$(INSTALL) -s $(BINS) $(bindir)

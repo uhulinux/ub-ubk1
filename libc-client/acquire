@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+imap-${UB_VERSION}.tar.Z imap-${UB_VERSION}/
+	ftp://ftp.cac.washington.edu/imap/imap-${UB_VERSION}.tar.Z

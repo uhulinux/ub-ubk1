@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+ub_compile \
+	-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=off

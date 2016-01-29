@@ -1,0 +1,12 @@
+diff -Naurd a/Makefile b/Makefile
+--- a/Makefile	2006-03-28 08:15:22.000000000 +0200
++++ b/Makefile	2007-06-23 21:34:17.000000000 +0200
+@@ -32,7 +32,7 @@
+ 	@$(CC) -MM $(ALL_CFLAGS) *.c 1> .depend
+ 
+ INSTALL = install
+-prefix = /usr/local
++prefix = /usr
+ bindir = $(prefix)/bin
+ RPMBUILD = rpmbuild
+ TAR = tar

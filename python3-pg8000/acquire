@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pg8000-py3-${UB_VERSION}.tar.gz pg8000-py3-${UB_VERSION}/
+	http://pybrary.net/pg8000/dist/

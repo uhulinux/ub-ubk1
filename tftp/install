@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+UB_MAKEINSTALL_USE_DESTDIR="yes" \
+ub_install \
+	INSTALLROOT="$UB_INSTALLDIR"
+
+ln -s in.tftpd "$UB_INSTALLDIR"/usr/sbin/tftpd

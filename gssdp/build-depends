@@ -1,0 +1,7 @@
+gobject-introspection-dev
+gtk2-dev
+libsoup-dev
+libtasn1-dev
+sqlite-dev
+vala-dev
+xz-dev

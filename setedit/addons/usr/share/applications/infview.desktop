@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=infview
+Comment=Borland style info viewer
+Comment[hu]=info megjelenítő
+Exec=infview %F
+Icon=/usr/share/pixmaps/infview.png
+Terminal=false
+Categories=Utility;Documentation;

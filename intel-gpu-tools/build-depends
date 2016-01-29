@@ -1,0 +1,6 @@
+cairo-dev
+libdrm-dev
+libpciaccess-dev
+libxrandr-dev
+libxv-dev
+systemd-dev

@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+ncpfs-${UB_VERSION}.tar.gz ncpfs-${UB_VERSION}/
+	http://ftp.cvut.cz/ncpfs/
+	ftp://ftp.cvut.cz/ncpfs/
+	ftp://platan.vc.cvut.cz/pub/linux/ncpfs/

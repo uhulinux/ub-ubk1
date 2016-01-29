@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+b43-fwcutter-${UB_VERSION}.tar.bz2 b43-fwcutter-${UB_VERSION}/
+	http://bu3sch.de/b43/fwcutter/

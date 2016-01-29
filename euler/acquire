@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+euler-$UB_VERSION.tgz euler-$UB_VERSION/
+	http://downloads.sourceforge.net/euler/

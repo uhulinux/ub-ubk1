@@ -1,0 +1,33 @@
+--- boo-0.8.0.2730/extras/booi.in	2007-11-12 12:42:37.000000000 +0000
++++ boo-0.8.0.2730/extras/booi.in.new	2007-11-12 12:46:35.000000000 +0000
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ if [ -x @prefix@/bin/cli ]; then
+-    env @prefix@/bin/cli $MONO_OPTIONS @prefix@/lib/boo/booi.exe "$@"
++    env @prefix@/bin/cli $MONO_OPTIONS ${libdir}/boo/booi.exe "$@"
+ else
+-    env @RUNTIME@ $MONO_OPTIONS @prefix@/lib/boo/booi.exe "$@"
++    env @RUNTIME@ $MONO_OPTIONS ${libdir}/boo/booi.exe "$@"
+ fi
+--- boo-0.8.0.2730/extras/booc.in	2007-11-12 12:42:37.000000000 +0000
++++ boo-0.8.0.2730/extras/booc.in.new	2007-11-12 12:45:40.000000000 +0000
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ if [ -x @prefix@/bin/cli ]; then
+-    env @prefix@/bin/cli $MONO_OPTIONS @prefix@/lib/boo/booc.exe "$@"
++    env @prefix@/bin/cli $MONO_OPTIONS ${libdir}/boo/booc.exe "$@"
+ else
+-    env @RUNTIME@ $MONO_OPTIONS @prefix@/lib/boo/booc.exe "$@"
++    env @RUNTIME@ $MONO_OPTIONS ${libdir}/boo/booc.exe "$@"
+ fi
+--- boo-0.8.0.2730/extras/booish.in	2007-11-12 12:42:37.000000000 +0000
++++ boo-0.8.0.2730/extras/booish.in.new	2007-11-12 12:47:10.000000000 +0000
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ if [ -x @prefix@/bin/cli ]; then
+-    env @prefix@/bin/cli $MONO_OPTIONS @prefix@/lib/boo/booish.exe "$@"
++    env @prefix@/bin/cli $MONO_OPTIONS ${libdir}/boo/booish.exe "$@"
+ else
+-    env @RUNTIME@ $MONO_OPTIONS @prefix@/lib/boo/booish.exe "$@"
++    env @RUNTIME@ $MONO_OPTIONS ${libdir}/boo/booish.exe "$@"
+ fi

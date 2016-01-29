@@ -1,0 +1,25 @@
+diff -Naur shadow-4.0.16.orig/src/useradd.c shadow-4.0.16/src/useradd.c
+--- shadow-4.0.16.orig/src/useradd.c	2006-05-30 20:28:45.000000000 +0200
++++ shadow-4.0.16/src/useradd.c	2006-06-19 20:45:15.000000000 +0200
+@@ -124,7 +124,6 @@
+     Gflg = 0,			/* secondary group set for new account */
+     kflg = 0,			/* specify a directory to fill new user directory */
+     mflg = 0,			/* create user's home directory if it doesn't exist */
+-    nflg = 0,			/* create a group having the same name as the user */
+     oflg = 0,			/* permit non-unique user ID to be specified with -u */
+     sflg = 0,			/* shell program for new account */
+     uflg = 0;			/* specify user ID for new account */
+@@ -1757,13 +1756,6 @@
+ 		find_new_uid ();
+ 	}
+ 
+-	/* do we have to add a group for that user? This is why we need to
+-	 * open the group files in the open_files() function  --gafton */
+-	if (!(nflg || gflg)) {
+-		find_new_gid ();
+-		grp_add ();
+-	}
+-
+ 	usr_update ();
+ 
+ 	if (mflg) {

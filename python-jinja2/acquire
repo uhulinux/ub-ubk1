@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Jinja2-${UB_VERSION}.tar.gz Jinja2-${UB_VERSION}/
+	http://pypi.python.org/packages/source/J/Jinja2/

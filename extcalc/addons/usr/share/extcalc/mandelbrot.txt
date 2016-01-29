@@ -1,0 +1,69 @@
+#config complexon
+
+
+
+F=-2;	//coordinate system x min
+G=-1;	//coordinate system y min
+H=1;	//zoom factors
+I=1;
+X=15;	//columns	small resolution (extcalc standard window)
+Y=7;	//rows
+//X=45;	//columns	high resolution
+//Y=17;	//rows
+//X=26;	//columns	console resolution
+//Y=12;	//rows
+clear;
+while(1)
+{
+for(A=0; A<3*X; A=A+1)       //Re(C) loop
+{
+  for(B=0; B<2*Y; B=B+1)       //Im(C) loop
+  {
+    C=A*H/X+F-i*(B*I/Y+G);             //The complex value
+    Z=0.0;
+    for(D=0; abs(Z)<20; D=D+1)     //testing convergence
+    {
+      Z=Z^2+C;
+      if(D>36)	//the calculation precision depends on this value
+      {		//the higher it ist, the longer runs the loop 
+        D=0;
+        break;
+      }
+    }
+      setcursor(A,B);
+    if(D!=0)		//print out degree of divergence
+    {
+      D=(int)(D/4);	//calculate the number to show
+      print(D);
+    }
+    else print(" ");
+  }
+}
+setcursor(0,0);		//print zoom factor
+print(1/H);
+print("X");
+J=(int)getkey;		//check keys to zoom and move
+if(J==97)
+  F=F-H/5;
+else if(J==100)
+  F=F+H/5;
+else if(J==119)
+  G=G-I/5;
+else if(J==115)
+  G=G+I/5;
+else if(J==114)
+  {
+    H=H/0.9;
+    I=I/0.9;
+    F=F-3*H*0.05;
+    G=G-2H*0.05;
+  }
+else if(J==102)
+  { 
+    F=F+3*H*0.05;
+    G=G+2*H*0.05;
+    H=H*0.9;
+    I=I*0.9;
+
+  }
+}

@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+DST="$UB_INSTALLDIR/usr"
+cp -a xd "$DST/bin/"
+cp -a xd.1 "$DST/share/man/man1/"
+cp -a xd.gif "$DST/share/pixmaps/"

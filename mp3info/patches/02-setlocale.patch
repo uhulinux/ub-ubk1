@@ -1,0 +1,42 @@
+diff -Naur mp3info-0.8.4.orig/gmp3info.c mp3info-0.8.4/gmp3info.c
+--- mp3info-0.8.4.orig/gmp3info.c	2001-07-16 11:17:16.000000000 +0200
++++ mp3info-0.8.4/gmp3info.c	2004-01-06 14:32:55.000000000 +0100
+@@ -33,6 +33,7 @@
+ #define __MAIN
+ #include "mp3info.h"
+ #undef __MAIN
++#include <locale.h>
+ 
+ gchar *gtext_genre(unsigned char genre);
+ unsigned char gget_genre (char *genre);
+@@ -95,6 +96,9 @@
+ 	char track_text[4];
+ 
+ 
++	setlocale(LC_ALL, "");
++
++
+         gtk_init (&argc, &argv);
+ 
+ 
+diff -Naur mp3info-0.8.4.orig/mp3info.c mp3info-0.8.4/mp3info.c
+--- mp3info-0.8.4.orig/mp3info.c	2001-07-16 11:13:38.000000000 +0200
++++ mp3info-0.8.4/mp3info.c	2004-01-06 14:35:45.000000000 +0100
+@@ -31,6 +31,7 @@
+ #include "mp3info.h"
+ #undef __MAIN
+ #include <sys/stat.h>
++#include <locale.h>
+ 
+ char FILENAME_FORMAT_STRING[]="File: %F\n";
+ char ID3_FORMAT_STRING[]="Title:   %-30t Track: %n\nArtist:  %a\nAlbum:   %-30l Year:  %y\nComment: %-30c Genre: %g [%G]\n";
+@@ -50,6 +51,9 @@
+    mp3info mp3;
+ 
+ 
++   setlocale(LC_ALL, "");
++
++
+    new_tag.title[0]=new_tag.artist[0]=new_tag.album[0]=new_tag.year[0]=
+    new_tag.comment[0]=new_tag.track[0]=new_tag.genre[0]=1;
+    /* use something REALLY unlikely... -- so we could clear the tag... */

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+hfsplus_${UB_VERSION}.src.tar.bz2 hfsplus-${UB_VERSION}/
+	http://penguinppc.org/historical/hfsplus/

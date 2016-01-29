@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+CXXFLAGS=" -std=c++0x"
+echo -e "n\nn\nn\nn"| ./build libraries

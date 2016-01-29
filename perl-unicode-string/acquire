@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Unicode-String-${UB_VERSION}.tar.gz Unicode-String-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/Unicode/

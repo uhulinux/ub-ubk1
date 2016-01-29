@@ -1,0 +1,25 @@
+#!/bin/sh -e
+
+generate_menus ()
+{
+	[ -z "${UHU_PKG_QUIET+x}" ] && echo -n "  Generating menus ..."
+	wmonly="$(ls /etc/menu-generate/ 2>/dev/null | cut -d- -f1 | uniq | tr '\n' ',')"
+	uhu-menu -l 4 --wm-only="${wmonly%,}"
+	true > /var/lib/uhu-pkg/uhu-menu
+	while [ ! /var/lib/uhu-pkg/uhu-menu -ot /var/lib/dpkg/info \
+	     -a ! /var/lib/uhu-pkg/uhu-menu -nt /var/lib/dpkg/info ]; do
+		sleep 0.1
+		true > /var/lib/uhu-pkg/uhu-menu
+	done
+	[ -z "${UHU_PKG_QUIET+x}" ] && echo
+}
+
+if [ -f /var/lib/uhu-pkg/uhu-menu -a /var/lib/uhu-pkg/uhu-menu -nt /var/lib/dpkg/info ]; then
+	exit 0
+fi
+
+if [ "$1" = "uhu-menu" -o "$1" = "+" ]; then
+	generate_menus
+elif egrep -q '^(/usr/share/desktop-directories/|/usr/share/applications/|/usr/lib/uhu-menu/|/etc/menu-generate/)' /var/lib/dpkg/info/"$1".list; then
+	generate_menus
+fi

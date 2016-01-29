@@ -1,0 +1,12 @@
+dl
+libice-dev
+libsm-dev
+libx11-dev
+libxau-dev
+libxcb-dev
+libxdmcp-dev
+libxext-dev
+libxmu-dev
+libxt-dev
+tk
+util-linux-dev

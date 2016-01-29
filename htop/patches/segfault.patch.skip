@@ -1,0 +1,30 @@
+diff -Naurd a/Hashtable.c b/Hashtable.c
+--- a/Hashtable.c	2011-11-18 06:30:30.000000000 +0100
++++ b/Hashtable.c	2011-11-21 19:15:58.000000000 +0100
+@@ -100,7 +100,7 @@
+ }
+ 
+ void Hashtable_put(Hashtable* this, unsigned int key, void* value) {
+-   unsigned int index = key % this->size;
++   unsigned int index = (key % this->size + this->size) % this->size;
+    HashtableItem** bucketPtr = &(this->buckets[index]);
+    while (true)
+       if (*bucketPtr == NULL) {
+@@ -118,7 +118,7 @@
+ }
+ 
+ void* Hashtable_remove(Hashtable* this, unsigned int key) {
+-   unsigned int index = key % this->size;
++   unsigned int index = (key % this->size + this->size) % this->size;
+    
+    assert(Hashtable_isConsistent(this));
+ 
+@@ -145,7 +145,7 @@
+ }
+ 
+ inline void* Hashtable_get(Hashtable* this, unsigned int key) {
+-   unsigned int index = key % this->size;
++   unsigned int index = (key % this->size + this->size) % this->size;
+    HashtableItem* bucketPtr = this->buckets[index];
+    while (true) {
+       if (bucketPtr == NULL) {

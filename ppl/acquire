@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+ppl-${UB_VERSION}.tar.xz ppl-${UB_VERSION}/
+	ftp://ftp.cs.unipr.it/pub/ppl/releases/${UB_VERSION}/
+	http://bugseng.com/products/ppl/download/ftp/releases/${UB_VERSION}/

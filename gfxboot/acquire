@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+gfxboot-${UB_VERSION}-12.2.src.rpm gfxboot-${UB_VERSION}.tar.bz2 gfxboot-${UB_VERSION}/
+	ftp://ftp.suse.com/pub/suse/i386/9.2/suse/src/
+	ftp://ftp.funet.fi/pub/mirrors/ftp.suse.com/suse/i386/9.2/suse/src/
+	ftp://ftp.mirror.ac.uk/sites/ftp.suse.com/pub/suse/i386/9.2/suse/src/
+	ftp://ftp.gwdg.de/pub/suse/i386/9.2/suse/src/

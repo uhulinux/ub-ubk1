@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+mftrace-${UB_VERSION}.tar.gz mftrace-${UB_VERSION}/
+	http://lilypond.org/download/sources/mftrace/
+	http://www.xs4all.nl/~hanwen/mftrace/

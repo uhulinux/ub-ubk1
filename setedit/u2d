@@ -1,0 +1,1 @@
+sflist setedit setedit-unix-devel | grep -E '^([0-9. r]+)(.+)$' | sort -V | tail -n 1 | sed 's/%20Tarball%20%28Source%29//' | sed 's/%20/~/'

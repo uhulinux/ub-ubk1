@@ -1,0 +1,11 @@
+gnome-panel-dev
+gobject-introspection-dev
+gstreamer0.10-dev
+gtkmm-dev
+intltool
+libsm-dev
+libxext-dev
+libxscrnsaver-dev
+libxtst-dev
+pulseaudio-dev
+python-cheetah

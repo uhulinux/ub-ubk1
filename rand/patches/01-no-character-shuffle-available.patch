@@ -1,0 +1,12 @@
+diff -Naur rand-1.8.orig/docs/rand.1 rand-1.8/docs/rand.1
+--- rand-1.8.orig/docs/rand.1	2004-06-28 20:13:11.000000000 +0200
++++ rand-1.8/docs/rand.1	2004-08-14 23:00:18.340076178 +0200
+@@ -46,8 +46,6 @@
+ Line shuffle
+ .It Op Fl w
+ Word shuffle
+-.It Op Fl w
+-Character shuffle
+ .It Op Fl v, -version
+ Show version and exit.
+ .It Op Fl h, -help

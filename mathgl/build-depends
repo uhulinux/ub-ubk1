@@ -1,0 +1,11 @@
+cmake
+fltk-dev
+gsl
+hdf5
+libjpeg-dev
+libpng-dev
+libungif-dev
+lzlib
+mesa-dev
+octave
+wxwidgets-dev

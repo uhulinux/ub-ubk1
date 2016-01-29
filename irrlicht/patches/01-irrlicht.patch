@@ -1,0 +1,24 @@
+diff -Naurd a/include/IrrCompileConfig.h b/include/IrrCompileConfig.h
+--- a/include/IrrCompileConfig.h	2013-10-29 21:34:58.000000000 +0100
++++ b/include/IrrCompileConfig.h	2014-02-23 22:13:43.000000000 +0100
+@@ -194,7 +194,7 @@
+ /** On some systems there is no support for the dynamic extension of OpenGL
+ 	via function pointers such that this has to be undef'ed. */
+ #if !defined(_IRR_OSX_PLATFORM_) && !defined(_IRR_SOLARIS_PLATFORM_)
+-#define _IRR_OPENGL_USE_EXTPOINTER_
++//#define _IRR_OPENGL_USE_EXTPOINTER_
+ #endif
+ 
+ //! On some Linux systems the XF86 vidmode extension or X11 RandR are missing. Use these flags
+diff -Naurd a/source/Irrlicht/Makefile b/source/Irrlicht/Makefile
+--- a/source/Irrlicht/Makefile	2013-12-16 13:28:22.000000000 +0100
++++ b/source/Irrlicht/Makefile	2014-02-23 22:42:04.000000000 +0100
+@@ -86,7 +86,7 @@
+ staticlib sharedlib install: SYSTEM = Linux
+ STATIC_LIB = libIrrlicht.a
+ LIB_PATH = ../../lib/$(SYSTEM)
+-INSTALL_DIR = /usr/local/lib
++INSTALL_DIR = $(DESTDIR)/usr/lib
+ sharedlib install: SHARED_LIB = libIrrlicht.so
+ sharedlib: LDFLAGS += -L/usr/X11R6/lib$(LIBSELECT) -lGL -lXxf86vm
+ staticlib sharedlib: CXXINCS += -I/usr/X11R6/include

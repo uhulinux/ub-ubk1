@@ -1,0 +1,6 @@
+curl-dev
+libarchive-dev
+libcanberra-dev
+libnotify-dev
+lua-dev
+totem-plparser-dev

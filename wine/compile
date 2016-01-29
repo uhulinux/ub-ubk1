@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+autoreconf -vif
+
+ub_compile \
+	--without-hal \
+	--without-openal \
+	--without-opencl \
+	--without-oss \
+	--without-capi \
+	--without-tiff \
+	--without-mpg123 \
+	--without-sane \
+	--with-dbus

@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+mkdir -p "${UB_INSTALLDIR}"/usr/share/{avidemux6,pixmaps,applications}
+cp avidemux_icon.png "${UB_INSTALLDIR}"/usr/share/avidemux6/
+cp avidemux2.desktop "${UB_INSTALLDIR}"/usr/share/applications/avidemux3.desktop
+ln -s ../avidemux6/avidemux_icon.png "${UB_INSTALLDIR}"/usr/share/pixmaps/avidemux.png
+ln -s avidemux3_qt4 "${UB_INSTALLDIR}"/usr/bin/avidemux

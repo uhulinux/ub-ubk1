@@ -1,0 +1,1 @@
+urllist ftp://ftp.ibiblio.org/pub/linux/apps/database/proprietary/ | splitver '^dbview-([0-9.]+).tar.gz$' | sort -V | tail -n 1

@@ -1,0 +1,15 @@
+#!/usr/bin/env dl
+
+#jasspa-mesrc-20${UB_VERSION}.tar.gz me${UB_VERSION}/
+#	http://www.jasspa.com/release_20${UB_VERSION}/
+
+jasspa-mesrc-20${UB_VERSION}.tar.gz .
+	http://www.jasspa.com/development/me-standalone/
+
+jasspa-metree-20091212.tar.gz .
+#	http://www.jasspa.com/release_20${UB_VERSION}/
+	http://www.jasspa.com/development/me-standalone/
+
+jasspa-memacros-20091017.tar.gz .
+#	http://www.jasspa.com/release_20${UB_VERSION}/
+	http://www.jasspa.com/release_20090909/

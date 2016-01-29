@@ -1,0 +1,12 @@
+diff -Naur krename-4.0.7-orig//cmake/modules/FindLIBPODOFO.cmake krename-4.0.7//cmake/modules/FindLIBPODOFO.cmake
+--- krename-4.0.7-orig//cmake/modules/FindLIBPODOFO.cmake	2011-02-21 23:00:30.000000000 +0100
++++ krename-4.0.7//cmake/modules/FindLIBPODOFO.cmake	2011-04-12 20:41:13.000000000 +0200
+@@ -23,7 +23,7 @@
+ ENDIF(LIBPODOFO_H)
+ 
+ FIND_LIBRARY(LIBPODOFO_LIB
+-	NAMES libpodofo-doc podofo-doc
++	NAMES libpodofo podofo
+ 	PATHS "${LIBPODOFO_DIR}/lib" "${LIBPODOFO_DIR}/src" "${LIBPODOFO_DIR}")
+ IF(LIBPODOFO_LIB)
+     MESSAGE("podofo lib: ${LIBPODOFO_LIB}")

@@ -1,0 +1,2 @@
+minor=$(urllist ftp://ftp.simplesystems.org/pub/libpng/png/src/ | splitver '^libpng([0-9.]+)' | sort -V | tail -n 1)
+urllist ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng"$minor"/ | splitver '^libpng-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

@@ -1,0 +1,6 @@
+cmake
+graphicsmagick
+imagemagick-dev
+libwmf-dev
+openexr-dev
+qt4-dev

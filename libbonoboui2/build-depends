@@ -1,0 +1,13 @@
+dbus-glib-dev
+esound-dev
+gconf2-dev
+gtk2-dev
+intltool
+libbonobo2-dev
+libglade2-dev
+libgnome2-dev
+libgnomecanvas2-dev
+libsm-dev
+libxml2-dev
+openssl-dev
+pangox-compat-dev

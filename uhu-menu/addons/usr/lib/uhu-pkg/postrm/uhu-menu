@@ -1,0 +1,23 @@
+#!/bin/sh -e
+
+generate_menus ()
+{
+	[ -z "${UHU_PKG_QUIET+x}" ] && echo -n "  Generating menus ..."
+	wmonly="$(ls /etc/menu-generate/ 2>/dev/null | cut -d- -f1 | uniq | tr '\n' ',')"
+	uhu-menu -l 4 --wm-only="${wmonly%,}"
+	true > /var/lib/uhu-pkg/uhu-menu
+	while [ ! /var/lib/uhu-pkg/uhu-menu -ot /var/lib/dpkg/info \
+	     -a ! /var/lib/uhu-pkg/uhu-menu -nt /var/lib/dpkg/info ]; do
+		sleep 0.1
+		true > /var/lib/uhu-pkg/uhu-menu
+	done
+	[ -z "${UHU_PKG_QUIET+x}" ] && echo
+}
+
+if [ "$2" = "upgrade" ]; then
+	exit 0
+fi
+
+if [ ! -f /var/lib/uhu-pkg/uhu-menu ]; then
+	generate_menus
+fi

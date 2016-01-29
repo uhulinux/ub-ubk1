@@ -1,0 +1,24 @@
+diff -Naur digikam-2.7.0-orig/core/libs/dimg/loaders/pgfloader.cpp digikam-2.7.0/core/libs/dimg/loaders/pgfloader.cpp
+--- digikam-2.7.0-orig/core/libs/dimg/loaders/pgfloader.cpp	2012-07-08 01:24:42.000000000 +0200
++++ digikam-2.7.0/core/libs/dimg/loaders/pgfloader.cpp	2012-07-09 19:54:49.000000000 +0200
+@@ -67,7 +67,7 @@
+ 
+ // Libpgf includes
+ 
+-#include <PGFimage.h>
++#include <libpgf/PGFimage.h>
+ 
+ // Local includes
+ 
+diff -Naur digikam-2.7.0-orig/core/libs/threadimageio/pgfutils.cpp digikam-2.7.0/core/libs/threadimageio/pgfutils.cpp
+--- digikam-2.7.0-orig/core/libs/threadimageio/pgfutils.cpp	2012-07-08 01:24:41.000000000 +0200
++++ digikam-2.7.0/core/libs/threadimageio/pgfutils.cpp	2012-07-09 19:55:12.000000000 +0200
+@@ -52,7 +52,7 @@
+ 
+ // LibPGF includes
+ 
+-#include <PGFimage.h>
++#include <libpgf/PGFimage.h>
+ 
+ namespace Digikam
+ {

@@ -1,0 +1,12 @@
+diff -Naur gDesklets-0.30.orig/data/gdesklets.desktop.in gDesklets-0.30/data/gdesklets.desktop.in
+--- gDesklets-0.30.orig/data/gdesklets.desktop.in	2004-08-13 23:30:23.000000000 +0200
++++ gDesklets-0.30/data/gdesklets.desktop.in	2006-06-15 14:29:12.000000000 +0200
+@@ -7,7 +7,7 @@
+ Terminal=false
+ Type=Application
+ MimeType=application/x-gdesklets-display
+-Categories=Application;Utility;
++Categories=Application;Utility;X-UHU-Menu/Settings;
+ StartupNotify=true
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=gDesklets

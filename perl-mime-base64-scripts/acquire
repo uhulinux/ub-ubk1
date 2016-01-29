@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+MIME-Base64-Scripts-${UB_VERSION}.tar.gz MIME-Base64-Scripts-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/

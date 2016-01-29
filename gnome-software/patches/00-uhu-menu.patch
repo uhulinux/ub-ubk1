@@ -1,0 +1,11 @@
+--- a/src/org.gnome.Software.desktop.in.orig	2013-10-11 23:39:20.000000000 +0200
++++ a/src/org.gnome.Software.desktop.in	2013-10-11 23:39:52.000000000 +0200
+@@ -5,7 +5,7 @@
+ Exec=gnome-software
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;System;PackageManager;
++Categories=GNOME;GTK;System;PackageManager;X-UHU-Menu/Settings;
+ StartupNotify=true
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=gnome-software

@@ -1,0 +1,11 @@
+ver=$(u2dcpan Mail::Sender)
+ver1=${ver%%.*}
+ver2=${ver#*.}
+
+ver3=${ver2:3:3}
+ver3=${ver3##*0}
+
+ver2=${ver2:0:3}
+ver2=${ver2##*0}
+
+echo $ver1.$ver2.$ver3

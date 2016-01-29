@@ -1,0 +1,18 @@
+diff -Naur ORIG/scite/gtk/SciTE.desktop UHU/scite/gtk/SciTE.desktop
+--- ORIG/scite/gtk/SciTE.desktop	2012-01-28 00:57:49.000000000 +0100
++++ UHU/scite/gtk/SciTE.desktop	2012-06-01 10:41:43.249581642 +0200
+@@ -9,11 +9,13 @@
+ Comment[es]=Edita especializado para programación
+ Comment[fr]=Éditer des fichiers sources
+ Comment[ru]=Редактор исходных кодов
++Comment[hu]=SciTE szövegszerkesztő
++GenericName[hu]=Szövegszerkesztő
+ GenericName=Text Editor
+ Type=Application
+ Exec=SciTE %F
+ Icon=Sci48M
+ Terminal=false
+ StartupNotify=true
+-Categories=TextEditor;Development;GTK;Application;
++Categories=TextEditor;Development;GTK;Application;X-UHU-Menu/Tools/Editors;
+ MimeType=text/plain;

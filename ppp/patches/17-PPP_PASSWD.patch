@@ -1,0 +1,33 @@
+diff -Naur ppp-2.4.5-orig/pppd/auth.c ppp-2.4.5/pppd/auth.c
+--- ppp-2.4.5-orig/pppd/auth.c	2009-11-16 23:26:07.000000000 +0100
++++ ppp-2.4.5/pppd/auth.c	2012-03-30 19:39:39.000000000 +0200
+@@ -2088,6 +2088,13 @@
+ {
+     struct stat sbuf;
+ 
++    /* if PPP_PASSWD is defined we don't bother with secret files */
++    if (getenv("PPP_PASSWD")) {
++	warn("PPP_PASSWD is defined");
++	return;
++    }
++    warn("PPP_PASSWD is not defined");
++
+     if (fstat(fileno(f), &sbuf) < 0) {
+ 	warn("cannot stat secret file %s: %m", filename);
+     } else if ((sbuf.st_mode & (S_IRWXG | S_IRWXO)) != 0) {
+@@ -2136,6 +2143,15 @@
+     if (opts != NULL)
+ 	*opts = NULL;
+     addr_list = NULL;
++
++    if (getenv("PPP_PASSWD")) {
++	warn("PPP_PASSWD is defined");
++	if (secret != NULL)
++	    strncpy(secret, getenv("PPP_PASSWD"), MAXWORDLEN);
++	return NONWILD_CLIENT;
++    }
++    warn("PPP_PASSWD is not defined");
++    
+     if (!getword(f, word, &newline, filename))
+ 	return -1;		/* file is empty??? */
+     newline = 1;

@@ -1,0 +1,15 @@
+diff -urN tkinfo-2.6.orig/tkinfo tkinfo-2.6/tkinfo
+--- tkinfo-2.6.orig/tkinfo	2003-06-30 20:48:16.000000000 +0200
++++ tkinfo-2.6/tkinfo	2003-08-12 10:32:29.000000000 +0200
+@@ -511,10 +511,7 @@
+     if { [info exist tki(sn)] } return
+ 
+     set defInfoPath [list . \
+-      /usr/info /usr/share/info /usr/local/info /usr/local/gnu/info \
+-      /usr/local/emacs/info /usr/local/lib/emacs/info \
+-      /usr/lib/xemacs/info /usr/local/lib/xemacs/info \
+-      /usr/gnu/info \
++      /usr/share/info /usr/local/info /usr/local/share/info \
+       ]
+ 
+     set defInfoSuffix [list .info -info ""]

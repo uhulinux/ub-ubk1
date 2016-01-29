@@ -1,0 +1,9 @@
+--- viking.orig/src/viking.desktop.in	2010-01-14 21:19:52.000000000 +0100
++++ viking/src/viking.desktop.in	2010-03-19 20:09:35.000000000 +0100
+@@ -8,5 +8,5 @@
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=GTK;Science;Maps;Geography;
++Categories=GTK;Science;Maps;Geography;X-UHU-Menu/Graphics;
+ MimeType=application/vnd.google-earth.kml+xml;application/gpx+xml;

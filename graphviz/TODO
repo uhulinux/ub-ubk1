@@ -1,0 +1,16 @@
+- liblasi: not too important - no uhu package
+http://www.unifont.org/lasi/
+
+- gts: not too important, the last release is too old (2006) - no uhu package
+http://gts.sourceforge.net/index.html
+
+guile bindings: does anybody use guile?
+build error, if build-depends contains guile-dev (needs patch to recognize guile2)
+http://pkgs.fedoraproject.org/cgit/graphviz.git/plain/graphviz-2.30.1-guile2-fix.patch
+
+php bindings: would be important!
+build error, if build-depends containd php and php-dev
+(I could't find any useful patch)
+
+R bindings: ??? - no uhu package
+http://www.r-project.org/

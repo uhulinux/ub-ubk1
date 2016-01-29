@@ -1,0 +1,7 @@
+glib-dev
+gpm-dev
+gtk2-dev
+libsm-dev
+libx11-dev
+libxext-dev
+tcsh

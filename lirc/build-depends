@@ -1,0 +1,5 @@
+alsa-lib-dev
+libsm-dev
+libusb-dev
+libx11-dev
+python-dev

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+zc.buildout-${UB_VERSION}.tar.gz zc.buildout-${UB_VERSION}/
+	http://pypi.python.org/packages/source/z/zc.buildout/

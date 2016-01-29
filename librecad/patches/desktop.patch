@@ -1,0 +1,14 @@
+diff -Naur orig/desktop/librecad.desktop mod/desktop/librecad.desktop
+--- orig/desktop/librecad.desktop	2013-04-14 22:37:18.000000000 +0200
++++ mod/desktop/librecad.desktop	2013-06-01 13:58:29.015684743 +0200
+@@ -3,9 +3,8 @@
+ Type=Application
+ Name=LibreCAD
+ Comment=A professional CAD System
+-Comment[es]=Un sistema CAD profesional
+ TryExec=librecad
+ Exec=librecad %F
+ Icon=librecad
+-Categories=Graphics;Engineering;
++Categories=Graphics;Engineering;X-UHU-Menu/Edutainment/Miscellaneous;
+ MimeType=image/vnd.dxf

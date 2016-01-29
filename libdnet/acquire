@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+libdnet-${UB_VERSION}.tar.gz libdnet-${UB_VERSION}/
+	http://libdnet.googlecode.com/files/
+	http://download.sourceforge.net/libdnet/

@@ -1,0 +1,25 @@
+diff -Naur k9copy-2.3.8-Source-orig/k9copy.desktop k9copy-2.3.8-Source/k9copy.desktop
+--- k9copy-2.3.8-Source-orig/k9copy.desktop	2011-12-09 22:08:41.000000000 +0100
++++ k9copy-2.3.8-Source/k9copy.desktop	2012-01-02 21:34:54.000000000 +0100
+@@ -6,11 +6,13 @@
+ Exec=k9copy -caption "%c" %i %m  %u
+ Comment=DVD9 to DVD5 backup tool
+ Comment[fr]=Backup de DVD9 en DVD5
++Comment[hu]=DVD9 másolás DVD5-re
+ Comment[tr]=DVD9 DVD5 yedekleme aracı
+ Comment[ru]=Инструмент для копирования с DVD9 на DVD5
+ Comment[uk]=Інструмент резервного копіювання DVD
+ GenericName=Video DVD Backup
+ GenericName[fr]=Backup de DVD Video
++GenericName[hu]=DVD9 másolás DVD5-re
+ GenericName[tr]=DVD Vidyo Yedekleme Aracı
+ GenericName[ru]=Копирование с видео-DVD
+ GenericName[uk]=Копіювання відео-DVD
+@@ -18,5 +20,5 @@
+ Terminal=false
+ Icon=k9copy
+ X-DocPath=k9copy/index.html
+-Categories=Qt;KDE;AudioVideo;DiscBurning;
++Categories=Qt;KDE;AudioVideo;DiscBurning;
+ X-KDE-StartupNotify=true
+\ Nincs újsor a fájl végén

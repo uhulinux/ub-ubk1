@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+glaurung${UB_VERSION/./}.zip glaurung${UB_VERSION/./}/
+	http://www.glaurungchess.com/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+synergy-${UB_VERSION}-r2055-Source.tar.gz synergy-${UB_VERSION}-Source/
+	http://fossfiles.com/synergy/

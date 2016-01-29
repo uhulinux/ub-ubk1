@@ -1,0 +1,14 @@
+fontconfig-dev
+freetype2-dev
+imlib-dev
+libjpeg-dev
+libpng-dev
+libtiff-dev
+libungif-dev
+libx11-dev
+libxext-dev
+libxft-dev
+libxinerama-dev
+libxrandr-dev
+libxt-dev
+x.org-font-utils

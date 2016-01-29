@@ -1,0 +1,23 @@
+diff -Naur alsa-utils-1.0.25-orig/alsactl/init/00main alsa-utils-1.0.25/alsactl/init/00main
+--- alsa-utils-1.0.25-orig/alsactl/init/00main	2012-01-25 10:43:38.000000000 +0100
++++ alsa-utils-1.0.25/alsactl/init/00main	2012-03-21 21:57:18.000000000 +0100
+@@ -37,8 +37,6 @@
+ LABEL="init_end"
+ ACCESS=="postinit", INCLUDE="postinit"
+ RESULT=="true", GOTO="00_mainend"
+-ERROR="Found hardware: \"$cardinfo{driver}\" \"$cardinfo{mixername}\" \"$cardinfo{components}\" \"$attr{subsystem_vendor}\" \"$attr{subsystem_device}\"\n"
+-ERROR="Hardware is initialized using a generic method\n"
+ INCLUDE="default"
+ EXIT="99"
+ 
+diff -Naur alsa-utils-1.0.25-orig/alsactl/state.c alsa-utils-1.0.25/alsactl/state.c
+--- alsa-utils-1.0.25-orig/alsactl/state.c	2012-01-25 10:43:38.000000000 +0100
++++ alsa-utils-1.0.25/alsactl/state.c	2012-03-21 21:58:51.000000000 +0100
+@@ -1501,7 +1501,6 @@
+ 				id = tmpid;
+ 		}
+ 		if (err < 0) {
+-			fprintf(stderr, "No state is present for card %s\n", id);
+ 			goto _close;
+ 		}
+ 		id = tmpid;

@@ -1,0 +1,12 @@
+diff -Naurd a/Makefile b/Makefile
+--- a/Makefile	2003-08-18 15:27:45.000000000 +0200
++++ b/Makefile	2003-11-21 20:29:41.000000000 +0100
+@@ -18,7 +18,7 @@
+ 	$(CC) $(CFLAGS) $< -o $@
+ 
+ bincode:  bincode.asm vocabulary.inc modplay_defines.inc modplay.inc kroete.inc
+-	nasm -f bin -O3 -o $@ -l $(@).lst $<
++	nasm -f bin -O1 -o $@ -l $(@).lst $<
+ 
+ bincode.h:  bincode bin2c
+ 	./bin2c bincode >bincode.h

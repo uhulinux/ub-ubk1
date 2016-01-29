@@ -1,0 +1,59 @@
+diff -Naur orig/misc/syntax/lsm.syntax patched/misc/syntax/lsm.syntax
+--- orig/misc/syntax/lsm.syntax	2010-09-07 09:16:43.000000000 +0200
++++ patched/misc/syntax/lsm.syntax	2010-09-14 13:28:48.000000000 +0200
+@@ -1,32 +1,29 @@
+ 
+ context default
+-    spellcheck
+-    keyword linestart Begin3 brightmagenta
+-    keyword linestart Title:\s\s\s\s\s\s\s\s\s\s red yellow
+-    keyword linestart Version:\s\s\s\s\s\s\s\s red yellow
+-    keyword linestart Entered-date:\s\s\s red yellow
+-    keyword linestart Description:\s\s\s\s red yellow
+-    keyword linestart Keywords:\s\s\s\s\s\s\s red yellow
+-    keyword linestart Alternate-site:\s red yellow
+-    keyword linestart Primary-site:\s\s\s red yellow
+-    keyword linestart Original-site:\s\s red yellow
+-    keyword linestart Platforms:\s\s\s\s\s\s red yellow
+-    keyword linestart Copying-policy:\s red yellow
+-    keyword linestart End brightmagenta
++    keyword linestart Begin3		brightmagenta/20
++    keyword linestart Title:		brightred/9
++    keyword linestart Version:		brightred/9
++    keyword linestart Entered-date:	brightred/9
++    keyword linestart Description:	brightred/9
++    keyword linestart Keywords:		brightred/9
++    keyword linestart Author:		brightred/9
++    keyword linestart Maintained-by:	brightred/9
++    keyword linestart Alternate-site:	brightred/9
++    keyword linestart Primary-site:	brightred/9
++    keyword linestart Original-site:	brightred/9
++    keyword linestart Platforms:	brightred/9
++    keyword linestart Copying-policy:	brightred/9
++    keyword linestart End		brightmagenta/20
+ 
+-    keyword linestart \t\t                white yellow
+-    keyword linestart \s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s white yellow
+-    keyword whole GPL green
+-    keyword whole BSD green
+-    keyword whole Shareware green
+-    keyword whole sunsite.unc.edu green
+-    keyword wholeright \s*.tar.gz green
+-    keyword wholeright \s*.lsm green
++    keyword whole GPL			green/6
++    keyword whole BSD			green/6
++    keyword whole Shareware		green/6
++    keyword whole sunsite.unc.edu	green/6
++    keyword wholeright \s+tar+gz	brightgreen/6
++    keyword wholeright \t+tar+gz	brightgreen/6
++    keyword whole \s*@*\s(*)		cyan/16
++    keyword whole <*@*>			cyan/16
+ 
+-context linestart Author:\s\s\s\s\s\s\s\s\s \n brightred
+-    keyword whole \s*@*\s(*) cyan
+-
+-context linestart Maintained-by:\s\s \n brightred
+-    keyword whole \s*@*\s(*) cyan
++context exclusive linestart Title: \n	white/26
+ 
+ ###############################################################################

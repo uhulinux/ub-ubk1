@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+open-iscsi-${UB_VERSION/~/-}.tar.gz open-iscsi-${UB_VERSION/~/-}/
+	http://www.open-iscsi.org/bits/

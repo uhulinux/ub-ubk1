@@ -1,0 +1,6 @@
+diff -Nar -U0 povray-3.6.1.orig/Makefile.in povray-3.6.1/Makefile.in
+--- povray-3.6.1.orig/Makefile.in	2004-08-03 01:20:09.000000000 +0200
++++ povray-3.6.1/Makefile.in	2004-08-12 14:00:06.843482614 +0200
+@@ -177 +177 @@
+-povdocdir = @datadir@/doc/@PACKAGE@-@VERSION_BASE@
++povdocdir = @datadir@/doc/Packages/@PACKAGE@

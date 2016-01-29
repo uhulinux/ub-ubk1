@@ -1,0 +1,11 @@
+diff -Naur BitchX.orig/include/irc_std.h BitchX/include/irc_std.h
+--- BitchX.orig/include/irc_std.h	2003-04-11 03:09:07.000000000 +0200
++++ BitchX/include/irc_std.h	2007-05-30 13:32:22.000000000 +0200
+@@ -104,7 +104,6 @@
+ # else
+ #  define __A(x)
+ #  define __N
+-#  define __inline
+ # endif
+ #endif
+ 

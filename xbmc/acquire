@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xbmc-${UB_VERSION/~/-}.tar.gz xbmc-${UB_VERSION/~/-}-Gotham/
+	http://mirrors.xbmc.org/releases/source/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+liboldX-$UB_VERSION.tar.bz2 liboldX-$UB_VERSION/
+	http://xorg.freedesktop.org/releases/individual/lib/

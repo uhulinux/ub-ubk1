@@ -1,0 +1,9 @@
+diff -Naur ORIG/frescobaldi.desktop UHU/frescobaldi.desktop
+--- ORIG/frescobaldi.desktop	2012-02-05 23:03:55.000000000 +0100
++++ UHU/frescobaldi.desktop	2012-05-30 11:40:02.000000000 +0200
+@@ -20,4 +20,4 @@
+ Type=Application
+ Terminal=false
+ InitialPreference=8
+-Categories=Qt;AudioVideo;Music;Utility;TextEditor;
++Categories=Qt;AudioVideo;Music;Utility;TextEditor;X-UHU-Menu/Multimedia/SoundEdit;

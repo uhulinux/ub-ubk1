@@ -1,0 +1,24 @@
+diff -Naurd a/src/druntime/posix.mak b/src/druntime/posix.mak
+--- a/src/druntime/posix.mak	2014-02-24 05:23:06.000000000 +0100
++++ b/src/druntime/posix.mak	2014-02-24 19:52:44.000000000 +0100
+@@ -43,7 +43,7 @@
+   endif
+ endif
+ 
+-DMD=../dmd/src/dmd
++DMD=../dmd/dmd
+ INSTALL_DIR=../install
+ 
+ DOCDIR=doc
+diff -Naurd a/src/phobos/posix.mak b/src/phobos/posix.mak
+--- a/src/phobos/posix.mak	2014-02-24 05:23:10.000000000 +0100
++++ b/src/phobos/posix.mak	2014-02-24 19:53:08.000000000 +0100
+@@ -108,7 +108,7 @@
+ 	DMD = wine dmd.exe
+ 	RUN = wine
+ else
+-	DMD = ../dmd/src/dmd
++	DMD = ../dmd/dmd
+ 	ifeq ($(OS),win32)
+ 		CC = dmc
+ 	else

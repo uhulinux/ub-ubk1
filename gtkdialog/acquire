@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gtkdialog-${UB_VERSION}.tar.gz .
+	http://gtkdialog.googlecode.com/files/

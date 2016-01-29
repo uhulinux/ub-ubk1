@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+z3c.rml-${UB_VERSION}.zip z3c.rml-${UB_VERSION}/
+	http://pypi.python.org/packages/source/z/z3c.rml/

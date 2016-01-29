@@ -1,0 +1,1077 @@
+diff -Naur smssend-orig/scripts/6sensreg.sms smssend/scripts/6sensreg.sms
+--- smssend-orig/scripts/6sensreg.sms	2004-01-11 19:31:29.000000000 +0100
++++ smssend/scripts/6sensreg.sms	2009-06-07 21:53:54.000000000 +0200
+@@ -1,6 +1,6 @@
+ ## SkySMS provider file - www.6sens.com - Bouygtel clients ##
+ # Version 1.00
+-# by Ze KiLleR <zekiller@-REMOVE-skytech.org>
++# by Ze KiLleR <zekiller@skytech.org>
+ # Error codes :
+ #  1 -> Bad Login/Password
+ #  2 -> Max SMS per day reached
+@@ -11,38 +11,37 @@
+ %Login : Your Bouygtel phone number
+ %Password Hidden : Your password
+ %Tel : Gsm number of bouygtel recipient
+-%Message Size=140 Convert : Your message
+-
++%Message Size=140 Convert : Your message
++
+ GetURL http://services.6sens.bouyguestelecom.fr/SMS/SMSFormsLogin.asp
+-GO
+-
+-PostURL https://services.6sens.bouyguestelecom.fr/verifPassword.asp
+-NoAdd MSISDN
+-NoAdd code
+-PostData \%RTGetForm-1-0%&MSISDN=\%Login%&code=\%Password%
+-Search Votre numÈro de mobile n'est pas valide
+-ErrorMsg 3 Not a bouygtel phone number
+-ElseSearch Les donnÈes que vous avez saisies sont incorrectes
+-ErrorMsg 1 Bad Login/Password
+-ElseSearch Cette opÈration est indisponible pour le moment
+-ErrorMsg 1 Bad Login/Password
+-GO
+-
+-GetURL http://services.6sens.bouyguestelecom.fr/SMS/EnvoiSMS.asp
+-Search value="0"
+-ErrorMsg 2 Max SMS per day reached
+-GO
+-
+-PostURL \%RTFormAction-4-0%
+-NoAdd destinataire
+-NoAdd msg
+-PostData \%RTGetForm-4-0%&destinataire=\%Tel%&msg=\%Message%
+-GO
+-
+-PostURL http://services.6sens.bouyguestelecom.fr/SMS/TelemessagesValidByTelEnvoyeText.asp
+-PostData Destinataires=\%Tel%&Msg=\%Message%
+-Search message a bien ÈtÈ envoyÈ
+-PrintMsg Message successfully sent
+-Else
+-ErrorMsg 3 Unknown error
+-GO
++GO
++
++PostURL https://services.6sens.bouyguestelecom.fr/verifPassword.asp
++NoAdd MSISDN
++NoAdd code
++PostData \%RTGetForm-1-0%&MSISDN=\%Login%&code=\%Password%
++Search Votre numÔøΩo de mobile n'est pas valide
++ErrorMsg 3 Not a bouygtel phone number
++ElseSearch Les donnÔøΩs que vous avez saisies sont incorrectes
++ErrorMsg 1 Bad Login/Password
++ElseSearch Cette opÔøΩation est indisponible pour le moment
++ErrorMsg 1 Bad Login/Password
++GO
++
++GetURL http://services.6sens.bouyguestelecom.fr/SMS/EnvoiSMS.asp
++Search value="0"
++ErrorMsg 2 Max SMS per day reached
++GO
++
++PostURL \%RTFormAction-4-0%
++NoAdd destinataire
++
++PostData \%RTGetForm-4-0%&destinataire=\%Tel%&msg=\%Message%
++GO
++
++PostURL http://services.6sens.bouyguestelecom.fr/SMS/TelemessagesValidByTelEnvoyeText.asp
++PostData Destinataires=\%Tel%&Msg=\%Message%
++
++Else
++ErrorMsg 3 Unknown error
++GO
+diff -Naur smssend-orig/scripts/attwireless.sms smssend/scripts/attwireless.sms
+--- smssend-orig/scripts/attwireless.sms	2003-02-12 20:43:09.000000000 +0100
++++ smssend/scripts/attwireless.sms	2009-06-07 20:17:56.000000000 +0200
+@@ -1,6 +1,10 @@
+-## ATT Wireless - www.mobile.att.net ##
+-# Version 1.0
++## ATT Wireless - www.mymmode.com ##
++# Version 1.4
+ # by Ian Reinhart Geiser <geiseri@kde.org>
++# updated by Mathew Alexander <mathew@marsupilamil23.net> 04/20/2004
++# updated by Mathew Alexander <mathew@marsupilamil23.net> 09/19/2004
++# updated by Gus Collins <gcollins@ieee.org> 10/19/2004
++# 
+ # Error codes :
+ #  1 -> Bad input phone number
+ #  2 -> Error sending message
+@@ -12,12 +16,14 @@
+ %Message Size=110 Convert : Your message
+ 
+ # Sending message
+-PostURL http://www.mobile.att.net/messagecenter/pagersend.cgi
+-PostData pin=\%Pin%&from=\%From%&subject=\%Subject%&message=\%Message%
++PostURL http://www.mymmode.com/messagecenter/sendMessage.do
++Referer http://www.mymmode.com/messagecenter/init
++PostData recipient=\%Pin%&sender=\%From%&subject=\%Subject%&message=\%Message%
++
+ 
+ Search There has been an error sending your message.
+  ErrorMsg 1 Your message could not be delivered
+-ElseSearch Your message has been submitted
++ElseSearch Your Message has been submitted
+  PrintMsg  Your message has been sent
+ Else
+ ErrorMsg 2 Error sending message
+diff -Naur smssend-orig/scripts/banana.sms smssend/scripts/banana.sms
+--- smssend-orig/scripts/banana.sms	2003-11-03 19:33:13.000000000 +0100
++++ smssend/scripts/banana.sms	2009-06-07 20:25:03.000000000 +0200
+@@ -1,6 +1,6 @@
+ ## Base on the SkyLotto provider file ##
+-# Version 2.03
+-# Modified by SigKill for the new version of Bananalotto website
+++## SkyLotto provider file ##
+++# Version 2.02
+ # Error codes :
+ #  1 -> Bad Login/Password
+ #  2 -> Error sending grid
+@@ -28,23 +28,27 @@
+ GO
+ PostURL \%RTFormAction-1-0%
+ PostData login=\%Login%&pass=\%Password%
+-Search loginError
+-ErrorMsg 1 Bad login and/or password
+-ElseSearch gridAlready
+-ErrorMsg 2 Already played today
++Search msg=gridAlready
++ErrorMsg 3 Already played today
++ElseSearch msg=loginError
++ErrorMsg 1 Bad Login/Password
+ GO
+ 
+-# Sending grid
+-PostURL \%RTFormAction-3-0%
++# Getting grid map
++GetURL http://fr.bananalotto.com/grid.php
++GO
++
++# Posting grid map
++PostURL http://fr.bananalotto.com/popAlert.php?msg=grid2
+ Referer \%RTURL-3%
+-PostData chaine_jeu=\%Num1%,\%Num2%,\%Num3%,\%Num4%,\%Num5%,\%Num6%,\%Num7%,
++PostData chaine_jeu=\%Num1%%2C\%Num2%%2C\%Num3%%2C\%Num4%%2C\%Num5%%2C\%Num6%%2C\%Num7%%2C
+ GO
+ 
+-# Validing grid
+-PostURL \%RTFormAction-4-0%
+-PostData \%RTGetForm-4-0%
+-Sleep 10
+-Search BANANA-
++#Validating grid
++PostURL http://fr.bananalotto.com/popAlert.php?msg=grid3
++Referer \%RTURL-5%
++PostData chaine_jeu=\%Num1%%2C\%Num2%%2C\%Num3%%2C\%Num4%%2C\%Num5%%2C\%Num6%%2C\%Num7%%2C
++Search votre grille est bien
+ PrintMsg Successfully played
+ Else
+ ErrorMsg 3 Error sending grid
+diff -Naur smssend-orig/scripts/clarodigital.sms smssend/scripts/clarodigital.sms
+--- smssend-orig/scripts/clarodigital.sms	2003-02-12 20:43:09.000000000 +0100
++++ smssend/scripts/clarodigital.sms	2009-06-07 20:31:47.000000000 +0200
+@@ -7,15 +7,26 @@
+ %prefixo  : Prefixo ou codigo de area (51,53,54,55)
+ %telefone : fone do destinatario
+ %de       : Remetente
+-%Message Size=150 Convert : Texto a enviar Ex: "Ola Joao"
++## SkySMS provider file - www.claro.com.br ##
++# Version 2.00
++# by Adriel Mota Ziesemer Jr (aziesemer [at] bol.com.br)
++# Based on Version 1.00 by Leandro Paulo Bogoni(bogoni@uri.com.br)
++# and SMSBR 1.3 (http://smsbr.sourceforge.net/)
++# Compatible with Kopete >= 0.8
+ 
+-SetCookie 1 www.clarodigital.com.br-/-ASPSESSIONIDGGQQQJRO=GGBNIBMCHHFEOAHJJOIJNPAG
++NbParams 6
++%ddd  : Prefixo ou codigo de area (51,53,54,55)
++%telefone : Fone do destinatario
++%de_ddd : Prefixo do Remetente
++%de_telefone : Telefone do Remetente
++%de_nome Convert : Nome do Remetente
++%Message Size=150 Convert : Texto a enviar Ex: "Ola Joao"
+ 
+-PostURL http://www.claroonline.com.br/submitsms.asp 
+-PostData sender=\%de%&pre1=\%prefixo%&min=\%telefone%&msg=\%Message% 
+-Referer http://www.claroonline.com.br/submitsms.asp
++GetURL http://www2.claro.com.br/torpedoweb/popup_senderJava.asp
++Params ddd_para=\%ddd%&telefone_para=\%telefone%&nome_de=\%de_nome%&ddd_de=\%de_ddd%&telefone_de=\%de_telefone%&msg=\%Message% 
++Referer http://www2.claro.com.br/torpedoweb/popuph.htm
+ 
+-Search encaminhada
++Search ok
+ PrintMsg Mensagem enviada com sucesso
+ Else
+ PrintMsg Erro mensagem nao foi enviada
+diff -Naur smssend-orig/scripts/ermak_rus.sms smssend/scripts/ermak_rus.sms
+--- smssend-orig/scripts/ermak_rus.sms	2003-07-27 23:50:06.000000000 +0200
++++ smssend/scripts/ermak_rus.sms	2009-06-07 20:36:59.000000000 +0200
+@@ -1,28 +1,27 @@
+-## ERMAK RMS - Russia (may be for N-Vartovsk only? Not tested in any other city) ##
+-# Version 1.00
+-# by $CoRPioN <saa@priobye|NOSPAM|.ru>
++## ERMAK RMS - Russia (For all regions) ##
++# Version 1.01
++# by KRAB <prodagniy@inbox.ru>
+ # Error codes :
+-#  1 -> Only for Ermak RMS abonents
++#  1 -> Your IP limit exceedded
+ #  2 -> Can't send message
+ 
+ 
+ NbParams 3
+-%To Convert : Destination Phone number e.g. 1234567
+-%Type : DCS7 for english, UCS2 for russian
+-%Message Size=160 Convert : Your message
+-
+-GetURL http://www.nvartovsk.wsnet.ru/sot/sms/
++%Code : Enter 0 for 3452, 1 - 902812, 2 - 902813, 3 - 902815, 4 - 902818, 5 - 902850, 6 - 904873, 7 - 904874, 8 - 904875, 9 - 904876, 10 - 904877, 11 - 904887, 12 - 904888, 13 - 904889
++%Tel : Last four digits of phone number  e.g. 4567
++%Message Size=70 Convert : Your message
++
++GetURL http://sms.telecom.tmn.ru/
++Search ÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩIP ÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩ 10
++ErrorMsg 1 Your IP limit exceedded
+ GO
+ 
+-PostURL http://www.nvartovsk.wsnet.ru/sot/sms/sms.asp
+-Referer http://www.nvartovsk.wsnet.ru/sot/sms/
+-PostData ver=1.40&ph=\%To%&dcs=\%Type%&sm=\%Message%
+-
++PostURL http://sms.telecom.tmn.ru/smssend.php
++Referer http://sms.telecom.tmn.ru/
++PostData codepage=koi8_%CF%F0%CE%E2%C5%F0%CA%E0&nomeration=\%Code%&phone=\%Tel%&message=\%Message%&lang=on&msglen=70
+ 
+-Search —ÓÓ·˘ÂÌËÂ ÓÚÔ‡‚ÎÂÌÓ.
++Search ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+ PrintMsg Message successfully sent
+-ElseSearch ÔÓ‰‰ÂÊË‚‡ÂÚÒˇ ÚÓÎ¸ÍÓ ‡·ÓÌÂÌÚ‡Ï
+-ErrorMsg 1 Only for Ermak RMS abonents
+-ElseSearch —ÓÓ·˘ÂÌËÂ ÌÂ ÓÚÔ‡‚ÎÂÌÓ
++Else
+ ErrorMsg 2 Can't send message
+ GO
+diff -Naur smssend-orig/scripts/eurobate.sms smssend/scripts/eurobate.sms
+--- smssend-orig/scripts/eurobate.sms	2002-03-25 23:32:21.000000000 +0100
++++ smssend/scripts/eurobate.sms	2009-06-07 20:44:15.000000000 +0200
+@@ -1,30 +1,31 @@
+-## SkySMS provider file - www.eurobate.com ##
+-# Version 1.02
+-# by Remco Brink <remco@allycards.com>
++## SkySMS provider file - www2.eurobate.com ##
++# Version 1.03
++# Authors
++# - Jerome Lacoste <jerome@coffeebreaks.org> from 1.02
++# - Remco Brink <remco@allycards.com> til 1.02
+ # Error codes :
+-#  1 -> Bad Login/Password
+ 
+ NbParams 5
+-%Login Convert : Your login from www.eurobate.com
++%Login Convert : Your login from www2.eurobate.com
+ %Password Hidden : Your password
+-%Network Convert : Network code (0045 for Denmark, 00358 for Finland, 0047 for Norway, 0046 for Sweden or 001 for USA)
++%Network Convert : Network code (45 for Denmark, 358 for Finland, 47 for Norway, 46 for Sweden or 92 for Pakistan)
+ %Tel Convert : International gsm number of recipient (For example +33 for France, so for a sms to the french 0612345678 gsm : +33612345678)
+-%Message Size=143 Convert : Your message
++%Message Size=140 Convert : Your message
+ 
+ # Logging on Eurobate
+-GetURL http://www.eurobate.com/sms/index.php
++PostURL http://www2.eurobate.com/index.php?option=login
++Referer http://www2.eurobate.com/index.php
++PostData username=\%Login%&passwd=\%Password%
+ GO
+-PostURL http://www.eurobate.com/sms/sms.php
+-Referer http://www.eurobate.com/sms/index.php
+-PostData bruker=\%Login%&passord=\%Password%
+-Search Alle mÂ registrere seg
+-ErrorMsg 1 Bad login and/or password
++GetURL http://www2.eurobate.com/index.php?option=com_sms&task=sms
++#Referer http://www2.eurobate.com/index.php
+ GO
+ 
+ # Sending message
+-PostURL http://www.eurobate.com/sms/sms.php
+-Referer http://www.eurobate.com/sms/sms.php
+-PostData msgcounter=0&anumber=\%Network%\%Tel%&text=\%Message%
++PostURL http://www2.eurobate.com/index.php?option=com_sms&task=sms
++Referer http://www2.eurobate.com/index.php?option=com_sms&task=sms
++PostData melding=\%Message%&nummer=\%Tel%&land=\%Network%&option=com_sms&task=sms_send
+ 
+-# PrintMsg Message should be on its way now
++Search Din sms er sendt til
++PrintMsg Message should be on its way now
+ GO
+diff -Naur smssend-orig/scripts/everyday.sms smssend/scripts/everyday.sms
+--- smssend-orig/scripts/everyday.sms	2004-01-11 19:31:29.000000000 +0100
++++ smssend/scripts/everyday.sms	2009-06-07 20:47:25.000000000 +0200
+@@ -1,6 +1,6 @@
+ ## SkySMS provider file - www.everyday.com ##
+ # Version 1.05
+-# by Ze KiLleR <zekiller@-REMOVE-skytech.org>
++# by Ze KiLleR <zekiller@skytech.org>
+ # Error codes :
+ #  1 -> Bad Login/Password
+ #  2 -> Daily message quota exceeded
+diff -Naur smssend-orig/scripts/ft.sms smssend/scripts/ft.sms
+--- smssend-orig/scripts/ft.sms	2004-01-11 19:31:29.000000000 +0100
++++ smssend/scripts/ft.sms	2009-06-07 20:54:08.000000000 +0200
+@@ -1,7 +1,7 @@
+ ## SkySMS provider file - www.francetelecom.com ##
+-# Version 1.02
+-# by Ze KiLleR <zekiller@-REMOVE-skytech.org>
+-# Register at http://www.francetelecom.com/vfrance/home/pourvous/boutique/mobile/sms/
++# Version 1.05
++# by Ze KiLleR <zekiller@skytech.org>
++# Register at http://www.francetelecom.fr
+ # Error codes :
+ #  1 -> Bad Login/Password
+ #  2 -> Message Not Sent
+@@ -12,26 +12,26 @@
+ %Login Convert : Your login from francetelecom.com
+ %Password Hidden : Your password
+ %Tel : Gsm number of recipient (ex: 0601234567)
+-%Message Size=155 Convert : Your message
++%Message Size=128 Convert : Your message
+ 
+-GetURL http://smsft.wanadooportails.com/login.php
+-GO
++GetURL http://ftsms.cvf.fr/index.jgi
++ GO
+ 
+-PostURL http://smsft.wanadooportails.com/login.php
+-Referer http://smsft.wanadooportails.com/login.php
+-PostData login=\%Login%&password=\%Password%
+-Search identification n'a pas
++PostURL http://ftsms.cvf.fr/Authentification.jgi
++Referer http://ftsms.cvf.fr/index.jgi
++PostData loginMail=\%Login%&loginPassword=\%Password%
++Search Erreur d'identification
+ ErrorMsg 1 Bad login and/or password
+-ElseSearch avez consomm&eacute; la totalit&eacute; des
++ElseSearch Vous ne pouvez pas envoyer plus de 3 sms par jour
+ ErrorMsg 3 Daily quota exceeded
+ GO
+ 
+-PostURL http://smsft.wanadooportails.com/sendSMS.php
+-Referer http://smsft.wanadooportails.com/login.php
+-PostData messageSMS=\%Message%&SMSType=2&signature=&telephone=\%Tel%&HTMLlisttel%5B%5D=\%Tel%
++PostURL http://ftsms.cvf.fr/SendSMS.jgi
++Referer http://ftsms.cvf.fr/SendSMS.jgi
++PostData smsTextContent=\%Message%&displayModeRB=normal&signature=&hiddenAllTelNum=\%Tel%
+ Search message n'a pu
+ ErrorMsg 2 Message not sent
+-ElseSearch Votre message a ÈtÈ envoyÈ avec succËs
++ElseSearch Message(s) envoy&eacute;(s) avec succ&egrave;s
+ PrintMsg Message successfully sent
+ Else
+ ErrorMsg 5 Unknown error
+diff -Naur smssend-orig/scripts/gmxde.sms smssend/scripts/gmxde.sms
+--- smssend-orig/scripts/gmxde.sms	2003-02-12 20:43:09.000000000 +0100
++++ smssend/scripts/gmxde.sms	2009-06-07 20:59:07.000000000 +0200
+@@ -1,36 +1,14 @@
+ ## www.gmx.de ##
+-# Version 0.01
+-# by philipp.berndt@gmx.net
+-# Error codes :
+-#  1 Password is wrong
+-#  2 Invalid GMX email adress
+-#  3 daily limit exceeded
+-#  4 number has wrong format
+-#  5 unknown Error
+-#  6 monthly limit exceeded
+-#  7 didn't log out last time
+++# Version 0.10
+++# by fire-buster@gmx.de
+ 
+ NbParams 5
+-%user : GMX User ID (numerical)
+-%password hidden : Password
+-%from : gmx-email to send from
+-%number : complete phonenumber i.e. +491791234567
+-%message Size=160 Convert : Your message
+-
+-# Get login form and server
+-GetURL http://www.gmx.de/
+-GO
+-
+-# Log in
+-PostURL \%RTFormAction-1-1%
+-PostData AREA=\%RTGetInput-1-AREA%&EXT=\%RTGetInput-1-EXT%&EXT2=\%RTGetInput-1-EXT2%&id=\%user%&p=\%password%
+-Referer \%RTURL-1%
+-Search Haben Sie Ihr Passwort vergessen?
+-ErrorMsg 1 Password is wrong!
+-ElseSearch wurde Ihre letzte Sitzung von GMX
+-ErrorMsg 7 Error: You didn't log out the previous time. Please retry!
+-GO
+-
++%user : GMX User ID (numerisch)
++%password hidden : Freischaltcode des SMS-Managers
++%sender : Absender
++%number Convert : Empfaengernummer z.B. +491791234567
++%message Size=160 Convert : Die Nachricht
++ 
+ # Send message
+ PostURL http://\%RTHost-3%/de/cgi/sms
+ PostData CUSTOMERNO=\%user%&t=\%RTGetInput-3-t%&AREA=12&nr=\%number%&msg=\%message%&email=\%from%&USEPRO=1&SPONSOR=&Senden=Ja,+SMS+senden
+@@ -42,11 +20,42 @@
+ ErrorMsg 8 Message too long!
+ ElseSearch SMS-Nachricht wurde an
+ PrintMsg Message sent successfully!
++PostURL http://www2.wr-gmbh.de/api/send.jsp
++PostData login=\%user%&pwd=\%password%&from=\%sender%&to=%2B\%number%&sms=\%message%&customer=gmx
++
++Search ERROR_LOGIN_MISSING
++ErrorMsg 2 Sie haben den Parameter "login" nicht angegeben.
++ElseSearch ERROR_PASSWORD_MISSING
++ErrorMsg 3 Der Parameter "pwd" fehlt. 
++ElseSearch ERROR_RECEIVER_MISSING
++ErrorMsg 4 Sie haben keine EmpfÔøΩgernummer "to" angegeben. 
++ElseSearch ERROR_SMS_MISSING
++ErrorMsg 6 Der wichtigste Parameter "sms" wurde nicht angegeben. 
++ElseSearch ERROR_SENDER_TO_LONG
++ErrorMsg 7 Der als Absender angegebene Text ist zu lang. Ein rein aus Ziffern bestehender Absender darf 16-stellig sein. Sobald andere Zeichen enthalten sind, ist der Absender auf 11 Zeichen beschrÔøΩkt. 
++ElseSearch ERROR_INVALID_SENDER
++ErrorMsg 8 Eine Absenderkennung drfen Sie nur angeben, wenn Ihre Handynummer bestÔøΩigt wurde. Entweder ist Ihre Handynummer noch nicht bestÔøΩigt oder Sie versuchen eine andere als die bestÔøΩigte Handynummer zu verwenden. 
++ElseSearch ERROR_INVALID_RECEIVER
++ErrorMsg 9 Diese Fehlermeldung erscheint bei einer syntaktisch ungltigen EmpfÔøΩgernummer. 
++ElseSearch ERROR_INVALID_COUNTRY
++ErrorMsg 10 In das von Ihnen angegebene Land kÔøΩnen zur Zeit noch keine Kurznachrichten verschickt werden. 
++ElseSearch ERROR_INVALID_DATE
++ErrorMsg 11 Das von Ihnen angegebene Datum entspricht nicht dem von uns vorgegebenen Format. 
++ElseSearch ERROR_SMS_TOO_LONG
++ErrorMsg 12 Die abgegebene SMS ist zu lang. Hier sind bisher maximal 160 Zeichen erlaubt. 
++ElseSearch ERROR_INVALID_LOGIN
++ErrorMsg 13 Sie haben vermutlich einen Fehler bei der Eingabe Ihres Login uns Passworts gemacht. 
++ElseSearch ERROR_INSUFFICIENT_CREDITS
++ErrorMsg 14 Sie haben leider nicht mehr gengend Credits, um eine SMS zu versenden. 
++ElseSearch ERROR_TEMPORARY
++ErrorMsg 15 Dieser Fehler tritt nur bei GMX-Kunden auf. Es ist ein temporÔøΩer Fehler bei der ÔøΩerprfung Ihres Accounts aufgetreten. Bitte probieren Sie es spÔøΩer noch einmal. 
++ElseSearch ERROR_NON_GMX_USER
++ErrorMsg 16 Dieser Fehler tritt nur bei GMX-Kunden auf. Sie versuchen mit einem Nicht-GMX-Account auf die GMX-Features zuzugreifen.  
++ElseSearch ERROR_GMX_USER
++ErrorMsg 17 Sie verwenden einen GMX-Account. Bitte geben Sie den Parameter "customer=gmx" an, als Login Ihre Kundennummer und als Passwort Ihren Freischaltcode.  
++ElseSearch OK (
++PrintMsg Message successfully sent!
++
+ Else
+ ErrorMsg 5 Unknown error
+ GO
+-
+-# Log out
+-GetURL \%RTFollowLink-4-Logout%
+-GO
+-
+diff -Naur smssend-orig/scripts/info2you.sms smssend/scripts/info2you.sms
+--- smssend-orig/scripts/info2you.sms	2003-11-03 19:25:45.000000000 +0100
++++ smssend/scripts/info2you.sms	2009-06-07 21:03:23.000000000 +0200
+@@ -1,6 +1,7 @@
+ ## Info2You provider file - www.info2you.com.au
+-# Version 2.0
++# Version 2.2
+ # by Mike MacCana <mikem at cyber.com.au>, based on work by Frank Crawford <Frank.Crawford at ac3.com.au>
++# further modified by Gavin Brown <ausflyboy@mypostbox.com> to keep up with Optus.
+ # Error codes:
+ #	1 -> Bad Login/Password
+ #	2 -> Invalid destination number
+@@ -9,7 +10,7 @@
+ NbParams 4
+ %Login : Your login for Info2You (your Optus GSM number)
+ %Password Hidden : Your password (visit info2you.com and and register to get this sent to you via SMS)
+-%Tel : GSM number of recipient(s) (separate with `,')
++%Tel : GSM number of recipient(s) (separate with ,)
+ %Message Size=160 Convert : Your message
+ 
+ # Version 1.10 - update to new site scripts - 9 Oct 2001
+@@ -33,7 +34,7 @@
+ PostData mobile_phone=\%Tel%&message=\%Message%&counter=0&radaction=sendnow&action=send&groups=&individuals=&finish=Send
+ Search successfully
+ PrintMsg Message successfully sent
+-ElseSearch mobile number entered is improper
++ElseSearch Your SMS could not be
+ ErrorMsg 2 Invalid destination number
+ Else
+ ErrorMsg 3 Error sending message
+diff -Naur smssend-orig/scripts/lycos.sms smssend/scripts/lycos.sms
+--- smssend-orig/scripts/lycos.sms	2004-01-11 19:31:30.000000000 +0100
++++ smssend/scripts/lycos.sms	2009-06-07 21:05:42.000000000 +0200
+@@ -1,6 +1,6 @@
+ ## SkySMS provider file - www.lycos.fr ##
+ # Version 1.06
+-# by Ze KiLleR <zekiller@-REMOVE-skytech.org>
++# by Ze KiLleR <zekiller@skytech.org>
+ # Error codes :
+ #  1 -> Bad login
+ #  2 -> Bad password
+@@ -40,8 +40,7 @@
+ Params DA=\%Tel%&msg=\%Message%&validity=72&res=FR-+&security=\%RTExec-4-lycos /tmp/lycos.jpg%&\%RTGetForm-3-2%
+ #Params DA=\%Tel%&msg=\%Message%&validity=72&res=FR-+&\%RTGetForm-3-2%
+ Referer http://www.lycos.fr/cgi-bin/sms/logincheck_sms.cgi
+-Search Vous avez dÈpassÈ
+-ErrorMsg 3 Daily message quota exceeded
++Search Vous avez dÔøΩassÔøΩErrorMsg 3 Daily message quota exceeded
+ ElseSearch Lycos SMS n'a pas
+ ErrorMsg 4 Lycos error while sending message
+ ElseSearch LYCOS est en train d'envoyer le message
+diff -Naur smssend-orig/scripts/mageos.sms smssend/scripts/mageos.sms
+--- smssend-orig/scripts/mageos.sms	2004-01-11 19:31:30.000000000 +0100
++++ smssend/scripts/mageos.sms	2009-06-07 21:06:14.000000000 +0200
+@@ -1,40 +1,40 @@
+ ## SkySMS provider file - sms.mageos.com ##
+ # Version 2.03
+-# by Ze KiLleR <zekiller@-REMOVE-skytech.org>
++# by Ze KiLleR <zekiller@skytech.org>
+ # Error codes :
+ #  1 -> Max SMS per day reached
+ #  2 -> Max SMS per month reached
+-#  3 -> Unknown error
+-#  4 -> Bad Login/Password
+-
+-NbParams 4
++#  3 -> Unknown error
++#  4 -> Bad Login/Password
++
++NbParams 4
+ %Login : Your login from 9online
+-%Password Hidden : Your password
+-%Tel : Gsm number of recipient
+-%Message Size=130 Convert : Your message
+-
+-GetURL http://sms.mageos.com/identification.asp
+-Search pour le mois en cours, vous pourrez de nouveau envoyer
+-ErrorMsg 2 Max SMS per month reached
+-Go
+-
+-PostURL \%RTFormAction-1-0%
+-PostData mode=identification&login=\%Login%&pwd=\%Password%
+-Search Attention, identification non reconnue
+-ErrorMsg 4 Bad Login/Password
+-Go
+-
+-PostURL \%RTFormAction-3-0%
+-NoAdd refuse
+-PostData \%RTGetForm-3-0%
+-Search Vous avez atteint votre quota journalier
+-ErrorMsg 1 Max SMS per day reached
+-Go
+-
+-PostURL \%RTFormAction-5-0%
+-PostData notel1=\%Tel%&typeenvoi=maintenant&commentaire=\%Message%&Envoyer.x=1&Envoyer.x=2
+-Search Votre SMS a bien
+-PrintMsg Message successfully sent
+-Else
+-ErrorMsg 3 Unknown error
+-Go
++%Password Hidden : Your password
++%Tel : Gsm number of recipient
++%Message Size=130 Convert : Your message
++
++GetURL http://sms.mageos.com/identification.asp
++Search pour le mois en cours, vous pourrez de nouveau envoyer
++ErrorMsg 2 Max SMS per month reached
++Go
++
++PostURL \%RTFormAction-1-0%
++PostData mode=identification&login=\%Login%&pwd=\%Password%
++Search Attention, identification non reconnue
++ErrorMsg 4 Bad Login/Password
++Go
++
++PostURL \%RTFormAction-3-0%
++NoAdd refuse
++PostData \%RTGetForm-3-0%
++Search Vous avez atteint votre quota journalier
++ErrorMsg 1 Max SMS per day reached
++Go
++
++PostURL \%RTFormAction-5-0%
++PostData notel1=\%Tel%&typeenvoi=maintenant&commentaire=\%Message%&Envoyer.x=1&Envoyer.x=2
++Search Votre SMS a bien
++PrintMsg Message successfully sent
++Else
++ErrorMsg 3 Unknown error
++Go
+diff -Naur smssend-orig/scripts/megafon-msk.sms smssend/scripts/megafon-msk.sms
+--- smssend-orig/scripts/megafon-msk.sms	2003-11-03 19:33:13.000000000 +0100
++++ smssend/scripts/megafon-msk.sms	2009-06-07 21:07:26.000000000 +0200
+@@ -1,24 +1,25 @@
+-## Megafon Moscow privider file http://megafonmoscow.ru ##
+-# Version 0.9, Russian, GSM Network only (+7926)
+-# by Dr. Nebula <dr-nebula@nm.ru>
++Ôªø## Megafon-Moscow - Russia##
++# Version 1.00
++# by KRAB <prodagniy@inbox.ru>
+ # Error codes :
+-#  1 -> Access Denied
++#  1 -> Exceeded limit of messages per hour
+ #  2 -> Error sending message
+-
+ NbParams 2
+-%Tel : Phone number e.g. 1234567
++%Tel : GSM Number in 7 digit format without +7926 e.g. 1234567
+ %Message Size=110 Convert : Your message
+ 
+-PostURL http://www.megafonmoscow.ru/misc/sms2
+-Referer http://www.megafonmoscow.ru/misc/sms.sent
+-PostData addr=\%Tel%&&prefix=7926&&message=\%Message%&transliterate=1&
++# get the index
++GetURL http://www.megafonmoscow.ru/banner.cgi?p=general-leftcolumn&t=156x97&n=1
++GO
++# send the message
++PostURL http://www.megafonmoscow.ru/misc/sms2 
++Referer http://www.megafonmoscow.ru/misc/sms
++Postdata prefix=7926&addr=\%Tel%&message=\%Message%&transliterate=on
+ 
+-#Search ¬‡¯Â ÒÓÓ·˘ÂÌËÂ ÔÓÒÚ‡‚ÎÂÌÓ ‚ Ó˜ÂÂ‰¸ Ì‡ ÓÚÔ‡‚ÍÛ.
+-#Search ˜¡€≈ ”œœ¬›≈Œ…≈ –œ”‘¡◊Ã≈Œœ ◊ œﬁ≈“≈ƒÿ Œ¡ œ‘–“¡◊À’.
+-Search menu.jpg
+-PrintMsg Message successfully sent
+-ElseSearch ÓÒÚÛÔ Á‡ÔÂ˘
+-ErrorMsg 1 Access Denied
++Search –í–∞—à–µ —Å–æ–æ–±—â–µ–Ω–∏–µ –ø–æ—Å—Ç–∞–≤–ª–µ–Ω–æ –≤ –æ—á–µ—Ä–µ–¥—å –Ω–∞ –æ—Ç–ø—Ä–∞–≤–∫—É
++PrintMsg Message successfully send
++ElseSearch –ü—Ä–µ–≤—ã—à–µ–Ω –ª–∏–º–∏—Ç –Ω–∞ –∫–æ–ª–∏—á–µ—Å—Ç–≤–æ —Å–æ–æ–±—â–µ–Ω–∏–π —Å –æ–¥–Ω–æ–≥–æ IP-–∞–¥—Ä–µ—Å–∞ –≤ —á–∞—Å
++ErrorMsg 1 Exceeded limit of messages per hour
+ Else
+ ErrorMsg 2 Error sending message
+ GO
+diff -Naur smssend-orig/scripts/mobimel.sms smssend/scripts/mobimel.sms
+--- smssend-orig/scripts/mobimel.sms	2004-01-11 19:31:30.000000000 +0100
++++ smssend/scripts/mobimel.sms	2009-06-07 21:08:24.000000000 +0200
+@@ -1,6 +1,6 @@
+ ## SkySMS provider file - www.mobimel.com ##
+ # Version 1.04
+-# by Ze KiLleR <zekiller@-REMOVE-skytech.org>, mod. by <XSFX@linuxfreak.com>
++# by Ze KiLleR <zekiller@skytech.org>, mod. by <XSFX@linuxfreak.com>
+ # Error codes :
+ #  1 -> Bad Login/Password
+ #  2 -> Daily message quota exceeded
+@@ -32,7 +32,7 @@
+ PrintMsg Message successfully sent
+ ElseSearch atteint votre quota
+ ErrorMsg 2 Daily message quota exceeded
+-ElseSearch numÈro incorrect
++ElseSearch numÔøΩo incorrect
+ ErrorMsg 3 Incorrect phone number
+ ElseSearch destinataire ne souhaite pas
+ ErrorMsg 4 Blacklisted
+diff -Naur smssend-orig/scripts/mobitag.sms smssend/scripts/mobitag.sms
+--- smssend-orig/scripts/mobitag.sms	2004-01-11 19:31:30.000000000 +0100
++++ smssend/scripts/mobitag.sms	2009-06-07 21:09:21.000000000 +0200
+@@ -1,6 +1,6 @@
+ ## www.mobitag.nc ##
+ # Version 1.00
+-# by Ze KiLleR <zekiller@-REMOVE-skytech.org>
++# by Ze KiLleR <zekiller@skytech.org>
+ # Error codes :
+ #  1 -> Unknown error
+ 
+@@ -24,10 +24,9 @@
+ #PostURL http://services.6sens.bouyguestelecom.fr/SMS/TelemessagesValidEnvoyeText.asp
+ #Referer http://services.6sens.bouyguestelecom.fr/SMS/TelemessagesAnonymesProcess.asp
+ #PostData destinataire=\%Tel%&msg=\%Message%
+-#Search qui n'est pas un numÈro de mobile Bouygues Telecom
++#Search qui n'est pas un numÔøΩo de mobile Bouygues Telecom
+ #ErrorMsg 2 Not a bouygtel phone number
+-#ElseSearch a bien ÈtÈ envoyÈ
+-#PrintMsg Message successfully sent
++#ElseSearch a bien ÔøΩÔøΩenvoyÔøΩ#PrintMsg Message successfully sent
+ #Else
+ #ErrorMsg 3 Unknown error
+ #GO
+diff -Naur smssend-orig/scripts/mtnsms.sms smssend/scripts/mtnsms.sms
+--- smssend-orig/scripts/mtnsms.sms	2004-01-11 19:31:30.000000000 +0100
++++ smssend/scripts/mtnsms.sms	2009-06-07 21:10:04.000000000 +0200
+@@ -1,6 +1,6 @@
+ ## SkySMS provider file - www.mtnsms.com ##
+ # Version 1.06
+-# by Ze KiLleR <zekiller@-REMOVE-skytech.org>
++# by Ze KiLleR <zekiller@skytech.org>
+ # Error codes :
+ #  1 -> Bad Login/Password
+ #  2 -> Daily message quota exceeded
+diff -Naur smssend-orig/scripts/mts.sms smssend/scripts/mts.sms
+--- smssend-orig/scripts/mts.sms	2002-03-25 23:32:21.000000000 +0100
++++ smssend/scripts/mts.sms	2009-06-07 21:12:21.000000000 +0200
+@@ -1,19 +1,19 @@
+ ## 'Mobilnye Telesistemy' provider file - www.mts.ru ##
+-# Version 2.0
+-# by Alex Kapranoff <kappa@sendmail.ru>
++# Version 3.0
++# by Igor Ryapisov <ail@ints.ru>
+ # Error codes :
+ #  1 -> Something bad (specify '-- -d5' to smssend to figure out)
+ 
+ NbParams 2
+-%Tel : Use prefixes 7095, 7902, 7910, 7916
++%Tel : Use prefixes 7095, 7910, 7916
+ %Message Size=160 Convert
+ 
+ # Sending message
+-PostURL http://www.mts.ru/cgi-bin/cgi.exe?function=sms_send
++PostURL http://sms.mts.ru/cgi-bin/cgi.exe?function=sms_send&isFree=1
+ PostData To=\%Tel%&Msg=\%Message%&Hour=23&Min=59&Day=31&Mon=12&Year=2005
+-Referer http://www.mts.ru/sms/
++Referer http://sms.mts.ru
+ 
+-Search ¬‡¯Â ÒÓÓ·˘ÂÌËÂ ÓÚÔ‡‚ÎÂÌÓ
++Search ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩ
+ PrintMsg Message successfully sent
+ ElseSearch 
+ ErrorMsg 1 Message NOT sent
+diff -Naur smssend-orig/scripts/o2-genie.sms smssend/scripts/o2-genie.sms
+--- smssend-orig/scripts/o2-genie.sms	2003-10-10 14:19:15.000000000 +0200
++++ smssend/scripts/o2-genie.sms	2009-06-07 21:32:03.000000000 +0200
+@@ -1,72 +1,74 @@
+ ## O2-Genie provider file - www.o2.co.uk formerly www.genie.co.uk ##
+-# Version 2.10
++# Version 3.00 
+ # by Brian Potkin <brian@copernicus.demon.co.uk>
+ # Previously: Ian Cameron <i.a.cameron@open.ac.uk>
+ 
+-# 2.10: 06/08/2003 Messages not being accepted so changed PostURL and
+-# 		   PostData in final block.  Added some tracking of
+-# 		   number of remaining TXT.
+-# 2.00: 19/04/2003 Rewrote script to allow logging in via SSL and fixed
+-#                  message sending.  Updated message strings for status
+-#                  detection.
+-# 1.03: 17/05/2002 Initial release.
++# 3.00: 21/10/04 A change in the O2 website broke message sending.
++#		 Fixed this by removing the block containing a
++#		 reference to zarkov.shop.o2.co.uk. Altered number of
++#		 messages tracked as the 30 free messages per month is
++#		 reduced to 10 per month on 1/11/04.
++# 2.50: 31/03/04 No change to basic functionality. Removed the first
++#		 GetURL block as it was redundant. Corrected message
++#		 strings relating to status detection. Tidied up
++#		 comments and replaced some PrintMsg with ErrorMsg.
++# 2.10: 06/08/03 Messages not being accepted so changed PostURL and
++#		 PostData in final block. Added some tracking of
++#		 number of remaining TXT.
++# 2.00: 19/04/03 Rewrote script to allow logging in via SSL and fixed
++#		 message sending. Updated message strings for status
++#		 detection.
++# 1.03: 17/05/02 Initial release.
+ #
+ # Usage: smssend o2-genie.sms Login Password Tel "Subject" "Message"
+-# 30 free messages per month at present.
++# 10 free messages per month at present.
+ 
+ NbParams 5
+-%Login Convert : Your login name on www.genie.co.uk
+-%Password Hidden : Your password on www.genie.co.uk
++%Login Convert : Your login name on www.o2.co.uk
++%Password Hidden : Your password on www.o2.co.uk
+ %Tel Convert : UK GSM mobile telephone number including leading 0 (UK only)
+ %Subject Convert : Message subject (may be blank - "")
+ %Message Size=123 Convert : Message body (may be blank - "")
+ 
+-GetURL http://www.genie.co.uk/
+-Search Go to O2 homepage
+-PrintMsg O2 website accessed - sending login name and password.
+-GO
++# Logging on to O2.
+ 
+-# Logging on to Genie
+ PostURL https://gordon.genie.co.uk/login/mblogin
+ PostData &username=\%Login%&password=\%Password%
+-Search We are unable to recognise
++Search Please try to
+ ErrorMsg 1 Unable to login - check username and password combination.
+ GO
+ 
+-# Send back cookies to continue logging on
+-PostURL https://zarkov.shop.o2.co.uk/login/bglogin
+-PostData &mID=\%RTGetInput-3-mID%&mAT=\%RTGetInput-3-mAT%
+-GO
++# Navigate to message sending page.
+ 
+-# Navigate to message sending page
+ GetURL http://sendtxt.o2.co.uk/webOriginate/action/viewHomePage
+-Search Buy Additional TXT
++Search Sorry. There was an unexpected problem
++ErrorMsg 2 The service is unavailable. Please try again later.
++ElseSearch Buy Additional TXT
+ PrintMsg You are now logged in and at the message sending page.
+ GO
+ 
+-# Test for number of remaining TXT.  Add to or delete as desired 
++# Track number of messages remaining. Alter as desired. Deleting this
++# block does not affect the message sending capability.
+ GetURL http://sendtxt.o2.co.uk/webOriginate/action/viewHomePage
+-Search Use free TXT - you have 30 TXT remaining
+-PrintMsg You have 30 free TXT left at present
+-ElseSearch Use free TXT - you have 20 TXT remaining
+-PrintMsg You have 20 free TXT left at present
+-ElseSearch Use free TXT - you have 10 TXT remaining
+-PrintMsg You have 10 free TXT left at present
++Search Use free TXT - you have 10 TXT remaining
++PrintMsg You have 10 free TXT remaining to send this month.
+ ElseSearch Use free TXT - you have 5 TXT remaining
+-PrintMsg You have 5 free TXT left at present
++PrintMsg You have 5 free TXT remaining to send this month.
++ElseSearch Use free TXT - you have 0 TXT remaining
++ErrorMsg 3 Message not sent - no free TXT quota remaining.
+ GO
+ 
+-# Sending message to Genie
++# Sending message to O2.
+ PostURL http://sendtxt.o2.co.uk/webOriginate/action/sendMessage
+ PostData contacts=&msisdns=\%Tel%&subject=\%Subject%&message=\%Message%
+ Search Your message has been sent successfully
+ PrintMsg Message accepted.
+-ElseSearch The message could not be sent to the following recipients
+-PrintMsg Your message has not been sent.
+-ElseSearch Use free TXT - you have 0 TXT remaining
+-PrintMsg Message not sent - no free TXT quota remaining.
++ElseSearch The message was not sent as the following recipients
++ErrorMsg 4 Message not sent - invalid phone number.
++ElseSearch The message was not sent due to an internal error
++ErrorMsg 5 Message not sent - invalid phone number.
+ Else
+-ErrorMsg 2 Unable to send message.
++ErrorMsg 6 Unable to send message. Reason unknown.
+ GO
+ 
+ 
+diff -Naur smssend-orig/scripts/oskar.sms smssend/scripts/oskar.sms
+--- smssend-orig/scripts/oskar.sms	2003-07-16 17:57:38.000000000 +0200
++++ smssend/scripts/oskar.sms	2009-06-07 21:18:52.000000000 +0200
+@@ -1,12 +1,18 @@
+ ## Oskar provider file - www.oskarmobil.cz ##
+-# Version 1.11
++# Version 1.14
+ # by Rudolf Cejka <cejkar@fit.vutbr.cz>
+-# updated by kato (1.06), petr (1.07)
++# updated by kato (1.06), petr (1.07), lim@nano.cz (1.13)
+ # Error codes :
+ #  1 -> Error sending message
++#  1 -> GSM number of recipient does not exist
++#  2 -> Optical recognition mistake (please try it once again)
++#  3 -> Error sending message
++
++# You also need to have installed gocr (http://jocr.sourceforge.net/)
++# and convert from ImageMagick (http://www.ImageMagick.org/)
+ 
+ NbParams 7
+-%Prefix Size=3 : GSM operator prefix (608, 776, 777)
++%Prefix Size=3 : GSM operator prefix (608, 775, 776, 777)
+ %Tel Size=6 : GSM number of recipient (6 digits in +420608xxxxxx)
+ %MyPrefix1 Size=3 : Your country prefix (420)
+ %MyPrefix2 Size=5 : Your phone number prefix (60x, ...)
+@@ -16,11 +22,18 @@
+ 
+ GetURL http://sms.oskarmobil.cz/s_main.php3?locale=cz
+ GO
++# \%RTGetInput-1-pic_id% would be better than
++# `sed -ne 's/^.*\(gd.php?id=[0-9]*\).*$/\1/p'`
++
+ PostURL http://sms.oskarmobil.cz/send.php3?locale=cz
+-PostData predcisli=\%Prefix%&number=\%Tel%&ppp=\%RTGetInput-1-ppp%&locale=cz&mypred1=\%MyPrefix1%&mypred2=\%MyPrefix2%&mynumber=\%Number%&sender=\%Name%&message=\%Message%
+-Search Vaöe textov· zpr·va byla ˙spÏönÏ odesl·na
++PostData predcisli=\%Prefix%&number=\%Tel%&ppp=\%RTGetInput-1-ppp%&locale=cz&mypred1=\%MyPrefix1%&mypred2=\%MyPrefix2%&mynumber=\%Number%&sender=\%Name%&pictogram=\%RTExec-1-convert -opaque white http://sms.oskarmobil.cz/`sed -ne 's/^.*\(gd.php?id=[0-9]*\).*$/\1/p'` pnm:- | gocr -%&pic_id=\%RTGetInput-1-pic_id%&message=\%Message%
++Search Vae textovÔøΩzprÔøΩa byla spÔøΩÔøΩodeslÔøΩa
+ PrintMsg Message successfully sent
++ElseSearch A takÔøΩnejde poslat zprÔøΩu na ÔøΩslo, kterÔøΩneexistuje
++ErrorMsg 1 GSM number of recipient does not exist
++ElseSearch Neopsali jste ÔøΩslo z obrÔøΩku
++ErrorMsg 2 Optical recognition mistake (please try it once again)
+ Else
+-ErrorMsg 1 Error sending message
++ErrorMsg 3 Error sending message
+ GO
+ 
+diff -Naur smssend-orig/scripts/pager.sms smssend/scripts/pager.sms
+--- smssend-orig/scripts/pager.sms	2002-03-25 23:32:21.000000000 +0100
++++ smssend/scripts/pager.sms	2009-06-07 21:33:07.000000000 +0200
+@@ -1,21 +1,20 @@
+ ## Pager ##
+-# Version 0.1
++# Version 0.2 (revided version 2004, tested with "pogo" service)
+ # by Jan Ptacek <ptak@ptak.cz>
+ #
+ 
+ NbParams 2
+ %Number : Pager Number
+-%Message Convert : Gateway cut off everything over pager char limit
++%Message Convert : Gateway cut off everything over service char limit (300 for pogo, 400 for tango, 1000 for r-mail)
+ 
+-# send the message
+-GetURL http://www.operator.cz/cgi-bin/oper/oper1n.pl/ca/sendmsgp?ID=\%Number%&TXT=\%Message%
+-
+-Search byl odesl
++#GetURL http://sms.oskarmobil.cz/s_main.php3?locale=cz
++#GO
++PostURL http://www.operator.cz/scripts/send_msg.php
++PostData ID=\%Number%&TXT=\%Message%
++Search spÔøΩÔøΩodeslÔøΩa
+ PrintMsg Okay, message probably sent
+-ElseSearch Opravte, pro
+-ErrorMsg 1 Hmm, your pager number is wrong
+-ElseSearch 400 znak
+-ErrorMsg 2 Okay, message probably sent, but only first 400 chars
+-ElseSearch 1000 znak
+-ErrorMsg 2 Okay, message probably sent, but only first 1000 chars
+-GO
+\ No newline at end of file
++ElseSearch prÔøΩdnou zprÔøΩu
++ErrorMsg 1 Message is empty - nothing send
++ElseSearch patnÔøΩÔøΩslo
++ErrorMsg 2 Number is wrong, message not send
++GO
+diff -Naur smssend-orig/scripts/smspress.sms smssend/scripts/smspress.sms
+--- smssend-orig/scripts/smspress.sms	2004-01-11 19:31:30.000000000 +0100
++++ smssend/scripts/smspress.sms	2009-06-07 21:35:33.000000000 +0200
+@@ -1,7 +1,7 @@
+ ## SkySMS provider file - www.smspress.com ##
+ # Version 0.01
+ # modified by Leon Brooks <leon@brooks.fdns.net>
+-# from totaliser script v1.06 by Ze KiLleR <zekiller@-REMOVE-skytech.org>
++# from totaliser script v1.06 by Ze KiLleR <zekiller@skytech.org>
+ # Error codes :
+ #  1 -> Bad Login/Password
+ #  2 -> Internal Server Error - probably overloading, Microsoft sucks
+diff -Naur smssend-orig/scripts/sprintpcs.sms smssend/scripts/sprintpcs.sms
+--- smssend-orig/scripts/sprintpcs.sms	2003-02-12 20:43:09.000000000 +0100
++++ smssend/scripts/sprintpcs.sms	2009-06-07 21:39:08.000000000 +0200
+@@ -1,6 +1,6 @@
+ #messaging.sprintpcs.com
+-#Version 1.20
+-#Jeff McCune <mccune@ling.ohio-state.edu>
++#Version 2.0
++#Dave Cinege <dcinege@psychosis.com>
+ #Error codes :
+ # 1 -> Not subscribed to SMS
+ # 2 -> General Error sending message
+@@ -11,23 +11,13 @@
+ %CallbackNumber : Your phone number - 1 or more digits
+ %Message Size=160 Convert : Your message
+ 
+-# Initial connection...  We need a jsessionid value from this
+-GetURL http://messaging.sprintpcs.com/
+-Go
++PostURL http://messaging.sprintpcs.com/textmessaging/composeconfirm
++PostData phoneNumber=\%Number%&message=\%Message%&callBackNumber=\%CallbackNumber%
+ 
+-# Sending message
+-# The first section GetURL will bounce to the right page, most likely
+-# http://messaging.sprintpcs.com/sml/guestCompose.do and as such we
+-# RTFormAction on part2 rather than part1
+-PostURL \%RTFormAction-2-0%
+-PostData post=Send&recipientsAsString=\%Number%&mobileNumber=\%Number%&body=\%Message%&counter=160&callback=\%CallbackNumber%
+-
+-Search does not subscribe to this messaging
+- ErrorMsg 1 The number supplied does not subscribe to SMS
+-ElseSearch Message sent successfully
++Search phone is not on a Sprint PCS plan that supports SMS text
++ErrorMsg 1 The number supplied does not subscribe to SprintPCS SMS
++ElseSearch This message is being transmitted now
+  PrintMsg  Your message has been sent succesfully
+ Else
+  ErrorMsg 2 General Error sending message
+ GO
+-
+-
+diff -Naur smssend-orig/scripts/telering.sms smssend/scripts/telering.sms
+--- smssend-orig/scripts/telering.sms	2002-03-25 23:32:21.000000000 +0100
++++ smssend/scripts/telering.sms	2009-06-07 21:44:07.000000000 +0200
+@@ -1,24 +1,39 @@
+ ## Austrian providers file - www.telering.at ##
+-# Original page: http://telering.annyway.net/telering/gateway/intro.html
+-# Version 1.00
+-# by Jaroslav Sterba <jarda@matfyz.cz>
++# Original page: http://sms.telering.at
++# Version 1.1
++# Originaly by Jaroslav Sterba <jarda@matfyz.cz>
++# 	adapted <maxpowerminimum@hotmail.com>
+ # Error codes :
+ #  1 -> GSM number of recipient is not correct
+ #  2 -> Error sending message
++#  3 -> Login/Password failed
++#  4 -> Telephone Number contained non-numeric characters
++#  5 -> Only Prefix is valid if not loged in 
+ 
+-NbParams 3
+-%Prefix : Prefix (650 - tele.ring, 664 - A1, 676 - max, 699 - One)
+-%Tel : GSM number of recipient (7 digits in +43650xxxxxxx)
++NbParams 5
++%Login : The Telering Login Your Telering Phone Number 0650xxxxxxx (7 Digits)
++%Password Hidden : Your Telering Password
++%Prefix : Precode 0043( 650 - tele.ring, 664 - A1, 676 - max, 699 - One, 660 - Drei) 7 Digits
++%Tel : GSM number of recipient (7 digits in (Precode)/xxxxxxx) for x fill in your Number
+ %Message Size=142 Convert : Your message
+ 
+-GetURL http://telering.annyway.net/telering/gateway/intro.html
+++GetURL http://sms.telering.at/aic?req=Login.singleLogin&go=http%3A%2F%2Fsms.telering.at%2Faic%3Freq%3DShared.misc%26form%3D..%2Fshared%2Fmain.jsp&go_after_error=http%3A%2F%2Fsms.telering.at%2Faic%3Freq%3DLogin.misc%26form%3D..%2Flogin%2FsingleLogin.jsp%26success%3Dfalse&natcode=0043&msisdn2=\%Login%&pin=\%Password%
++Search  Die angegebene Telefonnummer/Passwort-Kombination ist nicht korrekt. Bitte
++ErrorMsg 3 Login failed : Login or Password failed
+ GO
+-PostURL http://telering.annyway.net/telering/gateway/sendgw.html
+-PostData Gateway=0\%Prefix%&ERufNr=\%Tel%&SMStxt=\%Message%
+-Search Ihre SMS wurde versandt!
++
++#Send the SMS
++
++PostURL http://sms.telering.at/aic;jsessionid=sms.telering.at-3b8%3A4062ce00%3Abbf878c994d3b190
++PostData precode=\%Prefix%&recipient=\%Tel%&msg=\%Message%&counter=135&formDescr=http%3A%2F%2Fsms.telering.at%3A80%2Fde%2Fjsp%2Fwebsms%2FcomposeSMS.jsp%240.1%2Fsms%2Fsubmitimage.x&req=AicWebSMS.misc&form=..%2Fwebsms%2FcomposeSMS.jsp&currComp=websms
++Search Ihre SMS wurde erfolgreich versendet!
+ PrintMsg Message successfully sent
+ ElseSearch Die eingegebene Rufnummer ist nicht korrekt!
+-ErrorMsg 1 GSM number of recipient is not correct 
++ErrorMsg 1 GSM number of recipient is not correct
++ElseSearch nur Zahlen eingegeben werden.
++ErrorMsg 4 Only Nummeric characters are allowed for Number
++ElseSearch Sie sind Mobilkunde und wollen das komplette Angebot der tele.ring sms Dienste per Internet nutzen? Loggen Sie sich einfach mit Ihrer Telefonnummer und Ihrem tele.ring Passwort ein. Mehr Infos zum Thema Passwort finden Sie in der
++ErrorMsg 5 Only prefix 0650 is free for all other prefixes (664,676,699,660) you have to a telering customer
+ Else
+ ErrorMsg 2 Error sending message
+ GO
+diff -Naur smssend-orig/scripts/totalise.sms smssend/scripts/totalise.sms
+--- smssend-orig/scripts/totalise.sms	2004-01-11 19:31:30.000000000 +0100
++++ smssend/scripts/totalise.sms	2009-06-07 21:46:01.000000000 +0200
+@@ -1,10 +1,10 @@
+ ## SkySMS provider file - sms.totalise.net ##
+ # Version 1.06
+-# by Ze KiLleR <zekiller@-REMOVE-skytech.org>
++# by Ze KiLleR <zekiller@skytech.org>
+ # Error codes :
+ #  1 -> Bad Login/Password
+ #  2 -> Internal Server Error - probably overloading
+-#  3 -> Messages to this country not allowed
++#  3 -> Messages to this country not allowed
+ 
+ NbParams 5
+ %Login : Your login from totalise.net
+@@ -30,8 +30,8 @@
+ PostData AREA=\%CountryCode%&tnumber=\%Tel%&email=&snumber=&message=\%Message%
+ 
+ Search Messages to this country not allowed
+-ErrorMsg 3 Messages to this country not allowed
+-# We currently don't know if there is an error sending the sms
+-Else
++ErrorMsg 3 Messages to this country not allowed
++# We currently don't know if there is an error sending the sms
++Else
+ PrintMsg Message successfully sent
+ GO
+diff -Naur smssend-orig/scripts/unimobile.sms smssend/scripts/unimobile.sms
+--- smssend-orig/scripts/unimobile.sms	2004-01-11 19:31:30.000000000 +0100
++++ smssend/scripts/unimobile.sms	2009-06-07 21:47:58.000000000 +0200
+@@ -1,6 +1,6 @@
+ ## SkySMS provider file - unimobile.com ##
+ # Version 1.02
+-# by Ze KiLleR <zekiller@-REMOVE-skytech.org>
++# by Ze KiLleR <zekiller@skytech.org>
+ ##############
+ # UNFINISHED #
+ ##############
+@@ -53,7 +53,7 @@
+ 
+ ##ElseSearch votre quota de messages
+ ##ErrorMsg 2 Daily message quota exceeded
+-##ElseSearch numÈro incorrect
++##ElseSearch numÔøΩo incorrect
+ ##ErrorMsg 3 Incorrect phone number
+ 
+ Else

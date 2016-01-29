@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+audacity-minsrc-${UB_VERSION}.tar.xz audacity-src-${UB_VERSION}/
+	http://audacity.googlecode.com/files/
+	http://downloads.sourceforge.net/audacity/

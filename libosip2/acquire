@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libosip2-${UB_VERSION}.tar.gz libosip2-${UB_VERSION}/
+	ftp://ftp.gnu.org/gnu/osip/

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+confuse-${UB_VERSION}.tar.gz confuse-${UB_VERSION}/
+	http://bzero.se/confuse/
+	http://savannah.nongnu.org/download/confuse/

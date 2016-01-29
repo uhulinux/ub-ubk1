@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libview-${UB_VERSION}.tar.gz libview-${UB_VERSION}/
+	http://downloads.sourceforge.net/view/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ipsec-tools-"$UB_VERSION".tar.bz2 ipsec-tools-"$UB_VERSION"/
+	http://downloads.sourceforge.net/ipsec-tools/"$UB_VERSION"/

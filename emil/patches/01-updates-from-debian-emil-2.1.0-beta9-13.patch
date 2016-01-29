@@ -1,0 +1,943 @@
+--- emil-2.1.0-beta9.orig/7bit.c
++++ emil-2.1.0-beta9/7bit.c
+@@ -76,7 +76,7 @@
+ 0x5C, 0x55, 0x55, 0x55, 0x5E, 0x59, 0x50, 0x42,
+ 
+ 0x61, 0x61, 0x61, 0x61, 0x7B, 0x7D, 0x7B, 0x63,
+-0x65, 0x60, 0x65, 0x65, 0x69, 0x69, 0x69, 0x69,
++0x65, 0x65, 0x65, 0x65, 0x69, 0x69, 0x69, 0x69,
+ 
+ 0x64, 0x6E, 0x6F, 0x6F, 0x6F, 0x6F, 0x7C, 0x20,
+ 0x7C, 0x75, 0x75, 0x75, 0x7E, 0x79, 0x70, 0x79};
+@@ -126,7 +126,7 @@
+ 0x4F, 0x55, 0x55, 0x55, 0x5E, 0x59, 0x50, 0x42,
+ 
+ 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x63,
+-0x65, 0x60, 0x65, 0x65, 0x69, 0x69, 0x69, 0x69,
++0x65, 0x65, 0x65, 0x65, 0x69, 0x69, 0x69, 0x69,
+ 
+ 0x64, 0x6E, 0x6F, 0x6F, 0x6F, 0x6F, 0x6F, 0x20,
+ 0x6F, 0x75, 0x75, 0x75, 0x7E, 0x79, 0x70, 0x79};
+--- emil-2.1.0-beta9.orig/Makefile.in
++++ emil-2.1.0-beta9/Makefile.in
+@@ -41,9 +41,10 @@
+ #manprefix =
+ 
+ bindir = @bindir@
+-libdir = @libdir@
++libdir = @libdir@/emil
+ mandir = @mandir@
+-manext = 8
++manext = 1
++cfmanext = 5
+ 
+ MAINCF = $(libdir)/emil.cf
+ CHARFILE = $(libdir)/charsets.cpl
+@@ -102,7 +103,7 @@
+ MFLAGS = "CHARFILE=$(CHARFILE)" "CFLAGS=$(CFLAGS)" "LDFLAGS=$(LDFLAGS)"
+ 
+ DEFS = @DEFS@ $(CLIENTS) -DMAINCF=$(cffile) -DCHARFILE=$(charsetsfile) -DSENDMAILPATH=$(sendmailpath) -DSENDMAILPROG=$(sendmailprog) -DSENDERFLAG=$(senderflag) -DLOG_FACILITY=$(LOG_FACILITY) -DSMTPHOSTNAME=\"$(SMTPHOSTNAME)\" -DEMIL_VERSION=\"$(VERSION)\" -DEMILPATH=\"$(EMILPATH)\"
+-LIBS = @LIBS@
++LIBS = @LIBS@ @LEXLIB@
+ RANLIB = @RANLIB@
+ YACC = @YACC@
+ LEX = @LEX@
+@@ -187,12 +188,12 @@
+ 
+ man: 
+ 	cp emil.man emil.$(manext)
+-	cp emil.cf.man emil.cf.$(manext)
++	cp emil.cf.man emil.cf.$(cfmanext)
+ 	@rm -f config.ed
+ 	@echo "1,\$$s'^MAINCF'$(MAINCF)'g" > config.ed
+ 	@echo "w"		>> config.ed
+ 	@echo "q"		>> config.ed
+-	ed emil.cf.$(manext) <config.ed
++	ed emil.cf.$(cfmanext) <config.ed
+ 	@rm -f config.ed
+ 	@echo "1,\$$s'^MAINCF'$(MAINCF)'g" > config.ed
+ 	@echo "1,\$$s'^CHARFILE'$(CHARFILE)'g"	>> config.ed
+@@ -202,7 +203,7 @@
+ 
+ manprint: man
+ 	psroff -man emil.$(manext)
+-	psroff -man emil.cf.$(manext)
++	psroff -man emil.cf.$(cfmanext)
+ 
+ test:
+ 	@cd testdir-2.1.0; \
+@@ -248,7 +249,7 @@
+ 			echo " " ;\
+ 			echo "Installing charset/charsets.cpl as $(CHARFILE)";\
+ 			$(INSTALL_DATA) charset/charsets.cpl $(CHARFILE); \
+-			 chmod 444 $(CHARFILE) ; \
++			 chmod 644 $(CHARFILE) ; \
+ 		fi ; \
+ 	fi ;
+ 	@if test -f emil.$(manext) ; then \
+@@ -256,16 +257,17 @@
+ 		echo "Installing emil.$(manext) in $(mandir)/man$(manext)";\
+ 		$(INSTALL_DATA) emil.$(manext) $(mandir)/man$(manext); \
+ 	fi ;
+-	@if test -f emil.cf.$(manext) ; then \
++	@if test -f emil.cf.$(cfmanext) ; then \
+ 		echo " " ;\
+-		echo "Installing emil.cf.$(manext) in $(mandir)/man$(manext)";\
+-		$(INSTALL_DATA) emil.cf.$(manext) $(mandir)/man$(manext); \
++		echo "Installing emil.cf.$(cfmanext) in $(mandir)/man$(cfmanext)";\
++		$(INSTALL_DATA) emil.cf.$(cfmanext) $(mandir)/man$(cfmanext); \
+ 	fi ;
+ 	@echo " " ;
+ 	@echo "Installation done." ;
+ 
+ installdirs:
+-	$(srcdir)/mkinstalldirs $(bindir) $(libdir) $(mandir)/man$(manext)
++	$(srcdir)/mkinstalldirs $(bindir) $(libdir) $(mandir)/man$(manext) \
++		$(mandir)/man$(cfmanext)
+ 
+ uninstall: 
+ 	if test -f $(bindir)/emil ; then \
+@@ -280,8 +282,8 @@
+ 	if test -f $(mandir)/man$(manext)/emil.$(manext) ; then \
+ 		 rm $(mandir)/man$(manext)/emil.$(manext); \
+ 	fi ;\
+-	if test -f $(mandir)/man$(manext)/emil.cf.$(manext) ; then \
+-		 em $(mandir)/man$(manext)/emil.cf.$(manext) ; \
++	if test -f $(mandir)/man$(cfmanext)/emil.cf.$(cfmanext) ; then \
++		 em $(mandir)/man$(cfmanext)/emil.cf.$(cfmanext) ; \
+ 	fi
+ 
+ Makefile: Makefile.in config.status
+@@ -300,7 +302,8 @@
+ 	etags $(SRCS)
+ 
+ clean:
+-	rm -f *.o emil helper y.tab.c lex.yy.c getoption.o getoption.c core ; \
++	rm -f *.o emil helper y.tab.c lex.yy.c getoption.o getoption.c core \
++		emil.$(manext) emil.cf.$(cfmanext) y.output config.ed
+ 	cd charset; make clean
+ 
+ mostlyclean: clean
+--- emil-2.1.0-beta9.orig/base64.c
++++ emil-2.1.0-beta9/base64.c
+@@ -174,7 +174,7 @@
+ int
+ decode_base64(struct message *m)
+ {
+-  struct data *inbuf, *outbuf;
++  struct data *inbuf, *outbuf = NULL;
+   char *inb;
+   int i;
+   int l;
+--- emil-2.1.0-beta9.orig/charset.c
++++ emil-2.1.0-beta9/charset.c
+@@ -131,7 +131,7 @@
+   CHAR8U	 *source;
+   CHAR8U	c, c1;
+   /* 4 chars for ending: esc two-char nul */
+-  int	o;		/* intermediate binary value */
++  int	o=0;		/* intermediate binary value */
+   /* INT16S	mnem; ... Unused ... 941114 / TW */
+   int	oc; 		/* 2-byte output value */
+   int 	bytes;
+--- emil-2.1.0-beta9.orig/emil.cf
++++ emil-2.1.0-beta9/emil.cf
+@@ -28,35 +28,41 @@
+ Match	MAILTOOL	"postscript-file"		POSTSCRIPT	;
+ Match	MAILTOOL	"default"			APPLICATION	;
+ Match	MAILTOOL	"default-app"			APPLICATION	;
++Match	MAILTOOL	"h-file"			TEXT		;
+ Match	MAILTOOL	"default"			DEFAULT		;
+ 
+ #
+ # MIME "Content-Type" values
+ #
+-Match	MIME		"Text/plain"			TEXT		;
+-Match	MIME		"Image/GIF"			GIF		;
+-Match	MIME		"Image/JPEG"			JPEG		;
+-Match	MIME		"Audio/Basic"			ULAW		;
+-Match	MIME		"Application/Postscipt"		POSTSCRIPT	;
+-Match	MIME		"Application/MSWord"		MSWORD		;
+-Match	MIME		"Application/X-MSExcel"		EXCEL		;
+-Match	MIME		"Application/Applefile"		APPLESINGLE	;
+-Match	MIME		"Application/Octet-Stream"	APPLICATION	;
+-Match   MIME            "Application/X-framemaker"      FRAME           ;
+-Match	MIME		"Application/PGP"		PGP		;
+-Match	MIME		"Application/mac-binhex4.0"	BINHEX		;
+-Match	MIME		"Application/MacBinary"		MACBINARY	;
+-Match	MIME		"Message/rfc822"		MESSAGE		;
+-Match	MIME		"Message/Partial"		PARTIAL		;
+-Match	MIME		"Message/External-Body"		EXTERNAL	;
+-Match	MIME		"Multipart/Mixed"		MULTIPART	;
+-Match	MIME		"Multipart/Digest"		MULTIPART	;
+-Match	MIME		"Multipart/Aternative"		MULTIPART	;
+-Match	MIME		"Multipart/Parallel"		MULTIPART	;
+-Match	MIME		"Multipart/AppleDouble"		MULTIPART	;
+-Match	MIME		"Multipart/Header-Set"		MULTIPART	;
+-Match	MIME		"Video/MPEG"			MPEG		;
+-Match	MIME		"Application/Octet-Stream"	DEFAULT		;
++Match	MIME		"text/plain"			TEXT		;
++Match	MIME		"image/gif"			GIF		;
++Match	MIME		"image/jpeg"			JPEG		;
++Match	MIME		"audio/basic"			ULAW		;
++Match	MIME		"application/postscript"	POSTSCRIPT	;
++Match	MIME		"application/msword"		MSWORD		;
++Match	MIME		"application/x-msexcel"		EXCEL		;
++Match	MIME		"application/applefile"		APPLESINGLE	;
++Match	MIME		"application/octet-stream"	APPLICATION	;
++Match   MIME            "application/x-framemaker"      FRAME           ;
++Match	MIME		"application/pgp"		PGP		;
++Match	MIME		"application/mac-binhex4.0"	BINHEX		;
++Match	MIME		"application/mac-binhex40"	BINHEX		;
++Match	MIME		"application/macbinary"		MACBINARY	;
++Match	MIME		"application/x-dvi"		DVI		;
++Match	MIME		"message/rfc822"		MESSAGE		;
++Match	MIME		"message/partial"		PARTIAL		;
++Match	MIME		"message/external-body"		EXTERNAL	;
++Match	MIME		"multipart/mixed"		MULTIPART	;
++Match	MIME		"multipart/digest"		MULTIPART	;
++Match	MIME		"multipart/aternative"		MULTIPART	;
++Match	MIME		"multipart/parallel"		MULTIPART	;
++Match	MIME		"multipart/appledouble"		MULTIPART	;
++Match	MIME		"multipart/header-set"		MULTIPART	;
++Match	MIME		"video/mpeg"			MPEG		;
++Match	MIME		"application/x-tar"		TAR		;
++Match	MIME		"application/octet-stream"	DEFAULT		;
++Match	MIME		"text/html"			HTML		;
++Match	MIME		"application/pdf"		PDF		;
+ #
+ # UUencode file name extensions
+ #
+@@ -69,6 +75,11 @@
+ Match	UUENCODE	".pgp"				PGP		;
+ Match	UUENCODE	".au"				ULAW		;
+ Match	UUENCODE	".eps"				POSTSCRIPT	;
++Match	UUENCODE	".ps"				POSTSCRIPT	;
++Match	UUENCODE	".dvi"				DVI		;
++Match	UUENCODE	".tar"				TAR		;
++Match	UUENCODE	".html"				HTML		;
++Match	UUENCODE	".pdf"				PDF		;
+ #
+ # Applefile (BinHex) Type & Creator
+ #
+@@ -99,8 +110,8 @@
+ 			  appletype=single, textenc=8bit, henc=8bit ;
+ group mac_user		: charset=MACINTOSH, format=rfc822, bin=binhex,
+ 			  appletype=binhex, textenc=8bit, henc=8bit ;
+-group old_sunet		: charset=SE, format=rfc822, bin=uuencode,
+-						textenc=7bit, henc=7bit ;
++#group old_sunet		: charset=SE, format=rfc822, bin=uuencode,
++#						textenc=7bit, henc=7bit ;
+ group transparent	: format=transparent ;
+ 
+ group rfc822_user	: charset=iso-8859-1, format=rfc822, bin=uuencode,
+@@ -129,8 +140,8 @@
+ member old_sunet	: 	* * * ;
+ 
+ 
+-mailer	localaix	: /bin/bellmail, mail, -F, $s, $r ;
+-mailer	localbsd44	: /usr/libexec/mail.local, -f, $s, $r ;
+-mailer  sendmail	: /usr/lib/sendmail, sendmail, -f, $s, $r ;
++#mailer	localaix	: /bin/bellmail, mail, -F, $s, $r ;
++#mailer	localbsd44	: /usr/libexec/mail.local, -f, $s, $r ;
++mailer  sendmail	: /usr/sbin/sendmail, sendmail, -f, $s, $r ;
+ 
+ 
+--- emil-2.1.0-beta9.orig/emil.cf.man
++++ emil-2.1.0-beta9/emil.cf.man
+@@ -1,6 +1,6 @@
+-.TH EMIL.CF 8 "19 December 1994"
++.TH EMIL.CF 5 "19 December 1994"
+ .SH NAME
+-emil.cf \- configuration file for emil(8)
++emil.cf \- configuration file for emil(1)
+ .SH SYNOPSIS
+ .B group
+ .IR  "Group_Name" ":" 
+@@ -45,7 +45,7 @@
+ .SH DESCRIPTION
+ The file 
+ MAINCF
+-is used by emil(8) to decide which conversions should be applied to a specific
++is used by emil(1) to decide which conversions should be applied to a specific
+ Internet 
+ message. Conversion is controlled by the combination of 
+ .IR Sender,
+@@ -205,7 +205,7 @@
+ Martin Wendel (Martin.Wendel@its.uu.se) and
+ Torbjorn Wictorin (Torbjorn.Wictorin@its.uu.se)
+ .SH "SEE ALSO"
+-emil(8)
++emil(1)
+ .SH BUGS
+ None
+ 
+--- emil-2.1.0-beta9.orig/emil.man
++++ emil-2.1.0-beta9/emil.man
+@@ -1,7 +1,6 @@
+-.TH EMIL 8 "19 December 1994"
++.TH EMIL 1 "19 December 1994"
+ 
+ .SH NAME
+-
+ emil \- conversion filter for Internet messages
+ 
+ .SH SYNOPSIS
+@@ -151,17 +150,17 @@
+ .TP
+ .BI "\-H " Recipient_header_encoding
+ Recipient header encoding. One of Se, 7bit, 8bit, BAse64 or Quoted-printable.
+-See also emil.cf(8).
++See also emil.cf(5).
+ .TP
+ .BI "\-T " Recipient_text_encoding
+ Recipient text encoding. One of Se, 7bit, 8bit, BAse64, BInhex, Quoted-printable
+-or Uuencode. See also emil.cf(8).
++or Uuencode. See also emil.cf(5).
+ .TP
+ .BI "\-G " Target_Group
+ Use Target_Group to specify use of a conversion group, as declared in emil.cf.
+ If Target_Group is specified Emil will not try to resolve conversion group
+ using recipient, sender and recipient host, instead it performs a case 
+-sensitive match on the conversion groups as declared in emil.cf. See also emil.cf(8).
++sensitive match on the conversion groups as declared in emil.cf. See also emil.cf(5).
+ 
+ .RE
+ Beware, when applying the Sender_charset option, there is no
+@@ -243,7 +242,7 @@
+ 
+ .SH "SEE ALSO"
+ 
+-emil.cf(8)
++emil.cf(5)
+ 
+ .SH BUGS
+ 
+--- emil-2.1.0-beta9.orig/forks.c
++++ emil-2.1.0-beta9/forks.c
+@@ -32,6 +32,7 @@
+ */
+ #include "emil.h"
+ #include <fcntl.h>
++#include <sys/wait.h>
+ extern int pseudo_route;
+ static	int	fd[2];
+ 
+--- emil-2.1.0-beta9.orig/func.h
++++ emil-2.1.0-beta9/func.h
+@@ -41,7 +41,7 @@
+ int     to_hstripped(struct hprs *);
+ 
+ /* appledouble.c */
+-int     get_appledouble(struct message *);
++int     get_appledouble_binary(struct message *);
+ int     put_appledouble(struct message *);
+ 
+ /* applefile.c */
+@@ -247,5 +247,4 @@
+ char    * confextr(char *, char *, char *);
+ char    **get_mailer(char *);
+ struct  config_struct   * getoption(char *, char *, char *);
+-
+-
++struct  config_struct   * getmember(char *);
+--- emil-2.1.0-beta9.orig/getoption.y
++++ emil-2.1.0-beta9/getoption.y
+@@ -2,7 +2,7 @@
+ %{
+ 	/* getoption.c */
+ 
+-#pragma	alloca	/* For AIX */
++  /* #pragma	alloca */	/* For AIX */
+ 
+ #include	<assert.h>
+ #include	"emil.h"
+@@ -47,6 +47,7 @@
+ static	int	error_count;	/* used in lex */
+ static	int	should_load_config_file	= 1;
+ extern	FILE *	conf_fd;
++extern int yylex (void);
+ 
+ void	* Yalloc(int siz)
+ {
+@@ -70,7 +71,7 @@
+ 		*/
+ 		where	= malloc(len);
+ 		if (where == NULL) {
+-			sprintf(ebuf,"getoption cannot get memory (%d) %m",len);
++			sprintf(ebuf,"getoption cannot get memory (%ld) %m",len);
+ 			logger(LOG_ERR,ebuf);
+ 			fprintf(stderr, "Emil: Yalloc cannot get memory\n");
+ 			exit(EX_OSERR);
+@@ -128,7 +129,7 @@
+ 
+ static	int	Ycmp(char * pattern, char * string)
+ {
+-	char	p[255], s[255]; char	* c, *d, *t; int i;
++	char	p[255], s[255]; char	* c, *d; int i;
+ 	int	cc;
+ 
+ 	/* Copy / fold */
+@@ -169,7 +170,7 @@
+ 	}
+ */
+ 
+-#define	yywrap()	1
++/* #define	yywrap()	1 */
+ 
+ static	void	yyerror(char * msg)
+ {
+@@ -309,7 +310,7 @@
+ 	struct	member_struct	* mm;
+ 	struct	config_struct	* gg;
+ 
+-#ifdef	YYDEBUG
++#if	YYDEBUG
+ 	extern	int	yydebug;
+ 	yydebug	= 1;
+ #endif
+@@ -344,7 +345,7 @@
+ {
+ 	struct	config_struct	* gg;
+ 
+-#ifdef	YYDEBUG
++#if	YYDEBUG
+ 	extern	int	yydebug;
+ 	yydebug	= 1;
+ #endif
+@@ -443,7 +444,7 @@
+ {
+ 	struct	mailer_struct	* mm;
+ 
+-#ifdef	YYDEBUG
++#if	YYDEBUG
+ 	extern	int	yydebug;
+ 	yydebug	= 1;
+ #endif
+--- emil-2.1.0-beta9.orig/header.c
++++ emil-2.1.0-beta9/header.c
+@@ -222,7 +222,7 @@
+ void
+ add_header(struct message *mess, char *field, char *value, int format)
+ {
+-  struct header *hdr, *thdr;
++  struct header *hdr=NULL, *thdr;
+ #ifdef DEBUG
+   if (edebug)
+     fprintf(stderr, "+ Add header: %s: %s\n", field, value);
+@@ -263,7 +263,7 @@
+ void
+ rm_header(struct message *mess, char *field)
+ {
+-  struct header *hdr, *thdr;
++  struct header *hdr=NULL, *thdr;
+ #ifdef DEBUG
+   if (edebug)
+     fprintf(stderr, "+ Remove header: %s: **\n", field);
+--- emil-2.1.0-beta9.orig/helper.c
++++ emil-2.1.0-beta9/helper.c
+@@ -4,13 +4,13 @@
+   struct mparts *next;
+ };
+ 
+-main(int argc,char ** argv)
++int main(int argc,char ** argv)
+ {
+-  struct mparts *mp, *tmp, *arglist, *alist, *llist, *lalist;
++  struct mparts *mp, *tmp, *arglist, *alist, *llist=NULL, *lalist;
+   char *path;
+   FILE *sendmailcf;
+   char *localmailer;
+-  char *mpath;
++  char *mpath=NULL;
+   char tempc[1024];
+   int found = 0;
+   int unixfrom = 0;
+@@ -208,5 +208,7 @@
+     }
+   printf(" ;\n\n");
+   printf("Restart sendmail and try it out.\n");
++
++  return 0;
+ }
+   
+--- emil-2.1.0-beta9.orig/hqp.c
++++ emil-2.1.0-beta9/hqp.c
+@@ -60,7 +60,7 @@
+ h_to_quoted_printable(struct hprs *h)
+ {
+   struct data *inbuf, *outbuf;
+-  static int linelen;
++  static int linelen, charsetlen;
+   char lastspace;
+   char cbuf[5];
+   char *inb;
+@@ -81,7 +81,8 @@
+       return(NOK);
+     }
+   append_data(outbuf, "=?", 2, HEAD_BUF);
+-  append_data(outbuf, outbuf->charset, strlen(outbuf->charset), HEAD_BUF);
++  charsetlen = strlen(outbuf->charset);
++  append_data(outbuf, outbuf->charset, charsetlen, HEAD_BUF);
+   append_data(outbuf, "?Q?", 3, HEAD_BUF);
+   /* Initialize working pointers */
+   inb = inbuf->contents + inbuf->offset;
+@@ -91,9 +92,11 @@
+    */
+   while (inbuf->offset < inbuf->bodyend)
+     {
+-      if (linelen > 71 && *inb != '\n')
++      if (linelen > 66-charsetlen && *inb != '\n')
+ 	{
+-	  append_data(outbuf, "=\n", 2, HEAD_BUF);
++	  append_data(outbuf, "?=\n =?", 6, HEAD_BUF);
++	  append_data(outbuf, outbuf->charset, charsetlen, HEAD_BUF);
++	  append_data(outbuf, "?Q?", 3, HEAD_BUF);
+ 	  outbuf ->lineend += 1;
+ 	  linelen = 0;
+ 	}
+--- emil-2.1.0-beta9.orig/logger.c
++++ emil-2.1.0-beta9/logger.c
+@@ -31,6 +31,7 @@
+ ** 
+ */
+ #include "emil.h"
++#include <time.h>
+ 
+ #ifndef	HAVE_GETHOSTNAME
+ #include <sys/utsname.h>
+--- emil-2.1.0-beta9.orig/main.c
++++ emil-2.1.0-beta9/main.c
+@@ -69,7 +69,7 @@
+ int     pseudo_route    = 0;
+ 
+ int	in_fd		= 0;
+-FILE	* out_fd	= stdout;
++FILE	* out_fd;
+ FILE	* char_fd	= NULL;
+ FILE	* conf_fd	= NULL;
+ off_t   pz;
+@@ -84,6 +84,8 @@
+   char *cmailer = NULL;
+   char *member = NULL;
+ 
++  out_fd = stdout;
++
+ #ifdef	HAVE_GETPAGESIZE
+ 	pz = (off_t) getpagesize();
+ #elif	defined(hpux) || defined(_AUX_SOURCE)
+--- emil-2.1.0-beta9.orig/mime.c
++++ emil-2.1.0-beta9/mime.c
+@@ -181,7 +181,7 @@
+ 	      m->sd->encoding = E7BIT;
+ 	      /* Get m->charset for text */
+ 	      m->sd->charset = (char *)fixstring(getpartrest(line, "charset=", ";"), NULL, NULL,
+-				  (short) UNQUOTE);
++				  (short) UNQUOTE|UNSPACE);
+ 	    }
+ 	  else
+ 	  if (match(m->sd->type, "MULTIPART"))
+--- emil-2.1.0-beta9.orig/mimeparse.c
++++ emil-2.1.0-beta9/mimeparse.c
+@@ -220,7 +220,37 @@
+ 	    inbuf->bodyend);
+ #endif
+ 
++  /* FIX */
++  if (m->sd->encoding == EMULTI && m->sd->endbound != NULL)
++    {
++      int tttt;
++      move_past_boundary(m, m->sd->endbound);
++      for (;;)
++      {
++        tttt = emil_getline(m->sd);
++#ifdef DEBUG
++          if (edebug)
++            fprintf(stderr," getline = %d\n", tttt);
++#endif
++        if (tttt == 1)
++          {
++            inbuf->offset += tttt;
++            inbuf->loffset += 1;
++            continue;
++          }
++        if (tttt == 2 && *(m->sd->contents + m->sd->offset) == '\r')
++          {
++            inbuf->offset += tttt;
++            inbuf->loffset += 1;
++            continue;
++          }
++        break;
++      }
++      
++    }
++  else
++  /* END_FIX */
+   m->sd->offset = m->sd->bodyend;
+   if (getline(m->sd) == 0)
+     return(OK);
+   if (m->sd->offset < m->sd->end)
+--- emil-2.1.0-beta9.orig/qp.c
++++ emil-2.1.0-beta9/qp.c
+@@ -135,7 +135,7 @@
+ int
+ decode_quoted_printable(struct message *m)
+ {
+-  struct data *inbuf, *outbuf;
++  struct data *inbuf, *outbuf=NULL;
+   char *inb;
+   char *endpointer;
+   char t[3];
+--- emil-2.1.0-beta9.orig/rfc1522.c
++++ emil-2.1.0-beta9/rfc1522.c
+@@ -34,7 +34,9 @@
+ #include "charset/charset.h"
+ int     strptrncnv(CHARSET *, CHARSET *, struct data *, struct data *, int);
+ 
++#ifdef DEBUG
+ static char * out_data_part(struct data *);
++#endif
+ 
+ static char delim[256] = {
+ 0, 0, 0, 0, 0, 0, 0, 0,  0, 1, 1, 0, 0, 1, 0, 0,  
+@@ -61,32 +63,33 @@
+   long types;
+ };
+ static struct resheader resh[] = {
+-"Return-Path", 0,
+-"Received", 0,
+-"Reply-To", RADDR | ATOM | RFC1522,
+-"From", RADDR | ATOM | RFC1522,
+-"Sender", RADDR | ATOM | RFC1522,
+-"Resent-Reply-To", RADDR | ATOM | RFC1522,
+-"Resent-From", RADDR | ATOM | RFC1522,
+-"Resent-Sender", RADDR | ATOM | RFC1522,
+-"Date", 0,
+-"Resent-Date", 0, 
+-"To", RADDR | ATOM | RFC1522,
+-"Resent-To", RADDR | ATOM | RFC1522,
+-"cc", RADDR | ATOM | RFC1522,
+-"Resent-cc", RADDR | ATOM | RFC1522,
+-"bcc", RADDR | ATOM | RFC1522,
+-"Resent-bcc", RADDR | ATOM | RFC1522,
+-"Message-ID", 0, 
+-"Resent-Message-ID", 0,
+-"In-Reply-To", RADDR | ATOM | RFC1522,
+-"References", RADDR | ATOM | RFC1522,
+-"Keywords", ATOM | RFC1522,
+-"Subject", TEXT,
+-"Comments", TEXT,
+-"Encrypted", ATOM,
+-"X-Sun-Encoding-Info", ATOM,
+-NULL, TEXT};
++  { "Return-Path", 0 },
++  { "Received", 0 },
++  { "Reply-To", RADDR | ATOM | RFC1522 },
++  { "From", RADDR | ATOM | RFC1522 },
++  { "Sender", RADDR | ATOM | RFC1522 },
++  { "Resent-Reply-To", RADDR | ATOM | RFC1522 },
++  { "Resent-From", RADDR | ATOM | RFC1522 },
++  { "Resent-Sender", RADDR | ATOM | RFC1522 },
++  { "Date", 0 },
++  { "Resent-Date", 0 },
++  { "To", RADDR | ATOM | RFC1522 },
++  { "Resent-To", RADDR | ATOM | RFC1522 },
++  { "cc", RADDR | ATOM | RFC1522 },
++  { "Resent-cc", RADDR | ATOM | RFC1522 },
++  { "bcc", RADDR | ATOM | RFC1522 },
++  { "Resent-bcc", RADDR | ATOM | RFC1522 },
++  { "Message-ID", 0 },
++  { "Resent-Message-ID", 0 },
++  { "In-Reply-To", RADDR | ATOM | RFC1522 },
++  { "References", RADDR | ATOM | RFC1522 },
++  { "Keywords", ATOM | RFC1522 },
++  { "Subject", TEXT },
++  { "Comments", TEXT },
++  { "Encrypted", ATOM },
++  { "X-Sun-Encoding-Info", ATOM },
++  { NULL, TEXT }
++};
+ 
+ struct hprs *
+ copy_hprs(struct hprs *h)
+@@ -798,7 +801,7 @@
+ int
+ h_tocharset(struct hprs *h)
+ {
+-  CHARSET *schar, *tchar;
++  CHARSET *schar=NULL, *tchar=NULL;
+   struct data *inbuf, *outbuf;
+   char *sset, *tset;
+   int copy = 0;
+@@ -883,6 +886,7 @@
+   return(OK);
+ }
+ 
++#ifdef DEBUG
+ char *
+ out_data_part(struct data *d)
+ {
+@@ -891,7 +895,6 @@
+   strncpy(c, d->contents + d->bodystart, d->bodyend - d->bodystart);
+   return(c);
+ }
+-
+-
++#endif
+ 
+ 
+--- emil-2.1.0-beta9.orig/smtp.c
++++ emil-2.1.0-beta9/smtp.c
+@@ -31,6 +31,8 @@
+ ** 
+ */
+ #include "emil.h"
++#include <arpa/inet.h>
++
+ #ifdef SMTP
+ #define RTYPE(r)    ((r) / 100)
+ #define RCLASS(r)   (((r) / 10) % 10)
+--- emil-2.1.0-beta9.orig/charset/Makefile.in
++++ emil-2.1.0-beta9/charset/Makefile.in
+@@ -55,7 +55,7 @@
+ 		tar cf chset23b.tar *.c *.h *.def *.doc te makefile chars.req
+ 
+ clean:
+-		-rm -f *.o $(BINS) chardefs.txt cm/*  *.cpl iso10646.cm core; \
++		-rm -f *.o $(BINS) chardefs.txt cm/*  *.cpl core; \
+ 		if test -d cm ; then \
+ 			rmdir cm ; \
+ 		fi ;
+--- emil-2.1.0-beta9.orig/charset/charsets.def
++++ emil-2.1.0-beta9/charset/charsets.def
+@@ -3032,3 +3032,116 @@
+  !) J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+  // ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+  0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
++
++ &charset Windows-1251
++ &alias win-1251
++ &alias cp-1251
++ &alias x-cp1251
++ &alias cp1251
++ &alias win-cyr
++ &rem coded by Andrey Chernomyrdin <andrey@excom.spb.su>
++ &bits 8
++ &code 0
++ &rem   2  3  4  5  6  7  8  9  A  B  C  D  E  F
++ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
++ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
++ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
++ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
++ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
++ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
++ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
++ NS !I Ct Pd Cu Ye BB SE IO Co -a << NO -- Rg '-
++ DG +- 2S 3S '' My PI .M io 1S -o >> 14 12 34 ?I
++ A= B= V= G= D= E= Z% Z= I= J= K= L= M= N= O= P=
++ R= S= T= U= F= H= C= C% S% Sc =" Y= %" JE JU JA
++ a= b= v= g= d= e= z% z= i= j= k= l= m= n= o= p=
++ r= s= t= u= f= h= c= c% s% sc =' y= %' je ju ja
++
++ &charset KOI8-R
++ &alias koi8r
++ &alias koi8_r
++ &alias koi8
++ &alias IBM878
++ &alias cp-878
++ &alias x-ibm878
++ &alias 878
++ &rem source: RFC1489 via Gabor Kiss <kissg@sztaki.hu>
++ &rem and Andrey A. Chernov <ache@nagual.pp.ru>
++ &bits 8
++ &code 0
++ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
++ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
++ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
++ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
++ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
++ hh vv dr dl ur ul vr vl dh uh vh TB LB FB lB RB
++ .S :S ?S Iu fS sB RT ?2 =< >= NS Il DG 2S .M -:
++ HH VV dR io Dr DR dL Dl LD uR Ur UR uL Ul UL vR
++ Vr VR vL IO Vl VL dH Dh DH uH Uh UH vH Vh VH Co
++ ju a= b= c= d= e= f= g= h= i= j= k= l= m= n= o=
++ p= ja r= s= t= u= z% v= %' y= z= s% je sc c% ='
++ JU A= B= C= D= E= F= G= H= I= J= K= L= M= N= O=
++ P= JA R= S= T= U= Z% V= %" Y= Z= S% JE Sc C% ="
++
++ &charset KOI8-U
++ &rem source: http://www.net.ua/KOI8-U/
++ &alias KOI8-RU
++ &alias KOI8U
++ &bits 8
++ &code 0
++ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
++ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
++ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
++ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
++ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
++ hh vv dr dl ur ul vr vl dh uh vh TB LB FB lB RB
++ .S :S ?S Iu fS Sb RT ?2 =< >= NS Il DG 2S .M -:
++ HH VV dR io ie DR ii yi LD uR Ur UR uL g3 UL vR
++ Vr VR vL IO IE VL II YI DH uH Uh UH vH G3 VH Co
++ ju a= b= c= d= e= f= g= h= i= j= k= l= m= n= o=
++ p= ja r= s= t= u= z% v= %' y= z= s% je sc c% ='
++ JU A= B= C= D= E= F= G= H= I= J= K= L= M= N= O=
++ P= JA R= S= T= U= Z% V= %" Y= Z= S% JE Sc C% ="
++
++ &charset IBM866
++ &rem coded by Andrey Chernomyrdin <andrey@excom.spb.su>
++ &alias cp866
++ &alias 866
++ &alias x-ibm866
++ &alias x-cp866
++ &alias dos-rus-alt
++ &bits 8
++ &code 0
++ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
++ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
++ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
++ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
++ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
++ A= B= V= G= D= E= Z% Z= I= J= K= L= M= N= O= P=
++ R= S= T= U= F= H= C= C% S% Sc =" Y= %" JE JU JA
++ a= b= v= g= d= e= z% z= i= j= k= l= m= n= o= p=
++ .S :S ?S vv vl vL Vl Dl dL VL VV LD UL Ul uL dl
++ ur uh dh vr hh vh vR Vr UR DR UH DH VR HH VH uH
++ Uh dH Dh Ur uR dR Dr Vh vH ul dr FB LB lB RB TB
++ r= s= t= u= f= h= c= c% s% sc =' y= %' je ju ja
++ =3 +- >= =< Iu Il -: ?2 Ob .M Sb RT nS 2S fS NS
++
++ &charset MacOS_Cyrillic
++ &rem codede by Andrey Chernomyrdin <andrey@excom.spb.su> 
++ &alias x-ru-mac
++ &alias macOS-cyr
++ &bits 8
++ &code 0
++ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
++ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
++ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
++ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
++ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
++ A= B= V= G= D= E= Z% Z= I= J= K= L= M= N= O= P=
++ R= S= T= U= F= H= C= C% S% Sc =" Y= %" JE JU JA
++ /- DG Ct Pd SE Sb PI ss Rg Co TM '' ': != AE O/
++ 00 +- =< >= Ye My dP +Z *P p* In -a -o W* ae o/
++ ?I !I NO RT Fl ?2 D* << >> .3 NS A! A? O? OE oe
++ -M -N "6 "9 '6 '9 -: Db y: Y: /f Cu <1 IO io ja
++ a= b= v= g= d= e= z% z= i= j= k= l= m= n= o= p=
++ r= s= t= u= f= h= c= c% s% sc =' y= %' je ju '<
+--- emil-2.1.0-beta9.orig/charset/chset.c
++++ emil-2.1.0-beta9/charset/chset.c
+@@ -4,7 +4,7 @@
+  */
+ 
+ #ifndef lint
+-static char *Rcsid = "@(#)$Header$";
++static const char Rcsid[] = "@(#)$Header$";
+ 
+ #endif
+ 
+@@ -18,6 +18,8 @@
+ 
+ #include <stdio.h>
+ #include <errno.h>
++#include <string.h>
++#include <stdlib.h>
+ #include "iso646.h"
+ #include "charset.h"
+ 
+@@ -42,7 +44,7 @@
+ 	return s;
+ }
+ 
+-void
++int
+ main (argc, argv)
+ 	int	 argc;
+ 	char   **argv;
+--- emil-2.1.0-beta9.orig/charset/conv.c
++++ emil-2.1.0-beta9/charset/conv.c
+@@ -4,7 +4,7 @@
+  */
+ 
+ #ifndef lint
+-static char *Rcsid = "@(#)$Header$";
++static const char Rcsid[] = "@(#)$Header$";
+ 
+ #endif
+ 
+@@ -26,6 +26,8 @@
+ 
+ #include <stdio.h>
+ #include <errno.h>
++#include <string.h>
++#include <stdlib.h>
+ #include "iso646.h"
+ #include "charset.h"
+ 
+@@ -43,7 +45,7 @@
+ int ipos;
+ Char oc ARRAY(SLEN),*op;
+ 
+-extern	int atoi(char *);	/* 941114 / TW */
++/* extern	int atoi(char *); */	/* 941114 / TW */
+ extern	CHAR8U * strncnv(CHARSET *, CHARSET *, CHAR8U *, CHAR8U *, int); /* 941114 / TW */
+ 
+ void
+@@ -65,7 +67,7 @@
+ }
+ 
+ 
+-void
++int
+ main (argc, argv)
+ 	int	 argc;
+ 	Char   **argv;
+--- emil-2.1.0-beta9.orig/charset/gc.c
++++ emil-2.1.0-beta9/charset/gc.c
+@@ -1,7 +1,7 @@
+ /* gc.c - generates the required mappings */
+ 
+ # ifndef lint
+-static char *Rcsid = "@(#)$Header$";
++static const char Rcsid[] = "@(#)$Header$";
+ # endif
+ #include	"iso646.h"
+   
+@@ -15,6 +15,7 @@
+ #include	<ctype.h>
+ #include	<unistd.h>	/* 941114/TW */
+ #include	<string.h>	/* 941114/TW */
++#include	<stdlib.h>
+ #include	"charset.h"
+   
+ #define	AMAX	2200
+@@ -256,7 +257,7 @@
+ }
+ 
+ 
+-void
++int
+   main (argc, argv) 
+ int argc; char **argv; {
+   
+--- emil-2.1.0-beta9.orig/charset/strncnv.c
++++ emil-2.1.0-beta9/charset/strncnv.c
+@@ -33,6 +33,7 @@
+ #include <ctype.h>
+ #include <stdlib.h>	/* 941114 / TW */
+ #include <syslog.h>	/* 941125/TW */
++#include <string.h>
+ #ifdef SENDMAIL
+ #include "sendmail.h"
+ #endif
+@@ -59,7 +60,7 @@
+ static  char	*charfile	= CHARFILE; /* static added 941125/TW */
+ 
+ # ifndef lint
+-static char RcsId[] = "@(#)$Header: /usr/local/src/mail/sendmail/ida/charset/RCS/strncnv.c,v 2.1 1991/04/05 17:11:49 paul Exp $";
++static const char RcsId[] = "@(#)$Header: /usr/local/src/mail/sendmail/ida/charset/RCS/strncnv.c,v 2.1 1991/04/05 17:11:49 paul Exp $";
+ # endif /* !lint */
+ 
+ /* extern char *charfile; Doppeldefiniert 941125/TW */

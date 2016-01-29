@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+net-tools-${UB_VERSION}.tar.bz2 net-tools-${UB_VERSION}/
+	http://www.tazenda.demon.co.uk/phil/net-tools/
+

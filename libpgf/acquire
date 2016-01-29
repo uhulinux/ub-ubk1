@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libpgf-${UB_VERSION}-src.tar.gz libpgf/
+	http://downloads.sourceforge.net/libpgf/

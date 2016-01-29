@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gegl-${UB_VERSION}.tar.bz2 gegl-${UB_VERSION}/
+	ftp://ftp.gimp.org/pub/gegl/${UB_VERSION_HEAD2}/

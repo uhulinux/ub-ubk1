@@ -1,0 +1,11 @@
+--- nd.orig/data/notification-daemon.desktop.in.in	2011-02-16 17:34:20.000000000 +0100
++++ nd/data/notification-daemon.desktop.in.in	2011-03-30 15:52:17.000000000 +0200
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ _Name=Notification Daemon
+ _Comment=Display notifications
+-Exec=@LIBEXECDIR@/notification-daemon
++Exec=notification-daemon
+ Terminal=false
+ Type=Application
+ NoDisplay=true

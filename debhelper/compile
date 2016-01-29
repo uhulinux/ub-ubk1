@@ -1,0 +1,24 @@
+#!/bin/sh -eux
+
+pod2man -c Debhelper -r "$UB_VERSION" debhelper.pod | \
+perl -e '
+	undef $/;
+	foreach (@ARGV) {
+		open (IN, $_) or die "$_: $!";
+		$file=<IN>;
+		close IN;
+		if ($file=~m/=head1 NAME\n\n(.*?) - (.*?)\n/m) {
+			$collect.=".IP $1(1)\n$2\n";
+		}
+	}
+	END {
+	while (<STDIN>) {
+			s/#LIST#/$collect/;
+			print;
+		};
+	}' `find . -type f -perm +1 -maxdepth 1 -name "dh_*" | sort` > debhelper.1
+
+find . -type f -perm +1 -maxdepth 1 -name "dh_*" \
+	-exec pod2man -c Debhelper -r "$UB_VERSION" {} {}.1 \;
+printf "package Debian::Debhelper::Dh_Version;\n\$version='$UB_VERSION';" > \
+	Debian/Debhelper/Dh_Version.pm

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+efte-$UB_VERSION.tar.gz efte-$UB_VERSION/
+	http://downloads.sourceforge.net/efte/

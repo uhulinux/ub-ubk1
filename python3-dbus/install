@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_install
+
+# remove dbus-python-dev conflicting files
+rm -rf "$UB_INSTALLDIR"/usr/include
+rm -rf "$UB_INSTALLDIR"/usr/lib/pkgconfig
+rm -rf "$UB_INSTALLDIR"/usr/share/doc/dbus-python

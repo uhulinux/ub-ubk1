@@ -1,0 +1,1 @@
+urllist http://users.musicbrainz.org/~matt/ | splitver '^libdiscid-([0-9.]+).tar.gz$' | sort -V | tail -n 1

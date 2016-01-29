@@ -1,0 +1,2 @@
+urllist ftp://ftp.cpan.org/pub/CPAN/modules/by-module/Crypt/ | splitver '^Crypt-CipherSaber-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+#u2dcpan Crypt::CipherSaber

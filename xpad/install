@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_make \
+	DESTDIR="$UB_INSTALLDIR" \
+	install helpdir="$UB_INSTALLDIR"/usr/lib/xpad/help

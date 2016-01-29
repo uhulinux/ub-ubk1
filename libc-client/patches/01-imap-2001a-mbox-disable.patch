@@ -1,0 +1,22 @@
+--- imap-2004g/src/osdep/unix/Makefile.mbox-disable-patch	Wed Apr 17 18:22:25 2002
++++ imap-2004g/src/osdep/unix/Makefile	Wed Apr 17 18:22:25 2002
+@@ -21,7 +21,7 @@
+ # Command line build parameters
+ 
+ EXTRAAUTHENTICATORS=
+-EXTRADRIVERS=mbox
++EXTRADRIVERS=
+ PASSWDTYPE=std
+ SSLTYPE=none
+ 
+--- imap-2004g/Makefile.mbox-disable-patch	Wed Apr 17 18:24:27 2002
++++ imap-2004g/Makefile	Wed Apr 17 18:25:08 2002
+@@ -128,7 +128,7 @@
+ # mbox	if file "mbox" exists on the home directory, automatically moves mail
+ #	 from the spool directory to "mbox" and uses "mbox" as INBOX.
+ 
+-EXTRADRIVERS=mbox
++#EXTRADRIVERS=mbox
+ 
+ 
+ # Plaintext password type.  Defines how plaintext password authentication is

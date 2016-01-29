@@ -1,0 +1,22 @@
+#!/bin/sh -eux
+
+export PATH="$PATH:/usr/lib/java/bin"
+export CLASSPATH="/usr/share/jdictionary/jdictionary.jar"
+
+jar -xf *.jar
+
+jad -sjava Buffer MySelf Resources
+patch -p0 <read-utf8-dictionary.patch
+javac -g Buffer.java MySelf.java Resources.java
+
+chmod +x convert-dictionary
+./convert-dictionary '|' ISO-8859-1 ISO-8859-2 <resources/dictionary/French_Hungarian >resources/dictionary/French_Hungarian.new
+mv resources/dictionary/French_Hungarian.new resources/dictionary/French_Hungarian
+if [ -f dictionary.patch ]; then
+	patch -p0 <dictionary.patch
+fi
+
+iconv -f ISO-8859-2 -t UTF-8 <InfoSheet >InfoSheet.new
+mv InfoSheet.new InfoSheet
+
+jar -uf *.jar Buffer.class resources/dictionary/French_Hungarian InfoSheet

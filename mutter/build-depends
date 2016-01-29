@@ -1,0 +1,14 @@
+clutter-dev
+dbus-glib-dev
+gnome-desktop-dev
+gnome-doc-utils
+gobject-introspection-dev
+gsettings-desktop-schemas
+gtk-dev
+intltool
+libcanberra-dev
+libsm-dev
+startup-notification-dev
+upower-dev
+xcb-util-dev
+zenity

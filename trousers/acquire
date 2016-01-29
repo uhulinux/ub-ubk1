@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+trousers-${UB_VERSION}.tar.gz trousers-${UB_VERSION}/
+	http://downloads.sourceforge.net/trousers/

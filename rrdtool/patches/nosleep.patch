@@ -1,0 +1,19 @@
+diff -urN rrdtool-1.4.8.orig/configure rrdtool-1.4.8/configure
+--- rrdtool-1.4.8.orig/configure	2013-05-23 09:55:19.000000000 +0200
++++ rrdtool-1.4.8/configure	2014-02-18 08:43:24.705358086 +0100
+@@ -23869,15 +23869,10 @@
+ $as_echo "and out again" >&6; }
+ 
+ echo $ECHO_N "ordering CD from http://tobi.oetiker.ch/wish $ECHO_C" 1>&6
+-sleep 1
+ echo $ECHO_N ".$ECHO_C" 1>&6
+-sleep 1
+ echo $ECHO_N ".$ECHO_C" 1>&6
+-sleep 1
+ echo $ECHO_N ".$ECHO_C" 1>&6
+-sleep 1
+ echo $ECHO_N ".$ECHO_C" 1>&6
+-sleep 1
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result:  just kidding ;-)" >&5
+ $as_echo " just kidding ;-)" >&6; }
+ echo

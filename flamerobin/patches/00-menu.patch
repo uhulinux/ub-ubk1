@@ -1,0 +1,16 @@
+diff -Naur ORIG/res/flamerobin.desktop UHU/res/flamerobin.desktop
+--- ORIG/res/flamerobin.desktop	2007-11-23 19:29:16.000000000 +0100
++++ UHU/res/flamerobin.desktop	2008-03-22 20:32:20.000000000 +0100
+@@ -1,9 +1,11 @@
+ [Desktop Entry]
+ Name=FlameRobin
++Name[hu]=FlameRobin
+ GenericName=Database administration tool
+ Comment=Administration Tool for Firebird DBMS
++Comment[hu]=Adminisztrációs eszköz a Firebird DBMS-hez
+ Exec=flamerobin
+ Icon=/usr/share/pixmaps/flamerobin.png
+ Type=Application
+ Terminal=false
+-Categories=Development;Database;GTK
++Categories=Development;Database;GTK;X-UHU-Menu/Tools/Databases;

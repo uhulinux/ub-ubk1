@@ -1,0 +1,1 @@
+urllist http://ftp.daper.net/pub/soft/moc/stable/ | splitver '^moc-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

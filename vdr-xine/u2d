@@ -1,0 +1,2 @@
+urllist https://launchpad.net/~yavdr/+archive/stable-vdr/+packages?field.name_filter=vdr-plugin-xine | \
+grep xine_ | sed s/.*xine_// | sed s/-.*// |sort -V | tail -n 1

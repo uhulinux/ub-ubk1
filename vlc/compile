@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--enable-gnomevfs \
+	--enable-flac \
+	--enable-faad \
+	--enable-svg \
+	--enable-aa \
+	--enable-jack \
+	--enable-xosd \
+	--enable-lirc \
+	--enable-libva \
+	--disable-lua

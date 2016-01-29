@@ -1,0 +1,16 @@
+db4-dev
+gnome-python
+gnome-python-dev
+gnome2-vfs-dev
+gtk2-dev
+gtkspell2-dev
+libgda-dev
+libgksu-dev
+libgnomeui2-dev
+libgtkhtml2-dev
+libgtop2-dev
+openssl-dev
+pygtk-dev
+python-dev
+sqlite-dev
+xcb-util-dev

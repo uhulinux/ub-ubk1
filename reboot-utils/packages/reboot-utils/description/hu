@@ -1,0 +1,6 @@
+Öt program található a csomagban:
+  &hardreboot         - azonnal újraindítja a számítógépet
+  &hardhalt           - azonnal leállítja a számítógépet
+  &hardpoweroff       - azonnal leállítja a számítógépet és kikapcsolja ha tudja
+  &disable-ctrlaltdel - letiltja a &CTRL-ALT-DEL billentyűkombinációt
+  &enable-ctrlaltdel  - engedélyezi a &CTRL-ALT-DEL billentyűkombinációt

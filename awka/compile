@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+ub_compile --prefix=/usr \
+--mandir=/usr/share/man

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+DBD-mysql-${UB_VERSION}.tar.gz DBD-mysql-${UB_VERSION}/
+	http://cpan.metacpan.org/authors/id/C/CA/CAPTTOFU/

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+autoreconf -vif
+ub_compile \
+	JAVA=/usr/lib/java/bin/java

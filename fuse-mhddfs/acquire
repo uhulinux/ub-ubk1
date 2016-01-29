@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mhddfs_${UB_VERSION}.tar.gz mhddfs-${UB_VERSION}/
+	http://mhddfs.uvw.ru/downloads/

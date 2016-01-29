@@ -1,0 +1,13 @@
+--- moserial.orig/data/moserial.desktop.in	2009-03-06 19:35:30.000000000 +0100
++++ moserial/data/moserial.desktop.in	2009-04-19 08:44:30.000000000 +0200
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+-_Name=moserial Terminal
++_Name=moserial
+ _GenericName=Serial Terminal
+ _Comment=A serial terminal optimized for logging and file capture
+-Categories=GTK;Utility;FileTransfer;TerminalEmulator
++Categories=GTK;Utility;FileTransfer;TerminalEmulator;X-UHU-Menu/Tools/Utilities;
+ Exec=moserial %U
+ Icon=moserial
+ MimeType=

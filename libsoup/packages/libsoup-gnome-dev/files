@@ -1,0 +1,6 @@
+	/usr/include/libsoup-gnome-*
+	/usr/lib/libsoup-gnome-*.a
+	/usr/lib/libsoup-gnome-*.la
+@	/usr/lib/libsoup-gnome-*.so
+	/usr/lib/pkgconfig/libsoup-gnome-*.pc
+	/usr/share/gir-1.0/SoupGNOME-*.gir

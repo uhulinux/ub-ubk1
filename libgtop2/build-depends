@@ -1,0 +1,7 @@
+gobject-introspection-dev
+gtk-doc
+intltool
+libsm-dev
+libx11-dev
+libxau-dev
+popt-dev

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+dbview-${UB_VERSION}.tar.gz dbview-${UB_VERSION}/
+	ftp://ftp.ibiblio.org/pub/linux/apps/database/proprietary/
+

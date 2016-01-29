@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+mv *.1 "$UB_INSTALLDIR"/usr/share/man/man1/
+install -m 755 dh_* "$UB_INSTALLDIR"/usr/bin/
+
+for dir in /usr/lib/perl5/5*; do
+	mkdir -p "$UB_INSTALLDIR"/$dir/Debian/Debhelper
+done
+install -m 644 Debian/Debhelper/*.pm "$UB_INSTALLDIR"/usr/lib/perl5/5*/Debian/Debhelper/
+mkdir -p "$UB_INSTALLDIR"/usr/share/debhelper/autoscripts
+install -m 644 autoscripts/p* "$UB_INSTALLDIR"/usr/share/debhelper/autoscripts/
+
+rm -rf doc/CVS examples/CVS

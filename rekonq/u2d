@@ -1,0 +1,3 @@
+version=$(sflist rekonq | splitver '^([0-9.]+)' | sort -V | tail -n 1)
+
+sflist rekonq "$version" | parsever | sort -V | tail -n 1

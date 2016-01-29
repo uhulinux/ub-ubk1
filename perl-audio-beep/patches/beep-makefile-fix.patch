@@ -1,0 +1,13 @@
+diff -Naurdp Audio-Beep-0.11/beep-1.2.2/Makefile Audio-Beep-0.11-beep-makefile-fix/beep-1.2.2/Makefile
+--- Audio-Beep-0.11/beep-1.2.2/Makefile	2002-03-29 18:37:22.000000000 +0100
++++ Audio-Beep-0.11-beep-makefile-fix/beep-1.2.2/Makefile	2013-05-02 13:32:42.484424163 +0200
+@@ -14,6 +14,8 @@ beep : beep.c
+ 	${CC} ${FLAGS} -o ${EXEC_NAME} beep.c
+ 
+ install : 
++	mkdir -p ${INSTALL_DIR}
+ 	cp ${EXEC_NAME} ${INSTALL_DIR}
+-	rm -f /usr/man/man1/beep.1.bz2
++	rm -f ${MAN_DIR}/beep.1.bz2
++	mkdir -p ${MAN_DIR}
+ 	cp ${MAN_FILE} ${MAN_DIR}

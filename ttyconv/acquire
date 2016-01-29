@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ttyconv_${UB_VERSION}.tar.gz ttyconv/
+	http://debian.bedroomlan.org/debian/pool/main/t/ttyconv/

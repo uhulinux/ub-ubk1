@@ -1,0 +1,24 @@
+diff -Naurd a/Makefile b/Makefile
+--- a/Makefile	2009-11-18 16:16:21.000000000 +0100
++++ b/Makefile	2009-11-18 16:18:02.000000000 +0100
+@@ -527,20 +527,6 @@
+ 	#
+ 	# Installation Dependencies...
+ 	#
+-	@if [ -f /usr/local/libexec/cups/filter/foomatic-rip ]; then \
+-	    : ; \
+-	elif [ -f /usr/lib/cups/filter/foomatic-rip ]; then \
+-	    : ; \
+-	elif [ -f /usr/lib/lp/bin/foomatic-rip ]; then \
+-	    : ; \
+-	elif ! type foomatic-rip >/dev/null 2>&1; then \
+-	    echo "      ***"; \
+-	    echo "      *** Error: foomatic-rip is not installed!"; \
+-	    echo "      ***"; \
+-	    echo "      *** Install foomatic package(s) for your OS"; \
+-	    echo "      ***"; \
+-	    exit 1; \
+-	fi
+ 	# ... OK!
+ 	#
+     

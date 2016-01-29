@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+evolution-ews-${UB_VERSION}.tar.xz evolution-ews-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/evolution-ews/${UB_VERSION_HEAD2}/

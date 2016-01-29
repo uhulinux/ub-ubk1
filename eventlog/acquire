@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+eventlog_${UB_VERSION}.tar.gz eventlog-${UB_VERSION}/
+	http://www.balabit.com/downloads/files/syslog-ng/sources/3.4.4/source/

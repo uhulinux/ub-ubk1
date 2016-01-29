@@ -1,0 +1,15 @@
+cmake
+cups-dev
+gst0.10-plugins-base-dev
+gstreamer0.10-dev
+libx11-dev
+libxcursor-dev
+libxinerama-dev
+libxkbfile-dev
+libxrandr-dev
+libxrender-dev
+libxv-dev
+openssl-dev
+pcsc-lite-dev
+pulseaudio-dev
+xmlto

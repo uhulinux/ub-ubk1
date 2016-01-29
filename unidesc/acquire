@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+unidesc-${UB_VERSION}.tgz unidesc-${UB_VERSION}/
+	http://billposer.org/Software/Downloads/

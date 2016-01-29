@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+./configure \
+	--prefix=/usr \
+	--with-readline \
+	--with-ffcall \
+	build
+cd build
+./makemake \
+	--prefix=/usr \
+	--with-readline \
+	--with-ffcall \
+	--with-dynamic-ffi > Makefile
+make

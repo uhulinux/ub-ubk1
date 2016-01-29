@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gtk-sharp-${UB_VERSION}.tar.gz gtk-sharp-${UB_VERSION}/
+	http://go-mono.com/sources/gtk-sharp/

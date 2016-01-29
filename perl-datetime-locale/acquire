@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+DateTime-Locale-${UB_VERSION}.tar.gz DateTime-Locale-${UB_VERSION}/
+	http://cpan.metacpan.org/modules/by-module/DateTime/

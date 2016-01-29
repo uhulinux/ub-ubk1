@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cups-${UB_VERSION}-source.tar.bz2 cups-${UB_VERSION}/
+	http://www.cups.org/software/${UB_VERSION}/

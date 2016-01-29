@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+utf8filename-$UB_VERSION.tar.gz utf8filename-$UB_VERSION/
+	ftp://ftp.uhulinux.hu/pub/sources/utf8filename/

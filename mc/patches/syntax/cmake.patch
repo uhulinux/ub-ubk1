@@ -1,0 +1,12 @@
+diff -Naur orig/misc/syntax/Syntax.in patched/misc/syntax/Syntax.in
+--- orig/misc/syntax/Syntax.in	2012-12-10 22:04:32.000000000 +0100
++++ patched/misc/syntax/Syntax.in	2012-12-29 11:23:29.410732499 +0100
+@@ -67,7 +67,7 @@
+ file (.\*[Mm]akefile[\\\.A-Za-z0-9]\*|..\*\\.mk|Kbuild)$ Makefile
+ include makefile.syntax
+ 
+-file CMakeLists.txt$ CMake
++file (CMakeLists.txt|..\*\\.cmake)$ CMake
+ include cmake.syntax
+ 
+ file ..\*\\.(pp|PP|pas|PAS|dpr|DPR|inc|INC)$ Pascal\sProgram

@@ -1,0 +1,24 @@
+diff -Naur orig/configure.in mod/configure.in
+--- orig/configure.in	2013-12-12 22:47:49.000000000 +0100
++++ mod/configure.in	2014-03-20 21:34:11.000000000 +0100
+@@ -2651,7 +2651,7 @@
+   set -x
+   rm -f CMakeCache.txt &&                              \
+   CC="$ORIGCC" CXX="$ORIGCXX" LDFLAGS="$LDFLAGS" cmake \
+-    -DCMAKE_BUILD_TYPE=None -DUSE_FTGL:BOOL=OFF        \
++    -DCMAKE_BUILD_TYPE=None -DUSE_FTGL:BOOL=ON        \
+     -DCMAKE_C_FLAGS:STRING="${CPPFLAGS} ${CFLAGS}"     \
+     -DCMAKE_CXX_FLAGS:STRING="${CPPFLAGS} ${CXXFLAGS}" \
+     -DCMAKE_INSTALL_PREFIX="${prefix}"                 \
+diff -Naur orig/xbmc/visualizations/XBMCProjectM/libprojectM/Renderer.hpp mod/xbmc/visualizations/XBMCProjectM/libprojectM/Renderer.hpp
+--- orig/xbmc/visualizations/XBMCProjectM/libprojectM/Renderer.hpp	2013-12-12 22:47:49.000000000 +0100
++++ mod/xbmc/visualizations/XBMCProjectM/libprojectM/Renderer.hpp	2014-03-20 21:47:18.000000000 +0100
+@@ -25,7 +25,7 @@
+ #include <FTGLPixmapFont.h>
+ #include <FTGLExtrdFont.h>
+ #else
+-#include <FTGL/FTGL.h>
++#include <FTGL/ftgl.h>
+ #include <FTGL/FTGLPixmapFont.h>
+ #include <FTGL/FTGLExtrdFont.h>
+ #endif

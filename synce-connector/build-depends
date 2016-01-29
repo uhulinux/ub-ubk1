@@ -1,0 +1,8 @@
+dbus-dev
+dbus-glib-dev
+dhcp-client
+dhcp-dev
+glib-dev
+gnet2-dev
+libsynce-dev
+systemd-dev

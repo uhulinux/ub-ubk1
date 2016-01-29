@@ -1,0 +1,12 @@
+diff -up acct-6.5.4/lastcomm.1.pom acct-6.5.4/lastcomm.1
+--- acct-6.5.4/lastcomm.1.pom	2010-01-23 20:18:03.000000000 +0100
++++ acct-6.5.4/lastcomm.1	2010-02-12 12:57:34.000000000 +0100
+@@ -111,7 +111,7 @@ For each entry the following information
+         D -- command terminated with the generation of a core file
+         X -- command was terminated with the signal SIGTERM
+    + the name of the user who ran the process
+-   + time the process exited
++   + time the process started
+ .SH OPTIONS
+ .PD 0
+ .TP

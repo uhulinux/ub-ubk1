@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+distcc-${UB_VERSION}.tar.bz2 distcc-${UB_VERSION}/
+	https://distcc.googlecode.com/files/
+	http://distcc.samba.org/ftp/distcc/

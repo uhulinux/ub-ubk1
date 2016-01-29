@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+sip-${UB_VERSION}.tar.gz sip-${UB_VERSION}/
+	http://sourceforge.net/projects/pyqt/files/sip/sip-${UB_VERSION}/
+	http://www.riverbankcomputing.co.uk/static/Downloads/sip4/

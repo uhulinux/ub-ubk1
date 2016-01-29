@@ -1,0 +1,73 @@
+diff -urN proftpd-1.3.3.orig/configure proftpd-1.3.3/configure
+--- proftpd-1.3.3.orig/configure	2010-02-15 20:32:24.000000000 +0100
++++ proftpd-1.3.3/configure	2010-03-10 11:06:17.110679247 +0100
+@@ -919,7 +919,7 @@
+ LIBS
+ CPPFLAGS
+ CPP'
+-ac_subdirs_all='lib/libltdl
++ac_subdirs_all='
+ $ac_shared_module_dirs
+ $ac_static_module_dirs'
+ 
+@@ -14461,15 +14461,11 @@
+       ac_core_modules="$ac_core_modules mod_dso.o"
+       ac_build_core_modules="$ac_build_core_modules modules/mod_dso.o"
+ 
+-      MAIN_LDFLAGS="-L\$(top_srcdir)/lib/libltdl -dlopen self -export-dynamic"
++      MAIN_LDFLAGS="-dlopen self -export-dynamic"
+       MAIN_LIBS="\$(LIBLTDL)"
+ 
+       MODULE_LDFLAGS="-avoid-version -export-dynamic -module"
+ 
+-      INSTALL_DEPS="install-libltdl"
+-      LIB_DEPS="libltdl"
+-      MODULE_DEPS="libltdl"
+-
+ cat >>confdefs.h <<\_ACEOF
+ #define PR_USE_DSO 1
+ _ACEOF
+@@ -14731,9 +14727,9 @@
+   "") enable_ltdl_convenience=yes
+       ac_configure_args="$ac_configure_args --enable-ltdl-convenience" ;;
+ esac
+-LIBLTDL='${top_builddir}/'"${lt_ltdl_dir+$lt_ltdl_dir/}libltdlc.la"
++LIBLTDL='${libdir}/'libltdl.la
+ LTDLDEPS=$LIBLTDL
+-LTDLINCL='-I${top_srcdir}'"${lt_ltdl_dir+/$lt_ltdl_dir}"
++LTDLINCL='-I${includedir}/'libltdl
+ 
+ 
+ 
+@@ -14783,7 +14779,6 @@
+ 
+ 
+ 
+-    subdirs="$subdirs lib/libltdl"
+ 
+ 
+ 
+diff -urN proftpd-1.3.3.orig/modules/Makefile.in proftpd-1.3.3/modules/Makefile.in
+--- proftpd-1.3.3.orig/modules/Makefile.in	2010-02-24 19:03:09.000000000 +0100
++++ proftpd-1.3.3/modules/Makefile.in	2010-03-10 11:06:33.259856974 +0100
+@@ -241,7 +241,6 @@
+ mod_dso.o: ../include/trace.h ../include/encode.h ../include/compat.h
+ mod_dso.o: ../include/proctitle.h ../include/pidfile.h ../include/env.h
+ mod_dso.o: ../include/pr-syslog.h ../include/mod_ctrls.h
+-mod_dso.o: ../lib/libltdl/ltdl.h
+ mod_facl.o: ../include/conf.h ../include/version.h ../config.h
+ mod_facl.o: ../include/default_paths.h ../include/options.h ../include/pool.h
+ mod_facl.o: ../include/str.h ../include/regexp.h ../include/table.h
+diff -urN proftpd-1.3.3.orig/modules/mod_dso.c proftpd-1.3.3/modules/mod_dso.c
+--- proftpd-1.3.3.orig/modules/mod_dso.c	2009-11-17 19:27:46.000000000 +0100
++++ proftpd-1.3.3/modules/mod_dso.c	2010-03-10 11:08:10.814749482 +0100
+@@ -31,8 +31,7 @@
+ #include "conf.h"
+ #include "mod_ctrls.h"
+ 
+-/* Make sure we use the libltdl shipped with proftpd, not the system libltdl. */
+-#include "lib/libltdl/ltdl.h"
++#include <ltdl.h>
+ 
+ #define MOD_DSO_VERSION		"mod_dso/0.5"
+ 

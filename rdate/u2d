@@ -1,0 +1,1 @@
+urllist http://www.sfr-fresh.com/linux/misc/ | splitver '^rdate-([0-9.]+).tar.gz$' | sort -V | tail -n 1

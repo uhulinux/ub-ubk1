@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Image-ExifTool-${UB_VERSION}.tar.gz Image-ExifTool-${UB_VERSION}/
+	http://www.sno.phy.queensu.ca/~phil/exiftool/

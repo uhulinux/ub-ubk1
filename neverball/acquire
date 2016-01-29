@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+neverball-${UB_VERSION}.tar.gz neverball-${UB_VERSION}/
+	http://neverball.org/

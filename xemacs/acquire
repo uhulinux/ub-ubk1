@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xemacs-${UB_VERSION}.tar.gz xemacs-${UB_VERSION}/
+	http://ftp.xemacs.org/xemacs-${UB_VERSION_MAJOR}.${UB_VERSION_MINOR}/

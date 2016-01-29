@@ -1,0 +1,12 @@
+diff -urN TransGUI.orig/Makefile TransGUI/Makefile
+--- TransGUI.orig/Makefile	2012-09-20 17:34:55.000000000 +0200
++++ TransGUI/Makefile	2014-06-06 09:27:27.929495707 +0200
+@@ -907,7 +907,7 @@
+ endif
+ ifndef INSTALL_PREFIX
+ ifdef UNIXHier
+-INSTALL_PREFIX=/usr/local
++INSTALL_PREFIX=$(DESTDIR)/usr
+ else
+ ifdef INSTALL_FPCPACKAGE
+ INSTALL_BASEDIR:=/pp

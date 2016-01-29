@@ -1,0 +1,86 @@
+'extract /getenv HOME/'
+ myhome = getenv.1
+
+'set etmode on 32-255'
+'set inputmode line'
+'set insertmode on'
+'set linend on #'
+'set margins 1 70 +0'
+'set prefix off'
+'set tabkey character tab'
+'set tabsin off'
+
+
+'set reprofile on '
+'set coloring off '
+
+'set color highlig  bright red        blue '
+'set color arrow    normal yellow     black'
+'set color block    normal black      green'
+'set color cblock   normal black      green'
+'set color cmdline  normal turquoise  black'
+'set color ctofeof  normal red        black'
+'set color curline  normal cyan       black'
+'set color divider  normal gray       black'
+/*'set color filearea normal white      black'*/
+'set color filearea normal gray       black'
+'set color idline   normal green      black'
+'set color msgline  bright red        black'
+'set color pending  normal yellow     black'
+'set color prefix   normal green      black'
+'set color reserved normal black      green'
+'set color scale    normal gray       black'
+'set color shadow   normal green      black'
+'set color statarea normal green      black'
+'set color tabline  normal red        black'
+'set color tofeof   normal red        black'
+'set color nondisp  normal white      red'
+
+'def end sos startendchar'
+'def del sos delchar'
+
+'def c-a sos tabwordf'
+'def c-d bottom'
+"def c-f macro thefmt"
+'def c-h shadow on#emsg shadow on'
+'def c-j sos tabwordb'
+"def c-n macro commentblock"
+'def c-o shadow off#emsg shadow off'
+'def c-p the 'myhome'/.therc'
+'def c-s spltjoin'
+'def c-t top'
+'def c-y sos delline'
+
+'def f2 emsg file saved #save'
+'def f3 file'
+'def f4 nextwindow'
+'def f6 suspend'
+'def f8 duplicate 1'
+'def f9 ccancel'
+'def f10 quit'
+'def f12 tabpre'
+
+'def s-f1 macro manual'
+'def s-f4 lower block'
+'def s-f5 upper block'
+'def s-f7 set point .aaaaa'
+'def s-f8 locate .aaaaa'
+
+
+command.1 = "def f11 rexx if prefix.1()==on then 'prefix off'; else 'prefix on'"
+command.2 = "def s-f2 rexx if screen.1()==2 then 'scr 1 v'; else 'scr 2 v'"
+command.3 = "def s-f3 rexx if wordwrap.1()==on then 'wordw off#emsg wordwrap off'; else 'wordw on#emsg wordwrap on'"
+command.4 = "def s-f6 rexx if statusline.1()==bottom then 'statusline off#idline off'; else 'statusline bottom#idline on'"
+
+do i = 1 to 4
+   command.i
+end
+
+'extract /terminal'
+  if (terminal.1 = 'xterm' | terminal.1 = 'xterm-debian' | terminal.1 = 'rxvt') then
+    do
+      'define find cursor home save'
+      'define select sos startendchar'
+    end
+
+return

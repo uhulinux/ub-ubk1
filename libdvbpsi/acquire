@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libdvbpsi5-${UB_VERSION}.tar.bz2 libdvbpsi5-${UB_VERSION}/
+	http://www.mirror.umoss.org/videolan/libdvbpsi/${UB_VERSION}/

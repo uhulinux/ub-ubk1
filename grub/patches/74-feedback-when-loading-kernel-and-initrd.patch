@@ -1,0 +1,64 @@
+diff -Naur grub-0.95.orig/stage2/boot.c grub-0.95/stage2/boot.c
+--- grub-0.95.orig/stage2/boot.c	2004-03-30 13:44:08.000000000 +0200
++++ grub-0.95/stage2/boot.c	2004-07-26 23:07:52.570852900 +0200
+@@ -30,6 +30,22 @@
+ static struct mod_list mll[99];
+ static int linux_mem_size;
+ 
++static int feedback_state;
++static void (*disk_read_hook2) (int, int, int);
++
++static void
++feedback (int sector, int offset, int length)
++{
++  char art[4] = { '|', '/', '-', '\\', };
++  if (feedback_state % 256 == 0) {
++    grub_printf ("%c\b", art[(feedback_state / 256) % 4]);
++  }
++  feedback_state++;
++  if (disk_read_hook2) {
++    (*disk_read_hook2) (sector, offset, length);
++  }
++}
++
+ /*
+  *  The next two functions, 'load_image' and 'load_module', are the building
+  *  blocks of the multiboot loader component.  They handle essentially all
+@@ -280,9 +296,6 @@
+ 	errnum = ERR_WONT_FIT;
+       else
+ 	{
+-	  grub_printf ("   [Linux-%s, setup=0x%x, size=0x%x]\n",
+-		       (big_linux ? "bzImage" : "zImage"), data_len, text_len);
+-
+ 	  /* Video mode selection support. What a mess!  */
+ 	  /* NOTE: Even the word "mess" is not still enough to
+ 	     represent how wrong and bad the Linux video support is,
+@@ -444,8 +457,15 @@
+ 	  grub_seek (data_len + SECTOR_SIZE);
+       
+ 	  cur_addr = (int) linux_data_tmp_addr + LINUX_SETUP_MOVE_SIZE;
++	  disk_read_hook2 = disk_read_hook;
++	  disk_read_hook = feedback;
++	  feedback_state = 0;
+ 	  grub_read ((char *) LINUX_BZIMAGE_ADDR, text_len);
++	  disk_read_hook = disk_read_hook2;
+       
++	  grub_printf ("   [Linux-%s, setup=0x%x, size=0x%x]\n",
++		       (big_linux ? "bzImage" : "zImage"), data_len, text_len);
++
+ 	  if (errnum == ERR_NONE)
+ 	    {
+ 	      grub_close ();
+@@ -811,7 +831,11 @@
+   if (! grub_open (initrd))
+     goto fail;
+ 
++  disk_read_hook2 = disk_read_hook;
++  disk_read_hook = feedback;
++  feedback_state = 0;
+   len = grub_read ((char *) cur_addr, -1);
++  disk_read_hook = disk_read_hook2;
+   if (! len)
+     {
+       grub_close ();

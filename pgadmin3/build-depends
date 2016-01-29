@@ -1,0 +1,7 @@
+krb5-dev
+libxml2-dev
+libxslt-dev
+openssl-dev
+postgresql-dev
+postgresql-server
+wxwidgets2.8-dev

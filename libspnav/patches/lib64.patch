@@ -1,0 +1,16 @@
+diff -Naur libspnav-0.2.1-orig/configure libspnav-0.2.1/configure
+--- libspnav-0.2.1-orig/configure	2008-08-14 04:10:34.000000000 +0200
++++ libspnav-0.2.1/configure	2010-01-20 17:35:29.000000000 +0100
+@@ -10,9 +10,9 @@
+ srcdir="`dirname "$0"`"
+ libdir=lib
+ 
+-if [ "`uname -m`" = 'x86_64' ]; then
+-	libdir=lib64
+-fi
++#if [ "`uname -m`" = 'x86_64' ]; then
++#	libdir=lib64
++#fi
+ 
+ for arg; do
+ 	case "$arg" in

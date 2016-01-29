@@ -1,0 +1,24 @@
+#!/bin/sh -eux
+
+ub_install
+
+ln -sf /usr/share/xemacs-21.5-b34/etc/xemacs-icon.xpm "$UB_INSTALLDIR"/usr/share/pixmaps/
+
+for i in b2m ctags etags ; do
+	mv "$UB_INSTALLDIR"/usr/bin/${i} "$UB_INSTALLDIR"/usr/bin/${i}-xemacs
+done
+
+for i in ctags etags ; do
+	mv "$UB_INSTALLDIR"/usr/share/man/${i}{,-xemacs}.1
+done
+mv "$UB_INSTALLDIR"/usr/share/man/*.1 "$UB_INSTALLDIR"/usr/share/man/man1/
+
+rm "$UB_INSTALLDIR"/usr/lib/xemacs-21.5-b34/i686-uhu-linux/modules/auto-autoloads.el~
+
+cd "$UB_INSTALLDIR"/usr/share/info
+rm -f dir info.info cl.info widget.info texinfo* termcap* standards* 
+
+cd "$UB_INSTALLDIR"/usr/lib
+rmdir -p xemacs/site-modules
+cd "$UB_INSTALLDIR"/usr/share
+rmdir -p xemacs/site-lisp

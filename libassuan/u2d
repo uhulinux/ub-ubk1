@@ -1,0 +1,1 @@
+urllist ftp://ftp.gnupg.org/gcrypt/libassuan/ | splitver '^libassuan-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+MP3-Tag-${UB_VERSION}.tar.gz MP3-Tag-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/

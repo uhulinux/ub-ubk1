@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+paprefs-${UB_VERSION}.tar.gz paprefs-${UB_VERSION}/
+	http://0pointer.de/lennart/projects/paprefs/

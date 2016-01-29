@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_install
+ln -sf xvile "$UB_INSTALLDIR"/usr/bin/vile
+ln -sf xvile.1 "$UB_INSTALLDIR"/usr/share/man/man1/vile.1
+cp -a doc/. "$UB_INSTALLDIR"/usr/share/vile/doc/
+cp -a macros/xvile.desktop "$UB_INSTALLDIR"/usr/share/applications/
+cp -a icons/*.xpm "$UB_INSTALLDIR"/usr/share/pixmaps/
+ln -sf vile.xpm "$UB_INSTALLDIR"/usr/share/pixmaps/xvile.xpm
+cp -a bin/. "$UB_INSTALLDIR"/usr/bin/
+cp -a lib/. "$UB_INSTALLDIR"/usr/lib/

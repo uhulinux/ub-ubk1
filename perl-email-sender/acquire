@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Email-Sender-${UB_VERSION}.tar.gz Email-Sender-${UB_VERSION}/
+	http://cpan.metacpan.org/modules/by-module/Email/

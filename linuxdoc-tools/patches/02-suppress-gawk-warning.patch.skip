@@ -1,0 +1,14 @@
+diff -urN linuxdoc-tools-0.9.21.orig/lib/info.awk linuxdoc-tools-0.9.21/lib/info.awk
+--- linuxdoc-tools-0.9.21.orig/lib/info.awk	2001-05-24 17:57:40.000000000 +0200
++++ linuxdoc-tools-0.9.21/lib/info.awk	2003-02-27 13:14:27.000000000 +0100
+@@ -28,8 +28,8 @@
+ function conv(entrytext)
+ {
+    gsub( "@[A-Za-z][A-Za-z0-9]*", "", entrytext );
+-   gsub( "\{", "", entrytext );
+-   gsub( "\}", "", entrytext );
++   gsub( "{", "", entrytext );
++   gsub( "}", "", entrytext );
+    gsub( ",", "", entrytext );
+    gsub( /\./, "-", entrytext );
+    gsub( ";", "", entrytext );

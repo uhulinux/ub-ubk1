@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+time-${UB_VERSION}.tar.gz time-${UB_VERSION}/
+	ftp://ftp.gnu.org/gnu/time/

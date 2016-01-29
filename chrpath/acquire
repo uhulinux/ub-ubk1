@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+chrpath-${UB_VERSION}.tar.gz chrpath-${UB_VERSION}/
+	http://ftp.tux.org/pub/X-Windows/ftp.hungry.com/chrpath/

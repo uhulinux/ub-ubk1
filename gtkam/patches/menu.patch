@@ -1,0 +1,11 @@
+diff -urN gtkam-0.1.16.orig/gtkam.desktop.in gtkam-0.1.16/gtkam.desktop.in
+--- gtkam-0.1.16.orig/gtkam.desktop.in	2008-10-26 13:34:14.000000000 +0100
++++ gtkam-0.1.16/gtkam.desktop.in	2008-12-02 19:43:38.000000000 +0100
+@@ -6,6 +6,6 @@
+ Icon=gtkam-camera.png
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Photography;Graphics;RasterGraphics;Viewer;
++Categories=GNOME;GTK;Photography;Graphics;RasterGraphics;Viewer;X-UHU-Menu/Graphics;
+ StartupNotify=true
+ X-GNOME-DocPath=gtkam/gtkam.xml

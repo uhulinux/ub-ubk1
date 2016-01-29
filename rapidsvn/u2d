@@ -1,0 +1,2 @@
+minor=$(urllist http://www.rapidsvn.org/download/release/ | grep -E '^[0-9]+' | sort -V | tail -n 1) 
+urllist http://www.rapidsvn.org/download/release/"$minor"/ | splitver '^rapidsvn-([0-9.]+).tar.gz$'

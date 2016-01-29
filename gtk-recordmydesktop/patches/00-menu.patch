@@ -1,0 +1,10 @@
+diff -Naur ORIG/src/gtk-recordmydesktop.desktop UHU/src/gtk-recordmydesktop.desktop
+--- ORIG/src/gtk-recordmydesktop.desktop	2008-11-23 16:09:17.000000000 +0100
++++ UHU/src/gtk-recordmydesktop.desktop	2009-09-22 21:54:27.000000000 +0200
+@@ -8,5 +8,5 @@
+ Terminal=false
+ Type=Application
+ Icon=gtk-recordmydesktop.png
+-Categories=AudioVideo;Recorder;
++Categories=AudioVideo;Recorder;X-UHU-Menu/Multimedia;
+ StartupNotify=false

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+mysql-connector-java-${UB_VERSION}.tar.gz mysql-connector-java-${UB_VERSION}/
+	ftp://ftp.crysys.hu/pub/mysql/Downloads/Connector-J/
+	http://mysql.mirrors.crysys.hit.bme.hu/Downloads/Connector-J/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+sqlautocode-${UB_VERSION}.tar.gz sqlautocode-${UB_VERSION}/
+	http://pypi.python.org/packages/source/s/sqlautocode/

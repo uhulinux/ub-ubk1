@@ -1,0 +1,18 @@
+diff -Naur kate-4.6.80-orig//kate/data/kate.desktop kate-4.6.80//kate/data/kate.desktop
+--- kate-4.6.80-orig//kate/data/kate.desktop	2011-05-21 01:07:31.000000000 +0200
++++ kate-4.6.80//kate/data/kate.desktop	2011-06-01 09:05:07.000000000 +0200
+@@ -114,4 +114,4 @@
+ Terminal=false
+ X-DBUS-StartupType=Multi
+ X-DBUS-ServiceName=org.kde.kate
+-Categories=Qt;KDE;Utility;TextEditor;
++Categories=Qt;KDE;Utility;TextEditor;X-UHU-Menu/Tools/Editors;
+diff -Naur kate-4.6.80-orig//kwrite/kwrite.desktop kate-4.6.80//kwrite/kwrite.desktop
+--- kate-4.6.80-orig//kwrite/kwrite.desktop	2011-05-21 01:07:31.000000000 +0200
++++ kate-4.6.80//kwrite/kwrite.desktop	2011-06-01 09:05:28.000000000 +0200
+@@ -63,4 +63,4 @@
+ InitialPreference=8
+ X-DBUS-StartupType=Multi
+ X-DBUS-ServiceName=org.kate-editor.kwrite
+-Categories=Qt;KDE;Utility;TextEditor;
++Categories=Qt;KDE;Utility;TextEditor;X-UHU-Menu/Tools/Editors;

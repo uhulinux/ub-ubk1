@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+strigiclient-${UB_VERSION}.tar.gz strigiclient-v${UB_VERSION}/
+	git://anongit.kde.org/strigiclient.git@tag:v${UB_VERSION}

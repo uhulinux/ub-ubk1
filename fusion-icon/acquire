@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+fusion-icon-${UB_VERSION}.tar.gz fusion-icon/
+	http://slackbuilds.org/sources/12.1/

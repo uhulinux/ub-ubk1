@@ -1,0 +1,12 @@
+diff -Naurdp a/data/eog.desktop.in.in b/data/eog.desktop.in.in
+--- a/data/eog.desktop.in.in	2008-08-24 18:52:40.000000000 +0200
++++ b/data/eog.desktop.in.in	2008-09-10 18:27:32.000000000 +0200
+@@ -7,7 +7,7 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Graphics;2DGraphics;RasterGraphics;Viewer;
++Categories=GTK;GNOME;Graphics;2DGraphics;RasterGraphics;Viewer;X-UHU-Menu/Graphics;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=EOG
+ X-GNOME-Bugzilla-Component=general

@@ -1,0 +1,16 @@
+diff -Naur nss_ldap-265-orig/ldap-nss.h nss_ldap-265/ldap-nss.h
+--- nss_ldap-265-orig/ldap-nss.h	2009-11-06 11:28:08.000000000 +0100
++++ nss_ldap-265/ldap-nss.h	2013-05-01 13:10:37.992549107 +0200
+@@ -96,9 +96,9 @@
+  * unacceptable, in which case you may wish to adjust
+  * the constants below.
+  */
+-#define LDAP_NSS_TRIES	   5	/* number of sleeping reconnect attempts */
+-#define LDAP_NSS_SLEEPTIME       4	/* seconds to sleep; doubled until max */
+-#define LDAP_NSS_MAXSLEEPTIME    64	/* maximum seconds to sleep */
++#define LDAP_NSS_TRIES	   4	/* number of sleeping reconnect attempts */
++#define LDAP_NSS_SLEEPTIME       1	/* seconds to sleep; doubled until max */
++#define LDAP_NSS_MAXSLEEPTIME    16	/* maximum seconds to sleep */
+ #define LDAP_NSS_MAXCONNTRIES    2	/* reconnect attempts before sleeping */
+ 
+ #if defined(HAVE_NSSWITCH_H) || defined(HAVE_IRS_H)

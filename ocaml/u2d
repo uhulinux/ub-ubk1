@@ -1,0 +1,2 @@
+minor=$(urllist http://caml.inria.fr/pub/distrib/ | splitver '^ocaml-([0-9.]+)$' | sort -V | tail -n 1)
+urllist http://caml.inria.fr/pub/distrib/ocaml-"$minor"/ | splitver '^ocaml-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

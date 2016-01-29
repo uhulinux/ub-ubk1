@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-doc-utils-${UB_VERSION}.tar.xz gnome-doc-utils-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-doc-utils/${UB_VERSION_HEAD2}/

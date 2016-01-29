@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-vfs-${UB_VERSION}.tar.gz gnome-vfs-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-vfs/${UB_VERSION_HEAD2}/

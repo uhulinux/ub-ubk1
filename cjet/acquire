@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cjet${UB_VERSION//./}.tgz cjet${UB_VERSION//./}/
+	ftp://metalab.unc.edu/pub/Linux/system/printing/

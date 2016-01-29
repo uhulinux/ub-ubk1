@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+install -m 755 aewm-uhu ${UB_INSTALLDIR}/usr/bin/
+

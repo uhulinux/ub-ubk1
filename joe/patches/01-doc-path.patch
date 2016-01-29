@@ -1,0 +1,60 @@
+diff -urN joe-3.7.orig/rc/jmacsrc.in joe-3.7/rc/jmacsrc.in
+--- joe-3.7.orig/rc/jmacsrc.in	2008-11-02 20:13:54.000000000 +0100
++++ joe-3.7/rc/jmacsrc.in	2008-12-01 22:27:12.000000000 +0100
+@@ -552,7 +552,7 @@
+ \i \i \|\i \i
+ \i \i  default joerc file is here @JOERC@/joerc \|\i \i
+ \i \i  default syntax and i18n files are here @JOEDATA@ \|\i \i
+-\i \i  additional documentation can be found here @JOEDOC@ \|\i \i
++\i \i  additional documentation can be found here /usr/share/doc/Packages/joe \|\i \i
+ }
+ 
+ {CharTable
+diff -urN joe-3.7.orig/rc/joerc.in joe-3.7/rc/joerc.in
+--- joe-3.7.orig/rc/joerc.in	2008-11-02 04:29:43.000000000 +0100
++++ joe-3.7/rc/joerc.in	2008-12-01 22:27:29.000000000 +0100
+@@ -615,7 +615,7 @@
+ \i \i \|\i \i
+ \i \i  default joerc file is here @JOERC@/joerc \|\i \i
+ \i \i  default syntax and i18n files are here @JOEDATA@ \|\i \i
+-\i \i  additional documentation can be found here @JOEDOC@ \|\i \i
++\i \i  additional documentation can be found here /usr/share/doc/Packages/joe \|\i \i
+ }
+ 
+ {CharTable
+diff -urN joe-3.7.orig/rc/jpicorc.in joe-3.7/rc/jpicorc.in
+--- joe-3.7.orig/rc/jpicorc.in	2008-11-02 04:19:48.000000000 +0100
++++ joe-3.7/rc/jpicorc.in	2008-12-01 22:27:36.000000000 +0100
+@@ -568,7 +568,7 @@
+ \i \i \|\i \i
+ \i \i  default joerc file is here @JOERC@/joerc \|\i \i
+ \i \i  default syntax and i18n files are here @JOEDATA@ \|\i \i
+-\i \i  additional documentation can be found here @JOEDOC@ \|\i \i
++\i \i  additional documentation can be found here /usr/share/doc/Packages/joe \|\i \i
+ }
+ 
+ {CharTable
+diff -urN joe-3.7.orig/rc/jstarrc.in joe-3.7/rc/jstarrc.in
+--- joe-3.7.orig/rc/jstarrc.in	2008-11-02 04:20:19.000000000 +0100
++++ joe-3.7/rc/jstarrc.in	2008-12-01 22:27:41.000000000 +0100
+@@ -558,7 +558,7 @@
+ \i \i \|\i \i
+ \i \i  default joerc file is here @JOERC@/joerc \|\i \i
+ \i \i  default syntax and i18n files are here @JOEDATA@ \|\i \i
+-\i \i  additional documentation can be found here @JOEDOC@ \|\i \i
++\i \i  additional documentation can be found here /usr/share/doc/Packages/joe \|\i \i
+ }
+ 
+ {CharTable
+diff -urN joe-3.7.orig/rc/rjoerc.in joe-3.7/rc/rjoerc.in
+--- joe-3.7.orig/rc/rjoerc.in	2008-11-02 04:20:28.000000000 +0100
++++ joe-3.7/rc/rjoerc.in	2008-12-01 22:27:46.000000000 +0100
+@@ -566,7 +566,7 @@
+ \i \i \|\i \i
+ \i \i  default joerc file is here @JOERC@/joerc \|\i \i
+ \i \i  default syntax and i18n files are here @JOEDATA@ \|\i \i
+-\i \i  additional documentation can be found here @JOEDOC@ \|\i \i
++\i \i  additional documentation can be found here /usr/share/doc/Packages/joe \|\i \i
+ }
+ 
+ {CharTable

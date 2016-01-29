@@ -1,0 +1,11 @@
+diff -urN fontconfig-2.11.0.orig/conf.d/Makefile.in fontconfig-2.11.0/conf.d/Makefile.in
+--- fontconfig-2.11.0.orig/conf.d/Makefile.in	2013-10-11 06:28:47.000000000 +0200
++++ fontconfig-2.11.0/conf.d/Makefile.in	2014-03-19 11:02:26.717688625 +0100
+@@ -340,6 +340,7 @@
+ 	65-fonts-persian.conf \
+ 	65-nonlatin.conf \
+ 	69-unifont.conf \
++	70-no-bitmaps.conf \
+ 	80-delicious.conf \
+ 	90-synthetic.conf
+ 

@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+make \
+	INSTALLROOT=${UB_INSTALLDIR} \
+	MANDIR=/usr/share/man \
+	install
+
+ln -s in.rexecd  ${UB_INSTALLDIR}/usr/sbin/rexecd
+ln -s in.rlogind ${UB_INSTALLDIR}/usr/sbin/rlogind
+ln -s in.rshd    ${UB_INSTALLDIR}/usr/sbin/rshd
+

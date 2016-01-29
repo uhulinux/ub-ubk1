@@ -1,0 +1,46 @@
+--- acct-6.3.2/sa.8.tio-avio	1997-09-30 01:42:00.000000000 +0200
++++ acct-6.3.2/sa.8	2005-02-15 11:46:23.814170360 +0100
+@@ -24,17 +24,6 @@
+ .B \-\-percentages
+ ]
+ [
+-.B \-d
+-|
+-.B \-\-sort-avio
+-]
+-.br
+-[
+-.B \-D
+-|
+-.B \-\-sort-tio
+-]
+-[
+ .B \-f
+ |
+ .B \-\-not-interactive
+@@ -185,12 +174,6 @@
+ .I k
+  cpu-time averaged core usage, in 1k units
+ .TP
+-.I avio
+- average number of I/O operations per execution
+-.TP
+-.I tio
+- total number of I/O operations
+-.TP
+ .I k*sec
+  cpu storage integral (kilo-core seconds)
+ .TP
+@@ -238,12 +221,6 @@
+ Print percentages of total time for the command's user, system,
+ and real time values.
+ .TP
+-.B \-d, \-\-sort-avio
+-Sort the output by the average number of disk I/O operations.
+-.TP
+-.B \-D, \-\-sort-tio
+-Print and sort the output by the total number of disk I/O operations.
+-.TP
+ .B \-f, \-\-not-interactive
+ When using the `\-\-threshold' option, assume that all answers to
+ interactive queries will be affirmative.

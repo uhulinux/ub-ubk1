@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+trollius-${UB_VERSION}.tar.gz trollius-${UB_VERSION}/
+	https://pypi.python.org/packages/source/t/trollius/

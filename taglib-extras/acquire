@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+taglib-extras-${UB_VERSION/~/-}.tar.gz taglib-extras-${UB_VERSION#*~}/
+	svn://anonsvn.kde.org/home/kde/trunk/kdesupport/taglib-extras/@${UB_VERSION#*~r}

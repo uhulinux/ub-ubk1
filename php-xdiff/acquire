@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xdiff-${UB_VERSION}.tgz xdiff-${UB_VERSION}/
+	http://pecl.php.net/get/

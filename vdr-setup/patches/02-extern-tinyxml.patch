@@ -1,0 +1,23 @@
+diff -Naur orig/Makefile mod/Makefile
+--- orig/Makefile	2013-01-03 18:17:58.000000000 +0100
++++ mod/Makefile	2013-01-03 18:22:53.000000000 +0100
+@@ -48,6 +48,10 @@
+ 
+ DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"' -DAPIVERSION="\"$(APIVERSION)\"" 
+ 
++DEFINES += -DTIXML_USE_STL
++ 
++LIBS += -ltinyxml
++
+ ### The object files (add further files here):
+ OBJS     = $(PLUGIN).o menus.o setupmenu.o setupsetup.o config.o plugins.o sysconfig.o util.o setupsystemmenu.o
+ 
+@@ -98,7 +102,7 @@
+ ### Targets:
+ 
+ $(SOFILE): setupsystemmenu.c $(OBJS)
+-	$(CXX) $(CXXFLAGS) -shared $(OBJS) -o $@
++	$(CXX) $(CXXFLAGS) -shared $(OBJS) $(LIBS) -o $@
+ 
+ install-lib: $(SOFILE)
+ 	install -D $^ $(LIBDIR)/$^.$(APIVERSION)

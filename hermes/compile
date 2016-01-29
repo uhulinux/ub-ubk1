@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+# fix for gcc 4
+sed -i 's/__attribute__ ((alias ("\(.*\)")))/asm ("\1")/' src/HeadMMX.h src/HeadX86.h
+
+ub_compile

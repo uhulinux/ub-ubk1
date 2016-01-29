@@ -1,0 +1,4 @@
+cmake
+dbus-dev
+modemmanager-dev
+qt4-dev

@@ -1,0 +1,41 @@
+diff -Naur efont-unicode-bdf-0.4.1-src.orig/Makefile.in efont-unicode-bdf-0.4.1-src/Makefile.in
+--- efont-unicode-bdf-0.4.1-src.orig/Makefile.in	2002-08-27 04:02:01.000000000 +0200
++++ efont-unicode-bdf-0.4.1-src/Makefile.in	2004-05-05 22:07:30.000000000 +0200
+@@ -40,13 +40,13 @@
+ 	   f10.bdf f12.bdf f14.bdf f16.bdf f24.bdf 
+ 
+ HEXFILES = $(BDFFILES:.bdf=.hex)
+-PCFFILES = $(BDFFILES:.bdf=.pcf.gz)
++PCFFILES = $(BDFFILES:.bdf=.pcf)
+ BOLDBDFFILES = $(BDFFILES:.bdf=_b.bdf)
+-BOLDPCFFILES = $(BDFFILES:.bdf=_b.pcf.gz)
++BOLDPCFFILES = $(BDFFILES:.bdf=_b.pcf)
+ ITALICBDFFILES = $(BDFFILES:.bdf=_i.bdf)
+-ITALICPCFFILES = $(BDFFILES:.bdf=_i.pcf.gz)
++ITALICPCFFILES = $(BDFFILES:.bdf=_i.pcf)
+ BOLDITALICBDFFILES = $(BDFFILES:.bdf=_bi.bdf)
+-BOLDITALICPCFFILES = $(BDFFILES:.bdf=_bi.pcf.gz)
++BOLDITALICPCFFILES = $(BDFFILES:.bdf=_bi.pcf)
+ 
+ TOOLS = tools/ChangeLog tools/*.in
+ 
+@@ -82,7 +82,7 @@
+ 	$(MAKE) -f Makefile.diff
+ 
+ clean:
+-	rm -f *.bdf.tmp *.pcf.gz.tmp
++	rm -f *.bdf.tmp *.pcf.tmp
+ 	rm -f [fh]??_source.hex [bfh]??.hex gb1[^6]_uni.hex
+ 	rm -f taipei1[^6]_uni.hex [fh]??_half.hex hangul??.hex
+ 	rm -f gb1[^6]fs_uni.hex K1[^24]-[12]_uni.hex gulim1[^2]_uni.hex
+@@ -269,8 +269,8 @@
+ # General Rules                                                        #
+ ########################################################################
+ 
+-%.pcf.gz: %.bdf
+-	bdftopcf $< | gzip -9c > $@.tmp && \
++%.pcf: %.bdf
++	bdftopcf $< > $@.tmp && \
+ 	mv $@.tmp $@
+ %_b.bdf: %.bdf
+ 	tools/mkbold -l $< > $@.tmp && \

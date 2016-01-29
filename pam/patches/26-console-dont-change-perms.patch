@@ -1,0 +1,76 @@
+diff -Naurdp a/modules/pam_console/50-default.perms b/modules/pam_console/50-default.perms
+--- a/modules/pam_console/50-default.perms	2008-12-16 13:37:52.000000000 +0100
++++ b/modules/pam_console/50-default.perms	2013-02-09 12:11:12.770073951 +0100
+@@ -1,32 +1,32 @@
+ # device classes -- these are shell-style globs
+-<pilot>=/dev/pilot
+-<scanner>=/dev/scanner* /dev/usb/scanner*
+-<rio500>=/dev/usb/rio500
+-<fb>=/dev/fb /dev/fb[0-9]* \
+-     /dev/fb/*
+-<kbd>=/dev/kbd
+-<joystick>=/dev/js[0-9]*
+-<gpm>=/dev/gpmctl
+-<dri>=/dev/nvidia* /dev/3dfx* /dev/dri/card*
+-<mainboard>=/dev/apm_bios
+-<pmu>=/dev/pmu
+-<bluetooth>=/dev/rfcomm*
+-<irda>=/dev/ircomm*
+-<dvb>=/dev/dvb/adapter*/*
++#<pilot>=/dev/pilot
++#<scanner>=/dev/scanner* /dev/usb/scanner*
++#<rio500>=/dev/usb/rio500
++#<fb>=/dev/fb /dev/fb[0-9]* \
++#     /dev/fb/*
++#<kbd>=/dev/kbd
++#<joystick>=/dev/js[0-9]*
++#<gpm>=/dev/gpmctl
++#<dri>=/dev/nvidia* /dev/3dfx* /dev/dri/card*
++#<mainboard>=/dev/apm_bios
++#<pmu>=/dev/pmu
++#<bluetooth>=/dev/rfcomm*
++#<irda>=/dev/ircomm*
++#<dvb>=/dev/dvb/adapter*/*
+ 
+ # permission definitions
+-<console>  0600 <pilot>      0660 root.uucp
+-<console>  0660 <scanner>    0660 root.lp
+-<console>  0600 <fb>         0600 root
+-<console>  0600 <kbd>        0600 root
+-<console>  0600 <joystick>   0600 root
+-<console>  0700 <gpm>	     0700 root
+-<console>  0600 <mainboard>  0600 root
+-<console>  0600 <rio500>     0600 root
+-<console>  0600 <pmu>        0600 root
+-<console>  0600 <bluetooth>  0600 root
+-<console>  0600 <irda>       0600 root
+-<console>  0600 <dvb>        0600 root
++#<console>  0600 <pilot>      0660 root.uucp
++#<console>  0660 <scanner>    0660 root.lp
++#<console>  0600 <fb>         0600 root
++#<console>  0600 <kbd>        0600 root
++#<console>  0600 <joystick>   0600 root
++#<console>  0700 <gpm>	     0700 root
++#<console>  0600 <mainboard>  0600 root
++#<console>  0600 <rio500>     0600 root
++#<console>  0600 <pmu>        0600 root
++#<console>  0600 <bluetooth>  0600 root
++#<console>  0600 <irda>       0600 root
++#<console>  0600 <dvb>        0600 root
+ 
+-<xconsole> 0600 /dev/console 0600 root.root
+-<console>  0600 <dri>	     0600 root
++#<xconsole> 0600 /dev/console 0600 root.root
++#<console>  0600 <dri>	     0600 root
+diff -Naurdp a/modules/pam_console/console.perms b/modules/pam_console/console.perms
+--- a/modules/pam_console/console.perms	2008-12-16 13:37:52.000000000 +0100
++++ b/modules/pam_console/console.perms	2013-02-09 12:11:26.430073342 +0100
+@@ -19,7 +19,7 @@
+ 
+ # file classes -- these are regular expressions
+ <console>=tty[0-9][0-9]* vc/[0-9][0-9]* :[0-9]+\.[0-9]+ :[0-9]+
+-<xconsole>=:[0-9]+\.[0-9]+ :[0-9]+
++#<xconsole>=:[0-9]+\.[0-9]+ :[0-9]+
+ 
+ # device classes -- see console.perms.d/50-default.perms
+ # permission definitions -- see console.perms.d/50-default.perms

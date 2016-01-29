@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+cd source/Irrlicht
+ub_make NDEBUG=1 sharedlib
+ub_make NDEBUG=1 staticlib

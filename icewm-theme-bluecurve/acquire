@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+truecurve-default-${UB_VERSION}.tar.gz TrueCurve-${UB_VERSION}/
+	http://download.freshmeat.net/themes/truecurve/

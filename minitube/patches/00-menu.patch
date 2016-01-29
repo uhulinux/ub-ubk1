@@ -1,0 +1,12 @@
+diff -Naur minitube-orig/minitube.desktop minitube/minitube.desktop
+--- minitube-orig/minitube.desktop	2013-12-19 00:37:27.000000000 +0100
++++ minitube/minitube.desktop	2014-01-16 17:18:56.000000000 +0100
+@@ -16,7 +16,7 @@
+ Terminal=false
+ Type=Application
+ Icon=minitube
+-Categories=AudioVideo;Player;Qt;
++Categories=AudioVideo;Player;Qt;X-UHU-Menu/Multimedia/VideoPlayers;
+ StartupNotify=false
+ Actions=TogglePlaying;Next;Previous;
+ 

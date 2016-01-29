@@ -1,0 +1,87 @@
+--- ORIG/Xqed.py	2004-03-29 23:19:53.000000000 +0200
++++ UHU/Xqed.py	2011-09-10 20:27:33.136000070 +0200
+@@ -209,27 +209,27 @@
+         fontmenu.add_command(label="18", command=self.set_font18)
+         fontmenu.add_command(label="24", command=self.set_font24)
+         self.modemenu = modemenu = Menu(menu, tearoff=0)
+-        menu.add_cascade(label="Fájl", menu=modemenu, underline=0)
+-        modemenu.add_command(label="Összes kifejezés", command=self.all_items, underline=9)
+-        modemenu.add_command(label="Felolvasás", command=self.tts, underline=3)
++        menu.add_cascade(label="Fájl".decode("iso-8859-2"), menu=modemenu, underline=0)
++        modemenu.add_command(label="Összes kifejezés".decode("iso-8859-2"), command=self.all_items, underline=9)
++        modemenu.add_command(label="Felolvasás".decode("iso-8859-2"), command=self.tts, underline=3)
+         modemenu.add_separator()
+-        modemenu.add_command(label="Háttér-üzemmód", command=self.change_mode, underline=0)
+-        modemenu.add_command(label="Kilépés", command=self.xqed_exit, underline=0)
++        modemenu.add_command(label="Háttér-üzemmód".decode("iso-8859-2"), command=self.change_mode, underline=0)
++        modemenu.add_command(label="Kilépés".decode("iso-8859-2"), command=self.xqed_exit, underline=0)
+         self.helpmenu = helpmenu = Menu(menu, tearoff=0)
+-        menu.add_cascade(label="Segítség", menu=helpmenu, underline=0)
+-        helpmenu.add_command(label="Használat", command=self.about_program, underline=0)
+-        helpmenu.add_command(label="Kiejtési útmutató", command=self.about_prono, underline=0)
++        menu.add_cascade(label="Segítség".decode("iso-8859-2"), menu=helpmenu, underline=0)
++        helpmenu.add_command(label="Használat".decode("iso-8859-2"), command=self.about_program, underline=0)
++        helpmenu.add_command(label="Kiejtési útmutató".decode("iso-8859-2"), command=self.about_prono, underline=0)
+         helpmenu.add_cascade(label="Betûméret".decode("iso-8859-2"), menu=fontmenu, underline=0)
+         # helpmenu.add_command(label="Betûméret", command=self.set_fontsize)
+-        helpmenu.add_command(label="Magyarról angolra", command=self.about_magyar, underline=0)
+-        helpmenu.add_command(label="Az XQED névjegye", command=self.about_xqed, underline=0)
++        helpmenu.add_command(label="Magyarról angolra".decode("iso-8859-2"), command=self.about_magyar, underline=0)
++        helpmenu.add_command(label="Az XQED névjegye".decode("iso-8859-2"), command=self.about_xqed, underline=0)
+         self.localmenu = localmenu = Menu(menu, tearoff=0, postcommand=self.set_local_on)
+-        localmenu.add_command(label="Összes kifejezés", command=self.all_items)
+-        localmenu.add_command(label="Felolvasás", command=self.tts)
+-        localmenu.add_command(label="Kiejtési útmutató", command=self.about_prono)
++        localmenu.add_command(label="Összes kifejezés".decode("iso-8859-2"), command=self.all_items)
++        localmenu.add_command(label="Felolvasás".decode("iso-8859-2"), command=self.tts)
++        localmenu.add_command(label="Kiejtési útmutató".decode("iso-8859-2"), command=self.about_prono)
+         localmenu.add_separator()
+-        localmenu.add_command(label="Háttér-üzemmód", command=self.change_mode)
+-        localmenu.add_command(label="Kilépés", command=self.xqed_exit)
++        localmenu.add_command(label="Háttér-üzemmód".decode("iso-8859-2"), command=self.change_mode)
++        localmenu.add_command(label="Kilépés".decode("iso-8859-2"), command=self.xqed_exit)
+ 
+         # create frame, text widget, scrollbar
+         self.frame = f = Frame(tk, bg="black")
+@@ -339,12 +339,12 @@
+             if len(dictext) > 0:
+                 empty = 0
+                 self.puts([words[j] + '\n'],'item2')
+-	    else:
+-	        # split word	
+-	        for k in range(3, len(words[j]) - 2):
+-		    i1 = self.dictionary.get_item(words[j][0:k])
++            else:
++                # split word	
++                for k in range(3, len(words[j]) - 2):
++                    i1 = self.dictionary.get_item(words[j][0:k])
+                     if len(i1)>0:
+-		        dictext = self.dictionary.get_item(words[j][k:])
++                        dictext = self.dictionary.get_item(words[j][k:])
+                         if len(dictext)>0:
+                             empty = 0
+                             self.puts([words[j] + '\n'],'item2')
+@@ -387,18 +387,18 @@
+ 
+     def puts_tag(self, text, color):
+         if self.mode == 2:
+-	    if self.options_c:
+-            	if color=='item':
++            if self.options_c:
++                if color=='item':
+                     sys.stdout.write("[1m")
+-            	if color=='item2':
++                if color=='item2':
+                     sys.stdout.write("[1m[7m")
+-            	if color=='prono':
++                if color=='prono':
+                     sys.stdout.write("[1m[32m")
+                 elif color=='idiom':
+                     sys.stdout.write("[1m[31m")
+                 sys.stdout.write(text)
+                 sys.stdout.write("[0m")
+-    	    else:
++            else:
+                 sys.stdout.write(text)
+         else:
+             self.text.insert(END, text.decode("iso-8859-2"), color)

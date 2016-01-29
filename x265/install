@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cd multicoreware-x265-*/build/linux
+make DESTDIR="$UB_INSTALLDIR" install

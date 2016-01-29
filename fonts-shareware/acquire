@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+sharefonts-${UB_VERSION}.tar.gz sharefont/
+	ftp://ftp.gimp.org/pub/gimp/fonts/
+	ftp://ftp.ibiblio.org/pub/Linux/X11/fonts/

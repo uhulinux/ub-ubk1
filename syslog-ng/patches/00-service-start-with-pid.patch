@@ -1,0 +1,11 @@
+--- a/contrib/systemd/syslog-ng.service.orig	2013-10-21 18:44:37.000000000 +0200
++++ a/contrib/systemd/syslog-ng.service	2013-10-21 18:45:00.000000000 +0200
+@@ -4,7 +4,7 @@
+ 
+ [Service]
+ Sockets=syslog.socket
+-ExecStart=/usr/sbin/syslog-ng -F
++ExecStart=/usr/sbin/syslog-ng -F -p /var/run/syslogd.pid
+ ExecReload=/bin/kill -HUP $MAINPID
+ StandardOutput=null
+ Restart=on-failure

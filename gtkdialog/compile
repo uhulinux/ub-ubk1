@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+cd gtkdialog*
+sed -i s'|#! /usr/local/bin|#!/usr/bin|'g examples/miscellaneous/standalone_file
+ub_compile

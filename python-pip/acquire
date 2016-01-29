@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pip-"$UB_VERSION".tar.gz pip-"$UB_VERSION"/
+	http://pypi.python.org/packages/source/p/pip/

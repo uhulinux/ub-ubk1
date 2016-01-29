@@ -1,0 +1,40 @@
+--- db_dump.c
++++ db_dump.c
+@@ -228,6 +228,7 @@
+ {
+     int     bytes;
+  
++    lseek(dbfile, dbhead.header, SEEK_SET);
+     while(cnt) {
+         bytes=read(dbfile,Buffer,dbhead.lrecl);
+         if(bytes!=dbhead.lrecl)
+--- db_dump.h
++++ db_dump.h
+@@ -72,8 +72,8 @@
+     char    type;                                               /*field type*/
+     /* A-T uses large data model but drop it for now */
+     char   *data_ptr;                         /*pointer into buffer*/
+-    char   length;                                   /*field length*/
+-    char   dec_point;                         /*field decimal point*/
++    unsigned char   length;                                   /*field length*/
++    unsigned char   dec_point;                         /*field decimal point*/
+     char   fill[14];
+     } DBASE_FIELD;
+  
+--- dbview.c
++++ dbview.c
+@@ -54,7 +54,7 @@
+     printf ("  --version, -v          display version\n");
+ }
+ 
+-void main (int argc, char **argv)
++int main (int argc, char **argv)
+ {
+     int opt_index;
+     char c;
+@@ -123,4 +123,5 @@
+ 
+     db3_process (dbfile, flags, delim);
+ 
++    exit(0);
+ }

@@ -1,0 +1,16 @@
+adns
+curl-dev
+cyrus-sasl2-dev
+glew
+libidn-dev
+libx11-dev
+libxext-dev
+libxi-dev
+libxxf86vm-dev
+mesa-dev
+openssl-dev
+sdl-dev
+sdl-image-dev
+sdl-mixer-dev
+sdl-net-dev
+sdl-ttf-dev

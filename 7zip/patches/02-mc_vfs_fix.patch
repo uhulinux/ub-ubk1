@@ -1,0 +1,12 @@
+diff -urN p7zip_4.39.orig/contrib/VirtualFileSystemForMidnightCommander/u7z p7zip_4.39/contrib/VirtualFileSystemForMidnightCommander/u7z
+--- p7zip_4.39.orig/contrib/VirtualFileSystemForMidnightCommander/u7z	2006-04-15 13:29:34.000000000 +0200
++++ p7zip_4.39/contrib/VirtualFileSystemForMidnightCommander/u7z	2006-05-11 13:28:19.000000000 +0200
+@@ -32,7 +32,7 @@
+ 
+ 
+ 
+-SEVENZ=`which 7z` || SEVENZ=`which 7za`
++SEVENZ=`which 7za` || SEVENZ=`which 7z`
+ 
+ 
+ mc7zfs_list ()

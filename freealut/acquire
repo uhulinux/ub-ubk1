@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+freealut-${UB_VERSION}.tar.gz freealut-${UB_VERSION}/
+	ftp://ftp.itl.ua/.1/freebsd.org/ports/distfiles/

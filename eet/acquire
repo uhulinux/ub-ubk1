@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+eet-svn-${UB_VERSION}.tar.bz2 eet/
+	http://dev.openbossa.org/qedje/downloads/source/eet/

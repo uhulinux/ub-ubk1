@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Django-${UB_VERSION}.tar.gz Django-${UB_VERSION}/
+	http://pypi.python.org/packages/source/D/Django/

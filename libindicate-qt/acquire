@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+libindicate-qt-${UB_VERSION/~/-}.tar.bz2 libindicate-qt-${UB_VERSION/~/-}/
+	https://launchpad.net/libindicate-qt/libindicate-0.5/${UB_VERSION}/+download/
+	http://launchpad.net/libindicate-qt/trunk/${UB_VERSION}/+download/

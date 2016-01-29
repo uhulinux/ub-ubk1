@@ -1,0 +1,1 @@
+urllist http://www.openprinting.org/download/foomatic/ | splitver '^foomatic-db-4.0-([0-9]+).tar.gz$' | sort -V | tail -n 1

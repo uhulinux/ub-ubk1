@@ -1,0 +1,12 @@
+#!/bin/sh -eux
+
+mkdir -p ${UB_INSTALLDIR}/usr/lib/web-cyradm/
+rm scripts/imap2imap-copy.php
+cp *.php ${UB_INSTALLDIR}/usr/lib/web-cyradm/
+cp -R config/ ${UB_INSTALLDIR}/usr/lib/web-cyradm/
+cp -R css/ ${UB_INSTALLDIR}/usr/lib/web-cyradm/
+cp -R images/ ${UB_INSTALLDIR}/usr/lib/web-cyradm/
+cp -R lib/ ${UB_INSTALLDIR}/usr/lib/web-cyradm/
+cp -R locale/ ${UB_INSTALLDIR}/usr/lib/web-cyradm/
+cp -R scripts/ ${UB_INSTALLDIR}/usr/lib/web-cyradm/
+

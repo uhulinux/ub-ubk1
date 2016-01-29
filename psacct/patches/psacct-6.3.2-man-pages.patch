@@ -1,0 +1,74 @@
+diff -up acct-6.3.2/dump-acct.8.orig acct-6.3.2/dump-acct.8
+--- acct-6.3.2/dump-acct.8.orig	2009-12-02 13:56:58.000000000 +0100
++++ acct-6.3.2/dump-acct.8	2009-12-02 13:56:58.000000000 +0100
+@@ -0,0 +1,37 @@
++.\" Copyright (C) 2009 Red Hat, Inc. All Rights Reserved.
++.\" Written by Ivana Hutarova Varekova <varekova@redhat.com>
++.TH DUMP_ACCT 8 "2009 December 2" "Linux accounting system"
++
++.SH NAME
++dump\-acct \- print an acct/pacct file in human-readable format
++
++.SH SYNOPSYS
++\fBdump-acct\fR [\fB-hrR\fR] [\fB-n\fR <\fIrecs\fR>] <\fBfiles\fR>
++       [\fB--num\fR <\fIrecs\fR>] [\fB--raw\fR] [\fB--reverse\fR] [\fB--help\fR]
++
++.SH DESCRIPTION
++The dump-acct command transforms the output \fBfile\fR from the
++accton format to the human-readable format: one record per line.
++Each record consists of severald fields which are separated by
++character "|" (the meaning of concreate field depends on the
++version of kernel package - with which the accton file was created).
++
++.SH OPTIONS
++The following options are supported:
++.TP
++.B -h, --help
++Print a help message and the default location of the process accounting file
++and exit.
++.TP
++.B -r, --reverse
++Print the output in reverse order.
++.TP
++.B -R, --raw
++The records will be printed without any parsing.
++.TP
++.B -n, --num NUMRECS
++Display only the first NUMRECS number of records.
++
++.SH SEE ALSO
++accton (8), lastcomm (1)
++
+diff -up acct-6.3.2/dump-utmp.8.orig acct-6.3.2/dump-utmp.8
+--- acct-6.3.2/dump-utmp.8.orig	2009-12-02 13:57:05.000000000 +0100
++++ acct-6.3.2/dump-utmp.8	2009-12-02 13:57:05.000000000 +0100
+@@ -0,0 +1,29 @@
++.\" Copyright (C) 2009 Red Hat, Inc. All Rights Reserved.
++.\" Written by Ivana Hutarova Varekova <varekova@redhat.com>
++.TH DUMP_UTMP 8 "2009 December 2" "Linux accounting system"
++
++.SH NAME
++dump\-utmp \- print a utmp file in human-readable format
++
++.SH SYNOPSYS
++\fBdump-utmp\fR [\fB-hrR\fR] [\fB-n\fR <\fIrecs\fR>] <\fBfiles\fR>
++      [\fB--num\fR <\fIrecs\fR>] [\fB--raw\fR] [\fB--reverse\fR] [\fB--help\fR]
++
++.SH OPTIONS
++The following options are supported:
++.TP
++.B -h, --help
++Print a help message and the default location of the process accounting file
++and exit.
++.TP
++.B -r, --reverse
++Print the output in reverse order.
++.TP
++.B -R, --raw
++The records will be printed without any parsing.
++.TP
++.B -n, --num NUMRECS
++Display only the first NUMRECS number of records.
++
++.SH SEE ALSO
++accton (8), lastcomm (1), utmp (5)

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+e-szigno-${UB_VERSION}.tar.gz e-szigno-${UB_VERSION}/
+	http://ftp.uhulinux.hu/pub/sources/e-szigno/

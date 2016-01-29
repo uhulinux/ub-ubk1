@@ -1,0 +1,1 @@
+sflist spacenav spacenav%20library%20%28SDK%29  | splitver '^libspnav%20([0-9.]+)$' | sort -V | tail -n 1

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-speech-${UB_VERSION}.tar.gz gnome-speech-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-speech/${UB_VERSION_HEAD2}/

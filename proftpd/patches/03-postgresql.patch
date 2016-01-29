@@ -1,0 +1,11 @@
+diff -Naurd a/contrib/mod_sql_postgres.c b/contrib/mod_sql_postgres.c
+--- a/contrib/mod_sql_postgres.c	2005-04-11 19:02:33.000000000 +0200
++++ b/contrib/mod_sql_postgres.c	2007-06-25 13:19:27.000000000 +0200
+@@ -38,6 +38,6 @@
+ #include "conf.h"
+ #include "../contrib/mod_sql.h"
+ 
+-#include <libpq-fe.h>
++#include <postgresql/libpq-fe.h>
+ 
+ /* 

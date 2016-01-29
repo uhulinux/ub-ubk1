@@ -1,0 +1,9 @@
+fontconfig-dev
+freetype2-dev
+libx11-dev
+libxext-dev
+libxft-dev
+libxrender-dev
+libxt-dev
+unzip
+zip

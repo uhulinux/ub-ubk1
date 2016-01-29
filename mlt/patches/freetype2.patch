@@ -1,0 +1,12 @@
+diff -Naur orig/src/modules/gtk2/producer_pango.c mod/src/modules/gtk2/producer_pango.c
+--- orig/src/modules/gtk2/producer_pango.c	2013-06-03 05:34:35.000000000 +0200
++++ mod/src/modules/gtk2/producer_pango.c	2014-02-17 17:28:05.000000000 +0100
+@@ -25,7 +25,7 @@
+ #include <string.h>
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+ #include <pango/pangoft2.h>
+-#include <freetype/freetype.h>
++#include <freetype2/freetype.h>
+ #include <iconv.h>
+ #include <pthread.h>
+ #include <ctype.h>

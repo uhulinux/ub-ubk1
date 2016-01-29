@@ -1,0 +1,24 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Gtk2 -init;
+use Gtk2::WebKit;
+
+my $w = Gtk2::Window->new;
+$w->set_default_size(1024, 768);
+$w->signal_connect(destroy => sub { Gtk2->main_quit });
+
+$w->set_title('UHU mini browser');
+
+my $webkit = Gtk2::WebKit::WebView->new;
+$w->add($webkit);
+
+$w->show_all;
+$webkit->grab_focus;
+$webkit->load_uri($ARGV[0] or "http://uhulinux.hu/");
+
+$w->fullscreen;
+
+Gtk2->main;

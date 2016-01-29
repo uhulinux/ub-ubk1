@@ -1,0 +1,1 @@
+urllist https://launchpad.net/simple-scan/+download/ | splitver '^simple-scan-([0-9]+\.[0-9]+*[02468]\.[0-9]+).tar.xz$' | sort -V | tail -n 1

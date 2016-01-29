@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pychess-${UB_VERSION/~/}.tar.gz pychess-${UB_VERSION/~/}/
+	http://www.pychess.org/download/

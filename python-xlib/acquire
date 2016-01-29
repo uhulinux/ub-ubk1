@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+python-xlib-${UB_VERSION/~/}.tar.gz python-xlib-${UB_VERSION/~/}/
+	http://download.sourceforge.net/python-xlib/

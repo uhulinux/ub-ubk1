@@ -1,0 +1,9 @@
+--- wesnoth.orig/icons/wesnoth.desktop	2008-02-01 12:15:00.000000000 +0100
++++ wesnoth/icons/wesnoth.desktop	2008-02-24 13:47:25.000000000 +0100
+@@ -45,5 +45,4 @@
+ Comment[sr@latin]=Fantazijska strateška igra na poteze
+ Icon=wesnoth-icon.png
+ Exec=wesnoth
+-Categories=Game;StrategyGame;
+-
++Categories=Game;StrategyGame;X-UHU-Menu/Games/TacticStrategy;

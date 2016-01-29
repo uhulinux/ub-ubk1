@@ -1,0 +1,13 @@
+autoconf
+automake
+ctags
+cvs
+gcc
+gdb
+gettext
+gettext-tools
+git
+icon-theme-gnome
+indent
+libtool
+make

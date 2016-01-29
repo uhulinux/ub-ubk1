@@ -1,0 +1,20 @@
+#!/bin/sh -eux
+
+ub_install
+
+sed -i \
+  -e 's|"ganymede/6"|"-*-lucida-medium-r-normal-*-*-80-*-*-p-*-*-*"|g' \
+  -e 's|"ganymede/7"|"-*-lucida-medium-r-normal-*-*-100-*-*-p-*-*-*"|g' \
+  -e 's|"ganymede/8"|"-*-lucida-medium-r-normal-*-*-100-*-*-p-*-*-*"|g' \
+  -e 's|"ganymede/9"|"-*-lucida-medium-r-normal-*-*-120-*-*-p-*-*-*"|g' \
+  -e 's|"ganymede/10"|"-*-lucida-medium-r-normal-*-*-120-*-*-p-*-*-*"|g' \
+  -e 's|"ganymede_italic/6"|"-*-lucida-medium-i-normal-*-*-80-*-*-p-*-*-*"|g' \
+  -e 's|"ganymede_italic/7"|"-*-lucida-medium-i-normal-*-*-100-*-*-p-*-*-*"|g' \
+  -e 's|"ganymede_italic/8"|"-*-lucida-medium-i-normal-*-*-100-*-*-p-*-*-*"|g' \
+  -e 's|"ganymede_italic/9"|"-*-lucida-medium-i-normal-*-*-120-*-*-p-*-*-*"|g' \
+  -e 's|"ganymede_italic/10"|"-*-lucida-medium-i-normal-*-*-120-*-*-p-*-*-*"|g' \
+  "$UB_INSTALLDIR"/usr/share/e16/themes/Ganymede/fonts.cfg
+rm "$UB_INSTALLDIR"/usr/share/e16/themes/Ganymede/fonts.cfg.*
+rm -r "$UB_INSTALLDIR"/usr/share/e16/themes/Ganymede/ttfonts
+
+chown -Rh 0:0 "$UB_INSTALLDIR"

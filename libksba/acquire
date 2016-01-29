@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libksba-${UB_VERSION}.tar.bz2 libksba-${UB_VERSION}/
+	ftp://ftp.gnupg.org/gcrypt/libksba/

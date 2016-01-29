@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+nss-mdns-${UB_VERSION}.tar.gz nss-mdns-${UB_VERSION}/
+	http://0pointer.de/lennart/projects/nss-mdns/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Gtk2-Ex-Simple-List-${UB_VERSION}.tar.gz Gtk2-Ex-Simple-List-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/Gtk2/

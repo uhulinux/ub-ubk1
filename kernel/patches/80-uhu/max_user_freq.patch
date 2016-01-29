@@ -1,0 +1,12 @@
+diff -Naurdp a/drivers/char/rtc.c b/drivers/char/rtc.c
+--- a/drivers/char/rtc.c	2008-02-10 23:18:14.000000000 +0100
++++ b/drivers/char/rtc.c	2008-02-16 19:59:10.000000000 +0100
+@@ -190,7 +190,7 @@ static int rtc_proc_open(struct inode *i
+ static unsigned long rtc_status;	/* bitmapped status byte.	*/
+ static unsigned long rtc_freq;		/* Current periodic IRQ rate	*/
+ static unsigned long rtc_irq_data;	/* our output to the world	*/
+-static unsigned long rtc_max_user_freq = 64; /* > this, need CAP_SYS_RESOURCE */
++static unsigned long rtc_max_user_freq = 1024; /* > this, need CAP_SYS_RESOURCE */
+ 
+ #ifdef RTC_IRQ
+ /*

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-mplayer-${UB_VERSION}.tar.gz gnome-mplayer-${UB_VERSION}/
+	http://gnome-mplayer.googlecode.com/files/

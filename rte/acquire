@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+rte-${UB_VERSION}.tar.bz2 rte-${UB_VERSION}/
+	http://download.sourceforge.net/zapping/

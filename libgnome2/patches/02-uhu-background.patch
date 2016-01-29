@@ -1,0 +1,12 @@
+diff -Naurdp a/schemas/desktop_gnome_background.schemas.in.in b/schemas/desktop_gnome_background.schemas.in.in
+--- a/schemas/desktop_gnome_background.schemas.in.in	2007-10-15 10:42:42.000000000 +0200
++++ b/schemas/desktop_gnome_background.schemas.in.in	2007-10-18 09:49:26.000000000 +0200
+@@ -29,7 +29,7 @@
+         <applyto>/desktop/gnome/background/picture_filename</applyto>
+         <owner>gnome</owner>
+         <type>string</type>
+-	<default>@datadir@/pixmaps/backgrounds/gnome/background-default.jpg</default>
++	<default>/usr/share/wallpapers/UHU/blur.jpg</default>
+         <locale name="C">
+         <short>Picture Filename</short>
+         <long>File to use for the background image</long>

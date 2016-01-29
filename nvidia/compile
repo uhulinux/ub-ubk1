@@ -1,0 +1,16 @@
+#!/bin/bash -eux
+
+KVER="$(ls -1 /lib/modules|grep i386)"
+
+chmod +x NVIDIA-Linux-x86-"${UB_VERSION}".run
+./NVIDIA-Linux-x86-"${UB_VERSION}".run -x 
+
+rm NVIDIA-Linux-x86-"${UB_VERSION}".run
+cd NVIDIA-Linux-x86-"${UB_VERSION}"
+patch -i "$UB_SRCDIR"/patches/menu.patch.skip
+cd kernel
+# 
+make SYSSRC=/usr/src/linux KERNEL_UNAME="$KVER" module
+cd uvm
+make SYSSRC=/usr/src/linux KERNEL_UNAME="$KVER" module
+

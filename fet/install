@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+cp -a fet "$UB_INSTALLDIR"/usr/bin/
+cp -a doc/fet.1 "$UB_INSTALLDIR"/usr/share/man/man1/
+mkdir -p "$UB_INSTALLDIR"/usr/share/fet/translations
+cp -a translations/fet_hu.qm "$UB_INSTALLDIR"/usr/share/fet/translations/
+cp -a translations/fet_untranslated.qm "$UB_INSTALLDIR"/usr/share/fet/translations/
+mkdir -p "$UB_INSTALLDIR"/usr/share/fet/manual/pictures
+mkdir -p "$UB_INSTALLDIR"/usr/share/doc/fet/examples/Hungary/Bethlen/2008-2009/
+cp -a examples/Hungary/Bethlen/2008-2009/newer/Bethlen-2008-2009.fet \
+"$UB_INSTALLDIR"/usr/share/doc/fet/examples/Hungary/Bethlen/2008-2009/

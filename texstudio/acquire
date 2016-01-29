@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+texstudio-${UB_VERSION}.tar.gz texstudio${UB_VERSION}/
+	http://downloads.sourceforge.net/texstudio/

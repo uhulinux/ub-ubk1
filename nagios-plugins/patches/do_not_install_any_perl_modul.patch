@@ -1,0 +1,10 @@
+--- nagios-plugins-1.4.13.orig/perlmods/install_order	2007-09-13 13:36:57.000000000 +0200
++++ nagios-plugins-1.4.13/perlmods/install_order	2009-05-14 15:53:24.000000000 +0200
+@@ -1,7 +1 @@
+ # Modules installed in this order
+-Test-Simple
+-Params-Validate
+-Math-Calc-Units
+-Class-Accessor
+-Config-Tiny
+-Nagios-Plugin

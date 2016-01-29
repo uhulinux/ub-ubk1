@@ -1,0 +1,9 @@
+--- klavaro/data/klavaro.desktop.in.orig	2011-10-23 23:50:48.000000000 +0200
++++ klavaro/data/klavaro.desktop.in	2011-10-23 23:51:40.000000000 +0200
+@@ -8,5 +8,5 @@
+ Icon=klavaro
+ Terminal=false
+ Type=Application
+-Categories=Education;GTK;
++Categories=Education;GTK;X-UHU-Menu/Edutainment/Miscellaneous;
+ StartupNotify=true

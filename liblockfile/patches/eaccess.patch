@@ -1,0 +1,26 @@
+diff -Naur liblockfile-1.06.1.orig/dotlockfile.c liblockfile-1.06.1/dotlockfile.c
+--- liblockfile-1.06.1.orig/dotlockfile.c	2003-05-15 14:08:28.000000000 +0200
++++ liblockfile-1.06.1/dotlockfile.c	2006-03-08 16:10:21.633137918 +0100
+@@ -36,6 +36,9 @@
+ #include <getopt.h>
+ #endif
+ 
++/* eaccess conflicts with glibc-2.4's unistd.h */
++#define eaccess liblock_eaccess
++
+ #ifndef HAVE_GETOPT_H
+ extern int getopt();
+ extern char *optarg;
+diff -Naur liblockfile-1.06.1.orig/lockfile.c liblockfile-1.06.1/lockfile.c
+--- liblockfile-1.06.1.orig/lockfile.c	2004-06-04 17:14:21.000000000 +0200
++++ liblockfile-1.06.1/lockfile.c	2006-03-08 16:10:21.455166813 +0100
+@@ -36,6 +36,9 @@
+ #include <utime.h>
+ #endif
+ 
++/* eaccess conflicts with glibc-2.4's unistd.h */
++#define eaccess liblock_eaccess
++
+ #ifdef LIB
+ static char *mlockfile;
+ static int  islocked = 0;

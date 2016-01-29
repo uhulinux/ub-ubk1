@@ -1,0 +1,1 @@
+urllist http://hal.freedesktop.org/releases/ | splitver '^PolicyKit-gnome-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

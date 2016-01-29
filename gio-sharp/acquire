@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gio-sharp-${UB_VERSION}.tar.bz2 gio-sharp-${UB_VERSION}/
+	https://github.com/downloads/mono/gio-sharp/

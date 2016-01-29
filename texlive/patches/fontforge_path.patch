@@ -1,0 +1,9 @@
+diff -urN texlive-20120701-texmf.orig/texmf-dist/source/fonts/berenisadf/ff-ybd.pe texlive-20120701-texmf/texmf-dist/source/fonts/berenisadf/ff-ybd.pe
+--- texlive-20120701-texmf.orig/texmf-dist/source/fonts/berenisadf/ff-ybd.pe	2010-09-20 00:56:45.000000000 +0200
++++ texlive-20120701-texmf/texmf-dist/source/fonts/berenisadf/ff-ybd.pe	2014-06-10 09:53:28.217278038 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/fontforge -lang=ff
++#!/usr/bin/fontforge -lang=ff
+ 
+ #LoadNamelist("ybd-t1.nam")
+ LoadNamelist("ybd-8y.nam")

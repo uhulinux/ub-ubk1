@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+junit-${UB_VERSION}.jar
+	http://search.maven.org/remotecontent?filepath=junit/junit/${UB_VERSION}/

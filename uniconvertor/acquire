@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+uniconvertor-${UB_VERSION}.tar.gz UniConvertor-${UB_VERSION}/
+	http://sk1project.org/downloads/uniconvertor/v${UB_VERSION}/

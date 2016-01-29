@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+cd Python
+ub_install
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/qt4/qsci/api/python
+cp ../qsci/api/python/Python-2*.api "$UB_INSTALLDIR"/usr/lib/qt4/qsci/api/python
+

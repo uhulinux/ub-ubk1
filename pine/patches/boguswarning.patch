@@ -1,0 +1,25 @@
+diff -Naur orig/imap/src/osdep/unix/env_unix.c patched/imap/src/osdep/unix/env_unix.c
+--- orig/imap/src/osdep/unix/env_unix.c	2004-07-09 00:02:04.000000000 +0200
++++ patched/imap/src/osdep/unix/env_unix.c	2013-08-03 04:02:59.669223826 +0200
+@@ -1074,20 +1074,7 @@
+       }
+       close (pi[0]); close (pi[1]);
+     }
+-				/* find directory/file delimiter */
+-    if (s = strrchr (base->lock,'/')) {
+-      *s = '\0';		/* tie off at directory */
+-      sprintf(tmp,		/* generate default message */
+-	      "Mailbox vulnerable - directory %.80s must have 1777 protection",
+-	      base->lock);
+-				/* definitely not 1777 if can't stat */
+-      mask = stat (base->lock,&sb) ? 0 : (sb.st_mode & 1777);
+-      *s = '/';			/* restore lock name */
+-      if (mask != 1777) {	/* default warning if not 1777 */
+-	if (!disableLockWarning) MM_LOG (tmp,WARN);
+-	break;
+-      }
+-    }
++    break;
+   default:
+     sprintf (tmp,"Mailbox vulnerable - error creating %.80s: %s",
+ 	     base->lock,strerror (errno));

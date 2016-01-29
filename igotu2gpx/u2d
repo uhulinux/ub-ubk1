@@ -1,0 +1,1 @@
+urllist http://launchpad.net/igotu2gpx/ | splitver '^igotu2gpx-([0-9.]+).tar.gz$' | sort -V | tail -n 1

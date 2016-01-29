@@ -1,0 +1,6 @@
+Infravörös jelek adását és vételét teszi lehetővé. Tud kommunikálni a legtöbb
+infravörös távirányítóval, és sok felhasználói programmal tud együttműködni
+(pl. &xmms, &zapping). Ha &barkácsolhatnékunk támad, a weboldalukon megtaláljuk,
+hogy hogyan kell egy pár alkatrészből infravörös adóvevőt csinálni (amit persze
+támogat a &LIrC). A csomag tartalmaz egy démont, és különböző felhasználói
+programokat is.

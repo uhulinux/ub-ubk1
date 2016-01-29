@@ -1,0 +1,10 @@
+diff -Naur ORIG/data/moovida.desktop UHU/data/moovida.desktop
+--- ORIG/data/moovida.desktop	2009-05-25 18:55:23.000000000 +0200
++++ UHU/data/moovida.desktop	2009-06-01 18:26:50.000000000 +0200
+@@ -8,5 +8,5 @@
+ Icon=moovida
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;AudioVideo;Player;X-Ximian-Main;X-Red-Hat-Base;
++Categories=GNOME;GTK;AudioVideo;Player;X-Ximian-Main;X-Red-Hat-Base;X-UHU-Menu/Multimedia;
+ X-Osso-Service=com.fluendo.elisa

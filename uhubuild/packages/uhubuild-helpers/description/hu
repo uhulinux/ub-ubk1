@@ -1,0 +1,4 @@
+Az UHU csomagkészítő rendszere. Akkor van rá szükséged, ha újra szeretnél
+fordítani egy-két UHU csomagot.
+
+Segédprogramok főleg a &compile és &install fázis megkönnyítésének érdekében.

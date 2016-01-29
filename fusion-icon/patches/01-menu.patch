@@ -1,0 +1,16 @@
+diff -Naur ORIG/fusion-icon.desktop UHU/fusion-icon.desktop
+--- ORIG/fusion-icon.desktop	2008-02-16 18:50:44.000000000 +0100
++++ UHU/fusion-icon.desktop	2009-04-23 11:49:48.000000000 +0200
+@@ -1,9 +1,10 @@
+ [Desktop Entry]
+ Name=Compiz Fusion Icon
+ Comment=Start and manage Compiz Fusion
+-Exec=fusion-icon
++Comment[hu]=Kompiz gyorsindító és konfiguráló
++Exec=fusion-icon -n
+ Icon=fusion-icon
+ Terminal=false
+ Type=Application
+-Categories=System;Application;
++Categories=System;Application;X-UHU-Menu/Settings;
+ Encoding=UTF-8

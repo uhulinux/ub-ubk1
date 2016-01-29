@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+shiboken-${UB_VERSION}.tar.bz2 shiboken-${UB_VERSION}/
+	http://download.qt-project.org/official_releases/pyside/

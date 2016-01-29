@@ -1,0 +1,12 @@
+diff -Naur GPRS_Easy_Connect_300.orig/data/bin/gprsec GPRS_Easy_Connect_300/data/bin/gprsec
+--- GPRS_Easy_Connect_300.orig/data/bin/gprsec	2006-03-31 16:53:02.000000000 +0200
++++ GPRS_Easy_Connect_300/data/bin/gprsec	2006-08-04 18:24:09.000000000 +0200
+@@ -3436,7 +3436,7 @@
+ sub connect_sub {
+ 
+ 	# if  pppd not authorized for user then return;
+-	if ((!-u "/usr/sbin/pppd") || (!-x "/usr/sbin/pppd")) {
++	if (($> != 0 && !-u "/usr/sbin/pppd") || (!-x "/usr/sbin/pppd")) {
+ 		error_window(text_linker($cl[67]));
+ 		reset_main_butt();
+ 		return;

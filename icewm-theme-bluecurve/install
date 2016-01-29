@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+#rm -r taskbar/.xvpics
+mkdir -p "$UB_INSTALLDIR"/usr/share/icewm/themes/Bluecurve
+cp -a default.theme *.xpm icons mailbox taskbar \
+	"$UB_INSTALLDIR"/usr/share/icewm/themes/Bluecurve/

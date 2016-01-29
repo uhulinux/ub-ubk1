@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+httplib2-${UB_VERSION}.tar.gz httplib2-${UB_VERSION}/
+	http://httplib2.googlecode.com/files/

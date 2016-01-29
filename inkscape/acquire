@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+inkscape-${UB_VERSION}.tar.bz2 inkscape-${UB_VERSION}/
+	http://downloads.sourceforge.net/inkscape/

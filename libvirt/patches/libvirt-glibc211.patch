@@ -1,0 +1,32 @@
+From e8314e78f9c5d5ad84cfda5c61000e50d91c4a1e Mon Sep 17 00:00:00 2001
+From: Eric Blake <eblake@redhat.com>
+Date: Fri, 18 May 2012 09:42:25 -0600
+Subject: [PATCH] build: fix virnetlink on glibc 2.11
+
+We were being lazy - virnetlink.c was getting uint32_t as a
+side-effect from glibc 2.14's <unistd.h>, but older glibc 2.11
+does not provide uint32_t from <unistd.h>.  In fact, POSIX states
+that <unistd.h> need only provide intptr_t, not all of <stdint.h>,
+so the bug really is ours.  Reported by Jonathan Alescio.
+
+* src/util/virnetlink.h: Include <stdint.h>.
+---
+ src/util/virnetlink.h |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/src/util/virnetlink.h b/src/util/virnetlink.h
+index bafe8ca..8ec27c9 100644
+--- a/src/util/virnetlink.h
++++ b/src/util/virnetlink.h
+@@ -23,6 +23,8 @@
+ # include "config.h"
+ # include "internal.h"
+ 
++# include <stdint.h>
++
+ # if defined(__linux__) && defined(HAVE_LIBNL)
+ 
+ #  include <netlink/msg.h>
+-- 
+1.7.1
+

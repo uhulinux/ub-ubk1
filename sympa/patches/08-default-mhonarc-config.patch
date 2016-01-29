@@ -1,0 +1,37 @@
+diff -Naur sympa-5.3.orig/src/etc/mhonarc-ressources.tt2 sympa-5.3/src/etc/mhonarc-ressources.tt2
+--- sympa-5.3.orig/src/etc/mhonarc-ressources.tt2	2007-04-18 17:51:58.000000000 +0200
++++ sympa-5.3/src/etc/mhonarc-ressources.tt2	2007-06-04 18:07:36.000000000 +0200
+@@ -94,7 +94,7 @@
+ <DECODEHEADS>
+ 
+ <MIMEARGS>
+-text/plain; asis=us-ascii:iso-8859-1:iso-8859-2 nonfixed keepspace quote htmlcheck maxwidth=78
++text/plain; asis=us-ascii:iso-8859-1:iso-8859-2 nonfixed quote htmlcheck maxwidth=78
+ text/html; asis=us-ascii:iso-8859-1:iso-8859-2 allownoncidurls
+ m2h_external::filter; subdir usename
+ </MIMEARGS>
+@@ -127,15 +127,19 @@
+ and/or environment variables, may be in affect.
+ -->
+ 
+-<NOMAILTO>
+-<MULTIPG>
++<MAILTO>
++<NOMULTIPG>
+ <NODOC>
+ <SORT>
+ <NOFOLREFS>
+ 
+-<IDXSIZE>
+-30
+-</IDXSIZE>
++<TLEVELS>
++200
++</TLEVELS>
++
++<TSLICE>
++200:200:1
++</TSLICE>
+ 
+ <!-- should not be changed -->
+ <IDXFNAME>

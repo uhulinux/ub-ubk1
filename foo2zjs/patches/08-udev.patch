@@ -1,0 +1,89 @@
+diff -Naurd a/Makefile b/Makefile
+--- a/Makefile	2009-11-18 15:55:13.000000000 +0100
++++ b/Makefile	2009-11-18 15:57:37.000000000 +0100
+@@ -508,6 +508,7 @@
+ install: all install-test install-prog install-icc2ps install-extra \
+ 	    install-crd install-foo install-ppd \
+ 	    install-gui install-desktop \
++	    install-hotplug \
+ 	    install-man install-doc
+ 	#
+ 	# If you use CUPS, then restart the spooler:
+@@ -794,7 +794,7 @@
+ 	
+ 
+-USBDIR=/etc/hotplug/usb
++USBDIR=$(DESTDIR)/etc/hotplug/usb
+-UDEVDIR=/etc/udev/rules.d
++UDEVDIR=$(DESTDIR)/etc/udev/rules.d
+ RULES=hplj10xx.rules
+ install-hotplug: install-hotplug-test install-hotplug-prog
+ 
+@@ -814,9 +814,7 @@
+ 	#
+ 
+ install-hotplug-prog:
+-	if [ -d $(UDEVDIR) ]; then \
+ 	    $(INSTALL) -c -m 644 $(RULES) $(UDEVDIR)/11-$(RULES); \
+-	fi
+ 	[ -d $(USBDIR) ] || $(INSTALL) -d -m 755 $(USBDIR)/
+ 	$(INSTALL) -c -m 755 hplj1000 $(USBDIR)/
+ 	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hplj1005
+diff -Naurd a/hplj10xx.rules b/hplj10xx.rules
+--- a/hplj10xx.rules	2008-06-05 11:50:38.000000000 +0200
++++ b/hplj10xx.rules	2010-02-16 15:04:18.126447902 +0100
+@@ -1,36 +1,36 @@
+ #Own udev rule for HP Laserjet 1000
+-KERNEL=="lp*", BUS=="usb", SYSFS{idVendor}=="03f0", \
+-	SYSFS{product}=="hp LaserJet 1000", NAME="usb/%k", \
++KERNEL=="lp*", SUBSYSTEM=="usb", ATTR{idVendor}=="03f0", \
++	ATTR{product}=="hp LaserJet 1000", NAME="usb/%k", \
+ 	SYMLINK+="hplj1000-%n", MODE="0666", RUN+="/etc/hotplug/usb/hplj1000" 
+ #Own udev rule for HP Laserjet 1005
+-KERNEL=="lp*", BUS=="usb", SYSFS{idVendor}=="03f0", \
+-	SYSFS{product}=="hp LaserJet 1005 series", NAME="usb/%k", \
++KERNEL=="lp*", SUBSYSTEM=="usb", ATTR{idVendor}=="03f0", \
++	ATTR{product}=="hp LaserJet 1005 series", NAME="usb/%k", \
+ 	SYMLINK+="hplj1005-%n", MODE="0666", RUN+="/etc/hotplug/usb/hplj1005" 
+ #Own udev rule for HP Laserjet 1018
+-KERNEL=="lp*", BUS=="usb", SYSFS{idVendor}=="03f0", \
+-	SYSFS{product}=="HP LaserJet 1018", NAME="usb/%k", \
++KERNEL=="lp*", SUBSYSTEM=="usb", ATTR{idVendor}=="03f0", \
++	ATTR{product}=="HP LaserJet 1018", NAME="usb/%k", \
+ 	SYMLINK+="hplj1018-%n", MODE="0666", RUN+="/etc/hotplug/usb/hplj1018" 
+ #Own udev rule for HP Laserjet 1020
+-KERNEL=="lp*", BUS=="usb", SYSFS{idVendor}=="03f0", \
+-	SYSFS{product}=="HP LaserJet 1020", NAME="usb/%k", \
++KERNEL=="lp*", SUBSYSTEM=="usb", ATTR{idVendor}=="03f0", \
++	ATTR{product}=="HP LaserJet 1020", NAME="usb/%k", \
+ 	SYMLINK+="hplj1020-%n", MODE="0666", RUN+="/etc/hotplug/usb/hplj1020" 
+ #Own udev rule for HP Laserjet P1005
+-KERNEL=="lp*", BUS=="usb", SYSFS{idVendor}=="03f0", \
+-	SYSFS{product}=="HP LaserJet P1005", NAME="usb/%k", \
++KERNEL=="lp*", SUBSYSTEM=="usb", ATTR{idVendor}=="03f0", \
++	ATTR{product}=="HP LaserJet P1005", NAME="usb/%k", \
+ 	SYMLINK+="hpljP1005-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1005" 
+ #Own udev rule for HP Laserjet P1006
+-KERNEL=="lp*", BUS=="usb", SYSFS{idVendor}=="03f0", \
+-	SYSFS{product}=="HP LaserJet P1006", NAME="usb/%k", \
++KERNEL=="lp*", SUBSYSTEM=="usb", ATTR{idVendor}=="03f0", \
++	ATTR{product}=="HP LaserJet P1006", NAME="usb/%k", \
+ 	SYMLINK+="hpljP1006-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1006" 
+ #Own udev rule for HP Laserjet P1007
+-KERNEL=="lp*", BUS=="usb", SYSFS{idVendor}=="03f0", \
+-	SYSFS{product}=="HP LaserJet P1007", NAME="usb/%k", \
++KERNEL=="lp*", SUBSYSTEM=="usb", ATTR{idVendor}=="03f0", \
++	ATTR{product}=="HP LaserJet P1007", NAME="usb/%k", \
+ 	SYMLINK+="hpljP1007-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1007" 
+ #Own udev rule for HP Laserjet P1008
+-KERNEL=="lp*", BUS=="usb", SYSFS{idVendor}=="03f0", \
+-	SYSFS{product}=="HP LaserJet P1008", NAME="usb/%k", \
++KERNEL=="lp*", SUBSYSTEM=="usb", ATTR{idVendor}=="03f0", \
++	ATTR{product}=="HP LaserJet P1008", NAME="usb/%k", \
+ 	SYMLINK+="hpljP1008-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1008" 
+ #Own udev rule for HP Laserjet P1505
+-KERNEL=="lp*", BUS=="usb", SYSFS{idVendor}=="03f0", \
+-	SYSFS{product}=="HP LaserJet P1505", NAME="usb/%k", \
++KERNEL=="lp*", SUBSYSTEM=="usb", ATTR{idVendor}=="03f0", \
++	ATTR{product}=="HP LaserJet P1505", NAME="usb/%k", \
+ 	SYMLINK+="hpljP1505-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1505" 

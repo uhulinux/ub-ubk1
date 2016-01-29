@@ -1,0 +1,29 @@
+diff -Naur GPRS_Easy_Connect_300.orig/data/bin/gprsec GPRS_Easy_Connect_300/data/bin/gprsec
+--- GPRS_Easy_Connect_300.orig/data/bin/gprsec	2006-03-31 16:53:02.000000000 +0200
++++ GPRS_Easy_Connect_300/data/bin/gprsec	2006-05-03 17:29:11.000000000 +0200
+@@ -1299,16 +1299,6 @@
+ 	$mainwin_other_info_butt->can_focus(1 );
+ 	$mainwin_other_info_butt->signal_connect('clicked', sub {voice_click(); info_sub()});
+ 	#
+-	# Construct a Gtk2Button 'search_butt'
+-	#
+-	$mainwin_other_search_butt =  Gtk2::Button->new_from_stock('upgrade');
+-	$mainwin_other_fixed1->put($mainwin_other_search_butt, 60, 384 );
+-	$mainwin_other_search_butt->show;
+-	$mainwin_other_search_butt->set_size_request(380, 32 );
+-	$mainwin_other_search_butt->can_focus(1 );
+-	#$mainwin_other_search_butt->set_sensitive(0);
+-	$mainwin_other_search_butt->signal_connect('clicked', sub {voice_click(); upgrade_win_sub()});
+-	#
+ 	# Construct a Gtk2Button 'donate_butt'
+ 	#	
+ 	$mainwin_other_donate_butt =  Gtk2::Button->new_from_stock('donate');
+@@ -1324,7 +1314,7 @@
+ 	$mainwin_other_scrolledwindow1->set_policy('automatic', 'always' );
+ 	$mainwin_other_fixed1->put($mainwin_other_scrolledwindow1, 15, 64  );
+ 	$mainwin_other_scrolledwindow1->show;
+-	$mainwin_other_scrolledwindow1->set_size_request(480, 304 );
++	$mainwin_other_scrolledwindow1->set_size_request(480, 344 );
+ 		#
+ 		# Construct a TextView 'text1'
+ 		$mainwin_cmap = Gtk2::Gdk::Colormap->get_system();

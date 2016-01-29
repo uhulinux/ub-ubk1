@@ -1,0 +1,25 @@
+diff -Naurd a/bin/vilearn b/bin/vilearn
+--- a/bin/vilearn	1995-01-04 17:34:37.000000000 +0100
++++ b/bin/vilearn	2012-08-28 20:48:20.000000000 +0200
+@@ -10,7 +10,7 @@
+ # is supplied as is without expressed or implied warranties of any kind.
+ #
+ 
+-TUTORIALS=/usr/local/lib/vilearn
++TUTORIALS=/usr/lib/vilearn
+ 
+ TUTORIAL=
+ 
+diff -Naurd a/macros/xvile.desktop b/macros/xvile.desktop
+--- a/macros/xvile.desktop	2014-02-02 21:09:55.000000000 +0100
++++ b/macros/xvile.desktop	2014-05-06 17:32:40.000000000 +0200
+@@ -3,7 +3,8 @@
+ Name=XVile
+ GenericName=Text Editor
+ Comment=VI Like Emacs
+-Exec=xvile %f
++Comment[hu]=Vile szerkesztő
++Exec=uxvile -I %F
+ Terminal=false
+ Type=Application
+ Encoding=UTF-8

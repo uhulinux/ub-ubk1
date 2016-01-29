@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+gemdir="$(ruby -rubygems -e 'puts Gem::dir')"
+
+gem install --local --install-dir="$UB_INSTALLDIR/$gemdir" --force sqlite3-ruby-"$UB_VERSION".gem

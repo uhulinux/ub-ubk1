@@ -1,0 +1,12 @@
+#!/bin/sh -eux
+
+cd build_unix
+JAVA=/usr/lib/java/bin/java \
+JAR=/usr/lib/java/bin/jar \
+JAVAC=/usr/lib/java/bin/javac \
+UB_CONFIGURE_DIR=../dist \
+ub_configure \
+	--enable-java \
+	--enable-cxx \
+	--enable-static
+make

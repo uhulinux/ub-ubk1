@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libggz-snapshot-${UB_VERSION}.tar.gz libggz-snapshot-${UB_VERSION}/
+	http://mirrors.ibiblio.org/pub/mirrors/ggzgamingzone/ggz/snapshots/

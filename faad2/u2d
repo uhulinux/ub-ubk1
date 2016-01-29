@@ -1,0 +1,2 @@
+sflist faac faad2-src | splitver '^faad2-([0-9.]+)$' | sort -V | tail -n 1
+

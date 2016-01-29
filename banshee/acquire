@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+banshee-${UB_VERSION}.tar.xz banshee-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/banshee/${UB_VERSION_HEAD2}/

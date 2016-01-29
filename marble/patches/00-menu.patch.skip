@@ -1,0 +1,10 @@
+diff -Naur marble-4.11.90-orig/src/apps/marble-kde/marble.desktop marble-4.11.90/src/apps/marble-kde/marble.desktop
+--- marble-4.11.90-orig/src/apps/marble-kde/marble.desktop	2013-11-13 19:32:31.000000000 +0100
++++ marble-4.11.90/src/apps/marble-kde/marble.desktop	2013-11-15 09:40:59.000000000 +0100
+@@ -91,5 +91,5 @@
+ GenericName[zh_TW]=虛擬地球儀
+ Icon=marble
+ Terminal=false
+-Categories=Qt;KDE;Education;Geography;
++Categories=Qt;KDE;Education;Geography;X-UHU-Menu/Edutainment/Miscellaneous;
+ X-DocPath=marble/index.html

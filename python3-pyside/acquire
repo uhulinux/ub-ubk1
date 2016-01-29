@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PySide-${UB_VERSION}.tar.gz PySide-${UB_VERSION}/
+	http://pypi.python.org/packages/source/P/PySide/

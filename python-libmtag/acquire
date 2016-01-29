@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libmtag-python-${UB_VERSION}.tar.gz libmtag-python-${UB_VERSION}/
+	http://libmtag.googlecode.com/files/

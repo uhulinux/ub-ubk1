@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cp -a create_compressed_fs "$UB_INSTALLDIR/usr/bin"
+cp -a extract_compressed_fs "$UB_INSTALLDIR/usr/bin"

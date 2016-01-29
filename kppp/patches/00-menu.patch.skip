@@ -1,0 +1,9 @@
+diff -Naur kppp-4.10.80-orig/Kppp.desktop kppp-4.10.80/Kppp.desktop
+--- kppp-4.10.80-orig/Kppp.desktop	2013-06-10 22:08:01.000000000 +0200
++++ kppp-4.10.80/Kppp.desktop	2013-06-23 09:02:11.000000000 +0200
+@@ -153,4 +153,4 @@
+ Terminal=false
+ X-KDE-StartupNotify=true
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Network;Dialup;
++Categories=Qt;KDE;Network;Dialup;X-UHU-Menu/Internet/Tools;

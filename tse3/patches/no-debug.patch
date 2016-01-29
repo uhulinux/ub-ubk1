@@ -1,0 +1,15 @@
+diff -Naur tse3-0.3.1.orig/configure tse3-0.3.1/configure
+--- tse3-0.3.1.orig/configure	2005-08-23 15:27:34.000000000 +0200
++++ tse3-0.3.1/configure	2006-01-05 14:04:01.000000000 +0100
+@@ -3600,9 +3600,9 @@
+   CXXFLAGS=$ac_save_CXXFLAGS
+ elif test $ac_cv_prog_cxx_g = yes; then
+   if test "$GXX" = yes; then
+-    CXXFLAGS="-g -O2"
++    CXXFLAGS="-O2"
+   else
+-    CXXFLAGS="-g"
++    CXXFLAGS=""
+   fi
+ else
+   if test "$GXX" = yes; then

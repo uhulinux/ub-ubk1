@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+polkit-gnome-${UB_VERSION}.tar.xz polkit-gnome-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/polkit-gnome/${UB_VERSION_HEAD2}/

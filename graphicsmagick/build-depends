@@ -1,0 +1,13 @@
+dcraw
+freetype2-dev
+ghostscript
+jasper-dev
+lcms2-dev
+libjpeg-dev
+libpng-dev
+libtiff-dev
+libwmf-dev
+libx11-dev
+libxext-dev
+libxml2-dev
+xz-dev

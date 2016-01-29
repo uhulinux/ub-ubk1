@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+pine${UB_VERSION}.tar.Z ./pine${UB_VERSION}/
+	ftp://ftp.cac.washington.edu/pine/
+	ftp://ftp.cac.washington.edu/pine/old/

@@ -1,0 +1,13 @@
+diff -urN qalculate-gtk-0.9.6.orig/src/Makefile.in qalculate-gtk-0.9.6/src/Makefile.in
+--- qalculate-gtk-0.9.6.orig/src/Makefile.in	2007-06-17 13:07:35.000000000 +0200
++++ qalculate-gtk-0.9.6/src/Makefile.in	2008-03-25 14:17:10.000000000 +0100
+@@ -539,7 +539,8 @@
+ 
+ 
+ install-exec-local:
+-	cd $(DESTDIR)$(bindir) && rm -f qalculate; $(LN_S) @LN_QALCULATE@ qalculate
++	cd $(DESTDIR)$(bindir) && rm -f qalculate
++# $(LN_S) @LN_QALCULATE@ qalculate
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:

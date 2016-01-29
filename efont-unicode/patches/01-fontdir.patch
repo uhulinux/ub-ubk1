@@ -1,0 +1,12 @@
+diff -Naur efont-unicode-bdf-0.4.1-src.orig/configure efont-unicode-bdf-0.4.1-src/configure
+--- efont-unicode-bdf-0.4.1-src.orig/configure	2002-08-27 04:02:01.000000000 +0200
++++ efont-unicode-bdf-0.4.1-src/configure	2004-05-05 21:56:25.000000000 +0200
+@@ -823,7 +823,7 @@
+ # Check whether --with-fontdir or --without-fontdir was given.
+ if test "${with_fontdir+set}" = set; then
+   withval="$with_fontdir"
+-  FONTDIR=$withval
++  X11FONTDIR=$withval
+ fi
+ 
+ 

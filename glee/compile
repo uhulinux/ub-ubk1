@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+chmod -x *.txt
+ub_compile

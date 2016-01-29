@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xterm-$UB_VERSION.tgz xterm-$UB_VERSION/
+	ftp://invisible-island.net/xterm/

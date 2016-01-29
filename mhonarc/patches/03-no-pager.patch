@@ -1,0 +1,33 @@
+--- mhonarc-2.6.10.orig/lib/mhusage.pl
++++ mhonarc-2.6.10/lib/mhusage.pl
+@@ -29,21 +29,7 @@
+ package mhonarc;
+ 
+ sub mhusage {
+-    my($usefh, $close);
+-    local(*PAGER);
+-    PAGERCHECK: {
+-	if ($UNIX &&
+-		(-t STDOUT) &&
+-		(($ENV{'PAGER'} && open(PAGER, "| $ENV{'PAGER'}")) ||
+-		 (open(PAGER, '| more')))) {
+-	    $usefh = \*PAGER;
+-	    $close = 1;
+-	    last PAGERCHECK;
+-	}
+-	$usefh = \*STDOUT;
+-	$close = 0;
+-    }
+-    my($curfh) = select($usefh);
++    my($curfh) = select(\*STDERR);
+ 
+     print <<EndOfUsage;
+ Usage:  $PROG [<options>] <mailfolder> ...
+@@ -226,7 +212,6 @@
+ $VINFO
+ EndOfUsage
+ 
+-    close($usefh)  if $close;
+     select($curfh);
+ }
+ 

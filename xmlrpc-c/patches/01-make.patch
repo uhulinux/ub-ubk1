@@ -1,0 +1,12 @@
+diff -Naur ORIG/GNUmakefile UHU/GNUmakefile
+--- ORIG/GNUmakefile	2008-06-09 00:57:15.000000000 +0200
++++ UHU/GNUmakefile	2009-06-15 14:11:51.000000000 +0200
+@@ -7,7 +7,7 @@
+ 
+ include $(SRCDIR)/Makefile.config
+ 
+-SUBDIRS = include lib src tools examples
++SUBDIRS = include lib src tools
+ 
+ PROGRAMS_TO_INSTALL = xmlrpc-c-config
+ 

@@ -1,0 +1,8 @@
+gobject-introspection-dev
+gpg
+gtk-dev
+intltool
+libgcrypt-dev
+libxslt
+p11-kit-dev
+vala-dev

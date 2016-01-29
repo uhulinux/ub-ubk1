@@ -1,0 +1,43 @@
+#!/bin/sh -eux
+
+# uncompressing
+find . -name '*.gz' | xargs gunzip
+
+# shipped by shadow
+rm man1/chsh.1
+rm man1/gpasswd.1
+rm man1/groups.1
+rm man1/login.1
+rm man1/newgrp.1
+rm man1/passwd.1
+rm man5/passwd.5
+rm man8/lastlog.8
+
+# patching: s/"ÁSD MÉG/LÁSD MÉG/g
+sed -e 's/"\xC1SD M\xC9G/L\xC1SD M\xC9G/g' <man8/init.8 >man8/init.8.new
+touch -r man8/init.8 man8/init.8.new
+mv man8/init.8.new man8/init.8
+
+# patching: s/ô/ő/g
+for i in man1/host.1 man1/rwho.1 man1/telnet.1; do
+	sed -e 's/\xF4/\xF5/g' <"$i" >"$i".new
+	touch -r "$i" "$i".new
+	mv "$i".new "$i"
+done
+
+# converting brain-damaged legacy-mixed encoded files
+cd man7
+for i in iso_8859-*; do
+	part=1
+	grep '' $i | while read line; do
+		printf '%s\n' "$line" >>$i.part$part
+		if [ $part = 1 -a "$line" = "_" ]; then part=2; fi
+		if [ $part = 2 -a "$line" = ".TE" ]; then part=3; fi
+	done
+	iconv -f iso_8859-2 -t UTF-8 <$i.part1  >$i.new
+	iconv -f ${i%.*}    -t UTF-8 <$i.part2 >>$i.new
+	iconv -f iso_8859-2 -t UTF-8 <$i.part3 >>$i.new
+	touch -r $i $i.new
+	mv $i.new $i
+	rm $i.part*
+done

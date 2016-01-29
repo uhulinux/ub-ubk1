@@ -1,0 +1,21 @@
+diff -Naurdp a/po/hu.po b/po/hu.po
+--- a/po/hu.po	2009-11-11 19:20:51.000000000 +0100
++++ b/po/hu.po	2009-11-11 19:21:18.000000000 +0100
+@@ -5234,7 +5234,7 @@ msgstr "nincs bejelentkezési név"
+ #. will count bytes rather than characters in multibyte locales.
+ #: src/ls.c:728
+ msgid "%b %e  %Y"
+-msgstr "%Y %b %e"
++msgstr ""
+ 
+ #. TRANSLATORS: ls output needs to be aligned for ease of reading,
+ #. so be wary of using variable width fields from the locale.
+@@ -5243,7 +5243,7 @@ msgstr "%Y %b %e"
+ #. will count bytes rather than characters in multibyte locales.
+ #: src/ls.c:741
+ msgid "%b %e %H:%M"
+-msgstr "%b %e %H.%M"
++msgstr ""
+ 
+ #: src/ls.c:1556
+ #, c-format

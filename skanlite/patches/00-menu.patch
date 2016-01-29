@@ -1,0 +1,9 @@
+diff -Naur skanlite-0.8-orig/src/skanlite.desktop skanlite-0.8/src/skanlite.desktop
+--- skanlite-0.8-orig/src/skanlite.desktop	2011-12-12 09:58:29.000000000 +0100
++++ skanlite-0.8/src/skanlite.desktop	2011-12-20 09:31:50.000000000 +0100
+@@ -136,4 +136,4 @@
+ Comment[x-test]=xxScan and save imagesxx
+ Comment[zh_CN]=扫描和保存图像
+ Comment[zh_TW]=掃描與儲存影像
+-Categories=Qt;KDE;Graphics;Scanning;
++Categories=Qt;KDE;Graphics;Scanning;X-UHU-Menu/Graphics;

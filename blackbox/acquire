@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+blackbox-${UB_VERSION}.tar.gz blackbox-${UB_VERSION}/
+	http://downloads.sourceforge.net/blackboxwm/

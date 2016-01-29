@@ -1,0 +1,9 @@
+diff -Naur khangman-4.8.80-orig/src/desktop/khangman.desktop khangman-4.8.80/src/desktop/khangman.desktop
+--- khangman-4.8.80-orig/src/desktop/khangman.desktop	2012-05-23 02:26:00.000000000 +0200
++++ khangman-4.8.80/src/desktop/khangman.desktop	2012-06-05 11:53:39.000000000 +0200
+@@ -200,4 +200,4 @@
+ Name[x-test]=xxKHangManxx
+ Name[zh_CN]=KHangMan
+ Name[zh_TW]=語言_KHangMan
+-Categories=Qt;KDE;Education;Languages;Game;KidsGame;
++Categories=Qt;KDE;Education;Languages;Game;KidsGame;X-UHU-Menu/Edutainment/Languages;

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+uhu-doc-$UB_VERSION.tar.gz uhu-doc-$UB_VERSION/ :usr/share/doc/UHU
+	ftp://ftp.uhulinux.hu/pub/sources/uhu-doc/

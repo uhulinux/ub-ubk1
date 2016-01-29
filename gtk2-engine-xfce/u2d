@@ -1,0 +1,2 @@
+dir=$(urllist http://archive.xfce.org/src/xfce/gtk-xfce-engine/ | grep -E '^([0-9.]+)?$' | sort -V | tail -n 1)
+urllist http://archive.xfce.org/src/xfce/gtk-xfce-engine/$dir/ | splitver '^gtk-xfce-engine-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

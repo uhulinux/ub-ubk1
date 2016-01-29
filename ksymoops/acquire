@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ksymoops-${UB_VERSION}.tar.gz ksymoops-${UB_VERSION}/
+	http://www.kernel.org/pub/linux/utils/kernel/ksymoops/v2.4/

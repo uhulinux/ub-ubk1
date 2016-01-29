@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+LockFile-Simple-${UB_VERSION}.tar.gz LockFile-Simple-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/S/SC/SCHWIGON/lockfile-simple/

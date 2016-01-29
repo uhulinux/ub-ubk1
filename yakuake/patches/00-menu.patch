@@ -1,0 +1,12 @@
+diff -Naur yakuake-2.9.9-orig/data/yakuake.desktop yakuake-2.9.9/data/yakuake.desktop
+--- yakuake-2.9.9-orig/data/yakuake.desktop	2012-10-19 00:35:26.000000000 +0200
++++ yakuake-2.9.9/data/yakuake.desktop	2012-10-19 20:35:09.000000000 +0200
+@@ -96,7 +96,7 @@
+ Icon=yakuake
+ Type=Application
+ Terminal=false
+-Categories=Qt;KDE;System;TerminalEmulator;
++Categories=Qt;KDE;System;TerminalEmulator;X-UHU-Menu/Tools/Terminals;
+ Comment=A drop-down terminal emulator based on KDE Konsole technology.
+ Comment[bg]=Падащ терминален емулатор с меню, базиран на конзолната технология на KDE.
+ Comment[bs]=Padajući simulator terminala baziran na KDE konzolnoj tehnologiji

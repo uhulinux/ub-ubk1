@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+paq${UB_VERSION}.zip .
+	http://www.cs.fit.edu/~mmahoney/compression/

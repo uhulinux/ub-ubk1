@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+make FPC=/usr/bin/fpc LCL_PLATFORM=gtk2 clean bigide
+
+export LAZPATH=/usr/lib/lazarus
+export PATH=/usr/lib/lazarus:"$PATH"
+
+./build.sh beta gtk2

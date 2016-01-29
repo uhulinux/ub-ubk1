@@ -1,0 +1,1 @@
+urllist https://files.dyne.org/frei0r/releases/ | parsever | sort -V | tail -n 1

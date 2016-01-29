@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+install -m 755 mii-diag "$UB_INSTALLDIR"/usr/sbin/
+install -m 644 mii-diag.8 "$UB_INSTALLDIR"/usr/share/man/man8/

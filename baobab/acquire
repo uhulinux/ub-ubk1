@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+baobab-${UB_VERSION}.tar.xz baobab-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/baobab/${UB_VERSION_HEAD2}/

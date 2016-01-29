@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+twill-${UB_VERSION}.tar.gz twill-${UB_VERSION}/
+	http://pypi.python.org/packages/source/t/twill/

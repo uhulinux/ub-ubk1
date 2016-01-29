@@ -1,0 +1,1 @@
+urllist http://www.xmlmind.com/xmleditor/download.shtml | splitver '^xxe-eval-([0-9_]+).tar.gz$' | sort -V | tail -n 1 | sed 's/_/./g'

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+krusader-${UB_VERSION/~/-}.tar.bz2 krusader-${UB_VERSION/~/-}/
+	http://downloads.sourceforge.net/krusader/

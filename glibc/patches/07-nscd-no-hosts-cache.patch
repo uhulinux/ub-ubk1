@@ -1,0 +1,12 @@
+diff -Naur glibc.orig/nscd/nscd.conf glibc/nscd/nscd.conf
+--- glibc.orig/nscd/nscd.conf	2004-10-03 23:09:23.000000000 +0200
++++ glibc/nscd/nscd.conf	2004-11-09 19:47:34.000000000 +0100
+@@ -54,7 +54,7 @@
+ 	persistent		group		yes
+ 	shared			group		yes
+ 
+-	enable-cache		hosts		yes
++	enable-cache		hosts		no
+ 	positive-time-to-live	hosts		3600
+ 	negative-time-to-live	hosts		20
+ 	suggested-size		hosts		211

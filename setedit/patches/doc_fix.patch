@@ -1,0 +1,11 @@
+diff -urN setedit.orig/doc/set.txi setedit/doc/set.txi
+--- setedit.orig/doc/set.txi	2004-09-29 21:27:47.000000000 +0200
++++ setedit/doc/set.txi	2014-05-08 09:06:03.738139332 +0200
+@@ -187,7 +187,6 @@
+ @subtitle @value{update-month}
+ 
+ @author by @value{name-author}
+-@author @ii{last updated @value{update-date}}
+ 
+ @page
+ 

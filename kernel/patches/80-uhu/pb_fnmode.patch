@@ -1,0 +1,12 @@
+diff -Naurdp a/drivers/hid/hid-apple.c b/drivers/hid/hid-apple.c
+--- a/drivers/hid/hid-apple.c	2009-03-13 03:39:28.000000000 +0100
++++ b/drivers/hid/hid-apple.c	2009-03-17 22:19:41.000000000 +0100
+@@ -35,7 +35,7 @@
+ 
+ #define APPLE_FLAG_FKEY		0x01
+ 
+-static unsigned int fnmode = 1;
++static unsigned int fnmode = 2;
+ module_param(fnmode, uint, 0644);
+ MODULE_PARM_DESC(fnmode, "Mode of fn key on Apple keyboards (0 = disabled, "
+ 		"[1] = fkeyslast, 2 = fkeysfirst)");

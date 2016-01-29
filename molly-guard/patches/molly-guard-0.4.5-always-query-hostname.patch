@@ -1,0 +1,9 @@
+diff -rupN molly-guard-0.4.5.orig/rc molly-guard-0.4.5/rc
+--- molly-guard-0.4.5.orig/rc	2012-02-23 22:59:43.000000000 +0000
++++ molly-guard-0.4.5/rc	2015-09-11 14:29:58.886790089 +0000
+@@ -3,4 +3,4 @@
+ # ALWAYS_QUERY_HOSTNAME
+ # when set, causes the 30-query-hostname script to always ask for the
+ # hostname, even if no SSH session was detected.
+-#ALWAYS_QUERY_HOSTNAME=true
++ALWAYS_QUERY_HOSTNAME=true

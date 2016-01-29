@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_install
+
+for i in $(grep -rl '#!/bin/perl' "$UB_INSTALLDIR"); do
+	ub_replace '#!/bin/perl' '#!/usr/bin/perl' "$i"
+done
+
+for i in $(grep -rl '#!/usr/local/bin/perl' "$UB_INSTALLDIR"); do
+	ub_replace '#!/usr/local/bin/perl' '#!/usr/bin/perl' "$i"
+done

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libsoup-${UB_VERSION}.tar.xz libsoup-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libsoup/${UB_VERSION_HEAD2}/

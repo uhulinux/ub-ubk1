@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+choqok-${UB_VERSION}.tar.xz choqok-${UB_VERSION}/
+	http://downloads.sourceforge.net/project/choqok/Choqok/
+	http://choqok.gnufolks.org/pkgs/

@@ -1,0 +1,16 @@
+--- evince/data/evince.desktop.in.in.orig	2012-04-27 21:23:01.000000000 +0200
++++ evince/data/evince.desktop.in.in	2012-04-27 21:23:42.000000000 +0200
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-_Name=Document Viewer
++Name=Evince
+ _Comment=View multi-page documents
+ _Keywords=pdf;ps;postscript;dvi;xps;djvu;tiff;document;presentation;
+ TryExec=evince
+@@ -13,5 +13,5 @@
+ X-GNOME-Bugzilla-Product=evince
+ X-GNOME-Bugzilla-Component=BugBuddyBugs
+ X-GNOME-Bugzilla-Version=@VERSION@
+-Categories=GNOME;GTK;Office;Viewer;Graphics;2DGraphics;VectorGraphics;
++Categories=GNOME;GTK;Office;Viewer;Graphics;2DGraphics;VectorGraphics;X-UHU-Menu/Tools/Viewers;
+ MimeType=@EVINCE_MIME_TYPES@

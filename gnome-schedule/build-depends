@@ -1,0 +1,9 @@
+at
+cron
+docbook-dtds
+gnome-doc-utils
+gnome-python
+gnome-python-dev
+intltool
+libxslt-dev
+pygtk-dev

@@ -1,0 +1,31 @@
+#!/bin/sh -eux
+
+mkdir -p "${UB_INSTALLDIR}/usr/lib/uhubuild"
+cp -a src/. "${UB_INSTALLDIR}/usr/lib/uhubuild/"
+
+mv "${UB_INSTALLDIR}"/usr/lib/uhubuild/helpers/* "${UB_INSTALLDIR}"/usr/bin/
+rmdir "${UB_INSTALLDIR}"/usr/lib/uhubuild/helpers
+
+mkdir -p "${UB_INSTALLDIR}/usr/share/uhubuild"
+cp -a config words "${UB_INSTALLDIR}/usr/share/uhubuild/"
+
+cd "${UB_INSTALLDIR}/usr/bin"
+ln -sf "../lib/uhubuild/uhubuild-build"
+ln -sf "../lib/uhubuild/uhubuild-check"
+ln -sf "../lib/uhubuild/uhubuild-chrootbuild"
+ln -sf "../lib/uhubuild/uhubuild-expand"
+ln -sf "../lib/uhubuild/uhubuild-extract"
+ln -sf "../lib/uhubuild/uhubuild-pack"
+ln -sf "../lib/uhubuild/uhubuild-u2d"
+
+cd "${UB_INSTALLDIR}"
+for i in build check chrootbuild depends expand extract pack prepare-chroot; do
+	chmod 755 "usr/lib/uhubuild/uhubuild-$i"
+done
+
+chmod 644 usr/lib/uhubuild/common
+chmod 644 usr/lib/uhubuild/uhubuild-common
+chmod 644 usr/lib/uhubuild/uhubuild-commonenvironment
+chmod 755 usr/lib/uhubuild/steps/*
+
+chmod 755 usr/bin/ub_*

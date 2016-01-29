@@ -1,0 +1,15 @@
+diff -Naurd b/stage2/asm.S c/stage2/asm.S
+--- b/stage2/asm.S	2005-03-29 15:17:44.235954073 +0200
++++ c/stage2/asm.S	2005-03-30 14:44:42.874662250 +0200
+@@ -97,7 +97,11 @@
+ 	.string VERSION
+ VARIABLE(config_file)
+ #ifndef STAGE1_5
++#ifndef SUPPORT_NETBOOT
+ 	.string "/boot/grub/menu.lst"
++#else
++	.string "(nd)/tftpboot/menu.lst"
++#endif /* SUPPORT_NETBOOT */
+ #else   /* STAGE1_5 */
+ 	.long	0xffffffff
+ 	.string "/boot/grub/stage2"

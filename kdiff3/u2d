@@ -1,0 +1,1 @@
+urllist ftp://ftp.kde.org/pub/kde/stable/extragear/ | splitver '^kdiff3-([0-9.]+)-kde4.4.0.tar.bz2$'| sort -V | tail -n 1

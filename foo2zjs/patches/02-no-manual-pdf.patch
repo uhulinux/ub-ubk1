@@ -1,0 +1,20 @@
+diff -Naurdp a/Makefile b/Makefile
+--- a/Makefile	2009-10-21 20:41:50.000000000 +0200
++++ b/Makefile	2009-11-18 14:07:43.000000000 +0100
+@@ -1220,7 +1220,7 @@ install-man: man
+ 	$(INSTALL) -c -m 644 usb_printerid.1 $(MANDIR)/man1/
+ 	$(INSTALL) -c -m 644 printer-profile.1 $(MANDIR)/man1/
+ 
+-doc: README INSTALL manual.pdf
++doc: README INSTALL
+ 
+ install-doc: doc
+ 	#
+@@ -1227,7 +1227,6 @@
+ 	# Install documentation
+ 	#
+ 	$(INSTALL) -d -m 755 $(DOCDIR)
+-	$(INSTALL) -c -m 644 manual.pdf $(DOCDIR)
+ 	$(INSTALL) -c -m 644 COPYING $(DOCDIR)
+ 	$(INSTALL) -c -m 644 INSTALL $(DOCDIR)
+ 	$(INSTALL) -c -m 644 INSTALL.osx $(DOCDIR)

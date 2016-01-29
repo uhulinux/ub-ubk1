@@ -1,0 +1,108 @@
+diff -urN pine4.53.orig/imap/docs/FAQ.html pine4.53/imap/docs/FAQ.html
+--- pine4.53.orig/imap/docs/FAQ.html	2002-12-11 00:15:37.000000000 +0100
++++ pine4.53/imap/docs/FAQ.html	2003-02-24 14:50:32.000000000 +0100
+@@ -651,7 +651,7 @@
+ Why do I get the message
+ <UL>
+ <LI>
+-Moved ##### bytes of new mail to /home/user/mbox from /var/spool/mail/user
++Moved ##### bytes of new mail to /home/user/mbox from /var/mail/user
+ </UL>
+ and why did this happen?
+ </A>
+@@ -672,7 +672,7 @@
+ What does the message:
+ <UL>
+ <LI>
+-Mailbox vulnerable - directory /var/spool/mail must have 1777 protection
++Mailbox vulnerable - directory /var/mail must have 1777 protection
+ </UL>
+ mean?  How can I fix this?
+ </A>
+@@ -2454,7 +2454,7 @@
+ (note that "INBOX" must be all uppercase), then subsequent access to
+ INBOX by any c-client based application will use the mbx-format INBOX.
+ Any mail delivered to the traditional format mailbox in the spool
+-directory (e.g. /var/spool/mail/$USER) will automatically be copied
++directory (e.g. /var/mail/$USER) will automatically be copied
+ into the mbx-format INBOX and the spool directory copy removed.
+ <LI>
+ You can cause any newly-created mailboxes to be in mbx-format by
+@@ -3467,7 +3467,7 @@
+ Why do I get the message
+ </B>
+ <TT>
+- Moved ##### bytes of new mail to /home/user/mbox from /var/spool/mail/user
++ Moved ##### bytes of new mail to /home/user/mbox from /var/mail/user
+ </TT>
+ <B>
+ and why did this happen?
+@@ -3562,7 +3562,7 @@
+ What does the message:
+ </B>
+ <TT>
+- Mailbox vulnerable - directory /var/spool/mail must have 1777 protection
++ Mailbox vulnerable - directory /var/mail must have 1777 protection
+ </TT>
+ <B>
+ mean?  How can I fix this?
+diff -urN pine4.53.orig/imap/docs/FAQ.txt pine4.53/imap/docs/FAQ.txt
+--- pine4.53.orig/imap/docs/FAQ.txt	2002-12-11 00:15:58.000000000 +0100
++++ pine4.53/imap/docs/FAQ.txt	2003-02-24 14:50:43.000000000 +0100
+@@ -195,7 +195,7 @@
+             server"? 
+           + 7.7 Why do I get the message 
+                o Moved ##### bytes of new mail to /home/user/mbox from
+-                 /var/spool/mail/user
++                 /var/mail/user
+             and why did this happen?
+           + 7.8 Why isn't it showing the local host name as a
+             fully-qualified domain name? 
+@@ -203,7 +203,7 @@
+             headers of outgoing mail not coming out as a fully-qualified
+             domain name? 
+           + 7.10 What does the message: 
+-               o Mailbox vulnerable - directory /var/spool/mail must have
++               o Mailbox vulnerable - directory /var/mail must have
+                  1777 protection
+             mean? How can I fix this?
+           + 7.11 What does the message: 
+@@ -1145,7 +1145,7 @@
+             uppercase), then subsequent access to INBOX by any c-client
+             based application will use the mbx-format INBOX. Any mail
+             delivered to the traditional format mailbox in the spool
+-            directory (e.g. /var/spool/mail/$USER) will automatically be
++            directory (e.g. /var/mail/$USER) will automatically be
+             copied into the mbx-format INBOX and the spool directory copy
+             removed.
+           + You can cause any newly-created mailboxes to be in mbx-format
+@@ -1905,7 +1905,7 @@
+    
+    7.6 Why does mail disappear even though I set "keep mail on server"? 
+    7.7 Why do I get the message Moved ##### bytes of new mail to
+-   /home/user/mbox from /var/spool/mail/user and why did this happen? 
++   /home/user/mbox from /var/mail/user and why did this happen? 
+    
+           This is probably caused by the mbox driver. If the file "mbox"
+           exists on the user's home directory and is in UNIX mailbox
+@@ -1977,7 +1977,7 @@
+      _________________________________________________________________
+    
+    7.10 What does the message: Mailbox vulnerable - directory
+-   /var/spool/mail must have 1777 protection mean? How can I fix this? 
++   /var/mail must have 1777 protection mean? How can I fix this? 
+    
+           In order to update a mailbox in the default UNIX format, it is
+           necessary to create a lock file to prevent the mailer from
+diff -urN pine4.53.orig/imap/src/osdep/unix/Makefile pine4.53/imap/src/osdep/unix/Makefile
+--- pine4.53.orig/imap/src/osdep/unix/Makefile	2002-10-15 00:45:24.000000000 +0200
++++ pine4.53/imap/src/osdep/unix/Makefile	2003-02-24 14:49:57.000000000 +0100
+@@ -429,7 +429,7 @@
+ lnp:	# Linux Pluggable Authentication modules
+ 	$(BUILD) `$(CAT) SPECIALS` OS=lnx \
+ 	 SIGTYPE=psx CHECKPW=pam CRXTYPE=nfs \
+-	 SPOOLDIR=/var/spool \
++	 SPOOLDIR=/var/spool MAILSPOOL=/var/mail \
+ 	 ACTIVEFILE=/var/lib/news/active \
+ 	 RSHPATH=/usr/bin/rsh \
+ 	 BASECFLAGS="-g -fno-omit-frame-pointer -O6" \

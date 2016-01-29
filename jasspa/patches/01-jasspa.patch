@@ -1,0 +1,29 @@
+diff -Naur ORIG/me100503/src/linux26.gmk UHU/me100503/src/linux26.gmk
+--- ORIG/me100503/src/linux26.gmk	2010-05-03 23:38:50.000000000 +0200
++++ UHU/me100503/src/linux26.gmk	2010-06-25 14:46:14.000000000 +0200
+@@ -33,7 +33,7 @@
+ ##############################################################################
+ #
+ # Installation Directory
+-INSTDIR	      = /usr/local/bin
++INSTDIR	      = /usr/bin
+ INSTPROGFLAGS = -s -o root -g root -m 0775
+ #
+ # Local Definitions
+@@ -72,6 +72,7 @@
+ else
+ CONSOLE_LIBS  = -lncurses
+ endif
++CONSOLE_LIBS  = -lncurses
+ #
+ # Rules
+ .SUFFIXES: .c .oc .ow .ob .on .ov .oe .odc .odw .odb .odn .odv .ode
+@@ -150,7 +151,7 @@
+ all: me
+ 
+ install: me
+-	$(INSTALL) $(INSTPROGFLAGS) me $(INSTDIR)
++	$(INSTALL) $(INSTPROGFLAGS) me $(DESTDIR)$(INSTDIR)
+ 	@echo "install done"
+ 
+ clean:

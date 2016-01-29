@@ -1,0 +1,12 @@
+diff -urN xfsprogs-3.0.5.orig/configure xfsprogs-3.0.5/configure
+--- xfsprogs-3.0.5.orig/configure	2009-10-23 22:38:51.000000000 +0200
++++ xfsprogs-3.0.5/configure	2010-09-10 15:34:35.000000000 +0200
+@@ -10422,7 +10422,7 @@
+ 
+ # Check whether --enable-readline was given.
+ if test "${enable_readline+set}" = set; then
+-  enableval=$enable_readline; test $enable_readline = yes && libreadline="-lreadline"
++  enableval=$enable_readline; test $enable_readline = yes && libreadline="-lreadline -lncurses"
+ else
+   enable_readline=no
+ fi

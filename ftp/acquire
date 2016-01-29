@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+netkit-ftp-${UB_VERSION}.tar.gz netkit-ftp-${UB_VERSION}/
+	ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/
+

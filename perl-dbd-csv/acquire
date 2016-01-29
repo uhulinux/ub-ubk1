@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+DBD-CSV-${UB_VERSION}.tgz DBD-CSV-${UB_VERSION}/
+	http://search.cpan.org/CPAN/modules/by-module/DBD/

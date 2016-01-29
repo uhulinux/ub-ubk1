@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Glib-Object-Introspection-${UB_VERSION}.tar.gz Glib-Object-Introspection-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/

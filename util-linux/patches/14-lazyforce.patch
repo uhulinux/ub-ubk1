@@ -1,0 +1,12 @@
+diff -Naurdp util-linux-2.24/mount-deprecated/umount.c util-linux-2.24-lazyforce/mount-deprecated/umount.c
+--- util-linux-2.24/mount-deprecated/umount.c	2013-09-18 15:50:12.000000000 +0200
++++ util-linux-2.24-lazyforce/mount-deprecated/umount.c	2014-01-14 15:16:30.511523607 +0100
+@@ -311,7 +311,7 @@ umount_one (const char *spec, const char
+ 	}
+ 
+ 	if (lazy) {
+-		res = umount2 (target, MNT_DETACH | extra_flags);
++		res = umount2 (target, MNT_DETACH | extra_flags  | (force?MNT_FORCE:0));
+ 		if (res < 0)
+ 			umnt_err = errno;
+ 		goto writemtab;

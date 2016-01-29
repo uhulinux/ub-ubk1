@@ -1,0 +1,11 @@
+--- cheese.orig/data/cheese.desktop.in.in	2009-03-16 18:46:15.000000000 +0100
++++ cheese/data/cheese.desktop.in.in	2009-03-21 10:15:00.000000000 +0100
+@@ -7,7 +7,7 @@
+ Type=Application
+ StartupNotify=true
+ Icon=cheese
+-Categories=GNOME;AudioVideo;Video;Recorder;
++Categories=GTK;GNOME;AudioVideo;Video;Recorder;X-UHU-Menu/Graphics;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=cheese
+ X-GNOME-Bugzilla-Component=general

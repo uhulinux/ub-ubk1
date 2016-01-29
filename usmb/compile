@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+sed -i -e 's/-Werror//g' configure
+ub_compile

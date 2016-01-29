@@ -1,0 +1,10 @@
+exempi-dev
+gnome-desktop-dev
+gobject-introspection-dev
+intltool
+libexif-dev
+libnotify-dev
+libsm-dev
+libxml2-dev
+sqlite-dev
+tracker-dev

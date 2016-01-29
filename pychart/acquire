@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PyChart-${UB_VERSION}.tar.gz PyChart-${UB_VERSION}/
+	http://download.gna.org/pychart/

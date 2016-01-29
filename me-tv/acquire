@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+me-tv-${UB_VERSION}.tar.gz me-tv-${UB_VERSION}/
+	http://launchpad.net/me-tv/${UB_VERSION_HEAD2}/${UB_VERSION_HEAD3}/+download/

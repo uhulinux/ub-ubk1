@@ -1,0 +1,19 @@
+diff -Naurdp arj-3.10.22.orig/fardata.c arj-3.10.22/fardata.c
+--- arj-3.10.22.orig/fardata.c	2004-04-17 13:39:42.000000000 +0200
++++ arj-3.10.22/fardata.c	2009-09-30 21:23:50.000000000 +0200
+@@ -190,6 +190,7 @@ int msg_sprintf(char *str, FMSG *fmt, ..
+ 
+ /* Length-limited strlen() */
+ 
++/*
+ static int strnlen(const char FAR *s, int count)
+ {
+  const char FAR *sc;
+@@ -198,6 +199,7 @@ static int strnlen(const char FAR *s, in
+   ;
+  return(sc-s);
+ }
++*/
+ 
+ /* Hex representation of digits */
+ 

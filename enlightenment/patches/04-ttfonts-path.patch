@@ -1,0 +1,11 @@
+diff -Naur e16-0.16.8.1.orig/src/ttfont.c e16-0.16.8.1/src/ttfont.c
+--- e16-0.16.8.1.orig/src/ttfont.c	2006-03-28 20:06:01.000000000 +0200
++++ e16-0.16.8.1/src/ttfont.c	2006-03-30 13:17:07.000000000 +0200
+@@ -52,6 +52,7 @@
+    char              **lst;
+    int                 i, num;
+ 
++   imlib_add_path_to_font_path("/usr/share/fonts/TTF");
+    Esnprintf(s, sizeof(s), "%s/ttfonts", Mode.theme.path);
+    imlib_add_path_to_font_path(s);
+    lst = StrlistFromString(Conf.theme.ttfont_path, ':', &num);

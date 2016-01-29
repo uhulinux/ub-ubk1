@@ -1,0 +1,6 @@
+alsa-lib-dev
+gst0.10-plugins-base-dev
+gtk2-dev
+liboil-dev
+libsoup-dev
+libtasn1-dev

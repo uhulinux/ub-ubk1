@@ -1,0 +1,45 @@
+diff -Naur pine4.61.orig/pico/composer.c pine4.61/pico/composer.c
+--- pine4.61.orig/pico/composer.c	2005-11-29 18:41:06.000000000 +0100
++++ pine4.61/pico/composer.c	2005-11-29 18:41:36.000000000 +0100
+@@ -656,7 +656,7 @@
+ int f, n;
+ {
+     register  int	i;
+-    register  int	ch;
++              int	ch;
+     register  char	*bufp;
+     struct headerentry *h;
+     int                 cur_e, mangled, retval = -1,
+@@ -1758,7 +1758,7 @@
+ {
+     register struct	hdr_line   *lp;		/* temporary line pointer    */
+     register int	i;
+-    register int	ch = 0;
++             int	ch = 0;
+     register int	status;			/* various func's return val */
+     register char	*tbufp;			/* temporary buffer pointers */
+ 	     int	skipmove = 0;
+diff -Naur pine4.61.orig/pico/search.c pine4.61/pico/search.c
+--- pine4.61.orig/pico/search.c	2005-11-29 18:41:06.000000000 +0100
++++ pine4.61/pico/search.c	2005-11-29 18:42:29.000000000 +0100
+@@ -717,7 +717,7 @@
+     register int c;			/* character at current position */
+     register LINE *matchline;	/* current line during matching */
+     register int matchoff;		/* position in matching line */
+-    register char *patptr = patrn;	/* pointer into pattern */
++             char *patptr = patrn;	/* pointer into pattern */
+     register int stopoff;		/* offset to stop search */
+     register LINE *stopline;	/* line to stop search */
+     unsigned int ucspat[NPAT], ucspos = 0, match;
+diff -Naur pine4.61.orig/pine/osdep/termout.unx pine4.61/pine/osdep/termout.unx
+--- pine4.61.orig/pine/osdep/termout.unx	2005-11-29 18:41:06.000000000 +0100
++++ pine4.61/pine/osdep/termout.unx	2005-11-29 18:48:06.000000000 +0100
+@@ -740,7 +740,7 @@
+   ----*/
+ void
+ Writechar(ch, new_esc_len)
+-     register unsigned int ch;
++              unsigned int ch;
+      int      new_esc_len;
+ {
+     static   int esc_len = 0, seq = 0;

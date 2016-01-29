@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ne-${UB_VERSION}.tar.gz ne-${UB_VERSION}/
+	http://ne.dsi.unimi.it/

@@ -1,0 +1,16 @@
+diff -Naur orig/resources/etr.desktop mod/resources/etr.desktop
+--- orig/resources/etr.desktop	2013-08-29 11:51:40.000000000 +0200
++++ mod/resources/etr.desktop	2013-12-02 21:29:04.000000000 +0100
+@@ -8,10 +8,11 @@
+ Comment=Race a penguin down a mountain
+ Comment[de]=Rutsche mit einem Pinguin einen Hügel hinab
+ Comment[ro_RO]=Curse cu un pinguin pe munte, la vale
++Comment[hu]=Nyílt forrású, lecsúszós verseny Tux, a pingvin főszereplésével
+ Icon=etr
+ 
+ Exec=etr
+ Terminal=false
+ StartupNotify=false
+ 
+-Categories=Game;ArcadeGame;
++Categories=Game;ArcadeGame;X-UHU-Menu/Games/Action;

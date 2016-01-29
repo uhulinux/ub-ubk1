@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Term-ReadLine-${UB_VERSION}.tar.gz Term-ReadLine-${UB_VERSION}/
+	http://cpan.metacpan.org/authors/id/F/FL/FLORA/

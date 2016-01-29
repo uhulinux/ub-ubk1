@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+msgfmt -c -v -o hu.mo hu.po
+mkdir -p "${UB_INSTALLDIR}/usr/share/locale/hu/LC_MESSAGES/"
+install -m 644 hu.mo "${UB_INSTALLDIR}/usr/share/locale/hu/LC_MESSAGES/uhu-installer.mo"
+
+cp uhu-installer{,-cli} "$UB_INSTALLDIR"/usr/sbin/
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/uhu-installer/
+cp uhu-installer.glade "$UB_INSTALLDIR"/usr/share/uhu-installer/
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/applications/
+cp uhu-installer.desktop "$UB_INSTALLDIR"/usr/share/applications/

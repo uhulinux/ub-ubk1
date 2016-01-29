@@ -1,0 +1,43 @@
+diff -Naur orig/src/egl/opengl/Makefile.am patched/src/egl/opengl/Makefile.am
+--- orig/src/egl/opengl/Makefile.am	2010-07-07 19:57:15.000000000 +0200
++++ patched/src/egl/opengl/Makefile.am	2012-08-14 14:25:10.372961411 +0200
+@@ -26,13 +26,16 @@
+ # They're not too interesting but they're good for testing.
+ 
+ AM_CFLAGS = \
++	$(X11_CFLAGS) \
+ 	$(DEMO_CFLAGS) \
+ 	$(EGL_CFLAGS) \
+ 	-I$(top_srcdir)/src/egl/eglut \
+ 	-I$(top_srcdir)/src/util
+ AM_LDFLAGS = \
++	$(X11_LIBS) \
+ 	$(DEMO_LIBS) \
+-	$(EGL_LIBS)
++	$(EGL_LIBS) \
++	-lpthread
+ 
+ if HAVE_X11
+ EGL_X11_DEMOS = \
+diff -Naur orig/src/egl/opengl/Makefile.in patched/src/egl/opengl/Makefile.in
+--- orig/src/egl/opengl/Makefile.in	2010-07-13 20:53:23.000000000 +0200
++++ patched/src/egl/opengl/Makefile.in	2012-08-14 14:26:12.896389719 +0200
+@@ -294,14 +294,17 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ AM_CFLAGS = \
++	$(X11_CFLAGS) \
+ 	$(DEMO_CFLAGS) \
+ 	$(EGL_CFLAGS) \
+ 	-I$(top_srcdir)/src/egl/eglut \
+ 	-I$(top_srcdir)/src/util
+ 
+ AM_LDFLAGS = \
++	$(X11_LIBS) \
+ 	$(DEMO_LIBS) \
+-	$(EGL_LIBS)
++	$(EGL_LIBS) \
++	-lpthread
+ 
+ @HAVE_X11_TRUE@EGL_X11_DEMOS = \
+ @HAVE_X11_TRUE@	eglgears_x11 \

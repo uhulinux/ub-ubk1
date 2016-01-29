@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+libnm-qt-${UB_VERSION}.tar.xz libnm-qt-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/unstable/networkmanager-qt/${UB_VERSION}/src/
+	ftp://ftp.kde.org/pub/kde/stable/networkmanager-qt/${UB_VERSION}/src/

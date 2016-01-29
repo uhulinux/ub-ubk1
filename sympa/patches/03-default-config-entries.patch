@@ -1,0 +1,30 @@
+diff -Naur sympa-5.3.orig/src/sympa_wizard.pl sympa-5.3/src/sympa_wizard.pl
+--- sympa-5.3.orig/src/sympa_wizard.pl	2007-03-04 11:41:19.000000000 +0100
++++ sympa-5.3/src/sympa_wizard.pl	2007-06-01 23:52:38.000000000 +0200
+@@ -128,7 +128,7 @@
+ 	       'advice' =>''},
+ 
+ 	      {'name' => 'static_content_path',
+-	       'default' => '--DIR--/static_content',
++	       'default' => '/srv/www/html/sympa/static_content',
+ 	       'query' => 'The directory where Sympa stores static contents (CSS, members pictures, documentation) directly delivered by Apache',
+ 	       'file' => 'sympa.conf',
+ 	       'advice' =>''},	      
+@@ -184,7 +184,7 @@
+ 	       'advice' =>"Effective address will be \[EMAIL\]@\[HOST\]"},
+ 
+ 	      {'name' => 'create_list',
+-	       'default' => 'public_listmaster',
++	       'default' => 'listmaster',
+ 	       'query' => 'Who is able to create lists',
+ 	       'file' => 'sympa.conf','edit' => '1',
+ 	       'advice' =>'This parameter is a scenario, check sympa documentation about scenarios if you want to define one'},
+@@ -448,7 +448,7 @@
+ 	       'advice' =>''},
+ 
+ 	      {'name' => 'icons_url',
+-	       'default' => '/icons',
++	       'default' => '/sympa-icons',
+ 	       'query' => 'Icons directory (web) location for Sympa',
+ 	       'file' => 'wwsympa.conf'},
+ 

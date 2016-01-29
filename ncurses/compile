@@ -1,0 +1,30 @@
+#!/bin/sh -eux
+
+# build tic first
+ub_configure \
+	--libdir=/lib \
+	--with-shared \
+	--disable-termcap \
+	--enable-widec \
+	--without-termlib \
+	--without-ticlib
+ub_make -C include
+ub_make -C progs tic
+
+# build it for real now
+ub_compile \
+	--libdir=/lib \
+	--with-shared \
+	--disable-termcap \
+	--enable-widec \
+	--includedir=/usr/include/ncursesw \
+	--with-fallbacks="vt100,ansi,linux,xterm,screen"
+
+mkdir Install
+UB_MAKEINSTALL_PREFIX="$UB_COMPILEDIR"/Install ub_install
+
+ub_compile \
+	--libdir=/lib \
+	--with-shared \
+	--disable-termcap \
+	--with-fallbacks="vt100,ansi,linux,xterm,screen"

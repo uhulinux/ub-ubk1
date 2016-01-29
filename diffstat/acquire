@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+diffstat-${UB_VERSION}.tgz diffstat-${UB_VERSION}/
+	ftp://invisible-island.net/diffstat/

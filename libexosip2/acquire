@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libeXosip2-${UB_VERSION}.tar.gz libeXosip2-${UB_VERSION}/
+	http://download.savannah.gnu.org/releases/exosip/

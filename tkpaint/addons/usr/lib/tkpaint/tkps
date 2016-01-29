@@ -1,0 +1,287 @@
+#!/bin/sh
+# the next line restarts using wish \
+exec wish8.0 "$0" "$@"
+
+# tkps  version  1.0
+# June 25, 1998
+# Author: Samy Zafrany
+#         CS and Math school
+#         Netanya Academic College
+#         Israel
+#         email: samy@netanya.ac.il
+#         web:   http://www.netanya.ac.il/~samy
+
+set updateVar 0
+set busyVar 0
+set refreshTime 10000
+
+option add *Label.Font {Helvetica 14 bold}
+option add *Listbox.Font {Courier 14 bold}
+option add *tk_messageBox.Font {Courier 14 bold}
+option add *Message.Font {Helvetica 14}
+option add *Button.BorderWidth 3
+option add *Message.BorderWidth 3
+
+#option add *Message.Foreground #7c0000
+#option add *Message.Background #fada86
+#option add *Scale.Background #fada86
+#option add .*.Frame.Background #fada86
+
+proc updateData {} {
+  global Data updateVar
+
+  if [info exists Data] {unset Data}
+
+  foreach line [split [exec ps ahxu] \n] {
+     set pid [lindex $line 1]
+     set Udata($pid,owner) [lindex $line 0]
+     set Udata($pid,cpu) "[lindex $line 2]%"
+     set Udata($pid,mem) "[lindex $line 3]%"
+     set Udata($pid,tty) [lindex $line 6]
+     set Udata($pid,start) [string trim [string range $line 44 52]]
+  }
+
+  set i 0
+  foreach line [lsort -index 1 -integer [split [exec ps ahxlwww] \n]] {
+     if {[string first "ps ahxlwww" $line] >= 0} {continue}
+     set uid   [lindex $line 1]
+     set pid   [lindex $line 2]
+     set owner $Udata($pid,owner)
+     set Data($i,uid)    $uid
+     set Data($i,owner)  $owner
+     set Data($i,pid)    $pid
+     set Data($i,ppid)   [lindex $line 3]
+     set Data($i,nice)   [lindex $line 5]
+     set Data($i,size)   [lindex $line 6]
+     set Data($i,rss)    [lindex $line 7]
+     set Data($i,cpu)    $Udata($pid,cpu)
+     set Data($i,mem)    $Udata($pid,mem)
+     set Data($i,tty)    $Udata($pid,tty)
+     set Data($i,start)  $Udata($pid,start)
+     set Data($i,state)  [string range $line 58 61]
+     set Data($i,cmd)    [string range $line 71 100]
+     incr i
+  }
+  set Data(max) $i
+  set updateVar 1
+}
+
+proc displayData {} {
+  global Data
+
+  set yview [lindex [.body.list yview] 0]
+
+  .body.list delete 0 end
+  
+  for {set i 0} {$i < $Data(max)} {incr i} {
+    .body.list insert end \
+       [format "%-34s%-10s%6s%7s%7s" \
+       $Data($i,cmd) $Data($i,owner) $Data($i,mem) $Data($i,cpu) $Data($i,nice)]
+  }
+
+  .body.list yview moveto $yview
+  update
+}
+
+wm title . "tkps: Tk Tasks Manager"
+wm geometry . +30+30
+wm resizable . 0 0
+#wm protocol . WM_DELETE_WINDOW Exit
+
+frame .head -relief raised
+
+pack .head -side top -fill x
+
+label .head.task -text "Task" -width 35 -anchor w
+label .head.owner -text "Owner" -width 11 -anchor w
+label .head.mem -text "Mem" -width 6 -anchor w
+label .head.cpu -text "CPU" -width 6 -anchor w
+label .head.nice -text "Priority" -width 9 -anchor w
+
+pack .head.task .head.owner .head.mem .head.cpu .head.nice\
+     -side left -padx 2m -pady 2m
+
+frame .body
+pack .body -side top -fill x
+listbox .body.list -yscrollcommand {.body.scroll set} \
+     -width 68 -height 16 \
+     -cursor hand2 \
+     -background #00d8fe
+#  -background wheat
+# -cursor hand2 \
+# -selectmode single \
+# -setgrid 1
+# -selectbackground hotPink3 \
+
+scrollbar .body.scroll -command {.body.list yview}
+
+pack .body.list -side left
+pack .body.scroll -side right -fill y
+
+bind .body.list <Button-1> {
+   set Data(current) [%W curselection]
+   set busyVar 1
+   if [info exists nextRun] {after cancel $nextRun}
+   set nextRun [after 30000 "set busyVar 0 ; set updateVar 1"]
+}
+
+bind .body.scroll <Button-1> "+set busyVar 1"
+
+bind .body.scroll <ButtonRelease-1> "+set busyVar 0"
+
+frame .bottom
+pack .bottom -side bottom -fill x
+button .bottom.kill -text "Kill" -command Kill -width 5
+button .bottom.renice -text "Renice" -command {Renice} -width 5
+button .bottom.disown -text "Disown" -command {Disown} -width 5
+button .bottom.details -text "Details" -command {Details} -width 5
+button .bottom.refresh -text "Refresh" -width 5 -command {
+    set busyVar 0
+    set updateVar 1
+}
+button .bottom.exit -text "Exit" -command {exit} -width 5
+
+entry .bottom.date -textvariable Time \
+           -width 0 \
+           -bg  wheat \
+           -fg  #980000 \
+           -bd  3 \
+           -font {Helvetica 12 bold} \
+           -state disabled
+pack .bottom.kill .bottom.renice .bottom.disown \
+     .bottom.details .bottom.refresh .bottom.exit \
+     .bottom.date \
+      -side left -padx 2m -pady 2m
+
+pack .bottom.date -side right -padx 2m -pady 2m -expand 1
+
+proc updTime {} {
+  global Time
+  after 1000 {
+      set Seconds [clock seconds]
+      set Time [clock format $Seconds -format "%a %b %d, %H:%M:%S"]
+      updTime
+  }
+}
+
+after 1000 updTime
+
+proc Kill {} {
+  global Data busyVar updateVar
+  set i [.body.list curselection]
+  if {$i==""} {return}
+  exec kill -9 $Data($i,pid)
+  after 400
+  set busyVar 0
+  set updateVar 1
+}
+
+proc Renice {} {
+  global Data busyVar
+  set i [.body.list curselection]
+  if {$i==""} {return}
+  set task [string trim $Data($i,cmd)]
+  set pid $Data($i,pid)
+  toplevel .renice
+  wm title .renice "Renice task \"$task\""
+  message .renice.m -text "Use the scale to set a new nice value\
+for the task \"$task\"" -aspect 350
+pack .renice.m -side top -fill x
+scale .renice.scale -label "Nice value" -from -20 -to +20 -length 12c \
+        -orient horizontal \
+        -tickinterval 5 \
+        -variable Data($i,nice)
+
+#        -command "set Data($i,nice)" \
+
+pack .renice.scale -side top
+
+frame .renice.f
+pack .renice.f -side bottom -fill x
+button .renice.f.apply -text {Apply} \
+     -width 8 \
+     -command "Apply $i"
+button .renice.f.cancel -text {Cancel} \
+     -width 8 \
+     -command {set busyVar 0 ; destroy .renice}
+
+pack .renice.f.apply .renice.f.cancel -side left -expand 1 -padx 3m -pady 3m
+}
+
+proc Apply {i} {
+  global Data busyVar updateVar
+  exec renice $Data($i,nice) $Data($i,pid)
+  set busyVar 0
+  set updateVar 1
+  destroy .renice
+}
+
+proc Disown {} {
+  global Data busyVar
+#  set i [.body.list curselection]
+#  if {$i==""} {return}
+  toplevel .disown
+  wm transient .disown .
+#  wm title .disown "Disown task \"$Data($i,cmd)\""
+#  message .disown.m -text "TASK:   $Data($i,cmd)
+  message .disown.m -text "NOT IMPLEMENTED YET.
+WAIT FOR THE NEXT RELEASE!"\
+      -font {Courier 14 bold} \
+      -aspect 400
+
+pack .disown.m -side top
+
+button .disown.b -text Dismiss -command {
+    destroy .disown
+    set busyVar 0
+}
+pack .disown.b -side bottom
+}
+
+proc Details {} {
+  global Data busyVar
+  set i [.body.list curselection]
+  if {$i==""} {return}
+  toplevel .details
+  wm transient .details .
+  wm title .details "Details on task \"$Data($i,cmd)\""
+  message .details.m -text "TASK:   $Data($i,cmd)
+PID:    $Data($i,pid)
+PPID:   $Data($i,ppid)
+UID:    $Data($i,uid)
+OWNER:  $Data($i,owner)
+NICE:   $Data($i,nice)
+SIZE:   $Data($i,size)
+RSS:    $Data($i,rss)
+CPU:    $Data($i,cpu)
+MEM:    $Data($i,mem)
+TTY:    $Data($i,tty)
+START:  $Data($i,start)
+STATE:  $Data($i,state)"\
+      -font {Courier 14 bold} \
+      -aspect 300
+
+pack .details.m -side top
+
+button .details.b -text Dismiss -command {
+    destroy .details
+    set busyVar 0
+}
+pack .details.b -side bottom
+}
+
+proc DataTrace {v index op} {
+global updateVar busyVar nextRun refreshTime
+if {$busyVar==0} {
+  updateData
+  displayData
+}
+if [info exists nextRun] {after cancel $nextRun}
+set updateVar 0
+set nextRun [after $refreshTime "set updateVar 1"]
+}
+
+trace variable updateVar w DataTrace
+
+updateData
+displayData

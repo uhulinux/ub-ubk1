@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Class-Container-${UB_VERSION}.tar.gz Class-Container-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/K/KW/KWILLIAMS/

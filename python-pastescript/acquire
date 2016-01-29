@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PasteScript-${UB_VERSION}.tar.gz PasteScript-${UB_VERSION}/
+	http://pypi.python.org/packages/source/P/PasteScript/

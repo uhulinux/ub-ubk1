@@ -1,0 +1,9 @@
+--- a/data/swell-foop.desktop.in.orig	2011-08-22 00:39:28.000000000 +0200
++++ a/data/swell-foop.desktop.in	2011-10-20 18:32:56.000000000 +0200
+@@ -6,5 +6,5 @@
+ Exec=swell-foop
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Game;LogicGame;
++Categories=GNOME;GTK;Game;LogicGame;X-UHU-Menu/Games/TacticStrategy;
+ StartupNotify=true

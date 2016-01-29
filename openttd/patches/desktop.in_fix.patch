@@ -1,0 +1,9 @@
+diff -Naur orig/media/openttd.desktop.in mod/media/openttd.desktop.in
+--- orig/media/openttd.desktop.in	2014-04-01 20:36:19.000000000 +0200
++++ mod/media/openttd.desktop.in	2014-04-28 13:30:23.000000000 +0200
+@@ -9,4 +9,4 @@
+ Terminal=false
+ Categories=!!MENU_GROUP!!
+ Comment=A clone of Transport Tycoon Deluxe
+-Keywords=game;simulation;transport;tycoon;deluxe;economics;multiplayer;money;train;ship;bus;truck;aircraft;cargo
++Keywords=game;simulation;transport;tycoon;deluxe;economics;multiplayer;money;train;ship;bus;truck;aircraft;cargo;

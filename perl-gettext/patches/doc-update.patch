@@ -1,0 +1,24 @@
+--- liblocale-gettext-perl-1.01.orig/gettext.pm
++++ liblocale-gettext-perl-1.01/gettext.pm
+@@ -235,7 +235,7 @@
+ gettext(), dgettext(), and dcgettext() attempt to retrieve a string
+ matching their C<msgid> parameter within the context of the current
+ locale. dcgettext() takes the message's category and the text domain
+-as parameters while dcgettext() defaults to the LC_MESSAGES category
++as parameters while dgettext() defaults to the LC_MESSAGES category
+ and gettext() defaults to LC_MESSAGES and uses the current text domain.
+ If the string is not found in the database, then C<msgid> is returned.
+ 
+@@ -254,6 +254,12 @@
+ functions to translate the returned messages to the character encoding
+ given by B<codeset> if the encoding of the message catalog is known.
+ 
++=head1 WARNING
++
++When setting the textdomain you must be aware that the libc will only
++check for files named <domain>.mo (note the .mo extension) found in the
++locale path (defined either by the default path or by bindtextdomain).
++
+ =head1 NOTES
+ 
+ Not all platforms provide all of the functions. Functions that are

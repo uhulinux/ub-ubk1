@@ -1,0 +1,9 @@
+--- fontforge/Packaging/fontforge.desktop.orig	2011-02-15 04:37:39.000000000 +0100
++++ fontforge/Packaging/fontforge.desktop	2011-10-12 18:59:39.000000000 +0200
+@@ -13,5 +13,5 @@
+ StartupWMClass=fontforge
+ Terminal=false
+ Type=Application
+-Categories=Graphics;
++Categories=Graphics;X-UHU-Menu/Graphics;
+ MimeType=application/vnd.font-fontforge-sfd;application/x-font-ttf;application/x-font-otf;application/x-font-type1;application/x-font-bdf;application/x-font-pcf;application/x-font-tex;

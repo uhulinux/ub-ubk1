@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-keyring-sharp-${UB_VERSION}.tar.gz gnome-keyring-sharp-${UB_VERSION}/
+	http://www.go-mono.com/archive/gnome-keyring-sharp/

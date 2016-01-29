@@ -1,0 +1,7 @@
+#!/bin/bash -eux
+
+b43-fwcutter -w lib/firmware wl_apsta.o
+rm wl_apsta.o
+
+b43-fwcutter -w lib/firmware wl_apsta-3.130.20.0.o
+rm wl_apsta-3.130.20.0.o

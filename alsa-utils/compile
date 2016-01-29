@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+cd po
+msgfmt -o hu.gmo hu.po
+cd ..
+
+ub_compile \
+	--with-curses=ncursesw \
+	--disable-xmlto \
+	--with-udev-rules-dir=/usr/lib/udev/rules.d

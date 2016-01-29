@@ -1,0 +1,179 @@
+diff -Naur shadow-4.0.16.orig/etc/pam.d/Makefile.in shadow-4.0.16/etc/pam.d/Makefile.in
+--- shadow-4.0.16.orig/etc/pam.d/Makefile.in	2006-06-01 23:19:09.000000000 +0200
++++ shadow-4.0.16/etc/pam.d/Makefile.in	2006-06-19 20:08:16.000000000 +0200
+@@ -194,17 +194,7 @@
+ pamd_files = \
+ 	passwd \
+ 	su \
+-	useradd \
+-	chage \
+-	chgpasswd \
+-	chpasswd \
+-	groupadd \
+-	groupdel \
+-	groupmod \
+-	login \
+-	newusers \
+-	useradd \
+-	usermod
++	login
+ 
+ @USE_PAM_TRUE@pamddir = $(sysconfdir)/pam.d
+ @USE_PAM_TRUE@pamd_DATA = $(pamd_files)
+diff -Naur shadow-4.0.16.orig/src/chage.c shadow-4.0.16/src/chage.c
+--- shadow-4.0.16.orig/src/chage.c	2006-02-21 23:44:35.000000000 +0100
++++ shadow-4.0.16/src/chage.c	2006-06-19 20:08:43.000000000 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: chage.c,v 1.71 2006/02/21 22:44:35 kloczek Exp $"
+ 
+diff -Naur shadow-4.0.16.orig/src/chgpasswd.c shadow-4.0.16/src/chgpasswd.c
+--- shadow-4.0.16.orig/src/chgpasswd.c	2006-05-20 01:47:11.000000000 +0200
++++ shadow-4.0.16/src/chgpasswd.c	2006-06-19 20:08:04.000000000 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: chgpasswd.c,v 1.4 2006/05/19 23:47:11 kloczek Exp $"
+ 
+diff -Naur shadow-4.0.16.orig/src/chpasswd.c shadow-4.0.16/src/chpasswd.c
+--- shadow-4.0.16.orig/src/chpasswd.c	2006-05-20 01:45:54.000000000 +0200
++++ shadow-4.0.16/src/chpasswd.c	2006-06-19 20:08:04.000000000 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: chpasswd.c,v 1.34 2005/10/19 15:21:07 kloczek Exp $"
+ 
+diff -Naur shadow-4.0.16.orig/src/groupadd.c shadow-4.0.16/src/groupadd.c
+--- shadow-4.0.16.orig/src/groupadd.c	2006-01-18 20:55:15.000000000 +0100
++++ shadow-4.0.16/src/groupadd.c	2006-06-19 20:08:04.000000000 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: groupadd.c,v 1.51 2006/01/18 19:55:15 kloczek Exp $"
+ 
+diff -Naur shadow-4.0.16.orig/src/groupdel.c shadow-4.0.16/src/groupdel.c
+--- shadow-4.0.16.orig/src/groupdel.c	2006-01-18 20:55:15.000000000 +0100
++++ shadow-4.0.16/src/groupdel.c	2006-06-19 20:08:04.000000000 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: groupdel.c,v 1.31 2006/01/18 19:55:15 kloczek Exp $"
+ 
+diff -Naur shadow-4.0.16.orig/src/groupmod.c shadow-4.0.16/src/groupmod.c
+--- shadow-4.0.16.orig/src/groupmod.c	2005-10-19 17:21:07.000000000 +0200
++++ shadow-4.0.16/src/groupmod.c	2006-06-19 20:08:04.000000000 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: groupmod.c,v 1.37 2005/10/19 15:21:07 kloczek Exp $"
+ 
+diff -Naur shadow-4.0.16.orig/src/Makefile.in shadow-4.0.16/src/Makefile.in
+--- shadow-4.0.16.orig/src/Makefile.in	2006-06-01 23:19:14.000000000 +0200
++++ shadow-4.0.16/src/Makefile.in	2006-06-19 20:08:33.000000000 +0200
+@@ -366,15 +366,15 @@
+ 		 $(top_builddir)/lib/libshadow.la
+ 
+ AM_CPPFLAGS = -DLOCALEDIR=\"$(datadir)/locale\"
+-chage_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
++chage_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
+ chfn_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
+-chgpasswd_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
++chgpasswd_LDADD = $(LDADD) $(LIBSELINUX)
+ chsh_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
+-chpasswd_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
++chpasswd_LDADD = $(LDADD) $(LIBSELINUX)
+ gpasswd_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
+-groupadd_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
+-groupdel_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
+-groupmod_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
++groupadd_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
++groupdel_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
++groupmod_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
+ grpck_LDADD = $(LDADD) $(LIBSELINUX)
+ grpconv_LDADD = $(LDADD) $(LIBSELINUX)
+ grpunconv_LDADD = $(LDADD) $(LIBSELINUX)
+@@ -384,7 +384,7 @@
+ 
+ login_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT)
+ newgrp_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT)
+-newusers_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
++newusers_LDADD = $(LDADD) $(LIBSELINUX)
+ nologin_LDADD = 
+ passwd_LDADD = $(LDADD) $(LIBPAM) $(LIBCRACK) $(LIBAUDIT) $(LIBSELINUX)
+ pwck_LDADD = $(LDADD) $(LIBSELINUX)
+@@ -395,9 +395,9 @@
+ 	suauth.c
+ 
+ su_LDADD = $(LDADD) $(LIBPAM)
+-useradd_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
+-userdel_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
+-usermod_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
++useradd_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
++userdel_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
++usermod_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
+ vipw_LDADD = $(LDADD) $(LIBSELINUX)
+ all: all-am
+ 
+diff -Naur shadow-4.0.16.orig/src/newusers.c shadow-4.0.16/src/newusers.c
+--- shadow-4.0.16.orig/src/newusers.c	2006-03-07 16:50:33.000000000 +0100
++++ shadow-4.0.16/src/newusers.c	2006-06-19 20:08:04.000000000 +0200
+@@ -34,6 +34,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: newusers.c,v 1.33 2006/03/07 15:47:32 kloczek Exp $"
+ 
+diff -Naur shadow-4.0.16.orig/src/useradd.c shadow-4.0.16/src/useradd.c
+--- shadow-4.0.16.orig/src/useradd.c	2006-05-30 20:28:45.000000000 +0200
++++ shadow-4.0.16/src/useradd.c	2006-06-19 20:08:04.000000000 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: useradd.c,v 1.96 2006/05/30 18:28:45 kloczek Exp $"
+ 
+diff -Naur shadow-4.0.16.orig/src/userdel.c shadow-4.0.16/src/userdel.c
+--- shadow-4.0.16.orig/src/userdel.c	2006-05-13 02:45:00.000000000 +0200
++++ shadow-4.0.16/src/userdel.c	2006-06-19 20:08:04.000000000 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: userdel.c,v 1.64 2006/05/12 23:37:33 kloczek Exp $"
+ 
+diff -Naur shadow-4.0.16.orig/src/usermod.c shadow-4.0.16/src/usermod.c
+--- shadow-4.0.16.orig/src/usermod.c	2006-05-07 19:44:39.000000000 +0200
++++ shadow-4.0.16/src/usermod.c	2006-06-19 20:08:04.000000000 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: usermod.c,v 1.66 2006/05/07 17:44:39 kloczek Exp $"
+ 

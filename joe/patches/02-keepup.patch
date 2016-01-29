@@ -1,0 +1,60 @@
+diff -Naur joe-3.4.orig/rc/jmacsrc.in joe-3.4/rc/jmacsrc.in
+--- joe-3.4.orig/rc/jmacsrc.in	2006-05-30 17:16:35.000000000 +0200
++++ joe-3.4/rc/jmacsrc.in	2006-06-02 19:52:38.000000000 +0200
+@@ -66,7 +66,7 @@
+  -exask		^KX always confirms file name
+ -beep		Beep on errors and when cursor goes past extremes
+  -nosta		Disable top-most status line
+- -keepup	%k and %c status line escape sequences updated frequently
++-keepup		%k and %c status line escape sequences updated frequently
+ -pg 1		No. lines to keep for PgUp/PgDn
+ -csmode		^KF after a pervious search does a ^L instead
+ 
+diff -Naur joe-3.4.orig/rc/joerc.in joe-3.4/rc/joerc.in
+--- joe-3.4.orig/rc/joerc.in	2006-05-30 17:15:32.000000000 +0200
++++ joe-3.4/rc/joerc.in	2006-06-02 19:52:38.000000000 +0200
+@@ -80,7 +80,7 @@
+ 
+  -nosta		Disable top-most status line
+ 
+- -keepup	%k and %c status line escape sequences updated frequently
++-keepup		%k and %c status line escape sequences updated frequently
+ 
+  -pg nnn	No. lines to keep for PgUp/PgDn
+ 
+diff -Naur joe-3.4.orig/rc/jpicorc.in joe-3.4/rc/jpicorc.in
+--- joe-3.4.orig/rc/jpicorc.in	2006-05-30 17:15:48.000000000 +0200
++++ joe-3.4/rc/jpicorc.in	2006-06-02 19:52:38.000000000 +0200
+@@ -80,7 +80,7 @@
+ 
+  -nosta		Disable top-most status line
+ 
+- -keepup	%k and %c status line escape sequences updated frequently
++-keepup		%k and %c status line escape sequences updated frequently
+ 
+  -pg nnn	No. lines to keep for PgUp/PgDn
+ 
+diff -Naur joe-3.4.orig/rc/jstarrc.in joe-3.4/rc/jstarrc.in
+--- joe-3.4.orig/rc/jstarrc.in	2006-05-30 17:15:53.000000000 +0200
++++ joe-3.4/rc/jstarrc.in	2006-06-02 19:52:38.000000000 +0200
+@@ -66,7 +66,7 @@
+  -exask		^KX always confirms file name
+  -beep		Beep on errors and when cursor goes past extremes
+  -nosta		Disable top-most status line
+- -keepup	%k and %c status line escape sequences updated frequently
++-keepup		%k and %c status line escape sequences updated frequently
+  -pg nnn	No. lines to keep for PgUp/PgDn
+  -csmode	^KF after a pervious search does a ^L instead
+ 
+diff -Naur joe-3.4.orig/rc/rjoerc.in joe-3.4/rc/rjoerc.in
+--- joe-3.4.orig/rc/rjoerc.in	2006-05-30 17:16:00.000000000 +0200
++++ joe-3.4/rc/rjoerc.in	2006-06-02 19:52:38.000000000 +0200
+@@ -80,7 +80,7 @@
+ 
+  -nosta		Disable top-most status line
+ 
+- -keepup	%k and %c status line escape sequences updated frequently
++-keepup		%k and %c status line escape sequences updated frequently
+ 
+  -pg nnn	No. lines to keep for PgUp/PgDn
+ 

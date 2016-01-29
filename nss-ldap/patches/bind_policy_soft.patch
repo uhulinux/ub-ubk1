@@ -1,0 +1,12 @@
+diff -Naurd a/util.c b/util.c
+--- a/util.c	2006-06-07 10:43:45.000000000 +0200
++++ b/util.c	2006-06-07 10:45:23.000000000 +0200
+@@ -639,7 +639,7 @@
+   result->ldc_tls_key = NULL;
+   result->ldc_tls_randfile = NULL;
+   result->ldc_idle_timelimit = 0;
+-  result->ldc_reconnect_pol = LP_RECONNECT_HARD_OPEN;
++  result->ldc_reconnect_pol = LP_RECONNECT_SOFT;
+   result->ldc_sasl_secprops = NULL;
+   result->ldc_srv_domain = NULL;
+   result->ldc_logdir = NULL;

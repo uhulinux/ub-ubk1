@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Net-LibIDN-${UB_VERSION}.tar.gz Net-LibIDN-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/T/TH/THOR/

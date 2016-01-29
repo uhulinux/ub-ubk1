@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+GDGraph-${UB_VERSION}.tar.gz GDGraph-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/GD/

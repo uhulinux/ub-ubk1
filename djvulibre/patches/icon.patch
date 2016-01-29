@@ -1,0 +1,14 @@
+diff -Naur djvulibre-3.5.25-orig/desktopfiles/Makefile.in djvulibre-3.5.25/desktopfiles/Makefile.in
+--- djvulibre-3.5.25-orig/desktopfiles/Makefile.in	2012-05-08 04:56:53.000000000 +0200
++++ djvulibre-3.5.25/desktopfiles/Makefile.in	2012-06-12 19:53:08.000000000 +0200
+@@ -46,9 +46,7 @@
+ 
+ all: icons register-djvu-mime 
+ 
+-PNGICONS = hi16-djvu.png hi20-djvu.png hi22-djvu.png hi24-djvu.png \
+-           hi32-djvu.png hi48-djvu.png hi64-djvu.png hi72-djvu.png \
+-           hi96-djvu.png hi128-djvu.png hi256-djvu.png
++PNGICONS = hi22-djvu.png hi32-djvu.png hi48-djvu.png hi64-djvu.png
+ 
+ icons: ${PNGICONS} hi-djvu.svgz 
+ 

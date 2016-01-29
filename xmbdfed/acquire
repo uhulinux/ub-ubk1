@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xmbdfed-${UB_VERSION}.tar.bz2 xmbdfed-${UB_VERSION}/
+	http://crl.nmsu.edu/~mleisher/

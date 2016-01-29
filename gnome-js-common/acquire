@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-js-common-${UB_VERSION}.tar.bz2 gnome-js-common-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-js-common/${UB_VERSION_HEAD2}/

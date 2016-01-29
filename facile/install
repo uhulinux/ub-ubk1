@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/ocaml/facile/
+cp -a src/facile.cmi src/facile.cma src/facile.cmxa src/facile.a "$UB_INSTALLDIR"/usr/lib/ocaml/facile/

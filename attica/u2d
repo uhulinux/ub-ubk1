@@ -1,0 +1,1 @@
+urllist http://download.kde.org/stable/attica/ | splitver '^attica-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

@@ -1,0 +1,1 @@
+urllist http://download.nus.edu.sg/mirror/ubuntu/ubuntu/pool/universe/o/openct/ | splitver '^openct_([0-9.]+).orig.tar.(gz|bz2|xz)$' | sort -V | tail -n 1

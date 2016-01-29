@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="y" schema="/schemas/apps/panel/toplevels/y" type="int" value="739"/>
+	<entry name="enable_animations" schema="/schemas/apps/panel/toplevels/enable_animations"/>
+	<entry name="enable_buttons" schema="/schemas/apps/panel/toplevels/enable_buttons"/>
+	<entry name="animation_speed" schema="/schemas/apps/panel/toplevels/animation_speed"/>
+	<entry name="hide_delay" schema="/schemas/apps/panel/toplevels/hide_delay"/>
+	<entry name="unhide_delay" schema="/schemas/apps/panel/toplevels/unhide_delay"/>
+	<entry name="size" schema="/schemas/apps/panel/toplevels/size" type="int" value="25"/>
+	<entry name="y_centered" schema="/schemas/apps/panel/toplevels/y_centered"/>
+	<entry name="expand" schema="/schemas/apps/panel/toplevels/expand"/>
+	<entry name="name" schema="/schemas/apps/panel/toplevels/name"/>
+	<entry name="auto_hide_size" schema="/schemas/apps/panel/toplevels/auto_hide_size"/>
+	<entry name="x_centered" schema="/schemas/apps/panel/toplevels/x_centered"/>
+	<entry name="enable_arrows" schema="/schemas/apps/panel/toplevels/enable_arrows"/>
+	<entry name="auto_hide" schema="/schemas/apps/panel/toplevels/auto_hide"/>
+	<entry name="x" schema="/schemas/apps/panel/toplevels/x"/>
+	<entry name="orientation" schema="/schemas/apps/panel/toplevels/orientation" type="string"><stringvalue>bottom</stringvalue></entry>
+	<entry name="monitor" schema="/schemas/apps/panel/toplevels/monitor"/>
+	<entry name="screen" schema="/schemas/apps/panel/toplevels/screen" type="int" value="0"/>
+</gconf>

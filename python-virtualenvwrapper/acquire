@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+virtualenvwrapper-${UB_VERSION}.tar.gz virtualenvwrapper-${UB_VERSION}/
+	https://pypi.python.org/packages/source/v/virtualenvwrapper/

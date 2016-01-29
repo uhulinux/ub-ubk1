@@ -1,0 +1,11 @@
+diff -Naurd orig/src/mdb_net.h mod/src/mdb_net.h
+--- orig/src/mdb_net.h	2003-10-11 22:58:51.000000000 +0200
++++ mod/src/mdb_net.h	2009-10-07 14:05:32.000000000 +0200
+@@ -31,6 +31,7 @@
+ #define NETFUNC_H
+ 
+ #include <netdb.h>
++#include <stddef.h>
+ 
+ unsigned long	net_lookup(char *host);
+ int  		net_open  (char *host, int port);

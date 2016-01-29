@@ -1,0 +1,13 @@
+fontforge
+freetype2-dev
+gd
+icu
+icu-dev
+libice-dev
+libpng-dev
+libxaw-dev
+libxmu-dev
+libxpm-dev
+poppler-dev
+ruby
+tk

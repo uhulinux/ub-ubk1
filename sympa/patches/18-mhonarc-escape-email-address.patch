@@ -1,0 +1,21 @@
+diff -Naurd a/src/etc/mhonarc-ressources.tt2 b/src/etc/mhonarc-ressources.tt2
+--- a/src/etc/mhonarc-ressources.tt2	2008-01-08 01:34:02.000000000 +0100
++++ b/src/etc/mhonarc-ressources.tt2	2008-01-08 01:35:16.000000000 +0100
+@@ -451,7 +451,7 @@
+   <input type="hidden" name="subject" value="Re: $SUBJECTNA$" />
+   <input type="hidden" name="list" value="($tag$% list %$tag$)" />
+   ($tag$%|loc%$tag$)Reply to sender($tag$%END%$tag$)
+-  <input type="radio" name="to" value="$FROMADDRNAME$ $FROMADDRDOMAIN$" checked />
++  <input type="radio" name="to" value="$FROMADDRNAME:JU$ $FROMADDRDOMAIN:JU$" checked />
+   ($tag$%|loc%$tag$)to list($tag$%END%$tag$)
+   <input type="radio" name="to" value="($tag$% list %$tag$) ($tag$% list_conf.host %$tag$)" />
+   <input class="MainMenuLinks" type="submit" name="action_compose_mail" value="($tag$%|loc%$tag$)Reply($tag$%END%$tag$)" /><br />
+@@ -460,7 +460,7 @@
+     <input type="hidden" name="month" value="$mois$" />
+     <input type="hidden" name="msgid" value="$MSGID$" />
+     <input type="hidden" name="action" value="" />
+-   ($tag$% IF user.email == "$FROMADDRNAME$@$FROMADDRDOMAIN$"  || is_owner %$tag$)
++   ($tag$% IF user.email == "$FROMADDRNAME:JU$@$FROMADDRDOMAIN:JU$"  || is_owner %$tag$)
+     <input class="MainMenuLinks" type="submit" name="action_remove_arc" value="($tag$%|loc%$tag$)tag this mail for deletion($tag$%END%$tag$)" onClick="return request_confirm('($tag$%|loc%$tag$)Do you really want to delete this message ?($tag$%END%$tag$)')" />
+     ($tag$% END %$tag$)
+ </form>

@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+ub_install 
+
+#rm -f "$UB_INSTALLDIR"/usr/bin/d4x 
+#ln -s nt "$UB_INSTALLDIR"/usr/bin/d4x
+
+cp share/*.png "$UB_INSTALLDIR"/usr/share/pixmaps/
+cp share/*.xpm "$UB_INSTALLDIR"/usr/share/pixmaps/
+cp share/nt.desktop "$UB_INSTALLDIR"/usr/share/applications/

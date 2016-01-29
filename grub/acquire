@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+grub-${UB_VERSION}.tar.gz grub-${UB_VERSION}/
+	ftp://alpha.gnu.org/gnu/grub/

@@ -1,0 +1,12 @@
+diff -Naur orig/config.c mod/config.c
+--- orig/config.c	2012-06-17 14:27:07.000000000 +0200
++++ mod/config.c	2012-09-16 21:31:00.394881842 +0200
+@@ -373,7 +373,7 @@
+ cSetup::cSetup(void)
+ {
+   strcpy(OSDLanguage, ""); // default is taken from environment
+-  strcpy(OSDSkin, "lcars");
++  strcpy(OSDSkin, "sttng");
+   strcpy(OSDTheme, "default");
+   PrimaryDVB = 1;
+   ShowInfoOnChSwitch = 1;

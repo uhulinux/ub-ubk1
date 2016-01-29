@@ -1,0 +1,12 @@
+diff -Naurdp a/master/master.c b/master/master.c
+--- a/master/master.c	2003-12-18 17:29:24.000000000 +0100
++++ b/master/master.c	2004-01-18 16:52:03.000000000 +0100
+@@ -1684,7 +1684,7 @@ int main(int argc, char **argv)
+ 	}
+     }
+ 
+-    masterconf_init("master", alt_config);
++    masterconf_init("cyrus-master", alt_config);
+ 
+     /* zero out the children table */
+     memset(&ctable, 0, sizeof(struct centry *) * child_table_size);

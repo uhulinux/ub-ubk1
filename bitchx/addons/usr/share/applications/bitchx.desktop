@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=BitchX
+Comment=IRC Client
+Comment[hu]=IRC-kliens
+Exec=bitchx
+Terminal=true
+Type=Application
+Categories=Network;InstantMessaging;

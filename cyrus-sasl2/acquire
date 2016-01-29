@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cyrus-sasl-${UB_VERSION}.tar.gz cyrus-sasl-${UB_VERSION}/
+	ftp://ftp.cyrusimap.org/cyrus-sasl/

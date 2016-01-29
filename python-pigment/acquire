@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pigment-python-${UB_VERSION}.tar.gz pigment-python-${UB_VERSION}/
+	http://elisa.fluendo.com/static/download/pigment/

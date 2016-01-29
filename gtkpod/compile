@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+# nem hasznaljuk a cmake-et, mert nincs frissitve a gtk3-as porthoz
+rm -rf CMakeLists.txt
+ub_compile

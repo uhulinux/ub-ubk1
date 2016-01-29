@@ -1,0 +1,24 @@
+diff -Naur lesspipe-1.53.orig/lesspipe.sh.in lesspipe-1.53/lesspipe.sh.in
+--- lesspipe-1.53.orig/lesspipe.sh.in	2006-04-11 09:42:37.000000000 +0200
++++ lesspipe-1.53/lesspipe.sh.in	2006-05-04 18:33:02.000000000 +0200
+@@ -387,10 +387,7 @@
+ #endif
+ #ifdef groff
+   elif [[ "$1" = *roff* ]]; then
+-    DEV=latin1
+-    if [[ "$LANG" = ja* ]]; then
+-      DEV=nippon
+-    fi
++    DEV=utf8
+     MACRO=andoc
+     if [[ "$2" = *.me ]]; then
+       MACRO=e
+@@ -398,7 +395,7 @@
+       MACRO=s
+     fi
+     echo "==> append $sep to filename to view the nroff source"
+-    groff -s -p -t -e -T$DEV -m$MACRO "$2"
++    groff-utf8 -P-c -T$DEV -m$MACRO "$2"
+ #endif
+   elif [[ "$1" = *Debian* ]]; then
+     echo "==> use Deb_file${sep}contained_file to view a file in the Deb"

@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+export WX_CONFIG=/usr/bin/wx-config2
+ub_compile

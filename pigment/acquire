@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pigment-${UB_VERSION}.tar.gz pigment-${UB_VERSION}/
+	http://elisa.fluendo.com/static/download/pigment/

@@ -1,0 +1,12 @@
+diff -Naurd a/drivers/scsi/sr_ioctl.c b/drivers/scsi/sr_ioctl.c
+--- a/drivers/scsi/sr_ioctl.c	2007-10-09 22:31:38.000000000 +0200
++++ b/drivers/scsi/sr_ioctl.c	2007-10-29 18:22:15.000000000 +0100
+@@ -238,8 +238,6 @@
+ 					break;
+ 				}
+ 			}
+-			if (!cgc->quiet)
+-				printk(KERN_INFO "%s: CDROM not ready.  Make sure there is a disc in the drive.\n", cd->cdi.name);
+ #ifdef DEBUG
+ 			scsi_print_sense_hdr("sr", &sshdr);
+ #endif

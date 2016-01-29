@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+make \
+	MANDIR="$UB_INSTALLDIR"/usr/share/man \
+	BINDIR="$UB_INSTALLDIR"/usr/bin \
+	CONFDIR="$UB_INSTALLDIR"/var/vdr/config \
+	LOCDIR="$UB_INSTALLDIR"/usr/share/locale \
+	LIBDIR="$UB_INSTALLDIR"/usr/lib/vdr \
+	VIDEODIR=$"$UB_INSTALLDIR"/var/vdr/video \
+	install
+mkdir -p "$UB_INSTALLDIR"/var/vdr/config/plugins/xine
+cp data/* "$UB_INSTALLDIR"/var/vdr/config/plugins/xine/

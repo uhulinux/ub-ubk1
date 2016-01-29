@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+g2-${UB_VERSION}.tar.gz g2-${UB_VERSION}/
+	http://downloads.sourceforge.net/g2/

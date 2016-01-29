@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Epsilon-${UB_VERSION}.tar.gz Epsilon-${UB_VERSION}/
+	http://pypi.python.org/packages/source/E/Epsilon/

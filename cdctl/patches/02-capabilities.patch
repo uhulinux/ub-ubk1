@@ -1,0 +1,22 @@
+diff -Naur cdctl-0.15.orig/cdctl.c cdctl-0.15/cdctl.c
+--- cdctl-0.15.orig/cdctl.c	2000-03-27 03:06:54.000000000 +0200
++++ cdctl-0.15/cdctl.c	2006-07-07 18:20:05.000000000 +0200
+@@ -337,8 +337,17 @@
+ 	printf("Can report media change: %i\n", (ret & CDC_MEDIA_CHANGED)?1:0);
+ 	printf("Can play audio discs   : %i\n", (ret & CDC_PLAY_AUDIO)?1:0);
+ 	printf("Can do a hard reset    : %i\n", (ret & CDC_RESET)?1:0);
+-	printf("Has non-standard ioctls: %i\n", (ret & CDC_IOCTLS)?1:0);
+ 	printf("Can report drive status: %i\n", (ret & CDC_DRIVE_STATUS)?1:0);
++	printf("Support generic packets: %i\n", (ret & CDC_GENERIC_PACKET)?1:0);
++	printf("Is a CD-R              : %i\n", (ret & CDC_CD_R)?1:0);
++	printf("Is a CD-RW             : %i\n", (ret & CDC_CD_RW)?1:0);
++	printf("Is a DVD               : %i\n", (ret & CDC_DVD)?1:0);
++	printf("Can write DVD-R        : %i\n", (ret & CDC_DVD_R)?1:0);
++	printf("Can write DVD-RAM      : %i\n", (ret & CDC_DVD_RAM)?1:0);
++	printf("Is an MO device        : %i\n", (ret & CDC_MO_DRIVE)?1:0);
++	printf("Can read MRW           : %i\n", (ret & CDC_MRW)?1:0);
++	printf("Can write MRW          : %i\n", (ret & CDC_MRW_W)?1:0);
++	printf("Ok to open for write   : %i\n", (ret & CDC_RAM)?1:0);
+ 
+ #ifdef CDROM_CHANGER_NSLOTS
+ 	if(cd_get_changer_nslots(cdrom) <= 1 && (ret & CDC_SELECT_DISC)) {

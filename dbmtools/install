@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+for i in delete dump fetch store util; \
+	do cp -a gdbm$i "$UB_INSTALLDIR"/usr/bin/ ;
+	   cp -a dbm$i.1 "$UB_INSTALLDIR"/usr/share/man/man1/gdbm$i.1 ;
+	done;

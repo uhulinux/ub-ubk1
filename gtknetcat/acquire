@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gtknetcat-$UB_VERSION.tar.gz gtknetcat-$UB_VERSION/
+	http://downloads.sourceforge.net/lxde/

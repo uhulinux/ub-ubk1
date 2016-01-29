@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Barcode-Code128-${UB_VERSION}.tar.gz Barcode-Code128-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/W/WR/WRW/

@@ -1,0 +1,4 @@
+perl-extutils-depends
+perl-extutils-pkgconfig
+perl-gtk2
+webkitgtk2-dev

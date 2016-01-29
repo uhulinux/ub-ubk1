@@ -1,0 +1,1 @@
+urllist http://cgit.sukimashita.com/libplist.git/ | splitver '^libplist-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

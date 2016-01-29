@@ -1,0 +1,50 @@
+#!/usr/bin/env dl
+
+geogebra-jogl2.jar g/
+#	http://www.geogebra.org/webstart/ #${UB_VERSION}/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+geogebra_3d-jogl2.jar 3d/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+geogebra_algos.jar algos/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+geogebra_cas.jar cas/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+geogebra_export.jar export/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+geogebra_gui.jar gui/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+geogebra_javascript.jar javascript/unpacked/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+geogebra_main.jar main/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+geogebra_properties.jar properties/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+geogebra_usb.jar usb/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+#gluegen-rt.jar gluegen-rt/
+#	http://www.geogebra.org/webstart/5.0/unpacked/
+
+#gluegen-rt-natives-linux-i586.jar gluegen-rt-natives-linux-i586/
+#	http://www.geogebra.org/webstart/5.0/unpacked/
+
+jlatexmath.jar jlatexmath/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+jlm_cyrillic.jar jlm_cyrillic/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+jlm_greek.jar jlm_greek/
+	http://www.geogebra.org/webstart/5.0/unpacked/
+
+jogl.jar jogl/
+	http://www.geogebra.org/webstart/5.0/unpacked/

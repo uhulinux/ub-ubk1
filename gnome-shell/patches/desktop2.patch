@@ -1,0 +1,11 @@
+--- gnome-shell/data/gnome-shell-extension-prefs.desktop.in.in.orig	2012-04-22 20:53:47.000000000 +0200
++++ gnome-shell/data/gnome-shell-extension-prefs.desktop.in.in	2012-04-22 20:53:57.000000000 +0200
+@@ -2,7 +2,7 @@
+ Type=Application
+ _Name=GNOME Shell Extension Preferences
+ _Comment=Configure GNOME Shell Extensions
+-Exec=@bindir@/gnome-shell-extension-prefs %u
++Exec=gnome-shell-extension-prefs %u
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=gnome-shell
+ X-GNOME-Bugzilla-Component=extensions

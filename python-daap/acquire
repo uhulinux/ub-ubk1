@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PythonDaap-${UB_VERSION}.tar.gz PythonDaap-${UB_VERSION}/
+	http://jerakeen.org/files/

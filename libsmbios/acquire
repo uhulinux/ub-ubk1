@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libsmbios-"$UB_VERSION".tar.gz libsmbios-"$UB_VERSION"/
+	http://linux.dell.com/libsmbios/download/libsmbios/libsmbios-"$UB_VERSION"/

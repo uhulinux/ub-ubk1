@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+cd cpp
+ub_compile \
+	-DJAVA_BIN=/usr/lib/java/jre/bin/java \
+	-DWerror=OFF

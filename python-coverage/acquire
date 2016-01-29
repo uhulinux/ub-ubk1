@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+coverage-${UB_VERSION}.tar.gz coverage-${UB_VERSION}/
+	http://pypi.python.org/packages/source/c/coverage/

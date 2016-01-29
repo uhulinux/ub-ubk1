@@ -1,0 +1,45 @@
+--- a/Makefile.orig	2014-04-06 21:17:58.000000000 +0200
++++ a/Makefile	2014-04-06 21:20:12.000000000 +0200
+@@ -45,21 +45,21 @@
+ 
+ # Everything gets put in subdirectories of. . .
+ 
+-TOPDIR=		/usr/local
++TOPDIR=		/usr
+ 
+ # "Compiled" time zone information is placed in the "TZDIR" directory
+ # (and subdirectories).
+ # Use an absolute path name for TZDIR unless you're just testing the software.
+ 
+ TZDIR_BASENAME=	zoneinfo
+-TZDIR=		$(TOPDIR)/etc/$(TZDIR_BASENAME)
++TZDIR=		$(TOPDIR)/share/$(TZDIR_BASENAME)
+ 
+ # Types to try, as an alternative to time_t.  int64_t should be first.
+ TIME_T_ALTERNATIVES= int64_t int32_t uint32_t uint64_t
+ 
+ # The "tzselect", "zic", and "zdump" commands get installed in. . .
+ 
+-ETCDIR=		$(TOPDIR)/etc
++ETCDIR=		/etc
+ 
+ # If you "make INSTALL", the "date" command gets installed in. . .
+ 
+@@ -67,7 +67,7 @@
+ 
+ # Manual pages go in subdirectories of. . .
+ 
+-MANDIR=		$(TOPDIR)/man
++MANDIR=		$(TOPDIR)/share/man
+ 
+ # Library functions are put in an archive in LIBDIR.
+ 
+@@ -347,7 +347,7 @@
+ 		$(ZIC) -y $(YEARISTYPE) \
+ 			-d $(DESTDIR)$(TZDIR) -l $(LOCALTIME) -p $(POSIXRULES)
+ 		cp -f iso3166.tab zone.tab $(DESTDIR)$(TZDIR)/.
+-		cp tzselect zic zdump $(DESTDIR)$(ETCDIR)/.
++		cp tzselect zic zdump $(DESTDIR)$(BINDIR)/.
+ 		cp libtz.a $(DESTDIR)$(LIBDIR)/.
+ 		$(RANLIB) $(DESTDIR)$(LIBDIR)/libtz.a
+ 		cp -f newctime.3 newtzset.3 $(DESTDIR)$(MANDIR)/man3/.

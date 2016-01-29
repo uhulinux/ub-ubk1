@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ndiswrapper-${UB_VERSION/~/}.tar.gz ndiswrapper-${UB_VERSION/~/}/
+	http://download.sourceforge.net/ndiswrapper/

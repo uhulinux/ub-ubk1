@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgssh-${UB_VERSION}.tar.xz libgssh-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgssh/${UB_VERSION_HEAD2}/

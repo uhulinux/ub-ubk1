@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+skanlite-${UB_VERSION_HEAD2}.tar.xz skanlite-${UB_VERSION_HEAD2}/
+	ftp://ftp.kde.org/pub/kde/stable/skanlite/${UB_VERSION}/src/

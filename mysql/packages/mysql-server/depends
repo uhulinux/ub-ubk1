@@ -1,0 +1,3 @@
+mysql-common >=
+net-tools
+shadow

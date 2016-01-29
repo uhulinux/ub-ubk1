@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+amsn-${UB_VERSION}-src.tar.bz2 amsn-${UB_VERSION}/
+    http://downloads.sourceforge.net/amsn/

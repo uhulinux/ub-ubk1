@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Quota-${UB_VERSION}.tar.gz Quota-${UB_VERSION}/
+	http://cpan.metacpan.org/authors/id/T/TO/TOMZO/

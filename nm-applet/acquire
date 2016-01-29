@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+network-manager-applet-${UB_VERSION}.tar.xz network-manager-applet-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/network-manager-applet/${UB_VERSION_HEAD2}/

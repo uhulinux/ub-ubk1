@@ -1,0 +1,5 @@
+libice-dev
+libsm-dev
+libx11-dev
+libxt-dev
+mesa-dev

@@ -1,0 +1,41 @@
+diff -Naur gtk-kde4-orig//CMakeLists.txt gtk-kde4//CMakeLists.txt
+--- gtk-kde4-orig//CMakeLists.txt	2010-09-28 20:16:32.000000000 +0200
++++ gtk-kde4//CMakeLists.txt	2011-06-02 21:13:51.000000000 +0200
+@@ -8,11 +8,11 @@
+ 
+ ADD_SUBDIRECTORY(kcm)
+ 
+-INSTALL(FILES ${PROJECT_BINARY_DIR}/lib/kcm_gk4.so DESTINATION ${KDE4_LIB_DIR}/kde4)
+-INSTALL(FILES ${PROJECT_BINARY_DIR}/kcm/kcm_gk4.desktop DESTINATION ${KDE4_SERVICES_INSTALL_DIR} )
+-INSTALL(FILES ${PROJECT_BINARY_DIR}/kcm/gk4icon.png DESTINATION ${KDE4_ICON_INSTALL_DIR})
+-INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/qt4 DESTINATION /usr/share/themes)
+-INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/gk4ico DESTINATION /usr/share/icons)
++INSTALL(FILES ${PROJECT_BINARY_DIR}/lib/kcm_gk4.so DESTINATION ${KDE4_LIB_DIR}/kde4)
++INSTALL(FILES /var/uhubuild/work/compile/kcm/kcm_gk4.desktop DESTINATION ${KDE4_SERVICES_INSTALL_DIR} )
++INSTALL(FILES /var/uhubuild/work/compile/kcm/gk4icon.png DESTINATION ${KDE4_ICON_INSTALL_DIR})
++INSTALL(DIRECTORY /var/uhubuild/work/compile/qt4 DESTINATION /usr/share/themes)
++INSTALL(DIRECTORY /var/uhubuild/work/compile/gk4ico DESTINATION /usr/share/icons)
+ 
+ PROJECT (gtk-kde4)
+ FIND_PACKAGE(KDE4 REQUIRED)
+@@ -37,9 +37,9 @@
+ 
+ string(LENGTH conf len)
+ IF (NOT len)
+-  INSTALL(FILES ${PROJECT_BINARY_DIR}/daemon/gtk-kde4.desktop DESTINATION $ENV{XDG_CONFIG_DIRS}/autostart PERMISSIONS WORLD_EXECUTE)
++  INSTALL(FILES /var/uhubuild/work/compile/daemon/gtk-kde4.desktop DESTINATION $ENV{XDG_CONFIG_DIRS}/autostart PERMISSIONS WORLD_EXECUTE)
+ ELSE()
+-  INSTALL(FILES ${PROJECT_BINARY_DIR}/daemon/gtk-kde4.desktop DESTINATION /etc/xdg/autostart PERMISSIONS WORLD_EXECUTE WORLD_READ)
++  INSTALL(FILES /var/uhubuild/work/compile//daemon/gtk-kde4.desktop DESTINATION /etc/xdg/autostart PERMISSIONS WORLD_EXECUTE WORLD_READ)
+ ENDIF()
+ 
+ FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE msgfmt)
+@@ -55,7 +55,7 @@
+  
+         ADD_CUSTOM_TARGET(translations ALL)
+  
+-        FILE(GLOB PO_FILES ${PROJECT_BINARY_DIR}/po/*.po)
++        FILE(GLOB PO_FILES ${PROJECT_BINARY_DIR}/po/*.po)
+  
+         FOREACH(_poFile ${PO_FILES})
+                 GET_FILENAME_COMPONENT(_poFileName ${_poFile} NAME)

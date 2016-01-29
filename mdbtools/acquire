@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mdbtools-${UB_VERSION//~/}.tar.gz mdbtools-${UB_VERSION//~/}/
+	http://download.sourceforge.net/mdbtools/

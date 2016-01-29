@@ -1,0 +1,9 @@
+diff -Naur kdegames-orig/klines-4.10.0/klines.desktop kdegames/klines-4.10.0/klines.desktop
+--- kdegames-orig/klines-4.13.0/klines.desktop	2013-01-23 23:06:19.000000000 +0100
++++ kdegames/klines-4.13.0/klines.desktop	2013-02-28 11:21:43.000000000 +0100
+@@ -143,4 +143,4 @@
+ Name[zh_CN]=Kolor Lines
+ Name[zh_TW]=Kolor Lines 彩色線條
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Game;StrategyGame;
++Categories=Qt;KDE;Game;StrategyGame;X-UHU-Menu/Games/TacticStrategy;

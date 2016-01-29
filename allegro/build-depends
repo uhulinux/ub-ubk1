@@ -1,0 +1,12 @@
+alsa-lib-dev
+cmake
+db4-dev
+glu-dev
+jack-dev
+libjpeg-dev
+libpng-dev
+libvorbis-dev
+libxcursor-dev
+mesa-dev
+pulseaudio
+util-linux-dev

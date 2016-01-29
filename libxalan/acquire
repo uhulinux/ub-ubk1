@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Xalan-C_${UB_VERSION//./_}-src.tar.gz xml-xalan/
+	http://archive.apache.org/dist/xml/xalan-c/

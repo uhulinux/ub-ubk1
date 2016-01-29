@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+sparse-$UB_VERSION.tar.gz sparse-$UB_VERSION/
+	http://www.kernel.org/pub/software/devel/sparse/dist/

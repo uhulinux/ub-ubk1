@@ -1,0 +1,1 @@
+urllist http://www.mpg123.org/download/ | splitver '^mpg123-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

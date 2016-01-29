@@ -1,0 +1,28 @@
+#!/usr/bin/env dl
+
+cryptoki.h
+	ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-11/v2-20/
+
+ct-kip.h
+	ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-11/v2-20/
+
+otp-pkcs11.h
+	ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-11/v2-20/
+
+pkcs-11v2-20a3.h
+	ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-11/v2-20/
+
+pkcs-11v2-20a3d3.h
+	ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-11/v2-20/
+
+pkcs11.h
+	ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-11/v2-20/
+
+pkcs11f.h
+	ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-11/v2-20/
+
+pkcs11t-consolidated-d1.h
+	ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-11/v2-20/
+
+pkcs11t.h
+	ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-11/v2-20/

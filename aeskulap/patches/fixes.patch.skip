@@ -1,0 +1,55 @@
+diff -aurd aeskulap-0.2.1/imagepool/netloader.cpp aeskulap-0.2.1-medimon_javitott/imagepool/netloader.cpp
+--- aeskulap-0.2.1/imagepool/netloader.cpp	2006-03-06 10:11:11.000000000 +0100
++++ aeskulap-0.2.1-medimon_javitott/imagepool/netloader.cpp	2006-08-11 14:06:21.000000000 +0200
+@@ -92,18 +92,18 @@
+ 	e->putString("STUDY");
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SOPInstanceUID);
++	/*e = newDicomElement(DCM_SOPInstanceUID);
+ 	query.insert(e);
+ 
+ 	e = newDicomElement(DCM_InstanceNumber);
+-	query.insert(e);
++	query.insert(e);*/
+ 
+ 	e = newDicomElement(DCM_StudyInstanceUID);
+ 	e->putString(m_studyinstanceuid.c_str());
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SeriesInstanceUID);
+-	query.insert(e);
++	/*e = newDicomElement(DCM_SeriesInstanceUID);
++	query.insert(e);*/
+ 
+ 	if(!mover.QueryServer(&query, m_server, conf.get_local_aet())) {
+ 		std::cerr << "C-MOVE failed !" << std::endl;
+diff -aurd aeskulap-0.2.1/imagepool/netquery.cpp aeskulap-0.2.1-medimon_javitott/imagepool/netquery.cpp
+--- aeskulap-0.2.1/imagepool/netquery.cpp	2006-03-06 10:11:10.000000000 +0100
++++ aeskulap-0.2.1-medimon_javitott/imagepool/netquery.cpp	2006-08-11 13:08:21.000000000 +0200
+@@ -288,11 +288,11 @@
+ 	e = newDicomElement(DCM_SeriesTime);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_StudyDescription);
++	/*e = newDicomElement(DCM_StudyDescription);
+ 	query.insert(e);
+ 
+ 	e = newDicomElement(DCM_StudyTime);
+-	query.insert(e);
++	query.insert(e);*/
+ 
+ 	e = newDicomElement(DCM_StationName);
+ 	query.insert(e);
+diff -aurd aeskulap-0.2.1/imagepool/poolfindassociation.cpp aeskulap-0.2.1-medimon_javitott/imagepool/poolfindassociation.cpp
+--- aeskulap-0.2.1/imagepool/poolfindassociation.cpp	2005-08-31 10:04:41.000000000 +0200
++++ aeskulap-0.2.1-medimon_javitott/imagepool/poolfindassociation.cpp	2006-08-11 13:00:15.000000000 +0200
+@@ -31,7 +31,7 @@
+ 
+ 
+ FindAssociation::FindAssociation() {
+-	Association::m_abstractSyntax = UID_FINDPatientRootQueryRetrieveInformationModel;
++	Association::m_abstractSyntax = UID_FINDStudyRootQueryRetrieveInformationModel;
+ 	maxResults = 400;
+ 	bPushResults = true;
+ }

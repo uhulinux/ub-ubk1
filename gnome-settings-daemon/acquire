@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-settings-daemon-${UB_VERSION}.tar.xz gnome-settings-daemon-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-settings-daemon/${UB_VERSION_HEAD2}/

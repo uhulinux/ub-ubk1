@@ -1,0 +1,9 @@
+--- sylpheed.orig/sylpheed.desktop	2008-06-17 04:19:52.000000000 +0200
++++ sylpheed/sylpheed.desktop	2009-07-24 22:50:40.000000000 +0200
+@@ -11,4 +11,5 @@
+ Icon=sylpheed
+ Terminal=false
+ Type=Application
+-Categories=GTK;Network;Email;News;
++StartupNotify=false
++Categories=GTK;Network;Email;News;X-UHU-Menu/Internet/Email;

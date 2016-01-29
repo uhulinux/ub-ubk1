@@ -1,0 +1,21 @@
+diff -Naurd xcdroast-0.98alpha15.orig/src/init.c xcdroast-0.98alpha15/src/init.c
+--- xcdroast-0.98alpha15.orig/src/init.c	2003-10-30 12:58:26.000000000 +0100
++++ xcdroast-0.98alpha15/src/init.c	2003-11-16 19:43:35.000000000 +0100
+@@ -733,7 +733,7 @@
+ gint query_nonrootmode() {
+ gint nonrootmode;
+ 
+-#if (defined(__MACH__) && defined(__APPLE__)) || (USE_NONROOTMODE == 0)
++#if 0
+ 	dodebug(1,"-- X-CD-Roast compiled with disabled non-root-mode.\n");
+ 
+ #if !(defined(__MACH__) && defined(__APPLE__))
+@@ -1116,7 +1116,7 @@
+ 	/* load user config on osX always */
+ 	usercnf = load_setup_config(tmp,0);
+ 
+-#if !(defined(__MACH__) && defined(__APPLE__)) && (USE_NONROOTMODE == 0) 
++#if 0
+ 	/* no config yet? */
+ 	if (usercnf == 1) {
+ 		/* if nonrootmode was disabled warn user */

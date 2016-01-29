@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+find . -type f -exec chmod a-x {} \;
+sh autogen.sh
+mv sq/sq.c sq/sq.cpp
+ub_compile

@@ -1,0 +1,19 @@
+diff -Naur mined-2011.19.2-orig/usrshare/setup_install/mined.desktop mined-2011.19.2/usrshare/setup_install/mined.desktop
+--- mined-2011.19.2-orig/usrshare/setup_install/mined.desktop	2011-09-06 00:00:00.000000000 +0200
++++ mined-2011.19.2/usrshare/setup_install/mined.desktop	2011-11-18 16:41:58.000000000 +0100
+@@ -9,12 +9,13 @@
+ #Path=
+ # use start script to embed mined preferably into xterm
+ Terminal=false
+-Exec=umined %F
++Exec=mined %F
+ # don't implicitly use gnome-terminal or konsole to avoid their deficiencies
+ #Terminal=true
+ #Exec=mined %F
++X-UHU-Major=-1
+ 
+-Categories=TextEditor;Utility
++Categories=TextEditor;Utility;X-UHU-Menu/Tools/Editors;
+ GenericName=Text Editor
+ GenericName[af]=Teks Redigeerder
+ GenericName[ar]=محرر نصوص

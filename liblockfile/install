@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+chmod a+r ${UB_COMPILEDIR}/*
+mkdir -p ${UB_INSTALLDIR}/usr/include
+make ROOT=${UB_INSTALLDIR} install_shared
+make ROOT=${UB_INSTALLDIR} install_common
+ln -s /usr/lib/liblockfile.so.1.0 ${UB_INSTALLDIR}/usr/lib/liblockfile.so.1
+

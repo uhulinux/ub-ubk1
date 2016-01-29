@@ -1,0 +1,14 @@
+diff -Naur orig/wxmaxima.desktop patched/wxmaxima.desktop
+--- orig/wxmaxima.desktop	2012-01-19 11:05:06.000000000 +0100
++++ patched/wxmaxima.desktop	2014-06-21 20:00:04.132921336 +0200
+@@ -1,8 +1,9 @@
+ [Desktop Entry]
+ Name=wxMaxima
+ Comment=Perform symbolic and numeric calculations using Maxima
++Comment[hu]=Matematikai programcsomag
+ Exec=wxmaxima %f
+-Icon=wxmaxima.png
++Icon=wxmaxima
+ Terminal=false
+ Type=Application
+ Categories=Education;Science;Math;X-Red-Hat-Base;X-Red-Hat-Base-Only;

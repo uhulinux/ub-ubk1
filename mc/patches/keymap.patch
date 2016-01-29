@@ -1,0 +1,18 @@
+diff -Naur orig/misc/mc.keymap patched/misc/mc.keymap
+--- orig/misc/mc.keymap	2012-09-10 13:28:33.000000000 +0200
++++ patched/misc/mc.keymap	2012-09-22 16:19:06.064192508 +0200
+@@ -117,10 +117,10 @@
+ # SortPrev =
+ # SortNext =
+ # SortReverse =
+-# SortByName =
+-# SortByExt =
+-# SortBySize =
+-# SortByMTime =
++SortByName = alt-shift-n
++SortByExt = alt-shift-e
++SortBySize = alt-shift-s
++SortByMTime = alt-shift-t
+ # ScrollLeft =
+ # ScrollRight =
+ 

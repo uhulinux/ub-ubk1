@@ -1,0 +1,20 @@
+#!/usr/bin/env dl
+
+lsof_${UB_VERSION}.tar.gz lsof_${UB_VERSION}/lsof_${UB_VERSION}_src.tar lsof_${UB_VERSION}_src/
+	ftp://ftp.cerias.purdue.edu/pub/tools/unix/sysutils/lsof/
+	ftp://ftp.cert.dfn.de/pub/tools/admin/lsof/
+	ftp://ftp.crc.ca/pub/packages/lsof/
+	ftp://ftp.fu-berlin.de/pub/unix/tools/lsof/
+	ftp://ftp.sunet.se/pub/unix/admin/lsof/
+	ftp://ftp.tau.ac.il/pub/unix/admin/
+	ftp://ftp.tu-darmstadt.de/pub/sysadmin/lsof/
+	ftp://ftp.tux.org/pub/sites/vic.cc.purdue.edu/tools/unix/lsof/
+	ftp://gd.tuwien.ac.at/utils/admin-tools/lsof/
+	ftp://sunsite.ualberta.ca/pub/Mirror/lsof/
+	ftp://the.wiretapped.net/pub/security/host-security/lsof/
+	http://kaizo.org/pub/lsof/
+
+lsof_${UB_VERSION}.tar.gz lsof_${UB_VERSION}/README.lsof_${UB_VERSION}
+
+lsof_${UB_VERSION}.tar.gz lsof_${UB_VERSION}/RELEASE.SUMMARY_${UB_VERSION}
+

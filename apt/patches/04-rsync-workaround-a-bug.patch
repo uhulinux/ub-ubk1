@@ -1,0 +1,73 @@
+diff -Naur apt-0.6.25.orig/methods/rsync.cc apt-0.6.25/methods/rsync.cc
+--- apt-0.6.25.orig/methods/rsync.cc	2006-03-14 13:55:46.000000000 +0100
++++ apt-0.6.25/methods/rsync.cc	2006-03-14 15:12:14.000000000 +0100
+@@ -25,6 +25,7 @@
+ #include <stdarg.h>
+ #include <sys/wait.h>
+ #include <iostream>
++#include <dirent.h>
+ 
+ // Internet stuff
+ #include <netinet/in.h>
+@@ -301,6 +302,13 @@
+    int p[2];
+    int res = 0;
+    Argv argv(11);
++   DIR *dir;
++   struct dirent *de;
++   char *ext;
++   char linkold[PATH_MAX];
++   char linknew[PATH_MAX];
++   struct stat st;
++   bool retval;
+ 
+    State = Starting;
+    if ( RsyncMethod::Debug )
+@@ -343,6 +351,24 @@
+    if ( RsyncMethod::Debug )
+ 	  cerr << "RSYNC: Starting: " << string(argv) << endl;
+ 
++   /* rsync 2.6.7 is brain-damaged, --compare-dest or --copy-dest doesn't work
++      with --fuzzy. See
++      https://bugzilla.samba.org/show_bug.cgi?id=3392
++      for details.
++      Part1: create hardlinks */
++   if ((dir = opendir("/var/cache/apt/archives")) != NULL) {
++      while ((de = readdir(dir)) != NULL) {
++         if (de->d_name[0] == '.') continue;
++         if (strnlen(de->d_name, 5) < 5) continue;
++         ext = &de->d_name[strlen(de->d_name) - 4];
++         if (strcmp(ext, ".uhu") && strcmp(ext, ".deb")) continue;
++         sprintf(linkold, "/var/cache/apt/archives/%s", de->d_name);
++         sprintf(linknew, "/var/cache/apt/archives/partial/%s", de->d_name);
++         link(linkold, linknew); /* ignore error */
++      }
++      closedir(dir);
++   }
++
+    switch ( ChildPid = fork() ) {
+ 	  case -1:
+ 		 _error->Error("RsyncConnExec: Can't fork");
+@@ -374,7 +400,21 @@
+ 		 // Parent process
+ 		 close(p[1]);
+ 		 ChildFd = p[0];
+-		 return WaitChild(Owner,FRes,To);
++		 retval = WaitChild(Owner,FRes,To);
++		 /* rsync 2.6.7 is brain-damaged... part2: remove links */
++		 if ((dir = opendir("/var/cache/apt/archives/partial")) != NULL) {
++		    while ((de = readdir(dir)) != NULL) {
++		       if (de->d_name[0] == '.') continue;
++		       if (strnlen(de->d_name, 5) < 5) continue;
++		       ext = &de->d_name[strlen(de->d_name) - 4];
++		       if (strcmp(ext, ".uhu") && strcmp(ext, ".deb")) continue;
++		       sprintf(linknew, "/var/cache/apt/archives/partial/%s", de->d_name);
++		       if (stat(linknew, &st) < 0) continue;
++		       if (st.st_nlink >= 2) unlink(linknew);
++		    }
++		    closedir(dir);
++		 }
++		 return retval;
+    }
+    return false;
+ }

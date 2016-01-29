@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PHP-Serialization-${UB_VERSION}.tar.gz PHP-Serialization-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/

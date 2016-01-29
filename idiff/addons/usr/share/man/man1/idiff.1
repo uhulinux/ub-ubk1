@@ -1,0 +1,62 @@
+
+IDIFF(Local)                                         IDIFF(Local)
+
+
+NNAAMMEE
+       idiff - interactive diff of two files
+
+SSYYNNOOPPSSIISS
+       iiddiiffff file1 file2
+
+DDEESSCCRRIIPPTTIIOONN
+       _I_d_i_f_f  runs  _d_i_f_f(1)  on the specified files and then pre-
+       sents each chunk of _d_i_f_f output and offers  the  user  the
+       option  of  choosing the ``from'' part or the ``to'' part,
+       or editing the parts.  _I_d_i_f_f produces the selected  pieces
+       in the proper order in a file called _i_d_i_f_f_._o_u_t.
+
+       After  each chunk is presented, _i_d_i_f_f will prompt the user
+       (with a `? ') for a command.  The valid commands are:
+
+       <<      Take the ``from'' portion of the  displayed  chunk.
+              This  is  the  portion which was extracted from the
+              first file specified.
+
+       >>      Take the ``to'' portion  of  the  displayed  chunk.
+              This  corresponds to that extracted from the second
+              file specified.
+
+       ee      Invoke an editor on the  chunk.   The  contents  of
+              shell variable EDITOR select the editor to be used.
+              The default is _/_b_i_n_/_e_d.  Whatever  is  written  out
+              from _e_d will be placed into the final output.
+
+       qq<<     Take all the rest of the '<' choices automatically.
+              Think of this as ``quit from''.
+
+       qq>>     Take all the rest of the '>' choices automatically.
+              Think of this as ``quit to''.
+
+       !!      Pass  the  command buffer to the shell for process-
+              ing.
+
+       All code that _d_i_f_f considers identical in both input files
+       is automatically put into the output file.
+
+FFIILLEESS
+       _i_d_i_f_f_._o_u_t - merged output
+
+BBUUGGSS
+       It  is  not  possible  to pass any options to _d_i_f_f through
+       _i_d_i_f_f_.  Nor can you use `-' as a filename argument.
+
+HHIISSTTOORRYY
+       _I_d_i_f_f appears in the book _`_`_T_h_e _U_N_I_X _P_r_o_g_r_a_m_m_i_n_g  _E_n_v_i_r_o_n_-
+       _m_e_n_t_'_' by Brian Kernighan and Rob Pike.
+
+SSEEEE AALLSSOO
+       _s_d_i_f_f _(_1_) (side-by-side diff), a GNU tool that is included
+
+
+IDIFF(Local)                                         IDIFF(Local)
+

@@ -1,0 +1,13 @@
+--- xchat-gnome/configure.ac.orig	2012-01-03 18:11:07.000000000 +0100
++++ xchat-gnome/configure.ac	2012-01-03 18:11:32.000000000 +0100
+@@ -50,10 +50,6 @@
+ 
+ AC_PATH_PROG([GLIB_GENMARSHAL], [glib-genmarshal])
+ 
+-GNOME_MAINTAINER_MODE_DEFINES
+-GNOME_DEBUG_CHECK
+-GNOME_COMPILE_WARNINGS([maximum])
+-
+ PKG_PROG_PKG_CONFIG
+ 
+ # Set up gnome-doc-utils

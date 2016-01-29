@@ -1,0 +1,1 @@
+sflist lxde menu-cache/menu-cache%200.5.x | splitver '^menu-cache-([0-9.]+).tar.gz$' | sort -V | tail -n 1

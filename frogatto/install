@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/frogatto
+cp -a game server "$UB_INSTALLDIR"/usr/share/frogatto/
+for i in data images music sounds; \
+	do cp -a $i "$UB_INSTALLDIR"/usr/share/frogatto/; done;
+cp -a *.ttf "$UB_INSTALLDIR"/usr/share/frogatto/
+cp -a make-tileset.pl "$UB_INSTALLDIR"/usr/share/frogatto/

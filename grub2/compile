@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+#sh autogen.sh
+ub_compile \
+	--with-grubdir=grub2 \
+	--program-transform-name=s,grub,grub2, \
+	--disable-werror

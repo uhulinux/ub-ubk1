@@ -1,0 +1,1 @@
+urllist http://files.libburnia-project.org/releases/ | splitver '^libburn-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

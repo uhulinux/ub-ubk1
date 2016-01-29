@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+conglomerate-${UB_VERSION}.tar.gz conglomerate-${UB_VERSION}/
+	http://prdownloads.sourceforge.net/conglomerate/

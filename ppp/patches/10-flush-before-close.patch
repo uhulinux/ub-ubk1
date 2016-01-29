@@ -1,0 +1,11 @@
+diff -Naur ppp-2.4.5-orig/pppd/tty.c ppp-2.4.5/pppd/tty.c
+--- ppp-2.4.5-orig/pppd/tty.c	2009-11-16 23:26:07.000000000 +0100
++++ ppp-2.4.5/pppd/tty.c	2012-03-30 14:40:50.000000000 +0200
+@@ -844,6 +844,7 @@
+ 	}
+ #endif /* __linux__ */
+ 
++	tcflush(real_ttyfd, TCIOFLUSH);
+ 	close(real_ttyfd);
+ 	real_ttyfd = -1;
+ }

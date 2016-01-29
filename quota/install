@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+make \
+	ROOTDIR="$UB_INSTALLDIR" \
+	install
+
+rm "$UB_INSTALLDIR"/usr/include/rpcsvc/rquota.{h,x}
+# rm "$UB_INSTALLDIR"/usr/share/man/man2/quotactl.2
+
+chmod -R u+rwX "$UB_INSTALLDIR"

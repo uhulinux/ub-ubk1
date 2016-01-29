@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+xchat-gnome-${UB_VERSION}.tar.gz xchat-gnome-master/
+	git://git.gnome.org/xchat-gnome@master
+	ftp://ftp.gnome.org/pub/GNOME/sources/xchat-gnome/${UB_VERSION_HEAD2}/

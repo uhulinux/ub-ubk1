@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+phpmyfaq.${UB_VERSION}.full.zip .
+	http://www.phpmyfaq.de/download/
+

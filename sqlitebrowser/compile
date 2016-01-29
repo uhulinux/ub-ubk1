@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+export QTLIB=/usr/lib/qt4
+cd sqlitebrowser
+qmake-qt4
+make LINK="g++ -ldl"

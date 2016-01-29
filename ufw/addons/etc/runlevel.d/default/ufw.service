@@ -1,0 +1,9 @@
+Summary=Ufw firewall
+Summary[hu]=Ufw tűzfal
+MsgStart=Starting ufw
+MsgStart[hu]=Ufw indítása
+MsgStop=Shutting down ufw
+MsgStop[hu]=Ufw leállítása
+Script=/etc/init.d/ufw
+Runlevels=
+Sequence=13

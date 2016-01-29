@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-session-${UB_VERSION}.tar.xz gnome-session-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-session/${UB_VERSION_HEAD2}/

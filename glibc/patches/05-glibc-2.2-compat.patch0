@@ -1,0 +1,86 @@
+--- ctype/ctype-info.c	2002-09-05 23:21:48.000000000 +0200
++++ ctype/ctype-info.c	2006-03-07 14:05:36.000000000 +0100
+@@ -48,18 +48,32 @@
+ 
+ #define b(t,x,o) (((const t *) _nl_C_LC_CTYPE_##x) + o)
+ 
++// const unsigned short int *__ctype_b = b (unsigned short int, class, 128);
++// const __uint32_t *__ctype32_b = b (__uint32_t, class32, 0);
++// const __int32_t *__ctype_tolower = b (__int32_t, tolower, 128);
++// const __int32_t *__ctype_toupper = b (__int32_t, toupper, 128);
++// const __uint32_t *__ctype32_tolower = b (__uint32_t, tolower, 128);
++// const __uint32_t *__ctype32_toupper = b (__uint32_t, toupper, 128);
++
++// compat_symbol (libc, __ctype_b, __ctype_b, GLIBC_2_0);
++// compat_symbol (libc, __ctype_tolower, __ctype_tolower, GLIBC_2_0);
++// compat_symbol (libc, __ctype_toupper, __ctype_toupper, GLIBC_2_0);
++// compat_symbol (libc, __ctype32_b, __ctype32_b, GLIBC_2_0);
++// compat_symbol (libc, __ctype32_tolower, __ctype32_tolower, GLIBC_2_2);
++// compat_symbol (libc, __ctype32_toupper, __ctype32_toupper, GLIBC_2_2);
++
++#endif
++
++/* Temporarily exported until all .a libraries are recompiled.  */
++#undef b
++#define b(t,x,o) (((const t *) _nl_C_LC_CTYPE_##x) + o)
++extern const char _nl_C_LC_CTYPE_class[] attribute_hidden;
++extern const char _nl_C_LC_CTYPE_class32[] attribute_hidden;
++extern const char _nl_C_LC_CTYPE_toupper[] attribute_hidden;
++extern const char _nl_C_LC_CTYPE_tolower[] attribute_hidden;
+ const unsigned short int *__ctype_b = b (unsigned short int, class, 128);
+ const __uint32_t *__ctype32_b = b (__uint32_t, class32, 0);
+ const __int32_t *__ctype_tolower = b (__int32_t, tolower, 128);
+ const __int32_t *__ctype_toupper = b (__int32_t, toupper, 128);
+ const __uint32_t *__ctype32_tolower = b (__uint32_t, tolower, 128);
+ const __uint32_t *__ctype32_toupper = b (__uint32_t, toupper, 128);
+-
+-compat_symbol (libc, __ctype_b, __ctype_b, GLIBC_2_0);
+-compat_symbol (libc, __ctype_tolower, __ctype_tolower, GLIBC_2_0);
+-compat_symbol (libc, __ctype_toupper, __ctype_toupper, GLIBC_2_0);
+-compat_symbol (libc, __ctype32_b, __ctype32_b, GLIBC_2_0);
+-compat_symbol (libc, __ctype32_tolower, __ctype32_tolower, GLIBC_2_2);
+-compat_symbol (libc, __ctype32_toupper, __ctype32_toupper, GLIBC_2_2);
+-
+-#endif
+--- locale/lc-ctype.c	2005-02-17 02:16:08.000000000 +0100
++++ locale/lc-ctype.c	2006-03-07 14:08:10.000000000 +0100
+@@ -94,18 +94,32 @@
+      We need those relocations so that a versioned definition with a COPY
+      reloc in an executable will override the libc.so definition.  */
+ 
+-compat_symbol (libc, __ctype_b, __ctype_b, GLIBC_2_0);
+-compat_symbol (libc, __ctype_tolower, __ctype_tolower, GLIBC_2_0);
+-compat_symbol (libc, __ctype_toupper, __ctype_toupper, GLIBC_2_0);
+-compat_symbol (libc, __ctype32_b, __ctype32_b, GLIBC_2_0);
+-compat_symbol (libc, __ctype32_tolower, __ctype32_tolower, GLIBC_2_2);
+-compat_symbol (libc, __ctype32_toupper, __ctype32_toupper, GLIBC_2_2);
++// compat_symbol (libc, __ctype_b, __ctype_b, GLIBC_2_0);
++// compat_symbol (libc, __ctype_tolower, __ctype_tolower, GLIBC_2_0);
++// compat_symbol (libc, __ctype_toupper, __ctype_toupper, GLIBC_2_0);
++// compat_symbol (libc, __ctype32_b, __ctype32_b, GLIBC_2_0);
++// compat_symbol (libc, __ctype32_tolower, __ctype32_tolower, GLIBC_2_2);
++// compat_symbol (libc, __ctype32_toupper, __ctype32_toupper, GLIBC_2_2);
+ 
++//  __ctype_b = current (uint16_t, CLASS, 128);
++//  __ctype_toupper = current (uint32_t, TOUPPER, 128);
++//  __ctype_tolower = current (uint32_t, TOLOWER, 128);
++//  __ctype32_b = current (uint32_t, CLASS32, 0);
++//  __ctype32_toupper = current (uint32_t, TOUPPER32, 0);
++//  __ctype32_tolower = current (uint32_t, TOLOWER32, 0);
++#endif
++
++  /* Temporary.  */
++  extern __const unsigned short int *__ctype_b; /* Characteristics.  */
++  extern __const __int32_t *__ctype_tolower; /* Case conversions.  */
++  extern __const __int32_t *__ctype_toupper; /* Case conversions.  */
++  extern const uint32_t *__ctype32_b;
++  extern const uint32_t *__ctype32_toupper;
++  extern const uint32_t *__ctype32_tolower;
+   __ctype_b = current (uint16_t, CLASS, 128);
+   __ctype_toupper = current (int32_t, TOUPPER, 128);
+   __ctype_tolower = current (int32_t, TOLOWER, 128);
+   __ctype32_b = current (uint32_t, CLASS32, 0);
+   __ctype32_toupper = current (uint32_t, TOUPPER32, 0);
+   __ctype32_tolower = current (uint32_t, TOLOWER32, 0);
+-#endif
+ }

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+usmb-${UB_VERSION}.tar.gz usmb-${UB_VERSION}/
+	http://ametros.net/downloads/

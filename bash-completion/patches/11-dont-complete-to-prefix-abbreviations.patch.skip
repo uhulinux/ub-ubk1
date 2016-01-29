@@ -1,0 +1,33 @@
+diff -Naur bash_completion.orig/bash_completion bash_completion/bash_completion
+--- bash_completion.orig/bash_completion	2006-03-01 17:20:18.000000000 +0100
++++ bash_completion/bash_completion	2006-05-05 17:18:42.000000000 +0200
+@@ -8819,12 +8819,12 @@
+ 	COMPREPLY=()
+ 	cur=${COMP_WORDS[COMP_CWORD]}
+ 
+-	commands='add blame praise annotate ann cat checkout co cleanup commit \
+-		ci copy cp delete del remove rm diff di export help ? h import \
+-		info list ls lock log merge mkdir move mv rename ren \
+-		propdel pdel pd propedit pedit pe propget pget pg \
+-		proplist plist pl propset pset ps resolved revert \
+-		status stat st switch sw unlock update up'
++	commands='add blame praise annotate     cat checkout co cleanup commit \
++		ci copy cp delete     remove rm diff    export help ?   import \
++		info list ls lock log merge mkdir move mv rename     \
++		propdel pdel    propedit pedit    propget pget    \
++		proplist plist    propset pset    resolved revert \
++		status         switch    unlock update   '
+ 
+ 	if [[ $COMP_CWORD -eq 1 ]] ; then
+ 		if [[ "$cur" == -* ]]; then
+@@ -9171,8 +9171,8 @@
+ 	COMPREPLY=()
+ 	cur=${COMP_WORDS[COMP_CWORD]}
+ 
+-	commands='author cat changed date diff dirs-changed help ? h history \
+-		info lock log propget pget pg proplist plist pl tree uuid \
++	commands='author cat changed date diff dirs-changed help ?   history \
++		info lock log propget pget    proplist plist    tree uuid \
+ 		youngest'
+ 
+ 	if [[ $COMP_CWORD -eq 1 ]] ; then

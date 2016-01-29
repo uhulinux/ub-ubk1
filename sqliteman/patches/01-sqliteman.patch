@@ -1,0 +1,31 @@
+diff -Naurd a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2010-06-19 21:13:06.000000000 +0200
++++ b/CMakeLists.txt	2011-01-06 16:24:35.000000000 +0100
+@@ -150,7 +150,7 @@
+     # install desktop
+     INSTALL(FILES
+         sqliteman.desktop
+-        DESTINATION "share/applications"
++        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications"
+     )
+     INSTALL(FILES
+         sqliteman/icons/sqliteman.png
+diff -Naurd a/sqliteman.desktop b/sqliteman.desktop
+--- a/sqliteman.desktop	2010-06-19 21:13:06.000000000 +0200
++++ b/sqliteman.desktop	2011-01-06 16:09:49.000000000 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Version=1.1
+ Type=Application
+ Name=Sqliteman
+ GenericName=Sqlite admin tool
+@@ -8,7 +9,7 @@
+ Terminal=false
+ StartupNotify=true
+ MimeType=application/x-sqlite3;
+-
++Categories=Office;Databases;
+ # Translations
+ GenericName[cs]=Sqlite administrace
+-
++Comment[hu]=Sqlite3 grafikus felület

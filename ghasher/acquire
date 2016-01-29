@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ghasher-$UB_VERSION.tar.gz ghasher-$UB_VERSION/
+	http://asgaard.homelinux.org/code/ghasher/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+reboot-utils-${UB_VERSION}.tar.gz reboot-utils-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/reboot-utils/

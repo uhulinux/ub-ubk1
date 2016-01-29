@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-audio-${UB_VERSION}.tar.gz gnome-audio-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-audio/${UB_VERSION_HEAD2}/

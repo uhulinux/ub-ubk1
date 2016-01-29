@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Axiom-${UB_VERSION}.tar.gz Axiom-${UB_VERSION}/
+	http://divmod.org/trac/attachment/wiki/SoftwareReleases/Axiom-${UB_VERSION}.tar.gz?format=raw

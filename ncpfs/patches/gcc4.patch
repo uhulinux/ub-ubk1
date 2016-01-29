@@ -1,0 +1,36 @@
+diff -Naur ncpfs-2.2.6.orig/lib/ncplib.c ncpfs-2.2.6/lib/ncplib.c
+--- ncpfs-2.2.6.orig/lib/ncplib.c	2005-01-27 18:35:59.000000000 +0100
++++ ncpfs-2.2.6/lib/ncplib.c	2005-11-17 18:06:40.000000000 +0100
+@@ -2421,7 +2421,7 @@
+ 	int i = 1;
+ 	NWCCODE nwerr;
+ 
+-	static int get_argument(int arg_no, const char **target) {
++	int get_argument(int arg_no, const char **target) {
+ 		int count = 1;
+ 
+ 		if (target != NULL) {
+diff -Naur ncpfs-2.2.6.orig/util/nwpjmv.c ncpfs-2.2.6/util/nwpjmv.c
+--- ncpfs-2.2.6.orig/util/nwpjmv.c	2005-01-27 18:35:59.000000000 +0100
++++ ncpfs-2.2.6/util/nwpjmv.c	2005-11-17 18:10:24.000000000 +0100
+@@ -131,7 +131,7 @@
+ 	char *s = q->command;
+ 	char *target_end = target + target_size;
+ 
+-	static void add_string(const char *str)
++	void add_string(const char *str)
+ 	{
+ 		int len = strlen(str);
+ 		if (target + len + 1 > target_end)
+diff -Naur ncpfs-2.2.6.orig/util/pserver.c ncpfs-2.2.6/util/pserver.c
+--- ncpfs-2.2.6.orig/util/pserver.c	2005-01-27 18:35:59.000000000 +0100
++++ ncpfs-2.2.6/util/pserver.c	2005-11-17 18:09:09.000000000 +0100
+@@ -153,7 +153,7 @@
+ 	char *s = q->command;
+ 	char *target_end = target + target_size;
+ 
+-	static void add_string(const char *str)
++	void add_string(const char *str)
+ 	{
+ 		int len = strlen(str);
+ 		if (target + len + 1 > target_end)

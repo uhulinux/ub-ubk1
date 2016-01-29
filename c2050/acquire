@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+c2050-${UB_VERSION}.tar.gz c2050-${UB_VERSION}/
+	http://www.prato.linux.it/~mnencia/lexmark2050/files/

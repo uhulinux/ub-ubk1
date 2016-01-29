@@ -1,0 +1,1 @@
+urllist http://xorg.freedesktop.org/releases/individual/app/ | splitver '^luit-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

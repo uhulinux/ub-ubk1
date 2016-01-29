@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+snack${UB_VERSION}.tar.gz snack${UB_VERSION}/
+	http://www.speech.kth.se/snack/dist/

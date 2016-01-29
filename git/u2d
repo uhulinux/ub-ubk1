@@ -1,0 +1,1 @@
+urllist http://kernel.org/pub/software/scm/git/ | splitver '^git-([0-9.]+).tar.gz' | sort -V | tail -n 1

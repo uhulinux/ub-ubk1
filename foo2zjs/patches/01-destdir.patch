@@ -1,0 +1,22 @@
+diff -Naurdp a/hplj1000 b/hplj1000
+--- a/hplj1000	2009-10-27 06:58:06.000000000 +0100
++++ b/hplj1000	2009-11-18 14:07:23.000000000 +0100
+@@ -47,7 +47,7 @@ FWDIR=/usr/share/foo2zjs/firmware
+ #    [snip]
+ #    # Mount all other filesystems (except for NFS and /proc, which is already
+ #
+-PRINTERID=/bin/usb_printerid
++PRINTERID=/usr/bin/usb_printerid
+ 
+ #
+ #	Figure out how to log our messages
+diff -Naurdp a/icc2ps/Makefile b/icc2ps/Makefile
+--- a/icc2ps/Makefile	2009-03-01 23:04:53.000000000 +0100
++++ b/icc2ps/Makefile	2009-11-18 14:07:40.000000000 +0100
+@@ -1,5 +1,5 @@
+ UNAME := $(shell uname)
+-PREFIX=	/usr
++PREFIX=	$(DESTDIR)/usr
+ BIN=	$(PREFIX)/bin
+ SRC=	icc2ps.c xgetopt.c
+ LIB=	cmscam97.c cmscnvrt.c cmserr.c cmsgamma.c cmsgmt.c cmsintrp.c cmsio1.c \

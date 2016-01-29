@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+DBD-SQLite-${UB_VERSION}.tar.gz DBD-SQLite-${UB_VERSION}/
+	http://search.cpan.org/CPAN/modules/by-module/DBD/

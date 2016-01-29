@@ -1,0 +1,1 @@
+urllist http://launchpad.net/libindicate/+download/ | splitver '^libindicate-([0-9.]+).tar.gz$' | sort -V | tail -n 1

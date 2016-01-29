@@ -1,0 +1,22 @@
+--- mhonarc-2.6.10.orig/examples/mha-preview
++++ mhonarc-2.6.10/examples/mha-preview
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ ##---------------------------------------------------------------------------##
+ ##  File:
+ ##	$Id: mha-preview,v 1.2 2002/05/03 20:52:43 ehood Exp $
+--- mhonarc-2.6.10.orig/examples/mhasiteinit.pl
++++ mhonarc-2.6.10/examples/mhasiteinit.pl
+@@ -1,4 +1,3 @@
+-#!/usr/local/bin/perl
+ ##---------------------------------------------------------------------------##
+ ##  File:
+ ##      $Id: mhasiteinit.pl,v 1.3 2002/03/14 15:30:57 ehood Exp $
+--- mhonarc-2.6.10.orig/lib/base64.pl
++++ mhonarc-2.6.10/lib/base64.pl
+@@ -1,4 +1,3 @@
+-#!/usr/bin/perl
+ # $Id: base64.pl,v 2.4 2004/05/17 04:18:13 ehood Exp $
+ #
+ # Library based on Perl 4 code from:

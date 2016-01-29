@@ -1,0 +1,11 @@
+--- a/lib/imapoptions	2008-02-19 23:36:09.000000000 +0100
++++ b/lib/imapoptions	2008-02-19 23:38:11.000000000 +0100
+@@ -614,7 +614,7 @@
+ { "md5_user_map", NULL, STRING }
+ /* Map file (cdb) to allow partial make_md5 runs. Maps username to UID */
+ 
+-{ "munge8bit", 1, SWITCH }
++{ "munge8bit", 0, SWITCH }
+ /* If enabled, lmtpd munges messages with 8-bit characters in the
+    headers.  The 8-bit characters are changed to `X'.  If
+    \fBreject8bit\fR is enabled, setting \fBmunge8bit\fR has no effect.

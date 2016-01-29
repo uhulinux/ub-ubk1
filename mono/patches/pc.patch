@@ -1,0 +1,60 @@
+diff -Naurd a.orig/data/mono-2.pc.in a/data/mono-2.pc.in
+--- a.orig/data/mono-2.pc.in	2011-01-04 18:39:55.000000000 +0100
++++ a/data/mono-2.pc.in	2011-01-22 17:00:25.000000000 +0100
+@@ -1,5 +1,5 @@
+-prefix=${pcfiledir}/../..
+-exec_prefix=${pcfiledir}/../..
++prefix=/usr
++exec_prefix=/usr
+ libdir=${prefix}/@reloc_libdir@
+ includedir=${prefix}/include/mono-@API_VER@
+ sysconfdir=@sysconfdir@
+diff -Naurd a.orig/data/mono-cairo.pc.in a/data/mono-cairo.pc.in
+--- a.orig/data/mono-cairo.pc.in	2011-01-04 18:39:55.000000000 +0100
++++ a/data/mono-cairo.pc.in	2011-01-22 17:00:54.000000000 +0100
+@@ -1,5 +1,5 @@
+-prefix=${pcfiledir}/../..
+-exec_prefix=${pcfiledir}/../..
++prefix=/usr
++exec_prefix=/usr
+ libdir=${prefix}/@reloc_libdir@
+ includedir=${prefix}/include
+ 
+diff -Naurd a.orig/data/mono-lineeditor.pc.in a/data/mono-lineeditor.pc.in
+--- a.orig/data/mono-lineeditor.pc.in	2011-01-04 18:39:55.000000000 +0100
++++ a/data/mono-lineeditor.pc.in	2011-01-22 17:01:20.000000000 +0100
+@@ -1,4 +1,4 @@
+-prefix=${pcfiledir}/../..
++prefix=/usr
+ assemblies_dir=${prefix}/lib/mono-source-libs
+ Sources=${assemblies_dir}/getline.cs
+ 
+diff -Naurd a.orig/data/mono-nunit.pc.in a/data/mono-nunit.pc.in
+--- a.orig/data/mono-nunit.pc.in	2011-01-04 18:39:55.000000000 +0100
++++ a/data/mono-nunit.pc.in	2011-01-22 17:01:36.000000000 +0100
+@@ -1,4 +1,4 @@
+-prefix=${pcfiledir}/../..
++prefix=/usr
+ exec_prefix=${prefix}
+ libdir=${exec_prefix}/lib
+ 
+diff -Naurd a.orig/data/mono-options.pc.in a/data/mono-options.pc.in
+--- a.orig/data/mono-options.pc.in	2011-01-04 18:39:55.000000000 +0100
++++ a/data/mono-options.pc.in	2011-01-22 17:01:47.000000000 +0100
+@@ -1,4 +1,4 @@
+-prefix=${pcfiledir}/../..
++prefix=/usr
+ assemblies_dir=${prefix}/lib/mono-source-libs
+ Sources=${assemblies_dir}/Options.cs
+ 
+diff -Naurd a.orig/data/mono.pc.in a/data/mono.pc.in
+--- a.orig/data/mono.pc.in	2011-01-04 18:39:55.000000000 +0100
++++ a/data/mono.pc.in	2011-01-22 17:02:02.000000000 +0100
+@@ -1,5 +1,5 @@
+-prefix=${pcfiledir}/../..
+-exec_prefix=${pcfiledir}/../..
++prefix=/usr
++exec_prefix=/usr
+ libdir=${prefix}/@reloc_libdir@
+ includedir=${prefix}/include/mono-@API_VER@
+ sysconfdir=@sysconfdir@

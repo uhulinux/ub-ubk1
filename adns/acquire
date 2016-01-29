@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+adns-${UB_VERSION}.tar.gz adns-${UB_VERSION}/
+	ftp://ftp.chiark.greenend.org.uk/users/ian/adns/

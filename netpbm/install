@@ -1,0 +1,18 @@
+#!/bin/sh -eux
+
+make package pkgdir="$UB_COMPILEDIR"/Package
+./installnetpbm <<END
+$UB_COMPILEDIR/Package
+$UB_INSTALLDIR/usr
+
+
+N
+
+
+
+$UB_INSTALLDIR/usr/share/man
+N
+END
+
+rm -rf "$UB_INSTALLDIR"/usr/bin/doc.url
+rm -rf "$UB_INSTALLDIR"/usr/share/man/web

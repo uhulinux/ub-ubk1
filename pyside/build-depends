@@ -1,0 +1,5 @@
+cmake
+phonon-dev
+python-dev
+qt4-dev
+shiboken-dev

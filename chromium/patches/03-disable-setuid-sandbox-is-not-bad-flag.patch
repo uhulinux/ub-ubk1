@@ -1,0 +1,11 @@
+diff -Naur orig/chrome/browser/ui/startup/bad_flags_prompt.cc patched/chrome/browser/ui/startup/bad_flags_prompt.cc
+--- orig/chrome/browser/ui/startup/bad_flags_prompt.cc	2014-05-23 03:06:53.000000000 +0200
++++ patched/chrome/browser/ui/startup/bad_flags_prompt.cc	2014-05-25 17:41:28.845105053 +0200
+@@ -41,7 +41,6 @@
+     // These flags disable sandbox-related security.
+     switches::kDisableGpuSandbox,
+     switches::kDisableSeccompFilterSandbox,
+-    switches::kDisableSetuidSandbox,
+     switches::kDisableWebSecurity,
+     switches::kNaClDangerousNoSandboxNonSfi,
+     switches::kNoSandbox,

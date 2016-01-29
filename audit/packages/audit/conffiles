@@ -1,0 +1,3 @@
+/etc/audit/auditd.conf
+/etc/audit/rules.d/audit.rules
+/etc/libaudit.conf

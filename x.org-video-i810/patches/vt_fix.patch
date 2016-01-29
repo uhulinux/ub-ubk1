@@ -1,0 +1,38 @@
+Subject: RE: pb with SpringDale-G system
+Date: Mardi 8 Avril 2003 18:53
+From: "Chang, John" <john.chang@intel.com>
+To: "Frederic Lepied" <flepied@mandrakesoft.com>, "Jayapal, Priyadevi" 
+<priyadevi.jayapal@intel.com>
+Cc: "Alziq, Hasan" <hasan.alziq@intel.com>, "Sylvestre Taburet" 
+<staburet@mandrakesoft.com>
+
+Hello Fredric,
+
+
+
+We have determined that the VT switch problem that you have reported is
+caused by the XAA module in the X server.  Attached is a driver source
+patch that works around this XAA defect.  Please let me know how this
+works for you.
+
+
+
+Thanks, John
+
+### i830 does things entirely differently now, second part of patch removed.
+### i810 part ported to 2.9.0.
+### i810 is in legacy directory since at least 2.13.0
+
+diff -Naurdp xf86-video-intel-2.19.0/src/legacy/i810/i810_accel.c xf86-video-intel-2.19.0-vt_fix/src/legacy/i810/i810_accel.c
+--- xf86-video-intel-2.19.0/src/legacy/i810/i810_accel.c	2012-03-02 17:37:35.000000000 +0100
++++ xf86-video-intel-2.19.0-vt_fix/src/legacy/i810/i810_accel.c	2012-10-03 12:16:26.821126384 +0200
+@@ -245,6 +245,9 @@ I810Sync(ScrnInfoPtr pScrn)
+    if (I810_DEBUG & (DEBUG_VERBOSE_ACCEL | DEBUG_VERBOSE_SYNC))
+       ErrorF("I810Sync\n");
+ 
++   if (!pScrn->vtSema)
++      return;
++
+ #ifdef HAVE_DRI1
+    /* VT switching tries to do this.  
+     */

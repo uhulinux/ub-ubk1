@@ -1,0 +1,11 @@
+diff -Naur Linux-PAM-0.99.3.0.orig/modules/pam_utmp/pam_utmp.c Linux-PAM-0.99.3.0/modules/pam_utmp/pam_utmp.c
+--- Linux-PAM-0.99.3.0.orig/modules/pam_utmp/pam_utmp.c	2001-03-29 00:29:12.000000000 +0200
++++ Linux-PAM-0.99.3.0/modules/pam_utmp/pam_utmp.c	2006-02-07 16:06:46.000000000 +0100
+@@ -24,6 +24,7 @@
+ #include <utmp.h>
+ #include <utmpx.h>
+ #include <unistd.h>
++#include <syslog.h>
+ 
+ #define PAM_SM_SESSION
+ 

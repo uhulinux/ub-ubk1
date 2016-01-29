@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=DvorakNG
+Comment=Dvorak typing tutor
+Comment[hu]=Dvorak gépírás-oktató
+Exec=dvorakng
+Terminal=true
+Categories=Education;

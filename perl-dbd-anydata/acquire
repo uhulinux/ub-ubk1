@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+DBD-AnyData-${UB_VERSION}.tar.gz DBD-AnyData-${UB_VERSION}/
+	http://search.cpan.org/CPAN/modules/by-module/DBD/

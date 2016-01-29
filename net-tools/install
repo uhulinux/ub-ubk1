@@ -1,0 +1,9 @@
+#!/bin/bash -eux
+
+make \
+	BASEDIR="$UB_INSTALLDIR" \
+	install
+
+for i in arp ifconfig route; do
+	ln -s ../sbin/"$i" "$UB_INSTALLDIR"/bin/
+done

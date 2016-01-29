@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+at-spi2-core-${UB_VERSION}.tar.xz at-spi2-core-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/at-spi2-core/${UB_VERSION_HEAD2}/

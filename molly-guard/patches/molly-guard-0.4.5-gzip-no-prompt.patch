@@ -1,0 +1,12 @@
+diff -rupN molly-guard-0.4.5.orig/Makefile molly-guard-0.4.5/Makefile
+--- molly-guard-0.4.5.orig/Makefile	2015-09-11 13:57:22.440184588 +0000
++++ molly-guard-0.4.5/Makefile	2015-09-11 14:14:17.917173250 +0000
+@@ -11,7 +11,7 @@ all: molly-guard.8.gz shutdown
+ 	$(XP) $(DB2MAN) $<
+ 
+ %.gz: %
+-	gzip -9 $<
++	gzip -9 -f $<
+ 
+ man: molly-guard.8
+ 	man -l $<

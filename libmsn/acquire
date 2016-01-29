@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libmsn-${UB_VERSION/~/-}.tar.bz2 libmsn-${UB_VERSION/~/-}/
+	http://downloads.sourceforge.net/libmsn/

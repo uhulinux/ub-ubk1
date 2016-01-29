@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cd unix
+ub_compile --enable-alsa --libdir=/usr/lib

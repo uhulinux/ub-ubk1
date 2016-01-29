@@ -1,0 +1,91 @@
+diff -Naurd a/config.h b/config.h
+--- a/config.h	2007-11-26 20:12:40.000000000 +0100
++++ b/config.h	2013-01-17 18:28:02.000000000 +0100
+@@ -74,4 +74,4 @@
+ /* #undef HAVE_LIBTERMLIB */
+ 
+ /* Define if you have the wx library.  */
+-#define HAVE_WX 1
++/* #undef HAVE_WX */
+diff -Naurd a/docs/makefile b/docs/makefile
+--- a/docs/makefile	2008-08-19 21:56:59.000000000 +0200
++++ b/docs/makefile	2013-01-17 20:34:53.000000000 +0100
+@@ -1,5 +1,5 @@
+ BUILDIR	      = `pwd`
+-INFODIR	      = $(prefix)/info
++INFODIR	      = $(prefix)/share/info
+ DOCSDIR	      = $(LIBLOC)/docs
+ HTMLDIR	      = $(DOCSDIR)/html
+ 
+@@ -30,11 +30,11 @@
+ ship:
+ 	-rm -f *.{aux,cp,cps,dvi,fn,ky,log,pg,toc,tp,vr}
+ 
+-install: all
+-	for d in $(INFODIR) $(DOCSDIR) $(HTMLDIR); do [ -d $$d ] || mkdir -p $$d || exit 1; done
+-	-cp -f *.info* $(INFODIR)/.
+-	-cp -f html/*.html $(HTMLDIR)/.
+-	-cp -f usermanual.ps $(DOCSDIR)/.
+-	-cp -f usermanual.pdf $(DOCSDIR)/.
+-	-cp -f usermanual.texi $(DOCSDIR)/.
+-	-cp -f ../usermanual $(DOCSDIR)/.
++install:
++	for d in $(DESTDIR)$(INFODIR) $(DESTDIR)$(DOCSDIR) $(DESTDIR)$(HTMLDIR); do [ -d $$d ] || mkdir -p $$d || exit 1; done
++	-cp -f *.info* $(DESTDIR)$(INFODIR)/.
++	-cp -f html/*.html $(DESTDIR)$(HTMLDIR)/.
++	-cp -f usermanual.ps $(DESTDIR)$(DOCSDIR)/.
++	-cp -f usermanual.pdf $(DESTDIR)$(DOCSDIR)/.
++	-cp -f usermanual.texi $(DESTDIR)$(DOCSDIR)/.
++	-cp -f ../usermanual $(DESTDIR)$(DOCSDIR)/.
+diff -Naurd a/makefile b/makefile
+--- a/makefile	2008-09-13 23:21:18.000000000 +0200
++++ b/makefile	2013-01-17 20:36:25.000000000 +0100
+@@ -1,23 +1,22 @@
+ CC	= gcc
+-CFLAGS	= -g -O -DHAVE_WX    -O0
++CFLAGS	= -g -O
+ CXX     = g++
+-CXXFLAGS = -g  -DHAVE_WX -I/usr/local/lib/wx/include/gtk2-ansi-release-static-2.8 -I/usr/local/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -pthread
+ LDFLAGS	= 
+-LIBS  =   -lbsd -lm  -L/usr/local/lib -pthread   /usr/local/lib/libwx_gtk2_richtext-2.8.a /usr/local/lib/libwx_gtk2_aui-2.8.a /usr/local/lib/libwx_gtk2_xrc-2.8.a /usr/local/lib/libwx_gtk2_qa-2.8.a /usr/local/lib/libwx_gtk2_html-2.8.a /usr/local/lib/libwx_gtk2_adv-2.8.a /usr/local/lib/libwx_gtk2_core-2.8.a /usr/local/lib/libwx_base_xml-2.8.a /usr/local/lib/libwx_base_net-2.8.a /usr/local/lib/libwx_base-2.8.a -pthread -L/lib -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lpango-1.0 -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0 -lXinerama -lXxf86vm -lSM -lpng -ljpeg -ltiff -lexpat -lz -ldl -lm  -ltermcap -lX11 
+-prefix = /usr/local
++LIBS  =   -lSM -lICE -lm -lcurses -lX11
++prefix = /usr
+ BINDIR        = $(prefix)/bin
+ LIBLOC        = $(prefix)/lib/logo
+-LINKER = $(CXX)
++LINKER = $(CC)
+ 
+ # LIBLOC      = `pwd`
+ 
+ OBJS 	= coms.o error.o eval.o files.o graphics.o init.o intern.o \
+ 	  libloc.o lists.o logodata.o main.o math.o mem.o paren.o parse.o \
+-	  print.o wrksp.o nographics.o svn.o wxMain.o wxTerminal.o wxTurtleGraphics.o  TextEditor.o wxterm.o 
++	  print.o wrksp.o nographics.o svn.o term.o xgraphics.o
+ 
+ SRCS	= coms.c error.c eval.c files.c graphics.c init.c intern.c \
+ 	  libloc.c lists.c logodata.c main.c math.c mem.c paren.c parse.c \
+-	  print.c wrksp.c nographics.c wxMain.cpp wxTerminal.cpp wxTurtleGraphics.cpp  TextEditor.cpp wxterm.c 
++	  print.c wrksp.c nographics.c term.c xgraphics.c
+ 
+ HDRS	= globals.h logo.h xgraphics.h
+ 
+@@ -70,12 +69,12 @@
+ #	cd emacs; $(MAKE) ship
+ 	cd docs; $(MAKE) ship
+ 
+-install: all
+-	for d in $(BINDIR) $(LIBLOC) $(LIBLOC)/logolib $(LIBLOC)/helpfiles $(LIBLOC)/csls; do [ -d $$d ] || mkdir -p $$d || exit 1; done
+-	cp logo $(BINDIR)/.
+-	cp -f logolib/* $(LIBLOC)/logolib/.
+-	cp -f helpfiles/* $(LIBLOC)/helpfiles/.
+-	cp -f csls/* $(LIBLOC)/csls/.
++install:
++	for d in $(DESTDIR)$(BINDIR) $(DESTDIR)$(LIBLOC) $(DESTDIR)$(LIBLOC)/logolib $(DESTDIR)$(LIBLOC)/helpfiles $(DESTDIR)$(LIBLOC)/csls; do [ -d $$d ] || mkdir -p $$d || exit 1; done
++	cp logo $(DESTDIR)$(BINDIR)/.
++	cp -f logolib/* $(DESTDIR)$(LIBLOC)/logolib/.
++	cp -f helpfiles/* $(DESTDIR)$(LIBLOC)/helpfiles/.
++	cp -f csls/* $(DESTDIR)$(LIBLOC)/csls/.
+ #	(cd emacs; prefix=$(prefix) LIBLOC=$(LIBLOC) BINDIR=$(BINDIR) $(MAKE) install)
+ 	(cd docs; prefix=$(prefix) LIBLOC=$(LIBLOC) BINDIR=$(BINDIR) $(MAKE) install)
+ #	prefix=$(prefix); LIBLOC=$(LIBLOC); BINDIR=$(BINDIR); export prefix LIBLOC BINDIR; cd emacs; $(MAKE) install

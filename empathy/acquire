@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+empathy-${UB_VERSION}.tar.xz empathy-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/empathy/${UB_VERSION_HEAD2}/

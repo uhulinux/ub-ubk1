@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--enable-security-context=no \
+	--with-kernel-headers=/usr/include \
+	--without-readline

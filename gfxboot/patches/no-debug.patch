@@ -1,0 +1,19 @@
+diff -Naur gfxboot-2.4.orig/bincode.asm gfxboot-2.4/bincode.asm
+--- gfxboot-2.4.orig/bincode.asm	2004-04-02 17:47:45.000000000 +0200
++++ gfxboot-2.4/bincode.asm	2004-05-04 17:02:11.000000000 +0200
+@@ -1,4 +1,4 @@
+-%define			debug 1
++%define			debug 0
+ 
+ %include		"vocabulary.inc"
+ %include		"modplay_defines.inc"
+@@ -402,7 +402,9 @@
+ single_step		db 0
+ show_debug_info		db 0
+ 
++%if debug
+ hello			db 10, 'Initializing gfx code...', 10, 0
++%endif
+ msg_10			db '|ip %4x:  %8x.%x           |', 10, 0
+ msg_11			db '|%2x: %8x.%2x', 0
+ msg_12			db '|  :            ', 0

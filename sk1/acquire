@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+sk1-${UB_VERSION/+/_}.tar.gz sk1-${UB_VERSION%%+*}/
+	https://sk1.googlecode.com/files/

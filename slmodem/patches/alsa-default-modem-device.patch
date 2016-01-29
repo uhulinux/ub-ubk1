@@ -1,0 +1,12 @@
+diff -Naur slmodem-2.9.11-20090222-orig/modem/modem_cmdline.c slmodem-2.9.11-20090222/modem/modem_cmdline.c
+--- slmodem-2.9.11-20090222-orig/modem/modem_cmdline.c	2008-03-29 13:04:16.000000000 +0100
++++ slmodem-2.9.11-20090222/modem/modem_cmdline.c	2009-06-07 19:03:05.000000000 +0200
+@@ -68,7 +68,7 @@
+ /* config parameters */
+ const char *modem_dev_name = NULL;
+ const char *modem_default_dev_name = "/dev/slamr0";
+-const char *modem_alsa_dev_name = "modem:1";
++const char *modem_alsa_dev_name = "modem:0";
+ unsigned int need_realtime = 1;
+ #ifdef MODEM_CONFIG_RING_DETECTOR
+ unsigned int ring_detector = 0;

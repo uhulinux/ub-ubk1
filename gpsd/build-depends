@@ -1,0 +1,13 @@
+bluez-dev
+chrpath
+dbus-glib-dev
+libusb-dev
+libx11-dev
+libxaw-dev
+libxext-dev
+libxpm-dev
+libxslt-dev
+python-dev
+qt4-dev
+scons
+xmlto

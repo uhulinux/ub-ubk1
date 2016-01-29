@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+avogadro-${UB_VERSION/~/-}.tar.bz2 avogadro-${UB_VERSION/~/-}/
+	http://downloads.sourceforge.net/avogadro/

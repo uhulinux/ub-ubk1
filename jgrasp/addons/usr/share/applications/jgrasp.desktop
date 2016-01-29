@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=jGRASP
+Comment=jGRASP IDE
+Comment[hu]=jGRASP IDE
+Exec=jgrasp
+Icon=jgrasp
+Terminal=false
+Categories=Development;IDE;

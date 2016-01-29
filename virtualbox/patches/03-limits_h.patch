@@ -1,0 +1,11 @@
+diff -urN VirtualBox-1.5.0_OSE.orig/src/VBox/Devices/Storage/DrvHostDVD.cpp VirtualBox-1.5.0_OSE/src/VBox/Devices/Storage/DrvHostDVD.cpp
+--- VirtualBox-1.5.0_OSE.orig/src/VBox/Devices/Storage/DrvHostDVD.cpp	2007-08-30 17:16:22.000000000 +0200
++++ VirtualBox-1.5.0_OSE/src/VBox/Devices/Storage/DrvHostDVD.cpp	2007-10-15 19:57:47.000000000 +0200
+@@ -36,6 +36,7 @@
+ /* nothing (yet). */
+ 
+ #elif defined RT_OS_LINUX
++# include <limits.h>
+ # include <sys/ioctl.h>
+ /* This is a hack to work around conflicts between these linux kernel headers
+  * and the GLIBC tcpip headers. They have different declarations of the 4

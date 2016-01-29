@@ -1,0 +1,10 @@
+kernel
+kernel-dev
+kernel-headers
+man-db
+module-init-tools
+newt-dev
+procps
+strace
+systemd-dev
+wget

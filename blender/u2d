@@ -1,0 +1,1 @@
+urllist http://download.blender.org/source/ | splitver '^blender-([0-9.]+).tar.(gz|bz2)$' | sort -V | tail -n 1

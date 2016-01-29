@@ -1,0 +1,313 @@
+diff -Naur orig/src/aaddressbar.cc patched/src/aaddressbar.cc
+--- orig/src/aaddressbar.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/aaddressbar.cc	2013-04-23 02:14:09.835644261 +0200
+@@ -24,7 +24,7 @@
+ 
+ bool AddressBar::handleKey(const XKeyEvent &key) {
+     if (key.type == KeyPress) {
+-        KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++        KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+         int m = KEY_MODMASK(key.state);
+ 
+         if (k == XK_KP_Enter || k == XK_Return) {
+diff -Naur orig/src/movesize.cc patched/src/movesize.cc
+--- orig/src/movesize.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/movesize.cc	2013-04-23 02:14:09.835644261 +0200
+@@ -203,7 +203,7 @@
+ }
+ 
+ int YFrameWindow::handleMoveKeys(const XKeyEvent &key, int &newX, int &newY) {
+-    KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++    KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+     int m = KEY_MODMASK(key.state);
+     int factor = 1;
+ 
+@@ -251,7 +251,7 @@
+                                    int &newX, int &newY, int &newWidth, int &newHeight,
+                                    int incX, int incY)
+ {
+-    KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++    KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+     int m = KEY_MODMASK(key.state);
+     int factor = 1;
+ 
+@@ -746,7 +746,7 @@
+                 break;
+             }
+         } else if (xapp->AltMask != 0) {
+-            KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++            KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+             unsigned int m = KEY_MODMASK(key.state);
+             unsigned int vm = VMod(m);
+ 
+diff -Naur orig/src/testnetwmhints.cc patched/src/testnetwmhints.cc
+--- orig/src/testnetwmhints.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/testnetwmhints.cc	2013-04-23 02:14:09.835644261 +0200
+@@ -7,6 +7,7 @@
+ #include <X11/Xproto.h>
+ #include <X11/Xatom.h>
+ #include <X11/Xlib.h>
++#include <X11/XKBlib.h>
+ #include <X11/Xutil.h>
+ #include <X11/Xresource.h>
+ #include <X11/keysym.h>
+@@ -183,7 +184,7 @@
+         switch (xev.type) {
+         case KeyPress:
+             {
+-                unsigned int k = XKeycodeToKeysym(display, key.keycode, 0);
++                unsigned int k = XkbKeycodeToKeysym(display, key.keycode, 0, 0);
+                 unsigned int m = KEY_MODMASK(key.state);
+ 
+                 if (k == XK_Left && m == 0)
+diff -Naur orig/src/testwinhints.cc patched/src/testwinhints.cc
+--- orig/src/testwinhints.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/testwinhints.cc	2013-04-23 02:14:09.839644300 +0200
+@@ -7,6 +7,7 @@
+ #include <X11/Xproto.h>
+ #include <X11/Xatom.h>
+ #include <X11/Xlib.h>
++#include <X11/XKBlib.h>
+ #include <X11/Xutil.h>
+ #include <X11/Xresource.h>
+ #include <X11/keysym.h>
+@@ -151,7 +152,7 @@
+         switch (xev.type) {
+         case KeyPress:
+             {
+-                unsigned int k = XKeycodeToKeysym(display, key.keycode, 0);
++                unsigned int k = XkbKeycodeToKeysym(display, key.keycode, 0, 0);
+                 unsigned int m = KEY_MODMASK(key.state);
+ 
+                 if (k == XK_Left && m == 0)
+diff -Naur orig/src/wmapp.cc patched/src/wmapp.cc
+--- orig/src/wmapp.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/wmapp.cc	2013-04-23 02:14:09.839644300 +0200
+@@ -1481,9 +1481,9 @@
+     static XEvent lastKeyEvent = { 0 };
+ 
+     if (xev.type == KeyRelease && lastKeyEvent.type == KeyPress) {
+-        KeySym k1 = XKeycodeToKeysym(xapp->display(), (KeyCode)xev.xkey.keycode, 0);
++        KeySym k1 = XkbKeycodeToKeysym(xapp->display(), (KeyCode)xev.xkey.keycode, 0, 0);
+         unsigned int m1 = KEY_MODMASK(lastKeyEvent.xkey.state);
+-        KeySym k2 = XKeycodeToKeysym(xapp->display(), (KeyCode)lastKeyEvent.xkey.keycode, 0);
++        KeySym k2 = XkbKeycodeToKeysym(xapp->display(), (KeyCode)lastKeyEvent.xkey.keycode, 0, 0);
+ 
+         if (m1 == 0 && xapp->WinMask && win95keys) {
+             if (k1 == xapp->Win_L && k2 == xapp->Win_L) {
+diff -Naur orig/src/wmdialog.cc patched/src/wmdialog.cc
+--- orig/src/wmdialog.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/wmdialog.cc	2013-04-23 02:14:09.839644300 +0200
+@@ -206,7 +206,7 @@
+ }
+ 
+ bool CtrlAltDelete::handleKey(const XKeyEvent &key) {
+-    KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++    KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+     int m = KEY_MODMASK(key.state);
+         
+     if (key.type == KeyPress) {
+diff -Naur orig/src/wmmgr.cc patched/src/wmmgr.cc
+--- orig/src/wmmgr.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/wmmgr.cc	2013-04-23 02:14:09.839644300 +0200
+@@ -499,7 +499,7 @@
+ 
+ bool YWindowManager::handleKey(const XKeyEvent &key) {
+     if (key.type == KeyPress) {
+-        KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++        KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+         unsigned int m = KEY_MODMASK(key.state);
+         unsigned int vm = VMod(m);
+ 
+@@ -517,7 +517,7 @@
+         }
+         return handled;
+     } else if (key.type == KeyRelease) {
+-        KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++        KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+         unsigned int m = KEY_MODMASK(key.state);
+ 
+         (void)m;
+diff -Naur orig/src/wmprog.cc patched/src/wmprog.cc
+--- orig/src/wmprog.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/wmprog.cc	2013-04-23 02:14:09.839644300 +0200
+@@ -706,7 +706,7 @@
+ bool StartMenu::handleKey(const XKeyEvent &key) {
+     // If meta key, close the popup
+     if (key.type == KeyPress) {
+-        KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++        KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+         int m = KEY_MODMASK(key.state);
+ 
+         if (((k == xapp->Win_L) || (k == xapp->Win_R)) && m == 0) {
+diff -Naur orig/src/wmswitch.cc patched/src/wmswitch.cc
+--- orig/src/wmswitch.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/wmswitch.cc	2013-04-23 02:14:09.843644340 +0200
+@@ -684,7 +684,7 @@
+ }
+ 
+ bool SwitchWindow::handleKey(const XKeyEvent &key) {
+-    KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++    KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+     unsigned int m = KEY_MODMASK(key.state);
+     unsigned int vm = VMod(m);
+ 
+@@ -718,7 +718,7 @@
+ }
+ 
+ bool SwitchWindow::isModKey(KeyCode c) {
+-    KeySym k = XKeycodeToKeysym(xapp->display(), c, 0);
++    KeySym k = XkbKeycodeToKeysym(xapp->display(), c, 0, 0);
+ 
+     if (k == XK_Control_L || k == XK_Control_R ||
+         k == XK_Alt_L     || k == XK_Alt_R     ||
+diff -Naur orig/src/wmwinlist.cc patched/src/wmwinlist.cc
+--- orig/src/wmwinlist.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/wmwinlist.cc	2013-04-23 02:14:09.843644340 +0200
+@@ -147,7 +147,7 @@
+ 
+ bool WindowListBox::handleKey(const XKeyEvent &key) {
+     if (key.type == KeyPress) {
+-        KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++        KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+         int m = KEY_MODMASK(key.state);
+ 
+         switch (k) {
+diff -Naur orig/src/ybutton.cc patched/src/ybutton.cc
+--- orig/src/ybutton.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/ybutton.cc	2013-04-23 02:14:09.843644340 +0200
+@@ -197,7 +197,7 @@
+ }
+ 
+ bool YButton::handleKey(const XKeyEvent &key) {
+-    KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++    KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+     unsigned m = KEY_MODMASK(key.state);
+     int uk = (k < 256) ? ASCII::toUpper((char)k) : k;
+ 
+diff -Naur orig/src/ydialog.cc patched/src/ydialog.cc
+--- orig/src/ydialog.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/ydialog.cc	2013-04-23 02:14:09.843644340 +0200
+@@ -64,7 +64,7 @@
+ 
+ bool YDialog::handleKey(const XKeyEvent &key) {
+     if (key.type == KeyPress) {
+-        KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++        KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+         int m = KEY_MODMASK(key.state);
+ 
+         if (k == XK_Escape && m == 0) {
+diff -Naur orig/src/yinput.cc patched/src/yinput.cc
+--- orig/src/yinput.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/yinput.cc	2013-04-23 02:14:09.847644372 +0200
+@@ -161,7 +161,7 @@
+ 
+ bool YInputLine::handleKey(const XKeyEvent &key) {
+     if (key.type == KeyPress) {
+-        KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++        KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+ 
+         switch (k) {
+         case XK_KP_Home:
+@@ -176,7 +176,7 @@
+         case XK_KP_Insert:
+         case XK_KP_Delete:
+             if (key.state & xapp->NumLockMask) {
+-                k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 1);
++                k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 1);
+             }
+             break;
+         }
+diff -Naur orig/src/ylib.h patched/src/ylib.h
+--- orig/src/ylib.h	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/ylib.h	2013-04-23 02:14:09.847644372 +0200
+@@ -7,5 +7,6 @@
+ 
+ #include <X11/X.h>
+ #include <X11/Xlib.h>
++#include <X11/XKBlib.h>
+ 
+ #endif
+diff -Naur orig/src/ylistbox.cc patched/src/ylistbox.cc
+--- orig/src/ylistbox.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/ylistbox.cc	2013-04-23 02:14:09.847644372 +0200
+@@ -305,7 +305,7 @@
+ 
+ bool YListBox::handleKey(const XKeyEvent &key) {
+     if (key.type == KeyPress) {
+-        KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++        KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+         int m = KEY_MODMASK(key.state);
+ 
+         bool clear = (m & ControlMask) ? false : true;
+diff -Naur orig/src/ymenu.cc patched/src/ymenu.cc
+--- orig/src/ymenu.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/ymenu.cc	2013-04-23 02:14:09.847644372 +0200
+@@ -308,7 +308,7 @@
+ }
+ 
+ bool YMenu::handleKey(const XKeyEvent &key) {
+-    KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++    KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+     int m = KEY_MODMASK(key.state);
+ 
+     if (key.type == KeyPress) {
+diff -Naur orig/src/yscrollbar.cc patched/src/yscrollbar.cc
+--- orig/src/yscrollbar.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/yscrollbar.cc	2013-04-23 02:14:09.851644412 +0200
+@@ -692,7 +692,7 @@
+ 
+ bool YScrollBar::handleScrollKeys(const XKeyEvent &key) {
+     if (key.type == KeyPress) {
+-        KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++        KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+         int m = KEY_MODMASK(key.state);
+ 
+         switch (k) {
+diff -Naur orig/src/ywindow.cc patched/src/ywindow.cc
+--- orig/src/ywindow.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/ywindow.cc	2013-04-23 02:14:09.851644412 +0200
+@@ -764,7 +764,7 @@
+ 
+ bool YWindow::handleKey(const XKeyEvent &key) {
+     if (key.type == KeyPress) {
+-        KeySym k = XKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0);
++        KeySym k = XkbKeycodeToKeysym(xapp->display(), (KeyCode)key.keycode, 0, 0);
+         unsigned int m = KEY_MODMASK(key.state);
+ 
+         if (accel) {
+@@ -1128,7 +1128,7 @@
+ 
+ void YWindow::grabKeyM(int keycode, unsigned int modifiers) {
+     MSG(("grabKey %d %d %s", keycode, modifiers,
+-         XKeysymToString(XKeycodeToKeysym(xapp->display(), (KeyCode)keycode, 0))));
++         XKeysymToString(XkbKeycodeToKeysym(xapp->display(), (KeyCode)keycode, 0, 0))));
+ 
+     XGrabKey(xapp->display(), keycode, modifiers, handle(), False,
+              GrabModeAsync, GrabModeAsync);
+diff -Naur orig/src/yxapp.cc patched/src/yxapp.cc
+--- orig/src/yxapp.cc	2009-01-25 15:39:51.000000000 +0100
++++ patched/src/yxapp.cc	2013-04-23 02:14:09.851644412 +0200
+@@ -368,9 +368,9 @@
+             for (int k = 0; k < xmk->max_keypermod; k++, c++) {
+                 if (*c == NoSymbol)
+                     continue;
+-                KeySym kc = XKeycodeToKeysym(xapp->display(), *c, 0);
++                KeySym kc = XkbKeycodeToKeysym(xapp->display(), *c, 0, 0);
+                 if (kc == NoSymbol)
+-                    kc = XKeycodeToKeysym(xapp->display(), *c, 1);
++                    kc = XkbKeycodeToKeysym(xapp->display(), *c, 0, 1);
+                 if (kc == XK_Num_Lock && NumLockMask == 0)
+                     NumLockMask = (1 << m);
+                 if (kc == XK_Scroll_Lock && ScrollLockMask == 0)
+@@ -446,8 +446,8 @@
+     ButtonKeyMask = KeyMask | ButtonMask;
+ 
+ #if 0
+-    KeySym wl = XKeycodeToKeysym(app->display(), 115, 0);
+-    KeySym wr = XKeycodeToKeysym(app->display(), 116, 0);
++    KeySym wl = XkbKeycodeToKeysym(app->display(), 115, 0, 0);
++    KeySym wr = XkbKeycodeToKeysym(app->display(), 116, 0, 0);
+ 
+     if (wl == XK_Super_L) {
+     } else if (wl == XK_Meta_L) {

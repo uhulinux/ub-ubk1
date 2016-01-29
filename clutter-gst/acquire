@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+clutter-gst-${UB_VERSION}.tar.xz clutter-gst-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/clutter-gst/${UB_VERSION_HEAD2}/

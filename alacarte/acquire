@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+alacarte-${UB_VERSION}.tar.xz alacarte-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/alacarte/${UB_VERSION_HEAD2}/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgnomecanvas-${UB_VERSION}.tar.gz libgnomecanvas-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/${UB_VERSION_HEAD2}/

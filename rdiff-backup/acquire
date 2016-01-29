@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+rdiff-backup-${UB_VERSION}.tar.gz rdiff-backup-${UB_VERSION}/
+	http://savannah.nongnu.org/download/rdiff-backup/

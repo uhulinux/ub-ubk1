@@ -1,0 +1,15 @@
+acl-dev
+avahi-dev
+cups-dev
+file-dev
+gamin-dev
+gnutls-dev
+krb5-dev
+ldb-dev
+openldap-dev
+openssl-dev
+popt-dev
+python-dev
+talloc-dev
+tdb-dev
+tevent-dev

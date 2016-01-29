@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=akII
+Comment=Client for HiX Arena Portal
+Comment[hu]=Kliens a HiX Aréna Portálhoz
+Exec=akii
+Terminal=true
+Type=Application
+Categories=Network;InstantMessaging;

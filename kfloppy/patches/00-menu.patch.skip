@@ -1,0 +1,9 @@
+diff -Naur kfloppy-4.7.44-orig//KFloppy.desktop kfloppy-4.7.44//KFloppy.desktop
+--- kfloppy-4.7.44-orig//KFloppy.desktop	2011-08-22 15:26:09.000000000 +0200
++++ kfloppy-4.7.44//KFloppy.desktop	2011-10-13 10:23:46.000000000 +0200
+@@ -150,4 +150,4 @@
+ Terminal=false
+ X-KDE-StartupNotify=true
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Utility;X-KDE-Utilities-Peripherals;
++Categories=Qt;KDE;Utility;X-KDE-Utilities-Peripherals;X-UHU-Menu/Tools/Utilities;

@@ -1,0 +1,15 @@
+#!/bin/sh -eux
+
+# make install does not work so let's do this step manually :(
+
+install -p -m 0755 build/libgtest.so.0.0.0 build/libgtest_main.so.0.0.0 "$UB_INSTALLDIR"/usr/lib/
+ln -sf libgtest.so.0.0.0 "$UB_INSTALLDIR"/usr/lib/libgtest.so
+ln -sf libgtest_main.so.0.0.0 "$UB_INSTALLDIR"/usr/lib/libgtest_main.so
+ln -sf libgtest.so.0.0.0 "$UB_INSTALLDIR"/usr/lib/libgtest.so.0
+ln -sf libgtest_main.so.0.0.0 "$UB_INSTALLDIR"/usr/lib/libgtest_main.so.0
+mkdir -p "$UB_INSTALLDIR"/usr/include/gtest/internal
+mkdir -p "$UB_INSTALLDIR"/usr/share/aclocal
+install -p -m 0755 scripts/gtest-config "$UB_INSTALLDIR"/usr/bin/
+install -p -m 0644 include/gtest/*.h "$UB_INSTALLDIR"/usr/include/gtest/
+install -p -m 0644 include/gtest/internal/*.h "$UB_INSTALLDIR"/usr/include/gtest/internal/
+install -p -m 0644 m4/gtest.m4 "$UB_INSTALLDIR"/usr/share/aclocal/

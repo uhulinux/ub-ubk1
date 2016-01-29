@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tkinfo-$UB_VERSION.tar.gz tkinfo-$UB_VERSION/
+	http://math-www.uni-paderborn.de/~axel/tkinfo/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-disk-utility-${UB_VERSION}.tar.xz gnome-disk-utility-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/${UB_VERSION_HEAD2}/

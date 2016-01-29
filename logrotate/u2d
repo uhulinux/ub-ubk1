@@ -1,0 +1,1 @@
+urllist https://fedorahosted.org/releases/l/o/logrotate/ | splitver '^logrotate-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

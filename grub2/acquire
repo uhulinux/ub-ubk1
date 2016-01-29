@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+grub-${UB_VERSION}.tar.xz grub-${UB_VERSION}/
+	ftp://ftp.gnu.org/gnu/grub/
+
+unifont-6.3.20131221.pcf.gz :unifont.pcf.gz
+	http://unifoundry.com/pub/unifont-6.3.20131221/font-builds/

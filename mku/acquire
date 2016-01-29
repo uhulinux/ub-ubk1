@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mku-$UB_VERSION.tar.gz mku-$UB_VERSION/
+	http://www.tux.org/pub/people/kent-robotti/looplinux/

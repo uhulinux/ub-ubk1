@@ -1,0 +1,16 @@
+diff -Naurd a/Makefile b/Makefile
+--- a/Makefile	2003-08-23 18:20:01.000000000 +0200
++++ b/Makefile	2003-08-24 09:36:01.000000000 +0200
+@@ -132,12 +132,6 @@
+ 
+ install: rootperm
+ 	set -e; for i in `echo $(SUBDIRS)`; do $(MAKE) -C $$i install; done
+-	@if [ -c $(DESTDIR)/dev/isdnctrl0 ] && ls -l $(DESTDIR)/dev/isdnctrl0 | egrep "[[:space:]]45,[[:space:]]+64[[:space:]]" > /dev/null; \
+-	then \
+-		/bin/echo -e '(some) ISDN devices already exist, not creating them.\nUse scripts/makedev.sh manually if necessary.'; \
+-	else \
+-		sh scripts/makedev.sh $(DESTDIR) ; \
+-	fi
+ 
+ uninstall: rootperm
+ 	set -e; for i in `echo $(SUBDIRS)`; do $(MAKE) -C $$i uninstall; done

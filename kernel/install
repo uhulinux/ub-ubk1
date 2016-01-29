@@ -1,0 +1,47 @@
+#!/bin/bash -eux
+
+case "$UB_VERSION" in
+	*.*.*)
+		VERSION_BASE="${UB_VERSION/\~/-}-${UB_RELEASE}"
+		;;
+	*.*~*)
+		VERSION_BASE="${UB_VERSION/\~/.0-}-${UB_RELEASE}"
+		;;
+	*.*)
+		VERSION_BASE="${UB_VERSION}.0-${UB_RELEASE}"
+		;;
+	*)
+		exit 1
+		;;
+esac
+
+VERSION="$VERSION_BASE"
+
+export KBUILD_BUILD_TIMESTAMP="$(LC_ALL=C LANG=C date -r ../.src/changelog)"
+
+# mkinitrd
+cat >"$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel <<END
+#!/bin/sh
+
+mkinitramfs $VERSION.x86_64
+mkinitramfs $VERSION.i386
+
+
+rm -f /boot/initramfs.x86_64.cpio.gz
+ln -s initramfs-$VERSION.x86_64.cpio.gz /boot/initramfs.x86_64.cpio.gz
+
+rm -f /boot/initramfs.i386.cpio.gz
+ln -s initramfs-$VERSION.i386.cpio.gz /boot/initramfs.i386.cpio.gz
+
+rm -f /boot/initramfs.cpio.gz
+ln -s initramfs.i386.cpio.gz /boot/initramfs.cpio.gz
+END
+
+chmod 755 "$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel
+
+cp -al "$UB_OBJECTDIR"/. "$UB_INSTALLDIR"/
+
+chmod -R a+rX,u+w,go-w "$UB_INSTALLDIR"
+
+# firmware is shipped by the linux-firmware package
+rm -rfv "$UB_INSTALLDIR"/lib/firmware

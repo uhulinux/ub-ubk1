@@ -1,0 +1,10 @@
+--- liferea.orig/liferea.desktop.in	2008-10-25 14:28:53.000000000 +0200
++++ liferea/liferea.desktop.in	2009-03-14 18:29:25.000000000 +0100
+@@ -9,6 +9,5 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=Network;Feed;
+-Version=0.9.4
++Categories=GTK;Network;Feed;X-UHU-Menu/Internet/News;
+ MimeType=application/rss+xml;application/atom+xml;application/rdf+xml;

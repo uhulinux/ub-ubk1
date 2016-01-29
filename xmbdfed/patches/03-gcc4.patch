@@ -1,0 +1,11 @@
+diff -Naur xmbdfed-4.7.orig/xmbdfed.h xmbdfed-4.7/xmbdfed.h
+--- xmbdfed-4.7.orig/xmbdfed.h	2004-02-07 00:23:23.000000000 +0100
++++ xmbdfed-4.7/xmbdfed.h	2005-12-13 19:07:37.000000000 +0100
+@@ -280,7 +280,6 @@
+ extern XtAppContext app;
+ extern Boolean yes_no_answer;
+ extern Boolean yes_no_done;
+-extern unsigned long active_editor;
+ extern String app_name;
+ extern String app_class;
+ extern char title[];

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-online-accounts-${UB_VERSION}.tar.xz gnome-online-accounts-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-online-accounts/${UB_VERSION_HEAD2}/

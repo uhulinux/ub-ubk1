@@ -1,0 +1,10 @@
+#!/usr/bin/env dl
+
+${UB_VERSION}-mii-diag.c
+	ftp://ftp.scyld.com/pub/diag/mii-diag.c
+
+${UB_VERSION}-libmii.c
+	ftp://ftp.scyld.com/pub/diag/libmii.c
+
+${UB_VERSION}-mii-diag.8
+	ftp://ftp.scyld.com/pub/diag/mii-diag.8

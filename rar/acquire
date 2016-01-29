@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+rarlinux-$UB_VERSION.tar.gz rar/
+	http://www.rarlab.com/rar/

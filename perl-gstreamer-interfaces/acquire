@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+GStreamer-Interfaces-${UB_VERSION}.tar.gz GStreamer-Interfaces-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/GStreamer/

@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--disable-manual \
+	--enable-video \
+	--disable-strict \
+	--enable-external-ortp \
+	--enable-external-mediastreamer

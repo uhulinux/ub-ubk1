@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+anjuta-extras-${UB_VERSION}.tar.xz anjuta-extras-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/anjuta-extras/${UB_VERSION_HEAD2}/

@@ -1,0 +1,29 @@
+--- gchemutils/plugins/paint/text/equation.cc	2014/04/24 07:35:07	1898
++++ gchemutils/plugins/paint/text/equation.cc	2014/05/21 10:08:47	1904
+@@ -64,14 +64,14 @@
+ extern "C" void   itex2MML_free_string (char * str);
+ 
+ static char *
+-lsm_itex_to_mathml (const char *itex, int size)
++lsm_itex_to_mathml (const char *itex, gsize size)
+ {
+ 	char *mathml;
+ 
+ 	if (itex == NULL)
+ 		return NULL;
+ 
+-	if (size < 0)
++	if (size < 1)
+ 		size = strlen (itex);
+ 
+ 	mathml = itex2MML_parse (itex, size);
+@@ -421,7 +421,7 @@
+ 		std::string full_itex = (compact)? "$": "\\[";
+ 		full_itex += itex;
+ 		full_itex += (compact)? "$": "\\]";
+-		mathml = lsm_itex_to_mathml (full_itex.c_str (), -1);
++		mathml = lsm_itex_to_mathml (full_itex.c_str (), full_itex.length ());
+ 		if (mathml == NULL)
+ 			return;
+ 	}
+

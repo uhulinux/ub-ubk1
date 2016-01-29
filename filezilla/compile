@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+export WXRC=/usr/bin/wxrc2
+ub_compile \
+	--with-tinyxml=builtin \
+	--with-wx-config=/usr/bin/wx-config2 \
+	--disable-autoupdatecheck

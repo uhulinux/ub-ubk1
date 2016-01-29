@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tigervnc-${UB_VERSION}.tar.gz tigervnc-${UB_VERSION}/
+	http://download.sourceforge.net/tigervnc/

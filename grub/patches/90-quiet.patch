@@ -1,0 +1,135 @@
+diff -Naurd a/stage2/boot.c b/stage2/boot.c
+--- a/stage2/boot.c	2005-11-02 17:24:42.000000000 +0100
++++ b/stage2/boot.c	2005-11-02 17:54:44.000000000 +0100
+@@ -25,6 +25,8 @@
+ #include "imgact_aout.h"
+ #include "i386-elf.h"
+ 
++extern int quietmode;
++
+ static int cur_addr;
+ entry_func entry_addr;
+ static struct mod_list mll[99];
+@@ -463,6 +465,7 @@
+ 	  grub_read ((char *) LINUX_BZIMAGE_ADDR, text_len);
+ 	  disk_read_hook = disk_read_hook2;
+       
++	  if (!quietmode)
+ 	  grub_printf ("   [Linux-%s, setup=0x%x, size=0x%x]\n",
+ 		       (big_linux ? "bzImage" : "zImage"), data_len, text_len);
+ 
+@@ -796,6 +799,7 @@
+       return 0;
+     }
+ 
++  if (!quietmode)
+   printf ("   [Multiboot-module @ 0x%x, 0x%x bytes]\n", cur_addr, len);
+ 
+   /* these two simply need to be set if any modules are loaded at all */
+@@ -860,6 +864,7 @@
+   moveto -= 0x10000;
+   memmove ((void *) RAW_ADDR (moveto), (void *) cur_addr, len);
+ 
++  if (!quietmode)
+   printf ("   [Linux-initrd @ 0x%x, 0x%x bytes]\n", moveto, len);
+ 
+   /* FIXME: Should check if the kernel supports INITRD.  */
+diff -Naurd a/stage2/builtins.c b/stage2/builtins.c
+--- a/stage2/builtins.c	2005-11-02 17:24:42.000000000 +0100
++++ b/stage2/builtins.c	2005-11-02 18:15:31.000000000 +0100
+@@ -48,6 +48,8 @@
+ # include <md5.h>
+ #endif
+ 
++int quietmode = 1;
++
+ /* The type of kernel loaded.  */
+ kernel_t kernel_type;
+ /* The boot device.  */
+@@ -3011,6 +3013,26 @@
+   "Print MESSAGE, then wait until a key is pressed."
+ };
+ 
++/* quietmode */
++static int
++quietmode_func (char *arg, int flags)
++{
++  if (*arg) {
++    safe_parse_maxint (&arg, (int *) &quietmode);
++  }
++  grub_printf ("quiet mode is %s\n", quietmode ? "ON" : "OFF");
++  return 0;
++}
++
++static struct builtin builtin_quietmode =
++{
++  "quietmode",
++  quietmode_func,
++  BUILTIN_CMDLINE | BUILTIN_HELP_LIST | BUILTIN_NO_ECHO,
++  "quietmode STATE",
++  "Turn quiet mode on/off. STATE should be 0 or 1."
++};
++
+ 
+ #ifdef GRUB_UTIL
+ /* quit */
+@@ -4867,6 +4889,7 @@
+ #if defined(RPC_DEBUG) && defined(SUPPORT_NETBOOT)
+   &builtin_portmap,
+ #endif /* RPC_DEBUG && SUPPORT_NETBOOT */
++  &builtin_quietmode,
+ #ifdef GRUB_UTIL
+   &builtin_quit,
+ #endif /* GRUB_UTIL */
+diff -Naurd a/stage2/cmdline.c b/stage2/cmdline.c
+--- a/stage2/cmdline.c	2005-11-02 17:24:42.000000000 +0100
++++ b/stage2/cmdline.c	2005-11-02 17:56:04.000000000 +0100
+@@ -24,6 +24,8 @@
+ # include <grub.h>
+ #endif
+ 
++extern int quietmode;
++
+ grub_jmp_buf restart_cmdline_env;
+ 
+ /* Find the next word from CMDLINE and return the pointer. If
+@@ -231,11 +233,12 @@
+       builtin = find_command (heap);
+       if (! builtin)
+ 	{
++	  if (!quietmode)
+ 	  grub_printf ("%s\n", old_entry);
+ 	  continue;
+ 	}
+ 
+-      if (! (builtin->flags & BUILTIN_NO_ECHO))
++      if (! (builtin->flags & BUILTIN_NO_ECHO) && !quietmode)
+ 	grub_printf ("%s\n", old_entry);
+ 
+       /* If BUILTIN cannot be run in the command-line, skip it.  */
+diff -Naurd a/stage2/stage2.c b/stage2/stage2.c
+--- a/stage2/stage2.c	2005-11-02 17:24:42.000000000 +0100
++++ b/stage2/stage2.c	2005-11-02 17:56:59.000000000 +0100
+@@ -22,6 +22,8 @@
+ 
+ grub_jmp_buf restart_env;
+ 
++extern int quietmode;
++
+ #if defined(PRESET_MENU_STRING) || defined(SUPPORT_DISKLESS)
+ 
+ # if defined(PRESET_MENU_STRING)
+@@ -717,11 +719,13 @@
+   
+   while (1)
+     {
++      if (!quietmode) {
+       if (config_entries)
+ 	printf ("  Booting \'%s\'\n\n",
+ 		get_entry (menu_entries, first_entry + entryno, 0));
+       else
+ 	printf ("  Booting command-list\n\n");
++      }
+ 
+       if (! cur_entry)
+ 	cur_entry = get_entry (config_entries, first_entry + entryno, 1);

@@ -1,0 +1,9 @@
+diff -Naur kmouth-4.7.44-orig//kmouth.desktop kmouth-4.7.44//kmouth.desktop
+--- kmouth-4.7.44-orig//kmouth.desktop	2011-10-11 16:49:07.000000000 +0200
++++ kmouth-4.7.44//kmouth.desktop	2011-10-13 10:44:37.000000000 +0200
+@@ -141,4 +141,4 @@
+ GenericName[x-test]=xxSpeech Synthesizer Frontendxx
+ GenericName[zh_CN]=语音合成器前端
+ GenericName[zh_TW]=語音合成器前端
+-Categories=Qt;KDE;Utility;Accessibility;
++Categories=Qt;KDE;Utility;Accessibility;X-UHU-Menu/Tools/Utilities;

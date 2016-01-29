@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+audiofile-${UB_VERSION}.tar.gz audiofile-${UB_VERSION}/
+	http://www.68k.org/~michael/audiofile/
+	ftp://ftp.gnome.org/pub/GNOME/sources/audiofile/${UB_VERSION_HEAD2}/

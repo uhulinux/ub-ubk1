@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+reiser4progs-${UB_VERSION}.tar.gz reiser4progs-${UB_VERSION}/
+	http://www.kernel.org/pub/linux/utils/fs/reiser4/reiser4progs/
+	ftp://ftp.namesys.com/pub/reiser4progs/

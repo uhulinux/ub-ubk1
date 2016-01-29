@@ -1,0 +1,23 @@
+diff -Naur orig/chrome/browser/ui/startup/startup_browser_creator_impl.cc patched/chrome/browser/ui/startup/startup_browser_creator_impl.cc
+--- orig/chrome/browser/ui/startup/startup_browser_creator_impl.cc	2014-07-15 21:01:28.000000000 +0200
++++ patched/chrome/browser/ui/startup/startup_browser_creator_impl.cc	2014-07-23 02:04:15.984226485 +0200
+@@ -64,8 +64,6 @@
+ #include "chrome/browser/ui/startup/autolaunch_prompt.h"
+ #include "chrome/browser/ui/startup/bad_flags_prompt.h"
+ #include "chrome/browser/ui/startup/default_browser_prompt.h"
+-#include "chrome/browser/ui/startup/google_api_keys_infobar_delegate.h"
+-#include "chrome/browser/ui/startup/obsolete_system_infobar_delegate.h"
+ #include "chrome/browser/ui/startup/session_crashed_bubble.h"
+ #include "chrome/browser/ui/startup/session_crashed_infobar_delegate.h"
+ #include "chrome/browser/ui/startup/startup_browser_creator.h"
+@@ -856,10 +854,6 @@
+   if (is_process_startup == chrome::startup::IS_PROCESS_STARTUP &&
+       !command_line_.HasSwitch(switches::kTestType)) {
+     chrome::ShowBadFlagsPrompt(browser);
+-    GoogleApiKeysInfoBarDelegate::Create(InfoBarService::FromWebContents(
+-        browser->tab_strip_model()->GetActiveWebContents()));
+-    ObsoleteSystemInfoBarDelegate::Create(InfoBarService::FromWebContents(
+-        browser->tab_strip_model()->GetActiveWebContents()));
+ 
+ #if !defined(OS_CHROMEOS)
+     if (!command_line_.HasSwitch(switches::kNoDefaultBrowserCheck)) {

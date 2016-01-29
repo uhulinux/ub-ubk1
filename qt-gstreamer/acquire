@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+qt-gstreamer-${UB_VERSION}.tar.bz2 qt-gstreamer-${UB_VERSION}/
+	http://gstreamer.freedesktop.org/src/qt-gstreamer/

@@ -1,0 +1,14 @@
+--- gcc-3.4.6/gcc/config/i386/linux.orig.h	2013-04-10 18:22:34.598132154 +0100
++++ gcc-3.4.6/gcc/config/i386/linux.h	2013-04-10 18:22:59.651459578 +0100
+@@ -235,9 +235,9 @@
+       {									\
+ 	struct rt_sigframe {						\
+ 	  int sig;							\
+-	  struct siginfo *pinfo;					\
++	  siginfo_t *pinfo;					\
+ 	  void *puc;							\
+-	  struct siginfo info;						\
++	  siginfo_t info;						\
+ 	  struct ucontext uc;						\
+ 	} *rt_ = (CONTEXT)->cfa;					\
+ 	sc_ = (struct sigcontext *) &rt_->uc.uc_mcontext;		\

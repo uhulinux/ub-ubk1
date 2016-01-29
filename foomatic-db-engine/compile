@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+FOOMATIC_RIP=/usr/lib/cups/filters/foomatic-rip \
+ub_compile

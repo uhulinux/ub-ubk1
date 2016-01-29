@@ -1,0 +1,82 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH MII-DIAG 8 "February 10, 2002"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+mii-diag - Examine and set the MII registers of a network interface
+.SH SYNOPSIS
+.B mii-diag
+.RI [ options ]
+.SH DESCRIPTION
+.\" TeX users may be more comfortable with the \fB<whatever>\fP and
+.\" \fI<whatever>\fP escape sequences to invode bold face and italics, 
+.\" respectively.
+\fBmii-diag\fP is a program that you can use to diagnose and solve
+most problems with network interfaces.
+.SH OPTIONS
+These programs follow the usual GNU command line syntax, with long
+options starting with two dashes (`-').
+A summary of options is included below.
+.TP
+.B \-h, \-? \-\-help
+Show summary of options.
+.TP
+.B \-v, \-\-version
+Show version.
+.TP
+.B \-V, \-\-verbose
+Verbose mode
+.TP
+.B \-D, \-\-debug
+Debug mode
+.TP
+.B \-a, \-\-all
+Show all interfaces
+.TP
+.B \-A, \-\-Advertise [Mode]
+Change the capabilities advertised by your network interface. Currently the
+following modes are allowed: 100baseT4, 100baseTx 100baseTx-FD,
+100baseTx-HD, 10baseT, 10baseT-FD and 10baseT-HD.
+.TP
+.B \-f, \-\-force
+Force the operation
+.TP
+.B \-F, \-\-fixedspeed
+Force your network interface to a speed mode. Currently the
+following modes are allowed: 100baseT4, 100baseTx 100baseTx-FD,
+100baseTx-HD, 10baseT, 10baseT-FD and 10baseT-HD.
+.TP
+.B \-G, \-\-parameters
+Write general settings value. Only use this, if you know what you
+are doing!
+.TP
+.B \-p, \-\-phy
+Set the PHY (MII address) to from which mii-diag generates the report.
+.TP
+.B \-r, \-\-restart
+Restart the link negotiation.
+.TP
+.B \-R, \-\-Reset
+Reset the transceiver.
+.TP
+.B \-w, \-\-watch
+Constantly monitor the port and print out any changes.
+.SH SEE ALSO
+Understanding MII Tranceiver Status Info: http://scyld.com/expert/mii-status.html
+.SH AUTHOR
+mii-diag was written and is still maintained by Donald Becker <becker@scyld.com>.
+This manual page was written by Alain Schroeder <alain@parkautomat.net>,
+for the Debian GNU/Linux system (but may be used by others).

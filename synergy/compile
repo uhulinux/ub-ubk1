@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+#ub_compile
+cd ext
+mkdir -p gmock-1.6.0
+mkdir -p cryptopp562
+mkdir -p gtest-1.6.0
+unzip -x gmock-1.6.0.zip -d gmock-1.6.0
+unzip -x cryptopp562.zip -d cryptopp562
+unzip -x gtest-1.6.0.zip -d gtest-1.6.0
+cd ..
+cmake .
+ub_make

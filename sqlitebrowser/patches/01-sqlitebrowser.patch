@@ -1,0 +1,30 @@
+diff -Naurd a/sqlitebrowser/sqlitedb.h b/sqlitebrowser/sqlitedb.h
+--- a/sqlitebrowser/sqlitedb.h	2009-12-02 18:26:58.000000000 +0100
++++ b/sqlitebrowser/sqlitedb.h	2011-01-07 14:27:21.000000000 +0100
+@@ -41,7 +41,7 @@
+ class DBBrowserField
+     {    
+     public:
+-        DBBrowserField() : name( 0 ) { }
++        DBBrowserField() : name( "0" ) { }
+         DBBrowserField( const QString& wname,const QString& wtype )
+             : name( wname), type( wtype )
+         { }
+@@ -55,7 +55,7 @@
+ class DBBrowserIndex
+     {    
+     public:
+-        DBBrowserIndex() : name( 0 ) { }
++        DBBrowserIndex() : name( "0" ) { }
+        DBBrowserIndex( const QString& wname,const QString& wsql )
+             : name( wname), sql( wsql )
+         { }
+@@ -70,7 +70,7 @@
+ class DBBrowserTable
+     {    
+     public:
+-        DBBrowserTable() : name( 0 ) { }
++        DBBrowserTable() : name( "0" ) { }
+         DBBrowserTable( const QString& wname,const QString& wsql )
+             : name( wname), sql( wsql )
+         { }

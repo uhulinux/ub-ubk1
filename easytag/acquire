@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+easytag-${UB_VERSION}.tar.xz easytag-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/easytag/${UB_VERSION_HEAD2}/

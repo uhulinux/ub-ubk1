@@ -1,0 +1,12 @@
+diff -Naur linuxdoc-tools-0.9.21.orig/lib/LinuxDocTools.pm linuxdoc-tools-0.9.21/lib/LinuxDocTools.pm
+--- linuxdoc-tools-0.9.21.orig/lib/LinuxDocTools.pm	2001-10-18 15:38:03.000000000 +0200
++++ linuxdoc-tools-0.9.21/lib/LinuxDocTools.pm	2004-06-07 15:38:41.000000000 +0200
+@@ -600,7 +600,7 @@
+ 
+   create_temp("$tmpbase.3");
+   system ("$main::progs->{SGMLSASP} $style $mapping <\"$tmpbase.2\" |
+-      expand -$global->{tabsize} >\"$tmpbase.3\"");
++      expand -t $global->{tabsize} >\"$tmpbase.3\"");
+   ! -e "$tmpbase.3" and die "can't create file - exiting";
+ 
+ 

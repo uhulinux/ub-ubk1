@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+compface-${UB_VERSION}.tar.gz compface-${UB_VERSION}/
+	http://ftp.xemacs.org/pub/xemacs/aux/

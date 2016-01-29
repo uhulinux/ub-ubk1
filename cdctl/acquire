@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cdctl-${UB_VERSION}.tar.gz cdctl-${UB_VERSION}/
+	http://download.sourceforge.net/cdctl/

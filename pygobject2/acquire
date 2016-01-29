@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pygobject-${UB_VERSION}.tar.xz pygobject-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/pygobject/${UB_VERSION_HEAD2}/

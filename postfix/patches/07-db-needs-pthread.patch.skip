@@ -1,0 +1,12 @@
+diff -Naur postfix-2.0.18.orig/makedefs postfix-2.0.18/makedefs
+--- postfix-2.0.18.orig/makedefs	2003-11-05 20:50:15.000000000 +0100
++++ postfix-2.0.18/makedefs	2004-06-29 17:42:44.108783068 +0200
+@@ -201,7 +201,7 @@
+ 		#     CCARGS="$CCARGS -DHAS_DBM -DPATH_NDBM_H='<gdbm/ndbm.h>'"
+ 		#     GDBM_LIBS=gdbm
+ 		# fi
+-		SYSLIBS="-ldb"
++		SYSLIBS="-ldb -lpthread"
+ 		for name in nsl resolv $GDBM_LIBS
+ 		do
+ 		    for lib in /usr/lib64 /lib64 /usr/lib /lib

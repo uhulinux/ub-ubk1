@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+ppp-${UB_VERSION}.tar.gz ppp-${UB_VERSION}/
+	ftp://ftp.samba.org/pub/ppp/
+	ftp://cs.anu.edu.au/pub/software/ppp/
+

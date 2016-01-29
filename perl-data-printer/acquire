@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Data-Printer-${UB_VERSION}.tar.gz Data-Printer-${UB_VERSION}/
+	https://cpan.metacpan.org/authors/id/G/GA/GARU/

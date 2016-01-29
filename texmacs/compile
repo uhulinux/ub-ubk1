@@ -1,0 +1,18 @@
+#!/bin/sh -eux
+
+export QMAKE=qmake-qt4
+export MOC=moc-qt4
+export UIC=uic-qt4
+export RCC=/usr/lib/qt4/bin/rcc
+
+sed -i '/^LDPATH/d' src/makefile.in
+
+./configure \
+	--prefix=/usr \
+	--enable-pdf-renderer \
+	--enable-optimize \
+	--enable-guile2 \
+	--with-freetype \
+	--with-imlib2 \
+	--with-qt
+make

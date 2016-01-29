@@ -1,0 +1,74 @@
+diff -Naur kde-workspace-4.11.10-orig/kdm/config.def kde-workspace-4.11.10/kdm/config.def
+--- kde-workspace-4.11.10-orig/kdm/config.def	2014-06-08 10:55:49.000000000 +0000
++++ kde-workspace-4.11.10/kdm/config.def	2014-06-11 19:23:38.891791176 +0000
+@@ -1934,10 +1934,10 @@
+ 
+ Key: SessionsDirs
+ Type: list
+-Default: *KDMDATA "/sessions"
++Default: *"/usr/share/xsessions"
+ User: core
+ User: greeter-c
+-Instance: */KDMCONF "/sessions," KDMDATA "/sessions"
++Instance: */"/usr/share/xsessions"
+ Update: upd_sessionsdirs
+ Comment:
+  The directories containing session type definitions in .desktop format,
+diff -Naur kde-workspace-4.11.10-orig/kdm/kfrontend/sessions/CMakeLists.txt kde-workspace-4.11.10/kdm/kfrontend/sessions/CMakeLists.txt
+--- kde-workspace-4.11.10-orig/kdm/kfrontend/sessions/CMakeLists.txt	2014-06-08 10:55:49.000000000 +0000
++++ kde-workspace-4.11.10/kdm/kfrontend/sessions/CMakeLists.txt	2014-06-11 19:25:01.252790714 +0000
+@@ -4,53 +4,6 @@
+ install(FILES
+ 	${CMAKE_CURRENT_BINARY_DIR}/kde-plasma.desktop
+ 	${CMAKE_CURRENT_BINARY_DIR}/kde-plasma-safe.desktop
+-	gnome.desktop
+-	9wm.desktop
+-	aewm++.desktop
+-	aewm.desktop
+-	afterstep.desktop
+-	amaterus.desktop
+-	amiwm.desktop
+-	asclassic.desktop
+-	blackbox.desktop
+-	cde.desktop
+-	ctwm.desktop
+-	cwwm.desktop
+-	e16.desktop
+-        enlightenment.desktop
+-	evilwm.desktop
+-	fluxbox.desktop
+-	flwm.desktop
+-	fvwm.desktop
+-	fvwm95.desktop
+-	golem.desktop
+-	icewm.desktop
+-	ion.desktop
+-	larswm.desktop
+-	lwm.desktop
+-	matchbox.desktop
+-	metacity.desktop
+-	mwm.desktop
+-	olvwm.desktop
+-	olwm.desktop
+-	openbox.desktop
+-	oroborus.desktop
+-	phluid.desktop
+-	pwm.desktop
+-	qvwm.desktop
+-	ratpoison.desktop
+-	sapphire.desktop
+-	sawfish.desktop
+-	subtle.desktop
+-	twm.desktop
+-	ude.desktop
+-	vtwm.desktop
+-	w9wm.desktop
+-	waimea.desktop
+-	wm2.desktop
+-	wmaker.desktop
+-	xfce.desktop
+-	xfce4.desktop
+ 
+-	DESTINATION ${DATA_INSTALL_DIR}/kdm/sessions
++	DESTINATION ${DATA_INSTALL_DIR}/xsessions
+ )

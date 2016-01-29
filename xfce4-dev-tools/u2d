@@ -1,0 +1,2 @@
+dir=$(urllist http://archive.xfce.org/src/xfce/xfce4-dev-tools/ | grep -E '^[0-9]+\.[0-9]*[02468](\.[0-9.])?$' | sort -V | tail -n 1)
+urllist http://archive.xfce.org/src/xfce/xfce4-dev-tools/$dir/ | splitver '^xfce4-dev-tools-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

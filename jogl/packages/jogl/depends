@@ -1,0 +1,5 @@
+java-jre
+libx11
+libxxf86vm
+mesa
+newt-dev

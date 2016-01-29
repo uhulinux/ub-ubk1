@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_install
+mkdir -p $UB_INSTALLDIR/var/vdr/config/plugins/setup/help
+cp examples/minivdr/help/* $UB_INSTALLDIR/var/vdr/config/plugins/setup/help/

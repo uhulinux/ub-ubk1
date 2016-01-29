@@ -1,0 +1,14 @@
+gcc
+glibc-dev
+gpm-dev
+libsigc++-dev
+libstdc++-dev
+libt3key
+libt3window
+libtool
+libtranscript
+libunistring-dev
+libxau-dev
+libxcb-dev
+libxdmcp-dev
+pcre-dev

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+export CUSTOM_PROCPS_NAME=procps
+ub_compile \
+	--without-kernel-modules

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+recode-${UB_VERSION}.tar.gz recode-${UB_VERSION}/
+	ftp://ftp.gnu.org/gnu/recode/
+

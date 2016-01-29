@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-photos-${UB_VERSION}.tar.xz gnome-photos-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-photos/${UB_VERSION_HEAD2}/

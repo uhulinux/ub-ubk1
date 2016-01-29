@@ -1,0 +1,33 @@
+'extract /getenv HOME/'
+ myhome = getenv.1
+
+rnd = random(100000)
+
+tmpfile    = ''myhome'/.the.man.'rnd''
+edit_man   = 'zcat /usr/share/doc/the/the.man.gz > 'tmpfile''
+rm_tmpfile = 'rm 'tmpfile''
+
+'emsg Loading "The Hessling Editor Reference Manual"'
+rc = run_os(edit_man)
+If rc \= 0 Then
+  Do
+   'emsg Return code from edit_man' rc
+   Exit 1
+  End
+
+'the 'tmpfile''
+'SHift Left 4 ALL'
+'set backup OFF'
+'ssave 'tmpfile''
+'set backup KEEP'
+
+rc = run_os(rm_tmpfile)
+If rc \= 0 Then
+  Do
+   'emsg Return code from rm_tmpfile' rc
+   Exit 1
+  End
+
+'msg Done.'
+
+Return

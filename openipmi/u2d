@@ -1,0 +1,1 @@
+sflist openipmi OpenIPMI%202.0%20Library | splitver '^OpenIPMI-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+polkit-qt-${UB_VERSION/~/-}.tar.bz2 polkit-qt-${UB_VERSION#*~}/
+	ftp://ftp.kde.org/pub/kde/stable/apps/KDE4.x/admin/
+	svn://anonsvn.kde.org/home/kde/trunk/kdesupport/polkit-qt/@${UB_VERSION#*~r}

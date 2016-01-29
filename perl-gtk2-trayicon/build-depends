@@ -1,0 +1,4 @@
+gtk2-dev
+perl-extutils-depends
+perl-extutils-pkgconfig
+perl-gtk2

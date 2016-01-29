@@ -1,0 +1,12 @@
+diff -Naur orig/CMake/Packages/FindFreetype.cmake mod/CMake/Packages/FindFreetype.cmake
+--- orig/CMake/Packages/FindFreetype.cmake	2012-09-02 07:27:14.000000000 +0200
++++ mod/CMake/Packages/FindFreetype.cmake	2014-02-20 23:54:25.000000000 +0100
+@@ -43,7 +43,7 @@
+ findpkg_framework(FREETYPE)
+ message(STATUS "CMAKE_PREFIX_PATH: ${CMAKE_PREFIX_PATH}")
+ 
+-find_path(FREETYPE_INCLUDE_DIR NAMES freetype/freetype.h HINTS ${FREETYPE_INC_SEARCH_PATH} ${FREETYPE_PKGC_INCLUDE_DIRS} PATH_SUFFIXES freetype2)
++find_path(FREETYPE_INCLUDE_DIR NAMES freetype2/freetype.h HINTS ${FREETYPE_INC_SEARCH_PATH} ${FREETYPE_PKGC_INCLUDE_DIRS} PATH_SUFFIXES freetype2)
+ find_path(FREETYPE_FT2BUILD_INCLUDE_DIR NAMES ft2build.h HINTS ${FREETYPE_INC_SEARCH_PATH} ${FREETYPE_PKGC_INCLUDE_DIRS})
+ 
+ find_library(FREETYPE_LIBRARY_REL NAMES ${FREETYPE_LIBRARY_NAMES} HINTS ${FREETYPE_LIB_SEARCH_PATH} ${FREETYPE_PKGC_LIBRARY_DIRS} PATH_SUFFIXES "" release relwithdebinfo minsizerel)

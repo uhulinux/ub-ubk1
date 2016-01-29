@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+make \
+    INSTALL_PREFIX=${UB_INSTALLDIR}/usr \
+    INSTALL_MANDIR=${UB_INSTALLDIR}/usr/share/man \
+    install
+

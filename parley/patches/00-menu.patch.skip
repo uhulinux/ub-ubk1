@@ -1,0 +1,12 @@
+diff -Naur parley-4.6.90-orig//src/parley.desktop parley-4.6.90//src/parley.desktop
+--- parley-4.6.90-orig//src/parley.desktop	2011-06-22 16:52:49.000000000 +0200
++++ parley-4.6.90//src/parley.desktop	2011-06-29 19:03:54.000000000 +0200
+@@ -55,7 +55,7 @@
+ X-DocPath=parley/index.html
+ Type=Application
+ Terminal=false
+-Categories=Qt;KDE;Education;Languages;
++Categories=Qt;KDE;Education;Languages;X-UHU-Menu/Edutainment/Languages;
+ GenericName=Vocabulary Trainer
+ GenericName[af]=Woordeskat-afrigter
+ GenericName[ast]=Tutor de vocabulariu

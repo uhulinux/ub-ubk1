@@ -1,0 +1,1 @@
+urllist ftp://ftp.gnupg.org/gcrypt/gnupg/ | splitver '^gnupg-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

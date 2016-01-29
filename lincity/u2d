@@ -1,0 +1,1 @@
+sflist lincity Lincity%20Stable%20Source | grep -E '^([0-9.]+)$' | sort -V | tail -n 1

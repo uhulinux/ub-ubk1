@@ -1,0 +1,37 @@
+diff -Naur orig/src/FbTk/StringUtil.cc patched/src/FbTk/StringUtil.cc
+--- orig/src/FbTk/StringUtil.cc	2013-02-13 11:04:05.000000000 +0100
++++ patched/src/FbTk/StringUtil.cc	2014-03-15 11:27:22.529280627 +0100
+@@ -238,6 +238,9 @@
+ */
+ string expandFilename(const string &filename) {
+     string retval;
++    string retval2;
++    char *clocale;
++    string locale;
+     size_t pos = filename.find_first_not_of(" \t");
+     if (pos != string::npos && filename[pos] == '~') {
+ #ifdef _WIN32
+@@ -251,6 +254,23 @@
+         }
+     } else {
+         retval = filename; //return unmodified value
++
++    if (retval.size() < 8 || strcmp(retval.c_str() + retval.size() - 7, "[.LANG]"))
++        return retval;
++    /* if filename is "foobar[.LANG]" then... */
++    if ((clocale = setlocale(LC_MESSAGES, NULL)) != NULL) {
++        int i;
++        locale = clocale;
++        /* ... try "foobar.<language_TERRITORY>" first ... */
++        retval2 = retval.substr(0, retval.size() - 7) + '.' + locale.substr(0, locale.find_first_of(".@"));
++        if (access(retval2.c_str(), R_OK) == 0) return retval2;
++        /* ... then try "foobar.<language>" ... */
++        retval2 = retval.substr(0, retval.size() - 7) + '.' + locale.substr(0, locale.find_first_of("_.@"));
++        if (access(retval2.c_str(), R_OK) == 0) return retval2;
++    }
++    /* ... and finally try "foobar" */
++    retval2 = retval.substr(0, retval.size() - 7);
++    if (access(retval2.c_str(), R_OK) == 0) return retval2;
+     }
+ 
+ #if defined(_WIN32) && defined(DUMMYPREFIX)

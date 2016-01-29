@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+icmake_${UB_VERSION}.orig.tar.gz icmake-${UB_VERSION}/
+	http://downloads.sourceforge.net/project/icmake/icmake/${UB_VERSION}/

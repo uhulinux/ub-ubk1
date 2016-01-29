@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+# we use autotools instead of cmake cause it's buggy
+rm -rf CMakeLists.txt
+ub_compile \
+	--enable-xpdf-headers \
+	--enable-cms=lcms2

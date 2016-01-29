@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ipw2100-fw-${UB_VERSION}.tgz .
+	http://bughost.org/firmware/

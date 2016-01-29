@@ -1,0 +1,24 @@
+diff -Naur libindicate-0.6.92-orig/configure libindicate-0.6.92/configure
+--- libindicate-0.6.92-orig/configure	2012-03-21 21:40:20.000000000 +0100
++++ libindicate-0.6.92/configure	2012-04-07 09:53:37.000000000 +0200
+@@ -14320,7 +14320,7 @@
+ fi
+ 
+ # libpyglib-2.0-python* doesn't have a pkgconfig unfortunately
+-INDICATE_PYTHON_LIBS+=" -lpyglib-2.0-python$PYTHON_VERSION"
++INDICATE_PYTHON_LIBS+=" -lpyglib-2.0-python"
+ 
+ 
+ 
+diff -Naur libindicate-0.6.92-orig/configure.ac libindicate-0.6.92/configure.ac
+--- libindicate-0.6.92-orig/configure.ac	2012-03-21 21:40:05.000000000 +0100
++++ libindicate-0.6.92/configure.ac	2012-04-07 09:53:52.000000000 +0200
+@@ -213,7 +213,7 @@
+ )
+ 
+ # libpyglib-2.0-python* doesn't have a pkgconfig unfortunately
+-INDICATE_PYTHON_LIBS+=" -lpyglib-2.0-python$PYTHON_VERSION"
++INDICATE_PYTHON_LIBS+=" -lpyglib-2.0-python"
+ 
+ AC_SUBST(INDICATE_PYTHON_CFLAGS)
+ AC_SUBST(INDICATE_PYTHON_LIBS)

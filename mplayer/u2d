@@ -1,0 +1,1 @@
+urllist http://www.mplayerhq.hu/MPlayer/releases/ | splitver '^MPlayer-([0-9.]+).tar.xz$' | sort -V | tail -n 1

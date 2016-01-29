@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+griffith-${UB_VERSION}.tar.xz griffith-${UB_VERSION}/
+	http://launchpad.net/griffith/trunk/${UB_VERSION}/+download/

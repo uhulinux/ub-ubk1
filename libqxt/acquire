@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+v${UB_VERSION}.tar.gz libqxt-libqxt-af08f520f71c/
+	http://bitbucket.org/libqxt/libqxt/get/

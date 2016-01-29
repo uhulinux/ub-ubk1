@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+libaal-${UB_VERSION}.tar.gz libaal-${UB_VERSION}/
+	http://www.me.kernel.org/pub/linux/utils/fs/reiser4/libaal/
+	https://launchpad.net/libaal/main/${UB_VERSION}/+download/
+	

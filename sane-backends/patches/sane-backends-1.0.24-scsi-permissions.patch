@@ -1,0 +1,49 @@
+From 1567fcb9d9dd3dea6e0978ef2473ac7dba7dbba0 Mon Sep 17 00:00:00 2001
+From: Nils Philippsen <nils@redhat.com>
+Date: Wed, 20 Nov 2013 22:04:21 +0100
+Subject: [PATCH] patch: scsi-permissions
+
+Squashed commit of the following:
+
+commit 80e8a34505a45dd61761ce557bf029e33e39d2f2
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Wed Nov 20 21:45:23 2013 +0100
+
+    sane-desc: fix faulty udev logic for SCSI devices
+
+    SUBSYSTEMS!="..." seems to always match, i.e. skip the SCSI-specific
+    rules.
+
+    (cherry picked from commit 758731489d0d58bab6e4b70db9556038c9f4bb67)
+---
+ tools/sane-desc.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/tools/sane-desc.c b/tools/sane-desc.c
+index ae218c3..72e11b8 100644
+--- a/tools/sane-desc.c
++++ b/tools/sane-desc.c
+@@ -3569,7 +3569,8 @@ print_udev (void)
+ 
+   printf ("\nLABEL=\"libsane_usb_rules_end\"\n\n");
+ 
+-  printf ("SUBSYSTEMS!=\"scsi\", GOTO=\"libsane_scsi_rules_end\"\n\n");
++  printf ("SUBSYSTEMS==\"scsi\", GOTO=\"libsane_scsi_rules_begin\"\n");
++  printf ("GOTO=\"libsane_scsi_rules_end\"\n\n");
+   printf ("LABEL=\"libsane_scsi_rules_begin\"\n");
+   printf ("# Generic: SCSI device type 6 indicates a scanner\n");
+ 
+@@ -3695,7 +3696,9 @@ print_udevhwdb (void)
+   printf("ENV{DEVTYPE}==\"usb_device\", ENV{libsane_matched}==\"yes\", TEST==\"power/control\", ATTR{power/control}=\"on\"\n\n");
+   printf("ENV{DEVTYPE}==\"usb_device\", ENV{libsane_matched}==\"yes\", TEST!=\"power/control\", TEST==\"power/level\", ATTR{power/level}=\"on\"\n");
+ 
+-  printf ("SUBSYSTEMS!=\"scsi\", GOTO=\"libsane_rules_end\"\n");
++  printf ("SUBSYSTEMS==\"scsi\", GOTO=\"libsane_scsi_rules_begin\"\n");
++  printf ("GOTO=\"libsane_rules_end\"\n\n");
++  printf ("LABEL=\"libsane_scsi_rules_begin\"\n");
+   printf ("KERNEL!=\"sg[0-9]*\", GOTO=\"libsane_rules_end\"\n\n");
+ 
+   printf ("# Generic: SCSI device type 6 indicates a scanner\n");
+-- 
+1.8.4.2
+

@@ -1,0 +1,2 @@
+dir=$(urllist http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ | splitver '^ntp-([0-9.]+)$' | sort -V | tail -n 1)
+urllist "http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-$dir/" | splitver '^ntp-([0-9.]+(p[0-9]+)?).tar.gz$' | sort -V | tail -n 1

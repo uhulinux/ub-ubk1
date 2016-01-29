@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+smartypants-${UB_VERSION}.tar.gz smartypants-${UB_VERSION}/
+	http://pypi.python.org/packages/source/s/smartypants/

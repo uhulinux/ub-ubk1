@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gmm-"$UB_VERSION".tar.gz gmm-"$UB_VERSION"/
+	http://download.gna.org/getfem/stable/

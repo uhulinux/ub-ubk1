@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Conglomerate XML Editor
+Name[hu]=Conglomerate
+Comment=Edit XML files
+Comment[hu]=XML szerkesztő
+TryExec=conglomerate
+Exec=conglomerate %U
+Icon=conglomerate-icon-16
+Terminal=false
+Type=Application
+Categories=Utility;FileTools;
+MimeType=text/xml;text/x-dtd;text/x-xds;

@@ -1,0 +1,21 @@
+diff -Naurd a/netboot/ns8390.c b/netboot/ns8390.c
+--- a/netboot/ns8390.c	2004-06-03 19:18:42.000000000 +0200
++++ b/netboot/ns8390.c	2004-06-03 19:38:41.906079235 +0200
+@@ -40,7 +40,7 @@
+ #endif
+ static unsigned short	eth_nic_base, eth_asic_base;
+ static unsigned char	eth_memsize, eth_rx_start, eth_tx_start;
+-static Address		eth_bmem, eth_rmem;
++static unsigned long	eth_bmem, eth_rmem;
+ static unsigned char	eth_drain_receiver;
+ 
+ #ifdef	INCLUDE_WD
+@@ -393,7 +393,7 @@
+ 	unsigned int s,			/* size */
+ 	const char *p)			/* Packet */
+ {
+-	Address		eth_vmem = bus_to_virt(eth_bmem);
++	unsigned long		eth_vmem = bus_to_virt(eth_bmem);
+ #ifdef	INCLUDE_3C503
+         if (!(eth_flags & FLAG_PIO)) {
+                 memcpy((char *)eth_vmem, d, ETH_ALEN);	/* dst */

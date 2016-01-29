@@ -1,0 +1,12 @@
+diff -urN hugin-0.7_beta4.orig/src/hugin/CPListFrame.cpp hugin-0.7_beta4/src/hugin/CPListFrame.cpp
+--- hugin-0.7_beta4.orig/src/hugin1/hugin/CPListFrame.cpp	2007-02-02 00:18:23.000000000 +0100
++++ hugin-0.7_beta4/src/hugin1/hugin/CPListFrame.cpp	2007-10-04 20:18:08.000000000 +0200
+@@ -488,6 +488,8 @@
+     }
+ 
+     DEBUG_TRACE("sorting column " << m_sortCol);
++	unsigned int nrItems = m_list->GetItemCount();
++	if (nrItems == 0) return;
+     if (m_sortCol == colNumber) {
+         if (m_sortAscend) {
+             m_list->SortItems(&compareCPNr, 0);

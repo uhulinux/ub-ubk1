@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=blast
+Comment=Shooting the screen
+Comment[hu]=Monitorlyukasztó
+Exec=blast
+Categories=Game;

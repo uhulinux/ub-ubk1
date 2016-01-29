@@ -1,0 +1,21 @@
+diff -Naurd a/src/plugins/thumbnailffmpeg_extractor.c b/src/plugins/thumbnailffmpeg_extractor.c
+--- a/src/plugins/thumbnailffmpeg_extractor.c	2013-12-21 17:04:41.000000000 +0100
++++ b/src/plugins/thumbnailffmpeg_extractor.c	2013-12-28 18:56:27.000000000 +0100
+@@ -366,7 +366,7 @@
+  * @param ec extraction context to use
+  */
+ static void
+-extract_image (ENUM_CODEC_ID image_codec_id,
++extract_image (enum AVCodecID image_codec_id,
+                struct EXTRACTOR_ExtractContext *ec)
+ {
+   AVDictionary *opts;
+@@ -663,7 +663,7 @@
+   /**
+    * Corresponding ffmpeg decoder ID.
+    */
+-  ENUM_CODEC_ID codec_id;
++  enum AVCodecID codec_id;
+ };
+ 
+ 

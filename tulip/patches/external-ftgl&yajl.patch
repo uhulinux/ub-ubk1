@@ -1,0 +1,35 @@
+diff -Naur orig/CMakeLists.txt mod/CMakeLists.txt
+--- orig/CMakeLists.txt	2013-06-10 14:09:08.000000000 +0200
++++ mod/CMakeLists.txt	2013-07-30 18:41:18.000000000 +0200
+@@ -129,7 +129,7 @@
+ FIND_PACKAGE(ZLIB REQUIRED)
+ 
+ # Yajl
+-SET(YAJL_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/yajl/src ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/yajl/src/api ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/yajl/src/yajl ${CMAKE_CURRENT_BUILD_DIR}/thirdparty/yajl/yajl-2.0.1/include)
++SET(YAJL_INCLUDE_DIRS /usr/include)
+ 
+ # OpenGL
+ FIND_PACKAGE(OpenGL REQUIRED)
+@@ -236,7 +236,7 @@
+ SET(GZStreamInclude ${PROJECT_SOURCE_DIR}/thirdparty/gzstream/)
+ SET(QuazipInclude ${PROJECT_SOURCE_DIR}/thirdparty/quazip)
+ SET(QxtInclude ${PROJECT_SOURCE_DIR}/thirdparty/qxt/src)
+-SET(FTGLInclude ${PROJECT_SOURCE_DIR}/thirdparty/ftgl/)
++SET(FTGLInclude /usr/include)
+ SET(qscintilla2Include ${PROJECT_SOURCE_DIR}/thirdparty/QScintilla-gpl-2.5.1/Qt4/)
+ SET(OGDFInclude ${PROJECT_SOURCE_DIR}/thirdparty/OGDF)
+ SET(OGDFLibrary OGDF)
+diff -Naur orig/thirdparty/CMakeLists.txt mod/thirdparty/CMakeLists.txt
+--- orig/thirdparty/CMakeLists.txt	2013-06-10 14:08:51.000000000 +0200
++++ mod/thirdparty/CMakeLists.txt	2013-07-30 18:41:46.000000000 +0200
+@@ -1,10 +1,8 @@
+ DISABLE_COMPILER_WARNINGS()
+ 
+ ADD_SUBDIRECTORY(gzstream)
+-ADD_SUBDIRECTORY(ftgl)
+ ADD_SUBDIRECTORY(OGDF)
+ ADD_SUBDIRECTORY(quazip)
+-ADD_SUBDIRECTORY(yajl)
+ ADD_SUBDIRECTORY(qxt)
+ ADD_SUBDIRECTORY(libqhull)
+ 

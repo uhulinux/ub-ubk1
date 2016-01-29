@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+fribidi-${UB_VERSION}.tar.bz2 fribidi-${UB_VERSION}/
+	http://fribidi.org/download/

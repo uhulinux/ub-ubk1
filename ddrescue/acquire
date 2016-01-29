@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dd_rescue-"$UB_VERSION".tar.gz dd_rescue/
+	http://www.garloff.de/kurt/linux/ddrescue/

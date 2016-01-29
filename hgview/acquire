@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+hgview-${UB_VERSION}.tar.gz hgview-${UB_VERSION}/
+	http://download.logilab.org/pub/hgview/

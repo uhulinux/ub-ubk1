@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+smp_utils-${UB_VERSION}.tgz smp_utils-${UB_VERSION}/
+	http://sg.torque.net/sg/p/

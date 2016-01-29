@@ -1,0 +1,9 @@
+diff -Naur kbruch-4.6.90-orig//src/kbruch.desktop kbruch-4.6.90//src/kbruch.desktop
+--- kbruch-4.6.90-orig//src/kbruch.desktop	2011-05-20 22:33:55.000000000 +0200
++++ kbruch-4.6.90//src/kbruch.desktop	2011-06-27 08:29:24.000000000 +0200
+@@ -195,4 +195,4 @@
+ Name[x-test]=xxKBruchxx
+ Name[zh_CN]=KBruch
+ Name[zh_TW]=數學_KBruch
+-Categories=Qt;KDE;Education;Math;
++Categories=Qt;KDE;Education;Math;X-UHU-Menu/Edutainment/Mathematics;

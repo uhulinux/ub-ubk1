@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+cp  svn* "$UB_INSTALLDIR"/usr/bin/
+chmod +x "$UB_INSTALLDIR"/usr/bin/*
+
+ln -s svn2tar "$UB_INSTALLDIR"/usr/bin/svn2tgz
+ln -s svn2tar "$UB_INSTALLDIR"/usr/bin/svn2tbz2

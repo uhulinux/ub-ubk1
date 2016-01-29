@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_install
+
+install -d -m 777 "$UB_INSTALLDIR"/var/vdr/config/themes
+install -m 777 themes/* "$UB_INSTALLDIR"/var/vdr/config/themes/

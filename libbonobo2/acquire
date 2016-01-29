@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libbonobo-${UB_VERSION}.tar.gz libbonobo-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libbonobo/${UB_VERSION_HEAD2}/

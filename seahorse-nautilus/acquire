@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+seahorse-nautilus-${UB_VERSION}.tar.xz seahorse-nautilus-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/seahorse-nautilus/${UB_VERSION_HEAD2}/

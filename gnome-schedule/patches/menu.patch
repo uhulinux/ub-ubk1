@@ -1,0 +1,16 @@
+--- gnome-schedule.orig/desktop/gnome-schedule.desktop.in.in	2009-05-10 11:21:23.000000000 +0200
++++ gnome-schedule/desktop/gnome-schedule.desktop.in.in	2009-05-17 16:54:41.000000000 +0200
+@@ -1,9 +1,9 @@
+ [Desktop Entry]
+-_Name=Scheduled tasks
++_Name=GNOME Schedule
+ _Comment=Manage your system tasks
+-Categories=System;
+-Icon=@prefix@/share/pixmaps/gnome-schedule/gnome-schedule.svg
+-Exec=@prefix@/bin/gnome-schedule
++Categories=GTK;GNOME;X-UHU-Menu/Settings;
++Icon=gnome-schedule/gnome-schedule.svg
++Exec=gnome-schedule
+ Type=Application
+ StartupNotify=true
+ Terminal=false

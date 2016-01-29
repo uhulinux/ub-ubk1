@@ -1,0 +1,12 @@
+diff -Naurd a/netboot/sis900.c b/netboot/sis900.c
+--- a/netboot/sis900.c	2004-06-03 19:18:42.000000000 +0200
++++ b/netboot/sis900.c	2004-06-03 19:41:48.842016458 +0200
+@@ -115,7 +115,7 @@
+ 		"SIS 85C503/5513 PCI to ISA bridge"},
+ };
+ 
+-static struct pci_driver sis_bridge_driver __pci_driver = {
++static struct pci_driver sis_bridge_driver = {
+ 	.type     = BRIDGE_DRIVER,
+ 	.name     = "",
+ 	.probe    = 0,

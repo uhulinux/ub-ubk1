@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ttf-bitstream-vera-${UB_VERSION}.tar.gz ttf-bitstream-vera-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/ttf-bitstream-vera/${UB_VERSION_HEAD2}/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gtkam-${UB_VERSION}.tar.gz gtkam-${UB_VERSION}/
+	http://downloads.sourceforge.net/gphoto/

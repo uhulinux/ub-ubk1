@@ -1,0 +1,3 @@
+pycrypto >=
+pygobject2 >=
+pyopenssl >=

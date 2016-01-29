@@ -1,0 +1,1 @@
+urllist http://hal.freedesktop.org/releases | splitver '^udisks-([0-9.]+).tar.gz$' | sort -V | tail -n 1

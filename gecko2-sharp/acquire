@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gecko-sharp-2.0-${UB_VERSION}.tar.bz2 gecko-sharp-2.0-${UB_VERSION}/
+	http://ftp.novell.com/pub/mono/sources/gecko-sharp2/

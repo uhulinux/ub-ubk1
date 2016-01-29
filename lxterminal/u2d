@@ -1,0 +1,1 @@
+sflist lxde LXTerminal%20%28terminal%20emulator%29 | splitver '^LXTerminal%20([0-9.]+)$' | sort -V | tail -n 1

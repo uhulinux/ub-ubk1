@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+UB_MAKEINSTALL_USE_DESTDIR=yes ub_makeinstall
+

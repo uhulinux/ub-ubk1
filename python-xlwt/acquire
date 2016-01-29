@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xlwt-${UB_VERSION}.tar.gz xlwt-${UB_VERSION}/
+	http://pypi.python.org/packages/source/x/xlwt/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+elinks-${UB_VERSION_HEAD2}${UB_VERSION#*~}.tar.gz elinks-${UB_VERSION_HEAD2}${UB_VERSION#*~}/
+	http://elinks.or.cz/download/

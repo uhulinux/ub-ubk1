@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+make DESTDIR="${UB_INSTALLDIR}" PREFIX="/usr" install
+
+mkdir -p "${UB_INSTALLDIR}/usr/share/mercurial"
+cp -a hgweb.cgi "${UB_INSTALLDIR}/usr/share/mercurial"
+cp -a contrib "${UB_INSTALLDIR}/usr/share/mercurial"
+rm -f "${UB_INSTALLDIR}/usr/share/mercurial"/contrib/hgk
+rm -f "${UB_INSTALLDIR}/usr/share/mercurial"/contrib/plan9/9diff
+
+mkdir -p "${UB_INSTALLDIR}/usr/share/zsh/site-functions"
+cp -a contrib/zsh_completion "${UB_INSTALLDIR}/usr/share/zsh/site-functions"/_hg
+
+cp -a hgeditor "${UB_INSTALLDIR}/usr/bin"

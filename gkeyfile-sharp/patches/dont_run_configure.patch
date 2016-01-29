@@ -1,0 +1,8 @@
+--- a/autogen.sh.orig	2010-09-01 20:11:34.000000000 +0200
++++ a/autogen.sh	2011-11-01 13:17:01.000000000 +0100
+@@ -5,5 +5,3 @@
+ aclocal
+ automake --add-missing --gnu
+ autoconf
+-
+-./configure $@

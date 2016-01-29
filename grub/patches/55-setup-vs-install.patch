@@ -1,0 +1,18 @@
+diff -Naur grub-cvs.orig/util/grub-install.in grub-cvs/util/grub-install.in
+--- grub-cvs.orig/util/grub-install.in	2003-08-13 04:14:46.000000000 +0200
++++ grub-cvs/util/grub-install.in	2004-01-13 22:20:58.000000000 +0100
+@@ -435,10 +435,13 @@
+ # Create a safe temporary file.
+ test -n "$mklog" && log_file=`$mklog`
+ 
++# Check if we need the "d" option.
++[ "${root_drive%%[,)]*}" != "${install_drive%%[,)]*}" ] && d="d" || d=""
++
+ # Now perform the installation.
+ $grub_shell --batch $no_floppy --device-map=$device_map <<EOF >$log_file
+ root $root_drive
+-setup $force_lba --stage2=$grubdir/stage2 --prefix=$grub_prefix $install_drive
++install $force_lba --stage2=$grubdir/stage2 $grub_prefix/stage1 $d $install_drive $grub_prefix/stage2 p /boot/grub/menu.lst
+ quit
+ EOF
+ 

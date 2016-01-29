@@ -1,0 +1,14 @@
+diff -Naur sympa-5.3.orig/src/List.pm sympa-5.3/src/List.pm
+--- sympa-5.3.orig/src/List.pm	2007-05-24 18:05:21.000000000 +0200
++++ sympa-5.3/src/List.pm	2007-06-05 20:00:39.000000000 +0200
+@@ -2396,6 +2396,10 @@
+ 	
+ 	## If subject is tagged, replace it with new tag
+ 	$subject_field =~ s/\s*\[$tag_regexp\]//;
++
++	## Remove duplicate Re: entries.
++	$subject_field =~ s/(Re: )+/Re: /g;
++
+  	## Encode subject using initial charset
+ 
+ 	## Don't try to encode the subject if it was not originaly encoded non-ASCII.

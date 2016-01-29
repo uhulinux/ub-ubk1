@@ -1,0 +1,12 @@
+diff -urN PAM.orig/modules/pam_utmp/pam_utmp.c PAM/modules/pam_utmp/pam_utmp.c
+--- PAM.orig/modules/pam_utmp/pam_utmp.c	2001-03-29 00:29:12.000000000 +0200
++++ PAM/modules/pam_utmp/pam_utmp.c	2003-09-25 02:53:54.000000000 +0200
+@@ -70,7 +70,7 @@
+     if (host) 
+ 	strncpy(utx.ut_host, host, sizeof(utx.ut_host));
+ 
+-    if (!strncmp("pts/", utx.ut_line, 4)) {
++    if (!strncmp("pts/", utx.ut_line, 4) || !strncmp("vc/", utx.ut_line, 3)) {
+ 	id = utx.ut_line + 3;
+ 	if (strlen(id) > 4) id++;
+     } else {

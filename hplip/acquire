@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+hplip-"$UB_VERSION".tar.gz hplip-"$UB_VERSION"/
+	http://downloads.sourceforge.net/hplip/

@@ -1,0 +1,24 @@
+diff -Naurdp xscreensaver-5.29/driver/XScreenSaver_ad.h xscreensaver-5.29-browser/driver/XScreenSaver_ad.h
+--- xscreensaver-5.29/driver/XScreenSaver_ad.h	2014-06-08 23:43:53.000000000 +0200
++++ xscreensaver-5.29-browser/driver/XScreenSaver_ad.h	2014-06-19 14:25:03.557743865 +0200
+@@ -46,7 +46,7 @@
+ "*demoCommand: xscreensaver-demo",
+ "*prefsCommand: xscreensaver-demo -prefs",
+ "*helpURL: http://www.jwz.org/xscreensaver/man.html",
+-"*loadURL: gnome-open '%s'",
++"*loadURL: browser '%s'",
+ "*manualCommand: gnome-terminal --title '%s manual' \
+ 		--command '/bin/sh -c \"man %s; read foo\"'",
+ "*dateFormat:		%d-%b-%y (%a); %I:%M %p",
+diff -Naurdp xscreensaver-5.29/driver/XScreenSaver.ad.in xscreensaver-5.29-browser/driver/XScreenSaver.ad.in
+--- xscreensaver-5.29/driver/XScreenSaver.ad.in	2014-06-08 23:43:53.000000000 +0200
++++ xscreensaver-5.29-browser/driver/XScreenSaver.ad.in	2014-06-19 14:26:21.245746632 +0200
+@@ -115,7 +115,7 @@ GetViewPortIsFullOfLies: False
+ !
+ !   non-Gnome systems:
+ !
+-@NOGNOME@*loadURL: firefox '%s' || mozilla '%s' || netscape '%s'
++@NOGNOME@*loadURL: browser '%s'
+ @NOGNOME@*manualCommand: xterm -sb -fg black -bg gray75 -T '%s manual' \
+ @NOGNOME@		    -e /bin/sh -c 'man "%s" ; read foo'
+ 

@@ -1,0 +1,11 @@
+--- a/bonobo-activation/bonobo-activation-init.c.orig	2013-03-06 20:58:11.000000000 +0100
++++ a/bonobo-activation/bonobo-activation-init.c	2013-03-06 20:58:46.000000000 +0100
+@@ -46,7 +46,7 @@
+ 
+ #include <orbit/orbit.h>
+ 
+-GStaticRecMutex _bonobo_activation_guard = G_STATIC_REC_MUTEX_INIT;
++GRecMutex _bonobo_activation_guard;
+ static CORBA_ORB bonobo_activation_orb = CORBA_OBJECT_NIL;
+ static CORBA_Context bonobo_activation_context;
+ static gboolean is_initialized = FALSE;

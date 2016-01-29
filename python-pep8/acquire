@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pep8-${UB_VERSION}.tar.gz pep8-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pep8/

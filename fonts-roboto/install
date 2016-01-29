@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/fonts/TTF
+for dir in Roboto RobotoCondensed; do
+	pushd "$dir"
+	cp -a *.ttf "$UB_INSTALLDIR"/usr/share/fonts/TTF/
+	popd
+done
+mkfontscale "$UB_INSTALLDIR"/usr/share/fonts/TTF
+sed 1d \
+  <"$UB_INSTALLDIR"/usr/share/fonts/TTF/fonts.scale \
+  >"$UB_INSTALLDIR"/usr/share/fonts/TTF/fonts.scale.roboto
+rm "$UB_INSTALLDIR"/usr/share/fonts/TTF/fonts.scale
+cp -a "$UB_INSTALLDIR"/usr/share/fonts/TTF/fonts.{scale,dir}.roboto

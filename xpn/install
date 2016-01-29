@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/xpn
+
+cp -a lang pixmaps xpn_src xpn.py "$UB_INSTALLDIR"/usr/lib/xpn/
+
+rm -rf "$UB_INSTALLDIR"/usr/lib/xpn/lang/xpn.pot

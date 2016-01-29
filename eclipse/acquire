@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+eclipse-SDK-${UB_VERSION}-linux-gtk.tar.gz eclipse/
+	http://download.eclipse.org/eclipse/downloads/drops4/R-${UB_VERSION}-201406061215/

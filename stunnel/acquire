@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+stunnel-${UB_VERSION}.tar.gz stunnel-${UB_VERSION}/
+	ftp://stunnel.mirt.net/stunnel/
+	ftp://stunnel.mirt.net/stunnel/OBSOLETE/

@@ -1,0 +1,65 @@
+diff -urN fortune-1.0.orig/fortune.c fortune-1.0/fortune.c
+--- fortune-1.0.orig/fortune.c	2001-06-25 22:22:26.000000000 +0200
++++ fortune-1.0/fortune.c	2003-05-19 20:04:08.000000000 +0200
+@@ -28,6 +28,7 @@
+ #include <getopt.h>
+ #include <dirent.h>
+ #include <errno.h>
++#include <ctype.h>
+ 
+ void carp(const char* msg,const char* filename) {
+   write(2,msg,strlen(msg));
+@@ -173,6 +174,11 @@
+   int retcode;
+   int c;
+   char *re;
++  char fortunedir[PATH_MAX];
++  char *lang;
++  char *l2;
++  int ll;
++  int found = 0;
+ 
+   progname=argv[0]; re=NULL;
+   while ((c = getopt_long(argc, argv, "h?m:V",
+@@ -214,9 +220,30 @@
+     retcode = printormatchfortune(filename, re);
+   } else {
+     /* No? Then search the fortune directory. */
+-    DIR *d;
++    DIR *d = NULL;
+ 
+-    d=opendir(FORTUNEDIR);
++    lang = getenv("LC_ALL");
++    if (lang == NULL) lang = getenv("LC_MESSAGES");
++    if (lang == NULL) lang = getenv("LANG");
++    if (lang == NULL) lang = getenv("LANGUAGE");
++
++    while (d == NULL && lang != NULL) {
++      l2 = strchr(lang, ':');
++      if (l2 != NULL) *l2++ = '\0';
++      ll = strlen(lang);
++      while (d == NULL && ll > 0) {
++        sprintf(fortunedir, "%s/%s", FORTUNEDIR, lang);
++        d=opendir(fortunedir);
++        while (ll > 0 && isalnum(lang[ll-1])) ll--;
++        while (ll > 0 && !isalnum(lang[ll-1])) ll--;
++        lang[ll] = '\0';
++      }
++      lang = l2;
++    }
++    if (d == NULL) {
++      strcpy(fortunedir,FORTUNEDIR);
++      d=opendir(fortunedir);
++    }
+     if (d == NULL) {
+       carp("could not open directory",FORTUNEDIR);
+       retcode=1;
+@@ -227,7 +254,7 @@
+ 
+       retcode=0;
+      
+-      chdir(FORTUNEDIR);
++      chdir(fortunedir);
+       while ((e=readdir(d)) != NULL) {
+ 	struct stat sbuf;
+ 

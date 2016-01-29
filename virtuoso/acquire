@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+virtuoso-opensource-${UB_VERSION}.tar.gz virtuoso-opensource-${UB_VERSION}/
+	http://downloads.sourceforge.net/virtuoso/

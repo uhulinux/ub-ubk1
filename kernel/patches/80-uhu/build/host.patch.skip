@@ -1,0 +1,16 @@
+diff -Naurdp a/scripts/mkcompile_h b/scripts/mkcompile_h
+--- a/scripts/mkcompile_h	2009-11-03 20:37:49.000000000 +0100
++++ b/scripts/mkcompile_h	2009-11-11 15:47:33.000000000 +0100
+@@ -63,9 +63,9 @@ UTS_TRUNCATE="cut -b -$UTS_LEN"
+ 
+   echo \#define UTS_VERSION \"`echo $UTS_VERSION | $UTS_TRUNCATE`\"
+ 
+-  echo \#define LINUX_COMPILE_TIME \"`date +%T`\"
+-  echo \#define LINUX_COMPILE_BY \"`whoami`\"
+-  echo \#define LINUX_COMPILE_HOST \"`hostname | $UTS_TRUNCATE`\"
++  echo \#define LINUX_COMPILE_BY \"uhubuild\"
++  echo \#define LINUX_COMPILE_HOST \"build\"
++  echo \#define LINUX_COMPILE_DOMAIN \"uhulinux.hu\"
+ 
+   if [ -x /bin/dnsdomainname ]; then
+     domain=`dnsdomainname 2> /dev/null`

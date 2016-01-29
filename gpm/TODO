@@ -1,0 +1,33 @@
+systemd-be kellene beépíteni
+
+AA 00 reconnect csak ps2 egerek eseten
+ne hagyjon sose pid filet
+tty console jogokat ellenorizni (redhat patch)
+
+forced ps2, imps2, exps2
+regi ps2detect-et atnezni
+
+syncelessel parhuzamosan keresse a reconnect mintat
+sot, a reconnect mintat akkor is talalja meg, ha nem syncelve erkezik
+(gyk: mukodjon a reset utan a reconnect akkor is, ha elobb jon egy ACK a
+ resetre)
+
+r_exps2
+
+a read ps2 egernel miert csak 1 byteonkent megy??
+
+kernel: ha nincs radugva eger, es megy egy write, visszajon ra egy EIO,
+ez eddig ok, de a kovetkezo (timeout idon belul) kiadott writera az jon
+vissza hogy sikerult!!
+
+read_mouse_id: ne legyen special case a 0xfa miatt, mert azt a write_to_mouse
+ mar fel kellett dolgozza
+
+init_mouse(vagy mi): ne resetelje az egeret (elvileg erre semmi szukseg a
+ basic_init miatt)
+
+esetleg kulon ps2_waiting_for_reconnect protokoll?
+
+ha nem sikerult a ps2 init, akkor is kuldjon ENABLE_DEV parancsot, igy jobb
+esellyel mukodik. (mert ha init kozben elveszik 1 byte, de vegul elkezd
+beszelni az eger, akkor mukodik.)

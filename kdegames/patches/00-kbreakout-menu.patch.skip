@@ -1,0 +1,9 @@
+diff -Naur kdegames-orig/kbreakout-4.10.0/kbreakout.desktop kdegames/kbreakout-4.10.0/kbreakout.desktop
+--- kdegames-orig/kbreakout-4.13.0/kbreakout.desktop	2013-01-23 23:05:39.000000000 +0100
++++ kdegames/kbreakout-4.13.0/kbreakout.desktop	2013-02-28 11:10:04.000000000 +0100
+@@ -103,4 +103,4 @@
+ GenericName[zh_TW]=打磚塊遊戲
+ X-KDE-StartupNotify=true
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Game;ArcadeGame;
++Categories=Qt;KDE;Game;ArcadeGame;X-UHU-Menu/Games/Arcade;

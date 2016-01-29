@@ -1,0 +1,36 @@
+#!/bin/sh -eux
+
+export JAVA=/usr/lib/java/jre/bin/java
+./bootstrap
+export JAVA_EXE=/usr/lib/java/jre/bin/java
+export ac_cv_path_LATEX=no
+export ac_cv_lib_avcodec_ff_vdpau_vc1_decode_picture=yes
+ub_compile \
+	--enable-libbluray \
+	--enable-pulse \
+	--enable-sdl \
+	--enable-gl \
+	--enable-goom \
+	--disable-hal \
+	--enable-udev \
+	--enable-libusb \
+	--enable-vaapi \
+	--enable-vdpau \
+	--disable-debug \
+	--enable-xrandr \
+	--enable-texturepacker \
+	--enable-external-ffmpeg \
+	--enable-external-libraries \
+	--enable-xvba \
+	--enable-joystick \
+	--enable-rsxs \
+	--enable-projectm \
+	--enable-x11 \
+	--enable-samba \
+	--enable-nfs \
+	--enable-airplay \
+	--enable-ffmpeg-libvorbis \
+	--enable-dvdcss \
+	--enable-avahi \
+	--enable-webserver \
+	--enable-optical-drive

@@ -1,0 +1,12 @@
+diff -Naurd a/NMEA.pm b/NMEA.pm
+--- a/NMEA.pm	2007-06-28 17:34:50.000000000 +0200
++++ b/NMEA.pm	2007-06-28 17:35:59.000000000 +0200
+@@ -100,7 +126,7 @@
+     }
+ 
+     $deg = sprintf("%d",$deg);
+-    return "$deg.$dm$sec";
++    return "$deg.".substr(sprintf("%.06f", ("$dm.$sec"/60)), 2, 6);
+ }
+ 
+ 

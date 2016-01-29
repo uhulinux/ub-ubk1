@@ -1,0 +1,116 @@
+diff -Naurd orig/lib/themes/Infadel2/default.theme mod/lib/themes/Infadel2/default.theme
+--- orig/lib/themes/Infadel2/default.theme	2009-01-25 15:39:50.000000000 +0100
++++ mod/lib/themes/Infadel2/default.theme	2009-12-02 22:10:59.000000000 +0100
+@@ -93,34 +93,6 @@
+ ColorQuickSwitch="rgb:32/3d/4c"
+ ColorQuickSwitchText="rgb:ff/ff/ff"
+ 
+-# Font Specification
+-TitleFontNameXft	   = 	"Snap:size=10,sans-serif:size=8"
+-MenuFontNameXft	           =    "Snap:size=10,sans-serif:size=8"
+-MinimizedWindowFontNameXft =    "Snap:size=10,sans-serif:size=8"
+-ActiveButtonFontNameXft    =    "Snap:size=10,sans-serif:size=8:bold"
+-NormalButtonFontNameXft    =    "Snap:size=10,sans-serif:size=8"
+-QuickSwitchFontNameXft     =    "Snap:size=10,sans-serif:size=8"
+-ListBoxFontNameXft         =    "Snap:size=10,sans-serif:size=8"
+-StatusFontNameXft          =    "Snap:size=10,sans-serif:size=8"
+-ToolTipFontNameXft         =    "Snap:size=10,sans-serif:size=8"
+-ActiveTaskBarFontNameXft   =    "Snap:size=10,sans-serif:size=8:bold"
+-NormalTaskBarFontNameXft   =    "Snap:size=10,sans-serif:size=8"
+-ClockFontNameXft           =    "lucida:size=14:bold,sans-serif:size=14:bold"
+-ApmFontNameXft             =    "lucida:size=14:bold,sans-serif:size=14:bold"
+-
+-TitleFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-MenuFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-MinimizedWindowFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ActiveButtonFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-NormalButtonFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-QuickSwitchFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ListBoxFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-StatusFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ToolTipFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ActiveTaskBarFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-NormalTaskBarFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ClockFontName		=	"-b&h-lucida-bold-r-normal-sans-14-*-*-*-*-*-*-*"
+-ApmFontName		=	"-b&h-lucida-bold-r-normal-sans-14-*-*-*-*-*-*-*"
+ 
+ ShowMenuButtonIcon=0
+ TaskBarClockLeds=0
+diff -Naurd orig/lib/themes/Infadel2/Ergonomic.theme mod/lib/themes/Infadel2/Ergonomic.theme
+--- orig/lib/themes/Infadel2/Ergonomic.theme	2009-01-25 15:39:50.000000000 +0100
++++ mod/lib/themes/Infadel2/Ergonomic.theme	2009-12-02 22:11:36.000000000 +0100
+@@ -93,35 +93,6 @@
+ ColorQuickSwitch="rgb:32/3d/4c"
+ ColorQuickSwitchText="rgb:ff/ff/ff"
+ 
+-# Font Specification
+-TitleFontNameXft	   = 	"Snap:size=10,sans-serif:size=8"
+-MenuFontNameXft	           =    "Snap:size=10,sans-serif:size=8"
+-MinimizedWindowFontNameXft =    "Snap:size=10,sans-serif:size=8"
+-ActiveButtonFontNameXft    =    "Snap:size=10,sans-serif:size=8:bold"
+-NormalButtonFontNameXft    =    "Snap:size=10,sans-serif:size=8"
+-QuickSwitchFontNameXft     =    "Snap:size=10,sans-serif:size=8"
+-ListBoxFontNameXft         =    "Snap:size=10,sans-serif:size=8"
+-StatusFontNameXft          =    "Snap:size=10,sans-serif:size=8"
+-ToolTipFontNameXft         =    "Snap:size=10,sans-serif:size=8"
+-ActiveTaskBarFontNameXft   =    "Snap:size=10,sans-serif:size=8:bold"
+-NormalTaskBarFontNameXft   =    "Snap:size=10,sans-serif:size=8"
+-ClockFontNameXft           =    "lucida:size=14:bold,sans-serif:size=14:bold"
+-ApmFontNameXft             =    "lucida:size=14:bold,sans-serif:size=14:bold"
+-
+-# Font Specification
+-TitleFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-MenuFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-MinimizedWindowFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ActiveButtonFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-NormalButtonFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-QuickSwitchFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ListBoxFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-StatusFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ToolTipFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ActiveTaskBarFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-NormalTaskBarFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ClockFontName		=	"-b&h-lucida-bold-r-normal-sans-14-*-*-*-*-*-*-*"
+-ApmFontName		=	"-b&h-lucida-bold-r-normal-sans-14-*-*-*-*-*-*-*"
+ 
+ ShowMenuButtonIcon=0
+ TaskBarClockLeds=0
+diff -Naurd orig/lib/themes/Infadel2/Overloaded.theme mod/lib/themes/Infadel2/Overloaded.theme
+--- orig/lib/themes/Infadel2/Overloaded.theme	2009-01-25 15:39:50.000000000 +0100
++++ mod/lib/themes/Infadel2/Overloaded.theme	2009-12-02 22:12:05.000000000 +0100
+@@ -93,35 +93,6 @@
+ ColorQuickSwitch="rgb:32/3d/4c"
+ ColorQuickSwitchText="rgb:ff/ff/ff"
+ 
+-# Font Specification
+-TitleFontNameXft	   = 	"Snap:size=10,sans-serif:size=8"
+-MenuFontNameXft	           =    "Snap:size=10,sans-serif:size=8"
+-MinimizedWindowFontNameXft =    "Snap:size=10,sans-serif:size=8"
+-ActiveButtonFontNameXft    =    "Snap:size=10,sans-serif:size=8:bold"
+-NormalButtonFontNameXft    =    "Snap:size=10,sans-serif:size=8"
+-QuickSwitchFontNameXft     =    "Snap:size=10,sans-serif:size=8"
+-ListBoxFontNameXft         =    "Snap:size=10,sans-serif:size=8"
+-StatusFontNameXft          =    "Snap:size=10,sans-serif:size=8"
+-ToolTipFontNameXft         =    "Snap:size=10,sans-serif:size=8"
+-ActiveTaskBarFontNameXft   =    "Snap:size=10,sans-serif:size=8:bold"
+-NormalTaskBarFontNameXft   =    "Snap:size=10,sans-serif:size=8"
+-ClockFontNameXft           =    "lucida:size=14:bold,sans-serif:size=14:bold"
+-ApmFontNameXft             =    "lucida:size=14:bold,sans-serif:size=14:bold"
+-
+-# Font Specification
+-TitleFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-MenuFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-MinimizedWindowFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ActiveButtonFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-NormalButtonFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-QuickSwitchFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ListBoxFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-StatusFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ToolTipFontName		=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ActiveTaskBarFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-NormalTaskBarFontName	=	"-artwiz-snap-regular-r-normal-sans-10-*-*-*-*-*-*-*"
+-ClockFontName		=	"-b&h-lucida-bold-r-normal-sans-14-*-*-*-*-*-*-*"
+-ApmFontName		=	"-b&h-lucida-bold-r-normal-sans-14-*-*-*-*-*-*-*"
+ 
+ ShowMenuButtonIcon=0
+ TaskBarClockLeds=0

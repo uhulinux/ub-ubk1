@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+genesis-${UB_VERSION}.tar.gz genesis-${UB_VERSION}/
+	http://launchpad.net/genesis-sync/trunk/${UB_VERSION}/+download/

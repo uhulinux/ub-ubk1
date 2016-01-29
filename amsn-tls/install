@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+cp -a * $UB_INSTALLDIR/usr/lib/
+
+chown -R root:root $UB_INSTALLDIR/usr/lib/*

@@ -1,0 +1,92 @@
+#!/bin/sh -eux
+
+export LD_LIBRARY_PATH="$(pwd)"/lib
+
+yes yes | ./configure \
+	-platform linux-g++-32 \
+	-prefix /usr/lib/qt4 \
+	\
+	-release            \
+	-opensource         \
+	-shared             \
+	-fast               \
+	-largefile          \
+	\
+	-exceptions         \
+	-accessibility      \
+	-stl                \
+	\
+	-plugin-sql-mysql -I/usr/include/mysql \
+	-plugin-sql-psql -I/usr/include/postgresql -I/usr/include/postgresql/server \
+	-plugin-sql-odbc    \
+	-plugin-sql-sqlite  \
+	-system-sqlite      \
+	\
+	-qt3support         \
+	-xmlpatterns        \
+	-multimedia         \
+	-audio-backend      \
+	-no-phonon          \
+	-no-phonon-backend  \
+	\
+	-svg                \
+	-webkit             \
+	-javascript-jit     \
+	-script             \
+	-scripttools        \
+	-declarative        \
+	\
+	-system-zlib        \
+	-system-libtiff     \
+	-system-libpng      \
+	-system-libmng      \
+	-system-libjpeg     \
+	\
+	-openssl-linked     \
+	\
+	-rpath              \
+	-verbose            \
+	-silent             \
+	-optimized-qmake    \
+	\
+	-no-nis             \
+	-cups               \
+	-iconv              \
+	-no-pch             \
+	-dbus-linked        \
+	\
+	-reduce-relocations \
+	-no-separate-debug-info \
+	\
+	-gtkstyle           \
+	-no-nas-sound       \
+	-opengl             \
+	-no-openvg          \
+	\
+	-sm                 \
+	-xshape             \
+	-xsync              \
+	-xinerama           \
+	-xcursor            \
+	-xfixes             \
+	-xrandr             \
+	-xrender            \
+	-mitshm             \
+	-fontconfig         \
+	-xinput             \
+	-xkb                \
+	\
+	-lcrypto            \
+	-lcrypt             \
+	-lssl               \
+	
+ub_make
+
+#some options we may want to use in the future
+#	-phonon-backend     \
+#	-phonon             \
+#	-multimedia         \
+#	-audio-backend      \
+#	-nomake demos       \
+#	-nomake examples    \
+#	-nomake docs

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+cd extra/kipi-plugins/
+
+ub_install

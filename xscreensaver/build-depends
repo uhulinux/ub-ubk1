@@ -1,0 +1,11 @@
+gtk2-dev
+intltool
+libglade2-dev
+libice-dev
+libjpeg-dev
+libxext-dev
+libxi-dev
+libxml2-dev
+libxmu-dev
+libxpm-dev
+libxt-dev

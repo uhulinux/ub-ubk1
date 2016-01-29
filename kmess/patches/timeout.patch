@@ -1,0 +1,12 @@
+diff -Naur kmess-r4049.orig/src/network/msnnotificationconnection.cpp kmess-r4049/src/network/msnnotificationconnection.cpp
+--- kmess-r4049.orig/src/network/msnnotificationconnection.cpp	2009-01-20 19:17:56.000000000 +0100
++++ kmess-r4049/src/network/msnnotificationconnection.cpp	2009-01-28 15:15:23.000000000 +0100
+@@ -60,7 +60,7 @@
+  * (any command, in fact). If nothing arrives and this timeout expires, the login process
+  * or the connection will be aborted.
+  */
+-#define NOTIFICATION_COMMAND_INTERVAL_TIMEOUT     30000
++#define NOTIFICATION_COMMAND_INTERVAL_TIMEOUT     90000
+ 
+ /**
+  * @brief The constructor

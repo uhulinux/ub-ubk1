@@ -1,0 +1,317 @@
+diff -Naur shadow-4.0.16.orig/src/groupadd.c shadow-4.0.16/src/groupadd.c
+--- shadow-4.0.16.orig/src/groupadd.c	2006-01-18 20:55:15.000000000 +0100
++++ shadow-4.0.16/src/groupadd.c	2006-06-19 19:08:45.000000000 +0200
+@@ -74,6 +74,7 @@
+ static int oflg = 0;		/* permit non-unique group ID to be specified with -g */
+ static int gflg = 0;		/* ID value for the new group */
+ static int fflg = 0;		/* if group already exists, do nothing and exit(0) */
++static int qflg = 0;		/* be happy if groupname-gid combo already exists */
+ 
+ /* local function prototypes */
+ static void usage (void);
+@@ -97,13 +98,14 @@
+ 	fprintf (stderr, _("Usage: groupadd [options] group\n"
+ 			   "\n"
+ 			   "Options:\n"
+-			   "  -f, --force		force exit with success status if the specified\n"
++			   "  -f, --force			force exit with success status if the specified\n"
+ 			   "				group already exists\n"
+-			   "  -g, --gid GID		use GID for the new group\n"
++			   "  -g, --gid GID			use GID for the new group\n"
+ 			   "  -h, --help			display this help message and exit\n"
+ 			   "  -K, --key KEY=VALUE		overrides /etc/login.defs defaults\n"
+ 			   "  -o, --non-unique		allow create group with duplicate\n"
+-			   "				(non-unique) GID\n"));
++			   "				(non-unique) GID\n"
++			   "  -q, --quiet			succeed quietly if group+gid already exists\n"));
+ 	exit (E_USAGE);
+ }
+ 
+@@ -220,8 +222,18 @@
+ 	while ((grp = getgrent ())) {
+ #endif
+ 		if (strcmp (group_name, grp->gr_name) == 0) {
+-			if (fflg) {
+-				fail_exit (E_SUCCESS);
++			if (qflg) {
++				if (group_id == grp->gr_gid) {
++					exit (E_SUCCESS);
++				} else {
++					fprintf (stderr, _("%s: name %s is gid=%d\n"),
++						 Prog, group_name, grp->gr_gid);
++					fail_exit (E_NAME_IN_USE);
++				}
++			} else {
++				if (fflg) {
++					fail_exit (E_SUCCESS);
++				}
+ 			}
+ 			fprintf (stderr, _("%s: name %s is not unique\n"),
+ 				 Prog, group_name);
+@@ -407,11 +419,12 @@
+ 			{"help", no_argument, NULL, 'h'},
+ 			{"key", required_argument, NULL, 'K'},
+ 			{"non-unique", required_argument, NULL, 'o'},
++			{"quiet", no_argument, NULL, 'q'},
+ 			{NULL, 0, NULL, '\0'}
+ 		};
+ 
+ 		while ((c =
+-			getopt_long (argc, argv, "fg:hK:o", long_options,
++			getopt_long (argc, argv, "fg:hK:oq", long_options,
+ 				     &option_index)) != -1) {
+ 			switch (c) {
+ 			case 'f':
+@@ -462,6 +475,13 @@
+ 			case 'o':
+ 				oflg++;
+ 				break;
++			case 'q':
++				/*
++				 * "quiet" - if the groupname-gid combination already
++				 * exists do nothing and be happy
++				 */
++				qflg++;
++				break;
+ 			default:
+ 				usage ();
+ 			}
+@@ -474,6 +494,12 @@
+ 	if (optind != argc - 1)
+ 		usage ();
+ 
++	/*
++	 * The "quiet" flags requires the -g flag to be present.
++	 */
++	if (qflg && !gflg)
++		usage ();
++
+ 	group_name = argv[argc - 1];
+ 	check_new_name ();
+ 
+@@ -516,7 +542,7 @@
+ 	/*
+ 	 * Start with a quick check to see if the group exists.
+ 	 */
+-	if (getgrnam (group_name)) {
++	if (!qflg && getgrnam (group_name)) {
+ 		if (fflg) {
+ 			exit (E_SUCCESS);
+ 		}
+diff -Naur shadow-4.0.16.orig/src/groupdel.c shadow-4.0.16/src/groupdel.c
+--- shadow-4.0.16.orig/src/groupdel.c	2006-01-18 20:55:15.000000000 +0100
++++ shadow-4.0.16/src/groupdel.c	2006-06-19 19:08:45.000000000 +0200
+@@ -52,6 +52,7 @@
+  */
+ static char *group_name;
+ static char *Prog;
++static int qflg = 0;
+ static int errors;
+ static gid_t group_id = -1;
+ 
+@@ -80,7 +81,7 @@
+  */
+ static void usage (void)
+ {
+-	fprintf (stderr, _("Usage: groupdel group\n"));
++	fprintf (stderr, _("Usage: groupdel [-q] group\n"));
+ 	exit (E_USAGE);
+ }
+ 
+@@ -214,6 +215,7 @@
+ int main (int argc, char **argv)
+ {
+ 	struct group *grp;
++	int arg;
+ 
+ #ifdef USE_PAM
+ 	pam_handle_t *pamh = NULL;
+@@ -235,11 +237,6 @@
+ 	bindtextdomain (PACKAGE, LOCALEDIR);
+ 	textdomain (PACKAGE);
+ 
+-	if (argc != 2)
+-		usage ();
+-
+-	group_name = argv[1];
+-
+ 	OPENLOG ("groupdel");
+ 
+ #ifdef USE_PAM
+@@ -278,10 +275,27 @@
+ 	is_shadow_grp = sgr_file_present ();
+ #endif
+ 
++	while ((arg = getopt(argc, argv, "q")) != EOF) {
++		switch (arg) {
++		case 'q':	/* shut up if group is already removed */
++			qflg++;
++			break;
++		default:
++			usage();
++		}
++	}
++
++	if (optind + 1 != argc)
++		usage();
++
+ 	/*
+ 	 * Start with a quick check to see if the group exists.
+ 	 */
++	group_name = argv[argc - 1];
+ 	if (!(grp = getgrnam (group_name))) {
++		if (qflg) {
++			exit (E_SUCCESS);
++		}
+ 		fprintf (stderr, _("%s: group %s does not exist\n"),
+ 			 Prog, group_name);
+ #ifdef WITH_AUDIT
+diff -Naur shadow-4.0.16.orig/src/useradd.c shadow-4.0.16/src/useradd.c
+--- shadow-4.0.16.orig/src/useradd.c	2006-05-30 20:28:45.000000000 +0200
++++ shadow-4.0.16/src/useradd.c	2006-06-19 19:08:45.000000000 +0200
+@@ -126,6 +126,7 @@
+     mflg = 0,			/* create user's home directory if it doesn't exist */
+     nflg = 0,			/* create a group having the same name as the user */
+     oflg = 0,			/* permit non-unique user ID to be specified with -u */
++    qflg = 0,			/* be quiet if the specified user-uid-gid combo already exists */
+     sflg = 0,			/* shell program for new account */
+     uflg = 0;			/* specify user ID for new account */
+ 
+@@ -632,6 +633,7 @@
+ 			   "				(non-unique) UID\n"
+ 			   "  -p, --password PASSWORD	use encrypted password for the new user\n"
+ 			   "				account\n"
++			   "  -q, --quiet			succeed quietly if user+uid already exists\n"
+ 			   "  -s, --shell SHELL		the login shell for the new user account\n"
+ 			   "  -u, --uid UID			force use the UID for the new user account\n"));
+ 	exit (E_USAGE);
+@@ -854,13 +856,23 @@
+ 	while ((pwd = getpwent ())) {
+ #endif
+ 		if (strcmp (user_name, pwd->pw_name) == 0) {
+-			fprintf (stderr, _("%s: name %s is not unique\n"),
+-				 Prog, user_name);
++			if (qflg) {
++				if ((user_id == pwd->pw_uid) && (user_gid == pwd->pw_gid)) {
++					exit (E_SUCCESS);
++				} else {
++					fprintf (stderr, _("%s: name %s is uid=%d,gid=%d\n"),
++						 Prog, user_name, pwd->pw_uid, pwd->pw_gid);
++					exit (E_NAME_IN_USE);
++				}
++			} else {
++				fprintf (stderr, _("%s: name %s is not unique\n"),
++					 Prog, user_name);
+ #ifdef WITH_AUDIT
+-			audit_logger (AUDIT_USER_CHAUTHTOK, Prog, "adding user",
+-				      user_name, user_id, 0);
++				audit_logger (AUDIT_USER_CHAUTHTOK, Prog, "adding user",
++					      user_name, user_id, 0);
+ #endif
+-			exit (E_NAME_IN_USE);
++				exit (E_NAME_IN_USE);
++			}
+ 		}
+ 		if (uflg && user_id == pwd->pw_uid) {
+ 			fprintf (stderr, _("%s: UID %u is not unique\n"),
+@@ -1013,10 +1025,11 @@
+ 			{"password", required_argument, NULL, 'p'},
+ 			{"shell", required_argument, NULL, 's'},
+ 			{"uid", required_argument, NULL, 'u'},
++			{"quiet", no_argument, NULL, 'q'},
+ 			{NULL, 0, NULL, '\0'}
+ 		};
+ 		while ((c =
+-			getopt_long (argc, argv, "b:c:d:De:f:g:G:k:K:mMop:s:u:",
++			getopt_long (argc, argv, "b:c:d:De:f:g:G:k:K:mMop:qs:u:",
+ 				     long_options, NULL)) != -1) {
+ 			switch (c) {
+ 			case 'b':
+@@ -1169,6 +1182,13 @@
+ 				}
+ 				user_pass = optarg;
+ 				break;
++			case 'q':
++				/*
++				 * "quiet" - if the username-uid combination already
++				 * exists do nothing and be happy
++				 */
++				qflg++;
++				break;
+ 			case 's':
+ 				if (!VALID (optarg)
+ 				    || (optarg[0]
+@@ -1203,6 +1223,12 @@
+ 		usage ();
+ 
+ 	/*
++	 * The "quiet" flags requires the -u and the -g flag to be present.
++	 */
++	if (qflg && (!uflg || !gflg))
++		usage ();
++
++	/*
+ 	 * Either -D or username is required. Defaults can be set with -D
+ 	 * for the -b, -e, -f, -g, -s options only.
+ 	 */
+@@ -1710,7 +1736,7 @@
+ 	/*
+ 	 * Start with a quick check to see if the user exists.
+ 	 */
+-	if (getpwnam (user_name)) {
++	if (!qflg && getpwnam (user_name)) {
+ 		fprintf (stderr, _("%s: user %s exists\n"), Prog, user_name);
+ #ifdef WITH_AUDIT
+ 		audit_logger (AUDIT_USER_CHAUTHTOK, Prog, "adding user",
+diff -Naur shadow-4.0.16.orig/src/userdel.c shadow-4.0.16/src/userdel.c
+--- shadow-4.0.16.orig/src/userdel.c	2006-05-13 02:45:00.000000000 +0200
++++ shadow-4.0.16/src/userdel.c	2006-06-19 19:12:28.000000000 +0200
+@@ -70,7 +70,7 @@
+ static char *user_home;
+ 
+ static char *Prog;
+-static int fflg = 0, rflg = 0;
++static int fflg = 0, qflg = 0, rflg = 0;
+ 
+ static int is_shadow_pwd;
+ 
+@@ -104,6 +104,7 @@
+ 			   "Options:\n"
+ 			   "  -f, --force			force removal of files, even if not owned by user\n"
+ 			   "  -h, --help			display this help message and exit\n"
++			   "  -q, --quiet			quiet operation\n"
+ 			   "  -r, --remove			remove home directory and mail spool\n"));
+ 	exit (E_USAGE);
+ }
+@@ -625,16 +626,20 @@
+ 		static struct option long_options[] = {
+ 			{"force", no_argument, NULL, 'f'},
+ 			{"help", no_argument, NULL, 'h'},
++			{"quiet", no_argument, NULL, 'q'},
+ 			{"remove", no_argument, NULL, 'r'},
+ 			{NULL, 0, NULL, '\0'}
+ 		};
+ 		while ((c =
+-			getopt_long (argc, argv, "fhr",
++			getopt_long (argc, argv, "fhqr",
+ 				     long_options, NULL)) != -1) {
+ 			switch (c) {
+ 			case 'f':	/* force remove even if not owned by user */
+ 				fflg++;
+ 				break;
++			case 'q':	/* shut up if user is already removed */
++				qflg++;
++				break;
+ 			case 'r':	/* remove home dir and mailbox */
+ 				rflg++;
+ 				break;
+@@ -687,6 +692,9 @@
+ 	 */
+ 	user_name = argv[argc - 1];
+ 	if (!(pwd = getpwnam (user_name))) {
++		if (qflg) {
++			exit (E_SUCCESS);
++		}
+ 		fprintf (stderr, _("%s: user %s does not exist\n"),
+ 			 Prog, user_name);
+ #ifdef WITH_AUDIT

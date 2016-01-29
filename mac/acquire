@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+mac-${UB_VERSION//+/-}.tar.gz mac-${UB_VERSION//+/-}/
+	http://downloads.sourceforge.net/mac-port/
+	http://slackware.sukkology.net/packages/mac/

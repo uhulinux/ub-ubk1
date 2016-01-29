@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--with-zlib \
+	--with-xz \
+	--prefix=/usr \
+	--exec-prefix= \
+	--libdir=/usr/lib

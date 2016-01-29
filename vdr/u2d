@@ -1,0 +1,1 @@
+urllist ftp://ftp.tvdr.de/vdr/ | splitver '^vdr-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

@@ -1,0 +1,15 @@
+gconf2-dev
+gnome-doc-utils
+gsettings-desktop-schemas
+gtk2-dev
+icu-dev
+intltool
+itstool
+libcanberra-dev
+libgtop2-dev
+libsm-dev
+python-dev
+startup-notification-dev
+tdb-dev
+xcb-util-dev
+zenity

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=GPRS Easy Connect
+Icon=gprsec
+Exec=gprsec
+Categories=Network;

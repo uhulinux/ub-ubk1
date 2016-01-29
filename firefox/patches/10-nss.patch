@@ -1,0 +1,21 @@
+diff -Naur orig/security/nss/coreconf/Linux.mk patched/security/nss/coreconf/Linux.mk
+--- orig/security/nss/coreconf/Linux.mk	2013-07-30 20:41:15.000000000 +0200
++++ patched/security/nss/coreconf/Linux.mk	2013-08-06 08:04:15.589586113 +0200
+@@ -97,7 +97,7 @@
+ 	OS_REL_CFLAGS	+= -DLINUX2_0
+ 	MKSHLIB		= $(CC) -shared -Wl,-soname -Wl,$(@:$(OBJDIR)/%.so=%.so) $(RPATH)
+ 	ifdef MAPFILE
+-		MKSHLIB += -Wl,--version-script,$(MAPFILE)
++		MKSHLIB +=
+ 	endif
+ 	PROCESS_MAP_FILE = grep -v ';-' $< | \
+          sed -e 's,;+,,' -e 's; DATA ;;' -e 's,;;,,' -e 's,;.*,;,' > $@
+@@ -191,7 +191,7 @@
+ MKSHLIB         = $(CC) $(DSO_LDOPTS) -Wl,-soname -Wl,$(@:$(OBJDIR)/%.so=%.so) $(RPATH)
+ 
+ ifdef MAPFILE
+-	MKSHLIB += -Wl,--version-script,$(MAPFILE)
++	MKSHLIB +=
+ endif
+ PROCESS_MAP_FILE = grep -v ';-' $< | \
+         sed -e 's,;+,,' -e 's; DATA ;;' -e 's,;;,,' -e 's,;.*,;,' > $@

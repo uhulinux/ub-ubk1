@@ -1,0 +1,103 @@
+diff -Naurd a/lib/Image.cc b/lib/Image.cc
+--- a/lib/Image.cc	2005-04-08 17:41:09.000000000 +0200
++++ b/lib/Image.cc	2009-12-02 00:02:03.000000000 +0100
+@@ -44,6 +44,7 @@
+ #include <math.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ // #define COLORTABLE_DEBUG
+ // #define MITSHM_DEBUG
+diff -Naurd a/lib/Resource.cc b/lib/Resource.cc
+--- a/lib/Resource.cc	2005-04-06 23:16:50.000000000 +0200
++++ b/lib/Resource.cc	2009-12-02 00:04:18.000000000 +0100
+@@ -29,7 +29,7 @@
+ #include <X11/Xresource.h>
+ 
+ #include <stdio.h>
+-
++#include <string.h>
+ 
+ bt::Resource::Resource(void)
+   : db(NULL)
+diff -Naurd a/lib/XDG.cc b/lib/XDG.cc
+--- a/lib/XDG.cc	2005-04-06 16:04:38.000000000 +0200
++++ b/lib/XDG.cc	2009-12-02 00:08:19.000000000 +0100
+@@ -26,6 +26,7 @@
+ #include "XDG.hh"
+ 
+ #include <stdlib.h>
++#include <algorithm>
+ 
+ 
+ // make sure directory names end with a slash
+diff -Naurd a/util/bsetroot.cc b/util/bsetroot.cc
+--- a/util/bsetroot.cc	2005-03-15 08:01:37.000000000 +0100
++++ b/util/bsetroot.cc	2009-12-02 00:08:36.000000000 +0100
+@@ -27,6 +27,7 @@
+ #include <Pen.hh>
+ #include <Texture.hh>
+ 
++#include <cstdlib>
+ #include <cctype>
+ 
+ #include <X11/Xatom.h>
+diff -Naurd a/src/BlackboxResource.cc b/src/BlackboxResource.cc
+--- a/src/BlackboxResource.cc	2009-12-02 00:12:14.000000000 +0100
++++ b/src/BlackboxResource.cc	2009-12-02 00:12:30.000000000 +0100
+@@ -32,7 +32,7 @@
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+ #include <X11/cursorfont.h>
+-
++#include <string.h>
+ 
+ BlackboxResource::BlackboxResource(const std::string& rc): rc_file(rc) {
+   screen_resources = 0;
+diff -Naurd a/src/Screen.cc b/src/Screen.cc
+--- a/src/Screen.cc	2005-10-18 10:07:22.000000000 +0200
++++ b/src/Screen.cc	2009-12-02 00:14:22.000000000 +0100
+@@ -47,6 +47,7 @@
+ #include <assert.h>
+ #include <ctype.h>
+ #include <dirent.h>
++#include <string.h>
+ 
+ 
+ static bool running = true;
+diff -Naurd a/src/ScreenResource.cc b/src/ScreenResource.cc
+--- a/src/ScreenResource.cc	2005-04-13 07:54:08.000000000 +0200
++++ b/src/ScreenResource.cc	2009-12-02 00:16:15.000000000 +0100
+@@ -32,7 +32,7 @@
+ #include <Resource.hh>
+ 
+ #include <assert.h>
+-
++#include <string.h>
+ 
+ static const int iconify_width  = 9;
+ static const int iconify_height = 9;
+diff -Naurd a/src/main.cc b/src/main.cc
+--- a/src/main.cc	2005-01-03 10:42:57.000000000 +0100
++++ b/src/main.cc	2009-12-02 00:19:35.000000000 +0100
+@@ -35,7 +35,7 @@
+ #include "../version.h"
+ 
+ #include <stdio.h>
+-
++#include <string.h>
+ 
+ static void showHelp(int exitval) {
+   // print version - this should not be localized!
+diff -Naurd a/util/bsetroot.cc b/util/bsetroot.cc
+--- a/util/bsetroot.cc	2009-12-02 00:12:14.000000000 +0100
++++ b/util/bsetroot.cc	2009-12-02 00:23:09.000000000 +0100
+@@ -32,6 +32,7 @@
+ 
+ #include <X11/Xatom.h>
+ #include <stdio.h>
++#include <string.h>
+ 
+ 
+ // ignore all X errors

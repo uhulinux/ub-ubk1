@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libical-"$UB_VERSION".tar.gz libical-"$UB_VERSION"/
+	http://downloads.sourceforge.net/freeassociation/

@@ -1,0 +1,11 @@
+coreutils
+findutils
+grep
+kbd
+module-init-tools
+net-tools
+pciutils
+procps
+systemd
+uhu-utils
+util-linux

@@ -1,0 +1,11 @@
+bluez-dev
+boost-dev
+cppunit-dev
+curl-dev
+dbus-glib-dev
+evolution-data-server-dev
+gnome-bluetooth-dev
+gnome-keyring-dev
+intltool
+libnotify-dev
+openobex-dev

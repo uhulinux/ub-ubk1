@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libcue-${UB_VERSION}.tar.bz2 libcue-${UB_VERSION}/
+	http://downloads.sourceforge.net/libcue/

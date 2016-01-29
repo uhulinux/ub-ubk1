@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+man_hu_${UB_VERSION_TAIL3//./_}.tar.gz .
+	http://www.kde.hu/mlp/man/
+	ftp://ftp.uhulinux.hu/pub/sources/man-pages-hu/

@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+rm -f odbcinstQ4/m*.cpp
+
+UB_UPDATELIBTOOL=yes \
+ub_compile \
+	--enable-threads=yes \
+	--enable-gui=yes \
+	--x-includes=/usr/include \
+	--x-libraries=/usr/lib \
+	--enable-drivers

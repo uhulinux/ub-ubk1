@@ -1,0 +1,11 @@
+alsa-lib
+cmake
+dbus
+gamin
+glibc-dev
+gtk-dev
+libglade2-dev
+libjpeg-dev
+libx11-dev
+startup-notification-dev
+vte-dev

@@ -1,0 +1,12 @@
+diff -aurd HTTP-Proxy-0.15.orig/Build.PL HTTP-Proxy-0.15/Build.PL
+--- HTTP-Proxy-0.15.orig/Build.PL	2005-04-05 21:22:20.000000000 +0200
++++ HTTP-Proxy-0.15/Build.PL	2005-07-13 14:17:59.238252927 +0200
+@@ -2,6 +2,8 @@
+ use warnings;
+ use Module::Build;
+ 
++undef @ARGV;
++
+ my $builder = Module::Build->new(
+     module_name         => 'HTTP::Proxy',
+     license             => 'perl',

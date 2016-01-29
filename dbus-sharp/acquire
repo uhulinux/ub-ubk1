@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dbus-sharp-${UB_VERSION}.tar.gz dbus-sharp-${UB_VERSION}/
+	https://github.com/downloads/mono/dbus-sharp/

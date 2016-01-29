@@ -1,0 +1,17 @@
+alsa-lib-dev
+attr-dev
+bluez-dev
+curl-dev
+cyrus-sasl2-dev
+e2fsprogs-dev
+glib-dev
+gnutls-dev
+libjpeg-dev
+libpng-dev
+libx11-dev
+mesa-dev
+nss-dev
+pulseaudio-dev
+python-dev
+sdl-dev
+usbredir-dev

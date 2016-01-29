@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+GStreamer-${UB_VERSION}.tar.gz GStreamer-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/GStreamer/
+	http://downloads.sourceforge.net/gtk2-perl/

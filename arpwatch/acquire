@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+arpwatch-${UB_VERSION}.tar.gz arpwatch-${UB_VERSION}/
+	ftp://ftp.ee.lbl.gov/
+	ftp://ftp.ee.lbl.gov/old/

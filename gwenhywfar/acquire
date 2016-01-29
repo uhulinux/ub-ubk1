@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gwenhywfar-"$UB_VERSION".tar.gz gwenhywfar-"$UB_VERSION"/
+	http://www2.aquamaniac.de/sites/download/download.php?package=01&release=67&file=01&dummy=gwenhywfar-"$UB_VERSION".tar.gz

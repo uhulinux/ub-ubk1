@@ -1,0 +1,15 @@
+--- gammu.orig/CMakeLists.txt	2011-03-15 17:15:29.000000000 +0100
++++ gammu/CMakeLists.txt	2011-04-08 19:32:15.000000000 +0200
+@@ -472,9 +472,9 @@
+ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_MINGW OR
+     CMAKE_COMPILER_IS_CYGWIN OR CMAKE_COMPILER_IS_GNUCXX OR CLANG_COMPILER)
+     # Check for extra compiler flags we want to use
+-    if (NOT GAMMU_VERSION_PATCH LESS 90)
+-        MACRO_TUNE_COMPILER("-Werror")
+-    endif (NOT GAMMU_VERSION_PATCH LESS 90)
++#    if (NOT GAMMU_VERSION_PATCH LESS 90)
++#        MACRO_TUNE_COMPILER("-Werror")
++#    endif (NOT GAMMU_VERSION_PATCH LESS 90)
+ 
+     #
+     # Warnings related flags

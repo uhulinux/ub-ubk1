@@ -1,0 +1,12 @@
+diff -urN enchant-1.1.0.orig/src/ispell/ispell.h enchant-1.1.0/src/ispell/ispell.h
+--- enchant-1.1.0.orig/src/ispell/ispell.h	2003-08-14 19:51:27.000000000 +0200
++++ enchant-1.1.0/src/ispell/ispell.h	2003-10-14 15:31:00.000000000 +0200
+@@ -326,7 +326,7 @@
+ ** character counts as two!
+ */
+ #ifndef MAXSTRINGCHARS
+-#define MAXSTRINGCHARS 128
++#define MAXSTRINGCHARS 512
+ #endif /* MAXSTRINGCHARS */
+ 
+ /*

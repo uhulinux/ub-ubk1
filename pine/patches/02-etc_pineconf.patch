@@ -1,0 +1,474 @@
+diff -Naurdp a/doc/pine.1 b/doc/pine.1
+--- a/doc/pine.1	2004-07-09 22:34:18.000000000 +0200
++++ b/doc/pine.1	2004-10-04 09:34:35.525695995 +0200
+@@ -335,9 +335,9 @@ uses the following environment variables
+ .br
+ /usr/local/lib/pine.info	Local pointer to system administrator.
+ .br
+-/usr/local/lib/pine.conf	System-wide configuration file.
++/etc/pine.conf	System-wide configuration file.
+ .br
+-/usr/local/lib/pine.conf.fixed	 Non-overridable configuration file.
++/etc/pine.conf.fixed	 Non-overridable configuration file.
+ .br
+ /tmp/.\\usr\\spool\\mail\\xxxx	Per-folder mailbox lock files.
+ .br
+diff -Naurdp a/doc/tech-notes/background.html b/doc/tech-notes/background.html
+--- a/doc/tech-notes/background.html	2003-03-26 20:52:51.000000000 +0100
++++ b/doc/tech-notes/background.html	2004-10-04 09:34:35.526695829 +0200
+@@ -174,9 +174,9 @@ options.  The first MTA specified in the
+ <OL>
+ 
+ <LI><EM>sendmail-path</EM> in
+-<CODE>/usr/local/lib/pine.conf.fixed</CODE>
++<CODE>/etc/pine.conf.fixed</CODE>
+ 
+-<LI><EM>smtp-server</EM> in <CODE>/usr/local/pine.conf.fixed</CODE>
++<LI><EM>smtp-server</EM> in <CODE>/etc/pine.conf.fixed</CODE>
+ 
+ <LI><EM>sendmail-path</EM> specified on the command line. 
+ 
+@@ -186,9 +186,9 @@ options.  The first MTA specified in the
+ 
+ <LI><EM>smtp-server</EM> in the user's <CODE>.pinerc</CODE> file. 
+ 
+-<LI><EM>sendmail-path</EM> in <CODE>/usr/local/lib/pine.conf</CODE>
++<LI><EM>sendmail-path</EM> in <CODE>/etc/pine.conf</CODE>
+ 
+-<LI><EM>smtp-server</EM> in <CODE>/usr/local/pine.conf</CODE>
++<LI><EM>smtp-server</EM> in <CODE>/etc/pine.conf</CODE>
+ 
+ <LI><CODE>DF_SENDMAIL_PATH</CODE> defined at compile time.
+ 
+diff -Naurdp a/doc/tech-notes/cmd-line.html b/doc/tech-notes/cmd-line.html
+--- a/doc/tech-notes/cmd-line.html	2003-10-10 23:08:04.000000000 +0200
++++ b/doc/tech-notes/cmd-line.html	2004-10-04 09:34:35.527695662 +0200
+@@ -87,7 +87,7 @@ screen or standard output. To generate a
+ file, execute
+ 
+ <PRE><CODE>
+-		pine -conf > /usr/local/lib/pine.conf
++		pine -conf > /etc/pine.conf
+ </CODE></PRE>
+ <P>
+ 
+@@ -95,7 +95,7 @@ To generate a system configuration file 
+ system configuration file, execute
+ 
+ <PRE><CODE>
+-		pine -P old-pine.conf -conf > /usr/local/lib/pine.conf
++		pine -P old-pine.conf -conf > /etc/pine.conf
+ </CODE></PRE>
+ <P>
+ A system configuration file is not required.
+@@ -273,7 +273,7 @@ Pinerc may be either a local file or a r
+ <DT> -P <EM>pinerc</EM>
+ 
+ <DD> Uses the named file as the system wide configuration file instead of
+-<EM>/usr/local/lib/pine.conf</EM> on UNIX, or nothing on <EM>PC-Pine</EM>.
++<EM>/etc/pine.conf</EM> on UNIX, or nothing on <EM>PC-Pine</EM>.
+ Pinerc may be either a local file or a remote configuration folder.
+ <P>
+ 
+diff -Naurdp a/doc/tech-notes/config.html b/doc/tech-notes/config.html
+--- a/doc/tech-notes/config.html	2004-07-15 19:38:11.000000000 +0200
++++ b/doc/tech-notes/config.html	2004-10-04 09:34:35.533694663 +0200
+@@ -7,8 +7,8 @@ There is very little in <EM>Pine</EM> wh
+ configuration. In most cases, the compiled-in preferences will suit users
+ and administrators just fine. When running <EM>Pine</EM> on a UNIX system, the
+ default built-in configuration can be changed by setting variables in the
+-system configuration files, <CODE>/usr/local/lib/pine.conf</CODE>
+-or <CODE>/usr/local/lib/pine.conf.fixed</CODE>.
++system configuration files, <CODE>/etc/pine.conf</CODE>
++or <CODE>/etc/pine.conf.fixed</CODE>.
+ (Actually, these files are whatever the definitions for
+ <CODE>SYSTEM_PINERC</CODE> and <CODE>SYSTEM_PINERC_FIXED</CODE>
+ in pine/osdep/os-xxx.h are set to.)
+@@ -2857,7 +2857,7 @@ For Unix <EM>Pine</EM> the program <EM>i
+ alternate spell checker.
+ If your Unix system has <EM>ispell</EM> it is probably reasonable to make
+ it the default speller by configuring it as the default in the
+-system configuration file, <CODE>/usr/local/lib/pine.conf</CODE>.
++system configuration file, <CODE>/etc/pine.conf</CODE>.
+ 
+ <P>
+ If this option is not set, then the system's <EM>spell</EM> command is used.
+diff -Naurdp a/doc/tech-notes/config-notes.html b/doc/tech-notes/config-notes.html
+--- a/doc/tech-notes/config-notes.html	2004-05-05 23:54:18.000000000 +0200
++++ b/doc/tech-notes/config-notes.html	2004-10-04 09:34:35.535694330 +0200
+@@ -897,10 +897,10 @@ In increasing order of precedence they a
+ </OL>
+ <P>
+ The fixed configuration file is normally
+-<CODE>/usr/local/lib/pine.conf.fixed</CODE>.
++<CODE>/etc/pine.conf.fixed</CODE>.
+ <P>
+ The system-wide configuration file is normally
+-<CODE>/usr/local/lib/pine.conf</CODE> for Unix <EM>Pine</EM> and is normally not
++<CODE>/etc/pine.conf</CODE> for Unix <EM>Pine</EM> and is normally not
+ set for <EM>PC-Pine</EM>.
+ For <EM>PC-Pine</EM>, if the environment variable <EM>$PINECONF</EM> is set, that
+ is used for the system-wide configuration.
+@@ -1218,8 +1218,8 @@ A typical configuration would consist of
+ 
+ <LI> An entry in <CODE>/etc/inetd.conf</CODE> for the alternate service.
+ 
+-<LI> An entry in <CODE>/usr/local/lib/pine.conf</CODE>,
+-<CODE>/usr/local/lib/pine.conf.fixed</CODE> or <CODE>~/.pinerc</CODE>. 
++<LI> An entry in <CODE>/etc/pine.conf</CODE>,
++<CODE>/etc/pine.conf.fixed</CODE> or <CODE>~/.pinerc</CODE>. 
+ 
+ </UL>
+ 
+diff -Naurdp a/doc/tech-notes/installation.html b/doc/tech-notes/installation.html
+--- a/doc/tech-notes/installation.html	2003-02-06 04:04:26.000000000 +0100
++++ b/doc/tech-notes/installation.html	2004-10-04 09:34:35.536694164 +0200
+@@ -218,7 +218,7 @@ section for more details.
+ <DD> The name of the file which holds <EM>Pine</EM>
+ configuration information for
+ all users on the system.  Default on UNIX systems is
+-<CODE>/usr/local/lib/pine.conf</CODE>.
++<CODE>/etc/pine.conf</CODE>.
+ 
+ <DT> SYSTEM_PINERC_FIXED
+ 
+@@ -226,7 +226,7 @@ all users on the system.  Default on UNI
+ SYSTEM_PINERC, but only for variables that the administrator wants to keep
+ fixed.  That is, users are not allowed to change variables that are
+ specified in the FIXED file.  Default on UNIX systems is
+-<CODE>/usr/local/lib/pine.conf.fixed</CODE>.
++<CODE>/etc/pine.conf.fixed</CODE>.
+ 
+ </DL> <P>
+ 
+@@ -530,8 +530,8 @@ are no <STRONG>required</STRONG> auxilia
+ 
+ There are, however, three optional auxiliary files: 
+ <CODE>/usr/local/lib/pine.info</CODE>,
+-<CODE>/usr/local/lib/pine.conf</CODE>, and
+-<CODE>/usr/local/lib/pine.conf.fixed</CODE>.  The file
++<CODE>/etc/pine.conf</CODE>, and
++<CODE>/etc/pine.conf.fixed</CODE>.  The file
+ <CODE>pine.info</CODE> contains text on how to get further help on the
+ local system.  It is part of the help text for the
+ main menu and should probably refer to the local help desk or the system
+@@ -650,11 +650,11 @@ on <EM>Pine</EM>'s configuration. 
+ 
+ <DL COMPACT>
+ 
+-<DT> /usr/local/lib/pine.conf
++<DT> /etc/pine.conf
+ 
+ <DD> Pine's global configuration file. 
+ 
+-<DT> /usr/local/lib/pine.conf.fixed
++<DT> /etc/pine.conf.fixed
+ 
+ <DD> Non-overridable global configuration file. 
+ 
+diff -Naurdp a/doc/tech-notes/low-level.html b/doc/tech-notes/low-level.html
+--- a/doc/tech-notes/low-level.html	2002-11-01 20:35:48.000000000 +0100
++++ b/doc/tech-notes/low-level.html	2004-10-04 09:34:35.537693998 +0200
+@@ -1088,7 +1088,7 @@ The Wyse version uses Ctrl-R for on, and
+ 
+ The second selection is the standard UNIX print command.  The default is
+ <EM>lpr</EM>, but it can be changed on a system basis to anything so
+-desired in <CODE>/usr/local/lib/pine.conf</CODE>. <P>
++desired in <CODE>/etc/pine.conf</CODE>. <P>
+ 
+ The third selection is
+ the user's personal choice for a UNIX print command.  The text to be
+diff -Naurdp a/doc/tech-notes/porting.html b/doc/tech-notes/porting.html
+--- a/doc/tech-notes/porting.html	1998-09-17 01:09:04.000000000 +0200
++++ b/doc/tech-notes/porting.html	2004-10-04 09:34:35.538693831 +0200
+@@ -307,11 +307,11 @@ Error messages for incorrect terminal ty
+ <DT>
+  ___
+ <DD>
+-Reading of <CODE>/usr/local/lib/pine.conf</CODE> 
++Reading of <CODE>/etc/pine.conf</CODE> 
+ <DT>
+  ___
+ <DD>
+-Fixing variables and features in <CODE>/usr/local/lib/pine.conf.fixed</CODE> 
++Fixing variables and features in <CODE>/etc/pine.conf.fixed</CODE> 
+ <DT>
+  ___
+ <DD>
+diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
+--- a/doc/tech-notes.txt	2004-07-15 19:38:42.000000000 +0200
++++ b/doc/tech-notes.txt	2004-10-04 09:34:35.548692166 +0200
+@@ -333,14 +333,14 @@ SMTP and Sendmail
+           sendmail-path, smtp-server, and compile-time options. The first
+           MTA specified in the following list is used:
+           
+-         1. _sendmail-path_ in /usr/local/lib/pine.conf.fixed
+-         2. _smtp-server_ in /usr/local/pine.conf.fixed
++         1. _sendmail-path_ in /etc/pine.conf.fixed
++         2. _smtp-server_ in /etc/pine.conf.fixed
+          3. _sendmail-path_ specified on the command line.
+          4. _smtp-server_ specified on the command line.
+          5. _sendmail-path_ in the user's .pinerc file.
+          6. _smtp-server_ in the user's .pinerc file.
+-         7. _sendmail-path_ in /usr/local/lib/pine.conf
+-         8. _smtp-server_ in /usr/local/pine.conf
++         7. _sendmail-path_ in /etc/pine.conf
++         8. _smtp-server_ in /etc/pine.conf
+          9. DF_SENDMAIL_PATH defined at compile time.
+         10. SENDMAIL and SENDMAILFLAGS defined at compile time.
+             
+@@ -670,14 +670,14 @@ Compile-time Options
+    SYSTEM_PINERC
+           The name of the file which holds _Pine_ configuration
+           information for all users on the system. Default on UNIX
+-          systems is /usr/local/lib/pine.conf.
++          systems is /etc/pine.conf.
+    SYSTEM_PINERC_FIXED
+           The name of the file which holds the same type of information
+           as for SYSTEM_PINERC, but only for variables that the
+           administrator wants to keep fixed. That is, users are not
+           allowed to change variables that are specified in the FIXED
+           file. Default on UNIX systems is
+-          /usr/local/lib/pine.conf.fixed.
++          /etc/pine.conf.fixed.
+           
+    There are a couple of more obscure options which are in the source
+    code because a few people have asked for them or because we changed
+@@ -876,8 +876,8 @@ Installing Pine and Pico on UNIX Platfor
+    auxiliary files.
+    
+    There are, however, three optional auxiliary files:
+-   /usr/local/lib/pine.info, /usr/local/lib/pine.conf, and
+-   /usr/local/lib/pine.conf.fixed. The file pine.info contains text on
++   /usr/local/lib/pine.info, /etc/pine.conf, and
++   /etc/pine.conf.fixed. The file pine.info contains text on
+    how to get further help on the local system. It is part of the help
+    text for the main menu and should probably refer to the local help
+    desk or the system administrator. If this file doesn't exist a generic
+@@ -976,9 +976,9 @@ Support Files and Environment Variables:
+    This section lists the various files which _Pine_ uses which are not
+    email folders. All of these are the default names of files, they may
+    vary based on _Pine_'s configuration.
+-   /usr/local/lib/pine.conf
++   /etc/pine.conf
+           Pine's global configuration file.
+-   /usr/local/lib/pine.conf.fixed
++   /etc/pine.conf.fixed
+           Non-overridable global configuration file.
+    /usr/local/lib/pine.info
+           Local pointer to system administrator.
+@@ -1200,10 +1200,10 @@ Pine
+           Configuration: Prints a sample system configuration file to the
+           screen or standard output. To generate an initial system
+           configuration file, execute
+-                pine -conf > /usr/local/lib/pine.conf
++                pine -conf > /etc/pine.conf
+           To generate a system configuration file using settings from an
+           old system configuration file, execute
+-                pine -P old-pine.conf -conf > /usr/local/lib/pine.conf
++                pine -P old-pine.conf -conf > /etc/pine.conf
+           A system configuration file is not required.
+    -convert_sigs _-p pinerc_
+           Convert signatures contained in signature files into literal
+@@ -1318,7 +1318,7 @@ Pine
+           configuration folder.
+    -P _pinerc_
+           Uses the named file as the system wide configuration file
+-          instead of _/usr/local/lib/pine.conf_ on UNIX, or nothing on
++          instead of _/etc/pine.conf_ on UNIX, or nothing on
+           _PC-Pine_. Pinerc may be either a local file or a remote
+           configuration folder.
+    -passfile _passfile_
+@@ -1526,8 +1526,8 @@ Pine Configuration
+    configuration. In most cases, the compiled-in preferences will suit
+    users and administrators just fine. When running _Pine_ on a UNIX
+    system, the default built-in configuration can be changed by setting
+-   variables in the system configuration files, /usr/local/lib/pine.conf
+-   or /usr/local/lib/pine.conf.fixed. (Actually, these files are whatever
++   variables in the system configuration files, /etc/pine.conf
++   or /etc/pine.conf.fixed. (Actually, these files are whatever
+    the definitions for SYSTEM_PINERC and SYSTEM_PINERC_FIXED in
+    pine/osdep/os-xxx.h are set to.) The location of the pine.conf file
+    can be changed with the -P command line argument. Both _Pine_ and
+@@ -3608,7 +3608,7 @@ General Configuration Variables
+           spell checker. If your Unix system has _ispell_ it is probably
+           reasonable to make it the default speller by configuring it as
+           the default in the system configuration file,
+-          /usr/local/lib/pine.conf.
++          /etc/pine.conf.
+           If this option is not set, then the system's _spell_ command is
+           used. The spell command does not work the same as the alternate
+           speller. It produces a list of misspelled words on its standard
+@@ -9392,10 +9392,10 @@ Configuration Inheritance
+     5. the system-wide _fixed_ configuration file (Unix _Pine_ only)
+        
+    The fixed configuration file is normally
+-   /usr/local/lib/pine.conf.fixed.
++   /etc/pine.conf.fixed.
+    
+    The system-wide configuration file is normally
+-   /usr/local/lib/pine.conf for Unix _Pine_ and is normally not set for
++   /etc/pine.conf for Unix _Pine_ and is normally not set for
+    _PC-Pine_. For _PC-Pine_, if the environment variable _$PINECONF_ is
+    set, that is used for the system-wide configuration. This location can
+    be set or changed on the command line with the -P flag. The
+@@ -9655,8 +9655,8 @@ SMTP Servers
+      * A program that implements the SMTP or ESMTP protocol via stdio.
+      * An entry in /etc/services for the alternate service.
+      * An entry in /etc/inetd.conf for the alternate service.
+-     * An entry in /usr/local/lib/pine.conf,
+-       /usr/local/lib/pine.conf.fixed or ~/.pinerc.
++     * An entry in /etc/pine.conf,
++       /etc/pine.conf.fixed or ~/.pinerc.
+      _________________________________________________________________
+    
+ MIME.Types file
+@@ -10840,7 +10840,7 @@ Printers and Printing
+    
+    The second selection is the standard UNIX print command. The default
+    is _lpr_, but it can be changed on a system basis to anything so
+-   desired in /usr/local/lib/pine.conf.
++   desired in /etc/pine.conf.
+    
+    The third selection is the user's personal choice for a UNIX print
+    command. The text to be printed is piped into the command. _Enscript_
+@@ -11294,9 +11294,9 @@ Test Checklist
+           Error messages for incorrect terminal types (try "foo" and
+           "vt52")
+    ___
+-          Reading of /usr/local/lib/pine.conf
++          Reading of /etc/pine.conf
+    ___
+-          Fixing variables and features in /usr/local/lib/pine.conf.fixed
++          Fixing variables and features in /etc/pine.conf.fixed
+    ___
+           Flag command (check message status changed in mail folder)
+    ___
+diff -Naurdp a/pine/osdep/os-gen.h b/pine/osdep/os-gen.h
+--- a/pine/osdep/os-gen.h	2003-05-23 18:06:59.000000000 +0200
++++ b/pine/osdep/os-gen.h	2004-10-04 09:34:35.549692000 +0200
+@@ -163,10 +163,10 @@
+ 
+ /*----- System-wide config file ----------------------------------------*/
+ #ifndef SYSTEM_PINERC
+-#define SYSTEM_PINERC             "/usr/local/lib/pine.conf"
++#define SYSTEM_PINERC             "/etc/pine.conf"
+ #endif
+ #ifndef SYSTEM_PINERC_FIXED
+-#define SYSTEM_PINERC_FIXED       "/usr/local/lib/pine.conf.fixed"
++#define SYSTEM_PINERC_FIXED       "/etc/pine.conf.fixed"
+ #endif
+ 
+ 
+diff -Naurdp a/pine/osdep/os-lnx.h b/pine/osdep/os-lnx.h
+--- a/pine/osdep/os-lnx.h	2003-05-23 18:07:00.000000000 +0200
++++ b/pine/osdep/os-lnx.h	2004-10-04 09:34:35.549692000 +0200
+@@ -163,10 +163,10 @@
+ 
+ /*----- System-wide config file ----------------------------------------*/
+ #ifndef SYSTEM_PINERC
+-#define SYSTEM_PINERC             "/usr/local/lib/pine.conf"
++#define SYSTEM_PINERC             "/etc/pine.conf"
+ #endif
+ #ifndef SYSTEM_PINERC_FIXED
+-#define SYSTEM_PINERC_FIXED       "/usr/local/lib/pine.conf.fixed"
++#define SYSTEM_PINERC_FIXED       "/etc/pine.conf.fixed"
+ #endif
+ 
+ 
+diff -Naurdp a/pine/pine.hlp b/pine/pine.hlp
+--- a/pine/pine.hlp	2004-07-15 19:37:22.000000000 +0200
++++ b/pine/pine.hlp	2004-10-04 09:37:21.799922431 +0200
+@@ -856,8 +856,7 @@ Unix Pine:
+  addrbook lu    &lt;pinerc dir&gt;/.addressbook.lu  (appends .lu to addrbk name.)
+  postponed#     ~/mail/postponed-msgs
+  sentmail#      ~/mail/sent-mail
+- mailcap#       ~/.mailcap + /etc/mailcap
+-                           + /usr/etc/mailcap + /usr/local/etc/mailcap
++ mailcap#       ~/.mailcap + /etc/mailcap + /usr/local/etc/mailcap
+  mimetypes#     ~/.mime.types + /etc/mime.types + /usr/local/lib/mime.types
+ 
+  news-spool	varies across Unix flavors, e.g. /var/spool/news or /usr/spool/news
+@@ -14508,7 +14507,7 @@ but it is also possible to do it entirel
+ Instead of using just plain &quot;bogofilter&quot; as the Categorizer Command,
+ the &quot;-u&quot; argument will cause bogofilter to update the database.
+ <P>
+-<CENTER><SAMP>Command = /usr/local/bin/bogofilter -u</SAMP></CENTER>
++<CENTER><SAMP>Command = /usr/bin/bogofilter -u</SAMP></CENTER>
+ <P>
+ You'd want a couple more aliases or shell scripts called something like
+ <EM>change_to_spam</EM>
+@@ -14536,7 +14535,7 @@ at the time you close the folder and bef
+ This is usually ok.
+ However, in this case it is a problem because the command
+ <P>
+-<CENTER><SAMP>Command = /usr/local/bin/bogofilter -u</SAMP></CENTER>
++<CENTER><SAMP>Command = /usr/bin/bogofilter -u</SAMP></CENTER>
+ <P>
+ has the side effect of updating the database.
+ So you run the risk of updating the database multiple times for a single
+@@ -14582,7 +14581,7 @@ In summary, the first rule is something 
+   ! Keyword pattern = Bogo
+ 
+   External Categorizer Commands =
+-       Command              = /usr/local/bin/bogofilter -u
++       Command              = /usr/bin/bogofilter -u
+        Exit Status Interval = (0,0)
+        Character Limit      = <No Value Set: using "-1">  (optionally set this)
+ 
+@@ -18047,7 +18046,7 @@ a semi-colon (;) under Windows; for exam
+ </PRE>
+ <!--chtml else-->
+ a colon (:) under UNIX; for example:<PRE>
+-        ~/.mailcap:/etc/mailcap:/usr/etc/mailcap:/usr/local/etc/mailcap
++        ~/.mailcap:/etc/mailcap:/usr/local/etc/mailcap
+ </PRE>
+ <!--chtml endif-->
+ <P><UL>
+@@ -23032,16 +23031,16 @@ argument (see the &quot;lynx&quot; examp
+ <P>
+ So, here are some example entries:
+ <PRE>
+-URL-Viewers = _TEST(&quot;test -n '$&#123;DISPLAY}'&quot;)_  /usr/local/bin/netscape
+-              &quot;/usr/local/bin/lynx _URL_&quot;
++URL-Viewers = _TEST(&quot;test -n '$&#123;DISPLAY}'&quot;)_  /usr/bin/browser
++              &quot;/usr/bin/lynx _URL_&quot;
+               C:&#92;BIN&#92;NETSCAPE.BAT
+ </PRE>
+ <P>
+ This example shows that for the first viewer in the list to be used
+ the environment variable &quot;DISPLAY&quot; must be defined.  If it
+-is, then the path and file &quot;/usr/local/bin/netscape&quot; must exist.  
++is, then the path and file &quot;/usr/bin/browser&quot; must exist.  
+ If neither condition is met,
+-then the path and file &quot;/usr/local/bin/lynx&quot; must exist.  
++then the path and file &quot;/usr/bin/lynx&quot; must exist.  
+ If it does, then the &quot;_URL_&quot; token is replaced by the selected URL. 
+ If the path to &quot;lynx&quot; is invalid,
+ then the final path and file C:&#92;BIN&#92;NETSCAPE.BAT must exist.  
+@@ -23134,10 +23133,10 @@ using an existing invocation of the appl
+ An example using the Korn shell and the Netscape browser (first entry wrapped 
+ because of its length, but should all appear on one line):
+ <P>
+-URL-Viewers = _TEST("test -L /myhomedir/.netscape/lock")_ &quot;/usr/local/bin/netscape -remote 'openURL(_URL_,  new-window)' &amp;&quot;<BR>
++URL-Viewers = _TEST("test -L /myhomedir/.netscape/lock")_ &quot;/usr/bin/browser '_URL_' &amp;&quot;<BR>
+ 
+-_TEST(&quot;test -n '$&#123;DISPLAY}'&quot;)_ &quot;/usr/local/bin/netscape &amp;&quot;<BR>
+-              &quot;/usr/local/bin/lynx '_URL_'&quot;
++_TEST(&quot;test -n '$&#123;DISPLAY}'&quot;)_ &quot;/usr/bin/browser &amp;&quot;<BR>
++              &quot;/usr/bin/lynx '_URL_'&quot;
+ <P>
+ <!--chtml endif-->
+ <P>
+diff -Naurdp a/README b/README
+--- a/README	2004-05-07 21:17:40.000000000 +0200
++++ b/README	2004-10-04 09:34:35.602683177 +0200
+@@ -277,7 +277,7 @@ The executables built by the build scrip
+  pine   The Pine mailer. Once compiled this should work just fine on
+         your system with no other files than this binary, and no
+         modifications to your system. Optionally you may create two
+-        configuration files, /usr/local/lib/pine.conf and 
++        configuration files, /etc/pine.conf and 
+         /usr/local/lib/pine.info. See the documentation for details.
+  
+  pico   The standalone editor similar to the Pine message composer.

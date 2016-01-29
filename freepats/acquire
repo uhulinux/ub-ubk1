@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+freepats-${UB_VERSION}.tar.bz2 freepats/
+	http://freepats.opensrc.org/

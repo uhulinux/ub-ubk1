@@ -1,0 +1,6 @@
+cmake
+dbus-dev
+doxygen
+ibus-dev
+icu-dev
+qt4-dev

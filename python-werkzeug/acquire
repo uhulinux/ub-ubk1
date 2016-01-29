@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Werkzeug-${UB_VERSION}.tar.gz Werkzeug-${UB_VERSION}/
+	http://pypi.python.org/packages/source/W/Werkzeug/

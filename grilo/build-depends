@@ -1,0 +1,9 @@
+gobject-introspection-dev
+intltool
+itstool
+libarchive-dev
+liboauth-dev
+libsoup-dev
+totem-plparser-dev
+vala-dev
+xz-dev

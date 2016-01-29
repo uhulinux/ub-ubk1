@@ -1,0 +1,3 @@
+kdevelop_version=$(urllist http://download.kde.org/stable/kdevelop/ | splitver '^([0-9.]+)' | sort -V | tail -n 1)
+
+urllist http://download.kde.org/stable/kdevelop/$kdevelop_version/src/ | splitver '^kdevelop-php-([0-9.]+).tar.xz$' | sort -V | tail -n 1

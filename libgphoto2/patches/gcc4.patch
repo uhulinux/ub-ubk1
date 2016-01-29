@@ -1,0 +1,49 @@
+--- libgphoto2-2.1.6/libgphoto2_port/libgphoto2_port/gphoto2-port.c.gcc4	2005-02-22 06:33:42.000000000 +0000
++++ libgphoto2-2.1.6/libgphoto2_port/libgphoto2_port/gphoto2-port.c	2005-06-23 12:07:51.000000000 +0100
+@@ -408,7 +408,7 @@
+ 
+ 	/* Check if we read as many bytes as expected */
+ 	CHECK_SUPP (port, "read", port->pc->ops->read);
+-	retval = port->pc->ops->read (port, data, size);
++	retval = (port->pc->ops->read) (port, data, size);
+ 	CHECK_RESULT (retval);
+ 	if (retval != size)
+ 		gp_log (GP_LOG_DEBUG, "gphoto2-port", _("Could only read %i "
+--- libgphoto2-2.1.6/camlibs/digita/commands.c.gcc4	2005-03-21 12:26:46.000000000 +0000
++++ libgphoto2-2.1.6/camlibs/digita/commands.c	2005-06-23 11:51:43.000000000 +0100
+@@ -73,7 +73,7 @@
+ 		return -1;
+ 	}
+ 
+-	ret = dev->read(dev, (unsigned char *)&ss, sizeof(ss));
++	ret = (dev->read)(dev, (unsigned char *)&ss, sizeof(ss));
+ 	if (ret < 0) {
+ 		GP_DEBUG("digita_get_storage_status: error getting count (ret = %d)", ret);
+ 		return -1;
+@@ -117,7 +117,7 @@
+ 		return -1;
+ 	}
+ 
+-	ret = dev->read(dev, (void *)buffer, buflen);
++	ret = (dev->read)(dev, (void *)buffer, buflen);
+ 	if (ret < 0) {
+ 		GP_DEBUG("digita_get_file_list: error receiving data (ret = %d)", ret);
+ 		return -1;
+@@ -169,7 +169,7 @@
+ 		return -1;
+ 	}
+ 
+-	ret = dev->read(dev, gfdr, GFD_BUFSIZE + sizeof(*gfdr));
++	ret = (dev->read)(dev, gfdr, GFD_BUFSIZE + sizeof(*gfdr));
+ 	if (ret < 0) {
+ 		GP_DEBUG("digita_get_file_data: error reading data (ret = %d)", ret);
+ 		return -1;
+@@ -205,7 +205,7 @@
+ 		return -1;
+ 	}
+ 
+-	ret = dev->read(dev, (unsigned char *)&response, sizeof(response));
++	ret = (dev->read)(dev, (unsigned char *)&response, sizeof(response));
+ 	if (ret < 0) {
+ 		GP_DEBUG("error reading reply (ret = %d)", ret);
+ 		return -1;

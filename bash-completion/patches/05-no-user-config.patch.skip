@@ -1,0 +1,13 @@
+diff -urN bash_completion.orig/bash_completion bash_completion/bash_completion
+--- bash_completion.orig/bash_completion	2003-05-26 20:22:44.000000000 +0200
++++ bash_completion/bash_completion	2003-05-29 10:58:21.000000000 +0200
+@@ -4800,9 +4800,6 @@
+ fi
+ unset i
+ 
+-# source user completion file
+-[ $BASH_COMPLETION != ~/.bash_completion -a -r ~/.bash_completion ] \
+-	&& . ~/.bash_completion
+ unset -f have
+ unset UNAME RELEASE have default dirnames filenames nospace
+ 

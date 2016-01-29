@@ -1,0 +1,12 @@
+diff -Naur slmodem-2.9.11-20090222-orig/modem/modem_cmdline.c slmodem-2.9.11-20090222/modem/modem_cmdline.c
+--- slmodem-2.9.11-20090222-orig/modem/modem_cmdline.c	2009-06-07 19:30:17.000000000 +0200
++++ slmodem-2.9.11-20090222/modem/modem_cmdline.c	2009-06-07 19:36:03.000000000 +0200
+@@ -111,7 +111,7 @@
+ 	{'h',"help","this usage"},
+ 	{'u',"usage","this usage"},
+ 	{'v',"version","show version and exit"},
+-	{'c',"country","default modem country name",MANDATORY,STRING,"USA"},
++	{'c',"country","default modem country name",MANDATORY,STRING,"HUNGARY"},
+ 	{ 0 ,"countrylist","show list of supported countries"},
+ 	{'a',"alsa","ALSA mode (see README for howto)"},
+ 	{'g',"group","Modem TTY group",MANDATORY,STRING,"uucp"},

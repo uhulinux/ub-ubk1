@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Mojolicious-${UB_VERSION}.tar.gz Mojolicious-${UB_VERSION}/
+	http://cpan.metacpan.org/modules/by-module/Mojolicious/

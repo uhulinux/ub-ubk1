@@ -1,0 +1,109 @@
+#!/bin/bash -eux
+
+case "$UB_VERSION" in
+	*.*.*)
+		VERSION_BASE="${UB_VERSION/\~/-}-${UB_RELEASE}"
+		;;
+	*.*~*)
+		VERSION_BASE="${UB_VERSION/\~/.0-}-${UB_RELEASE}"
+		;;
+	*.*)
+		VERSION_BASE="${UB_VERSION}.0-${UB_RELEASE}"
+		;;
+	*)
+		exit 1
+		;;
+esac
+
+export KBUILD_BUILD_TIMESTAMP="$(LC_ALL=C LANG=C date -r ../.src/changelog)"
+
+NUMCPUS="$(grep ^processor /proc/cpuinfo|wc -l)"
+
+rm -f localversion*
+
+for ARCH in x86_64 i386; do
+VERSION="${VERSION_BASE}.$ARCH"
+ub_replace "^EXTRAVERSION =[\t ]*\(\.\([0-9]\+\)\)*.*" "EXTRAVERSION = \1-${VERSION#*-}" Makefile
+
+# work around configure bug...
+#cp arch/x86/configs/i386_defconfig .config
+cp .config."$ARCH" .config
+cp .config."$ARCH" arch/x86/configs/"$ARCH"_defconfig
+make ARCH="$ARCH" oldconfig
+
+diff -u <(grep -v '^#' .config|sort) <(grep -v '^#' arch/x86/configs/"$ARCH"_defconfig|sort)
+
+make ARCH="$ARCH" -j"$NUMCPUS" scripts
+make ARCH="$ARCH" -j"$NUMCPUS" bzImage
+make ARCH="$ARCH" -j"$NUMCPUS" modules
+
+# /boot
+mkdir -p "$UB_OBJECTDIR/boot"
+cp -a System.map            "$UB_OBJECTDIR/boot/System.map-$VERSION"
+cp -a arch/x86/boot/bzImage "$UB_OBJECTDIR/boot/bzImage-$VERSION"
+
+ln -s "bzImage-$VERSION" "$UB_OBJECTDIR/boot/bzImage.$ARCH"
+
+# modules
+make \
+	INSTALL_PATH="$UB_OBJECTDIR/boot" \
+	INSTALL_MOD_PATH="$UB_OBJECTDIR" \
+	modules_install
+
+# check module licenses
+[  -d  "$UB_OBJECTDIR"/lib/modules/"$VERSION" ]
+echo "checking for missing licenses..."
+if find "$UB_OBJECTDIR"/lib/modules/"$VERSION" -name "*.ko" -type f | while read f; do NEW_MODINFO=1 modinfo -F license "$f" | grep -q '' || echo "$f"; done | grep ''; then
+	echo "error: there are modules without license tag. please fix."
+#	exit 1
+fi
+
+# check module symbols
+if depmod -nea -b "$UB_OBJECTDIR" -F "$UB_OBJECTDIR"/boot/System.map "$VERSION" 2>&1 | grep "^WARNING:"; then
+	echo "fix WARNINGs above!"
+	exit 1
+fi
+
+mkdir -p "$UB_OBJECTDIR/usr/src/linux-$VERSION"
+rm -f "$UB_OBJECTDIR/usr/src/linux"
+ln -sf "linux-$VERSION" "$UB_OBJECTDIR/usr/src/linux"
+
+cp -av --parents .config Makefile Module.symvers arch/x86/Makefile arch/x86/Makefile_32.cpu scripts "$UB_OBJECTDIR"/usr/src/linux/
+cp --parents `find  -type f -name "Makefile*" -o -name "Kconfig*"` "$UB_OBJECTDIR"/usr/src/linux/
+cp -av include "$UB_OBJECTDIR"/usr/src/linux/
+cp -av arch/x86/include/asm/. "$UB_OBJECTDIR"/usr/src/linux/include/asm/
+cp -a --parents arch/x86/include "$UB_OBJECTDIR"/usr/src/linux/
+if [ -s Module.markers ]; then
+	cp Module.markers "$UB_OBJECTDIR"/usr/src/linux/
+fi
+if [ -d arch/x86/scripts ]; then
+	cp -a arch/x86/scripts "$UB_OBJECTDIR"/usr/src/linux/arch/x86
+fi
+if [ -f arch/x86/*lds ]; then
+	cp -a arch/x86/*lds "$UB_OBJECTDIR"/usr/src/linux/arch/x86/
+fi
+touch -r "$UB_OBJECTDIR"/usr/src/linux/Makefile "$UB_OBJECTDIR"/usr/src/linux/include/generated/uapi/linux/version.h
+
+# install headers
+make \
+	INSTALL_HDR_PATH="$UB_OBJECTDIR"/usr/ \
+	headers_install
+
+find "$UB_OBJECTDIR/usr/src/linux/." -name ..install.cmd -print0 | xargs -r0 rm -v
+find "$UB_OBJECTDIR/usr/src/linux/." -name .install -print0 | xargs -r0 rm -v
+
+rm -f "$UB_OBJECTDIR/lib/modules/$VERSION/build"
+ln -sf "../../../usr/src/linux-$VERSION" "$UB_OBJECTDIR/lib/modules/$VERSION/build"
+
+# remove mISDN headers
+rm -f "$UB_OBJECTDIR"/usr/src/linux/include/linux/mISDN*
+
+# System.map
+cp -a System.map "$UB_OBJECTDIR/lib/modules/$VERSION/"
+
+rm "$UB_OBJECTDIR"/lib/modules/"$VERSION"/source
+ln -sf ../../../usr/src/linux-"$VERSION" "$UB_OBJECTDIR"/lib/modules/"$VERSION"/source
+
+done
+
+ln -s "bzImage.$ARCH" "$UB_OBJECTDIR/boot/bzImage"

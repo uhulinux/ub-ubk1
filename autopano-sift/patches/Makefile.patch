@@ -1,0 +1,36 @@
+diff -urN autopano-sift-2.4.orig/src/Makefile autopano-sift-2.4/src/Makefile
+--- autopano-sift-2.4.orig/src/Makefile	2005-10-31 13:45:20.000000000 +0100
++++ autopano-sift-2.4/src/Makefile	2007-07-19 20:57:30.000000000 +0200
+@@ -11,7 +11,7 @@
+ LIBS_WIN=/r:gtk-sharp.dll /r:System.Drawing.dll /r:ICSharpCode.SharpZipLib.dll \
+ 	/r:glib-sharp.dll /r:gdk-sharp.dll
+ MAKE_MONO=
+-LIBS_MONO=/pkg:gtk-sharp /r:System.Drawing /r:ICSharpCode.SharpZipLib
++LIBS_MONO=/pkg:gtk-sharp-2.0 /r:System.Drawing /r:ICSharpCode.SharpZipLib
+ 
+ ifeq ($(windows),yes)
+ 	CSC=$(CSC_WINDOWS)
+diff -urN autopano-sift-2.4.orig/src/util/autopanog/Makefile autopano-sift-2.4/src/util/autopanog/Makefile
+--- autopano-sift-2.4.orig/src/util/autopanog/Makefile	2005-04-09 11:45:28.000000000 +0200
++++ autopano-sift-2.4/src/util/autopanog/Makefile	2007-07-19 20:55:56.000000000 +0200
+@@ -11,7 +11,7 @@
+ LIBS_WIN=/r:gtk-sharp.dll /r:glade-sharp.dll /r:atk-sharp.dll \
+ 	/r:gdk-sharp.dll /r:glib-sharp.dll /r:System.Drawing.dll
+ MAKE_MONO=
+-LIBS_MONO=/pkg:gtk-sharp /pkg:glade-sharp /resource:image-bottom-left.png \
++LIBS_MONO=/pkg:gtk-sharp-2.0 /pkg:glade-sharp-2.0 /resource:image-bottom-left.png \
+ 	/resource:image-bottom-right.png /resource:image-vanilla.png \
+ 	/r:System.Drawing.dll
+ 
+diff -urN autopano-sift-2.4.orig/src/util/Makefile autopano-sift-2.4/src/util/Makefile
+--- autopano-sift-2.4.orig/src/util/Makefile	2005-01-15 17:33:38.000000000 +0100
++++ autopano-sift-2.4/src/util/Makefile	2007-07-19 20:55:11.000000000 +0200
+@@ -10,7 +10,7 @@
+ MAKE_MONO=
+ LIBS_MONO=/r:System.Drawing
+ 
+-USING_GTK=/define:USING_GTK /pkg:gtk-sharp /pkg:glade-sharp
++USING_GTK=/define:USING_GTK /pkg:gtk-sharp-2.0 /pkg:glade-sharp-2.0
+ 
+ LIBSIFT=/r:../libsift.dll
+ SOURCES=DrawingPrimitives.cs BasicImagingInterface.cs

@@ -1,0 +1,11 @@
+--- gucharmap-2.26.0.orig/gucharmap.desktop.in.in	2008-09-01 13:57:09.000000000 +0200
++++ gucharmap-2.26.0/gucharmap.desktop.in.in	2009-03-15 19:40:26.000000000 +0100
+@@ -6,7 +6,7 @@
+ Icon=accessories-character-map
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Utility;
++Categories=GTK;GNOME;Utility;X-UHU-Menu/Tools/Utilities;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=gucharmap
+ X-GNOME-Bugzilla-Component=general

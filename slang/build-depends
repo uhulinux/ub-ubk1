@@ -1,0 +1,6 @@
+glibc-dev
+libpng-dev
+pcre-dev
+readline-dev
+terminfo
+zlib-dev

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Net-SSLeay-${UB_VERSION}.tar.gz Net-SSLeay-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/M/MI/MIKEM/

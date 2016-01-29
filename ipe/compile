@@ -1,0 +1,18 @@
+#!/bin/sh -eux
+
+export QTDIR="/usr/lib/qt4"
+
+cd src
+ub_make IPEPREFIX=/usr
+
+cd ../figtoipe-20091205
+ub_make
+
+cd ../pdftoipe-20130124-src
+ub_make
+
+#cd ../IpePresenter-6e21d1f3b806
+#CPPFLAGS+=" -I ../ipe-"$UB_VERSION"/src/include -I ../ipe-"$UB_VERSION"/src/ipeqtcanvas" \
+#LIBS=" -L ../ipe-"$UB_VERSION"/build/lib"
+#sed -i s'|uic|/usr/lib/qt4/bin/uic|'g Makefile
+#ub_make

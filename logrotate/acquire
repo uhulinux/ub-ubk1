@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+logrotate-${UB_VERSION}.tar.gz logrotate-${UB_VERSION}/
+	http://www.sfr-fresh.com/unix/privat/
+	https://fedorahosted.org/releases/l/o/logrotate/

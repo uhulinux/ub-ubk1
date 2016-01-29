@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/fonts/TTF
+cp -a ttf/*.ttf "$UB_INSTALLDIR"/usr/share/fonts/TTF/
+mkfontscale "$UB_INSTALLDIR"/usr/share/fonts/TTF
+sed 1d \
+  <"$UB_INSTALLDIR"/usr/share/fonts/TTF/fonts.scale \
+  >"$UB_INSTALLDIR"/usr/share/fonts/TTF/fonts.scale.dejavu
+rm "$UB_INSTALLDIR"/usr/share/fonts/TTF/fonts.scale
+cp -a "$UB_INSTALLDIR"/usr/share/fonts/TTF/fonts.{scale,dir}.dejavu

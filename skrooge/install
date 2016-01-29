@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+ub_install
+install -Dm 0644 skrooge/hi128-apps-skrooge.png ${UB_INSTALLDIR}/usr/share/pixmaps/skrooge.png

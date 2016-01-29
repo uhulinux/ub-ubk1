@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libvisual-plugins-${UB_VERSION}.tar.gz libvisual-plugins-${UB_VERSION}/
+	http://downloads.sourceforge.net/libvisual/

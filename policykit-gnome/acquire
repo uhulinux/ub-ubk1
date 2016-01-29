@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PolicyKit-gnome-${UB_VERSION}.tar.bz2 PolicyKit-gnome-${UB_VERSION}/
+	http://hal.freedesktop.org/releases/

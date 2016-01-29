@@ -1,0 +1,1 @@
+urllist https://bitbucket.org/Coin3D/coin/downloads/ | splitver '^Coin-([0-9.]+).tar.gz$' | sort -V | tail -n 1

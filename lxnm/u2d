@@ -1,0 +1,1 @@
+sflist lxde LXNM%20%28network%20manager%29 | splitver '^LXNM%20([0-9.]+)$' | sort -V | tail -n 1

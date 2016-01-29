@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pavucontrol-${UB_VERSION}.tar.xz pavucontrol-${UB_VERSION}/
+	http://0pointer.de/lennart/projects/pavucontrol/

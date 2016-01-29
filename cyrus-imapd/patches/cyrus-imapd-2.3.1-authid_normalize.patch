@@ -1,0 +1,80 @@
+diff -up cyrus-imapd-2.3.15/lib/auth_unix.c.authid_normalize cyrus-imapd-2.3.15/lib/auth_unix.c
+--- cyrus-imapd-2.3.15/lib/auth_unix.c.authid_normalize	2009-09-18 11:53:47.183115911 +0200
++++ cyrus-imapd-2.3.15/lib/auth_unix.c	2009-09-18 11:53:47.252115833 +0200
+@@ -156,10 +156,12 @@ const char *identifier;
+ size_t len;
+ {
+     static char retbuf[81];
++    char backup[81];
+     struct group *grp;
+     char sawalpha;
+     char *p;
+     int username_tolower = 0;
++    int ic,rbc;
+ 
+     if(!len) len = strlen(identifier);
+     if(len >= sizeof(retbuf)) return NULL;
+@@ -211,6 +213,22 @@ size_t len;
+     /* now we don't */
+     /* if (!sawalpha) return NULL;  */
+ 
++    if( (libcyrus_config_getswitch(CYRUSOPT_NORMALIZEUID) == 1) ) {
++        strcpy(backup,retbuf);
++       /* remove leading blanks */
++       for(ic=0; isblank(backup[ic]); ic++);
++       for(rbc=0; backup[ic]; ic++) {
++            retbuf[rbc] = ( isalpha(backup[ic]) ?
++                 tolower(backup[ic]) : backup[ic] );
++            rbc++;
++       }
++       retbuf[rbc] = '\0';
++       /* remove trailing blanks */
++       for(--rbc; isblank(retbuf[rbc]); rbc--) {
++            retbuf[rbc] = '\0';
++       }
++    }
++
+     return retbuf;
+ }
+ 
+diff -up cyrus-imapd-2.3.15/lib/imapoptions.authid_normalize cyrus-imapd-2.3.15/lib/imapoptions
+--- cyrus-imapd-2.3.15/lib/imapoptions.authid_normalize	2009-09-18 11:53:47.244115877 +0200
++++ cyrus-imapd-2.3.15/lib/imapoptions	2009-09-18 11:53:47.260115873 +0200
+@@ -1217,6 +1217,11 @@ product version in the capabilities */
+    interface, otherwise the user is assumed to be in the default
+    domain (if set). */
+ 
++{ "normalizeuid", 0, SWITCH }
++/* Lowercase uid and strip leading and trailing blanks. It is recommended
++   to set this to yes, especially if OpenLDAP is used as authentication
++   source. */
++
+ /*
+ .SH SEE ALSO
+ .PP
+diff -up cyrus-imapd-2.3.15/lib/libcyr_cfg.c.authid_normalize cyrus-imapd-2.3.15/lib/libcyr_cfg.c
+--- cyrus-imapd-2.3.15/lib/libcyr_cfg.c.authid_normalize	2009-03-31 06:43:20.000000000 +0200
++++ cyrus-imapd-2.3.15/lib/libcyr_cfg.c	2009-09-18 11:55:03.436822867 +0200
+@@ -154,6 +154,10 @@ struct cyrusopt_s cyrus_options[] = {
+       CFGVAL(long, 1),
+       CYRUS_OPT_SWITCH },
+ 
++    { CYRUSOPT_NORMALIZEUID,
++      CFGVAL(long, 1),
++      CYRUS_OPT_SWITCH },
++
+     { CYRUSOPT_LAST, { NULL }, CYRUS_OPT_NOTOPT }
+ };
+ 
+diff -up cyrus-imapd-2.3.15/lib/libcyr_cfg.h.authid_normalize cyrus-imapd-2.3.15/lib/libcyr_cfg.h
+--- cyrus-imapd-2.3.15/lib/libcyr_cfg.h.authid_normalize	2009-03-31 06:43:20.000000000 +0200
++++ cyrus-imapd-2.3.15/lib/libcyr_cfg.h	2009-09-18 11:55:33.267115989 +0200
+@@ -114,6 +114,8 @@ enum cyrus_opt {
+     CYRUSOPT_SQL_USESSL,
+     /* Checkpoint after every recovery (OFF) */
+     CYRUSOPT_SKIPLIST_ALWAYS_CHECKPOINT,
++    /* Lowercase uid and strip leading and trailing blanks (OFF) */
++    CYRUSOPT_NORMALIZEUID,
+ 
+     CYRUSOPT_LAST
+     

@@ -1,0 +1,3 @@
+	/usr/bin/*-config
+	/usr/lib/libcacard.so.*
+@	/usr/lib/libcacard.so.*

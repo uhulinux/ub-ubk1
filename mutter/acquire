@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mutter-${UB_VERSION}.tar.xz mutter-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/mutter/${UB_VERSION_HEAD2}/

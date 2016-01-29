@@ -1,0 +1,13 @@
+boost-dev
+cmake
+glew-dev
+glu-dev
+gst0.10-plugins-base-dev
+hdf5
+ilmbase-dev
+libxmu-dev
+opencv-dev
+openexr-dev
+openjpeg1-dev
+python-dev
+qt4-dev

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxrandr-$UB_VERSION.tar.gz lxrandr-$UB_VERSION/
+	http://downloads.sourceforge.net/lxde/

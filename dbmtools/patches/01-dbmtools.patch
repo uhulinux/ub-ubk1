@@ -1,0 +1,126 @@
+diff -Naurd a/dbmutil.c b/dbmutil.c
+--- a/dbmutil.c	2003-02-23 22:46:30.000000000 +0100
++++ b/dbmutil.c	2012-03-09 16:58:59.000000000 +0100
+@@ -237,7 +237,7 @@
+ 		if(DBM_OPEN_FAIL(dbd) && errno == ENOENT && interactive)
+ 			{
+ 			printf("%s does not exist.  Create? ", filename); fflush(stdout);
+-			getline(stdin, line, MAXLINE);
++			get_line(stdin, line, MAXLINE);
+ 			if(line[0] == 'y' || line[0] == 'Y')
+ 				{
+ #ifdef DBM_WRCREAT
+@@ -280,7 +280,7 @@
+ 		if((linep = agetline(stdin)) == NULL)
+ 			break;
+ #else
+-		if(getline(stdin, line, MAXLINE) == EOF)
++		if(get_line(stdin, line, MAXLINE) == EOF)
+ 			break;
+ 		linep = line;
+ #endif
+@@ -361,7 +361,7 @@
+ 			printf("db filename? ");
+ 			fflush(stdout);
+ 			}
+-		getline(stdin, line, MAXLINE);
++		get_line(stdin, line, MAXLINE);
+ 		strcpy(filename, line);
+ 		}
+ 
+@@ -387,7 +387,7 @@
+ 		if(DBM_OPEN_FAIL(dbd) && errno == ENOENT && interactive)
+ 			{
+ 			printf("%s does not exist.  Create? ", filename); fflush(stdout);
+-			getline(stdin, line, MAXLINE);
++			get_line(stdin, line, MAXLINE);
+ 			if(line[0] == 'y' || line[0] == 'Y')
+ 				{
+ #ifdef DBM_WRCREAT
+@@ -452,7 +452,7 @@
+ 	else	{
+ 		if(interactive)
+ 			{ printf("key? "); fflush(stdout); }
+-		getline(stdin, line, MAXLINE);
++		get_line(stdin, line, MAXLINE);
+ 		key = line;
+ 		}
+ 
+@@ -497,7 +497,7 @@
+ 	else	{
+ 		if(interactive)
+ 			{ printf("key? "); fflush(stdout); }
+-		getline(stdin, line, MAXLINE);
++		get_line(stdin, line, MAXLINE);
+ 		key = line;
+ 		}
+ 
+@@ -516,7 +516,7 @@
+ 		int r;
+ 		if(interactive)
+ 			printf("type data, terminated by \".\":\n");
+-		while((r = getline(stdin, &line2[totlen], MAXLINE - totlen - 2)) != EOF)
++		while((r = get_line(stdin, &line2[totlen], MAXLINE - totlen - 2)) != EOF)
+ 			{
+ 			if(line2[totlen] == '.' && r == 1)
+ 				break;
+@@ -556,7 +556,7 @@
+ 	else	{
+ 		if(interactive)
+ 			{ printf("value? "); fflush(stdout); }
+-		getline(stdin, line2, MAXLINE);
++		get_line(stdin, line2, MAXLINE);
+ 		vald.dptr = line2;
+ 		vald.dsize = strlen(vald.dptr);
+ 		}
+@@ -667,7 +667,7 @@
+ 	else	{
+ 		if(interactive)
+ 			{ printf("key? "); fflush(stdout); }
+-		getline(stdin, line, MAXLINE);
++		get_line(stdin, line, MAXLINE);
+ 		key = line;
+ 		}
+ 
+@@ -684,7 +684,7 @@
+ 	else	{
+ 		if(interactive)
+ 			{ printf("key? "); fflush(stdout); }
+-		getline(stdin, line, MAXLINE);
++		get_line(stdin, line, MAXLINE);
+ 		key = line;
+ 		}
+ 
+@@ -708,7 +708,7 @@
+ 	else	{
+ 		if(interactive)
+ 			{ printf("key? "); fflush(stdout); }
+-		getline(stdin, line, MAXLINE);
++		get_line(stdin, line, MAXLINE);
+ 		key = line;
+ 		}
+ 
+@@ -727,7 +727,7 @@
+ 	else	{
+ 		if(interactive)
+ 			{ printf("file? "); fflush(stdout); }
+-		getline(stdin, line2, MAXLINE);
++		get_line(stdin, line2, MAXLINE);
+ 		filename2 = line2;
+ 		}
+ 
+diff -Naurd a/getline.c b/getline.c
+--- a/getline.c	2002-01-13 23:03:31.000000000 +0100
++++ b/getline.c	2012-03-09 16:50:57.000000000 +0100
+@@ -12,10 +12,7 @@
+ 
+ #include <stdio.h>
+ 
+-getline(fi, string, max)
+-FILE *fi;
+-char string[];
+-register int max;
++get_line(char string[], int max, FILE *fi)
+ {
+ register int i;
+ register int c;

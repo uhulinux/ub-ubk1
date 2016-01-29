@@ -1,0 +1,1 @@
+KERNEL=="vboxdrv", NAME="vboxdrv", GROUP="media", MODE="0660"

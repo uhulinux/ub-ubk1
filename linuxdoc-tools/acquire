@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+linuxdoc-tools_${UB_VERSION}.tar.gz linuxdoc-tools-${UB_VERSION}/
+	http://people.debian.org/~sano/linuxdoc-tools/archives/
+	ftp://ftp.debian.org/debian/pool/main/l/linuxdoc-tools/

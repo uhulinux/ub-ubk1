@@ -1,0 +1,1 @@
+urllist ftp://ftp.cyrusimap.org/cyrus-sasl/ | parsever | sort -V | tail -n 1

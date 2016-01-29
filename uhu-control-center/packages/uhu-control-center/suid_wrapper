@@ -1,0 +1,10 @@
+/usr/sbin/adsl-config
+/usr/sbin/clock-config
+/usr/sbin/dhcpd-config
+/usr/sbin/fstab-config
+/usr/sbin/group-config
+/usr/sbin/mouse-config
+/usr/sbin/runlevel-config
+/usr/sbin/samba-config
+/usr/sbin/uhu-control-center
+/usr/sbin/user-config

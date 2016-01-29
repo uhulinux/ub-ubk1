@@ -1,0 +1,25 @@
+From f3d8bec24a5f459d5aab199db309af5d3b5d3d54 Mon Sep 17 00:00:00 2001
+From: Cole Robinson <crobinso@redhat.com>
+Date: Mon, 21 Apr 2014 16:51:23 -0400
+Subject: [PATCH] filesystem: Fix target validation when editing device (bz
+ 1089422)
+
+(cherry picked from commit e6a67fc7099ac39257108080c8cbcfcdc6371e56)
+---
+ virtinst/devicefilesystem.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/virtinst/devicefilesystem.py b/virtinst/devicefilesystem.py
+index f516fed..28eda74 100644
+--- a/virtinst/devicefilesystem.py
++++ b/virtinst/devicefilesystem.py
+@@ -100,7 +100,8 @@ class VirtualFilesystem(VirtualDevice):
+         # actually a directory, it is merely a arbitrary string tag
+         # that is exported to the guest as a hint for where to mount
+         if (self.conn.is_qemu() and
+-            (self.type == self.TYPE_DEFAULT or
++            (self.type is None or
++             self.type == self.TYPE_DEFAULT or
+              self.type == self.TYPE_MOUNT)):
+             pass
+         elif not os.path.isabs(val):

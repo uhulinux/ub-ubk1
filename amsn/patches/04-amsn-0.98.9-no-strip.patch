@@ -1,0 +1,12 @@
+diff -Naur orig/Makefile.in mod/Makefile.in
+--- orig/Makefile.in	2012-05-18 21:28:05.000000000 +0200
++++ mod/Makefile.in	2013-06-22 12:32:52.000000000 +0200
+@@ -135,7 +135,7 @@
+ 
+ #ifeq (@DEBUG@,no)
+ #  ifneq (@FOUND_OS@,mac)
+-#    LDFLAGS += -s
++#    LDFLAGS += 
+ #  endif
+ #endif
+ 

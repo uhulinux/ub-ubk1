@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_install
+
+sed -i \
+  -e 's|"zirkle/9"|"-*-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*"|g' \
+  "$UB_INSTALLDIR"/usr/share/e16/themes/ShinyMetal/fonts.cfg
+rm "$UB_INSTALLDIR"/usr/share/e16/themes/ShinyMetal/fonts.cfg.*
+rm -r "$UB_INSTALLDIR"/usr/share/e16/themes/ShinyMetal/ttfonts
+
+chown -Rh 0:0 "$UB_INSTALLDIR"

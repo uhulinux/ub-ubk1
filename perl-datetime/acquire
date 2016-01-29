@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+DateTime-${UB_VERSION}.tar.gz DateTime-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/

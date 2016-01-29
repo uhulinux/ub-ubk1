@@ -1,0 +1,5 @@
+glamor-egl-dev
+libdrm-dev
+libxvmc-dev
+mesa-dev
+x.org-server-dev

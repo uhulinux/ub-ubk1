@@ -1,0 +1,9 @@
+diff -Naur juk-4.8.80-orig/juk.desktop juk-4.8.80/juk.desktop
+--- juk-4.8.80-orig/juk.desktop	2012-05-24 12:09:42.000000000 +0200
++++ juk-4.8.80/juk.desktop	2012-06-04 18:29:16.000000000 +0200
+@@ -49,4 +49,4 @@
+ GenericName[x-test]=xxMusic Playerxx
+ GenericName[zh_CN]=音乐播放器
+ GenericName[zh_TW]=音樂播放器
+-Categories=Qt;KDE;AudioVideo;Player;
++Categories=Qt;KDE;AudioVideo;Player;X-UHU-Menu/Multimedia/MusicPlayers;

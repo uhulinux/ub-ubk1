@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lesstif-${UB_VERSION}.tar.gz lesstif-${UB_VERSION}/
+	http://downloads.sourceforge.net/lesstif/

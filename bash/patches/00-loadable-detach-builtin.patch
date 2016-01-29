@@ -1,0 +1,88 @@
+diff -Naurdp a/examples/loadables/detach.c b/examples/loadables/detach.c
+--- a/examples/loadables/detach.c	1970-01-01 01:00:00.000000000 +0100
++++ b/examples/loadables/detach.c	2009-11-27 13:00:42.000000000 +0100
+@@ -0,0 +1,57 @@
++/* detach - Detach from controlling terminal */
++
++#include <config.h>
++
++#if defined (HAVE_UNISTD_H)
++#  include <unistd.h>
++#endif
++
++#include <sys/ioctl.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
++#include <string.h>
++#include <errno.h>
++#include <stdio.h>
++#include <stdlib.h>
++
++#include "builtins.h"
++#include "shell.h"
++#include "bashgetopt.h"
++
++int
++detach_builtin (list)
++     WORD_LIST *list;
++{
++	int fd = open("/dev/tty", O_RDONLY);
++	pid_t pid, pgid;
++
++	if (fd < 0)
++		goto exit;
++
++	pid = getpid();
++	pgid = getpgid(pid);
++	ioctl(fd, TIOCNOTTY);
++	if (setpgid(pid, pgid) < 0) {
++		fprintf(stderr, "detach: setpgid: %s\n", strerror(errno));
++		return EXECUTION_FAILURE;
++	}
++
++exit:
++	return EXECUTION_SUCCESS;
++}
++
++char *detach_doc[] = {
++	"Detach from controlling terminal.",
++	(char *)NULL
++};
++
++struct builtin detach_struct = {
++	"detach",
++	detach_builtin,
++	BUILTIN_ENABLED,
++	detach_doc,
++	"detach",
++	0
++};
++	
+diff -Naurdp a/examples/loadables/Makefile.in b/examples/loadables/Makefile.in
+--- a/examples/loadables/Makefile.in	2009-01-04 20:32:27.000000000 +0100
++++ b/examples/loadables/Makefile.in	2009-11-27 13:01:18.000000000 +0100
+@@ -85,7 +85,7 @@ INC = -I. -I.. -I$(topdir) -I$(topdir)/l
+ 
+ ALLPROG = print truefalse sleep pushd finfo logname basename dirname \
+ 	  tty pathchk tee head mkdir rmdir printenv id whoami \
+-	  uname sync push ln unlink cut realpath getconf strftime mypid
++	  uname sync push ln unlink cut realpath getconf strftime mypid detach
+ OTHERPROG = necho hello cat
+ 
+ all:	$(SHOBJ_STATUS)
+@@ -191,6 +191,9 @@ strftime:	strftime.o
+ mypid:	mypid.o
+ 	$(SHOBJ_LD) $(SHOBJ_LDFLAGS) $(SHOBJ_XLDFLAGS) -o $@ mypid.o $(SHOBJ_LIBS)
+ 
++detach:	detach.o
++	$(SHOBJ_LD) $(SHOBJ_LDFLAGS) $(SHOBJ_XLDFLAGS) -o $@ detach.o $(SHOBJ_LIBS)
++
+ # pushd is a special case.  We use the same source that the builtin version
+ # uses, with special compilation options.
+ #
+@@ -242,3 +245,4 @@ mkdir.o: mkdir.c
+ realpath.o: realpath.c
+ strftime.o: strftime.c
+ mypid.o: mypid.c
++detach.o: detach.c

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gob2-${UB_VERSION}.tar.xz gob2-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gob2/${UB_VERSION_HEAD2}/

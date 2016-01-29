@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pycrypto-${UB_VERSION}.tar.gz pycrypto-${UB_VERSION}/
+	http://www.amk.ca/files/python/crypto/

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Kadu
+Comment=Instant Messenger
+Comment[hu]=Csevejkliens
+Exec=kadu
+Icon=kadu
+Terminal=false
+Type=Application
+Categories=Network;Chat;
+StartupNotify=true

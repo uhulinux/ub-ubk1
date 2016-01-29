@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+export DESTDIR="$UB_INSTALLDIR"
+scons install
+
+# GPSD needs RPATH (from Arch pkgbuild)
+chrpath -r /usr/lib/ "${UB_INSTALLDIR}"/usr/lib/libgps{,d}.so.20.0.0
+chrpath -r /usr/lib/ "${UB_INSTALLDIR}"/usr/bin/{gpsdecode,gpsctl,gpspipe,gpxlogger,lcdgps}
+chrpath -r /usr/lib/ "${UB_INSTALLDIR}"/usr/sbin/{gpsd,gpsdctl}
+chrpath -r /usr/lib/ "${UB_INSTALLDIR}"/usr/lib/python2.7/site-packages/gps/{clienthelpers,packet}.so
+
+#this header is necessary for kdeedu
+cp -a gpsd_config.h "$UB_INSTALLDIR"/usr/include/

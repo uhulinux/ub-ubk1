@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+    sed 's/(STATIC) -lbfd/(DYNAMIC) -lbfd/g' Makefile > Makefile.tmp && \
+    mv Makefile.tmp Makefile
+ub_make
+

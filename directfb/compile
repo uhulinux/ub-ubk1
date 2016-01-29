@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--enable-sdl \
+	--enable-xine \
+	--enable-mng \
+	--enable-imlib2 \
+	--enable-gstreamer \
+	--enable-zlib

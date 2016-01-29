@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+chmod -R -x ./doc/xehelp/*.*
+chmod -R -x ./doc/xehelp/html/*.*
+chmod -x ./doc/en/xereadme.txt
+chmod -x ./AUTHORS
+chmod -x ./README
+
+sed -i 's/#include <glib.h>//g' src/ulib/utf3.c
+
+autoconf
+
+ub_configure
+ub_make all

@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cp doc/C/conglomerate-C.omf doc/C/conglomerate-C.omf.out
+ub_install

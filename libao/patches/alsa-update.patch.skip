@@ -1,0 +1,230 @@
+diff -Naur libao-0.8.4/src/plugins/alsa09/ao_alsa09.c libao-20040123/src/plugins/alsa09/ao_alsa09.c
+--- libao-0.8.4/src/plugins/alsa09/ao_alsa09.c	2003-09-10 16:21:15.000000000 +0200
++++ libao-20040123/src/plugins/alsa09/ao_alsa09.c	2003-10-13 04:12:32.000000000 +0200
+@@ -25,6 +25,9 @@
+  *
+  */
+ 
++#define ALSA_PCM_NEW_HW_PARAMS_API
++#define ALSA_PCM_NEW_SW_PARAMS_API
++
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+@@ -47,10 +50,24 @@
+  * supplying a period_time to ao overrides the use of this  */
+ #define AO_ALSA_SAMPLE_XFER 256
+ 
++/* set mmap to default if enabled at compile time, otherwise, mmap isn't
++   the default */
++#ifdef USE_ALSA_MMIO
++#define AO_ALSA_WRITEI snd_pcm_mmap_writei
++#define AO_ALSA_ACCESS_MASK SND_PCM_ACCESS_MMAP_INTERLEAVED
++#else
++#define AO_ALSA_WRITEI snd_pcm_writei
++#define AO_ALSA_ACCESS_MASK SND_PCM_ACCESS_RW_INTERLEAVED
++#endif
++
++typedef snd_pcm_sframes_t ao_alsa_writei_t(snd_pcm_t *pcm, const void *buffer,
++						snd_pcm_uframes_t size);
++
+ static char *ao_alsa_options[] = {
+ 	"dev",
+ 	"buffer_time",
+-        "period_time"
++        "period_time",
++	"use_mmap"
+ };
+ 
+ 
+@@ -71,14 +88,16 @@
+ typedef struct ao_alsa_internal
+ {
+ 	snd_pcm_t *pcm_handle;
+-	int buffer_time;
+-	int period_time;
+-	int buffer_size;
+-	int period_size;
++	unsigned int buffer_time;
++	unsigned int period_time;
++	snd_pcm_uframes_t buffer_size;
++	snd_pcm_uframes_t period_size;
+ 	int sample_size;
+-	int bitformat;
++	snd_pcm_format_t bitformat;
+ 	char *dev;
+ 	char *cmd;
++	ao_alsa_writei_t * writei;
++	snd_pcm_access_t access_mask;
+ } ao_alsa_internal;
+ 
+ 
+@@ -121,6 +140,8 @@
+ 	
+ 	internal->buffer_time = AO_ALSA_BUFFER_TIME;
+ 	internal->period_time = AO_ALSA_PERIOD_TIME;
++	internal->writei = AO_ALSA_WRITEI;
++	internal->access_mask = AO_ALSA_ACCESS_MASK;
+ 
+ 	if (!(internal->dev = strdup("default"))) {
+ 		free (internal);
+@@ -148,6 +169,19 @@
+ 		internal->buffer_time = atoi(value);
+ 	else if (!strcmp(key, "period_time"))
+ 		internal->period_time = atoi(value);
++	else if (!strcmp(key,"use_mmap")) {
++		if(!strcmp(value,"yes") || !strcmp(value,"y") || 
++			!strcmp(value,"true") || !strcmp(value,"t") ||
++			!strcmp(value,"1"))
++		{
++			internal->writei = snd_pcm_mmap_writei;
++			internal->access_mask = SND_PCM_ACCESS_MMAP_INTERLEAVED;
++		}
++		else {
++			internal->writei = snd_pcm_writei;
++			internal->access_mask = SND_PCM_ACCESS_RW_INTERLEAVED;
++		}
++	}
+ 
+ 	return 1;
+ }
+@@ -182,6 +216,7 @@
+ 	snd_pcm_hw_params_t   *params;
+ 	snd_pcm_access_mask_t *access;
+ 	int err;
++	unsigned int rate = format->rate;
+ 
+ 	/* allocate the hardware parameter structure */
+ 	snd_pcm_hw_params_alloca(&params);
+@@ -196,13 +231,7 @@
+ 	/* create a null access mask */
+ 	snd_pcm_access_mask_none(access);
+ 
+-#ifdef USE_ALSA_MMIO
+-	/* allow interleaved memory-mapped access */
+-	snd_pcm_access_mask_set(access, SND_PCM_ACCESS_MMAP_INTERLEAVED);
+-#else
+-	/* allow interleaved non memory-mapped access */
+-	snd_pcm_access_mask_set(access, SND_PCM_ACCESS_RW_INTERLEAVED);
+-#endif
++	snd_pcm_access_mask_set(access, internal->access_mask);
+ 
+ 	/* commit the access value to params structure */
+ 	internal->cmd = "snd_pcm_hw_params_set_access";
+@@ -221,7 +250,7 @@
+ 	/* set the number of channels */
+ 	internal->cmd = "snd_pcm_hw_params_set_channels";
+ 	err = snd_pcm_hw_params_set_channels(internal->pcm_handle,
+-			params, format->channels);
++			params, (unsigned int)format->channels);
+ 	if (err < 0)
+ 		return err;
+ 
+@@ -231,29 +260,29 @@
+ 	/* set the sample rate */
+ 	internal->cmd = "snd_pcm_hw_params_set_rate_near";
+ 	err = snd_pcm_hw_params_set_rate_near(internal->pcm_handle,
+-			params, format->rate, 0);
++			params, &rate, 0);
+ 	if (err < 0)
+ 		return err;
+ 
+ 	/* set the length of the hardware sample buffer in milliseconds */
+ 	internal->cmd = "snd_pcm_hw_params_set_buffer_time_near";
+ 	err = snd_pcm_hw_params_set_buffer_time_near(internal->pcm_handle,
+-			params, internal->buffer_time, 0);
++			params, &(internal->buffer_time), 0);
+ 	if (err < 0)
+ 		return err;
+ 
+ 	/* save the buffer time in case alsa overrode it */
+-	internal->buffer_time = err;
++	/*internal->buffer_time = err;*/
+ 
+ 	/* calculate a period time of one half sample time */
+-	if ((internal->period_time == 0) && (format->rate > 0))
++	if ((internal->period_time == 0) && (rate > 0))
+ 		internal->period_time =
+-			1000000 * AO_ALSA_SAMPLE_XFER / format->rate;
++			1000000 * AO_ALSA_SAMPLE_XFER / rate;
+ 
+ 	/* set the time per hardware sample transfer */
+ 	internal->cmd = "snd_pcm_hw_params_set_period_time_near";
+ 	err = snd_pcm_hw_params_set_period_time_near(internal->pcm_handle,
+-			params, internal->period_time, 0);
++			params, &(internal->period_time), 0);
+ 	if (err < 0)
+ 		return err;
+ 
+@@ -264,10 +293,18 @@
+ 		return err;
+ 
+ 	/* save the period size in bytes for posterity */
+-	internal->period_size = snd_pcm_hw_params_get_period_size(params, 0);
++	internal->cmd = "snd_pcm_hw_get_period_size";
++	err = snd_pcm_hw_params_get_period_size(params, 
++						&(internal->period_size), 0);
++	if (err < 0)
++		return err;
+ 
+ 	/* save the buffer size in bytes for posterity */
+-	internal->buffer_size = snd_pcm_hw_params_get_buffer_size(params);
++	internal->cmd = "snd_pcm_hw_get_period_size";
++	err = snd_pcm_hw_params_get_buffer_size(params, 
++						&(internal->buffer_size)); 
++	if (err < 0)
++		return err;
+ 
+ 	return 1;
+ }
+@@ -288,6 +325,17 @@
+ 	if (err < 0)
+ 		return err;
+ 
++	/* allow transfers to start when there are four periods */
++	/* setting the threshold to a very big values seems to cause a
++	   deadlock for dmix in a pol().  So here we just set it to 0,
++	   I'm not sure why we need to set a threshold > 0 anyway, maybe 
++	   someone could enlighten me. - shank */
++	internal->cmd = "snd_pcm_sw_params_set_start_threshold";
++	err = snd_pcm_sw_params_set_start_threshold(internal->pcm_handle,
++			params, /*internal->period_size << 2*/0);
++	if (err < 0)
++		return err;
++
+ 	/* require a minimum of one full transfer in the buffer */
+ 	internal->cmd = "snd_pcm_sw_params_set_avail_min";
+ 	err = snd_pcm_sw_params_set_avail_min(internal->pcm_handle, params,
+@@ -295,13 +343,6 @@
+ 	if (err < 0)
+ 		return err;
+ 
+-	/* allow transfers to start when there are four periods */
+-	internal->cmd = "snd_pcm_sw_params_set_start_threshold";
+-	err = snd_pcm_sw_params_set_start_threshold(internal->pcm_handle,
+-			params, internal->period_size << 2);
+-	if (err < 0)
+-		return err;
+-
+ 	/* do not align transfers */
+ 	internal->cmd = "snd_pcm_sw_params_set_xfer_align";
+ 	err = snd_pcm_sw_params_set_xfer_align(internal->pcm_handle, params, 1);
+@@ -410,15 +451,12 @@
+ 	/* the entire buffer might not transfer at once */
+ 	while (len > 0) {
+ 		/* try to write the entire buffer at once */
+-#ifdef USE_ALSA_MMIO
+-		err = snd_pcm_mmap_writei(internal->pcm_handle, ptr, len);
+-#else
+-		err = snd_pcm_writei(internal->pcm_handle, ptr, len);
+-#endif
++		err = internal->writei(internal->pcm_handle, ptr, len);
+ 
+ 		/* it's possible that no data was transferred */
+-		if (err == -EAGAIN)
++		if (err == -EAGAIN) {
+ 			continue;
++		}
+ 
+ 		if (err < 0) {
+ 			/* this might be an error, or an exception */

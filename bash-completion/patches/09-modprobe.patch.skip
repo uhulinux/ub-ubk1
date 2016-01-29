@@ -1,0 +1,12 @@
+diff -Naur bash_completion.orig/bash_completion bash_completion/bash_completion
+--- bash_completion.orig/bash_completion	2005-07-12 21:13:02.000000000 +0200
++++ bash_completion/bash_completion	2005-07-14 16:40:28.226479075 +0200
+@@ -354,7 +354,7 @@
+ 	local modpath
+ 	modpath=/lib/modules/$1
+ 	COMPREPLY=( $( command ls -R $modpath | \
+-			sed -ne 's/^\('$cur'.*\)\.k\?o\(\|.gz\)$/\1/p') )
++			sed -ne 's/^\('${cur//[-_]/[-_]}'.*\)\.k\?o\(\|.gz\)$/\1/p') )
+ }
+ 
+ # this function complete on user:group format

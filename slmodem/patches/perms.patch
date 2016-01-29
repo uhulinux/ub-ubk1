@@ -1,0 +1,12 @@
+diff -Naur slmodem-2.9.11-20090222-orig/modem/modem_cmdline.c slmodem-2.9.11-20090222/modem/modem_cmdline.c
+--- slmodem-2.9.11-20090222-orig/modem/modem_cmdline.c	2009-06-07 19:38:13.000000000 +0200
++++ slmodem-2.9.11-20090222/modem/modem_cmdline.c	2009-06-07 19:48:10.000000000 +0200
+@@ -75,7 +75,7 @@
+ #endif
+ unsigned int use_alsa = 0;
+ unsigned int use_short_buffer = 0;
+-const char *modem_group = "uucp";
++const char *modem_group = "media";
+ mode_t modem_perm  = 0660;
+ int daemonize = 1;
+ 

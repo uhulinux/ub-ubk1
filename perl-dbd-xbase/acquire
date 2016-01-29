@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+DBD-XBase-${UB_VERSION}.tar.gz DBD-XBase-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/J/JA/JANPAZ/

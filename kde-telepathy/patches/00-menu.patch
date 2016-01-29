@@ -1,0 +1,21 @@
+diff -Naur kde-telepathy-orig/ktp-contact-list-0.7.0/ktp-contactlist.desktop kde-telepathy/ktp-contact-list-0.7.0/ktp-contactlist.desktop
+--- kde-telepathy-orig/ktp-contact-list-0.8.0/ktp-contactlist.desktop	2013-10-25 20:03:15.000000000 +0200
++++ kde-telepathy/ktp-contact-list-0.8.0/ktp-contactlist.desktop	2013-10-29 11:33:07.000000000 +0100
+@@ -126,6 +126,6 @@
+ Type=Application
+ Terminal=false
+ Icon=telepathy-kde
+-Categories=Qt;KDE;Network;InstantMessaging;
++Categories=Qt;KDE;Network;InstantMessaging;X-UHU-Menu/Internet/Messengers;
+ X-DBUS-StartupType=Unique
+ X-KDE-ServiceTypes=DBUS/InstantMessenger
+diff -Naur kde-telepathy-orig/ktp-text-ui-0.7.0/logviewer/ktp-log-viewer.desktop kde-telepathy/ktp-text-ui-0.7.0/logviewer/ktp-log-viewer.desktop
+--- kde-telepathy-orig/ktp-text-ui-0.8.0.1/logviewer/ktp-log-viewer.desktop	2013-10-25 19:57:47.000000000 +0200
++++ kde-telepathy/ktp-text-ui-0.8.0.1/logviewer/ktp-log-viewer.desktop	2013-10-29 11:36:10.000000000 +0100
+@@ -123,5 +123,5 @@
+ Type=Application
+ Terminal=false
+ Icon=documentation
+-Categories=Qt;KDE;Network;InstantMessaging;
++Categories=Qt;KDE;Network;InstantMessaging;X-UHU-Menu/Internet/Messengers;
+ X-DBUS-StartupType=Unique

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pcmanfm-${UB_VERSION/~/-}.tar.xz pcmanfm-${UB_VERSION/~/-}/
+	http://downloads.sourceforge.net/pcmanfm/

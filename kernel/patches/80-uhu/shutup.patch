@@ -1,0 +1,12 @@
+diff -Naurdp a/arch/x86/kernel/hpet.c b/arch/x86/kernel/hpet.c
+--- a/arch/x86/kernel/hpet.c	2011-06-24 00:06:00.000000000 +0200
++++ b/arch/x86/kernel/hpet.c	2011-06-28 16:12:31.961820560 +0200
+@@ -1198,7 +1198,7 @@ static void hpet_rtc_timer_reinit(void)
+ 	if (lost_ints) {
+ 		if (hpet_rtc_flags & RTC_PIE)
+ 			hpet_pie_count += lost_ints;
+-		if (printk_ratelimit())
++		if (printk_ratelimit() && (lost_ints > 2))
+ 			printk(KERN_WARNING "hpet1: lost %d rtc interrupts\n",
+ 				lost_ints);
+ 	}

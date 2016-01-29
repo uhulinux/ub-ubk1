@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-vfsmm-${UB_VERSION}.tar.gz gnome-vfsmm-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-vfsmm/${UB_VERSION_HEAD2}/

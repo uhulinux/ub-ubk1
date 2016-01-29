@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gecko-sharp-${UB_VERSION}.tar.gz gecko-sharp-${UB_VERSION}/
+	http://go-mono.com/sources/gecko-sharp/

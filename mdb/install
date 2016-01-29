@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+cp -a src/mdb "$UB_INSTALLDIR"/usr/bin/
+cp -a src/mdb2xml "$UB_INSTALLDIR"/usr/bin/
+cp -a src/mdbclient "$UB_INSTALLDIR"/usr/bin/
+cp -a src/mdbfilter "$UB_INSTALLDIR"/usr/bin/
+cp -a src/mdbserver "$UB_INSTALLDIR"/usr/bin/

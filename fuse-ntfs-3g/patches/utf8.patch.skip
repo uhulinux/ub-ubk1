@@ -1,0 +1,12 @@
+diff -urN ntfs-3g-1.5130.orig/src/ntfs-3g.c ntfs-3g-1.5130/src/ntfs-3g.c
+--- ntfs-3g-1.5130.orig/src/ntfs-3g.c	2008-11-30 22:54:18.000000000 +0100
++++ ntfs-3g-1.5130/src/ntfs-3g.c	2008-12-02 00:20:19.000000000 +0100
+@@ -1729,6 +1729,8 @@
+ 	ctx->silent = TRUE;
+ 	ctx->atime  = ATIME_RELATIVE;
+ 	
++	setlocale(LC_ALL, "C.UTF8");
++	
+ 	s = options;
+ 	while (s && *s && (val = strsep(&s, ","))) {
+ 		opt = strsep(&val, "=");

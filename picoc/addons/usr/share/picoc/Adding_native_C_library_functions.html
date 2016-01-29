@@ -1,0 +1,419 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Linux)">
+	<META NAME="CREATED" CONTENT="20100921;17205200">
+	<META NAME="CHANGED" CONTENT="20100921;17213800">
+	<STYLE TYPE="text/css">
+	<!--
+		PRE.cjk { font-family: "DejaVu Sans", monospace }
+		TT.cjk { font-family: "DejaVu Sans", monospace }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="hu-HU" DIR="LTR">
+<P><BR><BR>
+</P>
+<DIV ID="wikicontent" DIR="LTR">
+	<TABLE WIDTH=100% CELLPADDING=0 CELLSPACING=0>
+		<TR>
+			<TD WIDTH=100% STYLE="border: none; padding: 0cm">
+				<DIV ID="wikiheader" DIR="LTR">
+					<P STYLE="margin-top: 0.08cm"><I>Adding native C library
+					functions</I></P>
+				</DIV>
+				<H1><A NAME="Introduction"></A>Introduction<A HREF="http://code.google.com/p/picoc/wiki/Adding_native_C_library_functions#Introduction">¶</A></H1>
+				<P>picoc allows you to define your own library functions. These
+				functions are written in C using your system's native C compiler.
+				Since the native C compiler can access the hardware this means
+				you can add functions which give picoc control of your hardware. 
+				</P>
+				<H1><A NAME="How_libraries_work"></A>How libraries work<A HREF="http://code.google.com/p/picoc/wiki/Adding_native_C_library_functions#How_libraries_work">¶</A></H1>
+				<P>Your picoc distribution contains two files which are used to
+				define library functions for your system. If your system is
+				called &quot;foobar&quot; you'll be using: 
+				</P>
+				<UL>
+					<LI><P STYLE="margin-bottom: 0cm"><STRONG>library_foobar.c</STRONG>
+					- this is where the foobar-specific library functions go 
+					</P>
+					<LI><P><STRONG>clibrary.c</STRONG> - this is where standard C
+					library functions like printf() are defined 
+					</P>
+				</UL>
+				<P>We'll start by defining a simple function in <STRONG>library_foobar.c</STRONG>.
+				We need to do two things: 
+				</P>
+				<UL>
+					<LI><P STYLE="margin-bottom: 0cm">add the function prototype to
+					our list of picoc library functions 
+					</P>
+					<LI><P>define the native C implementation of the function 
+					</P>
+				</UL>
+				<H2><A NAME="The_prototype_list"></A>The prototype list<A HREF="http://code.google.com/p/picoc/wiki/Adding_native_C_library_functions#The_prototype_list">¶</A></H2>
+				<P>Each of the <STRONG>library_XXX.c</STRONG> files defines a
+				list of picoc prototypes for each of the functions it defines.
+				For example: 
+				</P>
+				<PRE CLASS="western">struct LibraryFunction PlatformLibrary[] =
+{
+&nbsp; &nbsp; { ShowComplex, &nbsp;&quot;void ShowComplex(struct complex *)&quot; },
+&nbsp; &nbsp; { Cpeek, &nbsp; &nbsp; &nbsp; &nbsp;&quot;int peek(int, int)&quot; },
+&nbsp; &nbsp; { Cpoke, &nbsp; &nbsp; &nbsp; &nbsp;&quot;void poke(int, int, int)&quot; },
+&nbsp; &nbsp; { Crandom, &nbsp; &nbsp; &nbsp;&quot;int random(int)&quot; },
+&nbsp; &nbsp; { NULL, &nbsp; &nbsp; &nbsp; &nbsp; NULL }
+};</PRE><P>
+				The first column is the name of the C function. The second column
+				is the function prototype. The &quot;{ NULL, NULL }&quot; line at
+				the end is required. 
+				</P>
+				<H2><A NAME="The_native_C_function"></A>The native C function<A HREF="http://code.google.com/p/picoc/wiki/Adding_native_C_library_functions#The_native_C_function">¶</A></H2>
+				<P>The native C function is called with these parameters: 
+				</P>
+				<PRE CLASS="western" STYLE="margin-bottom: 0.5cm">void MyCFunc(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs);</PRE>
+				<UL>
+					<LI><P STYLE="margin-bottom: 0cm"><STRONG>struct ParseState
+					</STRONG><STRONG><TT CLASS="western">*</TT></STRONG><STRONG>Parser</STRONG>
+					- this contains internal information about the progress of
+					parsing. It's mostly used here so error messages from your
+					function can report the line number where an error occurred. 
+					</P>
+					<LI><P STYLE="margin-bottom: 0cm"><STRONG>struct Value
+					</STRONG><STRONG><TT CLASS="western">*</TT></STRONG><STRONG>ReturnValue</STRONG>
+					- this points to the place you can put your return value. This
+					is pre-created as a value of the correct return type so all you
+					have to do is store your result here. 
+					</P>
+					<LI><P STYLE="margin-bottom: 0cm"><STRONG>struct Value </STRONG><STRONG><TT CLASS="western">**</TT></STRONG><STRONG>Param</STRONG>
+					- this points to an array of parameters. These are all
+					pre-checked as being the correct type. 
+					</P>
+					<LI><P><STRONG>int NumArgs</STRONG> - this is the number of
+					parameters. Normally this will already have been checked and
+					will be exactly what you've defined in your function prototype.
+					It is however possible to define functions with variable numbers
+					of arguments using a stdarg-like &quot;...&quot; method and this
+					is where you find out how many parameters were passed in if
+					you're doing that. 
+					</P>
+				</UL>
+				<P>Here's an example function definition of &quot;random&quot;
+				(as defined above): 
+				</P>
+				<PRE CLASS="western">void Crandom(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
+{
+&nbsp; &nbsp; ReturnValue-&gt;Val-&gt;Integer = random() % Param[0]-&gt;Val-&gt;Integer;
+}</PRE><P>
+				This function calls &quot;random()&quot; from the C standard
+				library. It accesses an integer parameter and returns an integer
+				value. 
+				</P>
+				<H1><A NAME="Passing_parameters"></A>Passing parameters<A HREF="http://code.google.com/p/picoc/wiki/Adding_native_C_library_functions#Passing_parameters">¶</A></H1>
+				<P>We've seen how to pass integers into functions. What about
+				passing other data types? 
+				</P>
+				<TABLE CELLPADDING=2 CELLSPACING=2>
+					<TR>
+						<TD STYLE="border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm"><STRONG>Type</STRONG>
+														</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm"><STRONG>Method</STRONG>
+														</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm"><STRONG>Comment</STRONG>
+														</P>
+						</TD>
+					</TR>
+					<TR>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">int 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Param<TT CLASS="western">[</TT>x<TT CLASS="western">]</TT>-&gt;Val-&gt;Integer
+														</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm"></TD>
+					</TR>
+					<TR>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">char 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Param<TT CLASS="western">[</TT>x<TT CLASS="western">]</TT>-&gt;Val-&gt;Integer
+														</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Treated
+							as 'int' here 
+							</P>
+						</TD>
+					</TR>
+					<TR>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">double 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Param<TT CLASS="western">[</TT>x<TT CLASS="western">]</TT>-&gt;Val-&gt;FP
+														</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Only
+							available on some systems 
+							</P>
+						</TD>
+					</TR>
+					<TR>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">float 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Param<TT CLASS="western">[</TT>x<TT CLASS="western">]</TT>-&gt;Val-&gt;FP
+														</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Same as
+							'double' 
+							</P>
+						</TD>
+					</TR>
+					<TR>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">enum 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Param<TT CLASS="western">[</TT>x<TT CLASS="western">]</TT>-&gt;Val-&gt;Integer
+														</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Gives
+							integer value of enum 
+							</P>
+						</TD>
+					</TR>
+					<TR>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">pointers
+														</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">See
+							section below 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Slightly
+							more complicated 
+							</P>
+						</TD>
+					</TR>
+					<TR>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">char <TT CLASS="western">*</TT>
+														</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">See
+							section below 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Slightly
+							more complicated 
+							</P>
+						</TD>
+					</TR>
+					<TR>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">arrays 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">See
+							section below 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Slightly
+							more complicated 
+							</P>
+						</TD>
+					</TR>
+					<TR>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">struct 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">See
+							section below 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Slightly
+							more complicated 
+							</P>
+						</TD>
+					</TR>
+					<TR>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">union 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">See
+							section below 
+							</P>
+						</TD>
+						<TD STYLE="; border: none; padding: 0cm">
+							<P STYLE="border: 1px solid #aaaaaa; padding: 0.13cm">Slightly
+							more complicated 
+							</P>
+						</TD>
+					</TR>
+				</TABLE>
+				<H2><A NAME="Passing_pointers"></A>Passing pointers<A HREF="http://code.google.com/p/picoc/wiki/Adding_native_C_library_functions#Passing_pointers">¶</A></H2>
+				<P>Pointer parameters are slighty more complicated to access
+				since you have to dereference the pointer to get at the
+				underlying data. 
+				</P>
+				<P>Here's how we dereference a pointer parameter. In this example
+				I'll be reading an 'int <TT CLASS="western">*</TT>' parameter: 
+				</P>
+				<PRE CLASS="western" STYLE="margin-bottom: 0.5cm">&nbsp; &nbsp; int IntValue = *(int *)Param[0]-&gt;Val-&gt;NativePointer;</PRE><H2>
+				<A NAME="Passing_strings_/_char_*"></A>Passing strings / char <TT CLASS="western">*</TT><A HREF="http://code.google.com/p/picoc/wiki/Adding_native_C_library_functions#Passing_strings_/_char_*">¶</A></H2>
+				<P>In this example I'll be reading a 'char <TT CLASS="western">*</TT>'
+				parameter. It's pretty similar to the 'int <TT CLASS="western">*</TT>'
+				example above: 
+				</P>
+				<PRE CLASS="western" STYLE="margin-bottom: 0.5cm">&nbsp; &nbsp; char *CharPtr = (char *)Param[0]-&gt;Val-&gt;NativePointer;</PRE><P>
+				picoc strings work like C strings - they're pointers to arrays of
+				characters, terminated by a null character. Once you have the C
+				char <TT CLASS="western">*</TT> you can use it just like a normal
+				C string. 
+				</P>
+				<P>Pointers to arrays of other data types work the same way. 
+				</P>
+				<H2><A NAME="Passing_pointers_to_structures_and_unions"></A>Passing
+				pointers to structures and unions<A HREF="http://code.google.com/p/picoc/wiki/Adding_native_C_library_functions#Passing_pointers_to_structures_and_unions">¶</A></H2>
+				<P>If you're defining library functions which take structures as
+				parameters you'll have to do a little more work. You need to
+				pre-define the structure so the function prototype can refer to
+				it. 
+				</P>
+				<P>In <STRONG>library_XXX.c</STRONG> you'll find a function
+				called PlatformLibraryInit(). This is called before the library
+				prototypes are defined. Here's some code which will define a
+				complex number structure: 
+				</P>
+				<PRE CLASS="western">void PlatformLibraryInit()
+{
+&nbsp; &nbsp; struct ParseState Parser;
+&nbsp; &nbsp; char *Identifier;
+&nbsp; &nbsp; struct ValueType *ParsedType;
+&nbsp; &nbsp; void *Tokens;
+&nbsp; &nbsp; const char *IntrinsicName = TableStrRegister(&quot;complex library&quot;);
+&nbsp; &nbsp; const char *StructDefinition = &quot;struct complex { int i; int j; }&quot;;
+&nbsp; &nbsp; 
+&nbsp; &nbsp; /* define an example structure */
+&nbsp; &nbsp; Tokens = LexAnalyse(IntrinsicName, StructDefinition, strlen(StructDefinition), NULL);
+&nbsp; &nbsp; LexInitParser(&amp;Parser, StructDefinition, Tokens, IntrinsicName, TRUE);
+&nbsp; &nbsp; TypeParse(&amp;Parser, &amp;ParsedType, &amp;Identifier);
+&nbsp; &nbsp; HeapFree(Tokens);
+}</PRE><P>
+				This code takes the structure definition in StructDefinition and
+				runs the lexical analyser over it. This returns some lexical
+				tokens. Then we initialise the parser and have it parse the type
+				of the structure definition from the tokens we made. That's
+				enough to define the structure in the system. Finally we free the
+				tokens. 
+				</P>
+				<P>Now let's say we're going to define a function to display a
+				complex number. Our prototype will look like: 
+				</P>
+				<PRE CLASS="western" STYLE="margin-bottom: 0.5cm">&nbsp; &nbsp; { ShowComplex, &nbsp; &quot;void ShowComplex(struct complex *)&quot; },</PRE><P>
+				And finally we can define the library function: 
+				</P>
+				<PRE CLASS="western">struct complex { int i; int j; }; &nbsp;/* make this C declaration match the picoc one */
+void ShowComplex(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
+{
+&nbsp; &nbsp; struct complex *ComplexVal = Param[0]-&gt;Val-&gt;NativePointer; &nbsp;/* casts the pointer */
+&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; /* print the result */
+&nbsp; &nbsp; PrintInt(ComplexVal-&gt;i, PlatformPutc);
+&nbsp; &nbsp; PlatformPutc(',');
+&nbsp; &nbsp; PrintInt(ComplexVal-&gt;j, PlatformPutc);
+}</PRE><P>
+				Unions work exactly the same way as structures. Define the
+				prototype as &quot;union&quot; rather than &quot;struct&quot; and
+				you're away. 
+				</P>
+				<H1><A NAME="Returning_values"></A>Returning values<A HREF="http://code.google.com/p/picoc/wiki/Adding_native_C_library_functions#Returning_values">¶</A></H1>
+				<P>Returning values from library functions is very much like
+				accessing parameters. The type of return values is already set
+				before your native C function is called so all you have to do is
+				fill in the value. 
+				</P>
+				<P>Just as with parameters, ints, chars and enums are stored in
+				ReturnValue-&gt;Val-&gt;Integer and floating point values are
+				returned in ReturnValue-&gt;Val-&gt;FP. 
+				</P>
+				<H2><A NAME="Returning_pointers"></A>Returning pointers<A HREF="http://code.google.com/p/picoc/wiki/Adding_native_C_library_functions#Returning_pointers">¶</A></H2>
+				<P>Returning a pointer to a static string or some other allocated
+				data is easy. Your return code will look something like: 
+				</P>
+				<PRE CLASS="western" STYLE="margin-bottom: 0.5cm">&nbsp; &nbsp; ReturnValue-&gt;Val-&gt;NativePointer = &quot;hello&quot;;</PRE><H1>
+				<A NAME="Variable_numbers_of_parameters"></A>Variable numbers of
+				parameters<A HREF="http://code.google.com/p/picoc/wiki/Adding_native_C_library_functions#Variable_numbers_of_parameters">¶</A></H1>
+				<P>You can define your own stdarg-style library functions like
+				printf(). Your function prototype should use &quot;...&quot; in
+				the parameter list to indicate the potential extra parameters
+				just like the standard stdarg system. Here's an example from
+				clibrary.c: 
+				</P>
+				<PRE CLASS="western" STYLE="margin-bottom: 0.5cm">&nbsp; &nbsp; { LibPrintf, &nbsp; &nbsp; &nbsp; &nbsp;&quot;void printf(char *, ...)&quot; },</PRE><P>
+				The NumArgs parameter to the native C function lets you know how
+				many parameters were passed in. You access the variable
+				parameters just like normal parameters using the Param<TT CLASS="western">[]</TT>
+				array. 
+				</P>
+				<P>Take a look at <STRONG>clibrary.c</STRONG> for the full
+				definition of LibPrintf() if you need a more complete example. 
+				</P>
+				<H1><A NAME="Sharing_native_values_with_picoc"></A>Sharing native
+				values with picoc<A HREF="http://code.google.com/p/picoc/wiki/Adding_native_C_library_functions#Sharing_native_values_with_picoc">¶</A></H1>
+				<P>Sometimes you have native variables you'd like to share with
+				picoc. We can define a picoc value which shares memory with a
+				native variable. Then we store this variable in the picoc symbol
+				table so your programs can find it by name. There's an easy way
+				to do this: 
+				</P>
+				<PRE CLASS="western">int RobotIsExploding = 0;
+void PlatformLibraryInit()
+{
+&nbsp; &nbsp; VariableDefinePlatformVar(NULL, &quot;RobotIsExploding&quot;, &amp;IntType, (union AnyValue *)&amp;RobotIsExploding, FALSE);
+}</PRE><P>
+				The variable RobotIsExploding can be written by your native C
+				program and read by picoc just like any other picoc variable. In
+				this case it's protected from being written by the last parameter
+				&quot;IsWritable&quot; being set to FALSE. Set it to TRUE and
+				picoc will be able to write it too. 
+				</P>
+			</TD>
+		</TR>
+	</TABLE>
+</DIV>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>

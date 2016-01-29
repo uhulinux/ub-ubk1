@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+RunSnakeRun-${UB_VERSION}.tar.gz RunSnakeRun-${UB_VERSION}/
+	http://pypi.python.org/packages/source/R/RunSnakeRun/

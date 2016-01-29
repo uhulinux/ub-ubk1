@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=XQed
+Comment=Quick Dictionary
+Comment[hu]=Gyorsfordító szótárprogram
+Exec=xqed
+Categories=TextTools;Utility;Dictionary;

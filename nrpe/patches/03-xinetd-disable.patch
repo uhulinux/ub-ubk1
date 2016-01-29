@@ -1,0 +1,18 @@
+diff -Naur nrpe-2.5.2.orig/sample-config/nrpe.xinetd.in nrpe-2.5.2/sample-config/nrpe.xinetd.in
+--- nrpe-2.5.2.orig/sample-config/nrpe.xinetd.in	2006-04-17 22:59:13.000000000 +0200
++++ nrpe-2.5.2/sample-config/nrpe.xinetd.in	2006-09-27 11:38:15.000000000 +0200
+@@ -2,6 +2,7 @@
+ # description: NRPE (Nagios Remote Plugin Executor)
+ service nrpe
+ {
++        disable         = yes
+        	flags           = REUSE
+         socket_type     = stream        
+        	wait            = no
+@@ -10,6 +11,5 @@
+        	server          = @bindir@/nrpe
+         server_args     = -c @sysconfdir@/nrpe.cfg --inetd
+        	log_on_failure  += USERID
+-        disable         = no
+ 	only_from       = 127.0.0.1
+ }

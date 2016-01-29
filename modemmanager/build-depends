@@ -1,0 +1,10 @@
+dbus-glib-dev
+gobject-introspection-dev
+gtk-doc
+intltool
+libmbim-dev
+libqmi-dev
+polkit-dev
+ppp-dev
+systemd-dev
+vala-dev

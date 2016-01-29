@@ -1,0 +1,31 @@
+#!/usr/bin/env dl
+
+DroidSans.ttf :.
+	http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob_plain;f=data/fonts/
+
+DroidSans-Bold.ttf :.
+	http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob_plain;f=data/fonts/
+
+DroidSansFallback.ttf :.
+	http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob_plain;f=data/fonts/
+
+DroidSerif-Regular.ttf :.
+	http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob_plain;f=data/fonts/
+
+DroidSerif-Bold.ttf :.
+	http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob_plain;f=data/fonts/
+
+DroidSerif-Italic.ttf :.
+	http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob_plain;f=data/fonts/
+
+DroidSerif-BoldItalic.ttf :.
+	http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob_plain;f=data/fonts/
+
+DroidSansMono.ttf :.
+	http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob_plain;f=data/fonts/
+
+NOTICE :.
+	http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob_plain;f=data/fonts/
+
+README.txt :.
+	http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob_plain;f=data/fonts/

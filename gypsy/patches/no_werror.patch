@@ -1,0 +1,11 @@
+--- gypsy.orig/configure	2010-06-09 16:58:47.000000000 +0200
++++ gypsy/configure	2011-03-31 21:20:25.000000000 +0200
+@@ -10882,7 +10882,7 @@
+   exec_prefix=$exec_prefix_save
+ 
+ 
+-CFLAGS="$CFLAGS -g -Wall -Werror -Wno-format"
++CFLAGS="$CFLAGS -g -Wall -Wno-format"
+ 
+ 
+ 

@@ -1,0 +1,1 @@
+urllist http://www.chiark.greenend.org.uk/~sgtatham/agedu/ | splitver '^agedu-r([0-9.]+).tar.gz$' | sort -V | tail -n 1

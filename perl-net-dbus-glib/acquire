@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Net-DBus-GLib-${UB_VERSION}.tar.gz Net-DBus-GLib-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/D/DA/DANBERR/

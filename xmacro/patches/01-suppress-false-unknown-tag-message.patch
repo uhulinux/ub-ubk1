@@ -1,0 +1,11 @@
+diff -urN xmacro-pre0.3-20000911.orig/xmacroplay.cpp xmacro-pre0.3-20000911/xmacroplay.cpp
+--- xmacro-pre0.3-20000911.orig/xmacroplay.cpp	2000-09-11 20:25:11.000000000 +0200
++++ xmacro-pre0.3-20000911/xmacroplay.cpp	2003-05-19 01:24:58.000000000 +0200
+@@ -335,6 +335,7 @@
+   
+   while ( !cin.eof() ) {
+ 	cin >> ev;
++	if (cin.eof()) break;
+ 	if (ev[0]=='#')
+ 	{
+ 	  cout << "Comment: " << ev << endl;

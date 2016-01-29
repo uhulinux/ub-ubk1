@@ -1,0 +1,12 @@
+diff -Naur nrpe-2.5.2.orig/configure nrpe-2.5.2/configure
+--- nrpe-2.5.2.orig/configure	2006-07-01 00:00:27.000000000 +0200
++++ nrpe-2.5.2/configure	2006-09-27 11:41:03.000000000 +0200
+@@ -6071,7 +6071,7 @@
+ 		echo "$as_me:$LINENO: checking for Kerberos include files" >&5
+ echo $ECHO_N "checking for Kerberos include files... $ECHO_C" >&6
+ 	found_kerberos=no
+-	for dir in $kerberos_inc_dir /usr/kerberos/include; do
++	for dir in $kerberos_inc_dir /usr/include /usr/kerberos/include; do
+ 		kerbdir="$dir"
+ 		if test -f "$dir/krb5.h"; then
+ 			found_kerberos=yes

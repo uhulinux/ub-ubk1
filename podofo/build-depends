@@ -1,0 +1,7 @@
+cmake
+fontconfig-dev
+freetype2-dev
+libjpeg-dev
+libpng-dev
+libtiff-dev
+openssl-dev

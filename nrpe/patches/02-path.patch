@@ -1,0 +1,12 @@
+diff -Naur nrpe-2.5.2.orig/sample-config/nrpe.xinetd.in nrpe-2.5.2/sample-config/nrpe.xinetd.in
+--- nrpe-2.5.2.orig/sample-config/nrpe.xinetd.in	2006-04-17 22:59:13.000000000 +0200
++++ nrpe-2.5.2/sample-config/nrpe.xinetd.in	2006-09-27 11:37:36.000000000 +0200
+@@ -7,7 +7,7 @@
+        	wait            = no
+         user            = @nrpe_user@
+ 	group		= @nrpe_grp@
+-       	server          = @bindir@/nrpe
++       	server          = @sbindir@/nrpe
+         server_args     = -c @sysconfdir@/nrpe.cfg --inetd
+        	log_on_failure  += USERID
+         disable         = no

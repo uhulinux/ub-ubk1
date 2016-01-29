@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+jpegsrc.v${UB_VERSION}.tar.gz jpeg-${UB_VERSION}/
+	http://www.ijg.org/files/
+

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gdm-theme-uhu-${UB_VERSION}.tar.gz gdm-theme-uhu-${UB_VERSION}/UHU/ :/usr/share/gdm/themes/UHU
+	ftp://ftp.uhulinux.hu/pub/sources/gdm-theme-uhu/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+async-${UB_VERSION}.tar.gz async-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/async/

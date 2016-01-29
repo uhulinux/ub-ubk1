@@ -1,0 +1,5 @@
+	/usr/bin/assistant-qt5
+	/usr/lib/qt5/bin/assistant
+	/usr/lib/qt5/bin/assistant.debug
+	/usr/lib/qt5/doc
+	/usr/share/applications/qt5-assistant.desktop

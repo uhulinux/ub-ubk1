@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+inputattach-${UB_VERSION}.c
+	http://linuxconsole.cvs.sourceforge.net/linuxconsole/ruby/utils/inputattach.c?rev=${UB_VERSION}

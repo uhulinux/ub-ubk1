@@ -1,0 +1,118 @@
+diff -Naur orig/pppd/pppd.h patched/pppd/pppd.h
+--- orig/pppd/pppd.h	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/pppd.h	2012-03-31 12:59:28.779815767 +0200
+@@ -655,8 +655,6 @@
+ int  lock __P((char *));	/* Create lock file for device */
+ int  relock __P((int));		/* Rewrite lock file with new pid */
+ void unlock __P((void));	/* Delete previously-created lock file */
+-void logwtmp __P((const char *, const char *, const char *));
+-				/* Write entry to wtmp file */
+ int  get_host_seed __P((void));	/* Get host-dependent random number seed */
+ int  have_route_to __P((u_int32_t)); /* Check if route to addr exists */
+ #ifdef PPP_FILTER
+diff -Naur orig/pppd/session.c patched/pppd/session.c
+--- orig/pppd/session.c	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/session.c	2012-03-31 13:01:24.459357301 +0200
+@@ -362,7 +362,7 @@
+     if (SESS_ACCT & flags) {
+ 	if (strncmp(ttyName, "/dev/", 5) == 0)
+ 	    ttyName += 5;
+-	logwtmp(ttyName, user, ifname); /* Add wtmp login entry */
++	/* logwtmp(ttyName, user, ifname); /* Add wtmp login entry */
+ 	logged_in = 1;
+ 
+ #if defined(_PATH_LASTLOG) && !defined(USE_PAM)
+@@ -415,7 +415,7 @@
+     if (logged_in) {
+ 	if (strncmp(ttyName, "/dev/", 5) == 0)
+ 	    ttyName += 5;
+-	logwtmp(ttyName, "", ""); /* Wipe out utmp logout entry */
++	/* logwtmp(ttyName, "", ""); /* Wipe out utmp logout entry */
+ 	logged_in = 0;
+     }
+ }
+diff -Naur orig/pppd/sys-linux.c patched/pppd/sys-linux.c
+--- orig/pppd/sys-linux.c	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/sys-linux.c	2012-03-31 12:59:28.779815767 +0200
+@@ -2150,81 +2150,6 @@
+ 
+ /********************************************************************
+  *
+- * Update the wtmp file with the appropriate user name and tty device.
+- */
+-
+-void logwtmp (const char *line, const char *name, const char *host)
+-{
+-    struct utmp ut, *utp;
+-    pid_t  mypid = getpid();
+-#if __GLIBC__ < 2
+-    int    wtmp;
+-#endif
+-
+-/*
+- * Update the signon database for users.
+- * Christoph Lameter: Copied from poeigl-1.36 Jan 3, 1996
+- */
+-    utmpname(_PATH_UTMP);
+-    setutent();
+-    while ((utp = getutent()) && (utp->ut_pid != mypid))
+-	/* nothing */;
+-
+-    if (utp)
+-	memcpy(&ut, utp, sizeof(ut));
+-    else
+-	/* some gettys/telnetds don't initialize utmp... */
+-	memset(&ut, 0, sizeof(ut));
+-
+-    if (ut.ut_id[0] == 0)
+-	strncpy(ut.ut_id, line + 3, sizeof(ut.ut_id));
+-
+-    strncpy(ut.ut_user, name, sizeof(ut.ut_user));
+-    strncpy(ut.ut_line, line, sizeof(ut.ut_line));
+-
+-    time(&ut.ut_time);
+-
+-    ut.ut_type = USER_PROCESS;
+-    ut.ut_pid  = mypid;
+-
+-    /* Insert the host name if one is supplied */
+-    if (*host)
+-	strncpy (ut.ut_host, host, sizeof(ut.ut_host));
+-
+-    /* Insert the IP address of the remote system if IP is enabled */
+-    if (ipcp_protent.enabled_flag && ipcp_hisoptions[0].neg_addr)
+-	memcpy(&ut.ut_addr, (char *) &ipcp_hisoptions[0].hisaddr,
+-		 sizeof(ut.ut_addr));
+-
+-    /* CL: Makes sure that the logout works */
+-    if (*host == 0 && *name==0)
+-	ut.ut_host[0]=0;
+-
+-    pututline(&ut);
+-    endutent();
+-/*
+- * Update the wtmp file.
+- */
+-#if __GLIBC__ >= 2
+-    updwtmp(_PATH_WTMP, &ut);
+-#else
+-    wtmp = open(_PATH_WTMP, O_APPEND|O_WRONLY);
+-    if (wtmp >= 0) {
+-	flock(wtmp, LOCK_EX);
+-
+-	if (write (wtmp, (char *)&ut, sizeof(ut)) != sizeof(ut))
+-	    warn("error writing %s: %m", _PATH_WTMP);
+-
+-	flock(wtmp, LOCK_UN);
+-
+-	close (wtmp);
+-    }
+-#endif
+-}
+-
+-
+-/********************************************************************
+- *
+  * sifvjcomp - config tcp header compression
+  */
+ 

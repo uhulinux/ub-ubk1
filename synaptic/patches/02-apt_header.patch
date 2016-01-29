@@ -1,0 +1,11 @@
+diff -Naur synaptic-0.75.10-orig/common/rpackagelister.cc synaptic-0.75.10/common/rpackagelister.cc
+--- synaptic-0.75.10-orig/common/rpackagelister.cc	2012-03-02 09:54:29.000000000 +0100
++++ synaptic-0.75.10/common/rpackagelister.cc	2012-05-16 21:10:47.000000000 +0200
+@@ -46,6 +46,7 @@
+ #include "rinstallprogress.h"
+ #include "rcacheactor.h"
+ 
++#include <apt-pkg/aptconfiguration.h>
+ #include <apt-pkg/error.h>
+ #include <apt-pkg/progress.h>
+ #include <apt-pkg/algorithms.h>

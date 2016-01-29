@@ -1,0 +1,11 @@
+diff -Naur kdepim-runtime-4.3.82-orig/tray/akonaditray.desktop kdepim-runtime-4.3.82/tray/akonaditray.desktop
+--- kdepim-runtime-4.3.82-orig/tray/akonaditray.desktop	2009-12-14 11:54:41.000000000 +0100
++++ kdepim-runtime-4.3.82/tray/akonaditray.desktop	2009-12-16 20:08:01.000000000 +0100
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Type=Application
+-Categories=Qt;KDE;Utility;
++Categories=Qt;KDE;Utility;X-UHU-Menu/Tools/Utilities;
+ Exec=akonaditray
+ Icon=akonadi
+ Name=Akonaditray

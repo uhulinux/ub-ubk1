@@ -1,0 +1,190 @@
+diff -Naur orig/client/Makefile mod/client/Makefile
+--- orig/client/Makefile	2011-05-02 22:16:31.000000000 +0200
++++ mod/client/Makefile	2013-01-03 15:04:47.000000000 +0100
+@@ -28,7 +28,7 @@
+ ### Implicit rules:
+ 
+ %.o: %.c
+-	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) -o $@ $<
++	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) $(INCLUDEPLUS) -o $@ $<
+ 
+ ### Dependencies:
+ 
+@@ -36,7 +36,7 @@
+ DEPFILE = .dependencies
+ 
+ $(DEPFILE): Makefile
+-	@$(MAKEDEP) $(DEFINES) $(INCLUDES) $(CLIENTOBJS:%.o=%.c) $(COMMONOBJS:%.o=%.c) > $@
++	@$(MAKEDEP) $(DEFINES) $(INCLUDES) $(INCLUDEPLUS) $(CLIENTOBJS:%.o=%.c) $(COMMONOBJS:%.o=%.c) > $@
+ 
+ -include $(DEPFILE)
+ 
+diff -Naur orig/libdvbmpeg/Makefile mod/libdvbmpeg/Makefile
+--- orig/libdvbmpeg/Makefile	2011-05-02 22:16:31.000000000 +0200
++++ mod/libdvbmpeg/Makefile	2013-01-03 15:05:13.000000000 +0100
+@@ -20,7 +20,7 @@
+ ### Implicit rules:
+ 
+ %.o: %.c 
+-	$(CC) $(CFLAGS) -c $(DEFINES) $(INCLUDES) -o $@ $<
++	$(CC) $(CFLAGS) -c $(DEFINES) $(INCLUDES) $(INCLUDEPLUS) -o $@ $<
+ 
+ ### Dependencies:
+ 
+@@ -28,7 +28,7 @@
+ DEPFILE = .dependencies
+ 
+ $(DEPFILE): Makefile
+-	@$(MAKEDEP) $(DEFINES) $(INCLUDES) $(OBJS:%.o=%.c) > $@
++	@$(MAKEDEP) $(DEFINES) $(INCLUDES) $(INCLUDEPLUS) $(OBJS:%.o=%.c) > $@
+ 
+ -include $(DEPFILE)
+ 
+diff -Naur orig/Makefile mod/Makefile
+--- orig/Makefile	2011-05-02 22:16:31.000000000 +0200
++++ mod/Makefile	2013-01-03 15:29:51.000000000 +0100
+@@ -9,49 +9,30 @@
+ 
+ ### The C/C++ compiler and options:
+ 
+-CC       ?= gcc
+-CFLAGS   ?= -g -O2 -Wall
+-
+-CXX      ?= g++
+-CXXFLAGS ?= -g -O2 -Wall -Woverloaded-virtual -Wno-parentheses
++export CFLAGS   = $(call PKGCFG,cflags)
++export CXXFLAGS = $(call PKGCFG,cxxflags)
+ 
+ ### The version number of this plugin (taken from the main source file):
+ 
+ VERSION = $(shell grep 'const char \*VERSION *=' common.c | awk '{ print $$5 }' | sed -e 's/[";]//g')
+ 
+ ### The directory environment:
+-
+-VDRDIR = ../../..
+-LIBDIR = ../../lib
++# Use package data if installed...otherwise assume we're under the VDR source directory:
++PKGCFG = $(if $(VDRDIR),$(shell pkg-config --variable=$(1) $(VDRDIR)/vdr.pc),$(shell pkg-config --variable=$(1) vdr || pkg-config --variable=$(1) ../../../vdr.pc))
++LIBDIR = $(DESTDIR)$(call PKGCFG,libdir)
++LOCDIR = $(DESTDIR)$(call PKGCFG,locdir)
++#
+ TMPDIR = /tmp
+ 
+ ### The version number of VDR (taken from VDR's "config.h"):
+ 
+-APIVERSION = $(shell grep 'define APIVERSION ' $(VDRDIR)/config.h | awk '{ print $$3 }' | sed -e 's/"//g')
+-APIVERSNUM = $(shell grep 'define APIVERSNUM ' $(VDRDIR)/config.h | awk '{ print $$3 }' | sed -e 's/"//g')
+-TSPLAYVERSNUM = $(shell grep 'define TSPLAY_PATCH_VERSION ' $(VDRDIR)/device.h | awk '{ print $$3 }')
+-
+-### Allow user defined options to overwrite defaults:
+-
+-ifeq ($(shell test $(APIVERSNUM) -ge 10713; echo $$?),0)
+-include $(VDRDIR)/Make.global
+-else
+-ifeq ($(shell test $(APIVERSNUM) -ge 10704 -o -n "$(TSPLAYVERSNUM)" ; echo $$?),0)
+-DEFINES  += -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
+-CFLAGS   += -fPIC
+-CXXFLAGS += -fPIC
+-else
+-CFLAGS   += -fPIC
+-CXXFLAGS += -fPIC
+-endif
+-endif
++APIVERSION = $(call PKGCFG,apiversion)
++APIVERSNUM = $(call PKGCFG,apiversion)
++TSPLAYVERSNUM = $(shell grep 'define TSPLAY_PATCH_VERSION ' /usr/include/vdr/device.h | awk '{ print $$3 }')
+ 
+--include $(VDRDIR)/Make.config
+ 
+ ### export all vars for sub-makes, using absolute paths
+ 
+-VDRDIR := $(shell cd $(VDRDIR) >/dev/null 2>&1 && pwd)
+-LIBDIR := $(shell cd $(LIBDIR) >/dev/null 2>&1 && pwd)
+ export
+ unexport PLUGIN
+ 
+@@ -62,9 +43,9 @@
+ 
+ ### Includes and Defines (add further entries here):
+ 
+-INCLUDES += -I$(VDRDIR)/include -I..
+-
+-DEFINES += -D_GNU_SOURCE
++INCLUDES +=
++INCLUDEPLUS= -I..
++DEFINES += 
+ 
+ ifdef DEBUG
+ DEFINES += -DDEBUG
+@@ -80,6 +61,8 @@
+ 
+ ### Targets:
+ 
++install: client server
++
+ client:
+ 	$(MAKE) -C ./tools
+ 	$(MAKE) -C ./client
+diff -Naur orig/remux/Makefile mod/remux/Makefile
+--- orig/remux/Makefile	2011-05-02 22:16:31.000000000 +0200
++++ mod/remux/Makefile	2013-01-03 15:05:31.000000000 +0100
+@@ -16,7 +16,7 @@
+ ### Implicit rules:
+ 
+ %.o: %.c 
+-	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) -o $@ $<
++	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(INCLUDEPLUS) $(INCLUDES) -o $@ $<
+ 
+ ### Dependencies:
+ 
+@@ -24,7 +24,7 @@
+ DEPFILE = .dependencies
+ 
+ $(DEPFILE): Makefile
+-	@$(MAKEDEP) $(DEFINES) $(INCLUDES) $(OBJS:%.o=%.c) > $@
++	@$(MAKEDEP) $(DEFINES) $(INCLUDES) $(INCLUDEPLUS) $(OBJS:%.o=%.c) > $@
+ 
+ -include $(DEPFILE)
+ 
+diff -Naur orig/server/Makefile mod/server/Makefile
+--- orig/server/Makefile	2011-12-11 10:20:10.000000000 +0100
++++ mod/server/Makefile	2013-01-03 15:05:55.000000000 +0100
+@@ -33,7 +33,7 @@
+ ### Implicit rules:
+ 
+ %.o: %.c
+-	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) -o $@ $<
++	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(INCLUDEPLUS) $(INCLUDES) -o $@ $<
+ 
+ ### Dependencies:
+ 
+@@ -41,7 +41,7 @@
+ DEPFILE = .dependencies
+ 
+ $(DEPFILE): Makefile
+-	@$(MAKEDEP) $(DEFINES) $(INCLUDES) $(SERVEROBJS:%.o=%.c) $(COMMONOBJS:%.o=%.c) > $@
++	@$(MAKEDEP) $(DEFINES) $(INCLUDES) $(INCLUDEPLUS) $(SERVEROBJS:%.o=%.c) $(COMMONOBJS:%.o=%.c) > $@
+ 
+ -include $(DEPFILE)
+ 
+diff -Naur orig/tools/Makefile mod/tools/Makefile
+--- orig/tools/Makefile	2011-05-02 22:16:31.000000000 +0200
++++ mod/tools/Makefile	2013-01-03 15:06:41.000000000 +0100
+@@ -16,7 +16,7 @@
+ ### Implicit rules:
+ 
+ %.o: %.c 
+-	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) -o $@ $<
++	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(INCLUDEPLUS) $(INCLUDES) -o $@ $<
+ 
+ ### Dependencies:
+ 
+@@ -24,7 +24,7 @@
+ DEPFILE = .dependencies
+ 
+ $(DEPFILE): Makefile
+-	@$(MAKEDEP) $(DEFINES) $(INCLUDES) $(OBJS:%.o=%.c) > $@
++	@$(MAKEDEP) $(DEFINES) $(INCLUDES) $(INCLUDEPLUS) $(OBJS:%.o=%.c) > $@
+ 
+ -include $(DEPFILE)
+ 

@@ -1,0 +1,26 @@
+diff -Naurd a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2010-12-21 17:45:24.000000000 +0100
++++ b/CMakeLists.txt	2011-02-07 19:34:01.000000000 +0100
+@@ -271,7 +271,7 @@
+ 		
+ 		SET( _out ${CMAKE_CURRENT_SOURCE_DIR}/${_basename}.rcc )
+ 		
+-		ADD_CUSTOM_COMMAND( OUTPUT ${_out} COMMAND rcc ARGS ${_in} -binary -o ${_out} DEPENDS ${_in} )
++		ADD_CUSTOM_COMMAND( OUTPUT ${_out} COMMAND /usr/lib/qt4/bin/rcc ARGS ${_in} -binary -o ${_out} DEPENDS ${_in} )
+ 		
+ 		SET( ${_sources} ${${_sources}} ${_out} )
+ 	ENDFOREACH( curFile )
+diff -Naurd a/menu_data/aqemu.desktop b/menu_data/aqemu.desktop
+--- a/menu_data/aqemu.desktop	2009-06-04 09:29:38.000000000 +0200
++++ b/menu_data/aqemu.desktop	2014-05-06 17:56:34.000000000 +0200
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=AQEMU
+ Exec=aqemu
+ Terminal=false
+@@ -12,3 +11,4 @@
+ Name[en]=AQEMU
+ Comment[ru]=Управление виртуальными машинами
+ Comment[en]=Virtual machine manager
++Comment[hu]=Qemu frontend

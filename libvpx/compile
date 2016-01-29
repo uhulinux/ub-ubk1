@@ -1,0 +1,12 @@
+#!/bin/sh -eux
+
+./configure \
+	--prefix=/usr \
+	--enable-ccache \
+	--target=x86-linux-gcc \
+	--enable-shared \
+	--enable-runtime-cpu-detect \
+	--enable-vp8 \
+	--enable-mem-tracker \
+	--enable-postproc
+ub_make

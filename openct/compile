@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+# use system ifdhandler.h
+#rm src/pcsc/ifdhandler.h
+ub_compile \
+	--enable-pcsc \
+	--enable-usb

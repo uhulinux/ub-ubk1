@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+unarj-${UB_VERSION}.tgz unarj-${UB_VERSION}/
+	ftp://ftp.freebsd.org/pub/FreeBSD/ports/local-distfiles/ache/
+

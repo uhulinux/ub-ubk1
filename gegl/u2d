@@ -1,0 +1,2 @@
+dir=$(urllist http://ftp.gimp.org/pub/gegl/ | grep -E '^[0-9.]+$' | sort -V | tail -n 1)
+urllist http://ftp.gimp.org/pub/gegl/$dir/ | splitver '^gegl-([0-9.]+).tar.(gz|bz2)$' | sort -V | tail -n 1

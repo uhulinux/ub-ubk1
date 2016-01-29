@@ -1,0 +1,156 @@
+diff -urN imlib-1.9.14.orig/configure imlib-1.9.14/configure
+--- imlib-1.9.14.orig/configure	2002-03-25 17:45:33.000000000 +0100
++++ imlib-1.9.14/configure	2002-10-21 16:21:37.000000000 +0200
+@@ -1285,7 +1285,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:1288: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   :
+ else
+@@ -1302,7 +1302,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:1305: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   :
+ else
+@@ -1319,7 +1319,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:1322: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   :
+ else
+@@ -2062,7 +2062,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:2065: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   eval "ac_cv_header_$ac_safe=yes"
+@@ -5696,7 +5696,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:5699: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   ac_cv_header_stdc=yes
+@@ -6340,7 +6340,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:6343: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   eval "ac_cv_header_$ac_safe=yes"
+@@ -6377,7 +6377,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:6380: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   eval "ac_cv_header_$ac_safe=yes"
+@@ -6410,7 +6410,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:6413: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   eval "ac_cv_header_$ac_safe=yes"
+@@ -6504,7 +6504,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:6507: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   # We can compile using X headers with no special include directory.
+@@ -7384,7 +7384,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:7387: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   eval "ac_cv_header_$ac_safe=yes"
+@@ -7421,7 +7421,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:7424: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   eval "ac_cv_header_$ac_safe=yes"
+@@ -7583,7 +7583,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:7586: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   jpeg_ok=yes
+@@ -7655,7 +7655,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:7658: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   eval "ac_cv_header_$ac_safe=yes"
+@@ -7730,7 +7730,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:7733: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   eval "ac_cv_header_$ac_safe=yes"
+@@ -7805,7 +7805,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:7808: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   eval "ac_cv_header_$ac_safe=yes"
+@@ -7854,7 +7854,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:7857: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   eval "ac_cv_header_$ac_safe=yes"
+@@ -8014,7 +8014,7 @@
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+ { (eval echo configure:8017: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$" | grep -v "cpp0: warning: "`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   eval "ac_cv_header_$ac_safe=yes"

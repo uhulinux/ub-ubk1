@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+apsw-${UB_VERSION}-r1.tar.gz apsw-${UB_VERSION}-r1/
+	http://pypi.python.org/packages/source/a/apsw/

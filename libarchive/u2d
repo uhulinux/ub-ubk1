@@ -1,0 +1,1 @@
+urllist http://www.libarchive.org/downloads/ | splitver '^libarchive-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

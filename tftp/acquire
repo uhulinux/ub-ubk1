@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+tftp-hpa-${UB_VERSION}.tar.gz tftp-hpa-${UB_VERSION}/
+	ftp://ftp.kernel.org/pub/software/network/tftp/tftp-hpa/
+	https://www.kernel.org/pub/software/network/tftp/tftp-hpa/
+	http://mirror.nexcess.net/kernel.org/software/network/tftp/tftp-hpa/

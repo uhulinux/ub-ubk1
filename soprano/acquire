@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+soprano-${UB_VERSION}.tar.bz2 soprano-${UB_VERSION}/
+	http://downloads.sourceforge.net/soprano/

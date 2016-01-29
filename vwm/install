@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_install
+mkdir "$UB_INSTALLDIR"/usr/share/vwm
+cp -a samples/vwmrc "$UB_INSTALLDIR"/usr/share/vwm/
+cp -a keycodes/keycodes "$UB_INSTALLDIR"/usr/share/vwm/

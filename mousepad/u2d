@@ -1,0 +1,2 @@
+dir=$(urllist http://archive.xfce.org/src/apps/mousepad/ | grep -E '^([0-9.]+)?$' | sort -V | tail -n 1)
+urllist http://archive.xfce.org/src/apps/mousepad/$dir/ | splitver '^mousepad-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

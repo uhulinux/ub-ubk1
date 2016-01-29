@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+setuptools-${UB_VERSION}.tar.gz setuptools-${UB_VERSION}/
+	http://pypi.python.org/packages/source/s/setuptools/

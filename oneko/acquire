@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+oneko-${UB_VERSION}.tar.gz oneko-${UB_VERSION}/
+	ftp://ftp.ibiblio.org/pub/Linux/distributions/gentoo/distfiles/
+

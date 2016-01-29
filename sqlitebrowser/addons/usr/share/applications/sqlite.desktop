@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SQLite
+Comment=SQLite doc
+Comment[hu]=Sqlite SQL
+Exec=browser http://sqlite.org/lang.html
+Icon=sqlite
+Type=Application
+Categories=Office;Database;Documentation;

@@ -1,0 +1,21 @@
+diff -Naur orig/src/Fl_JPEG_Image.cxx patched/src/Fl_JPEG_Image.cxx
+--- orig/src/Fl_JPEG_Image.cxx	2012-11-09 17:02:08.000000000 +0100
++++ patched/src/Fl_JPEG_Image.cxx	2014-03-14 15:14:08.165412825 +0100
+@@ -155,7 +155,7 @@
+   
+   jpeg_create_decompress(&dinfo);
+   jpeg_stdio_src(&dinfo, fp);
+-  jpeg_read_header(&dinfo, 1);
++  jpeg_read_header(&dinfo, TRUE);
+   
+   dinfo.quantize_colors      = (boolean)FALSE;
+   dinfo.out_color_space      = JCS_RGB;
+@@ -333,7 +333,7 @@
+   
+   jpeg_create_decompress(&dinfo);
+   jpeg_mem_src(&dinfo, data);
+-  jpeg_read_header(&dinfo, 1);
++  jpeg_read_header(&dinfo, TRUE);
+   
+   dinfo.quantize_colors      = (boolean)FALSE;
+   dinfo.out_color_space      = JCS_RGB;

@@ -1,0 +1,26 @@
+diff -Naurd a/tun.c b/tun.c
+--- a/src/openvpn/tun.c	2004-10-28 08:24:40.000000000 +0200
++++ b/src/openvpn/tun.c	2004-11-19 11:36:30.102146157 +0100
+@@ -930,6 +930,22 @@
+       if (!node)
+ 	node = "/dev/net/tun";
+ 
++      struct stat buf;
++      if (lstat("/dev/net/tun", &buf) < 0)
++	{
++	  if (lstat("/sys/module/tun", &buf) < 0)
++	    system("modprobe tun");
++	  if (!lstat("/sys/module/tun", &buf))
++	    {
++	      int i;
++	      for (i = 0; i < 50; ++i)
++		if (!lstat("/dev/net/tun", &buf))
++		  break;
++		else
++		  usleep(100000);
++	    }
++	}
++
+       /*
+        * Open the interface
+        */

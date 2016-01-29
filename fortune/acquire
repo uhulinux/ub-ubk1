@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+fortune-${UB_VERSION}.tar.gz fortune-${UB_VERSION}/
+	ftp://ftp.fu-berlin.de/pub/unix/games/fortune/
+	ftp://ftp.uhulinux.hu/pub/sources/fortune/

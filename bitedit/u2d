@@ -1,0 +1,1 @@
+urllist http://ledge.co.za/software/bitedit/ | splitver '^bitedit-([0-9.]+).tar.gz$' | sort -V | tail -n 1

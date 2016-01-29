@@ -1,0 +1,1 @@
+urllist http://download.kde.org/stable/ | splitver '^calligra-([0-9.]+)' | sort -V | tail -n 1

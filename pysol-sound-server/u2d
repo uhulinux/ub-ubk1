@@ -1,0 +1,1 @@
+urllist http://www.pysol.org/ | splitver '^pysol-sound-server-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

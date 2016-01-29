@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+install -m 755 cdp ${UB_INSTALLDIR}/usr/bin/
+install -m 644 cdp.1 ${UB_INSTALLDIR}/usr/share/man/man1/
+ln -sf cdp ${UB_INSTALLDIR}/usr/bin/cdplay
+ln -sf cdp.1 ${UB_INSTALLDIR}/usr/share/man/man1/cdplay.1
+

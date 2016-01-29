@@ -1,0 +1,12 @@
+diff -Naur nss_ldap-265-orig/Makefile.in nss_ldap-265/Makefile.in
+--- nss_ldap-265-orig/Makefile.in	2009-11-06 11:28:08.000000000 +0100
++++ nss_ldap-265/Makefile.in	2013-05-01 13:32:18.629795600 +0200
+@@ -703,7 +703,7 @@
+ 	@$(NORMAL_UNINSTALL)
+ 
+ vers.c: $(top_srcdir)/CVSVersionInfo.txt
+-	CVSVERSIONDIR=$(top_srcdir) vers_string -v
++	CVSVERSIONDIR=$(top_srcdir) ./vers_string -v
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:

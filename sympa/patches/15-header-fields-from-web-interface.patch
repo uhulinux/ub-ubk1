@@ -1,0 +1,15 @@
+diff -Naur sympa-5.3.orig/wwsympa/wwsympa.fcgi sympa-5.3/wwsympa/wwsympa.fcgi
+--- sympa-5.3.orig/wwsympa/wwsympa.fcgi	2007-05-09 15:20:09.000000000 +0200
++++ sympa-5.3/wwsympa/wwsympa.fcgi	2007-05-31 15:40:45.000000000 +0200
+@@ -14788,8 +14788,9 @@
+ 	 my $filetopic = $list->tag_topic($in{'message_id'},$list_topics,'sender');
+      }
+ 
+-     my $data = {'headers' => {'In-Reply-To' => $in{'in_reply_to'},
+-			       'Message-ID' => $in{'message_id'}}, 
++     my $data = {'headers' => {'User-Agent' => 'Sympa '.$Version::Version,
++			       ($in{'in_reply_to'} ? ('In-Reply-To' => '<'.$in{'in_reply_to'}.'>') : ()),
++			       'Message-ID' => '<'.$in{'message_id'}.'>'}, 
+ 	         'subject' => $in{'subject'},
+ 		 'return_path' => &Conf::get_robot_conf($robot, 'sympa'),
+ 		 'from'=> $from,

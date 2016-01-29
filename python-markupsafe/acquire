@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+MarkupSafe-${UB_VERSION}.tar.gz MarkupSafe-${UB_VERSION}/
+	http://pypi.python.org/packages/source/M/MarkupSafe/

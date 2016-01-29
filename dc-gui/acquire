@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+dc_gui2-${UB_VERSION}.tar.gz dc_gui2-${UB_VERSION}/
+	http://ac2i.homelinux.com/dctc/
+	http://dc.tddm.se/clients/

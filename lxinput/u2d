@@ -1,0 +1,1 @@
+sflist lxde LXInput%20%28Kbd%20and%20amp_%20mouse%20config%29 | splitver '^LXInput%20([0-9.]+)$' | sort -V | tail -n 1

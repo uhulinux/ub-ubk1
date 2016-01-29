@@ -1,0 +1,19 @@
+diff -Naurd hfsutils-3.2.6.orig/Makefile.in hfsutils-3.2.6/Makefile.in
+--- hfsutils-3.2.6.orig/Makefile.in	1998-08-31 20:40:14.000000000 +0200
++++ hfsutils-3.2.6/Makefile.in	2004-10-26 14:03:00.958828021 +0200
+@@ -28,11 +28,11 @@
+ prefix =	@prefix@
+ exec_prefix =	@exec_prefix@
+ 
+-BINDEST =	@bindir@
+-MANDEST =	@mandir@
++BINDEST =	$(DESTDIR)@bindir@
++MANDEST =	$(DESTDIR)@mandir@
+ 
+-LIBDEST =	@libdir@
+-INCDEST =	@includedir@
++LIBDEST =	$(DESTDIR)@libdir@
++INCDEST =	$(DESTDIR)@includedir@
+ 
+ MANEXT =	1
+ 

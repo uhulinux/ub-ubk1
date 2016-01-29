@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+marave-${UB_VERSION}.tar.gz marave-${UB_VERSION}/
+	http://marave.googlecode.com/files/

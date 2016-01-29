@@ -1,0 +1,12 @@
+diff -Naurd a/mh.c b/mh.c
+--- a/mh.c	2008-03-12 01:08:24.000000000 +0100
++++ b/mh.c	2008-12-02 00:59:44.000000000 +0100
+@@ -713,7 +713,7 @@
+ 	     de->d_name));
+ 
+     h = mutt_new_header ();
+-    h->old = is_old;
++    h->old = is_old && option (OPTMARKOLD);
+     if (ctx->magic == M_MAILDIR)
+       maildir_parse_flags (h, de->d_name);
+ 

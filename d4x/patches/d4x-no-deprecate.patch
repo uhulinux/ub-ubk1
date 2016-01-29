@@ -1,0 +1,33 @@
+--- a/configure
++++ a/configure
+@@ -18397,10 +18397,6 @@
+ _ACEOF
+ 
+ 
+-cat >>confdefs.h <<\_ACEOF
+-#define GTK_DISABLE_DEPRECATED
+-_ACEOF
+-
+ 
+ cat >>confdefs.h <<\_ACEOF
+ #define _FILE_OFFSET_BITS 64
+--- a/configure.ac
++++ a/configure.ac
+@@ -298,7 +298,6 @@
+ 
+ # Other needed defines
+ AC_DEFINE(_REENTRANT, , [Enable reenrant code of glibc])
+-AC_DEFINE(GTK_DISABLE_DEPRECATED, , [Enable warnings about deprecated functions usage])
+ AC_DEFINE(_FILE_OFFSET_BITS, 64, [To support files over 2GB])
+ 
+ # Prepare all requiered flags
+--- a/main/face/list.cc
++++ a/main/face/list.cc
+@@ -8,7 +8,6 @@
+  *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+  *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  */
+-#define GTK_DISABLE_DEPRECATED
+ 
+ #include <stdio.h>
+ #include <gtk/gtk.h>

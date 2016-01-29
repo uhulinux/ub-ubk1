@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="object_id_list" schema="/schemas/apps/panel/general/object_id_list" type="list" ltype="string">
+		<li type="string"><stringvalue>exaile</stringvalue></li>
+		<li type="string"><stringvalue>calculator</stringvalue></li>
+		<li type="string"><stringvalue>thunderbird</stringvalue></li>
+		<li type="string"><stringvalue>firefox</stringvalue></li>
+		<li type="string"><stringvalue>gthumb</stringvalue></li>
+		<li type="string"><stringvalue>jdictionary</stringvalue></li>
+		<li type="string"><stringvalue>menubar</stringvalue></li>
+		<li type="string"><stringvalue>totem</stringvalue></li>
+		<li type="string"><stringvalue>openoffice</stringvalue></li>
+		<li type="string"><stringvalue>terminal</stringvalue></li>
+	</entry>
+	<entry name="enable_program_list" schema="/schemas/apps/panel/general/enable_program_list"/>
+	<entry name="show_program_list" schema="/schemas/apps/panel/general/show_program_list"/>
+	<entry name="applet_id_list" schema="/schemas/apps/panel/general/applet_id_list" type="list" ltype="string">
+		<li type="string"><stringvalue>clock</stringvalue></li>
+		<li type="string"><stringvalue>keyboard</stringvalue></li>
+		<li type="string"><stringvalue>load</stringvalue></li>
+		<li type="string"><stringvalue>mixer</stringvalue></li>
+		<li type="string"><stringvalue>notificationarea</stringvalue></li>
+		<li type="string"><stringvalue>showdesktop</stringvalue></li>
+		<li type="string"><stringvalue>windowlist</stringvalue></li>
+		<li type="string"><stringvalue>windowmenu</stringvalue></li>
+		<li type="string"><stringvalue>workspaceswitcher</stringvalue></li>
+	</entry>
+	<entry name="toplevel_id_list" schema="/schemas/apps/panel/general/toplevel_id_list" type="list" ltype="string">
+		<li type="string"><stringvalue>panel_bottom</stringvalue></li>
+		<li type="string"><stringvalue>panel_top</stringvalue></li>
+	</entry>
+</gconf>

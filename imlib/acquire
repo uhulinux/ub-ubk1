@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+imlib-${UB_VERSION}.tar.gz imlib-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/imlib/1.9/
+

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#ep128emu makecfg szkript
+
+if test ! -d ~/.ep128emu/roms
+then
+mkdir -p ~/.ep128emu/roms
+cp /usr/share/ep128/roms/ep128emu_roms.bin ~/.ep128emu/roms
+fi
+/usr/share/ep128/makecfg.bin

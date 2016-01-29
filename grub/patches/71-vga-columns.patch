@@ -1,0 +1,12 @@
+diff -Naur grub-0.95.orig/stage2/asm.S grub-0.95/stage2/asm.S
+--- grub-0.95.orig/stage2/asm.S	2004-05-23 18:22:23.000000000 +0200
++++ grub-0.95/stage2/asm.S	2004-07-14 14:06:02.335579827 +0200
+@@ -1858,7 +1858,7 @@
+ 	int	$0x10
+ 
+ 	/* check the column with the width */
+-	cmpb	$79, %dl
++	cmpb	$80, %dl
+ 	jl	2f
+ 	
+ 	/* print CR and LF, if next write will exceed the width */	

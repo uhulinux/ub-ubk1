@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gexiv2-${UB_VERSION}.tar.xz gexiv2-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gexiv2/${UB_VERSION_HEAD2}/

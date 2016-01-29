@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--enable-optimization \
+	--enable-man \
+	--enable-exceptions \
+	--disable-debug \
+	--disable-maintainer-mode
+
+rm -f man/man3/_*.*
+

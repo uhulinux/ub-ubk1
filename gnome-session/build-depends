@@ -1,0 +1,14 @@
+dbus-glib-dev
+docbook-dtds
+gconf2-dev
+gnome-desktop-dev
+gtk-dev
+intltool
+json-glib-dev
+librsvg-dev
+libsm-dev
+libxslt
+mesa-dev
+pangox-compat-dev
+upower-dev
+x.org-xtrans-dev

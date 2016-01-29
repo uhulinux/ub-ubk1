@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Tempita-${UB_VERSION/~/}.tar.gz Tempita-${UB_VERSION/~/}/
+	http://pypi.python.org/packages/source/T/Tempita/

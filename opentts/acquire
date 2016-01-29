@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+opentts-${UB_VERSION}-6.1.src.rpm opentts-${UB_VERSION/~/-}.tar.gz opentts-${UB_VERSION/~/-}/
+ftp://ftp2.de.freebsd.org/pub/opensuse/repositories/home%3A/zhonghuaren/Fedora_19/src/

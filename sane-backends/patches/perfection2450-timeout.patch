@@ -1,0 +1,12 @@
+diff -Naurdp a/sanei/sanei_usb.c b/sanei/sanei_usb.c
+--- a/sanei/sanei_usb.c	2009-02-20 19:17:01.000000000 +0100
++++ b/sanei/sanei_usb.c	2010-02-16 02:01:01.479969256 +0100
+@@ -1918,6 +1918,8 @@ sanei_usb_close (SANE_Int dn)
+       usb_resetep (devices[dn].libusb_handle, devices[dn].bulk_out_ep);
+       usb_resetep (devices[dn].libusb_handle, devices[dn].iso_in_ep);
+ #endif /* 0 */
++/*	HACK FOR PERFECTION 2450  */
++      usb_reset(devices[dn].libusb_handle);
+       usb_release_interface (devices[dn].libusb_handle,
+ 			     devices[dn].interface_nr);
+       usb_close (devices[dn].libusb_handle);

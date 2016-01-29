@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+freeze-${UB_VERSION}.tar.gz freeze-${UB_VERSION}/
+	ftp://ftp.warwick.ac.uk/pub/compression/

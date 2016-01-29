@@ -1,0 +1,121 @@
+diff -Naur orig/Makefile mod/Makefile
+--- orig/Makefile	2008-01-27 21:58:52.000000000 +0100
++++ mod/Makefile	2013-01-03 18:42:41.000000000 +0100
+@@ -15,44 +15,43 @@
+ 
+ ### The C++ compiler and options:
+ 
+-CXX      ?= g++
+-CXXFLAGS ?= -g -O2 -Wall -Woverloaded-virtual
+-
++export CFLAGS   = $(call PKGCFG,cflags)
++export CXXFLAGS = $(call PKGCFG,cxxflags)
++ 
+ ### The directory environment:
+-
+-DVBDIR = ../../../../DVB
+-VDRDIR = ../../..
+-LIBDIR = ../../lib
++# Use package data if installed...otherwise assume we're under the VDR source directory:
++PKGCFG = $(if $(VDRDIR),$(shell pkg-config --variable=$(1) $(VDRDIR)/vdr.pc),$(shell pkg-config --variable=$(1) vdr || pkg-config --variable=$(1) ../../../vdr.pc))
++LIBDIR = $(DESTDIR)$(call PKGCFG,libdir)
++LOCDIR = $(DESTDIR)$(call PKGCFG,locdir)
++#
+ TMPDIR = /tmp
+ 
+-### Allow user defined options to overwrite defaults:
+-
+--include $(VDRDIR)/Make.config
++### The version number of VDR's plugin APIVERSION
+ 
+-### The version number of VDR (taken from VDR's "config.h"):
+-
+-APIVERSION = $(shell grep 'define APIVERSION ' $(VDRDIR)/config.h | awk '{ print $$3 }' | sed -e 's/"//g')
++APIVERSION = $(call PKGCFG,apiversion)
+ 
+ ### The name of the distribution archive:
+ 
+ ARCHIVE = $(PLUGIN)-$(VERSION)
+ PACKAGE = vdr-$(ARCHIVE)
+ 
+-### Includes and Defines (add further entries here):
++### The name of the shared object file:
+ 
+-INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include
++SOFILE = libvdr-$(PLUGIN).so
++
++### Includes and Defines (add further entries here):
+ 
+ #just for TESTING VDR SUBmenu
+-INCLUDES += -I$(VDRDIR)
++INCLUDES += -I/usr/include/vdr -I/usr/include/linux/dvb
+ 
+-DEFINES += -D_GNU_SOURCE -DPLUGIN_NAME_I18N='"$(PLUGIN)"' -DAPIVERSION="\"$(APIVERSION)\"" 
++DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"' -DAPIVERSION="\"$(APIVERSION)\"" 
+ 
+ ### The object files (add further files here):
+-OBJS     = $(PLUGIN).o  i18n.o menus.o setupmenu.o setupsetup.o config.o plugins.o sysconfig.o util.o setupsystemmenu.o
++OBJS     = $(PLUGIN).o menus.o setupmenu.o setupsetup.o config.o plugins.o sysconfig.o util.o setupsystemmenu.o
+ 
+ ### The main target:
+ 
+-all: libvdr-$(PLUGIN).so i18n
++all: $(SOFILE)
+ 
+ ### Implicit rules:
+ 
+@@ -71,37 +70,42 @@
+ ### Internationalization (I18N):
+ 
+ PODIR     = po
+-LOCALEDIR = $(VDRDIR)/locale
+ I18Npo    = $(wildcard $(PODIR)/*.po)
+-I18Nmsgs  = $(addprefix $(LOCALEDIR)/, $(addsuffix /LC_MESSAGES/vdr-$(PLUGIN).mo, $(notdir $(foreach file, $(I18Npo), $(basename $(file))))))
++I18Nmo    = $(addsuffix .mo, $(foreach file, $(I18Npo), $(basename $(file))))
++I18Nmsgs  = $(addprefix $(LOCDIR)/, $(addsuffix /LC_MESSAGES/vdr-$(PLUGIN).mo, $(notdir $(foreach file, $(I18Npo), $(basename $(file))))))
+ I18Npot   = $(PODIR)/$(PLUGIN).pot
+ 
+ %.mo: %.po
+ 	msgfmt -c -o $@ $<
+ 
+ $(I18Npot): $(wildcard *.c)
+-	xgettext -C -cTRANSLATORS --no-wrap --no-location -k -ktr -ktrNOOP --msgid-bugs-address='<see README>' -o $@ $^
++	xgettext -C -cTRANSLATORS --no-wrap --no-location -k -ktr -ktrNOOP --package-name=vdr-$(PLUGIN) --package-version=$(VERSION) --msgid-bugs-address='<see README>' -o $@ `ls $^`
+ 
+ %.po: $(I18Npot)
+-	msgmerge -U --no-wrap --no-location --backup=none -q $@ $<
++	msgmerge -U --no-wrap --no-location --backup=none -q -N $@ $<
+ 	@touch $@
+ 
+-$(I18Nmsgs): $(LOCALEDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo: $(PODIR)/%.mo
+-	@mkdir -p $(dir $@)
+-	cp $< $@
++$(I18Nmsgs): $(LOCDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo: $(PODIR)/%.mo
++	install -D -m644 $< $@
+ 
+ .PHONY: i18n
+-i18n: $(I18Nmsgs)
++i18n: $(I18Nmo) $(I18Npot)
++
++install-i18n: $(I18Nmsgs)
+ 
+ ### Targets:
+ 
+-libvdr-$(PLUGIN).so: setupsystemmenu.c $(OBJS)
++$(SOFILE): setupsystemmenu.c $(OBJS)
+ 	$(CXX) $(CXXFLAGS) -shared $(OBJS) -o $@
+-	@cp $@ $(LIBDIR)/$@.$(APIVERSION)
+ 
+-setupsystemmenu.c:  ../../../menu.c
++install-lib: $(SOFILE)
++	install -D $^ $(LIBDIR)/$^.$(APIVERSION)
++
++install: install-lib
++
++setupsystemmenu.c:  menu.c
+ 	@echo "Extracting class definitions from VDR's menu.c for standard Setup"
+-	@./getVdrSetupMenu.pl ../../../menu.c
++	@./getVdrSetupMenu.pl menu.c
+ 
+ 	
+ dist: clean

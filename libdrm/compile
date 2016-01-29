@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+export PTHREADSTUBS_CFLAGS=" "
+export PTHREADSTUBS_LIBS=" "
+ub_compile \
+	--enable-nouveau \
+	--enable-radeon \
+	--enable-udev

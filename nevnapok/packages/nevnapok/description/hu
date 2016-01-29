@@ -1,0 +1,3 @@
+Példák:
+	Név keresése: &find('Péter') - a "Péter" szöveg előfordulása bárhol.
+	Mai névnapok: ma()

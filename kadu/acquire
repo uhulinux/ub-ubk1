@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kadu-${UB_VERSION}.tar.bz2 kadu-${UB_VERSION}/
+	http://download.kadu.im/stable/

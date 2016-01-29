@@ -1,0 +1,41 @@
+--- libhfsp/src/os.c
++++ libhfsp/src/os.c
+@@ -46,6 +46,7 @@
+ # endif
+ 
+ # include <stdio.h>
++# include <stdlib.h>
+ 
+ 
+ # include <errno.h>
+--- libhfsp/src/partitions.c
++++ libhfsp/src/partitions.c
+@@ -32,6 +32,7 @@
+ #include "libhfsp.h"
+ 
+ #include <stdlib.h>
++#include <string.h>
+ 
+ /*
+  * Returns the number of partitions in the given partition map.
+--- libhfsp/src/record.c
++++ libhfsp/src/record.c
+@@ -32,6 +32,8 @@
+ 
+ #include <errno.h>
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ #include "libhfsp.h"
+ #include "hfstime.h"
+@@ -1255,8 +1257,7 @@
+ 
+     // Find out where to insert the record
+     if (record_find_key(bt, &r->key, &keyind, &nodeind))
+-	HFSP_ERROR(EEXIST, 
+-	hfsp_error = "File/Folder already exists");
++	HFSP_ERROR(EEXIST, "File/Folder already exists");
+ 
+     // Create memory image
+     p = record_writekey  (p, &r->key);

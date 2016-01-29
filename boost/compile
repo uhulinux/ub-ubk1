@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+./bootstrap.sh \
+	--prefix="$UB_INSTALLDIR"/usr

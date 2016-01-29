@@ -1,0 +1,72 @@
+diff -Naur orig/src/mod_mono.c patched/src/mod_mono.c
+--- orig/src/mod_mono.c	2011-01-13 23:32:35.000000000 +0100
++++ patched/src/mod_mono.c	2013-03-08 11:58:16.131396094 +0100
+@@ -98,7 +98,7 @@
+ 	size_t      args_len;
+ 	size_t      protocol_len;
+ 	size_t      local_ip_len;
+-	size_t      remote_ip_len;
++	size_t      client_ip_len;
+ 	const char *remote_name;
+ 	size_t      remote_name_len;
+ 	size_t      filename_len;
+@@ -386,7 +386,7 @@
+ apache_get_userid ()
+ {
+ #ifdef HAVE_UNIXD
+-	return unixd_config.user_id;
++	return ap_unixd_config.user_id;
+ #else
+ 	return ap_user_id;
+ #endif
+@@ -396,7 +396,7 @@
+ apache_get_groupid ()
+ {
+ #ifdef HAVE_UNIXD
+-	return unixd_config.group_id;
++	return ap_unixd_config.group_id;
+ #else
+ 	return ap_group_id;
+ #endif
+@@ -406,7 +406,7 @@
+ apache_get_username ()
+ {
+ #ifdef HAVE_UNIXD
+-	return unixd_config.user_name;
++	return ap_unixd_config.user_name;
+ #else
+ 	return ap_user_name;
+ #endif
+@@ -848,10 +848,10 @@
+ connection_get_remote_port (conn_rec *c)
+ {
+ #if defined(APACHE22)
+-	return c->remote_addr->port;
++	return c->client_addr->port;
+ #else
+ 	apr_port_t port;
+-	apr_sockaddr_port_get (&port, c->remote_addr);
++	apr_sockaddr_port_get (&port, c->client_addr);
+ 	return port;
+ #endif
+ 
+@@ -1978,8 +1978,8 @@
+ 
+ 	size += sizeof (int32_t);
+ 
+-	info.remote_ip_len = strlen (r->connection->remote_ip);
+-	size += info.remote_ip_len + sizeof (int32_t);
++	info.client_ip_len = strlen (r->connection->client_ip);
++	size += info.client_ip_len + sizeof (int32_t);
+ 
+ 	size += sizeof (int32_t);
+ 
+@@ -2026,7 +2026,7 @@
+ 	i = LE_FROM_INT (i);
+ 	memcpy (ptr, &i, sizeof (i));
+ 	ptr += sizeof (int32_t);
+-	ptr += write_string_to_buffer (ptr, 0, r->connection->remote_ip, info.remote_ip_len);
++	ptr += write_string_to_buffer (ptr, 0, r->connection->client_ip, info.client_ip_len);
+ 	i = connection_get_remote_port (r->connection);
+ 	i = LE_FROM_INT (i);
+ 	memcpy (ptr, &i, sizeof (i));

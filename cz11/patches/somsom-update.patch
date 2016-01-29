@@ -1,0 +1,1563 @@
+diff -Naurd LexZ11-distro.orig/cZ11.c LexZ11-distro/cZ11.c
+--- LexZ11-distro.orig/cZ11.c	2000-06-18 16:01:11.000000000 +0200
++++ LexZ11-distro/cZ11.c	2004-01-12 03:32:22.000000000 +0100
+@@ -1,10 +1,31 @@
+ /***************************************************************************
+     cZ11.c  -  driver for the Lexmark Z11 printer. See README for details.
+-                             -------------------
++                              -------------------
+     begin                : Mon Jun 12 14:07:33 CEST 2000
+-    last change          : Sun Jun 18 16:05:00 CEST 2000
+-    copyright            : (C) 2000 by Christian Kornblum
+-    email                : kornblum@studst.fh-muenster.de
++    last change          : Mon Nov 13 14:15:16 CEST 2000
++
++    copyright
++    original             : (C) 2000 by Christian Kornblum
++    v1.1.1 changes       : (C) 2000 by Som-Som (toning)
++    v1.1.2 changes       : (C) 2000 by Som-Som (toning)
++    v1.1.3 changes       : (C) 2000 by Som-Som (toning)
++    v1.1.4 changes       : (C) 2000 by Erik Bernhardson (division by zero)
++                           and Som-Som (fix point accuracy)
++    v1.1.5 changes       : (C) 2002 by Mihael Hategan (variable page size)
++                         : (C) 2002 by Ullrich Sigwanz (color true gray scaling)
++                           (NTSC std-coding) )
++    v2.0                 : complete rework and refactoring of the code
++                           implemented 200 and 300dpi
++                           implemented 1200
++                           removing obsolete debug code
++                           optimizing of skipping empty lines
++                           increased BW-print by factor 3
++                           utilizing all 192 jets of the cartridge
++    email
++    Christian Kornblum   : kornblum@studst.fh-muenster.de
++    Som-Som              : somsom@freemail.c3.hu
++    Mihael Hategan       : hatemih@iit.edu (for now)
++    Ullrich Sigwanz      : usigwanz@lycos.de, pohl.sigwanz@freesurf.ch
+  ***************************************************************************/
+ 
+ /***************************************************************************
+@@ -14,6 +35,8 @@
+  *   the Free Software Foundation; either version 2 of the License, or     *
+  *   (at your option) any later version.                                   *
+  *                                                                         *
++ *   See a license at http://www.gnu.org/copyleft/gpl.html                 *
++ *                                                                         *
+  ***************************************************************************/
+ 
+ #ifdef HAVE_CONFIG_H
+@@ -22,70 +45,518 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+-
+-#include <stdlib.h>
+ #include <string.h>
++#include <limits.h>
++#include <malloc.h>
++
+ 
+ /* various constants */
+ #define Z11_PROLOG "/etc/LexmarkZ11/prolog.prn"
+-#define MAX_LINES 600
+-#define PAGE_HEIGHT 6720
+-#define PAGE_WIDTH 4802
+-#define GS_PAGE_WIDTH 4958
+-#define GS_PAGE_HEIGHT 7017
++#define Z11_PAGE_HEIGHT 6720
++#define Z11_PAGE_WIDTH 4802
+ 
+ /* general */
+ #define ROW_GAP 16
+ #define BYTES_PER_HEADER 24
+-#define LEFT_MARGIN 10
+-#define UPPER_MARGIN 0
+ 
+ /* CMYK printing */
+ #define COLOR_PENS 64
+ #define COLOR_GAP 26 /* ? */
+ #define BYTES_PER_COLUMN 24
+-#define STD_PAGE_MOVE 2*COLOR_PENS
+ #define COLOR_BUFFERS 6
++#define COLORS 3
++
++#define BW_LINES (COLOR_PENS*3)
++
++
++#define BW_Y 1 /*114*/
++#define BW_M 3 /*587*/
++#define BW_C 5 /*299*/
++#define BW_K    ( BW_Y+BW_M+BW_C )
++
++#define NO_COLOR   -2
++#define ALL_COLORS -1
+ 
+ /* the ghostscript color identifiers */
+-#define BLACK   0x10
+-#define CYAN    0x80
+-#define MAGENTA 0x40
+-#define YELLOW  0x20
++#define GS_K 0x1
++#define GS_Y 0x2
++#define GS_M 0x4
++#define GS_C 0x8
++
++  static int bwShade[16] = { 0,
++                             BW_K, BW_Y,
++                             BW_K, BW_M,
++                             BW_K, BW_Y+BW_M,
++                             BW_K, BW_C,
++
++                             BW_K, BW_C+BW_Y,
++                             BW_K, BW_C+BW_M,
++                             BW_K, BW_C+BW_Y+BW_M,
++                             BW_K };
++
++ static int xLatCMYK[16] = { 0,
++                             GS_Y|GS_M|GS_C, GS_Y,
++                             GS_Y|GS_M|GS_C, GS_M,
++                             GS_Y|GS_M|GS_C, GS_Y|GS_M,
++                             GS_Y|GS_M|GS_C, GS_C,
++
++                             GS_Y|GS_M|GS_C, GS_C|GS_Y,
++                             GS_Y|GS_M|GS_C, GS_C|GS_M,
++                             GS_Y|GS_M|GS_C, GS_C|GS_Y|GS_M,
++                             GS_Y|GS_M|GS_C };
++
++ static int  gsDiv[2] = { 16, 1 };
++
++ static unsigned char gsColorCheck[] = { GS_Y|GS_K,
++                                         GS_M|GS_K,
++                                         GS_C|GS_K };
++
++ static unsigned char gsColorSet[] = { GS_Y,
++                                       GS_M,
++                                       GS_C };
+ 
+ /* the structure for the pixmaps */
+-struct tSweepBuffer {
++typedef struct tgSweepBuffer {
+   int bytepos;
+   int bitpos;
+   int bufpos;        /* this is used for the colors! */
+   int unprinted;     /* does this buffer contain data? */
++  long bytesize;
++  int width;
+   char *buffer;
+-};
++} tSweepBuffer;
+ 
+-/*
++/***************************************************************************
++   Toning
++
++   How this (too) simple color toning works:
++   For printing a dot you specify whether cyan, magenta and yellow ink must be
++   placed at that location or not (1 or 0).
++
++   Toning:
++   1. You specify tone percentage of cyan, magenta and yellow colors.
++      If tone is 33% (1/3) you put that color only at every 3rd occurance.
++      We need only every TONE_N_TH = (100 / Tone) dot to be printed.
++      Let "Skipped" represent the number of the dots which are skipped,
++      because of printing only every TONE_N_TH dot.
++      We print if (Skipped + 1 >= TONE_N_TH) and reset Skipped.
++   2. Now making a solid black printing with toning of 33% for each color will
++      like this: |  |  |  |. When using color cartridge we prefer if printing
++      like this: cmycmycmy. The space between the different colored dots is
++      TONE_COLOR_SPACE = TONE_N_TH / 3 (for equal tones).
++      To achieve our goal initial value of Skipped will be
++      (1 * TONE_COLOR_SPACE) for magenta and (2 * TONE_COLOR_SPACE) for yellow.
++   3. Now the printing will like cmycmycmy. But every row will like this, so
++      there will be single colored straight lines like
++      cmycmycmy
++      ycmycmycm
++      mycmycmyc
++      The easiest way to avoid it to randomize initial Skipped values on
++      each printed row. InitSkipped() function does it.
++   4. Integer calculation is in use, so TONE_N_TH for tone percentage
++      between 51 and 100 will be 1. Fix point (FP) calculation is fast, so
++      FP calculation will remain in use, only the point moves.
++      For 10 times better accuracy TONE_FP_ACCURACY = 10.
++      Skipped is multiplied by TONE_FP_ACCURACY, too. And after printing
++      instead of resetting Skipped it will be reduced by TONE_N_TH.
++
++   At command line you can specify different toning for each color. It
++   may conflict a bit with the toning algorithm, because in case of different
++   color tones TONE_N_TH and TONE_COLOR_SPACE loose their original meaning.
++   But you get a tool to fine-tune ink consumption. And if you use a black
++   cartridge you are able to use this color driver by setting 0 percent
++   for cyan and magenta color tone.
++ ***************************************************************************/
++
++typedef union {
++  int c[COLORS];
++  struct {int y; int m; int c;} color;
++} tTone, tSkipped;
++
++
++#define DITHERING 4
++typedef unsigned char tDitherInfo;
++typedef struct tgDitherMatrix
++{
++  tDitherInfo m[DITHERING][DITHERING];
++}
++tDitherMatrix;
++
++typedef struct tgDataPipe
++{
++   int dithering;                 /* scale down factor */
++   int readSize;                /* relevant buffer to read */
++   int redundantSize;           /* redundant buffer */
++   int lineWrap;                /* ==0 means read new line from input */
++   int isRead;                  /* 1 when data in buffer */
++   int bytesRead;               /* bytes actually read in buffer */
++   int width;                   /* number of pixels in line */
++   int isAnalized;              /* 0, when not analyized yet */
++   int isCompressed;            /* 1, when 1200dpi data was compressed to 600spi */
++   int isEOF;                   /* 1 when bffer empty */
++   char * buffer;               /* buffer */
++   tDitherMatrix* dm[COLORS];   /* dithering bitmasks */
++} tDataPipe;
++
++
++/***************************************************************************
++ * initialize the data pipe and preset all structure for fast read access
++ ***************************************************************************/
++void InitDataPipe( tDataPipe* p, int dithering, tTone* tone, int usedColor,
++  int gsWidth, int gsHeight, int* linesPerPage, int* buffersPerLine)
++{
++  /* dithering 300 dpi */
++  static /* const */ tDitherMatrix dm2[5] =
++  {
++    {{{0,0},
++      {0,0}}},
++
++    {{{1,0},
++      {0,0}}},
++
++    {{{1,0},
++      {0,1}}},
++
++    {{{1,1},
++      {0,1}}},
++
++    {{{1,1},
++      {1,1}}}
++  };
++
++  /* dithering 200 dpi */
++  static /* const */ tDitherMatrix dm3[10] =
++  {
++    {{{0,0,0},
++      {0,0,0},
++      {0,0,0}}},
++
++    {{{0,0,0},
++      {0,1,0},
++      {0,0,0}}},
++
++    {{{1,0,0},
++      {0,0,0},
++      {0,0,1}}},
++
++    {{{1,0,0},
++      {0,0,1},
++      {0,1,0}}},
++
++    {{{0,1,0},
++      {1,0,1},
++      {0,1,0}}},
++
++    {{{1,0,1},
++      {0,1,0},
++      {1,0,1}}},
++
++    {{{0,1,1},
++      {1,1,0},
++      {1,0,1}}},
++
++    {{{0,1,1},
++      {1,1,1},
++      {1,1,0}}},
++
++    {{{1,1,1},
++      {1,0,1},
++      {1,1,1}}},
++
++    {{{1,1,1},
++      {1,1,1},
++      {1,1,1}}}
++  };
++
++  static /* const */ tDitherMatrix *dm[4] = { NULL, NULL, dm2, dm3 };
++
++  memset(p,0,sizeof(*p));
++
++  /* get the proper scaling factore */
++  if ( dithering<0 )
++    dithering = 0;
++  else if (dithering>3 )
++    dithering = 3;
++
++  p->dithering = dithering;
++  /* calculate size to read and size to discard */
++
++  {
++    int gsSize;
++    int z11Size;
++
++    gsSize  = ( gsWidth+1 )/2;
++
++    if ( p->dithering )
++      z11Size = ( ( ( Z11_PAGE_WIDTH + p->dithering - 1 )/ p->dithering ) + 1 )/2;
++    else
++      z11Size = Z11_PAGE_WIDTH;
++
++    if ( gsSize<z11Size )
++    {
++        p->readSize = gsSize;
++        p->redundantSize = 0;
++    }
++    else
++    {
++        p->readSize = z11Size;
++        p->redundantSize = gsSize - z11Size;
++    }
++  }
++
++  p->lineWrap = 0;
++  p->bytesRead = 0;
++  p->isAnalized = 0;
++  p->isEOF = 0;
++  p->isCompressed = 0;
++
++  /* when the dithering is 1 or 0, we read directly from the buffer */
++  p->buffer = p->dithering<2 ? NULL : malloc( p->readSize );
++
++  *linesPerPage = p->dithering ? (p->dithering * gsHeight) : gsHeight;
++  *buffersPerLine = p->dithering ? 1 : 2;
++
++  /* get tones as close as possible to predefined dithering */
++  if ( p->dithering>1 )
++  {
++    if ( usedColor != ALL_COLORS )
++    {
++      int c,t,tt;
++      t = tone->c[usedColor];
++      tt = (t*dithering*dithering+99)/100;
++      tone->c[usedColor] = (t*dithering*dithering)/tt;
++      for ( c=0; c<COLORS; ++c )
++        p->dm[c] = &(dm[dithering][tt]);
++    }
++    else
++    {
++      int c;
++      for ( c=0; c<COLORS; ++c )
++      {
++        int t;
++        int tt;
++        t = tone->c[c];
++        tt = (t*dithering*dithering+99)/100;
++        tone->c[c] = tt ? (t*dithering*dithering)/tt : 0;
++        p->dm[c] = &(dm[dithering][tt]);
++      }
++    }
++  }
++}
++
++/***************************************************************************
++ * read a line from the data pipe
++ * fDiscardContents==1 means: read but no need to analyze
++ * fUnget==1 means: read, but keep in pipe also for the next read
++ * returns the width of the bitcmyk line, -1 mark end of input file
++ ***************************************************************************/
++int ReadDataPipe(tDataPipe *p, FILE* in, char* pLine, int fDiscardContents, int fUnget)
++{
++  char * buf;
++  int line;
++
++  /* save the current dither line */
++  line = p->lineWrap;
++
++  /* assign the buffer */
++  buf = p->buffer ? p->buffer : pLine;
++
++  /* new buffer read prepared */
++  if ( !p->lineWrap && !p->isRead )
++  {
++    p->isRead = 1;
++    p->width = 0;
++    p->isAnalized = 0;
++    p->isCompressed = 0;
++
++    /* has there been a EOF before ? */
++    if ( !p->isEOF )
++    {
++      int i;
++      int isEOF = 0;
++      p->bytesRead = fread( (void *)buf, sizeof(buf[0]), p->readSize, in );
++      for ( i=p->redundantSize; i>0 && !(isEOF=( getc(in)==EOF)); --i );
++      p->isEOF = isEOF || (p->bytesRead < p->readSize);
++    }
++    else
++    {
++      /* uncomplete read marks end of file */
++      p->bytesRead = 0;
++    }
++  }
++
++  /* EOF, no bytes could be read */
++  if ( !p->bytesRead )
++    return -1;
++
++  /* analyze the length of the buffer */
++  if ( !p->isAnalized && !fDiscardContents )
++  {
++     int w;
++     char* b;
++
++     w = p->bytesRead;
++     b = &buf[w];
++
++     while ( w && !*(--b) ) --w;
++
++     /* each byte contains 2 color nibbles
++        and one nibble less, when the lowest nibble is "0" */
++     if ( w )
++       w = w*2 - ((*b & 0xf)==0);
++
++     p->width = w;
++     p->isAnalized = 1;
++  }
++
++  /* prepare the read in of a new line from file if requested */
++  if ( !fUnget )
++  {
++     p->lineWrap = ( p->lineWrap+1 ) % ( p->dithering ? p->dithering : 1);
++     if ( !p->lineWrap )
++       p->isRead = 0;
++  }
++
++  /* when just reading to discard, no need to print (width=0) */
++  if ( fDiscardContents )
++    return 0;
++
++  /* if no data in line, then nothing to analize or print */
++  if (!p->width )
++    return 0;
++
++  /* easy, just read from the line */
++  if ( p->dithering==1 )
++  {
++    return p->width;
++  }
++  /* harder , make 1 pixel out of 2 */
++  else if ( p->dithering==0 )
++  {
++    if ( !p->isCompressed )
++    {
++      int i,w;
++      int acc = 0;
++      int set = 0; /* pixels to set */
++      for ( w=p->width, i=0; w; ++i )
++      {
++        int cur; /* current CMYK value */
++        /* translate into pure CMY (without K) */
++        cur = xLatCMYK[ ((int)(unsigned char)buf[i/2]/gsDiv[i&1]) & 0xf ];
++        /* accumulate the bits that are to be set */
++        acc ^= cur;
++        set |= (~acc) & cur; /* set every pixel that turns from 1 to 0 */
++
++        /* both nibbles of the source processed or end of buffer reached ? */
++        if ( !(--w) || i&1 )
++        {
++          int d;   /* nibble in the destination buffer */
++          d = i/2;
++          /* mask out the space that is needed by "set" and logically OR it with "set" */
++          pLine[d/2] = ( pLine[d/2] & ~( 0xf * gsDiv[d&1] ) ) | (set*gsDiv[d&1]);
++          /* start to accumulate again */
++          set = 0;
++        }
++      }
++      p->isCompressed = 1;
++    }
++    return p->width/2;
++  }
++  /* hardest regard the dithering */
++  else
++  {
++    tDitherInfo *dm[COLORS]; /* contains the dither info for each color */
++    memset( pLine, 0, (Z11_PAGE_WIDTH+1)/2 );
++
++    /* set the lines of the dithermatrices properly
++       and store the pattern pointers */
++    {
++      int c;
++      for ( c=0; c<COLORS; ++c )
++        dm[c] = p->dm[c]->m[line];
++    }
++    /* step through the bytes */
++    /* and expand the desitination line */
++    {
++      int w=0; /* expanded width */
++      int i;
++      for ( i=0; i<p->width ; ++i )
++      {
++        /* step through the nibbles, when they are not 0 */
++        int gsNibble;
++        gsNibble = ((int)(unsigned char)(buf[i/2]) / gsDiv[i&1]) & 0xf;
++
++        if ( gsNibble )
++        {
++          int dx;
++          int di;
++          /* step through the pixel colors , when they are not 0 */
++          for ( di=i*p->dithering, dx=0; dx<p->dithering; ++dx, ++di )
++          {
++            int c;
++            for ( c=0; c<COLORS; ++c )
++              if ( gsNibble & gsColorCheck[c] )
++                 /* dither bit set ? */
++                 if ( dm[c][dx] )
++                 {
++                    /* this contributes to the print width */
++                    w = di+1;
++                    pLine[di/2] |= gsColorSet[c]*gsDiv[di&1];
++                 }
++
++          }
++        }
++      }
++      return w;
++    }
++  }
++}
++
++
++/***************************************************************************
++ * release all buffers in the data pipe
++ ***************************************************************************/
++void FinishDataPipe( tDataPipe* p )
++{
++   if ( p->buffer )
++     free( p->buffer );
++   memset(p,0,sizeof(*p));
++}
++
++
++#define TONE_FP_ACCURACY 10
++#define TONE_N_TH(Tone) (Tone == 0 ? INT_MAX : (TONE_FP_ACCURACY * 100 / Tone) )
++#define TONE_COLOR_SPACE(Tone) (TONE_N_TH(Tone) / 3)
++
++#define BUFFER_OVERHEAD 10000
++
++/***************************************************************************
+  * This writes a number of zeros to a string.
+- */
++ ***************************************************************************/
+ void ClearBuffer(char *data, int bytes)
+ {
+     memset((void *) data, 0, bytes);
+ } /* ClearBuffer */
+ 
+-/*
++/***************************************************************************
+  * Initialize a sweep buffer
+- */
+-void SweepBuffer_Init (struct tSweepBuffer *SweepBuffer, int bytesize)
++ ***************************************************************************/
++void SweepBufferInit (tSweepBuffer *SweepBuffer, int width, long bytesize)
+ {
+   SweepBuffer->bytepos = 0;
+   SweepBuffer->bitpos = 0;
+   SweepBuffer->bufpos = 0;
+   SweepBuffer->unprinted = 0;
+-  SweepBuffer->buffer = (char *) malloc(bytesize+10000);
+-  ClearBuffer(SweepBuffer->buffer, bytesize+10000);
+-} /* SweepBuffer_Init */
++  SweepBuffer->bytesize = bytesize;
++  SweepBuffer->width = width;
++  if ( !SweepBuffer->buffer )
++    SweepBuffer->buffer = (char *) malloc(bytesize+BUFFER_OVERHEAD);
++  ClearBuffer(SweepBuffer->buffer, bytesize+BUFFER_OVERHEAD);
++} /* SweepBufferInit */
+ 
+-/*
++/***************************************************************************
+  * Summ up some bytes for a single checksum-byte
+- */
++ ***************************************************************************/
+ char checkbyte(char* stuff, int start, int end)
+ {
+     int i;
+@@ -94,32 +565,33 @@
+     return ret;
+ } /* CheckByte */
+ 
+-/*
++/***************************************************************************
+  * This puts an unterminated amount of any chars to "out". The first
+  * byte of the "string" has to give the correct number of the following bytes.
+- */
++ ***************************************************************************/
+ void fPutLString (FILE *out, char *data) {
+   int i;
+   for (i = 1; i <= data[0]; putc(data[i++], out));
+ } /* fPutLString */
+ 
+-/*
++/***************************************************************************
+  * This moves the paper by a defined number of lines (600lpi!).
+- */
++ ***************************************************************************/
+ void LexMove(FILE *out, long int pixel)
+ {
+-  char command[] = {8, 0x1b,0x23,0x80,0x0a,0x58,0x00,0x00,0x05,0x1b,0x31,0x0c,0x02,0x7f,0x00,0x00,0xbe};
+-  pixel *= 2;
++  char command[] = {8,
++                    0x1b,0x23,0x80,0x0a,0x58,0x00,0x00,0x05,
++                    0x1b,0x31,0x0c,0x02,0x7f,0x00,0x00,0xbe};
+   command[5] = (char) pixel;
+   command[4] = (char) (pixel >> 8);
+   command[8] = checkbyte(command, 2, 7);
+   fPutLString(out, command);
+ } /* LexMove */
+ 
+-/*
++/***************************************************************************
+  * This initializes the printer. Currently, the rather long magic
+  * prolog is read from a file.
+- */
++ ***************************************************************************/
+ void LexInit(FILE *out)
+ {
+     int InByte;
+@@ -137,27 +609,29 @@
+     fclose(prologfile);
+ } /* LexInit */
+ 
+-/*
++/***************************************************************************
+  * This tells the printer to throw out his current page.
+- */
++ ***************************************************************************/
+ void LexEOP(FILE *out)
+ {
+-   char command[] = {24, 0x1B,0x22,0x80,0x3f,0x84,0x00,0x00,0x65,0x1b,0x33,0x00,0x00,0x00,0x00,0x00,
+-                        0x33,0x1b,0x62,0x00,0x00,0x00,0x00,0x00,0x62};
++   char command[] = {24,
++                     0x1B,0x22,0x80,0x3f,0x84,0x00,0x00,0x65,
++                     0x1b,0x33,0x00,0x00,0x00,0x00,0x00,0x33,
++                     0x1b,0x62,0x00,0x00,0x00,0x00,0x00,0x62};
+    fPutLString(out, command);
+ }
+ 
+-/*
++/***************************************************************************
+  * Make bytes to use both inkjet columns on the cartridge. Return 1 if
+  * they are not empty.
+- */
+-int MakePacketByte(char *buffer, int bytesize, int index, char *packet, int bytespercolumn)
++ ***************************************************************************/
++int MakePacketByte(char *buffer, int bytesize, int index, char *packet)
+ {
+   int rowindex;
+   *packet = 0;
+ 
+   // calculate position of data byte for second row
+-  rowindex = index - (bytespercolumn * ROW_GAP);
++  rowindex = index - (BYTES_PER_COLUMN * ROW_GAP);
+ 
+   // set up byte
+   if (index < bytesize)
+@@ -169,14 +643,14 @@
+ 
+ } /* MakePacketBytes */
+ 
+-/*
++/***************************************************************************
+  * Make packets to reduce the bytes sent to the printer. This is done
+  * with a 24 bit mask and up to 24 bytes for the pixels.
+  * The 16 pixel space between the two columns on the cartridge has
+  * to be taken into account, too.
+- */
++ ***************************************************************************/
+ void MakePackets(char *buffer, int colstart, int *width,
+-		 char *packetbuffer, int *bytesize, int bytespercolumn)
++		 char *packetbuffer, int *bytesize)
+ {
+   int packbufpos = 0;
+   int lastpackheadpos = 0;
+@@ -188,335 +662,637 @@
+   columnbuffer = &buffer[colstart];
+ 
+   /* do things reverse */
+-  for (j= *width + ROW_GAP - 1; j >= 0; j--)
++  for (j= *width + ROW_GAP - 1; j >= 0; --j)
+   {
+     lastpackheadpos = packbufpos;
+     packbufpos += 4;
+     packetbuffer[lastpackheadpos] = 0x80;
+     packetbuffer[lastpackheadpos + 1] = 0xff;
+-	packetbuffer[lastpackheadpos + 2] = 0xff;
+-	packetbuffer[lastpackheadpos + 3] = 0xff;
+-	
+-    for (i = 0; i < bytespercolumn; i++)
++    packetbuffer[lastpackheadpos + 2] = 0xff;
++    packetbuffer[lastpackheadpos + 3] = 0xff;
++
++    for (i = 0; i < BYTES_PER_COLUMN; i++)
+     {
+        /* The gap is crap. Just to save a uP... a shame. */
+-        if (MakePacketByte(columnbuffer, *bytesize, i + j*bytespercolumn, &packet, bytespercolumn))
+-	    {
+-	        /* shift the bit to the packet position and activate it */
++        if (MakePacketByte(columnbuffer, *bytesize, i + j*BYTES_PER_COLUMN, &packet))
++        {
++            /* shift the bit to the packet position and activate it */
+             mergebit = 0x80 >> (i % 8);
+             packetbuffer[lastpackheadpos + i / 8 + 1] ^= mergebit;
+ 
+-            /* add byte to the buffer */	
+-	        packetbuffer[packbufpos] = packet;
+-	        packbufpos++;
+-	    }
+-	}
+-
++            /* add byte to the buffer */
++            packetbuffer[packbufpos] = packet;
++            packbufpos++;
++        }
++    }
+   }
+-
+   /* new bytesize */
+   *bytesize = packbufpos;
+-
+ } /* MakePackets */
+ 
+ 
+-/*
++/***************************************************************************
+  * This sends a complete sweep to the printer. Black or color, no difference.
+- */
+-void PrintSweep(char *buffer, char *header, int bytesize,
+-		int width, FILE *out, int bytespercolumn)
++ ***************************************************************************/
++void PrintSweep(tSweepBuffer *sweep, FILE *out, int lineDrive, int * emptyLines)
+ {
+-  int bstart = 0;
+-  int leftmargin = LEFT_MARGIN;
+-  char *packetbuffer;
+-  int packetbuffersize;
+-  register int i;
++  char lHeader[BYTES_PER_HEADER] =
++    {  0x1b,0x40,0x80,0x12,0xd2,0x04,0xb7,0xFF,
++       0x1b,0x42,0x0c,0x04,0x8f,0x00,0xFF,0xFF,
++       0x1b,0x43,0x00,0xFF,0xFF,0x39,0x87,0xFF };
+ 
+-  /* Allocate Packetbuffer */
+-  packetbuffersize = (PAGE_WIDTH + 2 * ROW_GAP) * (bytespercolumn + 4) + 20000;
+-  packetbuffer = (char *) malloc(packetbuffersize);
+-  memset(packetbuffer, 0, packetbuffersize);
++  int bytesize;
++  int width;
++
++  bytesize = sweep->bytesize;
++  width = sweep->width;
++
++
++  if (sweep->unprinted) { /* do not print empty sweeps */
++
++    int bstart = 0;
++
++    char *packetbuffer;
++    int packetbuffersize;
++
++    /* Allocate Packetbuffer */
++    packetbuffersize = (Z11_PAGE_WIDTH + 2 * ROW_GAP) * (BYTES_PER_COLUMN + 4) + 20000;
++    packetbuffer = (char *) malloc(packetbuffersize);
++    memset(packetbuffer, 0, packetbuffersize);
+ 
+-  if (width > 0) { /* do not print empty sweeps */
+     /* kill the noise at the end of the lines... probably MY bug */
+     width += ROW_GAP;
+     bytesize += BYTES_PER_COLUMN * ROW_GAP;
+ 
+     /* Make the packets for the printer. */
+-    MakePackets(buffer, bstart, &width, packetbuffer, &bytesize, bytespercolumn);
++    MakePackets(sweep->buffer, bstart, &width, packetbuffer, &bytesize);
+ 
+     /* Calculate the number of bytes for the size of the pixelblock */
+-    header[20] = (char) bytesize;
+-    header[19] = (char) (bytesize >> 8);
+-    header[18] = (char) (bytesize >> 16);
++    lHeader[20] = (char) bytesize;
++    lHeader[19] = (char) (bytesize >> 8);
++    lHeader[18] = (char) (bytesize >> 16);
+ 
+     /* The number of columns */
+-    header[4] = (char) width;
+-    header[3] = (char) (width >> 8);
++    lHeader[4] = (char) width;
++    lHeader[3] = (char) (width >> 8);
+ 
+     /* vertical move, always just enough for the next color */
+-    header[14] = COLOR_PENS * 2;
+-    header[13] = 0;
++    lHeader[14] = (char)lineDrive;
++    lHeader[13] = (char)(lineDrive>>8);
+ 
+     /* checksum-bytes - this did cost me some nerve! */
+-    header[7] = checkbyte(header, 1, 6);
+-    header[15] = checkbyte(header, 9, 14);
+-    header[23] = checkbyte(header, 17, 22);
++    lHeader[7]  = checkbyte(lHeader,  1,  6);
++    lHeader[15] = checkbyte(lHeader,  9, 14);
++    lHeader[23] = checkbyte(lHeader, 17, 22);
+ 
++    if ( *emptyLines )
++      LexMove( out, *emptyLines );
++
++    *emptyLines = 0;
+     /* send header and compressed matrix to the printer */
+-    fwrite((void *) header, 1, BYTES_PER_HEADER, out);
++    fwrite((void *) lHeader, 1, BYTES_PER_HEADER, out);
+     fwrite((void *) packetbuffer, 1, bytesize, out);
++    free(packetbuffer);
++  }
++  else
++    *emptyLines += lineDrive;
++  sweep->unprinted = 0;
++} /* PrintSweep */
++
++
++/***************************************************************************
++ * clear the contents of a sweep
++ ***************************************************************************/
++void ClearSweep( tSweepBuffer* sweep)
++{
++  sweep->unprinted = 0;
++  ClearBuffer( sweep->buffer, sweep->bytesize+BUFFER_OVERHEAD );
++}
++
++/***************************************************************************
++ * OR all set bits in dest with all set bits in src and copy the unprinted
++ * attribute
++ * and clear src
++ ***************************************************************************/
++void MergeSweep( tSweepBuffer* dest, tSweepBuffer* src)
++{
++  int i;
++  for(i = 0; i < dest->bytesize; ++i)
++     dest->buffer[i] |= src->buffer[i];
++  dest->unprinted = src->unprinted;
++  ClearSweep( src );
++}
++
++/***************************************************************************
++ * copy the data form src to dest and clear src
++ ***************************************************************************/
++void CopySweep( tSweepBuffer* dest, tSweepBuffer* src)
++{
++  memcpy( dest->buffer, src->buffer, src->bytesize+BUFFER_OVERHEAD );
++  dest->unprinted = src->unprinted;
++  ClearSweep( src );
++}
++
++/***************************************************************************
++ * This function makes randomization for toning.
++ * See detailed description on toning.
++ ***************************************************************************/
++void InitSkipped(tSkipped *Skipped, tTone Tone) {
++  int i;
++  int m;
++  int c;
++
++  /* count the color values to evaluate the average */
++  for ( i=m=c=0; i<COLORS; m += Tone.c[i], c += Tone.c[i]!=0, ++i );
++  if ( c )
++    m /= c;
++
++  /* assign all color values that are 0 a average one */
++  for ( i=0; i<COLORS; ++i)
++    if ( !Tone.c[i] )
++      Tone.c[i] = m;
++
++  Skipped->color.c = Skipped->color.m = Skipped->color.y = 0;
++
++  /* i will be 0, 1 or 2. */
++  i = (int)(3.0 * rand() / (RAND_MAX + 1.0));
++  Skipped->c[i] = 1 * TONE_COLOR_SPACE(Tone.c[i]);
++  do
++  {
++    i = (int)(3.0 * rand() / (RAND_MAX + 1.0));
+   }
++  while (Skipped->c[i] != 0);
++  Skipped->c[i] = 2 * TONE_COLOR_SPACE(Tone.c[i]);
++}
+ 
+-  free(packetbuffer);
+ 
+-} /* PrintSweep */	
++/***************************************************************************
++ * set a color pixel for the bit position pos in the color array
++ ***************************************************************************/
++void SetSweepPixel(tSweepBuffer* sweeps, int color, int pos)
++{
++   tSweepBuffer* pCurBuffer;
++   pCurBuffer = &(sweeps[sweeps[color].bufpos]);
++   pCurBuffer->buffer[(pos*BYTES_PER_COLUMN)+sweeps[color].bytepos]
++                    |= 0x01 << sweeps[color].bitpos;
++                  pCurBuffer->unprinted = 1;
++}
+ 
+-/*
+- * This finds out if there is anything but zeros in a string
+- */
+-int LineSum(char line[], int length)
++
++/***************************************************************************
++ * initializes the settings of the buffer depending of the height of the
++ * sweep and of the color that the sweep refers to
++ ***************************************************************************/
++void SetSweepParams(tSweepBuffer* sweep, int color, int height)
+ {
+-  register int i = 0;
+-  while (i < length)
+-    if(line[i++] != 0) return 1;
+-  return 0;
+-} /* LineSum */
++  int of = color*(COLOR_GAP+COLOR_PENS)+height;
++  sweep->bitpos  = 7 - (of % 8);
++  sweep->bytepos = 8*((COLORS-1)-color) + (of/8) % 8;
++  sweep->bufpos  = (of/COLOR_PENS) % COLORS;
++}
+ 
+-/*
++
++/***************************************************************************
++ * checks if the values in skipped have counted high enough to
++ * wrap.
++ * if so wrap and return 1
++ ***************************************************************************/
++int PixelToSet(tSkipped * skipped, tTone* tone, int color)
++{
++   int setIt = 0;
++   skipped->c[color] += TONE_FP_ACCURACY;
++    if ( setIt= (skipped->c[color] >= TONE_N_TH(tone->c[color])) )
++        skipped->c[color] -= TONE_N_TH(tone->c[color]);
++   return setIt;
++}
++
++/***************************************************************************
++ * returns 1, when page is at its end
++ ***************************************************************************/
++int EndOfPage( int currentLine, int linesPerPage, int buffersPerLine )
++{
++  return  (currentLine >= Z11_PAGE_HEIGHT*buffersPerLine)
++       || (currentLine >= linesPerPage);
++}
++
++/***************************************************************************
+  * This is the main printing routine. Wicked and insane. Nonetheless working.
+  * This one is printing CMYK and expects the ghostscript "bitcmyk" device.
+- */
+-void LexPrintCMYK(FILE *in, FILE *out) {
+-  char line[GS_PAGE_WIDTH / 2];
+-  int done_page, cur_height = 0, page_height = 0, numpages = 0;
+-  char lex_colhd[BYTES_PER_HEADER] = {  0x1b,0x40,0x80,0x12,0xd2,0x04,0xb7,0xFF,
+-				                        0x1b,0x42,0x0c,0x04,0x8f,0x00,0xFF,0xFF,
+-				                        0x1b,0x43,0x00,0xFF,0xFF,0x39,0x87,0xFF };
++ ***************************************************************************/
++void LexPrintCMYK(FILE *in, FILE *out, tTone Tone, int gsPageWidth, int gsPageHeight, int dithering)
++{
+ 
+-  long bytesize;
+-  register int i=0;
+-  int CurrentColBuffer = 0, BufferToPrint;
+-  int width;
+-  int empty_lines;
+-  char nibble;
+-  struct tSweepBuffer colbuffer[COLOR_BUFFERS];
++  /* lines in one page */
++  int linesPerPage;
+ 
+-  /* The printer may not be able to print every GhostScript pixel */
+-  if (GS_PAGE_WIDTH <= PAGE_WIDTH) width = GS_PAGE_WIDTH;
+-  else width = PAGE_WIDTH;
++  /* how many buffers are held in parallel */
++  int buffersPerLine = 1;
+ 
+-  /* Calculating the size for the buffers */
+-  bytesize = BYTES_PER_COLUMN * width;
++  /* buffers to hold the print information */
++  tSweepBuffer colbuffer[2][COLOR_BUFFERS] = { {0} };
++
++  /* assume color printing in the beginning */
++  int isBW = 0;
++
++  /* line feed after a sweep */
++  int *pLineDrive;
++
++  /* number of pixels to move after a sweep has been printed */
++  int lineDrive[2][3][2] = { { /* color drive */
++                               {0},                /* discard */
++                               {COLOR_PENS*2},     /* standard drive */
++                               {1, COLOR_PENS*2-1} /* first only one pixel */
++                             },
++                             { /*bw drive*/
++                               {0},                       /* discard */
++                               {COLOR_PENS*2*COLORS},     /* stadard */
++                               {1, COLOR_PENS*2*COLORS-1} /* first only one pixel */
++                             }
++                           };
++
++  /* how many pixelmoves are one empty pixel line */
++  int emptyLines[3] = { 0, 2, 1 };
++
++  /* struct to hold the read data */
++  tDataPipe dataPipe;
++
++  /* being able to store the double amount of printable pixels */
++  char line[Z11_PAGE_WIDTH];
++
++  /* number of printed pages */
++  int numPages = 0;
++
++  /* currently used colors for printing */
++  int usedColor = NO_COLOR;
++
++  /* count the colors , if only one color present, mark this color for b&w */
++  {
++    int c;
++    for ( c=0; c<COLORS; ++c)
++    {
++      if ( Tone.c[c] )
++      {
++        if ( usedColor == NO_COLOR )
++          usedColor = c;
++        else
++          usedColor = ALL_COLORS;
++      }
++    }
++  }
++
++
++  /* check if any color at all to be printed */
++  if ( usedColor == NO_COLOR )
++  {
++    fprintf(stderr, "LexZ11: No pages printed because no color assigned!");
++    while ( getc(in)!=EOF ); /* eat up all garbadge */
++    return;
++  }
++
++  isBW = ( usedColor != ALL_COLORS );
++
++  /* initialize the data pipe with the values and allocate the memory for the buffer */
++  InitDataPipe( &dataPipe, dithering, &Tone, usedColor, gsPageWidth, gsPageHeight, &linesPerPage, &buffersPerLine);
++
++  /* select the array with the line feeds */
++  pLineDrive = lineDrive[isBW][buffersPerLine];
+ 
+   /* As long as we get input... */
+-  while((line[0] = getc(in)) != EOF)
++  while( ReadDataPipe(&dataPipe, in, line, 1, 1 )>=0 )
+   {
++    /* corrected bug on 2nd page*/
++    int CurrentColBuffer = 0;
+ 
+-    /* Get memory and clear it. */
+-    for (i=0; i<COLOR_BUFFERS; i++) {
+-      SweepBuffer_Init(&colbuffer[i], bytesize);
+-      colbuffer[i].bufpos = i;
+-    }
++    /* Reset all variables */
++    int isPageDone  = 0;
++    int pageHeight  = 0;
++    int curHeight   = 0;
++    int cEmptyLines = 0;
++
++    /* experimentally determined line feed on B&W */
++    if ( isBW )
++      cEmptyLines += (2*COLOR_PENS+COLOR_GAP)*(COLORS-1);
+ 
+     /* Initialize the printer, load a page  */
+     LexInit(out);
+-    LexMove(out, UPPER_MARGIN);
+ 
+-    /* Reset all variables */
+-    done_page   = 0;
+-    page_height = 0;
+-    cur_height  = 0;
+-    empty_lines = 0;
++    {
++      int i;
++      /* Get memory and clear it. */
++      for (i=0; i<(isBW ? 1 : COLOR_BUFFERS); ++i)
++      {
++        int b;
++        for (b=0; b<buffersPerLine; ++b)
++        {
++          SweepBufferInit(&colbuffer[b][i], Z11_PAGE_WIDTH, Z11_PAGE_WIDTH*BYTES_PER_COLUMN);
++          colbuffer[b][i].bufpos = i;
++        }
++      }
++    }
+ 
+     /* ... we do the pages. */
+-    while(!done_page)
++    while(!isPageDone)
+     {
++      int width;
++      int isUnprinted = 0;
+ 
+-      /* Read a CMYK line (GS -sDEVICE=bitcmyk) from the input */
+-      if (page_height == 0) {
+-        fread((void *) &line[1], 1, GS_PAGE_WIDTH / 2 - 1, in);
++      /* can we just count the empty lines , or do we have to wait to be printed */
++      if ( !isBW )
++      {
++        int b;
++        for  (b=0; !isUnprinted && b<buffersPerLine; ++b )
++          isUnprinted = colbuffer[b][0].unprinted
++                    |   colbuffer[b][1].unprinted
++                    |   colbuffer[b][3].unprinted;
+       }
+-      else {
+-	    fread((void *) &line[0], 1, GS_PAGE_WIDTH / 2, in);
++      else
++      {
++        int b;
++        for  (b=0; !isUnprinted && b<buffersPerLine; ++b )
++            isUnprinted = colbuffer[b][0].unprinted;
+       }
+ 
++      /* Read a CMYK line (GS -sDEVICE=bitcmyk) from the input */
++      width = ReadDataPipe(&dataPipe, in, line, 0, 0 );
++
+       /* optimize for empty lines, if buffers are empty */
+-      if ((cur_height == 0)
+-	  && !LineSum(line, GS_PAGE_WIDTH / 2)
+-	  && (page_height < PAGE_HEIGHT)
+-	  && (page_height < GS_PAGE_HEIGHT)
+-	  && !(colbuffer[0].unprinted | colbuffer[1].unprinted | colbuffer[3].unprinted))
+-	{
+-	  empty_lines++;
+-	}
++      if (  (curHeight == 0)
++        &&  width<=0
++        && !EndOfPage( pageHeight, linesPerPage, buffersPerLine )
++        && !isUnprinted )
++      {
++        cEmptyLines += emptyLines[buffersPerLine];
++      }
+       else /* This line does not seem to be empty or there is still data */
+-	{
+-	  if (empty_lines) {
+-        LexMove(out, empty_lines);
+-        empty_lines = 0;	
+-	  }
++      {
++        int cBuffer;
++        cBuffer = (curHeight % buffersPerLine);
++        if ( !isBW )
++        {
++          /* count lines and set values */
++          /* yellow, magenta, cyan */
++          {
++            int c;
++            for ( c=0; c<COLORS; ++c )
++              SetSweepParams(&colbuffer[cBuffer][c], c, curHeight/buffersPerLine);
++          }
+ 
+-	  /* count lines and set values */
+-	
+-	  /* yellow */
+-	  colbuffer[0].bitpos  = 7 - (cur_height % 8);
+-	  colbuffer[0].bytepos = 16 + (cur_height / 8) % 8;
+-	  colbuffer[0].bufpos  = cur_height / COLOR_PENS;
+-	
+-	  /* magenta */
+-	  colbuffer[1].bitpos
+-	    = 7 - ((cur_height + COLOR_GAP + COLOR_PENS) % 8);
+-	  colbuffer[1].bytepos
+-	    = 8 + ((cur_height + COLOR_GAP + COLOR_PENS) / 8) % 8;
+-	  colbuffer[1].bufpos
+-	    = ((cur_height + COLOR_GAP + COLOR_PENS) / COLOR_PENS) % 3;
++          /* cyan has 6 buffers, so that it is not mapped to buffers
++             which have not been printed by yellow yet. The Buffers
++            > 2 are mapped to the right corresponding buffer
++            after it has been sent to the printer. */
++          if (colbuffer[cBuffer][COLORS-1].bufpos == colbuffer[cBuffer][0].bufpos)
++            colbuffer[cBuffer][COLORS-1].bufpos += COLORS;
+ 
+-	  /* cyan has 6 buffers, so that it is not mapped to buffers
+-	     which have not been printed by yellow yet. The Buffers
+-	     > 2 are mapped to the right corresponding buffer
+-	     after it has been sent to the printer. */
+-	  colbuffer[2].bitpos
+-	    = 7 - ((cur_height + 2 * (COLOR_GAP + COLOR_PENS)) % 8);
+-	  colbuffer[2].bytepos
+-	    = ((cur_height + 2 * (COLOR_GAP + COLOR_PENS)) / 8) % 8;
+-	  colbuffer[2].bufpos
+-	    = ((cur_height + 2 * (COLOR_GAP + COLOR_PENS)) / COLOR_PENS) % 3;
+-	  if (colbuffer[2].bufpos == colbuffer[0].bufpos)
+-	    colbuffer[2].bufpos += 3;
++          if ( width>0 )
++          {
++            /* array containing the masks for ghostscript cmyk colors
++               a black-bit in the bitcmyk indicates the occurrence of all colors */
++            /* array with the shading values to sum up */
++            tSkipped Skipped;
+ 
+-	  /* This extracts the nibbles and transforms them to the bits
+-	     in the output stream. */
+-	  for(i=0; (i <= width); i++)
+-	    {
+-	      nibble = (line[i/2] << (4 * (i % 2))) & 0xF0;
+-	      if (nibble & BLACK) {	
+-            nibble = CYAN | MAGENTA | YELLOW; /* this is supposed to be black, then. */	
+-	      }
+-	      if (nibble & CYAN) {
+-		    colbuffer[colbuffer[2].bufpos].buffer[(i * BYTES_PER_COLUMN) + colbuffer[2].bytepos]
+-        	  |= 0x01 << colbuffer[2].bitpos;
+-		    colbuffer[colbuffer[2].bufpos].unprinted = 1;
+-	      }
+-	      if (nibble & MAGENTA) {
+-		    colbuffer[colbuffer[1].bufpos].buffer[(i * BYTES_PER_COLUMN) + colbuffer[1].bytepos]
+-    		  |= 0x01 << colbuffer[1].bitpos;
+-	    	colbuffer[colbuffer[1].bufpos].unprinted = 1;
+-	      }
+-	      if (nibble & YELLOW) {
+-		    colbuffer[colbuffer[0].bufpos].buffer[(i * BYTES_PER_COLUMN) + colbuffer[0].bytepos]
+-    		  |= 0x01 << colbuffer[0].bitpos;
+-		    colbuffer[colbuffer[0].bufpos].unprinted = 1;
+-	      }
+-	    }
+-	  cur_height++;
+-	  /* Buffer is full or page is over. Print it. Color first...*/
+-	  if (!(cur_height % COLOR_PENS) || (page_height >= GS_PAGE_HEIGHT))
+-	    {
+-	      PrintSweep(colbuffer[CurrentColBuffer].buffer,
+-			 lex_colhd, bytesize, width, out, BYTES_PER_COLUMN);
+-	      ClearBuffer(colbuffer[CurrentColBuffer].buffer, bytesize);
+- 	      colbuffer[CurrentColBuffer].unprinted = 0;
+- 	
+-	      /* now handle the cyan stuff */
+-	      if (colbuffer[CurrentColBuffer + 3].unprinted)
+-	      {
+-	        for(i = 0; i < bytesize; i++)
+-		        colbuffer[CurrentColBuffer].buffer[i] |= colbuffer[CurrentColBuffer + 3].buffer[i];
+-	        ClearBuffer(colbuffer[CurrentColBuffer + 3].buffer, bytesize);
+-	        colbuffer[CurrentColBuffer].unprinted = colbuffer[CurrentColBuffer + 3].unprinted;
+-	
+-	        colbuffer[CurrentColBuffer + 3].unprinted = 0;
+-	      }
+-	
+-	      /* switch to the next buffer */
+-	      CurrentColBuffer = ++CurrentColBuffer % 3;
+-	
+-	    }
+-  	  if (cur_height == 3 * COLOR_PENS) cur_height = 0;
+-	}
++            int i;
++            /* This extracts the nibbles and transforms them to the bits
++            in the output stream. */
++            InitSkipped(&Skipped, Tone);
++            /* walk through the cmyk-line */
++            for(i=0; i<width; ++i)
++            {
++              /* extracting the color specific values */
++              int gsNibble;
++              int c;
++              gsNibble = ( (int)((unsigned char)line[i/2]) / gsDiv[i&1] ) & 0x0f;
++              for (c=0; c<COLORS; ++c )
++                if ( (gsNibble & gsColorCheck[c]) && Tone.c[c] && PixelToSet(&Skipped, &Tone, c ) )
++                  SetSweepPixel( colbuffer[cBuffer], c, i );
++            }
++          }
+ 
+-      /* this page has found an end */
+-      if ((page_height++ >= PAGE_HEIGHT)||(page_height >= GS_PAGE_HEIGHT))
+-      {
+-        done_page = 1;
+-        /* print all unprinted buffers */
+-        for(i = 0; i < COLOR_BUFFERS; i++)
++          curHeight++;
++
++          /* Buffer is full or page is over. Print it. Color first...*/
++          if (!( curHeight % (COLOR_PENS*buffersPerLine) ) || (pageHeight >= linesPerPage))
++          {
++            int b;
++            for (b=0; b<buffersPerLine; ++b)
++            {
++              PrintSweep(&colbuffer[b][CurrentColBuffer],out,pLineDrive[b],&cEmptyLines);
++              /* now handle the cyan stuff */
++              if (colbuffer[b][CurrentColBuffer + COLORS].unprinted)
++                CopySweep(&colbuffer[b][CurrentColBuffer],&colbuffer[b][CurrentColBuffer + COLORS]);
++              else
++                ClearSweep(&colbuffer[b][CurrentColBuffer]);
++            }
++            /* switch to the next buffer */
++            CurrentColBuffer = ++CurrentColBuffer % COLORS;
++          }
++          if (curHeight == COLORS*COLOR_PENS*buffersPerLine)
++            curHeight = 0;
++        }
++        else /* print B & W */
+         {
+-            BufferToPrint = (i + CurrentColBuffer) % 3;
++          /* address the lines linearily through the cartridge */
++          {
++            int cur_height;
++            cur_height = curHeight/buffersPerLine;
++            colbuffer[cBuffer][0].bitpos  = 7  - (cur_height % 8);
++            colbuffer[cBuffer][0].bytepos = (cur_height / 8) % BYTES_PER_COLUMN;
++            colbuffer[cBuffer][0].bufpos  = 0;
++          }
+ 
+-            if(colbuffer[BufferToPrint].unprinted)
++          if ( width>0 )
++          {
++            int i;
++            /* sum up the amount that the colors will contribute to a b & w pixel */
++            int bwTone = 0;
++            /* array containing the masks for ghostscript cmyk colors
++               a black-bit in the bitcmyk indicates the occurrence of all colors */
++            /* array with the shading values to sum up */
++            tSkipped Skipped;
++
++            /* This extracts the nibbles and transforms them to the bits
++            in the output stream. */
++            InitSkipped(&Skipped, Tone);
++            /* walk through the cmyk-line */
++            for(i=0; i<width; ++i)
+             {
+-                fprintf(stderr, "printing post-sweep %d\n", BufferToPrint);
+-	            PrintSweep(colbuffer[BufferToPrint].buffer,
+-			        lex_colhd, bytesize, width, out, BYTES_PER_COLUMN);
+-			    colbuffer[BufferToPrint].unprinted = 0;
+-	        }
+-	
+-	        /* now handle the cyan stuff */
+-	        if (colbuffer[BufferToPrint + 3].unprinted)
+-	        {
+-	            for(i = 0; i < bytesize; i++)
+-		            colbuffer[BufferToPrint].buffer[i] |= colbuffer[BufferToPrint + 3].buffer[i];
+-	            ClearBuffer(colbuffer[BufferToPrint + 3].buffer, bytesize);
+-	
+-	            colbuffer[BufferToPrint].unprinted = colbuffer[BufferToPrint + 3].unprinted;
+-	
+-	            colbuffer[BufferToPrint + 3].unprinted = 0;
+-	        }
++              /* extracting the color specific values */
++              int gsNibble;
++              int c;
++              gsNibble = ( (int)((unsigned char)line[i/2]) / gsDiv[i&1] ) & 0x0f;
++              if ( ( bwTone += bwShade[gsNibble] )>=BW_K )
++              {
++                bwTone -= BW_K;
++                if ( PixelToSet(&Skipped, &Tone, usedColor) )
++                  SetSweepPixel( colbuffer[cBuffer],0, i );
++              }
++            }
++          }
++
++          /* is this buffer to print */
++          if ( !(++curHeight % (BW_LINES*buffersPerLine))
++            || EndOfPage( pageHeight+1, linesPerPage, buffersPerLine ) )
++          {
++            int b;
++            for ( b=0; b<buffersPerLine; ++b )
++            {
++              PrintSweep(&colbuffer[b][0],out,pLineDrive[b],&cEmptyLines);
++              ClearSweep(&colbuffer[b][0]);
++            }
++            curHeight = 0;
++          }
+         }
+       }
+ 
++      /* this page has found an end */
++      if ( EndOfPage( ++pageHeight, linesPerPage, buffersPerLine ) )
++      {
++        isPageDone = 1;
++        if ( !isBW )
++        {
++          int b;
++          int c;
++          for ( b=0; b<buffersPerLine; ++b )
++            for(c = 0; c < COLOR_BUFFERS; c++) /* print all unprinted buffers */
++            {
++              int BufferToPrint;
++              BufferToPrint = (c + CurrentColBuffer) % COLORS;
++              if(colbuffer[b][BufferToPrint].unprinted)
++                PrintSweep(&colbuffer[b][BufferToPrint],out,pLineDrive[b],&cEmptyLines);
++              /* now handle the cyan stuff */
++              if (colbuffer[b][BufferToPrint + COLORS].unprinted)
++                MergeSweep(&colbuffer[b][BufferToPrint],&colbuffer[b][BufferToPrint + COLORS]);
++            }
++        }
++      }
+     }
+ 
+     /* hand out the page */
+     LexEOP(out);
+ 
+-    /* eat any remaining whitespace so process will not hang */
+-    if (PAGE_HEIGHT < GS_PAGE_HEIGHT)
+-      for(i=0; i < ((GS_PAGE_HEIGHT - PAGE_HEIGHT) * GS_PAGE_WIDTH / 2); i++) getc(in);
+-
++    /* eat any remaining whitespace as long there is data in the pipe
++       so process will not hang */
++    {
++      int i;
++      for( i=linesPerPage - Z11_PAGE_HEIGHT*buffersPerLine;
++          i>0 && ReadDataPipe(&dataPipe, in, line, 1, 0 ) >=0 ;
++            --i );
++    }
+     /* count the pages and free memory */
+-    numpages++;
+-    for (i=0; i < COLOR_BUFFERS; free(colbuffer[i++].buffer));
++    numPages++;
+   }
+-  if (numpages == 0) fprintf(stderr, "LexZ11: No pages printed!");
++
++  /* free the buffers if allocated */
++  {
++    int b;
++    int i;
++    for (b=0; b<buffersPerLine; ++b)
++      for (i=0; i<COLOR_BUFFERS; ++i )
++        if ( colbuffer[b][i].buffer )
++          free(colbuffer[b][i].buffer);
++  }
++
++  FinishDataPipe( &dataPipe );
++
++  if (numPages == 0)
++    fprintf(stderr, "LexZ11: No pages printed!");
++
+ } /* LexPrintCMYK */
+ 
+-#ifdef DEBUG
+-/*
+- * Write input to a file. Only for debugging purposes.
+- */
+-void WriteToFile(FILE *in, FILE *out)
++
++/***************************************************************************
++ * Sets toning values according to command line arguments.
++ ***************************************************************************/
++void GetArgs(int argc, char *argv[], tTone *Tone, int *method, int *w, int *h, int* d)
+ {
+-  char c;
+-  while ((c = getc(in)) != EOF) putc(c, out);
+-} /* WriteToFile */
+-#endif
++    float big; /* Protection against very big numeric argument. */
++    int argmax; /* Index of the last argument to process. */
++    int i;
+ 
+-/*
++    /* assign the defaults first */
++    *w=4958;
++    *h=7017;
++    *d=1;
++
++
++    Tone->color.c = Tone->color.m = Tone->color.y = 100;
++    if(argc>1)
++    {
++      for (i = 1; i < 4 && i<argc; i++)
++      {
++        int ci;
++        ci = 2-(i-1);
++        big = atof(argv[i]);
++        if (big < 0)
++          Tone->c[ci] = 0;
++        else if (big > 100)
++          Tone->c[ci] = 100;
++        else
++          Tone->c[ci] = (int) big;
++      }
++    }
++
++
++    /* this is dummy for now */
++    *method = 0;
++
++    /* get width and height */
++    if(argc>=7)
++    {
++        int wi;
++        int hi;
++        wi = atoi(argv[5]);
++        hi = atoi(argv[6]);
++        if ( wi>0 && wi<13000 )
++           *w = wi;
++        if ( hi>0 )
++           *h = hi;
++    }
++
++    /*  get the resolution of the bitmap */
++    if (argc>=8)
++    {
++      int res;
++      res = atoi(argv[7]);
++      if (!res)
++        *d=1;
++      else if ( res>808 )
++        *d=0;
++      else if ( res>404 )
++        *d=1;
++      else if ( res>202 )
++        *d=2;
++      else if ( res>137 )
++        *d=3;
++      else
++        *d=4;
++    }
++}
++
++/***************************************************************************
+  * The main program. Sets input and output streams.
+- */
+-int main(int argc, char *argv[]) {
++ ***************************************************************************/
++int main(int argc, char *argv[])
++{
++    tTone Tone;
+     FILE *InputFile;
+     FILE *OutPutFile;
++    int dummy;
++
++    int gsPageWidth;
++    int gsPageHeight;
++    int dithering;
+ 
+     InputFile  = stdin;
+     OutPutFile = stdout;
+ 
++    GetArgs(argc, argv, &Tone,&dummy,&gsPageWidth,&gsPageHeight,&dithering);
+ 
+-#ifdef DEBUG
+-    printf("debug mode!\n");
+-    OutPutFile = fopen("/tmp/Z11out", "w");
+-    DebugFile = fopen("/tmp/Z11debug", "w");
+-#endif
+-
+-    LexPrintCMYK(InputFile, OutPutFile);
++    LexPrintCMYK(InputFile, OutPutFile, Tone, gsPageWidth, gsPageHeight, dithering );
+ 
+     fclose(OutPutFile);
+     fclose(InputFile);
+-#ifdef DEBUG
+-    fclose(DebugFile);
+-#endif
+     return 0;
+ }
++
++

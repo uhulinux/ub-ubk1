@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ht-${UB_VERSION}.tar.gz ht-${UB_VERSION}/
+	http://downloads.sourceforge.net/hte/

@@ -1,0 +1,25 @@
+--- inputattach-1.24.orig/inputattach-1.24.c
++++ inputattach-1.24/inputattach-1.24.c
+@@ -402,7 +402,7 @@
+ 		puts("  --spaceball     -sbl   SpaceBall 2003 / 3003 / 4000 FLX");
+                 puts("  --magellan      -mag   Magellan / SpaceMouse");
+                 puts("  --warrior       -war   WingMan Warrior");
+-		puts("  --stinger       -stng  Gravis Stinger");
++		puts("  --stinger       -sting Gravis Stinger");
+ 		puts("  --mousesystems  -msc   3-button Mouse Systems mice");
+ 		puts("  --sunmouse      -sun   3-button Sun mice");
+ 		puts("  --microsoft     -bare  2-button Microsoft mice");
+@@ -411,11 +411,13 @@
+ 		puts("  --intellimouse  -ms3   Microsoft IntelliMouse");
+ 		puts("  --mmwheel       -mmw   Logitech mice with 4-5 buttons or wheel");
+ 		puts("  --iforce        -ifor  I-Force joysticks and wheels");
++		puts("  --newtonkbd     -newt  Newton keyboard");
+                 puts("  --h3600ts       -ipaq  Ipaq h3600 touchscreen");
+ 		puts("  --stowawaykbd   -ipaqkbd  Stowaway keyboard");
+ 		puts("  --ps2serkbd     -ps2ser PS/2 via serial keyboard");
+ 		puts("  --twiddler      -twid   Handykey Twiddler chording keyboard");
+ 		puts("  --twiddler-joy  -twidjoy  Handykey Twiddler used as a joystick");
++		puts("  --dump          -dump  Dump raw data (for debug purposes)");
+ 		puts("");
+                 return 1;
+         }

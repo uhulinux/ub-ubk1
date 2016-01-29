@@ -1,0 +1,1 @@
+sflist libpgf libpgf/ | sed s/-latest//g | grep -E '^([0-9.]+)$' | sort -V | tail -n 1

@@ -1,0 +1,12 @@
+diff -Naur tcpdump-4.1.1-orig/sctpConstants.h tcpdump-4.1.1/sctpConstants.h
+--- tcpdump-4.1.1-orig/sctpConstants.h	2010-03-12 02:56:44.000000000 +0100
++++ tcpdump-4.1.1/sctpConstants.h	2010-04-20 21:28:30.000000000 +0200
+@@ -46,7 +46,7 @@
+ 
+ #ifndef __sctpConstants_h__
+ #define __sctpConstants_h__
+-
++#include <netinet/in.h>
+ 
+   /* If you wish to use MD5 instead of SLA uncomment the line
+    * below. Why you would like to do this:

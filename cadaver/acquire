@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cadaver-${UB_VERSION}.tar.gz cadaver-${UB_VERSION}/
+	http://www.webdav.org/cadaver/

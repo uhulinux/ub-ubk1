@@ -1,0 +1,1 @@
+urllist https://bitbucket.org/lazka/mutagen/downloads | splitver '^mutagen-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

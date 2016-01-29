@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cloop_${UB_VERSION}-1.tar.gz cloop-${UB_VERSION}/
+	http://debian-knoppix.alioth.debian.org/sources/

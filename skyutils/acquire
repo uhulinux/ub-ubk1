@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+skyutils-${UB_VERSION}.tar.gz skyutils/
+	http://zekiller.skytech.org/fichiers/
+	http://gd.tuwien.ac.at/opsys/linux/gentoo/distfiles/
+	http://www.sfr-fresh.com/unix/privat/

@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+export MONO_SHARED_DIR=/tmp/
+ub_install

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_replace "wx-config" "wx-config2" configure
+ub_compile \
+	--enable-databasedesigner

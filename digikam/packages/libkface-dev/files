@@ -1,0 +1,3 @@
+	/usr/include/libkface
+@	/usr/lib/libkface*.so
+	/usr/lib/pkgconfig/libkface.pc

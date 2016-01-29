@@ -1,0 +1,13 @@
+expat-dev
+fontconfig-dev
+freetype2-dev
+libffi-dev
+libjpeg-dev
+libpng-dev
+libungif-dev
+libx11-dev
+libxext-dev
+libxrender-dev
+mesa-dev
+sqlite-dev
+upx

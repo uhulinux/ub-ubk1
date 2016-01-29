@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+mksh-R${UB_VERSION}.tgz .
+	https://www.mirbsd.org/MirOS/dist/mir/mksh/
+
+TaC-mksh.txt
+	https://www.mirbsd.org/

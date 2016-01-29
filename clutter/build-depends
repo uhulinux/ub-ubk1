@@ -1,0 +1,7 @@
+cogl-dev
+gobject-introspection-dev
+gtk-dev
+json-glib-dev
+libffi-dev
+libxi-dev
+mesa-dev

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Module-Runtime-${UB_VERSION}.tar.gz Module-Runtime-${UB_VERSION}/
+	http://cpan.metacpan.org/modules/by-module/Module/

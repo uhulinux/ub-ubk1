@@ -1,0 +1,8 @@
+cmake
+dbus-dev
+dbus-python-dev
+gst0.10-plugins-base-dev
+libxml2-dev
+python-dev
+qt4-dev
+telepathy-farstream-dev

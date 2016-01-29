@@ -1,0 +1,14 @@
+cppunit-dev
+glu-dev
+gst0.10-plugins-base-dev
+gtk-dev
+libjpeg-dev
+libnotify-dev
+libpng-dev
+libsm-dev
+libtiff-dev
+mesa-dev
+python-dev
+sdl-dev
+webkitgtk-dev
+wxwidgets-dev

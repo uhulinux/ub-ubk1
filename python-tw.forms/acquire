@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tw.forms-${UB_VERSION}.tar.gz tw.forms-${UB_VERSION}/
+	http://pypi.python.org/packages/source/t/tw.forms/

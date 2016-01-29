@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+50971-ksshaskpass-${UB_VERSION}.tar.gz ksshaskpass-${UB_VERSION}/
+	http://kde-apps.org/CONTENT/content-files/

@@ -1,0 +1,1 @@
+urllist ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/ | splitver '^openldap-([0-9.]+).tgz$' | sort -V | tail -n 1

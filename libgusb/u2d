@@ -1,0 +1,1 @@
+urllist http://people.freedesktop.org/~hughsient/releases/ | splitver '^libgusb-([0-9.]+).tar.xz$' | sort -V | tail -n 1

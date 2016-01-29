@@ -1,0 +1,5 @@
+cmake
+curl-dev
+fftw3-dev
+libsamplerate-dev
+qt4-dev

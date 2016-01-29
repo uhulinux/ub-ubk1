@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+cd extra/kipi-plugins/
+
+ub_compile \
+	-DImageMagick_MagickCore_INCLUDE_DIR:PATH=/usr/include/ImageMagick-6

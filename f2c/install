@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+cd src
+cp -a f2c "$UB_INSTALLDIR"/usr/bin/
+cp -a f2c.1t "$UB_INSTALLDIR"/usr/share/man/man1/f2c.1
+cp -a xsum "$UB_INSTALLDIR"/usr/bin/
+
+cd ../libf2c
+make LIBDIR="$UB_INSTALLDIR"/usr/lib install
+cp -a f2c.h "$UB_INSTALLDIR"/usr/include/

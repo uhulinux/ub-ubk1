@@ -1,0 +1,65 @@
+https://sourceforge.net/project/showfiles.php?group_id=33072&package_id=223791
+http://www.strocamp.net/opensource/
+http://www.strocamp.net/opensource/cpqarrayd.php
+http://sourceforge.net/projects/array-info/
+
+mactel patches: https://mactel-linux.svn.sourceforge.net/svnroot/mactel-linux/trunk/kernel/
+
+http://www.rastageeks.org/ov51x-jpeg/index.php/Main_Page
+
+- uvesafb?
+- ndiswrapper update
+- verify_area.patch kell meg az fglrx-nek?
+- default_utf8
+- console capslock utf8-at ellenorizni
+
+- VETH driver (virtal ethernet)
+- virtio driver?
+- 50 msec kodot a pata driverbol is kiszedni
+- wireless:
+  - 3945/4965 ucode -> http://intellinuxwireless.org/?p=iwlwifi&n=downloads
+  - bcm 43xx a kernelben? (->b43-fwcutter!!!)
+  - acx http://www.hauke-m.de/fileadmin/acx/
+- modprobe dmi:* ??? (lasd drivers/input/misc/apanel) (sensorokhoz is hasznalni kene!)
+- modprobe platform:* ???
+- btsco a kernelben?
+- print quota warnings
+- boot_delay= opciot kiprobalni (erre volt a printkdelay.patch)
+- latencytop
+- unionsfs?
+- ocfs, gfs tools
+- open-iscsi.org
+
+- http://www.drbd.org/
+- http://home.gna.org/aes2501/index_en.html
+
+- http://rt2x00.serialmonkey.com/wiki/index.php?title=Downloads
+- wireless-dev (www.kernel.org/pub/linux/kernel/people/linville/wireless-dev)
+
+- install: depmod check, fix kdb
+- reiser4
+- qnet
+- sco-mtu.patch?
+- lirc gpio
+- initio pcitable entry
+- linux-2.6-proc-self-maps-fix.patch?
+- check usb mouse horizontal scrolling
+- 80-uhu/utf8/utf8-output-keep-columns-and-print-replacement-character.patch
+- config.h
+- ATAPI device hdb:
+   Error: Illegal request -- (Sense key=0x05)
+   Invalid command operation code -- (asc=0x20, ascq=0x00)
+   The failed "<NULL>" packet command was:
+   "15 10 00 00 0c 00 00 00 00 00 00 00 00 00 00 00 "
+- unionfs ismet
+- btsco
+- e1000 7.3.20
+- ivtv (http://ivtvdriver.org)
+- ieee80211/ipw2100/ipw2200 update
+- spca5xx
+- zd1211-driver
+- sqfs lzma
+- adaptive readahead
+- vt binding
+- em8300 + firmware (em8300.uc)
+- qc-usb

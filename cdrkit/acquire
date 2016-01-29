@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cdrkit-${UB_VERSION}.tar.gz cdrkit-${UB_VERSION}/
+	http://cdrkit.org/releases/

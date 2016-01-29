@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Digest-SHA3-${UB_VERSION}.tar.gz Digest-SHA3-${UB_VERSION}/
+	https://cpan.metacpan.org/authors/id/M/MS/MSHELOR/

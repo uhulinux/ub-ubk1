@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_install
+
+# fix installation of tests
+mkdir -p "$UB_INSTALLDIR"/usr/share/mysql-odbc/test
+cp -a "$UB_INSTALLDIR"/usr/test/. "$UB_INSTALLDIR"/usr/share/mysql-odbc/test/
+rm -rf "$UB_INSTALLDIR"/usr/test

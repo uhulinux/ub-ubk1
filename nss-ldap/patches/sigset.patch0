@@ -1,0 +1,20 @@
+--- ldap-nss.c	2004/10/14 15:29:54	1.1
++++ ldap-nss.c	2004/10/14 15:36:36
+@@ -514,7 +514,7 @@
+    */
+ #ifdef HAVE_SIGACTION
+   __sigaction_retval = sigaction (SIGPIPE, &new_handler, &__stored_handler);
+-#elif defined(HAVE_SIGSET)
++#elif defined(HAVE_SIGSET) && !defined(__linux__)
+   __sigpipe_handler = sigset (SIGPIPE, SIG_IGN);
+ #else
+   __sigpipe_handler = signal (SIGPIPE, SIG_IGN);
+@@ -537,7 +537,7 @@
+ #else
+   if (__sigpipe_handler != SIG_ERR && __sigpipe_handler != SIG_IGN)
+     {
+-# ifdef HAVE_SIGSET
++# ifdef HAVE_SIGSET && !defined(__linux__)
+       (void) sigset (SIGPIPE, __sigpipe_handler);
+ # else
+       (void) signal (SIGPIPE, __sigpipe_handler);

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+143977-showimage-${UB_VERSION}.tar.bz2 ./showimage-${UB_VERSION}/
+	http://kde-look.org/CONTENT/content-files/

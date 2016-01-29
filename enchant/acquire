@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+enchant-$UB_VERSION.tar.gz enchant-$UB_VERSION/
+	http://www.abisource.com/downloads/enchant/$UB_VERSION/
+	http://download.sourceforge.net/abiword/

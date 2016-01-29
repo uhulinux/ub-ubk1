@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+MONO_SHARED_DIR=/tmp \
+ub_install

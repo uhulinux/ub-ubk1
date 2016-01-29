@@ -1,0 +1,4 @@
+	/etc/xinetd.d/swat
+	/usr/sbin/swat
+	/usr/share/man/man8/swat.8
+	/usr/share/swat

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+automoc4-${UB_VERSION/~/}.tar.gz automoc-${UB_VERSION#*~}/
+	svn://anonsvn.kde.org/home/kde/trunk/kdesupport/automoc@${UB_VERSION#*~r}

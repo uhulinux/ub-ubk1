@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+MRO-Compat-${UB_VERSION}.tar.gz MRO-Compat-${UB_VERSION}/
+	http://cpan.metacpan.org/authors/id/B/BO/BOBTFISH/

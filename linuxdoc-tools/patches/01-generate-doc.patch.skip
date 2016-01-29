@@ -1,0 +1,12 @@
+diff -urN linuxdoc-tools-0.9.21.orig/doc/Makedoc.sh linuxdoc-tools-0.9.21/doc/Makedoc.sh
+--- linuxdoc-tools-0.9.21.orig/doc/Makedoc.sh	2001-12-02 17:49:59.000000000 +0100
++++ linuxdoc-tools-0.9.21/doc/Makedoc.sh	2003-02-22 23:24:01.000000000 +0100
+@@ -25,7 +25,7 @@
+ 
+ cp -r ${DATADIR}/linuxdoc-tools $TMPDIR
+ 
+-NSGMLS=`which nsgmls`
++NSGMLS=`which onsgmls`
+ SGMLSASP=`which sgmlsasp`
+ GROFF=`which groff`
+ GAWK=`which gawk`

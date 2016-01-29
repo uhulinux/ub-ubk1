@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+jasper-${UB_VERSION}.zip jasper-${UB_VERSION}/
+	http://www.ece.uvic.ca/~mdadams/jasper/software/

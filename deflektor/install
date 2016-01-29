@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+datadir="$UB_INSTALLDIR"/usr/share/games/deflektor
+install -d $datadir
+install -m 644 *.dat $datadir/
+install -m 755 deflektor $UB_INSTALLDIR/usr/bin/deflektor.bin
+chmod 0777 $datadir

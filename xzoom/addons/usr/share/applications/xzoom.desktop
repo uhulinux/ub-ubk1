@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=xzoom
+Comment=X Zoomer
+Comment[hu]=Nagyító
+Exec=xzoom
+Categories=Utility;Accessibility;

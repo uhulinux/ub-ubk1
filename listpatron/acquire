@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+listpatron-$UB_VERSION.tar.gz listpatron-$UB_VERSION/
+	http://projects.electricmonk.nl/projects/listpatron/

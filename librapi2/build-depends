@@ -1,0 +1,7 @@
+dbus-dev
+dbus-glib-dev
+dbus-python-dev
+libsynce-dev
+libusb-dev
+pyrex
+python-dev

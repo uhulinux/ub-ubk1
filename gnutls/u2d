@@ -1,0 +1,2 @@
+minor=$(urllist ftp://ftp.gnutls.org/gcrypt/gnutls/ | splitver '^v([0-9.]+)' | sort -V | tail -n 1)
+urllist ftp://ftp.gnutls.org/gcrypt/gnutls/v"$minor" | splitver '^gnutls-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

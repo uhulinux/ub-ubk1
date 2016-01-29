@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Linux-CDROM-${UB_VERSION}.tar.gz Linux-CDROM-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/V/VP/VPARSEVAL/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pygtksourceview-${UB_VERSION}.tar.bz2 pygtksourceview-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/pygtksourceview/${UB_VERSION_HEAD2}/

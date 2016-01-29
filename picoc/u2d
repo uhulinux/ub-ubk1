@@ -1,0 +1,1 @@
+urllist http://code.google.com/p/picoc/downloads/list | splitver '^picoc-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

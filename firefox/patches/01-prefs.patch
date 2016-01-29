@@ -1,0 +1,68 @@
+diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firefox.js
+--- orig/browser/app/profile/firefox.js	2014-11-26 13:29:52.000000000 +0100
++++ patched/browser/app/profile/firefox.js	2014-12-01 17:12:30.743290231 +0100
+@@ -21,6 +21,9 @@
+ #endif
+ #endif
+ 
++pref("intl.locale.matchOS", true);
++pref("shell.checkDefaultApps", 0);
++
+ pref("browser.chromeURL","chrome://browser/content/");
+ pref("browser.hiddenWindowChromeURL", "chrome://browser/content/hiddenWindow.xul");
+ 
+@@ -65,7 +68,8 @@
+ 
+ // Disable add-ons that are not installed by the user in all scopes by default.
+ // See the SCOPE constants in AddonManager.jsm for values to use here.
+-pref("extensions.autoDisableScopes", 15);
++pref("extensions.autoDisableScopes", 0);
++pref("extensions.shownSelectionUI", true);
+ 
+ // Dictionary download preference
+ pref("browser.dictionaries.download.url", "https://addons.mozilla.org/%LOCALE%/firefox/dictionaries/");
+@@ -160,12 +164,12 @@
+ #endif
+ 
+ // Whether or not app updates are enabled
+-pref("app.update.enabled", true);
++pref("app.update.enabled", false);
+ 
+ // This preference turns on app.update.mode and allows automatic download and
+ // install to take place. We use a separate boolean toggle for this to make
+ // the UI easier to construct.
+-pref("app.update.auto", true);
++pref("app.update.auto", false);
+ 
+ // See chart in nsUpdateService.js source for more details
+ // incompatibilities are ignored by updates in Metro
+@@ -320,7 +324,7 @@
+ #endif
+ 
+ // Control autoFill behavior
+-pref("browser.urlbar.autoFill", true);
++pref("browser.urlbar.autoFill", false);
+ pref("browser.urlbar.autoFill.typed", true);
+ 
+ // 0: Match anywhere (e.g., middle of words)
+@@ -358,7 +362,7 @@
+ pref("browser.urlbar.default.behavior", 0);
+ 
+ pref("browser.urlbar.formatting.enabled", true);
+-pref("browser.urlbar.trimURLs", true);
++pref("browser.urlbar.trimURLs", false);
+ 
+ pref("browser.altClickSave", false);
+ 
+@@ -892,11 +896,7 @@
+ // 0 goes Back/Forward
+ // 1 act like PgUp/PgDown
+ // 2 and other values, nothing
+-#ifdef UNIX_BUT_NOT_MAC
+-pref("browser.backspace_action", 2);
+-#else
+ pref("browser.backspace_action", 0);
+-#endif
+ 
+ // this will automatically enable inline spellchecking (if it is available) for
+ // editable elements in HTML

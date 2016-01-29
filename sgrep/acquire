@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+sgrep-$UB_VERSION.tar.gz sgrep-$UB_VERSION/
+	ftp://ftp.cs.helsinki.fi/pub/Software/Local/Sgrep/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+IPC-Locker-${UB_VERSION}.tar.gz IPC-Locker-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/W/WS/WSNYDER/

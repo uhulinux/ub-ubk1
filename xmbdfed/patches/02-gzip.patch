@@ -1,0 +1,12 @@
+diff -Naur xmbdfed-4.7.orig/Makefile xmbdfed-4.7/Makefile
+--- xmbdfed-4.7.orig/Makefile	2004-02-17 16:24:06.000000000 +0100
++++ xmbdfed-4.7/Makefile	2004-05-07 20:36:11.000000000 +0200
+@@ -64,7 +64,7 @@
+ # files with a ".gz" extension.  If you don't care about HBF fonts, just
+ # comment this line out.
+ #
+-HBFDEFS = -Dunix -DIN_MEMORY -DGUNZIP_CMD="\"/usr/local/bin/gunzip -c\""
++HBFDEFS = -Dunix -DIN_MEMORY -DGUNZIP_CMD="\"/usr/bin/gunzip -c\""
+ 
+ #
+ # Set the defines used for all files except the HBF support.

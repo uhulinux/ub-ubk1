@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+thunderbird-${UB_VERSION/~/}.source.tar.bz2 comm-esr${UB_VERSION_HEAD1}/
+	ftp://ftp.mozilla.org/pub/thunderbird/releases/${UB_VERSION/~/}/source/
+
+hu-${UB_VERSION}.xpi . :/langpack-hu
+	ftp://ftp.mozilla.org/pub/thunderbird/releases/${UB_VERSION/~/}/linux-i686/xpi/hu.xpi

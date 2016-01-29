@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+openssl-"$UB_VERSION".tar.gz openssl-"$UB_VERSION"/
+	ftp://ftp.openssl.org/source/

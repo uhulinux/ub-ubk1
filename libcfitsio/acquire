@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libcfitsio3_${UB_VERSION}.tar.gz libcfitsio3-${UB_VERSION}/
+	http://downloads.sourceforge.net/indi/

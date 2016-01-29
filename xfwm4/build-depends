@@ -1,0 +1,12 @@
+dbus-glib-dev
+gtk2-dev
+intltool
+libglade2-dev
+libwnck2-dev
+libxfce4ui-dev
+libxfce4util-dev
+libxinerama-dev
+libxt-dev
+startup-notification-dev
+xcb-util-dev
+xfconf-dev

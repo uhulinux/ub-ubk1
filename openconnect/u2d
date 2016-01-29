@@ -1,0 +1,1 @@
+urllist ftp://ftp.infradead.org/pub/openconnect/ | splitver '^openconnect-([0-9.]+).tar.gz$' | sort -V | tail -n 1

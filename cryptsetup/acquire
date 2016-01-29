@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cryptsetup-${UB_VERSION}.tar.bz2 cryptsetup-${UB_VERSION}/
+	http://cryptsetup.googlecode.com/files/

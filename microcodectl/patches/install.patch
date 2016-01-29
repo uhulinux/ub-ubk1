@@ -1,0 +1,25 @@
+diff -Naurd a/Makefile b/Makefile
+--- a/Makefile	2004-09-09 17:23:20.000000000 +0200
++++ b/Makefile	2004-09-10 16:40:26.923167270 +0200
+@@ -17,10 +17,10 @@
+ CFLAGS		= -g -Wall -O2 -I $(KERNELHEADER)
+ 
+ DESTDIR		=
+-PREFIX		= /usr/local
++PREFIX		= /
+ 
+ INSDIR		= $(PREFIX)/sbin
+-MANDIR		= $(PREFIX)/man/man8
++MANDIR		= $(PREFIX)/usr/share/man/man8
+ MICDIR		= /etc
+ 
+ RCFILE		= microcode_ctl.start
+@@ -50,8 +50,6 @@
+ 	$(INS) -m 644 $(MANPAGE) $(DESTDIR)$(MANDIR)
+ 	gzip -9f $(DESTDIR)$(MANDIR)/$(MANPAGE)
+ 
+-	$(INS) -m 755 $(RCFILE) $(DESTDIR)$(RCFILETO)/$(RCFILEFINAL)
+-
+ ifndef DESTDIR
+ 		chkconfig --add $(RCFILEFINAL)
+ else

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+Audio-CD-${UB_VERSION}.tar.gz Audio-CD-${UB_VERSION}/
+	http://cpan.inode.at/authors/id/D/DO/DOUGM/
+	

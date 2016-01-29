@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pycairo-${UB_VERSION}.tar.bz2 pycairo-${UB_VERSION}/
+	http://cairographics.org/releases/

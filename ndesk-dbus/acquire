@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ndesk-dbus-${UB_VERSION}.tar.gz ndesk-dbus-${UB_VERSION}/
+	http://www.ndesk.org/archive/dbus-sharp/

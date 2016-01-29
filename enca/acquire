@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+enca-${UB_VERSION/~/-}.tar.bz2 enca-${UB_VERSION/~/-}/
+	http://dl.cihar.com/enca/

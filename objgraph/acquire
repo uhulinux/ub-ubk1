@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+objgraph-${UB_VERSION}.tar.gz objgraph-${UB_VERSION}/
+	http://pypi.python.org/packages/source/o/objgraph/

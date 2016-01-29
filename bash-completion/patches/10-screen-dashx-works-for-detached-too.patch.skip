@@ -1,0 +1,21 @@
+diff -Naur bash_completion.orig/bash_completion bash_completion/bash_completion
+--- bash_completion.orig/bash_completion	2006-05-05 17:10:01.000000000 +0200
++++ bash_completion/bash_completion	2006-05-05 17:14:04.000000000 +0200
+@@ -3879,11 +3879,16 @@
+ 			COMPREPLY=( $( command screen -ls | \
+ 					sed -ne 's|^['$'\t'']\+\('$cur'[^'$'\t'']\+\).*Detached.*$|\1|p' ) )
+ 			;;
+-		-[dDx])
++		-[dD])
+ 			# list attached
+ 			COMPREPLY=( $( command screen -ls | \
+ 					sed -ne 's|^['$'\t'']\+\('$cur'[^'$'\t'']\+\).*Attached.*$|\1|p' ) )
+ 			;;
++		-x)
++			# list both attached and detached
++			COMPREPLY=( $( command screen -ls | \
++					sed -ne 's|^['$'\t'']\+\('$cur'[^'$'\t'']\+\).*tached.*$|\1|p' ) )
++			;;
+ 		-s)
+ 			# shells
+ 			COMPREPLY=( $( grep ^${cur:-[^#]} /etc/shells ) )

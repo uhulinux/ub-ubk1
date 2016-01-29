@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+geeqie-${UB_VERSION}.tar.gz geeqie-${UB_VERSION}/
+	http://downloads.sourceforge.net/geeqie/

@@ -1,0 +1,38 @@
+--- psmisc-21.7/src/oldfuser.c.pid	2005-10-05 11:10:16.000000000 +0200
++++ psmisc-21.7/src/oldfuser.c	2005-10-05 11:27:58.000000000 +0200
+@@ -627,7 +627,7 @@
+ static void
+ kill_item (const FILE_DSC * file, const ITEM_DSC * item)
+ {
+-  char tmp[10];
++  char tmp[20];
+ 
+   switch (item->type)
+     {
+@@ -638,7 +638,7 @@
+ 	return;
+       if (kill (item->u.proc.pid, file->sig_num) >= 0)
+ 	break;
+-      sprintf (tmp, _("kill %d"), item->u.proc.pid);
++      snprintf (tmp, sizeof(tmp), _("kill %d"), item->u.proc.pid);
+       perror (tmp);
+       break;
+     case it_mount:
+@@ -665,7 +665,7 @@
+   FILE *f;
+   const struct passwd *pw;
+   const char *user, *scan;
+-  char tmp[10], *path, comm[COMM_LEN + 1];
++  char tmp[20], *path, comm[COMM_LEN + 1];
+   int length, header, first, dummy, last_namelen = 0;
+   header = 1;
+   for (file = files; file; file = file->next)
+@@ -774,7 +774,7 @@
+ 		  user = pw->pw_name;
+ 		else
+ 		  {
+-		    sprintf (tmp, "%d", uid);
++		    snprintf (tmp, sizeof(tmp), "%d", uid);
+ 		    user = tmp;
+ 		  }
+ 		if (!first)

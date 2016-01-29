@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xlrd-${UB_VERSION}.tar.gz xlrd-${UB_VERSION}/
+	http://pypi.python.org/packages/source/x/xlrd/

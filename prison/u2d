@@ -1,0 +1,1 @@
+urllist ftp://ftp.kde.org/pub/kde/stable/prison/| grep -E '^([0-9.]+)$' | sort -V | tail -n 1

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dmidecode-${UB_VERSION}.tar.gz dmidecode-${UB_VERSION}/
+	http://savannah.nongnu.org/download/dmidecode/

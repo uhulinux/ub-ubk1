@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pango-${UB_VERSION}.tar.xz pango-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/pango/${UB_VERSION_HEAD2}/

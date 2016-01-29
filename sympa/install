@@ -1,0 +1,24 @@
+#!/bin/sh -eux
+
+# Defining SYMPAUSER/SYMPAGROUP environment variables and USER/GROUP make
+# variables is a workaround for two bugs:
+#
+# - Sympa uses USER/GROUP for two purposes. It gets written into the sympa code
+#   as arguments to the get{pw,gr}nam calls so there the user/group name is
+#   required. Furthermore they are also passed to chown/chgrp where uid/gid is
+#   required due to an uhubuild limitation (this user and group does not exist
+#   while building the package).
+#
+# - Pretendroot overwrites USER, so we cannot alter this environment variable,
+#   it gets overridden in each process, hence subst.pl gets incorrect value.
+#
+# See patches/01-username-vs-uid.patch too.
+
+SYMPAUSER=sympa \
+SYMPAGROUP=sympa \
+ub_install \
+	USER=101 \
+	GROUP=101
+
+# Don't generate different config file at each build.
+sed -i 's/^cookie\t[0-9]*$/cookie\t123456789/' "$UB_INSTALLDIR"/etc/sympa.conf

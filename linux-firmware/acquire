@@ -1,0 +1,13 @@
+#!/usr/bin/env dl
+
+linux-firmware-${UB_VERSION}.tar.gz linux-firmware-${UB_VERSION}/:lib/firmware
+	git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git@${UB_VERSION}
+
+nouveau-firmware-20091212.tar.gz nouveau:/lib/firmware/
+	http://people.freedesktop.org/~pq/nouveau-drm/
+
+broadcom-wl-4.178.10.4.tar.bz2 broadcom-wl-4.178.10.4/linux/wl_apsta.o
+	http://downloads.openwrt.org/sources/
+
+wl_apsta-3.130.20.0.o
+	http://downloads.openwrt.org/sources/

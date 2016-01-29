@@ -1,0 +1,10 @@
+diff -Naur orig/data/gtkpod.desktop.in patched/data/gtkpod.desktop.in
+--- orig/data/gtkpod.desktop.in	2010-08-01 16:02:42.000000000 +0200
++++ patched/data/gtkpod.desktop.in	2011-03-01 22:12:40.000000000 +0100
+@@ -6,5 +6,5 @@
+ Icon=gtkpod
+ Terminal=false
+ Type=Application
+-Categories=GTK;AudioVideo;
++Categories=GTK;AudioVideo;X-UHU-Menu/Multimedia/More;
+ X-GNOME-FullName=gtkpod iPod Manager

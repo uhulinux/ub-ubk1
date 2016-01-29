@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+klavaro-${UB_VERSION}.tar.bz2 klavaro-${UB_VERSION}/
+	http://downloads.sourceforge.net/klavaro/

@@ -1,0 +1,1 @@
+urllist http://download.savannah.gnu.org/releases/freetype/ | splitver '^freetype-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

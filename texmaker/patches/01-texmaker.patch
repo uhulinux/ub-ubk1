@@ -1,0 +1,46 @@
+diff -Naurd a/BUILD.sh b/BUILD.sh
+--- a/BUILD.sh	2013-03-05 11:52:44.000000000 +0100
++++ b/BUILD.sh	2013-03-10 18:59:36.000000000 +0100
+@@ -2,9 +2,9 @@
+ echo "Texmaker compilation :"
+ echo "----------------------------------------"
+ echo "Enter path to QT:"
+-read QTDIR
++QTDIR=/usr/lib/qt5
+ echo "Enter SYSTEM (1: UNIX ; 2: MACOSX) :"
+-read SYSTEM
++SYSTEM=1
+ PATH=$QTDIR/bin:$PATH
+ LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
+ DYLD_LIBRARY_PATH=$QTDIR/lib:$DYLD_LIBRARY_PATH
+@@ -12,11 +12,11 @@
+ if [ "$SYSTEM" = 1 ] 
+ then
+ echo "Enter PREFIX (/usr , /usr/local or /opt) :"
+-read PREFIX
++PREFIX=/usr
+ echo "Enter  DIRECTORY for the desktop file (/usr/share/applications) :"
+-read DESKTOPDIR
++DESKTOPDIR=/usr/share/applications
+ echo "Enter  DIRECTORY for the icon file (/usr/share/pixmaps) :"
+-read ICONDIR
++ICONDIR=/usr/share/pixmaps
+ $QTDIR/bin/qmake PREFIX=$PREFIX DESKTOPDIR=$DESKTOPDIR ICONDIR=$ICONDIR texmaker.pro
+ make
+ make install
+diff -Naurd a/utilities/texmaker.desktop b/utilities/texmaker.desktop
+--- a/utilities/texmaker.desktop	2012-05-20 15:08:54.000000000 +0200
++++ b/utilities/texmaker.desktop	2014-05-05 20:19:41.000000000 +0200
+@@ -1,10 +1,11 @@
+ [Desktop Entry]
+-Categories=Office;Publishing;Qt;X-SuSE-Core-Office;X-Mandriva-Office-Publishing;X-Misc;
++Categories=Office;Publishing;Qt;X-Misc;
+ Exec=texmaker %F
+ GenericName=LaTeX Editor
+ GenericName[fr]=Editeur LaTeX
+ Comment=LaTeX development environment
+ Comment[fr]=Environnement de développement LaTeX
++Comment[hu]=LaTeX szerkesztő
+ Icon=texmaker
+ MimeType=text/x-tex;
+ Name=Texmaker

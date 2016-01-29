@@ -1,0 +1,48 @@
+diff -Naurdp a/src/io.c b/src/io.c
+--- a/src/io.c	2005-12-12 13:53:37.000000000 +0100
++++ b/src/io.c	2005-12-12 13:53:38.000000000 +0100
+@@ -1061,7 +1061,9 @@ gint i, devnr;
+ 
+ 	if (doscanbus) {
+ 		/* scan for scsi devices */
+-		scan_traditional(txt);
++	    scan_other("sg", 1, txt);
++	    scan_other("pg", 1, txt);
++	    scan_other("ATA", 1, txt);
+ 
+ 		/* scan for alternatives */
+ #if defined(linux)
+@@ -2946,7 +2948,7 @@ gint mmaperror;
+ static gint getcdtoc_atapi_timeout_func(gpointer data) {
+ 
+ 	getcdtoc_atapi_timeout_dialog = show_dialog_wait(ICO_INFO,
+-		_("Checking drive for a medium.\n\nUsing scsi-emulation for that drive would speed up\nthis considerably. Please note that inserting a\nmedium would also reduce the wait time."));
++		_("Checking drive for a medium.\n\nPlease note that inserting a\nmedium would reduce the wait time."));
+ 
+ 	return (FALSE);
+ }
+diff -Naurdp a/src/setup.c b/src/setup.c
+--- a/src/setup.c	2005-12-12 13:53:37.000000000 +0100
++++ b/src/setup.c	2005-12-12 13:54:31.000000000 +0100
+@@ -304,21 +304,6 @@ gchar tmp[MAXLINE];
+ 
+ 	dolog(2, "Confirm setup\n");
+ 
+-	/* some lasts checks and warnings */
+-
+-	/* get the writer device string */
+-	if (convert_devnr2busid(setupdata.writer_devnr, tmp) == 0) {
+-
+-		/* ATAPI device? (only on linux) */
+-		if (strstr(tmp, "ATAPI")) {
+-			ret = show_dialog(ICO_WARN, _("You have selected an ATAPI device as your CD-Writer.\nThis is not a recommended setup - you will experience\nlong delays within X-CD-Roast and bad writing performance.\nSee the FAQ how to properly install scsi-emulation for best results."), T_OK,T_CANCEL, NULL, 0);
+-			if (ret == 1) {
+-				/* abort */
+-				return;
+-			}
+-		}
+-	}		
+-
+ 	if (menu_setup_ok_work(widget,data)) 
+ 		return;
+ 

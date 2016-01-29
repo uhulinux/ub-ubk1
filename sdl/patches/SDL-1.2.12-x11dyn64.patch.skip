@@ -1,0 +1,13 @@
+diff -up SDL-1.2.12/configure.in.x11dyn64 SDL-1.2.12/configure.in
+--- SDL-1.2.12/configure.in.x11dyn64	2007-08-27 18:18:28.000000000 +0200
++++ SDL-1.2.12/configure.in	2007-08-27 18:20:48.000000000 +0200
+@@ -950,7 +950,8 @@ AC_HELP_STRING([--enable-x11-shared], [d
+                     ;;
+                 *)
+                     x11_lib_path=[`echo $X_LIBS | sed 's/.*-L\([^ ]*\).*/\1/'`]
+-                    for path in $x11_lib_path /usr/lib /usr/X11/lib /usr/X11R6/lib; do
++		    pfx=${libdir##*/}
++                    for path in $x11_lib_path /usr/${pfx} /usr/lib /usr/X11/lib /usr/X11R6/lib; do
+                         if test "x$x11_lib" = "x"; then
+                             x11_lib=[`ls -- $path/libX11.so.[0-9] 2>/dev/null | sort -r | sed 's/.*\/\(.*\)/\1/; q'`]
+                             if test "x$x11_lib" = "x"; then

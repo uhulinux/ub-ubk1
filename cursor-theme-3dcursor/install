@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/icons/3Dcursors
+cp -a cursors index.theme "$UB_INSTALLDIR"/usr/share/icons/3Dcursors/

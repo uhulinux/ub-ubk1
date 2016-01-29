@@ -1,0 +1,17 @@
+dbus-glib-dev
+gconf2-dev
+gst0.10-plugins-base-dev
+gtk2-dev
+liba52-dev
+libcdio-dev
+libdvdnav-dev
+libid3tag-dev
+libjpeg-dev
+liblame-dev
+libmad-dev
+libmpeg2-dev
+liboil-dev
+libxml2-dev
+opencore-amr-dev
+python-dev
+x264-dev

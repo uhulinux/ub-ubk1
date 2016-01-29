@@ -1,0 +1,2 @@
+- usx2y nem tamogatja a request_firmware()-t
+- {ea,pcxhr}/* fileokra nem hivatkozik senki!?

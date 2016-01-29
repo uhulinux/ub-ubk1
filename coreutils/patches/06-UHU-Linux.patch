@@ -1,0 +1,12 @@
+diff -Naurdp a/configure b/configure
+--- a/configure	2010-01-07 18:14:15.000000000 +0100
++++ b/configure	2010-01-08 11:20:23.554598573 +0100
+@@ -25660,7 +25660,7 @@ else
+        mint*)           os='MiNT';;
+        mingw*)          os='MinGW';;
+        lynxos*)         os='LynxOS';;
+-       linux*)          os='GNU/Linux';;
++       linux*)          os='UHU-Linux';;
+        hpux*)           os='HP-UX';;
+        hiux*)           os='HI-UX';;
+        gnu*)            os='GNU';;

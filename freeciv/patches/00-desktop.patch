@@ -1,0 +1,50 @@
+diff -urN freeciv-2.1.5.orig/bootstrap/freeciv.desktop.in freeciv-2.1.5/bootstrap/freeciv.desktop.in
+--- freeciv-2.1.5.orig/bootstrap/freeciv.desktop.in	2008-06-16 09:43:33.000000000 +0200
++++ freeciv-2.1.5/bootstrap/freeciv.desktop.in	2008-06-20 16:41:49.000000000 +0200
+@@ -4,6 +4,7 @@
+ Name[ca]=Freeciv
+ Name[es]=Freeciv
+ Name[fr]=Freeciv
++Name[hu]=Freeciv
+ Name[no]=Freeciv
+ Name[pt]=Freeciv
+ Name[tr]=Freeciv
+@@ -12,6 +13,7 @@
+ Comment[da]=Strategispil inspireret af den menneskelige civilisations historie
+ Comment[de]=Rundenbasiertes Strategiespiel, inspiriert durch die Geschichte der menschlichen Zivilisation
+ Comment[fi]=Ihmiskunnan historian inspiroima vuoropohjainen strategiapeli
++Comment[hu]=Az emberi civilizáció története által inspirált körökre osztott stratégiai játék
+ Comment[no]=Strategispill inspirert av historien til menneskelig sivilisasjon
+ Comment[pt]=Jogo de estratégia por turnos inspirado na História da civilização humana
+ Comment[sv]=Turordningsbaserat strategispel inspirerat av den mänskliga
+@@ -21,4 +23,4 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=GTK;Game;StrategyGame;
++Categories=GTK;Game;StrategyGame;X-UHU-Menu/Games/TacticStrategy;
+diff -urN freeciv-2.1.5.orig/bootstrap/freeciv-server.desktop.in freeciv-2.1.5/bootstrap/freeciv-server.desktop.in
+--- freeciv-2.1.5.orig/bootstrap/freeciv-server.desktop.in	2008-06-16 09:43:33.000000000 +0200
++++ freeciv-2.1.5/bootstrap/freeciv-server.desktop.in	2008-06-20 16:42:54.000000000 +0200
+@@ -4,6 +4,7 @@
+ Name[ca]=Freeciv server
+ Name[es]=Freeciv server
+ Name[fr]=Freeciv server
++Name[hu]=Freeciv szerver
+ Name[no]=Freeciv server
+ Name[pt]=Freeciv server
+ Name[tr]=Freeciv sunucusu
+@@ -12,6 +13,7 @@
+ Comment[da]=Strategispil inspireret af den menneskelige civilisations historie
+ Comment[de]=Rundenbasiertes Strategiespiel, inspiriert durch die Geschichte der menschlichen Zivilisation
+ Comment[fi]=Ihmiskunnan historian inspiroima vuoropohjainen strategiapeli
++Comment[hu]=Az emberi civilizáció története által inspirált körökre osztott stratégiai játék
+ Comment[no]=Strategispill inspirert av historien til menneskelig sivilisasjon
+ Comment[pt]=Jogo de estratégia por turnos inspirado na História da civilização humana
+ Comment[sv]=Turordningsbaserat strategispel inspirerat av den mänskliga
+@@ -21,4 +23,4 @@
+ StartupNotify=true
+ Terminal=true
+ Type=Application
+-Categories=ConsoleOnly;Game;StrategyGame;
++Categories=ConsoleOnly;Game;StrategyGame;X-UHU-Menu/Games/TacticStrategy;

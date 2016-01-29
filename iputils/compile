@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+ub_compile
+gcc -Wall -Wstrict-prototypes -O2 ifenslave.c -o ifenslave

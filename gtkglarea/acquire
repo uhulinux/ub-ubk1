@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gtkglarea-${UB_VERSION}.tar.gz gtkglarea-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gtkglarea/${UB_VERSION_HEAD2}/

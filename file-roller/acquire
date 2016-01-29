@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+file-roller-${UB_VERSION}.tar.xz file-roller-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/file-roller/${UB_VERSION_HEAD2}/

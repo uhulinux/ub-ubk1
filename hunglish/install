@@ -1,0 +1,12 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/etc/kbd/keymaps/i386/qwert{y,z}
+for i in 101 102 104 105; do
+	install -m 644 console/hunglish-pc"$i".kmap \
+		"$UB_INSTALLDIR"/etc/kbd/keymaps/i386/qwerty/hunglish-pc"$i".map
+	install -m 644 console/hunglish-pc"$i"qwertz.kmap \
+		"$UB_INSTALLDIR"/etc/kbd/keymaps/i386/qwertz/hunglish-pc"$i"qwertz.map
+done
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/X11
+cp -a xkb "$UB_INSTALLDIR"/usr/share/X11/

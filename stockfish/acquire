@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+stockfish-${UB_VERSION}-linux.zip stockfish-${UB_VERSION}-linux/
+	http://stockfish.s3.amazonaws.com/

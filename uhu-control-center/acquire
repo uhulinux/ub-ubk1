@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+uhu-control-center-${UB_VERSION}.tar.gz uhu-control-center-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/uhu-control-center/

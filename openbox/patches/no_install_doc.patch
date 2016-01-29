@@ -1,0 +1,15 @@
+diff -Naurd a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2013-08-12 03:33:40.000000000 +0200
++++ b/Makefile.in	2013-08-13 18:18:49.000000000 +0200
+@@ -1117,11 +1117,6 @@
+ 	tests/urgent.c
+ 
+ dist_doc_DATA = \
+-	COMPLIANCE \
+-	README \
+-	AUTHORS \
+-	CHANGELOG \
+-	COPYING \
+ 	data/rc.xsd \
+ 	data/menu.xsd \
+ 	doc/rc-mouse-focus.xml

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=xclock (analog)
+Name[hu]=xclock (analóg)
+Comment=Standard analog clock
+Comment[hu]=Hagyományos analóg óra
+Exec=xclock -analog -update 1
+Categories=Utility;Clock;

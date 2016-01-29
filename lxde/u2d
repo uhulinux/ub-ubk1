@@ -1,0 +1,1 @@
+sflist lxde lxde-common%20%28default%20config%29 | splitver '^LXDE%20Common%20([0-9.]+)$' | sort -V | tail -n 1

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+HTML-Template-${UB_VERSION}.tar.gz HTML-Template-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/W/WO/WONKO/
+

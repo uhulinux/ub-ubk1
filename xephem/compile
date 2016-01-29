@@ -1,0 +1,35 @@
+#!/bin/sh -eux
+
+make -C libastro
+make -C libip
+cd GUI/xephem
+xmkmf
+make
+
+# fix several time zones, including Budapest...
+IFS=''
+while read line; do
+	case "$line" in
+	\#*)
+		printf '%s\n' "$line"
+		;;
+	*\;*\;*\;*)
+		town="${line%%,*}"
+		tzfile="$(find /usr/share/zoneinfo \
+			-path /usr/share/zoneinfo/posix -prune -o \
+			-path /usr/share/zoneinfo/right -prune -o \
+			-type f -name "$town" -print | \
+			sed 's,/usr/share/zoneinfo/,,' | \
+			head -1)"
+		if [ -n "$tzfile" ]; then
+			printf '%s\n' "${line%;*}; $tzfile"
+		else
+			printf '%s\n' "$line"
+		fi
+		;;
+	*)
+		printf '%s\n' "$line"
+		;;
+	esac
+done <auxil/xephem.sit >auxil/xephem.sit.new
+mv auxil/xephem.sit.new auxil/xephem.sit

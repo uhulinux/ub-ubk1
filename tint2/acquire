@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tint2-${UB_VERSION}.tar.bz2 tint2-${UB_VERSION}/
+	http://tint2.googlecode.com/files/

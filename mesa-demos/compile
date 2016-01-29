@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+export DEMOS_DATA_DIR="/usr/share/mesa-demos"
+
+ub_compile \
+	--with-system-data-files

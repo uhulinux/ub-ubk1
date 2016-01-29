@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+stripe-${UB_VERSION}.tar.gz stripe-${UB_VERSION}/
+	http://pypi.python.org/packages/source/s/stripe/

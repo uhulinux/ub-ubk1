@@ -1,0 +1,12 @@
+diff -Naur dvd+rw-tools-5.21.4.10.8.orig/growisofs.c dvd+rw-tools-5.21.4.10.8/growisofs.c
+--- dvd+rw-tools-5.21.4.10.8.orig/growisofs.c	2004-08-25 01:02:29.000000000 +0200
++++ dvd+rw-tools-5.21.4.10.8/growisofs.c	2004-10-29 11:32:26.587631840 +0200
+@@ -2046,7 +2046,7 @@
+     CLOSEONEXEC(ioctl_fd);
+ #undef CLOSEONEXEC
+ 
+-    if (!dry_run && (poor_man || next_session==0))	/* unmount media */
++    if (!dry_run)	/* unmount media */
+     {	pid_t rpid,pid;
+ 	int   rval;
+ 

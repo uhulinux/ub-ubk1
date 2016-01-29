@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+openssh-${UB_VERSION}.tar.gz openssh-${UB_VERSION}/
+	ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/

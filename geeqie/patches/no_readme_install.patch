@@ -1,0 +1,11 @@
+--- x.orig/Makefile.in	2010-02-17 22:21:45.000000000 +0100
++++ x/Makefile.in	2010-05-03 18:34:06.000000000 +0200
+@@ -307,7 +307,7 @@
+ SUBDIRS = src po doc plugins
+ DIST_SUBDIRS = src po doc plugins
+ man_MANS = geeqie.1
+-readme_DATA = README COPYING ChangeLog TODO README.lirc
++readme_DATA = 
+ desktopdir = $(datadir)/applications
+ desktop_in_files = geeqie.desktop.in
+ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)

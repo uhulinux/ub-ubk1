@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Stream-Buffered-${UB_VERSION}.tar.gz Stream-Buffered-${UB_VERSION}/
+	http://cpan.metacpan.org/modules/by-module/Stream/

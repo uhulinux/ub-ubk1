@@ -1,0 +1,206 @@
+diff -Naur orig/chat/chat.8 patched/chat/chat.8
+--- orig/chat/chat.8	2009-11-16 23:26:07.000000000 +0100
++++ patched/chat/chat.8	2012-03-31 14:28:09.938734795 +0200
+@@ -200,7 +200,7 @@
+ at the terminal via standard error.  If \fBchat\fR is being run by
+ pppd, and pppd is running as a daemon (detached from its controlling
+ terminal), standard error will normally be redirected to the file
+-/etc/ppp/connect\-errors.
++/var/log/ppp/connect\-errors
+ .LP
+ \fBSAY\fR strings must be enclosed in single or double quotes. If
+ carriage return and line feed are needed in the string to be output,
+diff -Naur orig/chat/Makefile.linux patched/chat/Makefile.linux
+--- orig/chat/Makefile.linux	2009-11-16 23:26:07.000000000 +0100
++++ patched/chat/Makefile.linux	2012-03-31 14:28:09.938734795 +0200
+@@ -1,8 +1,8 @@
+ #	$Id: Makefile.linux,v 1.15 2006/06/04 05:07:46 paulus Exp $
+ 
+ DESTDIR = $(INSTROOT)@DESTDIR@
+-BINDIR = $(DESTDIR)/sbin
+-MANDIR = $(DESTDIR)/share/man/man8
++BINDIR = $(DESTDIR)/usr/sbin
++MANDIR = $(DESTDIR)/usr/share/man/man8
+ 
+ CDEF1=	-DTERMIOS			# Use the termios structure
+ CDEF2=	-DSIGTYPE=void			# Standard definition
+diff -Naur orig/contrib/pppgetpass/Makefile.linux patched/contrib/pppgetpass/Makefile.linux
+--- orig/contrib/pppgetpass/Makefile.linux	2009-11-16 23:26:07.000000000 +0100
++++ patched/contrib/pppgetpass/Makefile.linux	2012-03-31 14:28:36.964758666 +0200
+@@ -3,9 +3,9 @@
+ pppgetpass.vt: pppgetpass.vt.o
+ 
+ pppgetpass.gtk: pppgetpass.gtk.o
+-	$(CC) $(LDFLAGS) pppgetpass.gtk.o `gtk-config --libs` -o pppgetpass.gtk
++	$(CC) $(LDFLAGS) pppgetpass.gtk.o `pkg-config --libs gtk+-2.0` -o pppgetpass.gtk
+ pppgetpass.gtk.o: pppgetpass.gtk.c
+-	$(CC) $(CFLAGS) -c pppgetpass.gtk.c `gtk-config --cflags`
++	$(CC) $(CFLAGS) -c pppgetpass.gtk.c `pkg-config --cflags gtk+-2.0`
+ 
+ install: all
+ 	install -m 755 pppgetpass.sh /usr/bin/pppgetpass
+diff -Naur orig/linux/Makefile.top patched/linux/Makefile.top
+--- orig/linux/Makefile.top	2009-11-16 23:26:07.000000000 +0100
++++ patched/linux/Makefile.top	2012-03-31 14:28:09.938734795 +0200
+@@ -1,10 +1,12 @@
+ # PPP top-level Makefile for Linux.
+ 
+ DESTDIR = $(INSTROOT)@DESTDIR@
+-BINDIR = $(DESTDIR)/sbin
+-INCDIR = $(DESTDIR)/include
+-MANDIR = $(DESTDIR)/share/man
+-ETCDIR = $(INSTROOT)@SYSCONF@/ppp
++BINDIR = $(DESTDIR)/usr/sbin
++INCDIR = $(DESTDIR)/usr/include
++MANDIR = $(DESTDIR)/usr/share/man
++ETCDIR = ${UB_INSTALLDIR}/etc/ppp
++RUNDIR = $(DESTDIR)/var/run/ppp
++LOGDIR = $(DESTDIR)/var/log/ppp
+ 
+ # uid 0 = root
+ INSTALL= install
+@@ -16,7 +18,7 @@
+ 	cd pppstats; $(MAKE) $(MFLAGS) all
+ 	cd pppdump; $(MAKE) $(MFLAGS) all
+ 
+-install: $(BINDIR) $(MANDIR)/man8 install-progs install-devel
++install: $(BINDIR) $(RUNDIR) $(LOGDIR) $(MANDIR)/man8 install-progs install-devel install-etcppp
+ 
+ install-progs:
+ 	cd chat; $(MAKE) $(MFLAGS) install
+@@ -44,6 +46,10 @@
+ 	$(INSTALL) -d -m 755 $@
+ $(ETCDIR):
+ 	$(INSTALL) -d -m 755 $@
++$(RUNDIR):
++	$(INSTALL) -d -m 755 $@
++$(LOGDIR):
++	$(INSTALL) -d -m 755 $@
+ 
+ clean:
+ 	rm -f `find . -name '*.[oas]' -print`
+diff -Naur orig/pppd/Makefile.linux patched/pppd/Makefile.linux
+--- orig/pppd/Makefile.linux	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/Makefile.linux	2012-03-31 14:28:09.942734511 +0200
+@@ -5,9 +5,9 @@
+ 
+ # Default installation locations
+ DESTDIR = $(INSTROOT)@DESTDIR@
+-BINDIR = $(DESTDIR)/sbin
+-MANDIR = $(DESTDIR)/share/man/man8
+-INCDIR = $(DESTDIR)/include
++BINDIR = $(DESTDIR)/usr/sbin
++MANDIR = $(DESTDIR)/usr/share/man/man8
++INCDIR = $(DESTDIR)/usr/include
+ 
+ TARGETS = pppd
+ 
+diff -Naur orig/pppd/pathnames.h patched/pppd/pathnames.h
+--- orig/pppd/pathnames.h	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/pathnames.h	2012-03-31 14:28:09.942734511 +0200
+@@ -28,9 +28,9 @@
+ #define _PATH_AUTHUP	 _ROOT_PATH "/etc/ppp/auth-up"
+ #define _PATH_AUTHDOWN	 _ROOT_PATH "/etc/ppp/auth-down"
+ #define _PATH_TTYOPT	 _ROOT_PATH "/etc/ppp/options."
+-#define _PATH_CONNERRS	 _ROOT_PATH "/etc/ppp/connect-errors"
++#define _PATH_CONNERRS	 _ROOT_PATH "/var/log/ppp/connect-errors"
+ #define _PATH_PEERFILES	 _ROOT_PATH "/etc/ppp/peers/"
+-#define _PATH_RESOLV	 _ROOT_PATH "/etc/ppp/resolv.conf"
++#define _PATH_RESOLV	 _ROOT_PATH "/var/run/ppp/resolv.conf"
+ 
+ #define _PATH_USEROPT	 ".ppprc"
+ #define	_PATH_PSEUDONYM	 ".ppp_pseudonym"
+diff -Naur orig/pppd/plugins/Makefile.linux patched/pppd/plugins/Makefile.linux
+--- orig/pppd/plugins/Makefile.linux	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/plugins/Makefile.linux	2012-03-31 14:28:09.942734511 +0200
+@@ -5,9 +5,9 @@
+ INSTALL	= install
+ 
+ DESTDIR = $(INSTROOT)@DESTDIR@
+-BINDIR = $(DESTDIR)/sbin
+-MANDIR = $(DESTDIR)/share/man/man8
+-LIBDIR = $(DESTDIR)/lib/pppd/$(VERSION)
++BINDIR = $(DESTDIR)/usr/sbin
++MANDIR = $(DESTDIR)/usr/share/man/man8
++LIBDIR = $(DESTDIR)/usr/lib/pppd/$(VERSION)
+ 
+ SUBDIRS := rp-pppoe pppoatm pppol2tp
+ # Uncomment the next line to include the radius authentication plugin
+diff -Naur orig/pppd/plugins/pppoatm/Makefile.linux patched/pppd/plugins/pppoatm/Makefile.linux
+--- orig/pppd/plugins/pppoatm/Makefile.linux	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/plugins/pppoatm/Makefile.linux	2012-03-31 14:28:09.942734511 +0200
+@@ -7,7 +7,7 @@
+ #***********************************************************************
+ 
+ DESTDIR = $(INSTROOT)@DESTDIR@
+-LIBDIR = $(DESTDIR)/lib/pppd/$(VERSION)
++LIBDIR = $(DESTDIR)/usr/lib/pppd/$(VERSION)
+ 
+ VERSION = $(shell awk -F '"' '/VERSION/ { print $$2; }' ../../patchlevel.h)
+ 
+diff -Naur orig/pppd/plugins/pppol2tp/Makefile.linux patched/pppd/plugins/pppol2tp/Makefile.linux
+--- orig/pppd/plugins/pppol2tp/Makefile.linux	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/plugins/pppol2tp/Makefile.linux	2012-03-31 14:28:09.942734511 +0200
+@@ -7,7 +7,7 @@
+ #***********************************************************************
+ 
+ DESTDIR = @DESTDIR@
+-LIBDIR = $(DESTDIR)/lib/pppd/$(VERSION)
++LIBDIR = $(DESTDIR)/usr/lib/pppd/$(VERSION)
+ 
+ VERSION = $(shell awk -F '"' '/VERSION/ { print $$2; }' ../../patchlevel.h)
+ 
+diff -Naur orig/pppd/plugins/radius/Makefile.linux patched/pppd/plugins/radius/Makefile.linux
+--- orig/pppd/plugins/radius/Makefile.linux	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/plugins/radius/Makefile.linux	2012-03-31 14:28:09.942734511 +0200
+@@ -4,8 +4,8 @@
+ #
+ 
+ DESTDIR = $(INSTROOT)@DESTDIR@
+-MANDIR = $(DESTDIR)/share/man/man8
+-LIBDIR = $(DESTDIR)/lib/pppd/$(VERSION)
++MANDIR = $(DESTDIR)/usr/share/man/man8
++LIBDIR = $(DESTDIR)/usr/lib/pppd/$(VERSION)
+ 
+ VERSION = $(shell awk -F '"' '/VERSION/ { print $$2; }' ../../patchlevel.h)
+ 
+diff -Naur orig/pppd/plugins/rp-pppoe/Makefile.linux patched/pppd/plugins/rp-pppoe/Makefile.linux
+--- orig/pppd/plugins/rp-pppoe/Makefile.linux	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppd/plugins/rp-pppoe/Makefile.linux	2012-03-31 14:28:09.942734511 +0200
+@@ -15,8 +15,8 @@
+ #***********************************************************************
+ 
+ DESTDIR = $(INSTROOT)@DESTDIR@
+-BINDIR = $(DESTDIR)/sbin
+-LIBDIR = $(DESTDIR)/lib/pppd/$(PPPDVERSION)
++BINDIR = $(DESTDIR)/usr/sbin
++LIBDIR = $(DESTDIR)/usr/lib/pppd/$(PPPDVERSION)
+ 
+ PPPDVERSION = $(shell awk -F '"' '/VERSION/ { print $$2; }' ../../patchlevel.h)
+ 
+diff -Naur orig/pppdump/Makefile.linux patched/pppdump/Makefile.linux
+--- orig/pppdump/Makefile.linux	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppdump/Makefile.linux	2012-03-31 14:28:09.942734511 +0200
+@@ -1,6 +1,6 @@
+ DESTDIR = $(INSTROOT)@DESTDIR@
+-BINDIR = $(DESTDIR)/sbin
+-MANDIR = $(DESTDIR)/share/man/man8
++BINDIR = $(DESTDIR)/usr/sbin
++MANDIR = $(DESTDIR)/usr/share/man/man8
+ 
+ CFLAGS= -O -I../include/net
+ OBJS = pppdump.o bsd-comp.o deflate.o zlib.o
+diff -Naur orig/pppstats/Makefile.linux patched/pppstats/Makefile.linux
+--- orig/pppstats/Makefile.linux	2009-11-16 23:26:07.000000000 +0100
++++ patched/pppstats/Makefile.linux	2012-03-31 14:28:09.942734511 +0200
+@@ -3,8 +3,8 @@
+ # $Id: Makefile.linux,v 1.9 2006/06/04 05:07:46 paulus Exp $
+ #
+ DESTDIR = $(INSTROOT)@DESTDIR@
+-BINDIR = $(DESTDIR)/sbin
+-MANDIR = $(DESTDIR)/share/man/man8
++BINDIR = $(DESTDIR)/usr/sbin
++MANDIR = $(DESTDIR)/usr/share/man/man8
+ 
+ PPPSTATSRCS = pppstats.c
+ PPPSTATOBJS = pppstats.o

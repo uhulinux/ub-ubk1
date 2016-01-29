@@ -1,0 +1,74 @@
+diff -urN openssh-6.5p1.orig/ssh_config openssh-6.5p1/ssh_config
+--- openssh-6.5p1.orig/ssh_config	2013-10-10 01:24:12.000000000 +0200
++++ openssh-6.5p1/ssh_config	2014-02-27 08:49:51.498684524 +0100
+@@ -19,7 +19,8 @@
+ 
+ # Host *
+ #   ForwardAgent no
+-#   ForwardX11 no
++    ForwardX11 yes
++    ForwardX11Trusted yes
+ #   RhostsRSAAuthentication no
+ #   RSAAuthentication yes
+ #   PasswordAuthentication yes
+@@ -30,7 +31,7 @@
+ #   CheckHostIP yes
+ #   AddressFamily any
+ #   ConnectTimeout 0
+-#   StrictHostKeyChecking ask
++    StrictHostKeyChecking no
+ #   IdentityFile ~/.ssh/identity
+ #   IdentityFile ~/.ssh/id_rsa
+ #   IdentityFile ~/.ssh/id_dsa
+diff -urN openssh-6.5p1.orig/sshd_config openssh-6.5p1/sshd_config
+--- openssh-6.5p1.orig/sshd_config	2014-01-12 09:20:47.000000000 +0100
++++ openssh-6.5p1/sshd_config	2014-02-27 08:51:31.550900181 +0100
+@@ -41,7 +41,7 @@
+ # Authentication:
+ 
+ #LoginGraceTime 2m
+-#PermitRootLogin yes
++PermitRootLogin no
+ #StrictModes yes
+ #MaxAuthTries 6
+ #MaxSessions 10
+@@ -82,7 +82,7 @@
+ #KerberosGetAFSToken no
+ 
+ # GSSAPI options
+-#GSSAPIAuthentication no
++GSSAPIAuthentication yes
+ #GSSAPICleanupCredentials yes
+ 
+ # Set this to 'yes' to enable PAM authentication, account processing,
+@@ -94,17 +94,17 @@
+ # If you just want the PAM account and session checks to run without
+ # PAM authentication, then enable this but set PasswordAuthentication
+ # and ChallengeResponseAuthentication to 'no'.
+-#UsePAM no
++UsePAM yes
+ 
+ #AllowAgentForwarding yes
+ #AllowTcpForwarding yes
+ #GatewayPorts no
+-#X11Forwarding no
++X11Forwarding yes
+ #X11DisplayOffset 10
+ #X11UseLocalhost yes
+ #PermitTTY yes
+-#PrintMotd yes
+-#PrintLastLog yes
++PrintMotd no
++PrintLastLog no
+ #TCPKeepAlive yes
+ #UseLogin no
+ UsePrivilegeSeparation sandbox		# Default for new installations.
+@@ -112,7 +112,7 @@
+ #Compression delayed
+ #ClientAliveInterval 0
+ #ClientAliveCountMax 3
+-#UseDNS yes
++UseDNS no
+ #PidFile /var/run/sshd.pid
+ #MaxStartups 10:30:100
+ #PermitTunnel no

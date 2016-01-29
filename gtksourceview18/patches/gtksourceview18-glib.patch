@@ -1,0 +1,24 @@
+diff -Naurd gtksourceview.orig//gtksourceview/gtksourcelanguage.c gtksourceview//gtksourceview/gtksourcelanguage.c
+--- gtksourceview.orig//gtksourceview/gtksourcelanguage.c	2012-06-16 08:21:51.000000000 +0200
++++ gtksourceview//gtksourceview/gtksourcelanguage.c	2012-06-16 08:22:02.000000000 +0200
+@@ -31,7 +31,7 @@
+ #include <libxml/xmlreader.h>
+ 
+ #include <glib/gstdio.h>
+-#include <glib/gmappedfile.h>
++#include <glib.h>
+ 
+ #include "gtksourceview-i18n.h"
+ 
+diff -Naurd gtksourceview.orig//gtksourceview/gtksourceregex.h gtksourceview//gtksourceview/gtksourceregex.h
+--- gtksourceview.orig//gtksourceview/gtksourceregex.h	2012-06-16 08:19:20.000000000 +0200
++++ gtksourceview//gtksourceview/gtksourceregex.h	2012-06-16 08:19:28.000000000 +0200
+@@ -20,7 +20,7 @@
+ #ifndef __GTK_SOURCE_REGEX_H__
+ #define __GTK_SOURCE_REGEX_H__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 

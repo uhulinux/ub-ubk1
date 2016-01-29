@@ -1,0 +1,12 @@
+diff -urN doxygen-1.4.6.orig/Makefile.in doxygen-1.4.6/Makefile.in
+--- doxygen-1.4.6.orig/Makefile.in	2005-11-20 19:05:07.000000000 +0100
++++ doxygen-1.4.6/Makefile.in	2006-03-30 16:13:48.000000000 +0200
+@@ -46,7 +46,7 @@
+ 
+ DATE=$(shell date "+%B %Y")
+ 
+-MAN1DIR = man/man1
++MAN1DIR = share/man/man1
+ 
+ install: doxywizard_install 
+ 	$(INSTTOOL) -d $(INSTALL)/bin

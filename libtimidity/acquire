@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libtimidity-${UB_VERSION}.tar.bz2 libtimidity-${UB_VERSION}/
+	http://downloads.sourceforge.net/libtimidity/

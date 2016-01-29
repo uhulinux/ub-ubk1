@@ -1,0 +1,30 @@
+diff -urN pine4.53.orig/pico/makefile.lnx pine4.53/pico/makefile.lnx
+--- pine4.53.orig/pico/makefile.lnx	2001-10-24 00:19:06.000000000 +0200
++++ pine4.53/pico/makefile.lnx	2003-02-24 15:17:46.000000000 +0100
+@@ -36,9 +36,9 @@
+ RM=          rm -f
+ LN=          ln -s
+ MAKE=        make
+-OPTIMIZE=    # -O
++OPTIMIZE=    -O2
+ PROFILE=     # -pg
+-DEBUG=       -g -DDEBUG
++DEBUG=       # -g -DDEBUG
+ 
+ STDCFLAGS=	-Dlnx -DJOB_CONTROL -DPOSIX -DMOUSE
+ CFLAGS=         $(OPTIMIZE) $(PROFILE) $(DEBUG) $(EXTRACFLAGS) $(STDCFLAGS)
+diff -urN pine4.53.orig/pine/makefile.lnx pine4.53/pine/makefile.lnx
+--- pine4.53.orig/pine/makefile.lnx	2002-09-10 23:34:39.000000000 +0200
++++ pine4.53/pine/makefile.lnx	2003-02-24 15:17:28.000000000 +0100
+@@ -45,9 +45,9 @@
+ RM=          rm -f
+ LN=          ln -s
+ MAKE=        make
+-OPTIMIZE=    # -O2
++OPTIMIZE=    -O2
+ PROFILE=     # -pg
+-DEBUG=       -g -DDEBUG -DDEBUGJOURNAL
++DEBUG=       # -g -DDEBUG -DDEBUGJOURNAL
+ 
+ CCLIENTDIR=  ../c-client
+ PICODIR=     ../pico

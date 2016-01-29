@@ -1,0 +1,22 @@
+diff -Naur gimp-2.7.3.orig/desktop/gimp.desktop.in.in gimp-2.7.3/desktop/gimp.desktop.in.in
+--- gimp-2.7.3.orig/desktop/gimp.desktop.in.in	2011-08-22 11:14:32.000000000 +0200
++++ gimp-2.7.3/desktop/gimp.desktop.in.in	2011-11-12 20:31:16.000000000 +0100
+@@ -1,14 +1,14 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-_Name=GNU Image Manipulation Program
++Name=GIMP
+ _GenericName=Image Editor
+ _Comment=Create images and edit photographs
+-Exec=@GIMP_COMMAND@ %U
+-TryExec=gimp-@GIMP_APP_VERSION@
++Exec=gimp-@GIMP_APP_VERSION@ %U
++TryExec=gimp-@GIMP_APP_VERSION@
+ Icon=gimp
+ Terminal=false
+-Categories=Graphics;2DGraphics;RasterGraphics;GTK;
++Categories=Graphics;2DGraphics;RasterGraphics;GTK;X-UHU-Menu/Graphics/Bitmaps;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=GIMP
+ X-GNOME-Bugzilla-Component=General

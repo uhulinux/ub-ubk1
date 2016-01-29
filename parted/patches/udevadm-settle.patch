@@ -1,0 +1,71 @@
+From: Colin Watson <cjwatson@ubuntu.com>
+Forwarded: no
+Last-Update: 2010-02-22
+Description: udev handling
+ Run udevadm settle around partition table rereads, to avoid races.
+ .
+ This should be replaced by a proper completion-notification mechanism
+ between the kernel and udev.
+
+diff -Naurdp a/libparted/arch/linux.c b/libparted/arch/linux.c
+--- a/libparted/arch/linux.c	2013-03-22 18:27:39.193904497 +0100
++++ b/libparted/arch/linux.c	2013-03-22 18:34:05.933887255 +0100
+@@ -26,6 +26,7 @@
+ #include <parted/fdasd.h>
+ #endif
+ 
++#include <stdlib.h>
+ #include <ctype.h>
+ #include <errno.h>
+ #include <fcntl.h>
+@@ -2921,9 +2922,24 @@ _have_blkpg ()
+ static int
+ linux_disk_commit (PedDisk* disk)
+ {
++        int ret = 1;
++        /* Modern versions of udev may notice the write activity on
++         * partition devices caused by _flush_cache, and may decide to
++         * synthesise some change events as a result. These may in turn run
++         * programs that open partition devices, which will race with us
++         * trying to remove those devices. To avoid this, we need to wait
++         * until udevd has finished processing its event queue.
++         * TODO: for upstream submission, this should check whether udevadm
++         * exists on $PATH.
++         */
++        if (system ("udevadm settle") != 0) {
++                /* ignore failures */
++        }
+ #ifdef ENABLE_DEVICE_MAPPER
+-        if (disk->dev->type == PED_DEVICE_DM)
+-                return _dm_reread_part_table (disk);
++        if (disk->dev->type == PED_DEVICE_DM) {
++                ret = _dm_reread_part_table (disk);
++                goto out;
++        }
+ #endif
+         if (disk->dev->type != PED_DEVICE_FILE) {
+ 
+@@ -2934,10 +2950,21 @@ linux_disk_commit (PedDisk* disk)
+ 		assert (_have_blkpg ());
+ 
+ 		if (!_disk_sync_part_table (disk))
+-			return 0;
++			ret = 0;
++			goto out;
++        }
++        ret = 1;
++out:
++        /* Now we wait for udevd to finish creating device nodes based on
++         * the above activity, so that callers can reliably use them.
++         * TODO: for upstream submission, this should check whether udevadm
++         * exists on $PATH.
++         */
++        if (system ("udevadm settle") != 0) {
++                /* ignore failures */
+         }
+ 
+-        return 1;
++        return ret;
+ }
+ 
+ #if USE_BLKID

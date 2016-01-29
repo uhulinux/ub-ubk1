@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ORBit2-${UB_VERSION}.tar.bz2 ORBit2-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/ORBit2/${UB_VERSION_HEAD2}/

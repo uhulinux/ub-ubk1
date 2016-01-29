@@ -1,0 +1,20 @@
+diff -Naur orig/tools/Linux/xbmc.desktop patched/tools/Linux/xbmc.desktop
+--- orig/tools/Linux/xbmc.desktop	2013-01-29 15:20:27.000000000 +0100
++++ patched/tools/Linux/xbmc.desktop	2013-04-23 13:36:35.105094838 +0200
+@@ -2,12 +2,14 @@
+ Version=1.0
+ Name=XBMC Media Center
+ GenericName=Media Center
+-Comment=Manage and view your media 
++GenericName[hu]=Média központ
++Comment=Manage and view your media
++Comment[hu]=Videók és zenék kezelése
+ Exec=xbmc
+ Icon=xbmc
+ Terminal=false
+ Type=Application
+-Categories=AudioVideo;Video;Player;TV;
++Categories=AudioVideo;Video;Player;TV;X-UHU-Menu/Multimedia/VideoPlayers;
+ 
+ Actions=Fullscreen;Standalone;
+ 

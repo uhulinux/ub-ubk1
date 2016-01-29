@@ -1,0 +1,20 @@
+diff -Naur bash-3.0.orig/config-top.h bash-3.0/config-top.h
+--- bash-3.0.orig/config-top.h	2003-08-05 16:36:12.000000000 +0200
++++ bash-3.0/config-top.h	2004-07-28 18:49:05.096348854 +0200
+@@ -52,14 +52,14 @@
+ /* The default value of the PATH variable. */
+ #ifndef DEFAULT_PATH_VALUE
+ #define DEFAULT_PATH_VALUE \
+-  "/usr/gnu/bin:/usr/local/bin:/bin:/usr/bin:."
++  "/usr/local/bin:/bin:/usr/bin"
+ #endif
+ 
+ /* The value for PATH when invoking `command -p'.  This is only used when
+    the Posix.2 confstr () function, or CS_PATH define are not present. */
+ #ifndef STANDARD_UTILS_PATH
+ #define STANDARD_UTILS_PATH \
+-  "/bin:/usr/bin:/sbin:/usr/sbin:/etc:/usr/etc"
++  "/usr/local/bin:/bin:/usr/bin"
+ #endif
+ 
+ /* Default primary and secondary prompt strings. */

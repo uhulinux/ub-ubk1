@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+amarok-${UB_VERSION}.tar.bz2 amarok-${UB_VERSION}/
+	ftp://ftp.kde.org/pub/kde/stable/amarok/${UB_VERSION}/src/
+	ftp://ftp.kde.org/pub/kde/unstable/amarok/${UB_VERSION}/src/

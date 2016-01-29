@@ -1,0 +1,24 @@
+diff -urN apt-0.7.23.1.orig/cmdline/apt-get.cc apt-0.7.23.1/cmdline/apt-get.cc
+--- apt-0.7.23.1.orig/cmdline/apt-get.cc	2009-08-28 22:27:51.000000000 +0200
++++ apt-0.7.23.1/cmdline/apt-get.cc	2010-01-08 10:36:50.000000000 +0100
+@@ -862,9 +862,10 @@
+    {
+       struct statvfs Buf;
+       string OutputDir = _config->FindDir("Dir::Cache::Archives");
+-      if (statvfs(OutputDir.c_str(),&Buf) != 0)
+-	 return _error->Errno("statvfs",_("Couldn't determine free space in %s"),
++      if (statvfs(OutputDir.c_str(),&Buf) != 0) {
++	 _error->Warning("statvfs",_("Couldn't determine free space in 1%s"),
+ 			      OutputDir.c_str());
++	  } else {
+       if (unsigned(Buf.f_bfree) < (FetchBytes - FetchPBytes)/Buf.f_bsize)
+       {
+          struct statfs Stat;
+@@ -876,6 +877,7 @@
+             return _error->Error(_("You don't have enough free space in %s."),
+                 OutputDir.c_str());
+       }
++      }      
+    }
+    
+    // Fail safe check

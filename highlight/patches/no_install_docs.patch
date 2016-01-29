@@ -1,0 +1,23 @@
+--- a/makefile.orig	2013-02-23 17:20:28.000000000 +0100
++++ a/makefile	2013-02-23 17:20:55.000000000 +0100
+@@ -84,20 +84,11 @@
+ 	${INSTALL_DATA} ./themes/*.theme ${DESTDIR}${data_dir}themes/
+ 	${INSTALL_DATA} ./plugins/*.lua ${DESTDIR}${data_dir}plugins/
+ 	${INSTALL_DATA} ./man/highlight.1.gz ${DESTDIR}${man_dir}
+-	${INSTALL_DATA} ./AUTHORS ${DESTDIR}${doc_dir}
+-	${INSTALL_DATA} ./README ${DESTDIR}${doc_dir}
+-	${INSTALL_DATA} ./README_DE ${DESTDIR}${doc_dir}
+-	${INSTALL_DATA} ./README_REGEX ${DESTDIR}${doc_dir}
+-	${INSTALL_DATA} ./README_LANGLIST ${DESTDIR}${doc_dir}
+-	${INSTALL_DATA} ./ChangeLog ${DESTDIR}${doc_dir}
+-	${INSTALL_DATA} ./COPYING ${DESTDIR}${doc_dir}
+-	${INSTALL_DATA} ./INSTALL ${DESTDIR}${doc_dir}
+ 	${INSTALL_DATA} ./examples/web_plugins/dokuwiki/* ${DESTDIR}${examples_dir}web_plugins/dokuwiki/
+ 	${INSTALL_DATA} ./examples/web_plugins/movabletype/* ${DESTDIR}${examples_dir}web_plugins/movabletype/
+ 	${INSTALL_DATA} ./examples/web_plugins/wordpress/* ${DESTDIR}${examples_dir}web_plugins/wordpress/
+ 	${INSTALL_DATA} ./examples/swig/*.py ./examples/swig/*.pl ${DESTDIR}${examples_dir}swig
+ 	${INSTALL_DATA} ./examples/swig/*.i ./examples/swig/makefile ${DESTDIR}${examples_dir}swig
+-	${INSTALL_DATA} ./examples/swig/README_SWIG ${DESTDIR}${doc_dir}
+ 	${INSTALL_DATA} ./examples/highlight_pipe.* ${DESTDIR}${examples_dir}
+ 	${INSTALL_DATA} ./examples/*.py ${DESTDIR}${examples_dir}
+ 	${INSTALL_PROGRAM} ./src/highlight ${DESTDIR}${bin_dir}

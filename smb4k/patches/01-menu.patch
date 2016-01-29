@@ -1,0 +1,11 @@
+diff -Naurd smb4k-0.10.2.orig/smb4k/smb4k.desktop smb4k-0.10.2/smb4k/smb4k.desktop
+--- smb4k-0.10.2.orig/smb4k/smb4k.desktop	2009-02-21 18:51:19.000000000 +0100
++++ smb4k-0.10.2/smb4k/smb4k.desktop	2009-04-27 17:24:42.000000000 +0200
+@@ -77,6 +77,6 @@
+ X-DocPath=smb4k/index.html
+ Type=Application
+ Terminal=false
+-Categories=Qt;KDE;Utility;
++Categories=Qt;KDE;Utility;X-UHU-Menu/Tools/File_Managers;
+ X-DBUS-StartupType=Unique
+ X-DBUS-ServiceName=de.berlios.smb4k

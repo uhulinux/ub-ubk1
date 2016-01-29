@@ -1,0 +1,9 @@
+diff -Naur kiten-4.6.90-orig//app/kiten.desktop kiten-4.6.90//app/kiten.desktop
+--- kiten-4.6.90-orig//app/kiten.desktop	2011-06-22 16:47:46.000000000 +0200
++++ kiten-4.6.90//app/kiten.desktop	2011-06-27 20:41:09.000000000 +0200
+@@ -186,4 +186,4 @@
+ Terminal=false
+ Type=Application
+ Icon=kiten
+-Categories=Qt;KDE;Education;Languages;
++Categories=Qt;KDE;Education;Languages;X-UHU-Menu/Edutainment/Languages;

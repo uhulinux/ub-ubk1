@@ -1,0 +1,12 @@
+diff -Naur glibc-2.3.3-200405070341.orig/elf/Makefile glibc-2.3.3-200405070341/elf/Makefile
+--- glibc-2.3.3-200405070341.orig/elf/Makefile	2004-03-27 04:18:23.000000000 +0100
++++ glibc-2.3.3-200405070341/elf/Makefile	2004-05-22 23:26:16.000000000 +0200
+@@ -293,7 +293,7 @@
+ $(objpfx)trusted-dirs.h: $(objpfx)trusted-dirs.st; @:
+ $(objpfx)trusted-dirs.st: Makefile $(..)Makeconfig
+ 	$(make-target-directory)
+-	echo "$(subst :, ,$(default-rpath) $(user-defined-trusted-dirs))"    \
++	echo "$(subst :, ,$(user-defined-trusted-dirs) $(default-rpath))"    \
+ 	| $(AWK) -f gen-trusted-dirs.awk > ${@:st=T};
+ 	echo '#define DL_DST_LIB "$(notdir $(slibdir))"' >> ${@:st=T}
+ 	$(move-if-change) ${@:st=T} ${@:st=h}

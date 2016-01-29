@@ -1,0 +1,12 @@
+diff -Naurdp a/lib/dpkg/parse.c b/lib/dpkg/parse.c
+--- a/lib/dpkg/parse.c	2011-11-25 11:18:08.000000000 +0100
++++ b/lib/dpkg/parse.c	2011-12-23 15:51:18.496096435 +0100
+@@ -178,7 +178,7 @@ pkg_parse_verify(struct parsedb_state *p
+       (pkg->status != stat_notinstalled &&
+        pkg->status != stat_halfinstalled)) {
+     parse_ensure_have_field(ps, &pkgbin->description, "description");
+-    parse_ensure_have_field(ps, &pkgbin->maintainer, "maintainer");
++    //parse_ensure_have_field(ps, &pkgbin->maintainer, "maintainer");
+     parse_must_have_field(ps, pkgbin->version.version, "version");
+   }
+ 

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+MySQL-python-${UB_VERSION}.tar.gz MySQL-python-${UB_VERSION}/
+	http://downloads.sourceforge.net/mysql-python/

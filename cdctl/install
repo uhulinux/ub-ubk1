@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/locale/de/LC_MESSAGES
+ub_install \
+	bindir="$UB_INSTALLDIR"/usr/bin \
+	mandir="$UB_INSTALLDIR"/usr/share/man/man1 \
+	localedir="$UB_INSTALLDIR"/usr/share/locale

@@ -1,0 +1,12 @@
+diff -Naur rekonq-0.8.0-orig//src/data/rekonq.desktop rekonq-0.8.0//src/data/rekonq.desktop
+--- rekonq-0.8.0-orig//src/data/rekonq.desktop	2011-10-15 00:52:53.000000000 +0200
++++ rekonq-0.8.0//src/data/rekonq.desktop	2011-10-17 19:20:40.000000000 +0200
+@@ -84,7 +84,7 @@
+ Type=Application
+ Exec=rekonq %u
+ X-DocPath=rekonq/index.html
+-Categories=Qt;KDE;Network;WebBrowser;
++Categories=Qt;KDE;Network;WebBrowser;X-UHU-Menu/Internet/Browsers;
+ Terminal=false
+ MimeType=text/html;application/xhtml+xml;application/xml;
+ X-DBUS-StartupType=Unique

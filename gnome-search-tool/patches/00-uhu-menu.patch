@@ -1,0 +1,11 @@
+--- a/data/gnome-search-tool.desktop.in.orig	2013-03-07 20:14:34.000000000 +0100
++++ a/data/gnome-search-tool.desktop.in	2013-03-07 20:15:15.000000000 +0100
+@@ -6,7 +6,7 @@
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=GNOME;GTK;Utility;Core;
++Categories=GNOME;GTK;Utility;Core;X-UHU-Menu/Tools/Utilities;
+ NotShowIn=KDE;
+ X-GNOME-DocPath=gnome-search-tool/gnome-search-tool.xml
+ X-GNOME-Bugzilla-Bugzilla=GNOME

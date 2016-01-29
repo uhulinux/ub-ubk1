@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+anytopdf-${UB_VERSION}
+	http://anytopdf.googlecode.com/files/anytopdf

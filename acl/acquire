@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+acl-${UB_VERSION}.src.tar.gz acl-${UB_VERSION}/
+	http://mirror.lihnidos.org/GNU/savannah/acl/
+	ftp://oss.sgi.com/projects/xfs/cmd_tars/
+	ftp://oss.sgi.com/projects/xfs/previous/cmd_tars/

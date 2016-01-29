@@ -1,0 +1,40 @@
+diff -Naur libbluray-0.4.0-orig/src/Makefile.am libbluray-0.4.0/src/Makefile.am
+--- libbluray-0.4.0-orig/src/Makefile.am	2013-09-17 10:05:56.000000000 +0200
++++ libbluray-0.4.0/src/Makefile.am	2013-10-05 10:05:57.000000000 +0200
+@@ -151,14 +151,14 @@
+ AM_CFLAGS += $(BDJAVA_CFLAGS)
+ 
+ all-local:
+-	ant -f $(top_srcdir)/src/libbluray/bdj/build.xml \
++	/usr/lib/apache-ant/bin/ant -f $(top_srcdir)/src/libbluray/bdj/build.xml \
+ 	    -Dbuild='$(abs_builddir)/libbluray/bdj/build' \
+ 	    -Ddist='$(abs_builddir)/.libs' \
+ 	    -Dsrc_awt=:java-$(BDJ_TYPE) \
+ 	    -Dbootclasspath="$(BDJ_BOOTCLASSPATH)"
+ 
+ clean-local:
+-	ant -f $(top_srcdir)/src/libbluray/bdj/build.xml \
++	/usr/lib/apache-ant/bin/ant -f $(top_srcdir)/src/libbluray/bdj/build.xml \
+ 	    -Dbuild='$(abs_builddir)/libbluray/bdj/build' \
+ 	    -Ddist='$(abs_builddir)/.libs' \
+ 	    clean
+diff -Naur libbluray-0.4.0-orig/src/Makefile.in libbluray-0.4.0/src/Makefile.in
+--- libbluray-0.4.0-orig/src/Makefile.in	2013-09-18 10:17:44.000000000 +0200
++++ libbluray-0.4.0/src/Makefile.in	2013-10-05 10:06:52.000000000 +0200
+@@ -1199,14 +1199,14 @@
+ @USING_BDJAVA_TRUE@$(top_builddir)/src/.libs/libbluray.jar: all-local
+ 
+ @USING_BDJAVA_TRUE@all-local:
+-@USING_BDJAVA_TRUE@	ant -f $(top_srcdir)/src/libbluray/bdj/build.xml \
++@USING_BDJAVA_TRUE@	/usr/lib/apache-ant/bin/ant -f $(top_srcdir)/src/libbluray/bdj/build.xml \
+ @USING_BDJAVA_TRUE@	    -Dbuild='$(abs_builddir)/libbluray/bdj/build' \
+ @USING_BDJAVA_TRUE@	    -Ddist='$(abs_builddir)/.libs' \
+ @USING_BDJAVA_TRUE@	    -Dsrc_awt=:java-$(BDJ_TYPE) \
+ @USING_BDJAVA_TRUE@	    -Dbootclasspath="$(BDJ_BOOTCLASSPATH)"
+ 
+ @USING_BDJAVA_TRUE@clean-local:
+-@USING_BDJAVA_TRUE@	ant -f $(top_srcdir)/src/libbluray/bdj/build.xml \
++@USING_BDJAVA_TRUE@	/usr/lib/apache-ant/bin/ant -f $(top_srcdir)/src/libbluray/bdj/build.xml \
+ @USING_BDJAVA_TRUE@	    -Dbuild='$(abs_builddir)/libbluray/bdj/build' \
+ @USING_BDJAVA_TRUE@	    -Ddist='$(abs_builddir)/.libs' \
+ @USING_BDJAVA_TRUE@	    clean

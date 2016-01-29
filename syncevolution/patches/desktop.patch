@@ -1,0 +1,16 @@
+diff -urN syncevolution-0.9.orig/src/gtk-ui/sync.desktop.in syncevolution-0.9/src/gtk-ui/sync.desktop.in
+--- syncevolution-0.9.orig/src/gtk-ui/sync.desktop.in	2009-08-12 13:06:39.000000000 +0200
++++ syncevolution-0.9/src/gtk-ui/sync.desktop.in	2009-09-16 10:50:34.000000000 +0200
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+-_Name=Sync
++Name=SyncEvolution
+ _Comment=Up to date
+ Version=1.0
+ Type=Application
+ Exec=sync-ui
+ Icon=sync
+-Categories=Network;GTK;
++Categories=Network;GTK;X-UHU-Menu/Internet/Tools;
+ Terminal=false
+ StartupNotify=true

@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/nagios
+cp -a src/check_nrpe "$UB_INSTALLDIR"/usr/lib/nagios/
+cp -a src/nrpe "$UB_INSTALLDIR"/usr/sbin/
+cp -a sample-config/nrpe.cfg "$UB_INSTALLDIR"/etc/
+mkdir -p "$UB_INSTALLDIR"/etc/xinetd.d
+cp -a sample-config/nrpe.xinetd "$UB_INSTALLDIR"/etc/xinetd.d/nrpe

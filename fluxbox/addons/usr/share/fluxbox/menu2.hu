@@ -1,0 +1,19 @@
+[encoding] {UTF-8}
+	[begin] (Fluxbox)
+		[include] (/usr/lib/menu/fluxbox/menu[.LANG])
+		[separator]
+		[config] (Beállítások)
+		[submenu] (Rendszer stílusok) {Válasszon stílust...}
+			[stylesdir] (/usr/share/fluxbox/styles)
+		[end]
+		[submenu] (Felhasználói stílusok) {Válasszon stílust...}
+			[stylesdir] (~/.fluxbox/styles)
+		[end]
+		[workspaces] (Munkaasztalok)
+		[commanddialog] (Fluxbox parancs)
+		[separator]
+		[restart] (Újraindítás)
+		[exit] (Kilépés)
+		[end]
+	[end]
+[endencoding]

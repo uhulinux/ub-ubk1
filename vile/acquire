@@ -1,0 +1,9 @@
+#!/usr/bin/env dl
+
+vilearn.tar .
+	http://www.houseofthud.com/vilearn.tar
+
+vile-${UB_VERSION}.tgz vile-${UB_VERSION}/
+	ftp://invisible-island.net/vile/
+	ftp://invisible-island.net/temp/
+	ftp://invisible-island.net/vile/current/

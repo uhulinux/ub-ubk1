@@ -1,0 +1,1 @@
+urllist http://thomasjensen.com/software/tal/ | splitver '^tal-([0-9.]+).tar.gz$' | sort -V | tail -n 1

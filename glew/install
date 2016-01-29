@@ -1,0 +1,3 @@
+#!/bin/sh -eux
+
+make GLEW_DEST="${UB_INSTALLDIR}/usr" install.all

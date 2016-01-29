@@ -1,0 +1,12 @@
+diff -Naur orig/xye.desktop mod/xye.desktop
+--- orig/xye.desktop	2013-08-13 20:29:58.000000000 +0200
++++ mod/xye.desktop	2013-08-26 19:54:13.000000000 +0200
+@@ -4,7 +4,7 @@
+ Encoding=UTF-8
+ Exec=xye
+ Type=Application
+-Categories=Application;Game;PuzzleGame
++Categories=Application;Game;PuzzleGame;X-UHU-Menu/Games/TacticStrategy;
+ Name=Xye
+ GenericName=Xye
+ Comment=Solve puzzles and action challenges in order to get all the gems in the room.

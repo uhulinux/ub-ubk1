@@ -1,0 +1,9 @@
+diff -urN iodine-0.6.0-rc1.orig/Makefile iodine-0.6.0-rc1/Makefile
+--- iodine-0.6.0-rc1.orig/Makefile	2009-01-25 22:40:04.000000000 +0100
++++ iodine-0.6.0-rc1/Makefile	2011-02-04 15:17:13.045443103 +0100
+@@ -1,4 +1,4 @@
+-prefix=/usr/local
++prefix=/usr
+ sbindir=$(prefix)/sbin
+ datadir=$(prefix)/share
+ mandir=$(datadir)/man

@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+nttcp-${UB_VERSION}.tar.gz nttcp-${UB_VERSION}/
+	http://www.leo.org/~elmar/nttcp/
+	http://freeware.sgi.com/source/nttcp/

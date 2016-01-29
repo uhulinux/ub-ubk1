@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pilot-link-${UB_VERSION}.tar.gz pilot-link-${UB_VERSION}/
+	http://downloads.pilot-link.org/

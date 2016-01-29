@@ -1,0 +1,43 @@
+#!/bin/sh -eux
+
+make INSTALL_ROOT="$UB_INSTALLDIR" install
+
+# a desktop fájlok kedvéért szimlinkelünk az /usr/bin-be
+
+ln -s ../lib/qt5/bin/assistant "$UB_INSTALLDIR"/usr/bin/assistant-qt5
+ln -s ../lib/qt5/bin/designer "$UB_INSTALLDIR"/usr/bin/designer-qt5
+ln -s ../lib/qt5/bin/linguist "$UB_INSTALLDIR"/usr/bin/linguist-qt5
+ln -s ../lib/qt5/bin/lrelease "$UB_INSTALLDIR"/usr/bin/lrelease-qt5
+ln -s ../lib/qt5/bin/lupdate "$UB_INSTALLDIR"/usr/bin/lupdate-qt5
+ln -s ../lib/qt5/bin/moc "$UB_INSTALLDIR"/usr/bin/moc-qt5
+ln -s ../lib/qt5/bin/uic "$UB_INSTALLDIR"/usr/bin/uic-qt5
+ln -s ../lib/qt5/bin/qdbus "$UB_INSTALLDIR"/usr/bin/qdbus-qt5
+ln -s ../lib/qt5/bin/qdbusviewer "$UB_INSTALLDIR"/usr/bin/qdbusviewer-qt5
+ln -s ../lib/qt5/bin/qmake "$UB_INSTALLDIR"/usr/bin/qmake-qt5
+
+ln -s ../lib/qt5/bin/lconvert "$UB_INSTALLDIR"/usr/bin/lconvert
+ln -s ../lib/qt5/bin/pixeltool "$UB_INSTALLDIR"/usr/bin/pixeltool
+ln -s ../lib/qt5/bin/qcollectiongenerator "$UB_INSTALLDIR"/usr/bin/qcollectiongenerator
+ln -s ../lib/qt5/bin/qdbuscpp2xml "$UB_INSTALLDIR"/usr/bin/qdbuscpp2xml
+ln -s ../lib/qt5/bin/qdbusxml2cpp "$UB_INSTALLDIR"/usr/bin/qdbusxml2cpp
+ln -s ../lib/qt5/bin/qdoc "$UB_INSTALLDIR"/usr/bin/qdoc
+ln -s ../lib/qt5/bin/qhelpconverter "$UB_INSTALLDIR"/usr/bin/qhelpconverter
+ln -s ../lib/qt5/bin/qhelpgenerator "$UB_INSTALLDIR"/usr/bin/qhelpgenerator
+ln -s ../lib/qt5/bin/qml1plugindump "$UB_INSTALLDIR"/usr/bin/qml1plugindump
+ln -s ../lib/qt5/bin/qmlbundle "$UB_INSTALLDIR"/usr/bin/qmlbundle
+ln -s ../lib/qt5/bin/qmlmin "$UB_INSTALLDIR"/usr/bin/qmlmin
+ln -s ../lib/qt5/bin/qmlplugindump "$UB_INSTALLDIR"/usr/bin/qmlplugindump
+ln -s ../lib/qt5/bin/qmlprofiler "$UB_INSTALLDIR"/usr/bin/qmlprofiler
+ln -s ../lib/qt5/bin/qmlscene "$UB_INSTALLDIR"/usr/bin/qmlscene
+ln -s ../lib/qt5/bin/qmltestrunner "$UB_INSTALLDIR"/usr/bin/qmltestrunner
+ln -s ../lib/qt5/bin/qmlviewer "$UB_INSTALLDIR"/usr/bin/qmlviewer
+ln -s ../lib/qt5/bin/rcc "$UB_INSTALLDIR"/usr/bin/rcc
+ln -s ../lib/qt5/bin/syncqt.pl "$UB_INSTALLDIR"/usr/bin/syncqt.pl
+ln -s ../lib/qt5/bin/xmlpatterns "$UB_INSTALLDIR"/usr/bin/xmlpatterns
+ln -s ../lib/qt5/bin/xmlpatternsvalidator "$UB_INSTALLDIR"/usr/bin/xmlpatternsvalidator
+
+# pkgconfig linkek
+mkdir -p "$UB_INSTALLDIR"/usr/lib/pkgconfig
+for pc in "$UB_INSTALLDIR"/usr/lib/qt5/lib/pkgconfig/*.pc; do
+	ln -s ../../lib/qt5/lib/pkgconfig/`basename $pc` "$UB_INSTALLDIR"/usr/lib/pkgconfig/`basename $pc`
+done

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+POSIX-strftime-Compiler-${UB_VERSION}.tar.gz POSIX-strftime-Compiler-${UB_VERSION}/
+	https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/

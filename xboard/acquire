@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xboard-${UB_VERSION}.tar.gz xboard-${UB_VERSION}/
+	ftp://ftp.gnu.org/gnu/xboard/

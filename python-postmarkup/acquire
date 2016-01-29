@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+postmarkup-${UB_VERSION}.tar.gz postmarkup-${UB_VERSION}/
+	http://postmarkup.googlecode.com/files/

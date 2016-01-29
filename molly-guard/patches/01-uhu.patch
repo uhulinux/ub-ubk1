@@ -1,0 +1,17 @@
+diff -urN molly-guard-0.4.5.orig/shutdown.in molly-guard-0.4.5/shutdown.in
+--- molly-guard-0.4.5.orig/shutdown.in	2015-10-01 13:08:10.000000000 +0200
++++ molly-guard-0.4.5/shutdown.in	2015-10-01 15:02:40.845719691 +0200
+@@ -13,11 +13,11 @@
+ SCRIPTSDIR="@ETCDIR@/run.d"
+ 
+ CMD="${0##*/}"
+-EXEC="/sbin/$CMD"
++EXEC="/usr/bin/$CMD"
+ 
+ case "$CMD" in
+   halt|reboot|shutdown|poweroff)
+-    if [ ! -f $EXEC ]; then
++    if [ ! -e $EXEC ]; then
+       echo "E: not a regular file: $EXEC" >&2
+       exit 4
+     fi

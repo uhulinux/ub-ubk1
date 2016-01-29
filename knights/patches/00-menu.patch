@@ -1,0 +1,12 @@
+diff -Naur knights-2.4.0-orig/src/knights.desktop knights-2.4.0/src/knights.desktop
+--- knights-2.4.0-orig/src/knights.desktop	2011-11-22 17:49:50.000000000 +0100
++++ knights-2.4.0/src/knights.desktop	2011-11-22 17:50:05.000000000 +0100
+@@ -40,7 +40,7 @@
+ Icon=knights
+ Type=Application
+ X-DocPath=knights/index.html
+-Categories=Qt;KDE;Game;BoardGame;
++Categories=Qt;KDE;Game;BoardGame;X-UHU-Menu/Games/Board;
+ GenericName=Chess game
+ GenericName[bg]=Игра на шах
+ GenericName[bs]=Šahovska igra

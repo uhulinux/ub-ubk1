@@ -1,0 +1,17 @@
+diff -Naur libva-vdpau-driver-0.7.4-orig/src/utils_glx.h libva-vdpau-driver-0.7.4/src/utils_glx.h
+--- libva-vdpau-driver-0.7.4-orig/src/utils_glx.h	2012-10-05 17:02:58.000000000 +0200
++++ libva-vdpau-driver-0.7.4/src/utils_glx.h	2012-11-09 19:40:46.000000000 +0100
+@@ -48,6 +48,13 @@
+ typedef void (*PFNGLXRELEASETEXIMAGEEXTPROC)(Display *, GLXDrawable, int);
+ #endif
+ 
++#if GL_GLEXT_VERSION >= 85
++/* XXX: PFNGLMULTITEXCOORD2FPROC got out of the GL_VERSION_1_3_DEPRECATED
++   block and is not defined if GL_VERSION_1_3 is defined in <GL/gl.h>
++   Redefine the type here as an interim solution */
++typedef void (*PFNGLMULTITEXCOORD2FPROC) (GLenum target, GLfloat s, GLfloat t);
++#endif
++
+ #ifndef GL_FRAMEBUFFER_BINDING
+ #define GL_FRAMEBUFFER_BINDING GL_FRAMEBUFFER_BINDING_EXT
+ #endif

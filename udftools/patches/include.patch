@@ -1,0 +1,129 @@
+diff -Naurd a/cdrwtool/cdrwtool.c b/cdrwtool/cdrwtool.c
+--- a/cdrwtool/cdrwtool.c	2002-12-28 05:48:51.000000000 +0100
++++ b/cdrwtool/cdrwtool.c	2007-10-14 14:53:07.000000000 +0200
+@@ -27,6 +27,7 @@
+ #include <unistd.h>
+ #include <getopt.h>
+ #include <signal.h>
++#include <limits.h>
+ 
+ #include <sys/ioctl.h>
+ #include <asm/param.h>
+diff -Naurd a/cdrwtool/main.c b/cdrwtool/main.c
+--- a/cdrwtool/main.c	2004-02-23 04:33:11.000000000 +0100
++++ b/cdrwtool/main.c	2007-10-14 14:52:53.000000000 +0200
+@@ -22,6 +22,7 @@
+ 
+ #include <malloc.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+diff -Naurd a/cdrwtool/options.c b/cdrwtool/options.c
+--- a/cdrwtool/options.c	2003-10-24 03:16:04.000000000 +0200
++++ b/cdrwtool/options.c	2007-10-14 14:52:53.000000000 +0200
+@@ -21,6 +21,8 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
++#include <limits.h>
+ #include <stdlib.h>
+ #include <malloc.h>
+ 
+diff -Naurd a/include/udf_endian.h b/include/udf_endian.h
+--- a/include/udf_endian.h	2002-11-26 08:18:51.000000000 +0100
++++ b/include/udf_endian.h	2007-10-14 14:52:53.000000000 +0200
+@@ -24,6 +24,7 @@
+ #define __UDF_ENDIAN_H
+ 
+ #include "bswap.h"
++#include <string.h>
+ 
+ static inline lb_addr lelb_to_cpu(lb_addr in)
+ {
+diff -Naurd a/mkudffs/mkudffs.c b/mkudffs/mkudffs.c
+--- a/mkudffs/mkudffs.c	2004-02-23 04:35:33.000000000 +0100
++++ b/mkudffs/mkudffs.c	2007-10-14 14:52:53.000000000 +0200
+@@ -22,6 +22,7 @@
+ 
+ #include <malloc.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+diff -Naurd a/mkudffs/options.c b/mkudffs/options.c
+--- a/mkudffs/options.c	2002-11-26 08:18:51.000000000 +0100
++++ b/mkudffs/options.c	2007-10-14 14:52:53.000000000 +0200
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <stdlib.h>
+ #include <getopt.h>
+ #include <malloc.h>
+diff -Naurd a/pktsetup/pktsetup.c b/pktsetup/pktsetup.c
+--- a/pktsetup/pktsetup.c	2002-11-26 08:18:51.000000000 +0100
++++ b/pktsetup/pktsetup.c	2007-10-14 14:54:21.000000000 +0200
+@@ -17,12 +17,14 @@
+  *
+  */
+ #include <stdio.h>
++#include <string.h>
+ #include <fcntl.h>
+ #include <sys/ioctl.h>
+ #include <unistd.h>
+ #include <getopt.h>
+ #include <bits/types.h>
+ #include <sys/types.h>
++#include <limits.h>
+ 
+ #include <linux/cdrom.h>
+ 
+diff -Naurd a/wrudf/ide-pc.c b/wrudf/ide-pc.c
+--- a/wrudf/ide-pc.c	2002-11-26 08:18:51.000000000 +0100
++++ b/wrudf/ide-pc.c	2007-10-14 14:52:53.000000000 +0200
+@@ -25,6 +25,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include <stdarg.h>
+ #include <errno.h>
+ #include <sys/ioctl.h>
+diff -Naurd a/wrudf/wrudf.c b/wrudf/wrudf.c
+--- a/wrudf/wrudf.c	2002-11-26 08:18:51.000000000 +0100
++++ b/wrudf/wrudf.c	2007-10-14 14:52:53.000000000 +0200
+@@ -5,6 +5,7 @@
+  */
+ 
+ #include <stdlib.h>
++#include <string.h>
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <string.h>
+diff -Naurd a/wrudf/wrudf-cdr.c b/wrudf/wrudf-cdr.c
+--- a/wrudf/wrudf-cdr.c	2002-11-26 08:18:51.000000000 +0100
++++ b/wrudf/wrudf-cdr.c	2007-10-14 14:52:53.000000000 +0200
+@@ -4,6 +4,7 @@
+ 
+ #include <stddef.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include "wrudf.h"
+diff -Naurd a/wrudf/wrudf-cdrw.c b/wrudf/wrudf-cdrw.c
+--- a/wrudf/wrudf-cdrw.c	2002-11-26 08:18:51.000000000 +0100
++++ b/wrudf/wrudf-cdrw.c	2007-10-14 14:52:53.000000000 +0200
+@@ -26,6 +26,7 @@
+ 
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <sys/stat.h>

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+zope.i18nmessageid-${UB_VERSION}.tar.gz zope.i18nmessageid-${UB_VERSION}/
+	http://pypi.python.org/packages/source/z/zope.i18nmessageid/

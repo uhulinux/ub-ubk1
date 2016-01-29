@@ -1,0 +1,6 @@
+-         -          666  /var/vdr/config/plugins/setup/*
+-         -          777  /var/cache/vdr
+-         -          777  /var/vdr/config
+-         -          777  /var/vdr/config/plugins
+-         -          777  /var/vdr/config/plugins/setup
+-         -          777  /var/vdr/video

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+STLport-${UB_VERSION}.tar.gz STLport-${UB_VERSION}/
+	http://downloads.sourceforge.net/stlport/

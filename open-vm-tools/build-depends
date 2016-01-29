@@ -1,0 +1,9 @@
+fuse-dev
+gtk2-dev
+gtkmm2-dev
+icu
+libdnet-dev
+libice-dev
+libsm-dev
+libxtst-dev
+procps

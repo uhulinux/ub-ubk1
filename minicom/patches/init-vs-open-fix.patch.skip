@@ -1,0 +1,21 @@
+diff -Naurd minicom-2.1.b/src/main.c minicom-2.1.c/src/main.c
+--- minicom-2.1.b/src/main.c	2003-05-10 20:20:19.000000000 +0200
++++ minicom-2.1.c/src/main.c	2005-06-18 15:13:30.000000000 +0200
+@@ -282,7 +282,7 @@
+   alarm(0);
+   signal(SIGALRM, SIG_IGN);
+   if (portfd < 0 && !portfd_is_socket) {
+-	if (doinit > 0) {
++//	if (doinit > 0) {
+   		if (stdwin != NIL_WIN) wclose(stdwin, 1);
+ #ifdef HAVE_ERRNO_H
+ 		fprintf(stderr, _("minicom: cannot open %s: %s\n"),
+@@ -293,7 +293,7 @@
+ 		if (lockfile[0]) unlink(lockfile);
+ 		drop_privs();
+ 		return(-1);
+-	}
++//	}
+ 	if (lockfile[0]) unlink(lockfile);
+ 	werror(_("Cannot open %s!"), dial_tty);
+ 	drop_privs();

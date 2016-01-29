@@ -1,0 +1,55 @@
+diff -Naurd a/qtoctave/src/CMakeLists.txt b/qtoctave/src/CMakeLists.txt
+--- a/qtoctave/src/CMakeLists.txt	2011-01-06 22:48:07.000000000 +0100
++++ b/qtoctave/src/CMakeLists.txt	2011-07-03 22:01:45.000000000 +0200
+@@ -32,7 +32,7 @@
+   get_filename_component(this_qm ${lang_file} NAME_WE)
+   set(this_qm "${this_qm}.qm")
+   add_custom_command(OUTPUT ${this_qm}
+-    COMMAND "lrelease"
++    COMMAND "/usr/lib/qt4/bin/lrelease"
+     ARGS ${lang_file} -qm "${this_qm}"
+     DEPENDS ${lang_file}
+     )
+diff -Naurd a/qtoctave/src/config_files/qtoctave.desktop b/qtoctave/src/config_files/qtoctave.desktop
+--- a/qtoctave/src/config_files/qtoctave.desktop	2011-01-06 22:48:07.000000000 +0100
++++ b/qtoctave/src/config_files/qtoctave.desktop	2014-05-06 20:10:59.000000000 +0200
+@@ -1,6 +1,7 @@
+ [Desktop Entry]
+ Name=QtOctave
+ Comment=GUI for GNU Octave
++Comment[hu]=Matematikai programnyelv/fejlesztői környezet
+ Icon=qtoctave
+ Exec=qtoctave
+ Type=Application
+diff -Naurd a/qtoctave/src/configure.h b/qtoctave/src/configure.h
+--- a/qtoctave/src/configure.h	2011-01-06 22:48:06.000000000 +0100
++++ b/qtoctave/src/configure.h	2011-07-03 21:40:52.000000000 +0200
+@@ -1,11 +1,11 @@
+ 
+ #ifndef __CONFIGURE_H__
+ #define __CONFIGURE_H__
+-#define CONFIG_PATH "/opt/qtoctave/share/qtoctave"
+-#define HELP_PATH "/opt/qtoctave/share/doc/octave-html/octave_doc/index.html"
+-#define ICON_PATH "/opt/qtoctave/share/qtoctave/images"
+-#define LANG_PATH "/opt/qtoctave/share/qtoctave/lang"
+-#define QTOCTAVE_HELP_PATH "/opt/qtoctave/share/doc/qtoctave/qtoctave_doc/index.html"
++#define CONFIG_PATH "/usr/share/qtoctave"
++#define HELP_PATH "/usr/share/doc/octave-html/octave_doc/index.html"
++#define ICON_PATH "/usr/share/qtoctave/images"
++#define LANG_PATH "/usr/share/qtoctave/lang"
++#define QTOCTAVE_HELP_PATH "/usr/share/doc/qtoctave/qtoctave_doc/index.html"
+ 
+-#define PKG_CMD_PATH "/opt/qtoctave/share/qtoctave/pkg-commands.list"
++#define PKG_CMD_PATH "/usr/share/qtoctave/pkg-commands.list"
+ #endif
+diff -Naurd a/qtoctave/src/search_dialog.h b/qtoctave/src/search_dialog.h
+--- a/qtoctave/src/search_dialog.h	2011-01-06 22:48:07.000000000 +0100
++++ b/qtoctave/src/search_dialog.h	2011-07-03 21:36:12.000000000 +0200
+@@ -18,6 +18,7 @@
+ 
+ #ifndef __SEARCH_DIALOG_H__
+ #define __SEARCH_DIALOG_H__
++#include <cstdio>
+ #include <QDialog>
+ #include <QLabel>
+ #include <QLineEdit>

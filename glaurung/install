@@ -1,0 +1,3 @@
+#!/bin/sh -eux
+
+mv src/glaurung "$UB_INSTALLDIR"/usr/bin

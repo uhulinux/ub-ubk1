@@ -1,0 +1,44 @@
+parse arg n
+r = D2R(n)
+say 'D2R('n') = 'r
+say 'R2D('r') = 'R2D(r)
+exit
+
+
+R2D: procedure
+parse upper arg Roman .
+RtoD.I = 1; RtoD.V = 5; RtoD.X = 10
+RtoD.L = 50; RtoD.C = 100
+RtoD.D = 500; RtoD.M = 1000
+Decimal = 0; Rdigit = LEFT(Roman, 1)
+Ddigit = RtoD.Rdigit
+do J = 2 to LENGTH(Roman)
+  Rdigit = SUBSTR(Roman, J, 1)
+  Next = RtoD.Rdigit
+  if Next > Ddigit
+    then Decimal = Decimal - Ddigit
+    else Decimal = Decimal + Ddigit
+  Ddigit = Next
+end
+return Decimal + Ddigit
+
+
+D2R: procedure
+parse arg Decimal
+if (Decimal < 1) | (Decimal > 3999) | ^DATATYPE(Decimal, "W")
+  then call ERROR,
+    "D2R: Error - integer must be in range 1 - 3999"
+parse value RIGHT(FORMAT(Decimal, , 0), 4, 0),
+  with A +1 B +1 C +1 D
+parse value "1 1 1 1 3 4 4 4 4 7",
+  with X.0 X.1 X.2 X.3 X.4 X.5 X.6 X.7 X.8 X.9
+parse value "0 1 2 3 2 1 2 3 4 2",
+  with Y.0 Y.1 Y.2 Y.3 Y.4 Y.5 Y.6 Y.7 Y.8 Y.9
+R = "IIIVIIIXXXLXXXCCCDCCCMMM"
+/*            1         2      */
+/*   123456789012345678901234  */
+return SUBSTR(R, X.A + 21, Y.A) || SUBSTR(R, X.B + 14, Y.B),
+    || SUBSTR(R, X.C +  7, Y.C) || SUBSTR(R, X.D, Y.D)
+ 
+ERROR: say ARG(1); exit
+

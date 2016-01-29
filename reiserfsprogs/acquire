@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+reiserfsprogs-${UB_VERSION}.tar.gz reiserfsprogs-${UB_VERSION}/
+	http://ivete.fis.unb.br/mirror/linux/utils/fs/reiserfs/
+	ftp://ftp.namesys.com/pub/reiserfsprogs/

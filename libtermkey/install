@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_install
+
+cp -a .libs/demo "$UB_INSTALLDIR"/usr/bin/libtermkey-demo

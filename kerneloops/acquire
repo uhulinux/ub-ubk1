@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kerneloops_${UB_VERSION}.orig.tar.gz kerneloops-${UB_VERSION}/
+	http://ftp.de.debian.org/debian/pool/main/k/kerneloops/

@@ -1,0 +1,41 @@
+diff -Naur kde-baseapps-4.8.95-orig/dolphin/src/dolphin.desktop kde-baseapps-4.8.95/dolphin/src/dolphin.desktop
+--- kde-baseapps-4.8.95-orig/dolphin/src/dolphin.desktop	2012-06-19 23:48:19.000000000 +0200
++++ kde-baseapps-4.8.95/dolphin/src/dolphin.desktop	2012-06-27 08:47:17.000000000 +0200
+@@ -92,7 +92,7 @@
+ Icon=system-file-manager
+ Type=Application
+ X-DocPath=dolphin/index.html
+-Categories=Qt;KDE;System;FileTools;FileManager;
++Categories=Qt;KDE;System;FileTools;FileManager;X-UHU-Menu/Tools/File_Managers;
+ GenericName=File Manager
+ GenericName[af]=Lêerbestuurder
+ GenericName[ar]=مدير الملفات
+diff -Naur kde-baseapps-4.8.95-orig/kdepasswd/kcm/kcm_useraccount.desktop kde-baseapps-4.8.95/kdepasswd/kcm/kcm_useraccount.desktop
+--- kde-baseapps-4.8.95-orig/kdepasswd/kcm/kcm_useraccount.desktop	2012-06-19 23:48:22.000000000 +0200
++++ kde-baseapps-4.8.95/kdepasswd/kcm/kcm_useraccount.desktop	2012-06-27 08:49:42.000000000 +0200
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Icon=preferences-desktop-user-account
+-Categories=QT;KDE;X-KDE-settings-security;
++Categories=QT;KDE;X-KDE-settings-security;X-UHU-Menu/Settings;
+ X-KDE-ParentApp=kcontrol
+ X-KDE-Library=kcm_useraccount
+ X-KDE-System-Settings-Parent-Category=account-details
+diff -Naur kde-baseapps-4.8.95-orig/kfind/kfind.desktop kde-baseapps-4.8.95/kfind/kfind.desktop
+--- kde-baseapps-4.8.95-orig/kfind/kfind.desktop	2012-06-26 21:28:59.000000000 +0200
++++ kde-baseapps-4.8.95/kfind/kfind.desktop	2012-06-27 08:47:41.000000000 +0200
+@@ -96,4 +96,4 @@
+ Name[zh_TW]=尋找檔案/資料夾
+ X-KDE-StartupNotify=true
+ OnlyShowIn=KDE;
+-Categories=Qt;KDE;Core;
++Categories=Qt;KDE;Core;X-UHU-Menu;
+diff -Naur kde-baseapps-4.8.95-orig/konqueror/konqbrowser.desktop kde-baseapps-4.8.95/konqueror/konqbrowser.desktop
+--- kde-baseapps-4.8.95-orig/konqueror/konqbrowser.desktop	2012-05-23 02:03:37.000000000 +0200
++++ kde-baseapps-4.8.95/konqueror/konqbrowser.desktop	2012-06-27 08:48:15.000000000 +0200
+@@ -189,4 +189,4 @@
+ GenericName[x-test]=xxWeb Browserxx
+ GenericName[zh_CN]=网页浏览器
+ GenericName[zh_TW]=網頁瀏覽器
+-Categories=Qt;KDE;Network;WebBrowser;
++Categories=Qt;KDE;Network;WebBrowser;X-UHU-Menu/Internet/Browsers;

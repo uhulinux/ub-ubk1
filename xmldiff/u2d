@@ -1,0 +1,1 @@
+urllist http://ftp.logilab.org/pub/xmldiff/ | parsever | sort -V | tail -n 1

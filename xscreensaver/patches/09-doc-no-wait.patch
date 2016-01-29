@@ -1,0 +1,40 @@
+diff -Naurdp xscreensaver-5.29/driver/XScreenSaver_ad.h xscreensaver-5.29-doc-no-wait/driver/XScreenSaver_ad.h
+--- xscreensaver-5.29/driver/XScreenSaver_ad.h	2014-06-08 23:43:53.000000000 +0200
++++ xscreensaver-5.29-doc-no-wait/driver/XScreenSaver_ad.h	2014-06-19 14:33:00.585760853 +0200
+@@ -48,7 +48,7 @@
+ "*helpURL: http://www.jwz.org/xscreensaver/man.html",
+ "*loadURL: gnome-open '%s'",
+ "*manualCommand: gnome-terminal --title '%s manual' \
+-		--command '/bin/sh -c \"man %s; read foo\"'",
++		--command '/bin/sh -c \"man %s\"'",
+ "*dateFormat:		%d-%b-%y (%a); %I:%M %p",
+ "*installColormap:	True",
+ "*programs:								      \
+diff -Naurdp xscreensaver-5.29/driver/XScreenSaver.ad.in xscreensaver-5.29-doc-no-wait/driver/XScreenSaver.ad.in
+--- xscreensaver-5.29/driver/XScreenSaver.ad.in	2014-06-08 23:43:53.000000000 +0200
++++ xscreensaver-5.29-doc-no-wait/driver/XScreenSaver.ad.in	2014-06-19 14:33:26.797761787 +0200
+@@ -100,13 +100,13 @@ GetViewPortIsFullOfLies: False
+ !
+ @GNOME24@*loadURL: @WITH_BROWSER@ '%s'
+ @GNOME24@*manualCommand: gnome-terminal --title '%s manual' \
+-@GNOME24@		--command '/bin/sh -c "man %s; read foo"'
++@GNOME24@		--command '/bin/sh -c "man %s"'
+ !
+ !   Gnome 2.2:
+ !
+ @GNOME22@*loadURL: gnome-url-show '%s'
+ @GNOME22@*manualCommand: gnome-terminal --title '%s manual' \
+-@GNOME22@		--command '/bin/sh -c "man %s; read foo"'
++@GNOME22@		--command '/bin/sh -c "man %s"'
+ !
+ !   Gnome 1.4:
+ !
+@@ -117,7 +117,7 @@ GetViewPortIsFullOfLies: False
+ !
+ @NOGNOME@*loadURL: firefox '%s' || mozilla '%s' || netscape '%s'
+ @NOGNOME@*manualCommand: xterm -sb -fg black -bg gray75 -T '%s manual' \
+-@NOGNOME@		    -e /bin/sh -c 'man "%s" ; read foo'
++@NOGNOME@		    -e /bin/sh -c 'man "%s"'
+ 
+ 
+ ! The format used for printing the date and time in the password dialog box

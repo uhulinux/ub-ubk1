@@ -1,0 +1,11 @@
+--- gtranslator.orig/data/desktop/gtranslator.desktop.in.in	2009-04-11 03:03:51.000000000 +0200
++++ gtranslator/data/desktop/gtranslator.desktop.in.in	2009-06-16 12:31:45.000000000 +0200
+@@ -7,7 +7,7 @@
+ Type=Application
+ StartupNotify=true
+ MimeType=text/x-gettext-translation;text/x-gettext-translation-template;
+-Categories=GNOME;GTK;Development;Translation;
++Categories=GTK;GNOME;Development;Translation;X-UHU-Menu/Development/Translation;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=gtranslator
+ X-GNOME-Bugzilla-Component=general

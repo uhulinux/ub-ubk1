@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/apache-directory-studio
+cp -a configuration features plugins ApacheDirectoryStudio "$UB_INSTALLDIR"/usr/lib/apache-directory-studio/
+cp -a ApacheDirectoryStudio.xpm "$UB_INSTALLDIR"/usr/share/pixmaps/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-shell-${UB_VERSION}.tar.xz gnome-shell-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-shell/${UB_VERSION_HEAD2}/

@@ -1,0 +1,32 @@
+--- a/libs/gccv/Makefile.in.orig	2014-05-24 18:09:39.000000000 +0200
++++ a/libs/gccv/Makefile.in	2014-05-24 18:10:23.000000000 +0200
+@@ -490,6 +490,7 @@
+ AM_CPPFLAGS = \
+ 		-I$(top_srcdir) -I$(top_srcdir)/libs \
+ 		$(goffice_CFLAGS) \
++		$(lasem_CFLAGS) \
+ 		$(GCU_CFLAGS)
+ 
+ all: all-am
+--- a/plugins/paint/text/Makefile.in.orig	2014-05-24 18:16:22.000000000 +0200
++++ a/plugins/paint/text/Makefile.in	2014-05-24 18:16:53.000000000 +0200
+@@ -428,6 +428,7 @@
+ AM_CPPFLAGS = \
+ 		-I$(top_srcdir) -I$(top_srcdir)/libs \
+ 		$(goffice_CFLAGS) \
++		$(lasem_CFLAGS) \
+ 		$(GCU_CFLAGS)
+ 
+ textdir = $(libdir)/gchemutils/@GCU_API_VER@/plugins/paint
+--- a/programs/paint/Makefile.in.orig	2014-05-24 18:21:23.000000000 +0200
++++ a/programs/paint/Makefile.in	2014-05-24 18:26:16.000000000 +0200
+@@ -442,6 +442,9 @@
+ 		standalonewin.cc \
+ 		standalonewin.h
+ 
++gchempaint_@GCU_API_VER@_LDADD = \
++		$(lasem_LIBS)
++
+ desktop_in_files = gchempaint.desktop.in x-gchempaint.desktop.in
+ desktopdir = $(datadir)/applications
+ desktop_DATA = gchempaint-@GCU_API_VER@.desktop

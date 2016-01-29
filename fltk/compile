@@ -1,0 +1,18 @@
+#!/bin/sh -eux
+
+ub_configure \
+	--enable-threads \
+	--enable-xft \
+	--enable-shared
+
+ub_make
+
+cd documentation
+ub_make
+
+cd src
+for i in fluid fltk-config; \
+	do cp -f $i.man $i.1; done;
+cp -f fltk.man fltk.3
+for i in blocks checkers sudoku; \
+	do cp -f $i.man $i.6; done;

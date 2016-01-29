@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+subversion-tools-${UB_VERSION}.tar.gz subversion-tools-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/subversion-tools/

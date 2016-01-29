@@ -1,0 +1,12 @@
+diff -Naurdp xorg-server-1.12.2/hw/xfree86/common/xf86Globals.c xorg-server-1.12.2-mouseopenfail/hw/xfree86/common/xf86Globals.c
+--- xorg-server-1.12.2/hw/xfree86/common/xf86Globals.c	2012-05-17 19:09:03.000000000 +0200
++++ xorg-server-1.12.2-mouseopenfail/hw/xfree86/common/xf86Globals.c	2012-10-03 01:07:20.876621781 +0200
+@@ -111,7 +111,7 @@ xf86InfoRec xf86Info = {
+ #ifdef CSRG_BASED
+     .consType = -1,
+ #endif
+-    .allowMouseOpenFail = FALSE,
++    .allowMouseOpenFail = TRUE,
+     .vidModeEnabled = TRUE,
+     .vidModeAllowNonLocal = FALSE,
+     .miscModInDevEnabled = TRUE,

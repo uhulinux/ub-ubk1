@@ -1,0 +1,121 @@
+diff -Naurdp a/configure.in b/configure.in
+--- a/configure.in	2009-04-13 00:32:52.000000000 +0200
++++ b/configure.in	2009-04-14 19:31:32.000000000 +0200
+@@ -78,7 +78,7 @@ dnl Make sha1.c happy on big endian syst
+ dnl
+ AC_C_BIGENDIAN
+ 
+-AC_ARG_WITH(distro, AS_HELP_STRING([--with-distro=DISTRO], [Specify the Linux distribution to target: One of redhat, suse, gentoo, debian, arch, slackware, paldo or mandriva]))
++AC_ARG_WITH(distro, AS_HELP_STRING([--with-distro=DISTRO], [Specify the Linux distribution to target: One of redhat, suse, gentoo, debian, arch, slackware, uhu, paldo or mandriva]))
+ if test "z$with_distro" = "z"; then
+ 	AC_CHECK_FILE(/etc/redhat-release,with_distro="redhat")
+ 	AC_CHECK_FILE(/etc/SuSE-release,with_distro="suse")
+@@ -89,6 +89,7 @@ if test "z$with_distro" = "z"; then
+ 	AC_CHECK_FILE(/etc/slackware-version,with_distro="slackware")
+ 	AC_CHECK_FILE(/etc/frugalware-release,with_distro="frugalware")
+ 	AC_CHECK_FILE(/etc/mandriva-release,with_distro="mandriva")
++	AC_CHECK_FILE(/etc/uhu-release,with_distro="uhu")
+ 	if test "z$with_distro" = "z"; then
+ 		with_distro=`lsb_release -is`
+ 	fi
+@@ -100,7 +101,7 @@ if test "z$with_distro" = "z"; then
+ 	exit 1
+ else
+ 	case $with_distro in
+-		redhat|suse|gentoo|debian|slackware|arch|paldo|frugalware|mandriva) ;;
++		redhat|suse|gentoo|debian|slackware|arch|paldo|frugalware|mandriva|uhu) ;;
+ 		*)
+ 			echo "Your distribution (${with_distro}) is not yet supported!  (patches welcome)"
+ 			exit 1
+@@ -153,6 +154,11 @@ if test x"$with_distro" = xmandriva; the
+   AC_DEFINE(TARGET_MANDRIVA, 1, [Define if you have Mandriva])
+ fi
+ 
++AM_CONDITIONAL(TARGET_UHU, test x"$with_distro" = xuhu)
++if test x"$with_distro" = xuhu; then
++  AC_DEFINE(TARGET_UHU, 1, [Define if you have UHU-Linux])
++fi
++
+ AC_MSG_CHECKING([Linux Wireless Extensions >= 18])
+ AC_TRY_COMPILE([#ifndef __user
+                 #define __user
+diff -Naurdp a/src/backends/Makefile.am b/src/backends/Makefile.am
+--- a/src/backends/Makefile.am	2009-03-03 17:55:47.000000000 +0100
++++ b/src/backends/Makefile.am	2009-04-14 19:31:50.000000000 +0200
+@@ -49,6 +49,10 @@ if TARGET_MANDRIVA
+ libnmbackend_la_SOURCES += NetworkManagerMandriva.c
+ endif
+ 
++if TARGET_UHU
++libnmbackend_la_SOURCES += NetworkManagerUHU.c
++endif
++
+ libnmbackend_la_LIBADD += $(DBUS_LIBS) $(GLIB_LIBS)
+ libnmbackend_la_CPPFLAGS =	$(DBUS_CFLAGS)				\
+ 					$(GLIB_CFLAGS)				\
+diff -Naurdp a/src/backends/NetworkManagerUHU.c b/src/backends/NetworkManagerUHU.c
+--- a/src/backends/NetworkManagerUHU.c	1970-01-01 01:00:00.000000000 +0100
++++ b/src/backends/NetworkManagerUHU.c	2009-04-14 19:31:32.000000000 +0200
+@@ -0,0 +1,62 @@
++/*
++ * NetworkManager -- Network link manager
++ *
++ * Dan Williams <dcbw@redhat.com>
++ * Kay Sievers <kay.sievers@suse.de>
++ * Robert Love <rml@novell.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, write to the Free Software Foundation, Inc.,
++ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ * (C) Copyright 2004 Red Hat, Inc.
++ * (C) Copyright 2005-2006 SuSE GmbH
++ */
++
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++
++#include "NetworkManagerGeneric.h"
++#include "NetworkManagerSystem.h"
++#include "NetworkManagerUtils.h"
++#include "nm-utils.h"
++
++/*
++ * nm_system_enable_loopback
++ *
++ * Bring up the loopback interface
++ *
++ */
++void nm_system_enable_loopback (void)
++{
++	nm_generic_enable_loopback ();
++}
++
++/*
++ * nm_system_update_dns
++ *
++ * Invalidate the nscd host cache, if it exists, since
++ * we changed resolv.conf.
++ *
++ */
++void nm_system_update_dns (void)
++{
++	nm_info ("Clearing nscd hosts cache.");
++	nm_spawn_process ("/usr/sbin/nscd -i hosts");
++}
++

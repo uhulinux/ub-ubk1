@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+windows-all-${UB_VERSION_MINOR}.zip windows-all-${UB_VERSION_MINOR}/ :usr/lib/codecs
+	http://www1.mplayerhq.hu/MPlayer/releases/codecs/
+	ftp://ftp1.mplayerhq.hu/MPlayer/releases/codecs/
+	http://www2.mplayerhq.hu/MPlayer/releases/codecs/
+	ftp://ftp2.mplayerhq.hu/MPlayer/releases/codecs/

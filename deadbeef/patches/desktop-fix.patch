@@ -1,0 +1,92 @@
+diff -Naur orig/deadbeef.desktop mod/deadbeef.desktop
+--- orig/deadbeef.desktop	2014-02-02 20:53:41.000000000 +0100
++++ mod/deadbeef.desktop	2014-05-16 11:25:46.801147816 +0200
+@@ -3,39 +3,15 @@
+ GenericName=Audio Player
+ GenericName[pt_BR]=Reprodutor de áudio
+ GenericName[ru]=Аудио плеер
++GenericName[hu]=Hang lejászó
+ Comment=Listen to music
+ Comment[pt_BR]=Escute músicas
+ Comment[ru]=Слушай музыку
++Comment[hu]=Zenehallgatás
+ Exec=deadbeef %F
+ MimeType=application/ogg;audio/x-vorbis+ogg;application/x-ogg;audio/mp3;audio/prs.sid;audio/x-flac;audio/mpeg;audio/x-mpeg;audio/x-mod;audio/x-it;audio/x-s3m;audio/x-xm;audio/x-mpegurl;audio/x-scpls;
+-Categories=AudioVideo;Player;GTK;
++Categories=GTK;AudioVideo;Audio;Player;
+ Terminal=false
+ Type=Application
+ Icon=deadbeef
+ X-PulseAudio-Properties=media.role=music
+-
+-X-Ayatana-Desktop-Shortcuts=Play;Pause;Stop;Next;Prev
+-[Play Shortcut Group]
+-Name=Play
+-Exec=deadbeef --play
+-TargetEnvironment=Unity
+-
+-[Pause Shortcut Group]
+-Name=Pause
+-Exec=deadbeef --pause
+-TargetEnvironment=Unity
+-
+-[Stop Shortcut Group]
+-Name=Stop
+-Exec=deadbeef --stop
+-TargetEnvironment=Unity
+-
+-[Next Shortcut Group]
+-Name=Next
+-Exec=deadbeef --next
+-TargetEnvironment=Unity
+-
+-[Prev Shortcut Group]
+-Name=Prev
+-Exec=deadbeef --prev
+-TargetEnvironment=Unity
+diff -Naur orig/deadbeef.desktop.in mod/deadbeef.desktop.in
+--- orig/deadbeef.desktop.in	2013-12-08 22:34:09.000000000 +0100
++++ mod/deadbeef.desktop.in	2014-05-16 11:26:57.885370337 +0200
+@@ -3,39 +3,15 @@
+ GenericName=Audio Player
+ GenericName[pt_BR]=Reprodutor de áudio
+ GenericName[ru]=Аудио плеер
++GenericName[hu]=Hang lejászó
+ Comment=Listen to music
+ Comment[pt_BR]=Escute músicas
+ Comment[ru]=Слушай музыку
++Comment[hu]=Zenehallgatás
+ Exec=deadbeef %F
+ MimeType=application/ogg;audio/x-vorbis+ogg;application/x-ogg;audio/mp3;audio/prs.sid;audio/x-flac;audio/mpeg;audio/x-mpeg;audio/x-mod;audio/x-it;audio/x-s3m;audio/x-xm;audio/x-mpegurl;audio/x-scpls;
+-Categories=AudioVideo;Player;GTK;
++Categories=GTK;AudioVideo;Audio;Player;
+ Terminal=false
+ Type=Application
+ Icon=deadbeef
+ X-PulseAudio-Properties=media.role=music
+-
+-X-Ayatana-Desktop-Shortcuts=Play;Pause;Stop;Next;Prev
+-[Play Shortcut Group]
+-Name=Play
+-Exec=deadbeef --play
+-TargetEnvironment=Unity
+-
+-[Pause Shortcut Group]
+-Name=Pause
+-Exec=deadbeef --pause
+-TargetEnvironment=Unity
+-
+-[Stop Shortcut Group]
+-Name=Stop
+-Exec=deadbeef --stop
+-TargetEnvironment=Unity
+-
+-[Next Shortcut Group]
+-Name=Next
+-Exec=deadbeef --next
+-TargetEnvironment=Unity
+-
+-[Prev Shortcut Group]
+-Name=Prev
+-Exec=deadbeef --prev
+-TargetEnvironment=Unity

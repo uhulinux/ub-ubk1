@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+libtar-${UB_VERSION}.tar.gz libtar-${UB_VERSION}/
+	ftp://ftp.feep.net/pub/software/libtar/
+	http://mozilla2.mirrors.tds.net/pub/linux/frugalware/frugalware-current/source/lib-extra/libtar/

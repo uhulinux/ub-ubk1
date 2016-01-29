@@ -1,0 +1,9 @@
+diff -Naur orig/xarchiver.desktop.in patched/xarchiver.desktop.in
+--- orig/xarchiver.desktop.in	2008-06-27 07:24:12.000000000 +0200
++++ patched/xarchiver.desktop.in	2013-03-18 17:52:41.053713837 +0100
+@@ -11,4 +11,4 @@
+ X-MultipleArgs=false
+ Categories=GTK;Archiving;Utility;
+ StartupNotify=true
+-MimeType=application/x-arj;application/arj;application/x-bzip;application/x-bzip-compressed-tar;application/x-gzip;application/x-rar;application/x-rar-compressed;application/x-tar;application/x-zip;application/x-zip-compressed;application/zip;multipart/x-zip;application/x-7z-compressed;application/x-compressed-tar;application/x-bzip2;application/x-bzip2-compressed-tar;
++MimeType=application/x-arj;application/arj;application/x-bzip;application/x-bzip-compressed-tar;application/x-gzip;application/x-rar;application/x-rar-compressed;application/x-tar;application/x-zip;application/x-zip-compressed;application/zip;application/x-7z-compressed;application/x-compressed-tar;application/x-bzip2;application/x-bzip2-compressed-tar;

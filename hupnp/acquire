@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+herqq-${UB_VERSION}.zip herqq-${UB_VERSION}/
+	http://downloads.sourceforge.net/hupnp/

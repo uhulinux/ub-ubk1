@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ide-smart-${UB_VERSION}.tar.gz ide-smart-${UB_VERSION}/
+	http://lightside.eresmas.com/

@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+cd Python
+ub_install
+
+# remove conflicting files with qscintilla2-python
+rm "$UB_INSTALLDIR"/usr/share/sip/PyQt4/Qsci/*.sip
+rm -Rf "$UB_INSTALLDIR"/usr/lib/qt4/api/python

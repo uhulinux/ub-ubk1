@@ -1,0 +1,79 @@
+diff -Naur tse3-0.3.1-orig/src/examples/recording/recording.cpp tse3-0.3.1/src/examples/recording/recording.cpp
+--- tse3-0.3.1-orig/src/examples/recording/recording.cpp	2005-07-25 13:22:31.000000000 +0200
++++ tse3-0.3.1/src/examples/recording/recording.cpp	2009-12-01 00:47:51.000000000 +0100
+@@ -27,7 +27,7 @@
+      **************************************************************/
+ 
+ #include <iostream>
+-
++#include <cstdlib>
+ // Used in step 1
+ #include "tse3/Metronome.h"
+ #include "tse3/util/MidiScheduler.h"
+diff -Naur tse3-0.3.1-orig/src/tse3/cmd/Phrase.h tse3-0.3.1/src/tse3/cmd/Phrase.h
+--- tse3-0.3.1-orig/src/tse3/cmd/Phrase.h	2005-07-25 13:22:38.000000000 +0200
++++ tse3-0.3.1/src/tse3/cmd/Phrase.h	2009-12-01 00:49:53.000000000 +0100
+@@ -29,6 +29,7 @@
+     class Phrase;
+     class Song;
+     class Part;
++    class PhraseEdit;
+ 
+     namespace Cmd
+     {
+diff -Naur tse3-0.3.1-orig/src/tse3/MidiFile.cpp tse3-0.3.1/src/tse3/MidiFile.cpp
+--- tse3-0.3.1-orig/src/tse3/MidiFile.cpp	2005-07-25 13:23:00.000000000 +0200
++++ tse3-0.3.1/src/tse3/MidiFile.cpp	2009-12-01 00:51:27.000000000 +0100
+@@ -32,6 +32,7 @@
+ #include <string>
+ #include <queue>
+ #include <math.h>
++#include <cstring>
+ 
+ using namespace TSE3;
+ 
+diff -Naur tse3-0.3.1-orig/src/tse3/plt/OSS.cpp tse3-0.3.1/src/tse3/plt/OSS.cpp
+--- tse3-0.3.1-orig/src/tse3/plt/OSS.cpp	2005-07-25 13:22:56.000000000 +0200
++++ tse3-0.3.1/src/tse3/plt/OSS.cpp	2009-12-01 00:52:52.000000000 +0100
+@@ -25,6 +25,7 @@
+ #include <fcntl.h>
+ #include <stdarg.h>
+ #include <sys/types.h>
++#include <cstring>
+ 
+ // These #includes are linux specific and I need to do some autoconf
+ // magic to work out how to conditionally include them
+diff -Naur tse3-0.3.1-orig/src/tse3/Serializable.h tse3-0.3.1/src/tse3/Serializable.h
+--- tse3-0.3.1-orig/src/tse3/Serializable.h	2005-07-25 13:23:00.000000000 +0200
++++ tse3-0.3.1/src/tse3/Serializable.h	2009-12-01 00:55:06.000000000 +0100
+@@ -20,6 +20,7 @@
+ #include <iosfwd>
+ #include <iomanip>
+ #include <cstddef>
++#include <iostream>
+ 
+ namespace TSE3
+ {
+diff -Naur tse3-0.3.1-orig/src/tse3/TSE2MDL.cpp tse3-0.3.1/src/tse3/TSE2MDL.cpp
+--- tse3-0.3.1-orig/src/tse3/TSE2MDL.cpp	2005-07-25 13:23:00.000000000 +0200
++++ tse3-0.3.1/src/tse3/TSE2MDL.cpp	2009-12-01 00:56:48.000000000 +0100
+@@ -38,6 +38,7 @@
+ #include "tse3/Progress.h"
+ 
+ #include <fstream>
++#include <cstring>
+ 
+ using namespace TSE3;
+ 
+diff -Naur tse3-0.3.1-orig/src/tse3play/tse3play.cpp tse3-0.3.1/src/tse3play/tse3play.cpp
+--- tse3-0.3.1-orig/src/tse3play/tse3play.cpp	2005-08-23 14:58:35.000000000 +0200
++++ tse3-0.3.1/src/tse3play/tse3play.cpp	2009-12-01 00:58:03.000000000 +0100
+@@ -32,7 +32,7 @@
+ #include "tse3/Error.h"
+ #include "tse3/Metronome.h"
+ #include <fstream>
+-
++#include <cstdlib>
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+ #endif

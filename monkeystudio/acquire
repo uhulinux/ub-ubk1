@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mks_${UB_VERSION}-src.zip ./mks_${UB_VERSION}-src/
+	http://monkeystudio.googlecode.com/files/

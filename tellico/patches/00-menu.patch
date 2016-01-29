@@ -1,0 +1,9 @@
+diff -Naur tellico-2.3.7-ori/tellico.desktop tellico-2.3.7/tellico.desktop
+--- tellico-2.3.7-ori/tellico.desktop	2013-01-24 05:13:11.652434233 +0100
++++ tellico-2.3.7/tellico.desktop	2013-04-23 20:39:56.416773740 +0200
+@@ -132,4 +132,4 @@
+ GenericName[zh_CN]=收藏管理器
+ GenericName[zh_TW]=收藏管理員
+ MimeType=application/x-tellico;
+-Categories=KDE;Qt;Office;Database;
++Categories=KDE;Qt;Office;Database;X-UHU-Menu/Tools/Databases;

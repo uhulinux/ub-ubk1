@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libvtemm-${UB_VERSION}.tar.xz libvtemm-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libvtemm/${UB_VERSION_HEAD2}/

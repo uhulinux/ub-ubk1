@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+ub_install
+mv "$UB_OBJECTDIR"/{stage2{,_eltorito}.net,{nb,pxe}grub} "$UB_INSTALLDIR"/usr/lib/grub/

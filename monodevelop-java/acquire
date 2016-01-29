@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+monodevelop-java-${UB_VERSION}.tar.bz2 monodevelop-java-${UB_VERSION}/
+	http://download.mono-project.com/sources/monodevelop-java/

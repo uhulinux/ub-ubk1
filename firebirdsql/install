@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+mkdir -p ${UB_INSTALLDIR}/usr/lib/firebird/examples/api
+mkdir -p ${UB_INSTALLDIR}/usr/lib/firebird/examples/dyn
+mkdir -p ${UB_INSTALLDIR}/usr/lib/firebird/examples/empbuild
+mkdir -p ${UB_INSTALLDIR}/usr/lib/firebird/examples/include
+mkdir -p ${UB_INSTALLDIR}/usr/lib/firebird/examples/stat
+mkdir -p ${UB_INSTALLDIR}/usr/lib/firebird/examples/udf
+
+ub_install

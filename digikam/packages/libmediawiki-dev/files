@@ -1,0 +1,3 @@
+	/usr/include/libmediawiki
+@	/usr/lib/libmediawiki*.so
+	/usr/lib/pkgconfig/libmediawiki.pc

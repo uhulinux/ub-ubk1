@@ -1,0 +1,4 @@
+	/usr/lib/libreoffice/program/kde-open-url
+	/usr/lib/libreoffice/program/libkde*.so
+	/usr/lib/libreoffice/program/libvclplug_kde*.so
+	/usr/share/mimelnk

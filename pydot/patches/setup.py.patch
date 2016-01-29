@@ -1,0 +1,10 @@
+diff -Naur ORIG/setup.py UHU/setup.py
+--- ORIG/setup.py	2008-02-14 21:48:02.000000000 +0100
++++ UHU/setup.py	2009-10-13 10:37:13.000000000 +0200
+@@ -27,5 +27,4 @@
+         'Topic :: Software Development :: Libraries :: Python Modules'],
+     long_description = "\n".join(pydot.__doc__.split('\n')),
+     py_modules = ['pydot', 'dot_parser'],
+-    install_requires = ['pyparsing', 'setuptools'],
+-    data_files = [('.', ['ChangeLog', 'LICENSE', 'README'])] )
++    install_requires = ['pyparsing', 'setuptools'])

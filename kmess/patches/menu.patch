@@ -1,0 +1,12 @@
+diff -Naurdp kmess-r4608.orig/data/kmess.desktop kmess-r4608/data/kmess.desktop
+--- kmess-r4608.orig/data/kmess.desktop	2009-04-17 11:16:46.000000000 +0200
++++ kmess-r4608/data/kmess.desktop	2009-04-17 11:19:07.000000000 +0200
+@@ -6,7 +6,7 @@ Icon=kmess
+ Type=Application
+ DocPath=kmess/index.html
+ Terminal=0
+-Categories=Qt;KDE;Network;InstantMessaging;
++Categories=Qt;KDE;Network;InstantMessaging;X-UHU-Menu/Internet/Messengers;
+ Comment=Live Messenger Client for KDE
+ Comment[de]=Live-Messenger-Klon für KDE 4
+ Comment[nl]=MSN Messenger Kloon voor KDE 4

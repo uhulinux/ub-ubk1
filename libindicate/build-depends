@@ -1,0 +1,7 @@
+dbus-glib-dev
+gnome-doc-utils
+gtk-dev
+libdbusmenu-dev
+libxml2-dev
+pygobject2-dev
+pygtk-dev

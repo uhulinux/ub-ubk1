@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-sharp-${UB_VERSION}.tar.gz gnome-sharp-${UB_VERSION}/
+	http://ftp.gnome.org/pub/GNOME/sources/gnome-sharp/${UB_VERSION_HEAD2}/

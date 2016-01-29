@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+UB_MAKE_PROCS=1 \
+SENDMAIL=/usr/sbin/sendmail \
+ub_compile

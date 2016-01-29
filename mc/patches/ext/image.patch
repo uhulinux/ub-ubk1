@@ -1,0 +1,12 @@
+diff -Naur orig/misc/ext.d/image.sh patched/misc/ext.d/image.sh
+--- orig/misc/ext.d/image.sh	2012-12-27 09:13:20.000000000 +0100
++++ patched/misc/ext.d/image.sh	2012-12-29 11:05:04.353252803 +0100
+@@ -39,7 +39,7 @@
+         ;;
+     *)
+         if [ -n "$DISPLAY" ]; then
+-            (gqview "${MC_EXT_FILENAME}" &)
++            (gthumb "${MC_EXT_FILENAME}" &)
+         elif see >/dev/null 2>&1; then
+             (see "${MC_EXT_FILENAME}" &)
+         else

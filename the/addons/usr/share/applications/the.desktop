@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=THE
+Comment=The Hessling Editor
+Comment[hu]=The Hessling Editor
+Exec=the-run %F
+Icon=/usr/share/doc/the/the64.png
+Terminal=true
+Categories=Utility;TextEditor;

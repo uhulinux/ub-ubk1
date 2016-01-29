@@ -1,0 +1,13 @@
+diff -Naur orig/vitetris.desktop mod/vitetris.desktop
+--- orig/vitetris.desktop	2009-05-28 16:28:21.000000000 +0200
++++ mod/vitetris.desktop	2010-10-15 19:48:54.000000000 +0200
+@@ -3,7 +3,8 @@
+ Encoding=UTF-8
+ Name=vitetris
+ GenericName=Text-mode Tetris
++GenericName[hu]=Szöveges módú tetris
+ Exec=tetris -w 80
+ Icon=vitetris
+-Categories=Game;BlocksGame;
++Categories=Game;BlocksGame;X-UHU-Menu/Games/Action;
+ Terminal=true

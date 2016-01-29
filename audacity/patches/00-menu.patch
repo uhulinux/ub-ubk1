@@ -1,0 +1,22 @@
+diff -Naur audacity-src-1.3.13-beta-orig//src/audacity.desktop.in audacity-src-1.3.13-beta//src/audacity.desktop.in
+--- audacity-src-1.3.13-beta-orig//src/audacity.desktop.in	2011-04-07 01:35:51.000000000 +0200
++++ audacity-src-1.3.13-beta//src/audacity.desktop.in	2011-10-24 20:03:02.000000000 +0200
+@@ -4,15 +4,17 @@
+ Name[ru]=Audacity
+ GenericName=Sound Editor
+ GenericName[de]=Audio-Editor
++GenericName[hu]=Hangszerkesztő
+ GenericName[ru]=Редактор звуковых файлов
+ Comment=Record and edit audio files
+ Comment[de]=Audio-Dateien aufnehmen und bearbeiten
++Comment[hu]=Hangfájlok felvétele és szerkesztése
+ Comment[ru]=Запись и редактирование звуковых файлов
+ 
+ Icon=@AUDACITY_NAME@
+ 
+ Type=Application
+-Categories=AudioVideo;Audio;AudioVideoEditing;
++Categories=AudioVideo;Audio;AudioVideoEditing;X-UHU-Menu/Multimedia/SoundEdit;
+ 
+ Exec=@AUDACITY_NAME@
+ StartupNotify=false

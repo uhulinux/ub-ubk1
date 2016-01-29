@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xinetd-${UB_VERSION}.tar.gz xinetd-${UB_VERSION}/
+	http://www.xinetd.org/

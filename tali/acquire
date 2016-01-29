@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tali-${UB_VERSION}.tar.xz tali-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/tali/${UB_VERSION_HEAD2}/

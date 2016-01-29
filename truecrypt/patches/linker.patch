@@ -1,0 +1,12 @@
+diff -Naur orig/Makefile patched/Makefile
+--- orig/Makefile	2009-06-15 12:15:04.000000000 +0200
++++ patched/Makefile	2013-03-29 12:43:53.500733603 +0100
+@@ -126,7 +126,7 @@
+ 
+ ifeq "$(TC_BUILD_CONFIG)" "Release"
+ C_CXX_FLAGS += -fdata-sections -ffunction-sections
+-LFLAGS += -Wl,--gc-sections
++LFLAGS += -Wl,--gc-sections -ldl
+ 
+ ifneq "$(shell ld --help 2>&1 | grep sysv | wc -l)" "0"
+ LFLAGS += -Wl,--hash-style=sysv

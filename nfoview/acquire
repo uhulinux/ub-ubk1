@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+nfoview-${UB_VERSION}.tar.xz nfoview-${UB_VERSION}/
+	http://download.gna.org/nfoview/${UB_VERSION_HEAD2}/

@@ -1,0 +1,11 @@
+diff -Naurd postfix-2.0.9.orig/conf/main.cf postfix-2.0.9/conf/main.cf
+--- postfix-2.0.9.orig/conf/main.cf	2003-02-20 15:44:47.000000000 +0100
++++ postfix-2.0.9/conf/main.cf	2003-04-22 14:25:28.000000000 +0200
+@@ -105,6 +105,7 @@
+ #inet_interfaces = all
+ #inet_interfaces = $myhostname
+ #inet_interfaces = $myhostname, localhost
++inet_interfaces = localhost
+ 
+ # The proxy_interfaces parameter specifies the network interface
+ # addresses that this mail system receives mail on by way of a

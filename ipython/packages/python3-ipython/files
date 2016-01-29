@@ -1,0 +1,6 @@
+	/usr/bin/ipcluster3
+	/usr/bin/ipcontroller3
+	/usr/bin/ipengine3
+	/usr/bin/iptest3
+	/usr/bin/ipython3
+	/usr/lib/python3*/*

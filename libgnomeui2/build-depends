@@ -1,0 +1,15 @@
+dbus-glib-dev
+esound-dev
+gconf2-dev
+gtk2-dev
+intltool
+libbonobo2-dev
+libbonoboui2-dev
+libgcrypt-dev
+libglade2-dev
+libgnome-keyring-dev
+libgnome2-dev
+libgnomecanvas2-dev
+libsm-dev
+openssl-dev
+orbit2-dev

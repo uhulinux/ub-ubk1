@@ -1,0 +1,10 @@
+diff -Naur kolourpaint-4.6.90-orig//kolourpaint.desktop kolourpaint-4.6.90//kolourpaint.desktop
+--- kolourpaint-4.6.90-orig//kolourpaint.desktop	2011-05-20 22:36:21.000000000 +0200
++++ kolourpaint-4.6.90//kolourpaint.desktop	2011-06-28 21:35:03.000000000 +0200
+@@ -154,5 +154,5 @@
+ #       shipped with.
+ MimeType=image/bmp;image/gif;image/jpeg;image/jp2;image/png;image/tiff;image/x-dds;image/x-eps;image/x-exr;image/x-hdr;image/x-ico;image/x-pcx;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-psd;image/x-rgb;image/x-tga;image/x-xbitmap;image/x-xcf;image/x-xpixmap;video/x-mng;
+ 
+-Categories=Qt;KDE;Graphics;2DGraphics;RasterGraphics;
++Categories=Qt;KDE;Graphics;2DGraphics;RasterGraphics;X-UHU-Menu/Graphics/Bitmaps;
+ Terminal=false

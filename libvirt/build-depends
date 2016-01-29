@@ -1,0 +1,17 @@
+attr-dev
+avahi-dev
+curl-dev
+cyrus-sasl2-dev
+fuse-dev
+gnutls-dev
+libnl-dev
+libpcap-dev
+libpciaccess-dev
+libssh2-dev
+libxml2-dev
+libyajl-dev
+lvm-dev
+parted-dev
+python-dev
+systemd-dev
+util-linux-dev

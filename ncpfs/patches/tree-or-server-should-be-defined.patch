@@ -1,0 +1,21 @@
+diff -Naurd ncpfs-2.2.4.orig/sutil/ncplogin.c ncpfs-2.2.4/sutil/ncplogin.c
+--- ncpfs-2.2.4.orig/sutil/ncplogin.c	2004-02-10 19:28:47.000000000 +0100
++++ ncpfs-2.2.4/sutil/ncplogin.c	2004-08-17 12:27:47.978270379 +0200
+@@ -573,7 +573,7 @@
+ #endif
+ 		info.tree = ntree;
+ 		/*in that case the volume name must be in bindery format */
+-	} else {
++	} else if (info.tree) {
+ 		/* try to get a default tree from env variable */
+ 		/* we are using the same env names as the Caldera client (hope they won't mind)
+ 		#define PREFER_TREE_ENV "NWCLIENT_PREFERRED_TREE"
+@@ -660,6 +660,8 @@
+ 		info.remote_path = info.resourceName;
+ 		NWCCCloseConn(conn);
+ #endif
++	} else {
++		errexit(101, _("Must define either -T tree or -S server option\n"));
+ 	}
+ /* v 1.06 make search of  DefaultUserName (ncplogin/ncpmount  only) moved here so it is called with both -T or -S options*/
+ #ifndef NCPMAP

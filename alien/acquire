@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+alien_${UB_VERSION}.tar.gz alien/
+	http://kitenet.net/programs/alien/
+	ftp://ftp.debian.org/debian/pool/main/a/alien/

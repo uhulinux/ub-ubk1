@@ -1,0 +1,37 @@
+diff -Naur tcpdump-4.1.1-orig/addrtoname.c tcpdump-4.1.1/addrtoname.c
+--- tcpdump-4.1.1-orig/addrtoname.c	2010-04-06 03:18:35.000000000 +0200
++++ tcpdump-4.1.1/addrtoname.c	2010-04-20 21:09:17.000000000 +0200
+@@ -709,7 +709,7 @@
+ 
+ 		while (table->name)
+ 			table = table->nxt;
+-		if (nflag) {
++		if (nflag > 1) {
+ 			(void)snprintf(buf, sizeof(buf), "%d", port);
+ 			table->name = strdup(buf);
+ 		} else
+@@ -1109,7 +1109,7 @@
+ 		f_localnet = localnet;
+ 		f_netmask = mask;
+ 	}
+-	if (nflag)
++	if (nflag > 1)
+ 		/*
+ 		 * Simplest way to suppress names.
+ 		 */
+diff -Naur tcpdump-4.1.1-orig/tcpdump.1.in tcpdump-4.1.1/tcpdump.1.in
+--- tcpdump-4.1.1-orig/tcpdump.1.in	2010-03-12 02:56:44.000000000 +0100
++++ tcpdump-4.1.1/tcpdump.1.in	2010-04-20 21:15:17.000000000 +0200
+@@ -394,7 +394,11 @@
+ TCP segments with the TCP-MD5 option (RFC 2385), if present.
+ .TP
+ .B \-n
+-Don't convert addresses (i.e., host addresses, port numbers, etc.) to names.
++Don't convert host addresses to names.  This can be used to avoid 
++DNS lookups.
++.TP
++.B \-nn
++Don't convert protocol and port numbers etc. to names either.
+ .TP
+ .B \-N
+ Don't print domain name qualification of host names.

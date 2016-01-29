@@ -1,0 +1,1 @@
+urllist http://freedesktop.org/~hadess/ | splitver '^shared-mime-info-([0-9.]+).tar.xz$' | sort -V | tail -n 1

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--with-java=/usr/bin/java \
+	--with-javac=/usr/bin/javac

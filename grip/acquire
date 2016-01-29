@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+grip-${UB_VERSION}.tar.gz grip-${UB_VERSION}/
+	http://downloads.sourceforge.net/grip/

@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+ub_install
+
+# 2.14.0 forgets to create/install translations
+cd po
+for i in *.mo; do
+	mkdir -p "$UB_INSTALLDIR"/usr/share/locale/${i%.mo}/LC_MESSAGES
+	cp $i "$UB_INSTALLDIR"/usr/share/locale/${i%.mo}/LC_MESSAGES/atomix.mo
+done

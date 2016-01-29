@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+make	CONFDIR=/var/vdr/config \
+	VIDEODIR=/var/vdr/video \
+	HAVE_IMAGEMAGICK=1

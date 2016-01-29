@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+idiff-$UB_VERSION.tar.gz idiff-$UB_VERSION/
+	http://www.darwinsys.com/freeware/

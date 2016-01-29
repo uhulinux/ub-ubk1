@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gui-ufw_${UB_VERSION}.orig.tar.gz gui-ufw-${UB_VERSION}/
+	https://launchpad.net/ubuntu/lucid/+source/gui-ufw/${UB_VERSION}-0ubuntu1/+files/

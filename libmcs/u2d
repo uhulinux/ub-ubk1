@@ -1,0 +1,1 @@
+urllist http://distfiles.atheme.org/ | splitver '^libmcs-([0-9.]+).tgz$' | sort -V | tail -n 1

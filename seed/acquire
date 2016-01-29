@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+seed-${UB_VERSION}.tar.xz seed-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/seed/${UB_VERSION_HEAD2}/

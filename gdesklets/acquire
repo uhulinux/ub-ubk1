@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gdesklets-${UB_VERSION}.tar.gz gDesklets-${UB_VERSION}/
+	http://www.gdesklets.de/files/

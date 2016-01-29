@@ -1,0 +1,18 @@
+diff -Naur ORIG/setup.py UHU/setup.py
+--- ORIG/setup.py	1970-01-01 01:00:00.000000000 +0100
++++ UHU/setup.py	2011-11-22 21:10:54.968000148 +0100
+@@ -0,0 +1,14 @@
++from distutils.core import setup
++
++version = '1.6.9'
++
++setup(name='waf',
++      version=version,
++      description="Python-based framework for configuring, compiling and installing applications",
++      author='Thomas Nagy',
++      author_email='tnagy1024@gmail.com',
++      url='http://code.google.com/p/waf/',
++      license='New BSD License',
++      packages=['waflib', 'waflib.Tools', 'waflib.extras'],
++      scripts=['waf-light'],
++      )

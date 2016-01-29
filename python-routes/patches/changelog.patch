@@ -1,0 +1,12 @@
+diff -Naur ORIG/CHANGELOG.rst UHU/CHANGELOG.rst
+--- ORIG/CHANGELOG.rst	2013-11-17 18:38:31.000000000 +0100
++++ UHU/CHANGELOG.rst	2014-02-27 22:14:14.097395964 +0100
+@@ -3,7 +3,7 @@
+ 
+ Release 2.0 (November 17, 2013)
+ ===============================
+-* Python 3.2/3.3 Support. Fixes Issue #2. Thanks to Alejandro Sánchez for
++* Python 3.2/3.3 Support. Fixes Issue #2. Thanks to Alejandro Sanchez for
+   the pull request!
+ 
+ Release 1.13 (March 12, 2012)

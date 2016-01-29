@@ -1,0 +1,9 @@
+diff -Naur kgpg-4.7.44-orig//kgpg.desktop kgpg-4.7.44//kgpg.desktop
+--- kgpg-4.7.44-orig//kgpg.desktop	2011-08-22 15:26:11.000000000 +0200
++++ kgpg-4.7.44//kgpg.desktop	2011-10-13 10:29:21.000000000 +0200
+@@ -210,4 +210,4 @@
+ X-KDE-autostart-after=panel
+ X-KDE-autostart-condition=kgpgrc:User Interface:AutoStart:false
+ 
+-Categories=Qt;KDE;Utility;X-KDE-Utilities-PIM;
++Categories=Qt;KDE;Utility;X-KDE-Utilities-PIM;X-UHU-Menu/Tools/Utilities;

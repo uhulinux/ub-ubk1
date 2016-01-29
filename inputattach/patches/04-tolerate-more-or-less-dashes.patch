@@ -1,0 +1,15 @@
+--- inputattach-1.24.orig/inputattach-1.24.c
++++ inputattach-1.24/inputattach-1.24.c
+@@ -422,9 +422,10 @@
+                 return 1;
+         }
+ 
++	while (argv[1][0] == '-') argv[1]++;
+         for (type = 0; input_types[type].speed; type++) {
+-                if (!strncasecmp(argv[1], input_types[type].name, 16) ||
+-			!strncasecmp(argv[1], input_types[type].name2, 16))
++                if (!strncasecmp(argv[1], input_types[type].name+2, 16) ||
++			!strncasecmp(argv[1], input_types[type].name2+1, 16))
+                         break;
+         }
+ 

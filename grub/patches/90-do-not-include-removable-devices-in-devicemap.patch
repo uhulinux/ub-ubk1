@@ -1,0 +1,33 @@
+diff -Naurd a/util/grub-install.in b/util/grub-install.in
+--- a/util/grub-install.in	2004-08-19 14:43:17.011003259 +0200
++++ b/util/grub-install.in	2004-08-19 14:48:39.738394977 +0200
+@@ -225,18 +225,17 @@
+ if test -f "$device_map"; then
+     :
+ else
+-    # Create a safe temporary file.
+-    test -n "$mklog" && log_file=`$mklog`
+-
+-    $grub_shell --batch $no_floppy --device-map=$device_map <<EOF >$log_file
+-quit
+-EOF
+-    if grep "Error [0-9]*: " $log_file >/dev/null; then
+-	cat $log_file 1>&2
+-	exit 1
+-    fi
+-
+-    rm -f $log_file
++	# should use /sys/firmware/edd/int13_dev* if available
++	c=0
++	>/boot/grub/device.map
++	if [ -z "$no_floppy" -a -b /dev/fd0 ]; then
++		echo -e "(fd0)\t/dev/fd0" >>/boot/grub/device.map
++	fi
++	shopt -s nullglob
++	for i in /dev/sd?; do
++		echo -e "(hd$c)\t$i" >>/boot/grub/device.map
++		c=$((c+1))
++	done
+ fi
+ 
+ # Make sure that there is no duplicated entry.

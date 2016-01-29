@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+digikam-${UB_VERSION/~/-}.tar.bz2 digikam-${UB_VERSION/~/-}/
+	http://download.kde.org/stable/digikam/
+	http://downloads.sourceforge.net/digikam/

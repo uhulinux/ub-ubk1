@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lha${UB_VERSION/./}.tar.gz .
+	http://www.infor.kanazawa-it.ac.jp/~ishii/lhaunix/linux/

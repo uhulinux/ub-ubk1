@@ -1,0 +1,12 @@
+diff -Naurd orig/src/misc.cc mod/src/misc.cc
+--- orig/src/misc.cc	2009-01-25 15:39:51.000000000 +0100
++++ mod/src/misc.cc	2009-12-02 22:14:58.000000000 +0100
+@@ -11,7 +11,7 @@
+ #include "intl.h"
+ #include "ref.h"
+ 
+-#ifdef HAVE_LIBGEN_H
++#if 0
+ #include <libgen.h>
+ #endif
+ 

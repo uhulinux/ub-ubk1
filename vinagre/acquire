@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+vinagre-${UB_VERSION}.tar.xz vinagre-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/vinagre/${UB_VERSION_HEAD2}/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxtask-$UB_VERSION.tar.gz lxtask-$UB_VERSION/
+	http://downloads.sourceforge.net/lxde/

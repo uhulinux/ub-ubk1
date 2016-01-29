@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ibus-${UB_VERSION}.tar.gz ibus-${UB_VERSION}/
+	http://ibus.googlecode.com/files/

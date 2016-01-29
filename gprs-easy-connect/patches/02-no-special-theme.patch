@@ -1,0 +1,15 @@
+diff -Naur GPRS_Easy_Connect_300.orig/data/bin/gprsec GPRS_Easy_Connect_300/data/bin/gprsec
+--- GPRS_Easy_Connect_300.orig/data/bin/gprsec	2006-03-31 16:53:02.000000000 +0200
++++ GPRS_Easy_Connect_300/data/bin/gprsec	2006-05-03 17:22:20.000000000 +0200
+@@ -343,11 +343,6 @@
+ 		#$selected_font="sans 12";
+ 	}
+ 	
+-	#default theme
+-	if (!$theme && (-e $theme_path."/Bubbles-Revisited-GTK/gtk-2.0/gtkrc" || -e $theme_path."/Bubbles-Revisited-GTK/gtk/gtkrc")) {
+-		$theme="Bubbles-Revisited-GTK";
+-	}
+-
+ 	undef @filelines;
+ 	undef $st_found;
+ 	$gtkthemepath=get_gtk2_theme_path($theme_path."/".$theme,"load_themes");

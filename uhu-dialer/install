@@ -1,0 +1,15 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/uhu-dialer
+mkdir -p "$UB_INSTALLDIR"/usr/lib/uhu-dialer
+mkdir -p "$UB_INSTALLDIR"/usr/share/locale/hu/LC_MESSAGES
+
+cp -avl src/modules/. "$UB_INSTALLDIR"/usr/lib/uhu-dialer/
+cp -avl src/uhu-dialer "$UB_INSTALLDIR"/usr/sbin/
+cp -avl ui/uhu-dialer.glade2 "$UB_INSTALLDIR"/usr/share/uhu-dialer/
+chmod +x "$UB_INSTALLDIR"/usr/lib/uhu-dialer/*
+chmod +x "$UB_INSTALLDIR"/usr/sbin/uhu-dialer
+
+msgfmt po/hu.po
+cp -avl messages.mo \
+	"$UB_INSTALLDIR"/usr/share/locale/hu/LC_MESSAGES/uhu-dialer.mo

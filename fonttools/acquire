@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+fonttools-${UB_VERSION}.tar.gz fonttools-${UB_VERSION}/
+	http://downloads.sourceforge.net/fonttools/

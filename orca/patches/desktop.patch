@@ -1,0 +1,11 @@
+--- orca.orig/orca.desktop.in	2009-08-31 18:50:47.000000000 +0200
++++ orca/orca.desktop.in	2009-09-17 17:15:50.000000000 +0200
+@@ -8,7 +8,7 @@
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=GTK;GNOME;Utility;Accessibility;
++Categories=GTK;GNOME;Utility;Accessibility;X-UHU-Menu/Tools/Utilities;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=orca
+ X-GNOME-Bugzilla-Component=general

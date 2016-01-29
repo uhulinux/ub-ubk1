@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+sqlite3-ruby-${UB_VERSION}.gem :.
+	http://rubyforge.org/frs/download.php/42054/

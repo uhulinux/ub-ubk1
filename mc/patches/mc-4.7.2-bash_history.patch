@@ -1,0 +1,14 @@
+diff -p -up mc-4.7.2/contrib/mc.sh.in.bash mc-4.7.2/contrib/mc.sh.in
+--- mc-4.7.2/contrib/mc.sh.in.bash	2010-05-31 17:57:58.000000000 -0300
++++ mc-4.7.2/contrib/mc.sh.in	2010-05-31 17:58:15.000000000 -0300
+@@ -1,3 +1,10 @@
+ # Don't define aliases in plain Bourne shell
+ [ -n "${BASH_VERSION}${KSH_VERSION}${ZSH_VERSION}" ] || return 0
+ alias mc='. @pkglibexecdir@/mc-wrapper.sh'
++
++if [ "$PS1" ]  && [ -n "$BASH" ]; then
++    # work around mc history issues (#59547)
++    # see also https://midnight-commander.org/ticket/2104 for other solutions
++    # and workarounds
++    HISTIGNORE=" cd \"\`*: PROMPT_COMMAND=?*?"
++fi

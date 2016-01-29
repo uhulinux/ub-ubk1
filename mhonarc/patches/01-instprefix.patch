@@ -1,0 +1,21 @@
+--- mhonarc-2.6.10.orig/install.me
++++ mhonarc-2.6.10/install.me
+@@ -255,6 +255,7 @@
+ 		   noman
+ 		   perl=s
+ 		   prefix=s
++		   instprefix=s
+ 
+ 		   help));
+ 
+@@ -430,6 +431,10 @@
+     my $plprefix  = "#!$OptValues{'perl'}\n";
+        $plprefix .= "use lib qw($OptValues{'libpath'});\n"
+ 		    if $OptValues{'libpath'};
++    $OptValues{'instprefix'} and $OptValues{'binpath'} = join ('', $OptValues{'instprefix'}, $OptValues{'binpath'});
++    $OptValues{'instprefix'} and $OptValues{'libpath'} = join ('', $OptValues{'instprefix'}, $OptValues{'libpath'});
++    $OptValues{'instprefix'} and $OptValues{'docpath'} = join ('', $OptValues{'instprefix'}, $OptValues{'docpath'});
++    $OptValues{'instprefix'} and $OptValues{'manpath'} = join ('', $OptValues{'instprefix'}, $OptValues{'manpath'});
+     my($file, $destfile);
+     if ($dobin) {
+ 	print STDOUT qq(Installing programs to "$OptValues{'binpath'}":\n);

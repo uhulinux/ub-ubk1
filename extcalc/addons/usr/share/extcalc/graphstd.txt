@@ -1,0 +1,96 @@
+#config colorred
+#config typestd
+#config dynamicoff
+#config logicoff
+//Sine wave, Coordinate system: trigonometric standard size
+sinX
+#config colorblack
+#config typestd
+#config dynamicoff
+#config logicoff
+//Parabola
+(X+5)^2-4
+#config colorblue
+#config typestd
+#config dynamicon
+#config logicon
+//Animated parabola
+if(A<=10) (1-A/5)*x^2; else if(A<=20) -(x+5*(A-10)/10)^2; else -(x+5)^2-4*(A-20)/10;
+#config colorred
+#config typepolar
+#config dynamicoff
+#config logicoff
+//Archimedian spiral
+X+2
+#config colorgreen
+#config typepolar
+#config dynamicoff
+#config logicoff
+//Polar rose
+5*sin(4X)
+#config coloryellow
+#config typepolar
+#config dynamicoff
+#config logicoff
+//Ellipse
+2/(1+0.7cosX)
+#config colorgreen
+#config typeparameter
+#config dynamicoff
+#config logicoff
+//Parabola
+T\T^2
+#config colorred
+#config typeparameter
+#config dynamicoff
+#config logicon
+//Butterfly curve; Coordinate system: polar, max. radius=5; T from 0 to 20
+sinT*(exp(cosT)-2*cos(4T)-(sin(T/12))^5)\cosT*(exp(cosT)-2*cos(4T)-(sin(T/12))^5)
+#config colormagenta
+#config typeparameter
+#config dynamicon
+#config logicon
+//Inverse function; T from -10 to 10
+F=.01*T^3+1;U=1-A/15;((1+U)*T+(1-U)*F)/2\((1-U)*T+(1+U)*F)/2
+#config colorgrey
+#config typeparameter
+#config dynamicon
+#config logicoff
+//Reflection
+(1-A/15)*T\T^3-5*T^2+5*T-2
+#config colorcyan
+#config typeparameter
+#config dynamicon
+#config logicon
+//Odd function; T from 0 to 10
+F=.05*T^3;if(T>0)U=atan(F/T);elseU=0;R=sqrt(T^2+F^2);cos(pi/30*A+U)*R\sin(pi/30*A+U)*R
+#config colorcolored
+#config type3d
+#config dynamicoff
+#config logicoff
+//X, Y and Z from -3 to 3
+sin(X²)*cos(Z²)
+#config colorcolored
+#config type3d
+#config dynamicoff
+#config logicon
+//MOSFET transistor current; Coordinate system: X and Z from 0 to 10,Y from -0.01 to 0.04
+L=0.01;U=2;K=1e-3;if(X<U)0;else{if(Z>0 && Z<X-U)K*Z*(X-U-Z/2)*(1+L*Z);else if (Z>0) K/2*(X-U)²*(1+L*Z); else 0;}
+#config colorcolored
+#config type3d
+#config dynamicoff
+#config logicon
+//Complex graph in 3D (X=Re,Z=Im); Coordinate system: X and Z from -2 to 2,Y from 0 to 5; complex enabled (Calculator)
+abs(arg(((X+Zi)^2-1)*((X+Zi)^2-2-i)^2/((X+Zi)^2+2+2i)))
+#config colorblue
+#config typenyquist3d
+#config dynamicoff
+#config logicoff
+//
+exp(Z*i)
+#config colorgreen
+#config typenyquist2d
+#config dynamicoff
+#config logicoff
+//
+10/(1+Z*i)

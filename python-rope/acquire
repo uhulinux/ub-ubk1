@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+rope-${UB_VERSION}.tar.gz rope-${UB_VERSION}/
+	http://pypi.python.org/packages/source/r/rope/

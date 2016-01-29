@@ -1,0 +1,33 @@
+#!/bin/sh -eux
+
+cd "$UB_OBJECTDIR"
+
+OPT_FLAGS="-O2 -mtune=generic"
+
+CFLAGS="$OPT_FLAGS" \
+CXXFLAGS="$OPT_FLAGS" \
+XCFLAGS="$OPT_FLAGS" \
+TCFLAGS="$OPT_FLAGS" \
+GCJFLAGS="$OPT_FLAGS" \
+"$UB_COMPILEDIR"/configure \
+	--prefix=/usr \
+	--infodir=/usr/share/info \
+	--mandir=/usr/share/man \
+	--build=i686-uhu-linux \
+	--host=i686-uhu-linux \
+	--target=i686-uhu-linux \
+	--enable-languages=c,c++,objc,java,fortran \
+	--enable-shared \
+	--enable-targets=all \
+	--disable-multilib \
+	--with-gnu-as \
+	--with-gnu-ld \
+	--with-system-zlib \
+	--with-arch-32=i686 \
+	--with-arch-64=core2 \
+	--with-cpu-32=i686 \
+	--with-cpu-64=core2 \
+	--with-tune=generic
+
+ub_make -j4
+

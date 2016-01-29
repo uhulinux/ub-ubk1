@@ -1,0 +1,1 @@
+urllist http://gtk.mplat.es/libgrss/tarballs/ | splitver '^libgrss-([0-9.]+).tar.gz$' | sort -V | tail -n 1

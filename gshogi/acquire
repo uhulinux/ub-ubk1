@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gshogi-${UB_VERSION}.tar.gz gshogi-${UB_VERSION}/
+	http://johncheetham.com/projects/gshogi/

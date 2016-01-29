@@ -1,0 +1,14 @@
+diff -ur grub-0.93.orig/stage2/fsys_jfs.c grub-0.93/stage2/fsys_jfs.c
+--- grub-0.93.orig/stage2/fsys_jfs.c	2002-02-08 00:28:47.000000000 +0100
++++ grub-0.93/stage2/fsys_jfs.c	2003-02-04 13:28:08.000000000 +0100
+@@ -53,8 +53,8 @@
+ #define dtroot		((dtroot_t *)(&inode->di_btroot))
+ 
+ static ldtentry_t de_always[2] = {
+-	{1, -1, 2, {'.', '.'}},
+-	{1, -1, 1, {'.'}}
++	{1, -1, 2, {'.', '.'}, 0},
++	{1, -1, 1, {'.'}, 0}
+ };
+ 
+ static int

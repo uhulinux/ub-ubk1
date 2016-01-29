@@ -1,0 +1,1 @@
+sflist gphoto libgphoto | sort -V | tail -n 1

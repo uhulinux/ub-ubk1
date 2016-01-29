@@ -1,0 +1,1 @@
+urllist http://www.leptonica.com/download.html | splitver '^leptonica-([0-9].+).tar.gz$' | sort -V | tail -n 1

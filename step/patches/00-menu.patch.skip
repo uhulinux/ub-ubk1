@@ -1,0 +1,9 @@
+diff -Naur step-4.6.90-orig//step/step.desktop step-4.6.90//step/step.desktop
+--- step-4.6.90-orig//step/step.desktop	2011-05-20 22:34:32.000000000 +0200
++++ step-4.6.90//step/step.desktop	2011-06-29 19:29:38.000000000 +0200
+@@ -133,4 +133,4 @@
+ Comment[x-test]=xxSimulate physics experimentsxx
+ Comment[zh_CN]=物理实验模拟
+ Comment[zh_TW]=模擬物理實驗
+-Categories=Qt;KDE;Education;Physics;
++Categories=Qt;KDE;Education;Physics;X-UHU-Menu/Edutainment/Science;

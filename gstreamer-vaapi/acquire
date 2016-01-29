@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gstreamer-vaapi-${UB_VERSION}.tar.bz2 gstreamer-vaapi-${UB_VERSION}/
+	http://www.freedesktop.org/software/vaapi/releases/gstreamer-vaapi/

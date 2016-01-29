@@ -1,0 +1,1 @@
+urllist http://sg.danny.cz/scsi/lsscsi.html#mozTocId856130/ | splitver '^lsscsi-([0-9.]+).tgz$' | sort -V | tail -n 1

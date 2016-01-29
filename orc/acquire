@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+orc-${UB_VERSION}.tar.gz orc-${UB_VERSION}/
+	http://code.entropywave.com/download/orc/

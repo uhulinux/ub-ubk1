@@ -1,0 +1,9 @@
+dbus-glib-dev
+gobject-introspection-dev
+gpg
+gpgme-dev
+gtk-dev
+intltool
+libgnome-keyring-dev
+libnotify-dev
+libsm-dev

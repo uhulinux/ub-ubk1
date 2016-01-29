@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_install
+
+sed -i \
+  -e 's|"vixar/12"|"-*-lucida-medium-r-normal-*-*-100-*-*-p-*-*-*,-*-helvetica-medium-r-normal-*-10-*"|g' \
+  "$UB_INSTALLDIR"/usr/share/e16/themes/BlueSteel/fonts.cfg
+rm "$UB_INSTALLDIR"/usr/share/e16/themes/BlueSteel/fonts.cfg.*
+rm -r "$UB_INSTALLDIR"/usr/share/e16/themes/BlueSteel/ttfonts
+
+chown -Rh 0:0 "$UB_INSTALLDIR"

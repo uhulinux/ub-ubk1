@@ -1,0 +1,9 @@
+diff -Naur kcalc-4.7.44-orig//kcalc.desktop kcalc-4.7.44//kcalc.desktop
+--- kcalc-4.7.44-orig//kcalc.desktop	2011-08-22 15:26:06.000000000 +0200
++++ kcalc-4.7.44//kcalc.desktop	2011-10-13 19:33:10.000000000 +0200
+@@ -146,4 +146,4 @@
+ Terminal=false
+ Type=Application
+ X-KDE-StartupNotify=true
+-Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;
++Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;X-UHU-Menu/Tools/Calculators;

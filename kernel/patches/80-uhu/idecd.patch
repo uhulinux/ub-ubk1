@@ -1,0 +1,13 @@
+diff -Naurdp a/drivers/ide/ide-cd.c b/drivers/ide/ide-cd.c
+--- a/drivers/ide/ide-cd.c	2008-02-10 23:18:14.000000000 +0100
++++ b/drivers/ide/ide-cd.c	2008-02-16 19:58:38.000000000 +0100
+@@ -191,6 +191,9 @@ void cdrom_analyze_sense_data(ide_drive_
+  		}
+  	}
+ 
++	if (sense->error_code == 0x70 && sense->sense_key == 0x05 && sense->asc == 0x20 && sense->ascq == 0x00)
++		return;
++
+ 	ide_cd_log_error(drive->name, failed_command, sense);
+ }
+ 

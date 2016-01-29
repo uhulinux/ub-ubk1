@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+PDCurses-${UB_VERSION}.tar.gz PDCurses-${UB_VERSION}/
+	http://downloads.sourceforge.net/pdcurses/

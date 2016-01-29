@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+GD-${UB_VERSION}.tar.gz GD-${UB_VERSION}/
+	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/GD/
+	http://search.cpan.org/CPAN/authors/id/L/LD/LDS/

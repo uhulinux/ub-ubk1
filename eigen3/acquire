@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+${UB_VERSION}.tar.bz2 eigen-eigen-2249f9c22fe8/
+	http://bitbucket.org/eigen/eigen/get/

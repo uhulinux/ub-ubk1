@@ -1,0 +1,12 @@
+diff -Naurd a/configure b/configure
+--- a/configure	2008-09-10 17:33:40.000000000 +0200
++++ b/configure	2008-09-10 18:08:34.000000000 +0200
+@@ -25171,7 +25171,7 @@
+ _ACEOF
+ 
+ 
+-	BROWSER_PLUGIN_DIR="${BROWSER_PLUGIN_DIR:-"\${libdir}/mozilla/plugins"}"
++	BROWSER_PLUGIN_DIR="${BROWSER_PLUGIN_DIR:-"\${libdir}/firefox/plugins"}"
+ 
+ 
+ 

@@ -1,0 +1,75 @@
+diff -urN findutils-4.4.2.orig/find/find.1 findutils-4.4.2/find/find.1
+--- findutils-4.4.2.orig/find/find.1	2009-05-16 17:17:01.000000000 +0200
++++ findutils-4.4.2/find/find.1	2009-09-24 23:55:04.000000000 +0200
+@@ -1978,7 +1978,7 @@
+ .BR find .
+ 
+ .SH "SEE ALSO"
+-\fBlocate\fP(1), \fBlocatedb\fP(5), \fBupdatedb\fP(1), \fBxargs\fP(1),
++\fBlocate\fP(1), \fBlocatedb\fP(5), \fBupdatedb\fP(8), \fBxargs\fP(1),
+ \fBchmod\fP(1), \fBfnmatch\fP(3), \fBregex\fP(7), \fBstat\fP(2),
+ \fBlstat\fP(2), \fBls\fP(1), \fBprintf\fP(3), \fBstrftime\fP(3),
+ \fBctime\fP(3), \fBFinding Files\fP (on-line in Info, or printed).
+diff -urN findutils-4.4.2.orig/locate/locate.1 findutils-4.4.2/locate/locate.1
+--- findutils-4.4.2.orig/locate/locate.1	2009-05-16 17:17:01.000000000 +0200
++++ findutils-4.4.2/locate/locate.1	2009-09-24 23:55:24.000000000 +0200
+@@ -38,7 +38,7 @@
+ when the databases were last updated.  The system administrator can
+ choose the file name of the default database, the frequency with which
+ the databases are updated, and the directories for which they contain
+-entries; see \fBupdatedb\fP(1).
++entries; see \fBupdatedb\fP(8).
+ .P
+ If 
+ .BR locate 's 
+@@ -194,7 +194,7 @@
+ .BR locate .
+ 
+ .SH "SEE ALSO"
+-\fBfind\fP(1), \fBlocatedb\fP(5), \fBupdatedb\fP(1), \fBxargs\fP(1),
++\fBfind\fP(1), \fBlocatedb\fP(5), \fBupdatedb\fP(8), \fBxargs\fP(1),
+ \fBglob\fP(3),
+ \fBFinding Files\fP (on-line in Info, or printed)
+ .SH "HISTORY"
+diff -urN findutils-4.4.2.orig/locate/locatedb.5 findutils-4.4.2/locate/locatedb.5
+--- findutils-4.4.2.orig/locate/locatedb.5	2009-05-16 17:17:01.000000000 +0200
++++ findutils-4.4.2/locate/locatedb.5	2009-09-24 23:55:41.000000000 +0200
+@@ -15,7 +15,7 @@
+ databases are updated, and the directories for which they contain
+ entries.  Normally, file name databases are updated by running the
+ \fBupdatedb\fP program periodically, typically nightly; see
+-\fBupdatedb\fP(1).
++\fBupdatedb\fP(8).
+ 
+ .SH GNU LOCATE02 database format
+ This is the default format of databases produced by 
+diff -urN findutils-4.4.2.orig/locate/updatedb.1 findutils-4.4.2/locate/updatedb.1
+--- findutils-4.4.2.orig/locate/updatedb.1	2009-05-16 17:17:01.000000000 +0200
++++ findutils-4.4.2/locate/updatedb.1	2009-09-24 23:56:19.000000000 +0200
+@@ -1,4 +1,4 @@
+-.TH UPDATEDB 1 \" -*- nroff -*-
++.TH UPDATEDB 8 \" -*- nroff -*-
+ .SH NAME
+ updatedb \- update a file name database
+ .SH SYNOPSIS
+@@ -137,7 +137,7 @@
+ The best way to report a bug is to use the form at
+ http://savannah.gnu.org/bugs/?group=findutils.  
+ The reason for this is that you will then be able to track progress in
+-fixing the problem.   Other comments about \fBupdatedb\fP(1) and about
++fixing the problem.   Other comments about \fBupdatedb\fP(8) and about
+ the findutils package in general can be sent to the 
+ .I bug-findutils
+ mailing list.  To join the list, send email to 
+diff -urN findutils-4.4.2.orig/xargs/xargs.1 findutils-4.4.2/xargs/xargs.1
+--- findutils-4.4.2.orig/xargs/xargs.1	2009-05-16 17:17:01.000000000 +0200
++++ findutils-4.4.2/xargs/xargs.1	2009-09-24 23:56:36.000000000 +0200
+@@ -400,7 +400,7 @@
+ 
+ 
+ .SH "SEE ALSO"
+-\fBfind\fP(1), \fBlocate\fP(1), \fBlocatedb\fP(5), \fBupdatedb\fP(1),
++\fBfind\fP(1), \fBlocate\fP(1), \fBlocatedb\fP(5), \fBupdatedb\fP(8),
+ \fBfork\fP(2), \fBexecvp\fP(3), 
+ \fBFinding Files\fP (on-line in Info, or printed)
+ .SH "BUGS"

@@ -1,0 +1,114 @@
+#config colorred
+#config typestd
+#config dynamicon
+#config logicon
+//Shift along x- then y-axes (y1-3 in a group)-For ALL graphs, T=-10~10, A=0~30, Steps=30, Delay time=6.
+if(A<=15)(x+5*A/15)^2; else (x+5)^2-4*(A-15)/15;
+#config colorgrey
+#config typestd
+#config dynamicon
+#config logicoff
+//y1-3 in a group
+(x+5)^2-4
+#config colorgreen
+#config typestd
+#config dynamicon
+#config logicon
+//Shift along y- then x-axes (y1-3 in a group)
+if(A<=15) x^2-4*A/15; else (x+5*(A-15)/15)^2-4;
+#config colorgrey
+#config typestd
+#config dynamicoff
+#config logicoff
+//
+x^2
+#config colorblue
+#config typestd
+#config dynamicon
+#config logicon
+//Reflect in x-axis, shift along x- then y-axes (y4-7 in a group)
+if(A<=10) (1-A/5)*x^2; else if(A<=20) -(x+5*(A-10)/10)^2; else -(x+5)^2-4*(A-20)/10;
+#config colorgrey
+#config typestd
+#config dynamicoff
+#config logicoff
+//y4-7 in a group
+-(x+5)^2-4
+#config colorred
+#config typestd
+#config dynamicon
+#config logicon
+//Reflect in x-axis, shift along y- then x-axes (y4-7 in a group)
+if(A<=10) (1-A/5)*x^2; else if(A<=20) -x^2-4*(A-10)/10; else -(x+5*(A-20)/10)^2-4;
+#config colormagenta
+#config typeparameter
+#config dynamicon
+#config logicon
+//Reflect in y=x to generate graph of inverse function (y8-10 in a group)
+F=.01*T^3+1;U=1-A/15;((1+U)*T+(1-U)*F)/2\((1-U)*T+(1+U)*F)/2
+#config colorgrey
+#config typestd
+#config dynamicoff
+#config logicoff
+//y8-10 in a group
+x
+#config colorgrey
+#config typestd
+#config dynamicoff
+#config logicoff
+//y8-10 in a group
+.01*x^3+1
+#config colorcyan
+#config typestd
+#config dynamicon
+#config logicoff
+//Shrink (y4, y11, y12 in a group)
+2*(.5+A/60)*x^2
+#config colorgreen
+#config typestd
+#config dynamicon
+#config logicoff
+//Strech (y4, y11, y12 in a group)
+.5*(2-A/30)*x^2
+#config colorbrown
+#config typeparameter
+#config dynamicon
+#config logicoff
+//Reflect in y-axis (y13-14 in a group)
+(1-A/15)*T\T^3-5*T^2+5*T-2
+#config colorgrey
+#config typestd
+#config dynamicoff
+#config logicoff
+//y13-14 in a group
+x^3-5*x^2+5*x-2
+#config colorred
+#config typeparameter
+#config dynamicon
+#config logicon
+//Show odd function's symmetry with respect to the origin (y15-16 in a group)
+F=.05*T^3;U=atan(F/T);R=sqrt(T^2+F^2);cos(pi/30*A+U)*R\sin(pi/30*A+U)*R
+#config colorgrey
+#config typestd
+#config dynamicoff
+#config logicoff
+//y15-16 in a group
+.05*x^3
+#config colorblue
+#config typestd
+#config dynamicon
+#config logicon
+//Reflect in x-axis (y17-18 in a group)
+F=3*sin(x/2);(1-A/15)*F
+#config colorgrey
+#config typestd
+#config dynamicoff
+#config logicoff
+//y17-18 in a group
+3*sin(x/2)
+#config colorblue
+#config typeparameter
+#config dynamicon
+#config logicon
+//Show even function's symmetry with respect to y-axis (y4, y19 in a group)
+if(T>=0)(1-A/15)*T\if(T>=0)T^2

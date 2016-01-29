@@ -1,0 +1,126 @@
+#config clearmemory
+#config complexoff
+#config angledeg
+
+// This script can be used calculate the
+// dotproduct of two vectors.
+// To use it, first press the run button here.
+// Then you can run the script as often as you want by
+// pressing the run button of the script console.
+// Press the kill-button to stop the script.d
+//
+// Feel free to read or modify this code.
+// For further examples and more information, please
+// visit http://extcalc-linux.sourceforge.net/
+//
+
+
+
+A=0;           //first vector
+B=0;           //second vector
+C=0;           //dimensions of the vectors
+D=0;           //Absolute first vector
+E=0;           //Absolute second vector
+F=0;           //dotproduct
+
+G=0;           //general loop counter
+H=0;           //general status variable
+I=0;           //general input variable
+
+//request lines first matrix
+clear;
+
+print("\n********** Dotproduct **********\n");
+print("\n\nInsert dimensions of the vectors: ");
+
+while(1)
+{
+  C=(int)getline;
+  if(C<1 || C>=20)
+    print("\nDimension number must be greather than 0 and less than 20\n");
+  else break;
+}
+clear;
+
+
+  G[1]=0;
+  H=0;
+  while(1)
+  {
+    setcursor(0,0);
+    print("\n********** Dotproduct **********\n");
+    print("\n     Vector 1     .      Vector2");
+
+    for(G[0]=0; G[0]<C; G[0]=G[0]+1)
+    {
+        setcursor(5,G[0]+5);
+        if(G[0]==G[1] && H==0)
+          print("---");
+        else print(A[G[0]]);
+    }
+
+    for(G[0]=0; G[0]<C; G[0]=G[0]+1)
+    {
+        setcursor(25,G[0]+5);
+        if(G[0]==G[1] && H==1)
+          print("---");
+        else print(B[G[0]]);
+    }
+    print("\n\nInsert Element ");
+    print(G[1]+1);
+    print(" of Vector ");
+    print(H+1);
+    print(" : ");
+    I=getline;
+    clear;
+    setcursor(0,C+9);
+    if(I[0]!=0)
+    {
+      if(H==0)
+        A[G[1]]=(float)I;
+      else B[G[1]]=(float)I;
+    }
+
+    G[1]=G[1]+1;
+
+    if(G[1]==C)
+    {
+      G[1]=0;
+      if(H==0)
+        H=1;
+      else H=0;
+    }
+
+    print("Dotrproduct:\t\t");
+    F=A[]sprodB[];
+    print(F);
+
+    D=0;
+    E=0;
+    for(G[0]=0; G[0]<C; G[0]=G[0]+1)
+    {
+      D=D+A[G[0]]^2;
+      E=E+B[G[0]]^2;
+
+
+    }
+
+    D=sqrtD;
+    E=sqrtE;
+    print("\nAbsolute Vector 1:\t");
+    print(D);
+    print("\nAbsolute Vector 2:\t");
+    print(E);
+
+
+
+
+
+
+    print("\nAngle in degrees:\t");
+    print(acos(F/(D*E)));
+    
+
+
+  }
+

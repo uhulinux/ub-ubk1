@@ -1,0 +1,21 @@
+diff -Naurd orig/zgrep.in mod/zgrep.in
+--- orig/zgrep.in	2010-01-03 18:26:02.000000000 +0100
++++ mod/zgrep.in	2010-01-25 18:27:41.000000000 +0100
+@@ -173,7 +173,7 @@
+ 
+ exec 3>&1
+ res=0
+-
++trap break SIGPIPE
+ for i
+ do
+   # Fail if gzip or grep (or sed) fails.
+@@ -220,5 +220,8 @@
+   r=$?
+   test "$gzip_status" -eq 0 || test "$gzip_status" -eq 2 || r=2
+   test $res -lt $r && res=$r
++# SIGPIPE + 128
++  test "$r" -eq 141 && exit $res 
+ done
++trap - SIGPIPE
+ exit $res

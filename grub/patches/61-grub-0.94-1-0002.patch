@@ -1,0 +1,1302 @@
+diff -Naur grub-0.97.orig/netboot/e1000.c grub-0.97/netboot/e1000.c
+--- grub-0.97.orig/netboot/e1000.c	2007-08-14 20:12:51.000000000 +0200
++++ grub-0.97/netboot/e1000.c	2007-08-14 20:13:24.000000000 +0200
+@@ -55,11 +55,6 @@
+ 
+ typedef unsigned char *dma_addr_t;
+ 
+-typedef enum {
+-	FALSE = 0,
+-	TRUE = 1
+-} boolean_t;
+-
+ #define DEBUG 0
+ 
+ 
+diff -Naur grub-0.97.orig/netboot/eepro100.c grub-0.97/netboot/eepro100.c
+--- grub-0.97.orig/netboot/eepro100.c	2007-08-14 20:12:51.000000000 +0200
++++ grub-0.97/netboot/eepro100.c	2007-08-14 20:13:24.000000000 +0200
+@@ -416,6 +416,35 @@
+ #endif
+ }
+ 
++/*
++ * Sometimes the receiver stops making progress.  This routine knows
++ * how to get it going again, without losing packets or being
++ * otherwise nasty like a chip reset would be.  Previously the driver
++ * had a whole sequence of if RxSuspended, if it's no buffers do one
++ * thing, if it's no resources, do another, etc.  But those things
++ * don't really matter.  Separate logic in the ISR provides for
++ * allocating buffers--the other half of operation is just making sure
++ * the receiver is active.  speedo_rx_soft_reset does that.  This
++ * problem with the old, more involved algorithm is shown up under
++ * ping floods on the order of 60K packets/second on a 100Mbps fdx
++ * network.
++ */
++static void
++speedo_rx_soft_reset(void)
++{
++	wait_for_cmd_done(ioaddr + SCBCmd);
++	/*
++	 * Put the hardware into a known state.
++	 */
++	outb(RX_ABORT, ioaddr + SCBCmd);
++	
++	ACCESS(rxfd)rx_buf_addr = 0xffffffff;
++	
++	wait_for_cmd_done(ioaddr + SCBCmd);
++	
++	outb(RX_START, ioaddr + SCBCmd);
++}
++
+ /* function: eepro100_poll / eth_poll
+  * This recieves a packet from the network.
+  *
+@@ -430,9 +459,32 @@
+ 
+ static int eepro100_poll(struct nic *nic)
+ {
++	unsigned int status;
++
++	status = inw(ioaddr + SCBStatus);
+ 	if (!ACCESS(rxfd)status)
+ 		return 0;
+ 
++	/*
++	 * The chip may have suspended reception for various reasons.
++	 * Check for that, and re-prime it should this be the case.
++	 */
++	switch ((status >> 2) & 0xf) {
++	case 0: /* Idle */
++		break;
++	case 1:     /* Suspended */
++	case 2:     /* No resources (RxFDs) */
++	case 9:     /* Suspended with no more RBDs */
++	case 10: /* No resources due to no RBDs */
++	case 12: /* Ready with no RBDs */
++		speedo_rx_soft_reset();
++		break;
++	case 3:  case 5:  case 6:  case 7:  case 8:
++	case 11:  case 13:  case 14:  case 15:
++		/* these are all reserved values */
++		break;
++	}
++
+ 	/* Ok. We got a packet. Now restart the reciever.... */
+ 	ACCESS(rxfd)status = 0;
+ 	ACCESS(rxfd)command = 0xc000;
+diff -Naur grub-0.97.orig/netboot/grub.h grub-0.97/netboot/grub.h
+--- grub-0.97.orig/netboot/grub.h	2007-08-14 20:12:51.000000000 +0200
++++ grub-0.97/netboot/grub.h	2007-08-14 20:13:24.000000000 +0200
+@@ -159,4 +159,6 @@
+ #  define DEBUG 0
+ #endif
+ 
++/*#define RPC_DEBUG*/
++
+ #endif /* GRUB_H */
+diff -Naur grub-0.97.orig/netboot/Makefile.in grub-0.97/netboot/Makefile.in
+--- grub-0.97.orig/netboot/Makefile.in	2007-08-14 20:12:51.000000000 +0200
++++ grub-0.97/netboot/Makefile.in	2007-08-14 20:22:23.000000000 +0200
+@@ -56,7 +56,8 @@
+ 	libdrivers_a-fsys_tftp.$(OBJEXT) \
+ 	libdrivers_a-i386_timer.$(OBJEXT) libdrivers_a-misc.$(OBJEXT) \
+ 	libdrivers_a-nic.$(OBJEXT) libdrivers_a-pci.$(OBJEXT) \
+-	libdrivers_a-pci_io.$(OBJEXT) libdrivers_a-timer.$(OBJEXT)
++	libdrivers_a-pci_io.$(OBJEXT) libdrivers_a-timer.$(OBJEXT) \
++	libdrivers_a-rpc.$(OBJEXT)
+ libdrivers_a_OBJECTS = $(am_libdrivers_a_OBJECTS)
+ DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
+ depcomp = $(SHELL) $(top_srcdir)/depcomp
+@@ -193,7 +194,7 @@
+ 	if_arp.h if_ether.h igmp.h in.h io.h ip.h isa.h latch.h \
+ 	little_bswap.h misc.c nic.c nic.h osdep.h pci.c pci.h \
+ 	pci_ids.h pci_io.c stdint.h tftp.h timer.c timer.h \
+-	types.h udp.h
++	types.h udp.h rpc.c rpc.h
+ 
+ EXTRA_libdrivers_a_SOURCES = 3c595.c 3c595.h 3c90x.c davicom.c \
+ 	e1000.c e1000_hw.h eepro100.c epic100.c epic100.h natsemi.c \
+@@ -344,6 +345,7 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdrivers_a-pci.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdrivers_a-pci_io.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdrivers_a-pcnet32.Po@am__quote@
++@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdrivers_a-rpc.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdrivers_a-rtl8139.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdrivers_a-sis900.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libdrivers_a-sundance.Po@am__quote@
+@@ -480,6 +482,20 @@
+ @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+ @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libdrivers_a_CFLAGS) $(CFLAGS) -c -o libdrivers_a-timer.obj `if test -f 'timer.c'; then $(CYGPATH_W) 'timer.c'; else $(CYGPATH_W) '$(srcdir)/timer.c'; fi`
+ 
++libdrivers_a-rpc.o: rpc.c
++@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libdrivers_a_CFLAGS) $(CFLAGS) -MT libdrivers_a-rpc.o -MD -MP -MF "$(DEPDIR)/libdrivers_a-rpc.Tpo" -c -o libdrivers_a-rpc.o `test -f 'rpc.c' || echo '$(srcdir)/'`rpc.c; \
++@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libdrivers_a-rpc.Tpo" "$(DEPDIR)/libdrivers_a-rpc.Po"; else rm -f "$(DEPDIR)/libdrivers_a-rpc.Tpo"; exit 1; fi
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='rpc.c' object='libdrivers_a-rpc.o' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libdrivers_a_CFLAGS) $(CFLAGS) -c -o libdrivers_a-rpc.o `test -f 'rpc.c' || echo '$(srcdir)/'`rpc.c
++
++libdrivers_a-rpc.obj: rpc.c
++@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libdrivers_a_CFLAGS) $(CFLAGS) -MT libdrivers_a-rpc.obj -MD -MP -MF "$(DEPDIR)/libdrivers_a-rpc.Tpo" -c -o libdrivers_a-rpc.obj `if test -f 'rpc.c'; then $(CYGPATH_W) 'rpc.c'; else $(CYGPATH_W) '$(srcdir)/rpc.c'; fi`; \
++@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libdrivers_a-rpc.Tpo" "$(DEPDIR)/libdrivers_a-rpc.Po"; else rm -f "$(DEPDIR)/libdrivers_a-rpc.Tpo"; exit 1; fi
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='rpc.c' object='libdrivers_a-rpc.obj' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libdrivers_a_CFLAGS) $(CFLAGS) -c -o libdrivers_a-rpc.obj `if test -f 'rpc.c'; then $(CYGPATH_W) 'rpc.c'; else $(CYGPATH_W) '$(srcdir)/rpc.c'; fi`
++
+ libdrivers_a-3c595.o: 3c595.c
+ @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libdrivers_a_CFLAGS) $(CFLAGS) -MT libdrivers_a-3c595.o -MD -MP -MF "$(DEPDIR)/libdrivers_a-3c595.Tpo" -c -o libdrivers_a-3c595.o `test -f '3c595.c' || echo '$(srcdir)/'`3c595.c; \
+ @am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libdrivers_a-3c595.Tpo" "$(DEPDIR)/libdrivers_a-3c595.Po"; else rm -f "$(DEPDIR)/libdrivers_a-3c595.Tpo"; exit 1; fi
+diff -Naur grub-0.97.orig/netboot/nfs.h grub-0.97/netboot/nfs.h
+--- grub-0.97.orig/netboot/nfs.h	1970-01-01 01:00:00.000000000 +0100
++++ grub-0.97/netboot/nfs.h	2007-08-14 20:13:24.000000000 +0200
+@@ -0,0 +1,63 @@
++#ifndef	_NFS_H
++#define	_NFS_H
++
++#define SUNRPC_PORT	111
++
++#define PROG_PORTMAP	100000
++#define PROG_NFS	100003
++#define PROG_MOUNT	100005
++
++#define MSG_CALL	0
++#define MSG_REPLY	1
++
++#define PORTMAP_GETPORT	3
++
++#define MOUNT_ADDENTRY	1
++#define MOUNT_UMOUNTALL	4
++
++#define NFS_LOOKUP	4
++#define	NFS_READLINK	5
++#define NFS_READ	6
++
++#define NFS_FHSIZE	32
++
++#define NFSERR_PERM	1
++#define NFSERR_NOENT	2
++#define NFSERR_ACCES	13
++#define	NFSERR_ISDIR	21
++#define	NFSERR_INVAL	22
++
++/* Block size used for NFS read accesses.  A RPC reply packet (including  all
++ * headers) must fit within a single Ethernet frame to avoid fragmentation.
++ * Chosen to be a power of two, as most NFS servers are optimized for this.  */
++#define NFS_READ_SIZE	1024
++
++#define NFS_MAXLINKDEPTH 16
++
++struct rpc_t {
++	struct iphdr ip;
++	struct udphdr udp;
++	union {
++		uint8_t  data[300];		/* longest RPC call must fit!!!! */
++		struct {
++			uint32_t id;
++			uint32_t type;
++			uint32_t rpcvers;
++			uint32_t prog;
++			uint32_t vers;
++			uint32_t proc;
++			uint32_t data[1];
++		} call;
++		struct {
++			uint32_t id;
++			uint32_t type;
++			uint32_t rstatus;
++			uint32_t verifier;
++			uint32_t v2;
++			uint32_t astatus;
++			uint32_t data[1];
++		} reply;
++	} u;
++};
++
++#endif	/* _NFS_H */
+diff -Naur grub-0.97.orig/netboot/nic.c grub-0.97/netboot/nic.c
+--- grub-0.97.orig/netboot/nic.c	2007-08-14 20:12:51.000000000 +0200
++++ grub-0.97/netboot/nic.c	2007-08-14 20:13:24.000000000 +0200
+@@ -646,10 +646,11 @@
+ 		if (await_reply(await_dhcp, 0, NULL, timeout)) {
+ 			/* If not a DHCPOFFER then must be just a BOOTP reply,
+ 			   be backward compatible with BOOTP then */
+-			if (dhcp_reply != DHCPOFFER){
++			//if (dhcp_reply != DHCPOFFER){
++		        //jscott: DODGY HACK: comment out this if: use the first offer as the IP!
+ 				network_ready = 1;
+ 				return(1);
+-			}
++			//}
+ 			dhcp_reply = 0;
+ 			memcpy(ip.bp.bp_vend, rfc1533_cookie_dhcp, sizeof rfc1533_cookie_dhcp);
+ 			memcpy(ip.bp.bp_vend + sizeof rfc1533_cookie_dhcp, dhcprequest, sizeof dhcprequest);
+diff -Naur grub-0.97.orig/netboot/rpc.c grub-0.97/netboot/rpc.c
+--- grub-0.97.orig/netboot/rpc.c	1970-01-01 01:00:00.000000000 +0100
++++ grub-0.97/netboot/rpc.c	2007-08-14 20:13:24.000000000 +0200
+@@ -0,0 +1,371 @@
++#include "grub.h"
++#include "types.h"
++#include "nic.h"
++#include "rpc.h"
++
++#define START_OPORT 700		/* mountd usually insists on secure ports */
++#define OPORT_SWEEP 200		/* make sure we don't leave secure range */
++
++static unsigned long rpc_id;
++static int oport = START_OPORT;
++
++static int await_rpc(int ival, void *ptr,
++	unsigned short ptype, struct iphdr *ip, struct udphdr *udp)
++{
++	struct rpc_pkg *rpc;
++	if (!udp) 
++		return 0;
++	if (arptable[ARP_CLIENT].ipaddr.s_addr != ip->dest.s_addr)
++		return 0;
++	if (ntohs(udp->dest) != ival)
++		return 0;
++	if (nic.packetlen < ETH_HLEN + sizeof(struct iphdr) + sizeof(struct udphdr) + 8)
++		return 0;
++	rpc = (struct rpc_pkg *)&nic.packet[ETH_HLEN];
++	if (*(unsigned long *)ptr != ntohl(rpc->rbody.xid))
++		return 0;
++	if (MSG_REPLY != ntohl(rpc->rbody.mtype))
++		return 0;
++	return 1;
++}
++
++/**************************************************************************
++RPC_ADD_CREDENTIALS - Add RPC authentication/verifier entries
++**************************************************************************/
++long *add_auth_unix(struct opaque_auth *auth)
++{
++	int hl;
++	long *p;
++
++	/* Here's the executive summary on authentication requirements of the
++	 * various NFS server implementations:  Linux accepts both AUTH_NONE
++	 * and AUTH_UNIX authentication (also accepts an empty hostname field
++	 * in the AUTH_UNIX scheme).  *BSD refuses AUTH_NONE, but accepts
++	 * AUTH_UNIX (also accepts an empty hostname field in the AUTH_UNIX
++	 * scheme).  To be safe, use AUTH_UNIX and pass the hostname if we have
++	 * it (if the BOOTP/DHCP reply didn't give one, just use an empty
++	 * hostname).  */
++
++	hl = RNDUP(hostnamelen);
++
++	/* Provide an AUTH_UNIX credential.  */
++	auth[0].flavor = htonl(AUTH_UNIX);		/* AUTH_UNIX */
++	auth[0].length = htonl(hl+20);		/* auth length */
++	p = auth[0].data;
++	*p++ = htonl(0);		/* stamp */
++	*p++ = htonl(hostnamelen);	/* hostname string */
++	if (hostnamelen != hl) {
++		*(p + (hl / BYTES_PER_XDR_UNIT - 1)) = 0; /* add zero padding */
++	}
++	memcpy(p, hostname, hostnamelen);
++	p += hl / BYTES_PER_XDR_UNIT;
++	*p++ = 0;			/* uid */
++	*p++ = 0;			/* gid */
++	*p++ = 0;			/* auxiliary gid list */
++
++	/* Provide an AUTH_NONE verifier.  */
++	auth = (struct opaque_auth *)p;
++	auth->flavor = 0;			/* AUTH_NONE */
++	auth->length = 0;			/* auth length */
++
++	return auth->data;
++}
++
++long *add_auth_none(struct opaque_auth *auth)
++{
++#ifdef RPC_DEBUG
++	grub_printf("add_auth_none(auth:%d)\n", auth);
++#endif /* RPC_DEBUG */
++	auth[0].flavor = htonl(AUTH_NULL); /* cred */
++	auth[0].length = htonl(0);
++	auth[1].flavor = htonl(AUTH_NULL); /* verf */
++	auth[1].length = htonl(0);
++#ifdef RPC_DEBUG
++	grub_printf("add_auth_none OK, returned %d\n", auth[1].data);
++#endif /* RPC_DEBUG */
++	return auth[1].data;
++}
++
++AUTH *__authnone_create(AUTH *auth)
++{
++	auth->add_auth = &add_auth_none;
++	return auth;
++}
++/**
++ * auth_destroy
++ * 
++ * Anything is static, do nothing here
++ **/
++void auth_destroy(AUTH *auth)
++{
++	return;
++}
++
++int32_t *xdr_inline(XDR *xdrs, int len)
++{
++	int32_t *retval;
++
++	if (((char *)xdrs->x_private + xdrs->x_handy) <
++	    ((char *)xdrs->x_base + len ))
++		return NULL;
++	retval = (int32_t *)xdrs->x_base;
++	(char *)xdrs->x_base += len;
++	xdrs->x_handy -= len;
++
++	return retval;
++}
++
++/** 
++ * clntudp_call
++ * 
++ * Call the remote procedure _procnum_ in remote program _prognum_ of version
++ * _versnum_, which UDP address is _sin_addr_ and port is _sin_port_.
++ **/
++static int 
++clntudp_call(CLIENT *clnt, u_long procnum, xdrproc_t inproc, char *in,
++	     xdrproc_t outproc, char *out, struct timeval tout)
++{
++	struct rpc_pkg buf, *reply;
++	long *p;
++
++
++
++	unsigned long xid;
++	int retries;
++	long timeout, tout_ticks;
++       	struct XDR xdrs;
++	/* Must be static */
++	static int tokens = 0;
++
++#ifdef RPC_DEBUG
++	grub_printf("clntudp_call(procnum: %d)\n buf at %d\n", procnum, &buf);
++#endif /* RPC_DEBUG */
++	
++	tout_ticks = tout.tv_sec * TICKS_PER_SEC
++		+ tout.tv_usec * TICKS_PER_SEC / 1000;
++	rx_qdrain();
++	
++	xid = rpc_id++;
++	buf.cbody.xid = htonl(xid);
++	buf.cbody.mtype = htonl(MSG_CALL);
++	buf.cbody.rpcvers = htonl(2);	/* use RPC version 2 */
++	buf.cbody.prog = htonl(clnt->prognum);
++	buf.cbody.vers = htonl(clnt->versnum);
++	buf.cbody.proc = htonl(procnum);
++
++	/*
++	 * We use _x_base_ to store the heap top and _x_private_ for
++	 * the heap end. _x_handy is the max size of the heap.
++	 */
++	xdrs.x_base = xdrs.x_private 
++		= (caddr_t)clnt->cl_auth->add_auth(buf.cbody.auth);
++	xdrs.x_handy = (char *)&buf + sizeof(buf) - (char *)xdrs.x_base;
++#ifdef RPC_DEBUG
++	grub_printf("x_base at %d, x_private at %d, x_handy is %d\n",
++		    xdrs.x_base, xdrs.x_private, xdrs.x_handy);
++	grub_printf("Encoding...");
++#endif
++	/* Encoding... */
++	xdrs.x_op = XDR_ENCODE;
++	if (!inproc(&xdrs, in)){
++		/* Unable to encode */
++		return RPC_CANTENCODEARGS;
++	}
++#ifdef RPC_DEBUG
++	grub_printf("OK.\n");
++	grub_printf("x_base at %d, x_private at %d, x_handy is %d\n",
++		    xdrs.x_base, xdrs.x_private, xdrs.x_handy);
++#endif
++	/*
++	 * Try to implement something similar to a window protocol in
++	 * terms of response to losses. On successful receive, increment
++	 * the number of tokens by 1 (cap at 256). On failure, halve it.
++	 * When the number of tokens is >= 2, use a very short timeout.
++	 */
++	for (retries = 0; retries < MAX_RPC_RETRIES; retries++) {
++		if (tokens >= 2)
++			timeout = TICKS_PER_SEC/2;
++		else
++			timeout = rfc2131_sleep_interval(tout_ticks, retries);
++		udp_transmit(arptable[clnt->server].ipaddr.s_addr, clnt->sport,
++			     clnt->port, (char *)xdrs.x_base - (char *)&buf, &buf);
++		if (await_reply(await_rpc, clnt->sport, &xid, timeout)) {
++			if (tokens < 256)
++				tokens++;
++			reply = (struct rpc_pkg *)&nic.packet[ETH_HLEN];
++			if (reply->rbody.stat || reply->rbody.verifier 
++			    || reply->rbody.astatus) {
++				if (reply->rbody.stat) {
++					/* MSG_DENIED */
++					/* TODO: specify the error */
++					return RPC_AUTHERROR;
++				}
++				if (reply->rbody.astatus) {
++					/* RPC couldn't decode parameters */
++					return RPC_CANTDECODEARGS;
++				}
++			}
++			xdrs.x_base = xdrs.x_private = reply->rbody.data;
++			xdrs.x_handy = nic.packetlen - ((char *)xdrs.x_base - (char *)reply);
++#ifdef RPC_DEBUG
++			grub_printf("x_base at %d, x_private at %d, x_handy is %d\n",
++				    xdrs.x_base, xdrs.x_private, xdrs.x_handy);
++			grub_printf("Decoding...");
++#endif
++			xdrs.x_op = XDR_DECODE;
++			if (!outproc(&xdrs, out))
++				return RPC_CANTDECODERES;
++#ifdef RPC_DEBUG
++			grub_printf("OK.\n");
++			grub_printf("x_base at %d, x_private at %d, x_handy is %d\n",
++				    xdrs.x_base, xdrs.x_private, xdrs.x_handy);
++#endif
++			return RPC_SUCCESS;
++		}
++	        else
++			tokens >>= 1;
++	}
++	return RPC_CANTRECV;
++}
++
++/**
++ * xdr_mapping
++ *
++ * An XDR proc wirten by hand.
++ **/
++static bool_t xdr_mapping (XDR *xdrs, mappping *objp)
++{
++	register int32_t *buf;
++
++	if (xdrs->x_op == XDR_ENCODE) {
++		buf = XDR_INLINE (xdrs, 4 * BYTES_PER_XDR_UNIT);
++		/* It may never happened in GRUB :-) */
++		if (buf == NULL)
++			return FALSE;
++		IXDR_PUT_U_LONG(buf, objp->prog);
++		IXDR_PUT_U_LONG(buf, objp->vers);
++		IXDR_PUT_U_LONG(buf, objp->prot);
++		IXDR_PUT_U_LONG(buf, objp->port);
++		return TRUE;
++	} else if (xdrs->x_op == XDR_DECODE) {
++		buf = XDR_INLINE (xdrs, 4 * BYTES_PER_XDR_UNIT);
++		/* It may never happened in GRUB :-) */
++		if (buf == NULL)
++			return FALSE;
++		objp->prog = IXDR_GET_U_LONG(buf);
++		objp->vers = IXDR_GET_U_LONG(buf);
++		objp->prot = IXDR_GET_U_LONG(buf);
++		objp->port = IXDR_GET_U_LONG(buf);
++		return TRUE;
++	}
++	return TRUE;
++}
++
++bool_t xdr_u_int (XDR *xdrs, u_int *objp)
++{
++	register int32_t *buf;
++
++	if (xdrs->x_op == XDR_ENCODE) {
++		buf = XDR_INLINE (xdrs, BYTES_PER_XDR_UNIT);
++		/* It may never happened in GRUB :-) */
++		if (buf == NULL)
++			return FALSE;
++		IXDR_PUT_U_LONG(buf, *objp);
++		return TRUE;
++	} else if (xdrs->x_op == XDR_DECODE) {
++		buf = XDR_INLINE (xdrs, BYTES_PER_XDR_UNIT);
++		/* It may never happened in GRUB :-) */
++		if (buf == NULL)
++			return FALSE;
++		*objp = IXDR_GET_U_LONG(buf);
++		return TRUE;
++	}
++	return TRUE;
++}
++
++/**
++ * __pmapudp_getport
++ *
++ * Get RPC program _prognum_ of version _versnum_ port through
++ * portmap. The portmap server is specified by _pmapsrv_.
++ **/
++u_short __pmapudp_getport(int pmapsrv, u_long prognum,
++			  u_long versnum)
++{
++	u_int retval;
++	CLIENT clnt_s, *clnt;
++	AUTH auth_s, *auth;
++	struct mapping map;
++	struct timeval tout = { 25, 0 };
++
++#ifdef RPC_DEBUG
++	grub_printf("__pmapudp_getport(pmapsrv:%d, prognum:%d, versnum:%d)\n", 
++	       pmapsrv, prognum, versnum);
++#endif /* RPC_DEBUG */
++
++	/* 
++	 * Initialize the RPC parameter, which will be handled by
++	 * xdr_mapping
++	 */
++	map.prog = prognum;
++	map.vers = versnum;
++	map.prot = IPPROTO_UDP;
++	map.port = 0;
++	/* We use AUTH_NONE */
++	auth = __authnone_create(&auth_s);
++	if (auth == NULL)
++		return 0;
++	clnt = __clntudp_create
++		(&clnt_s, auth, pmapsrv, PMAP_PORT, PMAP_PROG, PMAP_VERS);
++	if (clnt == NULL)
++		return 0;
++	if (clnt_call (clnt, PMAPROC_GETPORT, (xdrproc_t)xdr_mapping,
++		       (caddr_t)&map, (xdrproc_t)xdr_u_int, (caddr_t)&retval,
++		       tout) != RPC_SUCCESS) {
++		return -1;
++	}
++	return retval;
++}
++
++/**
++ * __clntudp_create
++ *
++ * Config the _clnt_ to the RPC server specified by _server_ and
++ * _port_. The RPC program is _prognum_ with version _versnum_. If
++ * _port_ == 0, use portmap to get it.
++ **/
++CLIENT *__clntudp_create(CLIENT *clnt, AUTH *auth, int server, u_short port,
++			 u_long prognum, u_long versnum)
++{
++	unsigned long t;
++	int sport;
++#ifdef RPC_DEBUG
++	grub_printf("__clntudp_create(server:%d, port:%d, prognum:%d, versnum:%d)\n",
++	       server, port, prognum, versnum);
++#endif /* RPC_DEBUG */
++	sport = oport++;
++	if (oport > START_OPORT + OPORT_SWEEP){
++		oport = START_OPORT;
++	}
++	if (port == 0)
++		port = __pmapudp_getport(server, prognum, versnum);
++	if (port == 0){
++		/* If dynamic, we must free the clnt here */
++		return NULL;
++	}
++	/* Initial the CLIENT structure. */
++	clnt->cl_auth = auth;
++	clnt->server = server;
++	clnt->sport = sport;
++	clnt->prognum = prognum;
++	clnt->versnum = versnum;
++	clnt->port = port;
++
++	t = currticks();
++	rpc_id = t ^ (t << 8) ^ (t << 16);
++#ifdef RPC_DEBUG
++	grub_printf("__clntudp_create OK. Port is %d, rpc_id is %d.\n",
++		    port, rpc_id);
++#endif /* RPC_DEBUG */
++	return clnt;
++}
+diff -Naur grub-0.97.orig/netboot/rpc.h grub-0.97/netboot/rpc.h
+--- grub-0.97.orig/netboot/rpc.h	1970-01-01 01:00:00.000000000 +0100
++++ grub-0.97/netboot/rpc.h	2007-08-14 20:13:24.000000000 +0200
+@@ -0,0 +1,366 @@
++#ifndef RPC_H
++#define RPC_H
++
++#include "types.h"
++#include "in.h"
++#include "timer.h"
++
++enum xdr_op {
++	XDR_ENCODE = 0,
++	XDR_DECODE = 1,
++	XDR_FREE = 2
++};
++
++#define BYTES_PER_XDR_UNIT	(4)
++
++#define RNDUP(x)  (((x) + BYTES_PER_XDR_UNIT - 1) & ~(BYTES_PER_XDR_UNIT - 1))
++
++typedef struct XDR XDR;
++struct XDR {
++	enum xdr_op x_op;		/* operation; fast additional param */
++	
++	/* We use following private */
++	caddr_t x_public;		/* users' data */
++	caddr_t x_private;		/* pointer to private data */
++	caddr_t x_base;		/* private used for position info */
++	int x_handy;		/* extra private word */
++};
++
++typedef bool_t (*xdrproc_t) (XDR *, void *,...);
++
++#define XDR_INLINE xdr_inline
++
++#define NULL_xdrproc_t ((xdrproc_t)0)
++struct xdr_discrim {
++	int value;
++	xdrproc_t proc;
++};
++
++#define IXDR_GET_INT32(buf)           ((int32_t)ntohl((uint32_t)*(buf)++))
++#define IXDR_PUT_INT32(buf, v)        (*(buf)++ = (int32_t)htonl((uint32_t)(v)))
++#define IXDR_GET_U_INT32(buf)         ((uint32_t)IXDR_GET_INT32(buf))
++#define IXDR_PUT_U_INT32(buf, v)      IXDR_PUT_INT32(buf, (int32_t)(v))
++
++/* WARNING: The IXDR_*_LONG defines are removed by Sun for new platforms
++ * and shouldn't be used any longer. Code which use this defines or longs
++ * in the RPC code will not work on 64bit Solaris platforms !
++ */
++#define IXDR_GET_LONG(buf) \
++	((long)ntohl((u_long)*__extension__((uint32_t*)(buf))++))
++#define IXDR_PUT_LONG(buf, v) \
++	(*__extension__((uint32_t*)(buf))++ = (long)htonl((u_long)(v)))
++#define IXDR_GET_U_LONG(buf)	      ((u_long)IXDR_GET_LONG(buf))
++#define IXDR_PUT_U_LONG(buf, v)	      IXDR_PUT_LONG(buf, (long)(v))
++
++
++#define IXDR_GET_BOOL(buf)            ((bool_t)IXDR_GET_LONG(buf))
++#define IXDR_GET_ENUM(buf, t)         ((t)IXDR_GET_LONG(buf))
++#define IXDR_GET_SHORT(buf)           ((short)IXDR_GET_LONG(buf))
++#define IXDR_GET_U_SHORT(buf)         ((u_short)IXDR_GET_LONG(buf))
++
++#define IXDR_PUT_BOOL(buf, v)         IXDR_PUT_LONG(buf, (long)(v))
++#define IXDR_PUT_ENUM(buf, v)         IXDR_PUT_LONG(buf, (long)(v))
++#define IXDR_PUT_SHORT(buf, v)        IXDR_PUT_LONG(buf, (long)(v))
++#define IXDR_PUT_U_SHORT(buf, v)      IXDR_PUT_LONG(buf, (long)(v))
++
++/*
++ * These are the "generic" xdr routines.
++ * None of these can have const applied because it's not possible to
++ * know whether the call is a read or a write to the passed parameter
++ * also, the XDR structure is always updated by some of these calls.
++ */
++extern bool_t xdr_void (void)  ;
++extern bool_t xdr_short (XDR *__xdrs, short *__sp)  ;
++extern bool_t xdr_u_short (XDR *__xdrs, u_short *__usp)  ;
++extern bool_t xdr_int (XDR *__xdrs, int *__ip)  ;
++extern bool_t xdr_u_int (XDR *__xdrs, u_int *__up)  ;
++extern bool_t xdr_long (XDR *__xdrs, long *__lp)  ;
++extern bool_t xdr_u_long (XDR *__xdrs, u_long *__ulp)  ;
++extern bool_t xdr_hyper (XDR *__xdrs, quad_t *__llp)  ;
++extern bool_t xdr_u_hyper (XDR *__xdrs, u_quad_t *__ullp)  ;
++extern bool_t xdr_longlong_t (XDR *__xdrs, quad_t *__llp)  ;
++extern bool_t xdr_u_longlong_t (XDR *__xdrs, u_quad_t *__ullp)  ;
++extern bool_t xdr_int8_t (XDR *__xdrs, int8_t *__ip)  ;
++extern bool_t xdr_uint8_t (XDR *__xdrs, uint8_t *__up)  ;
++extern bool_t xdr_int16_t (XDR *__xdrs, int16_t *__ip)  ;
++extern bool_t xdr_uint16_t (XDR *__xdrs, uint16_t *__up)  ;
++extern bool_t xdr_int32_t (XDR *__xdrs, int32_t *__ip)  ;
++extern bool_t xdr_uint32_t (XDR *__xdrs, uint32_t *__up)  ;
++extern bool_t xdr_int64_t (XDR *__xdrs, int64_t *__ip)  ;
++extern bool_t xdr_uint64_t (XDR *__xdrs, uint64_t *__up)  ;
++extern bool_t xdr_bool (XDR *__xdrs, bool_t *__bp)  ;
++extern bool_t xdr_enum (XDR *__xdrs, enum_t *__ep)  ;
++extern bool_t xdr_array (XDR * _xdrs, caddr_t *__addrp, u_int *__sizep,
++			 u_int __maxsize, u_int __elsize, xdrproc_t __elproc)
++      ;
++extern bool_t xdr_bytes (XDR *__xdrs, char **__cpp, u_int *__sizep,
++			 u_int __maxsize)  ;
++extern bool_t xdr_opaque (XDR *__xdrs, caddr_t __cp, u_int __cnt)  ;
++extern bool_t xdr_string (XDR *__xdrs, char **__cpp, u_int __maxsize)  ;
++extern bool_t xdr_union (XDR *__xdrs, enum_t *__dscmp, char *__unp,
++			 __const struct xdr_discrim *__choices,
++			 xdrproc_t dfault)  ;
++extern bool_t xdr_char (XDR *__xdrs, char *__cp)  ;
++extern bool_t xdr_u_char (XDR *__xdrs, u_char *__cp)  ;
++extern bool_t xdr_vector (XDR *__xdrs, char *__basep, u_int __nelem,
++			  u_int __elemsize, xdrproc_t __xdr_elem)  ;
++extern bool_t xdr_float (XDR *__xdrs, float *__fp)  ;
++extern bool_t xdr_double (XDR *__xdrs, double *__dp)  ;
++extern bool_t xdr_reference (XDR *__xdrs, caddr_t *__xpp, u_int __size,
++			     xdrproc_t __proc)  ;
++extern bool_t xdr_pointer (XDR *__xdrs, char **__objpp,
++			   u_int __obj_size, xdrproc_t __xdr_obj)  ;
++extern bool_t xdr_wrapstring (XDR *__xdrs, char **__cpp)  ;
++extern u_long xdr_sizeof (xdrproc_t, void *)  ;
++
++/*
++ * Common opaque bytes objects used by many rpc protocols;
++ * declared here due to commonality.
++ */
++#define MAX_NETOBJ_SZ 1024
++struct netobj {
++	u_int n_len;
++	char *n_bytes;
++};
++typedef struct netobj netobj;
++extern bool_t xdr_netobj (XDR *__xdrs, struct netobj *__np)  ;
++
++
++/*
++ * Rpc calls return an enum clnt_stat.  This should be looked at more,
++ * since each implementation is required to live with this (implementation
++ * independent) list of errors.
++ */
++enum clnt_stat {
++	RPC_SUCCESS=0,			/* call succeeded */
++	/*
++	 * local errors
++	 */
++	RPC_CANTENCODEARGS=1,		/* can't encode arguments */
++	RPC_CANTDECODERES=2,		/* can't decode results */
++	RPC_CANTSEND=3,			/* failure in sending call */
++	RPC_CANTRECV=4,			/* failure in receiving result */
++	RPC_TIMEDOUT=5,			/* call timed out */
++	/*
++	 * remote errors
++	 */
++	RPC_VERSMISMATCH=6,		/* rpc versions not compatible */
++	RPC_AUTHERROR=7,		/* authentication error */
++	RPC_PROGUNAVAIL=8,		/* program not available */
++	RPC_PROGVERSMISMATCH=9,		/* program version mismatched */
++	RPC_PROCUNAVAIL=10,		/* procedure unavailable */
++	RPC_CANTDECODEARGS=11,		/* decode arguments error */
++	RPC_SYSTEMERROR=12,		/* generic "other problem" */
++	RPC_NOBROADCAST = 21,		/* Broadcasting not supported */
++	/*
++	 * callrpc & clnt_create errors
++	 */
++	RPC_UNKNOWNHOST=13,		/* unknown host name */
++	RPC_UNKNOWNPROTO=17,		/* unknown protocol */
++	RPC_UNKNOWNADDR = 19,		/* Remote address unknown */
++
++	/*
++	 * rpcbind errors
++	 */
++	RPC_RPCBFAILURE=14,		/* portmapper failed in its call */
++#define RPC_PMAPFAILURE RPC_RPCBFAILURE
++	RPC_PROGNOTREGISTERED=15,	/* remote program is not registered */
++	RPC_N2AXLATEFAILURE = 22,	/* Name to addr translation failed */
++	/*
++	 * unspecified error
++	 */
++	RPC_FAILED=16,
++	RPC_INTR=18,
++	RPC_TLIERROR=20,
++	RPC_UDERROR=23,
++        /*
++         * asynchronous errors
++         */
++        RPC_INPROGRESS = 24,
++        RPC_STALERACHANDLE = 25
++};
++
++/*
++ * Status returned from authentication check
++ */
++enum auth_stat {
++	AUTH_OK=0,
++	/*
++	 * failed at remote end
++	 */
++	AUTH_BADCRED=1,			/* bogus credentials (seal broken) */
++	AUTH_REJECTEDCRED=2,		/* client should begin new session */
++	AUTH_BADVERF=3,			/* bogus verifier (seal broken) */
++	AUTH_REJECTEDVERF=4,		/* verifier expired or was replayed */
++	AUTH_TOOWEAK=5,			/* rejected due to security reasons */
++	/*
++	 * failed locally
++	*/
++	AUTH_INVALIDRESP=6,		/* bogus response verifier */
++	AUTH_FAILED=7			/* some unknown reason */
++};
++
++
++
++
++/*
++ * Error info.
++ */
++struct rpc_err {
++	enum clnt_stat re_status;
++	union {
++		int RE_errno;		/* related system error */
++		enum auth_stat RE_why;	/* why the auth error occurred */
++		struct {
++			u_long low;		/* lowest verion supported */
++			u_long high;		/* highest verion supported */
++		} RE_vers;
++		struct {			/* maybe meaningful if RPC_FAILED */
++			long s1;
++			long s2;
++		} RE_lb;			/* life boot & debugging only */
++	} ru;
++#define	re_errno	ru.RE_errno
++#define	re_why		ru.RE_why
++#define	re_vers		ru.RE_vers
++#define	re_lb		ru.RE_lb
++};
++
++struct opaque_auth{
++	long flavor;
++	long length;
++	long data[0];
++};
++extern long *add_auth_unix(struct opaque_auth *auth);
++extern long *add_auth_none(struct opaque_auth *auth);
++
++typedef struct AUTH AUTH;
++struct AUTH{
++	long *(* add_auth)(struct opaque_auth *);
++
++};
++extern AUTH *__authnone_create(AUTH *auth);
++extern void auth_destroy(AUTH *auth);
++
++/*
++ * Client rpc handle.
++ * Created by individual implementations, see e.g. rpc_udp.c.
++ * Client is responsible for initializing auth, see e.g. auth_none.c.
++ */
++typedef struct CLIENT CLIENT;
++struct CLIENT {
++	AUTH	*cl_auth;	/* authenticator */
++	unsigned long xid;	/* RPC id */
++	int server;		/* entry in ARP table */
++	u_short port;		/* RPC server port */
++	u_short sport;		/* Local port */
++	u_long prognum;		/* RPC program number */
++	u_long versnum;		/* RPC program version */
++};
++
++/*
++ * control operations that apply to all transports
++ *
++ * Note: options marked XXX are no-ops in this implementation of RPC.
++ * The are present in TI-RPC but can't be implemented here since they
++ * depend on the presence of STREAMS/TLI, which we don't have.
++ */
++#define CLSET_TIMEOUT        1    /* set timeout (timeval) */
++#define CLGET_TIMEOUT        2    /* get timeout (timeval) */
++#define CLGET_SERVER_ADDR    3    /* get server's address (sockaddr) */
++#define CLGET_FD             6    /* get connections file descriptor */
++#define CLGET_SVC_ADDR       7    /* get server's address (netbuf)      XXX */
++#define CLSET_FD_CLOSE       8    /* close fd while clnt_destroy */
++#define CLSET_FD_NCLOSE      9    /* Do not close fd while clnt_destroy*/
++#define CLGET_XID            10   /* Get xid */
++#define CLSET_XID            11   /* Set xid */
++#define CLGET_VERS           12   /* Get version number */
++#define CLSET_VERS           13   /* Set version number */
++#define CLGET_PROG           14   /* Get program number */
++#define CLSET_PROG           15   /* Set program number */
++#define CLSET_SVC_ADDR       16   /* get server's address (netbuf)      XXX */
++#define CLSET_PUSH_TIMOD     17   /* push timod if not already present  XXX */
++#define CLSET_POP_TIMOD      18   /* pop timod                          XXX */
++/*
++ * Connectionless only control operations
++ */
++#define CLSET_RETRY_TIMEOUT	4	/* set retry timeout (timeval) */
++#define CLGET_RETRY_TIMEOUT	5	/* get retry timeout (timeval) */
++
++
++#define UDPMSGSIZE	8800	/* rpc imposed limit on udp msg size */
++#define RPCSMALLMSGSIZE	400	/* a more reasonable packet size */
++
++#define clnt_call clntudp_call
++
++CLIENT *__clntudp_create(CLIENT *__clnt, AUTH *__auth, int __server,
++			 u_short __port, u_long __prognum, u_long __versnum);
++
++struct rpc_pkg{
++	struct iphdr ip;
++	struct udphdr udp;
++	union{
++		char data[300];		/* longest RPC call must fit!!!! */
++		/* The call body */
++		struct{
++			long xid;
++			long mtype;
++			long rpcvers;
++			long prog;
++			long vers;
++			long proc;
++			struct opaque_auth auth[0];
++		}call;
++		/* The reply body */
++		struct{
++			long xid;
++			long mtype;
++			long stat;
++			long verifier;
++			long v2;
++			long astatus;
++			long data[0];
++		}reply;
++	}u;
++};
++#define cbody u.call
++#define rbody u.reply
++#define areply u.reply.u
++
++#define AUTH_NONE	0		/* no authentication */
++#define	AUTH_NULL	0		/* backward compatibility */
++#define	AUTH_SYS	1		/* unix style (uid, gids) */
++#define	AUTH_UNIX	AUTH_SYS
++#define	AUTH_SHORT	2		/* short hand unix style */
++#define AUTH_DES	3		/* des style (encrypted timestamps) */
++#define AUTH_DH		AUTH_DES	/* Diffie-Hellman (this is DES) */
++#define AUTH_KERB       4               /* kerberos style */
++
++#define PMAP_PORT 111
++
++struct mapping {
++	u_int prog;
++	u_int vers;
++	u_int prot;
++	u_int port;
++};
++
++typedef struct mapping mappping;
++#define IPPROTO_TCP 6
++#define IPPROTO_UDP 17
++
++#define PMAP_PROG 100000
++#define PMAP_VERS 2
++
++#define PMAPROC_GETPORT 3
++extern  bool_t xdr_mappping (XDR *, mappping*);
++
++
++enum msg_type {
++	MSG_CALL = 0,
++	MSG_REPLY = 1
++};
++
++
++
++#endif /*RPC_H*/
+diff -Naur grub-0.97.orig/netboot/tg3.c grub-0.97/netboot/tg3.c
+--- grub-0.97.orig/netboot/tg3.c	2007-08-14 20:12:51.000000000 +0200
++++ grub-0.97/netboot/tg3.c	2007-08-14 20:13:24.000000000 +0200
+@@ -1,4 +1,4 @@
+-/* $Id: tg3.c,v 1.1 2003/11/20 03:46:08 fengshuo Exp $
++/* $Id: tg3.c,v 1.3 2003/11/27 13:55:34 fengshuo Exp $
+  * tg3.c: Broadcom Tigon3 ethernet driver.
+  *
+  * Copyright (C) 2001, 2002 David S. Miller (davem@redhat.com)
+@@ -6,15 +6,20 @@
+  * Copyright (C) 2003 Eric Biederman (ebiederman@lnxi.com)  [etherboot port]
+  */
+ 
+-/* 11-13-2003	timlegge	Fix Issue with NetGear GA302T */
++/* 11-13-2003	timlegge	Fix Issue with NetGear GA302T 
++ * 11-18-2003   ebiederm        Generalize NetGear Fix to what the code was supposed to be.
++ */
+ 
+ #include "etherboot.h"
+ #include "nic.h"
+ #include "pci.h"
+ #include "timer.h"
+-#include "string.h"
++//#include "string.h"
++#define TG3_VLAN_TAG_USED 0
++
+ #include "tg3.h"
+ 
++
+ #define SUPPORT_COPPER_PHY  1
+ #define SUPPORT_FIBER_PHY   1
+ #define SUPPORT_LINK_REPORT 1
+@@ -2014,17 +2019,18 @@
+ 	if (GET_ASIC_REV(tp->pci_chip_rev_id) != ASIC_REV_5705) {
+ 		tw32_carefully(DMAC_MODE, DMAC_MODE_ENABLE);
+ 	}
+-	
++
++	val = (	WDMAC_MODE_ENABLE | WDMAC_MODE_TGTABORT_ENAB |
++		WDMAC_MODE_MSTABORT_ENAB | WDMAC_MODE_PARITYERR_ENAB |
++		WDMAC_MODE_ADDROFLOW_ENAB | WDMAC_MODE_FIFOOFLOW_ENAB |
++		WDMAC_MODE_FIFOURUN_ENAB | WDMAC_MODE_FIFOOREAD_ENAB |
++		WDMAC_MODE_LNGREAD_ENAB);
+ 	if ((GET_ASIC_REV(tp->pci_chip_rev_id) != ASIC_REV_5705) &&
+-		(((tr32(TG3PCI_PCISTATE) & PCISTATE_BUS_SPEED_HIGH) != 0) || (tp->pci_chip_rev_id == CHIPREV_ID_5701_B5)) &&  
+-		!(tp->tg3_flags2 & TG3_FLG2_IS_5788)) {    
+-		tw32_carefully(WDMAC_MODE, 
+-			(	WDMAC_MODE_ENABLE | WDMAC_MODE_TGTABORT_ENAB |
+-				WDMAC_MODE_MSTABORT_ENAB | WDMAC_MODE_PARITYERR_ENAB |
+-				WDMAC_MODE_ADDROFLOW_ENAB | WDMAC_MODE_FIFOOFLOW_ENAB |
+-				WDMAC_MODE_FIFOURUN_ENAB | WDMAC_MODE_FIFOOREAD_ENAB |
+-				WDMAC_MODE_LNGREAD_ENAB));
++		((tr32(TG3PCI_PCISTATE) & PCISTATE_BUS_SPEED_HIGH) != 0) &&
++		!(tp->tg3_flags2 & TG3_FLG2_IS_5788)) {
++		val |= WDMAC_MODE_RX_ACCEL;
+ 	}
++	tw32_carefully(WDMAC_MODE, val);
+ 
+ 	if ((tp->tg3_flags & TG3_FLAG_PCIX_MODE) != 0) {
+ 		val = tr32(TG3PCI_X_CAPS);
+@@ -2791,7 +2797,7 @@
+ 
+ static int  tg3_get_device_address(struct tg3 *tp)
+ {
+-	struct nic *nic = tp->nic;
++	struct nic *anic = tp->nic;
+ 	uint32_t hi, lo, mac_offset;
+ 
+ 	if (PCI_FUNC(tp->pdev->devfn) == 0)
+@@ -2802,36 +2808,36 @@
+ 	/* First try to get it from MAC address mailbox. */
+ 	tg3_read_mem(NIC_SRAM_MAC_ADDR_HIGH_MBOX, &hi);
+ 	if ((hi >> 16) == 0x484b) {
+-		nic->node_addr[0] = (hi >>  8) & 0xff;
+-		nic->node_addr[1] = (hi >>  0) & 0xff;
++		anic->node_addr[0] = (hi >>  8) & 0xff;
++		anic->node_addr[1] = (hi >>  0) & 0xff;
+ 
+ 		tg3_read_mem(NIC_SRAM_MAC_ADDR_LOW_MBOX, &lo);
+-		nic->node_addr[2] = (lo >> 24) & 0xff;
+-		nic->node_addr[3] = (lo >> 16) & 0xff;
+-		nic->node_addr[4] = (lo >>  8) & 0xff;
+-		nic->node_addr[5] = (lo >>  0) & 0xff;
++		anic->node_addr[2] = (lo >> 24) & 0xff;
++		anic->node_addr[3] = (lo >> 16) & 0xff;
++		anic->node_addr[4] = (lo >>  8) & 0xff;
++		anic->node_addr[5] = (lo >>  0) & 0xff;
+ 	}
+ 	/* Next, try NVRAM. */
+ 	else if (!tg3_nvram_read(tp, mac_offset + 0, &hi) &&
+ 		 !tg3_nvram_read(tp, mac_offset + 4, &lo)) {
+-		nic->node_addr[0] = ((hi >> 16) & 0xff);
+-		nic->node_addr[1] = ((hi >> 24) & 0xff);
+-		nic->node_addr[2] = ((lo >>  0) & 0xff);
+-		nic->node_addr[3] = ((lo >>  8) & 0xff);
+-		nic->node_addr[4] = ((lo >> 16) & 0xff);
+-		nic->node_addr[5] = ((lo >> 24) & 0xff);
++		anic->node_addr[0] = ((hi >> 16) & 0xff);
++		anic->node_addr[1] = ((hi >> 24) & 0xff);
++		anic->node_addr[2] = ((lo >>  0) & 0xff);
++		anic->node_addr[3] = ((lo >>  8) & 0xff);
++		anic->node_addr[4] = ((lo >> 16) & 0xff);
++		anic->node_addr[5] = ((lo >> 24) & 0xff);
+ 	}
+ 	/* Finally just fetch it out of the MAC control regs. */
+ 	else {
+ 		hi = tr32(MAC_ADDR_0_HIGH);
+ 		lo = tr32(MAC_ADDR_0_LOW);
+ 
+-		nic->node_addr[5] = lo & 0xff;
+-		nic->node_addr[4] = (lo >> 8) & 0xff;
+-		nic->node_addr[3] = (lo >> 16) & 0xff;
+-		nic->node_addr[2] = (lo >> 24) & 0xff;
+-		nic->node_addr[1] = hi & 0xff;
+-		nic->node_addr[0] = (hi >> 8) & 0xff;
++		anic->node_addr[5] = lo & 0xff;
++		anic->node_addr[4] = (lo >> 8) & 0xff;
++		anic->node_addr[3] = (lo >> 16) & 0xff;
++		anic->node_addr[2] = (lo >> 24) & 0xff;
++		anic->node_addr[1] = hi & 0xff;
++		anic->node_addr[0] = (hi >> 8) & 0xff;
+ 	}
+ 
+ 	return 0;
+@@ -2970,11 +2976,11 @@
+ 	}
+ }
+ 
+-static int tg3_poll(struct nic *nic)
++static int tg3_poll(struct nic *anic)
+ {
+ 	/* return true if there's an ethernet packet ready to read */
+-	/* nic->packet should contain data on return */
+-	/* nic->packetlen should contain length of data */
++	/* anic->packet should contain data on return */
++	/* anic->packetlen should contain length of data */
+ 
+ 	struct tg3 *tp = &tg3;
+ 	int result;
+@@ -2988,8 +2994,8 @@
+ 		if ((desc->opaque & RXD_OPAQUE_RING_MASK) == RXD_OPAQUE_RING_STD) {
+ 			len = ((desc->idx_len & RXD_LEN_MASK) >> RXD_LEN_SHIFT) - 4; /* omit crc */
+ 			
+-			nic->packetlen = len;
+-			memcpy(nic->packet, bus_to_virt(desc->addr_lo), len);
++			anic->packetlen = len;
++			memcpy(anic->packet, bus_to_virt(desc->addr_lo), len);
+ 			result = 1;
+ 		}
+ 		tp->rx_rcb_ptr = (tp->rx_rcb_ptr + 1) % TG3_RX_RCB_RING_SIZE;
+@@ -3026,7 +3032,7 @@
+ 	txd->vlan_tag  = 0 << TXD_VLAN_TAG_SHIFT;
+ }
+ 
+-static void tg3_transmit(struct nic *nic, const char *dst_addr,
++static void tg3_transmit(struct nic *anic, const char *dst_addr,
+ 	unsigned int type, unsigned int size, const char *packet)
+ {
+ 	static struct eth_frame {
+@@ -3064,7 +3070,7 @@
+ 	
+ 	/* Copy the packet to the our local buffer */
+ 	memcpy(&frame[frame_idx].dst_addr, dst_addr, ETH_ALEN);
+-	memcpy(&frame[frame_idx].src_addr, nic->node_addr, ETH_ALEN);
++	memcpy(&frame[frame_idx].src_addr, anic->node_addr, ETH_ALEN);
+ 	frame[frame_idx].type = htons(type);
+ 	memset(&frame[frame_idx].data, 0, sizeof(frame[frame_idx].data));
+ 	memcpy(&frame[frame_idx].data, packet, size);
+@@ -3116,7 +3122,7 @@
+ ***************************************************************************/
+ static int tg3_probe(struct dev *dev, struct pci_device *pdev)
+ {
+-	struct nic *nic = (struct nic *)dev;
++	struct nic *anic = (struct nic *)dev;
+ 	struct tg3 *tp = &tg3;
+ 	unsigned long tg3reg_base, tg3reg_len;
+ 	int i, err, pm_cap;
+@@ -3142,7 +3148,7 @@
+ 	tg3reg_len  = pci_bar_size(pdev,  PCI_BASE_ADDRESS_0);
+ 
+ 	tp->pdev       = pdev;
+-	tp->nic        = nic;
++	tp->nic        = anic;
+ 	tp->pm_cap     = pm_cap;
+ 	tp->rx_mode    = 0;
+ 	tp->tx_mode    = 0;
+@@ -3189,7 +3195,7 @@
+ 		printf("Could not obtain valid ethernet address, aborting.\n");
+ 		goto err_out_iounmap;
+ 	}
+-	printf("Ethernet addr: %!\n", nic->node_addr);
++	printf("Ethernet addr: %!\n", anic->node_addr);
+ 
+ 	tg3_setup_dma(tp);
+ 
+@@ -3228,8 +3234,8 @@
+ 	}
+ 
+ 	dev->disable  = tg3_disable;
+-	nic->poll     = tg3_poll;
+-	nic->transmit = tg3_transmit;
++	anic->poll     = tg3_poll;
++	anic->transmit = tg3_transmit;
+ 	return 1;
+ 
+  err_out_iounmap:
+diff -Naur grub-0.97.orig/netboot/timer.h grub-0.97/netboot/timer.h
+--- grub-0.97.orig/netboot/timer.h	2007-08-14 20:12:51.000000000 +0200
++++ grub-0.97/netboot/timer.h	2007-08-14 20:13:24.000000000 +0200
+@@ -60,4 +60,9 @@
+ extern void mdelay(unsigned int msecs);
+ //extern unsigned long currticks(void);
+ 
++struct timeval {
++	long tv_sec;
++	long tv_usec;
++};
++
+ #endif	/* TIMER_H */
+diff -Naur grub-0.97.orig/netboot/types.h grub-0.97/netboot/types.h
+--- grub-0.97.orig/netboot/types.h	2007-08-14 20:12:51.000000000 +0200
++++ grub-0.97/netboot/types.h	2007-08-14 20:13:24.000000000 +0200
+@@ -1,11 +1,44 @@
+ #ifndef _TYPES_H
+ #define _TYPES_H
+ 
+-/* I'm architecture independed */
+-
++/* I'm architecture independed :-) */
+ 
+ /* 
+  * It's architecture depended headers for common integer types
+  */
+ #include "stdint.h"
++
++/* 
++ * Here are some RPC types define from linux /usr/include/rpc/types.h
++ */
++typedef int bool_t;
++typedef int enum_t;
++typedef uint32_t rpcprog_t;
++typedef uint32_t rpcvers_t;
++typedef uint32_t rpcproc_t;
++typedef uint32_t rpcprot_t;
++typedef uint32_t rpcport_t;
++
++/* For bool_t */
++typedef enum {
++ 	FALSE = 0,
++ 	TRUE = 1
++} boolean_t;
++
++
++
++/* Some BSD or RPC style types */
++typedef unsigned char u_char;
++typedef unsigned short u_short;
++typedef unsigned int u_int;
++typedef unsigned long u_long;
++typedef long long quad_t;
++typedef unsigned long long u_quad_t;
++typedef struct {
++	int __val[2];
++}fsid_t;			/* Type of file system IDs, from bits/types.h */
++
++typedef int daddr_t;		/* The type of a disk address, from bits/types.h */
++typedef char * caddr_t;
++
+ #endif /* _TYPES_H */
+diff -Naur grub-0.97.orig/stage2/builtins.c grub-0.97/stage2/builtins.c
+--- grub-0.97.orig/stage2/builtins.c	2007-08-14 20:12:51.000000000 +0200
++++ grub-0.97/stage2/builtins.c	2007-08-14 20:13:24.000000000 +0200
+@@ -832,6 +832,42 @@
+ #endif /* GRUB_UTIL */
+ 
+ #ifdef SUPPORT_NETBOOT
++/* Debug Function for RPC */
++#ifdef RPC_DEBUG
++/* portmap */
++static int
++portmap_func (char *arg, int flags)
++{
++	int port, prog, ver;
++	if (! eth_probe ()){
++		grub_printf ("No ethernet card found.\n");
++		errnum = ERR_DEV_VALUES;
++		return 1;
++	}
++	if ((prog = getdec(&arg)) == -1){
++		grub_printf("Error prog number\n");
++		return 1;
++	}
++	arg = skip_to (0, arg);
++	if ((ver = getdec(&arg)) == -1){
++		grub_printf("Error ver number\n");
++		return 1;
++	}
++	port = __pmapudp_getport(ARP_SERVER, prog, ver);
++	printf("portmap getport %d", port);
++	return 0;
++}
++
++static struct builtin builtin_portmap =
++{
++	"portmap",
++	portmap_func,
++	BUILTIN_CMDLINE | BUILTIN_HELP_LIST,
++	"portmap prog_number vers_number",
++	"Do portmap with the prog_number and vers_number"
++};
++#endif /* RPC_DEBUG */
++
+ /* dhcp */
+ static int
+ dhcp_func (char *arg, int flags)
+@@ -4887,6 +4923,9 @@
+   &builtin_parttype,
+   &builtin_password,
+   &builtin_pause,
++#if defined(RPC_DEBUG) && defined(SUPPORT_NETBOOT)
++  &builtin_portmap,
++#endif /* RPC_DEBUG && SUPPORT_NETBOOT */
+ #ifdef GRUB_UTIL
+   &builtin_quit,
+ #endif /* GRUB_UTIL */

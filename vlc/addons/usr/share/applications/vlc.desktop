@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=VLC
+Comment=Media Player
+Comment[hu]=Médialejátszó
+Exec=vlc
+Icon=/usr/share/icons/hicolor/48x48/apps/vlc.png
+Terminal=false
+StartupNotify=true
+Categories=Qt;AudioVideo;Video;X-UHU-Menu/Multimedia/VideoPlayers;

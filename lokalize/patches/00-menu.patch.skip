@@ -1,0 +1,12 @@
+diff -Naur lokalize-4.10.80-orig/src/lokalize.desktop lokalize-4.10.80/src/lokalize.desktop
+--- lokalize-4.10.80-orig/src/lokalize.desktop	2013-06-10 20:55:36.000000000 +0200
++++ lokalize-4.10.80/src/lokalize.desktop	2013-06-24 20:16:44.000000000 +0200
+@@ -55,7 +55,7 @@
+ Exec=lokalize %i -caption %c
+ Icon=lokalize
+ Type=Application
+-Categories=Qt;KDE;Development;Office;Translation;
++Categories=Qt;KDE;Development;Office;Translation;X-UHU-Menu/Development/Translation;
+ MimeType=application/x-xliff;text/x-gettext-translation;application/x-lokalize-project;
+ X-DocPath=lokalize/index.html
+ GenericName=Computer-Aided Translation System

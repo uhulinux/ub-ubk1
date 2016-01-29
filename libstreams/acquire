@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libstreams-${UB_VERSION}.tar.gz libstreams-v${UB_VERSION}/
+	git://anongit.kde.org/libstreams.git@tag:v${UB_VERSION}

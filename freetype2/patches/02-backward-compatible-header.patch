@@ -1,0 +1,12 @@
+diff -Naurdp freetype-2.5.2/include/freetype.h freetype-2.5.2-bch/include/freetype.h
+--- freetype-2.5.2/include/freetype.h	2013-12-08 20:17:52.000000000 +0100
++++ freetype-2.5.2-bch/include/freetype.h	2014-01-20 12:53:10.353903513 +0100
+@@ -20,7 +20,7 @@
+ #define __FREETYPE_H__
+ 
+ 
+-#ifndef FT_FREETYPE_H
++#if 0 /* #ifndef FT_FREETYPE_H */
+ #error "`ft2build.h' hasn't been included yet!"
+ #error "Please always use macros to include FreeType header files."
+ #error "Example:"

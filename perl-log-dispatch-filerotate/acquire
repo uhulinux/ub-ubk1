@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Log-Dispatch-FileRotate-${UB_VERSION}.tar.gz Log-Dispatch-FileRotate-${UB_VERSION}/
+	http://search.cpan.org/CPAN/authors/id/M/MA/MARKPF/

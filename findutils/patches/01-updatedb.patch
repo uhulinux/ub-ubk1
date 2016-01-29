@@ -1,0 +1,41 @@
+diff -urN findutils-4.4.2.orig/locate/updatedb.sh findutils-4.4.2/locate/updatedb.sh
+--- findutils-4.4.2.orig/locate/updatedb.sh	2009-05-16 17:17:01.000000000 +0200
++++ findutils-4.4.2/locate/updatedb.sh	2009-09-24 23:53:40.000000000 +0200
+@@ -158,7 +158,7 @@
+ : ${NETPATHS=}
+ 
+ # Directories to not put in the database, which would otherwise be.
+-: ${PRUNEPATHS="/tmp /usr/tmp /var/tmp /afs /amd /sfs /proc"}
++: ${PRUNEPATHS="/afs /amd /dev /initrd /media /mnt /proc /sfs /sys /tmp /var/cache /var/mail /var/spool /var/tmp"}
+ 
+ # Trailing slashes result in regex items that are never matched, which 
+ # is not what the user will expect.   Therefore we now reject such 
+@@ -178,17 +178,11 @@
+ : ${LOCATE_DB=@LOCATE_DB@}
+ 
+ # Directory to hold intermediate files.
+-if test -d /var/tmp; then
+-  : ${TMPDIR=/var/tmp}
+-elif test -d /usr/tmp; then
+-  : ${TMPDIR=/usr/tmp}
+-else
+-  : ${TMPDIR=/tmp}
+-fi
++: ${TMPDIR=/tmp}
+ export TMPDIR
+ 
+ # The user to search network directories as.
+-: ${NETUSER=daemon}
++: ${NETUSER=nobody}
+ 
+ # The directory containing the subprograms.
+ if test -n "$LIBEXECDIR" ; then
+@@ -228,7 +222,7 @@
+ 
+ PATH=/bin:/usr/bin:${BINDIR}; export PATH
+ 
+-: ${PRUNEFS="nfs NFS proc afs smbfs autofs iso9660 ncpfs coda devpts ftpfs devfs mfs sysfs shfs"}
++: ${PRUNEFS="afs autofs cifs cdfs coda configfs devfs devpts ftpfs fuse hugetlbfs iso9660 mfs ncpfs nfs NFS nfs4 ocfs2 proc ramfs relayfs shfs smbfs supermount sysfs tmpfs usbfs"}
+ 
+ if test -n "$PRUNEFS"; then
+ prunefs_exp=`echo $PRUNEFS |sed -e 's/\([^ ][^ ]*\)/-o -fstype \1/g' \

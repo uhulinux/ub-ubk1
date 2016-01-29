@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_install
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/dbus-1/services
+install -m644 misc/org.Coherence.service "$UB_INSTALLDIR"/usr/share/dbus-1/services/

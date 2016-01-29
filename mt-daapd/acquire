@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+#mt-daapd-${UB_VERSION}.tar.gz mt-daapd-${UB_VERSION}/
+mt-daapd-svn-${UB_VERSION_TAIL1}.tar.gz mt-daapd-svn-${UB_VERSION_TAIL1}/
+	http://nightlies.fireflymediaserver.org/nightlies/svn-${UB_VERSION_TAIL1}/
+#	http://download.sourceforge.net/mt-daapd/

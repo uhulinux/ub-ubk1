@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/qt4/plugins/
+cp -a plugins/script/ "$UB_INSTALLDIR"/usr/lib/qt4/plugins/

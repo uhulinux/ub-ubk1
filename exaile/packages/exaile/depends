@@ -1,0 +1,11 @@
+dbus-python
+gst0.10-plugins-bad
+gst0.10-plugins-good
+gst0.10-plugins-ugly
+gst0.10-python
+librsvg
+mutagen
+pygobject2
+pygtk
+python-cddb
+python-notify

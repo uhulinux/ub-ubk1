@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+cd "$UB_SRCDIR"/sources
+install -d -m755 "$UB_INSTALLDIR"/usr/share/java/geogebra
+install -D -m644 *.jar "$UB_INSTALLDIR"/usr/share/java/geogebra

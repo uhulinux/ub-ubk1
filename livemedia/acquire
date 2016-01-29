@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+live."$UB_VERSION".tar.gz live/
+	http://www.live555.com/liveMedia/public/

@@ -1,0 +1,12 @@
+#!/bin/sh -eux
+
+ub_install
+
+cd "$UB_INSTALLDIR"/usr/lib/ntop/plugins
+for i in *.so; do
+	f=../../lib"${i%.so}"-"$UB_VERSION".so
+	if cmp "$i" "$f"; then
+		rm "$i"
+		ln -s "$f" "$i"
+	fi
+done

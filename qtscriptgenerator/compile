@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+export QTDIR=/usr/lib/qt4
+
+cd generator/
+qmake-qt4
+make
+./generator
+
+cd ..
+cd qtbindings/
+qmake-qt4
+
+make

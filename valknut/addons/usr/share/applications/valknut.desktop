@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Valknut
+Comment=Direct Connect Client
+Comment[hu]=Direct Connect kliens 
+Exec=valknut
+Icon=valknut
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Qt;Network;FileTransfer;X-UHU-Menu/Internet/Downloaders;

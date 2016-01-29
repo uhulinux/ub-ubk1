@@ -1,0 +1,36 @@
+diff -Naur kdevelop-pg-qt-1.0.0-orig/kdev-pg/kdev-pg-code-gen.cpp kdevelop-pg-qt-1.0.0/kdev-pg/kdev-pg-code-gen.cpp
+--- kdevelop-pg-qt-1.0.0-orig/kdev-pg/kdev-pg-code-gen.cpp	2012-01-27 22:40:18.000000000 +0100
++++ kdevelop-pg-qt-1.0.0/kdev-pg/kdev-pg-code-gen.cpp	2013-08-28 17:37:54.000000000 +0200
+@@ -51,7 +51,7 @@
+ 
+   void generateCondition(const World::NodeSet& s, QTextStream& out)
+   {
+-    if(s.size() == 0 || s.size() == 1 && nodeCast<Model::ZeroItem*>(*s.begin()) != 0)
++    if(s.size() == 0 || (s.size() == 1 && nodeCast<Model::ZeroItem*>(*s.begin()) != 0))
+     {
+       out << "true /*epsilon*/";
+       return;
+diff -Naur kdevelop-pg-qt-1.0.0-orig/kdev-pg/kdev-pg-lexer.ll kdevelop-pg-qt-1.0.0/kdev-pg/kdev-pg-lexer.ll
+--- kdevelop-pg-qt-1.0.0-orig/kdev-pg/kdev-pg-lexer.ll	2012-01-27 22:40:18.000000000 +0100
++++ kdevelop-pg-qt-1.0.0/kdev-pg/kdev-pg-lexer.ll	2013-08-28 17:37:12.000000000 +0200
+@@ -417,7 +417,7 @@
+   strcpy(yyTextLine+currentOffset, yytext + (yymoreFlag ? lastTextLeng : 0)); /* append current */
+   /* strcpy is faster than strcat */
+   
+-  Q_ASSERT(strlen(yyTextLine) < yyTextLineLeng);
++  Q_ASSERT(strlen(yyTextLine) < size_t(yyTextLineLeng));
+   
+   lastTextLeng = strlen(yytext);
+   yymoreFlag = false;
+diff -Naur kdevelop-pg-qt-1.0.0-orig/kdev-pg/kdev-pg-parser.yy kdevelop-pg-qt-1.0.0/kdev-pg/kdev-pg-parser.yy
+--- kdevelop-pg-qt-1.0.0-orig/kdev-pg/kdev-pg-parser.yy	2012-01-27 22:40:18.000000000 +0100
++++ kdevelop-pg-qt-1.0.0/kdev-pg/kdev-pg-parser.yy	2013-08-28 17:34:57.000000000 +0200
+@@ -309,7 +309,7 @@
+     | T_CONTINUE {
+         r = "\nlxCONTINUE;\n";
+       }
+-    | /* empty */ { r = "\nlxSKIP\n" }
++    | /* empty */ { r = "\nlxSKIP\n"; }
+     ;
+ 
+ regexp

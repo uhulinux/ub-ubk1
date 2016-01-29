@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libphonenumber-${UB_VERSION/~/-}.tar.gz trunk-${UB_VERSION#*~}/
+	svn://libphonenumber.googlecode.com/svn/trunk@${UB_VERSION#*~r}

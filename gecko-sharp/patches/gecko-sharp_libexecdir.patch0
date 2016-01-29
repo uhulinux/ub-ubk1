@@ -1,0 +1,31 @@
+--- gtkmozembed/Makefile.am
++++ gtkmozembed/Makefile.am
+@@ -45,11 +45,11 @@
+ 	$(build_sources) generated/*.cs -o gecko-sharp.dll
+ 
+ install-data-local:
+-	echo "$(GACUTIL) /i $(ASSEMBLY) /f /package gecko-sharp /root $(DESTDIR)$(libdir)";  \
+-        $(GACUTIL) /i $(ASSEMBLY) /f /package gecko-sharp /root $(DESTDIR)$(libdir) || exit 1;
++	echo "$(GACUTIL) /i $(ASSEMBLY) /f /package gecko-sharp /root $(DESTDIR)$(libexecdir)";  \
++        $(GACUTIL) /i $(ASSEMBLY) /f /package gecko-sharp /root $(DESTDIR)$(libexecdir) || exit 1;
+                                                                                 
+ uninstall-local:
+-	echo "$(GACUTIL) /u $(ASSEMBLY_NAME) /package gecko-sharp /root $(DESTDIR)$(libdir)"; \
+-        $(GACUTIL) /u $(ASSEMBLY_NAME) /package gecko-sharp /root $(DESTDIR)$(libdir) || exit 1;
++	echo "$(GACUTIL) /u $(ASSEMBLY_NAME) /package gecko-sharp /root $(DESTDIR)$(libexecdir)"; \
++        $(GACUTIL) /u $(ASSEMBLY_NAME) /package gecko-sharp /root $(DESTDIR)$(libexecdir) || exit 1;
+  
+ EXTRA_DIST = $(API) $(RAW_API) $(sources) $(customs) $(METADATA) AssemblyInfo.cs.in gecko-sharp.dll.config
+--- sample/Makefile.am
++++ sample/Makefile.am
+@@ -3,8 +3,8 @@
+ 
+ bin_SCRIPTS = webshot
+ 
+-exedir = $(libdir)/gecko-sharp
+-exe_DATA = WebThumbnailer.exe
++exedir = $(libexecdir)/gecko-sharp
++exe_DATA = WebThumbnailer.exe GtkMozApp.exe
+ 
+ webshot: webshot.in
+ 	sed -e 's^\@libdir\@^$(libdir)^g' < $(srcdir)/webshot.in > webshot.tmp \

@@ -1,0 +1,1 @@
+urllist http://freedesktop.org/software/farstream/releases/farstream/ | splitver '^farstream-([0-9.]+).tar.gz$' | sort -V | tail -n 1

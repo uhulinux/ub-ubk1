@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libuser-${UB_VERSION}.tar.xz libuser-${UB_VERSION}/
+	https://fedorahosted.org/releases/l/i/libuser/

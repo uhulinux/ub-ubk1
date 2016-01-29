@@ -1,0 +1,11 @@
+#!/usr/bin/env dl
+
+gcc-core-3.4.6.tar.gz gcc-3.4.6/
+	ftp://gcc.gnu.org/pub/gcc/releases/gcc-3.4.6/
+	ftp://ftp.gnu.org/gnu/gcc/gcc-3.4.6/
+	ftp://sources.redhat.com/pub/gcc/releases/gcc-3.4.6/
+
+gpc-${UB_VERSION}.tar.bz2 . :gcc
+	http://www.gnu-pascal.de/alpha/
+	http://www.gnu-pascal.de/beta/
+	http://www.gnu-pascal.de/stable/

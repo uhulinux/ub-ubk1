@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgnome-${UB_VERSION}.tar.gz libgnome-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgnome/${UB_VERSION_HEAD2}/

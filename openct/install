@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/lib/udev
+ub_install
+
+mkdir -p "$UB_INSTALLDIR"/etc/udev/rules.d
+cp etc/openct.udev "$UB_INSTALLDIR"/etc/udev/rules.d/60-openct.rules
+cp etc/openct.conf "$UB_INSTALLDIR"/etc/openct.conf

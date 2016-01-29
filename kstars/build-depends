@@ -1,0 +1,7 @@
+eigen3
+kdelibs-dev
+libcfitsio
+libindi-dev
+qjson-dev
+wcslib-dev
+xplanet

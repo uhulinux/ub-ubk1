@@ -1,0 +1,1 @@
+urllist ftp://ftp.gimp.org/pub/gimp/stable/ | splitver '^gimp-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

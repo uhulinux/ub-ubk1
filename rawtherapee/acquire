@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+rawtherapee-${UB_VERSION}.tar.xz rawtherapee-${UB_VERSION}/
+	http://rawtherapee.com/shared/source/

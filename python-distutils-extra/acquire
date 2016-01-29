@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+python-distutils-extra_"$UB_VERSION".orig.tar.gz python-distutils-extra-"$UB_VERSION"/
+	http://ftp.debian.org/debian/pool/main/p/python-distutils-extra/

@@ -1,0 +1,22 @@
+#!/bin/sh -eux
+
+cd "$UB_OBJECTDIR"
+
+OPT_FLAGS="-O2 -march=i586 -mtune=i586"
+
+CFLAGS="$OPT_FLAGS" \
+CXXFLAGS="$OPT_FLAGS" \
+XCFLAGS="$OPT_FLAGS" \
+TCFLAGS="$OPT_FLAGS" \
+"$UB_COMPILEDIR"/configure \
+	--prefix=/usr \
+	--infodir=/usr/share/info \
+	--mandir=/usr/share/man \
+	--enable-languages=pascal \
+	--enable-shared \
+	--with-gnu-as \
+	--with-gnu-ld \
+	--with-system-zlib \
+	--host=i586-uhu-linux
+
+make
