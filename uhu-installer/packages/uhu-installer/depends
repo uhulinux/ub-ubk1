@@ -1,7 +1,0 @@
-coreutils
-e2fsprogs
-grub
-lvm
-perl-gettext
-perl-gtk2
-util-linux
