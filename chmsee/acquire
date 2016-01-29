@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-chmsee-${UB_VERSION}.tar.gz chmsee-${UB_VERSION}/
-	http://chmsee.googlecode.com/files/

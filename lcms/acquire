@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-lcms-${UB_VERSION}.tar.gz lcms-1.19/
-	http://downloads.sourceforge.net/lcms/

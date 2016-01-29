@@ -1,1 +1,0 @@
-urllist ftp://ftp.mozilla.org/pub/xulrunner/releases/ | splitver '^([0-9.]+)$' | sort -V | tail -n 1
