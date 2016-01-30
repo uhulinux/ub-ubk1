@@ -5,6 +5,6 @@ exec 2>>/var/log/ntpdate.log
 
 case "$2" in
 	up)
-		/usr/sbin/ntpdate -u time.uhulinux.hu
+		/usr/sbin/ntpdate -u hu.pool.ntp.org
 		;;
 esac

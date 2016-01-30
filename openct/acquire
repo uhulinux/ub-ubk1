@@ -1,6 +1,4 @@
 #!/usr/bin/env dl
 
-openct-"$UB_VERSION".tar.gz openct-"$UB_VERSION"/
-	http://www.opensc-project.org/files/openct/
-	http://www.opensc-project.org/files/openct/snapshots/
-	http://www.opensc-project.org/files/openct/testing/
+openct-${UB_VERSION}.tar.gz openct-openct-${UB_VERSION}/
+	https://github.com/OpenSC/openct/archive/

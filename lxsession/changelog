@@ -1,7 +1,11 @@
+-------------
+Kiss Attila 2014-12-02
+0.4.9.2 -> 0.5.2
 ------------------------------------------------------------------------
-r40099 | robot | 2014-07-16 09:30:15 +0200 (Wed, 16 Jul 2014) | 2 lines
+r40135 | attus@enterpriseforever.com | 2014-08-07 14:55:32 +0200 (Thu, 07 Aug 2014) | 3 lines
 
-UHU 3 (LTS)
+build-depends, runtime-depends fix
+foltozások a rebootolhatóságás végett
 
 ------------------------------------------------------------------------
 r36854 | janusz@uhulinux.hu | 2014-02-25 14:02:23 +0100 (Tue, 25 Feb 2014) | 2 lines

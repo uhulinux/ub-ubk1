@@ -1,9 +1,6 @@
 #!/bin/sh -eux
 
-ub_configure \
-	--enable-gradients \
-	--enable-shape \
-	--enable-shaped-decorations
-sed -i '/^CORE_LIBS/aCORE_LIBS += -lfontconfig' src/Makefile
+ub_compile \
+	-DPREFIX=/usr \
+	-DCFGDIR=/etc/icewm
 
-ub_make

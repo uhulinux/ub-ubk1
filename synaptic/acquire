@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
-synaptic_${UB_VERSION}.tar.gz synaptic-${UB_VERSION}/
-	http://ftp.de.debian.org/debian/pool/main/s/synaptic/
-	http://savannah.nongnu.org/download/synaptic/
+synaptic_${UB_VERSION}.tar.xz synaptic-${UB_VERSION}/
+	http://ftp.debian.org/debian/pool/main/s/synaptic/
+	http://download.ubk.hu/src/synaptic/

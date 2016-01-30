@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-menu-cache-$UB_VERSION.tar.gz menu-cache-$UB_VERSION/
-	http://downloads.sourceforge.net/lxde/
+$UB_VERSION.tar.gz menu-cache-$UB_VERSION/
+	https://github.com/lxde/menu-cache/archive/

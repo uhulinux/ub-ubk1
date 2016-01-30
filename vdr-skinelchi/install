@@ -2,6 +2,6 @@
 
 ub_install
 
-install -d -m 777 "$UB_INSTALLDIR"/var/vdr/config/themes \
-	"$UB_INSTALLDIR"/var/vdr/config/plugins/skinelchi/{logos,hqlogos}
-install -m 777 themes/* "$UB_INSTALLDIR"/var/vdr/config/themes/
+mkdir -p "$UB_INSTALLDIR"/etc/vdr/themes \
+	"$UB_INSTALLDIR"/etc/vdr/plugins/skinelchi/{logos,hqlogos}
+cp themes/* "$UB_INSTALLDIR"/etc/vdr/themes/

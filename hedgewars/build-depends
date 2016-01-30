@@ -6,6 +6,7 @@ libx11-dev
 libxext-dev
 libxt-dev
 lua-dev
+physfs-dev
 qt4-dev
 sdl-dev
 sdl-image-dev

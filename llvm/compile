@@ -1,14 +1,30 @@
 #!/bin/sh -eux
 
-rm CMakeLists.txt
-
+export UB_MAKE_PROCS=1
 ub_compile \
-	--enable-libffi \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DLLVM_ENABLE_FFI=ON \
+	-DLLVM_BUILD_TESTS=ON \
+	-DLLVM_ENABLE_RTTI=ON \
+	-DLLVM_DYLIB_EXPORT_ALL=ON \
+	-DLLVM_LINK_LLVM_DYLIB=ON \
+	-DLLVM_ENABLE_SPHINX=ON \
+	-DLLVM_BUILD_DOCS=ON \
+	-DLLVM_ENABLE_DOXYGEN=OFF \
+	-DSPHINX_WARNINGS_AS_ERRORS=OFF \
+	-DLLVM_BINUTILS_INCDIR=/usr/include \
 	--disable-expensive-checks \
 	--disable-debug-runtime \
 	--disable-assertions \
 	--enable-optimized \
-	--enable-experimental-targets=R600
+	--enable-experimental-targets=R600 \
+	--enable-shared \
+	--enable-targets=all \
+..
 
-#	-DLLVM_ENABLE_PIC:BOOL=OFF \
-#	-DLLVM_ENABLE_ASSERTIONS:BOOL=OFF
+make -C docs -f Makefile.sphinx man
+make -C docs -f Makefile.sphinx html
+make -C tools/clang/docs -f Makefile.sphinx html
+
+#	-DENABLE_PIC=ON
+

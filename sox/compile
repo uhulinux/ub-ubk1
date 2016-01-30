@@ -5,4 +5,6 @@ rm CMakeLists.txt
 autoreconf -vif
 
 ub_compile \
-	--with-ffmpeg
+	--with-ffmpeg \
+	--with-dyn-default \
+	--with-distro="UHU-Linux"

@@ -1,7 +1,7 @@
-diff -Naurdp a/src/vte-private.h b/src/vte-private.h
---- a/src/vte-private.h	2014-06-23 19:26:54.000000000 +0200
-+++ b/src/vte-private.h	2014-06-23 23:00:21.433927676 +0200
-@@ -101,9 +101,9 @@ G_BEGIN_DECLS
+diff -Naur orig/src/vtedefines.hh patched/src/vtedefines.hh
+--- orig/src/vtedefines.hh	2015-04-29 11:46:12.000000000 +0200
++++ patched/src/vtedefines.hh	2015-12-13 02:17:24.349104163 +0100
+@@ -70,9 +70,9 @@
  #define VTE_INPUT_CHUNK_SIZE		0x2000
  #define VTE_MAX_INPUT_READ		0x1000
  #define VTE_INVALID_BYTE		'?'
@@ -13,4 +13,4 @@ diff -Naurdp a/src/vte-private.h b/src/vte-private.h
 +#define VTE_UPDATE_REPEAT_TIMEOUT	10
  #define VTE_MAX_PROCESS_TIME		100
  #define VTE_CELL_BBOX_SLACK		1
- 
+ #define VTE_DEFAULT_UTF8_AMBIGUOUS_WIDTH 1

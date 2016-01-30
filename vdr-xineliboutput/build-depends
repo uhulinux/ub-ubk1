@@ -1,6 +1,5 @@
 ffmpeg-dev
-libbluray-dev
-libextractor
+libextractor-dev
 libjpeg-dev
 libvdpau-dev
 vdr

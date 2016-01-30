@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 TiMidity++-${UB_VERSION}.tar.gz TiMidity++-${UB_VERSION}/
-	http://downloads.sourceforge.net/timidity/
+	http://download.sourceforge.net/timidity/

@@ -1,4 +1,3 @@
 #!/bin/sh -eux
 
-mkdir -p "$UB_INSTALLDIR"/usr/share/fonts/unifont
-cp -a *.pcf* fonts.dir "$UB_INSTALLDIR"/usr/share/fonts/unifont/
+ub_install

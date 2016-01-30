@@ -1,7 +1,6 @@
 [Desktop Entry]
 Type=Application
 Name=EP128emu
-GenericName=ep128
 Comment=Enterprise 64/128 emulator
 Comment[hu]=Enterprise 64/128 emulátor
 Exec=ep128emu

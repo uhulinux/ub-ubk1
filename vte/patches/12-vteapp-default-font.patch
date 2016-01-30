@@ -1,12 +1,12 @@
-diff -Naurdp a/src/vteapp.c b/src/vteapp.c
---- a/src/vteapp.c	2007-06-06 14:20:53.000000000 +0200
-+++ b/src/vteapp.c	2007-06-06 14:21:27.000000000 +0200
-@@ -436,7 +436,7 @@ main(int argc, char **argv)
-         char *geometry = NULL;
- 	gint lines = 100;
+diff -Naur orig/src/vteapp.c patched/src/vteapp.c
+--- orig/src/vteapp.c	2015-10-14 07:56:24.000000000 +0200
++++ patched/src/vteapp.c	2015-12-13 02:06:25.793838563 +0100
+@@ -573,7 +573,7 @@
+ 	char *geometry = NULL;
+ 	gint lines = -1;
  	const char *message = "Launching interactive shell...\r\n";
 -	const char *font = NULL;
 +	const char *font = "Fixed Bold 12";
- 	const char *termcap = NULL;
  	const char *command = NULL;
  	const char *working_directory = NULL;
+ 	const char *output_file = NULL;

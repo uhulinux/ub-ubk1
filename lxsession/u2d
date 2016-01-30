@@ -1,2 +1,1 @@
-alap=$(sflist lxde LXSession%20%28session%20manager%29 | splitver '^LXSession%20([0-9.]+)$' | sort -V | tail -n 1)
-sflist lxde LXSession%20%28session%20manager%29/LXSession%20"$alap" | parsever | sort -V | tail -n 1
+urllist https://github.com/lxde/lxsession/releases/ | splitver '^([0-9.]+).tar.gz$' | sort -V | tail -n 1

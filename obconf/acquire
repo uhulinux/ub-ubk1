@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-obconf-${UB_VERSION}.tar.gz obconf-${UB_VERSION}/
-	http://openbox.org/dist/obconf/
-	http://icculus.org/openbox/obconf/
+obconf-${UB_VERSION}.tar.gz obconf-63ec47c/
+	git://github.com/danakj/obconf.git@63ec47c

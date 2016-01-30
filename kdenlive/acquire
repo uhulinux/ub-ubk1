@@ -3,3 +3,4 @@
 kdenlive-${UB_VERSION}.tar.bz2 kdenlive-${UB_VERSION}/
 	http://download.kde.org/stable/kdenlive/${UB_VERSION}/src/
 	http://downloads.sourceforge.net/kdenlive/
+	ftp://ftp.dvo.ru/pub/distfiles/

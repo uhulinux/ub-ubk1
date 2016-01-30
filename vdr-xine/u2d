@@ -1,2 +1,1 @@
-urllist https://launchpad.net/~yavdr/+archive/stable-vdr/+packages?field.name_filter=vdr-plugin-xine | \
-grep xine_ | sed s/.*xine_// | sed s/-.*// |sort -V | tail -n 1
+urllist http://ppa.launchpad.net/yavdr/stable-vdr/ubuntu/pool/main/v/vdr-plugin-xine/ | splitver '^vdr-plugin-xine_([0-9.].+).orig.tar.gz$' | sort -V | tail -n 1

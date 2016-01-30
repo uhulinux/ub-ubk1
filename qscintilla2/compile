@@ -16,6 +16,7 @@ cp *.h "$UB_INSTALLDIR"/usr/lib/qt4/include
 # python stuff
 cd ../Python
 
+export QMAKEFEATURES=../Qt4Qt5/features
 python configure.py \
 	--qsci-incdir="$UB_INSTALLDIR"/usr/lib/qt4/include \
 	--qsci-libdir="$UB_INSTALLDIR"/usr/lib/qt4/lib \

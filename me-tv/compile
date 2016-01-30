@@ -1,3 +1,5 @@
 #!/bin/sh -eux
 
+ln -sf /usr/share/doc/Licenses/GPL-3 COPYING
+
 ub_compile

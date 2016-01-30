@@ -2,6 +2,16 @@
 
 ub_install
 
-install -Dm755 tools/qt-faststart "$UB_INSTALLDIR"/usr/bin/qt-faststart
-ln -s libpostproc "$UB_INSTALLDIR"/usr/include/postproc
-ln -s postproc/postprocess.h "$UB_INSTALLDIR"/usr/include/
+mkdir -p "$UB_INSTALLDIR"/usr/include/libavutil/x86  "$UB_INSTALLDIR"/usr/include/libavformat
+cp libavutil/x86/*.h "$UB_INSTALLDIR"/usr/include/libavutil/x86/
+cp libavformat/*.h "$UB_INSTALLDIR"/usr/include/libavformat/
+
+extratools="aviocat graph2dot ismindex pktdumper qt-faststart trasher cws2fws"
+for i in $extratools; do
+	cp "tools/$i" "$UB_INSTALLDIR"/usr/bin/
+done
+
+# ln -s libpostproc "$UB_INSTALLDIR"/usr/include/postproc
+# ln -s postproc/postprocess.h "$UB_INSTALLDIR"/usr/include/
+
+cp config.h "$UB_INSTALLDIR"/usr/include/libavformat/

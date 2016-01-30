@@ -1,4 +1,5 @@
 doxygen
+expat-dev
 libdmx-dev
 libgcrypt-dev
 libpciaccess-dev
@@ -8,6 +9,7 @@ libxfont-dev
 libxkbfile-dev
 libxrender-dev
 libxres-dev
+libxshmfence-dev
 libxtst-dev
 libxv-dev
 mesa-dev

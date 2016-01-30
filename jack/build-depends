@@ -1,6 +1,9 @@
 alsa-lib-dev
-db4-dev
+celt-dev
+dbus-dev
+eigen3
+expat-dev
 libsamplerate-dev
 libsndfile-dev
-libvorbis-dev
-util-linux-dev
+opus-dev
+readline-dev

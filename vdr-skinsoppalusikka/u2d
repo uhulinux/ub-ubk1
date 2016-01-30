@@ -1,1 +1,1 @@
-urllist http://www.saunalahti.fi/~rahrenbe/vdr/soppalusikka/files | parsever | sort -V | tail -n 1
+urllist http://www.saunalahti.fi/~rahrenbe/vdr/soppalusikka/files | splitver '^vdr-skinsoppalusikka-([0-9.]+).tgz$' | sort -V | tail -n 1

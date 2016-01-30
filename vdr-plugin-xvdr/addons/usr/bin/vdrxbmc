@@ -1,16 +1,16 @@
 #!/bin/sh
 
-if ! [ -f /var/vdr/config/startvdrxbmc ]
+if ! [ -f /etc/vdr/startvdrxbmc ]
   then
-  cp /etc/startvdrxbmc  /var/vdr/config/
-  chmod +x /var/vdr/config/startvdrxbmc
-  echo Az átszerkesztendő indító szkript a /var/vdr/config/startvdrxbmc.
+  cp /usr/lib/vdr/startvdrxbmc  /etc/vdr/
+  chmod +x /etc/vdr/startvdrxbmc
+  echo Az átszerkesztendő és személyre szabható indító szkript a /etc/vdr/startvdrxbmc.
   echo Ez hiba esetén letörölhető, hiány esetén újraindítva az eredetire frissül.
   echo Nyomj meg egy billentyűt a vdr első indításához!
   read
-	/var/vdr/config/startvdrxbmc $*
+	/etc/vdr/startvdrxbmc $*
   else
-  /var/vdr/config/startvdrxbmc $*
+  /etc/vdr/startvdrxbmc $*
 fi
 
 

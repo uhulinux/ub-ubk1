@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 dateutils-${UB_VERSION}.tar.xz dateutils-${UB_VERSION}/
-	https://github.com/downloads/hroptatyr/dateutils/
 	https://bitbucket.org/hroptatyr/dateutils/downloads/

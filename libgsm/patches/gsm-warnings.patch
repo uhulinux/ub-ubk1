@@ -1,16 +1,3 @@
---- gsm-1.0-pl12/src/code.c.warn	2006-04-26 21:16:50.000000000 +0200
-+++ gsm-1.0-pl12/src/code.c	2007-05-11 00:26:52.000000000 +0200
-@@ -9,8 +9,8 @@
- #include	"config.h"
- 
- 
--#ifdef	HAS_STDLIB_H
--#include	<stdlib.h>
-+#ifdef	HAS_STRING_H
-+#include	<string.h>
- #else
- #	include "proto.h"
- 	extern char	* memcpy P((char *, char *, int));
 --- gsm-1.0-pl12/src/toast.c.warn	2006-04-26 21:14:26.000000000 +0200
 +++ gsm-1.0-pl12/src/toast.c	2007-05-11 00:26:52.000000000 +0200
 @@ -6,6 +6,8 @@

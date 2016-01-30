@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-dbh-${UB_VERSION}.tar.gz dbh-${UB_VERSION}/
-	http://downloads.sourceforge.net/dbh/
+libdbh2-${UB_VERSION}.tar.gz libdbh2-${UB_VERSION}/
+	http://sourceforge.net/projects/dbh/files/dbh/${UB_VERSION}/

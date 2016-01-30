@@ -11,6 +11,7 @@ libgnome-keyring-dev
 libnotify-dev
 libsm-dev
 libwnck-dev
+libxshmfence-dev
 nss-dev
 systemd-dev
 webkitgtk-dev

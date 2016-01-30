@@ -7,5 +7,5 @@ libsm-dev
 libsndfile-dev
 libvorbis-dev
 pulseaudio-dev
-tdb-dev
 systemd-dev
+tdb-dev

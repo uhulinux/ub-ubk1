@@ -1,1 +1,1 @@
-sflist lxde LXDE%20Icon%20Theme | splitver '^lxde-icon-theme-([0-9.]+)$' | sort -V | tail -n 1
+urllist http://sourceforge.net/projects/lxde/files/LXDE%20Icon%20Theme/  | splitver '^lxde-icon-theme-([0-9.x]+)$' | sort -V | tail -n 1

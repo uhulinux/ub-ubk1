@@ -1,6 +1,6 @@
 [Unit]
 Description=Domain Name Service Server
-After=syslog.target network.target
+After=network.target
 
 [Service]
 PIDFile=/var/run/named/named.pid

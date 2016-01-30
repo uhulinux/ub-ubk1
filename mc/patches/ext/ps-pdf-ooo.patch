@@ -6,7 +6,7 @@ diff -Naur orig/misc/ext.d/doc.sh.in patched/misc/ext.d/doc.sh.in
      ps)
          if [ -n "$DISPLAY" ]; then
 -            (gv "${MC_EXT_FILENAME}" &)
-+            (evinve "${MC_EXT_FILENAME}" &)
++            (evince "${MC_EXT_FILENAME}" &)
          else
              ps2ascii "${MC_EXT_FILENAME}" | ${PAGER:-more}
          fi

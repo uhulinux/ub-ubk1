@@ -1,8 +1,0 @@
---- balsa.orig/balsa.desktop.in.in	2009-05-23 09:02:12.000000000 +0200
-+++ balsa/balsa.desktop.in.in	2009-06-21 20:00:38.000000000 +0200
-@@ -7,4 +7,4 @@
- Terminal=false
- Type=Application
- StartupNotify=true
--Categories=GNOME;GTK;Office;Email;
-+Categories=GNOME;GTK;Office;Email;X-UHU-Menu/Internet/Email;

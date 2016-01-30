@@ -5,4 +5,4 @@ Comment=Mixer for the ALSA sound system
 Comment[hu]=Az ALSA hangrendszer hangkeverője
 Exec=alsamixer
 Terminal=true
-Categories=AudioVideo;Audio;Mixer;X-UHU-Menu/Multimedia/Mixers;
+Categories=AudioVideo;Audio;Mixer;

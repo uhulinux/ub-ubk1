@@ -13,6 +13,6 @@ qt4-dev
 sdl-dev
 sdl-image-dev
 sdl-mixer-dev
-sox
+sox-dev
 swfdec-dev
 x264-dev

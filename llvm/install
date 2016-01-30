@@ -2,7 +2,6 @@
 
 ub_install
 
-mkdir -p "$UB_INSTALLDIR"/usr/share/llvm/
-mv "$UB_INSTALLDIR"/usr/docs/llvm "$UB_INSTALLDIR"/usr/share/llvm/docs
-rm -R "$UB_INSTALLDIR"/usr/docs
-rm -f "$UB_INSTALLDIR"/usr/share/llvm/docs/html.tar.gz
+mkdir -p "$UB_INSTALLDIR/usr/share/doc/clang/html"
+cp -r docs/_build/html/* "$UB_INSTALLDIR/usr/share/doc/clang/html/"
+rm -r "$UB_INSTALLDIR/usr/share/doc/clang/html/_sources"

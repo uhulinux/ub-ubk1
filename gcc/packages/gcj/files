@@ -4,6 +4,7 @@
 	/usr/bin/gc-analyze
 	/usr/bin/gcj-dbtool
 	/usr/bin/gcjh
+	/usr/bin/gij
 	/usr/bin/gjar
 	/usr/bin/gjarsigner
 	/usr/bin/gjavah
@@ -15,6 +16,8 @@
 	/usr/bin/grmiregistry
 	/usr/bin/gserialver
 	/usr/bin/gtnameserv
+	/usr/bin/jcf-dump
+	/usr/bin/jv-convert
 	/usr/bin/rebuild-gcj-db
 	/usr/include/c++/*/gcj
 	/usr/include/c++/*/gnu
@@ -37,6 +40,7 @@
 	/usr/lib/libgij.*
 	/usr/lib/logging.properties
 	/usr/lib/pkgconfig/libgcj-*.pc
+	/usr/lib/security/classpath.security
 	/usr/libexec/gcc/*/*/jc1
 	/usr/libexec/gcc/*/*/jvgenmain
 	/usr/share/gcc-*/python/libjava
@@ -48,6 +52,7 @@
 	/usr/share/man/man1/gcj-dbtool.1
 	/usr/share/man/man1/gcj.1
 	/usr/share/man/man1/gcjh.1
+	/usr/share/man/man1/gij.1*
 	/usr/share/man/man1/gjar.1
 	/usr/share/man/man1/gjarsigner.1
 	/usr/share/man/man1/gjavah.1
@@ -60,4 +65,6 @@
 	/usr/share/man/man1/grmiregistry.1
 	/usr/share/man/man1/gserialver.1
 	/usr/share/man/man1/gtnameserv.1
+	/usr/share/man/man1/jcf-dump.1*
+	/usr/share/man/man1/jv-convert.1*
 	/usr/share/man/man1/rebuild-gcj-db.1

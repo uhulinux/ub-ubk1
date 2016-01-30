@@ -1,3 +1,4 @@
 #!/bin/sh -eux
 
-./install.sh --prefix="${UB_INSTALLDIR}/usr"
+python3 setup.py install --root=${UB_INSTALLDIR}
+

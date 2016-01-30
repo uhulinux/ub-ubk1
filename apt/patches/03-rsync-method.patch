@@ -1,7 +1,7 @@
-diff -Naurdp a/apt-pkg/acquire-item.h b/apt-pkg/acquire-item.h
---- a/apt-pkg/acquire-item.h	2012-04-16 19:23:05.000000000 +0200
-+++ b/apt-pkg/acquire-item.h	2013-03-06 16:53:04.626235024 +0100
-@@ -167,6 +167,10 @@ class pkgAcquire::Item : public WeakPoin
+diff -Naur orig/apt-pkg/acquire-item.h patched/apt-pkg/acquire-item.h
+--- orig/apt-pkg/acquire-item.h	2014-07-10 10:50:32.000000000 +0200
++++ patched/apt-pkg/acquire-item.h	2014-07-17 04:17:56.175862248 +0200
+@@ -171,6 +171,10 @@
      *  will be written.
      */
     std::string DestFile;
@@ -12,10 +12,10 @@ diff -Naurdp a/apt-pkg/acquire-item.h b/apt-pkg/acquire-item.h
  
     /** \brief Invoked by the acquire worker when the object couldn't
      *  be fetched.
-diff -Naurdp a/apt-pkg/acquire-method.cc b/apt-pkg/acquire-method.cc
---- a/apt-pkg/acquire-method.cc	2012-05-21 11:41:17.000000000 +0200
-+++ b/apt-pkg/acquire-method.cc	2013-03-06 16:50:47.334962505 +0100
-@@ -132,6 +132,9 @@ void pkgAcqMethod::URIStart(FetchResult
+diff -Naur orig/apt-pkg/acquire-method.cc patched/apt-pkg/acquire-method.cc
+--- orig/apt-pkg/acquire-method.cc	2014-07-10 10:50:30.000000000 +0200
++++ patched/apt-pkg/acquire-method.cc	2014-07-17 04:17:56.175862248 +0200
+@@ -140,6 +140,9 @@
  
     if (UsedMirror.empty() == false)
        std::cout << "UsedMirror: " << UsedMirror << "\n";
@@ -25,10 +25,10 @@ diff -Naurdp a/apt-pkg/acquire-method.cc b/apt-pkg/acquire-method.cc
  
     std::cout << "\n" << std::flush;
  }
-diff -Naurdp a/apt-pkg/acquire-method.h b/apt-pkg/acquire-method.h
---- a/apt-pkg/acquire-method.h	2012-05-21 11:41:17.000000000 +0200
-+++ b/apt-pkg/acquire-method.h	2013-03-06 16:53:43.296903414 +0100
-@@ -56,6 +56,7 @@ class pkgAcqMethod
+diff -Naur orig/apt-pkg/acquire-method.h patched/apt-pkg/acquire-method.h
+--- orig/apt-pkg/acquire-method.h	2014-07-10 10:50:30.000000000 +0200
++++ patched/apt-pkg/acquire-method.h	2014-07-17 04:17:56.175862248 +0200
+@@ -59,6 +59,7 @@
        time_t LastModified;
        bool IMSHit;
        std::string Filename;
@@ -36,10 +36,10 @@ diff -Naurdp a/apt-pkg/acquire-method.h b/apt-pkg/acquire-method.h
        unsigned long long Size;
        unsigned long long ResumePoint;
        
-diff -Naurdp a/apt-pkg/acquire-worker.cc b/apt-pkg/acquire-worker.cc
---- a/apt-pkg/acquire-worker.cc	2012-05-21 11:41:17.000000000 +0200
-+++ b/apt-pkg/acquire-worker.cc	2013-03-06 16:54:26.583412848 +0100
-@@ -275,6 +275,7 @@ bool pkgAcquire::Worker::RunMessages()
+diff -Naur orig/apt-pkg/acquire-worker.cc patched/apt-pkg/acquire-worker.cc
+--- orig/apt-pkg/acquire-worker.cc	2014-07-10 10:50:30.000000000 +0200
++++ patched/apt-pkg/acquire-worker.cc	2014-07-17 04:17:56.175862248 +0200
+@@ -283,6 +283,7 @@
  	    CurrentSize = 0;
  	    TotalSize = strtoull(LookupTag(Message,"Size","0").c_str(), NULL, 10);
  	    ResumePoint = strtoull(LookupTag(Message,"Resume-Point","0").c_str(), NULL, 10);
@@ -47,7 +47,7 @@ diff -Naurdp a/apt-pkg/acquire-worker.cc b/apt-pkg/acquire-worker.cc
  	    Itm->Owner->Start(Message,strtoull(LookupTag(Message,"Size","0").c_str(), NULL, 10));
  
  	    // Display update before completion
-@@ -586,7 +587,11 @@ void pkgAcquire::Worker::Pulse()
+@@ -601,7 +602,11 @@
        return;
   
     struct stat Buf;
@@ -60,10 +60,10 @@ diff -Naurdp a/apt-pkg/acquire-worker.cc b/apt-pkg/acquire-worker.cc
        return;
     CurrentSize = Buf.st_size;
     
-diff -Naurdp a/methods/makefile b/methods/makefile
---- a/methods/makefile	2012-04-16 19:23:05.000000000 +0200
-+++ b/methods/makefile	2013-03-06 16:50:47.338962368 +0100
-@@ -79,6 +79,13 @@ LIB_MAKES = apt-pkg/makefile
+diff -Naur orig/methods/makefile patched/methods/makefile
+--- orig/methods/makefile	2014-04-25 13:39:00.000000000 +0200
++++ patched/methods/makefile	2014-07-17 04:17:56.175862248 +0200
+@@ -79,6 +79,13 @@
  SOURCE = rsh.cc
  include $(PROGRAM_H)
  
@@ -77,9 +77,9 @@ diff -Naurdp a/methods/makefile b/methods/makefile
  # The mirror method
  PROGRAM=mirror
  SLIBS = -lapt-pkg $(SOCKETLIBS)
-diff -Naurdp a/methods/rsync.cc b/methods/rsync.cc
---- a/methods/rsync.cc	1970-01-01 01:00:00.000000000 +0100
-+++ b/methods/rsync.cc	2013-03-06 16:50:47.338962368 +0100
+diff -Naur orig/methods/rsync.cc patched/methods/rsync.cc
+--- orig/methods/rsync.cc	1970-01-01 01:00:00.000000000 +0100
++++ patched/methods/rsync.cc	2014-07-17 04:17:56.175862248 +0200
 @@ -0,0 +1,468 @@
 +// -*- mode: cpp; mode: fold -*-
 +// Description								/*{{{*/
@@ -549,9 +549,9 @@ diff -Naurdp a/methods/rsync.cc b/methods/rsync.cc
 +   
 +   return Mth.Run();
 +}
-diff -Naurdp a/methods/rsync-method.h b/methods/rsync-method.h
---- a/methods/rsync-method.h	1970-01-01 01:00:00.000000000 +0100
-+++ b/methods/rsync-method.h	2013-03-06 16:50:47.338962368 +0100
+diff -Naur orig/methods/rsync-method.h patched/methods/rsync-method.h
+--- orig/methods/rsync-method.h	1970-01-01 01:00:00.000000000 +0100
++++ patched/methods/rsync-method.h	2014-07-17 04:17:56.179862297 +0200
 @@ -0,0 +1,102 @@
 +// -*- mode: cpp; mode: fold -*-
 +// Description								/*{{{*/

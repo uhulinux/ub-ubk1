@@ -1,5 +1,7 @@
+expat-dev
 freeglut-dev
 glew-dev
 glu-dev
+libxshmfence-dev
 mesa-dev
 systemd-dev

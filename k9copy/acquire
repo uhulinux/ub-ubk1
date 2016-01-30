@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-k9copy-${UB_VERSION/~/-}-Source.tar.gz k9copy-${UB_VERSION}-Source/
-	http://downloads.sourceforge.net/k9copy/k9copy-kde4/
+k9copy_3.0.3.orig.tar.xz k9copy/
+	http://main.mepis-deb.org/mepiscr/testrepo/pool/test/k/k9copy/

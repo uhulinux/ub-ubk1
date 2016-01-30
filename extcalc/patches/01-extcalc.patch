@@ -1,6 +1,6 @@
-diff -Naurd a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2010-04-10 13:03:21.000000000 +0200
-+++ b/CMakeLists.txt	2013-07-23 18:42:34.000000000 +0200
+diff -Naur orig/CMakeLists.txt mod/CMakeLists.txt
+--- orig/CMakeLists.txt	2010-04-10 13:03:21.000000000 +0200
++++ mod/CMakeLists.txt	2016-01-24 22:19:09.012247720 +0100
 @@ -160,12 +160,12 @@
  
  
@@ -16,9 +16,9 @@ diff -Naurd a/CMakeLists.txt b/CMakeLists.txt
  SET(BINDIR "bin")
  ADD_DEFINITIONS(-DINSTALLDIR=\"\\\"${CMAKE_INSTALL_PREFIX}/share/extcalc\\\"\")
  
-diff -Naurd a/share/extcalc.desktop b/share/extcalc.desktop
---- a/share/extcalc.desktop	2010-04-09 18:13:47.000000000 +0200
-+++ b/share/extcalc.desktop	2014-05-06 19:29:43.000000000 +0200
+diff -Naur orig/share/extcalc.desktop mod/share/extcalc.desktop
+--- orig/share/extcalc.desktop	2010-04-09 18:13:47.000000000 +0200
++++ mod/share/extcalc.desktop	2016-01-24 21:59:37.647786009 +0100
 @@ -1,8 +1,9 @@
  [Desktop Entry]
 -Encoding=UTF-8
@@ -29,11 +29,12 @@ diff -Naurd a/share/extcalc.desktop b/share/extcalc.desktop
  Terminal=false
  Type=Application
 -Categories=Qt;Utility
+-Icon=extcalc48.png
 +Categories=Qt;Utility;
- Icon=extcalc48.png
-diff -Naurd a/src/calclocale.h b/src/calclocale.h
---- a/src/calclocale.h	2010-04-09 18:13:47.000000000 +0200
-+++ b/src/calclocale.h	2013-07-23 18:44:56.000000000 +0200
++Icon=extcalc48
+diff -Naur orig/src/calclocale.h mod/src/calclocale.h
+--- orig/src/calclocale.h	2010-04-09 18:13:47.000000000 +0200
++++ mod/src/calclocale.h	2016-01-24 22:17:54.336250687 +0100
 @@ -21,7 +21,7 @@
  
  //This macros will be defined by the configure-script at a normal installation

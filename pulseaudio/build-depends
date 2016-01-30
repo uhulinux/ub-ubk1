@@ -2,9 +2,10 @@ alsa-lib-dev
 avahi-dev
 bluez-dev
 db4-dev
-dbus-glib-dev
+fftw3-dev
 gconf2-dev
 gdbm-dev
+gtk-dev
 intltool
 jack-dev
 json-c-dev
@@ -14,7 +15,7 @@ liboil-dev
 libsamplerate-dev
 libsm-dev
 libsndfile-dev
-libvorbis-dev
+libsoxr-dev
 libxtst-dev
 lirc-dev
 openssl-dev

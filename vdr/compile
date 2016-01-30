@@ -1,18 +1,5 @@
 #!/bin/sh -eux
 
-#rotor plugin engedélyezés
-#sed -i "s/#ROTOR/ROTOR/g" Make.config.template
-
-#setup plugin engedélyezés
-sed -i "s/#SETUP/SETUP/g" Make.config.template
-
-#yaepg plugin engedélyezés
-#sed -i "s/#YAEPG/YAEPG/g" Make.config.template
-
 cp Make.config.template Make.config
 
-make \
-	PREFIX=/usr \
-	VIDEODIR=/var/vdr/video \
-	VDR_USER=users \
-	CONFDIR=/var/vdr/config
+ub_compile

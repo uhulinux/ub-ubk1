@@ -1,8 +1,0 @@
-cmake
-libffi-dev
-ocaml
-perl
-python-dev
-python-markupsafe
-python-setuptools
-python-sphinx

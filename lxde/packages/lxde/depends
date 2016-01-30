@@ -1,19 +1,19 @@
-docbook2man
-gpicview
-gtknetcat
-icon-theme-lxde
-lxappearance
-lxdm
-lxinput
-lxmenu-data
-lxmusic
-lxnm
-lxpanel
-lxrandr
-lxsession
-lxshortcut
-lxtask
-lxterminal
-menu-cache
-openbox
-pcmanfm
+gpicview >=
+icon-theme-lxde >=
+libfm >=
+lxappearance >=
+lxappearance-obconf >=
+lxde-common >=
+lxdm >=
+lxinput >=
+lxmenu-data >=
+lxmusic >=
+lxpanel >=
+lxrandr >=
+lxsession >=
+lxtask >=
+lxterminal >=
+menu-cache >=
+obconf >=
+openbox >=
+pcmanfm >=

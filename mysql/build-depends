@@ -1,4 +1,8 @@
 cmake
+cracklib-dev
+libevent-dev
+libxml2-dev
 openssl-dev
 procps
 sharutils
+systemd-dev

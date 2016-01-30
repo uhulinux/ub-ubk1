@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-blackbox-${UB_VERSION}.tar.gz blackbox-${UB_VERSION}/
-	http://downloads.sourceforge.net/blackboxwm/
+blackbox-${UB_VERSION}.tar.gz blackboxwm-ea43b64/
+	git://github.com/bbidulock/blackboxwm.git@ea43b64

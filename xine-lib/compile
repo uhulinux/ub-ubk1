@@ -3,5 +3,6 @@
 ub_compile \
 	--enable-dvb \
 	--with-wavpack \
-	--disable-musepack \
-	--enable-vdpau
+	--enable-musepack \
+	--enable-vdpau \
+	--with-external-dvdnav

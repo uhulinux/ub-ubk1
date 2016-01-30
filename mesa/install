@@ -2,4 +2,24 @@
 
 ub_install
 
+mkdir -p "$UB_INSTALLDIR"/usr/lib/mesa
+mkdir -p "$UB_INSTALLDIR"/usr/lib/xorg/modules/extensions
+mv -v "$UB_INSTALLDIR"/usr/lib/libEGL.so* "$UB_INSTALLDIR"/usr/lib/mesa/
+mv -v "$UB_INSTALLDIR"/usr/lib/libGL.so* "$UB_INSTALLDIR"/usr/lib/mesa/
+mv -v "$UB_INSTALLDIR"/usr/lib/libGLES*.so* "$UB_INSTALLDIR"/usr/lib/mesa/
+
+ln -s libglx.so.xorg "$UB_INSTALLDIR"/usr/lib/xorg/modules/extensions/libglx.so
+ln -s "$UB_INSTALLDIR"/usr/lib/mesa/libGL.so "$UB_INSTALLDIR"/usr/lib/libGL.so
+ln -s "$UB_INSTALLDIR"/usr/lib/mesa/libGL.so.1 "$UB_INSTALLDIR"/usr/lib/libGL.so.1
+ln -s "$UB_INSTALLDIR"/usr/lib/mesa/libGL.so.1.2.0 "$UB_INSTALLDIR"/usr/lib/libGL.so.1.2.0
+ln -s "$UB_INSTALLDIR"/usr/lib/mesa/libEGL.so "$UB_INSTALLDIR"/usr/lib/libEGL.so
+ln -s "$UB_INSTALLDIR"/usr/lib/mesa/libEGL.so.1 "$UB_INSTALLDIR"/usr/lib/libEGL.so.1
+ln -s "$UB_INSTALLDIR"/usr/lib/mesa/libEGL.so.1.0.0 "$UB_INSTALLDIR"/usr/lib/libEGL.so.1.0.0
+ln -s "$UB_INSTALLDIR"/usr/lib/mesa/libGLESv1_CM.so "$UB_INSTALLDIR"/usr/lib/libGLESv1_CM.so
+ln -s "$UB_INSTALLDIR"/usr/lib/mesa/libGLESv1_CM.so.1 "$UB_INSTALLDIR"/usr/lib/libGLESv1_CM.so.1
+ln -s "$UB_INSTALLDIR"/usr/lib/mesa/libGLESv1_CM.so.1.1.0 "$UB_INSTALLDIR"/usr/lib/libGLESv1_CM.so.1.1.0
+ln -s "$UB_INSTALLDIR"/usr/lib/mesa/libGLESv2.so "$UB_INSTALLDIR"/usr/lib/libGLESv2.so
+ln -s "$UB_INSTALLDIR"/usr/lib/mesa/libGLESv2.so.2 "$UB_INSTALLDIR"/usr/lib/libGLESv2.so.2
+ln -s "$UB_INSTALLDIR"/usr/lib/mesa/libGLESv2.so.2.0.0 "$UB_INSTALLDIR"/usr/lib/libGLESv2.so.2.0.0
+
 rm -f "$UB_INSTALLDIR"/usr/include/GL/{glew,glxew,wglew}.h

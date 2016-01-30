@@ -1,4 +1,5 @@
 freetype2-dev
 libfontenc-dev
 libpng-dev
+x.org-proto-dev
 x.org-xtrans-dev

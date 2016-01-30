@@ -1,7 +1,7 @@
-diff -Naur synaptic-0.52.orig/gtk/gsynaptic.cc synaptic-0.52/gtk/gsynaptic.cc
---- synaptic-0.52.orig/gtk/gsynaptic.cc	2004-06-27 18:45:29.000000000 +0200
-+++ synaptic-0.52/gtk/gsynaptic.cc	2004-08-02 16:54:25.528375101 +0200
-@@ -48,7 +48,7 @@
+diff -Naur orig/gtk/gsynaptic.cc patched/gtk/gsynaptic.cc
+--- orig/gtk/gsynaptic.cc	2013-04-18 20:04:37.000000000 +0200
++++ patched/gtk/gsynaptic.cc	2014-10-18 23:15:37.660838896 +0200
+@@ -65,7 +65,7 @@
  {
     std::cout <<
  #ifndef HAVE_RPM

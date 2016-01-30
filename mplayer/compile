@@ -10,18 +10,19 @@ CFLAGS="-O2 -march=i686 -mtune=generic -fomit-frame-pointer -I/usr/include/direc
 	--enable-runtime-cpudetection \
 	--language="hu bg cs de dk el en es fr it ja ko mk nb nl pl ro ru sk sv tr uk pt_BR zh_CN zh_TW" \
 	--enable-menu \
-	--disable-fribidi \
+	--enable-fribidi \
 	--enable-libopenjpeg \
 	--enable-bl \
 	--enable-xvmc \
 	--enable-mga \
 	--enable-xmga \
 	--enable-vdpau \
-	--disable-libdvdcss-internal \
-	--disable-dvdread-internal \
 	--enable-libgsm \
 	--enable-radio \
 	--enable-radio-capture \
 	--enable-gui \
-	--enable-directfb
+	--enable-directfb \
+	--extra-ldflags="-lfribidi"
 ub_make
+
+# 	--disable-libdvdcss-internal, --disable-dvdread-internal: unknown parameter

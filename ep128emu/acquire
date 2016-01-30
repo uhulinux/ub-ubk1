@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-ep128emu-${UB_VERSION}-linux_i686.tar.bz2 ep128emu-${UB_VERSION}/
-	http://downloads.sourceforge.net/project/ep128emu/ep128emu2/ep128emu-${UB_VERSION}/
-
-ep128emu_roms.bin :roms
+ep128emu_roms.bin 
 	http://ep128emu.enterpriseforever.com/roms/
+
+ep128emu-${UB_VERSION}.tar.bz2 ep128emu-${UB_VERSION}/
+	http://sourceforge.net/projects/ep128emu/files/ep128emu2/ep128emu-${UB_VERSION}/

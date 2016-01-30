@@ -1,17 +1,38 @@
 #!/bin/sh -eux
 
+# deprecated in 5.5: Qt WebKit, Qt Declarative (Qt Quick 1), Qt Script
+
+# qtwebengine: HTML5 fejlesztőknek egy Chromium alapú izé, nem kell
+
+# https://bugreports.qt.io/browse/QTBUG-43412
+# egyelőre viszont qtwayland sem kell 
+# mkdir qtwayland/.git
+
 export LD_LIBRARY_PATH="$(pwd)"/lib
 
-yes yes | ./configure \
+./configure \
 	-platform linux-g++-32 \
 	-prefix /usr/lib/qt5 \
+	-sysconfdir /etc/xdg \
 	\
 	-release            \
 	-opensource         \
+	-confirm-license	\
 	-shared             \
 	-largefile          \
 	-c++11              \
+	-rpath              \
+	-verbose            \
+	-silent             \
+	-optimized-qmake    \
 	-no-qml-debug       \
+	-no-use-gold-linker \
+	-no-journald		\
+	-reduce-relocations \
+	-no-separate-debug-info \
+	\
+	-nomake examples    \
+	-skip qtwebengine	\
 	\
 	-accessibility      \
 	\
@@ -19,32 +40,27 @@ yes yes | ./configure \
 	-plugin-sql-psql -I/usr/include/postgresql -I/usr/include/postgresql/server \
 	-plugin-sql-odbc    \
 	-plugin-sql-sqlite  \
-	-system-sqlite      \
 	\
 	-audio-backend      \
+	-gstreamer 1.0		\
 	\
-	-javascript-jit     \
-	\
-	-system-zlib        \
-	-system-libpng      \
+	-system-freetype	\
 	-system-libjpeg     \
+	-system-libpng      \
+	-system-pcre		\
+	-system-sqlite		\
+	-system-zlib        \
 	-system-xcb         \
+	-system-xkbcommon-x11 \
 	\
 	-openssl-linked     \
-	\
-	-rpath              \
-	-verbose            \
-	-silent             \
-	-optimized-qmake    \
 	\
 	-no-nis             \
 	-cups               \
 	-iconv              \
 	-no-pch             \
 	-dbus-linked        \
-	\
-	-reduce-relocations \
-	-no-separate-debug-info \
+	-mtdev				\
 	\
 	-glib               \
 	-gtkstyle           \
@@ -74,10 +90,6 @@ yes yes | ./configure \
 ub_make
 
 #some options we may want to use in the future
-#	-phonon-backend     \
-#	-phonon             \
-#	-multimedia         \
-#	-audio-backend      \
-#	-nomake demos       \
-#	-nomake examples    \
-#	-nomake docs
+#	-nomake tests       \
+#	-system-harfbuzz	\ # requires harfbuzz >= 0.9.31
+

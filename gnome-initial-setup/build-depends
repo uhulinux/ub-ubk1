@@ -15,6 +15,7 @@ libgweather-dev
 libpwquality-dev
 librsvg-dev
 libsoup-gnome-dev
+libxshmfence-dev
 networkmanager-dev
 nm-applet-dev
 polkit-dev

@@ -1,1 +1,1 @@
-sflist eaccelerator eaccelerator | splitver '^eAccelerator%20([0-9.]+)$' | sort -V | tail -n 1
+sflist eaccelerator eaccelerator | sed s/" "//g | splitver '^eAccelerator([0-9.]+)$' | sort -V | tail -n 1

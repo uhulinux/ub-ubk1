@@ -16,6 +16,6 @@ diff -Naur canorus-0.7.R1002-orig/canorus.desktop canorus-0.7.R1002/canorus.desk
  Terminal=false
  Type=Application
 -Categories=Application;AudioVideo;
-+Categories=Application;AudioVideo;X-UHU-Menu/Multimedia/SoundEdit;
++Categories=Application;AudioVideo;
  StartupNotify=true
  MimeType=application/x-notes

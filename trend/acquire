@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 trend-$UB_VERSION.tar.gz trend-$UB_VERSION/
-	http://www.thregr.org/~wavexx/software/trend/
+	ftp://ftp.slackware.org.uk/people/alphageek/slackware-13.37/source/trend/

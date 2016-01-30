@@ -1,10 +1,11 @@
---- vte.orig/src/vte.c	2011-02-16 20:42:09.000000000 +0100
-+++ vte/src/vte.c	2011-03-30 20:11:40.000000000 +0200
-@@ -5389,6 +5389,7 @@
+diff -Naur orig/src/vte.cc patched/src/vte.cc
+--- orig/src/vte.cc	2015-10-14 07:56:24.000000000 +0200
++++ patched/src/vte.cc	2015-12-13 02:11:55.895475449 +0100
+@@ -5055,6 +5055,7 @@
  			break;
  		case GDK_KEY_KP_Insert:
  		case GDK_KEY_Insert:
-+			break;
++		        break;
  			if (modifiers & GDK_SHIFT_MASK) {
  				if (modifiers & GDK_CONTROL_MASK) {
  					vte_terminal_paste_clipboard(terminal);

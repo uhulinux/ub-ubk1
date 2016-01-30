@@ -1,10 +1,12 @@
+curl-dev
+cyrus-sasl2-dev
 dbus-glib-dev
 ffmpeg-thumbnailer-dev
 freetype2-dev
 gdk-pixbuf-dev
-gstreamer0.10-dev
+gst-plugins-base-dev
 intltool
-lcms-dev
+libgsf-dev
 libjpeg-dev
 libpng-dev
 libtiff-dev

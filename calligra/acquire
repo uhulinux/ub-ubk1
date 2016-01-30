@@ -3,3 +3,4 @@
 calligra-${UB_VERSION}.tar.xz calligra-${UB_VERSION}/
 	http://download.kde.org/stable/calligra-${UB_VERSION}/
 	http://download.kde.org/unstable/calligra-${UB_VERSION}/
+	ftp://ftp.dvo.ru/pub/distfiles/

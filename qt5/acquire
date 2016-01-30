@@ -1,5 +1,6 @@
 #!/usr/bin/env dl
 
 qt-everywhere-opensource-src-${UB_VERSION/~/-}.tar.xz qt-everywhere-opensource-src-${UB_VERSION/~/-}/
+	http://download.qt.io/official_releases/qt/${UB_VERSION_HEAD2}/${UB_VERSION}/single/
 	http://download.qt-project.org/official_releases/qt/${UB_VERSION_HEAD2}/${UB_VERSION}/single/
-	http://origin.releases.qt-project.org/qt5/${UB_VERSION}/single/
+	http://download.qt.io/development_releases/qt/${UB_VERSION_HEAD2}/${UB_VERSION/~/-}/single/

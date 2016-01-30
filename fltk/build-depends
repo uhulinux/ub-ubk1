@@ -1,10 +1,10 @@
 alsa-lib-dev
+cairo-dev
 cmake
 desktop-file-utils
+glu-dev
 icon-theme-hicolor
 libjpeg-dev
-libpng-dev
 libxdg-basedir-dev
 libxft-dev
 libxinerama-dev
-mesa-dev

@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-scribus-${UB_VERSION}.tar.xz scribus-${UB_VERSION}/
-	http://downloads.sourceforge.net/scribus/
+scribus-${UB_VERSION}.tar.bz2 ./scribus-${UB_VERSION}/
+	http://download.sourceforge.net/scribus/
 	http://www.scribus.org.uk/downloads/${UB_VERSION}/
 	http://web2.altmuehlnet.de/fschmid/
 	http://scribus.planetmirror.com/

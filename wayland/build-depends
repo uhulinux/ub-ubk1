@@ -1,3 +1,5 @@
 doxygen
 expat-dev
+graphviz-dev
 libffi-dev
+xmlto

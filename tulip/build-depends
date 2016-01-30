@@ -4,7 +4,6 @@ docbook-xsl
 docbook2man
 doxygen
 freetype2-dev
-ftgl-dev
 glew-dev
 glib-dev
 glu-dev
@@ -12,7 +11,9 @@ java-jre
 libjpeg-dev
 libpng-dev
 libxml2-dev
-libyajl-dev
 mesa-dev
 python-dev
+python-markupsafe
+python-setuptools
+python-sphinx
 qt4-dev

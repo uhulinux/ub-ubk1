@@ -1,7 +1,22 @@
 #!/bin/sh -eux
 
 celdir="$UB_INSTALLDIR"/usr/share/ep128/
-install -d -m 0775 "$celdir"/{roms,disk,config}
+install -d -m 0775 "$celdir"/roms  "$celdir"/disk "$celdir"/config
+mv ep128emu_roms.bin roms/
 cp ep128emu  tapeedit "$UB_INSTALLDIR"/usr/bin
-cp -r roms config disk "$celdir"/
+cp -r roms  config disk "$celdir"
 cp makecfg "$celdir"/makecfg.bin
+usrbin="$UB_INSTALLDIR"/usr/bin/makecfg
+bashstr='#!/bin/bash
+if test ! -d ~/.ep128emu/roms
+then
+mkdir -p ~/.ep128emu/roms
+cp /usr/share/ep128/roms/ep128emu_roms.bin ~/.ep128emu/roms
+fi
+/usr/share/ep128/makecfg.bin'
+# bash indító
+for sorok in "$bashstr"
+	do
+	echo "$sorok" >"$usrbin"
+	done
+chmod +x "$usrbin"

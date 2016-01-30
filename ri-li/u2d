@@ -1,1 +1,2 @@
-sflist ri-li Ri-li%20Linux_Unix | splitver '^Ri-li%20V([0-9.]+)$' | sort -V | tail -n 1 
+urllist http://sourceforge.net/projects/ri-li/files/Ri-li%20Linux_Unix/ | grep -E '^Ri-li V' | sort -V | tail -n 1 | sed s/.*V//g
+

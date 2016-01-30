@@ -10,4 +10,5 @@ ub_compile \
 	--enable-compat-howl \
 	--disable-qt3 \
 	--disable-qt4 \
-	--disable-python
+	--disable-python \
+	--disable-gtk

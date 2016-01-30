@@ -2,5 +2,6 @@ gtk2-dev
 gtkglext-dev
 gtkmm2-dev
 libxmu-dev
+libxshmfence-dev
 libxt-dev
 mesa-dev

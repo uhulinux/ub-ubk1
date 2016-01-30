@@ -1,7 +1,6 @@
 dbus-glib-dev
 gtk2-dev
 intltool
-libglade2-dev
 libwnck2-dev
 libxfce4ui-dev
 libxfce4util-dev
@@ -14,6 +13,5 @@ startup-notification-dev
 systemd-dev
 x.org-server-utils
 xcb-util-dev
-xfce4-dev-tools
 xfce4-panel-dev
 xfconf-dev

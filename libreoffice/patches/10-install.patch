@@ -1,6 +1,6 @@
 diff -Naur orig/bin/distro-install-desktop-integration patched/bin/distro-install-desktop-integration
---- orig/bin/distro-install-desktop-integration	2014-02-13 01:31:05.000000000 +0100
-+++ patched/bin/distro-install-desktop-integration	2014-02-16 13:26:12.140598386 +0100
+--- orig/bin/distro-install-desktop-integration	2015-10-10 21:45:34.860542834 +0200
++++ patched/bin/distro-install-desktop-integration	2015-10-10 23:19:12.440398908 +0200
 @@ -39,22 +39,20 @@
  
  create_man_link()
@@ -29,8 +29,8 @@ diff -Naur orig/bin/distro-install-desktop-integration patched/bin/distro-instal
  
  
 diff -Naur orig/solenv/bin/modules/installer/worker.pm patched/solenv/bin/modules/installer/worker.pm
---- orig/solenv/bin/modules/installer/worker.pm	2014-02-13 01:31:05.000000000 +0100
-+++ patched/solenv/bin/modules/installer/worker.pm	2014-02-16 13:25:48.236377756 +0100
+--- orig/solenv/bin/modules/installer/worker.pm	2015-10-10 21:45:34.860542834 +0200
++++ patched/solenv/bin/modules/installer/worker.pm	2015-10-10 19:36:23.000000000 +0200
 @@ -96,7 +96,6 @@
  
      $installdir = installer::systemactions::create_directories("install", $languageref);

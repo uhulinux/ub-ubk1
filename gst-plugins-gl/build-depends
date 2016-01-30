@@ -7,5 +7,6 @@ liboil-dev
 libpng-dev
 libsm-dev
 libx11-dev
+libxshmfence-dev
 mesa-dev
 python-dev

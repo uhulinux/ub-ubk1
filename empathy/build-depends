@@ -25,6 +25,7 @@ libnotify-dev
 librsvg-dev
 libsecret-dev
 libsm-dev
+libxshmfence-dev
 libxslt-dev
 mx-dev
 networkmanager-dev

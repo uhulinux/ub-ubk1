@@ -17,18 +17,18 @@ esac
 
 VERSION="$VERSION_BASE"
 
-export KBUILD_BUILD_TIMESTAMP="$(LC_ALL=C LANG=C date -r ../.src/changelog)"
+export KBUILD_BUILD_TIMESTAMP="$(LC_ALL=C LANG=C date)"
 
 # mkinitrd
 cat >"$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel <<END
 #!/bin/sh
 
-mkinitramfs $VERSION.x86_64
+# mkinitramfs $VERSION.x86_64
 mkinitramfs $VERSION.i386
 
 
-rm -f /boot/initramfs.x86_64.cpio.gz
-ln -s initramfs-$VERSION.x86_64.cpio.gz /boot/initramfs.x86_64.cpio.gz
+# rm -f /boot/initramfs.x86_64.cpio.gz
+# ln -s initramfs-$VERSION.x86_64.cpio.gz /boot/initramfs.x86_64.cpio.gz
 
 rm -f /boot/initramfs.i386.cpio.gz
 ln -s initramfs-$VERSION.i386.cpio.gz /boot/initramfs.i386.cpio.gz

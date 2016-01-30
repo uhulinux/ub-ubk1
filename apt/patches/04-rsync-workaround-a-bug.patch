@@ -1,6 +1,6 @@
-diff -Naur apt-0.6.25.orig/methods/rsync.cc apt-0.6.25/methods/rsync.cc
---- apt-0.6.25.orig/methods/rsync.cc	2006-03-14 13:55:46.000000000 +0100
-+++ apt-0.6.25/methods/rsync.cc	2006-03-14 15:12:14.000000000 +0100
+diff -Naur orig/methods/rsync.cc patched/methods/rsync.cc
+--- orig/methods/rsync.cc	2014-07-17 04:19:58.373167103 +0200
++++ patched/methods/rsync.cc	2014-07-17 04:21:03.061857780 +0200
 @@ -25,6 +25,7 @@
  #include <stdarg.h>
  #include <sys/wait.h>
@@ -23,7 +23,7 @@ diff -Naur apt-0.6.25.orig/methods/rsync.cc apt-0.6.25/methods/rsync.cc
  
     State = Starting;
     if ( RsyncMethod::Debug )
-@@ -343,6 +351,24 @@
+@@ -344,6 +352,24 @@
     if ( RsyncMethod::Debug )
  	  cerr << "RSYNC: Starting: " << string(argv) << endl;
  
@@ -48,7 +48,7 @@ diff -Naur apt-0.6.25.orig/methods/rsync.cc apt-0.6.25/methods/rsync.cc
     switch ( ChildPid = fork() ) {
  	  case -1:
  		 _error->Error("RsyncConnExec: Can't fork");
-@@ -374,7 +400,21 @@
+@@ -375,7 +401,21 @@
  		 // Parent process
  		 close(p[1]);
  		 ChildFd = p[0];

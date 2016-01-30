@@ -1,50 +1,82 @@
 #!/bin/sh -eux
 
-# ninja.
-# a 34.0.1847.131 valamiért csak ezzel fordul le rendesen,
-# make használatánál linker hibák lesznek.
+# clang opciók:
+#	-Dmake_clang_dir=/usr \
+#	-Dclang_use_chrome_plugins=0 \
 
-unzip ninja.zip
-cd ninja-1.4.0
-./bootstrap.py --verbose
-cd ..
-rm -f ninja.zip
+_conf=(
+	-Dhost_arch=ia32
+	-Dtarget_arch=ia32
+	-Dfastbuild=0
+	-Dlogging_like_official_build=1
+	-Dbranding=Chromium
+	-Dffmpeg_branding=Chrome
+	-Dproprietary_codecs=1
+	-Dwerror=
+	-Dno_gc_sections=1
+	-Dno_strict_aliasing=1
+	-Drelease_optimize=2
+	-Dlinux_link_gsettings=1
+	-Dlinux_link_libpci=1
+	-Dlinux_link_pulseaudio=1
+	-Dlinux_strip_binary=0
+	-Dlinux_use_bundled_binutils=0
+	-Dlinux_use_bundled_gold=0
+	-Dlinux_use_gold_binary=0
+	-Dlinux_use_gold_flags=0
+	-Dclang=0
+	-Dhost_clang=0
+	-Dmake_clang_dir=/usr
+	-Dclang_use_chrome_plugins=0
+	-Ddisable_sse2=1
+	-Ddisable_nacl=1
+	-Ddisable_pnacl=1
+	-Denable_google_now=0
+	-Denable_hotwording=0
+	-Dtoolkit_wiews=0
+	-Dtoolkit_uses_gtk=1
+	-Duse_gnome_keyring=0
+	-Duse_gconf=0
+	-Duse_gio=1
+    -Dicu_use_data_file_flag=0
+	-Duse_system_bzip2=1
+	-Duse_system_expat=1
+	-Duse_system_flac=1
+	-Duse_system_ffmpeg=0
+	-Duse_system_fontconfig=1
+	-Duse_system_harfbuzz=1
+	-Duse_system_hunspell=1
+	-Duse_system_icu=0
+	-Duse_system_libevent=1
+	-Duse_system_libexif=1
+	-Duse_system_libjpeg=1
+	-Duse_system_libpng=1
+	-Duse_system_libsrtp=0
+	-Duse_system_libusb=0 # patkolt
+	-Duse_system_libvpx=0 
+	-Duse_system_libwebp=1
+	-Duse_system_libxml=1
+	-Duse_system_libxnvctrl=0 # sharednél linker hiba
+	-Duse_system_libxslt=1
+	-Duse_system_minizip=1
+	-Duse_system_nspr=1
+	-Duse_system_opus=1
+	-Duse_system_protobuf=0
+	-Duse_system_speex=1
+	-Duse_system_sqlite=0 # patkolt
+	-Duse_system_xdg_utils=1
+	-Duse_system_yasm=1
+	-Duse_system_zlib=1
+#	-Dcomponent="shared_library"
+)
 
-# ok, chromium
+build/linux/unbundle/replace_gyp_files.py "${_conf[@]}"
 
 export LDFLAGS+="-Wl,-rpath,/usr/lib/chromium/ -Wl,--no-keep-memory"
 
-build/gyp_chromium -f ninja build/all.gyp --no-parallel --depth=. \
-	-Dhost_arch=ia32 \
-	-Dtarget_arch=ia32 \
-	-Dfastbuild=1 \
-	-Dcomponent="shared_library" \
-	-Dpython_ver="2.7" \
-	-Dwerror= \
-	-Dno_strict_aliasing=1 \
-	-Ddisable_sse2=1 \
-	-Dno_gc_sections=1 \
-	-Drelease_optimize=2 \
-	-Dlinux_strip_binary=1 \
-	-Dlinux_use_gold_binary=0 \
-	-Dlinux_use_gold_flags=0 \
-	-Ddisable_nacl=1 \
-	-Ddisable_pnacl=1 \
-	-Denable_google_now=0 \
-	-Dffmpeg_branding=Chrome \
-	-Dlinux_sandbox_path=/usr/lib/chromium/chrome_sandbox \
-	-Dtoolkit_wiews=0 \
-	-Dtoolkit_uses_gtk=1 \
-	-Duse_gnome_keyring=0 \
-	-Duse_gconf=0 \
-	-Duse_gio=1 \
-	-Duse_system_ffmpeg=0 \
-	-Duse_system_libjpeg=1 \
-	-Duse_system_libxml=1 \
-	-Duse_system_libxslt=1 \
-	-Duse_system_ssl=0 \
-	-Duse_system_sqlite=0 \
-	-Duse_system_yasm=1
+build/gyp_chromium -f ninja build/all.gyp --no-parallel --depth=. "${_conf[@]}"
 
-ninja-1.4.0/ninja -C out/Release chrome chrome_sandbox
+# ninja, a 34-től a make nem támogatott
+
+ninja -C out/Release chrome chrome_sandbox
 

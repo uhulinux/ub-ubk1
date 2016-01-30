@@ -1,9 +1,0 @@
-diff -Naur pavucontrol.orig/src/pavucontrol.desktop.in pavucontrol/src/pavucontrol.desktop.in
---- pavucontrol.orig/src/pavucontrol.desktop.in	2009-03-05 12:59:15.000000000 +0200
-+++ pavucontrol/src/pavucontrol.desktop.in	2009-05-28 13:54:08.000000000 +0200
-@@ -11,4 +11,4 @@
- Icon=multimedia-volume-control
- StartupNotify=true
- Type=Application
--Categories=AudioVideo;Audio;Mixer;GTK;
-+Categories=GTK;AudioVideo;Audio;Mixer;X-UHU-Menu/Multimedia/Mixers;

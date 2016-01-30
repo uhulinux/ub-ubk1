@@ -1,11 +1,5 @@
 #!/bin/sh -eux
 
-# ouch, this isn't done automatically, even though we patch hu.po
-msgfmt -o po/hu.gmo po/hu.po
-
-# cheat a little bit so that pixmap and desktop file are installed
-GNOME_CONFIG=/bin/true \
-
-export LDFLAGS="-lm"
-
 ub_compile
+
+# ub_make -C po update-po

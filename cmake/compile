@@ -4,6 +4,7 @@ mkdir build
 cd build
 ../bootstrap \
 	--system-libs \
+	--no-system-jsoncpp \
 	--prefix=/usr \
 	--mandir=/share/man \
 	--docdir=/share/doc/Packages/cmake

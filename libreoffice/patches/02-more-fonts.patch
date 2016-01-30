@@ -1,5 +1,5 @@
 diff -Naur orig/external/more_fonts/ExternalPackage_dejavu.mk patched/external/more_fonts/ExternalPackage_dejavu.mk
---- orig/external/more_fonts/ExternalPackage_dejavu.mk	2014-04-30 21:49:45.000000000 +0200
+--- orig/external/more_fonts/ExternalPackage_dejavu.mk	2014-09-16 22:10:41.000000000 +0200
 +++ patched/external/more_fonts/ExternalPackage_dejavu.mk	1970-01-01 01:00:00.000000000 +0100
 @@ -1,36 +0,0 @@
 -# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
@@ -39,7 +39,7 @@ diff -Naur orig/external/more_fonts/ExternalPackage_dejavu.mk patched/external/m
 -
 -# vim: set noet sw=4 ts=4:
 diff -Naur orig/external/more_fonts/ExternalPackage_liberation.mk patched/external/more_fonts/ExternalPackage_liberation.mk
---- orig/external/more_fonts/ExternalPackage_liberation.mk	2014-04-30 21:49:45.000000000 +0200
+--- orig/external/more_fonts/ExternalPackage_liberation.mk	2014-09-16 22:10:41.000000000 +0200
 +++ patched/external/more_fonts/ExternalPackage_liberation.mk	1970-01-01 01:00:00.000000000 +0100
 @@ -1,27 +0,0 @@
 -# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
@@ -70,7 +70,7 @@ diff -Naur orig/external/more_fonts/ExternalPackage_liberation.mk patched/extern
 -
 -# vim: set noet sw=4 ts=4:
 diff -Naur orig/external/more_fonts/ExternalPackage_libertineg.mk patched/external/more_fonts/ExternalPackage_libertineg.mk
---- orig/external/more_fonts/ExternalPackage_libertineg.mk	2014-04-30 21:49:45.000000000 +0200
+--- orig/external/more_fonts/ExternalPackage_libertineg.mk	2014-09-16 22:10:41.000000000 +0200
 +++ patched/external/more_fonts/ExternalPackage_libertineg.mk	1970-01-01 01:00:00.000000000 +0100
 @@ -1,25 +0,0 @@
 -# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
@@ -99,8 +99,8 @@ diff -Naur orig/external/more_fonts/ExternalPackage_libertineg.mk patched/extern
 -
 -# vim: set noet sw=4 ts=4:
 diff -Naur orig/external/more_fonts/Module_more_fonts.mk patched/external/more_fonts/Module_more_fonts.mk
---- orig/external/more_fonts/Module_more_fonts.mk	2014-04-30 21:49:45.000000000 +0200
-+++ patched/external/more_fonts/Module_more_fonts.mk	2014-05-13 09:21:50.205332079 +0200
+--- orig/external/more_fonts/Module_more_fonts.mk	2014-09-16 22:10:41.000000000 +0200
++++ patched/external/more_fonts/Module_more_fonts.mk	2014-09-24 00:19:04.885048363 +0200
 @@ -13,22 +13,16 @@
  	Package_conf \
  	ExternalPackage_caladea \
@@ -125,7 +125,7 @@ diff -Naur orig/external/more_fonts/Module_more_fonts.mk patched/external/more_f
  	UnpackedTarball_ptserif \
  	UnpackedTarball_sourcecode \
 diff -Naur orig/external/more_fonts/UnpackedTarball_dejavu.mk patched/external/more_fonts/UnpackedTarball_dejavu.mk
---- orig/external/more_fonts/UnpackedTarball_dejavu.mk	2014-04-30 21:49:45.000000000 +0200
+--- orig/external/more_fonts/UnpackedTarball_dejavu.mk	2014-09-16 22:10:41.000000000 +0200
 +++ patched/external/more_fonts/UnpackedTarball_dejavu.mk	1970-01-01 01:00:00.000000000 +0100
 @@ -1,14 +0,0 @@
 -# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
@@ -143,7 +143,7 @@ diff -Naur orig/external/more_fonts/UnpackedTarball_dejavu.mk patched/external/m
 -
 -# vim: set noet sw=4 ts=4:
 diff -Naur orig/external/more_fonts/UnpackedTarball_liberation.mk patched/external/more_fonts/UnpackedTarball_liberation.mk
---- orig/external/more_fonts/UnpackedTarball_liberation.mk	2014-04-30 21:49:45.000000000 +0200
+--- orig/external/more_fonts/UnpackedTarball_liberation.mk	2014-09-16 22:10:41.000000000 +0200
 +++ patched/external/more_fonts/UnpackedTarball_liberation.mk	1970-01-01 01:00:00.000000000 +0100
 @@ -1,14 +0,0 @@
 -# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
@@ -161,7 +161,7 @@ diff -Naur orig/external/more_fonts/UnpackedTarball_liberation.mk patched/extern
 -
 -# vim: set noet sw=4 ts=4:
 diff -Naur orig/external/more_fonts/UnpackedTarball_libertineg.mk patched/external/more_fonts/UnpackedTarball_libertineg.mk
---- orig/external/more_fonts/UnpackedTarball_libertineg.mk	2014-04-30 21:49:45.000000000 +0200
+--- orig/external/more_fonts/UnpackedTarball_libertineg.mk	2014-09-16 22:10:41.000000000 +0200
 +++ patched/external/more_fonts/UnpackedTarball_libertineg.mk	1970-01-01 01:00:00.000000000 +0100
 @@ -1,15 +0,0 @@
 -# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
@@ -180,10 +180,10 @@ diff -Naur orig/external/more_fonts/UnpackedTarball_libertineg.mk patched/extern
 -# vim: set noet sw=4 ts=4:
 -
 diff -Naur orig/scp2/source/ooo/file_font_ooo.scp patched/scp2/source/ooo/file_font_ooo.scp
---- orig/scp2/source/ooo/file_font_ooo.scp	2014-04-30 21:49:45.000000000 +0200
-+++ patched/scp2/source/ooo/file_font_ooo.scp	2014-05-13 09:22:42.081810883 +0200
+--- orig/scp2/source/ooo/file_font_ooo.scp	2014-09-16 22:10:41.000000000 +0200
++++ patched/scp2/source/ooo/file_font_ooo.scp	2014-09-24 00:19:04.885048363 +0200
 @@ -34,17 +34,17 @@
- #ifndef WITHOUT_FONTS 
+ #ifndef WITHOUT_FONTS
  
  // DejaVu fonts
 -STD_FONT_FILELIST(gid_File_Fnt_DejaVu, "fonts_dejavu.filelist")

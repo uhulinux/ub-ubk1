@@ -1,8 +1,4 @@
 #!/bin/sh -eux
 
-./autobuild
-
-ub_compile \
-	--with-pic \
-	--with-zlib \
-	--enable-static
+# rm CMakeLists.txt
+ub_compile

@@ -15,13 +15,14 @@ case "$UB_VERSION" in
 		;;
 esac
 
-export KBUILD_BUILD_TIMESTAMP="$(LC_ALL=C LANG=C date -r ../.src/changelog)"
+export KBUILD_BUILD_TIMESTAMP="$(LC_ALL=C LANG=C date)"
 
 NUMCPUS="$(grep ^processor /proc/cpuinfo|wc -l)"
 
 rm -f localversion*
 
-for ARCH in x86_64 i386; do
+# for ARCH in x86_64 i386; do
+ARCH="i386"
 VERSION="${VERSION_BASE}.$ARCH"
 ub_replace "^EXTRAVERSION =[\t ]*\(\.\([0-9]\+\)\)*.*" "EXTRAVERSION = \1-${VERSION#*-}" Makefile
 
@@ -89,8 +90,8 @@ make \
 	INSTALL_HDR_PATH="$UB_OBJECTDIR"/usr/ \
 	headers_install
 
-find "$UB_OBJECTDIR/usr/src/linux/." -name ..install.cmd -print0 | xargs -r0 rm -v
-find "$UB_OBJECTDIR/usr/src/linux/." -name .install -print0 | xargs -r0 rm -v
+find "$UB_OBJECTDIR/usr/include/" -name ..install.cmd -print0 | xargs -r0 rm -v
+find "$UB_OBJECTDIR/usr/include/" -name .install -print0 | xargs -r0 rm -v
 
 rm -f "$UB_OBJECTDIR/lib/modules/$VERSION/build"
 ln -sf "../../../usr/src/linux-$VERSION" "$UB_OBJECTDIR/lib/modules/$VERSION/build"
@@ -104,6 +105,6 @@ cp -a System.map "$UB_OBJECTDIR/lib/modules/$VERSION/"
 rm "$UB_OBJECTDIR"/lib/modules/"$VERSION"/source
 ln -sf ../../../usr/src/linux-"$VERSION" "$UB_OBJECTDIR"/lib/modules/"$VERSION"/source
 
-done
+# done
 
 ln -s "bzImage.$ARCH" "$UB_OBJECTDIR/boot/bzImage"

@@ -7,6 +7,7 @@ intltool
 itstool
 libgdata-dev
 libsoup-gnome-dev
+libxshmfence-dev
 libzapojit-dev
 networkmanager-dev
 systemd-dev

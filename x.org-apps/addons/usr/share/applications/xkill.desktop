@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=xkill
-Comment=Kill an X application
-Comment[hu]=Alkalmazás kilövése
-Exec=xkill
-Categories=Utility;

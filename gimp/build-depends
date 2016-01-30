@@ -6,11 +6,12 @@ dbus-glib-dev
 gegl-dev
 ghostscript
 gpm-dev
+gtk-doc
 gtk2-dev
 intltool
 iso-codes
 jasper-dev
-lcms-dev
+lcms2-dev
 libart-lgpl-dev
 libexif-dev
 libgsf-dev
@@ -22,6 +23,7 @@ libsm-dev
 libtiff-dev
 libwmf-dev
 libxpm-dev
+libxshmfence-dev
 libxslt
 poppler-dev
 poppler-glib-dev

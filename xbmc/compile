@@ -1,5 +1,8 @@
 #!/bin/sh -eux
 
+# texturepacker cannot build statically
+sed '/--enable-static/d' -i tools/depends/native/TexturePacker/Makefile
+
 export JAVA=/usr/lib/java/jre/bin/java
 ./bootstrap
 export JAVA_EXE=/usr/lib/java/jre/bin/java
@@ -11,17 +14,12 @@ ub_compile \
 	--enable-sdl \
 	--enable-gl \
 	--enable-goom \
-	--disable-hal \
 	--enable-udev \
-	--enable-libusb \
 	--enable-vaapi \
 	--enable-vdpau \
 	--disable-debug \
 	--enable-xrandr \
 	--enable-texturepacker \
-	--enable-external-ffmpeg \
-	--enable-external-libraries \
-	--enable-xvba \
 	--enable-joystick \
 	--enable-rsxs \
 	--enable-projectm \
@@ -29,8 +27,10 @@ ub_compile \
 	--enable-samba \
 	--enable-nfs \
 	--enable-airplay \
-	--enable-ffmpeg-libvorbis \
 	--enable-dvdcss \
 	--enable-avahi \
 	--enable-webserver \
-	--enable-optical-drive
+	--enable-optical-drive \
+	--with-ffmpeg-shared
+# --with-ffmpeg=shared - ffmpeg 2.4.4 kellene
+# --enable-libusb - udev esetén nem kell, így mindenképp letiltja

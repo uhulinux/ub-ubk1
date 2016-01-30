@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-openbox-${UB_VERSION}.tar.gz openbox-${UB_VERSION}/
-	http://openbox.org/dist/openbox/
-	http://icculus.org/openbox/releases/
+release-${UB_VERSION}.tar.gz openbox-release-${UB_VERSION}/
+	https://github.com/Mikachu/openbox/archive/

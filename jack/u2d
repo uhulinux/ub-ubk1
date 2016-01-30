@@ -1,1 +1,2 @@
-urllist http://jackaudio.org/ | parsever | sort -V | tail -n 1
+urllist https://github.com/jackaudio/jack2/releases/ | splitver '^v([0-9.]+).tar.gz$' |sort -V | tail -n 1
+

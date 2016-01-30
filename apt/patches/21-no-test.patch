@@ -1,25 +1,22 @@
-diff -urN upstream.git.orig/Makefile upstream.git/Makefile
---- upstream.git.orig/Makefile	2014-04-25 13:39:00.000000000 +0200
-+++ upstream.git/Makefile	2014-06-11 10:18:08.742090984 +0200
+diff -Naur orig/Makefile patched/Makefile
+--- orig/Makefile	2014-07-10 10:50:32.000000000 +0200
++++ patched/Makefile	2014-07-17 04:25:34.976761163 +0200
 @@ -9,8 +9,8 @@
  .PHONY: default
  default: startup all
  
 -.PHONY: headers library clean veryclean all binary program doc test update-po
--all headers library clean veryclean binary program doc manpages debiandoc test update-po startup dirs:
+-all headers library clean veryclean binary program doc manpages docbook test update-po startup dirs:
 +.PHONY: headers library clean veryclean all binary program doc update-po
-+all headers library clean veryclean binary program doc manpages debiandoc update-po startup dirs:
++all headers library clean veryclean binary program doc manpages docbook update-po startup dirs:
  	$(MAKE) -C vendor $@
  	$(MAKE) -C apt-pkg $@
  	$(MAKE) -C apt-inst $@
-@@ -21,9 +21,8 @@
+@@ -21,7 +21,6 @@
  	$(MAKE) -C dselect $@
  	$(MAKE) -C doc $@
  	$(MAKE) -C po $@
 -	$(MAKE) -C test $@
  
--all headers library clean veryclean binary program doc manpages debiandoc test update-po: startup dirs
-+all headers library clean veryclean binary program doc manpages debiandoc update-po: startup dirs
- 
- dirs: startup
+ all headers library clean veryclean binary program doc manpages docbook test update-po: startup dirs
  

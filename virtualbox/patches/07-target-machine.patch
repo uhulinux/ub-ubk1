@@ -1,7 +1,7 @@
 diff -Naur orig/configure patched/configure
---- orig/configure	2011-06-15 20:53:06.000000000 +0200
-+++ patched/configure	2011-07-25 17:24:04.968906560 +0200
-@@ -366,12 +366,12 @@
+--- orig/configure	2015-07-09 22:51:28.000000000 +0200
++++ patched/configure	2015-07-09 22:56:12.720029162 +0200
+@@ -374,12 +374,12 @@
    esac
    [ -z "$TARGET_MACHINE" ] && TARGET_MACHINE=$BUILD_MACHINE
    [ -z "$TARGET_CPU"     ] && TARGET_CPU=$BUILD_CPU
@@ -17,7 +17,7 @@ diff -Naur orig/configure patched/configure
    echo "export BUILD_PLATFORM_ARCH" >> $ENV
    echo "BUILD_TARGET=\"$OS\"" >> $ENV
    echo "export BUILD_TARGET" >> $ENV
-@@ -420,14 +420,14 @@
+@@ -429,14 +429,14 @@
        else
          log_success "found version $cc_ver"
        fi
@@ -34,7 +34,7 @@ diff -Naur orig/configure patched/configure
          [ -z "$CC64"  ] && CC64="$CC -m64"
          [ -z "$CXX64" ] && CXX64="$CXX -m64"
        fi
-@@ -473,7 +473,7 @@
+@@ -482,7 +482,7 @@
          cnf_append "TOOL_GXX64_LD"  "$CXX64"
        fi
        # Solaris sports a 32-bit gcc/g++.
@@ -43,7 +43,7 @@ diff -Naur orig/configure patched/configure
          [ "$CC" = "gcc" ] && CC="gcc -m64"
          [ "$CXX" = "g++" ] && CXX="g++ -m64"
        fi
-@@ -1741,8 +1741,8 @@
+@@ -1770,8 +1770,8 @@
  check_kbuild()
  {
    test_header kBuild
@@ -54,7 +54,7 @@ diff -Naur orig/configure patched/configure
      echo "PATH_KBUILD=\"`cd $KBUILDDIR ; pwd`\"" >> $ENV
      echo "export PATH_KBUILD" >> $ENV
      echo "PATH_DEVTOOLS=\"$DEVDIR\"" >> $ENV
-@@ -1763,7 +1763,7 @@
+@@ -1792,7 +1792,7 @@
      echo "export PATH" >> $ENV
      echo "unset path_kbuild_bin path_dev_bin" >> $ENV
      KBUILD_SED="$KBUILDDIR_BIN/kmk_sed"
@@ -63,7 +63,7 @@ diff -Naur orig/configure patched/configure
      # Currently there are no amd64 kBuild bins. So use the x86 variant in any case.
      KBUILDDIR_BIN="$KBUILDDIR/bin/$OS.x86"
      echo "PATH_KBUILD=\"`cd $KBUILDDIR ; pwd`\"" >> $ENV
-@@ -1980,8 +1980,8 @@
+@@ -2010,8 +2010,8 @@
      ;;
      *) eval "wineprefixcreate() { true ; }" ;; # now created automatically
    esac
@@ -74,12 +74,12 @@ diff -Naur orig/configure patched/configure
    echo "export WINEPREFIX" >> $ENV
    rm -rf $WINEPREFIX
    mkdir -p $WINEPREFIX
-@@ -2600,7 +2600,7 @@
+@@ -2775,7 +2775,7 @@
+     check_libcap
    fi
-   check_libcap
    check_compiler_h
--  [ "$BUILD_MACHINE" = "amd64" -a $WITH_VMMRAW -eq 1 ] && check_32bit
-+  [ "$TARGET_MACHINE" = "amd64" -a $WITH_VMMRAW -eq 1 ] && check_32bit
+-  [ $ONLY_ADDITIONS -eq 0 -a "$BUILD_MACHINE" = "amd64" -a $WITH_VMMRAW -eq 1 ] && check_32bit
++  [ $ONLY_ADDITIONS -eq 0 -a "$TARGET_MACHINE" = "amd64" -a $WITH_VMMRAW -eq 1 ] && check_32bit
    # tools/common/makeself*
    [ $OSE -ge 1 ] && check_makeself
  fi

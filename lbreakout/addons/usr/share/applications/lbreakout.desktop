@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=LBreakout
-Exec=lbreakout2
-Comment=Breakout-Style Game
-Comment[hu]=Falkilövő játék
-Icon=/usr/share/games/lbreakout2/gfx/win_icon.png
-Categories=Game;ArcadeGame;

@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-jack-audio-connection-kit-"$UB_VERSION".tar.gz jack-audio-connection-kit-"$UB_VERSION"/
-	http://jackaudio.org/downloads/
+v${UB_VERSION}.tar.gz jack2-${UB_VERSION}/
+	https://github.com/jackaudio/jack2/archive/

@@ -1,3 +1,5 @@
+expat-dev
 libxext-dev
-llvm
+libxshmfence-dev
+llvm-libs
 x.org-server-dev

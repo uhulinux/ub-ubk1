@@ -11,4 +11,5 @@ ub_compile \
 	--without-tiff \
 	--without-mpg123 \
 	--without-sane \
+	--without-netapi \
 	--with-dbus

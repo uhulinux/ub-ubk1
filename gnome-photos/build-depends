@@ -3,6 +3,7 @@ clutter-gtk-dev
 desktop-file-utils
 exempi-dev
 gegl-dev
+gnome-common
 gnome-desktop-dev
 gnome-online-accounts-dev
 grilo-dev
@@ -18,3 +19,4 @@ networkmanager-dev
 sqlite-dev
 tracker-dev
 util-linux-dev
+yelp-tools

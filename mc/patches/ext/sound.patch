@@ -1,7 +1,7 @@
 diff -Naur orig/misc/ext.d/sound.sh patched/misc/ext.d/sound.sh
---- orig/misc/ext.d/sound.sh	2012-09-10 13:28:33.000000000 +0200
-+++ patched/misc/ext.d/sound.sh	2012-09-22 16:10:54.041752717 +0200
-@@ -33,7 +33,7 @@
+--- orig/misc/ext.d/sound.sh	2014-03-13 10:06:03.000000000 +0100
++++ patched/misc/ext.d/sound.sh	2014-10-06 19:53:37.854230729 +0200
+@@ -35,7 +35,7 @@
      case "${filetype}" in
      common)
          if [ -n "$DISPLAY" ]; then
@@ -10,7 +10,7 @@ diff -Naur orig/misc/ext.d/sound.sh patched/misc/ext.d/sound.sh
          else
              play "${MC_EXT_FILENAME}"
          fi
-@@ -43,18 +43,18 @@
+@@ -45,18 +45,18 @@
          #tracker "${MC_EXT_FILENAME}"
          ;;
      wav22)
@@ -32,7 +32,7 @@ diff -Naur orig/misc/ext.d/sound.sh patched/misc/ext.d/sound.sh
          else
              ogg123 "${MC_EXT_FILENAME}"
          fi
-@@ -67,7 +67,7 @@
+@@ -69,7 +69,7 @@
          ;;
      playlist)
          if [ -n "$DISPLAY" ]; then

@@ -4,6 +4,7 @@ docbook-dtds
 docbook-xsl
 doxygen
 dpkg-dev
+fonts-x.org-ttf
 graphviz
 gtest
 libxslt-dev

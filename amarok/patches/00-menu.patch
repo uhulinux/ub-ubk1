@@ -1,9 +1,0 @@
-diff -Naur amarok-2.0.2-orig/src/amarok.desktop amarok-2.0.2/src/amarok.desktop
---- amarok-2.0.2-orig/src/amarok.desktop	2009-03-01 18:21:55.000000000 +0100
-+++ amarok-2.0.2/src/amarok.desktop	2009-03-20 12:37:38.000000000 +0100
-@@ -101,4 +101,4 @@
- X-DocPath=amarok/index.html
- X-KDE-Protocols=http
- Terminal=false
--Categories=Qt;KDE;AudioVideo;Audio;Player;
-+Categories=Qt;KDE;AudioVideo;Audio;Player;X-UHU-Menu/Multimedia/MusicPlayers;

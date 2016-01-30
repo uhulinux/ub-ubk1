@@ -1,9 +1,4 @@
 #!/bin/sh -eux
 
-make \
-	DESTDIR="$UB_INSTALLDIR" \
-	BINDIR=usr/bin \
-	VDRDIR=/usr/include/vdr \
-	LIBDIR=/usr/lib/vdr \
-	install
-#cp ../../lib/* "$UB_INSTALLDIR"/usr/lib/vdr/
+mkdir -p "$UB_INSTALLDIR"/usr/lib/vdr
+ub_install

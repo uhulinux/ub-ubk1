@@ -1,1 +1,1 @@
-sflist libusbx releases |splitver '^([0-9.]+)' | sort -V | tail -n 1
+sflist libusb libusb-1.0 |splitver '^libusb-([0-9.]+)$' | sort -V | tail -n 1

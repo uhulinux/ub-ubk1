@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-lxpanel-${UB_VERSION}.tar.gz lxpanel-${UB_VERSION}/
-	http://downloads.sourceforge.net/lxde/
+lxpanel-${UB_VERSION}.tar.xz lxpanel-${UB_VERSION}/
+	http://download.sourceforge.net/lxde/

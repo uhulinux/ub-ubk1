@@ -1,7 +1,4 @@
 avahi-dev
-dbus-dev
 gnutls-dev
-libjpeg-dev
 libtiff-dev
 libusb-dev
-libx11-dev

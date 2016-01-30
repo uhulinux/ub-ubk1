@@ -1,13 +1,18 @@
 #!/bin/sh -eux
 
+autoreconf -vif
 ub_compile \
 	--enable-gnomevfs \
 	--enable-flac \
 	--enable-faad \
 	--enable-svg \
-	--enable-aa \
 	--enable-jack \
 	--enable-xosd \
 	--enable-lirc \
+	--enable-xcb \
 	--enable-libva \
-	--disable-lua
+	--enable-nls \
+	--enable-sftp \
+	--enable-matroska \
+	--disable-update-check \
+	--enable-qt=4

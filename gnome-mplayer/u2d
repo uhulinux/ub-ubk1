@@ -1,1 +1,1 @@
-urllist http://code.google.com/p/gnome-mplayer/downloads/list | splitver '^gnome-mplayer-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://ftp.debian.org/debian/pool/main/g/gnome-mplayer/ | splitver '^gnome-mplayer_([0-9.]+).orig.tar.gz$' | sort -V | tail -n 1

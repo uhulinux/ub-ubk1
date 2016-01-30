@@ -1,9 +1,10 @@
-dbus-glib-dev
-gconf2-dev
+alsa-lib-dev
 gnome-doc-utils
-gnome2-vfs-dev
-gst0.10-plugins-base-dev
-gtk-dev
+gst-plugins-base-dev
+intltool
+itstool
 libgnome-media-profiles-dev
+libgnomeui2-dev
+libv4l-dev
 lirc-dev
-perl-xml-parser
+yelp-tools

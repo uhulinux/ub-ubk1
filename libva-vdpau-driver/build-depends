@@ -1,3 +1,5 @@
+expat-dev
+glu-dev
 libva-dev
 libvdpau-dev
-mesa-dev
+libxshmfence-dev

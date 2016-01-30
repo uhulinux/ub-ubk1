@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-pycups-${UB_VERSION}.tar.bz2 pycups-${UB_VERSION}/
+pycups-${UB_VERSION}.tar.bz2 pycups-${UB_VERSION}/ :pycups
 	http://pypi.python.org/packages/source/p/pycups/

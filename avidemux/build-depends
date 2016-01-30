@@ -26,8 +26,9 @@ libxslt-dev
 libxv-dev
 opencore-amr-dev
 pulseaudio-dev
-qt4-dev
+qt5-dev
 sdl-dev
 x264-dev
+x265-dev
 xvid-dev
 yasm

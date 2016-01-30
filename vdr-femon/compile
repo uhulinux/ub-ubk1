@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
-make	PREFIX=/usr \
-	CONFDIR=/var/vdr/config \
+ub_compile \
+	PREFIX=/usr \
 	VIDEODIR=/var/vdr/video \
 	DESTDIR=/usr \

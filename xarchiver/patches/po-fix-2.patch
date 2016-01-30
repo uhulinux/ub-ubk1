@@ -1,6 +1,6 @@
 diff -Naur orig/po/hu.po patched/po/hu.po
 --- orig/po/hu.po	2008-11-04 07:31:04.000000000 +0100
-+++ patched/po/hu.po	2011-01-22 14:41:13.000000000 +0100
++++ patched/po/hu.po	2015-03-01 14:26:27.976137134 +0100
 @@ -8,9 +8,9 @@
  "Project-Id-Version: xarchiver 0.4.2rc2\n"
  "Report-Msgid-Bugs-To: colossus73@gmail.com\n"
@@ -747,8 +747,8 @@ diff -Naur orig/po/hu.po patched/po/hu.po
 -#~ msgid "CRC-32"
 -#~ msgstr "CRC-32"
 diff -Naur orig/src/interface.c patched/src/interface.c
---- orig/src/interface.c	2008-11-11 09:09:01.000000000 +0100
-+++ patched/src/interface.c	2011-01-22 00:59:06.000000000 +0100
+--- orig/src/interface.c	2014-09-28 22:11:04.000000000 +0200
++++ patched/src/interface.c	2015-03-01 14:26:27.976137134 +0100
 @@ -301,7 +301,7 @@
  	menuitem4_menu = gtk_menu_new ();
  	gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem4),menuitem4_menu);
@@ -759,18 +759,18 @@ diff -Naur orig/src/interface.c patched/src/interface.c
  	gtk_container_add (GTK_CONTAINER (menuitem4_menu),help1);
  	gtk_widget_add_accelerator (help1,"activate",accel_group,GDK_F1,GDK_MODE_DISABLED,GTK_ACCEL_VISIBLE);
 diff -Naur orig/src/window.c patched/src/window.c
---- orig/src/window.c	2008-11-11 09:31:45.000000000 +0100
-+++ patched/src/window.c	2011-01-22 14:40:04.000000000 +0100
-@@ -974,7 +974,7 @@
+--- orig/src/window.c	2014-09-28 22:42:37.000000000 +0200
++++ patched/src/window.c	2015-03-01 14:28:20.924697215 +0100
+@@ -979,7 +979,7 @@
  			"name", "xarchiver",
  			"version",PACKAGE_VERSION,
- 			"copyright","Copyright \xC2\xA9 2005-2008 Giuseppe Torelli",
+ 			"copyright","Copyright \xC2\xA9 2005-2014 Giuseppe Torelli",
 -			"comments","A GTK+2 only lightweight archive manager",
 +			"comments",_("A GTK+2 only lightweight archive manager"),
  			"authors",authors,
  			"documenters",documenters,
  			"translator_credits",_("translator-credits"),
-@@ -1433,7 +1433,7 @@
+@@ -1444,7 +1444,7 @@
  	}
  	else
  	{

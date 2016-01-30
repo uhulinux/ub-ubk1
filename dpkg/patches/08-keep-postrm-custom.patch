@@ -1,7 +1,7 @@
-diff -Naurdp a/lib/dpkg/dpkg.h b/lib/dpkg/dpkg.h
---- a/lib/dpkg/dpkg.h	2014-05-30 18:30:50.000000000 +0200
-+++ b/lib/dpkg/dpkg.h	2014-06-10 11:06:57.437081456 +0200
-@@ -73,6 +73,7 @@ DPKG_BEGIN_DECLS
+diff -Naur orig/lib/dpkg/dpkg.h patched/lib/dpkg/dpkg.h
+--- orig/lib/dpkg/dpkg.h	2015-09-16 14:50:15.000000000 +0200
++++ patched/lib/dpkg/dpkg.h	2015-09-26 15:09:03.317399338 +0200
+@@ -71,6 +71,7 @@
  #define POSTINSTFILE       "postinst"
  #define PRERMFILE          "prerm"
  #define POSTRMFILE         "postrm"
@@ -9,10 +9,10 @@ diff -Naurdp a/lib/dpkg/dpkg.h b/lib/dpkg/dpkg.h
  #define TRIGGERSCIFILE     "triggers"
  
  #define STATUSFILE        "status"
-diff -Naurdp a/src/remove.c b/src/remove.c
---- a/src/remove.c	2014-06-05 19:56:33.000000000 +0200
-+++ b/src/remove.c	2014-06-10 11:07:47.397079228 +0200
-@@ -207,7 +207,8 @@ removal_bulk_remove_file(const char *fil
+diff -Naur orig/src/remove.c patched/src/remove.c
+--- orig/src/remove.c	2015-09-16 14:50:16.000000000 +0200
++++ patched/src/remove.c	2015-09-26 15:09:03.317399338 +0200
+@@ -206,7 +206,8 @@
  {
    /* We need the postrm and list files for --purge. */
    if (strcmp(filetype, LISTFILE) == 0 ||
@@ -22,7 +22,7 @@ diff -Naurdp a/src/remove.c b/src/remove.c
      return;
  
    debug(dbg_stupidlyverbose, "removal_bulk info not postrm or list");
-@@ -640,6 +641,12 @@ void removal_bulk(struct pkginfo *pkg) {
+@@ -646,6 +647,12 @@
            filename);
      if (unlink(filename) && errno != ENOENT)
        ohshite(_("can't remove old postrm script"));

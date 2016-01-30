@@ -1,11 +1,7 @@
 #!/bin/sh -eux
 
-# build included Irrlicht
-NDEBUG=1 ub_make -C lib/irrlicht/source/Irrlicht
-
-# build supertuxkart
-export LDFLAGS="-lz -lpng -ljpeg -lbz2"
 ub_compile \
 	-DSTK_INSTALL_BINARY_DIR=/usr/bin \
 	-DSTK_INSTALL_DATA_DIR=/usr/share/supertuxkart \
-	-DUSE_WIIUSE=no
+	-DUSE_WIIUSE=no \
+	-DCMAKE_CXX_FLAGS="-lpthread -lm -ldl"

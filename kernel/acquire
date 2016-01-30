@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
 linux-${UB_VERSION/~/-}.tar.xz linux-${UB_VERSION/~/-}/
-	ftp://ftp.hu.kernel.org/pub/linux/kernel/v${UB_VERSION_HEAD2}/
-	ftp://ftp.hu.kernel.org/pub/linux/kernel/v${UB_VERSION_HEAD2}/testing/
-	ftp://ftp.kernel.org/pub/linux/kernel/v3.0/
-	ftp://ftp.kernel.org/pub/linux/kernel/v3.0/testing/
+	ftp://ftp.kernel.org/pub/linux/kernel/v${UB_VERSION_HEAD1}.x/
+	ftp://ftp.kernel.org/pub/linux/kernel/v${UB_VERSION_HEAD1}.x/testing/
+	ftp://ftp.kernel.org/pub/linux/kernel/v${UB_VERSION_HEAD2}/
+	ftp://ftp.kernel.org/pub/linux/kernel/v${UB_VERSION_HEAD2}/testing/

@@ -3,7 +3,6 @@ gamin-dev
 gtk2-dev
 intltool
 libexo-dev
-libglade2-dev
 libjpeg-dev
 libnotify-dev
 libwnck2-dev

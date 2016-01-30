@@ -1,4 +1,2 @@
-dotconf
-libsndfile
 lua
-sdl
+pulseaudio

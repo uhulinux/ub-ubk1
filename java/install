@@ -27,17 +27,15 @@ rm -Rf "$UB_INSTALLDIR"/usr/lib/java/jre/lib/desktop
 
 # firefox plugin
 mkdir -p "$UB_INSTALLDIR"/usr/lib/firefox/plugins
-# ln -s /usr/lib/java/jre/plugin/i386/ns7/libjavaplugin_oji.so "$UB_INSTALLDIR"/usr/lib/firefox/plugins/
-ln -s /usr/lib/java/jre/lib/i386/libnpjp2.so "$UB_INSTALLDIR"/usr/lib/firefox/plugins/ # firefox >=3.6
+ln -s /usr/lib/java/jre/lib/i386/libnpjp2.so "$UB_INSTALLDIR"/usr/lib/firefox/plugins/
 
 # mozilla plugin
 mkdir -p "$UB_INSTALLDIR"/usr/lib/mozilla/plugins
-# ln -s /usr/lib/java/jre/plugin/i386/ns7/libjavaplugin_oji.so "$UB_INSTALLDIR"/usr/lib/mozilla/plugins/
-ln -s /usr/lib/java/jre/lib/i386/libnpjp2.so "$UB_INSTALLDIR"/usr/lib/mozilla/plugins/ # firefox >=3.6
+ln -s /usr/lib/java/jre/lib/i386/libnpjp2.so "$UB_INSTALLDIR"/usr/lib/mozilla/plugins/
 
 # fix permissions
 chmod -R a+rX,u+w,go-w "$UB_INSTALLDIR"
 
-# ffmpeg < 0.11 kellene
-rm -f "$UB_INSTALLDIR"/usr/lib/java/jre/lib/i386/fxavcodecplugin-{52,53}.so
+# ffmpeg < 0.11, 2.0 kellene
+rm -f "$UB_INSTALLDIR"/usr/lib/java/jre/lib/i386/libavplugin-{53,54}.so
 

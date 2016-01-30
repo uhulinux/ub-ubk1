@@ -3,3 +3,6 @@
 ub_install \
 	LIBS=libz.a \
 	libdir=/usr/lib
+
+cd contrib/minizip
+ub_install

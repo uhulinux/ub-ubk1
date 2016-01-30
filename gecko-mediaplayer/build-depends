@@ -2,5 +2,6 @@ curl-dev
 dbus-glib-dev
 gconf2-dev
 gmtk-dev
+gnome-mplayer
 libx11-dev
 xulrunner-dev

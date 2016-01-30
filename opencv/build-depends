@@ -1,6 +1,6 @@
 cmake
 eigen2
-ffmpeg-dev
+eigen3
 gst0.10-plugins-base-dev
 gstreamer0.10-dev
 gtk2-dev

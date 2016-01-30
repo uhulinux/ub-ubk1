@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 lsb-release-${UB_VERSION}.tar.gz lsb-release-${UB_VERSION}/
-	http://downloads.sourceforge.net/
-	http://switch.dl.sourceforge.net/project/lsb/lsb_release/${UB_VERSION}/
+	http://download.sourceforge.net/lsb/lsb_release/${UB_VERSION}/

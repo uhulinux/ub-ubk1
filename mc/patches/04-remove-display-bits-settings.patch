@@ -1,9 +1,9 @@
 diff -Naur orig/src/filemanager/boxes.c patched/src/filemanager/boxes.c
---- orig/src/filemanager/boxes.c	2014-04-01 12:54:01.000000000 +0200
-+++ patched/src/filemanager/boxes.c	2014-04-13 14:15:51.981693808 +0200
-@@ -105,9 +105,11 @@
- 
- static unsigned long skin_name_id;
+--- orig/src/filemanager/boxes.c	2015-03-20 19:06:04.000000000 +0100
++++ patched/src/filemanager/boxes.c	2015-03-23 15:56:35.443054632 +0100
+@@ -103,9 +103,11 @@
+ static unsigned long panel_listing_types_id, panel_user_format_id;
+ static unsigned long mini_user_status_id, mini_user_format_id;
  
 +#if 0
  #ifdef HAVE_CHARSET
@@ -13,7 +13,7 @@ diff -Naur orig/src/filemanager/boxes.c patched/src/filemanager/boxes.c
  
  #if defined(ENABLE_VFS) && defined(ENABLE_VFS_FTP)
  static unsigned long ftpfs_always_use_proxy_id, ftpfs_proxy_host_id;
-@@ -263,6 +265,7 @@
+@@ -354,6 +356,7 @@
  
  /* --------------------------------------------------------------------------------------------- */
  
@@ -21,7 +21,7 @@ diff -Naur orig/src/filemanager/boxes.c patched/src/filemanager/boxes.c
  #ifdef HAVE_CHARSET
  static int
  sel_charset_button (WButton * button, int action)
-@@ -293,6 +296,7 @@
+@@ -384,6 +387,7 @@
      return 0;
  }
  #endif /* HAVE_CHARSET */
@@ -29,7 +29,7 @@ diff -Naur orig/src/filemanager/boxes.c patched/src/filemanager/boxes.c
  
  /* --------------------------------------------------------------------------------------------- */
  
-@@ -923,6 +927,7 @@
+@@ -915,6 +919,7 @@
  
  /* --------------------------------------------------------------------------------------------- */
  
@@ -37,7 +37,7 @@ diff -Naur orig/src/filemanager/boxes.c patched/src/filemanager/boxes.c
  #ifndef HAVE_CHARSET
  void
  display_bits_box (void)
-@@ -1039,6 +1044,7 @@
+@@ -1031,6 +1036,7 @@
      }
  }
  #endif /* HAVE_CHARSET */
@@ -46,8 +46,8 @@ diff -Naur orig/src/filemanager/boxes.c patched/src/filemanager/boxes.c
  /* --------------------------------------------------------------------------------------------- */
  /** Show tree in a box, not on a panel */
 diff -Naur orig/src/filemanager/boxes.h patched/src/filemanager/boxes.h
---- orig/src/filemanager/boxes.h	2014-04-01 12:54:01.000000000 +0200
-+++ patched/src/filemanager/boxes.h	2014-04-13 14:10:19.658626570 +0200
+--- orig/src/filemanager/boxes.h	2014-11-06 20:26:04.000000000 +0100
++++ patched/src/filemanager/boxes.h	2015-03-23 15:56:35.443054632 +0100
 @@ -24,7 +24,9 @@
  int panel_listing_box (WPanel * p, char **user, char **mini, int *use_msformat, int num);
  const panel_field_t *sort_box (dir_sort_options_t * op, const panel_field_t * sort_field);
@@ -59,8 +59,8 @@ diff -Naur orig/src/filemanager/boxes.h patched/src/filemanager/boxes.h
  void jobs_cmd (void);
  char *cd_dialog (void);
 diff -Naur orig/src/filemanager/midnight.c patched/src/filemanager/midnight.c
---- orig/src/filemanager/midnight.c	2014-04-01 12:54:01.000000000 +0200
-+++ patched/src/filemanager/midnight.c	2014-04-13 14:10:19.658626570 +0200
+--- orig/src/filemanager/midnight.c	2015-03-20 19:06:04.000000000 +0100
++++ patched/src/filemanager/midnight.c	2015-03-23 15:56:35.443054632 +0100
 @@ -1174,9 +1174,11 @@
          diff_view_cmd ();
          break;
@@ -74,9 +74,9 @@ diff -Naur orig/src/filemanager/midnight.c patched/src/filemanager/midnight.c
          edit_cmd ();
          break;
 diff -Naur orig/src/setup.c patched/src/setup.c
---- orig/src/setup.c	2014-04-01 12:54:01.000000000 +0200
-+++ patched/src/setup.c	2014-04-13 14:10:19.658626570 +0200
-@@ -291,11 +291,13 @@
+--- orig/src/setup.c	2015-03-20 19:06:04.000000000 +0100
++++ patched/src/setup.c	2015-03-23 15:56:35.447054652 +0100
+@@ -292,11 +292,13 @@
      { "safe_delete", &safe_delete },
      { "mouse_repeat_rate", &mou_auto_repeat },
      { "double_click_speed", &double_click_speed },

@@ -8,26 +8,11 @@
 	--enable-avfilter\
 	--enable-avisynth \
 	--enable-avresample \
-	--enable-dxva2 \
 	--enable-frei0r \
 	--enable-fontconfig \
 	--enable-gnutls \
 	--enable-gpl \
 	--enable-gray \
-	--enable-hwaccel=h263_vaapi \
-	--enable-hwaccel=h263_vdpau \
-	--enable-hwaccel=h264_vaapi \
-	--enable-hwaccel=h264_vaapi \
-	--enable-hwaccel=h264_vda \
-	--enable-hwaccel=mpeg1_vdpau \
-	--enable-hwaccel=mpeg2_vaapi \
-	--enable-hwaccel=mpeg2_vdpau \
-	--enable-hwaccel=mpeg4_vaapi \
-	--enable-hwaccel=mpeg4_vdpau \
-	--enable-hwaccel=vc1_vaapi \
-	--enable-hwaccel=vc1_vdpau \
-	--enable-hwaccel=wmv3_vaapi \
-	--enable-hwaccel=wmv3_vdpau \
 	--enable-libass \
 	--enable-libbluray \
 	--enable-libcdio \
@@ -56,6 +41,7 @@
 	--enable-libzvbi \
 	--enable-nonfree \
 	--enable-openal \
+	--enable-opengl \
 	--enable-openssl \
 	--enable-pic \
 	--enable-pthreads \
@@ -63,9 +49,12 @@
         --enable-shared \
 	--enable-swresample \
 	--enable-swscale \
-	--enable-vaapi \
-	--enable-vdpau \
 	--enable-version3 \
-	--enable-x11grab
+	--enable-x11grab \
+	--disable-libopencv
 ub_make
-ub_make tools/qt-faststart
+
+extratools="aviocat graph2dot ismindex pktdumper qt-faststart trasher cws2fws"
+for i in $extratools; do
+	make "tools/$i"
+done

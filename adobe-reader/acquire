@@ -1,9 +1,4 @@
 #!/usr/bin/env dl
 
-AdbeRdr${UB_VERSION}-1_i486linux_enu.tar.bz2 AdobeReader/
-	ftp://ftp.adobe.com/pub/adobe/reader/unix/${UB_VERSION_MAJOR}.x/${UB_VERSION}/enu/
-	http://ardownload.adobe.com/pub/adobe/reader/unix/${UB_VERSION_MAJOR}.x/${UB_VERSION_HEAD2}/enu/
-
-AdbeRdr${UB_VERSION}-1_i486linux_enu.tar.bz2 AdobeReader/COMMON.TAR .
-
-AdbeRdr${UB_VERSION}-1_i486linux_enu.tar.bz2 AdobeReader/ILINXR.TAR .
+AdbeRdr${UB_VERSION}-1_i486linux_enu.bin
+      http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/${UB_VERSION}/enu/

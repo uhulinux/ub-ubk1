@@ -1,37 +1,31 @@
-diff -Naur dbh-4.6.2-orig/man/Makefile.am dbh-4.6.2/man/Makefile.am
---- dbh-4.6.2-orig/man/Makefile.am	2011-04-01 06:55:15.000000000 +0200
-+++ dbh-4.6.2/man/Makefile.am	2011-11-13 17:06:37.000000000 +0100
-@@ -36,13 +36,13 @@
+diff -Naur libdbh2-5.0.16-orig/man/Makefile.am libdbh2-5.0.16/man/Makefile.am
+--- libdbh2-5.0.16-orig/man/Makefile.am	2014-04-01 19:25:18.000000000 +0200
++++ libdbh2-5.0.16/man/Makefile.am	2015-01-11 22:13:06.272111632 +0100
+@@ -51,11 +51,11 @@
  	     dbh_writeheader.3	
  
  
 -if WANT_FREEBSD
--dbhman1dir = ${prefix}/man/man1
 -dbhman3dir = ${prefix}/man/man3
 -else
 +#if WANT_FREEBSD
-+# dbhman1dir = ${prefix}/man/man1
-+#dbhman3dir = ${prefix}/man/man3
-+#else
- dbhman1dir = $(mandir)/man1
++# dbhman3dir = ${prefix}/man/man3
++# else
  dbhman3dir = $(mandir)/man3
 -endif
-+#endif
++# endif
  
- EXTRA_DIST = $(dbhman1_DATA) $(dbhman3_DATA)
+ EXTRA_DIST =  $(dbhman3_DATA)
  
-diff -Naur dbh-4.6.2-orig/man/Makefile.in dbh-4.6.2/man/Makefile.in
---- dbh-4.6.2-orig/man/Makefile.in	2011-04-01 07:19:45.000000000 +0200
-+++ dbh-4.6.2/man/Makefile.in	2011-11-13 17:07:37.000000000 +0100
-@@ -255,9 +255,9 @@
+diff -Naur libdbh2-5.0.16-orig/man/Makefile.in libdbh2-5.0.16/man/Makefile.in
+--- libdbh2-5.0.16-orig/man/Makefile.in	2014-10-06 22:09:06.000000000 +0200
++++ libdbh2-5.0.16/man/Makefile.in	2015-01-11 22:11:28.128351153 +0100
+@@ -336,7 +336,7 @@
  	     dbh_writeheader.3	
  
- @WANT_FREEBSD_FALSE@dbhman1dir = $(mandir)/man1
--@WANT_FREEBSD_TRUE@dbhman1dir = ${prefix}/man/man1
-+# @WANT_FREEBSD_TRUE@dbhman1dir = ${prefix}/man/man1
  @WANT_FREEBSD_FALSE@dbhman3dir = $(mandir)/man3
 -@WANT_FREEBSD_TRUE@dbhman3dir = ${prefix}/man/man3
 +# @WANT_FREEBSD_TRUE@dbhman3dir = ${prefix}/man/man3
- EXTRA_DIST = $(dbhman1_DATA) $(dbhman3_DATA)
+ EXTRA_DIST = $(dbhman3_DATA)
  all: all-am
  

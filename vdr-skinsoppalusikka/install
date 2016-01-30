@@ -2,5 +2,5 @@
 
 ub_install
 
-install -d -m 777 "$UB_INSTALLDIR"/var/vdr/config/themes
-install -m 777 themes/* "$UB_INSTALLDIR"/var/vdr/config/themes/
+mkdir -p "$UB_INSTALLDIR"/etc/vdr/themes
+cp themes/* "$UB_INSTALLDIR"/etc/vdr/themes/

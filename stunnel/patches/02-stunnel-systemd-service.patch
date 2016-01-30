@@ -1,14 +1,14 @@
-diff -urNp stunnel-5.01-patched/tools/stunnel.service.in stunnel-5.01-current/tools/stunnel.service.in
---- stunnel-5.01-patched/tools/stunnel.service.in	2011-05-02 18:07:34.000000000 -0400
-+++ stunnel-5.01-current/tools/stunnel.service.in	2014-04-28 22:41:20.842510005 -0400
+diff -Naur orig/tools/stunnel.service.in patched/tools/stunnel.service.in
+--- orig/tools/stunnel.service.in	2015-06-01 16:25:32.000000000 +0200
++++ patched/tools/stunnel.service.in	2015-10-23 19:35:14.201790754 +0200
 @@ -1,10 +1,11 @@
  [Unit]
  Description=SSL tunnel for network daemons
 -After=syslog.target
-+After=syslog.target network.target
++After=network.target
  
  [Service]
- ExecStart=@prefix@/bin/stunnel
+ ExecStart=@bindir@/stunnel
  Type=forking
 +PrivateTmp=true
  

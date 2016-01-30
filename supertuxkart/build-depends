@@ -1,15 +1,14 @@
 cmake
 curl-dev
 freealut-dev
+freeglut-dev
 fribidi-dev
+gettext
 glu-dev
 libjpeg-dev
-libogg-dev
 libpng-dev
 libvorbis-dev
 libxt-dev
-mesa-dev
-openal-dev
 plib
 plib-dev
 sdl-dev

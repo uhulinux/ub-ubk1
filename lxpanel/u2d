@@ -1,1 +1,1 @@
-sflist lxde LXPanel%20%28desktop%20panel%29 | splitver '^LXPanel%20([0-9.]+)$' | sort -V | tail -n 1
+geturl http://sourceforge.net/projects/lxde/files/LXPanel%20%28desktop%20panel%29/LXPanel%200.7.x/ | grep lxpanel |  sed s/.*lxpanel-//g | sed s/\.tar.*//g | sort -V | tail -n 1

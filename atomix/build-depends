@@ -1,7 +1,4 @@
-gdk-pixbuf-dev
-libbonoboui2-dev
-libgnome2-dev
-libgnomecanvas2-dev
-libgnomeui2-dev
+gettext
+gtk-dev
+intltool
 libxml2-dev
-perl-xml-parser

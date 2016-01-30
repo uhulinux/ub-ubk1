@@ -1,3 +1,3 @@
 #!/bin/bash
 
-systemctl enable gdm
+systemctl -f enable gdm

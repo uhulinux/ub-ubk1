@@ -1,7 +1,7 @@
-diff -Naurdp a/src/vte.c b/src/vte.c
---- a/src/vte.c	2009-06-08 11:17:36.000000000 +0200
-+++ b/src/vte.c	2009-06-08 11:18:35.000000000 +0200
-@@ -5948,7 +5948,7 @@ vte_terminal_get_text_range_maybe_wrappe
+diff -Naur orig/src/vte.cc patched/src/vte.cc
+--- orig/src/vte.cc	2015-10-14 07:56:24.000000000 +0200
++++ patched/src/vte.cc	2015-12-13 02:20:14.625948520 +0100
+@@ -6188,7 +6188,7 @@
  					attr.strikethrough = pcell->attr.strikethrough;
  
  					/* Store the cell string */

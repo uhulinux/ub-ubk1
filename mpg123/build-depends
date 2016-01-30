@@ -1,6 +1,4 @@
-alsa-lib-dev
 db4-dev
-dbus-dev
 jack-dev
 openal-dev
 portaudio-dev

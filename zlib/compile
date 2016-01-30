@@ -12,3 +12,8 @@ make
 	--libdir=/lib \
 	--shared
 make
+
+# minizip
+cd contrib/minizip
+autoreconf -vif
+ub_compile

@@ -9,3 +9,10 @@ rm -rf "$UB_INSTALLDIR"/usr/share/locale/*/LC_MESSAGES/libkipi.mo
 rm -rf "$UB_INSTALLDIR"/usr/share/icons/hicolor/*/actions/black-white.png
 rm -rf "$UB_INSTALLDIR"/usr/share/icons/hicolor/*/actions/color.png
 rm -rf "$UB_INSTALLDIR"/usr/share/icons/hicolor/*/actions/gray-scale.png
+
+# install headers
+mkdir -p "$UB_INSTALLDIR"/usr/include/{libkvkontakte,libmediawiki,libkface,libkgeomap}
+cp extra/libkvkontakte/libkvkontakte/*.h "$UB_INSTALLDIR"/usr/include/libkvkontakte/
+cp extra/libmediawiki/libmediawiki/*.h "$UB_INSTALLDIR"/usr/include/libmediawiki/
+cp extra/libkface/libkface/*.h "$UB_INSTALLDIR"/usr/include/libkface/
+cp extra/libkgeomap/libkgeomap/*.h "$UB_INSTALLDIR"/usr/include/libkgeomap/

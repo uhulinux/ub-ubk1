@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
-cmake -D CMAKE_INSTALL_PREFIX=/usr -D INSTALL_SUBDIR_BIN=bin .
-ub_make
+ub_compile \
+	-DINSTALL_SUBDIR_BIN="bin"

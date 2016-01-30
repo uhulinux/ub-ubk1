@@ -1,9 +1,13 @@
 desktop-file-utils
 icon-theme-hicolor
 libpng-dev
+librsvg-dev
 libtiff-dev
 libx11-dev
 libxext-dev
 perl
+poppler-glib-dev
+xdg-utils
 xine-lib-dev
 xterm
+xz-dev

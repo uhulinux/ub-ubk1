@@ -6,6 +6,5 @@ intltool
 libvorbis-dev
 openal-dev
 physfs-dev
-sdl-image-dev
-sdl-mixer-dev
-squirrel2-dev
+sdl2-dev
+sdl2-image-dev

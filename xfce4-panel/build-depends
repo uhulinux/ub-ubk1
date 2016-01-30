@@ -1,5 +1,6 @@
 cairo-dev
 garcon-dev
+gtk-dev
 gtk2-dev
 intltool
 libexo-dev

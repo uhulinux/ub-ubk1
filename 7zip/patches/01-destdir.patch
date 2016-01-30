@@ -1,18 +1,38 @@
---- p7zip_4.61.orig/makefile	2008-11-30 16:49:38.000000000 +0100
-+++ p7zip_4.61/makefile	2009-02-06 17:14:42.000000000 +0100
-@@ -1,10 +1,10 @@
+diff -Naur orig/install.sh patched/install.sh
+--- orig/install.sh	2015-10-05 10:38:59.000000000 +0200
++++ patched/install.sh	2015-10-31 04:44:15.479208146 +0100
+@@ -16,14 +16,14 @@
+ }
+ 
+ # global install
+-DEST_HOME=/usr/local
++DEST_HOME=/usr
+ # for testing 
+ # DEST_HOME=${HOME}/INSTALL/usr/local
+ DEST_BIN=${DEST_HOME}/bin
+ DEST_SHARE=${DEST_HOME}/lib/p7zip
+-DEST_MAN=${DEST_HOME}/man
++DEST_MAN=${DEST_HOME}/share/man
+ DEST_SHARE_DOC=${DEST_HOME}/share/doc/p7zip
+-DEST_DIR=
++DEST_DIR=${DESTDIR}
+ [ "$1" ] && DEST_BIN="$1"
+ [ "$2" ] && DEST_SHARE="$2"
+ [ "$3" ] && DEST_MAN="$3"
+diff -Naur orig/makefile patched/makefile
+--- orig/makefile	2015-10-05 10:39:57.000000000 +0200
++++ patched/makefile	2015-10-31 04:46:09.951775785 +0100
+@@ -1,10 +1,11 @@
  MKDIR = mkdir -p
  
 -DEST_HOME=/usr/local
--DEST_BIN=$(DEST_HOME)/bin
--DEST_SHARE=$(DEST_HOME)/lib/p7zip
--DEST_SHARE_DOC=$(DEST_HOME)/share/doc/p7zip
--DEST_MAN=$(DEST_HOME)/man
 +DEST_HOME=/usr
-+DEST_BIN=$(DESTDIR)$(DEST_HOME)/bin
-+DEST_SHARE=$(DESTDIR)$(DEST_HOME)/lib/p7zip
-+DEST_SHARE_DOC=$(DESTDIR)$(DEST_HOME)/share/doc/p7zip
-+DEST_MAN=$(DESTDIR)$(DEST_HOME)/share/man
+ DEST_BIN=$(DEST_HOME)/bin
+ DEST_SHARE=$(DEST_HOME)/lib/p7zip
+ DEST_SHARE_DOC=$(DEST_HOME)/share/doc/p7zip
+-DEST_MAN=$(DEST_HOME)/man
++DEST_MAN=$(DEST_HOME)/share/man
++DEST_DIR=$(DESTDIR)
  
- .PHONY: default all all2 7za 7zG sfx 7z 7zr Client7z common common7z clean tar_bin depend test test_7z test_7zr test_7zG test_Client7z all_test
+ .PHONY: default all all2 7za 7zG 7zFM sfx 7z 7zr Client7z common common7z LangAndHelp clean tar_bin depend test test_7z test_7zr test_7zG test_Client7z LzmaCon test_LzmaCon  all_test app cppcheck
  

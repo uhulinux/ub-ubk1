@@ -1,9 +1,0 @@
-diff -Naur orig/data/pasystray.desktop patched/data/pasystray.desktop
---- orig/data/pasystray.desktop	2012-12-18 17:41:40.000000000 +0100
-+++ patched/data/pasystray.desktop	2013-03-06 13:47:25.294998900 +0100
-@@ -7,4 +7,4 @@
- Icon=pasystray
- StartupNotify=true
- Type=Application
--Categories=AudioVideo;Audio;
-+Categories=AudioVideo;Audio;X-UHU-Menu/Settings;

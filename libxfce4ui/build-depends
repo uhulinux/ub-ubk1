@@ -1,7 +1,7 @@
 dbh-dev
+gtk-dev
 gtk2-dev
 intltool
-libglade2-dev
 libxfce4util-dev
 libxinerama-dev
 libxml2-dev

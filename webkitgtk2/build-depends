@@ -10,6 +10,7 @@ icu-dev
 libjpeg-dev
 libsoup-dev
 libxml2-dev
+libxshmfence-dev
 libxslt-dev
 libxt-dev
 mesa-dev

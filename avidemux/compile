@@ -1,6 +1,10 @@
 #!/bin/sh -eux
 
-export QTDIR="/usr/lib/qt4"
+export QTDIR="/usr/lib/qt5"
+export CMAKE_PREFIX_PATH=/usr/lib/qt5
 sh bootStrap.bash \
+	--with-cli \
+	--with-core \
+	--with-plugins \
 	--without-gtk \
-	--with-cli
+	--enable-qt5

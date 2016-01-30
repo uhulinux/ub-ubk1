@@ -14,6 +14,7 @@ gtksourceview-dev
 intltool
 itstool
 libgda-dev
+libxshmfence-dev
 neon-dev
 serf-dev
 sqlite-dev

@@ -18,7 +18,14 @@ rm -rf "$UB_INSTALLDIR"/usr/share/doc/cups/{de,fr}
 
 # create empty config file
 mkdir -p "$UB_INSTALLDIR"/etc/cups
+mkdir -p "$UB_INSTALLDIR"/etc/xinetd.d
 touch "$UB_INSTALLDIR"/etc/cups/printers.conf
+cp -a conf/mime.convs "$UB_INSTALLDIR"/etc/cups/
+cp -a conf/mime.types "$UB_INSTALLDIR"/etc/cups/
+cp -a "$UB_INSTALLDIR"/usr/lib/cups/daemon/cups-lpd "$UB_INSTALLDIR"/etc/xinetd.d/
 
-rm -rf ${UB_INSTALLDIR}/usr/share/cups/banners
-rm -f ${UB_INSTALLDIR}/usr/share/cups/data/testprint
+# remove files now part of cups-filters
+rm -v "$UB_INSTALLDIR"/usr/share/cups/banners/*
+rm -v "$UB_INSTALLDIR"/usr/share/cups/data/testprint
+# comment out all conversion rules which use any of the removed filters
+perl -p -i -e 's:^(.*\s+bannertops\s*)$:#\1:' "$UB_INSTALLDIR"/usr/share/cups/mime/mime.convs

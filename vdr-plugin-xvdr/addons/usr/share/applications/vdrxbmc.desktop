@@ -1,11 +1,11 @@
 [Desktop Entry]
-Version=1.0
-Name=xbmc+vdr
-Comment=VDR+XBMC
+Categories=AudioVideo;Video;Player;TV;X-UHU-Menu/Multimedia/VideoPlayers;
 Comment[hu]=VDR xbmc felülettel
-Type=Application
+Comment=VDR+XBMC
 Exec=vdrxbmc
 Icon=vdrxbmc
+Name=xbmc+vdr
 StartupNotify=true
 Terminal=true
-Categories=AudioVideo;Video;Player;TV;X-UHU-Menu/Multimedia/VideoPlayers;
+Type=Application
+Version=1.0

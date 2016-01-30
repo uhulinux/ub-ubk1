@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
-export PATH=/usr/lib/qt4/bin:"$PATH"
-export QTDIR=/usr/lib/qt4
+export PATH=/usr/lib/qt5/bin:"$PATH"
+export QTDIR=/usr/lib/qt5
 qmake -recursive
 ub_make

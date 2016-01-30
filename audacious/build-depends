@@ -1,5 +1,5 @@
 dbus-glib-dev
-gtk-dev
+gtk2-dev
 libguess-dev
 libmcs-dev
 libmowgli-dev

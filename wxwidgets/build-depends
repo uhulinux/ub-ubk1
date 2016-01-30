@@ -8,5 +8,4 @@ libpng-dev
 libsm-dev
 libtiff-dev
 mesa-dev
-sdl-dev
 webkitgtk-dev

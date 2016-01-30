@@ -1,1 +1,1 @@
-sflist xarchiver xarchiver | sort -V | tail -n 1
+sflist xarchiver | splitver '^xarchiver-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

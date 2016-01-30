@@ -13,6 +13,7 @@ libsecret-dev
 libsoup-dev
 libwebp-dev
 libxml2-dev
+libxshmfence-dev
 libxslt-dev
 libxt-dev
 mesa-dev

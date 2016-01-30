@@ -1,4 +1,8 @@
 #!/usr/bin/env dl
 
-xbmc-${UB_VERSION/~/-}.tar.gz xbmc-${UB_VERSION/~/-}-Gotham/
+${UB_VERSION/~/-}-Isengard.tar.gz xbmc-${UB_VERSION/~/-}-Isengard/
 	http://mirrors.xbmc.org/releases/source/
+	https://github.com/xbmc/xbmc/archive/
+	
+ffmpeg-2.6.4-Isengard.tar.gz :/tools/depends/target/ffmpeg/
+	https://github.com/xbmc/FFmpeg/archive/2.6.4-Isengard.tar.gz

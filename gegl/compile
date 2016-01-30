@@ -3,4 +3,3 @@
 ub_compile \
 	--enable-workshop \
 	--disable-docs
-

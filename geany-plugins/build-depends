@@ -8,6 +8,7 @@ gtkspell2-dev
 intltool
 libsoup-dev
 libwnck2-dev
+libxshmfence-dev
 lua-dev
 mesa-dev
 pygtk-dev

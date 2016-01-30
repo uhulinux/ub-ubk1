@@ -1,3 +1,15 @@
+-------------
+Kiss Attila 2014-09-24
+postinst fix
+build-depends fix
+-------------
+Kiss Attila 2014-09-19
+KDE és gnome-classic bejelentkezési hibák kijavítva
+------------------------------------------------------------------------
+r40142 | janusz@uhulinux.hu | 2014-08-18 13:25:11 +0200 (Mon, 18 Aug 2014) | 2 lines
+
+mark custom.conf as config
+
 ------------------------------------------------------------------------
 r40099 | robot | 2014-07-16 09:30:15 +0200 (Wed, 16 Jul 2014) | 2 lines
 

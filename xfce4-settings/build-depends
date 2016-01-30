@@ -4,7 +4,6 @@ gtk2-dev
 intltool
 libcanberra-dev
 libexo-dev
-libglade2-dev
 libnotify-dev
 libwnck2-dev
 libxcursor-dev
@@ -17,5 +16,6 @@ libxklavier-dev
 libxrandr-dev
 libxt-dev
 startup-notification-dev
+upower-dev
 xcb-util-dev
 xfconf-dev

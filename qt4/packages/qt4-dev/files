@@ -1,5 +1,8 @@
+	/usr/bin/lrelease-qt4
+	/usr/bin/lupdate-qt4
 	/usr/bin/moc-qt4
 	/usr/bin/qmake-qt4
+	/usr/bin/rcc-qt4
 	/usr/bin/uic-qt4
 @	/usr/lib/pkgconfig/*
 	/usr/lib/qt4/bin/findtr
@@ -18,6 +21,7 @@
 	/usr/lib/qt4/bin/qt3to4
 	/usr/lib/qt4/bin/qt3to4.debug
 	/usr/lib/qt4/bin/qtrename140
+	/usr/lib/qt4/bin/rcc
 	/usr/lib/qt4/bin/uic
 	/usr/lib/qt4/bin/uic.debug
 	/usr/lib/qt4/bin/uic3

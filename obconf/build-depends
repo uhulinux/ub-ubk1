@@ -1,5 +1,4 @@
-gtk2-dev
+gtk-dev
 libglade2-dev
-libxml2-dev
 openbox-dev
 startup-notification-dev

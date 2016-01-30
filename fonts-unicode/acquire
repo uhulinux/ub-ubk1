@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-unifont_${UB_VERSION}.orig.tar.gz unifont-dvdeug-${UB_VERSION}/
-	ftp://ftp.debian.org/debian/pool/main/u/unifont/
+unifont-${UB_VERSION}.tar.gz unifont-${UB_VERSION}/
+	http://unifoundry.com/pub/unifont-${UB_VERSION}/
+
+#unifont_${UB_VERSION}.orig.tar.gz unifont-${UB_VERSION}/
+#	ftp://ftp.debian.org/debian/pool/main/u/unifont/

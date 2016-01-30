@@ -1,6 +1,5 @@
 [Unit]
 Description=SASL authentication daemon.
-After=syslog.target 
 
 [Service]
 Type=forking

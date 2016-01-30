@@ -1,8 +1,8 @@
 cppunit-dev
 dbus-dev
 gnutls-dev
-gtk2-dev
+gtk-dev
 libidn-dev
 sqlite-dev
-wxwidgets2.8-dev
+wxwidgets-dev
 xdg-utils

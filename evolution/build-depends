@@ -22,6 +22,7 @@ libgweather-dev
 libnotify-dev
 liboauth-dev
 libpst-dev
+libxshmfence-dev
 mx-dev
 networkmanager-dev
 nss-dev

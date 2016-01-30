@@ -1,1 +1,1 @@
-urllist http://dvdnav.mplayerhq.hu/releases/ | splitver '^libdvdread-([0-9.]+).tar.xz$' | sort -V | tail -n 1
+urllist http://download.videolan.org/videolan/libdvdread/ | grep -E '^([0-9.]+)$' | sort -V | tail -n 1

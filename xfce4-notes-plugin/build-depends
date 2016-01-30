@@ -1,10 +1,14 @@
 dbus-glib-dev
+gobject-introspection-dev
 gtk2-dev
 intltool
 libsm-dev
 libunique1-dev
-libxfcegui4-dev
+libxfce4ui-dev
 startup-notification-dev
+vala-dev
 xcb-util-dev
+xfce4-dev-tools
 xfce4-panel-dev
+xfce4-vala
 xfconf-dev

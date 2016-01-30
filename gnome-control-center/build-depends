@@ -40,6 +40,7 @@ libsecret-dev
 libsoup-gnome-dev
 libwacom-dev
 libxkbfile-dev
+libxshmfence-dev
 libxslt-dev
 libxt-dev
 modemmanager-dev

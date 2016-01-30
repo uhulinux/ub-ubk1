@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 abevjava_install-$UB_VERSION-0.1.noarch.rpm ./usr/share/abevjava/abevjava_install-$UB_VERSION-0.1.jar application/
-	http://www.nav.gov.hu/data/cms332911/
-	http://www.nav.gov.hu/data/cms362080/
+	http://nav.gov.hu/data/cms387280/

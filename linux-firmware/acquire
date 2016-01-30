@@ -1,13 +1,22 @@
 #!/usr/bin/env dl
 
-linux-firmware-${UB_VERSION}.tar.gz linux-firmware-${UB_VERSION}/:lib/firmware
-	git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git@${UB_VERSION}
+linux-firmware-${UB_VERSION}.tar.xz linux-firmware-${UB_VERSION}/ :linux-firmware
+#	git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+	http://download.ubk.hu/src/firmware/
 
-nouveau-firmware-20091212.tar.gz nouveau:/lib/firmware/
+nouveau-firmware-20091212.tar.gz nouveau/ :nouveau
 	http://people.freedesktop.org/~pq/nouveau-drm/
 
-broadcom-wl-4.178.10.4.tar.bz2 broadcom-wl-4.178.10.4/linux/wl_apsta.o
+broadcom-wl-5.100.138.tar.bz2 broadcom-wl-5.100.138/linux/wl_apsta.o
 	http://downloads.openwrt.org/sources/
 
 wl_apsta-3.130.20.0.o
 	http://downloads.openwrt.org/sources/
+
+dvb-firmware-20150912.tar.xz dvb-firmware-20150912/ :dvb-firmware
+#	http://www.linuxtv.org/downloads/firmware/
+	http://download.ubk.hu/src/firmware/
+
+#dvb-firmware-20121016.tar.xz dvb-firmware-20121016/ :dvb-firmware
+#	http://download.ubk.hu/src/firmware/
+

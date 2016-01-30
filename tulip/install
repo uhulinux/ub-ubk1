@@ -2,5 +2,4 @@
 
 ub_install
 
-rm -f "$UB_INSTALLDIR"/usr/share/*.cmake
 

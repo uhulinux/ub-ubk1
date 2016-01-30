@@ -3,6 +3,7 @@ docbook-dtds
 exiv2-dev
 gnome-doc-utils
 gtk2-dev
+gvfs
 intltool
 lcms-dev
 libgcrypt-dev

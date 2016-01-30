@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-${UB_VERSION}.tar.bz2 .
-	https://bitbucket.org/multicoreware/x265/get/
+x265_${UB_VERSION}.tar.gz x265_11047/
+	https://bitbucket.org/multicoreware/x265/downloads/

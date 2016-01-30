@@ -2,5 +2,6 @@
 
 rm CMakeLists.txt
 ub_compile \
+	--enable-pcre16 \
 	--enable-utf8 \
 	--enable-unicode-properties

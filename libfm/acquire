@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 libfm-${UB_VERSION}.tar.xz libfm-${UB_VERSION}/
-	http://downloads.sourceforge.net/pcmanfm/
+	http://download.sourceforge.net/pcmanfm/

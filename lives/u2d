@@ -1,1 +1,1 @@
-urllist http://www.xs4all.nl/~salsaman/lives/current/ | splitver '^LiVES-([0-9.]+).tar.bz2' | sort -V | tail -n 1
+sflist lives lives | grep -E '^[0-9]' | sort -V | tail -n 1

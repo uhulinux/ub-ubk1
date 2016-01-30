@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 cppcheck-${UB_VERSION}.tar.gz cppcheck-${UB_VERSION}/
-	http://downloads.sourceforge.net/cppcheck/
+	http://download.sourceforge.net/cppcheck/

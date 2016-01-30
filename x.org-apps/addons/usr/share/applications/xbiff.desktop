@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=xbiff
-Comment=Notification when mail arrives
-Comment[hu]=Értesítés új levél érkezésekor
-Exec=xbiff
-Categories=Utility;

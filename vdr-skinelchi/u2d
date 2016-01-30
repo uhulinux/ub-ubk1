@@ -1,1 +1,1 @@
-urllist http://firefly.vdr-developer.org/skinelchi/ | parsever | sort -V | tail -n 1
+urllist http://firefly.vdr-developer.org/skinelchi/ | splitver '^vdr-skinelchi-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

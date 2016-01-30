@@ -2,6 +2,7 @@ automoc4
 boost-dev
 cmake
 dbus-dev
+icu-dev
 libxslt-dev
 mysql-server
 qt4-dev

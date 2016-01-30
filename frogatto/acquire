@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-frogatto-${UB_VERSION}.tar.bz2 frogatto-${UB_VERSION}/
-	http://www.frogatto.com/files/
+${UB_VERSION}.tar.gz frogatto-${UB_VERSION}/
+	https://github.com/frogatto/frogatto/archive/

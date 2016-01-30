@@ -1,9 +1,0 @@
-diff -Naur digikam-3.0.0-rc-orig/extra/CMakeLists.txt digikam-3.0.0-rc/extra/CMakeLists.txt
---- digikam-3.0.0-rc-orig/extra/CMakeLists.txt	2012-12-24 00:32:49.000000000 +0100
-+++ digikam-3.0.0-rc/extra/CMakeLists.txt	2013-01-01 09:18:14.000000000 +0100
-@@ -37,4 +37,4 @@
- 
- ADD_SUBDIRECTORY(libkgeomap)
- ADD_SUBDIRECTORY(libkface)
--ADD_SUBDIRECTORY(kipi-plugins)
-+#ADD_SUBDIRECTORY(kipi-plugins)

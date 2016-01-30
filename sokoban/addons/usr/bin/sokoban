@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /usr/share/sokoban
+cd /usr/share/games/sokoban
 python sokoban.py "$@"

@@ -2,6 +2,6 @@
 
 ub_install
 
-rm -rf "$UB_INSTALLDIR"/etc/xdg/menus/applications.menu
+#rm -rf "$UB_INSTALLDIR"/etc/xdg/menus/applications.menu
 rm -rf "$UB_INSTALLDIR"/usr/share/desktop-directories/Development.directory
 rm -rf "$UB_INSTALLDIR"/usr/share/desktop-directories/Graphics.directory

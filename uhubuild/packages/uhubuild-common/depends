@@ -1,6 +1,7 @@
 coreutils
 cpp
 diffutils
+dl
 dpkg
 findutils
 gawk

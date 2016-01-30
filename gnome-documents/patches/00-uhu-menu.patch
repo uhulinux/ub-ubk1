@@ -1,9 +1,0 @@
---- a/data/org.gnome.Documents.desktop.in.orig	2013-02-28 20:07:41.000000000 +0100
-+++ a/data/org.gnome.Documents.desktop.in	2013-02-28 20:09:37.000000000 +0100
-@@ -7,5 +7,5 @@
- Type=Application
- StartupNotify=true
- OnlyShowIn=GNOME;
--Categories=GNOME;GTK;Utility;Core;
-+Categories=GNOME;GTK;Utility;Core;X-UHU-Menu/Tools/FileManagers;
- _Keywords=Docs;PDF;Document;

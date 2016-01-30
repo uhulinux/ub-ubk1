@@ -1,4 +1,5 @@
 #!/bin/sh -eux
 
 NOCONFIGURE=yes ./autogen.sh
-ub_compile
+ub_compile \
+	--enable-admin-group=root

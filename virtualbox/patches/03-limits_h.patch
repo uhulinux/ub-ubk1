@@ -1,11 +1,11 @@
-diff -urN VirtualBox-1.5.0_OSE.orig/src/VBox/Devices/Storage/DrvHostDVD.cpp VirtualBox-1.5.0_OSE/src/VBox/Devices/Storage/DrvHostDVD.cpp
---- VirtualBox-1.5.0_OSE.orig/src/VBox/Devices/Storage/DrvHostDVD.cpp	2007-08-30 17:16:22.000000000 +0200
-+++ VirtualBox-1.5.0_OSE/src/VBox/Devices/Storage/DrvHostDVD.cpp	2007-10-15 19:57:47.000000000 +0200
-@@ -36,6 +36,7 @@
- /* nothing (yet). */
+diff -Naur orig/src/VBox/Devices/Storage/DrvHostDVD.cpp patched/src/VBox/Devices/Storage/DrvHostDVD.cpp
+--- orig/src/VBox/Devices/Storage/DrvHostDVD.cpp	2014-07-15 19:24:35.000000000 +0200
++++ patched/src/VBox/Devices/Storage/DrvHostDVD.cpp	2014-08-30 15:04:36.659208694 +0200
+@@ -35,6 +35,7 @@
+ # define USE_MEDIA_POLLING
  
  #elif defined RT_OS_LINUX
 +# include <limits.h>
  # include <sys/ioctl.h>
- /* This is a hack to work around conflicts between these linux kernel headers
-  * and the GLIBC tcpip headers. They have different declarations of the 4
+ # include <linux/version.h>
+ /* All the following crap is apparently not necessary anymore since Linux

@@ -1,6 +1,7 @@
 gtk2-dev
 intltool
+libgksu-dev
+libgtop2-dev
 libsm-dev
 libwnck2-dev
-libxfcegui4-dev
 xcb-util-dev

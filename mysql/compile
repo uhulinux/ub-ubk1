@@ -2,14 +2,7 @@
 
 ub_compile \
 	-DMYSQL_MAINTAINER_MODE=OFF \
-	-DINSTALL_SBINDIR=sbin \
-	-DINSTALL_LIBDIR=lib \
-	-DINSTALL_SHAREDIR=share/mysql \
-	-DINSTALL_MANDIR=share/man \
-	-DINSTALL_MYSQLSHAREDIR=share/mysql \
-	-DINSTALL_MYSQLTESTDIR=share/mysql-test \
-	-DMYSQL_DATADIR=/var/lib/mysql \
-	-DMYSQL_UNIX_ADDR=/var/run/mysqld/mysqld.sock \
+	-DINSTALL_LAYOUT=DEB \
 	-DWITH_LIBWRAP=1 \
 	-DWITH_READLINE=0 \
 	-DWITH_EMBEDDED_SERVER=1 \

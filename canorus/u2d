@@ -1,1 +1,2 @@
-sflist canorus | grep -E '^([0-9.]+)$' | sort -V | tail -n 1
+dir=$(sflist canorus | grep -E '^([0-9.]+)$' | sort -V | tail -n 1)
+sflist canorus $dir | splitver '^canorus-([0-9.rc]+).tar.bz2$' | sed s/rc/~rc/g | sort -V | tail -n 1

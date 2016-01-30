@@ -1,8 +1,6 @@
 edelib-dev
-fltk-dev
 jam
-libjpeg-dev
-libpng-dev
-libx11-dev
-libxext-dev
-libxft-dev
+libice-dev
+librsvg-dev
+libxkbfile-dev
+startup-notification-dev

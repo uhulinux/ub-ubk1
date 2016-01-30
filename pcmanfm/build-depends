@@ -1,14 +1,10 @@
-dbus-dev
 dbus-glib-dev
 desktop-file-utils
 gamin-dev
-gtk2-dev
 intltool
 libfm-dev
 libsm-dev
-libxcb-dev
 lxmenu-data
-menu-cache
-pixman-dev
+menu-cache-dev
 startup-notification-dev
 xcb-util-dev

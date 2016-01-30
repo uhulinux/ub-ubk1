@@ -13,6 +13,7 @@ libgdata-dev
 libgweather-dev
 libical-dev
 liboauth-dev
+libphonenumber-dev
 libsecret-dev
 libsoup-gnome-dev
 nspr-dev

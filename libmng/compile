@@ -1,9 +1,8 @@
 #!/bin/sh -eux
 
-cp unmaintained/autogen.sh .
-sed -i 's,\r,,' autogen.sh
+rm -f CMakeLists.txt
 
 ub_compile \
 	--with-zlib \
 	--with-jpeg \
-	--with-lcms
+	--with-lcms2

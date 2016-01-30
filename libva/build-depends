@@ -1,8 +1,10 @@
+expat-dev
+glu-dev
 libdrm-dev
 libpciaccess-dev
 libx11-dev
 libxext-dev
 libxfixes-dev
-mesa-dev
+libxshmfence-dev
 systemd-dev
 wayland-dev

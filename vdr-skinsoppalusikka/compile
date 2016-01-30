@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
-make	CONFDIR=/var/vdr/config \
+make	CONFDIR=/etc/vdr/config \
 	VIDEODIR=/var/vdr/video

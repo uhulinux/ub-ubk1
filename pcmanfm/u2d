@@ -1,1 +1,1 @@
-sflist pcmanfm PCManFM%20%2B%20Libfm%20%28tarball%20release%29/PCManFM | splitver '^pcmanfm-([0-9.]+).tar.xz$' | sort -V | tail -n 1
+urllist http://ubuntu.snet.uz/ubuntu/pool/universe/p/pcmanfm/ | splitver '^pcmanfm_([0-9.]+).orig.tar.xz$' | sort -V | tail -n 1

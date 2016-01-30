@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-QupZilla-${UB_VERSION}.tar.gz QupZilla-${UB_VERSION}/
-	http://www.qupzilla.com/uploads/
-	http://www.qupzilla.com/
+QupZilla-${UB_VERSION}.tar.xz QupZilla-${UB_VERSION}/
+	https://github.com/QupZilla/qupzilla/releases/download/v${UB_VERSION}/

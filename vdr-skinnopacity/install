@@ -2,9 +2,4 @@
 
 ub_install
 
-mkdir -p "$UB_INSTALLDIR"/var/vdr/config/plugins/skinnopacity/logos
-mkdir -p "$UB_INSTALLDIR"/var/vdr/config/plugins/skinnopacity/epgimages
-
-chown -R root:users "$UB_INSTALLDIR"/var/vdr/config/plugins/skinnopacity/epgimages
-chown -R root:users "$UB_INSTALLDIR"/var/vdr/config/plugins/skinnopacity/logos
-ln -s /var/vdr/config/plugins/skinnopacity/logos "$UB_INSTALLDIR"/usr/share/vdr/plugins/skinnopacity/logos
+ln -s /etc/vdr/plugins/skinnopacity/logos "$UB_INSTALLDIR"/usr/share/vdr/plugins/skinnopacity/logos

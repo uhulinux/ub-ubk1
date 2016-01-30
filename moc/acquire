@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 moc-${UB_VERSION}.tar.bz2 moc-${UB_VERSION}/
-	ftp://ftp.daper.net/pub/soft/moc/stable/
+	http://ftp.daper.net/pub/soft/moc/stable/

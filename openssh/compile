@@ -5,4 +5,6 @@ ub_compile \
 	--datadir=/usr/share/openssh \
 	--with-kerberos5=/usr \
 	--with-xauth=/usr/bin/xauth \
-	--with-pam
+	--with-pam \
+	--with-md5-passwords \
+	--with-libedit

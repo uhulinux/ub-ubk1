@@ -1,6 +1,5 @@
 fontconfig-dev
-freetype2-dev
 libpng-dev
 vdr
 vdr-dev
-vdr-text2skin
+vdr-plugin-text2skin

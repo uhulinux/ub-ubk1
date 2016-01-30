@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 lxappearance-${UB_VERSION}.tar.xz lxappearance-${UB_VERSION}/
-	http://downloads.sourceforge.net/lxde/
+	http://download.sourceforge.net/lxde/

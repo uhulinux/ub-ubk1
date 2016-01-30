@@ -10,6 +10,7 @@ libid3tag-dev
 libogg-dev
 libvorbis-dev
 libxslt
+opusfile-dev
 speex-dev
 taglib-dev
 wavpack-dev

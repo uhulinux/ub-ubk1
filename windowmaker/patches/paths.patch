@@ -1,144 +1,126 @@
-diff -Naur orig/util/wmgenmenu.c mod/util/wmgenmenu.c
---- orig/util/wmgenmenu.c	2013-09-12 23:43:54.000000000 +0200
-+++ mod/util/wmgenmenu.c	2014-06-16 16:29:10.000000000 +0200
-@@ -146,7 +146,7 @@
- 	L2Menu = WMCreatePLArray(
- 		WMCreatePLString(_("Themes")),
- 		WMCreatePLString("OPEN_MENU"),
--		WMCreatePLString("-noext /usr/local/share/WindowMaker/Themes $HOME/GNUstep/Library/WindowMaker/Themes WITH setstyle"),
-+		WMCreatePLString("-noext /usr/share/WindowMaker/Themes $HOME/GNUstep/Library/WindowMaker/Themes WITH setstyle"),
- 		NULL
- 	);
- 	WMAddToPLArray(L1Menu, L2Menu);
-@@ -155,7 +155,7 @@
- 	L2Menu = WMCreatePLArray(
- 		WMCreatePLString(_("Styles")),
- 		WMCreatePLString("OPEN_MENU"),
--		WMCreatePLString("-noext /usr/local/share/WindowMaker/Styles $HOME/GNUstep/Library/WindowMaker/Styles WITH setstyle"),
-+		WMCreatePLString("-noext /usr/share/WindowMaker/Styles $HOME/GNUstep/Library/WindowMaker/Styles WITH setstyle"),
- 		NULL
- 	);
- 	WMAddToPLArray(L1Menu, L2Menu);
-@@ -164,7 +164,7 @@
- 	L2Menu = WMCreatePLArray(
- 		WMCreatePLString(_("Icon Sets")),
- 		WMCreatePLString("OPEN_MENU"),
--		WMCreatePLString("-noext /usr/local/share/WindowMaker/IconSets $HOME/GNUstep/Library/WindowMaker/IconSets WITH seticons"),
-+		WMCreatePLString("-noext /usr/share/WindowMaker/IconSets $HOME/GNUstep/Library/WindowMaker/IconSets WITH seticons"),
- 		NULL
- 	);
- 	WMAddToPLArray(L1Menu, L2Menu);
 diff -Naur orig/WindowMaker/menu mod/WindowMaker/menu
---- orig/WindowMaker/menu	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/menu	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/menu	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/menu	2014-12-30 19:53:57.920347366 +0100
 @@ -208,7 +208,7 @@
  		"Background" END
  		"Save Theme" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name,Enter file name:)"
  		"Save IconSet" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(IconSet name,Enter file name:)"
 -		"Preferences Utility" EXEC /usr/local/GNUstep/Applications/WPrefs.app/WPrefs
-+		"Preferences Utility" EXEC /usr/bin/WPrefs
++		"Preferences Utility" EXEC /usr/bin//WPrefs
  	"Appearance" END
  
  	"Session" MENU
 diff -Naur orig/WindowMaker/menu.bg mod/WindowMaker/menu.bg
---- orig/WindowMaker/menu.bg	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/menu.bg	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/menu.bg	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/menu.bg	2014-12-30 19:53:57.924347366 +0100
 @@ -209,7 +209,7 @@
  		"Фон" END
  		"Запази темата" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name,Enter file name:)"
  		"Запази колекцията иконки" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(IconSet name,Enter file name:)"
 -		"Пособие за настройки" EXEC /usr/local/GNUstep/Applications/WPrefs.app/WPrefs
-+		"Пособие за настройки" EXEC /usr/bin/WPrefs
++		"Пособие за настройки" EXEC /usr/bin//WPrefs
  	"Изглед" END
  
  	"Изход"	MENU
 diff -Naur orig/WindowMaker/menu.fi mod/WindowMaker/menu.fi
---- orig/WindowMaker/menu.fi	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/menu.fi	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/menu.fi	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/menu.fi	2014-12-30 19:53:57.952347365 +0100
 @@ -202,7 +202,7 @@
  		"Taustat" END
  		"Tallenna teema" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Teeman nimi,Kirjoita teematiedoston nimi:)"
  		"Tallenna kuvakkeet" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(Kuvakesetin nimi,Kirjoita tiedostonnimi:)"
 -		"Asetukset" EXEC /usr/local/GNUstep/Applications/WPrefs.app/WPrefs
-+		"Asetukset" EXEC /usr/bin/WPrefs
++		"Asetukset" EXEC /usr/bin//WPrefs
  	"Ulkonäkö" END
  
  	"Lopeta"	MENU
 diff -Naur orig/WindowMaker/menu.ko mod/WindowMaker/menu.ko
---- orig/WindowMaker/menu.ko	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/menu.ko	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/menu.ko	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/menu.ko	2014-12-30 19:53:57.984347364 +0100
 @@ -163,7 +163,7 @@
  		"세션 지움" CLEAR_SESSION
  	"창 관 리" END
  	"작업환경" MENU
 -		"설    정" SHEXEC /usr/local/GNUstep/Applications/WPrefs.app/WPrefs || wmakerconf
-+		"설    정" SHEXEC /usr/bin/WPrefs || wmakerconf
++		"설    정" SHEXEC /usr/bin//WPrefs || wmakerconf
  		"테    마" OPEN_MENU -noext THEMES_DIR ~/GNUstep/Library/WindowMaker/Themes WITH setstyle
  		"테마저장" EXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(테마 이름,파일 이름을 입력하세요:)"
  		"아이콘셋" OPEN_MENU -noext ICON_SETS_DIR ~/GNUstep/Library/WindowMaker/IconSets WITH seticons
+diff -Naur orig/WindowMaker/menu.nl mod/WindowMaker/menu.nl
+--- orig/WindowMaker/menu.nl	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/menu.nl	2014-12-30 19:53:57.988347364 +0100
+@@ -208,7 +208,7 @@
+ 		"Achtergrond" END
+ 		"Thema opslaan" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Themanaam,Voer bestandsnaam in:)"
+ 		"Iconenset opslaan" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(Iconensetnaam,Voer bestandsnaam in:)"
+-		"Voorkeurenhulpmiddel" EXEC /usr/local/GNUstep/Applications/WPrefs.app/WPrefs
++		"Voorkeurenhulpmiddel" EXEC /usr/bin//WPrefs
+ 	"Uiterlijk" END
+ 
+ 	"Sessie" MENU
 diff -Naur orig/WindowMaker/menu.ro mod/WindowMaker/menu.ro
---- orig/WindowMaker/menu.ro	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/menu.ro	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/menu.ro	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/menu.ro	2014-12-30 19:53:58.004347363 +0100
 @@ -202,7 +202,7 @@
  		"Fundal" END
  		"Salvează Tema" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name,Enter file name:)"
  		"Salvează Setul de Iconiţe" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(IconSet name,Enter file name:)"
 -		"Utilitar de Configurare" EXEC /usr/local/GNUstep/Applications/WPrefs.app/WPrefs
-+		"Utilitar de Configurare" EXEC /usr/bin/WPrefs
++		"Utilitar de Configurare" EXEC /usr/bin//WPrefs
  	"Configurare" END
  
  	"Ieşire" MENU
 diff -Naur orig/WindowMaker/menu.sk mod/WindowMaker/menu.sk
---- orig/WindowMaker/menu.sk	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/menu.sk	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/menu.sk	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/menu.sk	2014-12-30 19:53:58.016347363 +0100
 @@ -216,7 +216,7 @@
  		"Pozadie" END
  		"Uložiť tému" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Meno témy,Zadajte názov súboru:)"
  		"Uložiť sadu ikon" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(Meno sady ikon,Zadajte názov súboru:)"
 -		"Konfiguračný nástroj" EXEC /usr/local/GNUstep/Applications/WPrefs.app/WPrefs
-+		"Konfiguračný nástroj" EXEC /usr/bin/WPrefs
++		"Konfiguračný nástroj" EXEC /usr/bin//WPrefs
  	"Vzhľad" END
  
  	"Koniec" MENU
 diff -Naur orig/WindowMaker/menu.zh_TW mod/WindowMaker/menu.zh_TW
---- orig/WindowMaker/menu.zh_TW	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/menu.zh_TW	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/menu.zh_TW	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/menu.zh_TW	2014-12-30 19:53:58.032347362 +0100
 @@ -199,7 +199,7 @@
  		"背景" END
  		"儲存主題" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(主題名稱)"
  		"儲存圖示集" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(圖示集名稱)"
 -		"偏好設定公用程式" EXEC /usr/local/GNUstep/Applications/WPrefs.app/WPrefs
-+		"偏好設定公用程式" EXEC /usr/bin/WPrefs
++		"偏好設定公用程式" EXEC /usr/bin//WPrefs
  	"外觀" END
  
  	"離開"	MENU
 diff -Naur orig/WindowMaker/plmenu mod/WindowMaker/plmenu
---- orig/WindowMaker/plmenu	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu	2014-12-30 19:53:58.036347362 +0100
 @@ -93,7 +93,7 @@
     ),
     ("Save Theme", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Theme name)\""),
     ("Save IconSet", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(IconSet name)\""),
 -   ("Preferences Utility", EXEC, "/usr/local/GNUstep/Applications/WPrefs.app/WPrefs")
-+   ("Preferences Utility", EXEC, "/usr/bin/WPrefs")
++   ("Preferences Utility", EXEC, "/usr/bin//WPrefs")
     ),
     ("Session",
      ("Save Session", SAVE_SESSION),
 diff -Naur orig/WindowMaker/plmenu.bg mod/WindowMaker/plmenu.bg
---- orig/WindowMaker/plmenu.bg	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu.bg	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu.bg	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.bg	2014-12-30 19:53:58.040347362 +0100
 @@ -94,7 +94,7 @@
     ),
    ("Запази темата", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Theme name)\""),
    ("Запази колекцията иконки", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(IconSet name)\""),
 -  ("Пособие за настройки", EXEC, "/usr/local/GNUstep/Applications/WPrefs.app/WPrefs")
-+  ("Пособие за настройки", EXEC, "/usr/bin/WPrefs")
++  ("Пособие за настройки", EXEC, "/usr/bin//WPrefs")
    ),
   ("Изход",
    ("Рестартиране", RESTART),
 diff -Naur orig/WindowMaker/plmenu.da mod/WindowMaker/plmenu.da
---- orig/WindowMaker/plmenu.da	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu.da	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu.da	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.da	2014-12-30 19:53:58.044347362 +0100
 @@ -211,17 +211,17 @@
                  (
                  "Temaer",
@@ -170,8 +152,8 @@ diff -Naur orig/WindowMaker/plmenu.da mod/WindowMaker/plmenu.da
                  ),
                  ("Gem Tema", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Tema navn,Indtast navn:)"),
 diff -Naur orig/WindowMaker/plmenu.de mod/WindowMaker/plmenu.de
---- orig/WindowMaker/plmenu.de	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu.de	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu.de	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.de	2014-12-30 19:53:58.048347361 +0100
 @@ -66,9 +66,9 @@
    ("Gespeicherte Sitzung löschen", CLEAR_SESSION)
    ),
@@ -195,8 +177,8 @@ diff -Naur orig/WindowMaker/plmenu.de mod/WindowMaker/plmenu.de
    ("Thema speichern", SHEXEC, "getstyle -t $(HOME)/GNUstep/Library/WindowMaker/Themes/\"%a(Themenname)\""),
    ("Iconsatz speichern", SHEXEC, "geticonset $(HOME)/GNUstep/Library/WindowMaker/IconSets/\"%a(Iconsatz-Name)\"")
 diff -Naur orig/WindowMaker/plmenu.es mod/WindowMaker/plmenu.es
---- orig/WindowMaker/plmenu.es	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu.es	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu.es	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.es	2014-12-30 19:53:58.048347361 +0100
 @@ -66,9 +66,9 @@
    ("Borrar sesion", CLEAR_SESSION)
    ),
@@ -220,13 +202,13 @@ diff -Naur orig/WindowMaker/plmenu.es mod/WindowMaker/plmenu.es
    ("Guardar tema", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Theme name)\""),
    ("Guardar iconos", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(IconSet name)\""),
 -  ("Preferencias", EXEC, "/usr/local/GNUstep/Applications/WPrefs.app/WPrefs")
-+  ("Preferencias", EXEC, "/usr/bin/WPrefs")
++  ("Preferencias", EXEC, "/usr/bin//WPrefs")
    ), 
   ("Salir",
    ("Reiniciar", RESTART),
 diff -Naur orig/WindowMaker/plmenu.fi mod/WindowMaker/plmenu.fi
---- orig/WindowMaker/plmenu.fi	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu.fi	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu.fi	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.fi	2014-12-30 19:53:58.056347361 +0100
 @@ -238,17 +238,17 @@
  		(
  		"Teemat",
@@ -262,13 +244,13 @@ diff -Naur orig/WindowMaker/plmenu.fi mod/WindowMaker/plmenu.fi
  		"Asetukset",
  		EXEC,
 -		"/usr/local/GNUstep/Applications/WPrefs.app/WPrefs"
-+		"/usr/bin/WPrefs"
++		"/usr/bin//WPrefs"
  		)
  	),
  	(
 diff -Naur orig/WindowMaker/plmenu.fr mod/WindowMaker/plmenu.fr
---- orig/WindowMaker/plmenu.fr	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu.fr	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu.fr	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.fr	2014-12-30 19:53:58.060347361 +0100
 @@ -66,9 +66,9 @@
     ("Effacer la session", CLEAR_SESSION)
    ),
@@ -292,8 +274,8 @@ diff -Naur orig/WindowMaker/plmenu.fr mod/WindowMaker/plmenu.fr
     ("Sauver le thème", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes /\"%a(Nom du thème,Entrez un nom de fichier:)\""),
     ("Sauver le jeu d'icônes", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets /\"%a(Nom du jeu d'icônes,Entrez un nom de fichier:)\"")  
 diff -Naur orig/WindowMaker/plmenu.hr mod/WindowMaker/plmenu.hr
---- orig/WindowMaker/plmenu.hr	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu.hr	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu.hr	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.hr	2014-12-30 19:53:58.064347361 +0100
 @@ -88,17 +88,17 @@
      (
        Teme,
@@ -325,62 +307,74 @@ diff -Naur orig/WindowMaker/plmenu.hr mod/WindowMaker/plmenu.hr
      ),
      (
 diff -Naur orig/WindowMaker/plmenu.ja mod/WindowMaker/plmenu.ja
---- orig/WindowMaker/plmenu.ja	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu.ja	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu.ja	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.ja	2014-12-30 19:53:58.068347361 +0100
 @@ -94,7 +94,7 @@
     ),   
    ("設定をテーマとしてセーブ", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Theme name)\""),
    ("現在のアイコンセットをセーブ", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(IconSet name)\""),
 -  ("設定ユーティリティ", EXEC, "/usr/local/GNUstep/Applications/WPrefs.app/WPrefs")
-+  ("設定ユーティリティ", EXEC, "/usr/bin/WPrefs")
++  ("設定ユーティリティ", EXEC, "/usr/bin//WPrefs")
    ), 
   ("終了",
    ("再起動", RESTART),
 diff -Naur orig/WindowMaker/plmenu.ko mod/WindowMaker/plmenu.ko
---- orig/WindowMaker/plmenu.ko	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu.ko	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu.ko	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.ko	2014-12-30 19:53:58.072347360 +0100
 @@ -63,7 +63,7 @@
    ),
   ("작업공간", WORKSPACE_MENU),
   ("작업환경",
 -  ("설    정", SHEXEC, "/usr/local/GNUstep/Applications/WPrefs.app/WPrefs || wmakerconf"),
-+  ("설    정", SHEXEC, "/usr/bin/WPrefs || wmakerconf"),
++  ("설    정", SHEXEC, "/usr/bin//WPrefs || wmakerconf"),
    ("테    마", OPEN_MENU, "-noext /usr/share/WindowMaker/Themes ~/GNUstep/Library/WindowMaker/Themes WITH setstyle"),
    ("테마저장", EXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(테마 이름,파일 이름을 입력하세요:)\""),
    ("스 타 일", OPEN_MENU, "-noext /usr/share/WindowMaker/Styles ~/GNUstep/Library/WindowMaker/Styles WITH setstyle"),
+diff -Naur orig/WindowMaker/plmenu.nl mod/WindowMaker/plmenu.nl
+--- orig/WindowMaker/plmenu.nl	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.nl	2014-12-30 19:53:58.076347360 +0100
+@@ -93,7 +93,7 @@
+    ),
+    ("Thema opslaan", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Themanaam)\""),
+    ("Iconenset opslaan", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(Iconensetnaam)\""),
+-   ("Voorkeurenhulpmiddel", EXEC, "/usr/local/GNUstep/Applications/WPrefs.app/WPrefs")
++   ("Voorkeurenhulpmiddel", EXEC, "/usr/bin//WPrefs")
+    ),
+    ("Sessie",
+     ("Sessie opslaan", SAVE_SESSION),
 diff -Naur orig/WindowMaker/plmenu.ro mod/WindowMaker/plmenu.ro
---- orig/WindowMaker/plmenu.ro	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu.ro	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu.ro	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.ro	2014-12-30 19:53:58.084347360 +0100
 @@ -94,7 +94,7 @@
     ),   
    ("Salvează Tema", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Theme name)\""),
    ("Salvează Setul de Iconiţe", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(IconSet name)\""),
 -  ("Utilitar de Configurare", EXEC, "/usr/local/GNUstep/Applications/WPrefs.app/WPrefs")
-+  ("Utilitar de Configurare", EXEC, "/usr/bin/WPrefs")
++  ("Utilitar de Configurare", EXEC, "/usr/bin//WPrefs")
    ), 
   ("Ieşire",
    ("Repornire", RESTART),
 diff -Naur orig/WindowMaker/plmenu.sk mod/WindowMaker/plmenu.sk
---- orig/WindowMaker/plmenu.sk	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu.sk	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu.sk	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.sk	2014-12-30 19:53:58.084347360 +0100
 @@ -94,7 +94,7 @@
     ),   
    ("Uložiť tému", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Theme name)\""),
    ("Uložiť sadu ikon", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(IconSet name)\""),
 -  ("Konfiguračný nástroj", EXEC, "/usr/local/GNUstep/Applications/WPrefs.app/WPrefs")
-+  ("Konfiguračný nástroj", EXEC, "/usr/bin/WPrefs")
++  ("Konfiguračný nástroj", EXEC, "/usr/bin//WPrefs")
    ), 
   ("Koniec",
    ("Reštartovať", RESTART),
 diff -Naur orig/WindowMaker/plmenu.zh_TW mod/WindowMaker/plmenu.zh_TW
---- orig/WindowMaker/plmenu.zh_TW	2013-09-12 23:43:54.000000000 +0200
-+++ mod/WindowMaker/plmenu.zh_TW	2014-06-16 16:29:10.000000000 +0200
+--- orig/WindowMaker/plmenu.zh_TW	2014-08-30 14:29:09.000000000 +0200
++++ mod/WindowMaker/plmenu.zh_TW	2014-12-30 19:53:58.092347360 +0100
 @@ -92,7 +92,7 @@
     ),
    ("儲存主題", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/%a(主題名稱)"),
    ("儲存圖示集", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/%a(圖示集名稱)"),
 -  ("偏好設定公用程式", EXEC, "/usr/local/GNUstep/Applications/WPrefs.app/WPrefs")
-+  ("偏好設定公用程式", EXEC, "/usr/bin/WPrefs")
++  ("偏好設定公用程式", EXEC, "/usr/bin//WPrefs")
    ),
   ("離開",
    ("重新啟動", RESTART),

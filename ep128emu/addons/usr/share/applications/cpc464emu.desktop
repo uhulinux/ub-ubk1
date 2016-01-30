@@ -1,9 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=cpc464emu
-GenericName=cpc 464emu
 Comment=Amstrad cpc 464 emulator
 Comment[hu]=Amstrad cpc 464 emulátor
-Exec=ep128emu -cpc
+Exec=cpc464emu
 Icon=cpc464emu
 Categories=Game;Emulator;

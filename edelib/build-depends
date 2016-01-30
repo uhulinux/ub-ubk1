@@ -2,9 +2,9 @@ dbus-dev
 doxygen
 fltk-dev
 jam
+libice-dev
 libjpeg-dev
-libpng-dev
-libx11-dev
-libxext-dev
 libxft-dev
 libxinerama-dev
+libxkbfile-dev
+libxpm-dev

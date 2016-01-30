@@ -8,3 +8,5 @@
 	/usr/lib/qt4/tools
 	/usr/share/applications/qt4-designer.desktop
 	/usr/share/applications/qt4-linguist.desktop
+	/usr/share/pixmaps/designer-qt4.png
+	/usr/share/pixmaps/linguist-qt4.png

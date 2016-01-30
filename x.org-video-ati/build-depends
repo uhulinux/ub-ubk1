@@ -1,4 +1,5 @@
+expat-dev
 glamor-egl-dev
 libdrm-dev
-mesa-dev
+libxshmfence-dev
 x.org-server-dev

@@ -1,7 +1,7 @@
-diff -Naurdp a/lib/dpkg/compress.c b/lib/dpkg/compress.c
---- a/lib/dpkg/compress.c	2012-10-20 06:34:16.000000000 +0200
-+++ b/lib/dpkg/compress.c	2013-03-06 16:15:42.687428901 +0100
-@@ -237,7 +237,7 @@ compress_gzip(int fd_in, int fd_out, str
+diff -Naur orig/lib/dpkg/compress.c patched/lib/dpkg/compress.c
+--- orig/lib/dpkg/compress.c	2014-10-11 19:36:42.000000000 +0200
++++ patched/lib/dpkg/compress.c	2014-10-18 22:08:54.588988734 +0200
+@@ -256,7 +256,7 @@
  #endif
  
  static const struct compressor compressor_gzip = {
@@ -10,7 +10,7 @@ diff -Naurdp a/lib/dpkg/compress.c b/lib/dpkg/compress.c
  	.extension = ".gz",
  	.default_level = 9,
  	.fixup_params = fixup_gzip_params,
-@@ -361,7 +361,7 @@ compress_bzip2(int fd_in, int fd_out, st
+@@ -382,7 +382,7 @@
  #endif
  
  static const struct compressor compressor_bzip2 = {

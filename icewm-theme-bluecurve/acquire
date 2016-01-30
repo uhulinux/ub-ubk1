@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-truecurve-default-${UB_VERSION}.tar.gz TrueCurve-${UB_VERSION}/
-	http://download.freshmeat.net/themes/truecurve/
+truecurve-default-${UB_VERSION}.tar TrueCurve-${UB_VERSION}/
+	ftp://ftp.spline.de/pub/gentoo/distfiles/

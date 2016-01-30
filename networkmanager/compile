@@ -7,5 +7,4 @@ ub_compile \
 	--enable-modify-system \
 	--enable-concheck \
 	--with-session-tracking=systemd \
-	--with-suspend-resume=systemd \
-	--with-nmtui
+	--with-suspend-resume=systemd

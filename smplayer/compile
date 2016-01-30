@@ -2,5 +2,6 @@
 
 ub_make \
 	PREFIX=/usr \
-	QMAKE=qmake-qt4 \
-	LRELEASE=/usr/lib/qt4/bin/lrelease
+	QMAKE=qmake-qt5 \
+	LRELEASE=/usr/lib/qt5/bin/lrelease
+

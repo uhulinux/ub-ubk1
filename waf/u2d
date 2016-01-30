@@ -1,1 +1,1 @@
-urllist https://code.google.com/p/waf/downloads/list | grep waf | grep .tar. | parsever | sort -V | tail -n 1
+urllist https://github.com/waf-project/waf/releases/ | splitver '^waf-([0-9.]+).tar.gz$' | sort -V | tail -n 1

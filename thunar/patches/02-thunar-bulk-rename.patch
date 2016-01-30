@@ -10,14 +10,3 @@ diff -Naur orig/Thunar-bulk-rename.desktop.in.in patched/Thunar-bulk-rename.desk
  Icon=Thunar
  Terminal=false
  StartupNotify=true
-diff -Naur orig/ThunarBulkRename.in patched/ThunarBulkRename.in
---- orig/ThunarBulkRename.in	2012-03-28 19:04:36.000000000 +0200
-+++ patched/ThunarBulkRename.in	2012-04-08 20:35:16.242324664 +0200
-@@ -22,6 +22,6 @@
- # This is an ugly hack, required because xfdesktop simply
- # strips off all parameters from the Exec field, and so
- # we cannot just invoke Thunar --bulk-rename %F there
--exec @bindir@/Thunar --bulk-rename $@
-+exec @bindir@/Thunar --bulk-rename "$@"
- 
- # vim:set ts=2 sw=2 et ai:

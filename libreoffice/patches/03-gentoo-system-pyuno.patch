@@ -1,7 +1,7 @@
 diff -Naur orig/desktop/scripts/soffice.sh patched/desktop/scripts/soffice.sh
---- orig/desktop/scripts/soffice.sh	2013-01-31 11:54:53.000000000 +0100
-+++ patched/desktop/scripts/soffice.sh	2013-02-11 18:28:22.247231363 +0100
-@@ -120,6 +120,9 @@
+--- orig/desktop/scripts/soffice.sh	2014-12-05 10:23:19.000000000 +0100
++++ patched/desktop/scripts/soffice.sh	2014-12-09 19:26:30.909063992 +0100
+@@ -127,6 +127,9 @@
      exit 1;
  fi
  
@@ -12,8 +12,8 @@ diff -Naur orig/desktop/scripts/soffice.sh patched/desktop/scripts/soffice.sh
  NetBSD|OpenBSD|FreeBSD|DragonFly)
  # this is a temporary hack until we can live with the default search paths
 diff -Naur orig/pyuno/source/module/uno.py patched/pyuno/source/module/uno.py
---- orig/pyuno/source/module/uno.py	2013-01-31 11:54:53.000000000 +0100
-+++ patched/pyuno/source/module/uno.py	2013-02-11 18:28:22.247231363 +0100
+--- orig/pyuno/source/module/uno.py	2014-12-05 10:23:19.000000000 +0100
++++ patched/pyuno/source/module/uno.py	2014-12-09 19:26:30.909063992 +0100
 @@ -16,8 +16,12 @@
  #   except in compliance with the License. You may obtain a copy of
  #   the License at http://www.apache.org/licenses/LICENSE-2.0 .
@@ -27,9 +27,9 @@ diff -Naur orig/pyuno/source/module/uno.py patched/pyuno/source/module/uno.py
  import pyuno
  
  try:
-diff -Naur orig/scripting/source/pyprov/officehelper.py patched/scripting/source/pyprov/officehelper.py
---- orig/scripting/source/pyprov/officehelper.py	2013-01-31 11:54:53.000000000 +0100
-+++ patched/scripting/source/pyprov/officehelper.py	2013-02-11 18:28:22.247231363 +0100
+diff -Naur orig/pyuno/source/officehelper.py patched/pyuno/source/officehelper.py
+--- orig/pyuno/source/officehelper.py	2014-12-05 10:23:19.000000000 +0100
++++ patched/pyuno/source/officehelper.py	2014-12-09 19:27:03.917227670 +0100
 @@ -44,7 +44,7 @@
          if "UNO_PATH" in os.environ:
              sOffice = os.environ["UNO_PATH"]

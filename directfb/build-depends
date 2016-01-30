@@ -4,7 +4,6 @@ gst-plugins-base-dev
 gstreamer-dev
 imlib2-dev
 jasper-dev
-lcms-dev
 libcddb-dev
 libjpeg-dev
 libmad-dev
@@ -20,6 +19,7 @@ libvorbis-dev
 libwebp-dev
 libx11-dev
 libxext-dev
+libxshmfence-dev
 mesa-dev
 sdl-dev
 tslib-dev

@@ -1,4 +1,6 @@
+gnutls-dev
 gobject-introspection-dev
 gtk-dev
 intltool
 python-dev
+vala-dev

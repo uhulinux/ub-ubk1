@@ -18,7 +18,6 @@ x.org-video-amd
 x.org-video-apm
 x.org-video-ark
 x.org-video-ast
-x.org-video-ati
 x.org-video-chips
 x.org-video-cirrus
 x.org-video-dummy
@@ -45,7 +44,6 @@ x.org-video-trident
 x.org-video-tseng
 x.org-video-v4l
 x.org-video-vesa
-x.org-video-vmware
 x.org-video-voodoo
 xkb-utils
 xkeyboard-config

@@ -1,1 +1,1 @@
-urllist http://www.frogatto.com/files/ | splitver '^frogatto-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+urllist https://github.com/frogatto/frogatto/releases/ | splitver '^([0-9.]+).tar.gz$' | sort -V | tail -n 1

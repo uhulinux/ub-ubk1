@@ -2,18 +2,6 @@
 
 ub_install
 
-mv "$UB_INSTALLDIR"/usr/sql-bench mysql-bench
-mv "$UB_INSTALLDIR"/usr/scripts/mysql_install_db "$UB_INSTALLDIR"/usr/bin/
-mv "$UB_INSTALLDIR"/usr/support-files/*cnf "$UB_INSTALLDIR"/usr/share/mysql/
-mkdir -p "$UB_INSTALLDIR"/usr/share/aclocal
-mv "$UB_INSTALLDIR"/usr/share/mysql/aclocal/mysql.m4 "$UB_INSTALLDIR"/usr/share/aclocal/
-
-rm -Rf "$UB_INSTALLDIR"/usr/{data,docs,scripts,support-files}
-rm -Rf "$UB_INSTALLDIR"/usr/share/mysql/aclocal
-
 ln -sf libmysqlclient.so.18 "$UB_INSTALLDIR"/usr/lib/libmysqlclient_r.so.18
 ln -sf libmysqlclient.so.18.0.0 "$UB_INSTALLDIR"/usr/lib/libmysqlclient_r.so.18.0.0
-
-# systemd
-cp packaging/rpm-oel/mysqld.service "$UB_INSTALLDIR"/usr/lib/systemd/system/
-cp packaging/rpm-oel/mysql-systemd-start "$UB_INSTALLDIR"/usr/bin/mysqld-ping
+ln -sf mariadb.pc "$UB_INSTALLDIR"/usr/lib/pkgconfig/mysql.pc

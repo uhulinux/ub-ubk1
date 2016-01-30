@@ -4,6 +4,7 @@ intltool
 libgsm-dev
 libortp-dev
 libupnp-dev
+libxshmfence-dev
 libxv-dev
 mesa-dev
 opus-dev

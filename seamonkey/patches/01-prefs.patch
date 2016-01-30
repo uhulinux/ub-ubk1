@@ -1,6 +1,6 @@
 diff -Naur orig/suite/browser/browser-prefs.js patched/suite/browser/browser-prefs.js
---- orig/suite/browser/browser-prefs.js	2013-11-14 06:36:26.000000000 +0100
-+++ patched/suite/browser/browser-prefs.js	2013-11-23 09:00:06.506154365 +0100
+--- orig/suite/browser/browser-prefs.js	2015-01-13 05:25:42.000000000 +0100
++++ patched/suite/browser/browser-prefs.js	2015-01-14 20:25:33.938561179 +0100
 @@ -20,6 +20,9 @@
  pref("startup.homepage_override_url","chrome://navigator-region/locale/region.properties");
  pref("general.skins.selectedSkin", "classic/1.0");
@@ -11,7 +11,7 @@ diff -Naur orig/suite/browser/browser-prefs.js patched/suite/browser/browser-pre
  pref("browser.chromeURL","chrome://navigator/content/navigator.xul");
  pref("browser.hiddenWindowChromeURL", "chrome://navigator/content/hiddenWindow.xul");
  
-@@ -69,7 +72,7 @@
+@@ -70,7 +73,7 @@
  pref("browser.download.manager.addToRecentDocs", true);
  pref("browser.download.manager.scanWhenDone", true);
  pref("browser.download.manager.resumeOnWakeDelay", 10000);
@@ -20,7 +20,7 @@ diff -Naur orig/suite/browser/browser-prefs.js patched/suite/browser/browser-pre
  pref("browser.download.manager.showWhenStarting", true);
  pref("browser.download.manager.focusWhenStarting", false);
  pref("browser.download.manager.closeWhenDone", false);
-@@ -473,12 +476,12 @@
+@@ -494,12 +497,12 @@
  // App-specific update preferences
  
  // Whether or not app updates are enabled
@@ -35,7 +35,7 @@ diff -Naur orig/suite/browser/browser-prefs.js patched/suite/browser/browser-pre
  
  // Defines how the Application Update Service notifies the user about updates:
  //
-@@ -612,7 +615,8 @@
+@@ -633,7 +636,8 @@
  // Disable add-ons installed into the shared user and shared system areas by
  // default. This does not include the application directory. See the SCOPE
  // constants in AddonManager.jsm for values to use here.

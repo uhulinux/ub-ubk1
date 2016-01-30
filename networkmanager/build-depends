@@ -1,6 +1,7 @@
 bluez-dev
 dbus-glib-dev
 dhcp-client
+expat-dev
 gobject-introspection-dev
 gtk-doc
 intltool
@@ -10,7 +11,6 @@ libnl-dev
 libsoup-dev
 libusb-dev
 modemmanager-dev
-newt-dev
 nss-dev
 polkit-dev
 ppp-dev

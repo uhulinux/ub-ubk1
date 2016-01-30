@@ -14,5 +14,5 @@ diff -urN usr.orig/share/applications/flash-player-properties.desktop usr/share/
  Type=Application
  StartupNotify=true
 -Categories=Settings;GNOME;GTK;X-GNOME-PersonalSettings;
-+Categories=Settings;GNOME;GTK;X-GNOME-PersonalSettings;X-UHU-Menu/Settings
++Categories=Settings;GNOME;GTK;X-GNOME-PersonalSettings;
  NotShowIn=KDE;

@@ -3,12 +3,12 @@ bluez-dev
 boost-dev
 cmake
 curl-dev
-cvs
 doxygen
 enca-dev
 ffmpeg-dev
 flac-dev
 ftgl-dev
+git
 glew-dev
 glu-dev
 gperf
@@ -30,7 +30,7 @@ libplist-dev
 libssh-dev
 libtiff-dev
 libtinyxml-dev
-libusb-compat-dev
+libungif-dev
 libvdpau-dev
 libxinerama-dev
 libxmu-dev
@@ -46,9 +46,7 @@ pcre-dev
 pulseaudio-dev
 python-dev
 samba-dev
-sdl-gfx-dev
-sdl-image-dev
-sdl-mixer-dev
+sdl2-dev
 sqlite-dev
 swig
 taglib-dev

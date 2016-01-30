@@ -7,3 +7,4 @@ gtkmm2-dev
 intltool
 iso-codes
 libxml++2-dev
+libxshmfence-dev

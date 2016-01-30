@@ -1,12 +1,10 @@
 accountsservice-dev
-audit
 check-dev
 dbus-glib-dev
 dconf
 docbook-dtds
 gnome-doc-utils
 gobject-introspection-dev
-gtk-dev
 intltool
 iso-codes
 itstool
@@ -15,8 +13,6 @@ libsm-dev
 libxkbfile-dev
 libxklavier-dev
 nss-dev
-python-dev
 systemd-dev
-tcp-wrappers-dev
 upower-dev
 xdm

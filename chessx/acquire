@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-chessx-1-0-0.tgz chessx-1-0-0/
+chessx-${UB_VERSION}.tgz ./chessx-${UB_VERSION}/
 	http://downloads.sourceforge.net/chessx/

@@ -1,6 +1,4 @@
 #!/bin/sh -eux
 
-make  CONFDIR=/var/vdr/config \
-	VIDEODIR=/var/vdr/video \
-	DVBDIR=/usr/include/linux/dvb \
-	DESTDIR=/usr
+export DESTDIR=/usr
+ub_compile

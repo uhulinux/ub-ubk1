@@ -4,6 +4,7 @@ dirac-dev
 faac-dev
 faad2
 frei0r-dev
+glu-dev
 gnutls-dev
 imlib2-dev
 jack-dev
@@ -28,7 +29,6 @@ libxext-dev
 libxfixes-dev
 openal-dev
 opencore-amr-dev
-opencv-dev
 openjpeg1-dev
 openssl-dev
 pulseaudio-dev

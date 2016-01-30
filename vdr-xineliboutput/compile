@@ -1,13 +1,9 @@
 #!/bin/sh -eux
 
-sed -i 's|if XINE_VERSION_CODE < 10200|if XINE_VERSION_CODE <= 10200|' \
-   xine_post_audiochannel.c
-
 make \
-  VIDEODIR=/var/vdr/video \
-  CONFDIR=/var/vdr/config \
-  VDRDIR=/usr/include/vdr \
-  BINDIR=/usr/bin \
-  VDRINCDIR=/usr/include/vdr \
-  LIBDIR=/usr/lib/vdr \
-  LOCALEDIR=$UB_INSTALLDIR/usr/share/locale
+	VIDEODIR=/var/vdr/video \
+	CONFDIR=/etc/vdr \
+	BINDIR=/usr/bin \
+	VDRINCDIR=/usr/include \
+	LIBDIR=/usr/lib/vdr \
+all i18n

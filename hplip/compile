@@ -13,6 +13,6 @@ ub_compile \
 	--enable-udev-acl-rules \
 	--enable-qt4 \
 	--enable-pp-build \
-    --enable-hpcups-install \
-    --enable-cups-drv-install \
+	--enable-hpcups-install \
+	--enable-cups-drv-install \
 	--enable-new-hpcups

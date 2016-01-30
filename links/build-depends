@@ -1,7 +1,9 @@
 bzip2-dev
 gpm-dev
+libevent-dev
 libjpeg-dev
 libpng-dev
+librsvg-dev
 libtiff-dev
 libx11-dev
 libxt-dev

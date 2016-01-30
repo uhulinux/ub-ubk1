@@ -2,6 +2,7 @@
 
 # we use autotools instead of cmake cause it's buggy
 rm -rf CMakeLists.txt
+autoreconf -vif
 ub_compile \
 	--enable-xpdf-headers \
 	--enable-cms=lcms2

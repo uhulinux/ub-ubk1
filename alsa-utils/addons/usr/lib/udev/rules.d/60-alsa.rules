@@ -1,6 +1,0 @@
-# /usr/lib/udev/rules.d/60-alsa.rules
-#
-# Set default/saved volume settings
-#
-
-ACTION=="add", SUBSYSTEM=="sound", KERNEL=="controlC*", RUN+="/usr/sbin/alsactl restore /dev/$name"

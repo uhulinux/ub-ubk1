@@ -1,1 +1,1 @@
-urllist http://openbox.org/dist/openbox/ | parsever | sort -V | tail -n 1
+urllist https://github.com/Mikachu/openbox/releases/ | splitver '^release-([0-9.]+).tar.gz$' | sort -V | tail -n 1

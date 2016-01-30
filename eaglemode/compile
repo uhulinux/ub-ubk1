@@ -1,3 +1,6 @@
 #!/bin/sh -eux
 
-perl make.pl build
+perl \
+	make.pl \
+	build \
+	continue=yes

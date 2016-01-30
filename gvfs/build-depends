@@ -12,9 +12,7 @@ libcdio-paranoia-dev
 libgphoto2-dev
 libimobiledevice-dev
 libmtp-dev
-libsecret-dev
 libsoup-dev
-libsoup-gnome-dev
 libxslt
 samba-dev
 sqlite-dev

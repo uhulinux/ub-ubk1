@@ -1,7 +1,7 @@
-diff -Naur orig/codepage.inc mod/codepage.inc
---- orig/codepage.inc	2012-05-27 17:44:34.000000000 +0200
-+++ mod/codepage.inc	2013-11-23 16:44:05.000000000 +0100
-@@ -4287,11 +4287,11 @@
+diff -Naur orig/codepage.inc patched/codepage.inc
+--- orig/codepage.inc	2014-06-25 01:39:41.000000000 +0200
++++ patched/codepage.inc	2015-10-02 13:08:19.266075870 +0200
+@@ -3903,11 +3903,11 @@
  	{ "ISO 8859-14 (Celtic)", aliases_8859_14, table_8859_14 },
  	{ "ISO 8859-15 (Western European)", aliases_8859_15, table_8859_15 },
  	{ "ISO 8859-16 (Romainian)", aliases_8859_16, table_8859_16 },
@@ -18,10 +18,10 @@ diff -Naur orig/codepage.inc mod/codepage.inc
  	{ "CP 437 (US)", aliases_cp437, table_cp437 },
  	{ "CP 737 (Greek)", aliases_cp737, table_cp737 },
  	{ "CP 850 (Western European)", aliases_cp850, table_cp850 },
-diff -Naur orig/default.c mod/default.c
---- orig/default.c	2013-08-26 01:08:07.000000000 +0200
-+++ mod/default.c	2013-11-23 16:45:51.000000000 +0100
-@@ -1938,10 +1938,10 @@
+diff -Naur orig/default.c patched/default.c
+--- orig/default.c	2015-09-13 19:11:40.000000000 +0200
++++ patched/default.c	2015-10-02 13:08:19.266075870 +0200
+@@ -2019,10 +2019,10 @@
  int async_lookup = 1;
  int download_utime = 0;
  
@@ -36,10 +36,10 @@ diff -Naur orig/default.c mod/default.c
  int aggressive_cache = 1;
  
  struct ipv6_options ipv6_options = { ADDR_PREFERENCE_DEFAULT };
-diff -Naur orig/session.c mod/session.c
---- orig/session.c	2013-09-01 19:13:48.000000000 +0200
-+++ mod/session.c	2013-11-23 16:47:04.000000000 +0100
-@@ -2706,7 +2706,6 @@
+diff -Naur orig/session.c patched/session.c
+--- orig/session.c	2015-07-27 23:58:10.000000000 +0200
++++ patched/session.c	2015-10-02 13:08:19.266075870 +0200
+@@ -2716,7 +2716,6 @@
  	add_to_list(sessions, ses);
  	if (first_use) {
  		first_use = 0;
@@ -47,36 +47,36 @@ diff -Naur orig/session.c mod/session.c
  	}
  	return ses;
  }
-diff -Naur orig/Unicode/cp1251.cp mod/Unicode/cp1251.cp
+diff -Naur orig/Unicode/cp1251.cp patched/Unicode/cp1251.cp
 --- orig/Unicode/cp1251.cp	2004-01-07 10:56:47.000000000 +0100
-+++ mod/Unicode/cp1251.cp	2013-11-23 16:48:53.000000000 +0100
++++ patched/Unicode/cp1251.cp	2015-10-02 13:08:19.266075870 +0200
 @@ -1,4 +1,4 @@
 -Window$ 1251 (Cyrillic)
 +Windows 1251 (Cyrillic)
  "windows-1251", "1251", "cp1251"
  
  0x20	0x0020	# SPACE
-diff -Naur orig/Unicode/cp1252.cp mod/Unicode/cp1252.cp
+diff -Naur orig/Unicode/cp1252.cp patched/Unicode/cp1252.cp
 --- orig/Unicode/cp1252.cp	2004-01-07 10:56:47.000000000 +0100
-+++ mod/Unicode/cp1252.cp	2013-11-23 16:49:16.000000000 +0100
++++ patched/Unicode/cp1252.cp	2015-10-02 13:08:19.270075890 +0200
 @@ -1,4 +1,4 @@
 -Window$ 1252 (Western European)
 +Windows 1252 (Western European)
  "windows-1252", "1252"
  
  0x00	0x0000	#NULL
-diff -Naur orig/Unicode/cp1256.cp mod/Unicode/cp1256.cp
+diff -Naur orig/Unicode/cp1256.cp patched/Unicode/cp1256.cp
 --- orig/Unicode/cp1256.cp	2004-01-07 10:56:47.000000000 +0100
-+++ mod/Unicode/cp1256.cp	2013-11-23 16:49:32.000000000 +0100
++++ patched/Unicode/cp1256.cp	2015-10-02 13:08:19.270075890 +0200
 @@ -1,4 +1,4 @@
 -Window$ 1256 (Arabic)
 +Window2 1256 (Arabic)
  "windows-1256", "1256", "cp1256"
  #
  #    Name:     cp1256 to Unicode table
-diff -Naur orig/Unicode/cp1257.cp mod/Unicode/cp1257.cp
+diff -Naur orig/Unicode/cp1257.cp patched/Unicode/cp1257.cp
 --- orig/Unicode/cp1257.cp	2004-10-22 20:11:32.000000000 +0200
-+++ mod/Unicode/cp1257.cp	2013-11-23 16:49:54.000000000 +0100
++++ patched/Unicode/cp1257.cp	2015-10-02 13:08:19.270075890 +0200
 @@ -1,4 +1,4 @@
 -Window$ 1257 (Baltic)
 +Windows 1257 (Baltic)

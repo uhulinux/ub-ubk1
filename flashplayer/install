@@ -1,17 +1,13 @@
 #!/bin/sh -eux
 
 cp -a usr "$UB_INSTALLDIR"/
+libdir="$UB_INSTALLDIR"/usr/lib
 
-mkdir -p "$UB_INSTALLDIR"/usr/lib/firefox/plugins
-install -m 755 libflashplayer.so "$UB_INSTALLDIR"/usr/lib/firefox/plugins/
+mkdir -p "$libdir"/firefox/plugins "$libdir"/mozilla/plugins "$libdir"/kde4 "$libdir"/flashplayer
 
-# install -m 755 sa/install_flash_player_linux_sa/flashplayer "$UB_INSTALLDIR"/usr/bin/flashplayer
+install -m 755 libflashplayer.so "$libdir"/firefox/plugins/
 install -m 755 sa/flashplayer "$UB_INSTALLDIR"/usr/bin/flashplayer
-
 install -m 755 sadebug/flashplayerdebugger "$UB_INSTALLDIR"/usr/bin/
+install -m 755 debug/libflashplayer.so "$libdir"/flashplayer/
 
-mkdir -p "$UB_INSTALLDIR"/usr/lib/mozilla/plugins
-ln -s ../../firefox/plugins/libflashplayer.so "$UB_INSTALLDIR"/usr/lib/mozilla/plugins/
-
-mkdir "$UB_INSTALLDIR"/usr/lib/flashplayer
-install -m 755 debug/libflashplayer.so "$UB_INSTALLDIR"/usr/lib/flashplayer
+ln -s ../../firefox/plugins/libflashplayer.so "$libdir"/mozilla/plugins/

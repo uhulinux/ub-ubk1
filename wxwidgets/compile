@@ -3,8 +3,7 @@
 ub_compile \
 	--with-opengl \
 	--with-gtk=3 \
-	--with-sdl \
 	--enable-unicode \
-	--enable-stl \
 	--enable-ipv6 \
-	--enable-intl
+	--enable-intl \
+	--disable-precomp-headers

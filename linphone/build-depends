@@ -1,5 +1,10 @@
+belle-sip-dev
 gtk2-dev
 intltool
 libexosip2-dev
+libnotify-dev
 libosip2-dev
+libxshmfence-dev
 mediastreamer-dev
+sqlite-dev
+vim

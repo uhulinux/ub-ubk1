@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=xcalc
-Comment=Calculator
-Comment[hu]=Számológép
-Exec=xcalc
-Categories=Utility;Calculator;

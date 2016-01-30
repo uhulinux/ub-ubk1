@@ -1,4 +1,2 @@
-atk-dev
-glib-dev
-gtk2-dev
-pango-dev
+gtk-doc
+libfm-extra-dev

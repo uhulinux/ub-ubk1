@@ -1,1 +1,1 @@
-sflist pcmanfm PCManFM%20%2B%20Libfm%20%28tarball%20release%29/libfm%20%28required%20by%20PCManFM%29/ | splitver '^libfm-([0-9.]+).tar.xz$' | sort -V | tail -n 1
+urllist https://github.com/lxde/libfm/releases/ | splitver '^([0-9.]+).tar.gz$' | sort -V | tail -n 1

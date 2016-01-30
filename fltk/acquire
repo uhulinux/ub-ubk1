@@ -3,3 +3,7 @@
 fltk-${UB_VERSION}-source.tar.gz fltk-${UB_VERSION}/
 	http://fltk.org/pub/fltk/${UB_VERSION}/
 	http://ftp.easysw.com/pub/fltk/${UB_VERSION}/
+
+FLTKConfig.cmake
+	http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/x11-libs/fltk/files/FLTKConfig.cmake?revision=1.1
+	ftp://ftp.twaren.net/pub/Linux/Gentoo/gentoo-portage/x11-libs/fltk/files/

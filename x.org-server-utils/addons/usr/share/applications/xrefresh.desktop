@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=xrefresh
-Comment=Refresh the screen
-Comment[hu]=A képernyő újrarajzolása
-Exec=xrefresh
-Categories=Utility;

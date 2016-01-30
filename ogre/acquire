@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-ogre_src_v${UB_VERSION//./-}.tar.bz2 ogre_src_v${UB_VERSION//./-}/
-	http://downloads.sourceforge.net/ogre/
+v${UB_VERSION//./-}.tar.bz2 sinbad-ogre-dd30349ea667/
+	https://bitbucket.org/sinbad/ogre/get/

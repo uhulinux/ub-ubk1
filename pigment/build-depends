@@ -1,4 +1,5 @@
 gst0.10-plugins-base-dev
 gtk2-dev
 libglade2-dev
+libxshmfence-dev
 mesa-dev

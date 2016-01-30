@@ -1,6 +1,8 @@
-gtk2-dev
+glu-dev
+gtk-dev
 kernel-dev
 kernel-headers
 libxv
 libxvmc
+x.org-server
 x.org-server-dev

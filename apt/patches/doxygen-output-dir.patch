@@ -1,12 +1,12 @@
-diff -Naur apt-0.7.20.2.orig/doc/Doxyfile.in apt-0.7.20.2/doc/Doxyfile.in
---- apt-0.7.20.2.orig/doc/Doxyfile.in	2009-02-07 16:09:35.000000000 +0100
-+++ apt-0.7.20.2/doc/Doxyfile.in	2009-02-25 20:47:37.000000000 +0100
-@@ -30,7 +30,7 @@
- # If a relative path is entered, it will be relative to the location 
- # where doxygen was started. If left blank the current directory will be used.
+diff -Naur orig/doc/Doxyfile.in patched/doc/Doxyfile.in
+--- orig/doc/Doxyfile.in	2014-10-15 19:55:49.000000000 +0200
++++ patched/doc/Doxyfile.in	2014-10-18 22:31:33.451726971 +0200
+@@ -58,7 +58,7 @@
+ # entered, it will be relative to the location where doxygen was started. If
+ # left blank the current directory will be used.
  
 -OUTPUT_DIRECTORY       = ../build/doc/doxygen
 +OUTPUT_DIRECTORY       = ../../object/doc/doxygen
  
- # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 
- # 4096 sub-directories (in 2 levels) under the output directory of each output 
+ # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 4096 sub-
+ # directories (in 2 levels) under the output directory of each output format and

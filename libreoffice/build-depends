@@ -8,6 +8,7 @@ doxygen
 expat-dev
 fonts-x.org-ttf
 glew-dev
+glm-dev
 glu-dev
 gperf
 gst-plugins-base-dev
@@ -35,6 +36,7 @@ libxmu-dev
 libxslt-dev
 libxt-dev
 libxtst-dev
+mdds-dev
 mesa-dev
 mysql-dev
 neon-dev
@@ -42,7 +44,6 @@ nspr-dev
 nss-dev
 openldap-dev
 perl-archive-zip
-poppler-dev
 python3-dev
 redland-dev
 sane-backends-dev

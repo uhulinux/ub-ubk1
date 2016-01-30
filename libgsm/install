@@ -3,14 +3,7 @@
 install -m 644 lib/libgsm.a "$UB_INSTALLDIR"/usr/lib/
 cp -av lib/libgsm.so* "$UB_INSTALLDIR"/usr/lib/
 mkdir -p "$UB_INSTALLDIR"/usr/include/gsm/
-install -m 644 inc/gsm.h "$UB_INSTALLDIR"/usr/include/gsm/
-install -m 644 man/gsm.3 "$UB_INSTALLDIR"/usr/share/man/man3/
-install -m 644 man/gsm_explode.3 "$UB_INSTALLDIR"/usr/share/man/man3/
-install -m 644 man/gsm_option.3 "$UB_INSTALLDIR"/usr/share/man/man3/
-install -m 644 man/gsm_print.3 "$UB_INSTALLDIR"/usr/share/man/man3/
-install -m 755 bin/toast "$UB_INSTALLDIR"/usr/bin
-install -m 755 bin/tcat "$UB_INSTALLDIR"/usr/bin
-install -m 755 bin/untoast "$UB_INSTALLDIR"/usr/bin
-install -m 644 man/toast.1 "$UB_INSTALLDIR"/usr/share/man/man1/
-install -d "$UB_INSTALLDIR"/usr/share/doc/copyright/libgsm
-install -m 644 "$UB_COMPILEDIR"/COPYRIGHT "$UB_INSTALLDIR"/usr/share/doc/copyright/libgsm/
+install -m 644 inc/*.h "$UB_INSTALLDIR"/usr/include/gsm/
+cp man/*.3 "$UB_INSTALLDIR"/usr/share/man/man3/
+cp man/*.1 "$UB_INSTALLDIR"/usr/share/man/man1/
+cp -r bin "$UB_INSTALLDIR"/usr/

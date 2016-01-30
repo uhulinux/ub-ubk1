@@ -12,6 +12,7 @@ libcanberra-dev
 libesmtp-dev
 libnotify-dev
 libsecret-dev
+libxshmfence-dev
 networkmanager-dev
 openldap-dev
 openssl-dev

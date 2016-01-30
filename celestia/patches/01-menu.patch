@@ -1,10 +1,10 @@
---- celestia.orig/src/celestia/gtk/data/celestia.desktop	2009-06-22 17:44:10.000000000 +0200
-+++ celestia/src/celestia/gtk/data/celestia.desktop	2009-07-09 15:31:59.000000000 +0200
-@@ -1,12 +1,11 @@
+diff -Naur orig/src/celestia/gtk/data/celestia.desktop mod/src/celestia/gtk/data/celestia.desktop
+--- orig/src/celestia/gtk/data/celestia.desktop	2011-06-05 18:11:10.000000000 +0200
++++ mod/src/celestia/gtk/data/celestia.desktop	2016-01-16 20:09:47.389753358 +0100
+@@ -1,12 +1,10 @@
  [Desktop Entry]
 -Encoding=UTF-8
 -Version=1.4.0
-+Version=1.1
  Type=Application
  Exec=celestia
  Icon=celestia
@@ -15,4 +15,4 @@
 +Comment[hu]=Űrszimulátor
  StartupNotify=true
 -Categories=Astronomy;Science;Application;
-+Categories=GTK;GNOME;Science;Astronomy;X-UHU-Menu/Edutainment/Science;
++Categories=GTK;GNOME;Science;Astronomy;

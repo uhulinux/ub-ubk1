@@ -1,1 +1,1 @@
-urllist http://cgit.freedesktop.org/mesa/glu/refs/ | parsever | sort -V | tail -n 1
+urllist http://cgit.freedesktop.org/mesa/glu/refs/ | splitver '^\?id=glu-([0-9.]+)$' | sort -V | tail -n 1

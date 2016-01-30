@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
 kstars-${UB_VERSION}.tar.xz kstars-${UB_VERSION}/
-	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
-	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION}/src/
+	ftp://ftp.dvo.ru/pub/distfiles/
