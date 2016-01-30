@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 kdevelop-php-${UB_VERSION}.tar.xz kdevelop-php-${UB_VERSION}/
-	ftp://ftp.kde.org/pub/kde/stable/kdevelop/${UB_VERSION/1/4}/src/
+	http://download.kde.org/stable/kdevelop/${UB_VERSION/1/4}/src/

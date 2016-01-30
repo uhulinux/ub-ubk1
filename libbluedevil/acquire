@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 libbluedevil-${UB_VERSION}.tar.xz libbluedevil-v${UB_VERSION}/
-	ftp://ftp.kde.org/pub/kde/stable/libbluedevil/${UB_VERSION}/src/
+	http://download.kde.org/stable/libbluedevil/${UB_VERSION}/src/

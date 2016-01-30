@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
 skrooge-${UB_VERSION}.tar.bz2 skrooge-${UB_VERSION}/
-	ftp://ftp.kde.org/pub/kde/stable/skrooge/${UB_VERSION}/src/
+	http://download.kde.org/stable/skrooge/${UB_VERSION}/src/
 

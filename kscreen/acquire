@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 kscreen-${UB_VERSION}.tar.xz kscreen-${UB_VERSION}/
-	ftp://ftp.kde.org/pub/kde/stable/kscreen/${UB_VERSION}/src/
+	http://download.kde.org/stable/kscreen/${UB_VERSION}/src/

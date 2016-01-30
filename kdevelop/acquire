@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 kdevelop-${UB_VERSION/~/-}.tar.xz kdevelop-${UB_VERSION}/
-	ftp://ftp.kde.org/pub/kde/stable/kdevelop/${UB_VERSION}/src/
+	http://download.kde.org/stable/kdevelop/${UB_VERSION}/src/

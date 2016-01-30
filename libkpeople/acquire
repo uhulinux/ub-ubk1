@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 libkpeople-${UB_VERSION}.tar.bz2 libkpeople-${UB_VERSION}/
-	ftp://ftp.kde.org/pub/kde/unstable/libkpeople/${UB_VERSION}/src/
+	http://download.kde.org/unstable/libkpeople/${UB_VERSION}/src/

@@ -1,161 +1,161 @@
 #!/usr/bin/env dl
 
 amor-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 bomber-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 bovo-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 granatier-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kajongg-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kapman-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 katomic-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kblackbox-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kblocks-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kbounce-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kbreakout-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kdiamond-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kfourinline-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kgoldrunner-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kigo-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 killbots-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kiriki-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kjumpingcube-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 klickety-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 klines-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kmahjongg-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kmines-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 knavalbattle-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 knetwalk-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kolf-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kollision-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 konquest-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kpat-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kreversi-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kshisen-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 ksirk-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 ksnakeduel-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kspaceduel-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 ksquares-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 ksudoku-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 ktuberling-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 kubrick-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 lskat-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 palapeli-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/
 
 picmi-${UB_VERSION}.tar.xz .
-	ftp://ftp.kde.org/pub/kde/stable/${UB_VERSION_HEAD3}/src/
-	ftp://ftp.kde.org/pub/kde/unstable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
+	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/

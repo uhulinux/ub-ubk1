@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 plasmate-${UB_VERSION}.tar.gz plasmate-${UB_VERSION}/
-	ftp://ftp.kde.org/pub/kde/stable/plasmate/${UB_VERSION}/src/
+	http://download.kde.org/stable/plasmate/${UB_VERSION}/src/

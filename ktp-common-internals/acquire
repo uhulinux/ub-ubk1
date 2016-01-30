@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 ktp-common-internals-${UB_VERSION}.tar.bz2 ktp-common-internals-${UB_VERSION}/
-	ftp://ftp.kde.org/pub/kde/stable/kde-telepathy/${UB_VERSION}/src/
+	http://download.kde.org/stable/kde-telepathy/${UB_VERSION}/src/

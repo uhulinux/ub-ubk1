@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 libkfbapi-${UB_VERSION}.tar.bz2 libkfbapi-${UB_VERSION}/
-	ftp://ftp.kde.org/pub/kde/stable/libkfbapi/${UB_VERSION}/src/
+	http://download.kde.org/stable/libkfbapi/${UB_VERSION}/src/
