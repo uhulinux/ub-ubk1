@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+idesk-extras-${UB_VERSION}.tar.xz idesk-extras-${UB_VERSION}/
+	http://dev.gentoo.org/~hasufell/distfiles/

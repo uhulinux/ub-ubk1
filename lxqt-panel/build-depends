@@ -1,0 +1,16 @@
+alsa-lib-dev
+cmake
+kguiaddons-dev
+libdbusmenu-qt5-dev
+liblxqt-dev
+libqtxdg-dev
+libstatgrab-dev
+libsysstat-dev
+libx11-dev
+libxcomposite-dev
+libxkbcommon-dev
+lmsensors-dev
+lxqt-globalkeys-dev
+menu-cache-dev
+pulseaudio-dev
+solid-dev

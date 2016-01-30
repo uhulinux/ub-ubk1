@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ois_v${UB_VERSION/./-}.tar.gz ois-v${UB_VERSION/./-}/
+	http://download.sourceforge.net/wgois/Source%20Release/${UB_VERSION}/

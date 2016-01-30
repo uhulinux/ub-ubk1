@@ -1,0 +1,23 @@
+From 0d762a00b092ef06af9c8e57f26c1611bcafcd59 Mon Sep 17 00:00:00 2001
+From: Christophe Fergeau <cfergeau@redhat.com>
+Date: Fri, 4 Apr 2014 14:36:03 +0200
+Subject: [PATCH] man: Fix 'concatonated' typo
+
+This also removes an extra 'are' in the same sentence.
+---
+ man/remote-viewer.pod | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/man/remote-viewer.pod b/man/remote-viewer.pod
+index 253a809..f65101b 100644
+--- a/man/remote-viewer.pod
++++ b/man/remote-viewer.pod
+@@ -241,7 +241,7 @@ C<class,vendor,product,version,allow>
+ 
+ Use -1 for class/vendor/product/version to accept any value.
+ 
+-And the rules are themselves are concatonated like this:
++And the rules themselves are concatenated like this:
+ 
+ C<rule1|rule2|rule3>
+ 

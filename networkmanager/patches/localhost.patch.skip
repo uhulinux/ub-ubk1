@@ -1,0 +1,11 @@
+--- nm/src/nm-policy-hostname.c.orig	2011-04-19 07:06:22.000000000 +0200
++++ nm/src/nm-policy-hostname.c	2011-09-28 19:12:33.000000000 +0200
+@@ -204,7 +204,7 @@
+ 
+ /************************************************************************/
+ 
+-#define FALLBACK_HOSTNAME4 "localhost.localdomain"
++#define FALLBACK_HOSTNAME4 "localhost"
+ 
+ gboolean
+ nm_policy_set_system_hostname (const char *new_hostname, const char *msg)

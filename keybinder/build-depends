@@ -1,0 +1,6 @@
+gnome-common
+gobject-introspection-dev
+gtk-doc
+gtk2-dev
+pygobject2-dev
+pygtk-dev

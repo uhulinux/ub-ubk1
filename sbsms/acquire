@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+libsbsms-${UB_VERSION}.tar.gz libsbsms-${UB_VERSION}/
+	http://downloads.sourceforge.net/project/sbsms/sbsms/${UB_VERSION}/
+	

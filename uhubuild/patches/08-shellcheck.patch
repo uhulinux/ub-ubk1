@@ -1,0 +1,85 @@
+diff -Naur orig/src/common patched/src/common
+--- orig/src/common	2005-08-31 15:54:11.000000000 +0200
++++ patched/src/common	2015-06-14 00:54:44.814654265 +0200
+@@ -42,7 +42,7 @@
+ 
+ error ()
+ {
+-	errors=$(($errors+1))
++	errors=$((errors+1))
+ 	if [ $errors -gt 100 ]; then
+ 		die "Tul sok hiba!"
+ 	fi
+@@ -51,7 +51,7 @@
+ 
+ warn ()
+ {
+-	warnings=$(($warnings+1))
++	warnings=$((warnings+1))
+ 	blueecho "Warning: $*" >&2
+ }
+ 
+diff -Naur orig/src/steps/menu patched/src/steps/menu
+--- orig/src/steps/menu	2014-05-07 09:58:01.000000000 +0200
++++ patched/src/steps/menu	2015-06-14 00:56:51.799283949 +0200
+@@ -21,7 +21,7 @@
+ 			grep -vw 'Encoding=UTF-8' "$f" | grep '^Encoding=' >/dev/null \
+ 			  && error "$f: hibás vagy nem támogatott Encoding sor!" \
+ 			  || true
+-			[ $(grep ^Categories= "$f" | wc -l) -le 1 ] \
++			[ $(grep -c ^Categories= "$f") -le 1 ] \
+ 			  || error "$f: egynél több Categories sort tartalmaz!"
+ 			fgrep -q '${' "$f" \
+ 			  && error "$f: maradt benne '\${', szar a configure vagy a Makefile!" \
+diff -Naur orig/src/uhubuild-build patched/src/uhubuild-build
+--- orig/src/uhubuild-build	2013-08-13 16:42:58.000000000 +0200
++++ patched/src/uhubuild-build	2015-06-14 00:58:21.315727843 +0200
+@@ -143,9 +143,9 @@
+ #	greenecho " OK"
+ fi
+ 
+-steps="$steps python addons cleanup optipng split dirs users-groups changelog suid_wrapper"\
+-" perms scripts remove-misc man info mo"\
+-" timestamps menu depends shlibs fhs conffiles buildinfo control pack"
++steps="$steps python addons cleanup optipng split dirs users-groups changelog suid_wrapper \
++  perms scripts remove-misc man info mo \
++  timestamps menu depends shlibs fhs conffiles buildinfo control pack"
+ 
+ for step in $steps; do
+ 	echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- UHUBUILD -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-" >> "$UB_ADMINDIR/log"
+diff -Naur orig/src/uhubuild-chrootbuild patched/src/uhubuild-chrootbuild
+--- orig/src/uhubuild-chrootbuild	2014-04-14 13:33:44.000000000 +0200
++++ patched/src/uhubuild-chrootbuild	2015-06-14 00:59:58.492209708 +0200
+@@ -84,7 +84,7 @@
+ declare -a versions=()
+ for version in $(echo "${distribution##* }"|tr ':' ' '); do
+ 	versions[${#versions[@]}]="$version"
+-	prio="$(($prio + 1))"
++	prio="$((prio + 1))"
+ 	IFS=":" cat >>"$UHUBUILD_APT_PREFERENCES" <<EOF
+ Package: *
+ Pin: release v=${versions[*]},l=${distribution% *}
+diff -Naur orig/src/uhubuild-commonenvironment patched/src/uhubuild-commonenvironment
+--- orig/src/uhubuild-commonenvironment	2006-04-14 15:31:43.000000000 +0200
++++ patched/src/uhubuild-commonenvironment	2015-06-14 01:01:15.708592605 +0200
+@@ -3,7 +3,7 @@
+ exec 1>&1
+ exec 2>&2
+ 
+-unset `bash -c declare | grep -v ^UHUBUILD | grep -v ^BASH_ | cut -d= -f1` 2>/dev/null || true
++unset $(bash -c declare | grep -v ^UHUBUILD | grep -v ^BASH_ | cut -d= -f1) 2>/dev/null || true
+ 
+ for i in /etc/env.d/*.env; do
+ 	if [ -f "$i" ]; then
+diff -Naur orig/src/uhubuild-pack patched/src/uhubuild-pack
+--- orig/src/uhubuild-pack	2013-09-18 13:58:09.000000000 +0200
++++ patched/src/uhubuild-pack	2015-06-14 01:02:37.788999624 +0200
+@@ -123,7 +123,7 @@
+   /usr/src \
+   /var; do
+ 	calc_size
+-	total_size="$(($total_size + $size))"
++	total_size="$((total_size + size))"
+ 	if [ "$size" != 0 ]; then
+ 		printf " %6s %s\n" "$size" "$dir"
+ 	fi

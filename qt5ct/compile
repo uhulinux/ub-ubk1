@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+qmake-qt5 \
+	PREFIX="/usr" \
+	INSTALL_ROOT="$UB_INSTALLDIR" \
+	qt5ct.pro
+
+ub_compile

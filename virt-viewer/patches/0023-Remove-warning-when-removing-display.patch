@@ -1,0 +1,33 @@
+From b8b4a32f2f5ad6ac8d7aeff6bd23a779e99bc63a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Date: Tue, 10 Jun 2014 14:25:16 +0300
+Subject: [PATCH] Remove warning when removing display
+
+Some display have no associated window (for ex, if it doesn't fit
+on client monitors).
+
+(remote-viewer:22275): remote-viewer-CRITICAL **: virt_viewer_window_set_display: assertion `VIRT_VIEWER_IS_WINDOW(self)' failed
+
+(remote-viewer:22275): remote-viewer-CRITICAL **: virt_viewer_app_remove_nth_window: assertion `win != NULL' failed
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1107518
+---
+ src/virt-viewer-app.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/virt-viewer-app.c b/src/virt-viewer-app.c
+index e4e2eeb..5f7b85a 100644
+--- a/src/virt-viewer-app.c
++++ b/src/virt-viewer-app.c
+@@ -856,8 +856,10 @@ virt_viewer_app_display_removed(VirtViewerSession *session G_GNUC_UNUSED,
+     gtk_widget_hide(GTK_WIDGET(display));
+     g_object_get(display, "nth-display", &nth, NULL);
+     win = virt_viewer_app_get_nth_window(self, nth);
+-    virt_viewer_window_set_display(win, NULL);
++    if (!win)
++        return;
+ 
++    virt_viewer_window_set_display(win, NULL);
+     if (nth != 0)
+         virt_viewer_app_remove_nth_window(self, nth);
+ }

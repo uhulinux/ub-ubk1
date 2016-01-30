@@ -1,0 +1,12 @@
+diff -Naur orig/files/usr/bin/cinnamon-settings mod/files/usr/bin/cinnamon-settings
+--- orig/files/usr/bin/cinnamon-settings	2015-10-20 12:16:42.000000000 +0200
++++ mod/files/usr/bin/cinnamon-settings	2015-10-20 22:44:53.036306331 +0200
+@@ -7,7 +7,7 @@
+ 	if os.path.exists("/usr/share/cinnamon/cinnamon-settings/modules/cs_%s.py" % module):
+ 		print "Python module"
+ 		os.execvp("/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py", ("",) + tuple(sys.argv[1:]))
+-	elif os.path.exists("/usr/bin/cinnamon-control-center"):
++	elif os.path.exists("/usr/lib/cinnamon-control-center-1/panels"):
+ 		print "Unknown module %s, using cinnamon-control-center" % module
+ 		os.execvp("/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py", ("",) + tuple(sys.argv[1:]))
+ 	elif os.path.exists("/usr/bin/gnome-control-center"):

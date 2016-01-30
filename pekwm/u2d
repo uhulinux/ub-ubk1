@@ -1,0 +1,1 @@
+urllist https://www.pekwm.org/projects/pekwm/releases/ | splitver '^pekwm-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

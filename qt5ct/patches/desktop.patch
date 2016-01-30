@@ -1,0 +1,22 @@
+diff -Naur orig/src/qt5ct/qt5ct.desktop patched/src/qt5ct/qt5ct.desktop
+--- orig/src/qt5ct/qt5ct.desktop	2015-05-21 10:00:04.000000000 +0200
++++ patched/src/qt5ct/qt5ct.desktop	2015-05-26 23:53:12.240374791 +0200
+@@ -1,7 +1,6 @@
+ [Desktop Entry]
+ X-Desktop-File-Install-Version=0.11
+ Name=Qt5 Settings
+-
+ Comment=Qt5 Configuration Tool
+ 
+ Comment[bg]=Инструмент за настройка на Qt5
+@@ -16,8 +15,8 @@
+ Comment[ru]=Программа для настройки Qt5
+ Name[ru]=Настройки Qt5
+ 
+-Comment[de]=Qt5-Konfigurationswerkzeug
+-Name[de]=Qt5-Einstellungen
++Comment[hu]=Qt5 beállító eszköz
++Name[hu]=Qt5 beállítások
+ 
+ Comment[cs]=Nástroj na nastavení Qt5
+ Name[cs]=Nastavení Qt5

@@ -1,0 +1,66 @@
+#!/bin/sh -eux
+
+# lényegi cuccok
+ub_install
+make -C fluid DESTDIR=$UB_INSTALLDIR install-linux
+make -C documentation DESTDIR=$UB_INSTALLDIR install
+make -C test DESTDIR=$UB_INSTALLDIR install-linux
+make -C documentation DESTDIR=$UB_INSTALLDIR install-linux
+
+#nehány változó
+prefix="$UB_INSTALLDIR"/usr
+bindir="$prefix"/bin
+share="$prefix"/share
+docdir="$share"/doc/fltk
+desktopdir="$share"/applications
+mandir1="$share"/man/man1
+mandir3="$share"/man/man3
+mandir6="$share"/man/man6
+icondir="$share"/icons/hicolor
+
+# teszt demók lényegének installálása
+mkdir -p $docdir/examples 
+cd test
+rm *.o *.ico *.wat *.rc Makefile CMakeLists.txt makedepend README 
+rm -r blocks.app checkers.app desktop pixmaps sudoku.app
+install * "$docdir"/examples/
+ln -s -T /usr/bin/fluid1 "$docdir"/examples/fluid #egy link a demóból hívott fluid -nak
+cd ..
+
+#fltk csomag ütközések
+
+mv "$docdir" "$UB_INSTALLDIR"/usr/share/doc/fltk1
+mv "$bindir"/fltk-config "$bindir"/fltk1-config
+mv "$bindir"/fluid "$bindir"/fluid1
+mv "$mandir1"/fltk-config.1 "$mandir1"/fltk1-config.1
+rm -f "$desktopdir"/fluid.desktop
+rm -f $share/mimelnk/application/x-fluid.desktop
+
+#efltk csomag ütközés
+
+mv "$mandir1"/fluid.1 "$mandir1"/fluid1.1
+mv "$mandir3"/fltk.3 "$mandir3"/fltk1.3
+
+# játék ütközések
+
+jatekok="blocks \
+	sudoku \
+	checkers"
+
+	for i in $jatekok; do
+rm -f "$desktopdir"/"$i".desktop
+mv "$mandir6"/"$i".6 "$mandir6"/"$i"1.6
+mv "$bindir"/"$i" "$bindir"/"$i"1
+mv "$icondir"/32x32/apps/"$i".png "$icondir"/32x32/apps/"$i"1.png
+mv "$icondir"/128x128/apps/"$i".png "$icondir"/128x128/apps/"$i"1.png
+done
+
+ikonok="16x16 \
+	32x32 \
+	48x48 \
+	64x64 \
+	128x128"
+
+for i in $ikonok; do
+mv "$icondir"/"$i"/apps/fluid.png "$icondir"/"$i"/apps/fluid1.png
+done

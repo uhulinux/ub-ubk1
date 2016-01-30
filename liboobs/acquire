@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+liboobs-${UB_VERSION}.tar.gz liboobs-${UB_VERSION}/
+	http://ftp.gnome.org/pub/gnome/sources/liboobs/${UB_VERSION_HEAD2}/

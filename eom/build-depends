@@ -1,0 +1,17 @@
+dbus-glib-dev
+exempi-dev
+gobject-introspection-dev
+gtk2-dev
+intltool
+itstool
+lcms2-dev
+libexif-dev
+libjpeg-dev
+librsvg-dev
+libsm-dev
+mate-common
+mate-desktop-dev
+mate-icon-theme
+util-linux-dev
+xcb-util-dev
+yelp-tools

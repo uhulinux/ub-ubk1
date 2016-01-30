@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=FLUID1
+Comment=FLTK GUI Designer
+Comment[hu]=FLTK felület készítő
+TryExec=fluid1
+Exec=fluid1 %F
+Icon=fluid1
+Terminal=false
+Type=Application
+MimeType=application/x-fluid1
+Categories=Development;GUIDesigner;

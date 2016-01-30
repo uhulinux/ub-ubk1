@@ -1,0 +1,1 @@
+urllist http://projects.vdr-developer.org/projects/plg-tvguide/files/ | splitver '^vdr-tvguide-([0-9.]+).tgz$' | sort -V | tail -n 1

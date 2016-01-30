@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxqt-runner-${UB_VERSION}.tar.gz lxqt-runner-9f0f1c6/
+	git://github.com/lxde/lxqt-runner.git@9f0f1c6

@@ -1,0 +1,1 @@
+urllist http://www.smokin-guns.org/downloads/ | splitver '^Smokin_Guns_([0-9.]+).zip$' | sort -V | tail -n 1

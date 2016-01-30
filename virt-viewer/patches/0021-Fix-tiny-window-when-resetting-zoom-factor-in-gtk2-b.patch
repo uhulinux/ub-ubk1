@@ -1,0 +1,46 @@
+From fcf77734a86732417142e81140f681233a4ef0da Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Wed, 11 Jun 2014 13:09:30 -0500
+Subject: [PATCH] Fix tiny window when resetting zoom factor in gtk2 build
+
+rhbz#1104064 had a couple of symptoms. The first was fixed in
+6edde57862ac30e74ce6412c93a2fa925ae4ea67.
+
+The second symptom is that displays could also become tiny when clicking 'View >
+Zoom > Normal Size'. This was because VirtViewerDisplay returned early from
+_display_set_zoom_level() if the zoom level was being set to the current zoom
+setting. However, the calling function (_window_set_zoom_level()) also tries to
+queue a resize event for itself after setting the zoom level on the display. If
+the display doesn't queue a resize event for itself, its size request will only
+be 50x50 during the window resize negotiation. This causes the display to become
+tiny and zoomed out. Queueing a resize on the display widget ensures that it
+will request the proper size during the next allocation.
+---
+ src/virt-viewer-display.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/virt-viewer-display.c b/src/virt-viewer-display.c
+index 48b7090..52e6962 100644
+--- a/src/virt-viewer-display.c
++++ b/src/virt-viewer-display.c
+@@ -605,12 +605,19 @@ void virt_viewer_display_set_zoom_level(VirtViewerDisplay *display,
+     if (zoom > MAX_ZOOM_LEVEL)
+         zoom = MAX_ZOOM_LEVEL;
+ 
++    // For the gtk2 build, we need to queue a resize even if the zoom level
++    // hasn't changed.  This is due to the fact that VirtViewerWindow will queue
++    // a resize event for itself immediately after calling this function (in
++    // order to shrink the window to fit the new display size if necessary). If
++    // we don't queue a resize here, the window will become tiny because we will
++    // only request 50x50 during the window resize
++    virt_viewer_display_queue_resize(display);
++
+     if (priv->zoom_level == zoom)
+         return;
+ 
+     priv->zoom_level = zoom;
+ 
+-    virt_viewer_display_queue_resize(display);
+     g_object_notify(G_OBJECT(display), "zoom-level");
+ }
+ 

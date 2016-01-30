@@ -1,0 +1,13 @@
+dbus-glib-dev
+exempi-dev
+gobject-introspection-dev
+gtk2-dev
+intltool
+libexif-dev
+libjpeg-dev
+libsm-dev
+libunique1-dev
+libxml2-dev
+mate-common
+mate-desktop-dev
+xcb-util-dev

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxqt-globalkeys-${UB_VERSION}.tar.gz lxqt-globalkeys-9266eb8/
+	git://github.com/lxde/lxqt-globalkeys.git@9266eb8

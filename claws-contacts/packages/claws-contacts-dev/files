@@ -1,0 +1,4 @@
+	/usr/include
+	/usr/lib/claws-contacts/extensions/*.la
+	/usr/lib/claws-contacts/plugins/*.la
+	/usr/lib/pkgconfig

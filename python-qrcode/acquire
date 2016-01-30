@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+qrcode-${UB_VERSION}.tar.gz qrcode-${UB_VERSION}/
+	http://pypi.python.org/packages/source/q/qrcode/

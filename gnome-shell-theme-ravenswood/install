@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+celdir="$UB_INSTALLDIR"/usr/share/themes/ravenswood/gnome-shell
+mkdir -p "$celdir"
+rm -rf theme/instructions
+cp -r theme/* "$celdir"/

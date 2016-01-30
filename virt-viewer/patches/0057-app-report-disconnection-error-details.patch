@@ -1,0 +1,32 @@
+From 008e5c245c201a645504593132ea75b33af84839 Mon Sep 17 00:00:00 2001
+From: Christophe Fergeau <cfergeau@redhat.com>
+Date: Thu, 18 Sep 2014 11:45:52 +0200
+Subject: [PATCH] app: report disconnection error details
+
+This RHEL-only patch backports bits from upstream commit 4c658485,
+225dff3c, b6d2744b and d1d53d0c.
+
+Related: rhbz#1115986
+---
+ src/virt-viewer-session-spice.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/virt-viewer-session-spice.c b/src/virt-viewer-session-spice.c
+index ad3028a..58a1dd7 100644
+--- a/src/virt-viewer-session-spice.c
++++ b/src/virt-viewer-session-spice.c
+@@ -518,9 +518,12 @@ virt_viewer_session_spice_main_channel_event(SpiceChannel *channel G_GNUC_UNUSED
+         }
+         break;
+     case SPICE_CHANNEL_ERROR_CONNECT:
+-        g_debug("main channel: failed to connect");
+-        g_signal_emit_by_name(session, "session-disconnected", NULL);
++    {
++        const GError *error = spice_channel_get_error(channel);
++        g_debug("main channel: failed to connect %s", error ? error->message : NULL);
++        g_signal_emit_by_name(session, "session-disconnected", error ? error->message : NULL);
+         break;
++    }
+     case SPICE_CHANNEL_ERROR_IO:
+     case SPICE_CHANNEL_ERROR_LINK:
+     case SPICE_CHANNEL_ERROR_TLS:

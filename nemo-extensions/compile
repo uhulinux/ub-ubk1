@@ -1,0 +1,12 @@
+#!/bin/sh -eux
+
+extensions="nemo-fileroller nemo-seahorse nemo-share nemo-preview"
+for progs in ${extensions}; do
+cd $progs
+  autoreconf -vif
+  ub_compile
+cd ..
+done
+
+cd nemo-python
+  ub_compile

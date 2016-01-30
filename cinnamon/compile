@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+#sed -i -e 's@blueberry@blueman-manager@g'  files/usr/lib/cinnamon-settings/cinnamon-settings.py
+
+ub_compile \
+  --disable-rpath \
+  --disable-schemas-compile \
+  --enable-introspection=yes \
+  --enable-compile-warnings=no \
+  --with-session-tracking=systemd

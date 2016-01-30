@@ -1,0 +1,4 @@
+	/usr/include
+	/usr/lib/claws-mail/plugins/*.a
+	/usr/lib/claws-mail/plugins/*.la
+	/usr/lib/pkgconfig

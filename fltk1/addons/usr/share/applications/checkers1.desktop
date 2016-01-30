@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Checkers
+Name[hu]=Dáma
+Comment=Checkers Game
+Comment[hu]=Dáma játék
+TryExec=checkers1
+Exec=checkers1
+Icon=checkers1
+Terminal=false
+Type=Application
+Categories=Game;BoardGame;

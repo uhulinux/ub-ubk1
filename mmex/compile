@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+export LIBS="-lpthread -lm -ldl"
+ub_compile \
+	  --with-wxshared \
+	  --with-gtk \
+	  --with-wx-config=/usr/lib/wx/config/gtk2-unicode-release-2.8

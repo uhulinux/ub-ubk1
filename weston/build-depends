@@ -1,0 +1,12 @@
+colord-dev
+glu-dev
+libevdev-dev
+libinput-dev
+libunwind-dev
+libva-dev
+libxcursor-dev
+libxkbcommon-dev
+libxshmfence-dev
+mtdev-dev
+pango-dev
+poppler-glib-dev

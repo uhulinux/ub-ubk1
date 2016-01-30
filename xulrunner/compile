@@ -1,0 +1,51 @@
+#!/bin/sh -eux
+
+export SHELL=/bin/bash
+export LDFLAGS="-Wl,-rpath,/usr/lib/xulrunner/ -Wl,--no-keep-memory"
+
+cd "$UB_OBJECTDIR"
+mkdir -p js/src/.deps
+
+# az UB_CONFIGURE_DIR="$UB_COMPILEDIR" forma nem jó, linker hiba lesz belőle
+"$UB_COMPILEDIR"/configure \
+	--build='i686-uhu-linux' \
+	--host='i686-uhu-linux' \
+	--prefix=/usr \
+	--with-system-bz2 \
+	--with-system-jpeg \
+	--with-system-nspr \
+	--with-system-nss \
+	--with-system-zlib \
+	--with-pthreads \
+	--enable-application=xulrunner \
+	--enable-canvas \
+	--enable-default-toolkit=cairo-gtk2 \
+	--enable-extensions=default \
+	--enable-gio \
+	--enable-libnotify \
+	--enable-pango \
+	--enable-safe-browsing \
+	--enable-shared-js \
+	--enable-startup-notification \
+	--enable-svg \
+	--enable-system-cairo \
+	--enable-system-hunspell \
+	--enable-system-lcms \
+	--enable-system-sqlite \
+	--enable-url-classifier \
+	--enable-xinerama \
+	--disable-cpp-exceptions \
+	--disable-crashreporter \
+	--disable-debug \
+	--disable-gnomeui \
+	--disable-gnomevfs \
+	--disable-installer \
+	--disable-updater \
+	--disable-javaxpcom \
+	--disable-mochitest \
+	--disable-necko-wifi \
+	--disable-tests
+#	--with-system-libvpx \
+	
+ub_make
+

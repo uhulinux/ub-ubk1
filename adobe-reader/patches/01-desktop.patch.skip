@@ -1,0 +1,15 @@
+diff -Naur orig/Adobe/Reader9/Resource/Support/AdobeReader.desktop patched/Adobe/Reader9/Resource/Support/AdobeReader.desktop
+--- orig/Adobe/Reader9/Resource/Support/AdobeReader.desktop	2013-05-08 18:18:47.000000000 +0200
++++ patched/Adobe/Reader9/Resource/Support/AdobeReader.desktop	2015-01-09 23:23:53.219399852 +0100
+@@ -4,9 +4,9 @@
+ Exec=acroread 
+ Type=Application
+ GenericName=PDF Viewer
++GenericName[hu]=PDF-megjelenítő
+ Terminal=false
+ Icon=AdobeReader9
+-Caption=PDF Viewer
+ X-KDE-StartupNotify=false
+-Categories=Application;Office;Viewer;X-Red-Hat-Base;
++Categories=Office;Viewer;
+ InitialPreference=9

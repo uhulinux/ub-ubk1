@@ -1,0 +1,5 @@
+cmake
+liblxqt-dev
+libqtxdg-dev
+polkit-dev
+polkit-qt5-dev

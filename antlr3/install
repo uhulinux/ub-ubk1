@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/java
+mv antlr-${UB_VERSION}-complete.jar "$UB_INSTALLDIR"/usr/share/java/
+
+cd "$UB_INSTALLDIR"/usr/share/java/
+ln -s antlr-${UB_VERSION}-complete.jar antlr.jar

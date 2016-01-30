@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+export USE_QT5=YES
+export CMAKE_PREFIX_PATH=/usr/lib/qt5
+export BUILD_TYPE=Release
+export BUILD_TESTING=OFF
+export KDE_INSTALL_USE_QT_SYS_PATHS=ON
+export LIB_INSTALL_DIR=lib
+export ECM_MKSPECS_INSTALL_DIR=share/qt5
+ub_compile

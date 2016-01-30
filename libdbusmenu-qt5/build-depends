@@ -1,0 +1,5 @@
+cmake
+dbus-dev
+doxygen
+qjson-dev
+qt5-dev

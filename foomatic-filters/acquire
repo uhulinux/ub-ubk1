@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+foomatic-filters-${UB_VERSION}.tar.gz foomatic-filters-${UB_VERSION}/
+	http://www.linuxprinting.org/download/foomatic/
+	http://www.openprinting.org/download/foomatic/

@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+if [ -f autogen.sh ]; then
+	./autogen.sh
+fi
+
+ub_compile \
+	--with-gtk=2.0 \
+	--disable-network \
+	--disable-services \

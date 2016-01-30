@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Sudoku1
+Name[hu]=Sudoku1 játék
+Comment=Suduku Number Game
+Comment[hu]=Számkitöltő játék
+TryExec=sudoku1
+Exec=sudoku1
+Icon=sudoku1
+Terminal=false
+Type=Application
+Categories=Game;LogicGame;

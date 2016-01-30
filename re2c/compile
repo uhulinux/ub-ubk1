@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+ub_compile
+
+#regenerate file scanner.cc
+rm -f scanner.cc
+./re2c -b scanner.re > scanner.cc
+rm -f re2c scanner.o
+ub_make

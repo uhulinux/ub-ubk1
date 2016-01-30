@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+cd FreeImage
+ub_install
+cd ../FreeImagefip
+make -f Makefile.fip DESTDIR=$UB_INSTALLDIR install
+ln -s libfreeimageplus-${UB_VERSION}.so ${UB_INSTALLDIR}/usr/lib/libfreeimageplus.so
+ln -s libfreeimageplus-${UB_VERSION}.so ${UB_INSTALLDIR}/usr/lib/libfreeimageplus.so.3

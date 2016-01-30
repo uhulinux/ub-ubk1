@@ -1,0 +1,10 @@
+diff -Naur orig/translations/compton-conf_ru_RU.desktop mod/translations/compton-conf_ru_RU.desktop
+--- orig/translations/compton-conf_ru_RU.desktop	2015-05-20 11:54:30.000000000 +0200
++++ mod/translations/compton-conf_ru_RU.desktop	2015-05-25 11:48:26.650828973 +0200
+@@ -1,6 +1,5 @@
+ [Desktop Entry]
+ Name[ru_RU]=Эффекты окна
+ GenericName[ru_RU]=Настройка Compton
+-Comment[ru_RU]=Настроить эффекты окна Compton
+ 
+ #TRANSLATIONS_DIR=translations

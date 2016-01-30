@@ -1,0 +1,12 @@
+&Head &over &Heels
+szerző: &Bernie &Drummond
+
+Alapban ablakban indul.
+Hanghoz &oss, vagy &pulseaudio megléte kell.
+Teljes képhez: &hoh &-r1, ablakhoz &hoh &-r0
+ezt a program meg is jegyzi.
+
+Ha &Heels kék, és bugyi színű a háttér, akkor: &hoh &-bgr.
+ezt nem jegyzi meg!
+
+Az indítóikon &-bgr paraméterrel indít.

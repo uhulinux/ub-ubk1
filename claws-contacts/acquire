@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+claws-mail-contacts-${UB_VERSION}.tar.gz contacts-38ff462/
+	git://git.claws-mail.org/contacts.git@38ff462

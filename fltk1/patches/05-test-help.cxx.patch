@@ -1,0 +1,12 @@
+diff -Naur orig/test/help.cxx mod/test/help.cxx
+--- orig/test/help.cxx	2009-04-02 22:57:35.000000000 +0200
++++ mod/test/help.cxx	2009-04-02 23:54:09.000000000 +0200
+@@ -50,7 +50,7 @@
+   help = new Fl_Help_Dialog;
+ 
+   if (argc < 2)
+-    help->load("../documentation/index.html");
++    help->load("../index.html");
+   else
+     help->load(argv[1]);
+ 

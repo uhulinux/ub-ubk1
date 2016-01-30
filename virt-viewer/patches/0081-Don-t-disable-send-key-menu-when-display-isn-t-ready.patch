@@ -1,0 +1,48 @@
+From ac763b6423d5e14729a48e236e5f7c7261e2d1a2 Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Thu, 16 Oct 2014 09:07:58 -0500
+Subject: [PATCH] Don't disable "send key" menu when display isn't ready
+
+The ability to send a keystroke should not depend on whether a display
+is ready or not, it only depends on whether the display exists or not.
+
+See https://bugzilla.redhat.com/show_bug.cgi?id=1152574
+
+(cherry picked from commit 65560fa4664e0cee5a0c7f76065a9418f06bbd86)
+---
+ src/virt-viewer-window.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/virt-viewer-window.c b/src/virt-viewer-window.c
+index 4cda1e0..3ee25e6 100644
+--- a/src/virt-viewer-window.c
++++ b/src/virt-viewer-window.c
+@@ -206,7 +206,7 @@ rebuild_combo_menu(GObject    *gobject G_GNUC_UNUSED,
+     menu = GTK_WIDGET(gtk_builder_get_object(self->priv->builder, "menu-send"));
+     gtk_menu_item_set_submenu(GTK_MENU_ITEM(menu),
+                               GTK_WIDGET(virt_viewer_window_get_keycombo_menu(self)));
+-    gtk_widget_set_sensitive(menu, FALSE);
++    gtk_widget_set_sensitive(menu, (self->priv->display != NULL));
+ }
+ 
+ static void
+@@ -1268,9 +1268,7 @@ display_show_hint(VirtViewerDisplay *display,
+ 
+     hint = (hint & VIRT_VIEWER_DISPLAY_SHOW_HINT_READY);
+ 
+-    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(self->priv->builder, "menu-send")), hint);
+     gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(self->priv->builder, "menu-file-screenshot")), hint);
+-    gtk_widget_set_sensitive(self->priv->toolbar_send_key, hint);
+ }
+ static gboolean
+ window_key_pressed (GtkWidget *widget G_GNUC_UNUSED,
+@@ -1332,6 +1330,9 @@ virt_viewer_window_set_display(VirtViewerWindow *self, VirtViewerDisplay *displa
+ 
+         if (virt_viewer_display_get_enabled(display))
+             virt_viewer_window_desktop_resize(display, self);
++
++        gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(self->priv->builder, "menu-send")), TRUE);
++        gtk_widget_set_sensitive(self->priv->toolbar_send_key, TRUE);
+     }
+ }
+ 

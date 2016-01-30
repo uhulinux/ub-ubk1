@@ -1,0 +1,12 @@
+diff -Naur orig/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in.in patched/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in.in
+--- orig/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in.in	2014-05-05 15:49:57.000000000 +0200
++++ patched/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in.in	2014-10-13 00:04:46.060139776 +0200
+@@ -16,7 +16,7 @@
+       <description>This is the laptop panel screen brightness used when the session is idle.</description>
+     </key>
+     <key name="idle-dim" type="b">
+-      <default>true</default>
++      <default>false</default>
+       <summary>Dim the screen after a period of inactivity</summary>
+       <description>If the screen should be dimmed to save power when the computer is idle.</description>
+     </key>

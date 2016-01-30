@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--with-gnutls-includes=/usr/include/gnutls \
+	--with-gnutls-libs=/usr/lib

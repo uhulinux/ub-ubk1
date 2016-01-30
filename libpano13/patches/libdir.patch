@@ -1,0 +1,11 @@
+diff -Naur orig/CMakeLists.txt patched/CMakeLists.txt
+--- orig/CMakeLists.txt	2014-02-17 23:04:42.000000000 +0100
++++ patched/CMakeLists.txt	2015-12-11 03:26:36.245032218 +0100
+@@ -369,6 +369,7 @@
+ set(prefix ${CMAKE_INSTALL_PREFIX})
+ set(exec_prefix ${CMAKE_INSTALL_PREFIX})
+ set(includedir ${CMAKE_INSTALL_PREFIX}/include)
++set(libdir ${CMAKE_INSTALL_PREFIX}/lib)
+ set(LIB_JPEG ${JPEG_LIBRARY})
+ set(LIB_TIFF ${TIFF_LIBRARY})
+ set(LIB_ZLIB ${ZLIB_LIBRARY})

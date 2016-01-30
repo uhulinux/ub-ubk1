@@ -1,0 +1,12 @@
+diff -Naur orig/config.def.h mod/config.def.h
+--- orig/config.def.h	2011-12-19 16:02:46.000000000 +0100
++++ mod/config.def.h	2014-12-30 21:46:59.200077905 +0100
+@@ -47,7 +47,7 @@
+ 
+ /* commands */
+ static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+-static const char *termcmd[]  = { "uxterm", NULL };
++static const char *termcmd[]  = { "xterm", NULL };
+ 
+ static Key keys[] = {
+ 	/* modifier                     key        function        argument */

@@ -1,0 +1,12 @@
+asciidoc
+dbus-dev
+docbook-dtds
+docbook-xsl
+glu-dev
+libX11-dev
+libconfig-dev
+libxcomposite-dev
+libxinerama-dev
+libxrandr-dev
+libxslt-dev
+pcre-dev

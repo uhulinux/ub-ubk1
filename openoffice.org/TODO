@@ -1,0 +1,50 @@
+python2.7-et miért nem fogadja el?
+
+system libwpd (0.9): Error: -- `/var/uhubuild/work/compile/main/solver/410/unxlngi6.pro/xml/wpft.component' not found, and can't be made
+
+vcl: külső icu-val hibára fut
+/bin/cp: missing destination file operand after `/var/uhubuild/work/compile/main/solver/410/unxlngi6.pro/lib/libicule.so'
+Try `/bin/cp --help' for more information.
+/var/uhubuild/work/compile/main/solenv/gbuild/Library.mk:49: recipe for target '/var/uhubuild/work/compile/main/solver/410/unxlngi6.pro/lib/libicule.so' failed
+make: *** [/var/uhubuild/work/compile/main/solver/410/unxlngi6.pro/lib/libicule.so] Error 1
+
+svx: https://bugs.freedesktop.org/show_bug.cgi?id=78174
+
+svtools, külső jpeg:
+/var/uhubuild/work/compile/main/solver/410/unxlngi6.pro/workdir/CObject/svtools/source/filter/jpeg/jpegc.o: In function `ReadJPEG':
+jpegc.c:(.text+0xc9): undefined reference to `jpeg_std_error'
+jpegc.c:(.text+0xf7): undefined reference to `jpeg_CreateDecompress'
+jpegc.c:(.text+0x116): undefined reference to `jpeg_read_header'
+jpegc.c:(.text+0x255): undefined reference to `jpeg_start_decompress'
+jpegc.c:(.text+0x38b): undefined reference to `jpeg_read_scanlines'
+jpegc.c:(.text+0x43a): undefined reference to `jpeg_read_scanlines'
+jpegc.c:(.text+0x46e): undefined reference to `jpeg_abort_decompress'
+jpegc.c:(.text+0x4aa): undefined reference to `jpeg_destroy_decompress'
+jpegc.c:(.text+0x4be): undefined reference to `jpeg_finish_decompress'
+/var/uhubuild/work/compile/main/solver/410/unxlngi6.pro/workdir/CObject/svtools/source/filter/jpeg/jpegc.o: In function `WriteJPEG':
+jpegc.c:(.text+0x523): undefined reference to `jpeg_destroy_compress'
+jpegc.c:(.text+0x540): undefined reference to `jpeg_std_error'
+jpegc.c:(.text+0x56e): undefined reference to `jpeg_CreateCompress'
+jpegc.c:(.text+0x5d7): undefined reference to `jpeg_set_defaults'
+jpegc.c:(.text+0x5e5): undefined reference to `jpeg_set_quality'
+jpegc.c:(.text+0x612): undefined reference to `jpeg_start_compress'
+jpegc.c:(.text+0x626): undefined reference to `jpeg_simple_progression'
+jpegc.c:(.text+0x678): undefined reference to `jpeg_write_scanlines'
+jpegc.c:(.text+0x696): undefined reference to `jpeg_finish_compress'
+/var/uhubuild/work/compile/main/solver/410/unxlngi6.pro/workdir/CxxObject/svtools/source/filter/jpeg/jpeg.o: In function `jpeg_svstream_src':
+jpeg.cxx:(.text+0x347): undefined reference to `jpeg_resync_to_restart'
+collect2: error: ld returned 1 exit status
+
+mysql connector: csak külső mysql cppconn-nal fordul
+
+report builder
+wiki publisher
+pdfimport:
+/var/uhubuild/work/compile/main/solver/410/unxlngi6.pro/inc/rtl/ustring.hxx: In member function 'void pdfi::StyleContainer::impl_emitStyle(sal_Int32, pdfi::EmitContext&, pdfi::ElementTreeVisitor&)':
+/var/uhubuild/work/compile/main/solver/410/unxlngi6.pro/inc/rtl/ustring.hxx:288:5: error: 'rtl::OUString::operator const sal_Unicode*() const' is private
+     operator const sal_Unicode *() const SAL_THROW(()) { return pData->buffer; }
+     ^
+/var/uhubuild/work/compile/main/sdext/source/pdfimport/tree/style.cxx:206:29: error: within this context
+         if( rStyle.Contents )
+         
+

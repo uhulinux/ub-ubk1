@@ -1,0 +1,259 @@
+diff -Naur orig/po/hu.po patched/po/hu.po
+--- orig/po/hu.po	2013-04-14 16:08:41.000000000 +0200
++++ patched/po/hu.po	2015-06-07 00:24:41.847262547 +0200
+@@ -1,25 +1,26 @@
+-# Hungarian translation of xfce4-notifyd
+-# Copyright 2010 Free Software Foundation, Inc.
+-# This file is distributed under the same license as the xfce4-notifyd package.
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
+ # 
+-# Gabor Kelemen <kelemeng at gnome dot hu>, 2010.
++# Translators:
++# Benedek Imre <nucleo@indamail.hu>, 2014
++# Gabor Kelemen <kelemeng at gnome dot hu>, 2010
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: xfce4-notifyd master\n"
++"Project-Id-Version: Xfce Apps\n"
+ "Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2013-01-27 13:18+0000\n"
+-"PO-Revision-Date: 2010-02-05 23:53+0100\n"
+-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+-"Language-Team: Hungarian <gnome at fsf dot hu>\n"
++"POT-Creation-Date: 2013-10-27 18:31+0100\n"
++"PO-Revision-Date: 2014-08-28 23:58+0000\n"
++"Last-Translator: Benedek Imre <nucleo@indamail.hu>\n"
++"Language-Team: Hungarian (http://www.transifex.com/projects/p/xfce-apps/language/hu/)\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+-"Language: \n"
++"Language: hu\n"
+ "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+-"X-Generator: KBabel 1.11.4\n"
+ 
+ #: ../xfce4-notifyd/main.c:74 ../xfce4-notifyd/main.c:84
+-#: ../xfce4-notifyd-config/main.c:238
++#: ../xfce4-notifyd-config/main.c:258
+ msgid "Xfce Notify Daemon"
+ msgstr "Xfce értesítési démon"
+ 
+@@ -47,86 +48,89 @@
+ msgid "Another notification xndaemon is already running"
+ msgstr "Már fut egy másik értesítési démon"
+ 
+-#. TRANSLATORS: notify-send is a command name in the following string,
+-#. * it must not be translated.
+-#: ../xfce4-notifyd-config/main.c:98 ../xfce4-notifyd-config/main.c:205
+-msgid ""
+-"notify-send \"Notification Preview\" \"This is how notifications will look "
+-"like\""
+-msgstr "notify-send \"Értesítés előnézete\" \"Így fog kinézni az értesítés\""
++#: ../xfce4-notifyd-config/main.c:57
++msgid "Notification Preview"
++msgstr "Értesítés előnézete"
++
++#: ../xfce4-notifyd-config/main.c:58
++msgid "This is what notifications will look like"
++msgstr "Az értesítések ilyenek lesznek"
++
++#: ../xfce4-notifyd-config/main.c:63
++msgid "Button"
++msgstr "Gomb"
+ 
+-#: ../xfce4-notifyd-config/main.c:102 ../xfce4-notifyd-config/main.c:209
++#: ../xfce4-notifyd-config/main.c:70
+ msgid "Notification preview failed"
+ msgstr "Az értesítés előnézete meghiúsult"
+ 
+-#: ../xfce4-notifyd-config/main.c:240
++#: ../xfce4-notifyd-config/main.c:260
+ msgid "Settings daemon is unavailable"
+ msgstr "A beállításdémon nem érhető el"
+ 
+-#: ../xfce4-notifyd-config/main.c:290
++#: ../xfce4-notifyd-config/main.c:310
+ msgid "Display version information"
+ msgstr "Verzióinformációk megjelenítése"
+ 
+-#: ../xfce4-notifyd-config/main.c:291
++#: ../xfce4-notifyd-config/main.c:311
+ msgid "Settings manager socket"
+ msgstr "Beállításkezelő foglalat"
+ 
+-#: ../xfce4-notifyd-config/main.c:291
++#: ../xfce4-notifyd-config/main.c:311
+ msgid "SOCKET_ID"
+ msgstr "FOGLALAT_AZONOSÍTÓ"
+ 
+-#: ../xfce4-notifyd-config/main.c:301
++#: ../xfce4-notifyd-config/main.c:321
+ #, c-format
+ msgid "Type '%s --help' for usage."
+ msgstr "Segítségért adja ki az „%s --help” parancsot."
+ 
+-#: ../xfce4-notifyd-config/main.c:314
++#: ../xfce4-notifyd-config/main.c:334
+ #, c-format
+ msgid "Released under the terms of the GNU General Public License, version 2\n"
+-msgstr ""
+-"Kiadva a GNU General Public License 2-es verziójának feltételei szerint\n"
++msgstr "Kiadva a GNU General Public License 2-es verziójának feltételei szerint\n"
+ 
+-#: ../xfce4-notifyd-config/main.c:315
++#: ../xfce4-notifyd-config/main.c:335
+ #, c-format
+ msgid "Please report bugs to %s.\n"
+ msgstr "A hibákat itt jelentse: %s\n"
+ 
+ #: ../xfce4-notifyd-config/xfce4-notifyd-config.glade.h:1
+-msgid "Bottom left"
+-msgstr "Balra lent"
++msgid "Top left"
++msgstr "Balra fent"
+ 
+ #: ../xfce4-notifyd-config/xfce4-notifyd-config.glade.h:2
+-msgid "Bottom right"
+-msgstr "Jobbra lent"
++msgid "Bottom left"
++msgstr "Balra lent"
+ 
+ #: ../xfce4-notifyd-config/xfce4-notifyd-config.glade.h:3
+-msgid "Default _position:"
+-msgstr "Alapértelmezett _pozíció:"
++msgid "Top right"
++msgstr "Jobbra fent"
+ 
+ #: ../xfce4-notifyd-config/xfce4-notifyd-config.glade.h:4
+-#: ../xfce4-notifyd-config/xfce4-notifyd-config.desktop.in.h:2
+-msgid "Notifications"
+-msgstr "Értesítések"
++msgid "Bottom right"
++msgstr "Jobbra lent"
+ 
+ #: ../xfce4-notifyd-config/xfce4-notifyd-config.glade.h:5
+-msgid "Top left"
+-msgstr "Balra fent"
++#: ../xfce4-notifyd-config/xfce4-notifyd-config.desktop.in.h:1
++msgid "Notifications"
++msgstr "Értesítések"
+ 
+ #: ../xfce4-notifyd-config/xfce4-notifyd-config.glade.h:6
+-msgid "Top right"
+-msgstr "Jobbra fent"
++msgid "_Preview"
++msgstr "Előné_zet"
+ 
+ #: ../xfce4-notifyd-config/xfce4-notifyd-config.glade.h:7
+-msgid "_Disappear after:"
+-msgstr "_Tűnjön el ennyi után:"
+-
+-#: ../xfce4-notifyd-config/xfce4-notifyd-config.glade.h:8
+ msgid "_Opacity:"
+ msgstr "Átlátszatla_nság:"
+ 
++#: ../xfce4-notifyd-config/xfce4-notifyd-config.glade.h:8
++msgid "_Disappear after:"
++msgstr "_Tűnjön el ennyi után:"
++
+ #: ../xfce4-notifyd-config/xfce4-notifyd-config.glade.h:9
+-msgid "_Preview"
+-msgstr "Előné_zet"
++msgid "Default _position:"
++msgstr "Alapértelmezett _pozíció:"
+ 
+ #: ../xfce4-notifyd-config/xfce4-notifyd-config.glade.h:10
+ msgid "_Theme:"
+@@ -136,26 +140,6 @@
+ msgid "seconds"
+ msgstr "másodperc"
+ 
+-#: ../xfce4-notifyd-config/xfce4-notifyd-config.desktop.in.h:1
++#: ../xfce4-notifyd-config/xfce4-notifyd-config.desktop.in.h:2
+ msgid "Customize how notifications appear on your screen"
+ msgstr "A képernyőn megjelenő értesítések megjelenésének személyre szabása"
+-
+-#~ msgid "image: "
+-#~ msgstr "kép: "
+-
+-#~ msgid "_Effect:"
+-#~ msgstr "_Effektus:"
+-
+-#~ msgid "_Fade to transparent"
+-#~ msgstr "_Halványuljon átlátszóvá"
+-
+-#~ msgid ""
+-#~ "Top left\n"
+-#~ "Bottom left\n"
+-#~ "Top right\n"
+-#~ "Bottom right"
+-#~ msgstr ""
+-#~ "Balra fent\n"
+-#~ "Balra lent\n"
+-#~ "Jobbra fent\n"
+-#~ "Jobbra lent"
+diff -Naur orig/xfce4-notifyd/xfce-notify-window.c patched/xfce4-notifyd/xfce-notify-window.c
+--- orig/xfce4-notifyd/xfce-notify-window.c	2013-04-21 16:42:08.000000000 +0200
++++ patched/xfce4-notifyd/xfce-notify-window.c	2015-06-07 00:21:24.274282836 +0200
+@@ -316,8 +316,9 @@
+ 
+     GTK_WIDGET_CLASS(xfce_notify_window_parent_class)->realize(widget);
+ 
+-    gdk_window_set_type_hint(widget->window,
++    gdk_window_set_type_hint(gtk_widget_get_window(widget),
+                              GDK_WINDOW_TYPE_HINT_NOTIFICATION);
++    gdk_window_set_override_redirect(gtk_widget_get_window(widget), TRUE);
+     xfce_notify_window_start_expiration(window);
+ }
+ 
+@@ -629,6 +630,8 @@
+     XfceNotifyWindow *window = data;
+     gboolean          fade_transparent;
+ 
++	g_return_val_if_fail(XFCE_IS_NOTIFY_WINDOW(data), FALSE);
++	
+     window->expire_id = 0;
+ 
+     fade_transparent =
+@@ -651,8 +654,11 @@
+ xfce_notify_window_fade_timeout(gpointer data)
+ {
+     XfceNotifyWindow *window = data;
+-    gdouble op = gtk_window_get_opacity(GTK_WINDOW(window));
++    gdouble op;
+ 
++	g_return_val_if_fail(XFCE_IS_NOTIFY_WINDOW(data), FALSE);
++	
++	op = gtk_window_get_opacity(GTK_WINDOW(window));
+     op -= window->op_change_delta;
+     if(op < 0.0)
+         op = 0.0;
+@@ -673,8 +679,12 @@
+ xfce_notify_window_button_clicked(GtkWidget *widget,
+                                   gpointer user_data)
+ {
+-    XfceNotifyWindow *window = XFCE_NOTIFY_WINDOW(user_data);
+-    gchar *action_id;
++	XfceNotifyWindow *window;
++	gchar *action_id;
++	
++	g_return_val_if_fail(XFCE_IS_NOTIFY_WINDOW(user_data), FALSE);
++
++    window = XFCE_NOTIFY_WINDOW(user_data);
+ 
+     action_id = g_object_get_data(G_OBJECT(widget), "--action-id");
+     g_assert(action_id);
+diff -Naur orig/xfce4-notifyd-config/main.c patched/xfce4-notifyd-config/main.c
+--- orig/xfce4-notifyd-config/main.c	2013-05-08 14:11:51.000000000 +0200
++++ patched/xfce4-notifyd-config/main.c	2015-06-07 00:22:45.174683999 +0200
+@@ -55,7 +55,7 @@
+ 
+     notification =
+         notify_notification_new(_("Notification Preview"),
+-                                _("This is how notifications will look like"),
++                                _("This is what notifications will look like"),
+                                 "xfce4-notifyd");
+ 
+     notify_notification_add_action(notification,

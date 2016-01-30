@@ -1,0 +1,12 @@
+diff -Naur orig/schemas/org.gnome.desktop.screensaver.gschema.xml.in.in patched/schemas/org.gnome.desktop.screensaver.gschema.xml.in.in
+--- orig/schemas/org.gnome.desktop.screensaver.gschema.xml.in.in	2013-10-12 18:10:05.000000000 +0200
++++ patched/schemas/org.gnome.desktop.screensaver.gschema.xml.in.in	2014-10-13 00:02:01.763325072 +0200
+@@ -1,7 +1,7 @@
+ <schemalist>
+   <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.desktop.screensaver" path="/org/gnome/desktop/screensaver/">
+     <key name="idle-activation-enabled" type="b">
+-      <default>true</default>
++      <default>false</default>
+       <_summary>Activate when idle</_summary>
+       <_description>
+         Set this to TRUE to activate the screensaver when the session is idle.

@@ -1,0 +1,60 @@
+From 8269ad003fffbb92ac93afc7f6d21e9ba7a8b934 Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Fri, 21 Feb 2014 16:39:30 -0600
+Subject: [PATCH] Don't resize guest display on zoom change
+
+When the zoom level is changed, the virt-viewer window gets resized. But we
+don't want this to trigger a resize of the guest display. But occasionally
+rounding errors cause the guest display to be reconfigured when zooming out.  To
+fix this, we first check whether the current size is the preferred size.  If it
+is, we don't send down a resize command to the guest.
+
+In addition to preventing guest resizes in response to zooming, it also improves
+the behavior when the guest display resolution is changed from within the guest.
+Before this change, we'd have the following behavior:
+    A. guest changes display to WxH
+    B. client gets notified of change and resizes the window to WxH
+    C. client responds to window resize by sending a new monitor config command to the guest
+
+With this change, the extra step C will be avoided because we're already at the
+preferred size.
+
+Resolves: rhbz#1004051
+---
+ src/virt-viewer-display-spice.c | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/src/virt-viewer-display-spice.c b/src/virt-viewer-display-spice.c
+index ff0d069..8bffe5b 100644
+--- a/src/virt-viewer-display-spice.c
++++ b/src/virt-viewer-display-spice.c
+@@ -185,9 +185,28 @@ virt_viewer_display_spice_mouse_grab(SpiceDisplay *display G_GNUC_UNUSED,
+ 
+ static void
+ virt_viewer_display_spice_size_allocate(VirtViewerDisplaySpice *self,
+-                                        GtkAllocation *allocation G_GNUC_UNUSED,
++                                        GtkAllocation *allocation,
+                                         gpointer data G_GNUC_UNUSED)
+ {
++    GtkRequisition preferred;
++
++    /* ignore all allocations before the widget gets mapped to screen since we
++     * only want to trigger guest resizing due to user actions
++     */
++    if (!gtk_widget_get_mapped(GTK_WIDGET(self)))
++        return;
++
++    /* when the window gets resized due to a change in zoom level, we don't want
++     * to re-size the guest display.  So if we get an allocation event that
++     * resizes the window to the size it already wants to be (based on desktop
++     * size and zoom level), just return early
++     */
++    gtk_widget_get_preferred_size(GTK_WIDGET(self), NULL, &preferred);
++    if (preferred.width == allocation->width
++        && preferred.height == allocation->height) {
++        return;
++    }
++
+     if (self->priv->auto_resize != AUTO_RESIZE_NEVER)
+         virt_viewer_display_spice_monitor_geometry_changed(self);
+ 

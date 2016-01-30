@@ -1,0 +1,2 @@
+urllist http://icculus.org/quake2/files/ | splitver '^quake2-r([0-9.]+).tar.gz$' | sort -V | tail -n 1
+#twilight/darkplaces/download.html | splitver '^darkplacesengine([0-9.]+).zip$'| sort -V | tail -n 1

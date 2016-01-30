@@ -1,0 +1,4 @@
+cmake
+fltk-dev
+libtinyxml-dev
+libx11-dev

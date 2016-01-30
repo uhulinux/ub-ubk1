@@ -1,0 +1,325 @@
+diff -Naur orig/gui/debugger.cpp mod/gui/debugger.cpp
+--- orig/gui/debugger.cpp	2010-12-17 16:02:30.000000000 +0100
++++ mod/gui/debugger.cpp	2015-06-04 17:43:41.370254660 +0200
+@@ -310,7 +310,7 @@
+         bufp[0] = ' ';
+         bufp[1] = ':';
+         for (int i = 2; i < 10; i++) {
+-          bufp[i] = char(tmpBuf2[i - 2] & 0x7F);
++          bufp[i] = char(tmpBuf2[9 - i] & 0x7F);
+           if (bufp[i] < char(0x20) || bufp[i] == char(0x7F))
+             bufp[i] = '.';
+         }
+@@ -384,7 +384,7 @@
+     for (int i = 0; i < 6; i++) {
+       char      *bufp = &(tmpBuf[0]);
+       uint16_t  addr = uint16_t(i < 3 ? r.IX.W : r.IY.W);
+-      int32_t   offs = (i < 3 ? ixViewOffset : iyViewOffset)
++      int32_t   offs = (i < 3 ? ixViewOffset : (iyViewOffset-24))
+                        + int32_t((i - 1) * 8);
+       *(bufp++) = ' ';
+       *(bufp++) = 'I';
+diff -Naur orig/gui/gui.cpp mod/gui/gui.cpp
+--- orig/gui/gui.cpp	2011-01-02 15:26:24.000000000 +0100
++++ mod/gui/gui.cpp	2012-02-11 17:30:18.000000000 +0100
+@@ -137,7 +137,7 @@
+     statusDisplayGroup->show();
+     mainMenuBar->resize(0, 2, 300, 26);
+     mainMenuBar->show();
+-    if (typeid(vm) == typeid(Ep128::Ep128VM)) {
++    if (typeid(vm) != typeid(ZX128::ZX128VM)) {
+       diskStatusDisplayGroup->resize(345, 0, 30, 30);
+       diskStatusDisplayGroup->show();
+     }
+diff -Naur orig/src/emucfg.cpp mod/src/emucfg.cpp
+--- orig/src/emucfg.cpp	2010-12-25 00:55:48.000000000 +0100
++++ mod/src/emucfg.cpp	2013-04-12 22:22:02.000000000 +0200
+@@ -313,7 +313,7 @@
+       std::sprintf(s, "floppy.%c.tracks", int('a') + i);
+       defineConfigurationVariable(*this, std::string(s),
+                                   floppy_->tracks, int(-1),
+-                                  *floppyChanged_, -1.0, 240.0);
++                                  *floppyChanged_, -1.0, 254.0);
+       std::sprintf(s, "floppy.%c.sides", int('a') + i);
+       defineConfigurationVariable(*this, std::string(s),
+                                   floppy_->sides, int(-1),
+diff -Naur orig/src/script.cpp mod/src/script.cpp
+--- orig/src/script.cpp	2011-01-02 17:41:36.000000000 +0100
++++ mod/src/script.cpp	2015-06-04 17:40:56.642579749 +0200
+@@ -148,14 +148,14 @@
+     lua_Integer result = lua_tointeger(lst, 1);
+     lua_Integer n = lua_tointeger(lst, 2);
+     if (n > 0) {
+-      if (n >= lua_Integer(sizeof(lua_Integer) * 4))
++      if (n >= lua_Integer(sizeof(lua_Integer) * 8))
+         result = 0;
+       else
+         result = result << int(n);
+     }
+     else if (n < 0) {
+       n = -n;
+-      if (n >= lua_Integer(sizeof(lua_Integer) * 4))
++      if (n >= lua_Integer(sizeof(lua_Integer) * 8))
+         result = 0;
+       else
+         result = result >> int(n);
+@@ -181,14 +181,14 @@
+     lua_Integer result = lua_tointeger(lst, 1);
+     lua_Integer n = lua_tointeger(lst, 2);
+     if (n > 0) {
+-      if (n >= lua_Integer(sizeof(lua_Integer) * 4))
++      if (n >= lua_Integer(sizeof(lua_Integer) * 8))
+         result = 0;
+       else
+         result = result >> int(n);
+     }
+     else if (n < 0) {
+       n = -n;
+-      if (n >= lua_Integer(sizeof(lua_Integer) * 4))
++      if (n >= lua_Integer(sizeof(lua_Integer) * 8))
+         result = 0;
+       else
+         result = result << int(n);
+diff -Naur orig/src/wd177x.cpp mod/src/wd177x.cpp
+--- orig/src/wd177x.cpp	2010-12-06 01:16:13.000000000 +0100
++++ mod/src/wd177x.cpp	2013-04-27 14:03:22.000000000 +0200
+@@ -34,6 +34,114 @@
+ #  include <linux/fd.h>
+ #endif
+ 
++#ifdef WIN32
++
++#define fopen ep_fopen
++#define fclose ep_fclose
++#define fseek ep_fseek
++#define ftell ep_ftell
++#define fread ep_fread
++#define fwrite ep_fwrite
++#define setvbuf ep_setvbuf
++
++namespace std {
++
++FILE* ep_fopen ( const char * filename, const char * mode )
++{
++	HANDLE hF= 0;
++
++	if (!strcmp(mode,"rb"))
++	{
++		hF= CreateFile(filename,GENERIC_READ,FILE_SHARE_READ|FILE_SHARE_WRITE,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL|FILE_FLAG_WRITE_THROUGH|FILE_FLAG_NO_BUFFERING,0);
++	}
++	else if (!strcmp(mode,"r+b"))
++	{
++		hF= CreateFile(filename,GENERIC_READ|GENERIC_WRITE,FILE_SHARE_READ|FILE_SHARE_WRITE,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL|FILE_FLAG_WRITE_THROUGH|FILE_FLAG_NO_BUFFERING,0);
++
++		if (filename[0] == '\\' && filename[1] == '\\' && filename[2] == '.' && filename[3] == '\\')
++		{
++			DWORD bytes;
++
++			BOOL ret= DeviceIoControl(hF,FSCTL_LOCK_VOLUME,0,0,0,0,&bytes,0);
++
++			if (!ret)
++			{
++				CloseHandle(hF);
++
++				hF= 0;
++			}
++		}
++	}
++
++	return (FILE*)(hF);
++}
++
++int ep_fclose ( FILE* stream )
++{
++	if (CloseHandle(HANDLE(stream)))
++		return 0;
++	else
++		return EOF;
++}
++
++int ep_fseek ( FILE* stream, long int offset, int origin )
++{
++	DWORD method= 0;
++
++	switch(origin)
++	{
++	case SEEK_SET:
++		method= FILE_BEGIN;
++		break;
++	case SEEK_CUR:
++		method= FILE_CURRENT;
++		break;
++	case SEEK_END:
++		method= FILE_END;
++		break;
++	}
++
++	DWORD ret= SetFilePointer(HANDLE(stream),offset,0,method);
++
++	return ret!=INVALID_SET_FILE_POINTER?0:1;
++}
++
++long int ep_ftell ( FILE* stream )
++{
++	DWORD ret= SetFilePointer(HANDLE(stream),0,0,FILE_CURRENT);
++
++	return ret;
++}
++
++size_t ep_fread ( void * ptr, size_t size, size_t count, FILE* stream )
++{
++	DWORD num= 0;
++
++	ReadFile(HANDLE(stream),ptr,size*count,&num,0);
++
++	return num;
++}
++
++size_t ep_fwrite ( const void * ptr, size_t size, size_t count, FILE* stream )
++{
++	DWORD num= 0;
++
++	WriteFile(HANDLE(stream),ptr,size*count,&num,0);
++
++	FlushFileBuffers(HANDLE(stream));
++
++	return num;
++}
++
++int ep_setvbuf ( FILE* stream, char * buffer, int mode, size_t size )
++{
++	return 0;
++}
++
++}
++
++#endif
++
+ namespace Ep128Emu {
+ 
+   int checkFloppyDisk(const char *fileName,
+@@ -80,7 +188,7 @@
+       errorFlag = true;
+     }
+     if (diskGeometry.Cylinders.QuadPart < (LONGLONG) 1 ||
+-        diskGeometry.Cylinders.QuadPart > (LONGLONG) 240 ||
++        diskGeometry.Cylinders.QuadPart > (LONGLONG) 254 ||
+         diskGeometry.TracksPerCylinder < (DWORD) 1 ||
+         diskGeometry.TracksPerCylinder > (DWORD) 2 ||
+         diskGeometry.SectorsPerTrack < (DWORD) 1 ||
+@@ -88,7 +196,7 @@
+         diskGeometry.BytesPerSector != (DWORD) 512) {
+       errorFlag = true;
+     }
+-    if (nTracks >= 1 && nTracks <= 240) {
++    if (nTracks >= 1 && nTracks <= 254) {
+       if (nTracks != int(diskGeometry.Cylinders.QuadPart))
+         errorFlag = true;
+     }
+@@ -130,14 +238,14 @@
+       return 0;                 // not a floppy device
+     }
+     close(fd);
+-    if (floppyParams.track < 1U || floppyParams.track > 240U ||
++    if (floppyParams.track < 1U || floppyParams.track > 254U ||
+         floppyParams.head < 1U || floppyParams.head > 2U ||
+         floppyParams.sect < 1U || floppyParams.sect > 240U ||
+         floppyParams.size != (floppyParams.track * floppyParams.head
+                               * floppyParams.sect)) {
+       return -2;
+     }
+-    if ((nTracks >= 1 && nTracks <= 240 &&
++    if ((nTracks >= 1 && nTracks <= 254 &&
+          nTracks != int(floppyParams.track)) ||
+         (nSides >= 1 && nSides <= 2 && nSides != int(floppyParams.head)) ||
+         (nSectorsPerTrack >= 1 && nSectorsPerTrack <= 240 &&
+@@ -290,7 +398,7 @@
+     if (fileName_ == "")
+       return;
+     unsigned char tmpBuf[512];
+-    bool    nTracksValid = (nTracks_ >= 1 && nTracks_ <= 240);
++    bool    nTracksValid = (nTracks_ >= 1 && nTracks_ <= 254);
+     bool    nSidesValid = (nSides_ >= 1 && nSides_ <= 2);
+     bool    nSectorsPerTrackValid =
+                 (nSectorsPerTrack_ >= 1 && nSectorsPerTrack_ <= 240);
+@@ -327,7 +435,7 @@
+       long    fileSize = -1L;
+       if (std::fseek(imageFile, 0L, SEEK_END) >= 0)
+         fileSize = std::ftell(imageFile);
+-      if (fileSize >= 512L && fileSize <= (240L * 2L * 240L * 512L)) {
++      if (fileSize >= 512L && fileSize <= (254L * 2L * 240L * 512L)) {
+         long    nSectors_ = fileSize / 512L;
+         if (!nTracksValid && nSidesValid && nSectorsPerTrackValid) {
+           nTracks_ = int(nSectors_ / (long(nSides_) * long(nSectorsPerTrack_)));
+@@ -364,7 +472,7 @@
+             if ((fatSectors % long(fatSides * fatSectorsPerTrack)) == 0L) {
+               long    fatTracks =
+                   fatSectors / long(fatSides * fatSectorsPerTrack);
+-              if (fatTracks >= 1L && fatTracks <= 240L) {
++              if (fatTracks >= 1L && fatTracks <= 254L) {
+                 // found a valid FAT header, set or check geometry parameters
+                 if (!nTracksValid)
+                   nTracks_ = int(fatTracks);
+@@ -382,7 +490,7 @@
+           }
+         }
+       }
+-      if (!(nTracks_ >= 1 && nTracks_ <= 240 &&
++      if (!(nTracks_ >= 1 && nTracks_ <= 254 &&
+             nSides_ >= 1 && nSides_ <= 2 &&
+             nSectorsPerTrack_ >= 1 && nSectorsPerTrack_ <= 240))
+         throw Exception("wd177x: cannot determine size of disk image");
+diff -Naur orig/z80/z80.cpp mod/z80/z80.cpp
+--- orig/z80/z80.cpp	2011-01-03 18:58:25.000000000 +0100
++++ mod/z80/z80.cpp	2012-08-11 11:40:16.000000000 +0200
+@@ -3635,7 +3635,7 @@
+       break;
+     case 0x071:
+       {
+-        doOut(R.BC.W, 0);
++        doOut(R.BC.W, 255);
+         ADD_PC(2);
+         R.Flags |= Z80_CHECK_INTERRUPT_FLAG;
+       }
+diff -Naur orig/z80/z80funcs2.cpp mod/z80/z80funcs2.cpp
+--- orig/z80/z80funcs2.cpp	2009-11-11 20:18:15.000000000 +0100
++++ mod/z80/z80funcs2.cpp	2013-04-20 08:57:40.000000000 +0200
+@@ -21,6 +21,7 @@
+ 
+ #include "z80.hpp"
+ #include "z80macros.hpp"
++#include "system.hpp"
+ 
+ namespace Ep128 {
+ 
+@@ -164,6 +165,19 @@
+   Z80::Z80()
+   {
+     std::memset(&R, 0, sizeof(Z80_REGISTERS));
++	int     seed = 0;
++    Ep128Emu::setRandomSeed(seed, Ep128Emu::Timer::getRandomSeedFromTime());
++    R.AF.W = Z80_WORD(Ep128Emu::getRandomNumber(seed) & 0xFFFF);
++	R.BC.W = Z80_WORD(Ep128Emu::getRandomNumber(seed) & 0xFFFF);
++	R.DE.W = Z80_WORD(Ep128Emu::getRandomNumber(seed) & 0xFFFF);
++	R.HL.W = Z80_WORD(Ep128Emu::getRandomNumber(seed) & 0xFFFF);
++	R.IX.W = Z80_WORD(Ep128Emu::getRandomNumber(seed) & 0xFFFF);
++	R.IY.W = Z80_WORD(Ep128Emu::getRandomNumber(seed) & 0xFFFF);
++	R.SP.W = Z80_WORD(Ep128Emu::getRandomNumber(seed) & 0xFFFF);
++	R.altAF.W = Z80_WORD(Ep128Emu::getRandomNumber(seed) & 0xFFFF);
++	R.altBC.W = Z80_WORD(Ep128Emu::getRandomNumber(seed) & 0xFFFF);
++	R.altDE.W = Z80_WORD(Ep128Emu::getRandomNumber(seed) & 0xFFFF);
++	R.altHL.W = Z80_WORD(Ep128Emu::getRandomNumber(seed) & 0xFFFF);
+     this->reset();
+   }
+ 
+@@ -176,10 +190,6 @@
+     R.IFF2 = 0;
+     R.RBit7 = 0;
+     R.R = 0;
+-    R.AF.W = 0xFFFF;
+-    R.SP.W = 0xFFFF;
+-    R.IX.W = 0xFFFF;
+-    R.IY.W = 0xFFFF;
+     R.Flags &= ~
+         (Z80_EXECUTING_HALT_FLAG |
+          Z80_CHECK_INTERRUPT_FLAG |

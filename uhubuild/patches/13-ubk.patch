@@ -1,0 +1,10 @@
+diff -Naur orig/src/steps/pack patched/src/steps/pack
+--- orig/src/steps/pack	2006-04-14 15:14:23.000000000 +0200
++++ patched/src/steps/pack	2015-05-31 16:14:45.116306375 +0200
+@@ -30,5 +30,5 @@
+ 	  uhubuild-pack "$UB_PACKAGEDIR/$pkg" "$UB_RESULTDIR"
+ done
+ for pkg in "$UB_RESULTDIR"/*.deb; do
+-	mv "$pkg" "${pkg%.deb}.uhu"
++	mv "$pkg" "${pkg%.deb}.ubk.uhu"
+ done

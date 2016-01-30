@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+cd linuxmint-nemo*
+ub_compile \
+	--disable-tracker \
+	--disable-gtk-doc-htlm

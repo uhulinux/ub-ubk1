@@ -1,0 +1,9 @@
+cairo-dev
+cmake
+libx11-dev
+libxext-dev
+libxt-dev
+pango-dev
+pycairo-dev
+pygtk-dev
+python-dev

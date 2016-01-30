@@ -1,0 +1,2 @@
+urllist http://embsys.technikum-wien.at/staff/horauer/estick/sw/ | splitver '^eStickFlashTool_v([0-9.]+).tgz$' | sort -V | tail -n 1
+

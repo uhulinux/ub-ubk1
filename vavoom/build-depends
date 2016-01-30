@@ -1,0 +1,10 @@
+cmake
+flac-dev
+glu-dev
+libjpeg-dev
+libmad-dev
+libmikmod-dev
+libpng-dev
+openal-dev
+sdl-mixer-dev
+wxwidgets-dev

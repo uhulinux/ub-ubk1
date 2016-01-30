@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+# antlr3 3.4 jó csak, a 3.5.2-vel nem fordul le!
+
+export JAVA=/usr/lib/java/jre/bin/java
+
+ub_compile

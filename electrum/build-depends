@@ -1,0 +1,9 @@
+pycurl
+pygtk-dev
+pyqt4
+python-dev
+python-ecdsa
+python-pbkdf2
+python-setuptools
+python-slowaes
+sip

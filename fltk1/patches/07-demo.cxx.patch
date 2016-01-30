@@ -1,0 +1,12 @@
+diff -Naur orig/test/demo.cxx mod/test/demo.cxx
+--- orig/test/demo.cxx	2007-02-23 20:27:43.000000000 +0100
++++ mod/test/demo.cxx	2009-04-03 14:54:38.000000000 +0200
+@@ -344,7 +344,7 @@
+ }
+ 
+ int main(int argc, char **argv) {
+-  putenv((char *)"FLTK_DOCDIR=../documentation");
++  putenv((char *)"FLTK_DOCDIR=../");
+   char buf[256];
+   strcpy(buf, argv[0]);
+ #if ( defined _MSC_VER || defined __MWERKS__ ) && defined _DEBUG

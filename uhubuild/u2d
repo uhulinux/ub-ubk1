@@ -1,0 +1,1 @@
+urllist ftp://ftp.uhulinux.hu/pub/sources/uhubuild/ | splitver '^uhubuild-([0-9.]+).tar.(gz|bz2|xz)$' | sed -e 's/0.2/0.4/g' | sort -V | tail -n 1

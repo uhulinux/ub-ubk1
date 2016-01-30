@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+cd "Smokin' Guns 1.1"
+pkgname=smokinguns
+install -d "$UB_INSTALLDIR/usr/share/games/${pkgname%%-*}/baseq3"
+install -m 644 baseq3/pak* "$UB_INSTALLDIR/usr/share/games/${pkgname%%-*}/baseq3/"
+install -d "$UB_INSTALLDIR/usr/share/games/${pkgname%%-*}/smokinguns"
+install -m 644 smokinguns/* "$UB_INSTALLDIR/usr/share/games/smokinguns/smokinguns"

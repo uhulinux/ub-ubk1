@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+cp config.template config.default
+convert simutrans.ico -alpha on simutrans.png
+ub_compile

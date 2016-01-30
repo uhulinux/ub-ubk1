@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/fonts/TTF
+
+cp -a Symbola{,_hint}.ttf "$UB_INSTALLDIR"/usr/share/fonts/TTF/

@@ -1,0 +1,4 @@
+	/usr/lib/libindicator3.so.*
+@	/usr/lib/libindicator3.so.*
+	/usr/libexec/indicator-loader3
+	/usr/share/doc/Packages/libindicator3

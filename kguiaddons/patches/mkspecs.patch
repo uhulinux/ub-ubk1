@@ -1,0 +1,9 @@
+diff -Naur orig/src/CMakeLists.txt mod/src/CMakeLists.txt
+--- orig/src/CMakeLists.txt	2015-04-04 13:48:28.000000000 +0200
++++ mod/src/CMakeLists.txt	2015-04-30 17:55:41.461299830 +0200
+@@ -98,4 +98,4 @@
+ 
+ include(ECMGeneratePriFile)
+ ecm_generate_pri_file(BASE_NAME KGuiAddons LIB_NAME KF5GuiAddons DEPS "gui" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/KGuiAddons)
+-install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
++install(FILES ${PRI_FILENAME} DESTINATION /usr/share/qt5/mkspecs)

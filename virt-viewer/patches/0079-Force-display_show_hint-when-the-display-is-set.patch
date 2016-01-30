@@ -1,0 +1,34 @@
+From 9869dc23a842efa97fa9dcf71a13dfa33e1accc1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fabiano=20Fid=C3=AAncio?= <fidencio@redhat.com>
+Date: Tue, 14 Oct 2014 16:47:03 +0200
+Subject: [PATCH] Force display_show_hint() when the display is set
+
+Since a window is not created at startup for each display, the first
+display(s) set when the application is opened will never receive and
+treat the "notify::show-hint" signal on VirtViewerWindow, once the
+callback is only set when the display is set to the specific window.
+It causes problems like the "Send Key" menu not activated till an extra
+display is added. To avoid this problem, let's force a call to
+display_show_hint() everytime a display is set.
+
+Resolves: rhbz#1152468
+https://bugzilla.redhat.com/show_bug.cgi?id=1152468
+(cherry picked from commit 910ee34248d98bd9f328c3f3e92120d49f55dedc)
+---
+ src/virt-viewer-window.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/virt-viewer-window.c b/src/virt-viewer-window.c
+index 7182c2f..4cda1e0 100644
+--- a/src/virt-viewer-window.c
++++ b/src/virt-viewer-window.c
+@@ -1327,6 +1327,9 @@ virt_viewer_window_set_display(VirtViewerWindow *self, VirtViewerDisplay *displa
+                                           G_CALLBACK(virt_viewer_window_desktop_resize), self, 0);
+         virt_viewer_signal_connect_object(display, "notify::show-hint",
+                                           G_CALLBACK(display_show_hint), self, 0);
++
++        display_show_hint(display, NULL, self);
++
+         if (virt_viewer_display_get_enabled(display))
+             virt_viewer_window_desktop_resize(display, self);
+     }

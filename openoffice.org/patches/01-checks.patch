@@ -1,0 +1,93 @@
+diff -Naur orig/main/configure.in patched/main/configure.in
+--- orig/main/configure.in	2014-02-25 09:19:25.000000000 +0100
++++ patched/main/configure.in	2014-05-03 02:16:38.693274391 +0200
+@@ -1416,9 +1416,9 @@
+    AC_MSG_RESULT([yes: allow modules nss, hunspell, hyphen, saxon, rhino, beanshell, graphite, coinmp to be built])
+ else
+    # Disable libaries.
+-   enable_nss_module="no"
+-   enable_hunspell="no"
+-   enable_hyphen="no"
++   enable_nss_module="yes"
++   enable_hunspell="yes"
++   enable_hyphen="yes"
+    enable_saxon="no"
+    enable_javascript="no"
+    enable_beanshell="no"
+@@ -1426,7 +1426,7 @@
+    enable_coinmp="no"
+    enable_category_b_fonts="no"
+ 
+-   AC_MSG_RESULT([no: disabled modules nss, hunspell, hyphen, saxon, rhino, beanshell, graphite, coinmp])
++   AC_MSG_RESULT([no: disabled modules saxon, rhino, beanshell, graphite, coinmp])
+ fi
+ AC_SUBST(ENABLE_CATEGORY_B)
+ 
+@@ -4021,6 +4021,7 @@
+ dnl ===================================================================
+ dnl Check for system lucene
+ dnl ===================================================================
++if test "$SOLAR_JAVA" != ""; then
+ AC_MSG_CHECKING([which lucene to use])
+ if test -n "$with_system_lucene" -o -n "$with_system_libs" && \
+        test "$with_system_lucene" != "no" && test "$with_system_jars" != "no"; then
+@@ -4098,6 +4099,7 @@
+ AC_SUBST(SYSTEM_LUCENE)
+ AC_SUBST(LUCENE_CORE_JAR)
+ AC_SUBST(LUCENE_ANALYZERS_JAR)
++fi
+ 
+ AC_MSG_CHECKING([whether to build the MySQL Connector extension])
+ if test -n "$enable_mysql_connector" -a "$enable_mysql_connector" != "no"; then
+@@ -4213,6 +4215,7 @@
+ dnl ===================================================================
+ dnl Check for system hsqldb
+ dnl ===================================================================
++if test "$SOLAR_JAVA" != ""; then
+ AC_MSG_CHECKING([which hsqldb to use])
+ if test -n "$with_system_hsqldb" -o -n "$with_system_libs" && \
+        test "$with_system_hsqldb" != "no" && test "$with_system_jars" != "no"; then
+@@ -4257,6 +4260,7 @@
+ fi
+ AC_SUBST(SYSTEM_HSQLDB)
+ AC_SUBST(HSQLDB_JAR)
++fi
+ 
+ dnl ===================================================================
+ dnl Check for system beanshell
+@@ -6495,8 +6499,8 @@
+ KDE4_LIBS=""
+ MOC4="moc"
+ if test "$test_kde4" = "yes" -a "$ENABLE_KDE4" = "TRUE" ; then
+-   qt_incdirs="$QT4INC $QT4DIR /usr/include/qt4 /usr/include $x_includes"
+-   qt_libdirs="$QT4LIB /usr/lib $x_libraries"
++   qt_incdirs="$QT4INC $QT4DIR/include /usr/include/qt4 /usr/include $x_includes"
++   qt_libdirs="$QT4LIB $QT4DIR/lib /usr/lib $x_libraries"
+    
+    kde_incdirs="/usr/include /usr/include/kde4 $x_includes"
+    kde_libdirs="/usr/lib /usr/lib/kde4 /usr/lib/kde4/devel $x_libraries"
+@@ -6553,7 +6557,7 @@
+    AC_PATH_PROG( MOCQT4, moc-qt4, no, [$QT4DIR/bin:$PATH] )
+    MOC4="$MOCQT4"
+    if test "$MOC4" = "no" ; then
+-      AC_PATH_PROG( MOC4, moc, no, [$PATH:$QT4DIR/bin] )
++      AC_PATH_PROG( MOC4, moc, no, [$QT4DIR/bin:$PATH] )
+       if test "$MOC4" = "no" ; then
+          AC_MSG_ERROR([Qt Meta Object Compiler not found.  Please specify the root of your Qt installation by exporting QT4DIR before running "configure".])
+       fi
+@@ -7033,7 +7037,6 @@
+    AC_MSG_RESULT([Ant lib directory found.])
+ fi
+ AC_SUBST(ANT_LIB)
+-fi
+ 
+ ant_minver=1.6.0
+ # update for more extensions...
+@@ -7103,6 +7106,7 @@
+   fi
+ fi
+ rm -f conftest* core core.* *.core
++fi
+ 
+ OOO_JUNIT_JAR=
+ if test "$SOLAR_JAVA" != "" && test "$with_junit" != "no"; then

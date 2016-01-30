@@ -1,0 +1,156 @@
+diff -Naur hplip-3.14.10-orig/installer/distros.dat hplip-3.14.10/installer/distros.dat
+--- hplip-3.14.10-orig/installer/distros.dat	2014-10-07 10:55:35.000000000 +0200
++++ hplip-3.14.10/installer/distros.dat	2014-12-08 21:25:14.669137322 +0100
+@@ -92,7 +92,7 @@
+ # ****************************************
+ 
+ [distros]
+-distros=unknown,mepis,debian,suse,mandriva,fedora,redhat,rhel,slackware,gentoo,redflag,ubuntu,xandros,freebsd,linspire,ark,pclinuxos,centos,igos,linuxmint,linpus,gos,boss,lfs
++distros=unknown,mepis,debian,uhu,suse,mandriva,fedora,redhat,rhel,slackware,gentoo,redflag,ubuntu,xandros,freebsd,linspire,ark,pclinuxos,centos,igos,linuxmint,linpus,gos,boss,lfs
+ 
+ # ****************************************
+ 
+@@ -3212,6 +3212,143 @@
+ [debian:7.6]
+ same_as_version=7.0
+ 
++# **************************************
++
++[uhu 3]
++code_name=LTS
++supported=1
++scan_supported=1
++fax_supported=1
++pcard_supported=1
++network_supported=1
++parallel_supported=1
++usb_supported=1
++packaged_version=3.14.10
++release_date=
++notes=NOTE: Disable the CD Sources in your apt sources.list or the install will fail and hang.
++ppd_install=drv
++udev_mode_fix=1
++ppd_dir=/usr/share/ppd/HP
++fix_ppd_symlink=0
++drv_dir=/usr/share/cups/drv/hp
++ui_toolkit=qt4
++native_cups=1
++policykit=1
++
++
++[uhu:3:cups]
++packages=cups
++
++[uhu:3:cups-devel]
++packages=cups-dev
++
++[uhu:3:gcc]
++packages=gcc
++
++#[uhu:3:gs]
++#packages=????????????????????????????????????
++#            [uhu:3:libcrypto]
++#            packages=openssl-dev
++
++[uhu:3:libjpeg]
++packages=libjpeg_9a-dev
++
++[uhu:3:libnetsnmp]
++packages=libnetsnmp
++
++[uhu:3:libnetsnmp-devel]
++packages=libnetsnmp-dev
++
++[uhu:3:libpthread]
++packages=glibc
++
++[uhu:3:libtool]
++packages=libtool
++
++[uhu:3:libgphoto2]
++packages=libgphoto2
++
++[uhu:3:libgphoto2-devel]
++packages=libgphoto2-devel
++
++[uhu:3:libieee1284]
++packages=libieee1284
++
++[uhu:3:libieee1284-devel]
++packages=libieee1284-dev
++
++[uhu:3:libusb]
++packages=libusb-dev
++
++[uhu:3:libusb-compat]
++packages=libusb-compat
++
++[uhu:3:make]
++packages=make
++
++[uhu:3:pyqt]
++packages=python3-pyqt4
++
++[uhu:3:python]
++packages=python
++
++[uhu:3:python-devel]
++packages=python-dev
++
++[uhu:3:pyqt4]
++packages=pyqt4
++
++[uhu:3:dbus]
++packages=dbus
++
++[uhu:3:dbus-devel]
++packages=dbus-dev
++
++[uhu:3:dbus-python]
++packages=dbus-python
++
++[uhu:3:python2x]
++packages=python
++
++[uhu:3:reportlab]
++packages=reportlab
++
++[uhu:3:sane]
++packages=sane-backends
++
++[uhu:3:libexif]
++packages=libexif
++
++[uhu:3:libexif-devel]
++packages=libexif-dev
++
++[uhu:3:xsane]
++packages=xsane
++
++#[uhu:3:cups-ddk]
++#packages=
++
++[uhu:3:pycups]
++packages=pycups
++
++[uhu:3:policykit]
++packages=policykit,policykit-gnome
++
++[uhu:3:python-notify]
++packages=python-notify
++
++[uhu:3:network]
++packages=wget
++
++[uhu:3:avahi]
++packages=avahi
++
++[uhu:3:qt4]
++packages=qt4
++
++[uhu:3:qt4-devel]
++packages=qt4-devel
++
+ # *********************
+ 
+ [xandros]

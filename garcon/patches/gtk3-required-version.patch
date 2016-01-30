@@ -1,0 +1,65 @@
+diff -Naur orig/configure patched/configure
+--- orig/configure	2015-04-04 14:43:43.000000000 +0200
++++ patched/configure	2015-04-06 12:34:36.599991630 +0200
+@@ -18097,9 +18097,9 @@
+ 
+ 
+ 
+-  { $as_echo "$as_me:$LINENO: checking for gtk+-3.0 >= 3.14.0" >&5
+-$as_echo_n "checking for gtk+-3.0 >= 3.14.0... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=3.14.0" "gtk+-3.0" >/dev/null 2>&1; then
++  { $as_echo "$as_me:$LINENO: checking for gtk+-3.0 >= 3.0.0" >&5
++$as_echo_n "checking for gtk+-3.0 >= 3.0.0... " >&6; }
++  if $PKG_CONFIG "--atleast-version=3.0.0" "gtk+-3.0" >/dev/null 2>&1; then
+     GTK3_VERSION=`$PKG_CONFIG --modversion "gtk+-3.0"`
+     { $as_echo "$as_me:$LINENO: result: $GTK3_VERSION" >&5
+ $as_echo "$GTK3_VERSION" >&6; }
+@@ -18116,7 +18116,7 @@
+     { $as_echo "$as_me:$LINENO: result: $GTK3_LIBS" >&5
+ $as_echo "$GTK3_LIBS" >&6; }
+ 
+-    GTK3_REQUIRED_VERSION=3.14.0
++    GTK3_REQUIRED_VERSION=3.0.0
+ 
+ 
+ 
+@@ -18132,7 +18132,7 @@
+ 
+       echo "*** The required package gtk+-3.0 was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade gtk+-3.0 to atleast version 3.14.0, or adjust"
++      echo "*** Please upgrade gtk+-3.0 to atleast version 3.0.0, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -18144,7 +18144,7 @@
+ 
+ 
+       echo "*** The required package gtk+-3.0 was not found on your system."
+-      echo "*** Please install gtk+-3.0 (atleast version 3.14.0) or adjust"
++      echo "*** Please install gtk+-3.0 (atleast version 3.0.0) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
+@@ -19937,7 +19937,8 @@
+ if test -n "$CONFIG_FILES"; then
+ 
+ 
+-ac_cr=''
++ac_cr='
++'
+ ac_cs_awk_cr=`$AWK 'BEGIN { print "a\rb" }' </dev/null 2>/dev/null`
+ if test "$ac_cs_awk_cr" = "a${ac_cr}b"; then
+   ac_cs_awk_cr='\\r'
+diff -Naur orig/configure.ac patched/configure.ac
+--- orig/configure.ac	2015-04-04 14:42:55.000000000 +0200
++++ patched/configure.ac	2015-04-06 12:34:53.648076167 +0200
+@@ -130,7 +130,7 @@
+ XDT_CHECK_PACKAGE([GTHREAD], [gthread-2.0], [2.30.0])
+ XDT_CHECK_PACKAGE([GTK2], [gtk+-2.0], [2.24.0])
+ XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1], [4.10.0])
+-XDT_CHECK_PACKAGE([GTK3], [gtk+-3.0], [3.14.0])
++XDT_CHECK_PACKAGE([GTK3], [gtk+-3.0], [3.0.0])
+ XDT_CHECK_PACKAGE([LIBXFCE4UI2], [libxfce4ui-2], [4.11.1])
+ 
+ dnl *************************

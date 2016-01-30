@@ -1,0 +1,8 @@
+gobject-introspection-dev
+gtk2-dev
+intltool
+libsm-dev
+libxi-dev
+libxkbfile-dev
+libxklavier-dev
+mate-common

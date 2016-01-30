@@ -1,0 +1,12 @@
+diff -Naur orig/src/textview.c patched/src/textview.c
+--- orig/src/textview.c	2015-10-11 01:15:42.000000000 +0200
++++ patched/src/textview.c	2015-11-14 13:26:56.050937250 +0100
+@@ -1068,7 +1068,7 @@
+ 	procmime_force_encoding(textview->messageview->forced_encoding);
+ 	
+ 	textview->is_in_signature = FALSE;
+-	textview->is_diff = FALSE;
++	textview->is_diff = TRUE;
+ 
+ 	procmime_decode_content(mimeinfo);
+ 

@@ -1,0 +1,11 @@
+dbus-glib-dev
+glu-dev
+gnome-common
+gtk-dev
+intltool
+json-glib-dev
+libcanberra-dev
+libsm-dev
+libxshmfence-dev
+systemd-dev
+x.org-xtrans-dev

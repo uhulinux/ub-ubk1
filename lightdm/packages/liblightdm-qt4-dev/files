@@ -1,0 +1,4 @@
+	/usr/include/lightdm-qt-3
+	/usr/lib/liblightdm-qt-3.la
+@	/usr/lib/liblightdm-qt-3.so
+	/usr/lib/pkgconfig/liblightdm-qt-3.pc

@@ -1,0 +1,21 @@
+diff -Naur orig/src/get patched/src/get
+--- orig/src/get	2014-07-03 12:33:14.000000000 +0200
++++ patched/src/get	2015-06-13 13:35:22.581858695 +0200
+@@ -178,7 +178,7 @@
+ 		
+ 		ifs="$IFS"
+ 		IFS=':'
+-		declare -a revarray=($rev)
++		revarray=($rev) # bash 4.3, declare -a: unbound variable
+ 		IFS="$ifs"
+ 		
+ 		if [[ "${revarray[0]}" = "tag" ]]; then  ## tag:tagname
+@@ -232,7 +232,7 @@
+ 		revpart="${1#*@}"
+ 		ifs="$IFS"
+ 		IFS='@'
+-		declare -a revarray=($revpart)
++		revarray=($revpart) # bash 4.3, declare -a: unbound variable
+ 		rev=${revarray[0]}
+ 		branch=${revarray[1]}
+ 		if [ -z $branch ]; then

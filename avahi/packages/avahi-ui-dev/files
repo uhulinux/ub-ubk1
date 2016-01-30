@@ -1,0 +1,4 @@
+	/usr/include/avahi-ui
+	/usr/lib/libavahi-ui*.la
+@	/usr/lib/libavahi-ui*.so
+	/usr/lib/pkgconfig/avahi-ui*.pc

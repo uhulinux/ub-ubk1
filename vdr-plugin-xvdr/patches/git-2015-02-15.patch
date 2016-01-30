@@ -1,0 +1,3713 @@
+diff -Naur orig/debian/install mod/debian/install
+--- orig/debian/install	2013-02-21 20:13:55.000000000 +0100
++++ mod/debian/install	2015-02-15 19:42:35.000000000 +0100
+@@ -1,3 +1,2 @@
+-libvdr-xvdr.so.*         usr/lib/vdr/plugins/
+ debian/plugin.xvdr.conf  etc/vdr/plugins/
+ xvdr/allowed_hosts.conf  var/lib/vdr/plugins/xvdr/
+diff -Naur orig/gentoo/media-plugins/vdr-plugin-xvdr/Manifest mod/gentoo/media-plugins/vdr-plugin-xvdr/Manifest
+--- orig/gentoo/media-plugins/vdr-plugin-xvdr/Manifest	2013-02-21 20:13:55.000000000 +0100
++++ mod/gentoo/media-plugins/vdr-plugin-xvdr/Manifest	1970-01-01 01:00:00.000000000 +0100
+@@ -1 +0,0 @@
+-EBUILD vdr-plugin-xvdr-9999.ebuild 782 RMD160 48a26bc63bafb4c475bc1f2e9ac65cae506a56d8 SHA1 4ff709850e61018713cbd593bf245d1ac8fe7551 SHA256 9c53e7868c8a5f335ecfd463b9ada92e8444cff70f35a5b2270c35f7600ec882
+diff -Naur orig/gentoo/media-plugins/vdr-plugin-xvdr/vdr-plugin-xvdr-9999.ebuild mod/gentoo/media-plugins/vdr-plugin-xvdr/vdr-plugin-xvdr-9999.ebuild
+--- orig/gentoo/media-plugins/vdr-plugin-xvdr/vdr-plugin-xvdr-9999.ebuild	2013-02-21 20:13:55.000000000 +0100
++++ mod/gentoo/media-plugins/vdr-plugin-xvdr/vdr-plugin-xvdr-9999.ebuild	1970-01-01 01:00:00.000000000 +0100
+@@ -1,43 +0,0 @@
+-# Copyright 1999-2010 Gentoo Foundation
+-# Distributed under the terms of the GNU General Public License v2
+-# $Header: $
+-
+-EAPI=2
+-
+-RESTRICT="strip"
+-
+-inherit vdr-plugin git-2
+-
+-EGIT_REPO_URI="git://github.com/pipelka/vdr-plugin-xvdr.git"
+-PATCHES=""
+-
+-SRC_URI=""
+-S=${WORKDIR}/${PN}
+-
+-DESCRIPTION="VDR plugin: XVDR Streamserver Plugin"
+-HOMEPAGE="https://github.com/pipelka/vdr-plugin-xvdr"
+-
+-LICENSE="GPL-2"
+-SLOT="0"
+-
+-KEYWORDS="~x86 ~amd64"
+-IUSE=""
+-
+-DEPEND=">=media-video/vdr-1.6"
+-RDEPEND="${DEPEND}"
+-
+-src_prepare() {
+-        vdr-plugin_src_prepare
+-
+-        fix_vdr_libsi_include recplayer.c
+-        fix_vdr_libsi_include receiver.c
+-}
+-
+-src_install() {
+-        vdr-plugin_src_install
+-
+-        insinto /etc/vdr/plugins/xvdr
+-        doins xvdr/allowed_hosts.conf
+-        diropts -gvdr -ovdr
+-}
+-
+diff -Naur orig/gentoo/media-plugins/vdr-xvdr/ChangeLog mod/gentoo/media-plugins/vdr-xvdr/ChangeLog
+--- orig/gentoo/media-plugins/vdr-xvdr/ChangeLog	1970-01-01 01:00:00.000000000 +0100
++++ mod/gentoo/media-plugins/vdr-xvdr/ChangeLog	2015-02-15 19:42:35.000000000 +0100
+@@ -0,0 +1,29 @@
++# ChangeLog for media-plugins/vdr-xvdr
++# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
++# $Header: $
++
++  29 Mar 2013; Torsten Kurbad <gentoo@tk-webart.de> vdr-xvdr-9999.ebuild:
++  Added debug use flag; Added tools use flag for optional installation of
++  serviceref tool
++
++  16 Jan 2013; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-xvdr-9999.ebuild:
++  eapi-5, fixed libsi includes #451522
++
++  01 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-xvdr-9999.ebuild:
++  eapi=4; vdr-plugin-2.eclass
++
++  18 Sep 2011; Diego E. Pettenò <flameeyes@gentoo.org> vdr-xvdr-9999.ebuild:
++  QA: do not keyword live ebuild.
++
++  17 Sep 2011; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-xvdr-9999.ebuild:
++  minor fixes
++
++  17 Sep 2011; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-xvdr-9999.ebuild:
++  removed useless strict restrict
++
++*vdr-xvdr-9999 (17 Sep 2011)
++
++  17 Sep 2011; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-xvdr-9999.ebuild,
++  +metadata.xml:
++  initial ebuild, pmasked
++
+diff -Naur orig/gentoo/media-plugins/vdr-xvdr/Manifest mod/gentoo/media-plugins/vdr-xvdr/Manifest
+--- orig/gentoo/media-plugins/vdr-xvdr/Manifest	1970-01-01 01:00:00.000000000 +0100
++++ mod/gentoo/media-plugins/vdr-xvdr/Manifest	2015-02-15 19:42:35.000000000 +0100
+@@ -0,0 +1,2 @@
++EBUILD vdr-xvdr-9999.ebuild 1165 SHA256 4d1455818585f113ebe56475dde0b76321c7eefc71371d07a2a597fdf0f9af65 SHA512 028452c92988c77de5a4bf5001d2f585cdf9aeed34356d420fb1f73ef4b7a8cac210e559248569a44be646e7cf52247c101a4e9c4a32bbec5ce3fce4ec70a672 WHIRLPOOL a281ffb3998bd68a8ced091dbd9dc3ea61d6e3ed5fec6113e8086b713518db3e818f9d29a9a6eccb925a39e5cd7ade66b6a213213adbf1e652e43b6d0d2e3e4a
++MISC ChangeLog 984 SHA256 f54055b09168e596256465bdbb43a7c1fcdaa7384ff7d9695d283171d3cb69a5 SHA512 241f33cebb6f3b3b5e5b08ec63b4679bc67d44aead59c33f850270d5692c69f5624e73086824aea153aeac6595d4453a93c2e43d51aa42878da6b1a8d95e2e4d WHIRLPOOL 47ed6e717b1848e67fa675d810612d8d37d293331055e1c8c1e559473163efd9d6a788395013bf4ed205c02d530b81301d97ef5d3128ee2f63b10d62ec116de6
+diff -Naur orig/gentoo/media-plugins/vdr-xvdr/vdr-xvdr-9999.ebuild mod/gentoo/media-plugins/vdr-xvdr/vdr-xvdr-9999.ebuild
+--- orig/gentoo/media-plugins/vdr-xvdr/vdr-xvdr-9999.ebuild	1970-01-01 01:00:00.000000000 +0100
++++ mod/gentoo/media-plugins/vdr-xvdr/vdr-xvdr-9999.ebuild	2015-02-15 19:42:35.000000000 +0100
+@@ -0,0 +1,65 @@
++# Copyright 1999-2013 Gentoo Foundation
++# Distributed under the terms of the GNU General Public License v2
++# $Header: $
++
++EAPI="5"
++
++inherit vdr-plugin-2 git-2 flag-o-matic
++
++EGIT_REPO_URI="git://github.com/pipelka/vdr-plugin-xvdr.git"
++
++DESCRIPTION="VDR plugin: XVDR Streamserver Plugin"
++HOMEPAGE="https://github.com/pipelka/vdr-plugin-xvdr"
++SRC_URI=""
++KEYWORDS=""
++LICENSE="GPL-2"
++SLOT="0"
++IUSE="debug tools"
++
++DEPEND=">=media-video/vdr-1.6"
++RDEPEND="${DEPEND}"
++
++S="${WORKDIR}/${PN}-plugin"
++
++src_prepare() {
++	vdr-plugin-2_src_prepare
++
++	fix_vdr_libsi_include "${S}"/src/live/livepatfilter.h
++}
++
++src_compile() {
++	if use debug; then
++		BUILD_PARAMS="DEBUG=1"
++		append-flags -g
++	fi
++
++	vdr-plugin-2_src_compile
++
++	if use tools ; then
++		cd "${S}/tools"
++		emake || die "emake failed for tools"
++	fi
++}
++
++src_install() {
++	vdr-plugin-2_src_install
++
++	insinto /etc/vdr/plugins/xvdr
++	doins xvdr/*.conf
++	diropts -gvdr -ovdr
++
++	if use tools ; then
++		exeinto /usr/bin
++		newexe "${S}/tools/serviceref" xvdr-serviceref
++	fi
++}
++
++pkg_postinst() {
++	vdr-plugin-2_pkg_postinst
++
++	if use tools ; then
++		elog
++		elog "The 'serviceref' tool has been installed as"
++		elog "\t/usr/bin/xvdr-serviceref"
++	fi
++}
+diff -Naur orig/.gitignore mod/.gitignore
+--- orig/.gitignore	2013-02-21 20:13:55.000000000 +0100
++++ mod/.gitignore	2015-02-15 19:42:35.000000000 +0100
+@@ -2,3 +2,6 @@
+ .dependencies
+ *.so
+ libvdr-vnsiserver.so*
++po/*.mo
++tools/serviceref
++po/xvdr.pot
+diff -Naur orig/Makefile mod/Makefile
+--- orig/Makefile	2013-02-21 20:13:55.000000000 +0100
++++ mod/Makefile	2015-02-15 19:42:35.000000000 +0100
+@@ -48,7 +48,7 @@
+ 
+ ### Includes and Defines (add further entries here):
+ 
+-INCLUDES += -I./src
++INCLUDES += -I./src -I./src/vdr
+ 
+ ifdef DEBUG
+ INCLUDES += -DDEBUG
+@@ -78,11 +78,11 @@
+ 	src/live/livestreamer.o \
+ 	src/net/msgpacket.o \
+ 	src/net/os-config.o \
+-	src/net/socketlock.o \
+ 	src/recordings/recordingscache.o \
+ 	src/recordings/recplayer.o \
+ 	src/scanner/wirbelscan.o \
+ 	src/tools/hash.o \
++	src/xvdr/timerconflicts.o \
+ 	src/xvdr/xvdr.o \
+ 	src/xvdr/xvdrclient.o \
+ 	src/xvdr/xvdrserver.o \
+@@ -95,7 +95,7 @@
+ ### Implicit rules:
+ 
+ %.o: %.c
+-	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) -o $@ $<
++	$(CXX) $(CXXFLAGS) -fPIC -c $(DEFINES) $(INCLUDES) -o $@ $<
+ 
+ ### Dependencies:
+ 
+@@ -117,7 +117,7 @@
+ %.mo: %.po
+ 	msgfmt -c -o $@ $<
+ 
+-$(I18Npot): $(wildcard *.c)
++$(I18Npot): $(wildcard src/*/*.c)
+ 	xgettext -C -cTRANSLATORS --no-wrap --no-location -k -ktr -ktrNOOP --package-name=vdr-$(PLUGIN) --package-version=$(VERSION) --msgid-bugs-address='<see README>' -o $@ `find ./src -name *.c`
+ 
+ %.po: $(I18Npot)
+diff -Naur orig/po/de_AT.po mod/po/de_AT.po
+--- orig/po/de_AT.po	1970-01-01 01:00:00.000000000 +0100
++++ mod/po/de_AT.po	2015-02-15 19:42:35.000000000 +0100
+@@ -0,0 +1,31 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++# Alexander Pipelka <alexander.pipelka@gmail.com>, 2014.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: vdr-xvdr 0.9.9\n"
++"Report-Msgid-Bugs-To: <see README>\n"
++"POT-Creation-Date: 2014-02-10 21:02+0100\n"
++"PO-Revision-Date: 2014-02-10 21:02+0100\n"
++"Last-Translator: Alexander Pipelka <alexander.pipelka@gmail.com>\n"
++"Language-Team: Deutsch <>\n"
++"Language: de\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=2; plural=(n!=1);\n"
++
++msgid "Unable to decrypt channel"
++msgstr "Kanal verschlüsselt"
++
++msgid "All tuners busy"
++msgstr "Alle Empfänger belegt"
++
++msgid "Blocked by active recording"
++msgstr "Durch Aufnahme blockiert"
++
++msgid "Failed to switch"
++msgstr "Fehler beim Umschalten"
+diff -Naur orig/po/de_DE.po mod/po/de_DE.po
+--- orig/po/de_DE.po	1970-01-01 01:00:00.000000000 +0100
++++ mod/po/de_DE.po	2015-02-15 19:42:35.000000000 +0100
+@@ -0,0 +1,31 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++# Alexander Pipelka <alexander.pipelka@gmail.com>, 2014.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: vdr-xvdr 0.9.9\n"
++"Report-Msgid-Bugs-To: <see README>\n"
++"POT-Creation-Date: 2014-02-10 21:02+0100\n"
++"PO-Revision-Date: 2014-02-10 21:02+0100\n"
++"Last-Translator: Alexander Pipelka <alexander.pipelka@gmail.com>\n"
++"Language-Team: Deutsch <>\n"
++"Language: de\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=2; plural=(n!=1);\n"
++
++msgid "Unable to decrypt channel"
++msgstr "Kanal verschlüsselt"
++
++msgid "All tuners busy"
++msgstr "Alle Empfänger belegt"
++
++msgid "Blocked by active recording"
++msgstr "Durch Aufnahme blockiert"
++
++msgid "Failed to switch"
++msgstr "Fehler beim Umschalten"
+diff -Naur orig/src/config/config.c mod/src/config/config.c
+--- orig/src/config/config.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/config/config.c	2015-02-15 19:42:35.000000000 +0100
+@@ -45,7 +45,11 @@
+ }
+ 
+ void cXVDRServerConfig::Load() {
++#if VDRVERSNUM >= 20102
++  cLiveQueue::SetTimeShiftDir(cVideoDirectory::Name());
++#else
+   cLiveQueue::SetTimeShiftDir(VideoDirectory);
++#endif
+   cRecordingsCache::GetInstance().LoadResumeData();
+ 
+   if(!cConfig<cSetupLine>::Load(AddDirectory(ConfigDirectory, GENERAL_CONFIG_FILE), true, false))
+diff -Naur orig/src/demuxer/demuxer.c mod/src/demuxer/demuxer.c
+--- orig/src/demuxer/demuxer.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/demuxer/demuxer.c	2015-02-15 19:42:35.000000000 +0100
+@@ -129,7 +129,6 @@
+     return false;
+ 
+   if (TsIsScrambled(data)) {
+-    INFOLOG("scrambled packet");
+     return false;
+   }
+ 
+diff -Naur orig/src/demuxer/demuxer.h mod/src/demuxer/demuxer.h
+--- orig/src/demuxer/demuxer.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/demuxer/demuxer.h	2015-02-15 19:42:35.000000000 +0100
+@@ -39,8 +39,10 @@
+   sStreamPacket() {
+     type = cStreamInfo::stNONE;
+     content = cStreamInfo::scNONE;
++    frametype = cStreamInfo::ftUNKNOWN;
+   }
+ 
++  cStreamInfo::FrameType frametype;
+   cStreamInfo::Type type;
+   cStreamInfo::Content content;
+ 
+diff -Naur orig/src/demuxer/demuxer_H264.c mod/src/demuxer/demuxer_H264.c
+--- orig/src/demuxer/demuxer_H264.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/demuxer/demuxer_H264.c	2015-02-15 19:42:35.000000000 +0100
+@@ -43,9 +43,9 @@
+ #define PROFILE_CAVLC444   44
+ 
+ // NAL SPS ID
++#define NAL_SLH 0x01
+ #define NAL_SPS 0x07
+ 
+-
+ // golomb decoding
+ uint32_t read_golomb_ue(cBitStream* bs)
+ {
+@@ -76,35 +76,69 @@
+   m_rate = 0;
+ }
+ 
++uint8_t* cParserH264::ExtractNAL(uint8_t* packet, int length, int nal_offset, int& nal_len) {
++  int e = FindStartCode(packet, length, nal_offset, 0x00000001);
++  if (e == -1) {
++    e = length;
++  }
++
++  int l = e - nal_offset;
++
++  if(l <= 0) {
++    return NULL;
++  }
++
++  uint8_t* nal_data = new uint8_t[l];
++  nal_len = nalUnescape(nal_data, packet + nal_offset, l);
++
++  if(nal_len + nal_offset > length) {
++    ERRORLOG("nal overrun: nal len: %i, offset: %i, packet length: %i", nal_len, nal_offset, length);
++  }
++
++  return nal_data;
++}
++
+ void cParserH264::ParsePayload(unsigned char* data, int length) {
+   int o = 0;
+-  bool spsfound = false;
++  int sps_start = -1;
++  int nal_len = 0;
++
++  if(length < 4) {
++    return;
++  }
+ 
+-  // iterate through all NAL units (and look for SPS)
++  // iterate through all NAL units
+   while((o = FindStartCode(data, length, o, 0x00000001)) >= 0) {
+     o += 4;
+     if(o >= length)
+       return;
+ 
+-    // NAL_SPS found ?
+-    if((data[o] & 0x1F) == NAL_SPS && length - o > 1) {
++    // NAL_SLH
++    if((data[o] & 0x1F) == NAL_SLH && length - o > 1) {
+       o++;
+-      spsfound = true;
+-      break;
++      uint8_t* nal_data = ExtractNAL(data, length, o, nal_len);
++
++      if(nal_data != NULL) {
++        Parse_SLH(nal_data, nal_len);
++        delete[] nal_data;
++      }
++    }
++
++    // NAL_SPS
++    else if((data[o] & 0x1F) == NAL_SPS && length - o > 1) {
++      o++;
++      sps_start = o;
+     }
+   }
+ 
+-  if(!spsfound)
++  if(sps_start == -1)
+     return;
+ 
+-  int e = FindStartCode(data, length, o, 0x00000001);
+-  if (e == -1)
+-    e = length;
+-
+-  int l = e - o;
+-  uint8_t* nal_data = new uint8_t[l];
++  uint8_t* nal_data = ExtractNAL(data, length, sps_start, nal_len);
+ 
+-  int nal_len = nalUnescape(nal_data, data + o, l);
++  if(nal_data == NULL) {
++    return;
++  }
+ 
+   int width = 0;
+   int height = 0;
+@@ -126,27 +160,48 @@
+ {
+   int s = 0, d = 0;
+ 
+-  while (s < len)
+-  {
+-    if (!src[s] && !src[s + 1])
+-    {
+-      // hit 00 00 xx
+-      dst[d] = dst[d + 1] = 0;
+-      s += 2;
+-      d += 2;
+-      if (src[s] == 3)
+-      {
+-        s++; // 00 00 03 xx --> 00 00 xx
+-        if (s >= len)
+-          return d;
++  while (s < len) {
++    if(s >= 2 && s < len - 1) {
++      // hit 00 00 03 ?
++      if(src[s - 2] == 0 && src[s - 1] == 0 && src[s] == 3) {
++        s++; // skip 03
+       }
+     }
++
+     dst[d++] = src[s++];
+   }
+ 
+   return d;
+ }
+ 
++void cParserH264::Parse_SLH(uint8_t *buf, int len) {
++  cBitStream bs(buf, len*8);
++
++  read_golomb_ue(&bs); // first_mb_in_slice
++  int type = read_golomb_ue(&bs);;
++
++  if(type > 4) {
++    type -= 5;
++  }
++
++  switch(type) {
++    case 0:
++      m_frametype = cStreamInfo::ftPFRAME;
++      break;
++    case 1:
++      m_frametype = cStreamInfo::ftBFRAME;
++      break;
++    case 2:
++      m_frametype = cStreamInfo::ftIFRAME;
++      break;
++    default:
++      m_frametype = cStreamInfo::ftUNKNOWN;
++      break;
++  }
++
++  return;
++}
++
+ bool cParserH264::Parse_SPS(uint8_t *buf, int len, struct pixel_aspect_t& pixelaspect, int& width, int& height)
+ {
+   bool seq_scaling_matrix_present = false;
+diff -Naur orig/src/demuxer/demuxer_H264.h mod/src/demuxer/demuxer_H264.h
+--- orig/src/demuxer/demuxer_H264.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/demuxer/demuxer_H264.h	2015-02-15 19:42:35.000000000 +0100
+@@ -44,8 +44,12 @@
+ 
+   static const struct pixel_aspect_t m_aspect_ratios[];
+ 
++  uint8_t* ExtractNAL(uint8_t* packet, int length, int nal_offset, int& nal_len);
++
+   bool Parse_SPS(uint8_t *buf, int len, struct pixel_aspect_t& pixel_aspect, int& width, int& height);
+ 
++  void Parse_SLH(uint8_t *buf, int len);
++
+   int nalUnescape(uint8_t *dst, const uint8_t *src, int len);
+ 
+   int m_scale;
+diff -Naur orig/src/demuxer/demuxer_LATM.c mod/src/demuxer/demuxer_LATM.c
+--- orig/src/demuxer/demuxer_LATM.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/demuxer/demuxer_LATM.c	2015-02-15 19:42:35.000000000 +0100
+@@ -83,7 +83,7 @@
+     slotLen += tmp;
+   } while (tmp == 255);
+ 
+-  if (slotLen * 8 > (bs.Length() - bs.Index()))
++  if (slotLen * 8 > (bs.Length() - (unsigned)bs.Index()))
+     return;
+ 
+   if (m_curDTS == DVD_NOPTS_VALUE)
+diff -Naur orig/src/demuxer/demuxer_MPEGVideo.c mod/src/demuxer/demuxer_MPEGVideo.c
+--- orig/src/demuxer/demuxer_MPEGVideo.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/demuxer/demuxer_MPEGVideo.c	2015-02-15 19:42:35.000000000 +0100
+@@ -53,17 +53,34 @@
+   return bs.GetBits(3);
+ }
+ 
++static cStreamInfo::FrameType ConvertFrameType(int frametype) {
++  switch (frametype) {
++    case 1:
++      return cStreamInfo::ftIFRAME;
++    case 2:
++      return cStreamInfo::ftPFRAME;
++    case 3:
++      return cStreamInfo::ftBFRAME;
++    case 4:
++      return cStreamInfo::ftDFRAME;
++    default:
++      break;
++  }
++
++  return cStreamInfo::ftUNKNOWN;
++}
++
+ cParserMPEG2Video::cParserMPEG2Video(cTSDemuxer *demuxer) : cParserPES(demuxer, 512* 1024), m_pdiff(0), m_lastDTS(DVD_NOPTS_VALUE) {
+ }
+ 
+-void cParserMPEG2Video::ParsePicture(unsigned char* data, int length) {
++cStreamInfo::FrameType cParserMPEG2Video::ParsePicture(unsigned char* data, int length) {
+   int frametype = GetFrameType(data, length);
+ 
+   // get I,P frames distance
+   if(frametype < 3 && m_curDTS != DVD_NOPTS_VALUE && m_curPTS != DVD_NOPTS_VALUE) {
+     m_pdiff = m_curPTS - m_curDTS;
+     m_lastDTS = m_curDTS;
+-    return;
++    return ConvertFrameType(frametype);
+   }
+ 
+   // extrapolate DTS
+@@ -79,6 +96,8 @@
+   // extrapolate PTS of I/P frame
+   if(frametype < 3 && m_curPTS == DVD_NOPTS_VALUE)
+     m_curPTS = PtsAdd(m_curDTS, m_pdiff);
++
++  return ConvertFrameType(frametype);
+ }
+ 
+ void cParserMPEG2Video::ParsePayload(unsigned char* data, int length) {
+@@ -98,6 +117,12 @@
+ 
+   // check for picture start codes
+   int s = FindStartCode(data, length, 0, MPEG2_PICTURE_START);
++
++  // abort if there isn't any picture information
++  if(s == -1) {
++    return;
++  }
++
+   int e = FindStartCode(data, length, s + 4, MPEG2_PICTURE_START);
+   o = s;
+   s = 0;
+@@ -106,7 +131,7 @@
+   while(e != -1) {
+ 
+     // parse and send payload data
+-    ParsePicture(data + o, e - o);
++    m_frametype = ParsePicture(data + o, e - o);
+     cParser::SendPayload(data + s, e - s);
+ 
+     // get next picture offsets
+@@ -120,7 +145,7 @@
+   }
+ 
+   // append last part
+-  ParsePicture(data + o, length - o);
++  m_frametype = ParsePicture(data + o, length - o);
+   cParser::SendPayload(data + s, length - s);
+ }
+ 
+diff -Naur orig/src/demuxer/demuxer_MPEGVideo.h mod/src/demuxer/demuxer_MPEGVideo.h
+--- orig/src/demuxer/demuxer_MPEGVideo.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/demuxer/demuxer_MPEGVideo.h	2015-02-15 19:42:35.000000000 +0100
+@@ -26,6 +26,7 @@
+ #define XVDR_DEMUXER_MPEGVIDEO_H
+ 
+ #include "demuxer_PES.h"
++#include "streaminfo.h"
+ #include <map>
+ 
+ class cParserMPEG2Video : public cParserPES
+@@ -44,7 +45,7 @@
+ 
+   void ParseSequenceStart(unsigned char* data, int length);
+ 
+-  void ParsePicture(unsigned char* data, int length);
++  cStreamInfo::FrameType ParsePicture(unsigned char* data, int length);
+ 
+   int64_t m_pdiff;
+ 
+diff -Naur orig/src/demuxer/parser.c mod/src/demuxer/parser.c
+--- orig/src/demuxer/parser.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/demuxer/parser.c	2015-02-15 19:42:35.000000000 +0100
+@@ -34,6 +34,7 @@
+   m_channels = 0;
+   m_duration = 0;
+   m_headersize = 0;
++  m_frametype = cStreamInfo::ftUNKNOWN;
+ 
+   m_curPTS = DVD_NOPTS_VALUE;
+   m_curDTS = DVD_NOPTS_VALUE;
+@@ -64,11 +65,12 @@
+ void cParser::SendPayload(unsigned char* payload, int length)
+ {
+   sStreamPacket pkt;
+-  pkt.data     = payload;
+-  pkt.size     = length;
+-  pkt.duration = m_duration;
+-  pkt.dts      = m_curDTS;
+-  pkt.pts      = m_curPTS;
++  pkt.data      = payload;
++  pkt.size      = length;
++  pkt.duration  = m_duration;
++  pkt.dts       = m_curDTS;
++  pkt.pts       = m_curPTS;
++  pkt.frametype = m_frametype;
+ 
+   m_demuxer->SendPacket(&pkt);
+ }
+diff -Naur orig/src/demuxer/parser.h mod/src/demuxer/parser.h
+--- orig/src/demuxer/parser.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/demuxer/parser.h	2015-02-15 19:42:35.000000000 +0100
+@@ -60,6 +60,7 @@
+   int m_channels;
+   int m_duration;
+   int m_headersize;
++  cStreamInfo::FrameType m_frametype;
+ 
+   bool m_startup;
+ 
+diff -Naur orig/src/demuxer/streaminfo.c mod/src/demuxer/streaminfo.c
+--- orig/src/demuxer/streaminfo.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/demuxer/streaminfo.c	2015-02-15 19:42:35.000000000 +0100
+@@ -109,7 +109,15 @@
+ }
+ 
+ bool cStreamInfo::ismetaof(const cStreamInfo& rhs) const {
+-  return (m_pid == rhs.m_pid && m_type == rhs.m_type && m_content == rhs.m_content);
++  if(m_content != rhs.m_content) {
++    return false;
++  }
++
++  if(m_type != rhs.m_type && (m_type != stAC3 && rhs.m_type != stEAC3)) {
++    return false;
++  }
++
++  return (m_pid == rhs.m_pid);
+ }
+ 
+ bool cStreamInfo::operator !=(const cStreamInfo& rhs) const {
+@@ -176,41 +184,41 @@
+   m_parsed            = true;
+ }
+ 
+-std::fstream& operator<< (std::fstream& lhs, const cStreamInfo& rhs) {
++MsgPacket& operator<< (MsgPacket& lhs, const cStreamInfo& rhs) {
+   // write item sync
+-  lhs << (int)0xFEFEFEFE << std::endl;
++  lhs.put_U32(0xFEFEFEFE);
+ 
+   // write general data
+-  lhs << rhs.m_type << std::endl;
+-  lhs << rhs.m_content << std::endl;
+-  lhs << rhs.m_pid << std::endl;
+-  lhs << rhs.m_parsed << std::endl;
++  lhs.put_U8(rhs.m_type);
++  lhs.put_U8(rhs.m_content);
++  lhs.put_U16(rhs.m_pid);
++  lhs.put_U8(rhs.m_parsed);
+ 
+   const char* lang = (rhs.m_language[0] == 0 ? "XXX" : rhs.m_language);
+ 
+   // write specific data
+   switch(rhs.m_content) {
+     case cStreamInfo::scAUDIO:
+-      lhs << lang << std::endl;
+-      lhs << (int)rhs.m_audiotype << std::endl;
+-      lhs << rhs.m_channels << std::endl;
+-      lhs << rhs.m_samplerate << std::endl;
+-      lhs << rhs.m_bitrate << std::endl;
+-      lhs << rhs.m_bitspersample << std::endl;
+-      lhs << rhs.m_blockalign << std::endl;
++      lhs.put_String(lang);
++      lhs.put_U8(rhs.m_audiotype);
++      lhs.put_U8(rhs.m_channels);
++      lhs.put_U32(rhs.m_samplerate);
++      lhs.put_U32(rhs.m_bitrate);
++      lhs.put_U8(rhs.m_bitspersample);
++      lhs.put_U32(rhs.m_blockalign);
+       break;
+     case cStreamInfo::scVIDEO:
+-      lhs << rhs.m_fpsscale << std::endl;
+-      lhs << rhs.m_fpsrate << std::endl;
+-      lhs << rhs.m_height << std::endl;
+-      lhs << rhs.m_width << std::endl;
+-      lhs << (unsigned long long)(rhs.m_aspect * 1000000000) << std::endl;
++      lhs.put_U32(rhs.m_fpsscale);
++      lhs.put_U32(rhs.m_fpsrate);
++      lhs.put_U16(rhs.m_height);
++      lhs.put_U16(rhs.m_width);
++      lhs.put_U64((unsigned long long)(rhs.m_aspect * 1000000000));
+       break;
+     case cStreamInfo::scSUBTITLE:
+-      lhs << lang << std::endl;
+-      lhs << rhs.m_subtitlingtype << std::endl;
+-      lhs << rhs.m_compositionpageid << std::endl;
+-      lhs << rhs.m_ancillarypageid << std::endl;
++      lhs.put_String(lang);
++      lhs.put_U8(rhs.m_subtitlingtype);
++      lhs.put_U16(rhs.m_compositionpageid);
++      lhs.put_U16(rhs.m_ancillarypageid);
+       break;
+     case cStreamInfo::scTELETEXT:
+       break;
+@@ -221,10 +229,9 @@
+   return lhs;
+ }
+ 
+-std::fstream& operator>> (std::fstream& lhs, cStreamInfo& rhs) {
+-  unsigned long long a;
++MsgPacket& operator>> (MsgPacket& lhs, cStreamInfo& rhs) {
+   unsigned int check = 0;
+-  lhs >> check;
++  check = lhs.get_U32();
+ 
+   if(check != 0xFEFEFEFE)
+     return lhs;
+@@ -232,16 +239,10 @@
+   rhs.Initialize();
+ 
+   // read general data
+-  int t = 0;
+-  lhs >> t;
+-  rhs.m_type = static_cast<cStreamInfo::Type>(t);
+-
+-  int c = 0;
+-  lhs >> c;
+-  rhs.m_content = static_cast<cStreamInfo::Content>(c);
+-
+-  lhs >> rhs.m_pid;
+-  lhs >> rhs.m_parsed;
++  rhs.m_type = static_cast<cStreamInfo::Type>(lhs.get_U8());
++  rhs.m_content = static_cast<cStreamInfo::Content>(lhs.get_U8());
++  rhs.m_pid = lhs.get_U16();
++  rhs.m_parsed = lhs.get_U8();
+ 
+   // read specific data
+   int at = 0;
+@@ -249,28 +250,26 @@
+ 
+   switch(rhs.m_content) {
+     case cStreamInfo::scAUDIO:
+-      lhs >> lang;
+-      lhs >> at;
+-      rhs.m_audiotype = at;
+-      lhs >> rhs.m_channels;
+-      lhs >> rhs.m_samplerate;
+-      lhs >> rhs.m_bitrate;
+-      lhs >> rhs.m_bitspersample;
+-      lhs >> rhs.m_blockalign;
++      lang = lhs.get_String();
++      rhs.m_audiotype = lhs.get_U8();
++      rhs.m_channels = lhs.get_U8();
++      rhs.m_samplerate = lhs.get_U32();
++      rhs.m_bitrate = lhs.get_U32();
++      rhs.m_bitspersample = lhs.get_U8();
++      rhs.m_blockalign = lhs.get_U32();
+       break;
+     case cStreamInfo::scVIDEO:
+-      lhs >> rhs.m_fpsscale;
+-      lhs >> rhs.m_fpsrate;
+-      lhs >> rhs.m_height;
+-      lhs >> rhs.m_width;
+-      lhs >> a;
+-      rhs.m_aspect = (double)a / 1000000000.0;
++      rhs.m_fpsscale = lhs.get_U32();
++      rhs.m_fpsrate = lhs.get_U32();
++      rhs.m_height = lhs.get_U16();
++      rhs.m_width = lhs.get_U16();
++      rhs.m_aspect = (double)lhs.get_U64() / 1000000000.0;
+       break;
+     case cStreamInfo::scSUBTITLE:
+-      lhs >> lang;
+-      lhs >> rhs.m_subtitlingtype;
+-      lhs >> rhs.m_compositionpageid;
+-      lhs >> rhs.m_ancillarypageid;
++      lang = lhs.get_String();
++      rhs.m_subtitlingtype = lhs.get_U8();
++      rhs.m_compositionpageid = lhs.get_U16();
++      rhs.m_ancillarypageid = lhs.get_U16();
+       break;
+     case cStreamInfo::scTELETEXT:
+       break;
+@@ -278,8 +277,7 @@
+       break;
+   }
+ 
+-  if(lang != "XXX")
+-    strncpy(rhs.m_language, lang.c_str(), 4);
++  strncpy(rhs.m_language, lang.c_str(), sizeof(rhs.m_language));
+ 
+   return lhs;
+ }
+diff -Naur orig/src/demuxer/streaminfo.h mod/src/demuxer/streaminfo.h
+--- orig/src/demuxer/streaminfo.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/demuxer/streaminfo.h	2015-02-15 19:42:35.000000000 +0100
+@@ -29,6 +29,8 @@
+ #include <fstream>
+ #include <string>
+ 
++#include "net/msgpacket.h"
++
+ class cStreamInfo {
+ public:
+ 
+@@ -38,7 +40,8 @@
+     scVIDEO,
+     scAUDIO,
+     scSUBTITLE,
+-    scTELETEXT
++    scTELETEXT,
++    scSTREAMINFO
+   };
+ 
+   enum Type
+@@ -55,6 +58,14 @@
+     stTELETEXT,
+   };
+ 
++  enum FrameType{
++    ftUNKNOWN,
++    ftIFRAME,
++    ftPFRAME,
++    ftBFRAME,
++    ftDFRAME
++  };
++
+ public:
+ 
+   cStreamInfo();
+@@ -118,9 +129,8 @@
+ 
+   friend class cLivePatFilter;
+ 
+-  friend std::fstream& operator<< (std::fstream& lhs, const cStreamInfo& rhs);
+-
+-  friend std::fstream& operator>> (std::fstream& lhs, cStreamInfo& rhs);
++  friend MsgPacket& operator<< (MsgPacket& lhs, const cStreamInfo& rhs);
++  friend MsgPacket& operator>> (MsgPacket& lhs, cStreamInfo& rhs);
+ 
+ private:
+ 
+@@ -128,8 +138,7 @@
+ 
+ };
+ 
+-std::fstream& operator<< (std::fstream& lhs, const cStreamInfo& rhs);
+-
+-std::fstream& operator>> (std::fstream& lhs, cStreamInfo& rhs);
++MsgPacket& operator>> (MsgPacket& lhs, cStreamInfo& rhs);
++MsgPacket& operator<< (MsgPacket& lhs, const cStreamInfo& rhs);
+ 
+ #endif // XVDR_STREAMINFO_H
+diff -Naur orig/src/live/channelcache.c mod/src/live/channelcache.c
+--- orig/src/live/channelcache.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/live/channelcache.c	2015-02-15 19:42:35.000000000 +0100
+@@ -38,6 +38,15 @@
+   if(s.GetPID() == 0 || s.GetType() == cStreamInfo::stNONE)
+     return;
+ 
++  // allow only one video stream
++  if(s.GetContent() == cStreamInfo::scVIDEO) {
++    for(iterator i = begin(); i != end(); i++) {
++      if(i->second.GetContent() == cStreamInfo::scVIDEO && i->second.GetPID() != s.GetPID()) {
++        return;
++      }
++    }
++  }
++
+   cStreamInfo old = (*this)[s.GetPID()];
+   (*this)[s.GetPID()] = s;
+ 
+@@ -134,22 +143,7 @@
+   Unlock();
+ }
+ 
+-void cChannelCache::AddToCache(const cChannel* channel) {
+-  cMutexLock lock(&m_access);
+-
+-  uint32_t uid = CreateChannelUID(channel);
+-
+-  // ignore invalid channels
+-  if(uid == 0)
+-    return;
+-
+-  std::map<uint32_t, cChannelCache>::iterator i = m_cache.find(uid);
+-
+-  // channel already in cache
+-  if(i != m_cache.end())
+-    return;
+-
+-  // create new cache item
++cChannelCache cChannelCache::ItemFromChannel(const cChannel* channel) {
+   cChannelCache item;
+ 
+   // add video stream
+@@ -192,11 +186,45 @@
+    item.AddStream(stream);
+   }
+ 
++  return item;
++}
++
++
++void cChannelCache::AddToCache(const cChannel* channel) {
++  cMutexLock lock(&m_access);
++
++  uint32_t uid = CreateChannelUID(channel);
++
++  // ignore invalid channels
++  if(uid == 0)
++    return;
++
++  std::map<uint32_t, cChannelCache>::iterator i = m_cache.find(uid);
++
++  // valid channel already in cache
++  if(i != m_cache.end()) {
++    if(i->second.size() != 0) {
++      return;
++    }
++  }
++
++  // create new cache item
++  cChannelCache item = ItemFromChannel(channel);
++
+   AddToCache(uid, item);
+ }
+ 
+ cChannelCache cChannelCache::GetFromCache(uint32_t channeluid) {
++  static cChannelCache empty;
++
+   Lock();
++
++  std::map<uint32_t, cChannelCache>::iterator i = m_cache.find(channeluid);
++  if(i == m_cache.end()) {
++    Unlock();
++    return empty;
++  }
++
+   cChannelCache result = m_cache[channeluid];
+   Unlock();
+ 
+@@ -204,86 +232,129 @@
+ }
+ 
+ void cChannelCache::SaveChannelCacheData() {
+-  std::fstream out;
+   cString filename = AddDirectory(XVDRServerConfig.CacheDirectory, CHANNEL_CACHE_FILE".bak");
+ 
+-  out.open(filename, std::ios_base::out | std::ios_base::binary | std::ios_base::trunc);
+-
+-  if(!out.is_open()) {
++  int fd = open(*filename, O_WRONLY | O_CREAT | O_TRUNC, 0666);
++  if(fd == -1) {
++    ERRORLOG("Unable to open channel cache data file (%s) !", (const char*)filename);
+     return;
+   }
+ 
+   Lock();
+ 
+-  out << "V2" << std::endl;
+-  out << m_cache.size() << std::endl;
++  MsgPacket* p = new MsgPacket;
++  p->put_String("V2");
++  p->put_U32(m_cache.size());
+ 
+   for(std::map<uint32_t, cChannelCache>::iterator i = m_cache.begin(); i != m_cache.end(); i++) {
+-    out << i->first << std::endl;
+-    out << i->second;
++    p->put_U32(i->first);
++    *p << i->second;
+   }
+ 
+   Unlock();
+ 
++  p->write(fd, 1000);
++  delete p;
++  close(fd);
++
+   cString filenamenew = AddDirectory(XVDRServerConfig.CacheDirectory, CHANNEL_CACHE_FILE);
+ 
+   rename(filename, filenamenew);
+ }
+ 
+-void cChannelCache::LoadChannelCacheData() {
+-  m_cache.clear();
++void cChannelCache::gc() {
++  cMutexLock lock(&m_access);
++  std::map<uint32_t, cChannelCache> m_newcache;
+ 
+-  // preload cache with VDR channel entries
++  INFOLOG("channel cache garbage collection ...");
++  INFOLOG("before: %zu channels in cache", m_cache.size());
++
++  // remove orphaned cache entries
+   XVDRChannels.Lock(false);
+   cChannels *channels = XVDRChannels.Get();
++
+   for (cChannel *channel = channels->First(); channel; channel = channels->Next(channel)) {
+-    AddToCache(channel);
++    uint32_t uid = CreateChannelUID(channel);
++
++    // ignore invalid channels
++    if(uid == 0)
++      continue;
++
++    // lookup channel in current cache
++    std::map<uint32_t, cChannelCache>::iterator i = m_cache.find(uid);
++    if(i == m_cache.end())
++      continue;
++
++    // add to new cache if it exists
++    m_newcache[uid] = i->second;
+   }
+   XVDRChannels.Unlock();
+ 
++  // regenerate cache
++  m_cache.clear();
++  std::map<uint32_t, cChannelCache>::iterator i;
++
++  for(i = m_newcache.begin(); i != m_newcache.end(); i++) {
++    m_cache[i->first] = i->second;
++  }
++
++  INFOLOG("after: %zu channels in cache", m_cache.size());
++}
++
++void cChannelCache::LoadChannelCacheData() {
++  m_cache.clear();
++
+   // load cache
+-  std::fstream in;
+   cString filename = AddDirectory(XVDRServerConfig.CacheDirectory, CHANNEL_CACHE_FILE);
+ 
+-  in.open(filename, std::ios_base::in | std::ios_base::binary);
+-
+-  if(!in.is_open()) {
++  int fd = open(*filename, O_RDONLY);
++  if(fd == -1) {
+     ERRORLOG("Unable to open channel cache data file (%s) !", (const char*)filename);
+     return;
+   }
+ 
+-  std::string version;
+-  in >> version;
++  MsgPacket* p = MsgPacket::read(fd, 1000);
++  if(p == NULL) {
++    ERRORLOG("Unable to load channel cache data file (%s) !", (const char*)filename);
++    close(fd);
++    return;
++  }
+ 
++  std::string version = p->get_String();
+   if(version != "V2") {
+     INFOLOG("old channel cache detected - skipped");
+     return;
+   }
+ 
+-  int c = 0;
+-  in >> c;
++  uint32_t c = p->get_U32();
+ 
+   // sanity check
+-  if(c > 10000)
++  if(c > 10000) {
++    delete p;
++    close(fd);
+     return;
++  }
+ 
+-  INFOLOG("Loading %i channels from cache", c);
++  INFOLOG("Loading %u channels from cache", c);
+ 
+-  for(int i = 0; i < c; i++) {
+-    int uid = 0;
+-    in >> uid;
++  for(uint32_t i = 0; i < c; i++) {
++    uint32_t uid = p->get_U32();
+ 
+     cChannelCache cache;
+-    in >> cache;
++    *p >> cache;
+ 
+     if(uid != 0)
+       m_cache[uid] = cache;
+   }
+-}
+ 
++  delete p;
++  close(fd);
++
++  gc();
++}
+ 
+-std::fstream& operator<< (std::fstream& lhs, const cChannelCache& rhs) {
+-  lhs << (int)rhs.size() << std::endl;
++MsgPacket& operator<< (MsgPacket& lhs, const cChannelCache& rhs) {
++  lhs.put_U32((int)rhs.size());
+ 
+   for(cChannelCache::const_iterator i = rhs.begin(); i != rhs.end(); i++) {
+     lhs << i->second;
+@@ -292,12 +363,11 @@
+   return lhs;
+ }
+ 
+-std::fstream& operator>> (std::fstream& lhs, cChannelCache& rhs) {
++MsgPacket& operator>> (MsgPacket& lhs, cChannelCache& rhs) {
+   rhs.clear();
+-  int c = 0;
+-  lhs >> c;
++  uint32_t c = lhs.get_U32();
+ 
+-  for(int i = 0; i < c; i++) {
++  for(uint32_t i = 0; i < c; i++) {
+     cStreamInfo s;
+     lhs >> s;
+     rhs.AddStream(s);
+diff -Naur orig/src/live/channelcache.h mod/src/live/channelcache.h
+--- orig/src/live/channelcache.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/live/channelcache.h	2015-02-15 19:42:35.000000000 +0100
+@@ -66,6 +66,10 @@
+ 
+   static cChannelCache GetFromCache(uint32_t channeluid);
+ 
++  static cChannelCache ItemFromChannel(const cChannel* channel);
++
++  static void gc();
++
+ private:
+ 
+   static void Lock() { m_access.Lock(); }
+@@ -79,8 +83,7 @@
+   bool m_bChanged;
+ };
+ 
+-std::fstream& operator<< (std::fstream& lhs, const cChannelCache& rhs);
+-
+-std::fstream& operator>> (std::fstream& lhs, cChannelCache& rhs);
++MsgPacket& operator<< (MsgPacket& lhs, const cChannelCache& rhs);
++MsgPacket& operator>> (MsgPacket& lhs, cChannelCache& rhs);
+ 
+ #endif // XVDR_CHANNELCACHEITEM_H
+diff -Naur orig/src/live/livepatfilter.c mod/src/live/livepatfilter.c
+--- orig/src/live/livepatfilter.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/live/livepatfilter.c	2015-02-15 19:42:35.000000000 +0100
+@@ -23,6 +23,8 @@
+  *
+  */
+ 
++#include <unistd.h>
++
+ #include "vdr/config.h"
+ #include "config/config.h"
+ #include "tools/hash.h"
+@@ -55,10 +57,10 @@
+         "",
+ };
+ 
+-cLivePatFilter::cLivePatFilter(cLiveStreamer *Streamer, const cChannel *Channel)
++cLivePatFilter::cLivePatFilter(cLiveStreamer *Streamer)
+ {
+   DEBUGLOG("cStreamdevPatFilter(\"%s\")", Channel->Name());
+-  m_Channel     = Channel;
++  m_Channel     = NULL;
+   m_Streamer    = Streamer;
+   m_pmtPid      = 0;
+   m_pmtSid      = 0;
+@@ -67,6 +69,11 @@
+ 
+ }
+ 
++void cLivePatFilter::SetChannel(const cChannel *Channel) {
++  cMutexLock lock(&m_Mutex);
++  m_Channel = Channel;
++}
++
+ void cLivePatFilter::GetLanguage(SI::PMT::Stream& stream, char *langs, uint8_t& type)
+ {
+   SI::Descriptor *d;
+@@ -286,6 +293,13 @@
+ 
+ void cLivePatFilter::Process(u_short Pid, u_char Tid, const u_char *Data, int Length)
+ {
++  {
++    cMutexLock lock(&m_Mutex);
++    if(m_Channel == NULL) {
++      return;
++    }
++  }
++
+   if (Pid == 0x00 && Tid == 0x00)
+   {
+     SI::PAT pat(Data, false);
+@@ -297,7 +311,8 @@
+     {
+       if (!assoc.isNITPid())
+       {
+-    	XVDRChannels.Lock(false);
++        cMutexLock lock(&m_Mutex);
++    	  XVDRChannels.Lock(false);
+         const cChannel *Channel =  XVDRChannels.Get()->GetByServiceID(Source(), Transponder(), assoc.getServiceId());
+ 
+         if (Channel && (Channel == m_Channel))
+@@ -338,8 +353,10 @@
+     m_pmtVersion = pmt.getVersionNumber();
+ 
+     // get cached channel data
+-    if(m_ChannelCache.size() == 0)
++    if(m_ChannelCache.size() == 0) {
++      cMutexLock lock(&m_Mutex);
+       m_ChannelCache = cChannelCache::GetFromCache(CreateChannelUID(m_Channel));
++    }
+ 
+     // get all streams and check if there are new (currently unknown) streams
+     SI::PMT::Stream stream;
+@@ -359,9 +376,18 @@
+ 
+     m_Streamer->m_FilterMutex.Lock();
+ 
++    // do not restart the receiver (detach / attach) for VDR >= 2.1.6
++    // VDR's ChannelChange notification will trigger the detach / attach procedure
++    // and also recreate the demuxers
++
++#if VDRVERSNUM < 20106 // VDR VERSION < 2.1.6
++    if(m_Streamer->IsAttached()) {
++      m_Streamer->Detach();
++    }
++
+     // create new stream demuxers
+-    m_Streamer->Detach();
+     cache.CreateDemuxers(m_Streamer);
++#endif
+ 
+     m_Streamer->m_ready = false;
+     INFOLOG("Currently unknown new streams found, requesting stream change");
+@@ -370,10 +396,14 @@
+ 
+     // write changed data back to the cache
+     m_ChannelCache = cache;
+-    cChannelCache::AddToCache(CreateChannelUID(m_Channel), m_ChannelCache);
++    {
++      cMutexLock lock(&m_Mutex);
++      cChannelCache::AddToCache(CreateChannelUID(m_Channel), m_ChannelCache);
++    }
+ 
+-    if(!m_Streamer->IsAttached())
+-      m_Streamer->Attach();
++#if VDRVERSNUM < 20106 // VDR VERSION < 2.1.6
++    m_Streamer->Attach();
++#endif
+ 
+     m_Streamer->m_FilterMutex.Unlock();
+   }
+diff -Naur orig/src/live/livepatfilter.h mod/src/live/livepatfilter.h
+--- orig/src/live/livepatfilter.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/live/livepatfilter.h	2015-02-15 19:42:35.000000000 +0100
+@@ -44,13 +44,15 @@
+   const cChannel *m_Channel;
+   cLiveStreamer  *m_Streamer;
+   cChannelCache   m_ChannelCache;
++  cMutex          m_Mutex;
+ 
+   bool GetStreamInfo(SI::PMT::Stream& stream, cStreamInfo& info);
+   void GetLanguage(SI::PMT::Stream& stream, char *langs, uint8_t& type);
+   virtual void Process(u_short Pid, u_char Tid, const u_char *Data, int Length);
+ 
+ public:
+-  cLivePatFilter(cLiveStreamer *Streamer, const cChannel *Channel);
++  cLivePatFilter(cLiveStreamer *Streamer);
++  void SetChannel(const cChannel *Channel);
+ };
+ 
+ #endif // XVDR_LIVEPATFILTER_H
+diff -Naur orig/src/live/livequeue.c mod/src/live/livequeue.c
+--- orig/src/live/livequeue.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/live/livequeue.c	2015-02-15 19:42:35.000000000 +0100
+@@ -33,7 +33,7 @@
+ cString cLiveQueue::TimeShiftDir = "/video";
+ uint64_t cLiveQueue::BufferSize = 1024*1024*1024;
+ 
+-cLiveQueue::cLiveQueue(int sock) : m_socket(sock), m_readfd(-1), m_writefd(-1)
++cLiveQueue::cLiveQueue(int sock) : m_socket(sock), m_readfd(-1), m_writefd(-1), m_queuesize(400)
+ {
+   m_pause = false;
+ }
+@@ -98,7 +98,7 @@
+   return (m_pause || (!m_pause && m_writefd != -1));
+ }
+ 
+-bool cLiveQueue::Add(MsgPacket* p)
++bool cLiveQueue::Add(MsgPacket* p, cStreamInfo::Content content)
+ {
+   cMutexLock lock(&m_lock);
+ 
+@@ -125,14 +125,24 @@
+     return true;
+   }
+ 
+-  // queue too long ?
+-  if (size() > 100) {
+-    delete p;
+-    return false;
++  // discard teletext / signalinfo packets if the buffer fills up, ...
++  if(size() > (m_queuesize / 2)) {
++    if(content == cStreamInfo::scTELETEXT || content == cStreamInfo::scNONE) {
++      delete p;
++      m_cond.Signal();
++      return true;
++    }
+   }
+ 
+   // add packet to queue
+   push(p);
++
++  // queue too long ?
++  while (size() > m_queuesize) {
++    p = front();
++    pop();
++  }
++
+   m_cond.Signal();
+ 
+   return true;
+@@ -192,7 +202,9 @@
+   close(m_writefd);
+   m_writefd = -1;
+ 
+-  unlink(m_storage);
++  if(*m_storage) {
++    unlink(m_storage);
++  }
+ }
+ 
+ bool cLiveQueue::Pause(bool on)
+diff -Naur orig/src/live/livequeue.h mod/src/live/livequeue.h
+--- orig/src/live/livequeue.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/live/livequeue.h	2015-02-15 19:42:35.000000000 +0100
+@@ -27,6 +27,7 @@
+ 
+ #include <queue>
+ #include <vdr/thread.h>
++#include "demuxer/streaminfo.h"
+ 
+ class MsgPacket;
+ 
+@@ -38,7 +39,7 @@
+ 
+   virtual ~cLiveQueue();
+ 
+-  bool Add(MsgPacket* p);
++  bool Add(MsgPacket* p, cStreamInfo::Content content);
+ 
+   void Request();
+ 
+@@ -54,12 +55,12 @@
+ 
+   static void RemoveTimeShiftFiles();
+ 
++  void Cleanup();
++
+ protected:
+ 
+   void Action();
+ 
+-  void Cleanup();
+-
+   void CloseTimeShift();
+ 
+   int m_socket;
+@@ -76,6 +77,8 @@
+ 
+   cString m_storage;
+ 
++  int m_queuesize;
++
+   static cString TimeShiftDir;
+ 
+   static uint64_t BufferSize;
+diff -Naur orig/src/live/livestreamer.c mod/src/live/livestreamer.c
+--- orig/src/live/livestreamer.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/live/livestreamer.c	2015-02-15 19:42:35.000000000 +0100
+@@ -42,6 +42,7 @@
+ #include "config/config.h"
+ #include "net/msgpacket.h"
+ #include "xvdr/xvdrcommand.h"
++#include "xvdr/xvdrclient.h"
+ #include "tools/hash.h"
+ 
+ #include "livestreamer.h"
+@@ -49,31 +50,37 @@
+ #include "livequeue.h"
+ #include "channelcache.h"
+ 
+-cLiveStreamer::cLiveStreamer(int priority, uint32_t timeout, uint32_t protocolVersion)
++cLiveStreamer::cLiveStreamer(cXVDRClient* parent, const cChannel *channel, int priority)
+  : cThread("cLiveStreamer stream processor")
+  , cRingBufferLinear(MEGABYTE(10), TS_SIZE * 2, true)
+  , cReceiver(NULL, priority)
+- , m_scanTimeout(timeout)
++ , m_scanTimeout(10)
++ , m_parent(parent)
+ {
+-  m_Priority        = priority;
+   m_Device          = NULL;
+   m_Queue           = NULL;
+-  m_PatFilter       = NULL;
+   m_startup         = true;
+   m_SignalLost      = false;
+   m_LangStreamType  = cStreamInfo::stMPEG2AUDIO;
+   m_LanguageIndex   = -1;
+-  m_uid             = 0;
++  m_uid             = CreateChannelUID(channel);
+   m_ready           = false;
+-  m_protocolVersion = protocolVersion;
++  m_protocolVersion = XVDR_PROTOCOLVERSION;
++  m_waitforiframe   = false;
++  m_PatFilter       = NULL;
+ 
+-  m_requestStreamChange = false;
+ 
++  m_requestStreamChange = false;
+ 
+   if(m_scanTimeout == 0)
+     m_scanTimeout = XVDRServerConfig.stream_timeout;
+ 
++  // create send queue
++  m_Queue = new cLiveQueue(m_parent->GetSocket());
++  m_Queue->Start();
++
+   SetTimeouts(0, 10);
++  Start();
+ }
+ 
+ cLiveStreamer::~cLiveStreamer()
+@@ -86,13 +93,19 @@
+   Cancel(5);
+   DEBUGLOG("Done.");
+ 
++  cMutexLock lock(&m_FilterMutex);
++
+   DEBUGLOG("Detaching");
+-  if (m_Device) {
+-    Detach();
++
++  if(m_PatFilter != NULL && m_Device != NULL) {
+     m_Device->Detach(m_PatFilter);
++    delete m_PatFilter;
++    m_PatFilter = NULL;
+   }
+ 
+-  delete m_PatFilter;
++  if (IsAttached()) {
++    Detach();
++  }
+ 
+   for (std::list<cTSDemuxer*>::iterator i = m_Demuxers.begin(); i != m_Demuxers.end(); i++) {
+     if ((*i) != NULL) {
+@@ -104,33 +117,95 @@
+ 
+   delete m_Queue;
+ 
++  m_uid = 0;
++
++  {
++    cMutexLock lock(&m_DeviceMutex);
++    m_Device = NULL;
++  }
++
+   DEBUGLOG("Finished to delete live streamer (took %llu ms)", t.Elapsed());
+ }
+ 
++void cLiveStreamer::SetTimeout(uint32_t timeout) {
++  m_scanTimeout = timeout;
++}
++
++void cLiveStreamer::SetProtocolVersion(uint32_t protocolVersion) {
++  m_protocolVersion = protocolVersion;
++}
++
++void cLiveStreamer::SetWaitForIFrame(bool waitforiframe) {
++  m_waitforiframe = waitforiframe;
++}
++
+ void cLiveStreamer::RequestStreamChange()
+ {
+   m_requestStreamChange = true;
+ }
+ 
++void cLiveStreamer::TryChannelSwitch() {
++  // find channel from uid
++  const cChannel* channel = FindChannelByUID(m_uid);
++
++  // try to switch channel
++  int rc = SwitchChannel(channel);
++
++  // succeeded -> exit
++  if(rc == XVDR_RET_OK) {
++    return;
++  }
++
++  // time limit not exceeded -> relax & exit
++  if(m_last_tick.Elapsed() < (uint64_t)(m_scanTimeout*1000)) {
++    cCondWait::SleepMs(10);
++    return;
++  }
++
++  // push notification after timeout
++  switch(rc) {
++    case XVDR_RET_ENCRYPTED:
++      ERRORLOG("Unable to decrypt channel %i - %s", channel->Number(), channel->Name());
++      m_parent->StatusMessage(tr("Unable to decrypt channel"));
++      break;
++    case XVDR_RET_DATALOCKED:
++      ERRORLOG("Can't get device for channel %i - %s", channel->Number(), channel->Name());
++      m_parent->StatusMessage(tr("All tuners busy"));
++      break;
++    case XVDR_RET_RECRUNNING:
++      ERRORLOG("Active recording blocking channel %i - %s", channel->Number(), channel->Name());
++      m_parent->StatusMessage(tr("Blocked by active recording"));
++      break;
++    case XVDR_RET_ERROR:
++      ERRORLOG("Error switching to channel %i - %s", channel->Number(), channel->Name());
++      m_parent->StatusMessage(tr("Failed to switch"));
++      break;
++  }
++
++  m_last_tick.Set(0);
++}
++
+ void cLiveStreamer::Action(void)
+ {
+   int size = 0;
+   unsigned char *buf = NULL;
+   m_startup = true;
+ 
++  // reset timer
++  m_last_tick.Set(0);
++
++  INFOLOG("streamer thread started.");
++
+   while (Running())
+   {
+     size = 0;
+     buf = Get(size);
+ 
++    // try to switch channel if we aren't attached yet
+     {
+       cMutexLock lock(&m_FilterMutex);
+-      if (!IsAttached())
+-      {
+-        INFOLOG("returning from streamer thread, receiver is no more attached");
+-        Clear();
+-        sendDetach();
+-        return;
++      if (!IsAttached()) {
++        TryChannelSwitch();
+       }
+     }
+ 
+@@ -139,6 +214,18 @@
+       INFOLOG("timeout. signal lost!");
+       sendStatus(XVDR_STREAM_STATUS_SIGNALLOST);
+       m_SignalLost = true;
++
++      // retune to restore
++      cMutexLock lock(&m_FilterMutex);
++      if(m_PatFilter != NULL && m_Device != NULL) {
++        m_Device->Detach(m_PatFilter);
++        delete m_PatFilter;
++        m_PatFilter = NULL;
++      }
++
++      if(IsAttached()) {
++        Detach();
++      }
+     }
+ 
+     // no data
+@@ -157,7 +244,6 @@
+     }
+     Del(used);
+ 
+-
+     while (size >= TS_SIZE)
+     {
+       if(!Running())
+@@ -182,17 +268,25 @@
+       Del(TS_SIZE);
+     }
+   }
++
++  INFOLOG("streamer thread ended.");
+ }
+ 
+-int cLiveStreamer::StreamChannel(const cChannel *channel, int sock)
++int cLiveStreamer::SwitchChannel(const cChannel *channel)
+ {
+-  if (channel == NULL)
+-  {
+-    ERRORLOG("Starting streaming of channel without valid channel");
++  if (channel == NULL) {
+     return XVDR_RET_ERROR;
+   }
+ 
+-  m_uid = CreateChannelUID(channel);
++  if(m_PatFilter != NULL && m_Device != NULL) {
++    m_Device->Detach(m_PatFilter);
++    delete m_PatFilter;
++    m_PatFilter = NULL;
++  }
++
++  if(IsAttached()) {
++    Detach();
++  }
+ 
+   // check if any device is able to decrypt the channel - code taken from VDR
+   int NumUsableSlots = 0;
+@@ -208,29 +302,26 @@
+       }
+     }
+     if (!NumUsableSlots) {
+-      ERRORLOG("Unable to decrypt channel %i - %s", channel->Number(), channel->Name());
+       return XVDR_RET_ENCRYPTED;
+     }
+   }
+ 
+   // get device for this channel
+-  m_Device = cDevice::GetDevice(channel, m_Priority, true);
+-
+-  // try a bit harder if we can't find a device
+-  if(m_Device == NULL)
+-    m_Device = cDevice::GetDevice(channel, m_Priority, false);
+-
+-  INFOLOG("--------------------------------------");
+-  INFOLOG("Channel streaming request: %i - %s", channel->Number(), channel->Name());
++  {
++    cMutexLock lock(&m_DeviceMutex);
++    m_Device = cDevice::GetDevice(channel, LIVEPRIORITY, false);
++  }
+ 
+   if (m_Device == NULL)
+   {
+-    ERRORLOG("Can't get device for channel %i - %s", channel->Number(), channel->Name());
+-
+     // return status "recording running" if there is an active timer
+     time_t now = time(NULL);
+-    if(Timers.GetMatch(now) != NULL)
+-      return XVDR_RET_RECRUNNING;
++
++    for (cTimer *ti = Timers.First(); ti; ti = Timers.Next(ti)) {
++      if (ti->Recording() && ti->Matches(now)) {
++        return XVDR_RET_RECRUNNING;
++      }
++    }
+ 
+     return XVDR_RET_DATALOCKED;
+   }
+@@ -243,35 +334,58 @@
+     return XVDR_RET_ERROR;
+   }
+ 
+-  // create send queue
+-  if (m_Queue == NULL)
+-  {
+-    m_Queue = new cLiveQueue(sock);
+-    m_Queue->Start();
+-  }
+-
+-  m_PatFilter = new cLivePatFilter(this, channel);
+-
+   // get cached demuxer data
+-  DEBUGLOG("Creating demuxers");
+   cChannelCache cache = cChannelCache::GetFromCache(m_uid);
++
++  // channel already in cache
+   if(cache.size() != 0) {
+     INFOLOG("Channel information found in cache");
++  }
++  // channel not found in cache -> add it from vdr
++  else {
++    INFOLOG("adding channel to cache");
++    cChannelCache::AddToCache(channel);
++    cache = cChannelCache::GetFromCache(m_uid);
++  }
++
++  // recheck cache item
++  cChannelCache currentitem = cChannelCache::ItemFromChannel(channel);
++  if(!currentitem.ismetaof(cache)) {
++    INFOLOG("current channel differs from cache item - updating");
++    cache = currentitem;
++    cChannelCache::AddToCache(m_uid, cache);
++  }
++
++  if(cache.size() != 0) {
++    INFOLOG("Creating demuxers");
+     cache.CreateDemuxers(this);
+-    if(!Attach()) {
+-      INFOLOG("Unable to attach receiver !");
+-      return XVDR_RET_DATALOCKED;
+-    }
+-    RequestStreamChange();
+   }
+ 
+-  DEBUGLOG("Starting PAT scanner");
+-  m_Device->AttachFilter(m_PatFilter);
++  RequestStreamChange();
+ 
+   INFOLOG("Successfully switched to channel %i - %s", channel->Number(), channel->Name());
+ 
+-  Start();
++  if(m_waitforiframe) {
++    INFOLOG("Will wait for first I-Frame ...");
++  }
++
++  // clear cached data
++  Clear();
++  m_Queue->Cleanup();
++
++  m_uid = CreateChannelUID(channel);
++
++  if(!Attach()) {
++    INFOLOG("Unable to attach receiver !");
++    return XVDR_RET_DATALOCKED;
++  }
+ 
++  INFOLOG("Starting PAT scanner");
++  m_PatFilter = new cLivePatFilter(this);
++  m_PatFilter->SetChannel(channel);
++  m_Device->AttachFilter(m_PatFilter);
++
++  INFOLOG("done switching.");
+   return XVDR_RET_OK;
+ }
+ 
+@@ -310,6 +424,11 @@
+   // Send stream information as the first packet on startup
+   if (IsStarting() && bReady)
+   {
++    // wait for AV frames (we start with an audio or video packet)
++    if(!(pkt->content == cStreamInfo::scAUDIO || pkt->content == cStreamInfo::scVIDEO)) {
++      return;
++    }
++
+     INFOLOG("streaming of channel started");
+     m_last_tick.Set(0);
+     m_requestStreamChange = true;
+@@ -320,6 +439,13 @@
+   if(m_requestStreamChange)
+     sendStreamChange();
+ 
++  // wait for first I-Frame (if enabled)
++  if(m_waitforiframe && pkt->frametype != cStreamInfo::ftIFRAME) {
++    return;
++  }
++
++  m_waitforiframe = false;
++
+   // if a audio or video packet was sent, the signal is restored
+   if(m_SignalLost && (pkt->content == cStreamInfo::scVIDEO || pkt->content == cStreamInfo::scAUDIO)) {
+     INFOLOG("signal restored");
+@@ -345,18 +471,21 @@
+     packet->put_U32(pkt->duration);
+   }
+ 
++  // write frame type into unused header field clientid
++  packet->setClientID((uint16_t)pkt->frametype);
++
+   // write payload into stream packet
+   packet->put_U32(pkt->size);
+   packet->put_Blob(pkt->data, pkt->size);
+ 
+-  m_Queue->Add(packet);
++  m_Queue->Add(packet, pkt->content);
+   m_last_tick.Set(0);
+ }
+ 
+ void cLiveStreamer::sendDetach() {
+   INFOLOG("sending detach message");
+   MsgPacket* resp = new MsgPacket(XVDR_STREAM_DETACH, XVDR_CHANNEL_STREAM);
+-  m_Queue->Add(resp);
++  m_parent->QueueMessage(resp);
+ }
+ 
+ void cLiveStreamer::sendStreamChange()
+@@ -429,7 +558,7 @@
+ 
+   m_FilterMutex.Unlock();
+ 
+-  m_Queue->Add(resp);
++  m_Queue->Add(resp, cStreamInfo::scSTREAMINFO);
+   m_requestStreamChange = false;
+ }
+ 
+@@ -437,11 +566,17 @@
+ {
+   MsgPacket* packet = new MsgPacket(XVDR_STREAM_STATUS, XVDR_CHANNEL_STREAM);
+   packet->put_U32(status);
+-  m_Queue->Add(packet);
++  m_parent->QueueMessage(packet);
+ }
+ 
+ void cLiveStreamer::RequestSignalInfo()
+ {
++  cMutexLock lock(&m_DeviceMutex);
++
++  if(!Running() || m_Device == NULL) {
++    return;
++  }
++
+   // do not send (and pollute the client with) signal information
+   // if we are paused
+   if(IsPaused())
+@@ -499,8 +634,23 @@
+   resp->put_U32(0);
+   resp->put_U32(0);
+ 
++  // get provider & service information
++  const cChannel* channel = FindChannelByUID(m_uid);
++  if(channel != NULL) {
++    // put in provider name
++    resp->put_String(channel->Provider());
++
++    // what the heck should be the service name ?
++    // using PortalName for now
++    resp->put_String(channel->PortalName());
++  }
++  else {
++    resp->put_String("");
++    resp->put_String("");
++  }
++
+   DEBUGLOG("RequestSignalInfo");
+-  m_Queue->Add(resp);
++  m_Queue->Add(resp, cStreamInfo::scNONE);
+ }
+ 
+ void cLiveStreamer::reorderStreams(int lang, cStreamInfo::Type type)
+@@ -594,24 +744,18 @@
+   if(m_ready)
+     return true;
+ 
+-  bool bAllParsed = true;
++  cMutexLock lock(&m_FilterMutex);
+ 
+   for (std::list<cTSDemuxer*>::iterator i = m_Demuxers.begin(); i != m_Demuxers.end(); i++)
+   {
+-    /*if((*i)->IsParsed() && (*i)->GetContent() == cStreamInfo::scVIDEO) {
+-      bAllParsed = true;
+-      break;
+-    }*/
+     if (!(*i)->IsParsed()) {
+       DEBUGLOG("Stream with PID %i not parsed", (*i)->GetPID());
+-      bAllParsed = false;
+-      break;
++      return false;
+     }
+   }
+ 
+-  m_ready = bAllParsed;
+-
+-  return bAllParsed;
++  m_ready = true;
++  return true;
+ }
+ 
+ bool cLiveStreamer::IsPaused()
+@@ -652,3 +796,15 @@
+   if (p != Length)
+     ReportOverflow(Length - p);
+ }
++
++void cLiveStreamer::ChannelChange(const cChannel* channel) {
++  cMutexLock lock(&m_FilterMutex);
++
++  if(CreateChannelUID(channel) != m_uid || !Running()) {
++    return;
++  }
++
++  INFOLOG("ChannelChange()");
++
++  SwitchChannel(channel);
++}
+diff -Naur orig/src/live/livestreamer.h mod/src/live/livestreamer.h
+--- orig/src/live/livestreamer.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/live/livestreamer.h	2015-02-15 19:42:35.000000000 +0100
+@@ -42,6 +42,7 @@
+ class MsgPacket;
+ class cLivePatFilter;
+ class cLiveQueue;
++class cXVDRClient;
+ 
+ class cLiveStreamer : public cThread
+                     , public cRingBufferLinear
+@@ -65,7 +66,6 @@
+ 
+   cDevice          *m_Device;                       /*!> The receiving device the channel depents to */
+   cLivePatFilter   *m_PatFilter;                    /*!> Filter processor to get changed pid's */
+-  int               m_Priority;                     /*!> The priority over other streamers */
+   std::list<cTSDemuxer*> m_Demuxers;
+   bool              m_startup;
+   bool              m_requestStreamChange;
+@@ -73,12 +73,15 @@
+   cTimeMs           m_last_tick;
+   bool              m_SignalLost;
+   cMutex            m_FilterMutex;
++  cMutex            m_DeviceMutex;
+   int               m_LanguageIndex;
+   cStreamInfo::Type m_LangStreamType;
+   cLiveQueue*       m_Queue;
+   uint32_t          m_uid;
+   bool              m_ready;
+   uint32_t          m_protocolVersion;
++  bool              m_waitforiframe;
++  cXVDRClient*      m_parent;
+ 
+ protected:
+   void Action(void);
+@@ -86,21 +89,31 @@
+ 
+   void RequestStreamChange();
+ 
++  int SwitchChannel(const cChannel *channel);
++
++private:
++
++  void TryChannelSwitch();
++
+ public:
+-  cLiveStreamer(int priority, uint32_t timeout = 0, uint32_t protocolVersion = XVDR_PROTOCOLVERSION);
++  cLiveStreamer(cXVDRClient* parent, const cChannel *channel, int priority);
+   virtual ~cLiveStreamer();
+ 
+-  int StreamChannel(const cChannel *channel, int sock);
+-
+   bool IsReady();
+   bool IsStarting() { return m_startup; }
+   bool IsPaused();
+   bool TimeShiftMode();
+ 
+   void SetLanguage(int lang, cStreamInfo::Type streamtype = cStreamInfo::stAC3);
++  void SetTimeout(uint32_t timeout);
++  void SetProtocolVersion(uint32_t protocolVersion);
++  void SetWaitForIFrame(bool waitforiframe);
++
+   void Pause(bool on);
+   void RequestPacket();
+   void RequestSignalInfo();
++
++  void ChannelChange(const cChannel* Channel);
+ };
+ 
+ #endif  // XVDR_RECEIVER_H
+diff -Naur orig/src/net/socketlock.c mod/src/net/socketlock.c
+--- orig/src/net/socketlock.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/net/socketlock.c	1970-01-01 01:00:00.000000000 +0100
+@@ -1,12 +0,0 @@
+-#include "socketlock.h"
+-
+-cSocketMutex cSocketLock::m_sockets;
+-
+-void cSocketLock::erase(int sock) {
+-  cSocketMutex::iterator i = m_sockets.find(sock);
+-
+-  if(i == m_sockets.end())
+-    return;
+-
+-  m_sockets.erase(sock);
+-}
+diff -Naur orig/src/net/socketlock.h mod/src/net/socketlock.h
+--- orig/src/net/socketlock.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/net/socketlock.h	1970-01-01 01:00:00.000000000 +0100
+@@ -1,30 +0,0 @@
+-#ifndef XVDR_SOCKETLOCK_H
+-#define XVDR_SOCKETLOCK_H
+-
+-#include <map>
+-#include <vdr/thread.h>
+-
+-class cSocketMutex : public std::map<int, cMutex> {
+-};
+-
+-class cSocketLock {
+-public:
+-
+-  cSocketLock(int sock) : m_socket(sock) {
+-    m_sockets[m_socket].Lock();
+-  }
+-
+-  ~cSocketLock() {
+-    m_sockets[m_socket].Unlock();
+-  }
+-
+-  static void erase(int sock);
+-
+-private:
+-
+-  static cSocketMutex m_sockets;
+-
+-  int m_socket;
+-};
+-
+-#endif // XVDR_SOCKETLOCK_H
+diff -Naur orig/src/recordings/recordingscache.c mod/src/recordings/recordingscache.c
+--- orig/src/recordings/recordingscache.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/recordings/recordingscache.c	2015-02-15 19:42:35.000000000 +0100
+@@ -23,16 +23,24 @@
+  */
+ 
+ #include <stdio.h>
++#define __STDC_FORMAT_MACROS // Required for format specifiers
++#include <inttypes.h>
+ 
+ #include "config/config.h"
+ #include "recordingscache.h"
+ #include "tools/hash.h"
+ 
+-cRecordingsCache::cRecordingsCache() : m_changed(false)
+-{
++cRecordingsCache::cRecordingsCache() : m_changed(false) {
++  cMutexLock lock(&m_mutex);
++
+   // initialize cache
+-  for (cRecording *recording = Recordings.First(); recording; recording = Recordings.Next(recording))
+-    Register(recording);
++  Update();
++}
++
++void cRecordingsCache::Update() {
++  for (cRecording *recording = Recordings.First(); recording; recording = Recordings.Next(recording)) {
++    RegisterNoLock(recording);
++  }
+ }
+ 
+ cRecordingsCache::~cRecordingsCache() {
+@@ -46,15 +54,14 @@
+ uint32_t cRecordingsCache::Register(cRecording* recording) {
+   cMutexLock lock(&m_mutex);
+ 
++  return RegisterNoLock(recording);
++}
++
++uint32_t cRecordingsCache::RegisterNoLock(cRecording* recording) {
+   cString filename = recording->FileName();
+   uint32_t uid = CreateStringHash(filename);
+ 
+-  if(m_recordings.find(uid) == m_recordings.end())
+-  {
+-    DEBUGLOG("%s - uid: %08x '%s'", __FUNCTION__, uid, (const char*)filename);
+-    m_recordings[uid].filename = filename;
+-  }
+-
++  m_recordings[uid].filename = filename;
+   return uid;
+ }
+ 
+@@ -68,6 +75,12 @@
+   }
+ 
+   cString filename = m_recordings[uid].filename;
++
++  if(isempty(filename)) {
++    DEBUGLOG("%s - empty filename for uid: %08x !", __FUNCTION__, uid);
++    return NULL;
++  }
++
+   DEBUGLOG("%s - filename: %s", __FUNCTION__, (const char*)filename);
+ 
+   cRecording* r = Recordings.GetByName(filename);
+@@ -139,12 +152,8 @@
+   uint64_t pos = 0;
+   int count = 0;
+ 
+-  while(fscanf(f, "%08x = %llu, %i", &uid, &pos, &count) != EOF)
++  while(fscanf(f, "%08x = %"PRIu64", %i", &uid, &pos, &count) != EOF)
+   {
+-    // skip unknown entries
+-    if(m_recordings.find(uid) == m_recordings.end())
+-      continue;
+-
+     m_recordings[uid].lastplayedposition = pos;
+     m_recordings[uid].playcount = count;
+ 
+@@ -174,7 +183,7 @@
+   for(i = m_recordings.begin(); i != m_recordings.end(); i++)
+   {
+     if(i->second.lastplayedposition != 0 || i->second.playcount != 0)
+-      fprintf(f, "%08x = %llu, %i\n", i->first, i->second.lastplayedposition, i->second.playcount);
++      fprintf(f, "%08x = %"PRIu64", %i\n", i->first, i->second.lastplayedposition, i->second.playcount);
+   }
+ 
+   fclose(f);
+@@ -190,7 +199,21 @@
+   return rc;
+ }
+ 
+-void cRecordingsCache::SetChanged() {
++void cRecordingsCache::gc() {
+   cMutexLock lock(&m_mutex);
+-  m_changed = true;
++
++  Update();
++
++  std::map<uint32_t, struct RecEntry>::iterator i = m_recordings.begin();
++
++  while(i != m_recordings.end()) {
++    if(!isempty(i->second.filename) && Recordings.GetByName(i->second.filename) == NULL) {
++      INFOLOG("removing outdated recording (%08x) '%s' from cache", i->first, (const char*)i->second.filename);
++      std::map<uint32_t, struct RecEntry>::iterator n = i++;
++      m_recordings.erase(n);
++    }
++    else {
++      i++;
++    }
++  }
+ }
+diff -Naur orig/src/recordings/recordingscache.h mod/src/recordings/recordingscache.h
+--- orig/src/recordings/recordingscache.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/recordings/recordingscache.h	2015-02-15 19:42:35.000000000 +0100
+@@ -61,9 +61,13 @@
+ 
+   bool Changed();
+ 
++  void gc();
++
+ protected:
+ 
+-  void SetChanged();
++  void Update();
++
++  uint32_t RegisterNoLock(cRecording* recording);
+ 
+ private:
+ 
+diff -Naur orig/src/recordings/recplayer.c mod/src/recordings/recplayer.c
+--- orig/src/recordings/recplayer.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/recordings/recplayer.c	2015-02-15 19:42:35.000000000 +0100
+@@ -1,9 +1,8 @@
+ /*
+  *      vdr-plugin-xvdr - XVDR server plugin for VDR
+  *
+- *      Copyright (C) 2004-2005 Chris Tallon
+  *      Copyright (C) 2010 Alwin Esch (Team XBMC)
+- *      Copyright (C) 2010, 2011 Alexander Pipelka
++ *      Copyright (C) 2010-2013 Alexander Pipelka
+  *
+  *      https://github.com/pipelka/vdr-plugin-xvdr
+  *
+@@ -33,6 +32,8 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
++#define __STDC_FORMAT_MACROS // Required for format specifiers
++#include <inttypes.h>
+ 
+ #include "config/config.h"
+ 
+@@ -42,19 +43,17 @@
+ 
+ cRecPlayer::cRecPlayer(cRecording* rec)
+ {
+-  m_file          = -1;
+-  m_fileOpen      = -1;
+-  m_rescanInterval    = 2000; // 2000 ms rescan interval
++  m_file = -1;
++  m_fileOpen = -1;
++  m_rescanInterval = 2000; // 2000 ms rescan interval
+   m_recordingFilename = strdup(rec->FileName());
++  m_totalLength = 0;
+ 
+   // FIXME find out max file path / name lengths
+ #if VDRVERSNUM < 10703
+   m_pesrecording = true;
+-  m_indexFile = new cIndexFile(m_recordingFilename, false);
+ #else
+   m_pesrecording = rec->IsPesRecording();
+-  if(m_pesrecording) INFOLOG("recording '%s' is a PES recording", m_recordingFilename);
+-  m_indexFile = new cIndexFile(m_recordingFilename, false, m_pesrecording);
+ #endif
+ 
+   scan();
+@@ -78,17 +77,12 @@
+ void cRecPlayer::scan()
+ {
+   struct stat s;
+-
+-  closeFile();
+-
++  uint64_t len = m_totalLength;
+   m_totalLength = 0;
+-  m_fileOpen    = -1;
+-  m_totalFrames = 0;
+ 
+   cleanup();
+ 
+-  for(int i = 0; ; i++) // i think we only need one possible loop
+-  {
++  for(int i = 0; ; i++) {
+     fileNameFromIndex(i);
+ 
+     if(stat(m_fileName, &s) == -1) {
+@@ -102,11 +96,11 @@
+     m_segments.Append(segment);
+ 
+     m_totalLength += s.st_size;
+-    INFOLOG("File %i found, size: %llu, totalLength now %llu", i, s.st_size, m_totalLength);
+   }
+ 
+-  m_totalFrames = m_indexFile->Last();
+-  INFOLOG("total frames: %u", m_totalFrames);
++  if(len != m_totalLength) {
++    INFOLOG("recording scan: %"PRIu64" bytes", m_totalLength);
++  }
+ }
+ 
+ void cRecPlayer::update()
+@@ -118,10 +112,6 @@
+   DEBUGLOG("%s", __FUNCTION__);
+   m_rescanTime.Set(0);
+ 
+-  // no change ?
+-  if(m_totalFrames == (uint32_t)m_indexFile->Last())
+-    return;
+-
+   scan();
+ }
+ 
+@@ -140,15 +130,23 @@
+   closeFile();
+ 
+   fileNameFromIndex(index);
+-  INFOLOG("openFile called for index %i string:%s", index, m_fileName);
++  INFOLOG("openFile called for index %i (%s)", index, m_fileName);
+ 
++  // first try to open with NOATIME flag
+   m_file = open(m_fileName, O_RDONLY | O_NOATIME);
+-  if (m_file == -1)
+-  {
++
++  // fallback if FS doesn't support NOATIME
++  if (m_file == -1) {
++    m_file = open(m_fileName, O_RDONLY);
++  }
++
++  // failed to open file
++  if (m_file == -1) {
+     INFOLOG("file failed to open");
+     m_fileOpen = -1;
+     return false;
+   }
++
+   m_fileOpen = index;
+   return true;
+ }
+@@ -171,11 +169,6 @@
+   return m_totalLength;
+ }
+ 
+-uint32_t cRecPlayer::getLengthFrames()
+-{
+-  return m_totalFrames;
+-}
+-
+ int cRecPlayer::getBlock(unsigned char* buffer, uint64_t position, int amount)
+ {
+   // dont let the block be larger than 256 kb
+@@ -212,7 +205,7 @@
+ 
+   // seek to position
+   if(lseek(m_file, filePosition, SEEK_SET) == -1) {
+-    ERRORLOG("unable to seek to position: %llu", filePosition);
++    ERRORLOG("unable to seek to position: %"PRIu64, filePosition);
+     return 0;
+   }
+ 
+@@ -236,86 +229,3 @@
+ 
+   return bytes_read;
+ }
+-
+-uint64_t cRecPlayer::positionFromFrameNumber(uint32_t frameNumber)
+-{
+-  if (!m_indexFile) return 0;
+-#if VDRVERSNUM < 10703
+-  unsigned char retFileNumber;
+-  int retFileOffset;
+-  unsigned char retPicType;
+-#else
+-  uint16_t retFileNumber;
+-  off_t retFileOffset;
+-  bool retPicType;
+-#endif
+-  int retLength;
+-
+-
+-  if (!m_indexFile->Get((int)frameNumber, &retFileNumber, &retFileOffset, &retPicType, &retLength))
+-    return 0;
+-
+-  if (retFileNumber >= m_segments.Size()) 
+-    return 0;
+-
+-  uint64_t position = m_segments[retFileNumber]->start + retFileOffset;
+-  return position;
+-}
+-
+-uint32_t cRecPlayer::frameNumberFromPosition(uint64_t position)
+-{
+-  if (!m_indexFile) return 0;
+-
+-  if (position >= m_totalLength)
+-  {
+-    DEBUGLOG("Client asked for data starting past end of recording!");
+-    return m_totalFrames;
+-  }
+-
+-  int segmentNumber = -1;
+-  for(int i = 0; i < m_segments.Size(); i++)
+-  {
+-    if ((position >= m_segments[i]->start) && (position < m_segments[i]->end)) {
+-      segmentNumber = i;
+-      break;
+-    }
+-  }
+-
+-  if(segmentNumber == -1) {
+-    return m_totalFrames;
+-  }
+-
+-  uint32_t askposition = position - m_segments[segmentNumber]->start;
+-  return m_indexFile->Get((int)segmentNumber, askposition);
+-}
+-
+-
+-bool cRecPlayer::getNextIFrame(uint32_t frameNumber, uint32_t direction, uint64_t* rfilePosition, uint32_t* rframeNumber, uint32_t* rframeLength)
+-{
+-  // 0 = backwards
+-  // 1 = forwards
+-
+-  if (!m_indexFile) return false;
+-
+-#if VDRVERSNUM < 10703
+-  unsigned char waste1;
+-  int waste2;
+-#else
+-  uint16_t waste1;
+-  off_t waste2;
+-#endif
+-
+-  int iframeLength;
+-  int indexReturnFrameNumber;
+-
+-  indexReturnFrameNumber = (uint32_t)m_indexFile->GetNextIFrame(frameNumber, (direction==1 ? true : false), &waste1, &waste2, &iframeLength);
+-  DEBUGLOG("GNIF input framenumber:%u, direction=%u, output:framenumber=%i, framelength=%i", frameNumber, direction, indexReturnFrameNumber, iframeLength);
+-
+-  if (indexReturnFrameNumber == -1) return false;
+-
+-  *rfilePosition = positionFromFrameNumber(indexReturnFrameNumber);
+-  *rframeNumber = (uint32_t)indexReturnFrameNumber;
+-  *rframeLength = (uint32_t)iframeLength;
+-
+-  return true;
+-}
+diff -Naur orig/src/recordings/recplayer.h mod/src/recordings/recplayer.h
+--- orig/src/recordings/recplayer.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/recordings/recplayer.h	2015-02-15 19:42:35.000000000 +0100
+@@ -32,8 +32,8 @@
+ #define XVDR_RECPLAYER_H
+ 
+ #include <stdio.h>
+-#include <vdr/recording.h>
+ #include <vdr/tools.h>
++#include <vdr/recording.h>
+ 
+ class cSegment
+ {
+@@ -42,41 +42,50 @@
+     uint64_t end;
+ };
+ 
+-class cRecPlayer
+-{
++class cRecPlayer {
+ public:
++
+   cRecPlayer(cRecording* rec);
++
+   ~cRecPlayer();
++
+   uint64_t getLengthBytes();
+-  uint32_t getLengthFrames();
++
+   int getBlock(unsigned char* buffer, uint64_t position, int amount);
+ 
+   bool openFile(int index);
++
+   void closeFile();
+ 
+   void scan();
+-  void update();
+ 
+-  uint64_t positionFromFrameNumber(uint32_t frameNumber);
+-  uint32_t frameNumberFromPosition(uint64_t position);
+-  bool getNextIFrame(uint32_t frameNumber, uint32_t direction, uint64_t* rfilePosition, uint32_t* rframeNumber, uint32_t* rframeLength);
++  void update();
+ 
+ private:
++
+   void cleanup();
++
+   char* fileNameFromIndex(int index);
++
+   void checkBufferSize(int s);
+ 
+-  char        m_fileName[512];
+-  cIndexFile *m_indexFile;
+-  int         m_file;
+-  int         m_fileOpen;
++  bool m_pesrecording;
++
++  char m_fileName[512];
++
++  int m_file;
++
++  int m_fileOpen;
++
+   cVector<cSegment*> m_segments;
+-  uint64_t    m_totalLength;
+-  uint32_t    m_totalFrames;
+-  char       *m_recordingFilename;
+-  bool        m_pesrecording;
+-  cTimeMs     m_rescanTime;
+-  uint32_t    m_rescanInterval;
++
++  uint64_t m_totalLength;
++
++  char* m_recordingFilename;
++
++  cTimeMs m_rescanTime;
++
++  uint32_t m_rescanInterval;
+ };
+ 
+ #endif // XVDR_RECPLAYER_H
+diff -Naur orig/src/tools/hash.c mod/src/tools/hash.c
+--- orig/src/tools/hash.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/tools/hash.c	2015-02-15 19:42:35.000000000 +0100
+@@ -115,3 +115,30 @@
+   XVDRChannels.Unlock();
+   return result;
+ }
++
++uint32_t CreateTimerUID(const cTimer* timer) {
++  cString timerid = cString::sprintf("%s:%s:%04d:%04d:%s",
++      *timer->Channel()->GetChannelID().ToString(),
++      *timer->PrintDay(timer->Day(), timer->WeekDays(), true),
++      timer->Start(),
++      timer->Stop(),
++      timer->File());
++
++  return CreateStringHash(timerid);
++}
++
++cTimer* FindTimerByUID(uint32_t timerUID) {
++  int numTimers = Timers.Count();
++
++  for (int i = 0; i < numTimers; i++) {
++    cTimer* timer = Timers.Get(i);
++    if (!timer)
++      continue;
++
++    if(CreateTimerUID(timer) == timerUID) {
++      return timer;
++    }
++  }
++
++  return NULL;
++}
+diff -Naur orig/src/tools/hash.h mod/src/tools/hash.h
+--- orig/src/tools/hash.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/tools/hash.h	2015-02-15 19:42:35.000000000 +0100
+@@ -28,12 +28,14 @@
+ 
+ #include <stdint.h>
+ #include <vdr/channels.h>
+-
+-class cChannel;
++#include <vdr/timers.h>
+ 
+ uint32_t CreateChannelUID(const cChannel* channel);
+ const cChannel* FindChannelByUID(uint32_t channelUID);
+ 
++uint32_t CreateTimerUID(const cTimer* channel);
++cTimer* FindTimerByUID(uint32_t timerUID);
++
+ uint32_t CreateStringHash(const cString& string);
+ 
+ #endif // XVDR_HASH_H
+diff -Naur orig/src/xvdr/timerconflicts.c mod/src/xvdr/timerconflicts.c
+--- orig/src/xvdr/timerconflicts.c	1970-01-01 01:00:00.000000000 +0100
++++ mod/src/xvdr/timerconflicts.c	2015-02-15 19:42:35.000000000 +0100
+@@ -0,0 +1,120 @@
++/*
++ *      vdr-plugin-xvdr - XVDR server plugin for VDR
++ *
++ *      Copyright (C) 2013 Alexander Pipelka
++ *
++ *      https://github.com/pipelka/vdr-plugin-xvdr
++ *
++ *  This Program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2, or (at your option)
++ *  any later version.
++ *
++ *  This Program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, write to the Free Software
++ *  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
++ *  http://www.gnu.org/copyleft/gpl.html
++ *
++ */
++
++#include <map>
++#include <set>
++
++#include <vdr/timers.h>
++#include <vdr/device.h>
++#include "config/config.h"
++#include "timerconflicts.h"
++#include "xvdrchannels.h"
++
++int CheckTimerConflicts(cTimer* timer) {
++  XVDRChannels.Lock(false);
++
++  // check for timer conflicts
++  DEBUGLOG("Checking conflicts for: %s", (const char*)timer->ToText(true));
++
++  // order active timers by starttime
++  std::map<time_t, cTimer*> timeline;
++  int numTimers = Timers.Count();
++  for (int i = 0; i < numTimers; i++)
++  {
++    cTimer* t = Timers.Get(i);
++
++    // same timer -> skip
++    if (!t || timer->Index() == i)
++      continue;
++
++    // timer not active -> skip
++    if(!(t->Flags() & tfActive))
++      continue;
++
++    // this one is earlier -> no match
++    if(t->StopTime() <= timer->StartTime())
++      continue;
++
++    // this one is later -> no match
++    if(t->StartTime() >= timer->StopTime())
++      continue;
++
++    timeline[t->StartTime()] = t;
++  }
++
++  std::set<int> transponders;
++  transponders.insert(timer->Channel()->Transponder()); // we also count ourself
++  cTimer* to_check = timer;
++
++  std::map<time_t, cTimer*>::iterator i;
++  for (i = timeline.begin(); i != timeline.end(); i++) {
++    cTimer* t = i->second;
++
++    // this one is earlier -> no match
++    if(t->StopTime() <= to_check->StartTime())
++      continue;
++
++    // this one is later -> no match
++    if(t->StartTime() >= to_check->StopTime())
++      continue;
++
++    // same transponder -> no conflict
++    if(t->Channel()->Transponder() == to_check->Channel()->Transponder())
++      continue;
++
++    // different source -> no conflict
++    if(t->Channel()->Source() != to_check->Channel()->Source())
++      continue;
++
++    DEBUGLOG("Possible conflict: %s", (const char*)t->ToText(true));
++    transponders.insert(t->Channel()->Transponder());
++
++    // now check conflicting timer
++    to_check = t;
++  }
++
++  uint32_t number_of_devices_for_this_channel = 0;
++  for(int i = 0; i < cDevice::NumDevices(); i++) {
++    cDevice* device = cDevice::GetDevice(i);
++    if(device != NULL && device->ProvidesTransponder(timer->Channel()))
++      number_of_devices_for_this_channel++;
++  }
++
++  int cflags = 0;
++  if(transponders.size() > number_of_devices_for_this_channel) {
++    DEBUGLOG("ERROR - Not enough devices");
++    cflags += 2048;
++  }
++  else if(transponders.size() > 1) {
++    DEBUGLOG("Overlapping timers - Will record");
++    cflags += 1024;
++  }
++  else {
++    DEBUGLOG("No conflicts");
++  }
++
++  XVDRChannels.Unlock();
++
++  return cflags;
++}
+diff -Naur orig/src/xvdr/timerconflicts.h mod/src/xvdr/timerconflicts.h
+--- orig/src/xvdr/timerconflicts.h	1970-01-01 01:00:00.000000000 +0100
++++ mod/src/xvdr/timerconflicts.h	2015-02-15 19:42:35.000000000 +0100
+@@ -0,0 +1,30 @@
++/*
++ *      vdr-plugin-xvdr - XVDR server plugin for VDR
++ *
++ *      Copyright (C) 2013 Alexander Pipelka
++ *
++ *      https://github.com/pipelka/vdr-plugin-xvdr
++ *
++ *  This Program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2, or (at your option)
++ *  any later version.
++ *
++ *  This Program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, write to the Free Software
++ *  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
++ *  http://www.gnu.org/copyleft/gpl.html
++ *
++ */
++
++#ifndef XVDR_TIMERCONFLICTS_H
++#define XVDR_TIMERCONFLICTS_H
++
++int CheckTimerConflicts(cTimer* timer);
++
++#endif // XVDR_TIMERCONFLICTS_H
+diff -Naur orig/src/xvdr/xvdrclient.c mod/src/xvdr/xvdrclient.c
+--- orig/src/xvdr/xvdrclient.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/xvdr/xvdrclient.c	2015-02-15 19:42:35.000000000 +0100
+@@ -26,7 +26,8 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <sys/socket.h>
+-#include <set>
++#include <unistd.h>
++#include <sys/types.h>
+ #include <map>
+ #include <string>
+ 
+@@ -43,7 +44,6 @@
+ #include "config/config.h"
+ #include "live/livestreamer.h"
+ #include "net/msgpacket.h"
+-#include "net/socketlock.h"
+ #include "recordings/recordingscache.h"
+ #include "recordings/recplayer.h"
+ #include "tools/hash.h"
+@@ -52,6 +52,7 @@
+ #include "xvdrcommand.h"
+ #include "xvdrclient.h"
+ #include "xvdrserver.h"
++#include "timerconflicts.h"
+ 
+ 
+ static bool IsRadio(const cChannel* channel)
+@@ -83,6 +84,11 @@
+   if(cSource::IsSat(channel->Source()))
+   {
+     hash = channel->Source() & cSource::st_Pos;
++
++#if VDRVERSNUM >= 20101
++    hash = -hash;
++#endif
++
+     if(hash > 0x00007FFF)
+       hash |= 0xFFFF0000;
+ 
+@@ -98,10 +104,10 @@
+   else if(cSource::IsTerr(channel->Source()))
+     hash = 0xEEEE0000;
+   else if(cSource::IsAtsc(channel->Source()))
+-    ; // how should we handle ATSC ?
++    hash = 0xDDDD0000;
+ 
+   cString serviceref = cString::sprintf("1_0_%i_%X_%X_%X_%X_0_0_0",
+-                                  (channel->Vpid() == 0) ? 2 : (channel->Vtype() == 27) ? 19 : 1,
++                                  IsRadio(channel) ? 2 : (channel->Vtype() == 27) ? 19 : 1,
+                                   channel->Sid(),
+                                   channel->Tid(),
+                                   channel->Nid(),
+@@ -121,95 +127,10 @@
+ 
+ void cXVDRClient::PutTimer(cTimer* timer, MsgPacket* p)
+ {
+-  XVDRChannels.Lock(false);
+-
+-  // check for conflicts
+-  DEBUGLOG("Checking conflicts for: %s", (const char*)timer->ToText(true));
+-
+-  // order active timers by starttime
+-  std::map<time_t, cTimer*> timeline;
+-  int numTimers = Timers.Count();
+-  for (int i = 0; i < numTimers; i++)
+-  {
+-    cTimer* t = Timers.Get(i);
+-
+-    // same timer -> skip
+-    if (!t || timer->Index() == i)
+-      continue;
+-
+-    // timer not active -> skip
+-    if(!(t->Flags() & tfActive))
+-      continue;
+-
+-    // this one is earlier -> no match
+-    if(t->StopTime() <= timer->StartTime())
+-      continue;
+-
+-    // this one is later -> no match
+-    if(t->StartTime() >= timer->StopTime())
+-      continue;
+-
+-    timeline[t->StartTime()] = t;
+-  }
+-
+-  std::set<int> transponders;
+-  transponders.insert(timer->Channel()->Transponder()); // we also count ourself
+-  cTimer* to_check = timer;
+-
+-  std::map<time_t, cTimer*>::iterator i;
+-  for (i = timeline.begin(); i != timeline.end(); i++)
+-  {
+-    cTimer* t = i->second;
+-
+-    // this one is earlier -> no match
+-    if(t->StopTime() <= to_check->StartTime())
+-      continue;
++  int flags = CheckTimerConflicts(timer);
+ 
+-    // this one is later -> no match
+-    if(t->StartTime() >= to_check->StopTime())
+-      continue;
+-
+-    // same transponder -> no conflict
+-    if(t->Channel()->Transponder() == to_check->Channel()->Transponder())
+-      continue;
+-
+-    // different source -> no conflict
+-    if(t->Channel()->Source() != to_check->Channel()->Source())
+-      continue;
+-
+-    DEBUGLOG("Possible conflict: %s", (const char*)t->ToText(true));
+-    transponders.insert(t->Channel()->Transponder());
+-
+-    // now check conflicting timer
+-    to_check = t;
+-  }
+-
+-  uint32_t number_of_devices_for_this_channel = 0;
+-  for(int i = 0; i < cDevice::NumDevices(); i++)
+-  {
+-    cDevice* device = cDevice::GetDevice(i);
+-    if(device != NULL && device->ProvidesTransponder(timer->Channel()))
+-      number_of_devices_for_this_channel++;
+-  }
+-
+-  int cflags = 0;
+-  if(transponders.size() > number_of_devices_for_this_channel)
+-  {
+-    DEBUGLOG("ERROR - Not enough devices");
+-    cflags += 2048;
+-  }
+-  else if(transponders.size() > 1)
+-  {
+-    DEBUGLOG("Overlapping timers - Will record");
+-    cflags += 1024;
+-  }
+-  else
+-    DEBUGLOG("No conflicts");
+-
+-  XVDRChannels.Unlock();
+-
+-  p->put_U32(timer->Index()+1);
+-  p->put_U32(timer->Flags() | cflags);
++  p->put_U32(CreateTimerUID(timer));
++  p->put_U32(timer->Flags() | flags);
+   p->put_U32(timer->Priority());
+   p->put_U32(timer->Lifetime());
+   p->put_U32(CreateChannelUID(timer->Channel()));
+@@ -221,14 +142,12 @@
+ }
+ 
+ cMutex cXVDRClient::m_timerLock;
+-cMutex cXVDRClient::m_switchLock;
+ 
+ cXVDRClient::cXVDRClient(int fd, unsigned int id)
+ {
+   m_Id                      = id;
+   m_loggedIn                = false;
+   m_Streamer                = NULL;
+-  m_isStreaming             = false;
+   m_StatusInterfaceEnabled  = false;
+   m_RecPlayer               = NULL;
+   m_req                     = NULL;
+@@ -238,12 +157,15 @@
+   m_LangStreamType          = cStreamInfo::stMPEG2AUDIO;
+   m_channelCount            = 0;
+   m_timeout                 = 3000;
++  m_scanSupported           = false;
+ 
+   m_socket = fd;
+   m_wantfta = true;
+   m_filterlanguage = false;
+ 
+   Start();
++
++  m_scanSupported = m_scanner.Connect();
+ }
+ 
+ cXVDRClient::~cXVDRClient()
+@@ -255,11 +177,22 @@
+   shutdown(m_socket, SHUT_RDWR); 
+   Cancel(10);
+ 
+-  // remove socket lock
+-  cSocketLock::erase(m_socket);
+-
+   // close connection
+   close(m_socket);
++
++  // remove recplayer
++  delete m_RecPlayer;
++
++  // delete messagequeue
++  {
++    cMutexLock lock(&m_queueLock);
++    while(!m_queue.empty()) {
++      MsgPacket* p = m_queue.front();
++      m_queue.pop();
++      delete p;
++    }
++  }
++
+   DEBUGLOG("done");
+ }
+ 
+@@ -267,9 +200,29 @@
+ {
+   bool bClosed(false);
+ 
+-  SetPriority(10);
++  // only root may change the priority
++  if(geteuid() == 0) {
++    SetPriority(10);
++  }
+ 
+   while (Running()) {
++
++    // send pending messages
++    {
++      cMutexLock lock(&m_queueLock);
++
++      while(!m_queue.empty()) {
++        MsgPacket* p = m_queue.front();
++
++        if(!p->write(m_socket, m_timeout)) {
++          break;
++        }
++
++        m_queue.pop();
++        delete p;
++      }
++    }
++
+     m_req = MsgPacket::read(m_socket, bClosed, 1000);
+ 
+     if(bClosed) {
+@@ -292,31 +245,47 @@
+   StopChannelStreaming();
+ }
+ 
+-int cXVDRClient::StartChannelStreaming(const cChannel *channel, uint32_t timeout, int32_t priority)
++int cXVDRClient::StartChannelStreaming(const cChannel *channel, uint32_t timeout, int32_t priority, bool waitforiframe)
+ {
+-  cMutexLock lock(&m_switchLock);
+-  m_Streamer = new cLiveStreamer(priority, timeout, m_protocolVersion);
++  cMutexLock lock(&m_streamerLock);
++
++  m_Streamer = new cLiveStreamer(this, channel, priority);
+   m_Streamer->SetLanguage(m_LanguageIndex, m_LangStreamType);
++  m_Streamer->SetTimeout(timeout);
++  m_Streamer->SetProtocolVersion(m_protocolVersion);
++  m_Streamer->SetWaitForIFrame(waitforiframe);
+ 
+-  return m_Streamer->StreamChannel(channel, m_socket);
++  return XVDR_RET_OK;
+ }
+ 
+ void cXVDRClient::StopChannelStreaming()
+ {
+-  cMutexLock lock(&m_switchLock);
++  cMutexLock lock(&m_streamerLock);
++
+   delete m_Streamer;
+   m_Streamer = NULL;
+-  m_isStreaming = false;
+ }
+ 
+ void cXVDRClient::TimerChange(const cTimer *Timer, eTimerChange Change)
+ {
+-  if(Change != tcAdd && Change != tcDel)
++  // ignore invalid timers
++  if(Timer == NULL) {
+     return;
++  }
+ 
+   TimerChange();
+ }
+ 
++void cXVDRClient::ChannelChange(const cChannel *Channel) {
++  cMutexLock lock(&m_streamerLock);
++
++  if(m_Streamer == NULL) {
++    return;
++  }
++
++  m_Streamer->ChannelChange(Channel);
++}
++
+ void cXVDRClient::TimerChange()
+ {
+   cMutexLock lock(&m_msgLock);
+@@ -324,14 +293,12 @@
+   if (m_StatusInterfaceEnabled)
+   {
+     INFOLOG("Sending timer change request to client #%i ...", m_Id);
+-    cSocketLock locks(m_socket);
+     MsgPacket* resp = new MsgPacket(XVDR_STATUS_TIMERCHANGE, XVDR_CHANNEL_STATUS);
+-    resp->write(m_socket, m_timeout);
+-    delete resp;
++    QueueMessage(resp);
+   }
+ }
+ 
+-void cXVDRClient::ChannelChange()
++void cXVDRClient::ChannelsChanged()
+ {
+   cMutexLock lock(&m_msgLock);
+ 
+@@ -350,10 +317,8 @@
+   else
+     INFOLOG("Client %i : %i channels, %i available - sending request", m_Id, m_channelCount, count);
+ 
+-  cSocketLock locks(m_socket);
+   MsgPacket* resp = new MsgPacket(XVDR_STATUS_CHANNELCHANGE, XVDR_CHANNEL_STATUS);
+-  resp->write(m_socket, m_timeout);
+-  delete resp;
++  QueueMessage(resp);
+ }
+ 
+ void cXVDRClient::RecordingsChange()
+@@ -363,10 +328,8 @@
+   if (!m_StatusInterfaceEnabled)
+     return;
+ 
+-  cSocketLock locks(m_socket);
+   MsgPacket* resp = new MsgPacket(XVDR_STATUS_RECORDINGSCHANGE, XVDR_CHANNEL_STATUS);
+-  resp->write(m_socket, m_timeout);
+-  delete resp;
++  QueueMessage(resp);
+ }
+ 
+ void cXVDRClient::Recording(const cDevice *Device, const char *Name, const char *FileName, bool On)
+@@ -375,7 +338,6 @@
+ 
+   if (m_StatusInterfaceEnabled)
+   {
+-    cSocketLock locks(m_socket);
+     MsgPacket* resp = new MsgPacket(XVDR_STATUS_RECORDING, XVDR_CHANNEL_STATUS);
+ 
+     resp->put_U32(Device->CardIndex());
+@@ -390,8 +352,7 @@
+     else
+       resp->put_String("");
+ 
+-    resp->write(m_socket, m_timeout);
+-    delete resp;
++    QueueMessage(resp);
+   }
+ }
+ 
+@@ -423,15 +384,17 @@
+     else if (strcasecmp(Message, trVDR("Cutter already running - Add to cutting queue?")) == 0) return;
+     else if (strcasecmp(Message, trVDR("No index-file found. Creating may take minutes. Create one?")) == 0) return;
+ 
+-    cSocketLock locks(m_socket);
+-    MsgPacket* resp = new MsgPacket(XVDR_STATUS_MESSAGE, XVDR_CHANNEL_STATUS);
++    StatusMessage(Message);
++  }
++}
+ 
+-    resp->put_U32(0);
+-    resp->put_String(Message);
++void cXVDRClient::StatusMessage(const char *Message) {
++  MsgPacket* resp = new MsgPacket(XVDR_STATUS_MESSAGE, XVDR_CHANNEL_STATUS);
+ 
+-    resp->write(m_socket, m_timeout);
+-    delete resp;
+-  }
++  resp->put_U32(0);
++  resp->put_String(Message);
++
++  QueueMessage(resp);
+ }
+ 
+ bool cXVDRClient::IsChannelWanted(cChannel* channel, bool radio)
+@@ -582,18 +545,6 @@
+       result = processRecStream_Update();
+       break;
+ 
+-    case XVDR_RECSTREAM_POSTOFRAME:
+-      result = processRecStream_PositionFromFrameNumber();
+-      break;
+-
+-    case XVDR_RECSTREAM_FRAMETOPOS:
+-      result = processRecStream_FrameNumberFromPosition();
+-      break;
+-
+-    case XVDR_RECSTREAM_GETIFRAME:
+-      result = processRecStream_GetIFrame();
+-      break;
+-
+ 
+     /** OPCODE 60 - 79: XVDR network functions for channel access */
+     case XVDR_CHANNELS_GETCOUNT:
+@@ -675,6 +626,10 @@
+       result = processRECORDINGS_GetPosition();
+       break;
+ 
++    case XVDR_RECORDINGS_GETMARKS:
++      result = processRECORDINGS_GetMarks();
++      break;
++
+ 
+     /** OPCODE 120 - 139: XVDR network functions for epg access and manipulating */
+     case XVDR_EPG_GETFORCHANNEL:
+@@ -713,11 +668,9 @@
+ 
+   if(result)
+   {
+-    cSocketLock locks(m_socket);
+-    m_resp->write(m_socket, m_timeout);
++    QueueMessage(m_resp);
+   }
+ 
+-  delete m_resp;
+   m_resp = NULL;
+ 
+   return result;
+@@ -728,9 +681,9 @@
+ 
+ bool cXVDRClient::process_Login() /* OPCODE 1 */
+ {
+-  m_protocolVersion      = m_req->getProtocolVersion();
+-  m_compressionLevel     = m_req->get_U8();
+-  const char *clientName = m_req->get_String();
++  m_protocolVersion = m_req->getProtocolVersion();
++  m_compressionLevel = m_req->get_U8();
++  m_clientName = m_req->get_String();
+   const char *language   = NULL;
+ 
+   // get preferred language
+@@ -743,11 +696,11 @@
+ 
+   if (m_protocolVersion > XVDR_PROTOCOLVERSION || m_protocolVersion < 4)
+   {
+-    ERRORLOG("Client '%s' has unsupported protocol version '%u', terminating client", clientName, m_protocolVersion);
++    ERRORLOG("Client '%s' has unsupported protocol version '%u', terminating client", m_clientName.c_str(), m_protocolVersion);
+     return false;
+   }
+ 
+-  INFOLOG("Welcome client '%s' with protocol version '%u'", clientName, m_protocolVersion);
++  INFOLOG("Welcome client '%s' with protocol version '%u'", m_clientName.c_str(), m_protocolVersion);
+ 
+   if(!m_LanguageIndex != -1) {
+     INFOLOG("Preferred language: %s / type: %i", I18nLanguageCode(m_LanguageIndex), (int)m_LangStreamType);
+@@ -847,15 +800,24 @@
+ bool cXVDRClient::processChannelStream_Open() /* OPCODE 20 */
+ {
+   cMutexLock lock(&m_timerLock);
+-  SetPriority(-15);
++
++  // only root may change the priority
++  if(geteuid() == 0) {
++    SetPriority(-15);
++  }
+ 
+   uint32_t uid = m_req->get_U32();
+   int32_t priority = 50;
++  bool waitforiframe = false;
+ 
+   if(!m_req->eop()) {
+     priority = m_req->get_S32();
+   }
+ 
++  if(!m_req->eop()) {
++    waitforiframe = m_req->get_U8();
++  }
++
+   uint32_t timeout = XVDRServerConfig.stream_timeout;
+ 
+   StopChannelStreaming();
+@@ -878,12 +840,15 @@
+   }
+   else
+   {
+-    int status = StartChannelStreaming(channel, timeout, priority);
++    int status = StartChannelStreaming(channel, timeout, priority, waitforiframe);
+ 
+-    if (status == XVDR_RET_OK)
++    if (status == XVDR_RET_OK) {
++      INFOLOG("--------------------------------------");
+       INFOLOG("Started streaming of channel %s (timeout %i seconds, priority %i)", channel->Name(), timeout, priority);
+-    else
++    }
++    else {
+       DEBUGLOG("Can't stream channel %s", channel->Name());
++    }
+ 
+     m_resp->put_U32(status);
+   }
+@@ -930,7 +895,11 @@
+ bool cXVDRClient::processRecStream_Open() /* OPCODE 40 */
+ {
+   cRecording *recording = NULL;
+-  SetPriority(-15);
++
++  // only root may change the priority
++  if(geteuid() == 0) {
++    SetPriority(-15);
++  }
+ 
+   const char* recid = m_req->get_String();
+   unsigned int uid = recid2uid(recid);
+@@ -942,7 +911,7 @@
+     m_RecPlayer = new cRecPlayer(recording);
+ 
+     m_resp->put_U32(XVDR_RET_OK);
+-    m_resp->put_U32(m_RecPlayer->getLengthFrames());
++    m_resp->put_U32(0);
+     m_resp->put_U64(m_RecPlayer->getLengthBytes());
+ 
+ #if VDRVERSNUM < 10703
+@@ -979,7 +948,7 @@
+     return false;
+ 
+   m_RecPlayer->update();
+-  m_resp->put_U32(m_RecPlayer->getLengthFrames());
++  m_resp->put_U32(0);
+   m_resp->put_U64(m_RecPlayer->getLengthBytes());
+ 
+   return true;
+@@ -987,12 +956,6 @@
+ 
+ bool cXVDRClient::processRecStream_GetBlock() /* OPCODE 42 */
+ {
+-  if (m_isStreaming)
+-  {
+-    ERRORLOG("Get block called during live streaming");
+-    return false;
+-  }
+-
+   if (!m_RecPlayer)
+   {
+     ERRORLOG("Get block called when no recording open");
+@@ -1012,59 +975,6 @@
+   return true;
+ }
+ 
+-bool cXVDRClient::processRecStream_PositionFromFrameNumber() /* OPCODE 43 */
+-{
+-  uint64_t retval       = 0;
+-  uint32_t frameNumber  = m_req->get_U32();
+-
+-  if (m_RecPlayer)
+-    retval = m_RecPlayer->positionFromFrameNumber(frameNumber);
+-
+-  m_resp->put_U64(retval);
+-
+-  return true;
+-}
+-
+-bool cXVDRClient::processRecStream_FrameNumberFromPosition() /* OPCODE 44 */
+-{
+-  uint32_t retval   = 0;
+-  uint64_t position = m_req->get_U64();
+-
+-  if (m_RecPlayer)
+-    retval = m_RecPlayer->frameNumberFromPosition(position);
+-
+-  m_resp->put_U32(retval);
+-
+-  return true;
+-}
+-
+-bool cXVDRClient::processRecStream_GetIFrame() /* OPCODE 45 */
+-{
+-  bool success            = false;
+-  uint32_t frameNumber    = m_req->get_U32();
+-  uint32_t direction      = m_req->get_U32();
+-  uint64_t rfilePosition  = 0;
+-  uint32_t rframeNumber   = 0;
+-  uint32_t rframeLength   = 0;
+-
+-  if (m_RecPlayer)
+-    success = m_RecPlayer->getNextIFrame(frameNumber, direction, &rfilePosition, &rframeNumber, &rframeLength);
+-
+-  // returns file position, frame number, length
+-  if (success)
+-  {
+-    m_resp->put_U64(rfilePosition);
+-    m_resp->put_U32(rframeNumber);
+-    m_resp->put_U32(rframeLength);
+-  }
+-  else
+-  {
+-    m_resp->put_U32(0);
+-  }
+-
+-  return true;
+-}
+-
+ int cXVDRClient::ChannelsCount()
+ {
+   XVDRChannels.Lock(false);
+@@ -1297,6 +1207,13 @@
+ {
+   cMutexLock lock(&m_timerLock);
+ 
++  if (Timers.BeingEdited())
++  {
++    ERRORLOG("Unable to delete timer - timers being edited at VDR");
++    m_resp->put_U32(XVDR_RET_DATALOCKED);
++    return true;
++  }
++
+   cTimer *timer;
+   int numTimers = Timers.Count();
+ 
+@@ -1318,6 +1235,13 @@
+ {
+   cMutexLock lock(&m_timerLock);
+ 
++  if (Timers.BeingEdited())
++  {
++    ERRORLOG("Unable to add timer - timers being edited at VDR");
++    m_resp->put_U32(XVDR_RET_DATALOCKED);
++    return true;
++  }
++
+   m_req->get_U32(); // index unused
+   uint32_t flags      = m_req->get_U32() > 0 ? tfActive : tfNone;
+   uint32_t priority   = m_req->get_U32();
+@@ -1385,19 +1309,12 @@
+ {
+   cMutexLock lock(&m_timerLock);
+ 
+-  uint32_t number = m_req->get_U32();
++  uint32_t uid = m_req->get_U32();
+   bool     force  = m_req->get_U32();
+ 
+-  if (number <= 0 || number > (uint32_t)Timers.Count())
+-  {
+-    ERRORLOG("Unable to delete timer - invalid timer identifier");
+-    m_resp->put_U32(XVDR_RET_DATAINVALID);
+-    return true;
+-  }
++  cTimer* timer = FindTimerByUID(uid);
+ 
+-  cTimer *timer = Timers.Get(number-1);
+-  if (timer == NULL)
+-  {
++  if (timer == NULL) {
+     ERRORLOG("Unable to delete timer - invalid timer identifier");
+     m_resp->put_U32(XVDR_RET_DATAINVALID);
+     return true;
+@@ -1412,7 +1329,7 @@
+ 
+   if (timer->Recording() && !force)
+   {
+-    ERRORLOG("Timer \"%i\" is recording and can be deleted (use force=1 to stop it)", number);
++    ERRORLOG("Timer is recording and can be deleted (use force to stop it)");
+     m_resp->put_U32(XVDR_RET_RECRUNNING);
+     return true;
+   }
+@@ -1432,20 +1349,19 @@
+ {
+   cMutexLock lock(&m_timerLock);
+ 
+-  uint32_t index  = m_req->get_U32();
+-  bool active     = m_req->get_U32();
++  uint32_t uid = m_req->get_U32();
++  bool active = m_req->get_U32();
+ 
+-  cTimer *timer = Timers.Get(index - 1);
+-  if (!timer)
+-  {
+-    ERRORLOG("Timer \"%u\" not defined", index);
++  cTimer* timer = FindTimerByUID(uid);
++  if(timer == NULL) {
++    ERRORLOG("Timer not defined");
+     m_resp->put_U32(XVDR_RET_DATAUNKNOWN);
+     return true;
+   }
+ 
+   if(timer->Recording())
+   {
+-    INFOLOG("Will not update timer #%i - currently recording", index);
++    INFOLOG("Will not update timer - currently recording");
+     m_resp->put_U32(XVDR_RET_OK);
+     return true;
+   }
+@@ -1491,6 +1407,7 @@
+ 
+   *timer = t;
+   Timers.SetModified();
++  TimerChange();
+ 
+   m_resp->put_U32(XVDR_RET_OK);
+ 
+@@ -1503,7 +1420,11 @@
+ bool cXVDRClient::processRECORDINGS_GetDiskSpace() /* OPCODE 100 */
+ {
+   int FreeMB;
++#if VDRVERSNUM >= 20102
++  int Percent = cVideoDirectory::VideoDiskSpace(&FreeMB);
++#else
+   int Percent = VideoDiskSpace(&FreeMB);
++#endif
+   int Total   = (FreeMB / (100 - Percent)) * 100;
+ 
+   m_resp->put_U32(Total);
+@@ -1770,6 +1691,53 @@
+   return true;
+ }
+ 
++bool cXVDRClient::processRECORDINGS_GetMarks() {
++#if VDRVERSNUM < 10732
++  m_resp->put_U32(XVDR_RET_NOTSUPPORTED);
++  return true;
++#endif
++
++  const char* recid = m_req->get_String();
++  uint32_t uid = recid2uid(recid);
++
++  cRecording* recording = cRecordingsCache::GetInstance().Lookup(uid);
++
++  if (recording == NULL) {
++    ERRORLOG("GetMarks: recording not found !");
++    m_resp->put_U32(XVDR_RET_DATAUNKNOWN);
++    return true;
++  }
++
++  cMarks marks;
++  if(!marks.Load(recording->FileName(), recording->FramesPerSecond(), recording->IsPesRecording())) {
++    INFOLOG("no marks found for: '%s'", recording->FileName());
++    m_resp->put_U32(XVDR_RET_NOTSUPPORTED);
++    return true;
++  }
++
++  m_resp->put_U32(XVDR_RET_OK);
++
++  m_resp->put_U64(recording->FramesPerSecond() * 10000);
++
++#if VDRVERSNUM >= 10732
++
++  cMark* end = NULL;
++  cMark* begin = NULL;
++
++  while((begin = marks.GetNextBegin(end)) != NULL) {
++    end = marks.GetNextEnd(begin);
++    if(end != NULL) {
++      m_resp->put_String("SCENE");
++      m_resp->put_U64(begin->Position());
++      m_resp->put_U64(end->Position());
++      m_resp->put_String(begin->ToText());
++    }
++  }
++#endif
++
++  return true;
++}
++
+ 
+ /** OPCODE 120 - 139: XVDR network functions for epg access and manipulating */
+ 
+@@ -1893,7 +1861,7 @@
+ 
+ bool cXVDRClient::processSCAN_ScanSupported() /* OPCODE 140 */
+ {
+-  if(m_scanner.Connect()) {
++  if(m_scanSupported) {
+     m_resp->put_U32(XVDR_RET_OK);
+   }
+   else {
+@@ -2080,6 +2048,11 @@
+   resp->put_String(status.transponder);
+ 
+   resp->compress(m_compressionLevel);
+-  resp->write(m_socket, m_timeout);
+-  delete resp;
++
++  QueueMessage(resp);
++}
++
++void cXVDRClient::QueueMessage(MsgPacket* p) {
++  cMutexLock lock(&m_queueLock);
++  m_queue.push(p);
+ }
+diff -Naur orig/src/xvdr/xvdrclient.h mod/src/xvdr/xvdrclient.h
+--- orig/src/xvdr/xvdrclient.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/xvdr/xvdrclient.h	2015-02-15 19:42:35.000000000 +0100
+@@ -29,6 +29,8 @@
+ #include <map>
+ #include <list>
+ #include <string>
++#include <queue>
++#include <set>
+ 
+ #include <vdr/thread.h>
+ #include <vdr/tools.h>
+@@ -55,15 +57,14 @@
+   bool              m_loggedIn;
+   bool              m_StatusInterfaceEnabled;
+   cLiveStreamer    *m_Streamer;
+-  bool              m_isStreaming;
+   cRecPlayer       *m_RecPlayer;
+   MsgPacket        *m_req;
+   MsgPacket        *m_resp;
+   cCharSetConv      m_toUTF8;
+   uint32_t          m_protocolVersion;
+   cMutex            m_msgLock;
++  cMutex            m_streamerLock;
+   static cMutex     m_timerLock;
+-  static cMutex     m_switchLock;
+   int               m_compressionLevel;
+   int               m_LanguageIndex;
+   cStreamInfo::Type m_LangStreamType;
+@@ -73,6 +74,11 @@
+   int               m_channelCount;
+   int               m_timeout;
+   cWirbelScan       m_scanner;
++  bool              m_scanSupported;
++  std::string       m_clientName;
++
++  std::queue<MsgPacket*> m_queue;
++  cMutex                 m_queueLock;
+ 
+ protected:
+ 
+@@ -81,6 +87,7 @@
+   virtual void Action(void);
+ 
+   virtual void TimerChange(const cTimer *Timer, eTimerChange Change);
++  virtual void ChannelChange(const cChannel *Channel);
+   virtual void Recording(const cDevice *Device, const char *Name, const char *FileName, bool On);
+   virtual void OsdStatusMessage(const char *Message);
+ 
+@@ -89,17 +96,22 @@
+   cXVDRClient(int fd, unsigned int id);
+   virtual ~cXVDRClient();
+ 
+-  void ChannelChange();
++  void ChannelsChanged();
+   void RecordingsChange();
+   void TimerChange();
+ 
++  void QueueMessage(MsgPacket* p);
++  void StatusMessage(const char *Message);
++
+   unsigned int GetID() { return m_Id; }
++  const std::string& GetClientName() { return m_clientName; }
++  int GetSocket() { return m_socket; }
+ 
+ protected:
+ 
+   void SetLoggedIn(bool yesNo) { m_loggedIn = yesNo; }
+   void SetStatusInterface(bool yesNo) { m_StatusInterfaceEnabled = yesNo; }
+-  int StartChannelStreaming(const cChannel *channel, uint32_t timeout, int32_t priority);
++  int StartChannelStreaming(const cChannel *channel, uint32_t timeout, int32_t priority, bool waitforiframe = false);
+   void StopChannelStreaming();
+ 
+ private:
+@@ -134,9 +146,6 @@
+   bool processRecStream_Close();
+   bool processRecStream_GetBlock();
+   bool processRecStream_Update();
+-  bool processRecStream_PositionFromFrameNumber();
+-  bool processRecStream_FrameNumberFromPosition();
+-  bool processRecStream_GetIFrame();
+ 
+   bool processCHANNELS_GroupsCount();
+   bool processCHANNELS_ChannelsCount();
+@@ -163,6 +172,7 @@
+   bool processRECORDINGS_SetPlayCount();
+   bool processRECORDINGS_SetPosition();
+   bool processRECORDINGS_GetPosition();
++  bool processRECORDINGS_GetMarks();
+ 
+   bool processEPG_GetForChannel();
+ 
+diff -Naur orig/src/xvdr/xvdrcommand.h mod/src/xvdr/xvdrcommand.h
+--- orig/src/xvdr/xvdrcommand.h	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/xvdr/xvdrcommand.h	2015-02-15 19:42:35.000000000 +0100
+@@ -58,9 +58,6 @@
+ #define XVDR_RECSTREAM_OPEN        40
+ #define XVDR_RECSTREAM_CLOSE       41
+ #define XVDR_RECSTREAM_GETBLOCK    42
+-#define XVDR_RECSTREAM_POSTOFRAME  43
+-#define XVDR_RECSTREAM_FRAMETOPOS  44
+-#define XVDR_RECSTREAM_GETIFRAME   45
+ #define XVDR_RECSTREAM_UPDATE      46
+ 
+ /* OPCODE 60 - 79: XVDR network functions for channel access */
+@@ -87,6 +84,7 @@
+ #define XVDR_RECORDINGS_SETPLAYCOUNT 105
+ #define XVDR_RECORDINGS_SETPOSITION  106
+ #define XVDR_RECORDINGS_GETPOSITION  107
++#define XVDR_RECORDINGS_GETMARKS     108
+ 
+ /* OPCODE 120 - 139: XVDR network functions for epg access and manipulating */
+ #define XVDR_EPG_GETFORCHANNEL     120
+diff -Naur orig/src/xvdr/xvdrserver.c mod/src/xvdr/xvdrserver.c
+--- orig/src/xvdr/xvdrserver.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/src/xvdr/xvdrserver.c	2015-02-15 19:42:35.000000000 +0100
+@@ -142,15 +142,11 @@
+ 
+ cXVDRServer::~cXVDRServer()
+ {
+-  Cancel(-1);
++  Cancel(5);
+   for (ClientList::iterator i = m_clients.begin(); i != m_clients.end(); i++)
+   {
+     delete (*i);
+   }
+-  m_clients.erase(m_clients.begin(), m_clients.end());
+-  Cancel();
+-
+-  cChannelCache::SaveChannelCacheData();
+ 
+   INFOLOG("XVDR Server stopped");
+ }
+@@ -228,7 +224,10 @@
+   struct timeval tv;
+   cTimeMs channelReloadTimer;
+   cTimeMs channelCacheTimer;
++  cTimeMs recordingReloadTimer;
++
+   bool channelReloadTrigger = false;
++  bool recordingReloadTrigger = false;
+   uint64_t channelsHash = 0;
+ 
+   SetPriority(19);
+@@ -292,7 +291,7 @@
+         {
+           INFOLOG("Checking for channel updates ...");
+           for (ClientList::iterator i = m_clients.begin(); i != m_clients.end(); i++)
+-            (*i)->ChannelChange();
++            (*i)->ChannelsChanged();
+           channelReloadTrigger = false;
+           INFOLOG("Done.");
+         }
+@@ -308,21 +307,41 @@
+ 
+       // store channel cache
+       if(m_clients.size() > 0 && channelCacheTimer.Elapsed() >= 60*1000) {
+-        cChannelCache::SaveChannelCacheData();
++        if(!bChanged) {
++          cChannelCache::SaveChannelCacheData();
++        }
+         channelCacheTimer.Set(0);
+       }
+ 
+-      // update recordings
++      // check for recording changes
+       Recordings.StateChanged(recState);
+-      if(recState != recStateOld || cRecordingsCache::GetInstance().Changed())
++      if(recState != recStateOld)
+       {
++        recordingReloadTrigger = true;
++        recordingReloadTimer.Set(2000);
+         INFOLOG("Recordings state changed (%i)", recState);
+-        INFOLOG("Requesting clients to reload recordings list");
+-
+         recStateOld = recState;
++      }
++
++      // update recordings
++      if((recordingReloadTrigger && recordingReloadTimer.TimedOut()) || cRecordingsCache::GetInstance().Changed()) {
++
++        // start gc if reload was triggered
++        if(!cRecordingsCache::GetInstance().Changed()) {
++          INFOLOG("Starting garbage collection in recordings cache");
++          cRecordingsCache::GetInstance().gc();
++        }
++
++        // request clients to reload recordings
++        if(!m_clients.empty()) {
++          INFOLOG("Requesting clients to reload recordings list");
++
++          for (ClientList::iterator i = m_clients.begin(); i != m_clients.end(); i++) {
++            (*i)->RecordingsChange();
++          }
++        }
+ 
+-        for (ClientList::iterator i = m_clients.begin(); i != m_clients.end(); i++)
+-          (*i)->RecordingsChange();
++        recordingReloadTrigger = false;
+       }
+ 
+       // no connect request -> continue waiting
+diff -Naur orig/tools/serviceref.c mod/tools/serviceref.c
+--- orig/tools/serviceref.c	2013-02-21 20:13:55.000000000 +0100
++++ mod/tools/serviceref.c	2015-02-15 19:42:35.000000000 +0100
+@@ -91,7 +91,7 @@
+ 	return stNone;
+ }
+ 
+-std::string CreateServiceReference(char* source, int frequency, char* vpid, int sid, int nid, int tid) {
++std::string CreateServiceReference(char* source, int frequency, char* vpid, char* apid, int sid, int nid, int tid) {
+ 	uint32_t hash;
+ 
+ 	// usually (on Enigma) the frequency is part of the namespace
+@@ -120,10 +120,13 @@
+ 	else if(source[0] == 'T') {
+ 		hash = 0xEEEE0000 | ((frequency / 1000000) & 0xFFFF);
+ 	}
++	else if(source[0] == 'A') {
++		hash = 0xDDDD0000 | ((frequency / 1000) & 0xFFFF);
++	}
+ 
+ 	int type = 1;
+ 
+-	if(strcmp(vpid, "0") == 0 || strcmp(vpid, "1") == 0) {
++	if((strcmp(vpid, "0") == 0 || strcmp(vpid, "1") == 0) && strcmp(apid, "0") != 0) {
+ 		type = 2;
+ 	}
+ 	else {
+@@ -228,7 +231,7 @@
+ 			continue;
+ 		}
+ 
+-		std::cout << name << " - " << CreateServiceReference(source, freq, vpid, sid, nid, tid) << std::endl;
++		std::cout << name << " - " << CreateServiceReference(source, freq, vpid, apid, sid, nid, tid) << std::endl;
+ 
+ 		free(name);
+ 		free(parameters);

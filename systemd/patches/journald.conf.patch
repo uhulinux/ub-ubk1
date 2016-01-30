@@ -1,0 +1,20 @@
+diff -Naur orig/src/journal/journald.conf patched/src/journal/journald.conf
+--- orig/src/journal/journald.conf	2014-03-15 16:24:56.000000000 +0100
++++ patched/src/journal/journald.conf	2015-04-12 02:11:14.427790357 +0200
+@@ -15,12 +15,12 @@
+ #SyncIntervalSec=5m
+ #RateLimitInterval=30s
+ #RateLimitBurst=1000
+-#SystemMaxUse=
++SystemMaxUse=50M
+ #SystemKeepFree=
+-#SystemMaxFileSize=
+-#RuntimeMaxUse=
++SystemMaxFileSize=50M
++RuntimeMaxUse=50M
+ #RuntimeKeepFree=
+-#RuntimeMaxFileSize=
++RuntimeMaxFileSize=50M
+ #MaxRetentionSec=
+ #MaxFileSec=1month
+ #ForwardToSyslog=yes

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mmex_${UB_VERSION}_src.tar.bz2 mmex_${UB_VERSION}/
+	http://download.sourceforge.net/moneymanagerex/files/moneymanagerex/Version%20${UB_VERSION}/

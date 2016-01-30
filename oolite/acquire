@@ -1,0 +1,10 @@
+#!/usr/bin/env dl
+
+${UB_VERSION}.tar.gz oolite-${UB_VERSION}/
+	https://github.com/OoliteProject/oolite/archive/
+
+master.zip oolite-binary-resources-master/ :Resources/Binary
+	https://github.com/OoliteProject/oolite-binary-resources/archive/master.zip
+
+firefox-4.0.source.js-only.tbz mozilla-2.0/js/ :deps/mozilla/
+	http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz

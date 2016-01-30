@@ -1,0 +1,18 @@
+--- a/files/usr/share/cinnamon-session/sessions/cinnamon.session
++++ b/files/usr/share/cinnamon-session/sessions/cinnamon.session
+@@ -1,5 +1,5 @@
+ [Cinnamon Session]
+ Name=Cinnamon
+-RequiredComponents=cinnamon;cinnamon-settings-daemon;cinnamon-screensaver;nemo-autostart;nm-applet;cinnamon-killer-daemon;
++RequiredComponents=cinnamon;cinnamon-settings-daemon;cinnamon-screensaver;nemo-autostart;cinnamon-killer-daemon;polkit-cinnamon-authentication-agent-1;
+ DesktopName=GNOME
+ 
+--- a/files/usr/share/cinnamon-session/sessions/cinnamon2d.session
++++ b/files/usr/share/cinnamon-session/sessions/cinnamon2d.session
+@@ -1,5 +1,5 @@
+ [Cinnamon Session]
+ Name=Cinnamon (Software Rendering)
+-RequiredComponents=cinnamon2d;cinnamon-settings-daemon;cinnamon-screensaver;nemo-autostart;nm-applet;cinnamon-killer-daemon;
++RequiredComponents=cinnamon2d;cinnamon-settings-daemon;cinnamon-screensaver;nemo-autostart;cinnamon-killer-daemon;polkit-cinnamon-authentication-agent-1;
+ DesktopName=GNOME
+ 

@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+# libass old
+
+waf configure --prefix=/usr --disable-libass --enable-libarchive
+waf build

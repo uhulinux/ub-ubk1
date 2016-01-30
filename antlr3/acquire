@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+antlr-${UB_VERSION}-complete.jar
+	http://www.antlr3.org/download/

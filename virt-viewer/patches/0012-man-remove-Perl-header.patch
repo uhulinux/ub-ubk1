@@ -1,0 +1,22 @@
+From 3ef2353f56185575657512a6b5787fb9899d1596 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>
+Date: Thu, 3 Apr 2014 14:21:02 +0200
+Subject: [PATCH] man: remove Perl header
+
+Remove "User Contributed Perl Documentation" header.
+---
+ man/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/man/Makefile.am b/man/Makefile.am
+index d6f709c..13bfb94 100644
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -13,6 +13,6 @@ EXTRA_DIST =					\
+ DISTCLEANFILES = $(man_MANS)
+ 
+ %.1: %.pod
+-	pod2man $< > $@
++	pod2man -c "Virtualization Support" $< > $@
+ 
+ -include $(top_srcdir)/git.mk

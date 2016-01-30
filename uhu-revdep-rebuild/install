@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cp * ${UB_INSTALLDIR}/usr/bin/
+rm ${UB_INSTALLDIR}/usr/bin/README.md

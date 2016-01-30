@@ -1,0 +1,8 @@
+cinnamon-control-center-dev
+cinnamon-desktop-dev
+glib-dev
+gnome-bluetooth-dev
+gnome-common
+intltool
+libnotify-dev
+libxslt-dev

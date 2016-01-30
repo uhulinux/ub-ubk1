@@ -1,0 +1,31 @@
+From 13701ea3777df7febd2f5f2bee33e1b2c16f85df Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Wed, 3 Sep 2014 13:54:47 -0500
+Subject: [PATCH] Make default window size a bit more useful
+
+Currently, windows have a default size of 400x400 pixels. This is a
+strange aspect ratio for a display, and it is also too small to be
+useful for much. Since the default window size determines the initial
+size of newly-enabled displays, it would be nice if we used a slightly
+better size.
+
+(cherry picked from commit a15bbac32001d8fb9eea5e6149df2aa2231f1a4f)
+---
+ src/virt-viewer.xml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/virt-viewer.xml b/src/virt-viewer.xml
+index d489653..849fc7d 100644
+--- a/src/virt-viewer.xml
++++ b/src/virt-viewer.xml
+@@ -4,8 +4,8 @@
+   <object class="GtkAccelGroup" id="accelgroup"/>
+   <object class="GtkWindow" id="viewer">
+     <property name="can_focus">False</property>
+-    <property name="default_width">400</property>
+-    <property name="default_height">400</property>
++    <property name="default_width">1024</property>
++    <property name="default_height">768</property>
+     <signal name="delete-event" handler="virt_viewer_window_delete" swapped="no"/>
+     <child>
+       <object class="GtkVBox" id="viewer-box">

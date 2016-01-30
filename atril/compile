@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+if [ -f autogen.sh ]; then
+	NOCONFIGURE=1 ./autogen.sh
+fi
+
+ub_compile \
+	--with-gtk=2.0 \
+	--with-platform=mate \
+	--without-keyring \
+	--enable-pixbuf \
+	--enable-introspection \
+	--enable-comics

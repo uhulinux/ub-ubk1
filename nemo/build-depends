@@ -1,0 +1,15 @@
+cinnamon-desktop-dev
+dconf-dev
+desktop-file-utils
+exempi-dev
+gnome-common
+gobject-introspection-dev
+gtk-doc
+gvfs
+intltool
+libexif-dev
+libnotify-dev
+libsm-dev
+libxml2-dev
+pygobject2-dev
+python-polib

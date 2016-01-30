@@ -1,0 +1,3 @@
+cmake
+gtk2-dev
+libsoup-dev

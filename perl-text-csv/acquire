@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Text-CSV-${UB_VERSION}.tar.gz Text-CSV-${UB_VERSION}/
+	http://search.mcpan.org/CPAN/authors/id/M/MA/MAKAMAKA/

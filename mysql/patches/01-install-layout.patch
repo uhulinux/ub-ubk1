@@ -1,0 +1,48 @@
+diff -Naur orig/cmake/install_layout.cmake patched/cmake/install_layout.cmake
+--- orig/cmake/install_layout.cmake	2015-10-15 17:43:36.000000000 +0200
++++ patched/cmake/install_layout.cmake	2015-10-18 16:35:40.938838526 +0200
+@@ -169,6 +169,7 @@
+ SET(INSTALL_BINDIR_DEB                  "bin")
+ SET(INSTALL_SBINDIR_DEB                 "sbin")
+ SET(INSTALL_SCRIPTDIR_DEB               "bin")
++SET(INSTALL_SYSCONFDIR_DEB              "/etc")
+ SET(INSTALL_SYSCONF2DIR_DEB             "/etc/mysql/conf.d")
+ #
+ SET(INSTALL_LIBDIR_DEB                  "lib")
+@@ -176,21 +177,21 @@
+ #
+ SET(INSTALL_INCLUDEDIR_DEB              "include/mysql")
+ #
+-SET(INSTALL_DOCDIR_DEB                  "share/doc")
+-SET(INSTALL_DOCREADMEDIR_DEB            "share/doc")
++SET(INSTALL_DOCDIR_DEB                  "share/doc/mysql")
++SET(INSTALL_DOCREADMEDIR_DEB            "share/doc/mysql")
+ SET(INSTALL_MANDIR_DEB                  "share/man")
+ SET(INSTALL_INFODIR_DEB                 "share/info")
+ #
+ SET(INSTALL_SHAREDIR_DEB                "share")
+ SET(INSTALL_MYSQLSHAREDIR_DEB           "share/mysql")
+-SET(INSTALL_MYSQLTESTDIR_DEB            "mysql-test")
+-SET(INSTALL_SQLBENCHDIR_DEB             ".")
++SET(INSTALL_MYSQLTESTDIR_DEB            "share/mysql-test")
++SET(INSTALL_SQLBENCHDIR_DEB             "")
+ SET(INSTALL_SUPPORTFILESDIR_DEB         "share/mysql")
+ #
+ SET(INSTALL_MYSQLDATADIR_DEB            "/var/lib/mysql")
+ 
+ SET(INSTALL_UNIX_ADDRDIR_DEB            "/var/run/mysqld/mysqld.sock")
+-SET(INSTALL_SYSTEMD_UNITDIR_DEB         "/lib/systemd/system")
++SET(INSTALL_SYSTEMD_UNITDIR_DEB         "/usr/lib/systemd/system")
+ 
+ #
+ # SVR4 layout
+diff -Naur orig/support-files/rpm/my.cnf patched/support-files/rpm/my.cnf
+--- orig/support-files/rpm/my.cnf	2015-10-15 17:44:19.000000000 +0200
++++ patched/support-files/rpm/my.cnf	2015-10-18 16:33:18.382131626 +0200
+@@ -7,5 +7,5 @@
+ #
+ # include all files from the config directory
+ #
+-!includedir /etc/my.cnf.d
++!includedir /etc/mysql/conf.d
+ 

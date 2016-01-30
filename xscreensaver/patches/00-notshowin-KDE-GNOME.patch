@@ -1,0 +1,14 @@
+diff -Naur orig/driver/screensaver-properties.desktop.in mod/driver/screensaver-properties.desktop.in
+--- orig/driver/screensaver-properties.desktop.in	2009-10-07 04:26:41.000000000 +0200
++++ mod/driver/screensaver-properties.desktop.in	2015-07-06 15:11:40.004631152 +0200
+@@ -2,7 +2,8 @@
+ Exec=xscreensaver-demo
+ Icon=xscreensaver
+ Terminal=false
+-_Name=Screensaver
+-_Comment=Change screensaver properties
++Name=XScreensaver
++Comment=Change screensaver properties
+ Type=Application
+ Categories=Settings;DesktopSettings;Security;X-XFCE;
++NotShowIn=KDE;GNOME;

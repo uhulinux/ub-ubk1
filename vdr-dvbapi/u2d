@@ -1,0 +1,1 @@
+urllist https://github.com/manio/vdr-plugin-dvbapi/releases/ | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1

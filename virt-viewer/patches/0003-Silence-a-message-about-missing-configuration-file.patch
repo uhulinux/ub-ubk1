@@ -1,0 +1,31 @@
+From ffe0c92907cc949cb9cc4e5d00b5f2b377ec251d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>
+Date: Wed, 12 Mar 2014 14:43:28 +0100
+Subject: [PATCH] Silence a message about missing configuration file
+
+Do not print a g_debug() error when the configuration file is missing,
+unless given the --debug option.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1006737
+---
+ src/virt-viewer-app.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/virt-viewer-app.c b/src/virt-viewer-app.c
+index 0cdf95a..4f31812 100644
+--- a/src/virt-viewer-app.c
++++ b/src/virt-viewer-app.c
+@@ -1575,8 +1575,11 @@ virt_viewer_app_init (VirtViewerApp *self)
+ 
+     g_key_file_load_from_file(self->priv->config, self->priv->config_file,
+                     G_KEY_FILE_KEEP_COMMENTS|G_KEY_FILE_KEEP_TRANSLATIONS, &error);
+-    if (error)
+-        g_debug("Couldn't load configuration: %s", error->message);
++
++    if (g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
++        DEBUG_LOG("No configuration file %s", self->priv->config_file);
++    else if (error)
++        g_warning("Couldn't load configuration: %s", error->message);
+ 
+     g_clear_error(&error);
+ 

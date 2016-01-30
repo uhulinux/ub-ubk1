@@ -1,0 +1,35 @@
+#!/usr/bin/env dl
+
+quake2-r${UB_VERSION/r//}.tar.gz quake2-r${UB_VERSION}/
+  http://www.icculus.org/quake2/files/
+
+q2-3.20-x86-full-ctf.exe
+  ftp://ftp.fu-berlin.de/pc/msdos/games/idgames/idstuff/quake2/
+  ftp://ftp.idsoftware.com/idstuff/quake2/
+
+maxpak.pak
+  http://www.icculus.org/quake2/files/
+
+pak10.pak
+  http://www.icculus.org/quake2/files/
+
+pak11.pak
+  http://www.icculus.org/quake2/files/
+
+pak12.pak
+  http://www.icculus.org/quake2/files/
+
+pak13.pak
+  http://www.icculus.org/quake2/files/
+
+pak14.pak
+  http://www.icculus.org/quake2/files/
+
+pak16.pak
+  http://www.icculus.org/quake2/files/
+
+pak17.pak
+  http://www.icculus.org/quake2/files/
+
+pak19.pak
+  http://www.icculus.org/quake2/files/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pam-${UB_VERSION}.tar.gz pam-${UB_VERSION}/
+	http://pypi.python.org/packages/source/p/pam/

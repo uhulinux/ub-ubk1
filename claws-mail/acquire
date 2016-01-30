@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+claws-mail-${UB_VERSION/~/-}.tar.xz claws-mail-${UB_VERSION/~/-}/
+	http://www.claws-mail.org/releases/
+#	http://downloads.sourceforge.net/project/claws-mail/Claws%20Mail/${UB_VERSION}/

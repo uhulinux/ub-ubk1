@@ -1,0 +1,10 @@
+alsa-lib-dev
+cmake
+glu-dev
+groff
+libice-dev
+libjpeg-dev
+libsm-dev
+libxext-dev
+man-db
+zlib-dev

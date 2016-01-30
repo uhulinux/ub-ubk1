@@ -1,0 +1,49 @@
+From c1e2e3603e5d76e6fd78a8a2d26d42acc1afd99f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>
+Date: Tue, 10 Jun 2014 17:37:33 +0200
+Subject: [PATCH] Use a custom log handler to silence debug messages
+
+On RHEL6, with old glib, all g_log messages are printed.
+Filter the messages with a custom handler instead.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1107518
+
+util: fix glib_check_version() condition
+
+glib_check_version() returns NULL if version is higher or equal.
+---
+ src/virt-viewer-util.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/src/virt-viewer-util.c b/src/virt-viewer-util.c
+index 9deddad..464a3d0 100644
+--- a/src/virt-viewer-util.c
++++ b/src/virt-viewer-util.c
+@@ -273,6 +273,18 @@ gulong virt_viewer_signal_connect_object(gpointer instance,
+     return ctx->handler_id;
+ }
+ 
++static void log_handler(const gchar *log_domain,
++                        GLogLevelFlags log_level,
++                        const gchar *message,
++                        gpointer unused_data)
++{
++    if (glib_check_version(2, 32, 0) != NULL)
++        if (log_level >= G_LOG_LEVEL_DEBUG && !doDebug)
++            return;
++
++    g_log_default_handler(log_domain, log_level, message, unused_data);
++}
++
+ void virt_viewer_util_init(const char *appname)
+ {
+ #ifdef G_OS_WIN32
+@@ -305,6 +317,8 @@ void virt_viewer_util_init(const char *appname)
+     textdomain(GETTEXT_PACKAGE);
+ 
+     g_set_application_name(appname);
++
++    g_log_set_default_handler(log_handler, NULL);
+ }
+ 
+ static gchar *

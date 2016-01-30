@@ -1,0 +1,9 @@
+diff -Naur orig/src/CMakeLists.txt mod/src/CMakeLists.txt
+--- orig/src/CMakeLists.txt	2015-10-01 11:47:37.000000000 +0200
++++ mod/src/CMakeLists.txt	2015-11-03 17:08:40.519012768 +0100
+@@ -74,4 +74,4 @@
+ 
+ include(ECMGeneratePriFile)
+ ecm_generate_pri_file(BASE_NAME KScreen LIB_NAME KF5Screen DEPS "core" FILENAME_VAR PRI_FILENAME)
+-install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
++install(FILES ${PRI_FILENAME} DESTINATION /usr/share/qt5/mkspecs)

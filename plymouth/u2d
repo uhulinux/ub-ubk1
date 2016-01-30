@@ -1,0 +1,1 @@
+urllist http://www.freedesktop.org/software/plymouth/releases/  | splitver '^plymouth-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

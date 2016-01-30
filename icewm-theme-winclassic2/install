@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+rm -rf Thinblack2
+mkdir -p $UB_INSTALLDIR/usr/share/icewm/themes
+cp -r * $UB_INSTALLDIR/usr/share/icewm/themes/

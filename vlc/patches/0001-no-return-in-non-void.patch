@@ -1,0 +1,48 @@
+diff --git a/modules/access/mms/mmstu.c b/modules/access/mms/mmstu.c
+index 15586cc..c1a16b7 100644
+--- a/modules/access/mms/mmstu.c
++++ b/modules/access/mms/mmstu.c
+@@ -1572,6 +1572,7 @@ static void *KeepAliveThread( void *p_data )
+         msleep( 10 * CLOCK_FREQ );
+     }
+     assert(0);
++    return NULL; /* dead code, but the compiler can't know */
+ }
+ 
+ static void KeepAliveStart( access_t *p_access )
+diff --git a/modules/stream_out/rtp.c b/modules/stream_out/rtp.c
+index 613f6c0..32e346f 100644
+--- a/modules/stream_out/rtp.c
++++ b/modules/stream_out/rtp.c
+@@ -1507,6 +1507,7 @@ static void *rtp_listen_thread( void *data )
+     }
+ 
+     assert( 0 );
++    return NULL; /* dead code, but the compiler can't know */
+ }
+ 
+ 
+diff --git a/src/misc/events.c b/src/misc/events.c
+index e3b1ee0..20480c2 100644
+--- a/src/misc/events.c
++++ b/src/misc/events.c
+@@ -265,6 +265,7 @@ int vlc_event_attach( vlc_event_manager_t * p_em,
+     FOREACH_END()
+     /* Unknown event = BUG */
+     assert( 0 );
++    return 0;
+ }
+ 
+ /**
+diff --git a/src/video_output/display.c b/src/video_output/display.c
+index c743836..9b778ea 100644
+--- a/src/video_output/display.c
++++ b/src/video_output/display.c
+@@ -555,6 +555,7 @@ static void *VoutDisplayEventKeyDispatch(void *data)
+ 
+         vlc_restorecancel(cancel);
+     }
++    return NULL;
+ }
+ 
+ static void VoutDisplayEventKey(vout_display_t *vd, int key)

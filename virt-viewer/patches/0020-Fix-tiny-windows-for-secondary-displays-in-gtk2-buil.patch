@@ -1,0 +1,37 @@
+From bd816fb6695f6e88521cff37faf12b061283d246 Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Tue, 10 Jun 2014 11:31:25 -0500
+Subject: [PATCH] Fix tiny windows for secondary displays in gtk2 build
+
+When enabling a new display on linux guests, the new window would be tiny
+(50x50) and zoomed way out. This was caused by the fact that when the display
+widget received the 'map' event, it unconditionally cleared the 'dirty' flag,
+which meant that it would only request 50x50 size. This behavior was intended to
+fix a bug on the windows client which wprevented windows from resized smaller
+than the guest display resolution. Unfortunately, due to the timing of the 'map'
+and allocate events, the widget became very small.
+
+Instead of clearing the 'dirty' flag directly when a widget is mapped, we
+now queue a resize event, which will guarantee that the widget attains its
+desired size and will then clear its dirty flag (allowing it to be resized).
+Testing on windows indicates that this fix still solves the 'unshrinkable
+window' problem while also preventing the tiny secondary display bug.
+
+Resolves: rhbz#1104064
+---
+ src/virt-viewer-display.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/virt-viewer-display.c b/src/virt-viewer-display.c
+index f298bb0..48b7090 100644
+--- a/src/virt-viewer-display.c
++++ b/src/virt-viewer-display.c
+@@ -454,7 +454,7 @@ virt_viewer_display_map(GtkWidget *widget)
+ {
+     GTK_WIDGET_CLASS(virt_viewer_display_parent_class)->map(widget);
+ 
+-    virt_viewer_display_make_resizable(VIRT_VIEWER_DISPLAY(widget));
++    virt_viewer_display_queue_resize(VIRT_VIEWER_DISPLAY(widget));
+ }
+ 
+ #else

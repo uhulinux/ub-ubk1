@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+ub_install
+mkdir -p ${UB_INSTALLDIR}/usr/share/MYGUI
+mkdir -p ${UB_INSTALLDIR}/usr/share/doc/MYGUI
+cd build
+cp lib/libCommon.so ${UB_INSTALLDIR}/usr/lib/
+cp -r Docs/html ${UB_INSTALLDIR}/usr/share/doc/MYGUI

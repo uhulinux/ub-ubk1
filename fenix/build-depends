@@ -1,0 +1,7 @@
+libX11-dev
+libmikmod-dev
+libpng-dev
+libungif-dev
+libvorbis-dev
+sdl-mixer-dev
+smpeg-dev

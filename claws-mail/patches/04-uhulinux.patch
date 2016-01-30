@@ -1,0 +1,13 @@
+diff -Naur orig/src/textview.c patched/src/textview.c
+--- orig/src/textview.c	2015-12-15 02:48:05.000000000 +0100
++++ patched/src/textview.c	2015-12-19 06:13:16.297394977 +0100
+@@ -2268,7 +2268,8 @@
+ 				procheader_headername_equal(header->name,
+ 						 "X-Newsreader")) &&
+ 				(strstr(header->body, "Claws Mail") != NULL ||
+-				strstr(header->body, "Sylpheed-Claws") != NULL)) {
++				strstr(header->body, "Sylpheed-Claws")) &&
++				strstr(header->body, "uhu-linux") != NULL) {
+ 			gtk_text_buffer_get_end_iter (buffer, &iter);
+ 			gtk_text_buffer_insert_with_tags_by_name
+ 				(buffer, &iter, header->body, -1,

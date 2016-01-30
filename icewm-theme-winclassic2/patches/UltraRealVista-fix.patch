@@ -1,0 +1,156 @@
+diff -Naur orig/UltraRealVista/default.theme mod/UltraRealVista/default.theme
+--- orig/UltraRealVista/default.theme	2007-12-10 04:52:18.000000000 +0100
++++ mod/UltraRealVista/default.theme	2014-12-21 19:58:26.000000000 +0100
+@@ -111,6 +111,7 @@
+ 
+ TaskBarClockLeds=0
+ DesktopBackgroundCenter = 1
++DesktopBackgroundScaled=1
+ DesktopBackgroundImage = 'img22.jpg'
+ TaskBarShowNetStatus=0
+ TaskBarShowCPUStatus=0
+diff -Naur orig/UltraRealVista/frameAB.xpm mod/UltraRealVista/frameAB.xpm
+--- orig/UltraRealVista/frameAB.xpm	2007-12-09 20:50:34.000000000 +0100
++++ mod/UltraRealVista/frameAB.xpm	2014-12-21 19:53:41.000000000 +0100
+@@ -1,12 +1,12 @@
+ /* XPM */
+ static char * frameAB_xpm[] = {
+-"1 4 5 1",
++"2 4 5 1",
+ " 	c None",
+ ".	c #A2C1E0",
+ "+	c #A5EFFF",
+ "@	c #61ABCE",
+ "#	c #082648",
+-".",
+-"+",
+-"@",
+-"#"};
++"..",
++"++",
++"@@",
++"##"};
+diff -Naur orig/UltraRealVista/titleAT.xpm mod/UltraRealVista/titleAT.xpm
+--- orig/UltraRealVista/titleAT.xpm	2007-12-09 20:25:58.000000000 +0100
++++ mod/UltraRealVista/titleAT.xpm	2014-12-21 19:55:15.000000000 +0100
+@@ -1,6 +1,6 @@
+ /* XPM */
+-static char * titleAP_xpm[] = {
+-"1 23 13 1",
++static char * titleAT_xpm[] = {
++"2 23 13 1",
+ " 	c None",
+ ".	c #29325B",
+ "+	c #E6F2FF",
+@@ -14,26 +14,26 @@
+ "-	c #D1D8F5",
+ ";	c #DCE5FF",
+ ">	c #A9BAE5",
+-".",
+-"+",
+-"@",
+-"#",
+-"@",
+-"$",
+-"%",
+-"%",
+-"$",
+-"@",
+-"#",
+-"#",
+-"#",
+-"#",
+-"#",
+-"&",
+-"&",
+-"*",
+-"&",
+-"=",
+-"-",
+-";",
+-">"};
++"..",
++"++",
++"@@",
++"##",
++"@@",
++"$$",
++"%%",
++"%%",
++"$$",
++"@@",
++"##",
++"##",
++"##",
++"##",
++"##",
++"&&",
++"&&",
++"**",
++"&&",
++"==",
++"--",
++";;",
++">>"};
+diff -Naur orig/UltraRealVista/titleIT.xpm mod/UltraRealVista/titleIT.xpm
+--- orig/UltraRealVista/titleIT.xpm	2007-12-09 20:25:58.000000000 +0100
++++ mod/UltraRealVista/titleIT.xpm	2014-12-21 19:55:48.000000000 +0100
+@@ -1,6 +1,6 @@
+ /* XPM */
+-static char * titleAP_xpm[] = {
+-"1 23 13 1",
++static char * titleIT_xpm[] = {
++"2 23 13 1",
+ " 	c None",
+ ".	c #29325B",
+ "+	c #E6F2FF",
+@@ -14,26 +14,26 @@
+ "-	c #D1D8F5",
+ ";	c #DCE5FF",
+ ">	c #A9BAE5",
+-".",
+-"+",
+-"@",
+-"#",
+-"@",
+-"$",
+-"%",
+-"%",
+-"$",
+-"@",
+-"#",
+-"#",
+-"#",
+-"#",
+-"#",
+-"&",
+-"&",
+-"*",
+-"&",
+-"=",
+-"-",
+-";",
+-">"};
++"..",
++"++",
++"@@",
++"##",
++"@@",
++"$$",
++"%%",
++"%%",
++"$$",
++"@@",
++"##",
++"##",
++"##",
++"##",
++"##",
++"&&",
++"&&",
++"**",
++"&&",
++"==",
++"--",
++";;",
++">>"};

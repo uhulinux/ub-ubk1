@@ -1,0 +1,12 @@
+diff -Naur orig/test/demo.menu mod/test/demo.menu
+--- orig/test/demo.menu	2006-08-25 08:58:33.000000000 +0200
++++ mod/test/demo.menu	2009-04-03 13:20:57.000000000 +0200
+@@ -51,7 +51,7 @@
+ 	@u:fast && slow widgets:fast_slow
+ 	@u:inactive:inactive
+ 
+-@main:Fluid\n(UI design tool):../fluid/fluid valuators.fl
++@main:Fluid\n(UI design tool):fluid valuators.fl
+ 
+ @main:Cool\nDemos:@e
+ 	@e:X Color\nBrowser:colbrowser

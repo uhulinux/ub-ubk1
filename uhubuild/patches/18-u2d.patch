@@ -1,0 +1,11 @@
+diff -Naur orig/src/uhubuild-u2d.sh patched/src/uhubuild-u2d.sh
+--- orig/src/uhubuild-u2d.sh	2014-05-20 17:13:31.000000000 +0200
++++ patched/src/uhubuild-u2d.sh	2015-06-16 00:18:10.762673154 +0200
+@@ -80,6 +80,5 @@
+ 
+ function u2dpypi() {
+ 	project="$1"
+-	first=${project:0:1}
+-	urllist "https://pypi.python.org/packages/source/$first/$project/" | parsever | sort -V | tail -n 1
++	urllist "https://pypi.python.org/simple/$project/" | sed 's/#.*//' | parsever | sort -V | tail -n 1
+ }

@@ -1,0 +1,14 @@
+diff -Naur orig/extra/kipi-plugins/common/libkipiplugins/tools/imageio/kpwriteimage.cpp mod/extra/kipi-plugins/common/libkipiplugins/tools/imageio/kpwriteimage.cpp
+--- orig/extra/kipi-plugins/common/libkipiplugins/tools/imageio/kpwriteimage.cpp	2015-06-15 11:29:05.000000000 +0200
++++ mod/extra/kipi-plugins/common/libkipiplugins/tools/imageio/kpwriteimage.cpp	2015-08-05 14:14:30.263769913 +0200
+@@ -181,8 +181,8 @@
+     cinfo.comp_info[2].v_samp_factor = 1;
+ 
+     // bug #154273: use 99 compression level instead 100 to reduce output JPEG file size.
+-    jpeg_set_quality(&cinfo, 99, true);
+-    jpeg_start_compress(&cinfo, true);
++    jpeg_set_quality(&cinfo, 99, boolean(true));
++    jpeg_start_compress(&cinfo, boolean(true));
+ 
+     // Write ICC color profile.
+     if (!d->iccProfile.isEmpty())

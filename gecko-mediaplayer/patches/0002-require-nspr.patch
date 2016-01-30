@@ -1,0 +1,25 @@
+Description: require nspr to build plugin
+  firefox-dev in quantal only provides the npapi headers so we need nspr to
+  build the plugin. (Perhaps firefox-dev should provide npapi-sdk.pc instead?
+  Then this patch wouldn't be required.)
+Author: Jason Conti <jason.conti@gmail.com>
+Last-Update: 2012-09-24
+Bug-Ubuntu: https://launchpad.net/bugs/1055639
+
+---
+ configure.in |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/configure.in
++++ b/configure.in
+@@ -80,8 +80,9 @@ PKG_CHECK_MODULES(GECKO, [libxul-unstabl
+ fi
+ 
+ if test "$GECKO_CFLAGS" = ""; then
+-PKG_CHECK_MODULES(GECKO, [mozilla-plugin mozilla-xpcom],[ AC_MSG_NOTICE([Using mozilla])
++PKG_CHECK_MODULES(GECKO, [mozilla-plugin],[ AC_MSG_NOTICE([Using mozilla])
+     ],[AC_MSG_WARN([mozilla-plugin not found, trying another])])
++    require_nspr="yes"
+ fi
+ 
+ if test "$GECKO_CFLAGS" = ""; then

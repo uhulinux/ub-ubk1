@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+mkdir -p $UB_INSTALLDIR/usr/share/estickflashtool/hexfiles
+cp hexfiles/* $UB_INSTALLDIR/usr/share/estickflashtool/hexfiles/
+cp eStickFlash *.png *.xml $UB_INSTALLDIR/usr/share/estickflashtool/

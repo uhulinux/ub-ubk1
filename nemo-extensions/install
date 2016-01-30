@@ -1,0 +1,21 @@
+#!/bin/sh -eux
+
+extensions="nemo-seahorse nemo-preview nemo-fileroller nemo-python nemo-share"
+for progs in ${extensions};do
+cd $progs
+ub_install
+if [ "$progs" == "nemo-seahorse" ];then
+make -C tool DESTDIR=$UB_INSTALLDIR uninstall
+rm -rf $UB_INSTALLDIR/usr/share/{GConf,glib-2.0,nemo-seahorse}
+fi
+cd ..
+done
+
+docdir=$UB_INSTALLDIR/usr/share/doc/Packages
+mkdir -p $docdir/{nemo-fileroller,nemo-seahorse,nemo-share,nemo-python,nemo-preview}
+cp nemo-fileroller/{COPYING,README} $docdir/nemo-fileroller/
+cp nemo-seahorse/{COPYING,ChangeLog,README,THANKS} $docdir/nemo-seahorse/
+cp nemo-seahorse/{AUTHORS,ChangeLog,COPYING,README} $docdir/nemo-share/
+cp nemo-python/{AUTHORS,ChangeLog,COPYING,README} $docdir/nemo-python/
+cp nemo-preview/{AUTHORS,COPYING,README} $docdir/nemo-preview/
+

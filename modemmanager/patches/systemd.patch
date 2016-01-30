@@ -1,0 +1,10 @@
+diff -Naur orig/data/ModemManager.service.in patched/data/ModemManager.service.in
+--- orig/data/ModemManager.service.in	2014-01-30 17:17:45.000000000 +0100
++++ patched/data/ModemManager.service.in	2015-08-02 19:32:47.348838891 +0200
+@@ -1,6 +1,5 @@
+ [Unit]
+ Description=Modem Manager
+-After=syslog.target
+ 
+ [Service]
+ Type=dbus

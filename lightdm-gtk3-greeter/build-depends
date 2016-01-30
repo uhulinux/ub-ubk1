@@ -1,0 +1,5 @@
+gnome-doc-utils
+gobject-introspection-dev
+gtk-dev
+intltool
+lightdm-dev

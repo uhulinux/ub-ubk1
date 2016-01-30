@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Heroes
+Icon=heroes
+Exec=padsp heroes -F
+Terminal=false
+StartupNotify=true
+Categories=Game;ArcadeGame;

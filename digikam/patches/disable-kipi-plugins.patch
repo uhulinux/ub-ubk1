@@ -1,0 +1,9 @@
+diff -Naur orig/extra/CMakeLists.txt mod/extra/CMakeLists.txt
+--- orig/extra/CMakeLists.txt	2015-06-15 11:29:05.000000000 +0200
++++ mod/extra/CMakeLists.txt	2015-08-05 18:21:52.910808288 +0200
+@@ -39,4 +39,4 @@
+     MACRO_OPTIONAL_ADD_SUBDIRECTORY(libkvkontakte)
+ endif()
+ 
+-add_subdirectory(kipi-plugins)
++#add_subdirectory(kipi-plugins)

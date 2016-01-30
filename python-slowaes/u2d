@@ -1,0 +1,1 @@
+urllist http://pypi.python.org/packages/source/s/slowaes | splitver '^slowaes-([0-9.ab]+).tar.gz$' | sort -V | tail -n 1

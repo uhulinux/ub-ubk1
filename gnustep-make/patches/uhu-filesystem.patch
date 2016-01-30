@@ -1,0 +1,78 @@
+diff -Naur orig/FilesystemLayouts/fhs-system mod/FilesystemLayouts/fhs-system
+--- orig/FilesystemLayouts/fhs-system	2008-01-17 03:24:05.000000000 +0100
++++ mod/FilesystemLayouts/fhs-system	2013-08-14 15:26:36.000000000 +0200
+@@ -7,9 +7,9 @@
+ # filesystem) and you are compiling gnustep-make so that it can be
+ # shipped as part of a distribution/basic system installation.
+ #
+-# We put SYSTEM into /usr, and LOCAL into /usr/local.  This allows you
++# We put SYSTEM into /usr, and LOCAL into /usr/lib/gnustep.  This allows you
+ # to make a distinction between stuff that you ship as part of your
+-# system/distribution, and the local stuff installed by the local
++# system/distribution, and the lib/gnustep stuff installed by the lib/gnustep
+ # sysadmin.  Make sure you compile/install all packages that you want
+ # to go into /usr (ie, be part of the system/distribution) using 
+ # 'make install GNUSTEP_INSTALLATION_DOMAIN=SYSTEM'
+@@ -19,8 +19,8 @@
+ # your Unix).  Don't forget to run ldconfig after installing a
+ # library!
+ #
+-# Your users will need to also add /usr/local/bin to PATH and
+-# /usr/local/lib to /etc/ld.so.conf (or equivalent for your Unix) if
++# Your users will need to also add /usr/lib/gnustep/bin to PATH and
++# /usr/lib/gnustep/lib to /etc/ld.so.conf (or equivalent for your Unix) if
+ # they want to use the LOCAL domain.  To use gnustep-make in this
+ # environment, use 'export
+ # GNUSTEP_MAKEFILES=/usr/share/GNUstep/Makefiles'
+@@ -52,29 +52,29 @@
+ GNUSTEP_SYSTEM_DOC_MAN=/share/man
+ GNUSTEP_SYSTEM_DOC_INFO=/share/info
+ 
+-GNUSTEP_NETWORK_APPS=/local/lib/GNUstep/Applications
+-GNUSTEP_NETWORK_ADMIN_APPS=/local/lib/GNUstep/Applications
++GNUSTEP_NETWORK_APPS=/lib/gnustep/lib/GNUstep/Applications
++GNUSTEP_NETWORK_ADMIN_APPS=/lib/gnustep/lib/GNUstep/Applications
+ GNUSTEP_NETWORK_WEB_APPS=/lib/GNUstep/WebApplications
+-GNUSTEP_NETWORK_TOOLS=/local/bin
+-GNUSTEP_NETWORK_ADMIN_TOOLS=/local/sbin
+-GNUSTEP_NETWORK_LIBRARY=/local/lib/GNUstep
+-GNUSTEP_NETWORK_HEADERS=/local/include
+-GNUSTEP_NETWORK_LIBRARIES=/local/lib
+-GNUSTEP_NETWORK_DOC=/local/share/GNUstep/Documentation
+-GNUSTEP_NETWORK_DOC_MAN=/local/share/man
+-GNUSTEP_NETWORK_DOC_INFO=/local/share/info
+-
+-GNUSTEP_LOCAL_APPS=/local/lib/GNUstep/Applications
+-GNUSTEP_LOCAL_ADMIN_APPS=/local/lib/GNUstep/Applications
+-GNUSTEP_LOCAL_WEB_APPS=/local/lib/GNUstep/WebApplications
+-GNUSTEP_LOCAL_TOOLS=/local/bin
+-GNUSTEP_LOCAL_ADMIN_TOOLS=/local/sbin
+-GNUSTEP_LOCAL_LIBRARY=/local/lib/GNUstep
+-GNUSTEP_LOCAL_HEADERS=/local/include
+-GNUSTEP_LOCAL_LIBRARIES=/local/lib
+-GNUSTEP_LOCAL_DOC=/local/share/GNUstep/Documentation
+-GNUSTEP_LOCAL_DOC_MAN=/local/share/man
+-GNUSTEP_LOCAL_DOC_INFO=/local/share/info
++GNUSTEP_NETWORK_TOOLS=/lib/gnustep/bin
++GNUSTEP_NETWORK_ADMIN_TOOLS=/lib/gnustep/sbin
++GNUSTEP_NETWORK_LIBRARY=/lib/gnustep/lib/GNUstep
++GNUSTEP_NETWORK_HEADERS=/lib/gnustep/include
++GNUSTEP_NETWORK_LIBRARIES=/lib/gnustep/lib
++GNUSTEP_NETWORK_DOC=/lib/gnustep/share/GNUstep/Documentation
++GNUSTEP_NETWORK_DOC_MAN=/lib/gnustep/share/man
++GNUSTEP_NETWORK_DOC_INFO=/lib/gnustep/share/info
++
++GNUSTEP_LOCAL_APPS=/lib/gnustep/lib/GNUstep/Applications
++GNUSTEP_LOCAL_ADMIN_APPS=/lib/gnustep/lib/GNUstep/Applications
++GNUSTEP_LOCAL_WEB_APPS=/lib/gnustep/lib/GNUstep/WebApplications
++GNUSTEP_LOCAL_TOOLS=/lib/gnustep/bin
++GNUSTEP_LOCAL_ADMIN_TOOLS=/lib/gnustep/sbin
++GNUSTEP_LOCAL_LIBRARY=/lib/gnustep/lib/GNUstep
++GNUSTEP_LOCAL_HEADERS=/lib/gnustep/include
++GNUSTEP_LOCAL_LIBRARIES=/lib/gnustep/lib
++GNUSTEP_LOCAL_DOC=/lib/gnustep/share/GNUstep/Documentation
++GNUSTEP_LOCAL_DOC_MAN=/lib/gnustep/share/man
++GNUSTEP_LOCAL_DOC_INFO=/lib/gnustep/share/info
+ 
+ GNUSTEP_USER_DIR_APPS=GNUstep/Applications
+ GNUSTEP_USER_DIR_ADMIN_APPS=GNUstep/Applications/Admin

@@ -1,0 +1,16 @@
+diff -Naur orig/resources.qrc mod/resources.qrc
+--- orig/resources.qrc	2015-04-27 14:07:43.000000000 +0200
++++ mod/resources.qrc	2015-10-16 14:38:01.441308063 +0200
+@@ -11,9 +11,9 @@
+         <file alias="help/about4.html">data/help/about4.html</file>
+         <file alias="help/about5.html">data/help/about5.html</file>
+         <file alias="help/about6.html">data/help/about6.html</file>
+-        <file alias="i18n/chessx_de.qm">i18n/chessx_de.qm</file>
+-        <file alias="i18n/chessx_fr.qm">i18n/chessx_fr.qm</file>
+-        <file alias="i18n/chessx_it.qm">i18n/chessx_it.qm</file>
++        <file alias="i18n/chessx_de.ts">i18n/chessx_de.ts</file>
++        <file alias="i18n/chessx_fr.ts">i18n/chessx_fr.ts</file>
++        <file alias="i18n/chessx_it.ts">i18n/chessx_it.ts</file>
+         <file alias="images/accept.png">data/images/accept.png</file>
+         <file alias="images/annotate.png">data/images/annotate.png</file>
+         <file alias="images/arrow_green.png">data/images/arrow_green.png</file>

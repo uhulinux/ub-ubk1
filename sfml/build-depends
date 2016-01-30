@@ -1,0 +1,9 @@
+cmake
+doxygen
+freetype2-dev
+glew-dev
+libjpeg-dev
+libsndfile-dev
+libxrandr-dev
+mesa-dev
+openal-dev

@@ -1,0 +1,57 @@
+From 5a494f14bce402634f0e6a65046a31e0cbda8783 Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Fri, 31 Jan 2014 14:48:35 -0600
+Subject: [PATCH] Don't set VNC display to ready until vnc is initialized
+
+We were setting the show_hint to READY as soon as we got the vnc-connected
+signal.  But there may be an authentication step between vnc-connected and
+vnc-initialized.  In this case, we switch to an empty black display during the
+authentication step instead of showing the 'waiting for display N' status.
+
+(cherry picked from commit 51c3a0decf21e9cfc200e20ad6635f39262efdf9)
+---
+ src/virt-viewer-display-vnc.c | 10 ++++++++++
+ src/virt-viewer-session-vnc.c |  2 --
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/virt-viewer-display-vnc.c b/src/virt-viewer-display-vnc.c
+index 8a9564a..1f7c11b 100644
+--- a/src/virt-viewer-display-vnc.c
++++ b/src/virt-viewer-display-vnc.c
+@@ -113,6 +113,14 @@ virt_viewer_display_vnc_key_ungrab(VncDisplay *vnc G_GNUC_UNUSED,
+ }
+ 
+ static void
++virt_viewer_display_vnc_initialized(VncDisplay *vnc G_GNUC_UNUSED,
++                                    VirtViewerDisplay *display)
++{
++    virt_viewer_display_set_show_hint(display,
++                                      VIRT_VIEWER_DISPLAY_SHOW_HINT_READY, TRUE);
++}
++
++static void
+ virt_viewer_display_vnc_send_keys(VirtViewerDisplay* display,
+                                   const guint *keyvals,
+                                   int nkeyvals)
+@@ -195,6 +203,8 @@ virt_viewer_display_vnc_new(VirtViewerSessionVnc *session,
+                      G_CALLBACK(virt_viewer_display_vnc_key_grab), display);
+     g_signal_connect(display->priv->vnc, "vnc-keyboard-ungrab",
+                      G_CALLBACK(virt_viewer_display_vnc_key_ungrab), display);
++    g_signal_connect(display->priv->vnc, "vnc-initialized",
++                     G_CALLBACK(virt_viewer_display_vnc_initialized), display);
+ 
+     return GTK_WIDGET(display);
+ }
+diff --git a/src/virt-viewer-session-vnc.c b/src/virt-viewer-session-vnc.c
+index 3f4c90d..7c31f87 100644
+--- a/src/virt-viewer-session-vnc.c
++++ b/src/virt-viewer-session-vnc.c
+@@ -100,8 +100,6 @@ virt_viewer_session_vnc_connected(VncDisplay *vnc G_GNUC_UNUSED,
+ {
+     GtkWidget *display = virt_viewer_display_vnc_new(session, session->priv->vnc);
+     g_signal_emit_by_name(session, "session-connected");
+-    virt_viewer_display_set_show_hint(VIRT_VIEWER_DISPLAY(display),
+-                                      VIRT_VIEWER_DISPLAY_SHOW_HINT_READY, TRUE);
+     virt_viewer_session_add_display(VIRT_VIEWER_SESSION(session),
+                                     VIRT_VIEWER_DISPLAY(display));
+ }

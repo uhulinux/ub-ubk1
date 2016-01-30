@@ -1,0 +1,40 @@
+From 1d01f3c9f4a2bbed427d860d4e46c861f6c7de09 Mon Sep 17 00:00:00 2001
+From: Christophe Fergeau <cfergeau@redhat.com>
+Date: Mon, 7 Apr 2014 09:07:05 +0200
+Subject: [PATCH] man: Use nicer link to GPLv2
+
+As pointed out by Eric Blake,
+https://www.gnu.org/licenses/gpl-2.0.html and
+https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+both point to the same location, with the former being nicer to read.
+---
+ man/remote-viewer.pod | 2 +-
+ man/virt-viewer.pod   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/man/remote-viewer.pod b/man/remote-viewer.pod
+index f65101b..63216e3 100644
+--- a/man/remote-viewer.pod
++++ b/man/remote-viewer.pod
+@@ -285,7 +285,7 @@ Report bugs to the mailing list C<http://www.redhat.com/mailman/listinfo/virt-to
+ 
+ Copyright (C) 2012-2014 Red Hat, Inc., and various contributors.
+ This is free software. You may redistribute copies of it under the terms of the GNU General
+-Public License C<https://www.gnu.org/licenses/old-licenses/gpl-2.0.html>. There is NO WARRANTY,
++Public License C<https://www.gnu.org/licenses/gpl-2.0.html>. There is NO WARRANTY,
+ to the extent permitted by law.
+ 
+ =head1 SEE ALSO
+diff --git a/man/virt-viewer.pod b/man/virt-viewer.pod
+index e766712..8b52377 100644
+--- a/man/virt-viewer.pod
++++ b/man/virt-viewer.pod
+@@ -150,7 +150,7 @@ Report bugs to the mailing list C<http://www.redhat.com/mailman/listinfo/virt-to
+ 
+ Copyright (C) 2007-2014 Red Hat, Inc., and various contributors.
+ This is free software. You may redistribute copies of it under the terms of the GNU General
+-Public License C<https://www.gnu.org/licenses/old-licenses/gpl-2.0.html>. There is NO WARRANTY,
++Public License C<https://www.gnu.org/licenses/gpl-2.0.html>. There is NO WARRANTY,
+ to the extent permitted by law.
+ 
+ =head1 SEE ALSO

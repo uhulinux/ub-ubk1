@@ -1,0 +1,21 @@
+diff -Naur orig/Makefile mod/Makefile
+--- orig/Makefile	2004-02-29 05:52:00.000000000 +0100
++++ mod/Makefile	2012-10-02 23:17:03.000000000 +0200
+@@ -6,7 +6,7 @@
+ 
+ 
+ CFLAGS =	-Wall -Wno-switch -march=pentium -mcpu=pentium -DDEBUG \
+-		-DDATA_PREFIX=\"data/\" -DFILE_SEPARATOR=\"/\" -DARGS \
++		-DDATA_PREFIX=\"/usr/share/games/vorton/data/\" -DFILE_SEPARATOR=\"/\" -DARGS \
+ 		-Isrc -Isrc/SDL_flic -Isrc/SFont `sdl-config --cflags` \
+ 		-ffast-math -fno-common -ffreestanding -fno-builtin \
+ 		-fno-exceptions -fstrict-aliasing -O3 \
+@@ -16,7 +16,7 @@
+ #CFLAGS+=-DUSE_FIXED_POINT
+ 
+ 
+-LDFLAGS =	`sdl-config --libs` -lSDL_mixer -lSDL_image \
++LDFLAGS =	`sdl-config --libs` -lSDL_mixer -lSDL_image -lm\
+ 
+ 
+ .CFILES	=	src/vorton.c \

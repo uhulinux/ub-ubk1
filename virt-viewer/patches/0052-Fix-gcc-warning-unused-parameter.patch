@@ -1,0 +1,26 @@
+From 77a43a8efdf6a02f25ff7ea8c0560b84f5ce66e4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fabiano=20Fid=C3=AAncio?= <fidencio@redhat.com>
+Date: Fri, 8 Aug 2014 16:27:31 +0200
+Subject: [PATCH] Fix gcc warning (unused-parameter)
+
+Related: rhbz#1129477
+(cherry picked from commit 4767491532da81acddf48ade32eb7b8b621952b5)
+---
+ src/virt-viewer-window.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/virt-viewer-window.c b/src/virt-viewer-window.c
+index 668a980..c8d5722 100644
+--- a/src/virt-viewer-window.c
++++ b/src/virt-viewer-window.c
+@@ -1055,7 +1055,9 @@ virt_viewer_window_menu_help_guest_details(GtkWidget *menu G_GNUC_UNUSED,
+ }
+ 
+ G_MODULE_EXPORT void
+-virt_viewer_window_guest_details_response(GtkDialog *dialog, gint response_id, gpointer user_data)
++virt_viewer_window_guest_details_response(GtkDialog *dialog,
++                                          gint response_id,
++                                          gpointer user_data G_GNUC_UNUSED)
+ {
+     if (response_id == GTK_RESPONSE_CLOSE)
+         gtk_widget_hide(GTK_WIDGET(dialog));

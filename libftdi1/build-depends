@@ -1,0 +1,6 @@
+boost-dev
+cmake
+doxygen
+libusb-compat-dev
+python-dev
+swig

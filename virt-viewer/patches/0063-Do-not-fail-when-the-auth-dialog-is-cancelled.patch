@@ -1,0 +1,62 @@
+From e39786a67599b20ae86f2df9cb9e140f0e36742d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fabiano=20Fid=C3=AAncio?= <fidencio@redhat.com>
+Date: Mon, 22 Sep 2014 17:14:39 +0200
+Subject: [PATCH] Do not fail when the auth dialog is cancelled
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1145460
+(cherry picked from commit a5ce2ed3aea30486900e868dc2158fc591321ec1)
+---
+ src/virt-viewer.c | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/src/virt-viewer.c b/src/virt-viewer.c
+index 8d3e6fb..aceb474 100644
+--- a/src/virt-viewer.c
++++ b/src/virt-viewer.c
+@@ -57,6 +57,7 @@ struct _VirtViewerPrivate {
+     gboolean withEvents;
+     gboolean waitvm;
+     gboolean reconnect;
++    gboolean auth_cancelled;
+ };
+ 
+ G_DEFINE_TYPE (VirtViewer, virt_viewer, VIRT_VIEWER_TYPE_APP)
+@@ -668,6 +669,7 @@ virt_viewer_auth_libvirt_credentials(virConnectCredentialPtr cred,
+ {
+     char **username = NULL, **password = NULL;
+     VirtViewer *app = cbdata;
++    VirtViewerPrivate *priv = app->priv;
+     int i;
+     int ret = -1;
+ 
+@@ -691,11 +693,11 @@ virt_viewer_auth_libvirt_credentials(virConnectCredentialPtr cred,
+     if (username || password) {
+         VirtViewerWindow *vwin = virt_viewer_app_get_main_window(VIRT_VIEWER_APP(app));
+         GtkWindow *win = virt_viewer_window_get_window(vwin);
+-        ret = virt_viewer_auth_collect_credentials(win,
+-                                                   "libvirt",
+-                                                   app->priv->uri,
+-                                                   username, password);
+-        if (ret < 0)
++        priv->auth_cancelled = !virt_viewer_auth_collect_credentials(win,
++                                                                     "libvirt",
++                                                                     app->priv->uri,
++                                                                     username, password);
++        if (priv->auth_cancelled)
+             goto cleanup;
+     } else {
+         ret = 0;
+@@ -748,8 +750,11 @@ virt_viewer_connect(VirtViewerApp *app)
+                                     &auth_libvirt,
+                                     oflags);
+     if (!priv->conn) {
+-        virt_viewer_app_simple_message_dialog(app, _("Unable to connect to libvirt with URI %s"),
+-                                              priv->uri ? priv->uri : _("[none]"));
++        if (!priv->auth_cancelled) {
++            virt_viewer_app_simple_message_dialog(app, _("Unable to connect to libvirt with URI %s"),
++                                                  priv->uri ? priv->uri : _("[none]"));
++        }
++
+         return -1;
+     }
+ 

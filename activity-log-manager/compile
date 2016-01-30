@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+rm src/activity_log_manager_vala.stamp
+autoreconf -vif
+ub_compile

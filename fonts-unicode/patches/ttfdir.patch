@@ -1,0 +1,12 @@
+diff -Naur orig/font/Makefile patched/font/Makefile
+--- orig/font/Makefile	2014-10-23 14:08:19.000000000 +0200
++++ patched/font/Makefile	2015-05-24 11:50:03.461011451 +0200
+@@ -41,7 +41,7 @@
+ CONSOLEDEST = $(DESTDIR)/usr/share/consolefonts
+ FONTDEST    = $(DESTDIR)/usr/share/fonts
+ PCFDEST     = $(FONTDEST)/X11/misc
+-TTFDEST     = $(FONTDEST)/truetype/unifont
++TTFDEST     = $(FONTDEST)/TTF
+ #
+ # destination directory for compiled fonts
+ #

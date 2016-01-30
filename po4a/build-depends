@@ -1,0 +1,8 @@
+docbook-dtds
+docbook-xsl
+libxslt
+perl-gettext
+perl-sgmls
+perl-term-readkey
+perl-text-wrapi18n
+perl-unicode-linebreak

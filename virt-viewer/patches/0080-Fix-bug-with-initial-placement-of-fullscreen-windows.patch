@@ -1,0 +1,31 @@
+From 912d62f4b706db37a8b023ca2e06a24fb0ac97e5 Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Thu, 9 Oct 2014 11:21:07 -0500
+Subject: [PATCH] Fix bug with initial placement of fullscreen windows
+
+The function app_window_try_fullscreen() will lookup the initial monitor
+for the nth monitor internally, so we should pass in the display ID to the function
+rather than the mapped monitor ID. This was causing 2 monitors on the
+same monitor with a configuration like this:
+
+    monitor-mapping=1:2;2:1
+
+(cherry picked from commit c64a3c8f707fcbb45c21cb6b4f5fc0b799ca6df5)
+---
+ src/virt-viewer-app.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/virt-viewer-app.c b/src/virt-viewer-app.c
+index 1abcc90..6dbe4bb 100644
+--- a/src/virt-viewer-app.c
++++ b/src/virt-viewer-app.c
+@@ -880,8 +880,7 @@ ensure_window_for_display(VirtViewerApp *self, VirtViewerDisplay *display)
+             g_debug("Found a window without a display, reusing for this display...");
+             virt_viewer_app_set_window_subtitle(self, win, nth);
+             if (self->priv->fullscreen && !self->priv->kiosk)
+-                app_window_try_fullscreen(self, win,
+-                                          virt_viewer_app_get_initial_monitor_for_display(self, nth));
++                app_window_try_fullscreen(self, win, nth);
+         } else {
+             win = virt_viewer_app_window_new(self, nth);
+         }

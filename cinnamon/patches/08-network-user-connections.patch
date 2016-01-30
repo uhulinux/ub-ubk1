@@ -1,0 +1,85 @@
+Description: Set new wireless connections as user-owned
+ Set connections and passwords as user-owned, following matching changes in
+ nm-applet and gnome-control-center. The logic is
+ - Wired connections: always system-owned.
+ - Modem (GSM/UMTS) connections are created by the control center.
+ - Bluetooth PAN connections are now always user-owned.
+ - Wireless connections are system-owned if the user has
+   permissions (in Debian this means group sudo or netdev). Otherwise,
+   it is user-owned, with the password in the keyring only for WPA.
+ - 802.1x (wired or wireless) is always handled by the control center.
+Author: Josselin Mouette <joss@debian.org>
+Origin: vendor
+Forwarded: no
+Last-Update: 2013-05-16
+---
+--- a/files/usr/share/cinnamon/applets/network@cinnamon.org/applet.js
++++ b/files/usr/share/cinnamon/applets/network@cinnamon.org/applet.js
+@@ -100,6 +100,11 @@
+     this._init.apply(this, arguments);
+ }
+ 
++function default_to_private_connections(client) {
++    let perms = client.get_permission_result (NMClient.ClientPermission.SETTINGS_MODIFY_SYSTEM);
++    return (perms != NMClient.ClientPermissionResult.YES);
++}
++
+ NMNetworkMenuItem.prototype = {
+     __proto__: PopupMenu.PopupBaseMenuItem.prototype,
+ 
+@@ -899,12 +904,14 @@
+         let connection = new NetworkManager.Connection;
+         connection._uuid = NetworkManager.utils_uuid_generate();
+         connection.add_setting(new NetworkManager.SettingBluetooth);
+-        connection.add_setting(new NetworkManager.SettingConnection({
++        let setting_conn = new NetworkManager.SettingConnection({
+             uuid: connection._uuid,
+             id: this._autoConnectionName,
+             type: NetworkManager.SETTING_BLUETOOTH_SETTING_NAME,
+             autoconnect: false
+-        }));
++        });
++        setting_conn.add_permission('user', GLib.get_user_name(), null);
++        connection.add_setting(setting_conn);
+         return connection;
+     },
+ 
+@@ -986,6 +993,8 @@
+         this._overflowItem = null;
+         this._networks = [ ];
+ 
++        this._client = client;
++
+         // breaking the layers with this, but cannot call
+         // this.connectionValid until I have a device
+         this.device = device;
+@@ -1520,12 +1529,27 @@
+ 
+         let connection = new NetworkManager.Connection();
+         connection.add_setting(new NetworkManager.SettingWireless());
+-        connection.add_setting(new NetworkManager.SettingConnection({
++        let setting_conn = new NetworkManager.SettingConnection({
+             id: name,
+             autoconnect: true, // NetworkManager will know to ignore this if appropriate
+             uuid: NetworkManager.utils_uuid_generate(),
+             type: NetworkManager.SETTING_WIRELESS_SETTING_NAME
+-        }));
++        });
++        if (default_to_private_connections(this._client)) {
++            setting_conn.add_permission('user', GLib.get_user_name(), null);
++            if (apObj.security == NMAccessPointSecurity.WPA2_PSK ||
++                apObj.security == NMAccessPointSecurity.WPA_PSK) {
++                connection.add_setting(new NetworkManager.SettingWirelessSecurity({
++                    psk_flags: NetworkManager.SettingSecretFlags.AGENT_OWNED
++                }));
++            }
++            if (apObj.security == NMAccessPointSecurity.WEP) {
++                connection.add_setting(new NetworkManager.SettingWirelessSecurity({
++                    wep_key_flags: NetworkManager.SettingSecretFlags.AGENT_OWNED
++                }));
++            }
++        }
++        connection.add_setting(setting_conn);
+         return connection;
+     },
+ 

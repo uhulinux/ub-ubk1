@@ -1,0 +1,12 @@
+diff -Naur orig/utils/vlaunch/vlaunch.cpp patched/utils/vlaunch/vlaunch.cpp
+--- orig/utils/vlaunch/vlaunch.cpp	2011-01-01 12:51:56.000000000 +0100
++++ patched/utils/vlaunch/vlaunch.cpp	2014-01-05 20:23:37.251115402 +0100
+@@ -133,7 +133,7 @@
+ 
+ VMain::VMain()
+ : wxFrame(NULL, wxID_ANY, wxT("Vavoom launcher"), wxDefaultPosition, wxDefaultSize,
+-	wxDEFAULT_FRAME_STYLE & ~ (wxRESIZE_BORDER | wxRESIZE_BOX | wxMAXIMIZE_BOX))
++	wxDEFAULT_FRAME_STYLE & ~ (wxRESIZE_BORDER | wxMAXIMIZE_BOX))
+ {
+ 	SetIcon(wxICON(vlaunch));
+ 

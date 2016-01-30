@@ -1,0 +1,9 @@
+caja-dev
+dbus-glib-dev
+gtk2-dev
+gupnp-dev
+intltool
+mate-common
+mate-desktop-dev
+util-linux-dev
+xcb-util-dev

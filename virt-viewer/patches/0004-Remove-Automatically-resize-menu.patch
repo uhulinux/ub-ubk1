@@ -1,0 +1,209 @@
+From 66f55ec707713472de4a76d851151a3c1d778e0d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>
+Date: Wed, 12 Mar 2014 18:46:49 +0100
+Subject: [PATCH] Remove "Automatically resize" menu
+
+Remove "Automatically resize" menu item (always enabled for Spice
+display now)
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1007649
+---
+ src/virt-viewer-display-spice.c |  5 -----
+ src/virt-viewer-display.c       | 25 +------------------------
+ src/virt-viewer-display.h       |  2 --
+ src/virt-viewer-window.c        | 26 +-------------------------
+ src/virt-viewer.xml             | 10 ----------
+ 5 files changed, 2 insertions(+), 66 deletions(-)
+
+diff --git a/src/virt-viewer-display-spice.c b/src/virt-viewer-display-spice.c
+index d13fbda..ff0d069 100644
+--- a/src/virt-viewer-display-spice.c
++++ b/src/virt-viewer-display-spice.c
+@@ -97,12 +97,7 @@ get_main(VirtViewerDisplay *self)
+ static void
+ virt_viewer_display_spice_monitor_geometry_changed(VirtViewerDisplaySpice *self)
+ {
+-
+-    if (virt_viewer_display_get_auto_resize(VIRT_VIEWER_DISPLAY(self)) == FALSE)
+-        return;
+-
+     g_signal_emit_by_name(self, "monitor-geometry-changed", NULL);
+-
+ }
+ 
+ static void
+diff --git a/src/virt-viewer-display.c b/src/virt-viewer-display.c
+index feefcca..6c078a5 100644
+--- a/src/virt-viewer-display.c
++++ b/src/virt-viewer-display.c
+@@ -47,7 +47,6 @@ struct _VirtViewerDisplayPrivate
+     gint monitor;     /* Monitor number on the client */
+     guint show_hint;
+     VirtViewerSession *session;
+-    gboolean auto_resize;
+     gboolean fullscreen;
+ };
+ 
+@@ -280,7 +279,6 @@ virt_viewer_display_init(VirtViewerDisplay *display)
+     display->priv->desktopHeight = 100;
+     display->priv->zoom_level = 100;
+     display->priv->zoom = TRUE;
+-    display->priv->auto_resize = TRUE;
+ #if !GTK_CHECK_VERSION(3, 0, 0)
+     display->priv->dirty = TRUE;
+ #endif
+@@ -691,20 +689,6 @@ VirtViewerSession* virt_viewer_display_get_session(VirtViewerDisplay *self)
+     return self->priv->session;
+ }
+ 
+-void virt_viewer_display_set_auto_resize(VirtViewerDisplay *self, gboolean auto_resize)
+-{
+-    g_return_if_fail(VIRT_VIEWER_IS_DISPLAY(self));
+-
+-    self->priv->auto_resize = auto_resize;
+-}
+-
+-gboolean virt_viewer_display_get_auto_resize(VirtViewerDisplay *self)
+-{
+-    g_return_val_if_fail(VIRT_VIEWER_IS_DISPLAY(self), FALSE);
+-
+-    return self->priv->auto_resize;
+-}
+-
+ void virt_viewer_display_set_monitor(VirtViewerDisplay *self, gint monitor)
+ {
+     g_return_if_fail(VIRT_VIEWER_IS_DISPLAY(self));
+@@ -796,14 +780,7 @@ void virt_viewer_display_get_preferred_monitor_geometry(VirtViewerDisplay* self,
+     topx = MAX(topx, 0);
+     topy = MAX(topy, 0);
+ 
+-    if (virt_viewer_display_get_auto_resize(VIRT_VIEWER_DISPLAY(self)) == FALSE) {
+-        guint w, h;
+-        virt_viewer_display_get_desktop_size(self, &w, &h);
+-        preferred->width = w;
+-        preferred->height = h;
+-        preferred->x = topx;
+-        preferred->y = topy;
+-    } else {
++    {
+         if (virt_viewer_display_get_fullscreen(VIRT_VIEWER_DISPLAY(self))) {
+             GdkRectangle physical_monitor;
+             GdkScreen *screen = gtk_widget_get_screen(GTK_WIDGET(self));
+diff --git a/src/virt-viewer-display.h b/src/virt-viewer-display.h
+index 195eeee..fe88d98 100644
+--- a/src/virt-viewer-display.h
++++ b/src/virt-viewer-display.h
+@@ -114,8 +114,6 @@ GdkPixbuf* virt_viewer_display_get_pixbuf(VirtViewerDisplay *display);
+ void virt_viewer_display_set_show_hint(VirtViewerDisplay *display, guint mask, gboolean enable);
+ guint virt_viewer_display_get_show_hint(VirtViewerDisplay *display);
+ VirtViewerSession* virt_viewer_display_get_session(VirtViewerDisplay *display);
+-void virt_viewer_display_set_auto_resize(VirtViewerDisplay *display, gboolean auto_resize);
+-gboolean virt_viewer_display_get_auto_resize(VirtViewerDisplay *display);
+ void virt_viewer_display_set_monitor(VirtViewerDisplay *display, gint monitor);
+ gint virt_viewer_display_get_monitor(VirtViewerDisplay *display);
+ void virt_viewer_display_set_fullscreen(VirtViewerDisplay *display, gboolean fullscreen);
+diff --git a/src/virt-viewer-window.c b/src/virt-viewer-window.c
+index d971263..f75fc41 100644
+--- a/src/virt-viewer-window.c
++++ b/src/virt-viewer-window.c
+@@ -50,7 +50,6 @@ gboolean virt_viewer_window_delete(GtkWidget *src, void *dummy, VirtViewerWindow
+ void virt_viewer_window_menu_file_quit(GtkWidget *src, VirtViewerWindow *self);
+ void virt_viewer_window_menu_help_about(GtkWidget *menu, VirtViewerWindow *self);
+ void virt_viewer_window_menu_view_fullscreen(GtkWidget *menu, VirtViewerWindow *self);
+-void virt_viewer_window_menu_view_resize(GtkWidget *menu, VirtViewerWindow *self);
+ void virt_viewer_window_menu_send(GtkWidget *menu, VirtViewerWindow *self);
+ void virt_viewer_window_menu_file_screenshot(GtkWidget *menu, VirtViewerWindow *self);
+ void virt_viewer_window_menu_file_usb_device_selection(GtkWidget *menu, VirtViewerWindow *self);
+@@ -101,7 +100,6 @@ struct _VirtViewerWindowPrivate {
+     gboolean kiosk;
+ 
+     gint zoomlevel;
+-    gboolean auto_resize;
+     gboolean fullscreen;
+     gchar *subtitle;
+ };
+@@ -287,7 +285,6 @@ virt_viewer_window_init (VirtViewerWindow *self)
+ {
+     VirtViewerWindowPrivate *priv;
+     GtkWidget *vbox;
+-    GtkWidget *menu;
+     GdkColor color;
+     GSList *accels;
+ 
+@@ -295,14 +292,11 @@ virt_viewer_window_init (VirtViewerWindow *self)
+     priv = self->priv;
+ 
+     priv->fullscreen_monitor = -1;
+-    priv->auto_resize = TRUE;
+     g_value_init(&priv->accel_setting, G_TYPE_STRING);
+ 
+     priv->notebook = virt_viewer_notebook_new();
+     priv->builder = virt_viewer_util_load_ui("virt-viewer.xml");
+ 
+-    menu = GTK_WIDGET(gtk_builder_get_object(priv->builder, "menu-view-resize"));
+-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu), TRUE);
+     gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(self->priv->builder, "menu-send")), FALSE);
+     gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(self->priv->builder, "menu-file-screenshot")), FALSE);
+ 
+@@ -415,7 +409,7 @@ virt_viewer_window_resize(VirtViewerWindow *self, gboolean keep_win_size)
+     guint desktopHeight;
+     VirtViewerWindowPrivate *priv = self->priv;
+ 
+-    if (!priv->auto_resize || priv->fullscreen)
++    if (priv->fullscreen)
+         return;
+ 
+     DEBUG_LOG("Preparing main window resize");
+@@ -876,23 +870,6 @@ virt_viewer_window_menu_view_fullscreen(GtkWidget *menu,
+         virt_viewer_window_leave_fullscreen(self);
+ }
+ 
+-G_MODULE_EXPORT void
+-virt_viewer_window_menu_view_resize(GtkWidget *menu,
+-                                    VirtViewerWindow *self)
+-{
+-    VirtViewerWindowPrivate *priv = self->priv;
+-
+-    if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menu))) {
+-        priv->auto_resize = TRUE;
+-        virt_viewer_window_resize(self, TRUE);
+-    } else {
+-        priv->auto_resize = FALSE;
+-    }
+-
+-    if (priv->display)
+-        virt_viewer_display_set_auto_resize(priv->display, priv->auto_resize);
+-}
+-
+ static void add_if_writable (GdkPixbufFormat *data, GHashTable *formats)
+ {
+     if (gdk_pixbuf_format_is_writable(data)) {
+@@ -1252,7 +1229,6 @@ virt_viewer_window_set_display(VirtViewerWindow *self, VirtViewerDisplay *displa
+         priv->display = g_object_ref(display);
+ 
+         virt_viewer_display_set_zoom_level(VIRT_VIEWER_DISPLAY(priv->display), priv->zoomlevel);
+-        virt_viewer_display_set_auto_resize(VIRT_VIEWER_DISPLAY(priv->display), priv->auto_resize);
+         virt_viewer_display_set_monitor(VIRT_VIEWER_DISPLAY(priv->display), priv->fullscreen_monitor);
+         virt_viewer_display_set_fullscreen(VIRT_VIEWER_DISPLAY(priv->display), priv->fullscreen);
+ 
+diff --git a/src/virt-viewer.xml b/src/virt-viewer.xml
+index 4917201..8a3d3c0 100644
+--- a/src/virt-viewer.xml
++++ b/src/virt-viewer.xml
+@@ -172,16 +172,6 @@
+                       </object>
+                     </child>
+                     <child>
+-                      <object class="GtkCheckMenuItem" id="menu-view-resize">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="use_action_appearance">False</property>
+-                        <property name="label" translatable="yes">Automatically resize</property>
+-                        <property name="use_underline">True</property>
+-                        <signal name="toggled" handler="virt_viewer_window_menu_view_resize" swapped="no"/>
+-                      </object>
+-                    </child>
+-                    <child>
+                       <object class="GtkMenuItem" id="menu-displays">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>

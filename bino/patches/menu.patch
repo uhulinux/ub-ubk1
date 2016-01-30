@@ -1,0 +1,11 @@
+diff -Naur orig/src/bino.desktop patched/src/bino.desktop
+--- orig/src/bino.desktop	2012-10-13 07:01:40.000000000 +0200
++++ patched/src/bino.desktop	2014-05-26 20:48:54.041598424 +0200
+@@ -3,6 +3,7 @@
+ GenericName=3D video player
+ GenericName[de]=3D Videospieler
+ GenericName[fr]=Lecteur vidéo 3D
++GenericName[hu]=3D videólejátszó
+ GenericName[pl]=Odtwarzacz 3D
+ GenericName[ru]=3D видео плеер
+ Icon=bino

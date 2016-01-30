@@ -1,0 +1,69 @@
+From ed387e66019867e2ca68a00473ef9b7e4b9db831 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fabiano=20Fid=C3=AAncio?= <fidencio@redhat.com>
+Date: Tue, 23 Sep 2014 16:23:42 +0200
+Subject: [PATCH] Improve authentication error messages
+
+Adding a better error message to our default error message, based on the
+libvirt error. Also, the libvirt error is shown as debug.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1142742
+(cherry picked from commit 141d69b7f523f1ecc3c328b43e4a54f9cbfb5eee)
+---
+ src/virt-viewer.c | 37 +++++++++++++++++++++++++++++++++++--
+ 1 file changed, 35 insertions(+), 2 deletions(-)
+
+diff --git a/src/virt-viewer.c b/src/virt-viewer.c
+index 1d14b70..604dea6 100644
+--- a/src/virt-viewer.c
++++ b/src/virt-viewer.c
+@@ -722,6 +722,36 @@ virt_viewer_auth_libvirt_credentials(virConnectCredentialPtr cred,
+     return ret;
+ }
+ 
++static gchar *
++virt_viewer_get_error_message_from_vir_error(VirtViewer *self,
++                                             virErrorPtr error)
++{
++    VirtViewerPrivate *priv = self->priv;
++    const gchar *error_details = NULL;
++    gchar *detailed_error_message = NULL;
++    gchar *error_message = g_strdup_printf(_("Unable to connect to libvirt with URI: %s."),
++                                           priv->uri ? priv->uri : _("[none]"));
++
++    g_debug("Error: %s", error->message);
++
++    /* For now we are only treating authentication errors. */
++    switch (error->code) {
++        case VIR_ERR_AUTH_FAILED:
++            error_details = _("Authentication failed.");
++            break;
++        default:
++            break;
++    }
++
++    if (error_details != NULL) {
++        detailed_error_message = g_strdup_printf("%s\n%s", error_message, error_details);
++        g_free(error_message);
++        return detailed_error_message;
++    }
++
++    return error_message;
++}
++
+ static int
+ virt_viewer_connect(VirtViewerApp *app)
+ {
+@@ -751,8 +781,11 @@ virt_viewer_connect(VirtViewerApp *app)
+                                     oflags);
+     if (!priv->conn) {
+         if (!priv->auth_cancelled) {
+-            virt_viewer_app_simple_message_dialog(app, _("Unable to connect to libvirt with URI %s"),
+-                                                  priv->uri ? priv->uri : _("[none]"));
++            gchar *error_message = virt_viewer_get_error_message_from_vir_error(self, virGetLastError());
++
++            virt_viewer_app_simple_message_dialog(app, error_message);
++
++            g_free(error_message);
+         }
+ 
+         return -1;

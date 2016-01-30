@@ -1,0 +1,3 @@
+#!/bin/sh -eux
+
+cp -a ${UB_COMPILEDIR}/data ${UB_INSTALLDIR}/usr/share/smc

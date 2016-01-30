@@ -1,0 +1,134 @@
+diff -Naur orig/configure patched/configure
+--- orig/configure	2012-08-12 22:14:08.000000000 +0200
++++ patched/configure	2015-07-24 21:20:04.122646680 +0200
+@@ -9469,18 +9469,18 @@
+ 
+ pkg_failed=no
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for LCMS" >&5
+-$as_echo_n "checking for LCMS... " >&6; }
++$as_echo_n "checking for LCMS2... " >&6; }
+ 
+ if test -n "$LCMS_CFLAGS"; then
+     pkg_cv_LCMS_CFLAGS="$LCMS_CFLAGS"
+  elif test -n "$PKG_CONFIG"; then
+     if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"lcms >= 1.14\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "lcms >= 1.14") 2>&5
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"lcms2 >= 2.0\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "lcms2 >= 2.0") 2>&5
+   ac_status=$?
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+-  pkg_cv_LCMS_CFLAGS=`$PKG_CONFIG --cflags "lcms >= 1.14" 2>/dev/null`
++  pkg_cv_LCMS_CFLAGS=`$PKG_CONFIG --cflags "lcms2 >= 2.0" 2>/dev/null`
+ else
+   pkg_failed=yes
+ fi
+@@ -9491,12 +9491,12 @@
+     pkg_cv_LCMS_LIBS="$LCMS_LIBS"
+  elif test -n "$PKG_CONFIG"; then
+     if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"lcms >= 1.14\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "lcms >= 1.14") 2>&5
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"lcms2 >= 2.0\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "lcms2 >= 2.0") 2>&5
+   ac_status=$?
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+-  pkg_cv_LCMS_LIBS=`$PKG_CONFIG --libs "lcms >= 1.14" 2>/dev/null`
++  pkg_cv_LCMS_LIBS=`$PKG_CONFIG --libs "lcms2 >= 2.0" 2>/dev/null`
+ else
+   pkg_failed=yes
+ fi
+@@ -9516,9 +9516,9 @@
+         _pkg_short_errors_supported=no
+ fi
+         if test $_pkg_short_errors_supported = yes; then
+-	        LCMS_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "lcms >= 1.14" 2>&1`
++	        LCMS_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "lcms2 >= 2.0" 2>&1`
+         else
+-	        LCMS_PKG_ERRORS=`$PKG_CONFIG --print-errors "lcms >= 1.14" 2>&1`
++	        LCMS_PKG_ERRORS=`$PKG_CONFIG --print-errors "lcms2 >= 2.0" 2>&1`
+         fi
+ 	# Put the nasty error message in config.log where it belongs
+ 	echo "$LCMS_PKG_ERRORS" >&5
+diff -Naur orig/configure.in patched/configure.in
+--- orig/configure.in	2012-08-12 22:13:40.000000000 +0200
++++ patched/configure.in	2015-07-24 21:36:28.959530222 +0200
+@@ -275,7 +275,7 @@
+     [liblcms=$enableval], [liblcms=auto])
+ 
+ if test "x${liblcms}" != "xno"; then
+-  PKG_CHECK_MODULES(LCMS, [lcms >= 1.14],
++  PKG_CHECK_MODULES(LCMS, [lcms2 >= 2.0],
+     [
+       HAVE_LCMS=yes
+       AC_DEFINE(HAVE_LCMS, 1, [define to enable use of color profiles with lcms])
+diff -Naur orig/src/color-man.c patched/src/color-man.c
+--- orig/src/color-man.c	2012-08-12 22:13:41.000000000 +0200
++++ patched/src/color-man.c	2015-07-24 21:38:30.808134437 +0200
+@@ -21,7 +21,7 @@
+ #ifdef HAVE_LCMS
+ /*** color support enabled ***/
+ 
+-#include <lcms.h>
++#include <lcms2.h>
+ 
+ 
+ typedef struct _ColorManCache ColorManCache;
+@@ -51,8 +51,6 @@
+ 
+ 	if (init_done) return;
+ 	init_done = TRUE;
+-
+-	cmsErrorAction(LCMS_ERROR_IGNORE);
+ }
+ 
+ static cmsHPROFILE color_man_create_adobe_comp(void)
+@@ -425,7 +423,10 @@
+ 		case COLOR_PROFILE_FILE:
+ 			if (profile)
+ 				{
+-				return g_strdup(cmsTakeProductName(profile));
++				cmsUInt8Number profileID[17];
++				profileID[16] = '\0';
++				cmsGetHeaderProfileID(profile, profileID);
++				return g_strdup(profileID);
+ 				}
+ 			return g_strdup(_("Custom profile"));
+ 			break;
+diff -Naur orig/src/exif-common.c patched/src/exif-common.c
+--- orig/src/exif-common.c	2012-08-12 22:13:41.000000000 +0200
++++ patched/src/exif-common.c	2015-07-24 21:30:54.469871577 +0200
+@@ -23,11 +23,7 @@
+ #ifdef HAVE_LCMS
+ /*** color support enabled ***/
+ 
+-#ifdef HAVE_LCMS_LCMS_H
+-  #include <lcms/lcms.h>
+-#else
+-  #include <lcms.h>
+-#endif
++#include <lcms2.h>
+ #endif
+ 
+ #include <glib.h>
+@@ -413,6 +409,7 @@
+ 
+ static gchar *exif_build_formatted_ColorProfile(ExifData *exif)
+ {
++	cmsUInt8Number profileID[17];
+ 	const gchar *name = "";
+ 	const gchar *source = "";
+ 	guchar *profile_data;
+@@ -452,7 +449,9 @@
+ 			profile = cmsOpenProfileFromMem(profile_data, profile_len);
+ 			if (profile)
+ 				{
+-				name = cmsTakeProductName(profile);
++				profileID[16] = '\0';
++				cmsGetHeaderProfileID(profile, profileID);
++				name = profileID;
+ 				cmsCloseProfile(profile);
+ 				}
+ 			g_free(profile_data);

@@ -1,0 +1,27 @@
+From 5e8642eb1f32109bf4801bd903fa945f580c0f2a Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Tue, 3 Jun 2014 11:13:14 -0500
+Subject: [PATCH] Set freed variables to NULL in remote_viewer_start()
+
+Coverity warns that 'type' can sometimes be used or free after already having
+been freed.  This can happen when open_recent_dialog is true and we jump back up
+to the retry_dialog label.  To prevent this, make sure the freed variables are
+set to NULL after freeing.
+---
+ src/remote-viewer.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/remote-viewer.c b/src/remote-viewer.c
+index 768ff74..5fa4ee4 100644
+--- a/src/remote-viewer.c
++++ b/src/remote-viewer.c
+@@ -1043,7 +1043,9 @@ cleanup:
+     g_clear_object(&file);
+     g_clear_object(&vvfile);
+     g_free(guri);
++    guri = NULL;
+     g_free(type);
++    type = NULL;
+ 
+     if (!ret && priv->open_recent_dialog) {
+         goto retry_dialog;

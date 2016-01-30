@@ -1,0 +1,47 @@
+diff -Naur orig/src/mainwindow.c patched/src/mainwindow.c
+--- orig/src/mainwindow.c	2015-12-15 02:48:05.000000000 +0100
++++ patched/src/mainwindow.c	2015-12-19 06:18:13.914870783 +0100
+@@ -1453,7 +1453,7 @@
+ 
+ 	/* main window */
+ 	window = GTK_WIDGET(gtkut_window_new(GTK_WINDOW_TOPLEVEL, "mainwindow"));
+-	gtk_window_set_title(GTK_WINDOW(window), PROG_VERSION_FRIENDLY);
++	gtk_window_set_title(GTK_WINDOW(window), (prefs_common.show_version_in_window_title ? PROG_VERSION_FRIENDLY : "Claws Mail"));
+ 	gtk_window_set_resizable(GTK_WINDOW(window), TRUE);
+ #ifdef GENERIC_UMPC
+ 	prefs_common.layout_mode = SMALL_LAYOUT;
+@@ -2637,9 +2637,9 @@
+ 			   : _("none"));
+ 
+ 	if (cur_account)
+-		buf = g_strdup_printf("%s - %s", ac_name, PROG_VERSION_FRIENDLY);
++		buf = g_strdup_printf("%s - %s", ac_name,  (prefs_common.show_version_in_window_title ? PROG_VERSION_FRIENDLY : "Claws Mail"));
+ 	else
+-		buf = g_strdup(PROG_VERSION_FRIENDLY);
++		buf = g_strdup_printf((prefs_common.show_version_in_window_title ? PROG_VERSION_FRIENDLY : "Claws Mail"));
+ 	gtk_window_set_title(GTK_WINDOW(mainwin->window), buf);
+ 	g_free(buf);
+ 
+diff -Naur orig/src/prefs_common.c patched/src/prefs_common.c
+--- orig/src/prefs_common.c	2015-12-15 02:48:05.000000000 +0100
++++ patched/src/prefs_common.c	2015-12-19 06:18:13.918870802 +0100
+@@ -779,6 +779,8 @@
+ 	{"layout_mode", "5", &prefs_common.layout_mode, P_INT,
+ 	 NULL, NULL, NULL},
+ #endif
++	{"show_version_in_window_title", "TRUE",
++	 &prefs_common.show_version_in_window_title, P_BOOL, NULL, NULL, NULL},
+ 	/* {"emulate_emacs", "FALSE", &prefs_common.emulate_emacs, P_BOOL,
+ 	 NULL, NULL, NULL}, */
+ 	{"always_show_message_when_selected", "0",
+diff -Naur orig/src/prefs_common.h patched/src/prefs_common.h
+--- orig/src/prefs_common.h	2015-11-18 14:40:05.000000000 +0100
++++ patched/src/prefs_common.h	2015-12-19 06:18:13.918870802 +0100
+@@ -360,6 +360,7 @@
+ 
+ 	/* Interface */
+ 	gboolean layout_mode;
++	gboolean show_version_in_window_title;
+ 
+ 	gint statusbar_update_step;
+ 	gboolean emulate_emacs;

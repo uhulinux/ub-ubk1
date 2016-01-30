@@ -1,0 +1,110 @@
+diff -Naur orig/po/hu_HU.po mod/po/hu_HU.po
+--- orig/po/hu_HU.po	2008-01-21 22:09:25.000000000 +0100
++++ mod/po/hu_HU.po	2013-01-01 20:31:09.000000000 +0100
+@@ -9,81 +9,82 @@
+ "Project-Id-Version: VDR 1.5.7\n"
+ "Report-Msgid-Bugs-To: <see README>\n"
+ "POT-Creation-Date: 2008-01-21 18:23+0100\n"
+-"PO-Revision-Date: 2008-01-21 18:12+0100\n"
+-"Last-Translator: Istvan Koenigsberger <istvnko@hotmail.com>, Guido Josten <guido.josten@t-online.de>\n"
+-"Language-Team: <vdr@linuxtv.org>\n"
++"PO-Revision-Date: 2013-01-01 20:31+0100\n"
++"Last-Translator: Kiss Attila <attus@enterpriseforever.com>\n"
++"Language-Team:  <vdr@linuxtv.org>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-2\n"
+ "Content-Transfer-Encoding: 8bit\n"
++"X-Generator: Poedit 1.5.3\n"
+ 
+ msgid "Manage your channellists"
+-msgstr ""
++msgstr "csatorna listák kezelése"
+ 
+ msgid "Channellists"
+-msgstr ""
++msgstr "csatorna listák"
+ 
+ msgid "Menu"
+ msgstr "Menü"
+ 
+ msgid "close"
+-msgstr ""
++msgstr "bezár"
+ 
+ msgid "none"
+-msgstr ""
++msgstr "semmi"
+ 
+ msgid "Hide main menu entry"
+-msgstr ""
++msgstr "menübelépés elrejtés"
+ 
+ msgid "Action after switch"
+-msgstr ""
++msgstr "váltás utáni teendõ"
+ 
+ msgid "Button Red"
+-msgstr ""
++msgstr "piros gomb"
+ 
+ msgid "Rename"
+-msgstr ""
++msgstr "átnevez"
+ 
+ msgid "Script"
+-msgstr ""
++msgstr "szkript"
+ 
+ msgid "Button Green"
+-msgstr ""
++msgstr "zöld gomb"
+ 
+ msgid "Copy"
+-msgstr ""
++msgstr "másol"
+ 
+ msgid "Name"
+ msgstr "Név"
+ 
+ msgid "An error occurs, see syslog..."
+-msgstr ""
++msgstr "hiba, lásd: syslog"
+ 
+ msgid "Switch current channellist?"
+-msgstr ""
++msgstr "csatornalista váltás?"
+ 
+ msgid "Delete channellist?"
+-msgstr ""
++msgstr "csatornalisták törlése?"
+ 
+ msgid "Save"
+-msgstr ""
++msgstr "ment"
+ 
+ msgid "Execute update script?"
+-msgstr ""
++msgstr "frissítõ szkript futtatás?"
+ 
+ msgid "Waiting..."
+-msgstr ""
++msgstr "Várjunk.."
+ 
+ msgid "Button$Script"
+-msgstr ""
++msgstr "szkript"
+ 
+ msgid "Button$Rename"
+-msgstr ""
++msgstr "átnevez"
+ 
+ msgid "Button$Copy"
+-msgstr ""
++msgstr "másol"
+ 
+ msgid "Button$Delete"
+ msgstr "Törölni"
+ 
+ msgid "Button$Save"
+-msgstr ""
++msgstr "ment"

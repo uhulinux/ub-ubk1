@@ -1,0 +1,5 @@
+cmake
+libX11-dev
+liblxqt-dev
+libqtxdg-dev
+qt5-dev

@@ -1,0 +1,13 @@
+diff -Naur orig/nvidia-settings.desktop mod/nvidia-settings.desktop
+--- orig/nvidia-settings.desktop	2013-08-28 23:02:47.000000000 +0200
++++ mod/nvidia-settings.desktop	2013-10-06 00:04:57.821810865 +0200
+@@ -3,6 +3,6 @@
+ Encoding=UTF-8
+ Name=NVIDIA X Server Settings
+ Comment=Configure NVIDIA X Server Settings
+-Exec=__UTILS_PATH__/nvidia-settings
+-Icon=__PIXMAP_PATH__/nvidia-settings.png
+-Categories=Application;System;
++Exec=nvidia-settings
++Icon=nvidia-settings
++Categories=Settings;HardwareSettings;

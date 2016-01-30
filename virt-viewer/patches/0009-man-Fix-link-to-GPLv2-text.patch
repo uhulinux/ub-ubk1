@@ -1,0 +1,42 @@
+From e53102cc563d1d382223b1482bfce31f730aa95e Mon Sep 17 00:00:00 2001
+From: Christophe Fergeau <cfergeau@redhat.com>
+Date: Fri, 4 Apr 2014 13:59:44 +0200
+Subject: [PATCH] man: Fix link to GPLv2 text
+
+The unversionned http links point to the GLPv3 text while virt-viewer is
+still licensed under the GPLv2.
+---
+ man/remote-viewer.pod | 4 ++--
+ man/virt-viewer.pod   | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/man/remote-viewer.pod b/man/remote-viewer.pod
+index e35d281..253a809 100644
+--- a/man/remote-viewer.pod
++++ b/man/remote-viewer.pod
+@@ -285,8 +285,8 @@ Report bugs to the mailing list C<http://www.redhat.com/mailman/listinfo/virt-to
+ 
+ Copyright (C) 2012-2014 Red Hat, Inc., and various contributors.
+ This is free software. You may redistribute copies of it under the terms of the GNU General
+-Public License C<http://www.gnu.org/licenses/gpl.html>. There is NO WARRANTY, to the extent
+-permitted by law.
++Public License C<https://www.gnu.org/licenses/old-licenses/gpl-2.0.html>. There is NO WARRANTY,
++to the extent permitted by law.
+ 
+ =head1 SEE ALSO
+ 
+diff --git a/man/virt-viewer.pod b/man/virt-viewer.pod
+index 45459ef..e766712 100644
+--- a/man/virt-viewer.pod
++++ b/man/virt-viewer.pod
+@@ -150,8 +150,8 @@ Report bugs to the mailing list C<http://www.redhat.com/mailman/listinfo/virt-to
+ 
+ Copyright (C) 2007-2014 Red Hat, Inc., and various contributors.
+ This is free software. You may redistribute copies of it under the terms of the GNU General
+-Public License C<http://www.gnu.org/licenses/gpl.html>. There is NO WARRANTY, to the extent
+-permitted by law.
++Public License C<https://www.gnu.org/licenses/old-licenses/gpl-2.0.html>. There is NO WARRANTY,
++to the extent permitted by law.
+ 
+ =head1 SEE ALSO
+ 

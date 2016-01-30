@@ -1,0 +1,22 @@
+From 378f26bc9d0b21e7a4a7ea33cbf6beceb19b3f2c Mon Sep 17 00:00:00 2001
+From: Christophe Fergeau <cfergeau@redhat.com>
+Date: Thu, 3 Apr 2014 17:36:30 +0200
+Subject: [PATCH] man: Add missing '.' at end of one sentence
+
+---
+ man/virt-viewer.pod | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/man/virt-viewer.pod b/man/virt-viewer.pod
+index 5b3d6e6..45459ef 100644
+--- a/man/virt-viewer.pod
++++ b/man/virt-viewer.pod
+@@ -13,7 +13,7 @@ B<virt-viewer> is a minimal tool for displaying the graphical console
+ of a virtual machine. The console is accessed using the VNC or SPICE
+ protocol. The guest can be referred to based on its name, ID, or
+ UUID. If the guest is not already running, then the viewer can be told
+-to wait until it starts before attempting to connect to the console
++to wait until it starts before attempting to connect to the console.
+ The viewer can connect to remote hosts to lookup the console
+ information and then also connect to the remote console using the same
+ network transport.

@@ -1,0 +1,2 @@
+dir=$(urllist http://archive.xfce.org/src/thunar-plugins/thunar-archive-plugin/ | grep -E '^([0-9.]+)?$' | sort -V | tail -n 1)
+urllist http://archive.xfce.org/src/thunar-plugins/thunar-archive-plugin/$dir/ | splitver '^thunar-archive-plugin-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

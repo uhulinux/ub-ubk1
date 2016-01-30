@@ -1,0 +1,10 @@
+diff -Naur orig/README patched/README
+--- orig/README	2015-08-02 00:38:10.000000000 +0200
++++ patched/README	2015-08-02 00:40:50.824835559 +0200
+@@ -1,5 +1,5 @@
+ Contacts module
+ 
+-Source: cvs -z3 -d:pserver:anonymous@claws-mail.org:/ co -r gtk2 contacts
++Source: git://git.claws-mail.org/contacts.git
+ Project: https://bugs.datanom.net/claws-contacts/
+ 

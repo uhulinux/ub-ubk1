@@ -1,0 +1,317 @@
+diff -Nru femon-2.0.0/femon.c femon/femon.c
+--- femon-2.0.0/femon.c	2013-04-01 03:20:00.000000000 +0200
++++ femon/femon.c	2013-09-18 00:17:13.000000000 +0200
+@@ -125,6 +125,7 @@
+   else if (!strcasecmp(Name, "UseSvdrp"))       femonConfig.usesvdrp       = atoi(Value);
+   else if (!strcasecmp(Name, "ServerPort"))     femonConfig.svdrpport      = atoi(Value);
+   else if (!strcasecmp(Name, "ServerIp"))       strn0cpy(femonConfig.svdrpip, Value, sizeof(femonConfig.svdrpip));
++  else if (!strcasecmp(Name, "SNRat100P"))      femonConfig.snrat100p      = atoi(Value);
+   else
+     return false;
+   if (femonConfig.displaymode < 0 || femonConfig.displaymode >= eFemonModeMaxNumber) femonConfig.displaymode = 0;
+@@ -375,6 +376,14 @@
+      help.Append(tr("Define the IP address of SVDRP service."));
+      }
+ 
++#if VDRVERSNUM < 20101
++  Add(new cMenuEditIntItem(tr("10*SNR shown as 100%"), &data.snrat100p, 5, 500));
++  help.Append(tr("Define how much SNR is shown as 100%."));
++#else
++  Add(new cMenuEditIntxItem(tr("SNR shown as 100%"), &data.snrat100p, 5, 500, 10));
++  help.Append(tr("Define how much SNR is shown as 100%."));
++#endif
++
+   SetCurrent(Get(current));
+   Display();
+ }
+@@ -397,6 +406,7 @@
+   SetupStore("UseSvdrp",       femonConfig.usesvdrp);
+   SetupStore("ServerPort",     femonConfig.svdrpport);
+   SetupStore("ServerIp",       femonConfig.svdrpip);
++  SetupStore("SNRat100P",      femonConfig.snrat100p);
+ }
+ 
+ eOSState cMenuFemonSetup::ProcessKey(eKeys Key)
+diff -Nru femon-2.0.0/femoncfg.c femon/femoncfg.c
+--- femon-2.0.0/femoncfg.c	2013-04-01 03:20:00.000000000 +0200
++++ femon/femoncfg.c	2013-09-17 18:10:17.000000000 +0200
+@@ -26,6 +26,7 @@
+   usesvdrp       = 0;
+   svdrpport      = 6419;
+   strncpy(svdrpip, "0.0.0.0", sizeof(svdrpip));
++  snrat100p      = 225; // good for my 60cm dish, use greater values for bigger dishes
+ }
+ 
+ const cFemonTheme femonTheme[eFemonThemeMaxNumber] =
+diff -Nru femon-2.0.0/femoncfg.h femon/femoncfg.h
+--- femon-2.0.0/femoncfg.h	2013-04-01 03:20:00.000000000 +0200
++++ femon/femoncfg.h	2013-09-17 18:10:42.000000000 +0200
+@@ -37,6 +37,7 @@
+   int usesvdrp;
+   int svdrpport;
+   char svdrpip[MaxSvdrpIp + 1]; // must end with additional null
++  int snrat100p;
+ };
+ 
+ extern cFemonConfig femonConfig;
+diff -Nru femon-2.0.0/femonosd.c femon/femonosd.c
+--- femon-2.0.0/femonosd.c	2013-04-01 03:20:00.000000000 +0200
++++ femon/femonosd.c	2013-09-18 22:50:39.269694880 +0200
+@@ -17,6 +17,7 @@
+ #include "femontools.h"
+ #include "femonsymbol.h"
+ #include "femonosd.h"
++#include "stv090x.c"
+ 
+ #define CHANNELINPUT_TIMEOUT      1000
+ #define SVDRPPLUGIN               "svdrpservice"
+@@ -360,6 +361,41 @@
+         OSDDRAWSTATUSBM(OSDSPACING);
+         }
+      offset += OSDROWHEIGHT;
++     if (strncmp(m_FrontendName, "STV090x", 7) == 0) {
++     double str = double(m_Signal) * 100 / 0xFFFF;
++     int stri = int(round(str));
++     double snr = 0;
++     int div;
++     int last;
++     cDvbTransponderParameters dtp(channel->Parameters());
++     if (strcmp(*getSatelliteSystem(dtp.System()), "DVB-S") == 0) {
++     last = ARRAY_SIZE(stv090x_s1cn_tab) - 1;
++     div =  stv090x_s1cn_tab[0].read - stv090x_s1cn_tab[last].read;
++     snr = (1 - double(m_SNR) / 0xFFFF) * div;
++     snr = double(stv090x_table_lookup(stv090x_s1cn_tab, last, snr)) / 10;
++     } else {
++     last = ARRAY_SIZE(stv090x_s2cn_tab) - 1;
++     div =  stv090x_s2cn_tab[0].read - stv090x_s2cn_tab[last].read;
++     snr = (1 - double(m_SNR) / 0xFFFF) * div;
++     snr = double(stv090x_table_lookup(stv090x_s2cn_tab, last, snr)) / 10;
++     }
++     int snri = int(round(fmin(100, snr * 100 / (double(femonConfig.snrat100p) / 10)))); // show snrat100p/10 dB as 100%
++     if (m_StrengthValid)
++        OSDDRAWSTATUSBAR(stri);
++     offset += OSDROWHEIGHT;
++     if (m_QualityValid)
++        OSDDRAWSTATUSBAR(snri);
++     offset += OSDROWHEIGHT;
++     OSDDRAWSTATUSVALUES("STR:", m_SignalValid ? *cString::sprintf("%3.0f dBm", str - 100) : "", m_SignalValid ? *cString::sprintf("%5d%%", stri) : "",
++                         "BER:", m_BERValid ? *cString::sprintf("%08x", m_BER) : "", *cString::sprintf("%s:", tr("Video")),
++                         *getBitrateMbits(m_Receiver ? m_Receiver->VideoBitrate() : (m_SvdrpFrontend >= 0 ? m_SvdrpVideoBitrate : -1.0)));
++     offset += OSDROWHEIGHT;
++     OSDDRAWSTATUSVALUES("SNR:", m_SNRValid ? *cString::sprintf("%3.1f dB", snr) : "", m_SNRValid ? *cString::sprintf("%5d%%", snri) : "",
++                         "UNC:", m_UNCValid ? *cString::sprintf("%08x", m_UNC) : "",
++                         *cString::sprintf("%s:", (m_Receiver && m_Receiver->AC3Valid() && IS_DOLBY_TRACK(track)) ? tr("AC-3") : tr("Audio")),
++                         *getBitrateKbits(m_Receiver ? ((m_Receiver->AC3Valid() && IS_DOLBY_TRACK(track)) ? m_Receiver->AC3Bitrate() : m_Receiver->AudioBitrate()) : (m_SvdrpFrontend >= 0 ? m_SvdrpAudioBitrate : -1.0)));
++     }
++     else {
+      if (m_StrengthValid)
+         OSDDRAWSTATUSBAR(m_Strength);
+      offset += OSDROWHEIGHT;
+@@ -374,6 +410,7 @@
+                          "UNC:", m_UNCValid ? *cString::sprintf("%08x", m_UNC) : "",
+                          *cString::sprintf("%s:", (m_Receiver && m_Receiver->AC3Valid() && IS_DOLBY_TRACK(track)) ? tr("AC-3") : tr("Audio")),
+                          *getBitrateKbits(m_Receiver ? ((m_Receiver->AC3Valid() && IS_DOLBY_TRACK(track)) ? m_Receiver->AC3Bitrate() : m_Receiver->AudioBitrate()) : (m_SvdrpFrontend >= 0 ? m_SvdrpAudioBitrate : -1.0)));
++     }
+      offset += OSDROWHEIGHT;
+      x = OSDSYMBOL(SYMBOL_LOCK).Width();
+      y = (OSDROWHEIGHT - OSDSYMBOL(SYMBOL_LOCK).Height()) / 2;
+diff -Nru femon-2.0.0/stv090x.c femon/stv090x.c
+--- femon-2.0.0/stv090x.c	1970-01-01 01:00:00.000000000 +0100
++++ femon/stv090x.c	2013-09-19 12:39:20.368078517 +0200
+@@ -0,0 +1,196 @@
++/*
++	STV0900/0903 Multistandard Broadcast Frontend driver
++	Copyright (C) Manu Abraham <abraham.manu@gmail.com>
++
++	Copyright (C) ST Microelectronics
++
++	This program is free software; you can redistribute it and/or modify
++	it under the terms of the GNU General Public License as published by
++	the Free Software Foundation; either version 2 of the License, or
++	(at your option) any later version.
++
++	This program is distributed in the hope that it will be useful,
++	but WITHOUT ANY WARRANTY; without even the implied warranty of
++	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++	GNU General Public License for more details.
++
++	You should have received a copy of the GNU General Public License
++	along with this program; if not, write to the Free Software
++	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++*/
++
++#    define ARRAY_SIZE(x) (sizeof(x) / sizeof(*(x)))
++
++struct stv090x_tab {
++	int real;
++	int read;
++};
++
++/* DVBS1 and DSS C/N Lookup table */
++static const struct stv090x_tab stv090x_s1cn_tab[] = {
++	{   0, 8917 }, /*  0.0dB */
++	{   5, 8801 }, /*  0.5dB */
++	{  10, 8667 }, /*  1.0dB */
++	{  15, 8522 }, /*  1.5dB */
++	{  20, 8355 }, /*  2.0dB */
++	{  25, 8175 }, /*  2.5dB */
++	{  30, 7979 }, /*  3.0dB */
++	{  35, 7763 }, /*  3.5dB */
++	{  40, 7530 }, /*  4.0dB */
++	{  45, 7282 }, /*  4.5dB */
++	{  50, 7026 }, /*  5.0dB */
++	{  55, 6781 }, /*  5.5dB */
++	{  60, 6514 }, /*  6.0dB */
++	{  65, 6241 }, /*  6.5dB */
++	{  70, 5965 }, /*  7.0dB */
++	{  75, 5690 }, /*  7.5dB */
++	{  80, 5424 }, /*  8.0dB */
++	{  85, 5161 }, /*  8.5dB */
++	{  90, 4902 }, /*  9.0dB */
++	{  95, 4654 }, /*  9.5dB */
++	{ 100, 4417 }, /* 10.0dB */
++	{ 105, 4186 }, /* 10.5dB */
++	{ 110, 3968 }, /* 11.0dB */
++	{ 115, 3757 }, /* 11.5dB */
++	{ 120, 3558 }, /* 12.0dB */
++	{ 125, 3366 }, /* 12.5dB */
++	{ 130, 3185 }, /* 13.0dB */
++	{ 135, 3012 }, /* 13.5dB */
++	{ 140, 2850 }, /* 14.0dB */
++	{ 145, 2698 }, /* 14.5dB */
++	{ 150, 2550 }, /* 15.0dB */
++	{ 160, 2283 }, /* 16.0dB */
++	{ 170, 2042 }, /* 17.0dB */
++	{ 180, 1827 }, /* 18.0dB */
++	{ 190, 1636 }, /* 19.0dB */
++	{ 200, 1466 }, /* 20.0dB */
++	{ 210, 1315 }, /* 21.0dB */
++	{ 220, 1181 }, /* 22.0dB */
++	{ 230, 1064 }, /* 23.0dB */
++	{ 240,	960 }, /* 24.0dB */
++	{ 250,	869 }, /* 25.0dB */
++	{ 260,	792 }, /* 26.0dB */
++	{ 270,	724 }, /* 27.0dB */
++	{ 280,	665 }, /* 28.0dB */
++	{ 290,	616 }, /* 29.0dB */
++	{ 300,	573 }, /* 30.0dB */
++	{ 310,	537 }, /* 31.0dB */
++	{ 320,	507 }, /* 32.0dB */
++	{ 330,	483 }, /* 33.0dB */
++	{ 400,	398 }, /* 40.0dB */
++	{ 450,	381 }, /* 45.0dB */
++	{ 500,	377 }  /* 50.0dB */
++};
++
++/* DVBS2 C/N Lookup table */
++static const struct stv090x_tab stv090x_s2cn_tab[] = {
++	{   0, 13348 }, /* -3.0dB * we don't use negative values anyway */
++	{   0, 12640 }, /* -2.0dB * so we replace them by zero */
++	{   0, 11883 }, /* -1.0dB */
++	{   0, 11101 }, /* -0.0dB */
++	{   5, 10718 }, /*  0.5dB */
++	{  10, 10339 }, /*  1.0dB */
++	{  15,  9947 }, /*  1.5dB */
++	{  20,  9552 }, /*  2.0dB */
++	{  25,  9183 }, /*  2.5dB */
++	{  30,  8799 }, /*  3.0dB */
++	{  35,  8422 }, /*  3.5dB */
++	{  40,  8062 }, /*  4.0dB */
++	{  45,  7707 }, /*  4.5dB */
++	{  50,  7353 }, /*  5.0dB */
++	{  55,  7025 }, /*  5.5dB */
++	{  60,  6684 }, /*  6.0dB */
++	{  65,  6331 }, /*  6.5dB */
++	{  70,  6036 }, /*  7.0dB */
++	{  75,  5727 }, /*  7.5dB */
++	{  80,  5437 }, /*  8.0dB */
++	{  85,  5164 }, /*  8.5dB */
++	{  90,  4902 }, /*  9.0dB */
++	{  95,  4653 }, /*  9.5dB */
++	{ 100,  4408 }, /* 10.0dB */
++	{ 105,  4187 }, /* 10.5dB */
++	{ 110,  3961 }, /* 11.0dB */
++	{ 115,  3751 }, /* 11.5dB */
++	{ 120,  3558 }, /* 12.0dB */
++	{ 125,  3368 }, /* 12.5dB */
++	{ 130,  3191 }, /* 13.0dB */
++	{ 135,  3017 }, /* 13.5dB */
++	{ 140,  2862 }, /* 14.0dB */
++	{ 145,  2710 }, /* 14.5dB */
++	{ 150,  2565 }, /* 15.0dB */
++	{ 160,  2300 }, /* 16.0dB */
++	{ 170,  2058 }, /* 17.0dB */
++	{ 180,  1849 }, /* 18.0dB */
++	{ 190,  1663 }, /* 19.0dB */
++	{ 200,  1495 }, /* 20.0dB */
++	{ 210,  1349 }, /* 21.0dB */
++	{ 220,  1222 }, /* 22.0dB */
++	{ 230,  1110 }, /* 23.0dB */
++	{ 240,  1011 }, /* 24.0dB */
++	{ 250,   925 }, /* 25.0dB */
++	{ 260,   853 }, /* 26.0dB */
++	{ 270,   789 }, /* 27.0dB */
++	{ 280,   734 }, /* 28.0dB */
++	{ 290,   690 }, /* 29.0dB */
++	{ 300,   650 }, /* 30.0dB */
++	{ 310,   619 }, /* 31.0dB */
++	{ 320,   593 }, /* 32.0dB */
++	{ 330,   571 }, /* 33.0dB */
++	{ 400,   498 }, /* 40.0dB */
++	{ 450,	 484 }, /* 45.0dB */
++	{ 500,	 481 }	/* 50.0dB */
++};
++
++/* RF level C/N lookup table */
++static const struct stv090x_tab stv090x_rf_tab[] = {
++	{  -5, 0xcaa1 }, /*  -5dBm */
++	{ -10, 0xc229 }, /* -10dBm */
++	{ -15, 0xbb08 }, /* -15dBm */
++	{ -20, 0xb4bc }, /* -20dBm */
++	{ -25, 0xad5a }, /* -25dBm */
++	{ -30, 0xa298 }, /* -30dBm */
++	{ -35, 0x98a8 }, /* -35dBm */
++	{ -40, 0x8389 }, /* -40dBm */
++	{ -45, 0x59be }, /* -45dBm */
++	{ -50, 0x3a14 }, /* -50dBm */
++	{ -55, 0x2d11 }, /* -55dBm */
++	{ -60, 0x210d }, /* -60dBm */
++	{ -65, 0xa14f }, /* -65dBm */
++	{ -70, 0x07aa }	 /* -70dBm */
++};
++
++static int stv090x_table_lookup(const struct stv090x_tab *tab, int max, int val)
++{
++	int res = 0;
++	int min = 0, med;
++
++	if ((val >= tab[min].read && val < tab[max].read) ||
++	    (val >= tab[max].read && val < tab[min].read)) {
++		while ((max - min) > 1) {
++			med = (max + min) / 2;
++			if ((val >= tab[min].read && val < tab[med].read) ||
++			    (val >= tab[med].read && val < tab[min].read))
++				max = med;
++			else
++				min = med;
++		}
++		res = ((val - tab[min].read) *
++		       (tab[max].real - tab[min].real) /
++		       (tab[max].read - tab[min].read)) +
++			tab[min].real;
++	} else {
++		if (tab[min].read < tab[max].read) {
++			if (val < tab[min].read)
++				res = tab[min].real;
++			else if (val >= tab[max].read)
++				res = tab[max].real;
++		} else {
++			if (val >= tab[min].read)
++				res = tab[min].real;
++			else if (val < tab[max].read)
++				res = tab[max].real;
++		}
++	}
++
++	return res;
++}

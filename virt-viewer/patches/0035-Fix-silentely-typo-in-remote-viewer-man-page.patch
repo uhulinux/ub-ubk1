@@ -1,0 +1,22 @@
+From 5c192f0f0f97409c5fb48043d251446d9f36553e Mon Sep 17 00:00:00 2001
+From: Christophe Fergeau <cfergeau@redhat.com>
+Date: Wed, 12 Mar 2014 09:29:23 +0100
+Subject: [PATCH] Fix 'silentely' typo in remote-viewer man page
+
+---
+ man/remote-viewer.pod | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/man/remote-viewer.pod b/man/remote-viewer.pod
+index bb7ede3..2c84432 100644
+--- a/man/remote-viewer.pod
++++ b/man/remote-viewer.pod
+@@ -253,7 +253,7 @@ The current SPICE channels are: main, display, inputs, cursor, playback, record,
+ 
+ =item C<delete-this-file> (boolean)
+ 
+-Set to 1 for the client to remove this connection file (if it can't, it will fail silentely)
++Set to 1 for the client to remove this connection file (if it can't, it will fail silently)
+ 
+ =item C<proxy> (string)
+ 

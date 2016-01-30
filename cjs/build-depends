@@ -1,0 +1,6 @@
+cairo-dev
+dbus-glib-dev
+gnome-common
+gobject-introspection-dev
+gtk-dev
+js-dev

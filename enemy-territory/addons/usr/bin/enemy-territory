@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#export ETSDL_SDL_LIB="/usr/lib/libSDL-1.2.so.0"
+#export SDL_AUDIODRIVER="pulse"
+cd /usr/share/games/enemy-territory
+./et.x86 $*
+#LD_PRELOAD="${LD_PRELOAD}:/usr/lib/et-sdl-sound.so" ./et.x86 $*

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+pepperflash_version=`grep -i version /usr/lib/PepperFlash/manifest.json | awk '{print $2}' | awk -F"\"" '{print $2}'`
+exec /usr/lib/google/chrome/google-chrome \
+	--ppapi-flash-path=/usr/lib/PepperFlash/libpepflashplayer.so \
+	--ppapi-flash-version="$pepperflash_version" \
+	"$@"

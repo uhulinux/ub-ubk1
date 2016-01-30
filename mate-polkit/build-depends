@@ -1,0 +1,6 @@
+gobject-introspection-dev
+gtk2-dev
+intltool
+mate-common
+polkit-dev
+systemd-dev

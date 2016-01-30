@@ -1,0 +1,19 @@
+diff -Naur orig/extras/source/autocorr/lang/hu/DocumentList.xml patched/extras/source/autocorr/lang/hu/DocumentList.xml
+--- orig/extras/source/autocorr/lang/hu/DocumentList.xml	2015-07-24 20:07:59.000000000 +0200
++++ patched/extras/source/autocorr/lang/hu/DocumentList.xml	2015-07-27 16:02:29.035278426 +0200
+@@ -942,6 +942,7 @@
+   <block-list:block block-list:abbreviated-name=":dühös:" block-list:name="😡"/>
+   <block-list:block block-list:abbreviated-name=":DVD:" block-list:name="📀"/>
+   <block-list:block block-list:abbreviated-name=":dzsóker:" block-list:name="🃏"/>
++  <block-list:block block-list:abbreviated-name=":joker:" block-list:name="🃏"/>
+   <block-list:block block-list:abbreviated-name=":É2:" block-list:name="⇑"/>
+   <block-list:block block-list:abbreviated-name=":^e:" block-list:name="ᵉ"/>
+   <block-list:block block-list:abbreviated-name=":_e:" block-list:name="ₑ"/>
+@@ -1356,6 +1357,7 @@
+   <block-list:block block-list:abbreviated-name=":macska:" block-list:name="🐈"/>
+   <block-list:block block-list:abbreviated-name=":madár:" block-list:name="🐦"/>
+   <block-list:block block-list:abbreviated-name=":madzsong:" block-list:name="🀄"/>
++  <block-list:block block-list:abbreviated-name=":mahjong:" block-list:name="🀄"/>
+   <block-list:block block-list:abbreviated-name=":magasfeszültség:" block-list:name="⚡"/>
+   <block-list:block block-list:abbreviated-name=":magonc:" block-list:name="🌱"/>
+   <block-list:block block-list:abbreviated-name=":majom2:" block-list:name="🐵"/>

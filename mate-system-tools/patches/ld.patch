@@ -1,0 +1,12 @@
+diff -Naur orig/src/network/Makefile.am patched/src/network/Makefile.am
+--- orig/src/network/Makefile.am	2013-08-06 23:19:33.000000000 +0200
++++ patched/src/network/Makefile.am	2014-03-05 19:45:57.615318695 +0100
+@@ -15,7 +15,7 @@
+ CLEANFILES = $(GST_TOOL_CLEANFILES)
+ EXTRA_DIST = $(GST_TOOL_EXTRA_DIST)
+ 
+-mate_network_admin_LDADD = $(GST_TOOL_LIBS) $(GST_IW_LIBS) $(DBUS_LIBS) $(GIO_LIBS)
++mate_network_admin_LDADD = $(GST_TOOL_LIBS) $(GST_IW_LIBS) $(DBUS_LIBS) $(GIO_LIBS) -lm
+ mate_network_admin_DEPENDENCIES = $(GST_TOOL_DEPENDENCIES)
+ 
+ if HAVE_LIBIW_H

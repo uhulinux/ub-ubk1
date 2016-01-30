@@ -1,0 +1,3 @@
+#!/usr/bin/env dl
+fltk-${UB_VERSION}-source.tar.bz2 fltk-${UB_VERSION}/
+	http://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/fltk/${UB_VERSION}/

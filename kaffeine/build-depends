@@ -1,0 +1,7 @@
+cmake
+gettext
+kdelibs-dev
+libx11-dev
+libxscrnsaver-dev
+qt4-dev
+xine-lib-dev

@@ -1,0 +1,60 @@
+From 0c40a610483824f649561f9b171112aba2971519 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>
+Date: Mon, 16 Jun 2014 19:55:39 +0200
+Subject: [PATCH] Fix a floating display warning
+
+You can reproduce the error by starting the client in kiosk and shuting
+down the guest.
+
+ #0  0x000000317e432915 in raise (sig=6) at
+ ../nptl/sysdeps/unix/sysv/linux/raise.c:64
+ #1  0x000000317e4340f5 in abort () at abort.c:92
+ #2  0x000000317fc4a98a in g_logv (log_domain=0x318730e657 "Gtk",
+ log_level=<value optimized out>, format=
+     0x31873a50a8 "A floating object was finalized. This means that
+     someone\ncalled g_object_unref() on an object that had only a
+     floating\nreference; the initial floating reference is not owned by
+     anyone\nand must be remo"..., args1=0x7fffffffd5f0)
+     at gmessages.c:557
+ #3  0x000000317fc4aa23 in g_log (log_domain=<value optimized out>,
+ log_level=<value optimized out>,
+     format=<value optimized out>) at gmessages.c:577
+ #4  0x000000318717ba72 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+ #5  0x0000000000426eb5 in
+ virt_viewer_display_spice_finalize (obj=0x6fec20
+ [VirtViewerDisplaySpice])
+     at virt-viewer-display-spice.c:67
+ #6  0x0000003180c106a4 in g_object_unref (_object=0x6fec20) at
+ gobject.c:2712
+ #7  0x0000000000425b5d in destroy_display (data=0x6fec20) at
+ virt-viewer-session-spice.c:596
+ #8  0x000000317fc1667b in g_ptr_array_foreach (array=0x74a040,
+ func=0x425ae7 <destroy_display>, user_data=0x0)
+     at garray.c:1306
+ #9  0x000000317fc16e7b in g_ptr_array_free (farray=0x74a040,
+ free_segment=1) at garray.c:938
+ #10 0x000000317fc2906a in g_data_set_internal (datalist=<value optimized
+ out>, key_id=1297, data=0x0, destroy_func=0)
+     at gdataset.c:351
+ #11 g_datalist_id_set_data_full (datalist=<value optimized out>,
+ key_id=1297, data=0x0, destroy_func=0) at gdataset.c:598
+ #12 0x00000000004268d0 in
+ virt_viewer_session_spice_channel_destroy (s=0x800000 [SpiceSession],
+ channel=
+---
+ src/virt-viewer-session-spice.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/virt-viewer-session-spice.c b/src/virt-viewer-session-spice.c
+index fedde18..cb62444 100644
+--- a/src/virt-viewer-session-spice.c
++++ b/src/virt-viewer-session-spice.c
+@@ -628,7 +628,7 @@ virt_viewer_session_spice_display_monitors(SpiceChannel *channel,
+         if (display == NULL) {
+             display = virt_viewer_display_spice_new(self, channel, i);
+             g_debug("creating spice display (#:%d)", i);
+-            g_ptr_array_index(displays, i) = g_object_ref(display);
++            g_ptr_array_index(displays, i) = g_object_ref_sink(display);
+         }
+ 
+         virt_viewer_session_add_display(VIRT_VIEWER_SESSION(self),

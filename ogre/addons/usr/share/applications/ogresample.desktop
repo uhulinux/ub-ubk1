@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OGRE samples
+Name[hu]=OGRE példák
+Type=Application
+Comment=OGRE examples
+Comment[hu]=OGRE példa böngésző
+Exec=SampleBrowser
+Terminal=false
+Icon=/usr/share/OGRE/Samples/Common/misc/Icon.png
+Categories=Development;Building;

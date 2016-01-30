@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cd power/cpupower
+ub_make VERSION=${UB_VERSION}

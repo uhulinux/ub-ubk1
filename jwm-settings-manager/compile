@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+export FLTK_DIR=/usr/share/cmake/modules
+export INCLUDE_DIRECTORIES="/usr/include"
+ub_compile \
+	-DCMAKE_SOURCE_DIR=/usr

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+cd z80ex-${UB_VERSION}
+ub_install
+cp README COPYING Changelog ../

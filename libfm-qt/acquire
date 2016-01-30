@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libfm-qt-${UB_VERSION}.tar.gz libfm-qt-d5bfd04/
+	git://github.com/lxde/libfm-qt.git@d5bfd04

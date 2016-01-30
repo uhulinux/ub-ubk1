@@ -1,0 +1,12 @@
+diff -Naur orig/config/pcmanfm-qt/lxqt/settings.conf.in mod/config/pcmanfm-qt/lxqt/settings.conf.in
+--- orig/config/pcmanfm-qt/lxqt/settings.conf.in	2015-10-08 18:38:12.000000000 +0200
++++ mod/config/pcmanfm-qt/lxqt/settings.conf.in	2015-12-23 20:07:19.471855729 +0100
+@@ -2,7 +2,7 @@
+ IconThemeName=elementary
+ SuCommand=gksu %s
+ TerminalCommand=
+-Archiver=file-roller
++Archiver=xarchiver
+ SIUnit=false
+ TerminalDirCommand=xterm
+ TerminalExecCommand=xterm -e %s

@@ -1,0 +1,21 @@
+diff -Naur orig/data/activity-log-manager.desktop.in mod/data/activity-log-manager.desktop.in
+--- orig/data/activity-log-manager.desktop.in	2013-07-10 08:28:23.000000000 +0200
++++ mod/data/activity-log-manager.desktop.in	2015-11-01 20:33:32.190367466 +0100
+@@ -1,15 +1,13 @@
+ [Desktop Entry]
+-Version=1.0
+ 
+ _Name=Activity Log Manager
+ _GenericName=Activity Log Manager
+ _Comment=Configure what gets logged in your Zeitgeist activity log
+-_X-Ubuntu-Software-Center-Name=Activities and Privacy Manager Tool
+ 
+ 
+ Type=Application
+ Exec=activity-log-manager
+ Icon=activity-log-manager
+ 
+-Categories=GNOME;GTK;Utility;
+-NotShowIn=Unity;
++Categories=GTK;Utility;
++

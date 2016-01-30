@@ -1,0 +1,9 @@
+diff -Naur orig/data/lxrandr.desktop.in mod/data/lxrandr.desktop.in
+--- orig/data/lxrandr.desktop.in	2014-09-08 16:35:49.000000000 +0200
++++ mod/data/lxrandr.desktop.in	2014-12-03 19:47:59.012063486 +0100
+@@ -6,4 +6,4 @@
+ Terminal=false
+ Type=Application
+ Categories=GTK;Settings;HardwareSettings;X-LXDE-Settings;
+-NotShowIn=GNOME;KDE;XFCE;
++OnlyShowIn=LXDE;

@@ -1,0 +1,3 @@
+cmake
+openssl-dev
+zlib-dev

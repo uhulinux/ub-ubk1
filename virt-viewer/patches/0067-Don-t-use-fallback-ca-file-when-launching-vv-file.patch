@@ -1,0 +1,31 @@
+From e63dd36d1468cc089b74cb04fbf9d80b47988ca4 Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Fri, 15 Aug 2014 10:58:56 -0500
+Subject: [PATCH] Don't use fallback ca-file when launching vv-file
+
+When launching from a vv-file, we want to use the ca specified in the vv
+file and not load additional certs from the fallback ca-file. This
+ensures that the ca-file property of the spice session is unset when
+loading a ca from a vv-file.
+
+Resolves: rhbz#1127762
+---
+ src/virt-viewer-session-spice.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/virt-viewer-session-spice.c b/src/virt-viewer-session-spice.c
+index 58a1dd7..ceef067 100644
+--- a/src/virt-viewer-session-spice.c
++++ b/src/virt-viewer-session-spice.c
+@@ -359,7 +359,10 @@ fill_session(VirtViewerFile *file, SpiceSession *session)
+         g_return_if_fail(ca != NULL);
+ 
+         GByteArray *ba = g_byte_array_new_take((guint8 *)ca, strlen(ca) + 1);
+-        g_object_set(G_OBJECT(session), "ca", ba, NULL);
++        g_object_set(G_OBJECT(session),
++                     "ca", ba,
++                     "ca-file", NULL,
++                     NULL);
+         g_byte_array_unref(ba);
+     }
+ 

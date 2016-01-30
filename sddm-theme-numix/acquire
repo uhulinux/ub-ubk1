@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+sddm-numix-theme-${UB_VERSION}.tar.gz intialonsohub.io.git-3db8e3a/themes/sddm/
+      git://github.com/intialonso/intialonso.github.io.git@3db8e3a

@@ -1,0 +1,7 @@
+gnome-common
+gobject-introspection-dev
+gtk-dev
+intltool
+libxkbcommon-dev
+libxkbfile-dev
+xkeyboard-config

@@ -1,0 +1,23 @@
+#!/bin/sh -eux
+
+mv opt/google/chrome/PepperFlash/ "$UB_INSTALLDIR"/usr/lib/PepperFlash/
+mv opt/google "$UB_INSTALLDIR"/usr/lib
+
+sed -i -e 's|/opt|/usr/lib|g' "$UB_INSTALLDIR"/usr/lib/google/chrome/default-app-block
+
+rm -Rf "$UB_INSTALLDIR"/usr/lib/google/chrome/cron
+rm -Rf "$UB_INSTALLDIR"/usr/share/applications/google-chrome.desktop
+
+for size in 16 22 24 32 48 64 128 256; do
+	mkdir -p ${UB_INSTALLDIR}/usr/share/icons/hicolor/${size}x${size}/apps/
+	cp "$UB_INSTALLDIR"/usr/lib/google/chrome/product_logo_$size.png \
+		${UB_INSTALLDIR}/usr/share/icons/hicolor/${size}x${size}/apps/google-chrome.png
+done
+cp "$UB_INSTALLDIR"/usr/lib/google/chrome/product_logo_48.png \
+	"$UB_INSTALLDIR"/usr/share/pixmaps/google-chrome.png
+
+mkdir -p "$UB_INSTALLDIR"/opt/google/chrome
+chmod 4755 "$UB_INSTALLDIR"/usr/lib/google/chrome/chrome-sandbox
+ln -s "$UB_INSTALLDIR"/usr/lib/google/chrome/chrome-sandbox "$UB_INSTALLDIR"/opt/google/chrome/chrome-sandbox
+
+ln -s "$UB_INSTALLDIR"/usr/lib/PepperFlash "$UB_INSTALLDIR"/usr/lib/google/chrome/PepperFlash

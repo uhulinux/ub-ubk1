@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+belle-sip-${UB_VERSION}.tar.gz belle-sip-${UB_VERSION}/
+	http://download.savannah.gnu.org/releases/linphone/belle-sip/

@@ -1,0 +1,31 @@
+From 9434767f8df4631d7ff807fa0d8cd53f8e665d2a Mon Sep 17 00:00:00 2001
+From: Pavel Grunt <pgrunt@redhat.com>
+Date: Thu, 27 Nov 2014 14:11:35 +0100
+Subject: [PATCH] remote-viewer: Show debug message when an invalid Ovirt VM
+ name is given
+
+This patch is intended for rhel-7.1 only. Upstream version handles this
+situation by showing a list of all available machines.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1168495
+---
+ src/remote-viewer.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/remote-viewer.c b/src/remote-viewer.c
+index 2cb8925..5ae3319 100644
+--- a/src/remote-viewer.c
++++ b/src/remote-viewer.c
+@@ -856,7 +856,11 @@ create_ovirt_session(VirtViewerApp *app, const char *uri)
+         goto error;
+     }
+     vm = OVIRT_VM(ovirt_collection_lookup_resource(vms, vm_name));
+-    g_return_val_if_fail(vm != NULL, FALSE);
++    if (vm == NULL) {
++        g_debug("Cannot find guest %s", vm_name);
++        goto error;
++    }
++
+     g_object_get(G_OBJECT(vm), "state", &state, NULL);
+     if (state != OVIRT_VM_STATE_UP) {
+         g_debug("oVirt VM %s is not running", vm_name);

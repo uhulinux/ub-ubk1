@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxqt-common-${UB_VERSION}.tar.xz lxqt-common-${UB_VERSION}/
+	http://downloads.lxqt.org/lxqt/${UB_VERSION}/

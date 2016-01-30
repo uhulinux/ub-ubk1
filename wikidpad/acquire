@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+WikidPad-${UB_VERSION/~/}-src.zip .
+	http://download.sourceforge.net/wikidpad/2.3/
+
+WikidPadHelp_hu_HU_2.1beta07.zip
+	http://download.sourceforge.net/wikidpad/AdditionalHelp/

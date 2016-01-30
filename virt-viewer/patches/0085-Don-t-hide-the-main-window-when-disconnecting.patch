@@ -1,0 +1,47 @@
+From 6b2c83325556bcc0c332221856d7999435a41906 Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Fri, 31 Jan 2014 13:59:42 -0600
+Subject: [PATCH] Don't hide the main window when disconnecting
+
+The main window (display #1) is treated a bit differently from other windows,
+since it is opened at app start and displays status messages while we attempt to
+connect to the remote guest.  As such, it should really stay open as long as the
+app is running.
+
+The impetus for this change is the following:
+- user attempts to connect to a remote VNC display with a password
+- user types the wrong password
+- A dialog pops up indicating that authentication failed and asking if the user
+  would like to try to re-connect.
+- User clicks 'Yes'
+- Because the connection was disconnected, all windows are closed
+- remote-viewer tries to reconnect again, at which point a new display window is
+  opened, and the window gets placed by the window manager (possibly on another
+  monitor altogether).
+
+As a user, I expect the program to simply re-use the existing window when trying
+to re-authenticate, instead of having the window disappear and then re-appear at
+a different location.  This patch accomplishes that.
+
+Conflicts:
+	src/virt-viewer-app.c
+(cherry picked from commit ed9b3f3450832c0b17b80468748aff4bddfcec34)
+---
+ src/virt-viewer-app.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/virt-viewer-app.c b/src/virt-viewer-app.c
+index 1abcc90..f635393 100644
+--- a/src/virt-viewer-app.c
++++ b/src/virt-viewer-app.c
+@@ -550,7 +550,9 @@ virt_viewer_app_window_set_visible(VirtViewerApp *self,
+ static void hide_one_window(gpointer value,
+                             gpointer user_data G_GNUC_UNUSED)
+ {
+-    virt_viewer_window_hide(VIRT_VIEWER_WINDOW(value));
++    VirtViewerApp* self = VIRT_VIEWER_APP(user_data);
++    if (self->priv->main_window != value)
++        virt_viewer_window_hide(VIRT_VIEWER_WINDOW(value));
+ }
+ 
+ static void

@@ -1,0 +1,13 @@
+diff -Naur orig/src/yprefs.h patched/src/yprefs.h
+--- orig/src/yprefs.h	2015-07-10 22:48:34.000000000 +0200
++++ patched/src/yprefs.h	2015-07-11 15:07:35.086006017 +0200
+@@ -34,7 +34,8 @@
+ #ifdef CONFIG_XFREETYPE
+ XIV(bool, haveXft,                              true)
+ #endif
+-XSV(const char *, iconPath,                     0)
++#define CONFIG_DEFAULT_ICONPATH "/usr/share/pixmaps:/usr/share/icons/hicolor/48x48/apps:/usr/share/icons/gnome/48x48/apps:/usr/share/icons/gnome/48x48/actions:/usr/share/icons/gnome/48x48/devices:/usr/share/icons/default.kde4/48x48/apps"
++XSV(const char *, iconPath,                     CONFIG_DEFAULT_ICONPATH)
+ #define CONFIG_DEFAULT_THEME "icedesert/default.theme"
+ XSV(const char *, themeName,                    CONFIG_DEFAULT_THEME)
+ XSV(const char *, xineramaPrimaryScreenName,    0)

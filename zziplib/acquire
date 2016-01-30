@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+zziplib-${UB_VERSION}.tar.bz2 zziplib-${UB_VERSION}/
+	http://download.sourceforge.net/zziplib/

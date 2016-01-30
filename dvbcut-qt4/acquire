@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dvbcut-qt4-${UB_VERSION}.tar.gz dvbcut-qt4-3c1f90f/
+  git://github.com/nextghost/dvbcut-qt4.git@3c1f90f

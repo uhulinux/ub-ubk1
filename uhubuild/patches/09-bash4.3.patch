@@ -1,0 +1,90 @@
+diff -Naur orig/src/common patched/src/common
+--- orig/src/common	2015-06-14 12:22:08.168817130 +0200
++++ patched/src/common	2015-06-14 12:52:38.805894769 +0200
+@@ -1,6 +1,8 @@
+ 
+ _myname="$(basename "$0")"
+ 
++UHUBUILD_BASH="$(echo ${BASH_VERSION%%[^0-9.]*} | cut -d. -f-2 | sed -e 's/\.//g')"
++
+ shopt -s nullglob
+ 
+ # színek ----------------------------------------------------------------------
+@@ -57,7 +59,7 @@
+ 
+ # tmp -------------------------------------------------------------------------
+ unset __tmp || true
+-declare -a __tmp
++__tmp=() # bash 4.3, declare -a: unbound variable
+ tmpfile()
+ {
+ 	local i
+@@ -91,7 +93,7 @@
+ }
+ 
+ # -----------------------------------------------------------------------------
+-declare -a _exit_hooks
++_exit_hooks=() # bash 4.3, declare -a: unbound variable
+ exit_hook ()
+ {
+ 	_exit_hooks[${#_exit_hooks[@]}]="$1"
+diff -Naur orig/src/helpers/ub_configure patched/src/helpers/ub_configure
+--- orig/src/helpers/ub_configure	2009-11-29 11:05:24.000000000 +0100
++++ patched/src/helpers/ub_configure	2015-06-14 12:22:33.204941278 +0200
+@@ -9,8 +9,8 @@
+ 
+ export CFLAGS="$UB_CFLAGS"
+ 
+-declare -a argv
+-declare -a argx=(
++argv=() # bash 4.3, declare -a: unbound variable
++argx=(
+ 	--prefix="/usr"             \
+ 	--sysconfdir="/etc"         \
+ 	--localstatedir="/var"      \
+diff -Naur orig/src/helpers/ub_makeinstall patched/src/helpers/ub_makeinstall
+--- orig/src/helpers/ub_makeinstall	2009-03-29 19:51:15.000000000 +0200
++++ patched/src/helpers/ub_makeinstall	2015-06-14 12:22:33.204941278 +0200
+@@ -33,7 +33,7 @@
+ 		;;
+ esac
+ 
+-declare -a argv
++argv=() # bash 4.3, declare -a: unbound variable
+ if [ "$UB_MAKEINSTALL_USE_DESTDIR" = "yes" ]; then
+ 	argv[${#argv[@]}]="DESTDIR=$UB_MAKEINSTALL_PREFIX"
+ # ez meg szokott lenni:
+@@ -57,7 +57,7 @@
+ argv[${#argv[@]}]="MAN7EXT=7"
+ argv[${#argv[@]}]="MAN8EXT=8"
+ 
+-declare -a argv2
++argv2=() # bash 4.3, declare -a: unbound variable
+ shopt -s extglob
+ for i in "${argv[@]}"; do
+ 	pattern="$i"
+diff -Naur orig/src/steps/split patched/src/steps/split
+--- orig/src/steps/split	2014-03-26 08:54:24.000000000 +0100
++++ patched/src/steps/split	2015-06-14 12:42:26.418858106 +0200
+@@ -72,6 +72,9 @@
+ 			# *, /**/ és ? átalakítása regexppé
+ 
+ 			shopt -s extglob
++			if [ $UHUBUILD_BASH -ge 43 ]; then
++			shopt -s compat42 # bash 4.3 enélkül nem értelmezi a **-t
++			fi
+ 			# ? -> [^/]
+ 			regex="${regex//\?/[^/]}"
+ 			# /+ -> /
+diff -Naur orig/src/uhubuild-chrootbuild patched/src/uhubuild-chrootbuild
+--- orig/src/uhubuild-chrootbuild	2015-06-14 12:22:08.168817130 +0200
++++ patched/src/uhubuild-chrootbuild	2015-06-14 12:22:33.204941278 +0200
+@@ -81,7 +81,7 @@
+ export  UHUBUILD_APT_PREFERENCES
+ distribution="$(<"$UHUBUILD_SRCDIR/distribution")"
+ prio=1000
+-declare -a versions=()
++versions=() # bash 4.3, declare -a: unbound variable
+ for version in $(echo "${distribution##* }"|tr ':' ' '); do
+ 	versions[${#versions[@]}]="$version"
+ 	prio="$((prio + 1))"

@@ -1,0 +1,6 @@
+cmake
+liblxqt-dev
+libqtxdg-dev
+libx11-dev
+libxcb-dev
+solid-dev

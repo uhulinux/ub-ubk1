@@ -1,0 +1,35 @@
+From 87e32602e117d922f531fda93bad984665a655d9 Mon Sep 17 00:00:00 2001
+From: "Daniel P. Berrange" <berrange@redhat.com>
+Date: Wed, 29 Jan 2014 16:22:09 +0000
+Subject: [PATCH] Improve docs for --attach flag in virt-viewer
+
+People seem to have a hard time understanding the --attach flag.
+Rewrite the docs in the hope that people figure it out this time.
+
+Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+---
+ man/virt-viewer.pod | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/man/virt-viewer.pod b/man/virt-viewer.pod
+index 937a891..ac9b268 100644
+--- a/man/virt-viewer.pod
++++ b/man/virt-viewer.pod
+@@ -59,10 +59,13 @@ used SSH.
+ 
+ =item -a, --attach
+ 
+-Use libvirt to directly attach to a local display, instead of making a
+-TCP/UNIX socket connection. This avoids the need to authentication with
+-the remote display, if authentication with libvirt is already allowed.
+-This option does not work with remote displays.
++Instead of making a direct TCP/UNIX socket connection to the remote display,
++ask libvirt to provide a pre-connected socket for the display. This avoids
++the need to authenticate with the remote display server directly. This option
++will only work when connecting to a guest that is running on the same host
++as the virt-viewer program. If attaching to the guest via libvirt fails,
++virt-viewer will automatically fallback to trying a regular direct TCP/UNIX
++socket connection.
+ 
+ =item -f, --full-screen
+ 

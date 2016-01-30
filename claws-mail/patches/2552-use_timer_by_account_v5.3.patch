@@ -1,0 +1,559 @@
+diff -Naur orig/src/account.c patched/src/account.c
+--- orig/src/account.c	2015-11-18 14:40:05.000000000 +0100
++++ patched/src/account.c	2015-12-19 06:15:25.074033546 +0100
+@@ -952,6 +952,11 @@
+ 
+ 	ACP_FASSIGN(imap_auth_type);
+ 
++	ACP_FASSIGN(acc_time_lapse);
++	ACP_FASSIGN(acc_time_multiplicator);
++	ACP_FASSIGN(acc_autocheck_timer);
++	ACP_FASSIGN(acc_autocheck_method);
++
+ 	/* send */
+ 	ACP_FASSIGN(gen_msgid);
+ 	ACP_FASSIGN(gen_xmailer);
+@@ -1768,6 +1773,9 @@
+ 
+ 	/* set value in account */
+ 	ac->recv_at_getall ^= TRUE;
++
++	/* set autocheck timer */
++	inc_acc_autocheck_timer_set(ac);
+ }
+ 
+ static void account_double_clicked(GtkTreeView		*list_view,
+diff -Naur orig/src/inc.c patched/src/inc.c
+--- orig/src/inc.c	2015-11-18 14:40:05.000000000 +0100
++++ patched/src/inc.c	2015-12-19 06:15:25.074033546 +0100
+@@ -135,10 +135,13 @@
+ static gint inc_all_spool(void);
+ static void inc_autocheck_timer_set_interval	(guint		 interval);
+ static gint inc_autocheck_func			(gpointer	 data);
++static void inc_acc_autocheck_timer_set_interval      (PrefsAccount *account, guint    interval);
++static gint inc_acc_autocheck_func                    (PrefsAccount *account);
+ 
+ static void inc_notify_cmd		(gint new_msgs, 
+  					 gboolean notify);
+ 
++
+ static void inc_update_stats(gint new_msgs)
+ {
+ 	/* update session statistics */
+@@ -296,7 +299,7 @@
+ 		  "to get mails.")))
+ 		return 0;
+ 
+-	inc_autocheck_timer_remove();
++	inc_acc_autocheck_timer_remove(account);
+ 	main_window_lock(mainwin);
+ 
+ 	new_msgs = inc_account_mail_real(mainwin, account);
+@@ -304,7 +307,7 @@
+ 	inc_update_stats(new_msgs);
+ 	inc_finished(mainwin, new_msgs > 0, FALSE);
+ 	main_window_unlock(mainwin);
+-	inc_autocheck_timer_set();
++	inc_acc_autocheck_timer_set(account);
+ 
+ 	return new_msgs;
+ }
+@@ -326,6 +329,7 @@
+ 	if (inc_lock_count) return;
+ 
+ 	inc_autocheck_timer_remove();
++
+ 	main_window_lock(mainwin);
+ 
+ 	list = account_get_list();
+@@ -1411,7 +1415,6 @@
+ 		inc_lock_count--;
+ }
+ 
+-static guint autocheck_timer = 0;
+ static gpointer autocheck_data = NULL;
+ 
+ static void inc_notify_cmd(gint new_msgs, gboolean notify)
+@@ -1451,48 +1454,94 @@
+ 	inc_autocheck_timer_set();
+ }
+ 
+-static void inc_autocheck_timer_set_interval(guint interval)
++static void inc_acc_autocheck_timer_set_interval(PrefsAccount *account, guint interval)
+ {
+-	inc_autocheck_timer_remove();
++	inc_acc_autocheck_timer_remove(account);
+ 	/* last test is to avoid re-enabling auto_check after modifying 
+ 	   the common preferences */
+-	if (prefs_common.autochk_newmail && autocheck_data
++	if (prefs_common.autochk_newmail && account->recv_at_getall && autocheck_data
+ 	    && prefs_common.work_offline == FALSE) {
+ 		if (interval % 1000 == 0)
+-			autocheck_timer =
+-				g_timeout_add_seconds(interval/1000, inc_autocheck_func, autocheck_data);
++			account->acc_autocheck_timer =
++				g_timeout_add_seconds(interval/1000, (GSourceFunc)inc_acc_autocheck_func, account);
+ 		else
+-			autocheck_timer = g_timeout_add
+-				(interval, inc_autocheck_func, autocheck_data);
+-		debug_print("added timer = %d\n", autocheck_timer);
++			account->acc_autocheck_timer = g_timeout_add
++				(interval, (GSourceFunc)inc_acc_autocheck_func, account);
++		debug_print(" +++ added timer = %d for account '%s'\n", account->acc_autocheck_timer, account->account_name);
+ 	}
+ }
+ 
+ void inc_autocheck_timer_set(void)
+ {
+-	inc_autocheck_timer_set_interval(prefs_common.autochk_itv * 60000);
++	GList *list;
++	for (list = account_get_list(); list != NULL; list = list->next) {
++		   PrefsAccount *account = list->data;
++	if( account-> recv_at_getall)
++		   inc_acc_autocheck_timer_set(account);
++	}
+ }
+ 
+ void inc_autocheck_timer_remove(void)
+ {
+-	if (autocheck_timer) {
+-		debug_print("removed timer = %d\n", autocheck_timer);
+-		g_source_remove(autocheck_timer);
+-		autocheck_timer = 0;
++	GList *list;
++	for (list = account_get_list(); list != NULL; list = list->next) {
++		   PrefsAccount *account = list->data;
++	if( account-> recv_at_getall)
++		   inc_acc_autocheck_timer_remove(account);
++	}
++}
++
++void inc_acc_autocheck_timer_set(PrefsAccount *account)
++{
++	guint time = 1;
++	switch(account->acc_autocheck_method)
++	{
++		  case AUTO_CHK_REL:
++				  time = (float)prefs_common.autochk_itv * account->acc_time_multiplicator;
++				  if (time == 0 )
++						  time = 1;
++				  break;
++		  case AUTO_CHK_FIX:
++				  time = account->acc_time_lapse;
++				  break;
++		  default:
++				  debug_print("Autocheck method '%d' unknown for account '%s'\n", 
++						  account->acc_autocheck_method,
++						  account->account_name);
+ 	}
++ 
++	inc_acc_autocheck_timer_set_interval(account, time * 60000);
+ }
+ 
+-static gint inc_autocheck_func(gpointer data)
++void inc_acc_autocheck_timer_remove(PrefsAccount *account)
+ {
+-	MainWindow *mainwin = (MainWindow *)data;
++	if (account->acc_autocheck_timer) {
++		  debug_print(" --- removed timer = %d for account '%s'\n", account->acc_autocheck_timer, account->account_name);
++		  g_source_remove(account->acc_autocheck_timer);
++		  account->acc_autocheck_timer = 0;
++	}
++}
+ 
++static gint inc_acc_autocheck_func(PrefsAccount *account)
++{
+ 	if (inc_lock_count) {
+ 		debug_print("autocheck is locked.\n");
+-		inc_autocheck_timer_set_interval(1000);
++		inc_acc_autocheck_timer_set_interval(account, 1000);
+ 		return FALSE;
+ 	}
+ 
+- 	inc_all_account_mail(mainwin, TRUE, prefs_common.newmail_notify_auto);
++	gint new_msgs;
++
++	inc_acc_autocheck_timer_remove(account);
++	main_window_lock(autocheck_data);
++
++	new_msgs = inc_account_mail_real(autocheck_data, account);
++
++	inc_finished(autocheck_data, new_msgs > 0, FALSE);
++	main_window_unlock(autocheck_data);
++	inc_acc_autocheck_timer_set(account);
++
++	inc_notify_cmd(new_msgs, prefs_common.newmail_notify_auto);
+ 
+ 	return FALSE;
+ }
+diff -Naur orig/src/inc.h patched/src/inc.h
+--- orig/src/inc.h	2015-11-18 14:40:05.000000000 +0100
++++ patched/src/inc.h	2015-12-19 06:15:25.074033546 +0100
+@@ -109,6 +109,8 @@
+ void inc_autocheck_timer_init	(MainWindow	*mainwin);
+ void inc_autocheck_timer_set	(void);
+ void inc_autocheck_timer_remove	(void);
++void inc_acc_autocheck_timer_set	(PrefsAccount	*account);
++void inc_acc_autocheck_timer_remove	(PrefsAccount	*account);
+ gboolean inc_offline_should_override(gboolean force_ask, const gchar *msg);
+ 
+ #endif /* __INC_H__ */
+diff -Naur orig/src/prefs_account.c patched/src/prefs_account.c
+--- orig/src/prefs_account.c	2015-11-18 14:40:05.000000000 +0100
++++ patched/src/prefs_account.c	2015-12-19 06:15:25.078033566 +0100
+@@ -139,6 +139,10 @@
+ 	GtkWidget *inbox_entry;
+ 	GtkWidget *inbox_btn;
+ 
++	GtkWidget *autocheck_radiobtn;
++	GtkWidget *autocheck_spinbtn1;
++	GtkWidget *autocheck_spinbtn2;
++
+ 	GtkWidget *local_frame;
+ 	GtkWidget *local_inbox_label;
+ 	GtkWidget *local_inbox_entry;
+@@ -466,6 +470,16 @@
+ 	 &receive_page.size_limit_spinbtn,
+ 	 prefs_set_data_from_spinbtn, prefs_set_spinbtn},
+ 
++	{"acc_time_multiplicator", "1", &tmp_ac_prefs.acc_time_multiplicator, P_FLOAT,
++	 &receive_page.autocheck_spinbtn1,
++	 prefs_set_data_from_spinbtn, prefs_set_spinbtn},
++	{"acc_time_lapse", "15", &tmp_ac_prefs.acc_time_lapse, P_INT,
++	 &receive_page.autocheck_spinbtn2,
++	 prefs_set_data_from_spinbtn, prefs_set_spinbtn},
++	{"acc_autocheck_method", "0", &tmp_ac_prefs.acc_autocheck_method, P_ENUM,
++	 &receive_page.autocheck_radiobtn,
++	 prefs_account_enum_set_data_from_radiobtn, prefs_account_enum_set_radiobtn},
++
+ 	{"filter_on_receive", "TRUE", &tmp_ac_prefs.filter_on_recv, P_BOOL,
+ 	 &receive_page.filter_on_recv_checkbtn,
+ 	 prefs_set_data_from_toggle, prefs_set_toggle},
+@@ -1367,6 +1381,21 @@
+ 	page->page.widget = vbox1;
+ }
+ 
++static void acc_autochk_set_time_label(GtkSpinButton *spinbutton, gpointer label)
++{
++	guint time = (float)prefs_common.autochk_itv * gtk_spin_button_get_value(spinbutton);
++	if (time == 0 )
++		time = 1;
++	char text[64];
++
++	if (time == 1)
++		snprintf(text, 64, "(check every minute)");
++	else
++		snprintf(text, 64, "(check every %d minutes)", time);
++
++	gtk_label_set_text(GTK_LABEL(label), text);
++}
++
+ static void receive_create_widget_func(PrefsPage * _page,
+                                            GtkWindow * window,
+                                            gpointer data)
+@@ -1618,6 +1647,104 @@
+ 	CLAWS_SET_TIP(low_bandwidth_checkbtn,
+ 			     _("This mode uses less bandwidth, but can be slower with some servers."));
+ 
++	/* Autocheck */
++	GtkWidget *autochk_vbox;
++	GtkWidget *autochk_hbox;
++	GtkWidget *autochk_frame;
++	GtkWidget *autochk_label;
++	GtkWidget *autochk_radio_vbox;
++	GtkWidget *autochk_radio1;
++	GtkWidget *autochk_radio2;
++	GtkWidget *autochk_radio1_hbox;
++	GtkWidget *autochk_radio1_label1;
++	GtkWidget *autochk_radio1_label2;
++	GtkWidget *autochk_radio2_hbox;
++	GtkWidget *autochk_radio2_label1;
++	GtkWidget *autochk_radio2_label2;
++	GtkWidget *autochk_hspc;
++	GtkWidget *autochk_radio1_hspc;
++	GtkWidget *autochk_radio2_hspc;
++	GtkWidget *autochk_spinbtn1;
++	GtkObject *autochk_spinbtn1_adj;
++	GtkWidget *autochk_spinbtn2;
++	GtkObject *autochk_spinbtn2_adj;
++
++	autochk_vbox = gtkut_get_options_frame(vbox1, &autochk_frame, _("Automatic checking"));	
++
++	/* label */
++	autochk_label = gtk_label_new( _("The time interval can be relative or independent of the global setting"));
++	gtk_misc_set_alignment(GTK_MISC(autochk_label), 0, 0.5);
++	gtk_box_pack_start (GTK_BOX (autochk_vbox), autochk_label, FALSE, FALSE, 0);
++
++	/* radio buttons */
++	autochk_radio1 = gtk_radio_button_new_with_label(NULL, 
++					_("use the global timer as reference:"));
++	autochk_radio2 = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(autochk_radio1), 
++					_("use a fixed timer:"));
++	g_object_set_data (G_OBJECT (autochk_radio1), MENU_VAL_ID, GINT_TO_POINTER(AUTO_CHK_REL));
++	g_object_set_data (G_OBJECT (autochk_radio2), MENU_VAL_ID, GINT_TO_POINTER(AUTO_CHK_FIX));
++
++	/* -- */
++	autochk_radio1_hbox = gtk_hbox_new (FALSE, 8);
++	autochk_radio1_hspc = gtk_hbox_new (FALSE, 0);
++	gtk_box_pack_start (GTK_BOX (autochk_radio1_hbox), autochk_radio1_hspc, FALSE, FALSE, 0);
++	gtk_widget_set_size_request (autochk_radio1_hspc, 12, -1);
++
++	autochk_radio1_label1 = gtk_label_new(_("multiply by "));
++	gtk_box_pack_start (GTK_BOX (autochk_radio1_hbox), autochk_radio1_label1, FALSE, FALSE, 0);
++
++	autochk_spinbtn1_adj = gtk_adjustment_new (1.0, 0.1, 100000, 0.1, 1, 0);
++	autochk_spinbtn1 = gtk_spin_button_new (GTK_ADJUSTMENT (autochk_spinbtn1_adj), 0.1, 1);
++	gtk_box_pack_start (GTK_BOX (autochk_radio1_hbox), autochk_spinbtn1, FALSE, FALSE, 0);
++	gtk_widget_set_size_request (autochk_spinbtn1, 64, -1);
++	gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (autochk_spinbtn1), TRUE);
++
++	autochk_radio1_label2 = gtk_label_new (NULL);
++	gtk_box_pack_start (GTK_BOX (autochk_radio1_hbox), autochk_radio1_label2, FALSE, FALSE, 0);
++	acc_autochk_set_time_label(GTK_SPIN_BUTTON(autochk_spinbtn1), GTK_LABEL(autochk_radio1_label2));
++
++	SET_TOGGLE_SENSITIVITY(autochk_radio1, autochk_radio1_hbox);
++	g_signal_connect(G_OBJECT(autochk_spinbtn1), "value-changed", 
++					 G_CALLBACK(acc_autochk_set_time_label), (gpointer)autochk_radio1_label2);
++
++	/* -- */
++	autochk_radio2_hbox = gtk_hbox_new (FALSE, 8);
++	autochk_radio2_hspc = gtk_hbox_new (FALSE, 0);
++	gtk_box_pack_start (GTK_BOX (autochk_radio2_hbox), autochk_radio2_hspc, FALSE, FALSE, 0);
++	gtk_widget_set_size_request (autochk_radio2_hspc, 12, -1);
++
++	autochk_radio2_label1 = gtk_label_new(_("check for mails every "));
++	gtk_box_pack_start (GTK_BOX (autochk_radio2_hbox), autochk_radio2_label1, FALSE, FALSE, 0);
++
++	autochk_spinbtn2_adj = gtk_adjustment_new (15, 1, 100000, 1, 10, 0);
++	autochk_spinbtn2 = gtk_spin_button_new (GTK_ADJUSTMENT (autochk_spinbtn2_adj), 1, 0);
++	gtk_box_pack_start (GTK_BOX (autochk_radio2_hbox), autochk_spinbtn2, FALSE, FALSE, 0);
++	gtk_widget_set_size_request (autochk_spinbtn2, 64, -1);
++	gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (autochk_spinbtn2), TRUE);
++
++	autochk_radio2_label2 = gtk_label_new (_("minute(s)"));
++	gtk_box_pack_start (GTK_BOX (autochk_radio2_hbox), autochk_radio2_label2, FALSE, FALSE, 0);
++
++	SET_TOGGLE_SENSITIVITY(autochk_radio2, autochk_radio2_hbox);
++
++	/* pack */
++	autochk_hbox = gtk_hbox_new (FALSE, 8);
++	gtk_box_pack_start (GTK_BOX (autochk_vbox), autochk_hbox, FALSE, FALSE, 0);
++	autochk_hspc = gtk_hbox_new (FALSE, 0);
++	gtk_box_pack_start (GTK_BOX (autochk_hbox), autochk_hspc, FALSE, FALSE, 0);
++	gtk_widget_set_size_request (autochk_hspc, 12, -1);
++	autochk_radio_vbox = gtk_vbox_new (FALSE, 8);
++	gtk_box_pack_start (GTK_BOX (autochk_radio_vbox), autochk_radio1, FALSE, FALSE, 0);
++	gtk_box_pack_start (GTK_BOX (autochk_radio_vbox), autochk_radio1_hbox, FALSE, FALSE, 0);
++	gtk_box_pack_start (GTK_BOX (autochk_radio_vbox), autochk_radio2, FALSE, FALSE, 0);
++	gtk_box_pack_start (GTK_BOX (autochk_radio_vbox), autochk_radio2_hbox, FALSE, FALSE, 0);
++	gtk_box_pack_start (GTK_BOX (autochk_hbox), autochk_radio_vbox, FALSE, FALSE, 0);
++
++	/* sensitity depends on the global setting */
++	gtk_widget_set_sensitive(autochk_frame, prefs_common.autochk_newmail); 
++	gtk_widget_show_all(autochk_vbox);
++	/* */
++
+ 	hbox1 = gtk_hbox_new (FALSE, 8);
+ 	gtk_widget_show (hbox1);
+ 	gtk_box_pack_start (GTK_BOX (vbox2), hbox1, FALSE, FALSE, 4);
+@@ -1636,6 +1763,9 @@
+ 		(vbox1, recvatgetall_checkbtn,
+ 		 _("'Get Mail' checks for new messages on this account"));
+ 
++	/* autochecking depend on this button */
++	SET_TOGGLE_SENSITIVITY(recvatgetall_checkbtn, autochk_hbox);
++
+ 	page->pop3_frame               = frame1;
+ 	page->use_apop_checkbtn          = use_apop_checkbtn;
+ 	page->rmmail_checkbtn            = rmmail_checkbtn;
+@@ -1657,6 +1787,10 @@
+ 	page->subsonly_checkbtn		= subsonly_checkbtn;
+ 	page->low_bandwidth_checkbtn	= low_bandwidth_checkbtn;
+ 	page->local_frame		= local_frame;
++	page->autocheck_radiobtn	= autochk_radio1;
++	page->autocheck_spinbtn1	= autochk_spinbtn1;
++	page->autocheck_spinbtn2	= autochk_spinbtn2;
++
+ 	page->local_inbox_label	= local_inbox_label;
+ 	page->local_inbox_entry	= local_inbox_entry;
+ 	page->local_inbox_btn		= local_inbox_btn;
+@@ -1671,6 +1805,7 @@
+ 
+ 	if (new_account) {
+ 		prefs_set_dialog_to_default(receive_param);
++		gtk_spin_button_set_value(GTK_SPIN_BUTTON(autochk_spinbtn2), prefs_common.autochk_itv);
+ 	} else
+ 		prefs_set_dialog(receive_param);
+ 
+@@ -2958,7 +3093,42 @@
+ 
+ static gint prefs_receive_apply(void)
+ {
++	/* check for changes in autochecking to update timers */
++	GSList *group;
++	gint method = 0;
++
++	group = gtk_radio_button_get_group (GTK_RADIO_BUTTON(receive_page.autocheck_radiobtn));
++	while (group != NULL) {
++		GtkToggleButton *btn = GTK_TOGGLE_BUTTON (group->data);
++		if (gtk_toggle_button_get_active (btn)) {
++			method = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (btn), MENU_VAL_ID));
++			break;
++		}
++		group = group->next;
++	}
++
++	gboolean b = 0;
++	if ( tmp_ac_prefs.recv_at_getall
++			!= gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(receive_page.recvatgetall_checkbtn)) )
++		b = 1;
++	else {
++		if ( tmp_ac_prefs.acc_autocheck_method != method) 
++			b = 1;
++		else {
++			if (	tmp_ac_prefs.acc_time_multiplicator 
++					!= gtk_spin_button_get_value(GTK_SPIN_BUTTON(receive_page.autocheck_spinbtn1))
++				||	(tmp_ac_prefs.acc_time_lapse 
++						!= gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(receive_page.autocheck_spinbtn2))) )
++						b = 1;
++		}
++	}
++
++	/* save prefs _before_ reseting timer  */
+ 	prefs_set_data_from_dialog(receive_param);
++
++	if (b)
++		inc_acc_autocheck_timer_set(&tmp_ac_prefs);
++
+ 	return 0;
+ }
+ 
+@@ -3478,6 +3648,7 @@
+ 	*ac_prefs = tmp_ac_prefs;
+ 	ac_prefs->account_id = prefs_account_get_new_id();
+ 
++	ac_prefs->acc_autocheck_timer = 0;
+ 	ac_prefs->privacy_prefs = g_hash_table_new(g_str_hash, g_str_equal);
+ 
+ 	return ac_prefs;
+diff -Naur orig/src/prefs_account.h patched/src/prefs_account.h
+--- orig/src/prefs_account.h	2015-11-18 14:40:05.000000000 +0100
++++ patched/src/prefs_account.h	2015-12-19 06:15:25.078033566 +0100
+@@ -43,6 +43,11 @@
+ 	SIG_DIRECT
+ } SigType;
+ 
++typedef enum {
++	AUTO_CHK_REL,
++	AUTO_CHK_FIX
++} AutoCheckMethod;
++
+ #include <glib.h>
+ 
+ #include "smtp.h"
+@@ -95,6 +100,10 @@
+ 	gint msg_leave_time;
+ 	gint msg_leave_hour;
+ 	gboolean recv_at_getall;
++	gint acc_time_lapse;
++	gfloat acc_time_multiplicator;
++	guint acc_autocheck_timer;
++	guint acc_autocheck_method;
+ 	gboolean sd_rmmail_on_download;
+ 	gboolean enable_size_limit;
+ 	gint size_limit;
+diff -Naur orig/src/prefs_gtk.c patched/src/prefs_gtk.c
+--- orig/src/prefs_gtk.c	2015-11-18 14:40:05.000000000 +0100
++++ patched/src/prefs_gtk.c	2015-12-19 06:15:25.078033566 +0100
+@@ -195,6 +195,10 @@
+ 			*((gint *)param[i].data) =
+ 				(gint)atoi(value);
+ 			break;
++		case P_FLOAT:
++			*((gfloat *)param[i].data) =
++				(gfloat)atof(value);
++			break;
+ 		case P_BOOL:
+ 			*((gboolean *)param[i].data) =
+ 				(*value == '0' || *value == '\0')
+@@ -365,6 +369,10 @@
+ 			g_snprintf(buf, sizeof(buf), "%s=%d\n", param[i].name,
+ 				   *((gint *)param[i].data));
+ 			break;
++		case P_FLOAT:
++			g_snprintf(buf, sizeof(buf), "%s=%5.2f\n", param[i].name,
++				   *((gfloat *)param[i].data));
++			break;
+ 		case P_BOOL:
+ 			g_snprintf(buf, sizeof(buf), "%s=%d\n", param[i].name,
+ 				   *((gboolean *)param[i].data));
+@@ -477,6 +485,13 @@
+ 			else
+ 				*((gint *)param[i].data) = 0;
+ 			break;
++		case P_FLOAT:
++			if (param[i].defval != NULL)
++				*((gfloat *)param[i].data) =
++					(gfloat)atof(param[i].defval);
++			else
++				*((gint *)param[i].data) = 0;
++			break;
+ 		case P_BOOL:
+ 			if (param[i].defval != NULL) {
+ 				if (!g_ascii_strcasecmp(param[i].defval, "TRUE"))
+@@ -579,6 +594,7 @@
+ 	PrefParam  tmpparam;
+ 	gchar	  *str_data = NULL;
+ 	gint	   int_data;
++	gfloat	   flt_data;
+ 	gushort    ushort_data;
+ 	gboolean   bool_data;
+ 	DummyEnum  enum_data;
+@@ -616,6 +632,13 @@
+ 				int_data = 0;
+ 			tmpparam.data = &int_data;
+ 			break;
++		case P_FLOAT:
++			if (tmpparam.defval)
++				flt_data = atof(tmpparam.defval);
++			else
++				flt_data = 0;
++			tmpparam.data = &flt_data;
++			break;
+ 		case P_USHORT:
+ 			if (tmpparam.defval)
+ 				ushort_data = atoi(tmpparam.defval);
+@@ -902,6 +925,11 @@
+ 			gtk_spin_button_get_value_as_int
+ 			(GTK_SPIN_BUTTON(*pparam->widget));
+ 		break;
++	case P_FLOAT:
++		*((gfloat *)pparam->data) =
++			gtk_spin_button_get_value
++			(GTK_SPIN_BUTTON(*pparam->widget));
++		break;
+ 	case P_USHORT:
+ 		*((gushort *)pparam->data) =
+ 			(gushort)gtk_spin_button_get_value_as_int
+@@ -922,6 +950,10 @@
+ 		gtk_spin_button_set_value(GTK_SPIN_BUTTON(*pparam->widget),
+ 					  (gfloat)*((gint *)pparam->data));
+ 		break;
++	case P_FLOAT:
++		gtk_spin_button_set_value(GTK_SPIN_BUTTON(*pparam->widget),
++					  *((gfloat *)pparam->data));
++		break;
+ 	case P_USHORT:
+ 		gtk_spin_button_set_value(GTK_SPIN_BUTTON(*pparam->widget),
+ 					  (gfloat)*((gushort *)pparam->data));
+diff -Naur orig/src/prefs_gtk.h patched/src/prefs_gtk.h
+--- orig/src/prefs_gtk.h	2015-11-18 14:40:05.000000000 +0100
++++ patched/src/prefs_gtk.h	2015-12-19 06:15:25.078033566 +0100
+@@ -36,6 +36,7 @@
+ {
+ 	P_STRING,
+ 	P_INT,
++	P_FLOAT,
+ 	P_BOOL,
+ 	P_ENUM,
+ 	P_USHORT,

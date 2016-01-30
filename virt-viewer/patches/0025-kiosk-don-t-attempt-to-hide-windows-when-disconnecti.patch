@@ -1,0 +1,28 @@
+From b9b188ca00aa60e4ebf35bde4dba68f75c0ae226 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Date: Tue, 10 Jun 2014 15:14:20 +0300
+Subject: [PATCH] kiosk: don't attempt to hide windows when disconnecting
+
+Get rid of the following warning:
+(virt-viewer:7262): virt-viewer-WARNING **: Can't hide windows in kiosk mode
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1107518
+---
+ src/virt-viewer-app.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/virt-viewer-app.c b/src/virt-viewer-app.c
+index e584e9b..956aecb 100644
+--- a/src/virt-viewer-app.c
++++ b/src/virt-viewer-app.c
+@@ -1304,7 +1304,9 @@ virt_viewer_app_disconnected(VirtViewerSession *session G_GNUC_UNUSED,
+     VirtViewerAppPrivate *priv = self->priv;
+     gboolean connect_error = !priv->connected && !priv->cancelled;
+ 
+-    virt_viewer_app_hide_all_windows(self);
++    if (!priv->kiosk)
++        virt_viewer_app_hide_all_windows(self);
++
+     if (priv->quitting)
+         gtk_main_quit();
+ 

@@ -1,0 +1,1 @@
+urllist https://launchpad.net/catfish-search/+download | splitver '^catfish-([0-9.]+).tar.bz2$' | sort -V | tail -n 1 | sed 's/%20//'

@@ -1,0 +1,32 @@
+#!/bin/sh -eux
+
+cp -r etc "$UB_INSTALLDIR"/
+cp -r usr "$UB_INSTALLDIR"/
+
+for i in 2.2 3 3.1 dev; do
+	for a in 1 2 3 4 5 ; do
+		mkdir -p "$UB_INSTALLDIR"/var/uhubuild/$i/chroot${a}
+	done
+mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/UB-"$i"
+mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/misc-"$i"/extrarelease
+mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/misc-"$i"/failed
+mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/misc-"$i"/snapshot/compile
+mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/misc-"$i"/snapshot/install
+mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/misc-"$i"/logpack
+mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/misc-"$i"/tmp
+mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/patches-"$i"
+mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/packages-"$i"/ub
+cd "$UB_INSTALLDIR"/usr/src/UHUBUILD/packages-"$i"
+uhu-scanpkgs
+echo "Label: UHU Linux" > Release
+echo "Origin: UHU Linux Baráti Kör" >> Release
+echo "Version: $i" >> Release
+ln -s "$UB_INSTALLDIR"/usr/bin/build-clean \
+	"$UB_INSTALLDIR"/usr/bin/build-clean-"$i"
+
+ln -s "$UB_INSTALLDIR"/usr/bin/build \
+	"$UB_INSTALLDIR"/usr/bin/build-"$i"
+done
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/doc/Packages
+cp "$UB_SRCDIR"/changelog "$UB_INSTALLDIR"/usr/share/doc/Packages

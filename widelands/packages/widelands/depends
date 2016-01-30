@@ -1,0 +1,13 @@
+glew >=
+libogg >=
+libtiff >=
+lua >=
+mesa >=
+python >=
+sdl >=
+sdl-gfx >=
+sdl-image >=
+sdl-mixer >=
+sdl-net >=
+sdl-ttf >=
+widelands-data

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lximage-qt-${UB_VERSION}.tar.gz lximage-qt-79ea1a06/
+  git://github.com/lxde/lximage-qt.git@79ea1a06

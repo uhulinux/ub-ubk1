@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+cp usr/bin/cgc ${UB_INSTALLDIR}/usr/bin/
+mkdir -p ${UB_INSTALLDIR}/usr/include/Cg
+cp usr/include/Cg/* ${UB_INSTALLDIR}/usr/include/Cg/
+cp usr/lib/* ${UB_INSTALLDIR}/usr/lib/
+cp -r usr/local/Cg ${UB_INSTALLDIR}/usr/share/

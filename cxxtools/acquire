@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cxxtools-${UB_VERSION}.tar.gz cxxtools-${UB_VERSION}/
+	http://www.tntnet.org/download/

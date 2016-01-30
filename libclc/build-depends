@@ -1,0 +1,5 @@
+clang
+libstdc++-dev
+llvm
+python
+python-dev

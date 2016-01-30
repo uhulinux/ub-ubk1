@@ -1,0 +1,12 @@
+diff -Naur orig/nemo-preview/po/Makefile.in.in mod/nemo-preview/po/Makefile.in.in
+--- orig/nemo-preview/po/Makefile.in.in	2015-10-20 00:30:06.000000000 +0200
++++ mod/nemo-preview/po/Makefile.in.in	2016-01-25 21:39:17.567011017 +0100
+@@ -33,7 +33,7 @@
+ datadir = @datadir@
+ datarootdir = @datarootdir@
+ libdir = @libdir@
+-DATADIRNAME = @DATADIRNAME@
++DATADIRNAME = share
+ itlocaledir = $(prefix)/$(DATADIRNAME)/locale
+ subdir = po
+ install_sh = @install_sh@

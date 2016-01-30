@@ -1,0 +1,42 @@
+diff -Naur orig/configure.in mod/configure.in
+--- orig/configure.in	2014-10-19 19:21:48.000000000 +0200
++++ mod/configure.in	2014-11-02 13:21:12.644829196 +0100
+@@ -237,7 +237,7 @@
+ 	CFLAGS="-Wall $CFLAGS"
+ 
+ 	if test "x$OPTIM" = x; then
+-		OPTIM="-Os -g"
++		OPTIM=""
+ 	fi
+ 
+ 	if test "x$use_ansi" = xyes; then
+diff -Naur orig/Makefile.in mod/Makefile.in
+--- orig/Makefile.in	2014-10-19 19:21:48.000000000 +0200
++++ mod/Makefile.in	2014-11-02 13:20:30.976920188 +0100
+@@ -57,7 +57,7 @@
+ # Install commands...
+ #
+ 
+-INSTALL_BIN	=	$(LIBTOOL) $(INSTALL) -m 755 -s
++INSTALL_BIN	=	$(LIBTOOL) $(INSTALL) -m 755
+ INSTALL_DATA	=	$(INSTALL) -m 644
+ INSTALL_DIR	=	$(INSTALL) -d
+ INSTALL_LIB	=	$(LIBTOOL) $(INSTALL) -m 755
+@@ -88,7 +88,7 @@
+ 			mxml-index.o mxml-node.o mxml-search.o mxml-set.o
+ LIBOBJS		=	$(PUBLIBOBJS) mxml-private.o mxml-string.o
+ OBJS		=	mxmldoc.o testmxml.o $(LIBOBJS)
+-TARGETS		=	$(LIBMXML) mxmldoc testmxml mxml.xml doc/mxml.man
++TARGETS		=	$(LIBMXML) mxmldoc mxml.xml doc/mxml.man
+ 
+ 
+ #
+@@ -297,7 +297,7 @@
+ 
+ libmxml.so.1.5:	$(LIBOBJS)
+ 	echo Creating $@...
+-	$(DSO) $(DSOFLAGS) -o libmxml.so.1.5 $(LIBOBJS)
++	$(DSO) $(DSOFLAGS) $(LDFLAGS) -o libmxml.so.1.5 $(LIBOBJS)
+ 	$(RM) libmxml.so libmxml.so.1
+ 	$(LN) libmxml.so.1.5 libmxml.so
+ 	$(LN) libmxml.so.1.5 libmxml.so.1

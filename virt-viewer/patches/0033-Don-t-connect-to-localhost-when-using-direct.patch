@@ -1,0 +1,70 @@
+From 7d8b1c5665e9f27533bea7c1e0876ffb784cd1b6 Mon Sep 17 00:00:00 2001
+From: Christophe Fergeau <cfergeau@redhat.com>
+Date: Thu, 3 Apr 2014 14:06:22 +0200
+Subject: [PATCH] Don't connect to localhost when using --direct
+
+Trying to connect to a remote virtual machine using
+virt-viewer -c qemu+ssh://example.com/system --direct $vm_name
+will currently fail with an error message saying it's not possible to
+localhost. This happens with VMs which listen on a wildcard address (eg
+'0.0.0.0').
+This was introduced by commit 74b1b62 which changes the host to connect to
+to 'localhost' when trying to connect through ssh to a VM listening on a
+wildcard address. This is only valid when using a ssh tunnel, and should
+not be done with --direct. The fallback code which uses the hostname from
+the libvirt URI is what makes the most sense in this situation (wildcard
+listen address + --direct).
+This commit introduces a virt_viewer_app_get_direct() so that this can be
+implemented.
+
+Fixes https://bugzilla.redhat.com/show_bug.cgi?id=1079211
+---
+ src/virt-viewer-app.c | 7 +++++++
+ src/virt-viewer-app.h | 1 +
+ src/virt-viewer.c     | 3 ++-
+ 3 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/src/virt-viewer-app.c b/src/virt-viewer-app.c
+index 033a594..27e5164 100644
+--- a/src/virt-viewer-app.c
++++ b/src/virt-viewer-app.c
+@@ -1838,6 +1838,13 @@ virt_viewer_app_set_direct(VirtViewerApp *self, gboolean direct)
+     self->priv->direct = direct;
+ }
+ 
++gboolean virt_viewer_app_get_direct(VirtViewerApp *self)
++{
++    g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), FALSE);
++
++    return self->priv->direct;
++}
++
+ void
+ virt_viewer_app_clear_hotkeys(VirtViewerApp *self)
+ {
+diff --git a/src/virt-viewer-app.h b/src/virt-viewer-app.h
+index 7c77957..f03369b 100644
+--- a/src/virt-viewer-app.h
++++ b/src/virt-viewer-app.h
+@@ -75,6 +75,7 @@ gboolean virt_viewer_app_activate(VirtViewerApp *self, GError **error);
+ gboolean virt_viewer_app_initial_connect(VirtViewerApp *self, GError **error);
+ void virt_viewer_app_start_reconnect_poll(VirtViewerApp *self);
+ void virt_viewer_app_set_zoom_level(VirtViewerApp *self, gint zoom_level);
++gboolean virt_viewer_app_get_direct(VirtViewerApp *self);
+ void virt_viewer_app_set_direct(VirtViewerApp *self, gboolean direct);
+ void virt_viewer_app_set_hotkeys(VirtViewerApp *self, const gchar *hotkeys);
+ void virt_viewer_app_set_attach(VirtViewerApp *self, gboolean attach);
+diff --git a/src/virt-viewer.c b/src/virt-viewer.c
+index 01a9a51..739b817 100644
+--- a/src/virt-viewer.c
++++ b/src/virt-viewer.c
+@@ -365,7 +365,8 @@ virt_viewer_extract_connect_info(VirtViewer *self,
+      */
+     if (virt_viewer_replace_host(ghost)) {
+         gchar *replacement_host = NULL;
+-        if (g_strcmp0(transport, "ssh") == 0) {
++        if ((g_strcmp0(transport, "ssh") == 0)
++                && !virt_viewer_app_get_direct(app)) {
+             replacement_host = g_strdup("localhost");
+         } else {
+             replacement_host = g_strdup(host);

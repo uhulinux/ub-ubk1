@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+./configure \
+	--with-layout=fhs-system \
+	--prefix=/usr \
+	--sysconfdir=/etc/GNUstep

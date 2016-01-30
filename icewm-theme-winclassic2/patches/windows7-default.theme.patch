@@ -1,0 +1,22 @@
+diff -Naur orig/windows7/default.theme mod/windows7/default.theme
+--- orig/windows7/default.theme	2009-07-29 21:15:26.000000000 +0200
++++ mod/windows7/default.theme	2014-12-29 10:56:55.000000000 +0100
+@@ -45,7 +45,7 @@
+ ColorScrollBarButton="rgb:FF/FF/FF"
+ ColorScrollBarButtonArrow="rgb:FF/FF/FF"
+ ColorLabel="rgb:f4/f4/f4"
+-ColorLabelText="rgb:FF/FF/FF"
++ColorLabelText="rgb:00/00/00"
+ 
+ ColorNormalMenu="rgb:40/40/40"
+ ColorActiveMenuItem="rgb:00/00/00"
+@@ -110,7 +110,8 @@
+ InputFontNameXft		=	calibri:size=10
+ 
+ TaskBarClockLeds=0
+-DesktopBackgroundCenter = 1
++DesktopBackgroundCenter = ""
++DesktopBackgroundScaled=1
+ DesktopBackgroundImage = 'img22.jpg'
+ TaskBarShowNetStatus=0
+ TaskBarShowCPUStatus=0

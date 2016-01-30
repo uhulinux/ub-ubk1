@@ -1,0 +1,9 @@
+--- a/cmake_modules/paths.cmake.orig	2015-04-07 13:52:49.439413468 -0500
++++ b/cmake_modules/paths.cmake	2015-04-07 13:55:02.617339698 -0500
+@@ -66,5 +66,5 @@
+     # - the second is the same directory of the executable (so it runs in bin/)
+     # - the third one is the full path of the system dir
+     #source http://www.cmake.org/pipermail/cmake/2008-January/019290.html
+-    set(CMAKE_INSTALL_RPATH "$ORIGIN/../${target_library_install_dir}/:$ORIGIN/:${CMAKE_INSTALL_PREFIX}/${target_library_install_dir}/")
++    #set(CMAKE_INSTALL_RPATH "$ORIGIN/../${target_library_install_dir}/:$ORIGIN/:${CMAKE_INSTALL_PREFIX}/${target_library_install_dir}/")
+ endif(APPLE)

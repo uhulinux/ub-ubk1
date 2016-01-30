@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+master.zip wolf4sdl-master/
+	https://github.com/mozzwald/wolf4sdl/archive/
+
+#Wolf4SDL-${UB_VERSION}-src.zip Wolf4SDL-${UB_VERSION}-src/
+#	http://homepage.o2mail.de/mkroll/bins/Wolf4SDL-1.7-src.zip

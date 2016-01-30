@@ -1,0 +1,39 @@
+diff -Naur orig/MenuMaker/BlackBox.py mod/MenuMaker/BlackBox.py
+--- orig/MenuMaker/BlackBox.py	2015-06-14 20:59:08.000000000 +0200
++++ mod/MenuMaker/BlackBox.py	2015-08-20 11:04:36.000000000 +0200
+@@ -1,3 +1,4 @@
++# -*- coding: utf-8 -*-
+ import os.path, MenuMaker, Prophet, Prophet.Legacy
+ 
+ 
+@@ -30,7 +31,7 @@
+ 
+ 
+ class StylesMenu(MenuMaker.Menu) :
+-	name = "Styles"
++	name = "Stílusok"
+ 	def __init__(self, dirs) :
+ 		super(StylesMenu, self).__init__([X(x, "stylesdir") for x in dirs if os.path.isdir(os.path.expanduser(x))])
+ 		self.align = MenuMaker.Entry.StickBottom
+@@ -41,16 +42,16 @@
+ class SysMenu(MenuMaker.Menu) :
+ 	name = "BlackBox"
+ 	def __init__(self) :
+-		subs = [X("Workspaces", "workspaces")]
++		subs = [X("Munkaasztalok", "workspaces")]
+ 		try :
+ 			subs += [StylesMenu([os.path.join(blackbox().prefix, "share/blackbox/styles"), "~/.blackbox/styles"])]
+ 		except Prophet.NotSet :
+ 			pass
+ 		subs += [
+-			X("Configure", "config"),
+-			X("Reconfig", "reconfig"),
+-			X("Restart", "restart"),
+-			X("Exit", "exit")
++			X("Beállítások", "config"),
++			X("Újrabeállítás", "reconfig"),
++			X("Újraindítás", "restart"),
++			X("Kilépés", "exit")
+ 		]
+ 		super(SysMenu, self).__init__(subs)
+ 		self.align = MenuMaker.Entry.StickBottom

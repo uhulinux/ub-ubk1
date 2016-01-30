@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+adathely=$UB_INSTALLDIR/usr/share/games/dangerdeep
+ikonhely=$UB_INSTALLDIR/usr/share/pixmaps
+mandir=$UB_INSTALLDIR/usr/share/man/man6
+mkdir -p $adathely $ikonhely $mandir
+scons installbindir=$UB_INSTALLDIR/usr/bin datadir='/usr/share/games/dangerdeep' install
+cp dftd_icon.xpm $ikonhely/
+cp doc/man/dangerdeep.6 $mandir/
+cd data
+cp -r * $adathely

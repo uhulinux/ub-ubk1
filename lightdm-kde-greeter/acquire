@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lightdm-${UB_VERSION}.tar.bz2 lightdm-${UB_VERSION_HEAD3}.1/
+	http://download.kde.org/unstable/lightdm-kde/src/

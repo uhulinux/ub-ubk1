@@ -1,0 +1,35 @@
+diff -Naur orig/lib/dpkg/parsehelp.c patched/lib/dpkg/parsehelp.c
+--- orig/lib/dpkg/parsehelp.c	2015-05-18 14:38:18.000000000 +0200
++++ patched/lib/dpkg/parsehelp.c	2015-05-19 20:44:54.959568690 +0200
+@@ -238,7 +238,7 @@
+   if (*ptr && !c_isdigit(*ptr++))
+     return dpkg_put_warn(err, _("version number does not start with digit"));
+   for (; *ptr; ptr++) {
+-    if (!c_isdigit(*ptr) && !c_isalpha(*ptr) && strchr(".-+~:", *ptr) == NULL)
++    if (!c_isdigit(*ptr) && !c_isalpha(*ptr) && strchr(".-+~:_", *ptr) == NULL)
+       return dpkg_put_warn(err, _("invalid character in version number"));
+   }
+   for (ptr = rversion->revision; *ptr; ptr++) {
+diff -Naur orig/lib/dpkg/t/t-version.c patched/lib/dpkg/t/t-version.c
+--- orig/lib/dpkg/t/t-version.c	2015-05-07 05:08:52.000000000 +0200
++++ patched/lib/dpkg/t/t-version.c	2015-05-19 20:48:30.716638572 +0200
+@@ -211,8 +211,8 @@
+ 	test_pass(dpkg_version_compare(&a, &b) == 0);
+ 
+ 	/* Test valid characters in upstream version. */
+-	b = DPKG_VERSION_OBJECT(0, "09azAZ.-+~:", "0");
+-	test_pass(parseversion(&a, "0:09azAZ.-+~:-0", NULL) == 0);
++	b = DPKG_VERSION_OBJECT(0, "09azAZ.-+~:_", "0");
++	test_pass(parseversion(&a, "0:09azAZ.-+~:_-0", NULL) == 0);
+ 	test_pass(dpkg_version_compare(&a, &b) == 0);
+ 
+ 	/* Test valid characters in revision. */
+@@ -263,7 +263,7 @@
+ 
+ 	/* Test invalid characters in upstream version. */
+ 	verstr = test_alloc(strdup("0:0a-0"));
+-	for (p = "!#@$%&/|\\<>()[]{};,_=*^'"; *p; p++) {
++	for (p = "!#@$%&/|\\<>()[]{};,=*^'"; *p; p++) {
+ 		verstr[3] = *p;
+ 		test_fail(parseversion(&a, verstr, &err) == 0);
+ 		test_warn(err);

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ ! -f /proc/asound/card0/pcm0p/oss ]; then
+/sbin/modprobe snd_pcm_oss
+echo "et.x86 0 0 direct" > /proc/asound/card0/pcm0p/oss
+echo "et.x86 0 0 disable" > /proc/asound/card0/pcm0c/oss
+else
+/sbin/rmmod snd_pcm_oss
+fi

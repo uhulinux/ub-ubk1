@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxqt-config-${UB_VERSION}.tar.gz lxqt-config-da7400d/
+	git://github.com/lxde/lxqt-config.git@da7400d

@@ -1,0 +1,22 @@
+diff -Naur orig/settings/xfce4-power-manager-settings.desktop.in patched/settings/xfce4-power-manager-settings.desktop.in
+--- orig/settings/xfce4-power-manager-settings.desktop.in	2015-04-24 00:58:15.000000000 +0200
++++ patched/settings/xfce4-power-manager-settings.desktop.in	2015-06-06 22:33:09.950079221 +0200
+@@ -8,7 +8,7 @@
+ Terminal=false
+ Type=Application
+ Categories=XFCE;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-HardwareSettings;
+-NotShowIn=GNOME;KDE;Unity;
++OnlyShowIn=XFCE;
+ StartupNotify=true
+ X-XfcePluggable=true
+ X-XfceHelpComponent=xfce4-power-manager
+diff -Naur orig/src/xfce4-power-manager.desktop.in patched/src/xfce4-power-manager.desktop.in
+--- orig/src/xfce4-power-manager.desktop.in	2015-04-24 00:58:15.000000000 +0200
++++ patched/src/xfce4-power-manager.desktop.in	2015-06-06 22:33:33.358195296 +0200
+@@ -5,5 +5,5 @@
+ Exec=xfce4-power-manager
+ Terminal=false
+ Type=Application
+-NotShowIn=GNOME;KDE;Unity;
++OnlyShowIn=XFCE;
+ StartupNotify=false

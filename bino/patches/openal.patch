@@ -1,0 +1,10 @@
+diff --git a/src/audio_output.cpp b/src/audio_output.cpp
+index 0b96caa..2b0b122 100644
+--- a/src/audio_output.cpp
++++ b/src/audio_output.cpp
+@@ -34,6 +34,7 @@
+ #include "msg.h"
+ #include "timer.h"
+ #include "dbg.h"
++#include "AL/alext.h"
+

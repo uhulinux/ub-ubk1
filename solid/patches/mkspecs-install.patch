@@ -1,0 +1,9 @@
+diff -Naur orig/src/solid/CMakeLists.txt mod/src/solid/CMakeLists.txt
+--- orig/src/solid/CMakeLists.txt	2015-04-04 14:15:43.000000000 +0200
++++ mod/src/solid/CMakeLists.txt	2015-05-20 23:10:18.208283065 +0200
+@@ -138,4 +138,4 @@
+ 
+ include(ECMGeneratePriFile)
+ ecm_generate_pri_file(BASE_NAME Solid LIB_NAME KF5Solid DEPS "core" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/Solid)
+-install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
++install(FILES ${PRI_FILENAME} DESTINATION /usr/share/qt5/mkspecs)

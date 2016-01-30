@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+radiotray-${UB_VERSION}.tar.bz2 carlmig-radio-tray-1717a0e8c143/
+	https://bitbucket.org/carlmig/radio-tray/get/

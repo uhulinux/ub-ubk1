@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tntnet-${UB_VERSION}.tar.gz tntnet-${UB_VERSION}/
+	http://www.tntnet.org/download/

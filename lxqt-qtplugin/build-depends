@@ -1,0 +1,5 @@
+cmake
+libdbusmenu-qt5-dev
+liblxqt-dev
+libqtxdg-dev
+libx11-dev

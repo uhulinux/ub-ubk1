@@ -1,0 +1,78 @@
+diff -Naur orig/src/helpers/ub_compile patched/src/helpers/ub_compile
+--- orig/src/helpers/ub_compile	2014-03-05 12:23:30.000000000 +0100
++++ patched/src/helpers/ub_compile	2015-05-31 16:27:57.148233849 +0200
+@@ -5,9 +5,6 @@
+ 	cd build
+ 	cmake \
+ 		-DCMAKE_INSTALL_PREFIX="/usr" \
+-		-DDATA_INSTALL_DIR="/usr/share" \
+-		-DSYSCONF_INSTALL_DIR="/etc" \
+-		-DKDE_DEFAULT_HOME=".kde4" \
+ 		"$@" \
+ 		..
+ elif [ -f "configure" ]; then
+@@ -46,12 +43,4 @@
+ 		"$@"
+ fi
+ 
+-exec ub_make \
+-	MAN1EXT=1 \
+-	MAN2EXT=2 \
+-	MAN3EXT=3 \
+-	MAN4EXT=4 \
+-	MAN5EXT=5 \
+-	MAN6EXT=6 \
+-	MAN7EXT=7 \
+-	MAN8EXT=8
++exec ub_make
+diff -Naur orig/src/helpers/ub_makeinstall patched/src/helpers/ub_makeinstall
+--- orig/src/helpers/ub_makeinstall	2015-05-31 16:07:24.000000000 +0200
++++ patched/src/helpers/ub_makeinstall	2015-05-31 16:20:09.281913825 +0200
+@@ -48,15 +48,6 @@
+ 	argv[${#argv[@]}]="sysconfdir=$UB_MAKEINSTALL_PREFIX/etc"
+ fi
+ 
+-argv[${#argv[@]}]="MAN1EXT=1"
+-argv[${#argv[@]}]="MAN2EXT=2"
+-argv[${#argv[@]}]="MAN3EXT=3"
+-argv[${#argv[@]}]="MAN4EXT=4"
+-argv[${#argv[@]}]="MAN5EXT=5"
+-argv[${#argv[@]}]="MAN6EXT=6"
+-argv[${#argv[@]}]="MAN7EXT=7"
+-argv[${#argv[@]}]="MAN8EXT=8"
+-
+ argv2=() # bash 4.3, declare -a: unbound variable
+ shopt -s extglob
+ for i in "${argv[@]}"; do
+diff -Naur orig/src/steps/depends patched/src/steps/depends
+--- orig/src/steps/depends	2013-03-10 12:45:53.000000000 +0100
++++ patched/src/steps/depends	2015-05-31 16:21:13.838233943 +0200
+@@ -203,7 +203,7 @@
+ 						args="${args# }"
+ 					done
+ 					if [ "${intp:0:1}" != "/" ]; then
+-						error "a $file interpretere nem / jellel kezdődik!"
++						warn "a $file interpretere nem / jellel kezdődik!"
+ 						continue
+ 					fi
+ 					# Ha az interpreter a /usr/bin/env, akkor megnezzuk
+diff -Naur orig/src/uhubuild-check patched/src/uhubuild-check
+--- orig/src/uhubuild-check	2015-05-31 16:09:47.000000000 +0200
++++ patched/src/uhubuild-check	2015-05-31 16:23:01.706768834 +0200
+@@ -280,6 +280,7 @@
+ #
+ 
+ # A distribution az elejére kell, mert ez még definiál cpp-változót.
++# de kell ez? -DUHU_LINUX_2_2
+ 
+ ####################
+ ### distribution ###
+@@ -291,7 +292,7 @@
+ 	fi
+ fi
+ 
+-cppflags="$cppflags -D$(tr 'a-z' 'A-Z' < $UHUBUILD_SRC2DIR/distribution | tr -c 'A-Z0-9\n' '[_*]')"
++# cppflags="$cppflags -D$(tr 'a-z' 'A-Z' < $UHUBUILD_SRC2DIR/distribution | tr -c 'A-Z0-9\n' '[_*]')"
+ 
+ ##############
+ ### addons ###

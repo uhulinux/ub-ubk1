@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+wput-${UB_VERSION}.tgz wput-${UB_VERSION}/
+	http://download.sourceforge.net/wput/

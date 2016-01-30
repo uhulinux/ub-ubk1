@@ -1,0 +1,4 @@
+cmake
+libusb-dev
+openssl-dev
+pcsc-lite-dev

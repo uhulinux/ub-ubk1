@@ -1,0 +1,10 @@
+	/usr/bin/argdumper
+	/usr/bin/lldb*
+@	/usr/bin/lldb*
+	/usr/include/lldb
+	/usr/lib/liblldb*
+@	/usr/lib/liblldb*
+@	/usr/lib/python2.7/site-packages/lib
+	/usr/lib/python2.7/site-packages/lldb
+	/usr/lib/python2.7/site-packages/readline.so
+	/usr/share/doc/Packages/lldb

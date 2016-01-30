@@ -1,0 +1,13 @@
+diff -Naur orig/mate-tweak patched/mate-tweak
+--- orig/mate-tweak	2015-09-29 17:14:41.000000000 +0200
++++ patched/mate-tweak	2015-10-17 13:57:24.587314198 +0200
+@@ -534,7 +534,8 @@
+         self.mint_menu_available = False
+         self.volume_applet_enabled = False
+ 
+-        if os.path.exists('/usr/lib/gnome-main-menu/main-menu'):
++        if os.path.exists('/usr/libexec/mate/main-menu') or \
++           os.path.exists('/usr/lib/gnome-main-menu/main-menu'):
+             self.gnome_menu_available = True
+ 
+         if os.path.exists('/usr/lib/indicators/7/libapplication.so') and \

@@ -1,0 +1,183 @@
+#!/bin/bash
+
+tmp=`mktemp`
+cat <<END > $tmp
+af afrikai
+ar arab
+as
+ast
+be-BY belorusz
+bg bolgár
+bn bengáli
+bo bo
+br breton
+brx brx
+bs bosnyák
+ca katalán
+ca-XV katalán
+cy velszi
+cs cseh
+da dán
+de német
+dgo dgo
+dz
+el görög
+en-GB angol
+en-ZA angol
+eo eszperantó
+es spanyol
+et észt
+eu baszk
+fa perzsa
+fi finn
+fr francia
+fur
+ga ír
+gd gd
+gl gallego
+gu gudzsarati
+he héber
+hi hindi
+hr horvát
+hu magyar
+id
+is is
+it olasz
+ja japán
+jbo
+ka ka
+kab
+kid kid
+kk
+km km
+kn kannada
+ko koreai
+kok kok
+ks ks
+ku ku
+lt litván
+lv lett
+mai mai
+mk macedón
+ml
+mn mn
+mni mni
+mr
+my my
+nb norvég (bokmal)
+ne nepáli
+nl holland
+nn norvég (nynorsk)
+nr ndebele (déli)
+nso nso
+ny ny
+oc oc
+om
+or
+pa-IN pandzsabi
+pap
+pl lengyel
+ps ps
+pt portugál
+pt-BR portugál
+ro román
+ru orosz
+rw kinyarwanda
+sa-IN sa-IN
+sat sat
+sc sc
+sd sd
+sh sh
+si si
+sk szlovák
+sl szlovén
+so
+sq
+sr szerb
+ss swati
+st sotho, déli
+sv svéd
+sw-TZ szuahéli
+ta tamil
+te
+tg
+th thai
+tn tswana
+tr török
+ts tsonga
+ug ug
+uk
+uz
+ve venda
+vi vietnami
+xh xhosa
+zh-CN kínai
+zh-TW kínai
+zu zulu
+END
+
+# langs="af bg bn-IN ca da en-GB eo eu fa ga he hu km lo mk ne nr pl ru sk ss sw ta-IN tr vi zh-TW ar bn br cy de en-US es fi gl hi-IN it kn-IN lt ms nl ns pt rw sl st sw-TZ th ts xh zu be-BY bn-BD bs cs el en-ZA et fr gu-IN hr ja ko lv nb nn pa-IN pt-BR sh-YU sr-CS sv sx tn ve zh-CN"
+
+# be-BY gu_IN hi_IN pa_IN sr_CS sh_YU kn_IN ta_IN
+
+#for i in $langs; do
+cat $tmp | while read f; do
+	lang_code=`echo $f | cut -d " " -f 1`
+	lang=`echo $f | cut -d " " -f 2`
+
+	lc_lang=`echo $lang_code | tr '[A-Z]' '[a-z]'`
+
+	pkg_dir="packages/openoffice.org-i18n-$lc_lang"
+
+	# short pkg name
+	pkg_dir=`echo $pkg_dir | sed \
+								-e 's/be-BY/be/i' \
+								-e 's/hi-IN/hi/i' \
+								-e 's/pa-IN/pa/i' \
+								-e 's/sr-CS/sr/i' \
+								-e 's/sh-YU/sh/i' \
+								-e 's/ta-IN/ta/i'`
+
+	# rm -rf "$pkg_dir"
+	mkdir -p "$pkg_dir"/summary
+	echo "&OpenOffice.org nyelvi kiegészítése &$lang nyelvhez" > "$pkg_dir"/summary/hu
+	echo "Data" > "$pkg_dir"/section
+	echo "openoffice.org" > "$pkg_dir"/depends
+	# use internal hunspell
+	#if [ "$lang_code" == "hu" ]; then
+	#	echo "hunspell-hu" >> "$pkg_dir"/depends
+	#	echo "huhyphn" >> "$pkg_dir"/depends
+	#fi
+	cat <<END | sort -u > "$pkg_dir"/files
+	/usr/lib/openoffice.org/basis3.2/help/$lang_code
+	/usr/lib/openoffice.org/licenses/LICENSE_$lang_code*
+	/usr/lib/openoffice.org/readmes/README_$lang_code*
+	/usr/lib/openoffice.org/share/readme/LICENSE_$lang_code*
+	/usr/lib/openoffice.org/share/readme/README_$lang_code*
+	/usr/lib/openoffice.org/basis3.2/presets/config/*_$lang_code.*
+	/usr/lib/openoffice.org/basis3.2/program/resource/*$lang_code.res
+	/usr/lib/openoffice.org/basis3.2/share/autocorr/acor_$lang_code*.dat
+	/usr/lib/openoffice.org/basis3.2/share/autotext/$lang_code
+	/usr/lib/openoffice.org/basis3.2/share/layout/$lang_code
+	/usr/lib/openoffice.org/basis3.2/share/registry/modules/org/openoffice/Setup/Langpack-$lang_code.xcu
+	/usr/lib/openoffice.org/basis3.2/share/registry/res/$lang_code
+	/usr/lib/openoffice.org/basis3.2/share/samples/$lang_code
+	/usr/lib/openoffice.org/basis3.2/share/template/$lang_code
+	/usr/lib/openoffice.org/basis3.2/share/template/wizard/letter/$lang_code
+	/usr/lib/openoffice.org/basis3.2/share/wordbook/$lang_code
+	/usr/lib/openoffice.org/program/resource/ooo$lang_code.res
+END
+done
+
+exit;
+	/usr/lib/openoffice.org/share/dict/ooo/README_$lang_code*.txt
+	/usr/lib/openoffice.org/share/dict/ooo/README_hyph_$lang_code*.txt
+	/usr/lib/openoffice.org/share/dict/ooo/${lang_code}_*.aff
+	/usr/lib/openoffice.org/share/dict/ooo/${lang_code}_*.dic
+	/usr/lib/openoffice.org/share/dict/ooo/hyph_${lang_code}_*.dic
+	/usr/lib/openoffice.org/share/dict/ooo/${lang_code}_license.txt
+	/usr/lib/openoffice.org/share/dict/ooo/$lang_code*_v2.dat
+	/usr/lib/openoffice.org/share/dict/ooo/$lang_code*_v2.idx
+	/usr/lib/openoffice.org/share/readme/*_$lang_code*
+	/usr/lib/openoffice.org/share/registry/modules/org/openoffice/Setup/Langpack-$lang_code.xcu	
+	/usr/lib/openoffice.org/presets/config/*_$lang_code.*

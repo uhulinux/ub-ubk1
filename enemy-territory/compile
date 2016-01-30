@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+mv "Enemy Territory 2.60b"/linux/* ./
+rm -rf "Enemy Territory 2.60b"
+unmakeself et-linux-${UB_VERSION/b/}.x86.run
+rm et-linux-${UB_VERSION/b/}.x86.run
+rm -rf {bin,setup.data}

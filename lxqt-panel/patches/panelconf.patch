@@ -1,0 +1,18 @@
+diff -Naur orig/panel/resources/panel.conf mod/panel/resources/panel.conf
+--- orig/panel/resources/panel.conf	2015-08-16 20:19:16.000000000 +0200
++++ mod/panel/resources/panel.conf	2015-08-16 21:04:56.292395823 +0200
+@@ -13,11 +13,11 @@
+ 
+ [quicklaunch]
+ type=quicklaunch
+-apps/size=5
++apps/size=4
+ apps/1/desktop=firefox.desktop
+-apps/2/desktop=chromium-browser.desktop
++apps/2/desktop=synaptic.desktop
+ apps/3/desktop=pcmanfm-qt.desktop
+-apps/5/desktop=lxqt-config.desktop
++apps/4/desktop=lxqt-config.desktop
+ 
+ [taskbar]
+ type=taskbar

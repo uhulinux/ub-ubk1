@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+ca-certificates_"$UB_VERSION"_all.deb .
+	http://ftp.de.debian.org/debian/pool/main/c/ca-certificates/
+
+#ca-certificates_"$UB_VERSION".tar.gz ca-certificates-"$UB_VERSION"/
+#	http://ftp.de.debian.org/debian/pool/main/c/ca-certificates/

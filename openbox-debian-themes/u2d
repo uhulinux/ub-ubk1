@@ -1,0 +1,1 @@
+urllist http://ftp.debian.org/debian/pool/main/o/openbox-themes/ | splitver '^openbox-themes_([0-9.]+).tar.gz$' | sort -V | tail -n 1

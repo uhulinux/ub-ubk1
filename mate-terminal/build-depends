@@ -1,0 +1,11 @@
+dconf-dev
+gtk2-dev
+intltool
+itstool
+libsm-dev
+libxslt-dev
+mate-common
+mate-desktop-dev
+vte2-dev
+xcb-util-dev
+yelp-tools

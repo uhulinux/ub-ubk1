@@ -1,0 +1,1 @@
+urllist https://github.com/qterminal/qtermwidget/releases/ | splitver '^([0-9.]+).tar.gz$' | sort -V | tail -n 1

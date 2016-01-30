@@ -1,0 +1,5 @@
+&revdep-rebuild - kívánt rekurzív mélységben a megadott frissített csomag(ok) javasolt fordítási sorrendje
+&rebuild-rendez - paraméterként megadott csomaghalmaz javasolt fordítási sorrendje
+&csomagko - paraméter csomag verziószámos építőkövei
+&csomagfi - paraméter csomag(ok) -ból építkező csomagok halmaza
+&build-depends-fix - A &build-depends fájl tartalmának szűkítése a minimumra

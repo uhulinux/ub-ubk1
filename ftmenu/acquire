@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ftmenu-${UB_VERSION}.tar.gz ftmenu-${UB_VERSION}/
+	http://download.sourceforge.net/ftmenu/files/ftmenu/ftmenu-${UB_VERSION_HEAD2}/

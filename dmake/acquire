@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dmake-${UB_VERSION}.tar.bz2 dmake-${UB_VERSION}/
+	http://dmake.apache-extras.org.codespot.com/files/

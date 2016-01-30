@@ -1,0 +1,20 @@
+diff -Naur orig/Makefile patched/Makefile
+--- orig/Makefile	2013-10-26 23:05:52.000000000 +0200
++++ patched/Makefile	2015-10-28 05:33:49.182792191 +0100
+@@ -11,7 +11,7 @@
+ 
+ .PHONY: dist test coverage clean sanitycheck
+ 
+-all: compile locale manpage
++all: compile locale
+ 	@echo "Ready to install..."
+ 
+ # The no_locale stuff is by request of BSD people, please ensure
+@@ -115,7 +115,6 @@
+ 	    	${EXAILESHAREDIR}/data/migrations/migration_200907100931/
+ 	install -m 644 data/exaile.desktop \
+ 		${DESTDIR}${PREFIX}/share/applications/	
+-	-install -m 644 exaile.1.gz ${DESTDIR}${PREFIX}/share/man/man1/
+ 	install -m 644 data/config/settings.ini ${EXAILECONFDIR}
+ 	tools/generate-launcher "${DESTDIR}" "${PREFIX}" "${LIBINSTALLDIR}" \
+ 		"${PYTHON2_CMD}" && \

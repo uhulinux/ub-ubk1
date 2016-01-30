@@ -1,0 +1,4 @@
+libjpeg >=
+libpng >=
+libtiff >=
+libwebp >=

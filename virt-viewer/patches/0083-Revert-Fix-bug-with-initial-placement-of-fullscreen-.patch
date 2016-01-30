@@ -1,0 +1,24 @@
+From ea9a07c37739d94df2ffcdb46a20a03297dd61c0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fabiano=20Fid=C3=AAncio?= <fidencio@redhat.com>
+Date: Thu, 23 Oct 2014 15:03:27 +0200
+Subject: [PATCH] Revert "Fix bug with initial placement of fullscreen windows"
+
+This reverts commit 912d62f4b706db37a8b023ca2e06a24fb0ac97e5.
+---
+ src/virt-viewer-app.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/virt-viewer-app.c b/src/virt-viewer-app.c
+index 6dbe4bb..1abcc90 100644
+--- a/src/virt-viewer-app.c
++++ b/src/virt-viewer-app.c
+@@ -880,7 +880,8 @@ ensure_window_for_display(VirtViewerApp *self, VirtViewerDisplay *display)
+             g_debug("Found a window without a display, reusing for this display...");
+             virt_viewer_app_set_window_subtitle(self, win, nth);
+             if (self->priv->fullscreen && !self->priv->kiosk)
+-                app_window_try_fullscreen(self, win, nth);
++                app_window_try_fullscreen(self, win,
++                                          virt_viewer_app_get_initial_monitor_for_display(self, nth));
+         } else {
+             win = virt_viewer_app_window_new(self, nth);
+         }

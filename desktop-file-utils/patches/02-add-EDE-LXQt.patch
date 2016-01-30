@@ -1,0 +1,12 @@
+diff -Naur orig/src/validate.c patched/src/validate.c
+--- orig/src/validate.c	2014-12-01 23:28:39.627203283 +0100
++++ patched/src/validate.c	2014-12-01 23:30:05.563629419 +0100
+@@ -363,7 +363,7 @@
+ };
+ 
+ static const char *show_in_registered[] = {
+-  "GNOME", "KDE", "LXDE", "MATE", "Razor", "ROX", "TDE", "Unity", "XFCE", "Old"
++  "GNOME", "KDE", "LXDE", "LXQt", "MATE", "Razor", "ROX", "TDE", "Unity", "XFCE", "Cinnamon", "EDE", "Old"
+ };
+ 
+ static struct {

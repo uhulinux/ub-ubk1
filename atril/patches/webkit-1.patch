@@ -1,0 +1,12 @@
+diff -Naur orig/configure.ac patched/configure.ac
+--- orig/configure.ac	2014-10-02 20:54:12.000000000 +0200
++++ patched/configure.ac	2014-11-22 18:08:38.794474934 +0100
+@@ -141,7 +141,7 @@
+ 	   WEBKIT_API_VERSION=1.0
+        GAIL_API_VERSION=
+        GTK_REQUIRED=2.24.0
+-       WEBKIT_REQUIRED=2.4.3
++       WEBKIT_REQUIRED=1.10.0
+        ;;
+   3.0) GTK_API_VERSION=3.0
+ 	   WEBKIT_API_VERSION=3.0

@@ -1,0 +1,41 @@
+From b03b437ba04f7dc9a7cc6881df09b1a560c46782 Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Fri, 31 Jan 2014 13:56:19 -0600
+Subject: [PATCH] rhbz#1007306 - Don't free session if we're re-trying auth
+
+deactivate() is called in response to a failed authentication attempt. If the
+session is cleared here, when a user attempts to re-authenticate, it will issue
+a warning and will not actually work. So only clear the session here if we're
+not going to re-try authentication.
+
+Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=1007295
+
+(cherry picked from commit 74b532f1ecf5affecc13e322723881ba42d2dd29)
+---
+ src/virt-viewer-app.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/virt-viewer-app.c b/src/virt-viewer-app.c
+index 499c33f..e4e2eeb 100644
+--- a/src/virt-viewer-app.c
++++ b/src/virt-viewer-app.c
+@@ -1250,7 +1250,6 @@ virt_viewer_app_deactivate(VirtViewerApp *self, gboolean connect_error)
+ 
+     if (priv->session) {
+         virt_viewer_session_close(VIRT_VIEWER_SESSION(priv->session));
+-        g_clear_object(&priv->session);
+     }
+ 
+     priv->connected = FALSE;
+@@ -1266,8 +1265,10 @@ virt_viewer_app_deactivate(VirtViewerApp *self, gboolean connect_error)
+     if (priv->authretry) {
+         priv->authretry = FALSE;
+         g_idle_add(virt_viewer_app_retryauth, self);
+-    } else
++    } else {
++        g_clear_object(&priv->session);
+         virt_viewer_app_deactivated(self, connect_error);
++    }
+ 
+ }
+ 

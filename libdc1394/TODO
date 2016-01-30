@@ -1,0 +1,3 @@
+examples build (sdl-dev, glu-dev)
+examples install
+examples package

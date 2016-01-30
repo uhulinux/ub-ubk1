@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxqt-panel-${UB_VERSION}.tar.gz lxqt-panel-ce680d1/
+	git://github.com/lxde/lxqt-panel.git@ce680d1

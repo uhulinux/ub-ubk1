@@ -1,0 +1,58 @@
+diff -Naur orig/configure patched/configure
+--- orig/configure	2015-05-25 23:35:49.000000000 +0200
++++ patched/configure	2015-06-05 20:24:54.670934403 +0200
+@@ -14284,9 +14284,9 @@
+ 
+ 
+ 
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for gtk+-3.0 >= 3.14.0" >&5
+-$as_echo_n "checking for gtk+-3.0 >= 3.14.0... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=3.14.0" "gtk+-3.0" >/dev/null 2>&1; then
++  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for gtk+-3.0 >= 3.12.0" >&5
++$as_echo_n "checking for gtk+-3.0 >= 3.12.0... " >&6; }
++  if $PKG_CONFIG "--atleast-version=3.12.0" "gtk+-3.0" >/dev/null 2>&1; then
+     GTK_VERSION=`$PKG_CONFIG --modversion "gtk+-3.0"`
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $GTK_VERSION" >&5
+ $as_echo "$GTK_VERSION" >&6; }
+@@ -14303,7 +14303,7 @@
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $GTK_LIBS" >&5
+ $as_echo "$GTK_LIBS" >&6; }
+ 
+-    GTK_REQUIRED_VERSION=3.14.0
++    GTK_REQUIRED_VERSION=3.12.0
+ 
+ 
+ 
+@@ -14319,7 +14319,7 @@
+ 
+       echo "*** The required package gtk+-3.0 was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade gtk+-3.0 to atleast version 3.14.0, or adjust"
++      echo "*** Please upgrade gtk+-3.0 to atleast version 3.12.0, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -14331,7 +14331,7 @@
+ 
+ 
+       echo "*** The required package gtk+-3.0 was not found on your system."
+-      echo "*** Please install gtk+-3.0 (atleast version 3.14.0) or adjust"
++      echo "*** Please install gtk+-3.0 (atleast version 3.12.0) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
+diff -Naur orig/settings/xfpm-settings.c patched/settings/xfpm-settings.c
+--- orig/settings/xfpm-settings.c	2015-04-24 00:59:49.000000000 +0200
++++ patched/settings/xfpm-settings.c	2015-06-05 20:26:28.895401637 +0200
+@@ -1248,7 +1248,11 @@
+      * Global dpms settings (enable/disable)
+      */
+     val = xfconf_channel_get_bool (channel, PROPERTIES_PREFIX DPMS_ENABLED_CFG, TRUE);
++#if GTK_CHECK_VERSION(3, 14, 0)
+     gtk_switch_set_state (GTK_SWITCH (dpms), val);
++#else
++	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(dpms), val);
++#endif
+ 
+     /*
+      * Power button

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+keybinder-3.0_${UB_VERSION}.orig.tar.gz keybinder-3.0-${UB_VERSION}/
+    http://archive.ubuntu.com/ubuntu/pool/universe/k/keybinder-3.0/

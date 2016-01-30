@@ -1,0 +1,9 @@
+gobject-introspection-dev
+gtk-dev
+intltool
+itstool
+libgcrypt-dev
+libxkbfile-dev
+libxklavier-dev
+qt4-dev
+systemd-dev

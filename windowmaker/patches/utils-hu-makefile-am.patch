@@ -1,0 +1,12 @@
+diff -Naur orig/util/po/Makefile.am mod/util/po/Makefile.am
+--- orig/util/po/Makefile.am	2014-08-30 14:29:09.000000000 +0200
++++ mod/util/po/Makefile.am	2014-12-31 20:21:17.232053922 +0100
+@@ -4,7 +4,7 @@
+ 
+ CLEANFILES = wmgenmenu.pot $(CATALOGS)
+ 
+-EXTRA_DIST = de.po es.po fr.po nl.po pt.po
++EXTRA_DIST = de.po es.po fr.po nl.po pt.po hu.po
+ 
+ POTFILES  = \
+ 	$(top_srcdir)/util/wmgenmenu.c \

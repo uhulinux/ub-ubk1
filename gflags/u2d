@@ -1,0 +1,1 @@
+urllist https://github.com/gflags/gflags/releases/  | splitver 'v([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

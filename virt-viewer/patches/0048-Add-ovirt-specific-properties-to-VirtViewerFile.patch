@@ -1,0 +1,193 @@
+From ef33efbc6425b6243b1a39995f13d6fbce90bf54 Mon Sep 17 00:00:00 2001
+From: Christophe Fergeau <cfergeau@redhat.com>
+Date: Thu, 12 Dec 2013 16:26:44 +0100
+Subject: [PATCH] Add ovirt-specific properties to VirtViewerFile
+
+They will be useful to implement foreign menu support through
+oVirt REST API
+
+Resolves: rhbz#1127156
+(cherry picked from commit eb4a7e4a840e4fb71eb499d4288eb4092f038e2d)
+---
+ src/virt-viewer-file.c | 108 +++++++++++++++++++++++++++++++++++++++++++++++++
+ src/virt-viewer-file.h |   8 ++++
+ 2 files changed, 116 insertions(+)
+
+diff --git a/src/virt-viewer-file.c b/src/virt-viewer-file.c
+index 3ead36d..8c618c7 100644
+--- a/src/virt-viewer-file.c
++++ b/src/virt-viewer-file.c
+@@ -66,6 +66,17 @@
+  * - delete-this-file: int (0 or 1 atm)
+  * - proxy: proxy URL, like http://user:pass@foobar:8080
+  *
++ * There is an optional [ovirt] section which can be used to specify
++ * the connection parameters to interact with the remote oVirt REST API.
++ * This is currently used to present a list of CDRom images which can be
++ * inserted in the VM.
++ *
++ * - host: string containing the URL of the oVirt engine
++ * - vm-guid: string containing the guid of the oVirt VM we are connecting to
++ * - jsessionid: string containing an authentication cookie to be used to
++ *   connect to the oVirt engine without being asked for credentials
++ * - ca: string PEM data (use \n to seperate the lines)
++ *
+  * (the file can be extended with extra groups or keys, which should
+  * be prefixed with x- to avoid later conflicts)
+  */
+@@ -79,6 +90,7 @@ G_DEFINE_TYPE(VirtViewerFile, virt_viewer_file, G_TYPE_OBJECT);
+ #define VIRT_VIEWER_FILE_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE((o), VIRT_VIEWER_TYPE_FILE, VirtViewerFilePrivate))
+ 
+ #define MAIN_GROUP "virt-viewer"
++#define OVIRT_GROUP "ovirt"
+ 
+ enum  {
+     PROP_DUMMY_PROPERTY,
+@@ -107,6 +119,10 @@ enum  {
+     PROP_SECURE_CHANNELS,
+     PROP_DELETE_THIS_FILE,
+     PROP_SECURE_ATTENTION,
++    PROP_OVIRT_HOST,
++    PROP_OVIRT_VM_GUID,
++    PROP_OVIRT_JSESSIONID,
++    PROP_OVIRT_CA,
+ };
+ 
+ VirtViewerFile*
+@@ -609,6 +625,58 @@ virt_viewer_file_set_secure_channels(VirtViewerFile* self, const gchar* const* v
+     g_object_notify(G_OBJECT(self), "secure-channels");
+ }
+ 
++gchar*
++virt_viewer_file_get_ovirt_host(VirtViewerFile* self)
++{
++    return virt_viewer_file_get_string(self, OVIRT_GROUP, "host");
++}
++
++void
++virt_viewer_file_set_ovirt_host(VirtViewerFile* self, const gchar* value)
++{
++    virt_viewer_file_set_string(self, OVIRT_GROUP, "host", value);
++    g_object_notify(G_OBJECT(self), "ovirt-host");
++}
++
++gchar*
++virt_viewer_file_get_ovirt_vm_guid(VirtViewerFile* self)
++{
++    return virt_viewer_file_get_string(self, OVIRT_GROUP, "vm-guid");
++}
++
++void
++virt_viewer_file_set_ovirt_vm_guid(VirtViewerFile* self, const gchar* value)
++{
++    virt_viewer_file_set_string(self, OVIRT_GROUP, "vm-guid", value);
++    g_object_notify(G_OBJECT(self), "ovirt-vm-guid");
++}
++
++gchar*
++virt_viewer_file_get_ovirt_jsessionid(VirtViewerFile* self)
++{
++    return virt_viewer_file_get_string(self, OVIRT_GROUP, "jsessionid");
++}
++
++void
++virt_viewer_file_set_ovirt_jsessionid(VirtViewerFile* self, const gchar* value)
++{
++    virt_viewer_file_set_string(self, OVIRT_GROUP, "jsessionid", value);
++    g_object_notify(G_OBJECT(self), "ovirt-jsessionid");
++}
++
++gchar*
++virt_viewer_file_get_ovirt_ca(VirtViewerFile* self)
++{
++    return virt_viewer_file_get_string(self, OVIRT_GROUP, "ca");
++}
++
++void
++virt_viewer_file_set_ovirt_ca(VirtViewerFile* self, const gchar* value)
++{
++    virt_viewer_file_set_string(self, OVIRT_GROUP, "ca", value);
++    g_object_notify(G_OBJECT(self), "ovirt-ca");
++}
++
+ static void
+ spice_hotkey_set_accel(const gchar *accel_path, const gchar *key)
+ {
+@@ -770,6 +838,18 @@ virt_viewer_file_set_property(GObject* object, guint property_id,
+     case PROP_DELETE_THIS_FILE:
+         virt_viewer_file_set_delete_this_file(self, g_value_get_int(value));
+         break;
++    case PROP_OVIRT_HOST:
++        virt_viewer_file_set_ovirt_host(self, g_value_get_string(value));
++        break;
++    case PROP_OVIRT_VM_GUID:
++        virt_viewer_file_set_ovirt_vm_guid(self, g_value_get_string(value));
++        break;
++    case PROP_OVIRT_JSESSIONID:
++        virt_viewer_file_set_ovirt_jsessionid(self, g_value_get_string(value));
++        break;
++    case PROP_OVIRT_CA:
++        virt_viewer_file_set_ovirt_ca(self, g_value_get_string(value));
++        break;
+     default:
+         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+         break;
+@@ -858,6 +938,18 @@ virt_viewer_file_get_property(GObject* object, guint property_id,
+     case PROP_DELETE_THIS_FILE:
+         g_value_set_int(value, virt_viewer_file_get_delete_this_file(self));
+         break;
++    case PROP_OVIRT_HOST:
++        g_value_take_string(value, virt_viewer_file_get_ovirt_host(self));
++        break;
++    case PROP_OVIRT_VM_GUID:
++        g_value_take_string(value, virt_viewer_file_get_ovirt_vm_guid(self));
++        break;
++    case PROP_OVIRT_JSESSIONID:
++        g_value_take_string(value, virt_viewer_file_get_ovirt_jsessionid(self));
++        break;
++    case PROP_OVIRT_CA:
++        g_value_take_string(value, virt_viewer_file_get_ovirt_ca(self));
++        break;
+     default:
+         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+         break;
+@@ -992,4 +1084,20 @@ virt_viewer_file_class_init(VirtViewerFileClass* klass)
+     g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_DELETE_THIS_FILE,
+         g_param_spec_int("delete-this-file", "delete-this-file", "delete-this-file", 0, 1, 0,
+                          G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
++
++    g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_OVIRT_HOST,
++        g_param_spec_string("ovirt-host", "ovirt-host", "ovirt-host", NULL,
++                            G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
++
++    g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_OVIRT_VM_GUID,
++        g_param_spec_string("ovirt-vm-guid", "ovirt-vm-guid", "ovirt-vm-guid", NULL,
++                            G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
++
++    g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_OVIRT_JSESSIONID,
++        g_param_spec_string("ovirt-jsessionid", "ovirt-jsessionid", "ovirt-jsessionid", NULL,
++                            G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
++
++    g_object_class_install_property(G_OBJECT_CLASS(klass), PROP_OVIRT_CA,
++        g_param_spec_string("ovirt-ca", "ovirt-ca", "ovirt-ca", NULL,
++                            G_PARAM_STATIC_STRINGS | G_PARAM_READWRITE));
+ }
+diff --git a/src/virt-viewer-file.h b/src/virt-viewer-file.h
+index 9507bf9..f4b030c 100644
+--- a/src/virt-viewer-file.h
++++ b/src/virt-viewer-file.h
+@@ -108,6 +108,14 @@ gint virt_viewer_file_get_delete_this_file(VirtViewerFile* self);
+ void virt_viewer_file_set_delete_this_file(VirtViewerFile* self, gint value);
+ gchar* virt_viewer_file_get_secure_attention(VirtViewerFile* self);
+ void virt_viewer_file_set_secure_attention(VirtViewerFile* self, const gchar* value);
++gchar* virt_viewer_file_get_ovirt_host(VirtViewerFile* self);
++void virt_viewer_file_set_ovirt_host(VirtViewerFile* self, const gchar* value);
++gchar* virt_viewer_file_get_ovirt_vm_guid(VirtViewerFile* self);
++void virt_viewer_file_set_ovirt_vm_guid(VirtViewerFile* self, const gchar* value);
++gchar* virt_viewer_file_get_ovirt_jsessionid(VirtViewerFile* self);
++void virt_viewer_file_set_ovirt_jsessionid(VirtViewerFile* self, const gchar* value);
++gchar* virt_viewer_file_get_ovirt_ca(VirtViewerFile* self);
++void virt_viewer_file_set_ovirt_ca(VirtViewerFile* self, const gchar* value);
+ 
+ G_END_DECLS
+ 

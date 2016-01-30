@@ -1,0 +1,51 @@
+From 2f562451e3dcb4d6762a86f820d88048b321d343 Mon Sep 17 00:00:00 2001
+From: "Daniel P. Berrange" <berrange@redhat.com>
+Date: Wed, 12 Mar 2014 17:33:24 +0000
+Subject: [PATCH] Fix scaling of window upon resize
+
+The code to determine scaling of windows was incorrectly
+using the original desktop size instead of the host screen
+size. The 128 pixel fudge factor was also causing windows
+to be scaled when there was no need for them to be.
+
+Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+---
+ src/virt-viewer-window.c | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/src/virt-viewer-window.c b/src/virt-viewer-window.c
+index a6ccaa1..d971263 100644
+--- a/src/virt-viewer-window.c
++++ b/src/virt-viewer-window.c
+@@ -433,24 +433,22 @@ virt_viewer_window_resize(VirtViewerWindow *self, gboolean keep_win_size)
+                                     (screen, gtk_widget_get_window(priv->window)),
+                                     &fullscreen);
+ 
+-    g_return_if_fail(fullscreen.height > 128);
+-    g_return_if_fail(fullscreen.width > 128);
+     g_return_if_fail(desktopWidth > 0);
+     g_return_if_fail(desktopHeight > 0);
+ 
+     desktopAspect = (double)desktopWidth / (double)desktopHeight;
+-    screenAspect = (double)(fullscreen.width - 128) / (double)(fullscreen.height - 128);
++    screenAspect = (double)fullscreen.width / (double)fullscreen.height;
+ 
+-    if ((desktopWidth > (fullscreen.width - 128)) ||
+-        (desktopHeight > (fullscreen.height - 128))) {
++    if ((desktopWidth > fullscreen.width) ||
++        (desktopHeight > fullscreen.height)) {
+         /* Doesn't fit native res, so go as large as possible
+            maintaining aspect ratio */
+         if (screenAspect > desktopAspect) {
+-            width = desktopHeight * desktopAspect;
+-            height = desktopHeight;
++            width = fullscreen.height * desktopAspect;
++            height = fullscreen.height;
+         } else {
+-            width = desktopWidth;
+-            height = desktopWidth / desktopAspect;
++            width = fullscreen.width;
++            height = fullscreen.width / desktopAspect;
+         }
+     } else {
+         width = desktopWidth;

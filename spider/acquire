@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+spider.tar.gz spider/
+	ftp://ftp.slackware.com/pub/slackware/slackware-current/source/xap/xgames/

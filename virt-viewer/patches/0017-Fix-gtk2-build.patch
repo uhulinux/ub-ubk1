@@ -1,0 +1,102 @@
+From bc4be9139c60541659fae1fd961d9eb770820b08 Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Mon, 31 Mar 2014 17:12:16 -0500
+Subject: [PATCH] Fix gtk2 build
+
+Previous commit accidentally broke gtk2 build by using
+gtk_widget_get_preferred_size().  We can't simply use gtk_widget_size_request()
+for the gtk2 build since this will generally return 50x50 whenever we're not in
+the middle of a resize, so we need to add a compatibility function.
+---
+ src/virt-viewer-display-spice.c |  2 +-
+ src/virt-viewer-display.c       | 41 ++++++++++++++++++++++++++++-------------
+ src/virt-viewer-display.h       |  1 +
+ 3 files changed, 30 insertions(+), 14 deletions(-)
+
+diff --git a/src/virt-viewer-display-spice.c b/src/virt-viewer-display-spice.c
+index c400f51..0450b5b 100644
+--- a/src/virt-viewer-display-spice.c
++++ b/src/virt-viewer-display-spice.c
+@@ -204,7 +204,7 @@ virt_viewer_display_spice_size_allocate(VirtViewerDisplaySpice *self,
+          * resizes the window to the size it already wants to be (based on desktop
+          * size and zoom level), just return early
+          */
+-        gtk_widget_get_preferred_size(GTK_WIDGET(self), NULL, &preferred);
++        virt_viewer_display_get_preferred_size(VIRT_VIEWER_DISPLAY(self), &preferred);
+         if (preferred.width == allocation->width
+             && preferred.height == allocation->height) {
+             return;
+diff --git a/src/virt-viewer-display.c b/src/virt-viewer-display.c
+index 6c078a5..f298bb0 100644
+--- a/src/virt-viewer-display.c
++++ b/src/virt-viewer-display.c
+@@ -377,6 +377,31 @@ virt_viewer_display_grab_focus(GtkWidget *widget)
+     gtk_widget_grab_focus(gtk_bin_get_child(bin));
+ }
+ 
++/* Compatibility function to allow gtk2 to emulate gtk3 behavior. We can't use
++ * the size request since it simply returns the minimum size whenever dirty is
++ * false */
++void virt_viewer_display_get_preferred_size(VirtViewerDisplay *self,
++                                            GtkRequisition *requisition)
++{
++#if GTK_CHECK_VERSION(3, 0, 0)
++    gtk_widget_get_preferred_size(GTK_WIDGET(self), NULL, requisition);
++#else
++    VirtViewerDisplayPrivate *priv = self->priv;
++    int border_width = gtk_container_get_border_width(GTK_CONTAINER(self));
++
++    requisition->width = border_width * 2;
++    requisition->height = border_width * 2;
++
++    if (priv->zoom) {
++        requisition->width += round(priv->desktopWidth * priv->zoom_level / 100.0);
++        requisition->height += round(priv->desktopHeight * priv->zoom_level / 100.0);
++    } else {
++        requisition->width += priv->desktopWidth;
++        requisition->height += priv->desktopHeight;
++    }
++#endif
++}
++
+ 
+ #if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean
+@@ -396,22 +421,12 @@ virt_viewer_display_size_request(GtkWidget *widget,
+ {
+     VirtViewerDisplay *display = VIRT_VIEWER_DISPLAY(widget);
+     VirtViewerDisplayPrivate *priv = display->priv;
+-    int border_width = gtk_container_get_border_width(GTK_CONTAINER(widget));
+-
+-    requisition->width = border_width * 2;
+-    requisition->height = border_width * 2;
+ 
+     if (priv->dirty) {
+-        if (priv->zoom) {
+-            requisition->width += round(priv->desktopWidth * priv->zoom_level / 100.0);
+-            requisition->height += round(priv->desktopHeight * priv->zoom_level / 100.0);
+-        } else {
+-            requisition->width += priv->desktopWidth;
+-            requisition->height += priv->desktopHeight;
+-        }
++        virt_viewer_display_get_preferred_size(display, requisition);
+     } else {
+-        requisition->width += 50;
+-        requisition->height += 50;
++        requisition->width = 50;
++        requisition->height = 50;
+     }
+ 
+     DEBUG_LOG("Display size request %dx%d (desktop %dx%d)",
+diff --git a/src/virt-viewer-display.h b/src/virt-viewer-display.h
+index fe88d98..70ce772 100644
+--- a/src/virt-viewer-display.h
++++ b/src/virt-viewer-display.h
+@@ -126,6 +126,7 @@ gboolean virt_viewer_display_get_enabled(VirtViewerDisplay *display);
+ gboolean virt_viewer_display_get_selectable(VirtViewerDisplay *display);
+ void virt_viewer_display_queue_resize(VirtViewerDisplay *display);
+ void virt_viewer_display_get_preferred_monitor_geometry(VirtViewerDisplay *self, GdkRectangle* preferred);
++void virt_viewer_display_get_preferred_size(VirtViewerDisplay *self, GtkRequisition* requisistion);
+ 
+ G_END_DECLS
+ 

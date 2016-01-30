@@ -1,0 +1,30 @@
+diff -Naur orig/main/sysui/desktop/share/create_tree.sh patched/main/sysui/desktop/share/create_tree.sh
+--- orig/main/sysui/desktop/share/create_tree.sh	2014-02-25 09:28:47.000000000 +0100
++++ patched/main/sysui/desktop/share/create_tree.sh	2014-05-11 11:19:56.736999643 +0200
+@@ -112,7 +112,7 @@
+ 
+ mkdir -p ${DESTDIR}/usr/bin
+ 
+-office_root=/opt/${PREFIX}
++office_root=/usr/lib/${PREFIX}
+ 
+ ln -sf ${office_root}/program/soffice ${DESTDIR}/usr/bin/soffice
+ 
+diff -Naur orig/main/sysui/desktop/share/openoffice.sh patched/main/sysui/desktop/share/openoffice.sh
+--- orig/main/sysui/desktop/share/openoffice.sh	2014-02-25 09:28:46.000000000 +0100
++++ patched/main/sysui/desktop/share/openoffice.sh	2014-05-11 11:18:43.780326267 +0200
+@@ -19,4 +19,4 @@
+ #  under the License.
+ #  
+ # *************************************************************
+-exec /opt/%PREFIX/program/soffice "$@"
++exec /usr/lib/%PREFIX/program/soffice "$@"
+diff -Naur orig/main/sysui/desktop/share/printeradmin.sh patched/main/sysui/desktop/share/printeradmin.sh
+--- orig/main/sysui/desktop/share/printeradmin.sh	2014-02-25 09:28:47.000000000 +0100
++++ patched/main/sysui/desktop/share/printeradmin.sh	2014-05-11 11:20:58.837572811 +0200
+@@ -20,4 +20,4 @@
+ #  
+ # *************************************************************
+ 
+-exec /opt/%PREFIX/program/spadmin 
++exec /usr/lib/%PREFIX/program/spadmin 

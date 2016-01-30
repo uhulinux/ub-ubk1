@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Science;Electricity;
+Exec=gksu estickflash
+Icon=eStickFlashTool
+StartupNotify=false
+Terminal=false
+Type=Application
+Name=eStickFlashTool

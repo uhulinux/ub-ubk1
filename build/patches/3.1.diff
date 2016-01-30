@@ -1,0 +1,120 @@
+From 62003d63277014a0b23f0ba8048362e7f4659ae1 Mon Sep 17 00:00:00 2001
+From: rezso <rezso@rezso.net>
+Date: Sat, 30 Jan 2016 19:32:50 +0100
+Subject: [PATCH] add 3.1
+
+---
+ etc/apt/sources.list-build-3.1              | 17 +++++++++++++++++
+ usr/bin/build                               |  4 +++-
+ usr/bin/build-all                           |  2 +-
+ usr/bin/build-clean                         |  4 +++-
+ usr/bin/build-clean-all                     |  2 +-
+ usr/share/bash-completion/completions/build |  9 +++++++++
+ 6 files changed, 34 insertions(+), 4 deletions(-)
+ create mode 100644 etc/apt/sources.list-build-3.1
+
+diff --git a/etc/apt/sources.list-build-3.1 b/etc/apt/sources.list-build-3.1
+new file mode 100644
+index 0000000..83a6b8a
+--- /dev/null
++++ b/etc/apt/sources.list-build-3.1
+@@ -0,0 +1,17 @@
++# /etc/apt/sources.list-build
++#
++# Lokálisan tárolt UHU csomagok, adott esetben a build
++# rendszer megfelelő packages könyvtárai.
++# A Packages, Packages.gz és Release fájlok megléte
++# szükséges a megadott könyvtárban!
++
++deb file:/usr/src/UHUBUILD/packages-3.1 ./
++
++# UHU tároló mirror ubk.hu-n
++deb ftp://ftp.ubk.hu/pkg/mirror/download.uhulinux.hu/dists/3/ ./
++# deb http://download.ubk.hu/pkg/mirror/download.uhulinux.hu/dists/3/ ./
++
++# UBK
++deb ftp://ftp.ubk.hu/pkg/3/dev ./
++# deb ftp://ftp.ubk.hu/pkg/3.1/main ./
++# http://download.ubk.hu/pkg/3.1/main ./
+diff --git a/usr/bin/build b/usr/bin/build
+index 0603d84..b7ac0c4 100644
+--- a/usr/bin/build
++++ b/usr/bin/build
+@@ -18,7 +18,7 @@ scrollout
+ # peritus <peritus@freemail.hu>
+ # Páder Rezső <rezso@rezso.net>
+ 
+-BUILD_VERSION="0.9.5"
++BUILD_VERSION="0.9.6"
+ VENDOR="UHU Linux Baráti Kör"
+ PACKAGER=${PACKAGER:=UBK <ubk@ubk.hu>}
+ 
+@@ -29,6 +29,8 @@ case `basename $0` in
+ 		export UHUBUILD_DISTR=2.2;;
+ 	build-3)
+ 		export UHUBUILD_DISTR=3;;
++	build-3.1)
++		export UHUBUILD_DISTR=3.1;;
+ 	build-dev)
+ 		export UHUBUILD_DISTR=dev;;
+ esac
+diff --git a/usr/bin/build-all b/usr/bin/build-all
+index 1a3620f..fa7a5da 100644
+--- a/usr/bin/build-all
++++ b/usr/bin/build-all
+@@ -11,6 +11,6 @@
+ 	exit 1
+ }
+ 
+-for i in 2.2 3 dev; do
++for i in 2.2 3 3.1 dev; do
+ 	/usr/bin/build-"$i" "$@"
+ done
+diff --git a/usr/bin/build-clean b/usr/bin/build-clean
+index afabcf8..0c177a4 100644
+--- a/usr/bin/build-clean
++++ b/usr/bin/build-clean
+@@ -19,8 +19,10 @@ case ${BASENAME} in
+ 		export DISTR=3;;
+ 	build-clean-2.2)
+ 		export DISTR=2.2;;
+-	build-clean-2.2)
++	build-clean-3)
+ 		export DISTR=3;;
++	build-clean-3.1)
++		export DISTR=3.1;;
+ 	build-clean-dev)
+ 		export DISTR=dev;;
+ esac
+diff --git a/usr/bin/build-clean-all b/usr/bin/build-clean-all
+index 0f456bd..b7fc1e2 100644
+--- a/usr/bin/build-clean-all
++++ b/usr/bin/build-clean-all
+@@ -9,6 +9,6 @@
+ 	exit 1
+ }
+ 
+-for i in 2.2 3 dev; do
++for i in 2.2 3 3.1 dev; do
+ 	/usr/bin/build-clean-"$i" "$@"
+ done
+diff --git a/usr/share/bash-completion/completions/build b/usr/share/bash-completion/completions/build
+index d75b824..a7f938b 100644
+--- a/usr/share/bash-completion/completions/build
++++ b/usr/share/bash-completion/completions/build
+@@ -24,3 +24,12 @@ _build3()
+         COMPREPLY=($(compgen -W "$foo" -- "$cur"))
+ }
+ complete -F _build3 build-3
++
++_build3.1()
++{
++        local cur foo
++        cur=${COMP_WORDS[COMP_CWORD]}
++        foo="$(/bin/ls /usr/src/UHUBUILD/UB-3.1)"
++        COMPREPLY=($(compgen -W "$foo" -- "$cur"))
++}
++complete -F _build3.1 build-3.1
+-- 
+2.7.0
+

@@ -1,0 +1,12 @@
+diff -Naur kaffeine-1.2.2-ori/CMakeLists.txt kaffeine-1.2.2/CMakeLists.txt
+--- kaffeine-1.2.2-ori/CMakeLists.txt	2011-04-17 21:17:19.000000000 +0200
++++ kaffeine-1.2.2/CMakeLists.txt	2011-10-01 16:03:22.981620855 +0200
+@@ -2,7 +2,7 @@
+ 
+ find_package(KDE4 REQUIRED)
+ find_package(X11 REQUIRED)
+-find_package(Xine REQUIRED)
++find_package(Xine 2.2.2)
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES} ${X11_INCLUDE_DIR} ${X11_Xscreensaver_INCLUDE_PATH} ${XINE_INCLUDE_DIR})
+ add_definitions(${KDE4_DEFINITIONS})
+ 

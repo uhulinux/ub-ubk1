@@ -1,0 +1,1 @@
+urllist http://www.escape-edv.de/endriss/vdr/ | splitver '^vdr-remote-([0-9.]+).tgz$' | sort -V | tail -n 1

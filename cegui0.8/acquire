@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+v${UB_VERSION_HEAD2/./-}-${UB_VERSION_TAIL1}.tar.bz2 cegui-cegui-5861231e8335/
+    https://bitbucket.org/cegui/cegui/get/

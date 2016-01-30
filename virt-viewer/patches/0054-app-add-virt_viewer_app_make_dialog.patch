@@ -1,0 +1,85 @@
+From 9411e11af06fbb24a68d2dca7dcb55267606d09d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>
+Date: Thu, 3 Jul 2014 18:41:08 +0200
+Subject: [PATCH] app: add virt_viewer_app_make_dialog()
+
+Add a function to create an application dialog. In the following
+commit, we will add more details for connection failures.
+
+Resolves: rhbz#1115986
+(cherry picked from commit df28177c679e8ba0a7cf069c5f816167a0a96904)
+---
+ src/virt-viewer-app.c | 37 +++++++++++++++++++++++++++----------
+ 1 file changed, 27 insertions(+), 10 deletions(-)
+
+diff --git a/src/virt-viewer-app.c b/src/virt-viewer-app.c
+index b8b5c9c..0110a9f 100644
+--- a/src/virt-viewer-app.c
++++ b/src/virt-viewer-app.c
+@@ -199,20 +199,18 @@ virt_viewer_app_set_debug(gboolean debug)
+     doDebug = debug;
+ }
+ 
+-void
+-virt_viewer_app_simple_message_dialog(VirtViewerApp *self,
+-                                      const char *fmt, ...)
++static GtkWidget*
++virt_viewer_app_make_message_dialog(VirtViewerApp *self,
++                                    const char *fmt, ...)
+ {
+-    g_return_if_fail(VIRT_VIEWER_IS_APP(self));
++    g_return_val_if_fail(VIRT_VIEWER_IS_APP(self), NULL);
+     GtkWindow *window = GTK_WINDOW(virt_viewer_window_get_window(self->priv->main_window));
+     GtkWidget *dialog;
+     char *msg;
+     va_list vargs;
+ 
+     va_start(vargs, fmt);
+-
+     msg = g_strdup_vprintf(fmt, vargs);
+-
+     va_end(vargs);
+ 
+     dialog = gtk_message_dialog_new(window,
+@@ -223,8 +221,25 @@ virt_viewer_app_simple_message_dialog(VirtViewerApp *self,
+                                     "%s",
+                                     msg);
+ 
++    g_free(msg);
++
++    return dialog;
++}
++
++void
++virt_viewer_app_simple_message_dialog(VirtViewerApp *self,
++                                      const char *fmt, ...)
++{
++    GtkWidget *dialog;
++    char *msg;
++    va_list vargs;
++
++    va_start(vargs, fmt);
++    msg = g_strdup_vprintf(fmt, vargs);
++    va_end(vargs);
++
++    dialog = virt_viewer_app_make_message_dialog(self, msg);
+     gtk_dialog_run(GTK_DIALOG(dialog));
+-
+     gtk_widget_destroy(dialog);
+ 
+     g_free(msg);
+@@ -1392,9 +1407,11 @@ virt_viewer_app_disconnected(VirtViewerSession *session G_GNUC_UNUSED,
+         gtk_main_quit();
+ 
+     if (connect_error) {
+-        virt_viewer_app_simple_message_dialog(self,
+-                                              _("Unable to connect to the graphic server %s"),
+-                                              priv->pretty_address);
++        GtkWidget *dialog = virt_viewer_app_make_message_dialog(self,
++            _("Unable to connect to the graphic server %s"), priv->pretty_address);
++
++        gtk_dialog_run(GTK_DIALOG(dialog));
++        gtk_widget_destroy(dialog);
+     }
+     virt_viewer_app_set_usb_options_sensitive(self, FALSE);
+     virt_viewer_app_deactivate(self, connect_error);

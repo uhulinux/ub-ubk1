@@ -1,0 +1,1 @@
+urllist https://github.com/i-rinat/freshplayerplugin/releases | splitver '^v([0-9.]+)$' | sort -V | tail -n 1

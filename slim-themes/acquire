@@ -1,0 +1,32 @@
+#!/usr/bin/env dl
+
+slim-flat.tar.gz .
+	http://download.sourceforge.net/slim.berlios/
+
+slim-flower2.tar.gz .
+	http://download.sourceforge.net/slim.berlios/
+
+slim-lake.tar.gz .
+	http://download.sourceforge.net/slim.berlios/
+
+slim-mindlock.tar.gz .
+	http://download.sourceforge.net/slim.berlios/
+	
+slim-parallel-dimensions.tar.gz .
+	http://download.sourceforge.net/slim.berlios/
+
+slim-previous.tar.gz .
+	http://download.sourceforge.net/slim.berlios/
+
+slim-rainbow.tar.gz .
+	http://download.sourceforge.net/slim.berlios/
+
+slim-scotland-road.tar.gz .
+	http://download.sourceforge.net/slim.berlios/
+
+slim-subway.tar.gz .
+	http://download.sourceforge.net/slim.berlios/
+
+slim-wave.tar.gz .
+	http://download.sourceforge.net/slim.berlios/
+

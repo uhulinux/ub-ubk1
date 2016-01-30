@@ -1,0 +1,12 @@
+diff -Naur orig/pcmanfm/settings.cpp mod/pcmanfm/settings.cpp
+--- orig/pcmanfm/settings.cpp	2015-11-02 12:34:16.000000000 +0100
++++ mod/pcmanfm/settings.cpp	2015-11-10 15:33:24.355856628 +0100
+@@ -151,7 +151,7 @@
+     fallbackIconThemeName_ = "elementary"; // fallback icon theme name
+   }
+   suCommand_ = settings.value("SuCommand", "gksu %s").toString();
+-  setTerminal(settings.value("Terminal", "xterm").toString());
++  setTerminal(settings.value("Terminal", "qterminal").toString());
+   setArchiver(settings.value("Archiver", "file-roller").toString());
+   setSiUnit(settings.value("SIUnit", false).toBool());
+ 

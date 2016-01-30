@@ -1,0 +1,24 @@
+From 48cec1e3cafbb204b9b07357b58db09277f2b984 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fabiano=20Fid=C3=AAncio?= <fidencio@redhat.com>
+Date: Fri, 25 Jul 2014 00:39:19 +0200
+Subject: [PATCH] Don't check for NULL when it never can happen
+
+Resolves: rhbz#885108
+(cherry picked from commit dc3db6302e6d6e2411911ae7bc3fd885676fe40d)
+---
+ src/virt-viewer-util.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/virt-viewer-util.c b/src/virt-viewer-util.c
+index 464a3d0..6dd048d 100644
+--- a/src/virt-viewer-util.c
++++ b/src/virt-viewer-util.c
+@@ -112,7 +112,7 @@ virt_viewer_util_extract_host(const char *uristr,
+     g_return_val_if_fail(uri != NULL, 1);
+ 
+     if (host) {
+-        if (!uri || !uri->server) {
++        if (!uri->server) {
+             *host = g_strdup("localhost");
+         } else {
+             if (uri->server[0] == '[') {

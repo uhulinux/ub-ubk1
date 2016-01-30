@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+wmctrl-${UB_VERSION}.tar.gz wmctrl-${UB_VERSION}/
+	https://sites.google.com/site/tstyblo/wmctrl/
