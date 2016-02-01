@@ -1,3 +1,4 @@
 intltool
-pygtk-dev
+python-dev
+python-distutils-extra
 zeitgeist
