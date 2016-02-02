@@ -1,7 +1,9 @@
 enchant-dev
-geoclue1-dev
-gst0.10-plugins-base-dev
+geoclue-dev
+gst-plugins-base-dev
 libjpeg-dev
+libsecret-dev
+libwebp-dev
 libxslt-dev
 libxt-dev
 mesa-dev

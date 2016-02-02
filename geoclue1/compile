@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-gtkdocize
-autoreconf -vif
-ub_compile \
-	--enable-skyhook \
-	--enable-gpsd=no

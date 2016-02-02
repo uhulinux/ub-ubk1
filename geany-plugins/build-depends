@@ -1,14 +1,11 @@
 ctpl-dev
 gconf2-dev
 geany-dev
-geoclue1-dev
 gpgme-dev
-gst0.10-plugins-base-dev
 gtkspell2-dev
 intltool
 libsoup-dev
 libwnck2-dev
-libxshmfence-dev
 lua-dev
 mesa-dev
 pygtk-dev

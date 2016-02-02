@@ -3,7 +3,7 @@ intltool
 libidn-dev
 libnotify-dev
 librsvg-dev
-libunique-dev
+libunique1-dev
 libxml2-dev
 libxscrnsaver-dev
 openssl-dev

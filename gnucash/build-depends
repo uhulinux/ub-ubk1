@@ -1,13 +1,10 @@
-geoclue1-dev
 goffice08-dev
-gst0.10-plugins-base-dev
 guile-dev
 intltool
 libdbi-drivers
 libgnomecanvas2-dev
 libofx-dev
 libunistring-dev
-libxshmfence-dev
 libxslt-dev
 mesa-dev
 openssl-dev
