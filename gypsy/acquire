@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gypsy-${UB_VERSION}.tar.gz gypsy-${UB_VERSION}/
-	http://gypsy.freedesktop.org/releases/
