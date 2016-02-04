@@ -1,11 +1,11 @@
 dbus-glib-dev
-gtkmm2-dev
+gtkmm-dev
 intltool
 itstool
 libgtop2-dev
 librsvg-dev
 libsm-dev
-libwnck2-dev
+libwnck-dev
 libxslt-dev
 mate-common
 mate-icon-theme
