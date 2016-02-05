@@ -1,3 +1,4 @@
+cmake
 create-resources
 curl-dev
 eigen3
