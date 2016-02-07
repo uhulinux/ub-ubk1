@@ -41,7 +41,7 @@ diff -Naur orig/doc/uhubuild.sgml patched/doc/uhubuild.sgml
  	Ha required, akkor automatikusan Essential is lesz a csomag.
  	Ezen értékek jelentéséről a dokumentáció során még szólunk.
  
-+  <tag/predepends [?]/
++  <tag/pre-depends [?]/
 +
 +	A csomag control fájljának Pre-Depends opciója készül el az itt
 +	felsorolt értékekkel. Soronként egy csomagnév. A szokásos operátorok
@@ -86,13 +86,13 @@ diff -Naur orig/src/steps/control patched/src/steps/control
  			echo
  		fi
  
-+		if [ -s "$UB_SRCDIR/packages/$pkg/predepends" ]; then
++		if [ -s "$UB_SRCDIR/packages/$pkg/pre-depends" ]; then
 +			sep=''
 +			echo -n "Pre-Depends:"
 +			while read -r line; do
 +				echo -n "$sep" "$line"
 +				sep=','
-+			done < "$UB_SRCDIR/packages/$pkg/predepends"
++			done < "$UB_SRCDIR/packages/$pkg/pre-depends"
 +			echo
 +		fi
 +		if [ -s "$UB_SRCDIR/packages/$pkg/conflicts" ]; then
@@ -155,7 +155,7 @@ diff -Naur orig/src/uhubuild-check patched/src/uhubuild-check
 -	  section  |users  |\
 +	  categories|conffiles|conflicts|depends|dirs |\
 +	  excludes|files|groups|obsoletes|options|perms|\
-+	  postinst |postrm |prerm  |priority|predepends|\
++	  postinst |postrm |prerm  |priority|pre-depends|\
 +	  provides|replaces|section  |users  |\
  	  keep-old-timestamps|suid_wrapper|libpath)
  		must_be_file "$file"
@@ -223,25 +223,25 @@ diff -Naur orig/src/uhubuild-check patched/src/uhubuild-check
  	fi
  
 +	##############################
-+	### packages/*/predepends ###
++	### packages/*/pre-depends ###
 +	##############################
-+	if [ -f $pkg/predepends ]; then
-+		pp < $pkg/predepends
-+	fi > $UHUBUILD_SRC2DIR/$pkg/predepends.tmp
-+	if ! has_macro $UHUBUILD_SRC2DIR/$pkg/predepends.tmp; then
-+		reformat 0 < $UHUBUILD_SRC2DIR/$pkg/predepends.tmp | sort -u > $UHUBUILD_SRC2DIR/$pkg/predepends
-+		rm $UHUBUILD_SRC2DIR/$pkg/predepends.tmp
++	if [ -f $pkg/pre-depends ]; then
++		pp < $pkg/pre-depends
++	fi > $UHUBUILD_SRC2DIR/$pkg/pre-depends.tmp
++	if ! has_macro $UHUBUILD_SRC2DIR/$pkg/pre-depends.tmp; then
++		reformat 0 < $UHUBUILD_SRC2DIR/$pkg/pre-depends.tmp | sort -u > $UHUBUILD_SRC2DIR/$pkg/pre-depends
++		rm $UHUBUILD_SRC2DIR/$pkg/pre-depends.tmp
 +		while read package op version; do
 +			case "$op" in
 +				""|"(<"|"(<<"|"(<="|"(="|"(>="|"(>>"|"(>")
 +					;;
 +				*)
-+					error "Ismeretlen verzió-operátor ($op) a $pkg/predepends fájlban."
++					error "Ismeretlen verzió-operátor ($op) a $pkg/pre-depends fájlban."
 +					;;
 +			esac
-+		done < $UHUBUILD_SRC2DIR/$pkg/predepends
++		done < $UHUBUILD_SRC2DIR/$pkg/pre-depends
 +	else
-+		mv $UHUBUILD_SRC2DIR/$pkg/predepends.tmp $UHUBUILD_SRC2DIR/$pkg/predepends
++		mv $UHUBUILD_SRC2DIR/$pkg/pre-depends.tmp $UHUBUILD_SRC2DIR/$pkg/pre-depends
 +	fi
 +
 +	#############################
@@ -297,7 +297,7 @@ diff -Naur orig/src/uhubuild-check patched/src/uhubuild-check
  	for f in acquire build-depends compile doc install options \
 -	  packages/*/{{description,words}/hu,depends,perms,conffiles,categories,options,suid_wrapper,users,groups}; do
 +	  packages/*/{{description,words}/hu,depends,perms,conffiles,categories,options,suid_wrapper,users,groups \
-+					conflicts,obsoletes,predepends,provides,replaces}; do
++					conflicts,obsoletes,pre-depends,provides,replaces}; do
  		if [ -f "$f" -a ! -s "$f" ]; then
  			rm -f "$f"
  		fi
