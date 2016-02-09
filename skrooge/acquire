@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-skrooge-${UB_VERSION}.tar.bz2 skrooge-${UB_VERSION}/
-	http://download.kde.org/stable/skrooge/${UB_VERSION}/src/
-

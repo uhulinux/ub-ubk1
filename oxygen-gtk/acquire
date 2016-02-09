@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-oxygen-gtk2-${UB_VERSION}.tar.bz2 oxygen-gtk2-${UB_VERSION}/
-	http://download.kde.org/stable/oxygen-gtk2/${UB_VERSION}/src/

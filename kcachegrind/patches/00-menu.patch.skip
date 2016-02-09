@@ -1,9 +1,0 @@
-diff -Naur kcachegrind-4.10.80-orig/kcachegrind/kcachegrind.desktop kcachegrind-4.10.80/kcachegrind/kcachegrind.desktop
---- kcachegrind-4.10.80-orig/kcachegrind/kcachegrind.desktop	2013-06-10 20:55:27.000000000 +0200
-+++ kcachegrind-4.10.80/kcachegrind/kcachegrind.desktop	2013-06-18 21:17:47.000000000 +0200
-@@ -174,4 +174,4 @@
- Comment[zh_TW]=效能分析資料視覺化
- X-DBUS-StartupType=Multi
- X-DBUS-ServiceName=net.sf.kcachegrind
--Categories=Qt;KDE;Development;
-+Categories=Qt;KDE;Development;X-UHU-Menu/Development/Programming;

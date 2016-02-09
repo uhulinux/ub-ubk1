@@ -1,9 +1,0 @@
-diff -Naur cervisia-4.10.80-orig/cervisia.desktop cervisia-4.10.80/cervisia.desktop
---- cervisia-4.10.80-orig/cervisia.desktop	2013-06-10 20:55:22.000000000 +0200
-+++ cervisia-4.10.80/cervisia.desktop	2013-06-14 11:07:12.000000000 +0200
-@@ -141,4 +141,4 @@
- Name[zh_TW]=Cervisia
- 
- X-DBUS-StartupType=Multi
--Categories=Qt;KDE;Development;RevisionControl;
-+Categories=Qt;KDE;Development;RevisionControl;X-UHU-Menu/Development/Programming;

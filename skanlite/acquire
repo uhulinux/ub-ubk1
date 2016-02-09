@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-skanlite-${UB_VERSION_HEAD2}.tar.xz skanlite-${UB_VERSION_HEAD2}/
-	http://download.kde.org/stable/skanlite/${UB_VERSION}/src/

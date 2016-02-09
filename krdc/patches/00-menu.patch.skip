@@ -1,9 +1,0 @@
-diff -Naur krdc-4.10.80-orig/krdc.desktop krdc-4.10.80/krdc.desktop
---- krdc-4.10.80-orig/krdc.desktop	2013-06-10 22:08:11.000000000 +0200
-+++ krdc-4.10.80/krdc.desktop	2013-06-23 09:07:23.000000000 +0200
-@@ -121,4 +121,4 @@
- GenericName[zh_CN]=远程桌面客户端
- GenericName[zh_TW]=遠端桌面客戶端
- X-DocPath=krdc/index.html
--Categories=Qt;KDE;Network;RemoteAccess;
-+Categories=Qt;KDE;Network;RemoteAccess;X-UHU-Menu/Internet/Tools;

@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-libnm-qt-${UB_VERSION}.tar.xz libnm-qt-${UB_VERSION}/
-	http://download.kde.org/unstable/networkmanager-qt/${UB_VERSION}/src/
-	http://download.kde.org/stable/networkmanager-qt/${UB_VERSION}/src/

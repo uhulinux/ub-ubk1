@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/kmahjongg-4.10.0/kmahjongg.desktop kdegames/kmahjongg-4.10.0/kmahjongg.desktop
---- kdegames-orig/kmahjongg-4.13.0/kmahjongg.desktop	2013-01-23 23:06:26.000000000 +0100
-+++ kdegames/kmahjongg-4.13.0/kmahjongg.desktop	2013-02-28 11:25:07.000000000 +0100
-@@ -125,4 +125,4 @@
- X-KDE-StartupNotify=true
- X-DBUS-StartupType=Multi
- X-DocPath=kmahjongg/index.html
--Categories=Qt;KDE;Game;BoardGame;
-+Categories=Qt;KDE;Game;BoardGame;X-UHU-Menu/Games/Board;

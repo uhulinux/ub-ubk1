@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-konversation-${UB_VERSION}.tar.xz konversation-${UB_VERSION}/
-	http://download.kde.org/stable/konversation/${UB_VERSION}/src/
-	http://download.berlios.de/konversation/

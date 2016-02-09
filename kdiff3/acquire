@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-kdiff3-${UB_VERSION}-kde4.4.0.tar.bz2 kdiff3-${UB_VERSION}-kde4.4.0/
-	http://download.kde.org/stable/extragear/

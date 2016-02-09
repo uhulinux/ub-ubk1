@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-libmm-qt-${UB_VERSION}.tar.xz libmm-qt-${UB_VERSION}/
-	http://download.kde.org/unstable/modemmanager-qt/${UB_VERSION}/src/
-	http://download.kde.org/stable/modemmanager-qt/${UB_VERSION}/src/

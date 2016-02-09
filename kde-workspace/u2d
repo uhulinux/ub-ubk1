@@ -1,3 +1,0 @@
-version=$(urllist http://download.kde.org/stable/ | splitver '^([0-9.]+)' | sort -V | tail -n 1)
-
-urllist http://download.kde.org/stable/$version/src/ | splitver '^kde-workspace-([0-9.]+).tar.xz$' | sort -V | tail -n 1

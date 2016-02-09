@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/kspaceduel-4.10.0/kspaceduel.desktop kdegames/kspaceduel-4.10.0/kspaceduel.desktop
---- kdegames-orig/kspaceduel-4.13.0/kspaceduel.desktop	2013-01-23 23:07:23.000000000 +0100
-+++ kdegames/kspaceduel-4.13.0/kspaceduel.desktop	2013-02-28 11:35:55.000000000 +0100
-@@ -130,4 +130,4 @@
- Terminal=false
- X-KDE-StartupNotify=true
- X-DBUS-StartupType=Multi
--Categories=Qt;KDE;Game;ArcadeGame;
-+Categories=Qt;KDE;Game;ArcadeGame;X-UHU-Menu/Games/Arcade;

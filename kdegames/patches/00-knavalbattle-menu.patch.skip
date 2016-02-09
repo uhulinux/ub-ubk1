@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/knavalbattle-4.13.0/src/knavalbattle.desktop kdegames/knavalbattle-4.13.0/src/knavalbattle.desktop
---- kdegames-orig/knavalbattle-4.13.0/src/knavalbattle.desktop	2013-01-23 23:06:36.000000000 +0100
-+++ kdegames/knavalbattle-4.13.0/src/knavalbattle.desktop	2013-02-28 11:25:47.000000000 +0100
-@@ -88,4 +88,4 @@
- GenericName[zh_TW]=擊沉船隻的遊戲
- Terminal=false
- X-DBUS-StartupType=Multi
--Categories=Qt;KDE;Game;StrategyGame;
-+Categories=Qt;KDE;Game;StrategyGame;X-UHU-Menu/Games/TacticStrategy;

@@ -1,9 +1,0 @@
-diff -Naur rocs-4.11.0-orig/App/rocs.desktop rocs-4.11.0/App/rocs.desktop
---- rocs-4.11.0-orig/App/rocs.desktop	2013-08-06 14:45:42.000000000 +0200
-+++ rocs-4.11.0/App/rocs.desktop	2013-08-14 10:29:08.000000000 +0200
-@@ -119,4 +119,4 @@
- Comment[x-test]=xxGraph Theory Tool for Professors and Students.xx
- Comment[zh_CN]=面向授课场合的图论工具。
- Comment[zh_TW]=給教授與學生使用的圖形理論工具。
--Categories=Qt;KDE;Education;Science;Math;
-+Categories=Qt;KDE;Education;Science;Math;X-UHU-Menu/Edutainment/Science;

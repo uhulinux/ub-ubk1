@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-kalgebra-${UB_VERSION}.tar.xz kalgebra-${UB_VERSION}/
-	http://download.kde.org/stable/${UB_VERSION}/src/
-	ftp://ftp.dvo.ru/pub/distfiles/

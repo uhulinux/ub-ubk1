@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-analitza-${UB_VERSION}.tar.xz analitza-${UB_VERSION}/
-	http://download.kde.org/stable/${UB_VERSION}/src/
-	ftp://ftp.dvo.ru/pub/distfiles/

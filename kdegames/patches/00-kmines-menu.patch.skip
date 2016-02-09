@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/kmines-4.10.0/data/kmines.desktop kdegames/kmines-4.10.0/data/kmines.desktop
---- kdegames-orig/kmines-4.13.0/data/kmines.desktop	2013-01-23 23:06:30.000000000 +0100
-+++ kdegames/kmines-4.13.0/data/kmines.desktop	2013-02-28 11:25:27.000000000 +0100
-@@ -136,4 +136,4 @@
- GenericName[zh_TW]=類似踩地雷的遊戲
- X-KDE-StartupNotify=true
- X-DBUS-StartupType=Multi
--Categories=Qt;KDE;Game;StrategyGame;
-+Categories=Qt;KDE;Game;StrategyGame;X-UHU-Menu/Games/TacticStrategy;

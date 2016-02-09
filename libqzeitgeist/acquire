@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libqzeitgeist-${UB_VERSION}.tar.bz2 libqzeitgeist-${UB_VERSION}/
-	http://download.kde.org/stable/libqzeitgeist/${UB_VERSION}/src/

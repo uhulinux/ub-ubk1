@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/amor-4.10.0/src/amor.desktop kdegames/amor-4.10.0/src/amor.desktop
---- kdegames-orig/amor-4.13.0/src/amor.desktop	2013-06-14 10:50:07.000000000 +0200
-+++ kdegames/amor-4.13.0/src/amor.desktop	2013-06-14 10:48:53.000000000 +0200
-@@ -137,4 +137,4 @@
- GenericName[zh_TW]=畫面擷取程式
- Terminal=false
- X-DBUS-StartupType=Unique
--Categories=Qt;KDE;Game;Amusement;
-+Categories=Qt;KDE;Game;Amusement;X-UHU-Menu/Games/Arcade;

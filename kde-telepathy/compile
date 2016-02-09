@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-for i in *; do
-	cd $i
-	ub_compile
-	cd ..
-done

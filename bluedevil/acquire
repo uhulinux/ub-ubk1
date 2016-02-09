@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-bluedevil-${UB_VERSION}.tar.xz bluedevil-v${UB_VERSION}/
-	http://download.kde.org/stable/bluedevil/${UB_VERSION}/src/
-	http://download.kde.org/unstable/bluedevil/${UB_VERSION}/src/

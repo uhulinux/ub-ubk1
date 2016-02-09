@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/konquest-4.10.0/konquest.desktop kdegames/konquest-4.10.0/konquest.desktop
---- kdegames-orig/konquest-4.13.0/konquest.desktop	2013-01-23 23:06:56.000000000 +0100
-+++ kdegames/konquest-4.13.0/konquest.desktop	2013-02-28 11:28:46.000000000 +0100
-@@ -132,4 +132,4 @@
- X-DocPath=konquest/index.html
- X-KDE-StartupNotify=true
- X-DBUS-StartupType=Multi
--Categories=Qt;KDE;Game;StrategyGame;
-+Categories=Qt;KDE;Game;StrategyGame;X-UHU-Menu/Games/TacticStrategy;

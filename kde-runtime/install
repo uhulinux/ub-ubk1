@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_install
-
-## shipped by icon-theme-hicolor
-rm -f "$UB_INSTALLDIR"/usr/share/icons/hicolor/index.theme

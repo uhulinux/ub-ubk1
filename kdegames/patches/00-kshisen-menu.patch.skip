@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/kshisen-4.10.0/kshisen.desktop kdegames/kshisen-4.10.0/kshisen.desktop
---- kdegames-orig/kshisen-4.13.0/kshisen.desktop	2013-01-23 23:07:11.000000000 +0100
-+++ kdegames/kshisen-4.13.0/kshisen.desktop	2013-02-28 11:31:46.000000000 +0100
-@@ -131,4 +131,4 @@
- Icon=kshisen
- X-KDE-StartupNotify=true
- X-DBUS-StartupType=Multi
--Categories=Qt;KDE;Game;BoardGame;
-+Categories=Qt;KDE;Game;BoardGame;X-UHU-Menu/Games/Board;

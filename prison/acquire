@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-prison-${UB_VERSION}.tar.xz prison-${UB_VERSION}/
-	http://download.kde.org/stable/prison/${UB_VERSION}/src/
-	http://download.kde.org/unstable/prison/${UB_VERSION}/src/

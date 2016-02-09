@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/ksquares-4.10.0/src/ksquares.desktop kdegames/ksquares-4.10.0/src/ksquares.desktop
---- kdegames-orig/ksquares-4.13.0/src/ksquares.desktop	2013-01-23 23:07:25.000000000 +0100
-+++ kdegames/ksquares-4.13.0/src/ksquares.desktop	2013-02-28 11:36:15.000000000 +0100
-@@ -106,4 +106,4 @@
- GenericName[zh_CN]=通过点连接创建方形
- GenericName[zh_TW]=將點連起來組成方塊
- Terminal=false
--Categories=Game;BoardGame;Qt;KDE;
-+Categories=Game;BoardGame;Qt;KDE;X-UHU-Menu/Games/Board;

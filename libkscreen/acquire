@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libkscreen-${UB_VERSION}.tar.xz libkscreen-${UB_VERSION}/
-	http://download.kde.org/stable/libkscreen/${UB_VERSION}/src/

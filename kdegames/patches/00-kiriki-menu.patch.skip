@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/kiriki-4.10.0/src/kiriki.desktop kdegames/kiriki-4.10.0/src/kiriki.desktop
---- kdegames-orig/kiriki-4.13.0/src/kiriki.desktop	2013-01-23 23:06:11.000000000 +0100
-+++ kdegames/kiriki-4.13.0/src/kiriki.desktop	2013-02-28 11:19:09.000000000 +0100
-@@ -109,4 +109,4 @@
- GenericName[zh_TW]=類似 Yahtzee 的骰子遊戲
- X-KDE-StartupNotify=true
- X-DBUS-StartupType=Multi
--Categories=Qt;KDE;Game;BoardGame;
-+Categories=Qt;KDE;Game;BoardGame;X-UHU-Menu/Games/Board;

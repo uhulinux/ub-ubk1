@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-kdev-python-${UB_VERSION}.tar.xz kdev-python-${UB_VERSION}/
-	http://download.kde.org/stable/kdevelop/${UB_VERSION/1/4}/src/

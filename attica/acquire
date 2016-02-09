@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-attica-${UB_VERSION/~/-}.tar.bz2 attica-${UB_VERSION#*~}/
-	http://download.kde.org/stable/attica/

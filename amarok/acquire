@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-amarok-${UB_VERSION}.tar.bz2 amarok-${UB_VERSION}/
-	http://download.kde.org/stable/amarok/${UB_VERSION}/src/
-	ftp://ftp.dvo.ru/pub/distfiles/

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-kdevplatform-${UB_VERSION/~/-}.tar.xz kdevplatform-${UB_VERSION#*~}/
-	http://download.kde.org/stable/kdevelop/${UB_VERSION/1/4}/src/

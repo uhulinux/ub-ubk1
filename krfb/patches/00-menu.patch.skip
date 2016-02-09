@@ -1,9 +1,0 @@
-diff -Naur krfb-4.10.80-orig/krfb/krfb.desktop krfb-4.10.80/krfb/krfb.desktop
---- krfb-4.10.80-orig/krfb/krfb.desktop	2013-06-10 22:08:21.000000000 +0200
-+++ krfb-4.10.80/krfb/krfb.desktop	2013-06-23 09:18:06.000000000 +0200
-@@ -143,4 +143,4 @@
- GenericName[zh_CN]=桌面共享
- GenericName[zh_HK]=桌面分享
- GenericName[zh_TW]=桌面分享
--Categories=Qt;KDE;System;Network;RemoteAccess;
-+Categories=Qt;KDE;System;Network;RemoteAccess;X-UHU-Menu/Internet/Tools;

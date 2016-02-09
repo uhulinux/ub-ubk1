@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-phonon-backend-vlc-${UB_VERSION}.tar.xz phonon-backend-vlc-${UB_VERSION}/
-	http://download.kde.org/stable/phonon/phonon-backend-vlc/${UB_VERSION}/src/

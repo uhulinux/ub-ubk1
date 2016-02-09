@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/bovo-4.10.0/bovo.desktop kdegames/bovo-4.10.0/bovo.desktop
---- kdegames-orig/bovo-4.13.0/bovo.desktop	2013-01-23 23:04:57.000000000 +0100
-+++ kdegames/bovo-4.13.0/bovo.desktop	2013-02-28 10:23:57.000000000 +0100
-@@ -117,4 +117,4 @@
- Terminal=false
- X-KDE-StartupNotify=true
- X-DBUS-StartupType=Multi
--Categories=Qt;KDE;Game;BoardGame;
-+Categories=Qt;KDE;Game;BoardGame;X-UHU-Menu/Games/Board;

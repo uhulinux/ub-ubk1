@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_install
-
-mkdir -p "$UB_INSTALLDIR"/usr/share/cmake/modules/
-cp -a "$UB_INSTALLDIR"/usr/lib/cmake/Akonadi/. "$UB_INSTALLDIR"/usr/share/cmake/modules/

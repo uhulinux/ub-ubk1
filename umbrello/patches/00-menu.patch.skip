@@ -1,9 +1,0 @@
-diff -Naur umbrello-4.10.80-orig/umbrello/umbrello.desktop umbrello-4.10.80/umbrello/umbrello.desktop
---- umbrello-4.10.80-orig/umbrello/umbrello.desktop	2013-05-30 11:17:34.000000000 +0200
-+++ umbrello-4.10.80/umbrello/umbrello.desktop	2013-06-24 20:43:16.000000000 +0200
-@@ -125,4 +125,4 @@
- GenericName[zh_CN]=UML 建模工具
- GenericName[zh_TW]=UML Modeller
- MimeType=application/x-uml;
--Categories=Qt;KDE;Development;
-+Categories=Qt;KDE;Development;X-UHU-Menu/Development/Programming;

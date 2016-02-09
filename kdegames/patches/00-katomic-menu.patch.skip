@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/katomic-4.10.0/katomic.desktop kdegames/katomic-4.10.0/katomic.desktop
---- kdegames-orig/katomic-4.13.0/katomic.desktop	2013-01-23 23:05:24.000000000 +0100
-+++ kdegames/katomic-4.13.0/katomic.desktop	2013-02-28 10:34:43.000000000 +0100
-@@ -136,4 +136,4 @@
- GenericName[zh_TW]=倉庫番(sokoban)式的智力遊戲
- X-KDE-StartupNotify=true
- X-DBUS-StartupType=Multi
--Categories=Qt;KDE;Game;StrategyGame;
-+Categories=Qt;KDE;Game;StrategyGame;X-UHU-Menu/Games/TacticStrategy;

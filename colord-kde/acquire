@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-colord-kde-${UB_VERSION}.tar.bz2 colord-kde-${UB_VERSION}/
-	http://download.kde.org/stable/colord-kde/${UB_VERSION}/src/

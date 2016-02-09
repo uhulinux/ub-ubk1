@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-mplayerthumbs-${UB_VERSION}.tar.xz mplayerthumbs-${UB_VERSION}/
-	http://download.kde.org/stable/${UB_VERSION_HEAD3}/src/
-	http://download.kde.org/unstable/${UB_VERSION_HEAD3}/src/

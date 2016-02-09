@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/ktuberling-4.10.0/ktuberling.desktop kdegames/ktuberling-4.10.0/ktuberling.desktop
---- kdegames-orig/ktuberling-4.13.0/ktuberling.desktop	2013-01-23 23:07:35.000000000 +0100
-+++ kdegames/ktuberling-4.13.0/ktuberling.desktop	2013-02-28 11:39:03.000000000 +0100
-@@ -125,4 +125,4 @@
- MimeType=application/x-tuberling;
- X-KDE-StartupNotify=true
- X-DBUS-StartupType=Multi
--Categories=Qt;KDE;Game;KidsGame;
-+Categories=Qt;KDE;Game;KidsGame;X-UHU-Menu/Games/Kidsgames;

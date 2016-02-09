@@ -1,9 +1,0 @@
-diff -Naur filelight-4.7.44-orig//misc/filelight.desktop filelight-4.7.44//misc/filelight.desktop
---- filelight-4.7.44-orig//misc/filelight.desktop	2011-10-11 16:48:05.000000000 +0200
-+++ filelight-4.7.44//misc/filelight.desktop	2011-10-13 09:17:20.000000000 +0200
-@@ -136,4 +136,4 @@
- Terminal=false
- MimeType=inode/directory;
- X-DocPath=filelight/index.html
--Categories=Qt;KDE;Utility;
-+Categories=Qt;KDE;Utility;X-UHU-Menu/Tools/Utilities;

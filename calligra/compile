@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-ub_compile \
-	-Wno-dev
-	
-cd hu
-ub_compile

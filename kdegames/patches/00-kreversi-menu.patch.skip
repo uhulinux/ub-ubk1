@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/kreversi-4.10.0/kreversi.desktop kdegames/kreversi-4.10.0/kreversi.desktop
---- kdegames-orig/kreversi-4.13.0/kreversi.desktop	2013-01-23 23:07:09.000000000 +0100
-+++ kdegames/kreversi-4.13.0/kreversi.desktop	2013-02-28 11:31:33.000000000 +0100
-@@ -137,4 +137,4 @@
- Icon=kreversi
- X-KDE-StartupNotify=true
- X-DBUS-StartupType=Multi
--Categories=Qt;KDE;Game;BoardGame;
-+Categories=Qt;KDE;Game;BoardGame;X-UHU-Menu/Games/Board;

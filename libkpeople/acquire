@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libkpeople-${UB_VERSION}.tar.bz2 libkpeople-${UB_VERSION}/
-	http://download.kde.org/unstable/libkpeople/${UB_VERSION}/src/

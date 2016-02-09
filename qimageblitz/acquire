@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-qimageblitz-${UB_VERSION}.tar.bz2 qimageblitz-${UB_VERSION}/
-	http://download.kde.org/stable/qimageblitz/

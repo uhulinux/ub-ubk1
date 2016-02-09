@@ -1,9 +1,0 @@
-diff -Naur kdegames-orig/kfourinline-4.10.0/kfourinline.desktop kdegames/kfourinline-4.10.0/kfourinline.desktop
---- kdegames-orig/kfourinline-4.13.0/kfourinline.desktop	2013-01-23 23:05:48.000000000 +0100
-+++ kdegames/kfourinline-4.13.0/kfourinline.desktop	2013-02-28 11:15:46.000000000 +0100
-@@ -106,4 +106,4 @@
- Terminal=false
- Type=Application
- X-DocPath=kfourinline/index.html
--Categories=Qt;KDE;Game;BoardGame;
-+Categories=Qt;KDE;Game;BoardGame;X-UHU-Menu/Games/Board;
