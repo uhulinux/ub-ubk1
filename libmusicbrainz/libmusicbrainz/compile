@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-cmake \
-	-DCMAKE_INSTALL_PREFIX="/usr" \
-	-DDATA_INSTALL_DIR="/usr/share" \
-	-DSYSCONF_INSTALL_DIR="/etc" \
-	.
-				
-ub_make

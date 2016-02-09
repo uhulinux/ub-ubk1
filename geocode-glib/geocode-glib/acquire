@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-geocode-glib-${UB_VERSION}.tar.xz geocode-glib-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/geocode-glib/${UB_VERSION_HEAD2}/

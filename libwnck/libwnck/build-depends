@@ -1,7 +1,0 @@
-gobject-introspection-dev
-gtk-dev
-intltool
-libsm-dev
-libxres-dev
-startup-notification-dev
-xcb-util-dev

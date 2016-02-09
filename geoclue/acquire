@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
-geoclue-${UB_VERSION}.tar.gz geoclue-${UB_VERSION}/
-	http://cgit.freedesktop.org/geoclue/snapshot/
-	http://folks.o-hand.com/jku/geoclue-releases/
+geoclue-${UB_VERSION}.tar.xz geoclue-${UB_VERSION}/
+	http://freedesktop.org/software/geoclue/releases/${UB_VERSION_HEAD2}/
+

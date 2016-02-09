@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libgrss-${UB_VERSION}.tar.xz libgrss-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/libgrss/${UB_VERSION_HEAD2}/

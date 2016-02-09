@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gnome-software-${UB_VERSION}.tar.xz gnome-software-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-software/${UB_VERSION_HEAD2}/

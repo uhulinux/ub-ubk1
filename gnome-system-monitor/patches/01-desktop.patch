@@ -13,7 +13,7 @@
  Type=Application
  StartupNotify=true
 -Categories=GNOME;GTK;System;Monitor;
-+Categories=GTK;GNOME;System;Monitor;X-UHU-Menu/Tools/Utilities;
++Categories=GTK;GNOME;System;Monitor;
  NotShowIn=KDE;
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=system-monitor

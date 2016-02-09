@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gnome-maps-${UB_VERSION}.tar.xz gnome-maps-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-maps/${UB_VERSION_HEAD2}/

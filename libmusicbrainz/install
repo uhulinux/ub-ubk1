@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
 ub_install \
-	DESTDIR=/var/uhubuild/work/install
+	DESTDIR=$UB_INSTALLDIR

@@ -1,9 +1,0 @@
---- a/data/gnome-klotski.desktop.in.orig	2011-01-24 23:46:40.000000000 +0100
-+++ a/data/gnome-klotski.desktop.in	2011-10-20 18:29:35.000000000 +0200
-@@ -5,5 +5,5 @@
- Icon=gnome-klotski
- Terminal=false
- Type=Application
--Categories=GNOME;GTK;Game;LogicGame;
-+Categories=GNOME;GTK;Game;LogicGame;X-UHU-Menu/Games/TacticStrategy;
- StartupNotify=true

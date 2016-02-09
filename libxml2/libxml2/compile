@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_configure \
-	--enable-static
-ub_make \
-	HTML_DIR=/usr/share/doc

@@ -1,8 +1,8 @@
 grilo-plugins
-gsettings-desktop-schemas >=
+gsettings-desktop-schemas
 gst-libav
-gst-plugins-bad >=
-gst-plugins-good >=
+gst-plugins-bad
+gst-plugins-good
 gvfs
 icon-theme-gnome
 iso-codes

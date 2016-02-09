@@ -1,3 +1,0 @@
-latest=$(urllist ftp://ftp.gnome.org/pub/gnome/sources/libgrss/ | grep -E '^[0-9]' | sort -V | tail -n 1 )
-urllist ftp://ftp.gnome.org/pub/gnome/sources/libgrss/$latest | parsever | sort -V | tail -n 1
-

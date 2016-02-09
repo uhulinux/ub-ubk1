@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gupnp-dlna-${UB_VERSION}.tar.xz gupnp-dlna-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gupnp-dlna/${UB_VERSION_HEAD2}/

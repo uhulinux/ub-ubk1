@@ -1,8 +1,8 @@
 enchant-dev
 gsettings-desktop-schemas
+gspell-dev
 gtksourceview-dev
-gtkspell-dev
 intltool
 itstool
-libgee06-dev
+libgee-dev
 vala-dev

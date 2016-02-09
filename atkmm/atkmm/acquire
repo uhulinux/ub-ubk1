@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-atkmm-${UB_VERSION}.tar.xz atkmm-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/atkmm/${UB_VERSION_HEAD2}/

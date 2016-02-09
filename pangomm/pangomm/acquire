@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-pangomm-${UB_VERSION}.tar.xz pangomm-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/pangomm/${UB_VERSION_HEAD2}/

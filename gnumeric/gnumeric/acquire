@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gnumeric-${UB_VERSION}.tar.xz gnumeric-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gnumeric/${UB_VERSION_HEAD2}/

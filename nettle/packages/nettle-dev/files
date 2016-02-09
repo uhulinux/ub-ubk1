@@ -9,6 +9,7 @@
 	/usr/lib/*/include
 	/usr/lib/*Conf.sh
 	/usr/lib/pkgconfig
+	/usr/lib/pkgconfig/*.pc
 	/usr/share/aclocal
 	/usr/share/gtk-doc
 	/usr/share/man/**/man1/*-config.1*

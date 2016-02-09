@@ -1,4 +1,4 @@
 gjs
-gtk >=
+gtk
 libchamplain
 pygobject

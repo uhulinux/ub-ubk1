@@ -1,1 +1,0 @@
-urllist http://samba.org/ftp/talloc/ | parsever | sort -V | tail -n 1

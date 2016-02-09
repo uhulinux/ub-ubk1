@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-glade-${UB_VERSION}.tar.xz glade-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/glade/${UB_VERSION_HEAD2}/

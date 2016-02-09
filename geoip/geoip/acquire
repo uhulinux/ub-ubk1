@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-v${UB_VERSION}.tar.gz geoip-api-c-${UB_VERSION}/
-	https://github.com/maxmind/geoip-api-c/archive/

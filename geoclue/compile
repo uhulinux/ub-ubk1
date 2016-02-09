@@ -1,7 +1,4 @@
 #!/bin/sh -eux
 
-gtkdocize
-autoreconf -vif
-intltoolize -f
 ub_compile \
 	--with-dbus-service-user=geoclue

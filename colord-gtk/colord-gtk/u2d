@@ -1,1 +1,0 @@
-urllist http://www.freedesktop.org/software/colord/releases/ | splitver '^colord-gtk-([0-9.]+).tar.xz$' | sort -V | tail -n 1

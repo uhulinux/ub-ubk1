@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-geary-${UB_VERSION}.tar.xz geary-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/geary/${UB_VERSION_HEAD2}/

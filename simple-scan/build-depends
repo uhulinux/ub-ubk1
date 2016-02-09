@@ -4,6 +4,7 @@ gtk-dev
 intltool
 itstool
 libjpeg-dev
+packagekit-dev
 python-dev
 sane-backends-dev
 sqlite-dev

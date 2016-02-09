@@ -1,5 +1,9 @@
+gtk-dev
 intltool
 itstool
-libxml2
+json-glib-dev
+libgee-dev
+libxml2-dev
 pygobject-dev
 python3-dev
+qqwing-dev

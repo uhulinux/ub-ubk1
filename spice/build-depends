@@ -10,3 +10,5 @@ libxinerama-dev
 openssl-dev
 pixman-dev
 pyparsing
+python-six
+spice-protocol

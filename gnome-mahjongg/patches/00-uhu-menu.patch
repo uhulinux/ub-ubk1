@@ -1,9 +1,0 @@
---- a/data/gnome-mahjongg.desktop.in.orig	2013-02-28 20:43:48.000000000 +0100
-+++ a/data/gnome-mahjongg.desktop.in	2013-02-28 20:45:17.000000000 +0100
-@@ -6,5 +6,5 @@
- Icon=gnome-mahjongg
- Terminal=false
- Type=Application
--Categories=GNOME;GTK;Game;BoardGame;
-+Categories=GNOME;GTK;Game;BoardGame;X-UHU-Menu/Games/Board;
- StartupNotify=true

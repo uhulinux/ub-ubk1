@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-ub_install
-
-ln -s libgnutls.so.30 "$UB_INSTALLDIR"/usr/lib/libgnutls.so.28

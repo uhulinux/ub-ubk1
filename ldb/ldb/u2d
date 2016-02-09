@@ -1,1 +1,0 @@
-urllist http://www.samba.org/ftp/pub/ldb/ | parsever | sort -V | tail -n 1

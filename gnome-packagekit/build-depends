@@ -8,4 +8,5 @@ libcanberra-dev
 libnotify-dev
 packagekit-dev
 polkit-dev
+python3-dev
 systemd-dev

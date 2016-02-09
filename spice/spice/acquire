@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-spice-${UB_VERSION}.tar.bz2 spice-${UB_VERSION}/
-	http://spice-space.org/download/releases/

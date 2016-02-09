@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_compile \
-	--enable-tee \
-	--enable-xlib-xcb \
-	--enable-gl

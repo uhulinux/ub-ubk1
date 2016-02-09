@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libzapojit-${UB_VERSION}.tar.xz libzapojit-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/libzapojit/${UB_VERSION_HEAD2}/

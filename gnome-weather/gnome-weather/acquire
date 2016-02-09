@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gnome-weather-${UB_VERSION}.tar.xz gnome-weather-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-weather/${UB_VERSION_HEAD2}/

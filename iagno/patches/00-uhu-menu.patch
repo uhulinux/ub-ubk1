@@ -1,9 +1,0 @@
---- a/data/iagno.desktop.in.orig	2011-01-24 23:46:40.000000000 +0100
-+++ a/data/iagno.desktop.in	2011-10-20 18:30:09.000000000 +0200
-@@ -5,5 +5,5 @@
- Exec=iagno
- Terminal=false
- Type=Application
--Categories=GNOME;GTK;Game;BoardGame;
-+Categories=GNOME;GTK;Game;BoardGame;X-UHU-Menu/Games/Board;
- StartupNotify=true

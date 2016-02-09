@@ -3,7 +3,7 @@ gnome-doc-utils
 gobject-introspection-dev
 gsettings-desktop-schemas
 gtk-dev
-icon-theme-gnome
+icon-theme-adwaita
 intltool
 itstool
 lcms-dev

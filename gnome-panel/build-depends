@@ -1,8 +1,8 @@
 dconf-dev
 docbook-dtds
 evolution-data-server-dev
-gconf2-dev
 gcr-dev
+geocode-glib-dev
 gnome-desktop-dev
 gnome-doc-utils
 gnome-keyring-dev
@@ -11,6 +11,7 @@ gobject-introspection-dev
 gtk-dev
 intltool
 itstool
+json-glib-dev
 krb5-dev
 libgweather-dev
 librsvg-dev

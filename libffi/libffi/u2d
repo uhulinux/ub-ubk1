@@ -1,1 +1,0 @@
-urllist ftp://sourceware.org/pub/libffi/ | parsever | sort -V | tail -n 1

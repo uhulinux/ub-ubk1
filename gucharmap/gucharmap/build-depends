@@ -1,9 +1,0 @@
-dbus-glib-dev
-desktop-file-utils
-docbook-dtds
-gconf2-dev
-gnome-doc-utils
-gobject-introspection-dev
-gtk-dev
-intltool
-itstool

@@ -4,4 +4,4 @@ itstool
 libxslt
 python-dev
 systemd-dev
-webkitgtk-dev
+webkit2gtk-dev

@@ -1,9 +1,11 @@
+appstream-glib-dev
 desktop-file-utils
 gconf2-dev
 gtk-dev
 guile-dev
 intltool
 itstool
+libatomic-ops-dev
 libcanberra-dev
 librsvg-dev
 libunistring-dev

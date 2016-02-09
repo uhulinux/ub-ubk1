@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-ub_install \
-	DESTDIR=/var/uhubuild/work/install
-
-chmod +x "$UB_INSTALLDIR"/usr/lib/libtdb.so*
-chmod +x "$UB_INSTALLDIR"/usr/lib/python*/site-packages/*.so

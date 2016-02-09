@@ -1,4 +1,4 @@
-clutter-gst-dev
+clutter-gst2-dev
 clutter-gtk-dev
 evince-dev
 gjs-dev
@@ -7,4 +7,4 @@ gtksourceview-dev
 intltool
 itstool
 libmusicbrainz-dev
-webkitgtk-dev
+webkit2gtk-dev

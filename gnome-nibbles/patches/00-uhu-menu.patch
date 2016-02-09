@@ -1,9 +1,0 @@
---- a/data/gnome-nibbles.desktop.in.orig	2011-01-24 23:46:40.000000000 +0100
-+++ a/data/gnome-nibbles.desktop.in	2011-10-20 18:26:34.000000000 +0200
-@@ -5,5 +5,5 @@
- Icon=gnome-nibbles
- Terminal=false
- Type=Application
--Categories=GNOME;GTK;Game;ArcadeGame;
-+Categories=GNOME;GTK;Game;ArcadeGame;X-UHU-Menu/Games/Arcade;
- StartupNotify=true

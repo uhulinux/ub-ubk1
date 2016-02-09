@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gobject-introspection-${UB_VERSION}.tar.xz gobject-introspection-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/${UB_VERSION_HEAD2}/

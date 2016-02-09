@@ -1,4 +1,5 @@
 openldap-dev
+popt-dev
 python-dev
 python-tdb
 talloc-dev

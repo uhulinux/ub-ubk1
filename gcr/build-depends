@@ -3,6 +3,6 @@ gpg
 gtk-dev
 intltool
 libgcrypt-dev
-libxslt
+libxslt-dev
 p11-kit-dev
 vala-dev

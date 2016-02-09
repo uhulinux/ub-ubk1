@@ -1,1 +1,0 @@
-urllist http://telepathy.freedesktop.org/releases/telepathy-gabble/ | parsever | sort -V | tail -n 1

@@ -1,3 +1,4 @@
+appstream-glib-dev
 docbook-dtds
 docbook-xsl
 gnome-desktop-dev
@@ -8,4 +9,6 @@ libarchive-dev
 libnotify-dev
 libsoup-dev
 libxslt
+libyaml-dev
 packagekit-dev
+polkit-dev

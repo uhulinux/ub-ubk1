@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gtksourceviewmm-${UB_VERSION}.tar.xz gtksourceviewmm-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gtksourceviewmm/${UB_VERSION_HEAD2}/

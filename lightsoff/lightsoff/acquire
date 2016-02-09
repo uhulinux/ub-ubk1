@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-lightsoff-${UB_VERSION}.tar.xz lightsoff-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/lightsoff/${UB_VERSION_HEAD2}/

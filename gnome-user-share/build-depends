@@ -1,6 +1,6 @@
-apache
+apache-dev
+dconf-dev
 docbook-dtds
-gconf2-dev
 gnome-bluetooth-dev
 gnome-doc-utils
 gtk-dev

@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-ub_compile \
-	--with-ssl \
-	--with-libxml2 \
-	--with-expat \
-	--with-libproxy

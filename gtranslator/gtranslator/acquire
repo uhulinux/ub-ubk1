@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gtranslator-${UB_VERSION}.tar.xz gtranslator-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gtranslator/${UB_VERSION_HEAD2}/

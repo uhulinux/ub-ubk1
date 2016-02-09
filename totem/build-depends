@@ -3,6 +3,7 @@ clutter-gtk-dev
 curl-dev
 dbus-glib-dev
 docbook-dtds
+gnome-desktop-dev
 grilo-dev
 gsettings-desktop-schemas
 gst-plugins-bad-dev
@@ -12,6 +13,7 @@ intltool
 itstool
 libarchive-dev
 libgcrypt-dev
+libgudev-dev
 libpeas-dev
 libsm-dev
 libsoup-gnome-dev

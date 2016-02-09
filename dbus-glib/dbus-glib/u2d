@@ -1,1 +1,0 @@
-urllist http://dbus.freedesktop.org/releases/dbus-glib/ | splitver '^dbus-glib-([0-9.]+).tar.gz$' | sort -V | tail -n 1

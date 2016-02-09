@@ -1,1 +1,0 @@
-urllist http://spice-space.org/download/releases/ | splitver '^spice-protocol-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

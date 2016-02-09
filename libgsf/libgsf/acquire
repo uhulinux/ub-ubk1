@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libgsf-${UB_VERSION}.tar.xz libgsf-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/libgsf/${UB_VERSION_HEAD2}/

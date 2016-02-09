@@ -1,1 +1,0 @@
-urllist http://people.freedesktop.org/~teuf/govirt/ | parsever | sort -V | tail -n 1

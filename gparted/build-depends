@@ -1,6 +1,5 @@
 docbook-dtds
 gnome-doc-utils
-gtk2-dev
 gtkmm2-dev
 intltool
 libsm-dev
