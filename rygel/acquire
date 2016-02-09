@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+rygel-${UB_VERSION}.tar.xz rygel-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/rygel/${UB_VERSION_HEAD2}/

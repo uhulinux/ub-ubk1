@@ -1,0 +1,10 @@
+gobject-introspection-dev
+icu-dev
+intltool
+libpng-dev
+libxml2-dev
+libxslt-dev
+sqlite-dev
+systemd-dev
+taglib-dev
+util-linux-dev

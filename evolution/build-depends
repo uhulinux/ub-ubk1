@@ -15,6 +15,7 @@ icon-theme-gnome
 intltool
 itstool
 libcanberra-dev
+libcryptui-dev
 libgcrypt-dev
 libgdata-dev
 libgnome-keyring-dev

@@ -1,6 +1,6 @@
 curl-dev
 exempi-dev
-firefox
+firefox-dev
 flac-dev
 gobject-introspection-dev
 gst-plugins-base-dev
@@ -13,6 +13,7 @@ libexif-dev
 libgee-dev
 libgrss-dev
 libgsf-dev
+libgudev-dev
 libgxps-dev
 libiptcdata-dev
 libmediaart-dev
@@ -25,13 +26,14 @@ libxslt-dev
 lua-dev
 nautilus-dev
 networkmanager-dev
-openjpeg1-dev
+openjpeg-dev
 poppler-glib-dev
 rest-dev
 sqlite-dev
 systemd-dev
 taglib-dev
-thunderbird
+thunderbird-dev
 totem-plparser-dev
+tracker-sparql-dev
 upower-dev
 util-linux-dev

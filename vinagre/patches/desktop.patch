@@ -13,7 +13,7 @@
  Type=Application
  StartupNotify=true
 -Categories=GNOME;GTK;Network;RemoteAccess;
-+Categories=GTK;GNOME;Network;RemoteAccess;X-UHU-Menu/Internet/Tools;
++Categories=GTK;GNOME;Network;RemoteAccess;
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=vinagre
  X-GNOME-Bugzilla-Component=general

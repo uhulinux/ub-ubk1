@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+evince-${UB_VERSION}.tar.xz evince-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/evince/${UB_VERSION_HEAD2}/

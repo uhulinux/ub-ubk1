@@ -6,6 +6,7 @@ gtk-dev
 intltool
 iso-codes
 libgnome-keyring-dev
+libgudev-dev
 libnotify-dev
 libsecret-dev
 libsm-dev

@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+NOCONFIGURE=1 AUTOPOINT=intltoolize gnome-autogen.sh
+ub_compile \
+	--with-boost \
+	--disable-scrollkeeper \
+	--enable-symsvis=yes \
+	--enable-memoryview=yes \
+	--enable-gsettings=yes

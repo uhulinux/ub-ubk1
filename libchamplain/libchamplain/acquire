@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libchamplain-${UB_VERSION}.tar.xz libchamplain-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libchamplain/${UB_VERSION_HEAD2}/

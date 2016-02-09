@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libsecret-${UB_VERSION}.tar.xz libsecret-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libsecret/${UB_VERSION_HEAD2}/

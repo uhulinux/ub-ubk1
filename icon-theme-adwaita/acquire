@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+adwaita-icon-theme-${UB_VERSION}.tar.xz adwaita-icon-theme-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/adwaita-icon-theme/${UB_VERSION_HEAD2}/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dconf-editor-${UB_VERSION}.tar.xz dconf-editor-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/dconf-editor/${UB_VERSION_HEAD2}/

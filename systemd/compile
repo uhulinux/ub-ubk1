@@ -1,14 +1,13 @@
 #!/bin/sh -eux
 
+export CFLAGS="-fno-lto"
 # compile fix
 sed -r -i 's/\blibsystemd-(login|journal|id128|daemon).c \\/\\/' Makefile.am
 autoreconf -vif
 
 ub_compile \
-	--enable-introspection \
 	--with-pamlibdir=/lib/security \
 	--enable-manpages \
 	--enable-compat-libs \
-	--with-firmware-path=/lib/firmware \
 	--enable-split-usr \
 	--with-ntp-servers=pool.ntp.org

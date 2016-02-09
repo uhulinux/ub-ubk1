@@ -2,6 +2,6 @@
 
 ub_install
 
-mkdir -p "$UB_INSTALLDIR/usr/share/doc/clang/html"
-cp -r docs/_build/html/* "$UB_INSTALLDIR/usr/share/doc/clang/html/"
-rm -r "$UB_INSTALLDIR/usr/share/doc/clang/html/_sources"
+rm -Rf "$UB_INSTALLDIR/usr/share/doc/{clang,llvm}/html/_sources"
+rm -f "$UB_INSTALLDIR/usr/share/doc/{clang,llvm}/html/.buildinfo"
+cp tools/lldb/docs/*.1 "$UB_INSTALLDIR/usr/share/man/man1/"

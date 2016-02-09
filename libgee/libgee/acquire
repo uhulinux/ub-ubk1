@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgee-${UB_VERSION}.tar.xz libgee-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgee/${UB_VERSION_HEAD2}/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+p11-kit-${UB_VERSION}.tar.gz p11-kit-${UB_VERSION}/
+	http://p11-glue.freedesktop.org/releases/

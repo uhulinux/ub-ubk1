@@ -1,3 +1,4 @@
+cmake
 dbus-dev
 enchant-dev
 geoclue-dev
@@ -9,11 +10,11 @@ gtk-doc
 gtk2-dev
 icu-dev
 libjpeg-dev
+libnotify-dev
 libsecret-dev
 libsoup-dev
 libwebp-dev
 libxml2-dev
-libxshmfence-dev
 libxslt-dev
 libxt-dev
 mesa-dev

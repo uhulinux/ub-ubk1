@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-dosfstools-${UB_VERSION}.tar.xz dosfstools-${UB_VERSION}/
-	http://www.daniel-baumann.ch/files/software/dosfstools/
+v${UB_VERSION}.tar.gz dosfstools-${UB_VERSION}/
+	https://github.com/dosfstools/dosfstools/archive/

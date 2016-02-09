@@ -1,4 +1,10 @@
 #!/bin/sh -eux
 
 ./bootstrap.sh \
-	--prefix="$UB_INSTALLDIR"/usr
+	--prefix="$UB_INSTALLDIR"/usr \
+	--with-toolset=gcc \
+	--with-icu \
+	--with-python=/usr/bin/python2
+	
+echo "using python : 3.5 : /usr/bin/python3 : /usr/include/python3.5m : /usr/lib ;" \
+      >> project-config.jam

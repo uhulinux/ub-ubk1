@@ -3,6 +3,7 @@ intltool
 itstool
 libgdata-dev
 libgfbgraph-dev
+libgudev-dev
 libsecret-dev
 libsoup-gnome-dev
 libzapojit-dev

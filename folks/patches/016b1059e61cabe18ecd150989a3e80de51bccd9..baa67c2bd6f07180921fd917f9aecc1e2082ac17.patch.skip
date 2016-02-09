@@ -1,0 +1,116 @@
+From baa67c2bd6f07180921fd917f9aecc1e2082ac17 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Tue, 3 Feb 2015 17:10:00 +0000
+Subject: eds: Update to new EDS address book timeout API
+
+Add a timeout parameter to handle the new EDS authentication process.
+This means that folks no longer triggers authentication dialogues from
+EDS, which will prevent them popping up unexpectedly (particularly from
+GNOME Shell). However, it does mean that external processes using folks
+which _do_ want to display authentication dialogues should manually
+create an ECredentialsPrompter and use that to display the dialogues.
+
+This bumps the EDS dependency to 3.13.90 unconditionally.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=743934
+---
+ NEWS                                       | 2 ++
+ backends/eds/lib/edsf-persona-store.vala   | 2 +-
+ configure.ac                               | 6 +++---
+ tests/eds/helper-create-many-contacts.vala | 2 +-
+ tests/eds/helper-delete-contacts.vala      | 2 +-
+ tests/lib/eds/backend.vala                 | 2 +-
+ 6 files changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/NEWS b/NEWS
+index ac9207a..a2f18df 100644
+--- a/NEWS
++++ b/NEWS
+@@ -3,6 +3,7 @@ Overview of changes from libfolks 0.10.1 to libfolks 0.11.0
+ 
+ Dependencies:
+  • telepathy-glib ≥ 0.19.9
++ • evolution-data-server ≥ 3.13.90
+ 
+ Major changes:
+  • The --enable-tests configure option has been renamed to
+@@ -13,6 +14,7 @@ Bugs fixed:
+  • Bug 641211 — Add arbitrary-field interface for applications to store trivial
+    per-person data
+  • Bug 743398 — Add support for installed-tests
++ • Bug 743934 — FTBFS after EDS commit 884fb8d8
+ 
+ API changes:
+  • Add ExtendedInfo interface
+diff --git a/backends/eds/lib/edsf-persona-store.vala b/backends/eds/lib/edsf-persona-store.vala
+index 58862f6..93aa4c5 100644
+--- a/backends/eds/lib/edsf-persona-store.vala
++++ b/backends/eds/lib/edsf-persona-store.vala
+@@ -760,7 +760,7 @@ public class Edsf.PersonaStore : Folks.PersonaStore
+                   this._source_registry_changed_cb);
+ 
+               /* Connect and open the address book */
+-              this._addressbook = yield E.BookClient.connect (this.source, null);
++              this._addressbook = yield E.BookClient.connect (this.source, 1, null);
+ 
+               ((!) this._addressbook).notify["readonly"].connect (
+                   this._address_book_notify_read_only_cb);
+diff --git a/configure.ac b/configure.ac
+index 84d3d19..3d0377a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -262,9 +262,9 @@ GLIB_REQUIRED=2.38.2
+ VALA_REQUIRED=0.22.0.28-9090
+ VALADOC_REQUIRED=0.3.1
+ TRACKER_SPARQL_REQUIRED=0.15.2
+-EBOOK_REQUIRED=3.8
+-EBOOK_REQUIRED_FOR_BLUEZ=3.9.1
+-EDATASERVER_REQUIRED=3.5.3.1
++EBOOK_REQUIRED=3.13.90
++EBOOK_REQUIRED_FOR_BLUEZ=3.13.90
++EDATASERVER_REQUIRED=3.13.90
+ ZEITGEIST_REQUIRED=0.9.14
+ GEE_REQUIRED=0.8.4
+ 
+diff --git a/tests/eds/helper-create-many-contacts.vala b/tests/eds/helper-create-many-contacts.vala
+index bbeb184..b5d2ab4 100644
+--- a/tests/eds/helper-create-many-contacts.vala
++++ b/tests/eds/helper-create-many-contacts.vala
+@@ -46,7 +46,7 @@ public class Main
+       var registry = new E.SourceRegistry.sync ();
+       var source = registry.ref_source (uid);
+       assert (source.uid == uid);
+-      var book_client = E.BookClient.connect_sync (source);
++      var book_client = E.BookClient.connect_sync (source, 1);
+       SList<E.Contact> contacts = null;
+ 
+       var envvar = Environment.get_variable ("FOLKS_TESTS_REAL_VCARDS");
+diff --git a/tests/eds/helper-delete-contacts.vala b/tests/eds/helper-delete-contacts.vala
+index 816767d..6853610 100644
+--- a/tests/eds/helper-delete-contacts.vala
++++ b/tests/eds/helper-delete-contacts.vala
+@@ -36,7 +36,7 @@ public class Main
+       var registry = new E.SourceRegistry.sync ();
+       var source = registry.ref_source (uid);
+       assert (source.uid == uid);
+-      var book_client = E.BookClient.connect_sync (source);
++      var book_client = E.BookClient.connect_sync (source, 1);
+ 
+       SList<string> uids;
+       book_client.get_contacts_uids_sync (
+diff --git a/tests/lib/eds/backend.vala b/tests/lib/eds/backend.vala
+index b6194c2..8a1080c 100644
+--- a/tests/lib/eds/backend.vala
++++ b/tests/lib/eds/backend.vala
+@@ -108,7 +108,7 @@ public class EdsTest.Backend
+           this._addressbook_name = name;
+ 
+           this._prepare_source (source_is_default);
+-          this._addressbook = BookClient.connect_sync (this._source, null);
++          this._addressbook = BookClient.connect_sync (this._source, 1, null);
+           Environment.set_variable ("FOLKS_BACKEND_EDS_USE_ADDRESS_BOOKS",
+                                     this._addressbook_name, true);
+         }
+-- 
+cgit v0.12
+

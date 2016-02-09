@@ -1,0 +1,10 @@
+gobject-introspection-dev
+goffice-dev
+gtk-dev
+intltool
+librsvg-dev
+libxslt-dev
+pygobject-dev
+python-dev
+rarian
+xz-dev

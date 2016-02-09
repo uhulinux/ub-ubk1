@@ -6,6 +6,7 @@ gnome-keyring-dev
 gobject-introspection-dev
 gst-plugins-base-dev
 gtk-dev
+gtk-doc
 intltool
 json-glib-dev
 krb5-dev
@@ -21,4 +22,4 @@ rest-dev
 sqlite-dev
 systemd-dev
 telepathy-glib-dev
-webkitgtk-dev
+webkit2gtk-dev

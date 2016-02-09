@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+rm -r Source/ThirdParty/gtest Source/ThirdParty/qunit
+ub_compile \
+	-DPORT=GTK \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_SKIP_RPATH=ON \
+	-DLIB_INSTALL_DIR=/usr/lib \
+	-DLIBEXEC_INSTALL_DIR=/usr/lib/webkit2gtk-4.0 \
+	-DENABLE_GTKDOC=ON

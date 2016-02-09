@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+brasero-${UB_VERSION}.tar.xz brasero-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/brasero/${UB_VERSION_HEAD2}/

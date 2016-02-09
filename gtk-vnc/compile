@@ -2,4 +2,4 @@
 
 ub_compile \
 	--with-gtk=3.0 \
-	--with-libview
+	--without-libview

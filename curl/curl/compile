@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+rm CMakeLists.txt
+ub_compile \
+	--enable-ipv6 \
+	--with-ssl \
+	--enable-ldaps \
+	--with-gssapi \
+	--with-ca-bundle=/usr/lib/ssl/certs/ca-cert.pem

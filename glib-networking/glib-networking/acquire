@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+glib-networking-${UB_VERSION}.tar.xz glib-networking-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/glib-networking/${UB_VERSION_HEAD2}/

@@ -1,3 +1,11 @@
 #!/bin/sh -eux
 
 ub_install
+
+# tracker-sparql rész irtás, mert az szülő csomag
+
+make DESTDIR=${UB_INSTALLDIR} -C src/libtracker-sparql uninstall
+make DESTDIR=${UB_INSTALLDIR} -C src/libtracker-sparql-backend uninstall
+make DESTDIR=${UB_INSTALLDIR} -C src/libtracker-data uninstall-libtracker_dataLTLIBRARIES
+make DESTDIR=${UB_INSTALLDIR} -C src/libtracker-common uninstall-libtracker_commonLTLIBRARIES
+rm -rf ${UB_INSTALLDIR}/usr/include/tracker-1.0/libtracker-sparql

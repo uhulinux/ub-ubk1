@@ -1,8 +1,10 @@
 bash-completion
 dbus-dev
+docbook2man
 gobject-introspection-dev
 intltool
 lcms2-dev
+libgudev-dev
 libgusb-dev
 libusb-dev
 polkit-dev

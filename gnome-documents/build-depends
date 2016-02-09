@@ -6,6 +6,8 @@ gobject-introspection-dev
 intltool
 itstool
 libgdata-dev
+libgudev-dev
+librsvg-dev
 libsoup-gnome-dev
 libxshmfence-dev
 libzapojit-dev
@@ -13,4 +15,4 @@ networkmanager-dev
 systemd-dev
 tracker-dev
 vala-dev
-webkitgtk-dev
+webkit2gtk-dev

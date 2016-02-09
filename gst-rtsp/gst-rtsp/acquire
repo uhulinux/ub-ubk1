@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gst-rtsp-server-${UB_VERSION}.tar.xz gst-rtsp-server-${UB_VERSION}/
+	http://gstreamer.freedesktop.org/src/gst-rtsp/

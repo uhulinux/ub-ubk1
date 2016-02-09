@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+neon-${UB_VERSION}.tar.gz neon-${UB_VERSION}/
+	http://www.webdav.org/neon/

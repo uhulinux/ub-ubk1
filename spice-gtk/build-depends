@@ -13,6 +13,9 @@ lua-dev
 openssl-dev
 polkit-dev
 pulseaudio-dev
+pyparsing
+python-dev
+python-six
 spice-protocol
 systemd-dev
 usbredir-dev

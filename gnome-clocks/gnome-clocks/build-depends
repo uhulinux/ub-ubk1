@@ -1,0 +1,12 @@
+geoclue-dev
+geocode-glib-dev
+gnome-desktop-dev
+gobject-introspection-dev
+gsound-dev
+intltool
+itstool
+json-glib-dev
+libcanberra-dev
+libgweather-dev
+libnotify-dev
+vala-dev

@@ -3,7 +3,6 @@ gnutls-dev
 gobject-introspection-dev
 gtk-dev
 intltool
-libview-dev
 pulseaudio-dev
 systemd-dev
 vala-dev

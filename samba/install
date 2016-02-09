@@ -9,6 +9,7 @@ rm -f "$UB_INSTALLDIR"/usr/bin/tdbrestore
 rm -f "$UB_INSTALLDIR"/usr/bin/tdbtool
 rm -f "$UB_INSTALLDIR"/usr/lib/python2.7/site-packages/talloc.so
 rm -f "$UB_INSTALLDIR"/usr/lib/python2.7/site-packages/tdb.so
+rm -f "$UB_INSTALLDIR"/usr/lib/python2.7/site-packages/_tdb_text.py
 
 # systemd
 cd packaging/systemd

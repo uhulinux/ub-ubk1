@@ -1,0 +1,7 @@
+	/usr/bin/dconf-editor
+	/usr/share/applications/dconf-editor.desktop
+	/usr/share/dconf-editor
+	/usr/share/glib-2.0/schemas/ca.desrt.dconf-editor.gschema.xml
+	/usr/share/icons/HighContrast/**/apps/dconf-editor.png
+	/usr/share/icons/hicolor/**/apps/dconf-editor.png
+	/usr/share/man/man1/dconf-editor.1

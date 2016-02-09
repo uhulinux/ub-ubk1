@@ -1,9 +1,9 @@
 clang
 expat-dev
-imake
 libclc-dev
 libdrm-dev
 libelf-dev
+libffi-dev
 libomxil-bellagio-dev
 libpciaccess-dev
 libva-dev

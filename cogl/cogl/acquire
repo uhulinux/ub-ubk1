@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+cogl-${UB_VERSION}.tar.xz cogl-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/cogl/${UB_VERSION_HEAD2}/

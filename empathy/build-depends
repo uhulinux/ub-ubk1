@@ -1,5 +1,5 @@
 cheese-dev
-clutter-gst-dev
+clutter-gst2-dev
 enchant-dev
 folks-dev
 gcr-dev
@@ -20,6 +20,7 @@ libcanberra-dev
 libchamplain-dev
 libgee-dev
 libgnome-keyring-dev
+libgudev-dev
 libjpeg-dev
 libnotify-dev
 librsvg-dev

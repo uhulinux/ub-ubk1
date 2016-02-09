@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
-ub_makeinstall
-
+ub_install
+cp mtools.conf ${UB_INSTALLDIR}/etc/

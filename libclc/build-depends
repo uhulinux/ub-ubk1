@@ -1,5 +1,6 @@
 clang
 libstdc++-dev
 llvm
+llvm-libs
 python
 python-dev

@@ -1,13 +1,5 @@
 #!/bin/sh -eux
 
-#autoreconf --verbose --install -I Source/autotools
-mkdir -p DerivedSources/webkit
-mkdir -p DerivedSources/WebCore
-mkdir -p DerivedSources/ANGLE
-mkdir -p DerivedSources/WebKit2
-mkdir -p DerivedSources/webkitdom
-mkdir -p DerivedSources/InjectedBundle
-mkdir -p DerivedSources/Platform
 ub_compile \
 	--enable-geolocation \
 	--enable-introspection \

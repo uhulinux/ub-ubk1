@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-tetravex-${UB_VERSION}.tar.xz gnome-tetravex-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-tetravex/${UB_VERSION_HEAD2}/

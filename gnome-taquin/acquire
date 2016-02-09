@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-taquin-${UB_VERSION}.tar.xz gnome-taquin-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-taquin/${UB_VERSION_HEAD2}/

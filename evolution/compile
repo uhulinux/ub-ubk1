@@ -5,4 +5,5 @@ ub_compile \
 	--with-openldap=yes \
 	--enable-nss=yes \
 	--enable-smime=yes \
-	--enable-plugins=all
+	--enable-plugins=all \
+	--disable-autoar

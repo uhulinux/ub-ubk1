@@ -3,7 +3,6 @@ cmake
 libedit-dev
 libffi-dev
 libxml2-dev
-ocaml
 python-dev
 python-markupsafe
 python-setuptools

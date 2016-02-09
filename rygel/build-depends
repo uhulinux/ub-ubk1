@@ -1,0 +1,15 @@
+gdk-pixbuf-dev
+gobject-introspection-dev
+gssdp-dev
+gstreamer-dev
+gupnp-av-dev
+gupnp-dev
+gupnp-dlna-dev
+icu-dev
+intltool
+libgee-dev
+libmediaart-dev
+libxml2-dev
+python-dev
+tracker-sparql-dev
+vala

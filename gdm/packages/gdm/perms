@@ -1,5 +1,4 @@
 -         -          644  /etc/pam.d/gdm-autologin
--         -          755  /etc/gdm/Xsession
 201       201        755  /var/run/gdm/greeter
 root      201        711  /var/run/gdm
 root      201       1755  /var/cache/gdm

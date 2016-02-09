@@ -1,0 +1,7 @@
+docbook-dtds
+gnome-doc-utils
+gtkmm2-dev
+intltool
+libsm-dev
+parted-dev
+python-dev

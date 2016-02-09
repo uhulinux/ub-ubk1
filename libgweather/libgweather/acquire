@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgweather-${UB_VERSION}.tar.xz libgweather-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgweather/${UB_VERSION_HEAD2}/

@@ -1,0 +1,17 @@
+apt-dev
+bash-completion
+docbook-xsl
+gobject-introspection-dev
+gstreamermm-dev
+gtk-dev
+gtk2-dev
+intltool
+libarchive-dev
+libxt-dev
+networkmanager-dev
+pm-utils
+polkit-dev
+python3
+sqlite-dev
+systemd-dev
+xulrunner-dev

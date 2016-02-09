@@ -1,0 +1,9 @@
+dbus-glib-dev
+gnome-doc-utils
+gobject-introspection-dev
+gtk-dev
+intltool
+itstool
+libcanberra-dev
+libnotify-dev
+systemd-dev

@@ -1,19 +1,56 @@
 #!/bin/sh -eux
 
+autoreconf -vif
+
 ub_compile \
-	--disable-static \
+	--enable-config-udev \
+	--enable-composite \
+	--enable-xres \
+	--enable-record \
+	--enable-xv \
+	--enable-glamor \
+	--enable-xvmc \
+	--enable-dga \
+	--enable-screensaver \
+	--enable-xdmcp \
+	--enable-xdm-auth-1 \
+	--enable-glx \
+	--enable-aiglx \
+	--enable-glx-tls \
+	--enable-dri \
+	--enable-xinerama \
+	--enable-xf86vidmode \
+	--enable-xace \
+	--enable-xcsecurity \
+	--enable-xf86bigfont \
+	--enable-dpms \
+	--enable-dbe \
+	--enable-xfree86-utils \
+	--enable-xorg \
+	--enable-dmx \
 	--enable-xvfb \
 	--enable-xnest \
-	--enable-dmx \
 	--enable-kdrive \
+	--enable-xfake \
 	--enable-xephyr \
-	--enable-record \
-	--with-fontdir="/usr/share/fonts" \
+	--enable-secure-rpc \
+	--enable-xwrapper \
+	--enable-pam \
+	--disable-strict-compilation \
+	--disable-install-libxf86config \
+	--disable-tslib \
+	--disable-xwin \
+	--disable-install-setuid \
+	--disable-config-hal \
+	--with-sha1=libcrypto \
+	--with-extra-module-dir=/usr/lib/xorg/extra-modules \
 	--with-default-font-path="/usr/share/fonts/local,/usr/share/fonts/misc,/usr/share/fonts/75dpi,/usr/share/fonts/100dpi,/usr/share/fonts/TTF,/usr/share/fonts/Type1,/usr/share/fonts/ghostscript,/usr/share/fonts/unifont,/usr/share/fonts/freefont,/usr/share/fonts/jmk" \
 	--with-xkb-output="/var/lib/xkb" \
 	--with-builder-addr="rezso@ubk.hu" \
 	--with-os-name="UHU-Linux" \
 	--with-os-vendor="UHU Baráti kör"
-
+	
 cd rgb-*
 ub_compile
+
+

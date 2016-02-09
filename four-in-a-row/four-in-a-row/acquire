@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+four-in-a-row-${UB_VERSION}.tar.xz four-in-a-row-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/four-in-a-row/${UB_VERSION_HEAD2}/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gjs-${UB_VERSION}.tar.xz gjs-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gjs/${UB_VERSION_HEAD2}/

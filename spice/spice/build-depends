@@ -1,0 +1,14 @@
+alsa-lib-dev
+celt051-dev
+cyrus-sasl2-dev
+glib-dev
+intltool
+itstool
+libcacard-dev
+libjpeg-dev
+libxinerama-dev
+openssl-dev
+pixman-dev
+pyparsing
+python-six
+spice-protocol

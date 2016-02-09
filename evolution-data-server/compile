@@ -4,4 +4,8 @@ ub_compile \
 	--with-openldap=yes \
 	--with-krb5=/usr \
 	--enable-vala-bindings \
-	--disable-uoa
+	--disable-uoa \
+	--without-phonenumber \
+	--enable-google \
+	--disable-examples \
+	--enable-smime

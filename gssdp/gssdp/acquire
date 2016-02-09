@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gssdp-${UB_VERSION}.tar.xz gssdp-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gssdp/${UB_VERSION_HEAD2}/

@@ -1,7 +1,19 @@
-diff -Naur a/libgomp/configure b/libgomp/configure
---- a/libgomp/configure	2014-12-19 12:45:25.000000000 +0100
-+++ b/libgomp/configure	2014-12-20 02:29:47.310062489 +0100
+diff -Naur orig/libgomp/configure patched/libgomp/configure
+--- orig/libgomp/configure	2014-07-16 12:06:03.000000000 +0200
++++ patched/libgomp/configure	2014-10-24 16:30:08.372338574 +0200
 @@ -4282,7 +4282,7 @@
+ 
+ # Add -Wall -Werror if we are using GCC.
+ if test "x$GCC" = "xyes"; then
+-  XCFLAGS="$XCFLAGS -Wall -Werror"
++  XCFLAGS="$XCFLAGS -Wall"
+ fi
+ 
+ # Find other programs we need.
+diff -Naur orig/libgomp/configure.ac patched/libgomp/configure.ac
+--- orig/libgomp/configure.ac	2013-11-07 16:07:34.000000000 +0100
++++ patched/libgomp/configure.ac	2014-10-24 16:31:25.760722323 +0200
+@@ -115,7 +115,7 @@
  
  # Add -Wall -Werror if we are using GCC.
  if test "x$GCC" = "xyes"; then

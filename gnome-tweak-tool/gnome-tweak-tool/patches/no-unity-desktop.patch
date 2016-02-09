@@ -1,0 +1,9 @@
+diff -Naur orig/data/gnome-tweak-tool.desktop.in mod/data/gnome-tweak-tool.desktop.in
+--- orig/data/gnome-tweak-tool.desktop.in	2013-02-27 13:48:44.000000000 +0100
++++ mod/data/gnome-tweak-tool.desktop.in	2016-02-05 22:59:19.993722300 +0100
+@@ -8,4 +8,4 @@
+ StartupNotify=true
+ Categories=GNOME;GTK;Utility;
+ _Keywords=Settings;Advanced;Preferences;Extensions;Fonts;Theme;XKB;Keyboard;Typing;
+-OnlyShowIn=GNOME;Unity;Pantheon;
++OnlyShowIn=GNOME;

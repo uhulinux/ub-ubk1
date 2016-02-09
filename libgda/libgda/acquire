@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libgda-${UB_VERSION}.tar.xz libgda-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/libgda/${UB_VERSION_HEAD2}/

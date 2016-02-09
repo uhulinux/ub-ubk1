@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+json-glib-${UB_VERSION}.tar.xz json-glib-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/json-glib/${UB_VERSION_HEAD2}/

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gdlmm-${UB_VERSION}.tar.xz gdlmm-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/gnome/sources/gdlmm/${UB_VERSION_HEAD2}/

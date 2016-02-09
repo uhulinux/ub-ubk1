@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+totem-pl-parser-${UB_VERSION}.tar.xz totem-pl-parser-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/totem-pl-parser/${UB_VERSION_HEAD2}/

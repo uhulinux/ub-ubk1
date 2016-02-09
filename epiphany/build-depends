@@ -10,10 +10,10 @@ itstool
 libgnome-keyring-dev
 libnotify-dev
 libsm-dev
+libsoup-gnome-dev
 libwnck-dev
-libxshmfence-dev
 nss-dev
 systemd-dev
-webkitgtk-dev
+webkit2gtk-dev
 xcb-util-dev
 xz-dev

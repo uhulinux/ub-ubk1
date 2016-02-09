@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-user-share-${UB_VERSION}.tar.xz gnome-user-share-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-user-share/${UB_VERSION_HEAD2}/

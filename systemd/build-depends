@@ -15,6 +15,7 @@ libgcrypt-dev
 libmicrohttpd-dev
 libqrencode-dev
 libtasn1-dev
+libxkbcommon-dev
 libxslt
 lvm-dev
 module-init-tools-dev

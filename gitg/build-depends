@@ -1,0 +1,13 @@
+glade-dev
+gnome-common
+gobject-introspection
+gtksourceview-dev
+gtkspell-dev
+intltool
+json-glib-dev
+libgee-dev
+libgit2-glib-dev
+libpeas-dev
+pygobject-dev
+vala
+webkit2gtk-dev

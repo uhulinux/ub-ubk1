@@ -4,12 +4,14 @@ desktop-file-utils
 docbook-dtds
 gconf2-dev
 gnome-shell
+gnutls-dev
 gsettings-desktop-schemas
 gtk-dev
 intltool
 itstool
 libsm-dev
 nautilus-dev
+nettle-dev
 python-dev
 rarian
 vala-dev

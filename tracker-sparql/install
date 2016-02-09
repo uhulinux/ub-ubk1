@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+make DESTDIR="${UB_INSTALLDIR}" -C src/libtracker-common install-libtracker_commonLTLIBRARIES
+make DESTDIR="${UB_INSTALLDIR}" -C src/libtracker-data install-libtracker_dataLTLIBRARIES
+make DESTDIR="${UB_INSTALLDIR}" -C src/libtracker-sparql install
+make DESTDIR="${UB_INSTALLDIR}" -C src/libtracker-sparql-backend install
+

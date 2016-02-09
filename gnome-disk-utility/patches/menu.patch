@@ -1,8 +1,0 @@
---- a/data/gnome-disks.desktop.in.orig	2013-02-16 13:33:22.000000000 +0100
-+++ a/data/gnome-disks.desktop.in	2013-02-16 13:33:43.000000000 +0100
-@@ -7,4 +7,4 @@
- Terminal=false
- Type=Application
- StartupNotify=true
--Categories=GNOME;GTK;Utility;HardwareSettings;
-+Categories=GNOME;GTK;Utility;HardwareSettings;X-UHU-Menu/Settings;

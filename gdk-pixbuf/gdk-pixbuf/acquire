@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gdk-pixbuf-${UB_VERSION}.tar.xz gdk-pixbuf-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gdk-pixbuf/${UB_VERSION_HEAD2}/

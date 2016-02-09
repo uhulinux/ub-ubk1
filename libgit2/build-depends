@@ -1,0 +1,3 @@
+cmake
+libssh2-dev
+python-dev

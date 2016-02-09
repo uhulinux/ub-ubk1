@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-screenshot-${UB_VERSION}.tar.xz gnome-screenshot-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-screenshot/${UB_VERSION_HEAD2}/

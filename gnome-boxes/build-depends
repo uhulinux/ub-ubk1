@@ -5,7 +5,9 @@ gtk-dev
 gtk-vnc-dev
 intltool
 itstool
+libarchive-dev
 libgovirt-dev
+libgudev-dev
 libosinfo-dev
 libsoup-gnome-dev
 libtasn1-dev

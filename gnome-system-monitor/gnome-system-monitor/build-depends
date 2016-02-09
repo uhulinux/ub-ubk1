@@ -1,0 +1,10 @@
+docbook-dtds
+gnome-doc-utils
+gtkmm-dev
+icon-theme-gnome
+intltool
+itstool
+libgtop2-dev
+librsvg-dev
+libwnck-dev
+python-dev

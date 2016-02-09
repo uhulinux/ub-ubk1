@@ -1,0 +1,5 @@
+dbus-dev
+expat-dev
+glib-dev
+libxml2-dev
+xmlto

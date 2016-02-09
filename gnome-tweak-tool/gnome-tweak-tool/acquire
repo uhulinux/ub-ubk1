@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-tweak-tool-${UB_VERSION}.tar.xz gnome-tweak-tool-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-tweak-tool/${UB_VERSION_HEAD2}/

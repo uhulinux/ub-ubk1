@@ -4,8 +4,9 @@ gnome-doc-utils
 gnome-panel-dev
 gnome-settings-daemon-dev
 gucharmap-dev
-icon-theme-gnome
+icon-theme-adwaita
 intltool
+itstool
 libgcrypt-dev
 libgnome-keyring-dev
 libgtop2-dev
@@ -16,6 +17,7 @@ libxml2-dev
 networkmanager-dev
 polkit-dev
 pygtk-dev
+python3-dev
 rarian-dev
 sqlite-dev
 systemd-dev

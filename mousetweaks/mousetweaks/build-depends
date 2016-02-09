@@ -1,0 +1,7 @@
+docbook-dtds
+gnome-doc-utils
+gsettings-desktop-schemas
+gtk-dev
+intltool
+libxtst-dev
+python-dev

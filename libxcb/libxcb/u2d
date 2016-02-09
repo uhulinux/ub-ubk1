@@ -1,0 +1,1 @@
+urllist http://xcb.freedesktop.org/dist/ | splitver '^libxcb-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

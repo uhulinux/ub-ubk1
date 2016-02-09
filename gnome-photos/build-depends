@@ -11,7 +11,9 @@ intltool
 itstool
 lcms2-dev
 libexif-dev
+libgdata-dev
 libgfbgraph-dev
+libgudev-dev
 librsvg-dev
 libsecret-dev
 libsoup-gnome-dev

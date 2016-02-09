@@ -17,12 +17,14 @@ intltool
 krb5-dev
 libcanberra-dev
 libcroco-dev
+libgudev-dev
+libxkbfile-dev
 mutter-dev
 networkmanager-dev
 nm-applet-dev
 polkit-dev
 pulseaudio-dev
-python-dev
+python3-dev
 startup-notification-dev
 systemd-dev
 telepathy-logger-dev

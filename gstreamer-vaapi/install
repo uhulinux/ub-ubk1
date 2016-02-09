@@ -1,3 +1,5 @@
 #!/bin/sh -eux
 
 ub_install
+
+sed -i -e 's/@LIBVA_GLX_PKGNAME@/libva-glx/g' "$UB_INSTALLDIR"/usr/lib/pkgconfig/gstreamer-vaapi-glx-1.0.pc

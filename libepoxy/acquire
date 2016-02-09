@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-libepoxy-${UB_VERSION}.tar.bz2 libepoxy-${UB_VERSION}/
-	https://github.com/anholt/libepoxy/releases/download/v${UB_VERSION}/
+v${UB_VERSION}.tar.gz libepoxy-${UB_VERSION}/
+	https://github.com/anholt/libepoxy/archive/

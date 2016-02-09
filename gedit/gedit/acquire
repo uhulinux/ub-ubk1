@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gedit-${UB_VERSION}.tar.xz gedit-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gedit/${UB_VERSION_HEAD2}/

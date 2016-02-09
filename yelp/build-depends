@@ -2,11 +2,10 @@ gtk-dev
 intltool
 itstool
 libsm-dev
-libxshmfence-dev
 libxslt-dev
 libxt-dev
 pangox-compat-dev
 systemd-dev
-webkitgtk-dev
+webkit2gtk-dev
 xz-dev
 yelp-xsl

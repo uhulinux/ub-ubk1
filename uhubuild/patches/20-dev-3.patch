@@ -7,7 +7,7 @@ diff -Naur orig/src/steps/control patched/src/steps/control
  
 -		echo "Distribution: ${UB_DISTRIBUTION/ dev/ 3}"
 +		if [ "$UHUBUILD_DISTR" = "dev" ]; then
-+			echo "Distribution: ${UB_DISTRIBUTION/ dev/ 3.1}"
++			echo "Distribution: ${UB_DISTRIBUTION/ dev/ 3}"
 +		else
 +			echo "Distribution: UHU Linux ${UHUBUILD_DISTR}"
 +		fi

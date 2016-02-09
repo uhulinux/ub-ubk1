@@ -32,6 +32,7 @@ libgee-dev
 libgnome-keyring-dev
 libgnomekbd-dev
 libgtop2-dev
+libgudev-dev
 libjpeg-dev
 libnotify-dev
 libpwquality-dev
@@ -59,4 +60,4 @@ telepathy-glib-dev
 tzdata
 upower-dev
 vala-dev
-webkitgtk-dev
+webkit2gtk-dev

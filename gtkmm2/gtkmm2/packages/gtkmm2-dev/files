@@ -1,0 +1,17 @@
+	/lib/*.a
+	/lib/*.la
+@	/lib/*.so
+	/usr/bin/*-config
+	/usr/include
+	/usr/lib/**/*.a
+	/usr/lib/**/*.la
+@	/usr/lib/**/*.so
+	/usr/lib/*/include
+	/usr/lib/*Conf.sh
+	/usr/lib/pkgconfig
+	/usr/share/aclocal
+	/usr/share/devhelp
+	/usr/share/doc/gtkmm-2.4
+	/usr/share/gtkmm-2.4/demo
+	/usr/share/man/**/man1/*-config.1*
+	/usr/share/man/**/man3

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+caribou-${UB_VERSION}.tar.xz caribou-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/caribou/${UB_VERSION_HEAD2}/

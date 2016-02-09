@@ -1,0 +1,15 @@
+clang
+ctags
+desktop-file-utils
+devhelp-dev
+gjs
+gobject-introspection
+gtk-doc
+gtksourceview-dev
+intltool
+libgit2-glib-dev
+libpeas-dev
+llvm-libs
+pygobject-dev
+vala
+vte-dev

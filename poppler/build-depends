@@ -4,7 +4,7 @@ lcms2-dev
 libjpeg-dev
 libxi-dev
 libxml2-dev
-openjpeg1-dev
+openjpeg-dev
 qt4-dev
 qt5-dev
 zlib-dev

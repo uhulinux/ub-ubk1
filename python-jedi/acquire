@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+jedi-${UB_VERSION}.tar.gz jedi-${UB_VERSION}/
+	http://pypi.python.org/packages/source/j/jedi/

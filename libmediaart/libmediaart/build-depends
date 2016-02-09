@@ -1,0 +1,5 @@
+gdk-pixbuf-dev
+gobject-introspection-dev
+intltool
+itstool
+vala-dev

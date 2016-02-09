@@ -1,12 +1,12 @@
-diff -urN gnome-shell-3.12.2.orig/data/org.gnome.shell.gschema.xml.in.in gnome-shell-3.12.2/data/org.gnome.shell.gschema.xml.in.in
---- gnome-shell-3.12.2.orig/data/org.gnome.shell.gschema.xml.in.in	2014-05-14 10:28:08.000000000 +0200
-+++ gnome-shell-3.12.2/data/org.gnome.shell.gschema.xml.in.in	2014-09-12 09:59:24.275141798 +0200
+diff -Naur orig/data/org.gnome.shell.gschema.xml.in.in mod/data/org.gnome.shell.gschema.xml.in.in
+--- orig/data/org.gnome.shell.gschema.xml.in.in	2015-11-17 22:11:17.000000000 +0100
++++ mod/data/org.gnome.shell.gschema.xml.in.in	2016-02-02 20:30:05.368652788 +0100
 @@ -31,7 +31,7 @@
        </_description>
      </key>
      <key name="favorite-apps" type="as">
--      <default>[ 'epiphany.desktop', 'evolution.desktop', 'empathy.desktop', 'rhythmbox.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'gnome-documents.desktop' ]</default>
-+      <default>[ 'firefox.desktop', 'thunderbird.desktop', 'empathy.desktop', 'rhythmbox.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'gnome-documents.desktop' ]</default>
+-      <default>[ 'epiphany.desktop', 'evolution.desktop', 'rhythmbox.desktop', 'shotwell.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop' ]</default>
++      <default>[ 'firefox.desktop', 'evolution.desktop', 'rhythmbox.desktop', 'shotwell.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop' ]</default>
        <_summary>List of desktop file IDs for favorite applications</_summary>
        <_description>
          The applications corresponding to these identifiers

@@ -1,0 +1,10 @@
+docbook-dtds
+gnome-doc-utils
+intltool
+itstool
+json-glib-dev
+libarchive-dev
+libnotify-dev
+libsm-dev
+nautilus-dev
+python-dev

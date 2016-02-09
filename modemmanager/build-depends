@@ -1,7 +1,10 @@
 dbus-glib-dev
+docbook-dtds
+docbook-xsl
 gobject-introspection-dev
 gtk-doc
 intltool
+libgudev-dev
 libmbim-dev
 libqmi-dev
 polkit-dev

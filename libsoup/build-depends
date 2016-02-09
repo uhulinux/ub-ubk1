@@ -1,5 +1,7 @@
 glib-networking
 gobject-introspection-dev
+gtk-doc
 intltool
 libxml2-dev
 sqlite-dev
+vala

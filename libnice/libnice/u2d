@@ -1,0 +1,1 @@
+urllist http://nice.freedesktop.org/releases/ | splitver '^libnice-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

@@ -1,8 +1,7 @@
-expat-dev
 gst-plugins-bad-dev
 gst-plugins-base-dev
 libva-dev
 libxrandr-dev
-libxshmfence-dev
 mesa-dev
 systemd-dev
+yasm

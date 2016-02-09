@@ -6,4 +6,6 @@ ub_compile \
 	--enable-yahoo \
 	--enable-windows-live \
 	--enable-exchange \
-	--enable-kerberos
+	--enable-kerberos \
+	--enable-media-server \
+	--enable-lastfm

@@ -2,4 +2,5 @@
 
 ub_compile \
 	--enable-vala \
-	--with-daemon-user=colord
+	--with-daemon-user=colord \
+	--disable-argyllcms-sensor

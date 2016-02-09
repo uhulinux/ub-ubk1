@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gnome-bluetooth-${UB_VERSION}.tar.xz gnome-bluetooth-${UB_VERSION}/
+	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-bluetooth/${UB_VERSION_HEAD2}/

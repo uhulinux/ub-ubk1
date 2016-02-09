@@ -3,6 +3,6 @@ evolution-dev
 gtkspell-dev
 intltool
 libcanberra-dev
-libxshmfence-dev
+libcryptui-dev
 systemd-dev
 xz-dev
