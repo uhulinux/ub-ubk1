@@ -3,4 +3,6 @@
 ub_compile \
 	--enable-vala \
 	--disable-libsocialweb-backend \
-	--disable-fatal-warnings
+	--disable-fatal-warnings \
+	--enable-eds-backend \
+	--enable-bluez-backend
