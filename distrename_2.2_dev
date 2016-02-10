@@ -1,0 +1,28 @@
+#! /bin/bash
+
+# Csak a megfelelő könyvtárban futtatható!!!!!!!
+
+# Ez a script verzióként (2.1 2.2 dev stb) megadott
+# verzójú UB könyvtárakban átírja a distribution-t.
+# Először a cserélendő disztribúciószám, utána amire cseréljük.
+
+#if [ "$#" != 2 ]; then
+#printf '%s\n' "A paraméterszám nem megfelelő!"
+#printf '%s\n' "Használat: source-del verzió "
+#exit
+#fi
+
+#DIST1="$1"
+#DIST2="$2"
+#cd /usr/src/UHUBUILD/UB-"$DIST1"
+
+for pkg in `ls -d */`; do
+
+	cd "$pkg"
+	sed -i 's/2.2/dev/' distribution
+	cd ..
+
+done
+
+printf '%s\n' "A csere befejeződött"
+exit 0

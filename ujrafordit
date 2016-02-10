@@ -1,0 +1,53 @@
+#! /bin/bash
+
+# Ez a script *.uhu csomagok fordítását végzi úgy, hogy a paraméterként megadott
+# fordítási sorszám szabja meg a működését. Ha ez a szám 1, akkor a verzió által
+# meghatározott packages (2.1 2.2 stb) könyvtárak tartalmát törli. 2 szám esetén
+# addig elkészült csomagok megmaradnak, a fordítás folytatódik.
+# A törölt csomagok a mentes-verzió könyvtárban a következő törlésig megmaradnak.
+# A fordítás a paraméterként megadott listafájlban lévő sorrendben történik.
+
+
+if [ "$#" != 3 ]; then
+printf '%s\n' "Nem megfelelő paraméter szám!"
+printf '%s\n' "Használat: ujrafordit verzió a fordítás sorszáma listafájl"
+exit
+fi
+
+ver="$1"
+list="$3"
+
+if [ "$2" = 1 ]; then
+
+printf '%s\n' "A packages-"$ver" tartalma törlődni fog!!"
+sleep 5
+dir="$PWD"
+if cd /usr/src/UHUBUILD/mentes-"$ver" 2>/dev/null ; then
+cd "$dir"
+rm -r /usr/src/UHUBUILD/mentes-"$ver" 2>/dev/null
+fi
+mkdir -p /usr/src/UHUBUILD/mentes-"$ver"
+mv -b /usr/src/UHUBUILD/packages-"$ver"/*.uhu /usr/src/UHUBUILD/mentes-"$ver"/
+rm /usr/src/UHUBUILD/packages-"$ver"/packages
+rm /usr/src/UHUBUILD/packages-"$ver"/packages.gz
+# cp /* /usr/src/UHUBUILD/mentes-"$ver"/release /usr/src/UHUBUILD/packages-"$ver"/
+
+fi
+
+for i in `cat < "$list"`; do
+
+	if [ -r /usr/src/UHUBUILD/packages-"$ver"/"$i"_*.uhu ]; then
+		  printf '%s\n' "A(z) "$i" csomag létezik, átlépjük"
+	else
+		rm /usr/src/UHUBUILD/misc-"$ver"/extrarelease/"$i"* 2>/dev/null
+		build-"$ver" -ns "$i"
+		if [ "$?" != 0 ]; then
+		printf "%s\n\e[4;1;3;31;5m Hiba a(z) "$i" fordítása közben%s\n"
+		exit 1
+		fi
+		rm /usr/src/UHUBUILD/UB-"$ver"/"$i"/sources/*.* 2>/dev/null
+	fi
+done
+
+printf '%s\n' "A buildelés befejeződött"
+exit 0

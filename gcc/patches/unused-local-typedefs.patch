@@ -1,7 +1,7 @@
 diff -Naur orig/gcc/c-family/c.opt patched/gcc/c-family/c.opt
---- orig/gcc/c-family/c.opt	2014-04-03 15:41:55.000000000 +0200
-+++ patched/gcc/c-family/c.opt	2014-10-24 16:32:14.668964846 +0200
-@@ -773,7 +773,7 @@
+--- orig/gcc/c-family/c.opt	2013-01-19 06:25:25.000000000 +0100
++++ patched/gcc/c-family/c.opt	2014-01-31 15:38:25.908002732 +0100
+@@ -754,7 +754,7 @@
  ; documented in common.opt
  
  Wunused-local-typedefs
