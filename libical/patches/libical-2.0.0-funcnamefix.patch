@@ -1,0 +1,11 @@
+diff -up libical-2.0.0/src/libical/icallangbind.h.funcnamefix libical-2.0.0/src/libical/icallangbind.h
+--- libical-2.0.0/src/libical/icallangbind.h.funcnamefix	2016-01-18 17:38:21.642590895 +0100
++++ libical-2.0.0/src/libical/icallangbind.h	2016-01-18 17:38:32.424590438 +0100
+@@ -63,6 +63,6 @@ LIBICAL_ICAL_EXPORT int icallangbind_str
+ 
+ LIBICAL_ICAL_EXPORT const char *icallangbind_quote_as_ical(const char *str);
+ 
+-LIBICAL_ICAL_EXPORT char *callangbind_quote_as_ical_r(const char *str);
++LIBICAL_ICAL_EXPORT char *icallangbind_quote_as_ical_r(const char *str);
+ 
+ #endif

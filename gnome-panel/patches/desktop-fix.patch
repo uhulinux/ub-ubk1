@@ -1,0 +1,12 @@
+diff -Naur orig/gnome-panel/gnome-panel.desktop.in.in mod/gnome-panel/gnome-panel.desktop.in.in
+--- orig/gnome-panel/gnome-panel.desktop.in.in	2015-09-11 16:57:26.000000000 +0200
++++ mod/gnome-panel/gnome-panel.desktop.in.in	2016-02-06 23:15:06.783027850 +0100
+@@ -10,7 +10,7 @@
+ X-GNOME-Bugzilla-Component=general
+ X-GNOME-Bugzilla-Version=@VERSION@
+ Categories=GNOME;GTK;System;Core;
+-OnlyShowIn=GNOME-Flashback;
++OnlyShowIn=GNOME;
+ NoDisplay=true
+ X-GNOME-AutoRestart=false
+ X-GNOME-Autostart-Notify=true
