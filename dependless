@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ "$#" > 2 | 0 ]; then
+printf '%s\n \033[22;31m' "A nem megfelelő paraméter szám!"
+exit
+fi
+
+# Tipikusan build-depends fájlok hiányának vizsgálata és a találatok
+# szövegfájlba írása. 
+
+DIR1="$PWD"
+filenev="build-depends"
+DIR=UB-"$1"
+
+cd /usr/src/UHUBUILD/"$DIR"
+
+for pkg in `ls -d */`; do
+
+if [ -s "$pkg"/"$filenev" ]; then
+	printf '%s\n' "$pkg"
+else
+	echo "$pkg" >> "$2".txt
+fi
+
+cd "$DIR1"
+
+done
