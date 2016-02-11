@@ -1,5 +1,7 @@
 cairo-dev
 dbus-glib-dev
+gnome-common
 gobject-introspection-dev
 gtk-dev
+gtk-doc
 js-dev

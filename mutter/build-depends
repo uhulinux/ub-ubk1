@@ -7,10 +7,13 @@ gsettings-desktop-schemas
 gtk-dev
 intltool
 libcanberra-dev
+libgudev-dev
 libsm-dev
 libxkbfile-dev
+pango-dev
 startup-notification-dev
 upower-dev
+wayland-dev
 xcb-util-dev
 xkeyboard-config
 zenity

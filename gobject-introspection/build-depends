@@ -1,4 +1,10 @@
 cairo-dev
+fontconfig-dev
+freetype2-dev
+gettext
 glib-dev
+gnome-common
+intltool
 libffi-dev
+mesa-dev
 python-dev

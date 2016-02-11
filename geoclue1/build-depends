@@ -1,0 +1,12 @@
+bluez-dev
+dbus-glib-dev
+gconf2-dev
+gtk-doc
+gtk2-dev
+libgudev-dev
+libsoup-gnome-dev
+libxml2-dev
+libxslt
+networkmanager-dev
+systemd-dev
+util-linux-dev
