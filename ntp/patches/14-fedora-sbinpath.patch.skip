@@ -1,0 +1,11 @@
+--- ntp-stable-4.2.0a-20040616/scripts/ntptrace.in.sbinpath	2004-08-31 14:16:53.441077004 +0200
++++ ntp-stable-4.2.0a-20040616/scripts/ntptrace.in	2004-08-31 14:17:17.701574588 +0200
+@@ -6,7 +6,7 @@
+ use Getopt::Std;
+ use vars qw($opt_n);
+ 
+-$ntpq = "ntpq";
++$ntpq = "/usr/sbin/ntpq";
+ 
+ getopts('n');
+ 

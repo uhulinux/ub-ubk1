@@ -1,3 +1,4 @@
+gettext
 gobject-introspection-dev
 gtk-doc
 intltool

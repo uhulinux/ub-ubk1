@@ -1,5 +1,8 @@
 gamin-dev
+gettext
 gtk-doc
 libelf-dev
 libffi-dev
+pcre-dev
 python-dev
+zlib-dev

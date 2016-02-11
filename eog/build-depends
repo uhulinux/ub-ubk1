@@ -1,6 +1,7 @@
 dbus-glib-dev
 docbook-dtds
 exempi-dev
+gdk-pixbuf-dev
 gnome-desktop-dev
 gnome-doc-utils
 gobject-introspection-dev
@@ -17,3 +18,4 @@ libsm-dev
 libxml2-dev
 openssl-dev
 xcb-util-dev
+zlib-dev

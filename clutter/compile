@@ -1,4 +1,7 @@
 #!/bin/sh -eux
 
 ub_compile \
-	--enable-xinput
+	--enable-xinput \
+	--enable-wayland-compozitor \
+	--enable-wayland-backend \
+	--enable-gdk-backend
