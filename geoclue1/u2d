@@ -1,1 +1,0 @@
-urllist http://freedesktop.org/~hadess/ | splitver '^geoclue-([0-9.]+).tar.gz$' | sort -V | tail -n 1
