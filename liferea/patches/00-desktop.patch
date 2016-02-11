@@ -6,5 +6,5 @@
  Type=Application
 -Categories=Network;Feed;
 -Version=0.9.4
-+Categories=GTK;Network;Feed;X-UHU-Menu/Internet/News;
++Categories=GTK;Network;Feed;
  MimeType=application/rss+xml;application/atom+xml;application/rdf+xml;

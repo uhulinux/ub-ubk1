@@ -7,4 +7,4 @@ Comment[hu]=Nyílt forrású valósidejű stratégiai játék a Warkraft II nyom
 Exec=padsp dark-oberon
 Icon=dark-oberon
 Terminal=false
-Categories=Game;StrategyGame;X-UHU-Menu/Games/TacticStrategy;
+Categories=Game;StrategyGame;

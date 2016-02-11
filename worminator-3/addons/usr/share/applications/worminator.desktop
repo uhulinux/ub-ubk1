@@ -5,4 +5,4 @@ GenericName[hu]=Kukac harcos
 Type=Application
 Icon=worminator
 Exec=worminator
-Categories=Game;ActionGame;X-UHU-Menu/Games/Action;
+Categories=Game;ActionGame;

@@ -7,4 +7,4 @@ Icon=valknut
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=Qt;Network;FileTransfer;X-UHU-Menu/Internet/Downloaders;
+Categories=Qt;Network;FileTransfer;

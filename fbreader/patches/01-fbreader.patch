@@ -1,13 +1,3 @@
-diff -Naurd a/fbreader/desktop/desktop b/fbreader/desktop/desktop
---- a/fbreader/desktop/desktop	2012-11-17 18:09:56.000000000 +0100
-+++ b/fbreader/desktop/desktop	2012-11-20 18:42:31.000000000 +0100
-@@ -20,4 +20,5 @@
- Terminal=false
- Type=Application
- Icon=FBReader
--Categories=Office;Viewer;Literature;
-+Categories=Office;Viewer;Literature;X-UHU-Menu/Tools/Viewers;
-+
 diff -Naurd a/fbreader/src/database/sqldb/implsqlite/SQLiteCommand.cpp b/fbreader/src/database/sqldb/implsqlite/SQLiteCommand.cpp
 --- a/fbreader/src/database/sqldb/implsqlite/SQLiteCommand.cpp	2012-11-17 18:09:55.000000000 +0100
 +++ b/fbreader/src/database/sqldb/implsqlite/SQLiteCommand.cpp	2012-11-20 18:43:52.000000000 +0100

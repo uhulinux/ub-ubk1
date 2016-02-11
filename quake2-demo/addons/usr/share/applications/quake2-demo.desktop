@@ -5,4 +5,4 @@ Icon=q2
 Exec=quake2-demo
 Terminal=true
 StartupNotify=true
-Categories=X-UHU-Menu/Games/Action;
+Categories=Game;ActionGame;

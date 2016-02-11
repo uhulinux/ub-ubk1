@@ -1,9 +1,0 @@
---- bluefish.orig/desktop-data/bluefish.desktop.in	2009-12-17 03:11:29.000000000 +0100
-+++ bluefish/desktop-data/bluefish.desktop.in	2010-02-01 18:41:35.000000000 +0100
-@@ -7,5 +7,5 @@
- Terminal=false
- Type=Application
- StartupNotify=true
--Categories=GTK;GNOME;Development;WebDevelopment;
-+Categories=GTK;GNOME;Development;WebDevelopment;X-UHU-Menu/Development/Web;
- MimeType=text/html;text/css;text/x-javascript;text/x-python;text/x-perl;application/x-php;text/x-java;text/javascript;text/x-php;application/x-cgi;application/x-javascript;application/x-perl;application/x-python;application/xhtml+xml;text/mathml;text/x-csrc;text/x-chdr;text/x-dtd;text/x-sql;text/xml;application/x-bluefish-project;

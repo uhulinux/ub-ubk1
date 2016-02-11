@@ -29,4 +29,4 @@ Name[hu]=gFTP
 Comment[hu]=Többszálas ftp-kliens
 Name=gFTP
 Comment=Multithreaded ftp client
-Categories=Network;FileTransfer;X-UHU-Menu/Internet/Downloaders;
+Categories=Network;FileTransfer;

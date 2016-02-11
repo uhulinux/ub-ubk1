@@ -8,12 +8,3 @@
  _GenericName=Download Manager
  _Comment=Download files from the Internet
  Exec=gwget
-@@ -9,7 +9,7 @@
- Terminal=false
- X-MultipleArgs=false
- Type=Application
--Categories=Network;FileTransfer;GNOME;GTK;
-+Categories=GTK;GNOME;Network;FileTransfer;X-UHU-Menu/Internet/Downloaders;
- X-GNOME-Bugzilla-Bugzilla=GNOME
- X-GNOME-Bugzilla-Product=gwget
- X-GNOME-Bugzilla-Component=General

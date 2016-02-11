@@ -6,4 +6,4 @@ GenericName=Allegro shooter demo
 GenericName[hu]=Allegro lövöldöző demó
 Icon=shooter
 Exec=shooter
-Categories=Game;ArcadeGame;X-UHU-Menu/Games/Arcade;
+Categories=Game;ArcadeGame;

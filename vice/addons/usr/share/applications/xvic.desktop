@@ -5,4 +5,4 @@ Comment=C= VIC20 emulator
 Comment[hu]=C= VIC20 emulátor
 Exec=xvic
 Icon=VICE
-Categories=Game;Emulator;X-UHU-Menu/Tools/Emulators;
+Categories=Game;Emulator;

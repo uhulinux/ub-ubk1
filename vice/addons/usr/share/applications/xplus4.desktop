@@ -5,4 +5,4 @@ Comment=C= Plus4 emulator
 Comment[hu]=C= Plus4 emulátor
 Exec=xplus4
 Icon=VICE
-Categories=Game;Emulator;X-UHU-Menu/Tools/Emulators;
+Categories=Game;Emulator;

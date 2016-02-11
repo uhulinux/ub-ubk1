@@ -7,4 +7,4 @@ Comment[hu]=A digger !
 Exec=digger "/A"
 Icon=digger
 Type=Application
-Categories=Game;ArcadeGame;X-UHU-Menu/Games/Action;
+Categories=Game;ArcadeGame;

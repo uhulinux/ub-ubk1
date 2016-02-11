@@ -12,4 +12,4 @@
  StartupNotify=true
  Type=Application
 -Categories=Application;AudioVideo;Audio;
-+Categories=GTK;AudioVideo;Audio;X-UHU-Menu/Settings;
++Categories=GTK;AudioVideo;Audio;

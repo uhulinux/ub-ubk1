@@ -3,4 +3,4 @@ Type=Application
 Name=SDL Invaders
 Exec=SDLInvaders
 Icon=fighter
-Categories=Game;ArcadeGame;X-UHU-Menu/Games/Arcade;
+Categories=Game;ArcadeGame;

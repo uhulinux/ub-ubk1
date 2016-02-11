@@ -7,4 +7,4 @@ Icon=ultimatestunts
 Exec=ustunts
 Terminal=false
 StartupNotify=false
-Categories=Game;ArcadeGame;X-UHU-Menu/Games/Arcade;
+Categories=Game;ArcadeGame;

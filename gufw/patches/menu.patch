@@ -10,9 +10,3 @@ diff -Naur ORIG/Alacarte_menu/gufw.desktop UHU/Alacarte_menu/gufw.desktop
  Name=Firewall configuration
  Name[zh_CN]=防火墙配置
  Name[uk]=Налаштування фаєрволу
-@@ -54,4 +54,4 @@
- Comment[ast]=Permite configurar el tornafuéu ufw
- Comment[ar]=يسٌمح لك بإعداد الجدار الناري UFW
- Icon=/usr/share/icons/hicolor/48x48/apps/gufw_menu.png
--Categories=System;Settings;
-+Categories=System;Settings;X-UHU-Menu/Internet/Firewall;

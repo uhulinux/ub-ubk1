@@ -5,4 +5,4 @@ Comment=C64 emulator
 Comment[hu]=C64 emulátor
 Exec=x64
 Icon=VICE
-Categories=Game;Emulator;X-UHU-Menu/Tools/Emulators;
+Categories=Game;Emulator;

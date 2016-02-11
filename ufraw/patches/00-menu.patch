@@ -17,12 +17,3 @@ diff -Naur ufraw-0.17-orig//ufraw.desktop ufraw-0.17//ufraw.desktop
  Comment[it]=Gestione immagini Raw realizzate con fotocamere digitali
  Comment[ko]=디지털 카메라의 Raw 이미지를 읽고, 처리하는 프로그램
  Comment[nb]=Et program for å lese og behandle raw-bilder fra digitale kameraer
-@@ -39,7 +41,7 @@
- Version=1.0
- 
- Type=Application
--Categories=Graphics;Photography;GTK;
-+Categories=Graphics;Photography;GTK;X-UHU-Menu/Graphics/More;
- 
- Exec=ufraw %U
- TryExec=ufraw

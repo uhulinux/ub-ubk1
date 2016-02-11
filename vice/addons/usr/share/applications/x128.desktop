@@ -5,4 +5,4 @@ Comment=C128 emulator
 Comment[hu]=C128 emulátor
 Exec=x128
 Icon=VICE
-Categories=Game;Emulator;X-UHU-Menu/Tools/Emulators;
+Categories=Game;Emulator;

@@ -1,5 +1,5 @@
 [Desktop Entry]
-Categories=AudioVideo;Video;Player;TV;X-UHU-Menu/Multimedia/VideoPlayers;
+Categories=AudioVideo;Video;Player;TV;
 Comment[hu]=VDR xbmc felülettel
 Comment=VDR+XBMC
 Exec=vdrxbmc

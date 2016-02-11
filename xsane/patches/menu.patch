@@ -13,4 +13,4 @@
  Type=Application
 -Categories=Application;Graphics
 +StartupNotify=false
-+Categories=GTK;Graphics;X-UHU-Menu/Graphics;
++Categories=GTK;Graphics;

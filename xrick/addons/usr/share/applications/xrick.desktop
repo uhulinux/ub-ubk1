@@ -5,4 +5,4 @@ Icon=rick
 Exec=xrick
 Terminal=false
 StartupNotify=true
-Categories=Game;ActionGame;X-UHU-Menu/Games/Action;
+Categories=Game;ActionGame;

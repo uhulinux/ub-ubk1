@@ -8,4 +8,4 @@ Icon=guilogon
 Type=Application
 Terminal=false
 StartupNotify=false
-Categories=Office;Database;X-UHU-Menu/Tools/Databases;
+Categories=Office;Database;
