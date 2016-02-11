@@ -8,7 +8,6 @@ freetype2-dev
 graphviz-dev
 imagemagick-dev
 jasper-dev
-lcms-dev
 liba52-dev
 libdv-dev
 libdvdnav-dev

@@ -3,7 +3,6 @@ dbus-sharp-glib
 enchant-dev
 gconf2-dev
 gdata-sharp
-geoclue1-dev
 gio-sharp
 gkeyfile-sharp
 gnome-doc-utils

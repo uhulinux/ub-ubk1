@@ -4,7 +4,6 @@ gsl-dev
 gtkmm2-dev
 imagemagick-dev
 intltool
-lcms-dev
 libjpeg-dev
 libsigc++-dev
 libwpg-dev

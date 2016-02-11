@@ -4,7 +4,6 @@ gnome-keyring-sharp
 gnome-sharp
 gtk2-sharp
 intltool
-lcms-dev
 libgcrypt-dev
 libgnomeui2-dev
 libjpeg-dev

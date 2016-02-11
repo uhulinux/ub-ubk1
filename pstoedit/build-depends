@@ -6,7 +6,6 @@ ghostscript
 graphviz-dev
 imagemagick-dev
 jasper-dev
-lcms-dev
 libemf-dev
 libgd-dev
 libgsf-dev

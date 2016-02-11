@@ -5,7 +5,6 @@ gnome-doc-utils
 gtk2-dev
 gvfs
 intltool
-lcms-dev
 libgcrypt-dev
 libgnomeui2-dev
 libgsf-dev

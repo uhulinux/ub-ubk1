@@ -7,7 +7,6 @@ gst-plugins-base-dev
 gtk-dev
 intltool
 itstool
-lcms-dev
 libcue-dev
 libexif-dev
 libgee-dev

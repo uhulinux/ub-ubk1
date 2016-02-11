@@ -6,7 +6,6 @@ gtk-dev
 icon-theme-adwaita
 intltool
 itstool
-lcms-dev
 libgxps-dev
 libkpathsea
 libsecret-dev
