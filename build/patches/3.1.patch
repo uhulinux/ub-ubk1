@@ -1,7 +1,7 @@
 From 62003d63277014a0b23f0ba8048362e7f4659ae1 Mon Sep 17 00:00:00 2001
 From: rezso <rezso@rezso.net>
 Date: Sat, 30 Jan 2016 19:32:50 +0100
-Subject: [PATCH] add 3.1
+Subject: [PATCH 1/2] add 3.1
 
 ---
  etc/apt/sources.list-build-3.1              | 17 +++++++++++++++++
@@ -115,6 +115,66 @@ index d75b824..a7f938b 100644
 +        COMPREPLY=($(compgen -W "$foo" -- "$cur"))
 +}
 +complete -F _build3.1 build-3.1
+-- 
+2.7.0
+
+
+From d0cf64afaa80177501e33db316e812c9254a8e02 Mon Sep 17 00:00:00 2001
+From: rezso <rezso@rezso.net>
+Date: Thu, 11 Feb 2016 19:09:39 +0100
+Subject: [PATCH 2/2] 3.1
+
+---
+ etc/apt/sources.list-build-3.1 |  6 +-----
+ usr/bin/build                  | 13 ++++++++++---
+ 2 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/etc/apt/sources.list-build-3.1 b/etc/apt/sources.list-build-3.1
+index 83a6b8a..7182438 100644
+--- a/etc/apt/sources.list-build-3.1
++++ b/etc/apt/sources.list-build-3.1
+@@ -7,11 +7,7 @@
+ 
+ deb file:/usr/src/UHUBUILD/packages-3.1 ./
+ 
+-# UHU tároló mirror ubk.hu-n
+-deb ftp://ftp.ubk.hu/pkg/mirror/download.uhulinux.hu/dists/3/ ./
+-# deb http://download.ubk.hu/pkg/mirror/download.uhulinux.hu/dists/3/ ./
+-
+ # UBK
+ deb ftp://ftp.ubk.hu/pkg/3/dev ./
+ # deb ftp://ftp.ubk.hu/pkg/3.1/main ./
+-# http://download.ubk.hu/pkg/3.1/main ./
++# deb http://download.ubk.hu/pkg/3.1/main ./
+diff --git a/usr/bin/build b/usr/bin/build
+index b7ac0c4..fe2ae60 100644
+--- a/usr/bin/build
++++ b/usr/bin/build
+@@ -388,14 +388,21 @@ uhu-scanpkgs .
+ 	if [ "$UB_UHUCHECK" = "1" ]; then
+ 		cd "$UHUBUILD_PATH"/UB-${UHUBUILD_DISTR}/
+ 		uhubuild-check "$i" || exit 1
+-	else
+-		echo
+-		uzenet_var
+ 	fi 
+ 		
+ echo
+ yellowecho "A(z) '$i' csomag buildelése következik..."
+ echo
++
++	# Distribution fix
++	if [ -f "$UHUBUILD_PATH"/UB-${UHUBUILD_DISTR}/"$i"/distribution ]; then
++		if grep -q -v "${UHUBUILD_DISTR}" "$UHUBUILD_PATH"/UB-${UHUBUILD_DISTR}/"$i"/distribution; then
++		sed -i -e "s/^.*$/UHU Linux ${UHUBUILD_DISTR}/g" "$UHUBUILD_PATH"/UB-${UHUBUILD_DISTR}/"$i"/distribution
++		fi
++	else
++	echo "UHU Linux ${UHUBUILD_DISTR}" > "$UHUBUILD_PATH"/UB-${UHUBUILD_DISTR}/"$i"/distribution
++	fi
++	
+ 	# A maintainer az UBK Team
+ 	if [ -f "$UHUBUILD_PATH"/UB-${UHUBUILD_DISTR}/"$i"/maintainer ]; then
+ 		if grep -q -v "$PACKAGER" "$UHUBUILD_PATH"/UB-${UHUBUILD_DISTR}/"$i"/maintainer; then
 -- 
 2.7.0
 
