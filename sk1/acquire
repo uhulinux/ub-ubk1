@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+sk1-${UB_VERSION}.tar.gz sk1-${UB_VERSION}/
+	https://sourceforge.net/projects/sk1/files/sk1/sK1_v.${UB_VERSION}/
