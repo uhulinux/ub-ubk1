@@ -1,0 +1,1 @@
+urllist https://code.launchpad.net/alltray/+download/ | splitver '^alltray-([0-9.]+)dev.tar.gz$' | sort -V | tail -n 1
