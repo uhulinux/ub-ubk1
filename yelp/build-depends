@@ -5,6 +5,7 @@ libsm-dev
 libxslt-dev
 libxt-dev
 pangox-compat-dev
+sqlite-dev
 systemd-dev
 webkit2gtk-dev
 xz-dev

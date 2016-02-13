@@ -6,6 +6,6 @@ ub_compile \
 	--enable-vala-bindings \
 	--disable-uoa \
 	--without-phonenumber \
-	--enable-google \
+	--disable-google-auth \
 	--disable-examples \
 	--enable-smime
