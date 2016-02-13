@@ -1,0 +1,54 @@
+From 5b4d18d3f8b69773be59ccc45bd09e5fa84d5f1b Mon Sep 17 00:00:00 2001
+From: David King <amigadave@amigadave.com>
+Date: Fri, 28 Nov 2014 14:21:37 +0000
+Subject: [PATCH] Only autostart in GNOME (#771601)
+
+https://bugzilla.redhat.com/show_bug.cgi?id=771601
+---
+ src/miners/fs/tracker-miner-fs.desktop.in.in   | 2 +-
+ src/miners/rss/tracker-miner-rss.desktop.in.in | 2 +-
+ src/tracker-store/tracker-store.desktop.in.in  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/miners/fs/tracker-miner-fs.desktop.in.in b/src/miners/fs/tracker-miner-fs.desktop.in.in
+index a1620f6..75dba52 100644
+--- a/src/miners/fs/tracker-miner-fs.desktop.in.in
++++ b/src/miners/fs/tracker-miner-fs.desktop.in.in
+@@ -12,7 +12,7 @@ X-KDE-autostart-after=panel
+ X-KDE-StartupNotify=false
+ X-KDE-UniqueApplet=true
+ NoDisplay=true
+-OnlyShowIn=GNOME;KDE;XFCE;X-MEEGO-HS;X-MEEGO-NB;X-IVI;Unity;
++OnlyShowIn=GNOME;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=tracker
+ X-GNOME-Bugzilla-Component=Miners
+diff --git a/src/miners/rss/tracker-miner-rss.desktop.in.in b/src/miners/rss/tracker-miner-rss.desktop.in.in
+index 49be401..505aec7 100644
+--- a/src/miners/rss/tracker-miner-rss.desktop.in.in
++++ b/src/miners/rss/tracker-miner-rss.desktop.in.in
+@@ -11,7 +11,7 @@ X-KDE-autostart-after=panel
+ X-KDE-StartupNotify=false
+ X-KDE-UniqueApplet=true
+ NoDisplay=true
+-OnlyShowIn=GNOME;KDE;XFCE;Unity;
++OnlyShowIn=GNOME;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=tracker
+ X-GNOME-Bugzilla-Component=Miners
+diff --git a/src/tracker-store/tracker-store.desktop.in.in b/src/tracker-store/tracker-store.desktop.in.in
+index 78e855d..aff4c16 100644
+--- a/src/tracker-store/tracker-store.desktop.in.in
++++ b/src/tracker-store/tracker-store.desktop.in.in
+@@ -11,7 +11,7 @@ X-KDE-autostart-after=panel
+ X-KDE-StartupNotify=false
+ X-KDE-UniqueApplet=true
+ NoDisplay=true
+-OnlyShowIn=GNOME;KDE;XFCE;X-MEEGO-HS;X-MEEGO-NB;X-IVI;Unity;
++OnlyShowIn=GNOME;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=tracker
+ X-GNOME-Bugzilla-Component=Store
+-- 
+2.1.0
+

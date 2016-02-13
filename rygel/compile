@@ -2,5 +2,6 @@
 
 ub_compile \
 	--enable-mediathek-plugin \
-	--enable-gst-launch-plugin
+	--enable-gst-launch-plugin \
+	--enable-media-export-plugin
 

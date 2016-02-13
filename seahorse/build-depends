@@ -10,7 +10,7 @@ intltool
 itstool
 libsecret-dev
 libsm-dev
-libsoup-dev
+libsoup-gnome-dev
 openldap-dev
 openssh
 openssh-common
