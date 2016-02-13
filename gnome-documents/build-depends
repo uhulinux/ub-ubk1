@@ -7,6 +7,7 @@ intltool
 itstool
 libgdata-dev
 libgudev-dev
+libmediaart-dev
 librsvg-dev
 libsoup-gnome-dev
 libxshmfence-dev

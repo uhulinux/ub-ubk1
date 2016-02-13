@@ -14,6 +14,7 @@ libexif-dev
 libgdata-dev
 libgfbgraph-dev
 libgudev-dev
+libmediaart-dev
 librsvg-dev
 libsecret-dev
 libsoup-gnome-dev
