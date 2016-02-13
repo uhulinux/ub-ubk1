@@ -8,6 +8,7 @@ docbook-dtds
 docbook-xsl
 enchant-dev
 gcr-dev
+geoclue-dev
 gnome-bluetooth-dev
 gnome-desktop-dev
 gnome-doc-utils
