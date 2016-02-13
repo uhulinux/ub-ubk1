@@ -1,5 +1,6 @@
---- gnome-shell/data/gnome-shell-extension-prefs.desktop.in.in.orig	2012-04-22 20:53:47.000000000 +0200
-+++ gnome-shell/data/gnome-shell-extension-prefs.desktop.in.in	2012-04-22 20:53:57.000000000 +0200
+diff -Naur orig/data/gnome-shell-extension-prefs.desktop.in.in mod/data/gnome-shell-extension-prefs.desktop.in.in
+--- orig/data/gnome-shell-extension-prefs.desktop.in.in	2015-12-17 01:23:51.000000000 +0100
++++ mod/data/gnome-shell-extension-prefs.desktop.in.in	2016-02-13 18:51:59.915289788 +0100
 @@ -2,7 +2,7 @@
  Type=Application
  _Name=GNOME Shell Extension Preferences

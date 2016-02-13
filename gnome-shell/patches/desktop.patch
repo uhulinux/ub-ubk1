@@ -1,5 +1,6 @@
---- gnome-shell.orig/data/gnome-shell.desktop.in.in	2011-03-21 21:46:45.000000000 +0100
-+++ gnome-shell/data/gnome-shell.desktop.in.in	2011-04-20 17:22:43.000000000 +0200
+diff -Naur orig/data/org.gnome.Shell.desktop.in.in mod/data/org.gnome.Shell.desktop.in.in
+--- orig/data/org.gnome.Shell.desktop.in.in	2015-12-02 10:36:16.000000000 +0100
++++ mod/data/org.gnome.Shell.desktop.in.in	2016-02-13 18:48:09.074174192 +0100
 @@ -2,7 +2,7 @@
  Type=Application
  _Name=GNOME Shell

@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-celdir="$UB_INSTALLDIR"/usr/share/themes/
-mkdir -p "$celdir"
-cp -r Glassfull "$celdir"/
