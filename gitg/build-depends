@@ -1,6 +1,7 @@
 glade-dev
 gnome-common
 gobject-introspection
+gsettings-desktop-schemas
 gtksourceview-dev
 gtkspell-dev
 intltool
