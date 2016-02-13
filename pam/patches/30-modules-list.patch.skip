@@ -1,0 +1,42 @@
+diff -Naur Linux-PAM-0.99.8.1.orig/configure Linux-PAM-0.99.8.1/configure
+--- Linux-PAM-0.99.8.1.orig/configure	2007-07-10 11:41:04.000000000 +0200
++++ Linux-PAM-0.99.8.1/configure	2007-08-14 17:07:03.000000000 +0200
+@@ -27555,7 +27555,7 @@
+ fi
+ 
+ 
+-ac_config_files="$ac_config_files Makefile libpam/Makefile libpamc/Makefile libpamc/test/Makefile libpam_misc/Makefile conf/Makefile conf/pam_conv1/Makefile po/Makefile.in modules/Makefile modules/pam_access/Makefile modules/pam_cracklib/Makefile modules/pam_debug/Makefile modules/pam_deny/Makefile modules/pam_echo/Makefile modules/pam_env/Makefile modules/pam_faildelay/Makefile modules/pam_filter/Makefile modules/pam_filter/upperLOWER/Makefile modules/pam_ftp/Makefile modules/pam_group/Makefile modules/pam_issue/Makefile modules/pam_keyinit/Makefile modules/pam_lastlog/Makefile modules/pam_limits/Makefile modules/pam_listfile/Makefile modules/pam_localuser/Makefile modules/pam_loginuid/Makefile modules/pam_mail/Makefile modules/pam_mkhomedir/Makefile modules/pam_motd/Makefile modules/pam_namespace/Makefile modules/pam_nologin/Makefile modules/pam_permit/Makefile modules/pam_rhosts/Makefile modules/pam_rootok/Makefile modules/pam_exec/Makefile modules/pam_securetty/Makefile modules/pam_selinux/Makefile modules/pam_shells/Makefile modules/pam_stress/Makefile modules/pam_succeed_if/Makefile modules/pam_tally/Makefile modules/pam_time/Makefile modules/pam_umask/Makefile modules/pam_unix/Makefile modules/pam_userdb/Makefile modules/pam_warn/Makefile modules/pam_wheel/Makefile modules/pam_xauth/Makefile doc/Makefile doc/specs/Makefile doc/man/Makefile doc/sag/Makefile doc/adg/Makefile doc/mwg/Makefile examples/Makefile tests/Makefile xtests/Makefile"
++ac_config_files="$ac_config_files Makefile libpam/Makefile libpamc/Makefile libpamc/test/Makefile libpam_misc/Makefile conf/Makefile conf/pam_conv1/Makefile po/Makefile.in modules/Makefile modules/pam_access/Makefile modules/pam_chroot/Makefile modules/pam_console/Makefile modules/pam_cracklib/Makefile modules/pam_debug/Makefile modules/pam_deny/Makefile modules/pam_echo/Makefile modules/pam_env/Makefile modules/pam_faildelay/Makefile modules/pam_filter/Makefile modules/pam_filter/upperLOWER/Makefile modules/pam_ftp/Makefile modules/pam_group/Makefile modules/pam_issue/Makefile modules/pam_keyinit/Makefile modules/pam_lastlog/Makefile modules/pam_limits/Makefile modules/pam_listfile/Makefile modules/pam_localuser/Makefile modules/pam_loginuid/Makefile modules/pam_mail/Makefile modules/pam_mkhomedir/Makefile modules/pam_motd/Makefile modules/pam_namespace/Makefile modules/pam_nologin/Makefile modules/pam_permit/Makefile modules/pam_rhosts/Makefile modules/pam_rootok/Makefile modules/pam_exec/Makefile modules/pam_securetty/Makefile modules/pam_selinux/Makefile modules/pam_shells/Makefile modules/pam_stress/Makefile modules/pam_succeed_if/Makefile modules/pam_tally/Makefile modules/pam_time/Makefile modules/pam_umask/Makefile modules/pam_unix/Makefile modules/pam_userdb/Makefile modules/pam_utmp/Makefile modules/pam_warn/Makefile modules/pam_wheel/Makefile modules/pam_xauth/Makefile doc/Makefile doc/specs/Makefile doc/man/Makefile doc/sag/Makefile doc/adg/Makefile doc/mwg/Makefile examples/Makefile tests/Makefile xtests/Makefile"
+ 
+ cat >confcache <<\_ACEOF
+ # This file is a shell script that caches the results of configure
+@@ -28224,6 +28224,8 @@
+     "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
+     "modules/Makefile") CONFIG_FILES="$CONFIG_FILES modules/Makefile" ;;
+     "modules/pam_access/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_access/Makefile" ;;
++    "modules/pam_chroot/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_chroot/Makefile" ;;
++    "modules/pam_console/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_console/Makefile" ;;
+     "modules/pam_cracklib/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_cracklib/Makefile" ;;
+     "modules/pam_debug/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_debug/Makefile" ;;
+     "modules/pam_deny/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_deny/Makefile" ;;
+@@ -28260,6 +28262,7 @@
+     "modules/pam_umask/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_umask/Makefile" ;;
+     "modules/pam_unix/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_unix/Makefile" ;;
+     "modules/pam_userdb/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_userdb/Makefile" ;;
++    "modules/pam_utmp/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_utmp/Makefile" ;;
+     "modules/pam_warn/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_warn/Makefile" ;;
+     "modules/pam_wheel/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_wheel/Makefile" ;;
+     "modules/pam_xauth/Makefile") CONFIG_FILES="$CONFIG_FILES modules/pam_xauth/Makefile" ;;
+diff -Naur Linux-PAM-0.99.8.1.orig/modules/Makefile.in Linux-PAM-0.99.8.1/modules/Makefile.in
+--- Linux-PAM-0.99.8.1.orig/modules/Makefile.in	2007-07-10 11:40:52.000000000 +0200
++++ Linux-PAM-0.99.8.1/modules/Makefile.in	2007-08-14 17:05:14.000000000 +0200
+@@ -230,7 +230,8 @@
+ 	pam_securetty pam_selinux pam_shells pam_stress pam_succeed_if \
+ 	pam_tally pam_time pam_umask pam_unix pam_userdb pam_warn \
+ 	pam_wheel pam_xauth pam_exec pam_namespace pam_loginuid \
+-	pam_faildelay
++	pam_faildelay \
++	pam_chroot pam_console pam_utmp pam_envfeed pam_locallogin
+ 
+ CLEANFILES = *~
+ EXTRA_DIST = modules.map

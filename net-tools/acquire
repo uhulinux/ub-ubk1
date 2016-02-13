@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 net-tools-${UB_VERSION}.tar.bz2 net-tools-${UB_VERSION}/
-	http://www.tazenda.demon.co.uk/phil/net-tools/
-
+	http://pkgs.fedoraproject.org/repo/pkgs/net-tools/net-tools-1.60.tar.bz2/888774accab40217dde927e21979c165/

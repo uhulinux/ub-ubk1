@@ -1,0 +1,42 @@
+diff -Naur Linux-PAM-0.99.3.0.orig/modules/pam_unix/pam_unix_acct.c Linux-PAM-0.99.3.0/modules/pam_unix/pam_unix_acct.c
+--- Linux-PAM-0.99.3.0.orig/modules/pam_unix/pam_unix_acct.c	2005-10-27 11:30:36.000000000 +0200
++++ Linux-PAM-0.99.3.0/modules/pam_unix/pam_unix_acct.c	2006-02-07 14:09:28.000000000 +0100
+@@ -262,7 +262,7 @@
+ 			return PAM_SUCCESS;
+ 
+ 	if (!spent)
+-		return PAM_AUTHINFO_UNAVAIL;	/* Couldn't get username from shadow */
++		return PAM_USER_UNKNOWN;	/* Couldn't get username from shadow */
+ 
+ 	curdays = time(NULL) / (60 * 60 * 24);
+ 	D(("today is %d, last change %d", curdays, spent->sp_lstchg));
+diff -Naur Linux-PAM-0.99.3.0.orig/modules/pam_unix/pam_unix_passwd.c Linux-PAM-0.99.3.0/modules/pam_unix/pam_unix_passwd.c
+--- Linux-PAM-0.99.3.0.orig/modules/pam_unix/pam_unix_passwd.c	2005-11-29 10:22:06.000000000 +0100
++++ Linux-PAM-0.99.3.0/modules/pam_unix/pam_unix_passwd.c	2006-02-07 14:10:34.000000000 +0100
+@@ -885,7 +885,7 @@
+ 	/* UNIX passwords area */
+ 	pwd = getpwnam(user);	/* Get password file entry... */
+ 	if (pwd == NULL)
+-		return PAM_AUTHINFO_UNAVAIL;	/* We don't need to do the rest... */
++		return PAM_USER_UNKNOWN;	/* We don't need to do the rest... */
+ 
+ 	if (_unix_shadowed(pwd)) {
+ 		/* ...and shadow password file entry for this user, if shadowing
+@@ -899,7 +899,7 @@
+ 		    spwdent = _unix_run_verify_binary(pamh, ctrl, user);
+ #endif
+ 		if (spwdent == NULL)
+-			return PAM_AUTHINFO_UNAVAIL;
++			return PAM_USER_UNKNOWN;
+ 	} else {
+ 		if (strcmp(pwd->pw_passwd,"*NP*") == 0) { /* NIS+ */
+ 			uid_t save_uid;
+@@ -910,7 +910,7 @@
+ 			seteuid (save_uid);
+ 
+ 			if (spwdent == NULL)
+-				return PAM_AUTHINFO_UNAVAIL;
++				return PAM_USER_UNKNOWN;
+ 		} else
+ 			spwdent = NULL;
+ 	}

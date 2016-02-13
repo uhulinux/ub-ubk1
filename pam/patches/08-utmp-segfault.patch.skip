@@ -1,0 +1,14 @@
+diff -urN Linux-PAM-0.77.orig/modules/pam_utmp/pam_utmp.c Linux-PAM-0.77/modules/pam_utmp/pam_utmp.c
+--- Linux-PAM-0.77.orig/modules/pam_utmp/pam_utmp.c	2002-12-10 02:59:38.000000000 +0100
++++ Linux-PAM-0.77/modules/pam_utmp/pam_utmp.c	2002-12-10 03:54:39.000000000 +0100
+@@ -57,7 +57,9 @@
+ 	utx.ut_type = DEAD_PROCESS;
+ 
+     utx.ut_pid = getppid();
+-    strncpy(utx.ut_line, device, sizeof(utx.ut_line));
++
++    if (device)
++        strncpy(utx.ut_line, device, sizeof(utx.ut_line));
+ 
+     pw = getpwnam(user);
+     if (!pw) {

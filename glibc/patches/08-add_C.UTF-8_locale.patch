@@ -1,6 +1,6 @@
-diff -Naur glibc-2.3.3.orig/localedata/locales/C.UTF-8 glibc-2.3.3/localedata/locales/C.UTF-8
---- glibc-2.3.3.orig/localedata/locales/C.UTF-8	1970-01-01 01:00:00.000000000 +0100
-+++ glibc-2.3.3/localedata/locales/C.UTF-8	2005-08-09 19:40:35.000000000 +0200
+diff -Naur glibc-2.22-orig/localedata/locales/C.UTF-8 glibc-2.22/localedata/locales/C.UTF-8
+--- glibc-2.22-orig/localedata/locales/C.UTF-8	1970-01-01 01:00:00.000000000 +0100
++++ glibc-2.22/localedata/locales/C.UTF-8	2016-02-12 19:12:04.040863939 +0100
 @@ -0,0 +1,75 @@
 +comment_char %
 +escape_char /
@@ -77,13 +77,13 @@ diff -Naur glibc-2.3.3.orig/localedata/locales/C.UTF-8 glibc-2.3.3/localedata/lo
 +LC_TELEPHONE
 +copy "i18n"
 +END LC_TELEPHONE
-diff -Naur glibc-2.3.3.orig/localedata/Makefile glibc-2.3.3/localedata/Makefile
---- glibc-2.3.3.orig/localedata/Makefile	2004-08-08 01:38:13.000000000 +0200
-+++ glibc-2.3.3/localedata/Makefile	2005-09-09 18:35:16.000000000 +0200
-@@ -207,11 +207,23 @@
+diff -Naur glibc-2.22-orig/localedata/Makefile glibc-2.22/localedata/Makefile
+--- glibc-2.22-orig/localedata/Makefile	2015-08-05 08:42:21.000000000 +0200
++++ glibc-2.22/localedata/Makefile	2016-02-12 19:14:36.576867704 +0100
+@@ -196,11 +196,23 @@
  # Sometimes the whole collection of locale files should be installed.
  LOCALEDEF=I18NPATH=. GCONV_PATH=$(common-objpfx)iconvdata LC_ALL=C \
- $(common-objpfx)elf/ld.so --library-path $(rpath-link) $(common-objpfx)locale/localedef
+ $(rtld-prefix) $(common-objpfx)locale/localedef
 -install-locales: $(INSTALL-SUPPORTED-LOCALES)
 +install-locales: install-c-utf8-locale $(INSTALL-SUPPORTED-LOCALES)
  

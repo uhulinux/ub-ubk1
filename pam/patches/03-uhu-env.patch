@@ -1,6 +1,6 @@
-diff -Naurdp a/modules/pam_env/pam_env.c b/modules/pam_env/pam_env.c
---- a/modules/pam_env/pam_env.c	2012-08-15 13:08:43.000000000 +0200
-+++ b/modules/pam_env/pam_env.c	2013-02-09 12:01:33.402099782 +0100
+diff -Naur Linux-PAM-1.2.1-orig/modules/pam_env/pam_env.c Linux-PAM-1.2.1/modules/pam_env/pam_env.c
+--- Linux-PAM-1.2.1-orig/modules/pam_env/pam_env.c	2015-03-25 12:54:15.000000000 +0100
++++ Linux-PAM-1.2.1/modules/pam_env/pam_env.c	2016-02-12 20:12:24.828953315 +0100
 @@ -6,7 +6,7 @@
   * template for this file (via pam_mail)
   */
@@ -20,7 +20,7 @@ diff -Naurdp a/modules/pam_env/pam_env.c b/modules/pam_env/pam_env.c
  
  /*
   * here, we make a definition for the externally accessible function
-@@ -106,18 +109,19 @@ _pam_parse (const pam_handle_t *pamh, in
+@@ -106,18 +109,19 @@
  	    *conffile = 9+*argv;
  	    D(("new Configuration File: %s", *conffile));
  	  }
@@ -43,7 +43,7 @@ diff -Naurdp a/modules/pam_env/pam_env.c b/modules/pam_env/pam_env.c
  	  } else {
  	    *user_envfile = 13+*argv;
  	    D(("new User Env File: %s", *user_envfile));
-@@ -194,15 +198,46 @@ static int
+@@ -194,16 +198,46 @@
  _parse_env_file(pam_handle_t *pamh, int ctrl, const char *file)
  {
      int retval=PAM_SUCCESS, i, t;
@@ -56,15 +56,16 @@ diff -Naurdp a/modules/pam_env/pam_env.c b/modules/pam_env/pam_env.c
  
 -    D(("Env file name is: %s", file));
 +    D(("Env dir name is: %s", file));
-+    
 +    n = scandir(file, &namelist, 0, alphasort);
  
 -    if ((conf = fopen(file,"r")) == NULL) {
+-      pam_syslog(pamh, LOG_ERR, "Unable to open env file: %s: %m", file);
+-      return PAM_IGNORE;
 +    if (n<0) {
 +	D(("Unable to open env dir: %s", file));
 +	return PAM_ABORT;
-+    }
-+
+     }
+ 
 +    real_cwd = open(".", O_RDONLY);
 +    chdir(file);
 +    do {
@@ -86,14 +87,14 @@ diff -Naurdp a/modules/pam_env/pam_env.c b/modules/pam_env/pam_env.c
 +    }
 +
 +    if ((conf = fopen(namelist[x]->d_name,"r")) == NULL) {
-       pam_syslog(pamh, LOG_ERR, "Unable to open env file: %s: %m", file);
--      return PAM_IGNORE;
-     }
++      pam_syslog(pamh, LOG_ERR, "Unable to open env file: %s: %m", file);
++     }
 +    free(namelist[x]);
- 
++
      while (_assemble_line(conf, buffer, BUF_SIZE) > 0) {
  	D(("Read line: %s", buffer));
-@@ -275,6 +310,12 @@ _parse_env_file(pam_handle_t *pamh, int
+ 	key = buffer;
+@@ -275,6 +309,12 @@
  
      (void) fclose(conf);
  
@@ -106,7 +107,7 @@ diff -Naurdp a/modules/pam_env/pam_env.c b/modules/pam_env/pam_env.c
      /* tidy up */
      D(("Exit."));
      return retval;
-@@ -686,6 +727,36 @@ static const char * _pam_get_item_byname
+@@ -686,6 +726,36 @@
      item = PAM_RUSER;
    } else if (strcmp(name, "PAM_RHOST") == 0) {
      item = PAM_RHOST;
@@ -143,9 +144,9 @@ diff -Naurdp a/modules/pam_env/pam_env.c b/modules/pam_env/pam_env.c
    } else {
      D(("Unknown PAM_ITEM: <%s>", name));
      pam_syslog (pamh, LOG_ERR, "Unknown PAM_ITEM: <%s>", name);
-diff -Naurdp a/modules/pam_env/pam_env.conf b/modules/pam_env/pam_env.conf
---- a/modules/pam_env/pam_env.conf	2012-08-15 13:08:43.000000000 +0200
-+++ b/modules/pam_env/pam_env.conf	2013-02-09 11:53:22.178121682 +0100
+diff -Naur Linux-PAM-1.2.1-orig/modules/pam_env/pam_env.conf Linux-PAM-1.2.1/modules/pam_env/pam_env.conf
+--- Linux-PAM-1.2.1-orig/modules/pam_env/pam_env.conf	2015-03-24 13:02:32.000000000 +0100
++++ Linux-PAM-1.2.1/modules/pam_env/pam_env.conf	2016-02-12 20:14:33.924956502 +0100
 @@ -45,6 +45,10 @@
  # For example, HOME is used below several times, but
  # many PAM applications don't make it available by the time you need it.
@@ -167,19 +168,19 @@ diff -Naurdp a/modules/pam_env/pam_env.conf b/modules/pam_env/pam_env.conf
 +LOGNAME		OVERRIDE=@{PAM_USER}
 +HOME		OVERRIDE=@{HOME}
 +MAIL		OVERRIDE=/var/mail/@{PAM_USER}
-diff -Naurdp a/modules/pam_env/README b/modules/pam_env/README
---- a/modules/pam_env/README	2012-08-17 11:34:40.000000000 +0200
-+++ b/modules/pam_env/README	2013-02-09 11:53:22.178121682 +0100
-@@ -31,14 +31,14 @@ debug
+diff -Naur Linux-PAM-1.2.1-orig/modules/pam_env/README Linux-PAM-1.2.1/modules/pam_env/README
+--- Linux-PAM-1.2.1-orig/modules/pam_env/README	2015-06-22 14:20:05.000000000 +0200
++++ Linux-PAM-1.2.1/modules/pam_env/README	2016-02-12 20:16:57.644960049 +0100
+@@ -35,7 +35,7 @@
  
      A lot of debug information is printed with syslog(3).
  
 -envfile=/path/to/environment
 +envdir=/path/to/environment
  
--    Indicate an alternative environment file to override the default. This can
-+    Indicate an alternative environment directory to override the default. This can
-     be useful when different services need different environments.
+     Indicate an alternative environment file to override the default. The
+     syntax are simple KEY=VAL pairs on separate lines. The export instruction
+@@ -44,7 +44,7 @@
  
  readenv=0|1
  

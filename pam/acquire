@@ -4,10 +4,10 @@ Linux-PAM-${UB_VERSION}.tar.gz Linux-PAM-${UB_VERSION}/
 	http://linux-pam.org/library/
 
 pam-1.1.6-3.fc18.1.src.rpm pam-redhat-0.99.10-1.tar.bz2 pam-redhat-0.99.10-1/pam_chroot/ :modules/
-	ftp://mirrors3.kernel.org/fedora/releases/18/Fedora/source/SRPMS/p/
+	http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/18/Fedora/source/SRPMS/p/
 
 pam-1.1.6-3.fc18.1.src.rpm pam-redhat-0.99.10-1.tar.bz2 pam-redhat-0.99.10-1/pam_console/ :modules/
-	ftp://mirrors3.kernel.org/fedora/releases/18/Fedora/source/SRPMS/p/
+	http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/18/Fedora/source/SRPMS/p/
 
 #pam-pld-1.1.2-1.tar.gz pam-pld-0.80.1/modules/pam_utmp/ :modules/
 #	ftp://ftp.pld-linux.org/software/pam/
