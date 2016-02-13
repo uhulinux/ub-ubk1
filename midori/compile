@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
-./waf --prefix=/usr configure --disable-zeitgeist
-./waf build
+ub_compile \
+	-DUSE_ZEITGEIST=OFF

@@ -1,14 +1,10 @@
+cmake
 gtk2-dev
 intltool
-libidn-dev
 libnotify-dev
 librsvg-dev
-libunique1-dev
+libsoup-gnome-dev
 libxml2-dev
-libxscrnsaver-dev
-openssl-dev
-python-dev
-python-docutils
 sqlite-dev
 vala
 webkitgtk2-dev
