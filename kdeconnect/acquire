@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-kdeconnect-kde-${UB_VERSION}.tar.xz kdeconnect-kde-${UB_VERSION}/
-	http://download.kde.org/unstable/kdeconnect/${UB_VERSION_HEAD3}/src/

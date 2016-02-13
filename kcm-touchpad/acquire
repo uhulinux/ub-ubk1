@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-kcm-touchpad-v${UB_VERSION}.tar.gz kcm-touchpad-v${UB_VERSION}/
-	git://anongit.kde.org/kcm-touchpad@tag:v${UB_VERSION}

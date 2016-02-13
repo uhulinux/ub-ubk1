@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-kwebkitpart-${UB_VERSION}.tar.gz kwebkitpart-v${UB_VERSION}/
-	git://anongit.kde.org/kwebkitpart.git@tag:v${UB_VERSION}

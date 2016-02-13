@@ -1,2 +1,0 @@
-MAJORMINOR=$(urllist "http://download.kde.org/unstable/kdeconnect/" | splitver '([0-9]+\.[0-9]+(.\[0-9]+)?)' | sort -V | tail -n 1)
-urllist "http://download.kde.org/unstable/kdeconnect/${MAJORMINOR}/src/" | parsever | sort -V | tail -n 1
