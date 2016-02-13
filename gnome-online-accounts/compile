@@ -8,4 +8,7 @@ ub_compile \
 	--enable-exchange \
 	--enable-kerberos \
 	--enable-media-server \
-	--enable-lastfm
+	--enable-lastfm \
+	--enable-foursquare \
+	--enable-telepathy
+
