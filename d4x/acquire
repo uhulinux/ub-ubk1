@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-d4x-${UB_VERSION}.tar.bz2 d4x-2.5.7.1/
-	http://www.d4x.net/
+d4x-${UB_VERSION}.tar.bz2 d4x-${UB_VERSION}/
+	http://pkgs.fedoraproject.org/repo/pkgs/d4x/d4x-2.5.7.1.tar.bz2/68d6336c3749a7caabb0f5a5f84f4102/

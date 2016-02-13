@@ -1,6 +1,6 @@
-diff -Naur d4x-2.5.7.1.orig/share/nt.desktop d4x-2.5.7.1/share/nt.desktop
---- d4x-2.5.7.1.orig/share/nt.desktop	2005-08-31 15:32:13.000000000 +0200
-+++ d4x-2.5.7.1/share/nt.desktop	2006-06-15 14:20:31.000000000 +0200
+diff -Naur orig/share/nt.desktop patched/share/nt.desktop
+--- orig/share/nt.desktop	2005-08-31 15:32:13.000000000 +0200
++++ patched/share/nt.desktop	2016-02-13 18:51:19.151325400 +0100
 @@ -13,9 +13,11 @@
  Comment[de]=Programm zum Downloaden von Dateien
  Comment[pl]=Program do pobierania plików z Internetu.
@@ -13,4 +13,5 @@ diff -Naur d4x-2.5.7.1.orig/share/nt.desktop d4x-2.5.7.1/share/nt.desktop
  Terminal=false
  Type=Application
  Encoding=UTF-8
-+Categories=Application;Network;X-UHU-Menu/Internet/Downloaders;
++Categories=Network;FileTransfer;
+\ No newline at end of file
