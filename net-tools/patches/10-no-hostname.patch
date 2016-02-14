@@ -1,0 +1,55 @@
+diff -Naur orig/Makefile patched/Makefile
+--- orig/Makefile	2001-04-15 16:34:31.000000000 +0200
++++ patched/Makefile	2016-02-14 23:30:25.560955744 +0100
+@@ -76,7 +76,7 @@
+ NET_LIB_PATH = lib
+ NET_LIB_NAME = net-tools
+ 
+-PROGS	:= ifconfig hostname arp netstat route rarp slattach plipconfig nameif
++PROGS	:= ifconfig arp netstat route rarp slattach plipconfig nameif
+ 
+ -include config.make
+ ifeq ($(HAVE_IP_TOOLS),1)
+@@ -224,7 +224,6 @@
+ 	install -m 0755 -d ${BASEDIR}/sbin
+ 	install -m 0755 -d ${BASEDIR}/bin
+ 	install -m 0755 arp        ${BASEDIR}/sbin
+-	install -m 0755 hostname   ${BASEDIR}/bin
+ 	install -m 0755 ifconfig   ${BASEDIR}/sbin
+ 	install -m 0755 nameif     ${BASEDIR}/sbin
+ 	install -m 0755 netstat    ${BASEDIR}/bin
+@@ -239,21 +238,11 @@
+ ifeq ($(HAVE_MII),1)
+ 	install -m 0755 mii-tool   $(BASEDIR)/sbin
+ endif
+-	ln -fs hostname $(BASEDIR)/bin/dnsdomainname
+-	ln -fs hostname $(BASEDIR)/bin/ypdomainname
+-	ln -fs hostname $(BASEDIR)/bin/nisdomainname
+-	ln -fs hostname $(BASEDIR)/bin/domainname
+-ifeq ($(HAVE_AFDECnet),1)
+-	ln -fs hostname $(BASEDIR)/bin/nodename
+-endif
+ 
+ savebin:
+ 	@for i in ${BASEDIR}/sbin/arp ${BASEDIR}/sbin/ifconfig \
+                  ${BASEDIR}/bin/netstat \
+-		 ${BASEDIR}/sbin/rarp ${BASEDIR}/sbin/route \
+-		 ${BASEDIR}/bin/hostname ${BASEDIR}/bin/ypdomainname \
+-                 ${BASEDIR}/bin/dnsdomainname ${BASEDIR}/bin/nisdomainname \
+-		 ${BASEDIR}/bin/domainname ; do \
++		 ${BASEDIR}/sbin/rarp ${BASEDIR}/sbin/route ; do \
+ 		 [ -f $$i ] && cp -f $$i $$i.old ; done ; echo Saved.
+ 
+ installdata:
+diff -Naur orig/man/Makefile patched/man/Makefile
+--- orig/man/Makefile	2000-10-28 12:59:42.000000000 +0200
++++ patched/man/Makefile	2016-02-14 23:25:48.615582446 +0100
+@@ -46,7 +46,7 @@
+ 		LANGS=$(LANGS) ; \
+ 		for LANG in $$LANGS; do \
+ 			cd $$LANG; \
+-			for SECTION in 1 5 8; do \
++			for SECTION in 5 8; do \
+ 				if [ "$$LANG" = "en_US" ] ; then \
+ 					MAN_DIR=${BASEDIR}${mandir}/man$$SECTION; \
+ 				else \

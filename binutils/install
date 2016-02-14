@@ -12,7 +12,8 @@ make \
 	infodir="$UB_INSTALLDIR"/usr/share/info \
 	tooldir="$UB_INSTALLDIR"/usr \
 	install-info
-rm "$UB_INSTALLDIR"/usr/lib/libiberty.a
+
+cp -f include/plugin-api.h "$UB_INSTALLDIR"/usr/include/
 
 ## create a "host" named link like in gcc
 ln -sf ar "$UB_INSTALLDIR"/usr/bin/i586-uhu-linux-ar

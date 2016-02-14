@@ -1,16 +1,9 @@
 #!/bin/sh -eux
 
-# ouch!
-cd po
-msgfmt -o hu.gmo hu.po
-cd ..
+# groups, su: shadow
+# kill, uptime: procps
 
-sed -e 's/|| @PRI_MACROS_BROKEN@//g' -i lib/inttypes.in.h
+ub_compile \
+	--enable-install-program=hostname \
+	--enable-no-install-program=arch,coreutils,groups,kill,su,uptime
 
-autoreconf -fi
-ub_configure \
-	--enable-pam
-ub_make \
-	su_LDFLAGS="-lpam -lpam_misc"
-
-#make -C src usleep

@@ -2,16 +2,6 @@
 
 ub_install
 
-#for cmd in su usleep; do
-#	cp src/$cmd "$UB_INSTALLDIR"/bin/
-#done
-
-#chmod 4755 "$UB_INSTALLDIR"/bin/su
-
-for cmd in setuidgid; do
-	cp src/$cmd "$UB_INSTALLDIR"/sbin/
-done
-
 for cmd in [ basename cat chgrp chmod chown cp cut date dd df dir dircolors \
   du echo env false install link ln ls mkdir mkfifo mknod mv nice pwd rm rmdir \
   shred sleep sort stat stty sync test touch true uname unlink vdir; do
@@ -23,18 +13,6 @@ done
 
 mv "$UB_INSTALLDIR"/usr/bin/chroot "$UB_INSTALLDIR"/sbin/
 mv "$UB_INSTALLDIR"/usr/share/man/man1/chroot.1 "$UB_INSTALLDIR"/usr/share/man/man8/chroot.8
-
-# shadow
-rm "$UB_INSTALLDIR"/usr/bin/groups
-rm "$UB_INSTALLDIR"/usr/share/man/man1/groups.1
-
-# procps
-rm "$UB_INSTALLDIR"/usr/bin/kill
-rm "$UB_INSTALLDIR"/usr/share/man/man1/kill.1
-
-# procps
-rm "$UB_INSTALLDIR"/usr/bin/uptime
-rm "$UB_INSTALLDIR"/usr/share/man/man1/uptime.1
 
 # usleep symlink
 ln -s sleep "$UB_INSTALLDIR"/bin/usleep
