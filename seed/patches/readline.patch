@@ -1,0 +1,26 @@
+From cf772e792fd64f70ee2c714e0b5eaf527ce35467 Mon Sep 17 00:00:00 2001
+From: Alan Knowles <alan@roojs.com>
+Date: Tue, 25 Mar 2014 18:14:03 +0800
+Subject: Fix Bug 725602 - typedef int Function () is removed in readline 6.3
+
+as per readline documents use rl_command_func_t
+---
+ modules/readline/seed-readline.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/readline/seed-readline.c b/modules/readline/seed-readline.c
+index cd5ecfe..49d1faa 100644
+--- a/modules/readline/seed-readline.c
++++ b/modules/readline/seed-readline.c
+@@ -77,7 +77,7 @@ seed_readline_bind(SeedContext ctx,
+   key = seed_value_to_string(ctx, arguments[0], exception);
+   c = seed_make_rl_closure((SeedObject) arguments[1]);
+ 
+-  rl_bind_key(*key, (Function *) c);
++  rl_bind_key(*key, (rl_command_func_t *) c);
+ 
+   g_free(key);
+ 
+-- 
+cgit v0.12
+
