@@ -1,1 +1,0 @@
-urllist http://xcb.freedesktop.org/dist/ | splitver '^xcb-util-cursor-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
