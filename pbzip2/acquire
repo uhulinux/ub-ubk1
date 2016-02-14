@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 pbzip2-${UB_VERSION}.tar.gz pbzip2-${UB_VERSION}/
-	http://compression.ca/pbzip2/
-
+	https://launchpad.net/pbzip2/${UB_VERSION_HEAD2}/${UB_VERSION}/+download/

@@ -1,0 +1,12 @@
+diff -urN pbzip2-1.0.5.orig/Makefile pbzip2-1.0.5/Makefile
+--- pbzip2-1.0.5.orig/Makefile	2009-01-08 22:08:17.000000000 +0100
++++ pbzip2-1.0.5/Makefile	2010-02-24 22:19:47.303427139 +0100
+@@ -15,7 +15,7 @@
+ #CFLAGS += -DPBZIP_NO_LOADAVG
+ 
+ # Where you want pbzip2 installed when you do 'make install'
+-PREFIX = /usr
++PREFIX = $(DESTDIR)/usr
+ 
+ all: pbzip2
+ 
