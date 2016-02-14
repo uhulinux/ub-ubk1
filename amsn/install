@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-# no need for Python this way
-chmod -x lang/missing.py
-
-ub_install
