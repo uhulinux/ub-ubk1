@@ -10,7 +10,6 @@
     --enable-pic \
 	--enable-vp8 \
 	--enable-vp9 \
-	--enable-vp10 \
     --disable-install-docs \
     --disable-install-srcs
 ub_make

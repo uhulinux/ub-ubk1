@@ -1,11 +1,9 @@
 graphviz-doc
 graphviz-gui
-graphviz-java
 graphviz-lua
 graphviz-ocaml
 graphviz-perl
 graphviz-python
 graphviz-ruby
-graphviz-sharp
 graphviz-tcl
 graphviz-dev

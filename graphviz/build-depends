@@ -7,14 +7,12 @@ glitz-dev
 glu-dev
 gtk2-dev
 gtkglext-dev
-java-jdk
 libgd-dev
 libjpeg-dev
 librsvg-dev
 libxaw-dev
 libxt-dev
 lua-dev
-mono-dev
 ocaml
 pango-dev
 python-dev
