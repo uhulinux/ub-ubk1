@@ -1,0 +1,16 @@
+diff -Naur avogadro-1.0.0-orig//avogadro/src/avogadro.desktop avogadro-1.0.0//avogadro/src/avogadro.desktop
+--- avogadro-1.0.0-orig//avogadro/src/avogadro.desktop	2009-10-23 21:06:31.000000000 +0200
++++ avogadro-1.0.0//avogadro/src/avogadro.desktop	2010-04-20 11:38:46.000000000 +0200
+@@ -2,10 +2,11 @@
+ Version=1.0
+ Name=Avogadro
+ Comment=Advanced molecular editor
++Comment[hu]=Molekula szerkesztő
+ Exec=avogadro %f
+ Icon=avogadro-icon
+ Terminal=false
+ Type=Application
+-Categories=Qt;Science;Chemistry;Physics;Education;
++Categories=Qt;Science;Chemistry;Physics;Education;X-UHU-Menu/Edutainment/Science;
+ StartupNotify=true
+ MimeType=chemical/x-cif;chemical/x-cml;chemical/x-daylight-smiles;chemical/x-gamess-input;chemical/x-gamess-output;chemical/x-gaussian-log;chemical/x-mopac-out;chemical/x-pdb;chemical/x-xyz;chemical/x-gaussian-checkpoint;chemical/x-gaussian-cube;chemical/x-qchem-output;
