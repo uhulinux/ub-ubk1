@@ -2,6 +2,8 @@ bogofilter
 clutter-gtk-dev
 db4-dev
 evolution-data-server-dev
+geoclue-dev
+geocode-glib-dev
 gnome-desktop-dev
 gnome-doc-utils
 gnome-online-accounts-dev
