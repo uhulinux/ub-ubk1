@@ -1,10 +1,10 @@
-diff -Naur orig/dpkg-deb/build.c patched/dpkg-deb/build.c
---- orig/dpkg-deb/build.c	2015-09-26 16:56:00.277219323 +0200
-+++ patched/dpkg-deb/build.c	2015-09-26 16:57:08.833559276 +0200
-@@ -504,7 +504,7 @@
-       ohshite(_("failed to chdir to '%.255s'"), dir);
-     if (chdir(BUILDCONTROLDIR))
-       ohshite(_("failed to chdir to '%.255s'"), ".../DEBIAN");
+diff -Naur dpkg-1.18.4-orig/dpkg-deb/build.c dpkg-1.18.4/dpkg-deb/build.c
+--- dpkg-1.18.4-orig/dpkg-deb/build.c	2015-12-12 21:49:37.000000000 +0100
++++ dpkg-1.18.4/dpkg-deb/build.c	2016-02-14 16:40:54.370648450 +0100
+@@ -554,7 +554,7 @@
+     m_dup2(p1[1],1); close(p1[0]); close(p1[1]);
+     if (chdir(ctrldir))
+       ohshite(_("failed to chdir to '%.255s'"), ctrldir);
 -    execlp(TAR, "tar", "-cf", "-", "--format=gnu", ".", NULL);
 +    execlp(TAR, "tar", "-cf", "-", "--format=gnu", "--owner=0", "--group=0", ".", NULL);
      ohshite(_("unable to execute %s (%s)"), "tar -cf", TAR);
