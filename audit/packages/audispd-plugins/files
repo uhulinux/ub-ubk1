@@ -1,7 +1,4 @@
-	/etc/audisp/audisp-remote.conf
-	/etc/audisp/plugins.d/au-remote.conf
-	/etc/audisp/plugins.d/audispd-zos-remote.conf
-	/etc/audisp/zos-remote.conf
+	/etc/audisp
 	/sbin/audisp-remote
 	/sbin/audispd-zos-remote
 	/usr/share/man/man5/audisp-remote.conf.5

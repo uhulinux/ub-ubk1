@@ -1,11 +1,13 @@
 #!/bin/sh -eux
 
-ub_compile \
+ub_configure \
 	--enable-cups \
 	--with-drivers=ALL \
 	--with-ijs \
 	--with-fontpath="/usr/share/fonts/ghostscript:/usr/share/fonts/Type1:/usr/share/fonts/TTF" \
 	--with-system-libtiff
+
+ub_make so
 
 cd ijs
 autoreconf -ivf
