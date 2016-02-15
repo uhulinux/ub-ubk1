@@ -1,16 +1,16 @@
 #!/usr/bin/env dl
 
 sgml-common-${UB_VERSION}-37.fc18.src.rpm sgml-common-${UB_VERSION}.tgz sgml-common-${UB_VERSION}/
-	ftp://ftp.fsn.hu/pub/linux/distributions/fedora/linux/development/18/source/SRPMS/s/
+	ftp://ftp.linux.ro/fedora/linux/releases/18/Fedora/source/SRPMS/s/
 
 sgml-common-${UB_VERSION}-37.fc18.src.rpm xml.dcl
-	ftp://ftp.fsn.hu/pub/linux/distributions/fedora/linux/development/18/source/SRPMS/s/
+	ftp://ftp.linux.ro/fedora/linux/releases/18/Fedora/source/SRPMS/s/
 
 sgml-common-${UB_VERSION}-37.fc18.src.rpm xml.soc
-	ftp://ftp.fsn.hu/pub/linux/distributions/fedora/linux/development/18/source/SRPMS/s/
+	ftp://ftp.linux.ro/fedora/linux/releases/18/Fedora/source/SRPMS/s/
 
 sgml-common-${UB_VERSION}-37.fc18.src.rpm html.dcl
-	ftp://ftp.fsn.hu/pub/linux/distributions/fedora/linux/development/18/source/SRPMS/s/
+	ftp://ftp.linux.ro/fedora/linux/releases/18/Fedora/source/SRPMS/s/
 
 sgml-common-${UB_VERSION}-37.fc18.src.rpm html.soc
-	ftp://ftp.fsn.hu/pub/linux/distributions/fedora/linux/development/18/source/SRPMS/s/
+	ftp://ftp.linux.ro/fedora/linux/releases/18/Fedora/source/SRPMS/s/
