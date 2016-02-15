@@ -1,3 +1,5 @@
 #!/bin/sh -eux
 
-scons
+#scons
+autoreconf -vif
+ub_compile

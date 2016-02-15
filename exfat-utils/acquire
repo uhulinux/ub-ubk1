@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-exfat-utils-${UB_VERSION}.tar.gz exfat-utils-${UB_VERSION}/
-	https://docs.google.com/uc?export=download&id=0B7CLI-REKbE3bnR2WHowZXNtUVU
-	http://pkgbuild.com/~giovanni/exfat/
+v${UB_VERSION}.tar.gz exfat-${UB_VERSION}/
+	https://github.com/relan/exfat/archive/
