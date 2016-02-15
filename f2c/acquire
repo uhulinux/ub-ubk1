@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-f2c.tar.gz f2c/
-	https://computation.llnl.gov/casc/Overture/henshaw/software/
+f2c-${UB_VERSION}.tar.gz f2c-a56529d/
+	git://github.com/juanjosegarciaripoll/f2c.git@a56529d
