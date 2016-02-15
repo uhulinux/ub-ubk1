@@ -4,7 +4,6 @@ cairo-dev
 cmake
 cups-dev
 gnutls-dev
-huhyphn
 lcms2-dev
 libart-lgpl-dev
 libjpeg-dev
