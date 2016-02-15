@@ -1,8 +1,8 @@
-diff -urN docbook-xsl-1.78.1.orig/Makefile docbook-xsl-1.78.1/Makefile
---- docbook-xsl-1.78.1.orig/Makefile	2012-01-09 15:08:19.000000000 +0100
-+++ docbook-xsl-1.78.1/Makefile	2014-02-04 16:42:57.915715828 +0100
-@@ -1,89 +1,54 @@
--# $Id: Makefile.tests 8481 2009-07-13 20:18:41Z abdelazer $
+diff -Naur docbook-xsl-1.79.1-orig/Makefile docbook-xsl-1.79.1/Makefile
+--- docbook-xsl-1.79.1-orig/Makefile	2014-02-24 21:04:27.000000000 +0100
++++ docbook-xsl-1.79.1/Makefile	2016-02-15 20:47:15.714134725 +0100
+@@ -1,93 +1,53 @@
+-# $Id: Makefile.tests 9909 2014-02-24 19:40:27Z bobstayton $
 -#
 -# This makefile does a "smoketest" of stylesheets for various
 -# output formats in the DocBook XSL Stylesheets release package.
@@ -67,13 +67,17 @@ diff -urN docbook-xsl-1.78.1.orig/Makefile docbook-xsl-1.78.1/Makefile
 -
 -smoketest-chunk:
 -	for stylesheet in $(MULTIFILE_STYLES) ; do \
+-	echo "$(XSLT) $(TESTFILE) $$stylesheet manifest.in.base.dir=1 base.dir=$(TMP_OUTPUT_DIR)" ; \
 -	$(XSLT) $(TESTFILE) $$stylesheet manifest.in.base.dir=1 base.dir=$(TMP_OUTPUT_DIR) ; \
+-	echo "$(XSLT) $(TESTFILE_NS) $$stylesheet manifest.in.base.dir=1 base.dir=$(TMP_OUTPUT_DIR)" ; \
 -	$(XSLT) $(TESTFILE_NS) $$stylesheet manifest.in.base.dir=1 base.dir=$(TMP_OUTPUT_DIR) ; \
 -	done;
 -
 -smoketest-chunk-profile:
 -	for stylesheet in $(MULTIFILE_PROFILE_STYLES) ; do \
+-	echo "$(XSLT) $(TESTFILE) $$stylesheet manifest.in.base.dir=1 base.dir=$(TMP_OUTPUT_DIR)" ; \
 -	$(XSLT) $(TESTFILE) $$stylesheet manifest.in.base.dir=1 base.dir=$(TMP_OUTPUT_DIR) ; \
+-	echo "$(XSLT) $(TESTFILE_NS) $$stylesheet manifest.in.base.dir=1 base.dir=$(TMP_OUTPUT_DIR)" ; \
 -	$(XSLT) $(TESTFILE_NS) $$stylesheet manifest.in.base.dir=1 base.dir=$(TMP_OUTPUT_DIR) ; \
 -	done;
 -
@@ -89,12 +93,12 @@ diff -urN docbook-xsl-1.78.1.orig/Makefile docbook-xsl-1.78.1/Makefile
  
 -smoketest-two-profile:
 -	$(XSLT) $(TESTFILE_NS) $(TWO_PROFILE_STYLE) > /dev/null ; 
-+all: install
++all: instal
  
 -smoketest-clean:
 -	$(RM) -r $(TMP_OUTPUT_DIR)
 +install: install-xsl install-img install-extensions install-misc install-epub
-+
+ 
 +install-xsl:
 +	mkdir -p $(DESTDIR)/{common,eclipse,fo,html,htmlhelp/doc,javahelp,lib,template,xhtml,xhtml-1_1,manpages,profiling,highlighting,roundtrip,website}
 +	cp common/*.dtd $(DESTDIR)/common
@@ -141,4 +145,3 @@ diff -urN docbook-xsl-1.78.1.orig/Makefile docbook-xsl-1.78.1/Makefile
 +install-misc:
 +	cp VERSION $(DESTDIR)
 +	cp VERSION.xsl $(DESTDIR)
- 
