@@ -1,3 +1,3 @@
-cmake
+imagemagick
 libx11-dev
-sdl-dev
+sdl2-dev
