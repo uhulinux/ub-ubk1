@@ -1,1 +1,1 @@
-urllist http://code.entropywave.com/download/orc/ | splitver '^orc-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+urllist http://gstreamer.freedesktop.org/data/src/orc/ | splitver '^orc-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

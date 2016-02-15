@@ -1,1 +1,1 @@
-urllist http://diracvideo.org/download/schroedinger/ | parsever | sort -V | tail -n 1
+urllist https://launchpad.net/schroedinger/trunk/ | splitver '^([0-9.]+)$' | sort -V | tail -n 1
