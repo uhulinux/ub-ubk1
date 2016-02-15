@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 enscript-${UB_VERSION}.tar.gz enscript-${UB_VERSION}/
-	http://www.iki.fi/mtr/genscript/
+	ftp://ftp.gnu.org/pub/gnu/enscript/

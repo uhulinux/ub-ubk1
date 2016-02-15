@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
-ethtool-${UB_VERSION}.tar.gz ethtool-${UB_VERSION}/
-	http://download.sourceforge.net/gkernel/
+ethtool-${UB_VERSION}.tar.xz ethtool-${UB_VERSION}/
+	https://www.kernel.org/pub/software/network/ethtool/
 
