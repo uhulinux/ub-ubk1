@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 flickrnet-${UB_VERSION}-8.fc15.src.rpm FlickrNet${UB_VERSION}-Src-48055.zip .
-	http://mirror.neu.edu.cn/fedora/releases/15/Everything/source/SRPMS/
+	ftp://ftp.cuhk.hk/.2/fedora-archive/fedora/linux/releases/16/Everything/source/SRPMS/
