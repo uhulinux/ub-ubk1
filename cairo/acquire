@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 cairo-${UB_VERSION}.tar.xz cairo-${UB_VERSION}/
-	http://www.cairographics.org/releases/
+	http://cairographics.org/releases/
