@@ -1,0 +1,2 @@
+urllist http://tw.archive.ubuntu.com/ubuntu/pool/main/t/ttf-arphic-uming/ \
+  | splitver '^ttf-arphic-uming_([0-9.]+).orig.tar.gz$' | sort -V | tail -n 1

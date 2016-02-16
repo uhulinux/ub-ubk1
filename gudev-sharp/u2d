@@ -1,0 +1,1 @@
+urllist https://github.com/mono/gudev-sharp/releases/ | splitver '^GUDEV_SHARP_([0-9_]+).tar.gz$' | sort -V | tail -n 1 | sed s/_/\./
