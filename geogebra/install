@@ -1,5 +1,5 @@
 #!/bin/sh -eux
 
-cd "$UB_SRCDIR"/sources
-install -d -m755 "$UB_INSTALLDIR"/usr/share/java/geogebra
-install -D -m644 *.jar "$UB_INSTALLDIR"/usr/share/java/geogebra
+mkdir -p ${UB_INSTALLDIR}/usr/share/{geogebra,pixmaps}
+cp geogebra/* -t ${UB_INSTALLDIR}/usr/share/geogebra/
+convert geogebra-logo.svg ${UB_INSTALLDIR}/usr/share/pixmaps/geogebra.png
