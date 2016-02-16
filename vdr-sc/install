@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-make \
-  DESTDIR=$UB_INSTALLDIR \
-  INCDIR=/usr/include/vdr \
-  install

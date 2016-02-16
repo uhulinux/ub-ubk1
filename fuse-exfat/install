@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-scons install DESTDIR="${UB_INSTALLDIR}/sbin"
-
-install -m 644 fuse/mount.exfat-fuse.8 "${UB_INSTALLDIR}/usr/share/man/man8/"

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-sasc-${UB_VERSION}.tar.gz sasc-stable/
-      git://github.com/bas-t/sasc.git@stable
