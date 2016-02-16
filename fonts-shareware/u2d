@@ -1,0 +1,1 @@
+urllist http://www.ibiblio.org/pub/linux/X11/fonts  | splitver '^sharefonts-([0-9.]+).tar.gz$' | sort -V | tail -n 1

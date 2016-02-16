@@ -1,0 +1,1 @@
+urllist http://www.cairographics.org/snapshots/ | splitver '^glitz-([0-9.]+).tar.gz$' | sort -V | tail -n 1

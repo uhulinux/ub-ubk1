@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 freefonts-${UB_VERSION}.tar.gz freefont/
-	ftp://ftp.gimp.org/pub/gimp/fonts/
-	ftp://ftp.ibiblio.org/pub/Linux/X11/fonts/
+	http://www.ibiblio.org/pub/linux/X11/fonts/
