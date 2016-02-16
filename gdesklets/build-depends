@@ -1,5 +1,5 @@
-gnome-python
 gnome-python-dev
+intltool
 libgsf-dev
 libgtop2-dev
 librsvg-dev

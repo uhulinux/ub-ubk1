@@ -1,0 +1,1 @@
+urllist https://launchpad.net/gdesklets/  | splitver '^gdesklets-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
