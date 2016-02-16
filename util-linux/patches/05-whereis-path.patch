@@ -1,7 +1,7 @@
-diff -Naurdp util-linux-2.24/misc-utils/whereis.1 util-linux-2.24-whereis-path/misc-utils/whereis.1
---- util-linux-2.24/misc-utils/whereis.1	2013-09-18 15:50:12.000000000 +0200
-+++ util-linux-2.24-whereis-path/misc-utils/whereis.1	2014-01-14 15:07:21.817718053 +0100
-@@ -107,13 +107,13 @@ To find all files in
+diff -Naur util-linux-2.27.1-orig/misc-utils/whereis.1 util-linux-2.27.1/misc-utils/whereis.1
+--- util-linux-2.27.1-orig/misc-utils/whereis.1	2015-10-06 08:59:51.587589616 +0200
++++ util-linux-2.27.1/misc-utils/whereis.1	2016-02-16 16:37:35.165714611 +0100
+@@ -130,13 +130,13 @@
  .B /usr/\:bin
  which are not documented
  in
@@ -10,17 +10,17 @@ diff -Naurdp util-linux-2.24/misc-utils/whereis.1 util-linux-2.24-whereis-path/m
  or have no source in
  .BR /usr/\:src :
  .IP
- .B $ cd /usr/bin
+ .B cd /usr/bin
  .br
--.B $ whereis \-u \-ms \-M /usr/man/man1 \-S /usr/src \-f *
-+.B $ whereis \-u \-ms \-M /usr/share/man/man1 \-S /usr/src \-f *
+-.B whereis \-u \-ms \-M /usr/man/man1 \-S /usr/src \-f *
++.B whereis \-u \-ms \-M /usr/share/man/man1 \-S /usr/src \-f *
  .SH "FILE SEARCH PATHS"
  By default
  .B whereis
-diff -Naurdp util-linux-2.24/misc-utils/whereis.c util-linux-2.24-whereis-path/misc-utils/whereis.c
---- util-linux-2.24/misc-utils/whereis.c	2013-09-18 15:50:12.000000000 +0200
-+++ util-linux-2.24-whereis-path/misc-utils/whereis.c	2014-01-14 15:10:05.288981391 +0100
-@@ -81,74 +81,22 @@ struct wh_dirlist {
+diff -Naur util-linux-2.27.1-orig/misc-utils/whereis.c util-linux-2.27.1/misc-utils/whereis.c
+--- util-linux-2.27.1-orig/misc-utils/whereis.c	2015-10-06 08:59:51.587589616 +0200
++++ util-linux-2.27.1/misc-utils/whereis.c	2016-02-16 16:40:16.297714506 +0100
+@@ -96,75 +96,21 @@
  static const char *bindirs[] = {
  	"/usr/bin",
  	"/usr/sbin",
@@ -70,7 +70,7 @@ diff -Naurdp util-linux-2.24/misc-utils/whereis.c util-linux-2.24-whereis-path/m
 -	"/usr/local",
 -	"/usr/libexec",
 -	"/usr/share",
- 
+-
  	"/opt/*/bin",
  	NULL
  };
@@ -82,6 +82,7 @@ diff -Naurdp util-linux-2.24/misc-utils/whereis.c util-linux-2.24-whereis-path/m
 -	"/usr/X11/man/*",
 -	"/usr/TeX/man/*",
 -	"/usr/interviews/man/mann",
+-	"/usr/share/info",
  	NULL
  };
  
