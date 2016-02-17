@@ -1,0 +1,2 @@
+urllist http://www2.aquamaniac.de/sites/download/packages.php?package=01/ | sed s/.*=//g \
+	| splitver '^gwenhywfar-([0-9.]+).tar.gz$' | sort -V | tail -n 1

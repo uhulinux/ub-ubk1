@@ -1,0 +1,12 @@
+diff -Naur orig/src/sio/syncio_tls.c mod/src/sio/syncio_tls.c
+--- orig/src/sio/syncio_tls.c	2014-10-12 15:12:22.000000000 +0200
++++ mod/src/sio/syncio_tls.c	2016-02-17 18:39:19.087720808 +0100
+@@ -671,7 +671,7 @@
+    * completely.
+    * So we only call this function now for GNUTLS < 2.12.0.
+    */
+-  gnutls_transport_set_lowat(xio->session, 0);
++  (xio->session, 0);
+ #endif
+ 
+   xio->prepared=1;
