@@ -1,0 +1,27 @@
+From be90a1827ab6325887f01a71e6e3d1284a667080 Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Thu, 18 Dec 2014 15:57:30 -0500
+Subject: [PATCH] Accept version 1.1
+
+When the current spec version was updated to 1.1, we forgot
+to ensure that we actually accept Version=1.1 in desktop files.
+---
+ src/validate.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/validate.c b/src/validate.c
+index b4b752e..5d36f0f 100644
+--- a/src/validate.c
++++ b/src/validate.c
+@@ -922,6 +922,9 @@ handle_version_key (kf_validator *kf,
+                     const char   *locale_key,
+                     const char   *value)
+ {
++  if (!strcmp (value, "1.1"))
++    return TRUE;
++
+   if (!strcmp (value, "1.0"))
+     return TRUE;
+
+--
+2.1.0

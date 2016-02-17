@@ -10,3 +10,4 @@ libxshmfence-dev
 mtdev-dev
 pango-dev
 poppler-glib-dev
+wayland-protocols
