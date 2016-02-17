@@ -1,13 +1,13 @@
 diff -Naur orig/distro-configs/LibreOfficeUHU.conf patched/distro-configs/LibreOfficeUHU.conf
 --- orig/distro-configs/LibreOfficeUHU.conf	1970-01-01 01:00:00.000000000 +0100
 +++ patched/distro-configs/LibreOfficeUHU.conf	2015-11-15 01:30:53.063469986 +0100
-@@ -0,0 +1,57 @@
+@@ -0,0 +1,55 @@
 +--build=i686-linux
 +--host=i686-linux
-+--prefix=/usr            
-+--sysconfdir=/etc        
-+--localstatedir=/var     
-+--mandir=/usr/share/man  
++--prefix=/usr
++--sysconfdir=/etc
++--localstatedir=/var
++--mandir=/usr/share/man
 +--infodir=/usr/share/info
 +--with-lang=en-GB hu
 +--with-vendor=ubk.hu
@@ -19,7 +19,6 @@ diff -Naur orig/distro-configs/LibreOfficeUHU.conf patched/distro-configs/LibreO
 +--without-java
 +--without-system-npapi-headers
 +--without-system-jars
-+--without-system-altlinuxhyph
 +--without-system-bluez
 +--without-system-clucene
 +--without-system-graphite
@@ -57,5 +56,4 @@ diff -Naur orig/distro-configs/LibreOfficeUHU.conf patched/distro-configs/LibreO
 +--enable-ext-nlpsolver
 +--enable-gio
 +--enable-gtk3
-+--enable-kde4
 +--enable-release-build

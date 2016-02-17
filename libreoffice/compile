@@ -21,8 +21,6 @@ mv *.{gz,zip,bz2,tgz} src/
 # egyébként az autogen.input a preferált (ebben felsorolni az opciókat),
 # csak ne legyenek idézőjelek az opciókban (pl. --prefix="/usr"), attól kiakad!
 
-export QT4DIR=/usr/lib/qt4
-
 # opciók a distro-configs/LibreOfficeUHU.conf-ból
 ./autogen.sh \
 	--with-distro=LibreOfficeUHU

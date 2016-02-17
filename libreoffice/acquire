@@ -14,7 +14,7 @@ libreoffice-translations-${UB_VERSION/~/.}.tar.xz libreoffice-${UB_VERSION/~/.}/
 
 # extra packs
 
-a10aa597411643326e27d7fc128af12d-OOOP-fonts-pack-2.9.0.0.zip 
+a10aa597411643326e27d7fc128af12d-OOOP-fonts-pack-2.9.0.0.zip
 	http://ooo.itc.hu/oxygenoffice/download/libreoffice/
 
 # fonts
@@ -24,7 +24,7 @@ a10aa597411643326e27d7fc128af12d-OOOP-fonts-pack-2.9.0.0.zip
 
 c74b7223abe75949b4af367942d96c7a-crosextrafonts-carlito-20130920.tar.gz
 	http://dev-www.libreoffice.org/src/
-	
+
 35efabc239af896dfb79be7ebdd6e6b9-gentiumbasic-fonts-1.10.zip
 	http://dev-www.libreoffice.org/src/
 
@@ -51,10 +51,7 @@ edc4d741888bc0d38e32dbaa17149596-source-sans-pro-2.010R-ro-1.065R-it.tar.gz
 48d647fbd8ef8889e5a7f422c1bfda94-clucene-core-2.3.3.4.tar.gz
 	http://dev-www.libreoffice.org/src/
 
-5c0c9ac0996fbb4a0e17780ff5441959-graphite2-minimal-1.3.4.tgz
-	http://dev-www.libreoffice.org/src/
-
-5ade6ae2a99bc1e9e57031ca88d36dad-hyphen-2.8.8.tar.gz
+28935e208c311761c29983c739db08d8-graphite2-minimal-1.3.5.tgz
 	http://dev-www.libreoffice.org/src/
 
 5821b806a98e6c38370970e682ce76e8-libcmis-0.5.0.tar.gz
@@ -63,7 +60,7 @@ edc4d741888bc0d38e32dbaa17149596-source-sans-pro-2.010R-ro-1.065R-it.tar.gz
 10d61fbaa6a06348823651b1bd7940fe-libexttextcat-3.4.4.tar.bz2
 	http://dev-www.libreoffice.org/src/
 
-26b3e95ddf3d9c077c480ea45874b3b8-lp_solve_5.5.tar.gz 
+26b3e95ddf3d9c077c480ea45874b3b8-lp_solve_5.5.tar.gz
 	http://dev-www.libreoffice.org/src/
 
 7239a4430efd4d0189c4f24df67f08e5-mysql-connector-c++-1.1.4.tar.gz
@@ -72,7 +69,7 @@ edc4d741888bc0d38e32dbaa17149596-source-sans-pro-2.010R-ro-1.065R-it.tar.gz
 a8c2c5b8f09e7ede322d5c602ff6a4b6-mythes-1.2.4.tar.gz
 	http://dev-www.libreoffice.org/src/
 
-0168229624cfac409e766913506961a8-ucpp-1.3.2.tar.gz 
+0168229624cfac409e766913506961a8-ucpp-1.3.2.tar.gz
 	http://dev-www.libreoffice.org/src/
 
 1f24ab1d39f4a51faf22244c94a6203f-xmlsec1-1.2.14.tar.gz
