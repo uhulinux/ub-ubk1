@@ -2,4 +2,4 @@
 
 ub_install
 
-rm ${UB_INSTALLDIR}/usr/bin/gufw
+rm -rf ${UB_INSTALLDIR}/usr/share/doc/gufw
