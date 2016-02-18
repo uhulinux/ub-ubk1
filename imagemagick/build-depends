@@ -2,8 +2,7 @@
 cairo-dev
 djvulibre-dev
 fftw3-dev
-ghostscript
-graphviz-dev
+graphviz
 jasper-dev
 lcms2-dev
 libgsf-dev
