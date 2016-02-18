@@ -1,0 +1,13 @@
+diff -Naur orig/utils/Makefile mod/utils/Makefile
+--- orig/utils/Makefile	2015-12-17 08:51:26.000000000 +0100
++++ mod/utils/Makefile	2016-02-18 14:22:06.093910201 +0100
+@@ -79,7 +79,7 @@
+ 	install $(PROGRAMS) $(DESTDIR)$(PREFIX)/bin
+ 	install -d $(DESTDIR)$(PREFIX)/share/joystick
+ 	install extract filter ident $(DESTDIR)$(PREFIX)/share/joystick
+-	install -d $(DESTDIR)/lib/udev
+-	install js-set-enum-leds $(DESTDIR)/lib/udev
++	install -d $(DESTDIR)/usr/lib/udev
++	install js-set-enum-leds $(DESTDIR)/usr/lib/udev
+ 
+ .PHONY: compile clean distclean install
