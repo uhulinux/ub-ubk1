@@ -1,0 +1,2 @@
+urllist http://liba52.sourceforge.net/downloads.html | splitver '^a52dec-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+

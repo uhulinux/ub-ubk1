@@ -1,0 +1,2 @@
+urllist http://libmpeg2.sourceforge.net/downloads.html | splitver '^libmpeg2-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+
