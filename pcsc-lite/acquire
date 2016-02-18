@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 pcsc-lite-${UB_VERSION}.tar.bz2 pcsc-lite-${UB_VERSION}/
-	https://alioth.debian.org/frs/download.php/file/3991/
-	https://alioth.debian.org/download.php/3862/
+	https://alioth.debian.org/frs/download.php/file/4157/
