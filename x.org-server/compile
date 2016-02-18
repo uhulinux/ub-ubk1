@@ -36,6 +36,7 @@ ub_compile \
 	--enable-secure-rpc \
 	--enable-xwrapper \
 	--enable-pam \
+	--enable-xwayland \
 	--disable-strict-compilation \
 	--disable-install-libxf86config \
 	--disable-tslib \
