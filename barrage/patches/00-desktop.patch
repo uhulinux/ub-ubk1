@@ -1,0 +1,13 @@
+diff -Naur orig/barrage.desktop patched/barrage.desktop
+--- orig/barrage.desktop	2011-07-28 17:00:11.000000000 +0200
++++ patched/barrage.desktop	2016-02-18 23:35:20.161287849 +0100
+@@ -1,7 +1,8 @@
+ [Desktop Entry]
+ Name=Barrage
+ Comment=A rather destructive action game.
++Comment[hu]=Semmisíts meg minél több célpontot 3 perc alatt
+ Exec=barrage
+ Icon=barrage.png
+ Type=Application
+-Categories=Game;
++Categories=Game;ActionGame;

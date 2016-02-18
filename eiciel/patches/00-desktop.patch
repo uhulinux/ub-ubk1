@@ -1,6 +1,6 @@
-diff -Naur eiciel-0.9.1.orig/src/eiciel.desktop.in eiciel-0.9.1/src/eiciel.desktop.in
---- eiciel-0.9.1.orig/src/eiciel.desktop.in	2006-02-12 15:36:26.000000000 +0100
-+++ eiciel-0.9.1/src/eiciel.desktop.in	2006-08-07 15:43:22.000000000 +0200
+diff -Naur orig/src/eiciel.desktop.in patched/src/eiciel.desktop.in
+--- orig/src/eiciel.desktop.in	2014-07-17 00:39:05.000000000 +0200
++++ patched/src/eiciel.desktop.in	2016-02-18 23:53:20.194643445 +0100
 @@ -4,12 +4,13 @@
  GenericName=Access control list editor
  GenericName[ca]=Editor de llistes de control d'accés
@@ -12,9 +12,8 @@ diff -Naur eiciel-0.9.1.orig/src/eiciel.desktop.in eiciel-0.9.1/src/eiciel.deskt
 -Exec=@DSK_bindir@/eiciel
 +Comment[hu]=Kiterjesztett fájlattribútumok megjelenítése és módosítása
 +Exec=eiciel
- Icon=@DSK_pkgdatadir@/img/icon_eiciel_24.png
+ Icon=eiciel
  Terminal=false
  Type=Application
--Categories=GNOME;System;FileTools;
+ Categories=GNOME;System;FileTools;
 -Version=@DSK_VERSION@
-+Categories=GNOME;System;FileTools;X-UHU-Menu/Tools/File_Managers;

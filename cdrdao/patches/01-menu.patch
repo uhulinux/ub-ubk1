@@ -12,4 +12,4 @@ diff -Naur cdrdao-1.2.1.orig/xdao/gcdmaster.desktop cdrdao-1.2.1/xdao/gcdmaster.
  Type=Application
  StartupNotify=true
 -Categories=GNOME;AudioVideo;Application;X-Fedora;
-+Categories=GNOME;AudioVideo;Application;X-Fedora;X-UHU-Menu/Multimedia/CDwriters;
++Categories=GNOME;AudioVideo;DiscBurning;
