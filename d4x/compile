@@ -1,8 +1,0 @@
-#!/bin/sh -eux
-
-msgfmt -o po/hu.gmo po/hu.po
-msgfmt -o po/nl.gmo po/nl.po
-
-export LDFLAGS+="-lX11"
-ub_compile \
-	--enable-release

@@ -1,3 +1,0 @@
-#!/bin/sh -eux
-
-scons -Q install PREFIX="$UB_INSTALLDIR"/usr

@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-create-${UB_VERSION/~/-}.tar.bz2 create-${UB_VERSION/~/-}/
-	ftp://kuiper.mirrorservice.org/sites/distfiles.finkmirrors.net/create-0.1.3.tar.bz2
-	http://create.freedesktop.org/releases/create/
