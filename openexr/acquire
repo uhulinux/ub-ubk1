@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 openexr-${UB_VERSION}.tar.gz openexr-${UB_VERSION}/
-	https://github.com/downloads/openexr/openexr/
+	http://download.savannah.gnu.org/releases/openexr/
