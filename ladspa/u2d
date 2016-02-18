@@ -1,0 +1,1 @@
+urllist https://github.com/OpenMandrivaAssociation/ladspa | splitver '^ladspa_sdk_([0-9.]+).tgz$' | sort -V | tail -n 1
