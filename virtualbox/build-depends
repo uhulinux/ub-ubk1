@@ -7,6 +7,7 @@ docbook-xsl
 glu-dev
 iasl
 kernel-dev
+kmod
 libcap-dev
 libidl2-dev
 libvpx-dev
@@ -18,7 +19,6 @@ libxmu-dev
 libxslt-dev
 lvm-dev
 makeself
-module-init-tools
 pulseaudio-dev
 python-dev
 qt4-dev
