@@ -5,7 +5,7 @@
  Type=Application
  MimeType=application/x-grsync-session;
 -Categories=Application;System;
-+Categories=GTK;System;X-UHU-Menu/Tools/File_Managers;
++Categories=GTK;System;
  Comment=Synchronize files with rsync
  Comment[fr]=Interface GTK pour rsync
  Comment[it]=Sincronizza file con rsync

@@ -1,7 +1,7 @@
-diff -urN gconf-editor-2.20.0.orig/data/gconf-editor.desktop.in.in gconf-editor-2.20.0/data/gconf-editor.desktop.in.in
---- gconf-editor-2.20.0.orig/data/gconf-editor.desktop.in.in	2007-08-11 11:33:38.000000000 +0200
-+++ gconf-editor-2.20.0/data/gconf-editor.desktop.in.in	2007-10-19 15:56:12.000000000 +0200
-@@ -1,13 +1,13 @@
+diff -Naur orig/data/gconf-editor.desktop.in.in patched/data/gconf-editor.desktop.in.in
+--- orig/data/gconf-editor.desktop.in.in	2009-05-06 21:44:27.000000000 +0200
++++ patched/data/gconf-editor.desktop.in.in	2016-02-19 01:40:48.942621060 +0100
+@@ -1,12 +1,12 @@
  [Desktop Entry]
 -_Name=Configuration Editor
 -_Comment=Directly edit your entire configuration database
@@ -13,15 +13,14 @@ diff -urN gconf-editor-2.20.0.orig/data/gconf-editor.desktop.in.in gconf-editor-
  Icon=gconf-editor
  StartupNotify=true
 -Categories=GNOME;GTK;System;
-+Categories=GTK;GNOME;System;X-UHU-Menu/Settings;
++Categories=GTK;GNOME;System;
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=gconf-editor
  X-GNOME-Bugzilla-Component=general
- X-GNOME-Bugzilla-Version=@VERSION@
-diff -urN gconf-editor-2.20.0.orig/po/hu.po gconf-editor-2.20.0/po/hu.po
---- gconf-editor-2.20.0.orig/po/hu.po	2007-09-17 23:58:14.000000000 +0200
-+++ gconf-editor-2.20.0/po/hu.po	2007-10-19 15:54:39.000000000 +0200
-@@ -26,9 +26,13 @@
+diff -Naur orig/po/hu.po patched/po/hu.po
+--- orig/po/hu.po	2009-05-06 21:44:27.000000000 +0200
++++ patched/po/hu.po	2016-02-19 01:39:43.638297233 +0100
+@@ -27,9 +27,13 @@
  msgid "Configuration Editor"
  msgstr "Konfigurációszerkesztő"
  
@@ -37,10 +36,10 @@ diff -urN gconf-editor-2.20.0.orig/po/hu.po gconf-editor-2.20.0/po/hu.po
  
  #: ../data/gconf-editor.schemas.in.h:1
  msgid "Bookmarks"
-diff -urN gconf-editor-2.20.0.orig/src/main.c gconf-editor-2.20.0/src/main.c
---- gconf-editor-2.20.0.orig/src/main.c	2007-08-27 15:53:12.000000000 +0200
-+++ gconf-editor-2.20.0/src/main.c	2007-10-19 15:55:28.000000000 +0200
-@@ -47,7 +47,7 @@
+diff -Naur orig/src/main.c patched/src/main.c
+--- orig/src/main.c	2009-05-06 21:44:28.000000000 +0200
++++ patched/src/main.c	2016-02-19 01:39:43.638297233 +0100
+@@ -74,7 +74,7 @@
  	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
  	textdomain (GETTEXT_PACKAGE);
  
@@ -48,4 +47,4 @@ diff -urN gconf-editor-2.20.0.orig/src/main.c gconf-editor-2.20.0/src/main.c
 +	context = g_option_context_new (N_("- Directly edit your entire GNOME configuration database"));
  
  	g_option_context_set_translation_domain (context, GETTEXT_PACKAGE);
- 
+ 	g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);

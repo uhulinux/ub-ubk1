@@ -1,1 +1,1 @@
-sflist mathgl mathgl | sort -V | tail -n 1 | sed 's/mathgl%20//'
+sflist mathgl mathgl | sort -V | tail -n 1 | sed 's/mathgl //'

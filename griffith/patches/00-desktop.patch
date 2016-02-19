@@ -1,11 +1,12 @@
---- griffith-0.9.6.orig/data/griffith.desktop	2008-01-27 23:58:59.000000000 +0100
-+++ griffith-0.9.6/data/griffith.desktop	2008-03-23 19:18:15.000000000 +0100
+diff -Naur orig/data/griffith.desktop patched/data/griffith.desktop
+--- orig/data/griffith.desktop	2008-01-29 21:47:53.000000000 +0100
++++ patched/data/griffith.desktop	2016-02-19 01:52:47.954186446 +0100
 @@ -9,11 +9,12 @@
  Type=Application
  StartupNotify=true
  StartupWMClass=Griffith
 -Categories=GNOME;GTK;Database;AudioVideo;
-+Categories=GTK;GNOME;Database;AudioVideo;X-UHU-Menu/Multimedia/More;
++Categories=GTK;GNOME;Database;AudioVideo;
  
  GenericName[en_PT]=Griffith - Um gestor de colecções de filmes
  GenericName[pl]=Griffith - wspomaga zarządzanie kolekcją filmów

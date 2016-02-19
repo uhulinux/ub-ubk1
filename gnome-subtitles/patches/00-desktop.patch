@@ -1,5 +1,6 @@
---- gnome-subtitles.orig/data/gnome-subtitles.desktop.in	2009-05-23 12:47:35.000000000 +0200
-+++ gnome-subtitles/data/gnome-subtitles.desktop.in	2009-07-19 16:32:28.000000000 +0200
+diff -Naur orig/data/gnome-subtitles.desktop.in patched/data/gnome-subtitles.desktop.in
+--- orig/data/gnome-subtitles.desktop.in	2010-12-08 20:10:33.000000000 +0100
++++ patched/data/gnome-subtitles.desktop.in	2016-02-19 01:50:40.405553966 +0100
 @@ -3,13 +3,14 @@
  Name=Gnome Subtitles
  GenericName=Subtitle Editor
@@ -12,7 +13,7 @@
  Terminal=false
  Type=Application
 -Categories=GNOME;GTK;Video;AudioVideo;AudioVideoEditing;
-+Categories=GTK;GNOME;Video;AudioVideo;AudioVideoEditing;X-UHU-Menu/Multimedia/VideoEdit;
++Categories=GTK;GNOME;Video;AudioVideo;AudioVideoEditing;
  MimeType=application/x-subrip;text/x-mpsub;text/x-ssa;text/x-microdvd;
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=gnome-subtitles
