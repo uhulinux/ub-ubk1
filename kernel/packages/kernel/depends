@@ -1,4 +1,4 @@
 grub2
+kmod
 linux-firmware
 mkinitrd
-module-init-tools

@@ -1,8 +1,8 @@
 kernel
 kernel-dev
 kernel-headers
+kmod
 man-db
-module-init-tools
 newt-dev
 procps
 strace

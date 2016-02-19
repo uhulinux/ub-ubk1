@@ -10,6 +10,7 @@ gnutls-dev
 gobject-introspection-dev
 gperf
 intltool
+kmod-dev
 libcap-dev
 libgcrypt-dev
 libmicrohttpd-dev
@@ -18,7 +19,6 @@ libtasn1-dev
 libxkbcommon-dev
 libxslt
 lvm-dev
-module-init-tools-dev
 python-dev
 tcp-wrappers-dev
 util-linux-dev

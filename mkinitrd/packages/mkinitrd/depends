@@ -14,11 +14,11 @@ iproute2
 iputils
 joe
 kbd
+kmod
 less
 libatasmart
 lvm
 mdadm
-module-init-tools
 net-tools
 pciutils
 polkit

@@ -2,7 +2,7 @@ coreutils
 findutils
 grep
 kbd
-module-init-tools
+kmod
 net-tools
 pciutils
 procps

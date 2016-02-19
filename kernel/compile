@@ -83,7 +83,7 @@ fi
 if [ -f arch/x86/*lds ]; then
 	cp -a arch/x86/*lds "$UB_OBJECTDIR"/usr/src/linux/arch/x86/
 fi
-touch -r "$UB_OBJECTDIR"/usr/src/linux/Makefile "$UB_OBJECTDIR"/usr/src/linux/include/generated/uapi/linux/version.h
+# touch -r "$UB_OBJECTDIR"/usr/src/linux/Makefile "$UB_OBJECTDIR"/usr/src/linux/include/generated/uapi/linux/version.h
 
 # install headers
 make \
