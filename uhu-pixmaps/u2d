@@ -1,0 +1,1 @@
+urllist ftp://ftp.uhulinux.hu/pub/sources/uhu-pixmaps/ | splitver '^uhu-pixmaps-([0-9.]+).tar.gz$' | sort -V | tail -n 1
