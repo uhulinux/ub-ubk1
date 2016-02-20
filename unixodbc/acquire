@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 unixODBC-${UB_VERSION}.tar.gz unixODBC-${UB_VERSION}/
-	http://www.unixodbc.org/
+	ftp://ftp.unixodbc.org/pub/unixODBC/
