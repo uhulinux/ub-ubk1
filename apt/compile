@@ -6,6 +6,9 @@ ln -sf /usr/share/automake-"$AM_VER"/config.guess "$UB_COMPILEDIR"/buildlib/conf
 ln -sf /usr/share/automake-"$AM_VER"/config.sub "$UB_COMPILEDIR"/buildlib/config.sub
 ln -sf /usr/share/automake-"$AM_VER"/config.sub "$UB_COMPILEDIR"/buildlib/config.rpath
 
+autoconf
+aclocal -I buildlib
+
 cd "$UB_OBJECTDIR"
 
 export CPPFLAGS='-std=c++11'

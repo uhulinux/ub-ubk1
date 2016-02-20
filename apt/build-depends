@@ -8,4 +8,5 @@ fonts-x.org-ttf
 graphviz
 gtest
 libxslt-dev
+po4a
 python
