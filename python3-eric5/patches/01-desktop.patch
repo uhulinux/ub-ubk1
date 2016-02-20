@@ -10,10 +10,3 @@ diff -Naur orig/eric/eric5.desktop patched/eric/eric5.desktop
  Terminal=false
  Name=eric5
  Name[de]=eric5
-@@ -11,5 +11,5 @@
- Comment[de]=Integrierte Entwicklungsumgebung für Python
- GenericName=Integrated Development Environment for Python
- GenericName[de]=Integrierte Entwicklungsumgebung für Python
--Categories=Qt;Python;Development;IDE;
-+Categories=Qt;Python;Development;IDE;X-UHU-Menu/Development/Programming;
- StartupNotify=true

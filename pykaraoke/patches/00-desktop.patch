@@ -1,6 +1,6 @@
-diff -Naurd pykaraoke.orig/install/pykaraoke.desktop pykaraoke/install/pykaraoke.desktop
---- pykaraoke.orig/install/pykaraoke.desktop	2006-05-23 01:22:00.000000000 +0200
-+++ pykaraoke/install/pykaraoke.desktop	2009-09-06 20:27:22.000000000 +0200
+diff -Naur orig/install/pykaraoke.desktop patched/install/pykaraoke.desktop
+--- orig/install/pykaraoke.desktop	2011-06-14 20:59:31.000000000 +0200
++++ patched/install/pykaraoke.desktop	2016-02-20 12:57:03.326736868 +0100
 @@ -1,13 +1,13 @@
  [Desktop Entry]
  Type=Application
@@ -16,10 +16,11 @@ diff -Naurd pykaraoke.orig/install/pykaraoke.desktop pykaraoke/install/pykaraoke
  Terminal=false
  MimeType=audio/x-karaoke;audio/x-midi;audio/midi
 -Categories=Application;AudioVideo;Player;
-+Categories=GTK;AudioVideo;Player;X-UHU-Menu/Multimedia/MusicPlayers;
-diff -Naurd pykaraoke.orig/install/pykaraoke_mini.desktop pykaraoke/install/pykaraoke_mini.desktop
---- pykaraoke.orig/install/pykaraoke_mini.desktop	2006-07-11 06:01:00.000000000 +0200
-+++ pykaraoke/install/pykaraoke_mini.desktop	2009-09-06 20:29:17.000000000 +0200
++Categories=GTK;AudioVideo;Player;
+\ No newline at end of file
+diff -Naur orig/install/pykaraoke_mini.desktop patched/install/pykaraoke_mini.desktop
+--- orig/install/pykaraoke_mini.desktop	2011-06-14 20:59:31.000000000 +0200
++++ patched/install/pykaraoke_mini.desktop	2016-02-20 12:57:20.254820810 +0100
 @@ -1,11 +1,11 @@
  [Desktop Entry]
  Type=Application
@@ -33,4 +34,4 @@ diff -Naurd pykaraoke.orig/install/pykaraoke_mini.desktop pykaraoke/install/pyka
  Terminal=false
  MimeType=audio/x-karaoke;audio/x-midi;audio/midi
 -Categories=Application;AudioVideo;Player;
-+Categories=GTK;AudioVideo;Player;X-UHU-Menu/Multimedia/MusicPlayers;
++Categories=GTK;AudioVideo;Player;

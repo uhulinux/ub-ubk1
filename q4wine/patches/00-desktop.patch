@@ -1,12 +1,7 @@
-diff -Naurd a/q4wine.desktop b/q4wine.desktop
---- a/q4wine.desktop	2013-11-10 13:35:28.000000000 +0100
-+++ b/q4wine.desktop	2013-11-11 19:50:19.000000000 +0100
-@@ -1,10 +1,11 @@
- [Desktop Entry]
--Categories=Qt;System;Emulator;
-+Categories=Qt;System;Emulator;X-UHU-Menu/Tools/Emulators;
- Comment=Qt4 utility for Wine applications and prefixes management.
- Comment[cz]=Qt4 užitečný program pro programy wine a správu předpon.
+diff -Naur orig/q4wine.desktop patched/q4wine.desktop
+--- orig/q4wine.desktop	2013-11-10 13:35:28.000000000 +0100
++++ patched/q4wine.desktop	2016-02-20 13:07:18.309786404 +0100
+@@ -5,6 +5,7 @@
  Comment[de]=Qt4-Werkzeug zur Verwaltung der Wine-Anwendungen und -Präfixe.
  Comment[en]=Qt4 utility for Wine applications and prefixes management.
  Comment[es]=Qt4 utilidad para el manejo de aplicaciones y prefijos de wine.
