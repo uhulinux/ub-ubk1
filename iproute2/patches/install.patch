@@ -1,12 +1,12 @@
-diff -urN iproute2-3.12.0.orig/Makefile iproute2-3.12.0/Makefile
---- iproute2-3.12.0.orig/Makefile	2013-11-23 02:10:33.000000000 +0100
-+++ iproute2-3.12.0/Makefile	2014-02-25 15:08:46.480223722 +0100
-@@ -4,7 +4,7 @@
- SBINDIR=/sbin
- CONFDIR=/etc/iproute2
- DATADIR=$(PREFIX)/share
--DOCDIR=$(DATADIR)/doc/iproute2
-+DOCDIR=$(DATADIR)/doc/Packages/iproute2
- MANDIR=$(DATADIR)/man
- ARPDDIR=/var/lib/arpd
- 
+diff -Naur iproute2-4.4.0-orig/Makefile iproute2-4.4.0/Makefile
+--- iproute2-4.4.0-orig/Makefile	2016-01-11 17:33:03.000000000 +0100
++++ iproute2-4.4.0/Makefile	2016-02-21 22:08:18.117075645 +0100
+@@ -3,7 +3,7 @@
+ SBINDIR?=/sbin
+ CONFDIR?=/etc/iproute2
+ DATADIR?=$(PREFIX)/share
+-DOCDIR?=$(DATADIR)/doc/iproute2
++DOCDIR?=$(DATADIR)/doc//Packages/iproute2
+ MANDIR?=$(DATADIR)/man
+ ARPDDIR?=/var/lib/arpd
+ KERNEL_INCLUDE?=/usr/include
