@@ -3,11 +3,14 @@
 cp -a usr "$UB_INSTALLDIR"/
 libdir="$UB_INSTALLDIR"/usr/lib
 
-mkdir -p "$libdir"/firefox/plugins "$libdir"/mozilla/plugins "$libdir"/kde4 "$libdir"/flashplayer
+mkdir -p "$libdir"/firefox/plugins "$libdir"/mozilla/plugins "$libdir"/flashplayer
 
 install -m 755 libflashplayer.so "$libdir"/firefox/plugins/
 install -m 755 sa/flashplayer "$UB_INSTALLDIR"/usr/bin/flashplayer
 install -m 755 sadebug/flashplayerdebugger "$UB_INSTALLDIR"/usr/bin/
 install -m 755 debug/libflashplayer.so "$libdir"/flashplayer/
+
+rm -Rf "$libdir"/kde4
+rm -Rf "$UB_INSTALLDIR"/usr/share/kde4
 
 ln -s ../../firefox/plugins/libflashplayer.so "$libdir"/mozilla/plugins/
