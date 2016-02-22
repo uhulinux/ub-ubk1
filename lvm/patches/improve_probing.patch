@@ -1,6 +1,6 @@
-diff -Naurdp LVM2.2.02.105.orig/lib/filters/filter-partitioned.c LVM2.2.02.105/lib/filters/filter-partitioned.c
---- LVM2.2.02.105.orig/lib/filters/filter-partitioned.c	2014-01-20 20:25:30.000000000 +0100
-+++ LVM2.2.02.105/lib/filters/filter-partitioned.c	2014-02-26 13:14:52.022748188 +0100
+diff -Naur LVM2.2.02.143-orig/lib/filters/filter-partitioned.c LVM2.2.02.143/lib/filters/filter-partitioned.c
+--- LVM2.2.02.143-orig/lib/filters/filter-partitioned.c	2016-02-22 00:18:04.000000000 +0100
++++ LVM2.2.02.143/lib/filters/filter-partitioned.c	2016-02-22 12:18:40.065894563 +0100
 @@ -15,6 +15,11 @@
  
  #include "lib.h"
@@ -11,24 +11,5 @@ diff -Naurdp LVM2.2.02.105.orig/lib/filters/filter-partitioned.c LVM2.2.02.105/l
 +#undef MINOR
 +#undef MKDEV
  
- static int _passes_partitioned_filter(struct dev_filter *f, struct device *dev)
- {
-@@ -24,10 +29,17 @@ static int _passes_partitioned_filter(st
- 	uint64_t size;
+ #define MSG_SKIPPING "%s: Skipping: Partition table signature found"
  
- 	/* Check it's accessible */
--	if (!dev_open_readonly_quiet(dev)) {
-+	if (!dev_open_flags(dev, O_RDONLY|O_NONBLOCK, 0, 1)) {
- 		log_debug_devs("%s: Skipping: open failed", name);
- 		return 0;
- 	}
-+	
-+	/* Skip cdrom device */
-+	#define CDROM_GET_CAPABILITY   0x5331
-+	if (ioctl(dev->fd, CDROM_GET_CAPABILITY) >= 0) {
-+		log_debug_devs("%s: Skipping: cdrom device", name );
-+		goto out;
-+	}
- 
- 	/* Check it's not too small */
- 	if (!dev_get_size(dev, &size)) {

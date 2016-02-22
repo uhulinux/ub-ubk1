@@ -11,5 +11,6 @@ ub_compile \
 	--with-clvmd=all \
 	--enable-pkgconfig \
 	--enable-applib \
-	--enable-python-bindings \
+	--enable-python2-bindings \
+	--enable-python3-bindings \
 	--enable-lvmetad
