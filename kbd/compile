@@ -1,17 +1,14 @@
 #!/bin/sh -eux
 
-# remove obsolete "gr"and "es" translations
-rm -f po/es.po po/gr.po po/gr.gmo
+# remove obsolete "gr" translations
+rm -f po/gr.po po/gr.gmo
 
 cd data/keymaps/i386
 
 # 7-bit maps are obsolete; so are non-euro maps
-mv qwerty/fi.map qwerty/fi-old.map
-cp qwerty/fi-latin9.map qwerty/fi.map
 cp qwerty/pt-latin9.map qwerty/pt.map
 cp qwerty/sv-latin1.map qwerty/se-latin1.map
 mv azerty/fr.map azerty/fr-old.map
-cp azerty/fr-latin9.map azerty/fr.map
 cp azerty/fr-latin9.map azerty/fr-latin0.map # legacy alias
 
 # Rename conflicting keymaps
