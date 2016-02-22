@@ -1,7 +1,6 @@
 coreutils
 dosfstools
 gawk
-grub
 sed
 timeslide
 util-linux

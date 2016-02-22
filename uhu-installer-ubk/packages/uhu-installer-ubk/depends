@@ -1,6 +1,6 @@
 coreutils
 e2fsprogs
-grub
+grub2
 lvm
 perl-gettext
 perl-gtk2
