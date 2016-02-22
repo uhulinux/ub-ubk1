@@ -1,1 +1,2 @@
-urllist http://code.google.com/p/cryptsetup/downloads/list | parsever | sort -V | tail -n 1
+dir=$(urllist https://www.kernel.org/pub/linux/utils/cryptsetup/ | grep ^v | sort -V | tail -n 1)
+urllist https://www.kernel.org/pub/linux/utils/cryptsetup/$dir | parsever | sort -V | tail -n 1
