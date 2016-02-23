@@ -6,4 +6,4 @@ Exec=aumix
 Terminal=true
 Type=Application
 Categories=AudioVideo;Audio;Mixer;ConsoleOnly;
-X-UHU-Major=-1
+
