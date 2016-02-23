@@ -1,1 +1,0 @@
-urllist http://www.cpan.org/src/5.0/ | parsever | grep -E '^[0-9]+\.[0-9]*[02468](\.[0-9.])?$' | sort -V | tail -n 1
