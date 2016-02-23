@@ -1,1 +1,1 @@
-sflist libdbi-drivers libdbi-drivers | grep -E '^([0-9.]+)$' | sort -V | tail -n 1
+urllist http://sourceforge.net/projects/libdbi-drivers/files/libdbi-drivers/ | splitver '^libdbi-drivers-([0-9.]+)' | sort -V | tail -n 1

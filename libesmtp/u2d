@@ -1,1 +1,1 @@
-urllist http://www.stafford.uklinux.net/libesmtp/download.html | splitver '^libesmtp-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+urllist  http://pkgs.fedoraproject.org/repo/pkgs/libesmtp/libesmtp-1.0.6.tar.bz2/bf3915e627fd8f35524a8fdfeed979c8/ | splitver '^libesmtp-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

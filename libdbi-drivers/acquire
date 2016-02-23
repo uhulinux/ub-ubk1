@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-libdbi-drivers-${UB_VERSION_HEAD3}-${UB_VERSION_TAIL1}.tar.gz libdbi-drivers-${UB_VERSION_HEAD3}-${UB_VERSION_TAIL1}/
-	http://downloads.sourceforge.net/libdbi-drivers/
+libdbi-drivers-${UB_VERSION}.tar.gz libdbi-drivers-${UB_VERSION}/
+	https://sourceforge.net/projects/libdbi-drivers/files/libdbi-drivers/libdbi-drivers-0.9.0/

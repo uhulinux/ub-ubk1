@@ -1,1 +1,1 @@
-urllist https://red.libssh.org/projects/libssh/files/ | parsever | sort -V | tail -n 1
+urllist https://red.libssh.org/projects/libssh/files/ | splitver '^libssh-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
