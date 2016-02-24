@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 Net-SMTP-SSL-${UB_VERSION}.tar.gz Net-SMTP-SSL-${UB_VERSION}/
-	https://cpan.metacpan.org/authors/id/C/CW/CWEST/
+	http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/

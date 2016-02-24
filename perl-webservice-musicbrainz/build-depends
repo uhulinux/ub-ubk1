@@ -1,5 +1,6 @@
 perl
 perl-class-accessor
 perl-libwww
+perl-module-build
 perl-uri
 perl-xml-libxml

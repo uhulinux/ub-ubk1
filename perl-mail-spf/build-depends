@@ -1,4 +1,5 @@
 perl-error
+perl-module-build
 perl-net-dns
 perl-net-dns-resolver-programmable
 perl-netaddr-ip
