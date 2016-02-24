@@ -9,7 +9,7 @@ lame
 liba52-dev
 libavc1394-dev
 libcddb-dev
-libdts-dev
+libdca-dev
 libdvbpsi-dev
 libdvdcss-dev
 libdvdnav-dev

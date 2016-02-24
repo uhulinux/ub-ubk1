@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+export PREFIX='/usr'
+export CONFIG_SHARED='TRUE'
+
+ub_make all

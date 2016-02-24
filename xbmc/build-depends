@@ -16,7 +16,7 @@ jasper-dev
 java-jre
 liba52-dev
 libcdio-dev
-libdts-dev
+libdcadec-dev
 libdvdcss-dev
 libfaad2-dev
 liblzo-dev

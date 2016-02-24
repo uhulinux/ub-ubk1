@@ -8,7 +8,7 @@ glu-dev
 gtk-dev
 jack-dev
 liba52-dev
-libdts-dev
+libdca-dev
 libfaad2-dev
 libice-dev
 liblame-dev

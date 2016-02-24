@@ -12,7 +12,7 @@ ladspa-dev
 libass-dev
 libcdaudio-dev
 libdc1394-dev
-libdts-dev
+libdca-dev
 libdvdnav-dev
 libexif-dev
 libfaad2-dev

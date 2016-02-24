@@ -13,6 +13,7 @@ libbluray-dev
 libcaca-dev
 libcdio-paranoia-dev
 libdc1394-dev
+libdcadec-dev
 libfaad2-dev
 libgsm-dev
 liblame-dev
