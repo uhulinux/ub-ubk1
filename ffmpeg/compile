@@ -1,10 +1,11 @@
 #!/bin/sh -eux
 
 ./configure \
-        --prefix=/usr \
-        --mandir=/usr/share/man \
+    --prefix=/usr \
+    --mandir=/usr/share/man \
 	--disable-debug \
-        --disable-static \
+    --disable-static \
+    --enable-shared \
 	--enable-avfilter\
 	--enable-avisynth \
 	--enable-avresample \
@@ -19,6 +20,7 @@
 	--enable-libcaca \
 	--enable-libcelt \
 	--enable-libdc1394 \
+	--enable-libdcadec \
 	--enable-libfreetype \
 	--enable-libfaac \
 	--enable-libgsm \
@@ -46,7 +48,6 @@
 	--enable-pic \
 	--enable-pthreads \
 	--enable-postproc \
-        --enable-shared \
 	--enable-swresample \
 	--enable-swscale \
 	--enable-version3 \
