@@ -1,7 +1,7 @@
-diff -Naurdp a/lib/HTTP/Proxy.pm b/lib/HTTP/Proxy.pm
---- a/lib/HTTP/Proxy.pm	2013-04-07 12:54:12.000000000 +0200
-+++ b/lib/HTTP/Proxy.pm	2014-02-27 11:10:09.263464994 +0100
-@@ -380,20 +380,20 @@ sub serve_connections {
+diff -Naur orig/lib/HTTP/Proxy.pm mod/lib/HTTP/Proxy.pm
+--- orig/lib/HTTP/Proxy.pm	2015-06-16 02:47:39.000000000 +0200
++++ mod/lib/HTTP/Proxy.pm	2016-02-24 14:00:06.254816778 +0100
+@@ -386,20 +386,20 @@
          # the header filters created a response,
          # we won't contact the origin server
          # FIXME should the response header and body be filtered?
@@ -19,14 +19,14 @@ diff -Naurdp a/lib/HTTP/Proxy.pm b/lib/HTTP/Proxy.pm
                  my ( $data, $response, $proto ) = @_;
  
 -                # first time, filter the headers
--                if ( !$sent ) { 
+-                if ( !$sent ) {
 -                    $sent++;
 +                if ( !$init ) { 
 +                    $init++;
                      $self->response( $response );
-                     
+ 
                      # select the response filters
-@@ -402,30 +402,38 @@ sub serve_connections {
+@@ -408,14 +408,20 @@
  
                      $self->{headers}{response}
                           ->filter( $response->headers, $response );
@@ -34,7 +34,7 @@ diff -Naurdp a/lib/HTTP/Proxy.pm b/lib/HTTP/Proxy.pm
 -                      $self->_send_response_headers( $served );
 +                    $headresponse = $self->response;
                  }
--
+ 
                  # filter and send the data
                  $self->log( DATA, "DATA",
                      "got " . length($data) . " bytes of body data" );
@@ -49,12 +49,7 @@ diff -Naurdp a/lib/HTTP/Proxy.pm b/lib/HTTP/Proxy.pm
                  if ($chunked) {
                      printf $conn "%x$CRLF%s$CRLF", length($data), $data
                        if length($data);    # the filter may leave nothing
-                 }
-                 else { print $conn $data; }
-+                }
-             },
-             $self->chunk
-         );
+@@ -427,11 +433,13 @@
  
          # remove the header added by LWP::UA before it sends the response back
          $response->remove_header('Client-Date');
@@ -69,7 +64,7 @@ diff -Naurdp a/lib/HTTP/Proxy.pm b/lib/HTTP/Proxy.pm
              $self->{$_}{response}->select_filters( $response )
                for qw( headers body );
              $self->{headers}{response}
-@@ -434,7 +442,24 @@ sub serve_connections {
+@@ -440,7 +448,24 @@
  
          # do a last pass, in case there was something left in the buffers
          my $data = "";    # FIXME $protocol is undef here too
@@ -94,7 +89,7 @@ diff -Naurdp a/lib/HTTP/Proxy.pm b/lib/HTTP/Proxy.pm
          if ( length $data ) {
              if ($chunked) {
                  printf $conn "%x$CRLF%s$CRLF", length($data), $data;
-@@ -454,6 +479,7 @@ sub serve_connections {
+@@ -460,6 +485,7 @@
              $response->content_type( "text/plain" );
              $response->content($died);
              $self->response($response);
@@ -102,7 +97,7 @@ diff -Naurdp a/lib/HTTP/Proxy.pm b/lib/HTTP/Proxy.pm
          }
  
        SEND:
-@@ -495,10 +521,10 @@ sub serve_connections {
+@@ -501,10 +527,10 @@
  # expects $served  (number of requests served)
  # returns $last and $chunked (last request served, chunked encoding)
  sub _send_response_headers {
