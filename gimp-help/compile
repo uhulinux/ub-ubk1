@@ -1,3 +1,0 @@
-#!/bin/bash -eux
-
-ub_compile
