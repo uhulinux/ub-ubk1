@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 Cache-Cache-${UB_VERSION}.tar.gz Cache-Cache-${UB_VERSION}/
-	http://search.cpan.org/CPAN/authors/id/J/JS/JSWARTZ/
+	https://cpan.metacpan.org/authors/id/R/RJ/RJBS/
