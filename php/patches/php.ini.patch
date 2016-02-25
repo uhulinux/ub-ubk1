@@ -1,6 +1,6 @@
-diff -urN php-5.5.13.orig/php.ini-production php-5.5.13/php.ini-production
---- php-5.5.13.orig/php.ini-production	2014-05-28 11:06:28.000000000 +0200
-+++ php-5.5.13/php.ini-production	2014-08-19 14:10:18.098890945 +0200
+diff -Naur php-5.6.18-orig/php.ini-production php-5.6.18/php.ini-production
+--- php-5.6.18-orig/php.ini-production	2016-02-03 09:38:08.000000000 +0100
++++ php-5.6.18/php.ini-production	2016-02-25 19:50:53.253359804 +0100
 @@ -199,7 +199,7 @@
  ; Development Value: Off
  ; Production Value: Off
@@ -10,21 +10,12 @@ diff -urN php-5.5.13.orig/php.ini-production php-5.5.13/php.ini-production
  
  ; Allow ASP-style <% %> tags.
  ; http://php.net/asp-tags
-@@ -680,7 +680,7 @@
- 
- ; PHP's default character set is set to empty.
- ; http://php.net/default-charset
--;default_charset = "UTF-8"
-+default_charset = "UTF-8"
- 
- ; Always populate the $HTTP_RAW_POST_DATA variable. PHP's default behavior is
- ; to disable this feature. If post reading is disabled through
-@@ -716,7 +716,7 @@
+@@ -730,7 +730,7 @@
  
  ; Directory in which the loadable extensions (modules) reside.
  ; http://php.net/extension-dir
 -; extension_dir = "./"
-+extension_dir = "/usr/lib/php"
++extension_dir = "./"
  ; On windows:
  ; extension_dir = "ext"
  

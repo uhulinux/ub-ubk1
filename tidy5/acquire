@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+tidy_src-${UB_VERSION}.tar.gz tidy-html5-${UB_VERSION}/
+	https://github.com/htacg/tidy-html5/archive/5.0.0.tar.gz

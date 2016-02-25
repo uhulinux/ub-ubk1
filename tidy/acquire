@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-tidy_src-${UB_VERSION}.tgz ./tidy/
-	http://tidy.sourceforge.net/src/tidy_src.tgz
+tidy-${UB_VERSION}-1mdk.src.rpm tidy_src.tar.bz2 ./tidy/
+	ftp://bo.mirror.garr.it/1/mandrake/official/2007.0/SRPMS/main/release/
