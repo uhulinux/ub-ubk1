@@ -1,7 +1,4 @@
 #!/usr/bin/env dl
 
-#release-${UB_VERSION}-stable.tar.gz libevent-${UB_VERSION}-stable/
-#	https://github.com/downloads/libevent/libevent/
-	
 libevent-${UB_VERSION}-stable.tar.gz libevent-${UB_VERSION}-stable/
-	https://download.sourceforge.net/levent/files/libevent/libevent-${UB_VERSION_HEAD2}/
+	https://github.com/libevent/libevent/releases/download/release-${UB_VERSION}-stable/
