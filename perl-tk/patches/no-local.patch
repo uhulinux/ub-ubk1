@@ -1,0 +1,36 @@
+diff -Naur orig/demos/demos/widtrib/npuz.pl mod/demos/demos/widtrib/npuz.pl
+--- orig/demos/demos/widtrib/npuz.pl	2013-11-16 00:50:03.000000000 +0100
++++ mod/demos/demos/widtrib/npuz.pl	2016-02-25 21:57:01.605181524 +0100
+@@ -5,7 +5,7 @@
+ # distribution with permission.  It has been modified slightly to conform
+ # to the widget demo standard.
+ 
+-#!/usr/local/bin/perl -w
++#!/us/bin/perl -w
+ #
+ # puz - demonstrate the Grid geometry manager by implementing an n-puzzle.
+ #
+diff -Naur orig/demos/demos/widtrib/plop.pl mod/demos/demos/widtrib/plop.pl
+--- orig/demos/demos/widtrib/plop.pl	2013-11-16 00:50:03.000000000 +0100
++++ mod/demos/demos/widtrib/plop.pl	2016-02-25 21:57:21.364955184 +0100
+@@ -5,7 +5,7 @@
+ # distribution with permission.  It has been modified slightly to conform
+ # to the widget demo standard.
+ 
+-#!/usr/local/bin/perl -w
++#!/usr/bin/perl -w
+ #
+ # plot_program - plot a series of continuous functions on a Perl/Tk Canvas.
+ #
+diff -Naur orig/pod/Text.pod mod/pod/Text.pod
+--- orig/pod/Text.pod	2015-01-31 20:22:38.000000000 +0100
++++ mod/pod/Text.pod	2016-02-25 22:10:56.038379318 +0100
+@@ -2155,7 +2155,7 @@
+ 
+ For example:
+ 
+- #!/usr/local/bin/perl -w
++ #!/usr/bin/perl -w
+  use POSIX 'acos';
+  use Tk;
+  use strict;
