@@ -1,0 +1,1 @@
+urllist ftp://ftp.uhulinux.hu/pub/sources/pretendroot/ | splitver '^pretendroot-([0-9.]+).tar.gz$' | sort -V | tail -n 1

@@ -1,0 +1,1 @@
+urllist ftp://ftp.uhulinux.hu/pub/sources/virtualmount/ | splitver '^virtualmount-([0-9.]+).tar.gz$' | sort -V | tail -n 1
