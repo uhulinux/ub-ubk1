@@ -1,1 +1,1 @@
-u2dcpan Net::DBus
+urllist ftp://ftp.cpan.org/pub/CPAN/modules/by-module/Net/ | splitver '^Net-DBus-([0-9.]+).tar.gz$' | sort -V | tail -n 1
