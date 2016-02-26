@@ -5,3 +5,4 @@ libjpeg-dev
 libpng-dev
 libx11-dev
 libxpm-dev
+perl-module-build
