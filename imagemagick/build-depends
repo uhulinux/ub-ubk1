@@ -2,7 +2,7 @@
 cairo-dev
 djvulibre-dev
 fftw3-dev
-graphviz
+graphviz-dev
 jasper-dev
 lcms2-dev
 libgsf-dev
@@ -12,12 +12,14 @@ libpng-dev
 librsvg-dev
 libsm-dev
 libtiff-dev
+libwebp-dev
 libwmf-dev
 libx11-dev
 libxext-dev
 libxml2-dev
 libxt-dev
 openexr-dev
+openjpeg-dev
 pango-dev
 xz-dev
 zip

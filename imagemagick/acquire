@@ -1,6 +1,4 @@
 #!/usr/bin/env dl
 
 ImageMagick-${UB_VERSION_HEAD3}-${UB_VERSION_TAIL1}.tar.xz ImageMagick-${UB_VERSION_HEAD3}-${UB_VERSION_TAIL1}/
-#	http://www.imagemagick.net/download/releases/
-	http://www.imagemagick.org/download/
-	http://downloads.sourceforge.net/imagemagick/
+	http://www.imagemagick.org/download/releases/
