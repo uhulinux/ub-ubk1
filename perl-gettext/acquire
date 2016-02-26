@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 gettext-${UB_VERSION}.tar.gz Locale-gettext-${UB_VERSION}/
-	http://search.cpan.org/CPAN/authors/id/P/PV/PVANDRY/
+	http://www.cpan.org/authors/id/P/PV/PVANDRY/
