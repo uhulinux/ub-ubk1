@@ -1,0 +1,12 @@
+diff -Naur orig/configure.ac mod/configure.ac
+--- orig/configure.ac	2015-10-30 16:15:14.000000000 +0100
++++ mod/configure.ac	2016-02-26 22:28:13.242723552 +0100
+@@ -32,7 +32,7 @@
+ LT_VERSION_INFO="3:0:0"
+ AC_SUBST([LT_VERSION_INFO])
+ 
+-AC_CHECK_HEADER([gssapi/gssapi.h], [HAVE_GSSAPI_H=yes], [HAVE_GSSAPI_H=no])
++AC_CHECK_HEADER([gssglue/gssapi/gssapi.h], [HAVE_GSSAPI_H=yes], [HAVE_GSSAPI_H=no])
+ 
+ AC_ARG_ENABLE(gssapi,
+ 	[AC_HELP_STRING([--disable-gssapi], [Disable GSSAPI support @<:@default=no@:>@])],
