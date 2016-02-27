@@ -1,3 +1,5 @@
 libevdev-dev
+libgudev-dev
+libwacom-dev
 mtdev-dev
 systemd-dev
