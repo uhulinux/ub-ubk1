@@ -28,7 +28,7 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-no-qml-debug       \
 	-no-use-gold-linker \
 	-no-journald		\
-	-reduce-relocations \
+	-no-reduce-relocations \
 	-no-separate-debug-info \
 	\
 	-nomake examples    \
@@ -45,6 +45,7 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-gstreamer 1.0		\
 	\
 	-system-freetype	\
+	-system-harfbuzz	\
 	-system-libjpeg     \
 	-system-libpng      \
 	-system-pcre		\
@@ -91,5 +92,4 @@ ub_make
 
 #some options we may want to use in the future
 #	-nomake tests       \
-#	-system-harfbuzz	\ # requires harfbuzz >= 0.9.31
 

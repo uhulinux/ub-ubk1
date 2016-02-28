@@ -8,6 +8,7 @@ gperf
 gst-plugins-base-dev
 gtk-dev
 gtk2-dev
+harfbuzz-dev
 icu-dev
 libjpeg-dev
 libmng-dev
