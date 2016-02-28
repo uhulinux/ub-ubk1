@@ -1,0 +1,37 @@
+From 47601e462c6606f7a711c093fb1b03580b01ee46 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Thu, 7 Jan 2016 10:23:24 +0100
+Subject: [PATCH] Work around an AC_CHECK_LIB bug in Autoconf
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+AC_CHECK_LIB([ldap], [ldap_initialize], [], [...]) should not append -lldap to
+LIBS variable because third AC_CHECK_LIB arugment is defined and
+empty.
+
+But broken autoconf-2.69-21.fc23 thinks empty is undefined and
+defaults to implicit if-found action. That results into linking all
+executables to ldap library and that is unnecessary.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index bb33774..1994945 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -73,7 +73,7 @@ AC_ARG_ENABLE([ldapmail],
+ )
+ AS_IF([test "x$enable_ldapmail" != "xno"], [
+     build_ldap="yes"
+-    AC_CHECK_LIB([ldap], [ldap_initialize], [], [
++    AC_CHECK_LIB([ldap], [ldap_initialize], [:;], [
+         build_ldap=no
+         AS_IF([test "x$enable_ldapmail" = "xyes"], [
+             AC_MSG_ERROR([LDAP support required but library not found.]);
+-- 
+2.5.0
+

@@ -1,0 +1,53 @@
+From cc25319e5e179da1c1d9455ab4760dcbcb66b591 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Wed, 6 Jan 2016 17:14:08 +0100
+Subject: [PATCH] Build rpc.rquotad as PIE
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Harden executables due to rpc.rquotad and quota_nld daemons.
+
+Recent distribution enabled hardening globally. This patch preserves the
+test to catch a regression.
+
+<https://bugzilla.redhat.com/show_bug.cgi?id=983179>
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ Makefile.am   | 2 ++
+ test-hardened | 9 +++++++++
+ 2 files changed, 11 insertions(+)
+ create mode 100644 test-hardened
+
+diff --git a/Makefile.am b/Makefile.am
+index eb62617..1414f8d 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -232,6 +232,8 @@ quota_nld_LDADD = \
+ 	$(DBUS_LIBS) \
+ 	$(LIBNL3_LIBS)
+ 
++TEST=test-hardended
++
+ # ------------------
+ # Rpcgen conversions
+ # ------------------
+diff --git a/test-hardened b/test-hardened
+new file mode 100644
+index 0000000..b8f63bf
+--- /dev/null
++++ b/test-hardened
+@@ -0,0 +1,9 @@
++#!/bin/sh
++# Check rpc.rquotad and quota_nld daemons are hardened (bug #983179)
++
++for D in rpc.rquotad quota_nld; do
++    if readelf -d "$D" | fgrep -q TEXTREL; then
++         echo "*** Text relocation found in ${D}"
++         exit 1;
++    fi
++done
+-- 
+2.5.0
+

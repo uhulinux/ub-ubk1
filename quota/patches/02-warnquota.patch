@@ -1,11 +1,11 @@
-diff -Naur quota-tools-orig/warnquota.conf quota-tools/warnquota.conf
---- quota-tools-orig/warnquota.conf	2011-03-04 17:00:10.000000000 +0100
-+++ quota-tools/warnquota.conf	2011-09-28 20:08:47.000000000 +0200
-@@ -4,28 +4,28 @@
- # and even blank lines
+diff -Naur orig/warnquota.conf mod/warnquota.conf
+--- orig/warnquota.conf	2015-12-16 18:15:52.000000000 +0100
++++ mod/warnquota.conf	2016-02-28 14:10:42.762676178 +0100
+@@ -5,28 +5,28 @@
  
  # values can be quoted:
--MAIL_CMD 	= "/usr/my/sendmail/instead/sendmail -t"
+ #MAIL_CMD 	= "/usr/my/sendmail/instead/sendmail -t"
+-MAIL_CMD 	= "/bin/echo"
 -FROM 		= "bas@example.com"
 +MAIL_CMD 	= "/usr/sbin/sendmail -t"
 +FROM 		= "root@localhost"
@@ -37,5 +37,5 @@ diff -Naur quota-tools-orig/warnquota.conf quota-tools/warnquota.conf
 -SIGNATURE	= See you!|			Your admin of %h|
 +SIGNATURE	= -- |root@localhost
  # Following text is used for mails about group exceeding quotas
- GROUP_MESSAGE	= Hello, a group '%i' you're member of use too much space at %h.|\
- I chose you to do the cleanup.|Delete group files on the following filesystems:|
+ GROUP_MESSAGE	= Hello,|\
+ your group %i is using too much disk space at %h.|\
