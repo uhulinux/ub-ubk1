@@ -1,1 +1,1 @@
-urllist http://www.riverbankcomputing.co.uk/static/Downloads/dip/ | parsever | sort -V | tail -n 1
+urllist https://www.riverbankcomputing.com/software/dip/download | splitver '^dip-gpl-([0-9.]+).tar.gz$'
