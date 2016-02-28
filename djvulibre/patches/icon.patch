@@ -1,14 +1,21 @@
-diff -Naur djvulibre-3.5.25-orig/desktopfiles/Makefile.in djvulibre-3.5.25/desktopfiles/Makefile.in
---- djvulibre-3.5.25-orig/desktopfiles/Makefile.in	2012-05-08 04:56:53.000000000 +0200
-+++ djvulibre-3.5.25/desktopfiles/Makefile.in	2012-06-12 19:53:08.000000000 +0200
-@@ -46,9 +46,7 @@
+diff -Naur djvulibre-3.5.27-orig/desktopfiles/Makefile.in djvulibre-3.5.27/desktopfiles/Makefile.in
+--- djvulibre-3.5.27-orig/desktopfiles/Makefile.in	2015-02-12 17:04:02.000000000 +0100
++++ djvulibre-3.5.27/desktopfiles/Makefile.in	2016-02-28 10:39:09.475622469 +0100
+@@ -284,17 +284,10 @@
+ scalable/mimetypes/djvu.svgz
  
- all: icons register-djvu-mime 
+ PNGICONS = \
+-16x16/mimetypes/djvu.png \
+-20x20/mimetypes/djvu.png \
+ 22x22/mimetypes/djvu.png \
+-24x24/mimetypes/djvu.png \
+ 32x32/mimetypes/djvu.png \
+ 48x48/mimetypes/djvu.png \
+ 64x64/mimetypes/djvu.png \
+-72x72/mimetypes/djvu.png \
+-96x96/mimetypes/djvu.png \
+-128x128/mimetypes/djvu.png \
+-256x256/mimetypes/djvu.png 
  
--PNGICONS = hi16-djvu.png hi20-djvu.png hi22-djvu.png hi24-djvu.png \
--           hi32-djvu.png hi48-djvu.png hi64-djvu.png hi72-djvu.png \
--           hi96-djvu.png hi128-djvu.png hi256-djvu.png
-+PNGICONS = hi22-djvu.png hi32-djvu.png hi48-djvu.png hi64-djvu.png
- 
- icons: ${PNGICONS} hi-djvu.svgz 
- 
+ @HAVE_CONVERSION_CONVERT_TRUE@convert_icons_process = \
+ @HAVE_CONVERSION_CONVERT_TRUE@s=`echo $@ | sed -e 's/[a-z]*\([0-9]*\).*/\1/'`; \

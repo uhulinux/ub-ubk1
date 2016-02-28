@@ -3,5 +3,5 @@
 ub_install
 
 mkdir -p "$UB_INSTALLDIR"/usr/include/cdio/paranoia
-mv "$UB_INSTALLDIR"/usr/include/cdio/*.h "$UB_INSTALLDIR"/usr/include/cdio/paranoia/
+#mv "$UB_INSTALLDIR"/usr/include/cdio/*.h "$UB_INSTALLDIR"/usr/include/cdio/paranoia/
 rm -rf "$UB_INSTALLDIR"/usr/share/man/jp
