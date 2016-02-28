@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-kile-${UB_VERSION}.tar.gz kile-${UB_VERSION#*~}/
-	svn://anonsvn.kde.org/home/kde/trunk/extragear/office/kile/@${UB_VERSION#*~r}

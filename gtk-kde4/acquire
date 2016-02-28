@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-gtk-kde4(src)${UB_VERSION}.tar.gz gtk-kde4/
-	http://betta.houa.org/no-site/
-	http://www.kde-look.org/CONTENT/content-files/

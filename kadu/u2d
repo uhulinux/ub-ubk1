@@ -1,1 +1,0 @@
-urllist http://download.kadu.im/stable/ | splitver '^kadu-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

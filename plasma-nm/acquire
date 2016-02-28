@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-plasma-nm-${UB_VERSION}.tar.gz plasma-nm-${UB_VERSION_HEAD3}/
-	git://anongit.kde.org/plasma-nm.git@head:${UB_VERSION#*+h}

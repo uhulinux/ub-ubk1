@@ -1,1 +1,0 @@
-urllist http://download.kde.org/unstable/lightdm-kde/src/ | parsever | sort -V | tail -n 1

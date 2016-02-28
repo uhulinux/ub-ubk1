@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-quassel-"$UB_VERSION".tar.bz2 quassel-"$UB_VERSION"/
-	http://quassel-irc.org/pub/

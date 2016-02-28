@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-rekonq-${UB_VERSION}.tar.xz rekonq-${UB_VERSION}/
-	http://downloads.sourceforge.net/rekonq/

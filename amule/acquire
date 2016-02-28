@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-aMule-${UB_VERSION/~/}.tar.bz2 aMule-${UB_VERSION/~/}/
-	http://downloads.sourceforge.net/amule/

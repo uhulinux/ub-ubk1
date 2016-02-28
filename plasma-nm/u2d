@@ -1,1 +1,0 @@
-urllist http://download.kde.org/unstable/plasma-nm/ | splitver '^plasma-nm-([0-9.]+).tar.xz$' | sort -V | tail -n 1

@@ -53,16 +53,16 @@ autoconf
 	--disable-fetch-external \
 	--disable-gconf \
 	--disable-gnome-vfs \
+	--disable-kde4 \
 	--disable-odk \
 	--disable-online-update \
+	--disable-pdfimport \
 	--disable-saxon \
 	--enable-crashdump \
 	--enable-gio \
 	--enable-gstreamer \
 	--enable-hunspell \
-	--enable-hyphen \
-	--enable-kde4
-#	--enable-pdfimport
+	--enable-hyphen
 
 source ./LinuxX86Env.Set.sh
 ./bootstrap

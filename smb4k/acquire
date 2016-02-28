@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-smb4k-${UB_VERSION}.tar.bz2 smb4k-${UB_VERSION}/
-	http://download.berlios.de/smb4k/
