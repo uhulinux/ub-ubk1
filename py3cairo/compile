@@ -1,7 +1,7 @@
 #!/bin/sh -eux
 
 export PYTHON=python3
-
+ls
 python3 ./waf \
 	--prefix=/usr \
 	configure
