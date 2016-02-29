@@ -1,5 +1,6 @@
 cmake
-phonon-dev
+icu-dev
 python-dev
+python-setuptools
 qt4-dev
 shiboken-dev
