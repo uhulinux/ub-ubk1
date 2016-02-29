@@ -6,4 +6,11 @@ ub_compile \
 	--enable-unicode \
 	--enable-ipv6 \
 	--enable-intl \
-	--disable-precomp-headers
+	--disable-precomp-headers \
+	--enable-graphics_ctx \
+	--enable-mediactrl \
+	--enable-webview \
+	--with-libpng=sys \
+	--with-libxpm=sys \
+	--with-libjpeg=sys \
+	--with-libtiff=sys
