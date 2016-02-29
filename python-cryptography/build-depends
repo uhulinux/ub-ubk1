@@ -1,6 +1,6 @@
-cffi
 openssl-dev
 pycparser
+python-cffi
 python-dev
 python-setuptools
 python-six
