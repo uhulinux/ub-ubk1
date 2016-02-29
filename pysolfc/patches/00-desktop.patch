@@ -1,13 +1,11 @@
-diff -Naur orig/data/pysol.desktop patched/data/pysol.desktop
+diff -Naur orig/data/pysol.desktop mod/data/pysol.desktop
 --- orig/data/pysol.desktop	2008-06-06 08:58:50.000000000 +0200
-+++ patched/data/pysol.desktop	2016-02-20 12:59:52.695576722 +0100
-@@ -1,7 +1,9 @@
++++ mod/data/pysol.desktop	2016-02-29 07:41:14.752202819 +0100
+@@ -1,7 +1,6 @@
  [Desktop Entry]
- Encoding=UTF-8
+-Encoding=UTF-8
  Name=PySol Fan Club Edition
 -Exec=pysol.py
-+Name[hu]=PySolFC
-+Comment[hu]=Pasziánsz
 +Exec=pysol
  Terminal=false
  Type=Application
