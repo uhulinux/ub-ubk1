@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-WebTest-${UB_VERSION}.zip WebTest-${UB_VERSION}/
+WebTest-${UB_VERSION}.tar.gz WebTest-${UB_VERSION}/
 	http://pypi.python.org/packages/source/W/WebTest/
