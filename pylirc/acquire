@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 pylirc-${UB_VERSION}.tar.gz pylirc-${UB_VERSION}/
-	http://download.sourceforge.net/pylirc/
+	http://downloads.sourceforge.net/project/pylirc/pylirc/${UB_VERSION}/
+	http://ufpr.dl.sourceforge.net/project/pylirc/pylirc/${UB_VERSION}/
