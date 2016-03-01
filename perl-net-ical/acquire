@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Net-ICal-${UB_VERSION}.tar.gz Net-ICal-${UB_VERSION}/
-	http://www.cpan.org/authors/id/S/SR/SRL/

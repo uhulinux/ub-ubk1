@@ -1,1 +1,0 @@
-sflist gtk2-perl Gtk2_Html2 | grep -E '^([0-9.]+)$' | sort -V | tail -n 1

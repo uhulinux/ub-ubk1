@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-ub_install
-
-# conflicts with sysstat
-rm "$UB_INSTALLDIR"/usr/bin/pidstat
-rm "$UB_INSTALLDIR"/usr/share/man/man1/pidstat.1

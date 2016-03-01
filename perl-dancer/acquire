@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Dancer-${UB_VERSION}.tar.gz Dancer-${UB_VERSION}/
-	http://cpan.metacpan.org/modules/by-module/Dancer/

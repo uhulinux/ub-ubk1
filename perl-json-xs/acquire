@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-JSON-XS-${UB_VERSION}.tar.gz JSON-XS-${UB_VERSION}/
-	http://cpan.metacpan.org/modules/by-module/JSON/

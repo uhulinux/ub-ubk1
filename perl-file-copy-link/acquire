@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-File-Copy-Link-${UB_VERSION}.tar.gz File-Copy-Link-${UB_VERSION}/
-	http://search.cpan.org/CPAN/authors/id/R/RM/RMBARKER/

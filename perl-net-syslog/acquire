@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Net-Syslog-${UB_VERSION}.tar.gz Net-Syslog-${UB_VERSION}/
-	http://www.cpan.org/authors/id/L/LH/LHOWARD/

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-DBD-CSV-${UB_VERSION}.tgz DBD-CSV-${UB_VERSION}/
-	https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Sys-Mmap-${UB_VERSION}.tar.gz Sys-Mmap-${UB_VERSION}/
-	http://cpan.metacpan.org/authors/id/T/TO/TODDR/

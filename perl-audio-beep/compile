@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-pushd beep-1.2.2
-	make
-popd
-
-ub_compile

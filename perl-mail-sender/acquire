@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Mail-Sender-${UB_VERSION}.tar.gz Mail-Sender-${UB_VERSION}/
-	http://search.cpan.org/CPAN/authors/id/J/JE/JENDA/

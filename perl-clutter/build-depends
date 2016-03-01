@@ -1,6 +1,0 @@
-clutter-dev
-perl-cairo-gobject
-perl-extutils-depends
-perl-extutils-pkgconfig
-perl-glib-object-introspection
-perl-pango

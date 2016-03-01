@@ -1,4 +1,0 @@
-#!/bin/sh -eux
-
-./configure prefix="$UB_INSTALLDIR"
-make

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Text-CSV-Separator-${UB_VERSION}.tar.gz Text-CSV-Separator-${UB_VERSION}/
-	http://search.cpan.org/CPAN/authors/id/E/EN/ENELL/

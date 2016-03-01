@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-make \
-	PERL_INSTALL_ROOT="$UB_INSTALLDIR" \
-	install

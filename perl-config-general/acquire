@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Config-General-${UB_VERSION}.tar.gz Config-General-${UB_VERSION}/
-	http://cpan.org/authors/id/T/TL/TLINDEN/
