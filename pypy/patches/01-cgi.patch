@@ -1,9 +1,0 @@
-diff -Naur ORIG/lib-python/2.7/cgi.py UHU/lib-python/2.7/cgi.py
---- ORIG/lib-python/2.7/cgi.py	2013-11-15 20:44:50.000000000 +0100
-+++ UHU/lib-python/2.7/cgi.py	2014-04-24 18:00:14.906123452 +0200
-@@ -1,4 +1,4 @@
--#! /usr/local/bin/python
-+#! /usr/bin/python
- 
- # NOTE: the above "/usr/local/bin/python" is NOT a mistake.  It is
- # intentionally NOT "/usr/bin/env python".  On many systems

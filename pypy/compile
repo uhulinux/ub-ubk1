@@ -1,8 +1,7 @@
 #!/bin/sh -eux
 
-#export PATH=/var/uhubuild/work/compile/pypy-portable/bin:"$PATH"
+# pypy rpython/bin/rpython --make-jobs=4 -Ojit pypy/goal/targetpypystandalone.py
 
-pypy rpython/bin/rpython --make-jobs=4 -Ojit pypy/goal/targetpypystandalone.py
+cd pypy/goal
 
-# create cffi extension modules
-./pypy-c -c 'import _sqlite3, _curses, syslog, _tkinter'
+python2 ../../rpython/bin/rpython --make-jobs=4 -Ojit --shared targetpypystandalone

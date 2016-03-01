@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
-release-${UB_VERSION}.tar.bz2 pypy-pypy-32f35069a16d/
+release-${UB_VERSION}.tar.bz2 pypy-pypy-5f8302b8bf9f/
 	https://bitbucket.org/pypy/pypy/get/
 #	https://bitbucket.org/pypy/pypy/downloads/
