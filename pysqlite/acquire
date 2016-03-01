@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 pysqlite-${UB_VERSION}.tar.gz pysqlite-${UB_VERSION}/
-	http://pysqlite.googlecode.com/files/
+	https://pypi.python.org/packages/source/p/pysqlite/
