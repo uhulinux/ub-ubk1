@@ -1,1 +1,1 @@
-urllist https://pypi.python.org/packages/source/i/ipaddr/ | parsever | sort -V | tail -n 1
+urllist https://pypi.python.org/pypi/ipaddr/  | parsever | sort -V | tail -n 1

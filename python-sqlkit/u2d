@@ -1,1 +1,2 @@
-urllist http://sqlkit.argolinux.org/download/ | splitver '^sqlkit-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+#u2dpypi sqlkit
+urllist http://sqlkit.argolinux.org/misc/download.html#download/ | parsever | sort -V | tail -n 1
