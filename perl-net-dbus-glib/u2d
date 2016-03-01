@@ -1,1 +1,0 @@
-urllist ftp://ftp.cpan.org/pub/CPAN/modules/by-module/Net/ | splitver '^Net-DBus-GLib-([0-9.]+).tar.gz$' | sort -V | tail -n 1

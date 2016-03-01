@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-DBIx-Connector-${UB_VERSION}.tar.gz DBIx-Connector-${UB_VERSION}/
-	http://cpan.metacpan.org/authors/id/D/DW/DWHEELER/

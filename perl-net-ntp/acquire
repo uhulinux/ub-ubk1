@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Net-NTP-${UB_VERSION}.tar.gz Net-NTP-${UB_VERSION}/
-	http://cpan.metacpan.org/authors/id/A/AB/ABH/
