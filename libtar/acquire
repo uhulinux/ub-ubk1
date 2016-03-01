@@ -2,4 +2,4 @@
 
 libtar-${UB_VERSION}.tar.gz libtar-${UB_VERSION}/
 	ftp://ftp.feep.net/pub/software/libtar/
-	http://mozilla2.mirrors.tds.net/pub/linux/frugalware/frugalware-current/source/lib-extra/libtar/
+	ftp://sourceforge.mirrorservice.org/sites/distfiles.finkmirrors.net/

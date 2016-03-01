@@ -1,0 +1,18 @@
+diff -Naur libzip-1.1.2-orig/libzip.pc.in libzip-1.1.2/libzip.pc.in
+--- libzip-1.1.2-orig/libzip.pc.in	2014-08-12 14:48:41.000000000 +0200
++++ libzip-1.1.2/libzip.pc.in	2016-03-01 16:41:55.461238119 +0100
+@@ -2,7 +2,6 @@
+ exec_prefix=@exec_prefix@
+ libdir=@libdir@
+ includedir=@includedir@
+-libincludedir=@libdir@/@PACKAGE@/include
+ 
+ zipcmp=@prefix@/bin/zipcmp
+ 
+@@ -10,5 +9,5 @@
+ Description: library for handling zip archives
+ Version: @VERSION@
+ Libs: @PKG_CONFIG_RPATH@ -L${libdir} -lzip @LIBS@
+-Cflags: -I${includedir} -I${libincludedir}
++
+ 
