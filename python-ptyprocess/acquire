@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-${UB_VERSION}.tar.gz ptyprocess-${UB_VERSION}/
-	https://github.com/pexpect/ptyprocess/archive/
+ptyprocess-${UB_VERSION}.tar.gz ptyprocess-${UB_VERSION}/
+	https://pypi.python.org/packages/source/p/ptyprocess/
