@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 urlgrabber-${UB_VERSION}.tar.gz urlgrabber-${UB_VERSION}/
-	http://linux.duke.edu/projects/urlgrabber/download/
+	http://urlgrabber.baseurl.org/download/
