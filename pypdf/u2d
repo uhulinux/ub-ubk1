@@ -1,0 +1,1 @@
+urllist https://github.com/mstamy2/PyPDF2/releases/ | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1

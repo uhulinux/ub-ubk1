@@ -1,0 +1,12 @@
+diff -Naur orig/setup.py mod/setup.py
+--- orig/setup.py	2015-05-01 21:40:12.000000000 +0200
++++ mod/setup.py	2016-03-01 14:32:37.246354413 +0100
+@@ -29,7 +29,7 @@
+       ext_modules = [Extension("xattr", ["xattr.c"],
+                                libraries=["attr"],
+                                define_macros=macros,
+-                               extra_compile_args=["-Wall", "-Werror"],
++                               extra_compile_args=["-Wall"],
+                                )],
+       test_suite = "test",
+       platforms = ["Linux"],

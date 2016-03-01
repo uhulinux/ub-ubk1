@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 pigment-python-${UB_VERSION}.tar.gz pigment-python-${UB_VERSION}/
-	http://elisa.fluendo.com/static/download/pigment/
+	ftp://zenlive.mirrors.tds.net/pub/linux/frugalware/frugalware-testing/source/xlib-extra/pigment-python/

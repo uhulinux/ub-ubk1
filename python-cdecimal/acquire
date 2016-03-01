@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 cdecimal-${UB_VERSION/~/-}.tar.gz cdecimal-${UB_VERSION/~/-}/
-	http://www.bytereef.org/software/
+	 http://www.bytereef.org/software/mpdecimal/releases/
