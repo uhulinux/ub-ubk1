@@ -1,6 +1,6 @@
 cinnamon-desktop-dev
 cjs-dev
-clutter-gst-dev
+clutter-gst2-dev
 clutter-gtk-dev
 evince-dev
 gcr-dev
@@ -17,6 +17,7 @@ libcryptui-dev
 libmusicbrainz-dev
 libnotify-dev
 libsm-dev
+libwebp-dev
 libxshmfence-dev
 nemo-dev
 pygobject2-dev
