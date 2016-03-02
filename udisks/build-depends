@@ -4,6 +4,7 @@ expat-dev
 glib-dev
 intltool
 libatasmart-dev
+libgudev-dev
 libsgutils
 libsm-dev
 libxslt
