@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-protobuf-${UB_VERSION}.tar.bz2 protobuf-${UB_VERSION}/
-	http://protobuf.googlecode.com/files/
+v${UB_VERSION}.tar.gz protobuf-${UB_VERSION}/
+	https://github.com/google/protobuf/archive/

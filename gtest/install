@@ -13,3 +13,4 @@ install -p -m 0755 scripts/gtest-config "$UB_INSTALLDIR"/usr/bin/
 install -p -m 0644 include/gtest/*.h "$UB_INSTALLDIR"/usr/include/gtest/
 install -p -m 0644 include/gtest/internal/*.h "$UB_INSTALLDIR"/usr/include/gtest/internal/
 install -p -m 0644 m4/gtest.m4 "$UB_INSTALLDIR"/usr/share/aclocal/
+ 

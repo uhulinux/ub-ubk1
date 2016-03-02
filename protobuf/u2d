@@ -1,1 +1,1 @@
-urllist https://code.google.com/p/protobuf/downloads/ | splitver '^protobuf-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+urllist https://github.com/google/protobuf/ | splitver '^v([0-9.]+)$' | sort -V | tail -n 1

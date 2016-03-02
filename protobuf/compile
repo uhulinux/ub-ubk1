@@ -1,9 +1,6 @@
 #!/bin/sh -eux
 
-rm -rf configure gtest
-./autogen.sh
-ub_compile \
-	--enable-static
-
+autoreconf -vif
+ub_compile
 cd python
 ub_compile

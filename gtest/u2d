@@ -1,1 +1,1 @@
-urllist https://code.google.com/p/googletest/downloads/list | parsever | sort -V | tail -n 1
+urllist https://github.com/google/googletest/releases/ | splitver '^release-([0-9.]+).tar.gz$' | sort -V | tail -n 1
