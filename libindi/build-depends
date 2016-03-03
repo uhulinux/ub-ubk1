@@ -1,5 +1,6 @@
 boost-dev
 cmake
+curl-dev
 gsl-dev
 libcfitsio
 libfli
