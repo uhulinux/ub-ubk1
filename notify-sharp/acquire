@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-notify-sharp_${UB_VERSION}~r3032.orig.tar.gz notify-sharp-${UB_VERSION}/
-	http://archive.ubuntu.com/ubuntu/pool/universe/n/notify-sharp/

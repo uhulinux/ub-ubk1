@@ -1,8 +1,0 @@
-#!/bin/sh -eux
-
-ub_install
-
-#install icons and desktop for menu
-install -m644 Menu/gnome-rdp.desktop "$UB_INSTALLDIR"/usr/share/applications/
-install -m644 Menu/gnome-rdp.png "$UB_INSTALLDIR"/usr/share/pixmaps/
-install -m644 Menu/gnome-rdp.xpm "$UB_INSTALLDIR"/usr/share/pixmaps/

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-boo-"$UB_VERSION".tar.gz boo-"$UB_VERSION"/
-	http://dist.codehaus.org/boo/distributions/

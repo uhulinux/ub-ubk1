@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-xsp-${UB_VERSION}.tar.bz2 xsp-${UB_VERSION}/
-	http://download.mono-project.com/sources/xsp/

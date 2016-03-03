@@ -1,1 +1,0 @@
-sflist gnome-rdp Tarballs | parsever | sort -V | tail -n 1

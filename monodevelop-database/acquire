@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-monodevelop-database-${UB_VERSION}.tar.bz2 monodevelop-database-${UB_VERSION}/
-	http://download.mono-project.com/sources/monodevelop-database/

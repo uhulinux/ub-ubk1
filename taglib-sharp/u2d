@@ -1,1 +1,0 @@
-urllist http://download.banshee-project.org/taglib-sharp/ | grep -E '^([0-9.]+)$' | sort -V | tail -n 1

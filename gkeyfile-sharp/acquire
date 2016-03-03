@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gkeyfile-sharp-${UB_VERSION}.tar.gz mono-gkeyfile-sharp-662c5c1/
-	http://github.com/mono/gkeyfile-sharp/tarball/GKEYFILE_SHARP_0_1

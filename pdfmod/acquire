@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-pdfmod-${UB_VERSION}.tar.gz pdfmod-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/pdfmod/${UB_VERSION_HEAD2}/

@@ -1,1 +1,0 @@
-urllist https://github.com/mono/daap-sharp/ | splitver '^daap-sharp-([0-9.]+)$' | sort -V | tail -n 1

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gnome-rdp-${UB_VERSION}.tar.gz gnome-rdp-${UB_VERSION}/
-	http://downloads.sourceforge.net/gnome-rdp/

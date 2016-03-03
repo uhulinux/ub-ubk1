@@ -1,1 +1,0 @@
-urllist http://www.go-mono.com/archive/gnome-keyring-sharp/ | parsever | sort -V | tail -n 1

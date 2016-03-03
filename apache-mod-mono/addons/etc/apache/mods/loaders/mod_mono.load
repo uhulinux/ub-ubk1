@@ -1,3 +1,0 @@
-<IfModule !mod_mono.c>
-LoadModule mono_module /usr/lib/apache/mod_mono.so
-</IfModule>

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gtk-sharp-beans-${UB_VERSION}.tar.gz mono-gtk-sharp-beans-19023b6/
-	https://github.com/mono/gtk-sharp-beans/tarball/${UB_VERSION}

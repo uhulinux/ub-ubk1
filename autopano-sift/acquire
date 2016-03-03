@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-autopano-sift-${UB_VERSION}.tar.gz autopano-sift-${UB_VERSION}/
-	http://user.cs.tu-berlin.de/~nowozin/autopano-sift/
-	ftp://ftp.uni-kl.de/pub/linux/gentoo/distfiles/

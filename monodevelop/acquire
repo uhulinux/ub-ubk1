@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-monodevelop-${UB_VERSION}.tar.bz2 monodevelop-${UB_VERSION}/
-	http://download.mono-project.com/sources/monodevelop/
