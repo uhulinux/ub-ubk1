@@ -14,8 +14,6 @@ libical-dev
 libindicator3-dev
 libxklavier-dev
 lmsensors-dev
-ndesk-dbus
-ndesk-dbus-glib
 pulseaudio-dev
 python3-dev
 ruby

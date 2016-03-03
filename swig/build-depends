@@ -7,7 +7,6 @@ libx11-dev
 libxext-dev
 libxt-dev
 lua-dev
-mono-dev
 ocaml
 pcre-dev
 php

@@ -3,7 +3,5 @@ expat-dev
 gdbm-dev
 gobject-introspection-dev
 gtk-dev
-gtk2-sharp
 intltool
 libdaemon-dev
-mono-dev

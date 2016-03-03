@@ -1,9 +1,7 @@
 dbus-glib-dev
 gtk2-dev
-gtk2-sharp
 libdbusmenu-dev
 libindicator-dev
-mono-dev
 perl-xml-libxml
 perl-xml-sax-base
 pygtk
