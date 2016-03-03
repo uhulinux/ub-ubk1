@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-FormEncode-${UB_VERSION}.zip FormEncode-${UB_VERSION}/
-	https://pypi.python.org/packages/source/F/FormEncode/

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Camelot-${UB_VERSION/0.0~/}-gpl-pyqt.tar.gz Camelot-${UB_VERSION/0.0~/}-gpl-pyqt/
-	http://pypi.python.org/packages/source/C/Camelot/

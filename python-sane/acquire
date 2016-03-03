@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-python-sane-${UB_VERSION}.tar.gz python-sane-${UB_VERSION}/
-	https://pypi.python.org/packages/source/p/python-sane/

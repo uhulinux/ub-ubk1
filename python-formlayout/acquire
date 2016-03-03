@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-formlayout-${UB_VERSION}.zip formlayout-${UB_VERSION}/
-	https://pypi.python.org/packages/source/f/formlayout/

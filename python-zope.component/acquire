@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-zope.component-"$UB_VERSION".tar.gz zope.component-"$UB_VERSION"/
-	http://pypi.python.org/packages/source/z/zope.component/

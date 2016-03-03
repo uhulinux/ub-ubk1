@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-alembic-${UB_VERSION}.tar.gz alembic-${UB_VERSION}/
-	http://pypi.python.org/packages/source/a/alembic/

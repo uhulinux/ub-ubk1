@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-PyGreSQL-${UB_VERSION}.tar.gz PyGreSQL-${UB_VERSION}/
-	https://pypi.python.org/packages/source/P/PyGreSQL/

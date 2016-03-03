@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Flask-Bcrypt-${UB_VERSION}.tar.gz Flask-Bcrypt-${UB_VERSION}/
-	http://pypi.python.org/packages/source/F/Flask-Bcrypt/

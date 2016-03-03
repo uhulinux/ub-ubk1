@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-${UB_VERSION}.tar.gz rst2pdf-${UB_VERSION}/
-	https://github.com/rst2pdf/rst2pdf/archive/

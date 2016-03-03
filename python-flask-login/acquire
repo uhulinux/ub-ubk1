@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Flask-Login-${UB_VERSION}.tar.gz Flask-Login-${UB_VERSION}/
-	http://pypi.python.org/packages/source/F/Flask-Login/

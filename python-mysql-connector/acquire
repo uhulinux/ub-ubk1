@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-mysql-connector-python-${UB_VERSION}.zip mysql-connector-python-${UB_VERSION}/
-	http://cdn.mysql.com/Downloads/Connector-Python/

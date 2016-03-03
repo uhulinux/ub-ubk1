@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-sqlkit-${UB_VERSION}.tar.gz sqlkit-${UB_VERSION}/
-	http://sqlkit.argolinux.org/download/
-	ftp://ftp.tw.freebsd.org/pub/ports/distfiles/

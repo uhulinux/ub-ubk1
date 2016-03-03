@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-pythondaap-${UB_VERSION}.tar.gz pythondaap-a52ee05/
-	git://github.com/tominsam/pythondaap.git@a52ee05

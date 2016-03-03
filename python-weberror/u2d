@@ -1,1 +1,0 @@
-urllist https://pypi.python.org/pypi/WebError/ | grep version | sed s/.*version=//g | sort -V | tail -n 1

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-pygtkspellcheck-${UB_VERSION}.tar.gz pygtkspellcheck-${UB_VERSION}/
-	http://pypi.python.org/packages/source/p/pygtkspellcheck/

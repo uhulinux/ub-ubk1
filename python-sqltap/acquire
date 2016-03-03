@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-sqltap-${UB_VERSION}.tar.gz sqltap-${UB_VERSION}/
-	http://pypi.python.org/packages/source/s/sqltap/

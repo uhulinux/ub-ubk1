@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Flask-WTF-${UB_VERSION}.tar.gz Flask-WTF-${UB_VERSION}/
-	http://pypi.python.org/packages/source/F/Flask-WTF/

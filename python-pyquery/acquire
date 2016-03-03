@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-pyquery-${UB_VERSION}.tar.gz pyquery-${UB_VERSION}/
-	http://pypi.python.org/packages/source/p/pyquery/

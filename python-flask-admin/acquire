@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Flask-Admin-${UB_VERSION}.tar.gz Flask-Admin-${UB_VERSION}/
-	http://pypi.python.org/packages/source/F/Flask-Admin/

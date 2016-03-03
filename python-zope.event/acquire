@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-zope.event-${UB_VERSION}.tar.gz zope.event-${UB_VERSION}/
-	http://pypi.python.org/packages/source/z/zope.event/

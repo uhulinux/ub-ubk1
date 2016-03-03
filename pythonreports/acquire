@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-PythonReports-${UB_VERSION}.tar.gz PythonReports-${UB_VERSION}/
-	http://downloads.sourceforge.net/pythonreports/

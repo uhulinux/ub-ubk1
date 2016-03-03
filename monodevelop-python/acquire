@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-monodevelop-python-${UB_VERSION}.tar.bz2 monodevelop-python-${UB_VERSION}/
-	http://download.mono-project.com/sources/monodevelop-python/

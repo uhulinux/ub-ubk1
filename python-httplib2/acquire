@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-${UB_VERSION}.tar.gz httplib2-${UB_VERSION}/
-	https://github.com/jcgregorio/httplib2/archive/

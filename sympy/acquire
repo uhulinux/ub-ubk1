@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-sympy-${UB_VERSION}.tar.gz sympy-sympy-${UB_VERSION}/
-	https://github.com/sympy/sympy/archive/
