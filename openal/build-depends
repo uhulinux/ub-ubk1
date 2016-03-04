@@ -1,6 +1,11 @@
 alsa-lib-dev
 cmake
 esound-dev
+fluidsynth-dev
+jack-dev
 libvorbis-dev
+portaudio-dev
 pulseaudio-dev
-sdl-dev
+qt4-dev
+sdl-sound-dev
+sdl2-dev
