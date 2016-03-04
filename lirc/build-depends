@@ -1,5 +1,10 @@
 alsa-lib-dev
+jack-dev
+libftdi-compat-dev
+libftdi1-dev
 libsm-dev
-libusb-dev
+libusb-compat-dev
 libx11-dev
+libxslt-dev
+portaudio-dev
 python-dev

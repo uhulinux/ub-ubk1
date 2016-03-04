@@ -1,4 +1,6 @@
 #!/bin/sh -eux
 
+autoreconf -fi
+export CFLAGS=" -fPIC"
 ub_compile \
 	--without-drm

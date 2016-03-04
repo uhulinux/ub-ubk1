@@ -1,0 +1,34 @@
+From 26d12ba3dff355e5dbc8dbee0e3965a98ce0dc67 Mon Sep 17 00:00:00 2001
+From: Alec Leamas <leamas.alec@gmail.com>
+Date: Wed, 9 Sep 2015 14:06:21 +0200
+Subject: [PATCH] irrecord: Fix crash when invoked without arguments.
+
+---
+ tools/irrecord-ui.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tools/irrecord-ui.cpp b/tools/irrecord-ui.cpp
+index bc58651..249ab87 100644
+--- a/tools/irrecord-ui.cpp
++++ b/tools/irrecord-ui.cpp
+@@ -287,6 +287,7 @@ static void get_commandline(int argc, char** argv, char* buff, size_t size)
+ 	int i;
+ 	int j;
+ 	unsigned int dest = 0;
++	buff[0] = '\0';
+ 
+ 	if (size == 0)
+ 		return;
+@@ -300,7 +301,8 @@ static void get_commandline(int argc, char** argv, char* buff, size_t size)
+ 			break;
+ 		buff[dest++] = ' ';
+ 	}
+-	buff[--dest] = '\0';
++	if (dest > 0)
++		buff[--dest] = '\0';
+ }
+ 
+ 
+-- 
+2.4.2
+

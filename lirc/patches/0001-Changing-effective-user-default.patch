@@ -1,0 +1,25 @@
+From bd400dc047567d230d194c2be8c911a300c0f723 Mon Sep 17 00:00:00 2001
+From: Alec Leamas <leamas.alec@gmail.com>
+Date: Mon, 9 Feb 2015 12:46:17 +0100
+Subject: [PATCH] lirc_options: Set effective user to lirc.
+
+---
+ lirc_options.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lirc_options.conf b/lirc_options.conf
+index 9346de8..bf342c1 100644
+--- a/lirc_options.conf
++++ b/lirc_options.conf
+@@ -12,7 +12,7 @@ plugindir       = /usr/lib/lirc/plugins
+ permission      = 666
+ allow-simulate  = No
+ repeat-max      = 600
+-#effective-user =
++effective-user  = lirc
+ #listen         = [address:]port
+ #connect        = host[:port]
+ #debug          = 6
+-- 
+2.1.0
+
