@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
-mkdir -p "$UB_INSTALLDIR"/usr/share/wallpapers/UHU
-cp -a * "$UB_INSTALLDIR"/usr/share/wallpapers/UHU/
+mkdir -p "$UB_INSTALLDIR"/usr/share/backgrounds/UHU
+cp -a * "$UB_INSTALLDIR"/usr/share/backgrounds/UHU/
