@@ -1,0 +1,6 @@
+alsa-lib-dev
+cmake
+jack-dev
+ladspa-dev
+libsndfile-dev
+pulseaudio-dev
