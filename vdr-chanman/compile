@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-make	PREFIX=/usr \
-	CONFDIR=/var/vdr/config \
-	VIDEODIR=/var/vdr/video \
-	DESTDIR=/usr \

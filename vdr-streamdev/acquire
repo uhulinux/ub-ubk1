@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-vdr-streamdev-${UB_VERSION}.tgz vdr-plugin-streamdev-${UB_VERSION}/
-#	http://projects.vdr-developer.org/attachments/download/969/
-	git://projects.vdr-developer.org/vdr-plugin-streamdev.git@${UB_VERSION}

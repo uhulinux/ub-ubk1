@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-make	CONFDIR=/var/vdr/config \
-	VIDEODIR=/var/vdr/video \
-	DVBDIR=/usr/include/linux/dvb
-	INCLUDES="-I/usr/include/vdr -I/usr/include/linux/dvb"

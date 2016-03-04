@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-vdr-plugin-dvd_${UB_VERSION}.orig.tar.gz vdr-plugin-dvd-${UB_VERSION}/
-  http://archive.ubuntu.com/ubuntu/pool/universe/v/vdr-plugin-dvd/

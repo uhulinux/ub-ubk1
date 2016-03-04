@@ -1,1 +1,0 @@
-urllist http://projects.vdr-developer.org/projects/plg-text2skin/files/ | parsever | sort -V | tail -n1

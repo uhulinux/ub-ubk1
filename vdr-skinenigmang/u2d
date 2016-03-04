@@ -1,1 +1,0 @@
-urllist http://projects.vdr-developer.org/projects/plg-skinenigmang/files/ | parsever | sort -V | tail -n1
