@@ -41,6 +41,10 @@
 	xcb-util-keysyms
 	xcb-util-wm
 	xcb-render-util
+	libclc
+	libomxil-bellagio
+	wayland-protocols
+	wayland
 	mesa
 	x.org-server
 	mesa
@@ -76,4 +80,4 @@
 	libxkbcommon
 	libxnvctrl
 	libxshmfence
-	
+

@@ -67,4 +67,5 @@
 	libevent
 	wayland
 	wayland-protocols
-	
+	libunwind # x.org-servernek kell
+

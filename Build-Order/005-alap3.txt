@@ -17,8 +17,6 @@
 	dbus-python
 	vala
 	colord
-	at-spi2-core
-	at-spi2-atk
 	avahi
 	libmng
 	unixodbc
@@ -99,7 +97,6 @@
 	tidy
 	tidy5
 	php
-	libepoxy
 	tdb
 	qjson
 	gssdp
@@ -112,4 +109,4 @@
 	geocule
 	js
 	gjs
-	
+

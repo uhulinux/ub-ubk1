@@ -2,7 +2,7 @@ libassuan
 libast
 libatasmart
 libavc1394
-libbobcat       
+libbobcat
 libidl2
 libbonobo2
 libcaca
@@ -11,8 +11,6 @@ libcddb
 libcdio
 libcdio-paranoia
 libcroco
-clang
-libclc
 libdate
 libdbi-drivers
 libdbusmenu

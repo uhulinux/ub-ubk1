@@ -10,7 +10,6 @@ libofa
 libofx
 libol
 liboldx
-libomxil-bellagio
 liboobs
 libopkele
 libsrtp
@@ -19,7 +18,7 @@ libosinfo
 libotr
 libpano13
 libpgf
-libphonenumber
+- libphonenumber # Attila, kell ez? csak az evolution-data-server használná, de annál sem required
 libpipeline
 libpqxx
 libpri
@@ -59,7 +58,6 @@ libv4l
 libunicap
 libuninum
 libunique1
-libunwind
 libuser
 libva
 libva-intel-driver
@@ -71,7 +69,6 @@ libvirt-glib
 libvirt-python
 libvisio
 libvisual-plugins
-libvpx
 libvterm
 libwbxml
 libwebp
