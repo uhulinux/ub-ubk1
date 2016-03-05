@@ -28,6 +28,7 @@
 	libxmu
 	libdrm
 	pixman
+	liboldx
 	freetype2
 	libxpm
 	x.org-bitmaps
