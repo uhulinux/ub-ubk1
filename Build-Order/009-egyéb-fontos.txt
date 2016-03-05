@@ -19,7 +19,6 @@ itstool
 pyxml
 iso-codes
 gtksourceview
-gdk-pixbuf
 gpm
 gsl
 bluez
@@ -38,7 +37,6 @@ gtest
 gcr
 rest
 gconf2
-libplist
 usbmuxd
 raptor2
 xdgutils
