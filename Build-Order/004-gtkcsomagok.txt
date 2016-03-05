@@ -1,0 +1,8 @@
+	atk
+	gdk-pixbuf
+	pango
+	gtk2
+	py2cairo
+	pygobject2
+	pygtk2
+	gtk
