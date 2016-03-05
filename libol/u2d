@@ -1,0 +1,2 @@
+minor=$(urllist https://my.balabit.com/hu/downloads/libol/ | splitver '^([0-9.]+)' | sort -V | tail -n 1)
+urllist https://my.balabit.com/hu/downloads/libol/"$minor" | parsever | sort -V | tail -n 1

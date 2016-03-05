@@ -1,4 +1,5 @@
 #!/bin/sh -eux
 
+rm CMakeLists.txt
 autoreconf -vif
 ub_compile
