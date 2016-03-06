@@ -18,7 +18,7 @@ xmlto
 rarian
 opensp
 openjade
-tetex#	?????
+tetex#	Ez a csomag vajon mi lehet?
 gnome-doc-utils
 gtk-doc
 linuxdoc-tools

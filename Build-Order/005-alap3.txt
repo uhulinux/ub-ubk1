@@ -96,7 +96,7 @@ apr-util
 aspell
 libc-client
 mhash
-snmp
+snmp# Ez a csomag mi lehet vajon?
 postfix
 tidy
 tidy5

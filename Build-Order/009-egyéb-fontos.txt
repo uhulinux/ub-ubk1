@@ -36,7 +36,7 @@ rest
 gconf2
 usbmuxd
 raptor2
-xdgutils
+xdg-utils
 pyrex
 openjpeg1
 poppler
