@@ -1,19 +1,19 @@
 	gmp
 	mpfr
 	mpc
-	gcc
-	xz
 	zlib
+	xz
+	cppp
+	gcc
 	kmod
 	net-tools
 	kernel
-	cppp
 	b43-fwcutter
 	linux-firmware
 	cracklib
 	pcre
 	glibc
-	timezones           #????
+	tzdata
 	glibc
 	pam			# python függő de a pythonnak "valahogyan" léteznie kell
 	shadow
@@ -30,6 +30,9 @@
 	attr
 	autoconf
 	automake
+	make
+	ncurses
+	readline
 	bash
 	bc
 	binutils
@@ -72,8 +75,6 @@
 	lzip
 	lzlib
 	m4
-	make
-	ncurses
 	nspr
 	openslp
 	openssl
@@ -88,7 +89,6 @@
 	pretendroot
 	procps
 	psutils
-	readline
 	sed
 	sharutils
 	sortdir
