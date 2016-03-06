@@ -18,7 +18,7 @@ xmlto
 rarian
 opensp
 openjade
-tetex#	Ez a csomag vajon mi lehet?
+texlive
 gnome-doc-utils
 gtk-doc
 linuxdoc-tools
