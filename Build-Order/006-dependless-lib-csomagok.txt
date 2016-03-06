@@ -41,7 +41,6 @@ libmnl
 libmodplug
 libmowgli
 libmpdclient
-libndp
 libnet
 libnfnetlink
 libnfs
