@@ -6,4 +6,10 @@ ub_compile \
 	--enable-mng \
 	--enable-imlib2 \
 	--enable-gstreamer \
-	--enable-zlib
+	--enable-zlib \
+	--enable-x11 \
+	--disable-vnc \
+	--disable-osx \
+	--enable-video4linux2 \
+	--enable-voodoo \
+	--enable-mesa 

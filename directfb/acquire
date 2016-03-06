@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 DirectFB-${UB_VERSION}.tar.gz DirectFB-${UB_VERSION}/
-	ftp://193.239.45.41/by-md5/f/5/f5bdacde77fc653279819796ae11341e/
+	http://sources.webos-ports.org/downloads//
