@@ -1,0 +1,5 @@
+python3
+py3cairo
+pycairo
+pygobject
+pygobject2

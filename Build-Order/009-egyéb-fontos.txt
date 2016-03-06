@@ -19,13 +19,10 @@ itstool
 pyxml
 iso-codes
 gtksourceview
-gpm
 gsl
-bluez
 man-db
 pilot-link
 protobuf
-slang
 strace
 taglib
 vorbis-tools
@@ -57,6 +54,14 @@ glibmm
 atkmm
 boost-jam
 fuse
+enchant
+dbus-js-common
+gst-plugins-base
+webkitgtk
+seed
+neon
+
+
 
 
 

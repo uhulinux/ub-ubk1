@@ -1,0 +1,24 @@
+librsvg
+ghostscript
+graphviz
+cairomm
+pangomm
+gtkmm2
+libsexymm
+libspectre
+
+gtk2mm		# ???????
+
+clucene-core
+libview
+vte2
+libvtemm
+libspectre
+gnome-keyring
+libsocialweb
+imagemagick
+librecad
+libpeas
+libmusicbrainz
+libmusicbrainz3
+

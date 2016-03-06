@@ -58,6 +58,7 @@
 	libnfnetlink
 	libnetfilter-conntrack
 	iptables
+	libndp
 	libnl
 	dhcp
 	libnotify
@@ -66,6 +67,9 @@
 	wireless-tools
 	wpasupplicant
 	modemmanag
+	slang
+	gpm
+	newt
 	eggdbus
 	db1
 	iproute2

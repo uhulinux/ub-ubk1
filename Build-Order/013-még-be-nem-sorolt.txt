@@ -1,34 +1,5 @@
 
-librsvg
-graphviz
-ghostscript
-cairomm
-pangomm
-libsexymm
-libspectre
-gtk2mm
-libview
-libvtemm
 
-
-libzapojit
-libvtemm
-libview
-libstreamanalyzer
-libspectre
-libsocialweb
-libsexymm
-librecad
-libquicktime
-libqalculate
-libpeas
-libmusicbrainz
-libmusicbrainz3
-libmatekbd
-libmatemixer
-libmateweather
-liblxqt
-libkscreen5
 libindicate
 libindicate-qt
 libgweather
@@ -60,3 +31,10 @@ libgnomeprintui2
 libgnomeui2
 libgnomeuimm2
 
+libqalculate
+libquicktime
+gnome-online-accounts
+libzapojit
+libstreamanalyzer
+liblxqt
+libkscreen5
