@@ -1,5 +1,4 @@
-
-liba52		# egyik csomag sem tartalmaz build-depends fájlt
+liba52# egyik csomag sem tartalmaz build-depends fájlt
 libaio
 libantlr3
 libantlr3c
@@ -61,6 +60,5 @@ libtranscript
 libucl
 libungif
 libzip
-
 libcfitsio
 libnova

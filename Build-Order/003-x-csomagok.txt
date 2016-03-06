@@ -1,84 +1,84 @@
-	x.org-util-macros
-	x.org-proto-dev
-	libxau
-	x.org-xtrans-dev
-	imake
-	libxdmcp
-	xcb-proto
-	libxslt
-	libxcb
-	libx11
-	libxext
-	libxp
-	libxfixes
-	libxi
-	libxkbfile
-	libfontenc
-	libxfont
-	libxdamage
-	libxv
-	libxvmc
-	libxxf86vm
-	libxinerama
-	libpciaccess
-	libice
-	libsm
-	libxt
-	libxkbui
-	libxmu
-	libdrm
-	pixman
-	liboldx
-	freetype2
-	libxpm
-	x.org-bitmaps
-	libxaw
-	libxrender
-	libxres
-	libxtst
-	libdmx
-	xcb-util
-	xcb-util-image
-	xcb-util-keysyms
-	xcb-util-wm
-	xcb-render-util
-	libclc
-	libomxil-bellagio
-	wayland-protocols
-	wayland
-	mesa
-	x.org-server
-	mesa
-	x.org-server
-	libxcomposite
-	libxcursor
-	libxft
-	libxrandr
-	libxscrnsaver
-	libepoxy
-	libxxf86dga
-	xkb-utils
-	xkeyboard-config
-	glew
-	x.org-font-utils
-	fonts-x.org
-	x.org-video-ati
-	x.org-video-intel
-	x.org-video-nv
-	x.org-video-vesa
-	x.org-video-fbdev
-	x.org-video-nouveau
-	x.org-input-evdev
-	x.org-input-keyboard
-	x.org-input-mouse
-	x.org-input-synaptics
-	libx86
-	libxalan
-	libxaw3d
-	libxdg-basedir
-	libxdiff
-	libxerces
-	libxkbcommon
-	libxnvctrl
-	libxshmfence
+x.org-util-macros
+x.org-proto-dev
+libxau
+x.org-xtrans-dev
+imake
+libxdmcp
+xcb-proto
+libxslt
+libxcb
+libx11
+libxext
+libxp
+libxfixes
+libxi
+libxkbfile
+libfontenc
+libxfont
+libxdamage
+libxv
+libxvmc
+libxxf86vm
+libxinerama
+libpciaccess
+libice
+libsm
+libxt
+libxkbui
+libxmu
+libdrm
+pixman
+liboldx
+freetype2
+libxpm
+x.org-bitmaps
+libxaw
+libxrender
+libxres
+libxtst
+libdmx
+xcb-util
+xcb-util-image
+xcb-util-keysyms
+xcb-util-wm
+xcb-render-util
+libclc
+libomxil-bellagio
+wayland-protocols
+wayland
+mesa
+x.org-server
+mesa
+x.org-server
+libxcomposite
+libxcursor
+libxft
+libxrandr
+libxscrnsaver
+libepoxy
+libxxf86dga
+xkb-utils
+xkeyboard-config
+glew
+x.org-font-utils
+fonts-x.org
+x.org-video-ati
+x.org-video-intel
+x.org-video-nv
+x.org-video-vesa
+x.org-video-fbdev
+x.org-video-nouveau
+x.org-input-evdev
+x.org-input-keyboard
+x.org-input-mouse
+x.org-input-synaptics
+libx86
+libxalan
+libxaw3d
+libxdg-basedir
+libxdiff
+libxerces
+libxkbcommon
+libxnvctrl
+libxshmfence
 

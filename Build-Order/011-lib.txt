@@ -18,7 +18,7 @@ libosinfo
 libotr
 libpano13
 libpgf
-- libphonenumber # Attila, kell ez? csak az evolution-data-server használná, de annál sem required
+libphonenumber # Át kell ugratni, mert nem sikeredett, későbbi TODO
 libpipeline
 libpqxx
 libpri

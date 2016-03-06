@@ -1,4 +1,4 @@
-perl-algorithm-diff		# egyik csomag sem tartalmaz build-depends fájlt
+perl-algorithm-diff# egyik csomag sem tartalmaz build-depends fájlt
 perl-anyevent
 perl-appconfig
 perl-archive-extract

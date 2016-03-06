@@ -1,71 +1,71 @@
-	ruby
-	glitz
-	fontconfig
-	libtiff
-	tk
-	alsa-lib
-	audiofile
-	esound
-	java
-	db4
-	python
-	python-setuptools
-	lcms
-	libxml2
-	libxslt
-	docbook-xsl
-	xmlto
-	rarian
-	opensp
-	openjade
-	tetex			?????
-	gnome-doc-utils
-	gtk-doc
-	linuxdoc-tools
-	sgml-common
-	talloc
-	dbus
-	glib
-	krb5
-	openldap
-	postgresql
-	cyrus-sasl2
-	openldap
-	postgresql
-	cyrus-sasl2
-	curl
-	apt
-	glib
-	gamin
-	pam
-	pkgconfig
-	pyxml
-	cairo
-	harfbuzz
-	gobject-introspection
-	cairo
-	util-linux
-	systemd
-	util-linux
-	systemd
-	e2fsprogs
-	reiser4progs
-	grub2
-	libarchive
-	cmake
-	llvm
-	nss
-	libesmtp
-	boost
-	pth
-	icmake
-	popt
-	cppunit
-	gperf
-	librevenge
-	libetpan
-	libevent
-	wayland
-	wayland-protocols
-	libunwind # x.org-servernek kell
+ruby
+glitz
+fontconfig
+libtiff
+tk
+alsa-lib
+audiofile
+esound
+java
+db4
+python
+python-setuptools
+lcms
+libxml2
+libxslt
+docbook-xsl
+xmlto
+rarian
+opensp
+openjade
+tetex#	?????
+gnome-doc-utils
+gtk-doc
+linuxdoc-tools
+sgml-common
+talloc
+dbus
+glib
+krb5
+openldap
+postgresql
+cyrus-sasl2
+openldap
+postgresql
+cyrus-sasl2
+curl
+apt
+glib
+gamin
+pam
+pkgconfig
+pyxml
+cairo
+harfbuzz
+gobject-introspection
+cairo
+util-linux
+systemd
+util-linux
+systemd
+e2fsprogs
+reiser4progs
+grub2
+libarchive
+cmake
+llvm
+nss
+libesmtp
+boost
+pth
+icmake
+popt
+cppunit
+gperf
+librevenge
+libetpan
+libevent
+wayland
+wayland-protocols
+libunwind# x.org-servernek kell
 

@@ -1,5 +1,3 @@
-
-
 libindicate
 libindicate-qt
 libgweather
@@ -30,7 +28,6 @@ libgnomeprint2
 libgnomeprintui2
 libgnomeui2
 libgnomeuimm2
-
 libqalculate
 libquicktime
 gnome-online-accounts
