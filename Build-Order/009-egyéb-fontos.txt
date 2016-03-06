@@ -55,7 +55,7 @@ atkmm
 boost-jam
 fuse
 enchant
-dbus-js-common
+gnome-js-common
 gst-plugins-base
 webkitgtk
 seed
