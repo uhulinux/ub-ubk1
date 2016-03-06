@@ -12,6 +12,7 @@ gst0.10-plugins-base-dev
 gtk2-dev
 hunspell-dev
 hunspell-hu
+hyphen-dev
 icu-dev
 java-jdk
 libxslt-dev

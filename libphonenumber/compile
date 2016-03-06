@@ -2,5 +2,4 @@
 
 cd cpp
 ub_compile \
-	-DJAVA_BIN=/usr/lib/java/jre/bin/java \
-	-DUSE_BOOST=OFF
+	-DJAVA_BIN=/usr/lib/java/jre/bin/java
