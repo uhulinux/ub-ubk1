@@ -6,7 +6,6 @@ pangomm
 gtkmm2
 libsexymm
 libspectre
-gtk2mm# ???????
 clucene-core
 libview
 vte2

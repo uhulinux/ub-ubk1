@@ -44,7 +44,7 @@ poppler-data
 gd
 fontforge
 texlive
-muaparser
+muparser
 djvulibre
 ilmbase
 openexr

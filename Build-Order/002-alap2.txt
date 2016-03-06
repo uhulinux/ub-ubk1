@@ -10,7 +10,7 @@ java
 db4
 python
 python-setuptools
-lcms
+lcms2
 libxml2
 libxslt
 docbook-xsl

@@ -41,7 +41,6 @@ xcb-util
 xcb-util-image
 xcb-util-keysyms
 xcb-util-wm
-xcb-render-util
 libclc
 libomxil-bellagio
 wayland-protocols
@@ -63,7 +62,6 @@ glew
 x.org-font-utils
 fonts-x.org
 x.org-video-ati
-x.org-video-intel
 x.org-video-nv
 x.org-video-vesa
 x.org-video-fbdev

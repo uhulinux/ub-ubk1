@@ -66,7 +66,7 @@ libpcap
 ppp
 wireless-tools
 wpasupplicant
-modemmanag
+modemmanager
 slang
 gpm
 newt
@@ -96,7 +96,7 @@ apr-util
 aspell
 libc-client
 mhash
-libnetsnmp
+snmp
 postfix
 tidy
 tidy5
@@ -110,7 +110,7 @@ yasm
 perl-net-dbus
 system-tools-backends
 check
-geocule
+geoclue
 js
 gjs
 

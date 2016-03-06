@@ -4,7 +4,7 @@ atk
 gdk-pixbuf
 pango
 gtk2
-py2cairo
+pycairo
 pygobject2
 pygtk
 gtk
