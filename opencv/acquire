@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-opencv-${UB_VERSION}.zip opencv-${UB_VERSION}/
-	http://downloads.sourceforge.net/opencvlibrary/
+${UB_VERSION}.zip opencv-${UB_VERSION}/
+	https://github.com/Itseez/opencv/archive/
