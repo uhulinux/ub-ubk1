@@ -18,7 +18,7 @@ libosinfo
 libotr
 libpano13
 libpgf
-libphonenumber # Át kell ugratni, mert nem sikeredett, későbbi TODO
+libphonenumber
 libpipeline
 libpqxx
 libpri
