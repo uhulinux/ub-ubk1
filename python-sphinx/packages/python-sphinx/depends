@@ -1,3 +1,9 @@
+python-babel
 python-docutils
 python-jinja2
 python-pygments
+python-six
+python-snowballstemmer
+python-sphinx-alabaster-theme
+python-sphinx-rtd-theme
+pytz
