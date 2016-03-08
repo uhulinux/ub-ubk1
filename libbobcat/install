@@ -1,8 +1,4 @@
 #!/bin/sh -eux
 
-mkdir -p ${UB_INSTALLDIR}/usr/lib
-mkdir -p ${UB_INSTALLDIR}/usr/include/bobcat
-
-cp -r tmp/lib/* ${UB_INSTALLDIR}/usr/lib
-cp -r tmp/bobcat/ ${UB_INSTALLDIR}/usr/include/
-#./build install "$UB_INSTALLDIR"
+cd bobcat
+./build install x "$UB_INSTALLDIR"

@@ -1,4 +1,7 @@
 #!/bin/sh -eux
 
-CXXFLAGS=" -std=c++0x"
-echo -e "n\nn\nn\nn"| ./build libraries
+cd bobcat
+export CXXFLAGS=" -std=c++0x"
+export LDFLAGS=" -pthread"
+./build libraries
+./build man
