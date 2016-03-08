@@ -59,6 +59,8 @@ libesmtp
 boost
 pth
 icmake
+yaml
+libbobcat
 popt
 cppunit
 gperf

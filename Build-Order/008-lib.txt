@@ -2,7 +2,6 @@ libassuan
 libast
 libatasmart
 libavc1394
-libbobcat
 libidl2
 libbonobo2
 libcaca

@@ -1,4 +1,5 @@
 boost-dev
+cmake
 gnutls-dev
 libbobcat-dev
 libgcrypt-dev
