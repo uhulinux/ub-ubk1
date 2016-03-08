@@ -1,2 +1,7 @@
+doxygen
+gdbm-dev
+graphviz-dev
 groff
+libyaml-dev
 openssl-dev
+tk-dev
