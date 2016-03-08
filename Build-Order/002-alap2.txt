@@ -59,7 +59,7 @@ libesmtp
 boost
 pth
 icmake
-yaml
+yodl
 libbobcat
 popt
 cppunit
