@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-FreeImage${UB_VERSION_HEAD2/./}${UB_VERSION_TAIL1}.zip .
-	http://softlayer-ams.dl.sourceforge.net/project/freeimage/Source%20Distribution/${UB_VERSION}/
+FreeImage${UB_VERSION}.tar.gz FreeImage-f6d180b/ :FreeImage
+	 git://github.com/danoli3/FreeImage.git@f6d180b
