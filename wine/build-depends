@@ -10,7 +10,7 @@ freetype2-dev
 glib-dev
 glu-dev
 gnutls-dev
-gst0.10-plugins-base-dev
+gst-plugins-base-dev
 lcms2-dev
 libgphoto2-dev
 libgsm-dev
