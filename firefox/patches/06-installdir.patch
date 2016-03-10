@@ -1,6 +1,6 @@
 diff -Naur orig/config/baseconfig.mk patched/config/baseconfig.mk
---- orig/config/baseconfig.mk	2014-04-22 07:27:37.000000000 +0200
-+++ patched/config/baseconfig.mk	2014-04-28 21:55:58.564212936 +0200
+--- orig/config/baseconfig.mk	2016-03-03 22:47:52.000000000 +0100
++++ patched/config/baseconfig.mk	2016-03-09 17:59:37.942833382 +0100
 @@ -4,8 +4,8 @@
  # whether a normal build is happening or whether the check is running.
  includedir := $(includedir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
@@ -9,6 +9,6 @@ diff -Naur orig/config/baseconfig.mk patched/config/baseconfig.mk
 -sdkdir = $(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION)
 +installdir = $(libdir)/$(MOZ_APP_NAME)
 +sdkdir = $(libdir)/$(MOZ_APP_NAME)-devel
- ifndef TOP_DIST
- TOP_DIST = dist
- endif
+ ifeq (.,$(DEPTH))
+ DIST = dist
+ else
