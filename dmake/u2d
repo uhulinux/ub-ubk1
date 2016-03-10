@@ -1,1 +1,1 @@
-urllist	https://code.google.com/a/apache-extras.org/p/dmake/downloads/ | splitver '^dmake-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+urllist	https://github.com/mohawk2/dmake/releases/ | sed s/_/\./g  |splitver '^DMAKE.([0-9.]+).tar.gz$' | sort -V | tail -n 1
