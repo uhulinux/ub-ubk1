@@ -1,1 +1,1 @@
-urllist https://code.google.com/p/hamcrest/downloads/list | splitver '^hamcrest-([0-9.]+).tgz$' | sort -V | tail -n 1
+urllist https://github.com/hamcrest/JavaHamcrest/releases/ | splitver '^hamcrest-java-([0-9.]+).tar.gz$' | sort -V | tail -n 1
