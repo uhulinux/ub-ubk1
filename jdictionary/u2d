@@ -1,1 +1,1 @@
-sflist jdictionary jDictionary | splitver '^jDictionary%20version%20([0-9].[0-9])$' | sort -V | tail -n 1
+sflist jdictionary jDictionary | grep version | sed 's/.*version //g' | sort | tail -n 1
