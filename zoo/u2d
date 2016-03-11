@@ -1,0 +1,1 @@
+urllist http://ftp.linux.org.tr/slackware/slackware_source/a/zoo/ | parsever

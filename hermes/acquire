@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 Hermes-${UB_VERSION}.tar.gz Hermes-${UB_VERSION}/
-	http://www.clanlib.org/download/legacy/
+	ftp://ftp.sbin.org/pub/lib/graphics/
+

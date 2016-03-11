@@ -1,1 +1,2 @@
-urllist https://acpica.org/downloads/ | splitver '^acpica-unix-([0-9]{8}).tar.gz$'
+urllist https://acpica.org/downloads/ | splitver '^acpica-unix-([0-9]{8}).tar.gz$' | sort -V | tail -n 1
+
