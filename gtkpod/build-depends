@@ -18,7 +18,6 @@ libmusicbrainz3-dev
 libogg-dev
 libplist-dev
 libvorbis-dev
-libxshmfence-dev
 libxslt-dev
 mp4v2-dev
 sound-juicer
