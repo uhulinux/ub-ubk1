@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 jam-${UB_VERSION}.tar jam-${UB_VERSION}/
-	ftp://ftp.perforce.com/jam/
+	https://swarm.workshop.perforce.com/projects/perforce_software-jam/download/main/
