@@ -1,8 +1,10 @@
 dbus-glib-dev
+gnome-common
 gobject-introspection-dev
 gpg
 gpgme-dev
 gtk-dev
+gtk-doc
 intltool
 libgnome-keyring-dev
 libnotify-dev

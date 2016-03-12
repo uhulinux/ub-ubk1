@@ -1,18 +1,18 @@
-diff -Naur orig/gksu-properties/gksu-properties.desktop.in patched/gksu-properties/gksu-properties.desktop.in
+diff -Naur orig/gksu-properties/gksu-properties.desktop.in mod/gksu-properties/gksu-properties.desktop.in
 --- orig/gksu-properties/gksu-properties.desktop.in	2008-05-09 19:39:55.000000000 +0200
-+++ patched/gksu-properties/gksu-properties.desktop.in	2016-02-19 02:08:51.490964367 +0100
-@@ -1,11 +1,13 @@
++++ mod/gksu-properties/gksu-properties.desktop.in	2016-03-12 22:23:40.589755378 +0100
+@@ -1,11 +1,10 @@
  [Desktop Entry]
- Encoding=UTF-8
+-Encoding=UTF-8
  _Name=Privilege granting
-+Name[hu]=Gksu beállítások
  _Comment=Configure behavior of the privilege-granting tool
-+Comment[hu]=Gksu tulajdonságait beállító program
  Exec=gksu-properties
- Icon=gksu.png
+-Icon=gksu.png
++Icon=gksu
  StartupNotify=true
  Terminal=false
  Type=Application
- Categories=GNOME;GTK;Application;Settings;AdvancedSettings;
+-Categories=GNOME;GTK;Application;Settings;AdvancedSettings;
 -OnlyShowIn=GNOME;XFCE;
++Categories=GNOME;GTK;Settings;
 +OnlyShowIn=GNOME;XFCE;MATE;

@@ -1,5 +1,7 @@
 exiv2-dev
-ffmpeg-dev
 file-dev
+libgsf-dev
+libmpeg2-dev
 libvorbis-dev
+poppler-dev
 qt4-dev

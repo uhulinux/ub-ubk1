@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-libcryptui-${UB_VERSION}.tar.xz libcryptui-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/libcryptui/${UB_VERSION_HEAD2}/
+#libcryptui-${UB_VERSION}.tar.xz libcryptui-${UB_VERSION}/
+#	ftp://ftp.gnome.org/pub/GNOME/sources/libcryptui/${UB_VERSION_HEAD2}/
+
+libcryptui-${UB_VERSION}.tar.gz libcryptui-7898f4f/
+	git://github.com/GNOME/libcryptui.git@7898f4f
