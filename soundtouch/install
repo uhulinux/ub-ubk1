@@ -3,4 +3,4 @@
 ub_install
 
 rm -rf "$UB_INSTALLDIR"/usr/doc/soundtouch/{COPYING.TXT,README.html}
-rmdir "$UB_INSTALLDIR"/usr/doc/soundtouch
+
