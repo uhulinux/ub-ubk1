@@ -1,5 +1,4 @@
 librsvg
-ghostscript
 graphviz
 cairomm
 pangomm
@@ -18,4 +17,5 @@ librecad
 libpeas
 libmusicbrainz
 libmusicbrainz3
-
+microcode
+microcodectl

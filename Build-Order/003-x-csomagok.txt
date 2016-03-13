@@ -79,4 +79,5 @@ libxerces
 libxkbcommon
 libxnvctrl
 libxshmfence
+tslib
 

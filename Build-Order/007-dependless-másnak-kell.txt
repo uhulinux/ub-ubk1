@@ -109,3 +109,5 @@ zeromq
 zoo
 zziplib
 zsh
+gnet2
+

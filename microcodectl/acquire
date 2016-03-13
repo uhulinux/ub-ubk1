@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-microcode_ctl-${UB_VERSION}.tar.gz microcode_ctl-${UB_VERSION}/
-	http://urbanmyth.org/microcode/
+microcode_ctl-${UB_VERSION}.tar.xz microcode_ctl-${UB_VERSION}/
+	https://fedorahosted.org/released/microcode_ctl/

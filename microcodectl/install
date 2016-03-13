@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
 ub_install
-rm "$UB_INSTALLDIR/etc/microcode.dat"
+# rm "$UB_INSTALLDIR/etc/microcode.dat"
