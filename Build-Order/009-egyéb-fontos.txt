@@ -60,3 +60,5 @@ gst-plugins-base
 webkitgtk
 seed
 neon
+fltk
+fltk1

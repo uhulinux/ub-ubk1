@@ -1,4 +1,4 @@
-liba52# egyik csomag sem tartalmaz build-depends fájlt
+liba52
 libaio
 libantlr3
 libantlr3c

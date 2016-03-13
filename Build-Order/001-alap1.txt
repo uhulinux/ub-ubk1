@@ -15,7 +15,7 @@ pcre
 glibc
 tzdata
 glibc
-pam# python függő de a pythonnak "valahogyan" léteznie kell
+pam
 shadow
 uhu-pkg
 uhu-base
