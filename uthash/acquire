@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-uthash-${UB_VERSION}.tar.gz uthash-v${UB_VERSION}/
-	git://github.com/troydhanson/uthash.git@tag:v${UB_VERSION}
+v${UB_VERSION}.tar.gz uthash-${UB_VERSION}/
+	https://github.com/troydhanson/uthash/archive/
