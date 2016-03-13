@@ -1,7 +1,4 @@
 #!/bin/sh -eux
 
-mv configure.in configure.ac
-aclocal
-automake --add-missing
-autoconf
+autoreconf -vif
 ub_compile

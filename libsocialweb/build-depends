@@ -4,6 +4,7 @@ gnome-keyring-dev
 gobject-introspection-dev
 intltool
 json-glib-dev
+libgudev-dev
 libsoup-gnome-dev
 libxslt
 networkmanager-dev

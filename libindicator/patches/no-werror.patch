@@ -1,4 +1,4 @@
---- a/gtk2/libindicator/Makefile.in.orig	2013-04-05 19:26:07.000000000 +0200
+--- a/gtk2/libindicator/Makefile.in	2013-04-05 19:26:07.000000000 +0200
 +++ b/gtk2/libindicator/Makefile.in	2013-04-05 19:26:23.000000000 +0200
 @@ -357,8 +357,7 @@
  libindicator_la_CFLAGS = \
