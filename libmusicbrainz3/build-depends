@@ -1,5 +1,5 @@
 cmake
 cppunit-dev
 expat-dev
-libdiscid
+libdiscid-dev
 neon-dev
