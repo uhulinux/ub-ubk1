@@ -64,7 +64,6 @@ pygobject
 pygobject2
 pyhyphen
 pyicu
-pyinotify
 pylibacl
 pylint
 pylirc

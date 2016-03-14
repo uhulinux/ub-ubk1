@@ -1,0 +1,16 @@
+cinnamon-sound-effects
+cinnamon-translations
+pyinotify
+cinnamon-menus
+keybinder3
+cinnamon-desktop
+cinnamon-screensaver
+cinnamon-session
+cinnamon-settings-daemon
+cjs
+muffin
+nemo
+nemo-extensions
+cinnamon-control-center
+cinnamon-bluetooth
+cinnamon
