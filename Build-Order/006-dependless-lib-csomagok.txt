@@ -50,7 +50,6 @@ libquvi-scripts
 libraw1394
 libsigc++
 libsmi
-libstatgrab
 libstdc++5
 libt3config
 libtar

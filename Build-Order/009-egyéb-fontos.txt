@@ -3,7 +3,6 @@ imlib2
 exiv2
 desktop-file-utils
 pangox-compat
-menu-cache
 sg3-utils
 ladspa
 libksba

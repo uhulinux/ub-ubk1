@@ -30,9 +30,6 @@ libical
 libgudev
 libgdiplus
 libfli
-libfm
-libfm-extra
-libfm-qt
 libfs
 libftdi1
 libftdi-compat

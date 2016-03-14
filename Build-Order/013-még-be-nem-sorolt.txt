@@ -33,5 +33,4 @@ libquicktime
 gnome-online-accounts
 libzapojit
 libstreamanalyzer
-liblxqt
 libkscreen5

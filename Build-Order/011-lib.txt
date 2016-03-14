@@ -27,7 +27,6 @@ libpst
 libpwquality
 libqmi
 libqrencode
-libqtxdg
 libquvi
 libqxt
 libsynce
@@ -45,7 +44,6 @@ libspectrum
 libspnav
 libstreams
 libstroke
-libsysstat
 libt3highlight
 libt3key
 libt3window
