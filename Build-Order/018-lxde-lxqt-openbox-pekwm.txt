@@ -40,5 +40,8 @@ lxqt-session
 lximage-qt
 obconf-qt
 pcmanfm-qt
+pekwm-menu
+pekwm
+pekwm-themes
 lxde
 lxqt
