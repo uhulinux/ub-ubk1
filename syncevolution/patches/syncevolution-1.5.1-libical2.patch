@@ -1,0 +1,12 @@
+diff -up syncevolution-1.5.1/src/syncevo/icaltz-util.c.libical2 syncevolution-1.5.1/src/syncevo/icaltz-util.c
+--- syncevolution-1.5.1/src/syncevo/icaltz-util.c.libical2	2014-04-28 11:55:52.000000000 +0200
++++ syncevolution-1.5.1/src/syncevo/icaltz-util.c	2016-01-19 10:04:32.090379654 +0100
+@@ -162,7 +162,7 @@ typedef struct
+ } leap;
+ 
+ #ifndef EVOLUTION_ICAL_COMPATIBILITY
+-extern const char *ical_tzid_prefix;
++const char *ical_tzid_prefix = "/freeassociation.sourceforge.net/";
+ #endif
+ 
+ static int
