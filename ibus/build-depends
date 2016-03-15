@@ -8,3 +8,4 @@ iso-codes
 libnotify-dev
 pygobject-dev
 vala-dev
+wayland-dev
