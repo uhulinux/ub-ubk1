@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-docutils-${UB_VERSION}.tar.gz docutils-${UB_VERSION}/
+docutils-${UB_VERSION}.tar.gz docutils-${UB_VERSION}/ :docutils
 	http://pypi.python.org/packages/source/d/docutils/
