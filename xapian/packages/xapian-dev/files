@@ -2,7 +2,7 @@
 	/lib/*.la
 @	/lib/*.so
 	/lib/pkgconfig
-	/usr/bin/*-config
+	/usr/bin/*-config*
 	/usr/include
 	/usr/lib/**/*.a
 	/usr/lib/**/*.la
