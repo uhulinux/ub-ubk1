@@ -1,5 +1,5 @@
 cmake
-libdbusmenu-qt5-dev
+libdbusmenu-qt-dev
 liblxqt-dev
 libqtxdg-dev
 libx11-dev

@@ -1,1 +1,1 @@
-urllist http://launchpad.net/libdbusmenu-qt/ | splitver '^libdbusmenu-qt-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+urllist http://archive.ubuntu.com/ubuntu/pool/main/libd/libdbusmenu-qt/ | splitver '^libdbusmenu-qt_([0-9].+?).orig.tar.gz$' | sort -V | tail -n 1

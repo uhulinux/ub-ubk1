@@ -2,4 +2,4 @@ cmake
 dbus-dev
 doxygen
 qjson-dev
-qt4-dev
+qt5-dev

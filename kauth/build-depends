@@ -1,5 +1,5 @@
 cmake
 extra-cmake-modules
 kcoreaddons-dev
-polkit-qt5-dev
+polkit-qt-dev
 qt5-dev

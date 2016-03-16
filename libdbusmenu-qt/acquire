@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-libdbusmenu-qt-${UB_VERSION/~/-}.tar.bz2 libdbusmenu-qt-${UB_VERSION/~/-}/
-	http://launchpad.net/libdbusmenu-qt/trunk/${UB_VERSION}/+download/
+libdbusmenu-qt_${UB_VERSION/~/+}.orig.tar.gz libdbusmenu-qt-${UB_VERSION/~/+}/
+	http://archive.ubuntu.com/ubuntu/pool/main/libd/libdbusmenu-qt/
