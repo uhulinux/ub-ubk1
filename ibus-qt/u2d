@@ -1,1 +1,0 @@
-urllist https://code.google.com/p/ibus/downloads/ | splitver '^ibus-qt-([0-9.]+)-Source.tar.gz$' | sort -V | tail -n 1
