@@ -1,9 +1,11 @@
 #!/bin/sh -eux
 
-rm -rf js/src/ctypes/libffi js/src/editline
 cd js/src
 export SHELL=/bin/bash
+rm -rf ctypes/libffi editline
 ub_compile \
 	--with-system-nspr \
 	--enable-threadsafe \
-	--enable-readline
+	--enable-readline \
+	--enable-jemalloc \
+	--enable-system-ffi

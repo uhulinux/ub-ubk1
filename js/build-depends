@@ -1,3 +1,6 @@
+icu-dev
+libedit
+libffi-dev
 nspr-dev
 python-dev
 zip
