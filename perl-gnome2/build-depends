@@ -1,9 +1,0 @@
-dbus-glib-dev
-libgnomeui2-dev
-perl-extutils-depends
-perl-extutils-pkgconfig
-perl-glib
-perl-gnome2-canvas
-perl-gnome2-vfs
-perl-gtk2
-perl-xml-parser
