@@ -1,0 +1,14 @@
+3.18: https://github.com/rcaelers/workrave/commit/b79490b
+3.20 not added yet
+
+--- a/frontend/applets/gnome-shell/src/metadata.json.in	2015-12-12 07:10:11.000000000 -0600
++++ b/frontend/applets/gnome-shell/src/metadata.json.in	2016-02-26 13:05:02.877532341 -0600
+@@ -3,7 +3,7 @@
+  "uuid": "@uuid@",
+  "name": "Workrave",
+  "description": "Applet that shows all the Workrave timers.",
+- "shell-version": [ "3.2", "3.3", "3.4", "3.5", "3.5.4", "3.6.0", "3.6", "3.8", "3.10", "3.12", "3.14", "3.16", "@shell_current@" ],
++ "shell-version": [ "3.2", "3.3", "3.4", "3.5", "3.5.4", "3.6.0", "3.6", "3.8", "3.10", "3.12", "3.14", "3.16", "3.18", "3.20", "@shell_current@" ],
+  "localedir": "@LOCALEDIR@",
+  "url": "@url@"
+ }

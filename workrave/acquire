@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-workrave-${UB_VERSION}.tar.gz workrave-${UB_VERSION}/
-	http://downloads.sourceforge.net/workrave/
+v${UB_VERSION//./_}.tar.gz workrave-${UB_VERSION//./_}/
+	https://github.com/rcaelers/workrave/archive/

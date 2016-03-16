@@ -1,0 +1,14 @@
+diff -Naur orig/configure.ac mod/configure.ac
+--- orig/configure.ac	2015-12-12 14:10:11.000000000 +0100
++++ mod/configure.ac	2016-03-16 13:04:57.081355409 +0100
+@@ -417,9 +417,7 @@
+     with_cxx11=no
+     # Enable C++11 std if gtkmm >= 3.18.0
+     PKG_CHECK_MODULES(GTKMM, gtkmm-3.0 >= 3.18.0,
+-      [ AX_CXX_COMPILE_STDCXX_11([noext])
+-        with_cxx11=yes
+-      ],
++      ,
+       []
+     )
+ fi

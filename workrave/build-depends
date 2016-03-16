@@ -1,3 +1,4 @@
+autoconf
 gnome-panel-dev
 gobject-introspection-dev
 gstreamer0.10-dev
