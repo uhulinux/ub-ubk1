@@ -1,6 +1,3 @@
-automoc4
 cmake
-icu-dev
-libxcursor-dev
 polkit-dev
 qt5-dev
