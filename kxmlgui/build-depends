@@ -1,0 +1,15 @@
+attica-dev
+cmake
+extra-cmake-modules
+kconfig-dev
+kconfigwidgets-dev
+kcoreaddons-dev
+kglobalaccel-dev
+ki18n-dev
+kiconthemes-dev
+kitemviews-dev
+ktextwidgets-dev
+kwidgetsaddons-dev
+kwindowsystem-dev
+qt5-dev
+sonnet-dev

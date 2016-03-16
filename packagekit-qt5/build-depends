@@ -1,0 +1,4 @@
+cmake
+dbus-dev
+packagekit-dev
+qt5-dev

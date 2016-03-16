@@ -1,0 +1,6 @@
+cmake
+extra-cmake-modules
+kdelibs4support-dev
+kdoctools-dev
+ki18n-dev
+qt5-dev

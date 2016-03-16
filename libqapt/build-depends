@@ -1,0 +1,15 @@
+apt-dev
+cmake
+extra-cmake-modules
+gst-plugins-base-dev
+kcoreaddons-dev
+ki18n-dev
+kiconthemes-dev
+kio-dev
+krunner-dev
+ktextwidgets-dev
+kwidgetsaddons-dev
+kwindowsystem-dev
+libdebconf-kde-dev
+qt5-dev
+xapian-dev

@@ -1,0 +1,7 @@
+cmake
+extra-cmake-modules
+frameworkintegration-dev
+kdecoration-dev
+ki18n-dev
+plasma-framework-dev
+qt5-dev

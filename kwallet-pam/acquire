@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+kwallet-pam-${UB_VERSION}.tar.xz kwallet-pam-${UB_VERSION}/
+	http://download.kde.org/stable/plasma/${UB_VERSION}/
+

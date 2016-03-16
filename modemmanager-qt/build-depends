@@ -1,0 +1,4 @@
+cmake
+extra-cmake-modules
+modemmanager-dev
+qt5-dev

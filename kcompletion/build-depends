@@ -1,0 +1,5 @@
+cmake
+extra-cmake-modules
+kconfig-dev
+kwidgetsaddons-dev
+qt5-dev

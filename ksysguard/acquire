@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+ksysguard-${UB_VERSION}.tar.xz ksysguard-${UB_VERSION}/
+	http://download.kde.org/stable/plasma/${UB_VERSION}/
+

@@ -1,0 +1,8 @@
+cmake
+extra-cmake-modules
+kcompletion-dev
+kconfig-dev
+ki18n-dev
+kio-dev
+phonon-qt5-dev
+qt5-dev

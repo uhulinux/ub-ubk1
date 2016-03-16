@@ -1,0 +1,10 @@
+cmake
+extra-cmake-modules
+kconfig-dev
+kconfigwidgets-dev
+ki18n-dev
+kiconthemes-dev
+kio-dev
+knotifications-dev
+kwidgetsaddons-dev
+qt5-dev

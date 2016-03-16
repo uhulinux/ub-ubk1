@@ -1,0 +1,13 @@
+cmake
+extra-cmake-modules
+frameworkintegration-dev
+kcmutils-dev
+kcompletion-dev
+kconfig-dev
+kdecoration-dev
+kguiaddons-dev
+ki18n-dev
+kservice-dev
+kwidgetsaddons-dev
+kwindowsystem-dev
+qt5-dev

@@ -1,0 +1,4 @@
+cmake
+extra-cmake-modules
+gamin-dev
+qt5-dev

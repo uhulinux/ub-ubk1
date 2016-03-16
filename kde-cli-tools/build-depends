@@ -1,0 +1,13 @@
+cmake
+extra-cmake-modules
+kcmutils-dev
+kconfig-dev
+kdelibs4support-dev
+kdesu-dev
+kdoctools-dev
+ki18n-dev
+kiconthemes-dev
+kinit-dev
+kio-dev
+kwindowsystem-dev
+qt5-dev

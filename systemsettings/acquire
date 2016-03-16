@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+systemsettings-${UB_VERSION}.tar.xz systemsettings-${UB_VERSION}/
+	http://download.kde.org/stable/plasma/${UB_VERSION}/
+

@@ -1,0 +1,5 @@
+cmake
+extra-cmake-modules
+mesa-dev
+qt5-dev
+wayland-dev

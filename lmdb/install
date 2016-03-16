@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_install
+
+ln -sf liblmdb.so.0.0.0 "$UB_INSTALLDIR"/usr/lib/liblmdb.so.0
+ln -sf liblmdb.so.0 "$UB_INSTALLDIR"/usr/lib/liblmdb.so

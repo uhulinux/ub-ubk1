@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+bluez-qt-${UB_VERSION}.tar.xz bluez-qt-${UB_VERSION}/
+	http://download.kde.org/stable/frameworks/${UB_VERSION_HEAD2}/
+

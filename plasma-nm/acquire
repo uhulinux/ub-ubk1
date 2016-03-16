@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+plasma-nm-${UB_VERSION}.tar.xz plasma-nm-${UB_VERSION}/
+	http://download.kde.org/stable/plasma/${UB_VERSION}/
+

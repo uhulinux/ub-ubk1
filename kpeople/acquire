@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+kpeople-${UB_VERSION}.tar.xz	kpeople-${UB_VERSION}/
+	http://download.kde.org/stable/frameworks/${UB_VERSION_HEAD2}/
+

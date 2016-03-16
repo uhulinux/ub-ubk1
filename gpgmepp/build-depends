@@ -1,0 +1,5 @@
+boost-dev
+cmake
+extra-cmake-modules
+gpgme-dev
+qt5-dev

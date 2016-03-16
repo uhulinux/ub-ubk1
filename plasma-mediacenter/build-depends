@@ -1,0 +1,13 @@
+baloo-dev
+cmake
+extra-cmake-modules
+kactivities-dev
+kconfig-dev
+kcoreaddons-dev
+kdeclarative-dev
+kguiaddons-dev
+ki18n-dev
+kio-dev
+kservice-dev
+plasma-framework-dev
+qt5-dev

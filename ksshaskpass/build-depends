@@ -1,0 +1,8 @@
+cmake
+extra-cmake-modules
+kcoreaddons-dev
+kdoctools-dev
+ki18n-dev
+kwallet-dev
+kwidgetsaddons-dev
+qt5-dev

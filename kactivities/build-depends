@@ -1,0 +1,17 @@
+boost-dev
+cmake
+extra-cmake-modules
+kcmutils-dev
+kconfig-dev
+kcoreaddons-dev
+kdbusaddons-dev
+kdeclarative-dev
+ki18n-dev
+kio-dev
+kpackage-dev
+qt5-dev
+qt5-plugin-mysql
+qt5-plugin-odbc
+qt5-plugin-psql
+qt5-plugin-tds
+solid-dev

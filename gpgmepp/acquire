@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+gpgmepp-${UB_VERSION}.tar.xz gpgmepp-${UB_VERSION}/
+	http://download.kde.org/stable/applications/${UB_VERSION}/src/

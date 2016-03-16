@@ -1,0 +1,10 @@
+cmake
+extra-cmake-modules
+kcoreaddons-dev
+kdeclarative-dev
+kdoctools-dev
+kglobalaccel-dev
+ki18n-dev
+plasma-framework-dev
+pulseaudio-dev
+qt5-dev

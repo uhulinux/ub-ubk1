@@ -1,0 +1,9 @@
+cmake
+extra-cmake-modules
+kconfig-dev
+kcrash-dev
+ki18n-dev
+kio-dev
+kservice-dev
+kwindowsystem-dev
+qt5-dev

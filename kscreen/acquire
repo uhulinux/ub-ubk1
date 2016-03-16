@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+kscreen-${UB_VERSION}.tar.xz kscreen-${UB_VERSION}/
+	http://download.kde.org/stable/plasma/${UB_VERSION}/
+

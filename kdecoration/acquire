@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+kdecoration-${UB_VERSION}.tar.xz kdecoration-${UB_VERSION}/
+	http://download.kde.org/stable/plasma/${UB_VERSION}/
+

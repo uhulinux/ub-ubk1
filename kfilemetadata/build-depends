@@ -1,0 +1,10 @@
+attr-dev
+cmake
+ebook-tools-dev
+exiv2-dev
+extra-cmake-modules
+ffmpeg-dev
+karchive-dev
+ki18n-dev
+poppler-qt5-dev
+taglib-dev

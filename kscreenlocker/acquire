@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+kscreenlocker-${UB_VERSION}.tar.xz kscreenlocker-${UB_VERSION}/
+	http://download.kde.org/stable/plasma/${UB_VERSION}/
+

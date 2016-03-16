@@ -1,0 +1,4 @@
+cmake
+extra-cmake-modules
+libxscrnsaver-dev
+qt5-dev
