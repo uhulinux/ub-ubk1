@@ -18,7 +18,6 @@ ac_add_options --enable-official-branding
 ac_add_options --enable-crashreporter
 ac_add_options --enable-optimize="-O2"
 ac_add_options --with-pthreads
-ac_add_options --with-qtdir="/usr/lib/qt5"
 ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-libevent
@@ -42,7 +41,6 @@ ac_add_options --enable-libnotify
 ac_add_options --enable-default-toolkit=cairo-gtk2
 ac_add_options --enable-safe-browsing
 ac_add_options --enable-url-classifier
-ac_add_options --enable-libxul
 ac_add_options --disable-debug
 ac_add_options --disable-gconf
 ac_add_options --disable-gnomeui
