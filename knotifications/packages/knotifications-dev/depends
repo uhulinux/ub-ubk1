@@ -2,6 +2,6 @@ kcodecs-dev
 kconfig-dev
 kcoreaddons-dev
 kwindowsystem-dev
-libdbusmenu-qt5-dev
+libdbusmenu-qt-dev
 phonon-qt5-dev
 qt5-dev

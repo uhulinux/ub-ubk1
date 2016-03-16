@@ -21,7 +21,7 @@ kwallet-dev
 kwayland-dev
 kwin-dev
 kxmlrpcclient-dev
-libdbusmenu-qt5-dev
+libdbusmenu-qt-dev
 libkscreen-dev
 libksysguard-dev
 networkmanager-qt-dev
