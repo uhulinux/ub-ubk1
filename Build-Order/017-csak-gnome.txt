@@ -13,6 +13,7 @@ pyatspi
 gnome-screenshot
 libgrss
 nautilus-sendto
+swfdec-gnome
 five-or-more
 gnome2-speech
 gnome-klotski
@@ -52,10 +53,14 @@ gjs
 gnome-chess
 gnome-mplayer
 gnome-nettool
+gnome-power-manager
 gnome-u2ps
 gssdp
+libgnome-media-profiles
 libzapojit
 mousetweaks
+pan
+policykit-gnome
 at-spi2-atk
 gnome-logs
 gnome-nibbles
@@ -64,6 +69,7 @@ libgxps
 gnome-bluetooth
 gnome-schedule
 gnome-sudoku
+libgnomekbd
 accerciser
 gnomeradio
 gnome-system-monitor
@@ -71,7 +77,9 @@ libchamplain
 orca
 aisleriot
 cairo-dock
+gksu
 gnome-packagekit
+xchat-gnome
 vino
 libgweather
 seed
