@@ -1,1 +1,1 @@
-sflist liferea Liferea%20Stable | sort -V | tail -n 1
+urllist https://github.com/lwindolf/liferea/releases/ | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1

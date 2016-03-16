@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-liferea-${UB_VERSION}.tar.bz2 liferea-${UB_VERSION}/
-	http://downloads.sourceforge.net/liferea/
+v${UB_VERSION}.tar.gz liferea-${UB_VERSION}/
+	https://github.com/lwindolf/liferea/archive/
