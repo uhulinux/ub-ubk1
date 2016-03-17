@@ -1,5 +1,5 @@
 cmake
-libkscreen5-dev
+libkscreen-dev
 liblxqt-dev
 libqtxdg-dev
 libxcursor-dev
