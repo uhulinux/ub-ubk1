@@ -49,7 +49,6 @@ swell-foop
 at-spi2-core
 baobab
 cogl
-gjs
 gnome-chess
 gnome-mplayer
 gnome-nettool
