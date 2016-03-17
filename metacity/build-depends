@@ -1,7 +1,7 @@
-gconf2-dev
+dconf-dev
 gnome-doc-utils
 gsettings-desktop-schemas
-gtk2-dev
+gtk-dev
 icu-dev
 intltool
 itstool
