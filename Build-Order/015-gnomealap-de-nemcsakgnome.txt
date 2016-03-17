@@ -66,3 +66,4 @@ clutter-gst
 vte
 libgdata
 gvfs
+swfdec
