@@ -42,6 +42,7 @@ libnotify
 libgnomemm2
 gtksourceview
 libgsf
+swfdec
 gjs
 gnome-python
 gnome-vfsmm2
@@ -66,4 +67,3 @@ clutter-gst
 vte
 libgdata
 gvfs
-swfdec
