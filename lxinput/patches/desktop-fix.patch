@@ -1,9 +1,0 @@
-diff -Naur orig/data/lxinput.desktop.in mod/data/lxinput.desktop.in
---- orig/data/lxinput.desktop.in	2014-09-16 15:32:59.000000000 +0200
-+++ mod/data/lxinput.desktop.in	2014-12-03 19:41:16.484079481 +0100
-@@ -7,4 +7,4 @@
- StartupNotify=true
- Terminal=false
- Categories=GTK;Settings;HardwareSettings;X-LXDE-Settings;
--NotShowIn=GNOME;KDE;XFCE;
-+OnlyShowIn=LXDE;
