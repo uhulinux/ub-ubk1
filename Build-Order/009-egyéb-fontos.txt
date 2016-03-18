@@ -9,6 +9,7 @@ libksba
 libpipeline
 lvm
 parted
+smp-utils
 udisks
 lua
 tk
