@@ -61,13 +61,10 @@ pth
 icmake
 yodl
 libbobcat
-popt
 cppunit
-gperf
 librevenge
 libetpan
 libevent
 wayland
 wayland-protocols
-libunwind# x.org-servernek kell
-
+libunwind

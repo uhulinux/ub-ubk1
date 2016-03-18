@@ -121,7 +121,6 @@ gawk
 docbook-xsl
 doxygen
 groff
-nss
 mysql
 libusb
 libusb-compat
