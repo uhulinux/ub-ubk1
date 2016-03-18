@@ -42,8 +42,6 @@ xcb-util-keysyms
 xcb-util-wm
 libclc
 libomxil-bellagio
-wayland-protocols
-wayland
 mesa
 x.org-server
 mesa
