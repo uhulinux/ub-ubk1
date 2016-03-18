@@ -19,3 +19,5 @@ libmusicbrainz
 libmusicbrainz3
 microcode
 microcodectl
+compton
+compton-conf

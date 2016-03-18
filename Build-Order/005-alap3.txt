@@ -1,3 +1,4 @@
+asciidoc
 libatomic-ops
 gc
 liblzo
