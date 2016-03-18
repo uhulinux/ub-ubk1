@@ -3,8 +3,8 @@ dbus-dev
 docbook-dtds
 docbook-xsl
 glu-dev
-libX11-dev
 libconfig-dev
+libx11-dev
 libxcomposite-dev
 libxinerama-dev
 libxrandr-dev
