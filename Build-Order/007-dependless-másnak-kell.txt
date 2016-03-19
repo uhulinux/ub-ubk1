@@ -2,7 +2,6 @@ acpitool
 adns
 amrnb
 antiword
-antlr3
 arj
 barcode
 bash-completion
