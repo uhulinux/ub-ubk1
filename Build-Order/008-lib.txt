@@ -14,7 +14,6 @@ libdate
 libdbi-drivers
 libdbusmenu
 libdbusmenu-qt
-libdbusmenu-qt5
 libdc1394
 libde265
 libdiscid
@@ -92,4 +91,3 @@ libmsn
 libmtag
 libmtp
 libvpx
-
