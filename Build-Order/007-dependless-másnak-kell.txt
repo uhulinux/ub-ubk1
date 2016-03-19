@@ -55,13 +55,11 @@ jam
 jdictionary
 junit
 less
-liba52
 libupnp
 libyaml
 linebreak
 livemedia
 makeself
-mate-common
 mdds
 mhonarc
 minixml
