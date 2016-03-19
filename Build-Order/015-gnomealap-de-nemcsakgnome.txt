@@ -1,3 +1,4 @@
+atk
 gnome-common
 libsigc++
 gnome2-mime-data
