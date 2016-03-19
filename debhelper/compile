@@ -16,9 +16,9 @@ perl -e '
 			s/#LIST#/$collect/;
 			print;
 		};
-	}' `find . -type f -perm +1 -maxdepth 1 -name "dh_*" | sort` > debhelper.1
+	}' `find . -type f -perm /1 -maxdepth 1 -name "dh_*" | sort` > debhelper.1
 
-find . -type f -perm +1 -maxdepth 1 -name "dh_*" \
+find . -type f -perm /1 -maxdepth 1 -name "dh_*" \
 	-exec pod2man -c Debhelper -r "$UB_VERSION" {} {}.1 \;
 printf "package Debian::Debhelper::Dh_Version;\n\$version='$UB_VERSION';" > \
 	Debian/Debhelper/Dh_Version.pm
