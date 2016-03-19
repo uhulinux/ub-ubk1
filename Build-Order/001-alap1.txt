@@ -81,7 +81,9 @@ openssl
 patch
 pbzip2
 pciutils
-pcre# újrafordítás!!
+pcre # újrafordítás!!
+perl
+perl-xml-parser
 perl-gettext
 perl-timedate
 pigz
@@ -106,14 +108,13 @@ zip
 7zip
 acl
 libcap
+po4a
 dpkg
 mkinitrd
 optipng
 help2man
 coreutils
 sqlite
-perl
-perl-xml-parser
 libgcrypt
 jasper
 intltool
