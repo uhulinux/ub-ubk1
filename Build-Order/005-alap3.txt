@@ -30,7 +30,6 @@ tdb
 libogg
 libvorbis
 speex
-alsa-lib
 lirc
 fftw3
 id3lib
@@ -87,7 +86,6 @@ libmng
 mtdev
 re2c
 glu
-nss
 sdl
 ghostscript
 qt5
@@ -98,7 +96,6 @@ aspell
 libc-client
 mhash
 net-snmp
-postfix
 tidy
 tidy5
 php
