@@ -1,0 +1,13 @@
+wine-gecko
+wine-mono
+winexs
+z81
+spectemu
+hatari
+fuse-utils
+dosbox
+ep128emu
+vice
+dosemu
+free-unix-spectrum-emulator
+virtualbox

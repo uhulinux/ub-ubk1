@@ -1,0 +1,8 @@
+abevjava
+adobe-reader
+efax-gtk
+foxit
+gnucash
+jmoney
+openoffice.org
+tellico
