@@ -92,7 +92,6 @@ htdig
 htop
 htpdate
 hunglish
-icewm-theme-ultrablack
 icmptx
 ico2xpm
 icon-theme-snow-apple
@@ -123,7 +122,6 @@ mdb
 memtest86+
 mii-diag
 minicom
-mjwm
 mlb
 mobile-broadband-provider-info
 mojolicious
@@ -335,7 +333,6 @@ luasocket
 lynx
 lzop
 mailx
-menumaker
 miniupnpc
 mp3splt
 musepack
@@ -421,7 +418,6 @@ tmux
 toilet
 trousers
 tse3
-twm
 txt2tags
 uhu-pixmaps
 uniconvertor
@@ -438,7 +434,6 @@ xapian
 xauth
 xcb-util-renderutil
 xdelta
-xdgmenumaker
 xdialog
 xdm
 xfsprogs
@@ -546,7 +541,6 @@ mtr
 ndiswrapper
 nrpe
 ntp
-openbox-menu
 pam-usb
 pavumeter
 pcmciautils
@@ -600,7 +594,6 @@ tcpdump
 tevent
 tilde
 transifex-client
-trayer
 ttyconv
 twisted
 twisted-web2
@@ -728,7 +721,6 @@ zvbi
 aalib
 anjuta-extras
 audit
-bochs
 btsco
 cppcheck
 cryptsetup
@@ -873,7 +865,6 @@ notification-daemon
 nvidia-cg-toolkit
 perl-gtk2
 pinentry
-q4wine
 virtuoso
 wv
 xaw3dxft
@@ -921,7 +912,6 @@ vim
 xaw3d
 xscreensaver
 evolution-ews
-fluxbox
 glfw
 gmtk
 gtkhtml
@@ -952,7 +942,6 @@ gdesklets
 gnustep-base
 gucharmap
 gv
-icewm
 lightdm
 mjpegtools
 mutt
@@ -967,7 +956,6 @@ thunar-vfs
 timidity
 usermode
 xfig
-edelib
 gammu
 gnokii
 gnumeric
@@ -1040,7 +1028,6 @@ racket
 spice
 cdrdao
 freerdp
-fvwm
 libqapt
 samba
 shotwell

@@ -1,6 +1,8 @@
+wine
 wine-gecko
 wine-mono
 winexs
+q4wine
 z81
 spectemu
 hatari
@@ -9,5 +11,7 @@ dosbox
 ep128emu
 vice
 dosemu
+libspectrum
 free-unix-spectrum-emulator
 virtualbox
+bochs

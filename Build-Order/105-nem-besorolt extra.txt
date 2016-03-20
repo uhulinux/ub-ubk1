@@ -2,7 +2,6 @@ aaphoto
 acx-fw
 adzapper
 aeskulap
-afterstep
 alltray
 amavisd-new
 anki
@@ -12,10 +11,8 @@ audio-entropyd
 aview
 avogadro
 azureus
-blackbox
 bleachbit
 bluefish
-bmpanel2
 bonnie++
 cadaver
 calcoo
@@ -38,12 +35,9 @@ diffuse
 dillo
 discount
 discwrapper
-dmenu
 doodle
 doublecmd
-dwm
 eaglemode
-ede
 efte
 electrum
 emelfm2
@@ -62,9 +56,7 @@ fish
 fluxstyle
 freemind
 frescobaldi
-ftmenu
 funny-manpages
-fvwm-crystal
 galculator
 geeqie
 gencfsm
@@ -88,12 +80,6 @@ hardinfo
 hoc
 homebank
 hugin
-icewm-theme-bluecurve
-icewm-theme-nitrogen
-icewm-themes
-icewm-theme-ubuntu
-icewm-theme-winclassic2
-icewm-xdgmenu
 idesk-extras
 ide-smart
 idiff
@@ -106,8 +92,6 @@ ipw2200-fw
 jargon
 jedit
 jgrasp
-jwm
-jwm-settings-manager
 klavaro
 knights-themes
 komodoedit
@@ -151,7 +135,6 @@ ocrad
 otter
 parcellite
 phun
-piewm
 poedit
 promoe
 qalculate-gtk
@@ -189,7 +172,6 @@ vwm
 wammu
 weatherman
 wikidpad
-windowmaker
 winpdb
 worker
 wxmaxima

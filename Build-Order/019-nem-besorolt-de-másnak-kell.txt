@@ -22,7 +22,6 @@ digikam
 asterisk
 gst0.10-plugins-good
 gst-plugins-good
-wine
 ffmpeg
 xine-lib
 gst0.10-plugins-bad

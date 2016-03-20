@@ -40,7 +40,6 @@ librra
 libsexy
 libsmbios
 libsoxr
-libspectrum
 libspnav
 libstreams
 libstroke
