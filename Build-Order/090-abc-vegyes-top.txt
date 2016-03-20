@@ -30,7 +30,6 @@ cflow
 cgdb
 chg
 chkrootkit
-claws-mail-themes
 clisp
 cloop
 colorgcc
@@ -41,7 +40,6 @@ cppcheck
 createrepo
 ctcompare
 curlftpfs
-cursor-theme-x.org
 cyrus-imapd
 cscope
 ddrescue
@@ -87,8 +85,6 @@ fuse-mtpfs
 fuse-smbnetfs
 fuse-sshfs
 fusion-icon
-gdm-theme-bluecurve
-gdm-theme-uhu
 geany-plugins
 genius
 geogebra
@@ -105,7 +101,6 @@ gptfdisk
 gqview
 gsmartcontrol
 gtkdialog
-gtk-stock-icons
 gutenprint
 gv
 hashalot
@@ -118,7 +113,6 @@ hostapd
 htop
 hunglish
 icon-slicer
-icon-theme-snow-apple
 intend
 ipsec-tools
 ipvsadm
@@ -208,7 +202,6 @@ rxwrap
 sbm
 schedtool
 screen
-sddm-theme-acidhub
 sdparm
 setserial
 setuser
@@ -245,7 +238,6 @@ ufraw
 uhubuild
 uhu-revdep-rebuild
 ultimatepp
-unicode-screensaver
 uniconvertor
 unidesc
 usb-modeswitch

@@ -1,0 +1,17 @@
+claws-mail-themes
+cursor-theme-x.org
+gdm-theme-bluecurve
+gdm-theme-uhu
+gtk-stock-icons
+icon-theme-snow-apple
+sddm-theme-acidhub
+unicode-screensaver
+griffith-extra-artwork
+knights-themes
+promoe
+sddm-theme-deepspace
+sddm-theme-futuristic
+sddm-theme-numix
+sddm-theme-urbanlifestyle
+slim-themes
+xpenguins-themes
