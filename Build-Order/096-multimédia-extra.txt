@@ -2,6 +2,7 @@ cdp
 fmtools
 tuxguitar
 w-scan
+dvdauthor
 devede
 playmidi
 smtube
@@ -89,3 +90,9 @@ smplayer
 vdr-plugin-sc
 vdr-softhddevice
 vdr-xineliboutput
+audacious
+audacious-plugins
+moovida
+moovida-plugins-bad
+moovida-plugins-good
+moovida-plugins-ugly

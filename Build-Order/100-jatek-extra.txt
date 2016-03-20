@@ -1,3 +1,9 @@
+allegro
+dumb
+cegui
+cegui0.8
+mygui
+ogre
 0ad-data
 alephone-marathon
 atris-sounds

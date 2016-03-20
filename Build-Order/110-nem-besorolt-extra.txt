@@ -4,7 +4,6 @@ alltray
 amavisd-new
 anki
 aqemu
-audacious-plugins
 audio-entropyd
 aview
 bleachbit
@@ -59,7 +58,6 @@ harbour
 hardinfo
 hoc
 homebank
-idesk-extras
 ide-smart
 idiff
 ifuse
@@ -84,9 +82,6 @@ mkvtoolnix
 mmex
 mnemosyne
 monkeystudio
-moovida-plugins-bad
-moovida-plugins-good
-moovida-plugins-ugly
 moserial
 mtx
 ndisgtk

@@ -1,6 +1,5 @@
 aalib
 accountsservice
-allegro
 alsa-firmware
 alsa-oss
 alsa-tools
@@ -10,7 +9,6 @@ apache-ant
 apache-mod-dnssd
 appdata-tools
 appstream-glib
-audacious
 audit
 autogen
 autotrace
@@ -29,8 +27,6 @@ ca-certificates
 catdoc
 cdrdao
 cdrkit
-cegui
-cegui0.8
 celt
 celt051
 c++-gtk-utils
@@ -52,8 +48,6 @@ dhcpcd
 directfb
 dmapi
 drv-z42
-dumb
-dvdauthor
 ebook-tools
 ec-fonts-mftraced
 eigen2
@@ -154,14 +148,12 @@ hdf5
 hdparm
 highlight
 hplip
-hsetroot
 hunspell-hu
 ibus
 icon-naming-utils
 icon-theme-bluecurve
 icon-theme-tango
 icoutils
-idesk
 imlib
 indent
 iputils
@@ -217,14 +209,12 @@ mftrace
 miniupnpc
 mjpegtools
 mobile-broadband-provider-info
-moovida
 mpg123
 mplayer
 mtools
 musepack
 mutagen
 mx
-mygui
 nagios-plugins
 ndiswrapper
 netpbm
@@ -234,7 +224,6 @@ ntp
 nvidia-cg-toolkit
 obexftp
 octave
-ogre
 ois
 oki4linux
 openal

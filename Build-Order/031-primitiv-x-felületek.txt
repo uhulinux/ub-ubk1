@@ -4,6 +4,7 @@ afterstep
 edelib
 ede
 trayer
+hsetroot
 twm
 fvwm
 fvwm-crystal
@@ -37,3 +38,5 @@ fbpanel
 piewm
 vwm
 weston
+idesk
+idesk-extras
