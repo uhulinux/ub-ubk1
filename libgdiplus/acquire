@@ -1,6 +1,0 @@
-#!/usr/bin/env dl
-
-libgdiplus-${UB_VERSION}.tar.bz2 libgdiplus-${UB_VERSION}/
-	http://download.mono-project.com/sources/libgdiplus/
-	http://ftp.novell.com/pub/mono/sources/libgdiplus/
-
