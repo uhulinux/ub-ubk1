@@ -1,0 +1,16 @@
+azureus
+bluefish
+clamz
+deluge
+dillo
+genesis
+gufw
+kompozer
+linphone
+otter
+qupzilla
+smssend
+tazweb
+transmission
+xchat
+xpn

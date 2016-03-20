@@ -10,9 +10,7 @@ audacious-plugins
 audio-entropyd
 aview
 avogadro
-azureus
 bleachbit
-bluefish
 bonnie++
 cadaver
 calcoo
@@ -20,7 +18,6 @@ ccal
 celestia
 cellwriter
 clamtk
-clamz
 codeblocks
 codelite
 colibri
@@ -29,10 +26,8 @@ converseen
 cuiterm
 ddd
 deb-gview
-deluge
 dia
 diffuse
-dillo
 discount
 discwrapper
 doodle
@@ -60,7 +55,6 @@ funny-manpages
 galculator
 geeqie
 gencfsm
-genesis
 gentoo
 gfxboot
 gkrellm
@@ -73,7 +67,6 @@ gramps
 griffith-extra-artwork
 grub-customizer
 gtkam
-gufw
 guvcview
 harbour
 hardinfo
@@ -95,7 +88,6 @@ jgrasp
 klavaro
 knights-themes
 komodoedit
-kompozer
 kpartitionmanager
 krusader
 leafpad
@@ -103,7 +95,6 @@ lightdm-another-gtk-greeter
 lightdm-gtk3-greeter-settings
 lilo
 limoo
-linphone
 listpatron
 lupe
 lxlogo
@@ -132,13 +123,11 @@ nvidia-173
 nvidia-304
 nvidia-340
 ocrad
-otter
 parcellite
 phun
 poedit
 promoe
 qalculate-gtk
-qupzilla
 rapidsvn
 rox-filer
 roxterm
@@ -153,11 +142,9 @@ sddm-theme-urbanlifestyle
 sdedit
 slim-themes
 smart
-smssend
 stellarium
 sweethome3d
 systemd-ui
-tazweb
 tbt
 tea
 teapot
@@ -165,10 +152,8 @@ terminator
 tesseract-gui
 texmacs
 the
-transmission
 tulip
 viewnior
-vwm
 wammu
 weatherman
 wikidpad
@@ -176,7 +161,6 @@ winpdb
 worker
 wxmaxima
 xbmc-addon-xvdr
-xchat
 xephem
 xfce4
 xfe
@@ -184,7 +168,6 @@ xiphos
 xpaint
 xpenguins-themes
 xplanet
-xpn
 xqed
 xsw
 xzoom
