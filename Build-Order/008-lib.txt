@@ -27,7 +27,6 @@ libexosip2
 libgcrypt
 libical
 libgudev
-libgdiplus
 libfli
 libfs
 libftdi1
