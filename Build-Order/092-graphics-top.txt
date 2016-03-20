@@ -35,3 +35,5 @@ mtpaint
 sweethome3d
 viewnior
 xpaint
+photopc
+tygemo

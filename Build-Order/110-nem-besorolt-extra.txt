@@ -34,12 +34,9 @@ estickflashtool
 eukleides
 extcalc
 falcon
-fbpanel
 fbreader
-fenix
 ffdiaporama
 fish
-fluxstyle
 freemind
 frescobaldi
 funny-manpages
@@ -100,7 +97,6 @@ qalculate-gtk
 rapidsvn
 rox-filer
 roxterm
-rubix
 scratch
 sddm-config-editor
 sdedit
@@ -118,7 +114,6 @@ wikidpad
 winpdb
 worker
 wxmaxima
-xbmc-addon-xvdr
 xephem
 xfce4
 xfe

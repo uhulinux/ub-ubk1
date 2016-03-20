@@ -1,3 +1,4 @@
+transcode
 cdp
 fmtools
 tuxguitar
@@ -7,9 +8,10 @@ devede
 playmidi
 smtube
 tkffmpeg
-tygemo
 gtick
 minitube
+vdr
+vdr-plugin-text2skin
 vdr-remote
 xcdroast
 youtube-dl
@@ -96,3 +98,6 @@ moovida
 moovida-plugins-bad
 moovida-plugins-good
 moovida-plugins-ugly
+xbmc
+xbmc-addon-xvdr
+vdr-plugin-xvdr

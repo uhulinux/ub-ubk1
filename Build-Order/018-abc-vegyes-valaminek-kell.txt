@@ -350,7 +350,6 @@ perl-xml-semanticdiff
 perl-xml-twig
 perl-xml-xpath
 phonon-qt5
-photopc
 physfs
 pidgin
 pigment
@@ -454,7 +453,6 @@ tigervnc
 timidity
 tntnet
 tracker-sparql
-transcode
 transfig
 trousers
 tuxcmd
@@ -472,8 +470,6 @@ usb-modeswitch-data
 usbredir
 vbetool
 vcdimager
-vdr
-vdr-plugin-text2skin
 vigra
 vim
 virtuoso

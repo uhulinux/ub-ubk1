@@ -157,3 +157,5 @@ oolite
 wesnoth
 x-moto
 0ad
+fenix
+rubix

@@ -32,6 +32,8 @@ icewm-theme-winclassic2
 icewm-xdgmenu
 fluxbox
 ftmenu
+fbpanel
+fluxstyle
 windowmaker
 bmpanel2
 fbpanel
