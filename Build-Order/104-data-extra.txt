@@ -8,3 +8,14 @@ jdictionary-plugin-french-hungarian
 jdictionary-plugin-german-hungarian
 jdictionary-plugin-interlingua-english
 jdictionary-plugin-swedish-interlingua
+aspell-dict-english
+aspell-dict-hungarian
+flamerobin
+htdig
+media-player-info
+mysql-jdbc
+pgadmin3
+postgis
+postgresql-jdbc
+postgresql-odbc
+shared-desktop-ontologies

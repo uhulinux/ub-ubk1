@@ -6,3 +6,9 @@ gnucash
 jmoney
 openoffice.org
 tellico
+abiword
+fet
+libreoffice
+qpdfview
+sapgui
+scribus
