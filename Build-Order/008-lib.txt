@@ -1,4 +1,3 @@
-libassuan
 libast
 libatasmart
 libavc1394

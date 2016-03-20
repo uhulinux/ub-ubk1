@@ -1,3 +1,4 @@
+cmake
 glib-dev
 libpng-dev
 python-dev
