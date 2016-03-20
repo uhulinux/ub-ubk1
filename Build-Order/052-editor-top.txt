@@ -17,3 +17,15 @@ xe
 xemacs
 xpad
 yudit
+conglomerate
+efte
+gmanedit
+jedit
+komodoedit
+leafpad
+mined
+ne
+scite
+tea
+texmacs
+the
