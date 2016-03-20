@@ -53,6 +53,7 @@ reiser4progs
 grub2
 libarchive
 cmake
+editline
 llvm
 nss
 libesmtp

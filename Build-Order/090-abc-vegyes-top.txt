@@ -56,7 +56,6 @@ dump
 ebtables
 ecere
 eclipse
-editline
 efont-unicode
 egenix-mx-base
 ethtool
