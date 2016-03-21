@@ -59,3 +59,10 @@ seed
 neon
 fltk
 fltk1
+gnome2-mime-data
+tevent
+ldb
+samba
+gnome2-vfs
+wxwidgets
+

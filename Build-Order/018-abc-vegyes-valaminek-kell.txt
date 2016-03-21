@@ -165,7 +165,6 @@ lapack
 lasem
 latexmk
 lazarus
-ldb
 leptonica
 lesstif
 lexmark7000linux
@@ -378,7 +377,6 @@ rrdtool
 rsync
 rte
 rubber
-samba
 sane-backends
 sbc
 scala
@@ -436,7 +434,6 @@ telepathy-mission-control
 telepathy-rakia
 telepathy-salut
 tesseract
-tevent
 thunderbird
 tigervnc
 timidity
@@ -470,7 +467,6 @@ webkitgtk2
 wv
 wvstreams
 wxsvg
-wxwidgets
 wxwidgets2.8
 x11vnc
 x264
