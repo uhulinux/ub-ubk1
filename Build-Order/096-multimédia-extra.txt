@@ -31,6 +31,10 @@ vdr-skinflat
 vdr-skinflatplus
 vdr-tvguide
 oscam
+paman
+paprefs
+pavucontrol
+pavumeter
 pasystray
 vdr-epgfixer
 vdr-plugin-channellists
@@ -101,3 +105,5 @@ moovida-plugins-ugly
 xbmc
 xbmc-addon-xvdr
 vdr-plugin-xvdr
+ec-fonts-mftraced
+lilypond

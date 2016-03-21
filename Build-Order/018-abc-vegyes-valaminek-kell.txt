@@ -48,7 +48,6 @@ directfb
 dmapi
 drv-z42
 ebook-tools
-ec-fonts-mftraced
 eigen2
 eigen3
 emacs
@@ -180,7 +179,6 @@ libtrace
 libyajl
 lightdm
 lightdm-gtk3-greeter
-lilypond
 lm1100
 lmdb
 lmsensors
@@ -239,10 +237,6 @@ opusfile
 osm-gps-map
 packagekit
 packagekit-qt5
-paman
-paprefs
-pavucontrol
-pavumeter
 pcc-libs
 pcsc-lite
 pdcurses
