@@ -1,0 +1,11 @@
+doublecmd
+eaglemode
+emelfm2
+gentoo
+krusader
+rox-filer
+worker
+xfe
+mc
+thunar-vfs
+ytree
