@@ -12,7 +12,6 @@ parted
 smp-utils
 udisks
 lua
-tk
 ocaml
 swig
 itstool
@@ -39,11 +38,9 @@ raptor2
 xdg-utils
 pyrex
 openjpeg1
-poppler
 poppler-data
 gd
 fontforge
-texlive
 muparser
 djvulibre
 ilmbase

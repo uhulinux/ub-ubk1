@@ -233,7 +233,7 @@ openvpn
 opusfile
 osm-gps-map
 packagekit
-packagekit-qt5
+packagekit-qt
 pcc-libs
 pcsc-lite
 pdcurses
@@ -339,7 +339,7 @@ perl-xml-sax-writer
 perl-xml-semanticdiff
 perl-xml-twig
 perl-xml-xpath
-phonon-qt5
+phonon
 physfs
 pidgin
 pigment
@@ -358,8 +358,8 @@ psmisc
 pstoedit
 ptlib
 pwlib
-qca2
-qca-qt5
+qca-qt4
+qca
 qpdf
 qscintilla2
 qterminal
@@ -412,7 +412,7 @@ smpeg2
 sofia-sip
 sound-theme-freedesktop
 source-highlight
-source-highlight-qt
+source-highlight-qt4
 sox
 spamassassin
 spandsp

@@ -4,5 +4,5 @@ kcompletion-dev
 kconfig-dev
 ki18n-dev
 kio-dev
-phonon-qt5-dev
+phonon-dev
 qt5-dev

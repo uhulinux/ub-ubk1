@@ -80,14 +80,12 @@ perl-test-xml
 perl-throwable
 perl-types-serialiser
 ppl
-qca2-ossl
 qoauth
 qt-gstreamer
 ruby-pg
 sdl2-net
 snack
 soprano
-soqt
 spice
 sqlite3-ruby
 starman

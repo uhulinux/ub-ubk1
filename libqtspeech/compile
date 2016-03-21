@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+mkdir .git
+
+qmake-qt5 qtspeech.pro
+
+ub_make

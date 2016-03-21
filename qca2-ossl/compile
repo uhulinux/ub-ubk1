@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-rm CMakeLists.txt
-
-export QTDIR=/usr/lib/qt4
-./configure \
-	--release
-
-ub_make

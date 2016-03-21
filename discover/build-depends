@@ -18,8 +18,8 @@ ktextwidgets-dev
 kwallet-dev
 kwidgetsaddons-dev
 libqapt-dev
-packagekit-qt5-dev
+packagekit-qt-dev
 plasma-framework-dev
-qca-qt5-dev
+qca-dev
 qt5-dev
 solid-dev

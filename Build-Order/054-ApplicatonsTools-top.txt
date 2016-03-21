@@ -103,7 +103,6 @@ pwgen
 pxtools
 qt5ct
 qt-recordmydesktop
-qtscriptgenerator
 rand
 rdiff-backup
 recoll

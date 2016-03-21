@@ -1,10 +1,9 @@
 libindicate
-libindicate-qt
+libindicate-qt4
 libgweather
 libgtkhtml2
 libgpod
 libextractor
-libexo
 libdmtx
 libcryptui
 libchipcard

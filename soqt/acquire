@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-SoQt-${UB_VERSION}.tar.gz SoQt-${UB_VERSION}/
-	https://bitbucket.org/Coin3D/coin/downloads/
