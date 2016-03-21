@@ -1,4 +1,3 @@
-gnome2-mime-data
 gcab
 gsettings-desktop-schemas
 gtk2-engines
@@ -16,7 +15,6 @@ polkit-gnome
 clutter
 glade
 yelp
-gnome2-vfs
 gvfs
 clutter-gtk
 clutter-gst
