@@ -27,6 +27,7 @@ libpst
 libpwquality
 libqmi
 libqrencode
+libqtspeech
 libquvi
 libqxt
 libsynce

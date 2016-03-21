@@ -8,5 +8,6 @@ kiconthemes-dev
 kservice-dev
 kwidgetsaddons-dev
 kwindowsystem-dev
+libqtspeech-dev
 qt5-dev
 sonnet-dev
