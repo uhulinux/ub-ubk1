@@ -58,6 +58,7 @@ sudo
 sysstat
 tcpdump
 unidesc
+usb-modeswitch-data
 usb-modeswitch
 usermode
 v86d

@@ -96,8 +96,6 @@ telepathy-qt4
 telepathy-yell
 termbox
 tse3
-tuxcmd-modules
-tuxcmd-modules-unrar
 utf8filename
 virtualmount
 wcslib

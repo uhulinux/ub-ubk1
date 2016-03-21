@@ -9,3 +9,6 @@ xfe
 mc
 thunar-vfs
 ytree
+tuxcmd
+tuxcmd-modules
+tuxcmd-modules-unrar

@@ -53,6 +53,7 @@ wireshark
 wput
 ytalk
 adzapper
+lzop
 amavisd-new
 cadaver
 corkscrew

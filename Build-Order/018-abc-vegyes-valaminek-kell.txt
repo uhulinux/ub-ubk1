@@ -188,7 +188,6 @@ luasocket
 lucene++
 luit
 lxmusic
-lzop
 lynx
 mac
 mash
@@ -441,7 +440,6 @@ tntnet
 tracker-sparql
 transfig
 trousers
-tuxcmd
 twisted
 twisted-web2
 txt2tags
@@ -452,7 +450,6 @@ unmakeself
 unshield
 upower
 upx
-usb-modeswitch-data
 usbredir
 vbetool
 vcdimager
