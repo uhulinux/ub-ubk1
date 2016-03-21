@@ -15,7 +15,6 @@ autotrace
 avfs
 babl
 beautifulsoup
-belle-sip
 bind
 bodr
 bogofilter
@@ -370,7 +369,6 @@ ptlib
 pwlib
 qca2
 qca-qt5
-qemu
 qpdf
 qscintilla2
 qterminal

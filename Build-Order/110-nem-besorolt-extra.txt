@@ -3,7 +3,6 @@ adzapper
 alltray
 amavisd-new
 anki
-aqemu
 audio-entropyd
 aview
 bleachbit
@@ -122,5 +121,4 @@ xplanet
 xqed
 xsw
 xzoom
-z80ex
 zd1211-firmware

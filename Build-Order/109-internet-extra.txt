@@ -6,6 +6,7 @@ dillo
 genesis
 gufw
 kompozer
+belle-sip
 linphone
 otter
 qupzilla

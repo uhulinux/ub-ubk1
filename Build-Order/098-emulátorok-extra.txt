@@ -15,3 +15,6 @@ libspectrum
 free-unix-spectrum-emulator
 virtualbox
 bochs
+qemu
+aqemu
+z80ex
