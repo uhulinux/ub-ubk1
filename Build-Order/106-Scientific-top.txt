@@ -2,6 +2,10 @@ euler
 genius
 geogebra
 mathgl
+octave
+qtoctave
 mathomatic
 socnetv
 zhu3d
+maxima
+wxmaxima

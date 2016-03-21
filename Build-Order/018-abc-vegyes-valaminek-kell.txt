@@ -193,7 +193,6 @@ lzop
 lynx
 mac
 mash
-maxima
 mcrypt
 mdadm
 mdbtools
@@ -219,7 +218,6 @@ notification-daemon
 ntp
 nvidia-cg-toolkit
 obexftp
-octave
 ois
 oki4linux
 openal

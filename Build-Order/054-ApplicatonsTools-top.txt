@@ -102,7 +102,6 @@ pv
 pwgen
 pxtools
 qt5ct
-qtoctave
 qt-recordmydesktop
 qtscriptgenerator
 rand

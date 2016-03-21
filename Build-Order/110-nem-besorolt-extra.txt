@@ -30,6 +30,5 @@ sddm-config-editor
 smart
 stellarium
 systemd-ui
-wxmaxima
 xfce4
 zd1211-firmware
