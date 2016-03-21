@@ -1,4 +1,0 @@
-#!/bin/sh -eux
-
-g++ -c -o mlb2.o mlb2.cpp
-ar -r -o libmlb2.a mlb2.o

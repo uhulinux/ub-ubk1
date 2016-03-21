@@ -61,7 +61,6 @@ man-pages-hu
 mathgl
 mathomatic
 memtest86+
-mlb
 mpage
 mt-daapd
 networkmanager-openvpn
@@ -114,7 +113,6 @@ vblade
 vnstat
 wdfs
 wvdial
-xfdashboard
 xfsdump
 xinetd
 xman

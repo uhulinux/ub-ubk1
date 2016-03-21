@@ -47,4 +47,5 @@ parole
 gigolo
 xfwm4-themes
 icon-theme-xfce
+xfdashboard
 
