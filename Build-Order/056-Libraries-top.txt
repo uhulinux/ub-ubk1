@@ -80,7 +80,6 @@ perl-test-xml
 perl-throwable
 perl-types-serialiser
 ppl
-qca2-ossl
 qoauth
 qt-gstreamer
 ruby-pg
