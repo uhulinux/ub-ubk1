@@ -62,3 +62,11 @@ uhubuild
 uhu-revdep-rebuild
 ultimatepp
 xwpe
+geany
+geany-pluginsclisp
+dmd2
+gpc
+pcc
+racket
+rxwrap
+sjasm

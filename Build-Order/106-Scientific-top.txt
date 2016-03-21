@@ -1,0 +1,7 @@
+euler
+genius
+geogebra
+mathgl
+mathomatic
+socnetv
+zhu3d

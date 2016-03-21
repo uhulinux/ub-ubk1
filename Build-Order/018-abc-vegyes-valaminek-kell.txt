@@ -85,7 +85,6 @@ gconfmm2
 gdal
 gdl
 gdlmm
-geany
 gegl
 geos
 gexiv2
