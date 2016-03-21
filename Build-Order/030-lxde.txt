@@ -17,4 +17,6 @@ lxsession
 lxappearance-obconf
 pcmanfm
 lxpanel
+lxshortcut
+lxnm
 lxde

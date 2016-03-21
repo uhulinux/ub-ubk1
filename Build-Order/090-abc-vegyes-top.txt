@@ -56,8 +56,6 @@ jfsutils
 lhasa
 linuxconsole
 logrotate
-lxnm
-lxshortcut
 man-pages
 man-pages-hu
 mathgl
