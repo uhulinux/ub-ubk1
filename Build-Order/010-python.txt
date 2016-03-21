@@ -41,7 +41,6 @@ python-zope.schema
 pytz
 pyxattr
 pyxdg
-pyxml
 pyzmq
 telepathy-python
 wxpython
@@ -75,7 +74,6 @@ pypdf
 pypoppler
 pyqt4
 pyqt5-python2
-pyrex
 pyside
 pysmbc
 pysolfc
