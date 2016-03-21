@@ -86,7 +86,6 @@ ruby-pg
 sdl2-net
 snack
 soprano
-soqt
 spice
 sqlite3-ruby
 starman

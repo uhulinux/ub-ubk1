@@ -104,7 +104,6 @@ pxtools
 qt5ct
 qtoctave
 qt-recordmydesktop
-qtscriptgenerator
 rand
 rdiff-backup
 recoll
