@@ -19,7 +19,7 @@ libusb-dev
 marble-dev
 opencv-dev
 pcre-dev
-qca2-dev
+qca-qt4-dev
 qjson-dev
 sane-backends-dev
 xdg-utils

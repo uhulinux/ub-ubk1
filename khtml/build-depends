@@ -17,6 +17,6 @@ kxmlgui-dev
 libjpeg-dev
 libpng-dev
 libungif-dev
-phonon-qt5-dev
+phonon-dev
 qt5-dev
 sonnet-dev

@@ -25,6 +25,6 @@ libdbusmenu-qt-dev
 libkscreen-dev
 libksysguard-dev
 networkmanager-qt-dev
-phonon-qt5-dev
+phonon-dev
 plasma-framework-dev
 qt5-dev

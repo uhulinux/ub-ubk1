@@ -7,13 +7,13 @@ gst0.10-plugins-base-dev
 gstreamer0.10-dev
 libcdio-dev
 libgpod-dev
-libindicate-qt-dev
+libindicate-qt4-dev
 libmtp-dev
-libmygpo-qt-dev
+libmygpo-qt4-dev
 libxml2-dev
 protobuf-dev
 pyqt4
-qca2-dev
+qca-qt4-dev
 qjson-dev
 qt4-dev
 taglib-dev

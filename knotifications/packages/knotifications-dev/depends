@@ -3,5 +3,5 @@ kconfig-dev
 kcoreaddons-dev
 kwindowsystem-dev
 libdbusmenu-qt-dev
-phonon-qt5-dev
+phonon-dev
 qt5-dev
