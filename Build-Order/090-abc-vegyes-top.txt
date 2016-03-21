@@ -60,7 +60,6 @@ lxnm
 lxshortcut
 man-pages
 man-pages-hu
-mate-system-tools
 mathgl
 mathomatic
 memtest86+
