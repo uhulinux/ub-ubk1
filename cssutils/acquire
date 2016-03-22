@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-cssutils-"$UB_VERSION".zip cssutils-"$UB_VERSION"/
+cssutils-"$UB_VERSION".tar.gz cssutils-"$UB_VERSION"/
 	http://pypi.python.org/packages/source/c/cssutils/
