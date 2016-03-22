@@ -1,4 +1,3 @@
-librsvg
 graphviz
 cairomm
 pangomm
