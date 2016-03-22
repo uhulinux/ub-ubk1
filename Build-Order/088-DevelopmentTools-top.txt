@@ -59,11 +59,11 @@ tcc
 tortoisehg
 transifex-client
 uhubuild
-uhu-revdep-rebuild
 ultimatepp
 xwpe
 geany
-geany-pluginsclisp
+geany-plugins
+clisp
 dmd2
 gpc
 pcc
