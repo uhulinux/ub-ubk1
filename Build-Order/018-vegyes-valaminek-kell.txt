@@ -512,6 +512,7 @@ sox
 gst0.10-plugins-good
 gst-plugins-good
 ffmpeg
+libstreamanalyzer
 xine-lib
 gst0.10-plugins-bad
 freealut

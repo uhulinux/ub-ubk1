@@ -4,10 +4,11 @@ libspectre
 clucene-core
 libgtkhtml2
 compton-conf
+pcsc-lite
+gwenhywfar
 libchipcard
 libmusicbrainz
 vte2
-libass
 libgnomecups
 libmusicbrainz3
 libbluray
@@ -19,8 +20,6 @@ libindicate
 libgnomekbd
 libgnomeprint2
 libgnomeprintui2
-libstreamanalyzer
-gnome-keyring
 libappindicator
 libchamplain
 libgnome2
