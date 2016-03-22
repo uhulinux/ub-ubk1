@@ -81,7 +81,6 @@ perl-throwable
 perl-types-serialiser
 ppl
 qoauth
-qt-gstreamer
 ruby-pg
 sdl2-net
 snack
