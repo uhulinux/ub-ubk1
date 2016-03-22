@@ -1,0 +1,12 @@
+diff -Naur orig/desktop/wordview.desktop mod/desktop/wordview.desktop
+--- orig/desktop/wordview.desktop	2012-12-03 18:59:19.000000000 +0100
++++ mod/desktop/wordview.desktop	2016-03-22 20:20:21.231557178 +0100
+@@ -2,7 +2,7 @@
+ Name=Wordview Microsoft doc Viewer
+ Comment=Microsoft doc document file viewer
+ Exec=wordview
+-Icon=wordview.xpm
++Icon=/usr/share/pixmaps/wordview.xpm
+ Terminal=false
+ Categories=Office;GNOME;
+ Type=Application
