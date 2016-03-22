@@ -1,7 +1,6 @@
 libnfsidmap
 libodfgen
 libol
-liboldx
 libpgf
 libpipeline
 libpqxx
@@ -67,7 +66,6 @@ libwnck
 libwnck2
 libosinfo
 libwmf
-libxklavier
 libva
 librsvg
 libt3widget
