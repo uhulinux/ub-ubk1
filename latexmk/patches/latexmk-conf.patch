@@ -1,25 +1,27 @@
---- ./latexmk.pl.orig	2012-11-11 10:12:34.000000000 -0700
-+++ ./latexmk.pl	2012-11-19 09:50:29.681445264 -0700
-@@ -894,10 +894,8 @@ else {
-     ## /usr/local/share, depending on the local conventions.
-     ## /usr/local/lib/latexmk/LatexMk is put in the list for
-     ## compatibility with older versions of latexmk.
--    @rc_system_files = 
--     ( '/opt/local/share/latexmk/LatexMk', 
--       '/usr/local/share/latexmk/LatexMk',
--       '/usr/local/lib/latexmk/LatexMk' );
-+    ## UHU-Linux change: only look in /etc
-+    @rc_system_files = ( '/etc/latexmk.conf' );
- 
-     $search_path_separator = ':';  # Separator of elements in search_path
- 
---- ./latexmk.1.orig	2012-11-11 10:36:10.000000000 -0700
-+++ ./latexmk.1	2012-11-19 09:50:29.683445100 -0700
-@@ -824,6 +824,7 @@ system RC file, in the following order,
+diff -Naur orig/latexmk.1 mod/latexmk.1
+--- orig/latexmk.1	2016-02-24 16:28:22.000000000 +0100
++++ mod/latexmk.1	2016-03-22 12:21:43.693824809 +0100
+@@ -998,6 +998,7 @@
     "/opt/local/share/latexmk/LatexMk",
     "/usr/local/share/latexmk/LatexMk",
     "/usr/local/lib/latexmk/LatexMk".
 +   On an UHU-Linux system, it only looks for "/etc/latexmk.conf".
     On a MS-WINDOWS system it looks for "C:\\latexmk\\LatexMk".
-    On a cygwin system (i.e., a MS-Windows system in which perl is
+    On a cygwin system (i.e., a MS-Windows system in which Perl is
  that of cygwin), \fIlatexmk\fR reads for the first it finds of
+diff -Naur orig/latexmk.pl mod/latexmk.pl
+--- orig/latexmk.pl	2016-02-24 15:05:16.000000000 +0100
++++ mod/latexmk.pl	2016-03-22 12:20:27.625673497 +0100
+@@ -948,10 +948,11 @@
+     ## But /usr/local/lib/latexmk is put in the list for
+     ## compatibility with older versions of latexmk.
+     @rc_system_files = ();
+-    foreach ( 'LatexMk', 'latexmkrc' ) {
++    foreach ( 'LatexMk', 'latexmkrc' 'latexmk.conf') {
+        push @rc_system_files,
+             ( "/opt/local/share/latexmk/$_", 
+               "/usr/local/share/latexmk/$_",
++              "/etc/latexmk/$_",
+               "/usr/local/lib/latexmk/$_" );
+     }
+     $search_path_separator = ':';  # Separator of elements in search_path
