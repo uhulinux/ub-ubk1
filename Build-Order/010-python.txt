@@ -152,11 +152,9 @@ spyder
 gst-python
 pyatspi
 pygame
-pygtk
 pygtksourceview
 pykaraoke
 pypy
-python3-eric5
 python-apt
 python-axiom
 python-matplotlib
@@ -164,7 +162,4 @@ python-notify
 python-pbr
 python-sqlalchemy-migrate
 python-stevedore
-gnome-python
-gnome-python-desktop
-gnome-python-extras
 gst0.10-python
