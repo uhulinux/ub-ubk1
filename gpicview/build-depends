@@ -1,4 +1,5 @@
 gtk2-dev
 intltool
 libjpeg-dev
+librsvg-dev
 libx11-dev
