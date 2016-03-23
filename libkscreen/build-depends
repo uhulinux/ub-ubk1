@@ -1,3 +1,4 @@
 cmake
 extra-cmake-modules
+kwayland-dev
 qt5-dev

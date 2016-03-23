@@ -72,7 +72,6 @@ breeze
 breeze-gtk
 kde-cli-tools
 kde-gtk-config
-kdeplasma-addons
 kgamma5
 khelpcenter
 kwayland
@@ -92,6 +91,7 @@ plasma-mediacenter
 plasma-nm
 plasma-pa
 plasma-workspace
+kdeplasma-addons
 khotkeys
 kmenuedit
 plasma-desktop

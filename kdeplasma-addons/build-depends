@@ -15,5 +15,6 @@ krunner-dev
 kservice-dev
 kunitconversion-dev
 plasma-framework-dev
+plasma-workspace-dev
 qt5-dev
 scim-dev
