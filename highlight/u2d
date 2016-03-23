@@ -1,1 +1,1 @@
-urllist http://www.andre-simon.de/zip/download.html | splitver '^highlight-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://www.andre-simon.de/zip/download.html | splitver '^highlight-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
