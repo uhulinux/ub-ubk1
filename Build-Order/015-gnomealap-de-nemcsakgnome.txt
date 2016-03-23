@@ -1,3 +1,8 @@
+libgnomeui2
+libgnomeuimm2
+mdbtools
+libgda
+libgdamm
 gcab
 gsettings-desktop-schemas
 gtk2-engines

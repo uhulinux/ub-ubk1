@@ -1,3 +1,5 @@
+claws-contacts
+claws-mail
 azureus
 bluefish
 clamz

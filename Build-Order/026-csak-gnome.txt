@@ -1,3 +1,4 @@
+gnome-python
 gnome2-audio
 mm-common
 fonts-cantarell

@@ -34,7 +34,6 @@ libbonoboui2
 geocode-glib
 libgweather
 libquicktime
-libgnomeui2
 mutagen
 libgpod
 libsocialweb
@@ -47,10 +46,8 @@ librecad
 pangomm
 gtkmm2
 libdmtx
-libgda
 libgnomecanvasmm2
 libview
 libvtemm
-libgdamm
 libgnomemm2
 libsexymm

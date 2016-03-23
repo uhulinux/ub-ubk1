@@ -231,7 +231,6 @@ iputils
 js185
 libao
 libtrace
-mdbtools
 opusfile
 osm-gps-map
 perl-cairo
@@ -338,7 +337,6 @@ xaw3dxft
 x.org-apps
 x.org-input-wacom
 clamav
-claws-contacts
 eigen3
 gexiv2
 goffice
@@ -486,7 +484,6 @@ perl-sdl
 cups-filters
 spamassassin
 autotrace
-claws-mail
 perl-http-body
 perl-moox-types-mooselike
 mftrace
