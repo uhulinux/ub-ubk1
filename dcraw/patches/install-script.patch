@@ -1,6 +1,6 @@
-diff -urN dcraw.orig/install dcraw/install
---- dcraw.orig/install	2014-01-16 22:26:18.000000000 +0100
-+++ dcraw/install	2014-02-25 10:30:28.518659571 +0100
+diff -Naur orig/install mod/install
+--- orig/install	2015-04-11 03:28:59.000000000 +0200
++++ mod/install	2016-03-23 22:32:21.047187234 +0100
 @@ -1,13 +1,13 @@
 -#!/bin/sh
 +#!/bin/sh -x
@@ -8,13 +8,30 @@ diff -urN dcraw.orig/install dcraw/install
  # Dave Coffin, dcoffin a cybercom o net
  
  # You will need these:
- # apt-get install libjasper-dev libjpeg-dev liblcms2-dev gettext
+ # apt-get install libjasper-dev libjpeg-dev liblcms2-dev gettext iconv
  
 -prefix=/usr/local
-+prefix="$DESTDIR"/usr/
++prefix=/usr
  
 -gcc -O4 -march=native -o $prefix/bin/dcraw dcraw.c \
 +gcc -O4 -march=i686 -o $prefix/bin/dcraw dcraw.c \
  	-Wall -Wno-unused-result -Wno-array-bounds -Wno-maybe-uninitialized \
- 	-Wno-aggressive-loop-optimizations -Wno-unused-but-set-variable \
+ 	-Wno-unused-but-set-variable \
  	-lm -ljasper -ljpeg -llcms2 -s -DLOCALEDIR=\"$prefix/share/locale/\"
+@@ -23,10 +23,10 @@
+ do
+   lang=`echo $langchar | cut -d. -f1`
+   char=`echo $langchar | cut -d. -f2-`
+-  mkdir -p -m 755 $prefix/share/man/$lang/man1
+-  iconv -f utf-8 -t $char dcraw_$lang.1 > $prefix/share/man/$lang/man1/dcraw.1
+-  mkdir -p -m 755 $prefix/share/man/$lang.UTF-8/man1
+-  cp dcraw_$lang.1 $prefix/share/man/$lang.UTF-8/man1/dcraw.1
+-  mkdir -p -m 755 $prefix/share/locale/$lang/LC_MESSAGES
+-  msgfmt -o $prefix/share/locale/$lang/LC_MESSAGES/dcraw.mo dcraw_$lang.po
++  mkdir -p -m 755 $DESTDIR/$prefix/share/man/$lang/man1
++  iconv -f utf-8 -t $char dcraw_$lang.1 > $DESTDIR/$prefix/share/man/$lang/man1/dcraw.1
++  mkdir -p -m 755 $DESTDIR/$prefix/share/man/$lang.UTF-8/man1
++  cp dcraw_$lang.1 $DESTDIR/$prefix/share/man/$lang.UTF-8/man1/dcraw.1
++  mkdir -p -m 755 $DESTDIR/$prefix/share/locale/$lang/LC_MESSAGES
++  msgfmt -o $DESTDIR/$prefix/share/locale/$lang/LC_MESSAGES/dcraw.mo dcraw_$lang.po
+ done
