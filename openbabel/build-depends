@@ -2,3 +2,4 @@ cairo-dev
 cmake
 eigen2
 libxml2-dev
+wxwidgets2.8-dev

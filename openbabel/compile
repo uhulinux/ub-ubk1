@@ -1,3 +1,4 @@
 #!/bin/sh -eux
 
-ub_compile
+ub_compile \
+      -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config2
