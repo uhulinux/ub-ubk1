@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
-# rm CMakeLists.txt
+rm -f CMakeLists.txt
 ub_compile
