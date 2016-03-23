@@ -1,3 +1,4 @@
 #!/bin/sh -eux
 
+export CXXFLAGS+=' -std=c++11 -Wno-narrowing'
 ub_compile
