@@ -1,3 +1,6 @@
+libgnomecups
+libgnomeprint2
+libgnomeprintui2
 gnome-python
 gnome2-audio
 mm-common

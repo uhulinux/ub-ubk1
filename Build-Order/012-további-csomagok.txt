@@ -9,7 +9,6 @@ gwenhywfar
 libchipcard
 libmusicbrainz
 vte2
-libgnomecups
 libmusicbrainz3
 libbluray
 libgnomecanvas2
@@ -19,20 +18,14 @@ emacs
 gnuplot
 libqalculate
 libextractor
-libgnome-media-profiles
 libindicate
-libgnomekbd
-libgnomeprint2
-libgnomeprintui2
 libappindicator
 libchamplain
 libgnome2
 libcryptui
 compton
-libpeas
 libbonoboui2
 geocode-glib
-libgweather
 libquicktime
 mutagen
 libgpod
@@ -42,7 +35,6 @@ gnome-online-accounts
 imagemagick
 libindicate-qt4
 cairomm
-librecad
 pangomm
 gtkmm2
 libdmtx

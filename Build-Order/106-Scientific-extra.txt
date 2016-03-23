@@ -9,3 +9,4 @@ socnetv
 zhu3d
 maxima
 wxmaxima
+librecad
