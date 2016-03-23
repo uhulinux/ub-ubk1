@@ -72,3 +72,5 @@ estickflashtool
 ide-smart
 kpartitionmanager
 mtx
+freepascal
+lazarus

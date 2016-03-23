@@ -41,7 +41,6 @@ eigen2
 enca
 fonts-dejavu
 fonts-terminus
-freepascal
 geos
 glee
 glm
@@ -475,7 +474,6 @@ perl-mail-spf
 sdl2-mixer
 w3m
 appdata-tools
-lazarus
 perl-libwww
 slim
 perl-ldap
