@@ -128,3 +128,4 @@ libusb-compat
 usbutils
 libevdev
 librsync
+trousers

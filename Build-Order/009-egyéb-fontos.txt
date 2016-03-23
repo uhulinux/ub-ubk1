@@ -67,3 +67,4 @@ gnome2-vfs
 wxwidgets
 wxwidgets2.8
 phonon
+libxml++2
