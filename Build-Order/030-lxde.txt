@@ -19,4 +19,5 @@ pcmanfm
 lxpanel
 lxshortcut
 lxnm
+gpicview
 lxde

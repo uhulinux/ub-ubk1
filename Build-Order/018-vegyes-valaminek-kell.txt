@@ -269,7 +269,6 @@ encfs
 gdl
 ghex
 glamor-egl
-gpicview
 gstreamermm
 gst-libav
 gtksourceviewmm
