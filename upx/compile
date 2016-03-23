@@ -3,9 +3,5 @@
 export UPX_UCLDIR=$UB_WORKDIR/ucl-1.03
 export UPX_LZMADIR=$UB_WORKDIR
 
-cd doc
-ub_make
-cd ..
 
-cd src
-ub_make
+ub_make all
