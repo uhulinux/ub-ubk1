@@ -1,2 +1,4 @@
 clutter-dev
+gnome-common
 gobject-introspection-dev
+gtk-doc
