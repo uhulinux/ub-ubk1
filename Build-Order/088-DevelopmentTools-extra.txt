@@ -7,6 +7,8 @@ gfxboot
 harbour
 jgrasp
 lxlogo
+source-highlight
+source-highlight-qt4
 marave
 mku
 monkeystudio

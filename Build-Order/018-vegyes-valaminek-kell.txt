@@ -246,7 +246,6 @@ razor
 retrovol
 rhtvision
 serf
-source-highlight
 startup-notification
 unshield
 vbetool
@@ -453,7 +452,6 @@ perl-xml-libxml
 perl-xml-sax-writer
 qterminal
 smpeg2
-source-highlight-qt4
 perl-datetime-timezone
 x.org-video-i810
 packagekit-qt
