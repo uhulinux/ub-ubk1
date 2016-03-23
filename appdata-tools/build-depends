@@ -5,4 +5,5 @@ gtk-dev
 intltool
 itstool
 libsoup-dev
+libyaml-dev
 python-lxml
