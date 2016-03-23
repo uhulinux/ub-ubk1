@@ -3,5 +3,5 @@
 for i in `find . -iname 'Makefile.in'`; do
 	ub_replace "-D[A-Z_]*DISABLE_DEPRECATED" "" "$i"
 done
-
+export CXXFLAGS+=' -std=c++11'
 ub_compile

@@ -1,3 +1,4 @@
 guile-dev
+libatomic-ops-dev
 libunistring-dev
 libxml2-dev

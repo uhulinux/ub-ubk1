@@ -50,7 +50,6 @@ baloo
 kxmlrpcclient
 knotifyconfig
 kparts
-kdewebkit
 kdesignerplugin
 ktexteditor
 kinit
