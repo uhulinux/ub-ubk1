@@ -13,6 +13,10 @@ libgnomecups
 libmusicbrainz3
 libbluray
 libgnomecanvas2
+xaw3d
+plotutils
+emacs
+gnuplot
 libqalculate
 libextractor
 libgnome-media-profiles
@@ -27,9 +31,11 @@ libcryptui
 compton
 libpeas
 libbonoboui2
+geocode-glib
 libgweather
 libquicktime
 libgnomeui2
+mutagen
 libgpod
 libsocialweb
 graphviz
@@ -40,10 +46,7 @@ cairomm
 librecad
 pangomm
 gtkmm2
-libzapojit
-libgfbgraph
 libdmtx
-libgdata
 libgda
 libgnomecanvasmm2
 libview
@@ -51,4 +54,3 @@ libvtemm
 libgdamm
 libgnomemm2
 libsexymm
-libgnomeuimm2

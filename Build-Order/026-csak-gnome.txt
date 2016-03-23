@@ -49,14 +49,12 @@ gnome-bluetooth
 gnome-schedule
 libgnomekbd
 gnome-system-monitor
-libchamplain
 opal
 cairo-dock
 gksu
 gnome-packagekit
 vino
 libgweather
-seed
 caribou
 metacity
 nm-applet

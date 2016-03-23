@@ -10,7 +10,6 @@ gupnp-igd
 dconf
 devhelp
 zenity
-geocode-glib
 polkit-gnome
 clutter
 glade

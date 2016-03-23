@@ -63,7 +63,6 @@ luasocket
 lynx
 miniupnpc
 musepack
-mutagen
 ois
 pcsc-lite
 perl-berkeleydb
