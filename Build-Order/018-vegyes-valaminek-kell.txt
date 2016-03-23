@@ -170,7 +170,6 @@ gtk2-theme-bluecurve
 gtkimageview
 highlight
 icon-theme-bluecurve
-lapack
 leptonica
 lsb-release
 lucene++

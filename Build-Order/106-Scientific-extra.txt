@@ -2,6 +2,7 @@ euler
 genius
 geogebra
 mathgl
+lapack
 octave
 qtoctave
 mathomatic
