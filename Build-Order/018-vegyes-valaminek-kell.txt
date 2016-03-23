@@ -300,7 +300,6 @@ gwenhywfar
 hunspell-hu
 jpilot
 js17
-lasem
 loudmouth
 netpbm
 ninja

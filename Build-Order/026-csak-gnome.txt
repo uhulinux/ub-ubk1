@@ -62,6 +62,7 @@ libgweather
 caribou
 metacity
 nm-applet
+lasem
 gnome-chemistry-utils
 gnome-desktop
 totem-plparser
