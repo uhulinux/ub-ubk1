@@ -1,5 +1,9 @@
+plib
 allegro
 dumb
+physfs
+bullet
+silly
 cegui
 cegui0.8
 mygui

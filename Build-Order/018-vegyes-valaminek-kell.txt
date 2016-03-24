@@ -99,11 +99,9 @@ qca-qt4
 qpdf
 radeontool
 rte
-rubber
 schroedinger
 scons
 sdl-net
-skyutils
 slib
 trousers
 txt2tags
@@ -204,7 +202,6 @@ prelink
 rsync
 sddm
 sdl-pango
-silly
 sip
 sofia-sip
 sound-theme-freedesktop
@@ -212,7 +209,6 @@ squashfs-tools
 syslinux
 twisted
 twisted-web2
-ufw
 x265
 xmessage
 xorriso
@@ -243,7 +239,6 @@ portaudio
 qtermwidget
 razor
 retrovol
-rhtvision
 serf
 startup-notification
 unshield
@@ -290,7 +285,6 @@ xosd
 yaz
 accountsservice
 apache-mod-dnssd
-bullet
 colord-gtk
 glfw2
 goffice08
@@ -342,12 +336,10 @@ mesa-demos
 mx
 obexftp
 phonon
-plib
 podofo
 qca
 sdl-mixer
 shiboken
-sword
 telepathy-mission-control
 tigervnc
 vim
@@ -437,8 +429,6 @@ perl-http-daemon
 perl-http-negotiate
 perl-linux-desktopfiles
 perl-test-deep
-pwlib
-tesseract
 gdlmm
 h323plus
 openmpi
@@ -489,7 +479,6 @@ plack
 sbc
 gavl
 espeak
-physfs
 libsndfile
 mpg123
 coin

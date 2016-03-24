@@ -6,12 +6,14 @@ clamz
 deluge
 dillo
 genesis
+ufw
 gufw
 kompozer
 belle-sip
 linphone
 otter
 qupzilla
+skyutils
 smssend
 tazweb
 transmission

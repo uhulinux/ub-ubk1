@@ -66,6 +66,7 @@ vde
 vlan
 xcalib
 xsensors
+pwlib
 yate
 bonnie++
 estickflashtool

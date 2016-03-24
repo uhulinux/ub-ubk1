@@ -66,6 +66,7 @@ jp2a
 keepassx
 krb5-auth-dialog
 latex2html
+rubber
 latexila
 launchy
 lesspipe
@@ -220,12 +221,14 @@ sdedit
 tbt
 teapot
 terminator
+tesseract
 tesseract-gui
 tulip
 wammu
 weatherman
 wikidpad
 xephem
+sword
 xiphos
 xplanet
 xqed
