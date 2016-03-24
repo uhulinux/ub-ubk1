@@ -9,6 +9,7 @@ jdictionary-plugin-german-hungarian
 jdictionary-plugin-interlingua-english
 jdictionary-plugin-swedish-interlingua
 aspell-dict-english
+aspell-dict-german
 aspell-dict-hungarian
 flamerobin
 htdig

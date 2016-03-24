@@ -1,6 +1,4 @@
 libnfsidmap
-libodfgen
-libol
 libpgf
 libpipeline
 libpqxx
@@ -36,7 +34,6 @@ libvdpau
 libmygpo-qt4
 liboauth
 liboobs
-libpst
 libqtspeech
 libqxt
 libraw

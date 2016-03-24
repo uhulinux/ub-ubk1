@@ -1,3 +1,4 @@
+libpst
 libgnomecups
 libgnomeprint2
 libgnomeprintui2

@@ -76,8 +76,6 @@ pyqt4
 pyqt5-python2
 pyside
 pysmbc
-pysolfc
-pysol-sound-server
 pysqlite
 python3-psutil
 python3-pyside

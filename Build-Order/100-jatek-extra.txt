@@ -1,13 +1,5 @@
-plib
-allegro
-dumb
-physfs
-bullet
-silly
-cegui
-cegui0.8
-mygui
-ogre
+pysolfc
+pysol-sound-server
 0ad-data
 alephone-marathon
 atris-sounds
@@ -64,7 +56,6 @@ xbl
 xpenguins
 xrick
 xsnow
-aspell-dict-german
 humphrey
 komi
 moon-buggy
@@ -161,5 +152,4 @@ oolite
 wesnoth
 x-moto
 0ad
-fenix
 rubix

@@ -45,7 +45,6 @@ geos
 glee
 glm
 gloox
-gnustep-make
 goocanvas
 griffith
 gsound
@@ -359,14 +358,12 @@ ptlib
 redland
 appstream-glib
 ftgl
-gnustep-base
 gucharmap
 lightdm
 mjpegtools
 perl-gtk2-gladexml
 rpm
 strigidaemon
-timidity
 xfig
 gammu
 gnokii
@@ -493,7 +490,6 @@ ffmpeg
 libstreamanalyzer
 xine-lib
 gst0.10-plugins-bad
-freealut
 ffmpeg-thumbnailer
 gnonlin
 libsamplerate
