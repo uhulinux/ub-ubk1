@@ -29,6 +29,7 @@ wget
 dahdi-linux
 dahdi-tools
 gpg
+gpgme
 gtest
 gcr
 rest
