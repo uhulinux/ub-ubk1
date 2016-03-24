@@ -28,12 +28,10 @@ gnome2-speech
 gnome-menus
 gnome-themes-standard
 icon-theme-adwaita
-yelp-xsl
 gupnp-av
 icon-theme-gnome
 libmediaart
 chemical-mime-data
-dconf-editor
 gconf-editor
 glade2
 glib-networking
@@ -43,7 +41,6 @@ gnome-user-docs
 polari
 at-spi2-core
 baobab
-cogl
 gnome-mplayer
 gnome-nettool
 gnome-power-manager

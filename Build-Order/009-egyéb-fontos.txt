@@ -53,7 +53,6 @@ boost-jam
 fuse
 enchant
 gnome-js-common
-gst-plugins-base
 webkitgtk
 seed
 neon

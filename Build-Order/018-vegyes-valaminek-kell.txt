@@ -159,7 +159,6 @@ exempi
 firebirdsql
 fonttools
 fuse-ntfs-3g
-gconfmm2
 ggz-client-libs
 goocanvasmm
 gtk2-engine-murrine
@@ -213,11 +212,9 @@ xmessage
 xorriso
 x.org-input-acecad
 autogen
-clutter-gst2
 dcraw
 ebook-tools
 fonts-oxygen
-gpgme
 gtksourceview2
 gtkspell2
 iputils
@@ -356,7 +353,6 @@ perl-gd
 plymouth
 ptlib
 redland
-appstream-glib
 ftgl
 gucharmap
 lightdm
