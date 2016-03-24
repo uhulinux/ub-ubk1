@@ -18,9 +18,6 @@ libdiscid
 libdmapsharing
 libdv
 libdvdnav
-libepc
-libetonyek
-libexif-gtk
 libexosip2
 libgcrypt
 libical
@@ -32,7 +29,6 @@ libftdi-compat
 libgadu
 libgee
 libgee06
-libgames-support
 libsecret
 libksba
 libssh
@@ -45,16 +41,12 @@ libgtop2
 libgksu
 libglade2
 libglademm2
-libgovirt
 libgphoto2
-libgrss
 libgsf
 libgssapi
 libgsystem
 libgssh
-libguess
 libgusb
-libgxps
 libh
 libharu
 libiec61883

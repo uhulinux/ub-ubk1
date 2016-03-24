@@ -1,4 +1,10 @@
+libgrss
+libgxps
+tracker-sparql
+libgovirt
+libepc
 libpst
+libgames-support
 libgnomecups
 libgnomeprint2
 libgnomeprintui2

@@ -1,3 +1,6 @@
+libguess
+libexif-gtk
+libetonyek
 libodfgen
 freealut
 gnustep-base
