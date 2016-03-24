@@ -9,7 +9,6 @@ libcddb
 libcdio
 libcdio-paranoia
 libcroco
-libdate
 libdbi-drivers
 libdbusmenu
 libdbusmenu-qt

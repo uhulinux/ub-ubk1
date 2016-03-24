@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libdate-${UB_VERSION}.tar.gz libdate-${UB_VERSION}/
-	http://downloads.sourceforge.net/libdate/
