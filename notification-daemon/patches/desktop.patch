@@ -1,10 +1,23 @@
---- nd.orig/data/notification-daemon.desktop.in.in	2011-02-16 17:34:20.000000000 +0100
-+++ nd/data/notification-daemon.desktop.in.in	2011-03-30 15:52:17.000000000 +0200
+diff -Naur orig/data/notification-daemon-autostart.desktop.in.in mod/data/notification-daemon-autostart.desktop.in.in
+--- orig/data/notification-daemon-autostart.desktop.in.in	2015-11-27 22:16:27.000000000 +0100
++++ mod/data/notification-daemon-autostart.desktop.in.in	2016-03-24 09:11:45.550663826 +0100
 @@ -1,7 +1,7 @@
  [Desktop Entry]
- _Name=Notification Daemon
- _Comment=Display notifications
--Exec=@LIBEXECDIR@/notification-daemon
+ Name=Notification Daemon
+ Comment=Display notifications
+-Exec=@libexecdir@/notification-daemon
++Exec=notification-daemon
+ Terminal=false
+ Type=Application
+ OnlyShowIn=GNOME-Flashback;
+diff -Naur orig/data/notification-daemon.desktop.in.in mod/data/notification-daemon.desktop.in.in
+--- orig/data/notification-daemon.desktop.in.in	2015-11-27 22:16:27.000000000 +0100
++++ mod/data/notification-daemon.desktop.in.in	2016-03-24 09:11:02.126981517 +0100
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=Notification Daemon
+ Comment=Display notifications
+-Exec=@libexecdir@/notification-daemon
 +Exec=notification-daemon
  Terminal=false
  Type=Application
