@@ -1,2 +1,1 @@
-alap=$(sflist giflib | grep giflib | sort | tail -n 1)
-sflist giflib "$alap" | parsever | sort -V | tail -n 1
+sflist giflib | parsever | sort -V | tail -n 1
