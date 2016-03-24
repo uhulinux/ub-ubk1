@@ -1,6 +1,6 @@
 diff -Naur orig/Makefile.in mod/Makefile.in
---- orig/Makefile.in	2014-03-01 16:15:26.000000000 +0100
-+++ mod/Makefile.in	2014-03-03 19:12:42.000000000 +0100
+--- orig/Makefile.in	2015-02-12 10:31:30.000000000 +0100
++++ mod/Makefile.in	2016-03-24 20:56:45.115248759 +0100
 @@ -207,12 +207,10 @@
  ################################################################################
  actual_xterm  = `echo xterm|        sed '$(transform)'`
@@ -14,38 +14,36 @@ diff -Naur orig/Makefile.in mod/Makefile.in
  binary_k8term = $(actual_k8term)
  
  install \
-@@ -229,12 +227,6 @@
- install-scripts \
- install-full ::
- 	@$(SHELL) -c "name=\"$(binary_xterm)\"; \
--		dest=\"$(binary_uxterm)\"; \
--		echo \"... installing $(BINDIR)/\$$dest\"; \
--		$(EDIT_SCRIPT) $(srcdir)/uxterm >uxterm.tmp; \
--		$(INSTALL_SCRIPT) -m  755 uxterm.tmp $(BINDIR)/\$$dest; \
--		rm -f uxterm.tmp"
--	@$(SHELL) -c "name=\"$(binary_xterm)\"; \
- 		dest=\"$(binary_k8term)\"; \
- 		echo \"... installing $(BINDIR)/\$$dest\"; \
- 		$(EDIT_SCRIPT) $(srcdir)/koi8rxterm >k8term.tmp; \
-@@ -252,7 +244,7 @@
+@@ -255,10 +253,6 @@
+ 	@$(SHELL) -c "source=\"resize\"; \
+ 		target=\"$(binary_resize)\"; \
+ 		$(InstallBinLink)"
+-	@$(SHELL) -c "source=\"uxterm\"; \
+-		target=\"$(binary_uxterm)\"; \
+-		$(InstallScript); \
+-		$(InstallBinLink)"
+ 	@$(SHELL) -c "source=\"koi8rxterm\"; \
+ 		target=\"$(binary_k8term)\"; \
+ 		$(InstallScript); \
+@@ -267,7 +261,7 @@
  install \
  install-man \
  install-full :: $(MANDIR)
--	@-$(SHELL) -c "for app in xterm resize uxterm koi8rxterm ; \
-+	@-$(SHELL) -c "for app in xterm resize koi8rxterm ; \
+-	@-$(SHELL) -c "for source in xterm resize uxterm koi8rxterm ; \
++	@-$(SHELL) -c "for source in xterm resize koi8rxterm ; \
  		do \
- 			actual=\`echo \"\$$app\" | sed '@program_transform_name@'\`; \
- 			$(SHELL) ./minstall \"$(INSTALL_DATA)\" $(srcdir)/\$$app.man  $(MANDIR)/\$$actual.$(manext) $(appsdir) $(CLASS) \$$app \$$actual $(pixmapdir); \
-@@ -261,7 +253,7 @@
- 	@-$(SHELL) -c "if test @XTERM_SYMLINK@ != NONE ; then cd $(MANDIR) && $(LN_S) $(actual_xterm).$(manext) @XTERM_SYMLINK@.$(manext) ; fi"
- 	@-$(SHELL) -c "if test @XTERM_SYMLINK@ != NONE ; then cd $(MANDIR) && echo '... created symbolic link:' && ls -l $(actual_xterm).$(manext) @XTERM_SYMLINK@.$(manext) ; fi"
+ 			target=\`echo \"\$$source\" | sed '@program_transform_name@'\`; \
+ 			$(SHELL) ./minstall \"$(INSTALL_DATA)\" \
+@@ -290,7 +284,7 @@
+ 			) \
+ 		fi"
  
 -APP_NAMES = XTerm UXTerm KOI8RXTerm
 +APP_NAMES = XTerm KOI8RXTerm
  
  @no_appsdir@install \
  @no_appsdir@install-app \
-@@ -420,7 +412,7 @@
+@@ -486,7 +480,7 @@
  @no_pixmapdir@	@echo "... removed icons"
  ################################################################################
  # Desktop-utils does not provide an uninstall, and is not uniformly available.
@@ -54,16 +52,16 @@ diff -Naur orig/Makefile.in mod/Makefile.in
  @desktop_utils@DESKTOP_FLAGS = @DESKTOP_FLAGS@
  @desktop_utils@install-desktop \
  @desktop_utils@install-full ::
-@@ -483,12 +475,6 @@
+@@ -548,12 +542,6 @@
  xterm.ps : xterm.$(manext)
  xterm.txt : xterm.$(manext)
  ################################################################################
 -docs-uxterm \
--docs ::  uxterm.txt @GROFF_NOTE@ uxterm.html uxterm.pdf uxterm.ps
+-docs ::  uxterm.txt @MAN2HTML_NOTE@ uxterm.html @GROFF_NOTE@ uxterm.pdf uxterm.ps
 -uxterm.html : uxterm.$(manext)
 -uxterm.pdf : uxterm.ps
 -uxterm.ps : uxterm.$(manext)
 -uxterm.txt : uxterm.$(manext)
  ################################################################################
  docs-koi8rxterm \
- docs ::  koi8rxterm.txt @GROFF_NOTE@ koi8rxterm.html koi8rxterm.pdf koi8rxterm.ps
+ docs ::  koi8rxterm.txt @MAN2HTML_NOTE@ koi8rxterm.html @GROFF_NOTE@ koi8rxterm.pdf koi8rxterm.ps

@@ -1,5 +1,6 @@
---- imlib-1.9.13/Imlib/load.c.secfixes	2004-11-22 15:53:20.702970601 -0500
-+++ imlib-1.9.13/Imlib/load.c	2004-11-22 15:53:31.527484592 -0500
+diff -urN imlib-1.9.13.orig/Imlib/load.c imlib-1.9.13/Imlib/load.c
+--- imlib-1.9.13.orig/Imlib/load.c	Wed Mar 13 19:06:29 2002
++++ imlib-1.9.13/Imlib/load.c	Thu Sep 16 17:21:01 2004
 @@ -4,6 +4,8 @@
  #include "Imlib_private.h"
  #include <setjmp.h>
@@ -50,7 +51,7 @@
  	    {
  	       return NULL;
  	    }
-@@ -999,7 +1007,12 @@
+@@ -965,7 +973,12 @@
    comment = 0;
    quote = 0;
    context = 0;
@@ -63,7 +64,7 @@
    while (!done)
      {
        pc = c;
-@@ -1028,25 +1041,25 @@
+@@ -994,25 +1007,25 @@
  		{
  		  /* Header */
  		  sscanf(line, "%i %i %i %i", w, h, &ncolors, &cpp);
@@ -93,7 +94,7 @@
  		    {
  		      fprintf(stderr, "IMLIB ERROR: Image height > 32767 pixels for file\n");
  		      free(line);
-@@ -1079,11 +1092,13 @@
+@@ -1045,11 +1058,13 @@
  		    {
  		      int                 slen;
  		      int                 hascolor, iscolor;
@@ -107,7 +108,7 @@
  		      s[0] = 0;
  		      len = strlen(line);
  		      strncpy(cmap[j].str, line, cpp);
-@@ -1106,10 +1121,10 @@
+@@ -1072,10 +1087,10 @@
  				{
  				  if (k >= len)
  				    {
@@ -122,7 +123,7 @@
  				    }
  				  if (col[0])
  				    {
-@@ -1139,14 +1154,17 @@
+@@ -1105,14 +1120,17 @@
  					    }
  					}
  				    }
@@ -144,7 +145,7 @@
  				}
  			    }
  			}
-@@ -1375,12 +1393,12 @@
+@@ -1341,12 +1359,12 @@
  	  sscanf(s, "%i %i", w, h);
  	  a = *w;
  	  b = *h;
@@ -159,8 +160,9 @@
  	    {
  	      fprintf(stderr, "IMLIB ERROR: Image height > 32767 pixels for file\n");
  	      return NULL;
---- imlib-1.9.13/Imlib/utils.c.secfixes	2002-03-04 11:45:28.000000000 -0500
-+++ imlib-1.9.13/Imlib/utils.c	2004-11-22 15:53:31.544482259 -0500
+diff -urN imlib-1.9.13.orig/Imlib/utils.c imlib-1.9.13/Imlib/utils.c
+--- imlib-1.9.13.orig/Imlib/utils.c	Mon Mar  4 17:45:28 2002
++++ imlib-1.9.13/Imlib/utils.c	Thu Sep 16 17:21:15 2004
 @@ -1496,36 +1496,56 @@
    context = 0;
    ptr = NULL;
@@ -246,8 +248,21 @@
      }
    if (!transp)
      {
---- imlib-1.9.13/gdk_imlib/io-ppm.c.secfixes	2002-03-04 11:26:51.000000000 -0500
-+++ imlib-1.9.13/gdk_imlib/io-ppm.c	2004-11-22 15:53:31.575478003 -0500
+diff -urN imlib-1.9.13.orig/gdk_imlib/io-gif.c imlib-1.9.13/gdk_imlib/io-gif.c
+--- imlib-1.9.13.orig/gdk_imlib/io-gif.c	Mon Mar  4 17:26:51 2002
++++ imlib-1.9.13/gdk_imlib/io-gif.c	Thu Sep 16 16:11:31 2004
+@@ -55,7 +55,7 @@
+ 	    }
+ 	  *w = gif->Image.Width;
+ 	  *h = gif->Image.Height;
+-	  if(*h > 32767 || *w > 32767)
++	  if(*h <= 0 || *h > 32767 || *w <= 0 || *w > 32767)
+ 	    {
+ 	      return NULL;
+ 	    }
+diff -urN imlib-1.9.13.orig/gdk_imlib/io-ppm.c imlib-1.9.13/gdk_imlib/io-ppm.c
+--- imlib-1.9.13.orig/gdk_imlib/io-ppm.c	Mon Mar  4 17:26:51 2002
++++ imlib-1.9.13/gdk_imlib/io-ppm.c	Thu Sep 16 16:13:13 2004
 @@ -53,12 +53,12 @@
  	  sscanf(s, "%i %i", w, h);
  	  a = *w;
@@ -263,8 +278,23 @@
  	    {
  	      fprintf(stderr, "gdk_imlib ERROR: Image height > 32767 pixels for file\n");
  	      return NULL;
---- imlib-1.9.13/gdk_imlib/io-xpm.c.secfixes	2002-03-04 11:26:51.000000000 -0500
-+++ imlib-1.9.13/gdk_imlib/io-xpm.c	2004-11-22 15:53:31.578477592 -0500
+diff -urN imlib-1.9.13.orig/gdk_imlib/io-tiff.c imlib-1.9.13/gdk_imlib/io-tiff.c
+--- imlib-1.9.13.orig/gdk_imlib/io-tiff.c	Mon Mar  4 17:26:51 2002
++++ imlib-1.9.13/gdk_imlib/io-tiff.c	Thu Sep 16 16:13:57 2004
+@@ -36,7 +36,9 @@
+   npix = ww * hh;
+   *w = (int)ww;
+   *h = (int)hh;
+-  if(ww > 32767 || hh > 32767)
++  if (ww <= 0 || ww > 32767 ||
++      hh <= 0 || hh > 32767 ||
++      hh >= (G_MAXINT/sizeof(uint32)) / ww)
+     {
+       TIFFClose(tif);
+       return NULL;
+diff -urN imlib-1.9.13.orig/gdk_imlib/io-xpm.c imlib-1.9.13/gdk_imlib/io-xpm.c
+--- imlib-1.9.13.orig/gdk_imlib/io-xpm.c	Mon Mar  4 17:26:51 2002
++++ imlib-1.9.13/gdk_imlib/io-xpm.c	Thu Sep 16 17:08:24 2004
 @@ -40,8 +40,12 @@
    context = 0;
    i = j = 0;
@@ -359,8 +389,9 @@
  				}
  			    }
  			}
---- imlib-1.9.13/gdk_imlib/misc.c.secfixes	2002-03-04 11:26:51.000000000 -0500
-+++ imlib-1.9.13/gdk_imlib/misc.c	2004-11-22 15:53:31.593475533 -0500
+diff -urN imlib-1.9.13.orig/gdk_imlib/misc.c imlib-1.9.13/gdk_imlib/misc.c
+--- imlib-1.9.13.orig/gdk_imlib/misc.c	Mon Mar  4 17:26:51 2002
++++ imlib-1.9.13/gdk_imlib/misc.c	Thu Sep 16 16:35:32 2004
 @@ -1355,11 +1355,16 @@
  
  /*
@@ -380,19 +411,9 @@
 +	return malloc(w * h * 3 + 3);
  }
 +
---- imlib-1.9.13/gdk_imlib/io-gif.c.secfixes	2002-03-04 11:26:51.000000000 -0500
-+++ imlib-1.9.13/gdk_imlib/io-gif.c	2004-11-22 15:53:31.560480062 -0500
-@@ -55,7 +55,7 @@
- 	    }
- 	  *w = gif->Image.Width;
- 	  *h = gif->Image.Height;
--	  if(*h > 32767 || *w > 32767)
-+	  if(*h <= 0 || *h > 32767 || *w <= 0 || *w > 32767)
- 	    {
- 	      return NULL;
- 	    }
---- imlib-1.9.13/gdk_imlib/utils.c.secfixes	2002-03-04 11:26:51.000000000 -0500
-+++ imlib-1.9.13/gdk_imlib/utils.c	2004-11-22 15:53:31.611473062 -0500
+diff -urN imlib-1.9.13.orig/gdk_imlib/utils.c imlib-1.9.13/gdk_imlib/utils.c
+--- imlib-1.9.13.orig/gdk_imlib/utils.c	Mon Mar  4 17:26:51 2002
++++ imlib-1.9.13/gdk_imlib/utils.c	Thu Sep 16 17:28:35 2004
 @@ -1236,36 +1236,56 @@
    context = 0;
    ptr = NULL;
@@ -487,16 +508,3 @@
      }
    if (!transp)
      {
---- imlib-1.9.13/gdk_imlib/io-tiff.c.secfixes	2002-03-04 11:26:51.000000000 -0500
-+++ imlib-1.9.13/gdk_imlib/io-tiff.c	2004-11-22 15:53:31.576477866 -0500
-@@ -36,7 +36,9 @@
-   npix = ww * hh;
-   *w = (int)ww;
-   *h = (int)hh;
--  if(ww > 32767 || hh > 32767)
-+  if (ww <= 0 || ww > 32767 ||
-+      hh <= 0 || hh > 32767 ||
-+      hh >= (G_MAXINT/sizeof(uint32)) / ww)
-     {
-       TIFFClose(tif);
-       return NULL;
