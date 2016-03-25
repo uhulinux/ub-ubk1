@@ -5,5 +5,4 @@ autoreconf -vif
 ub_compile \
 	--with-unixodbc=/usr \
 	--enable-sql \
-	--disable-man
-#	--mandir=/usr/share/man \
+	--mandir=/usr/share/man
