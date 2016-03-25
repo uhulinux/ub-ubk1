@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+mdbtools-${UB_VERSION}.tar.gz mdbtools-3b6d88f/
+	git://github.com/brianb/mdbtools.git@3b6d88f
