@@ -30,7 +30,6 @@ dahdi-linux
 dahdi-tools
 gpg
 gpgme
-perl-gpg
 gtest
 gcr
 rest
