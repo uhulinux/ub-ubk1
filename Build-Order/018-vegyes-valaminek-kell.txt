@@ -272,7 +272,6 @@ conky
 ibus
 udisks2
 x.org-server-utils
-x.org-utils
 fox
 lesstif
 recordmydesktop
@@ -307,7 +306,6 @@ h323plus
 openmpi
 qterminal
 smpeg2
-x.org-video-i810
 packagekit-qt
 telepathy-farstream
 telepathy-idle
@@ -337,7 +335,6 @@ mpg123
 coin
 sdl-sound
 speechd
-wxwidgets2.8
 openal
 sox
 gst0.10-plugins-good

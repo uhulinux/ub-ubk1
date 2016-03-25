@@ -87,9 +87,11 @@ libxft
 libxrandr
 libxscrnsaver
 libepoxy
+libxshmfence
 libxxf86dga
 xkb-utils
 xkeyboard-config
+glamor-egl
 glew
 x.org-font-utils
 fonts-x.org
@@ -97,6 +99,7 @@ x.org-video-ati
 x.org-video-nv
 x.org-video-vesa
 x.org-video-fbdev
+x.org-video-i810
 x.org-video-nouveau
 x.org-input-evdev
 x.org-input-keyboard
@@ -111,7 +114,7 @@ libxdiff
 libxerces
 libxkbcommon
 libxnvctrl
-libxshmfence
 tslib
 libxklavier
-
+nickle
+x.org-utils
