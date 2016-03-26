@@ -194,7 +194,6 @@ glfw2
 goffice08
 gpgmepp
 gtkspell
-gwenhywfar
 hunspell-hu
 jpilot
 js17
@@ -329,7 +328,6 @@ plack
 sbc
 gavl
 espeak
-libsndfile
 mpg123
 coin
 sdl-sound
@@ -344,7 +342,6 @@ xine-lib
 gst0.10-plugins-bad
 ffmpeg-thumbnailer
 gnonlin
-libsamplerate
 wxsvg
 alsa-utils
 fluidsynth
