@@ -1,27 +1,27 @@
 #!/usr/bin/env dl
 
-iceauth-1.0.6.tar.bz2 .
+iceauth-1.0.7.tar.bz2 .
 	http://xorg.freedesktop.org/releases/individual/app/
 
-sessreg-1.0.8.tar.bz2 .
+sessreg-1.1.0.tar.bz2 .
 	http://xorg.freedesktop.org/releases/individual/app/
 
-xcmsdb-1.0.4.tar.bz2 .
+xcmsdb-1.0.5.tar.bz2 .
 	http://xorg.freedesktop.org/releases/individual/app/
 
-xgamma-1.0.5.tar.bz2 .
+xgamma-1.0.6.tar.bz2 .
 	http://xorg.freedesktop.org/releases/individual/app/
 
-xhost-1.0.6.tar.bz2 .
+xhost-1.0.7.tar.bz2 .
 	http://xorg.freedesktop.org/releases/individual/app/
 
-xinput-1.6.1.tar.bz2 .
+xinput-1.6.2.tar.bz2 .
 	http://xorg.freedesktop.org/releases/individual/app/
 
 xmodmap-1.0.8.tar.bz2 .
 	http://xorg.freedesktop.org/releases/individual/app/
 
-xrandr-1.4.2.tar.bz2 .
+xrandr-1.5.0.tar.bz2 .
 	http://xorg.freedesktop.org/releases/individual/app/
 
 xrdb-1.1.0.tar.bz2 .
@@ -35,26 +35,3 @@ xscope-1.4.1.tar.bz2 .
 
 xset-1.2.3.tar.bz2 .
 	http://xorg.freedesktop.org/releases/individual/app/
-
-## not present in the X11R7.5 katamari
-#xsetmode-1.0.0.tar.bz2 .
-#	http://xorg.freedesktop.org/releases/individual/app/
-
-## not present in the X11R7.4 katamari
-#xsetpointer-1.0.1.tar.bz2 .
-#	http://xorg.freedesktop.org/releases/individual/app/
-
-xsetroot-1.1.1.tar.bz2 .
-	http://xorg.freedesktop.org/releases/individual/app/
-
-## not present in the X11R7.4 katamari
-#xstdcmap-1.0.3.tar.bz2 .
-#	http://xorg.freedesktop.org/releases/individual/app/
-
-## not present in the X11R7.4 katamari; requires trapproto in x.org-proto-dev
-#xtrap-1.0.2.tar.bz2 .
-#	http://xorg.freedesktop.org/releases/individual/app/
-
-## not present in the X11R7.4 katamari
-#xvidtune-1.0.3.tar.bz2 .
-#	http://xorg.freedesktop.org/releases/individual/app/
