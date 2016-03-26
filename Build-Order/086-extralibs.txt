@@ -12,7 +12,7 @@ physfs
 bullet
 silly
 cegui
-cegui0.8
+cegui0.7
 mygui
 ogre
 fenix

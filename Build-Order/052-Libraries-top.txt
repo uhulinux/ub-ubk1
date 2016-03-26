@@ -37,7 +37,6 @@ irrlicht
 jogl
 judy
 keybinder
-libxfcegui4
 lightning
 mojolicious
 mplayer-w32codecs
