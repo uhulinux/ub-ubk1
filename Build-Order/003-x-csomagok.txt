@@ -76,7 +76,6 @@ x.org-video-tseng
 x.org-video-v4l
 x.org-video-voodoo
 x.org-video-glint
-x.org-video-mga
 x.org-video-savage
 x.org-video-sis
 x.org-video-tdfx
