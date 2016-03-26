@@ -18,3 +18,5 @@ ogre
 fenix
 libspectrum
 timidity
+pigment
+python-pigment

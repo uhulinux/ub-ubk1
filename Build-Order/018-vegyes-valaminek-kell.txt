@@ -201,7 +201,6 @@ js17
 loudmouth
 netpbm
 ninja
-pigment
 reportlab
 rpcbind
 sdl-ttf

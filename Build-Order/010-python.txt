@@ -132,7 +132,6 @@ python-pastedeploy
 python-pbkdf2
 python-pep8
 python-pexpect
-python-pigment
 python-pillow
 python-pip
 python-polib
