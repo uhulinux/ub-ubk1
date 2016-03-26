@@ -3,7 +3,6 @@ boost-dev
 clucene-core-dev
 cmake
 exiv2-dev
-ffmpeg-dev
 libstreams-dev
 libxml2-dev
 qt4-dev
