@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-CEGUI-${UB_VERSION}.tar.gz CEGUI-${UB_VERSION/b/}/
-    http://download.sourceforge.net/crayzedsgui/CEGUI%20Mk-2/${UB_VERSION/b/}/
+v${UB_VERSION_HEAD2/./-}-${UB_VERSION_TAIL1}.tar.bz2 cegui-cegui-5861231e8335/
+    https://bitbucket.org/cegui/cegui/get/

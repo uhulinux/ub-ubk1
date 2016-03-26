@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+CEGUI-${UB_VERSION}.tar.gz CEGUI-${UB_VERSION/b/}/
+    http://download.sourceforge.net/crayzedsgui/CEGUI%20Mk-2/${UB_VERSION/b/}/
