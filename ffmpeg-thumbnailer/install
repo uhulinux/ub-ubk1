@@ -1,3 +1,5 @@
 #!/bin/sh -eux
 
 ub_install
+sed 's/-L //g' -i ${UB_INSTALLDIR}/usr/lib/pkgconfig/libffmpegthumbnailer.pc
+sed s/\\/usr\\//-L\\/usr\\//g -i ${UB_INSTALLDIR}/usr/lib/pkgconfig/libffmpegthumbnailer.pc
