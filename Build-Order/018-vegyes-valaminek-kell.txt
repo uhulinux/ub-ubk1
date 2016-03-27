@@ -226,7 +226,6 @@ goffice
 gspell
 gtkglextmm
 mesa-demos
-mx
 obexftp
 phonon
 podofo
