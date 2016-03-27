@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
-cd src/
-ub_compile
+ub_compile \
+	-DSTOP_ON_WARNING=OFF
