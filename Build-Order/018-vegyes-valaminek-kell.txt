@@ -86,7 +86,6 @@ xcb-util-renderutil
 xdialog
 xdm
 xfsprogs
-xmldiff
 xvid
 alsa-tools
 avfs

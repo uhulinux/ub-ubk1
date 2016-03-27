@@ -160,3 +160,4 @@ python-pbr
 python-sqlalchemy-migrate
 python-stevedore
 gst0.10-python
+xmldiff
