@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-xmldiff-${UB_VERSION}.tar.gz xmldiff-${UB_VERSION}/
-	http://ftp.logilab.org/pub/xmldiff/
+xmldiff-${UB_VERSION}.zip xmldiff-${UB_VERSION}/
+	https://pypi.python.org/packages/source/x/xmldiff/
