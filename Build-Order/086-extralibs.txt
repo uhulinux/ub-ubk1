@@ -1,3 +1,4 @@
+vigra
 libguess
 libexif-gtk
 libetonyek

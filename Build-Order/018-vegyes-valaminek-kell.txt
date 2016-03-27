@@ -274,7 +274,6 @@ recordmydesktop
 subversion
 telepathy-gabble
 telepathy-salut
-vigra
 zeitgeist
 emacs
 gpsd
