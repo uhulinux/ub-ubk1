@@ -1,3 +1,4 @@
+policykit
 libgrss
 libgxps
 tracker-sparql

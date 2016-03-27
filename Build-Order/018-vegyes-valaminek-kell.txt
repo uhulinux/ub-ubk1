@@ -174,7 +174,6 @@ openbabel
 openconnect
 openobex
 openvpn
-policykit
 qscintilla2
 rasqal
 scim
