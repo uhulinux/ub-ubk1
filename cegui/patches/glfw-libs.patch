@@ -1,0 +1,12 @@
+diff -Naur orig/cmake/FindGLFW3.cmake patched/cmake/FindGLFW3.cmake
+--- orig/cmake/FindGLFW3.cmake	2016-02-28 00:06:14.000000000 +0100
++++ patched/cmake/FindGLFW3.cmake	2016-03-27 01:00:22.194824762 +0100
+@@ -29,7 +29,7 @@
+ # set up output vars
+ if (GLFW3_FOUND)
+     set (GLFW3_INCLUDE_DIR ${GLFW3_H_PATH})
+-    set (GLFW3_LIBRARIES ${GLFW3_LIB})
++    set (GLFW3_LIBRARIES ${GLFW3_LIB} Xxf86vm X11 Xrandr Xi Xinerama Xcursor pthread)
+     if (GLFW3_LIB_DBG)
+         set (GLFW3_LIBRARIES_DBG ${GLFW3_LIB_DBG})
+     endif()
