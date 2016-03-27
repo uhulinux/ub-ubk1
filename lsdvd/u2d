@@ -1,1 +1,1 @@
-sflist lsdvd lsdvd/0.16%20-%20I%20hate%20James%20Blunt | splitver '^lsdvd-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+sflist lsdvd lsdvd | splitver '^lsdvd-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
