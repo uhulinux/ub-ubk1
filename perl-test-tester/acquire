@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-Test-Tester-${UB_VERSION}.tar.gz Test-Tester-${UB_VERSION}/
-	http://www.cpan.org/authors/id/F/FD/FDALY/
-	http://www.cpan.org/authors/id/F/FD/FDALY/

@@ -95,7 +95,6 @@ perl-sub-uplevel
 perl-sys-hostname-long
 perl-term-readkey
 perl-test-tcp
-perl-test-tester
 perl-text-csv
 perl-text-csv-xs
 perl-text-wrapi18n
