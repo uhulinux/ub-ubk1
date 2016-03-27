@@ -7,3 +7,4 @@ libsndfile-dev
 libxrandr-dev
 mesa-dev
 openal-dev
+xcb-util-image-dev
