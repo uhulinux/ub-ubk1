@@ -4,6 +4,7 @@ python3-dip
 python3-doc
 python3-setuptools
 python3-zope.fixers
+sip
 python-cddb
 python-dip
 python-doc
@@ -79,6 +80,7 @@ pysmbc
 pysqlite
 python3-psutil
 python3-pyside
+qscintilla2
 python3-qscintilla2
 python-apsw
 python-astroid

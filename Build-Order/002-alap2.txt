@@ -69,3 +69,5 @@ libevent
 wayland
 wayland-protocols
 libunwind
+rpm
+uhubuild
