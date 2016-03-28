@@ -1,3 +1,5 @@
+webkit2gtk
+gnome-online-accounts
 gconfmm2
 libgnomeui2
 libgnomeuimm2

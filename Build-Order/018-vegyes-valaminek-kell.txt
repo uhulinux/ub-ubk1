@@ -285,7 +285,6 @@ gst0.10-plugins-ugly
 gst-plugins-ugly
 webkitgtk2
 spice-gtk
-webkit2gtk
 firefox
 thunderbird
 nagios-plugins

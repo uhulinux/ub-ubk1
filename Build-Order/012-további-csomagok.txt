@@ -31,7 +31,6 @@ mutagen
 libgpod
 libsocialweb
 graphviz
-gnome-online-accounts
 imagemagick
 libindicate-qt4
 cairomm
