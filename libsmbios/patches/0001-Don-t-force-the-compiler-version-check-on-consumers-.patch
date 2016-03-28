@@ -1,0 +1,149 @@
+From 74913b28e3a436a6c519f66332a0b140bf72aa67 Mon Sep 17 00:00:00 2001
+From: Peter Jones <pjones@redhat.com>
+Date: Thu, 25 Feb 2016 15:22:57 -0500
+Subject: [PATCH] Don't force the compiler version check on consumers of the
+ library.
+
+This check just stops things from building when the compiler gets
+upgraded, and it clearly hasn't been maintained in some time.  The .so
+almost certainly still works fine, and if the headers don't, the
+consuming build will fail anyway.
+
+Signed-off-by: Peter Jones <pjones@redhat.com>
+---
+ Makefile.am                                      | 6 +++---
+ Makefile.in                                      | 6 +++---
+ src/include/smbios/config/compiler/gcc.hpp       | 4 ++--
+ src/include/smbios/config/compiler/sunpro_cc.hpp | 2 ++
+ src/include/smbios/config/compiler/visualc.hpp   | 2 ++
+ src/include/smbios_c/config/compiler/gcc.h       | 4 ++--
+ src/include/smbios_c/config/compiler/visualc.h   | 2 ++
+ 7 files changed, 16 insertions(+), 10 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 0f39e27..8ded6cd 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -17,9 +17,9 @@ lib_LTLIBRARIES=
+ 
+ TESTS=
+ 
+-AM_CPPFLAGS = -I$(top_builddir)/out/include -I$(top_srcdir)/src/include -DLIBSMBIOS_LOCALEDIR=\"$(localedir)\"
+-AM_CFLAGS = -Wall
+-AM_CXXFLAGS = -Wall
++AM_CPPFLAGS = -I$(top_builddir)/out/include -I$(top_srcdir)/src/include -DLIBSMBIOS_LOCALEDIR=\"$(localedir)\" -DLIBSMBIOS_BUILD
++AM_CFLAGS = -Wall -DLIBSMBIOS_BUILD
++AM_CXXFLAGS = -Wall -DLIBSMBIOS_BUILD
+ AM_LDADD = $(LIBINTL)
+ 
+ AM_LDFLAGS = -L$(top_builddir)/out/
+diff --git a/Makefile.in b/Makefile.in
+index 00a7c2b..f7a2126 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1213,9 +1213,9 @@ check_SCRIPTS =
+ noinst_LTLIBRARIES = out/libgetopt.la
+ lib_LTLIBRARIES = $(am__append_3) out/libsmbios_c.la
+ TESTS = src/pyunit/runtests.sh $(am__append_27)
+-AM_CPPFLAGS = -I$(top_builddir)/out/include -I$(top_srcdir)/src/include -DLIBSMBIOS_LOCALEDIR=\"$(localedir)\"
+-AM_CFLAGS = -Wall
+-AM_CXXFLAGS = -Wall
++AM_CPPFLAGS = -I$(top_builddir)/out/include -I$(top_srcdir)/src/include -DLIBSMBIOS_LOCALEDIR=\"$(localedir)\" -DLIBSMBIOS_BUILD
++AM_CFLAGS = -Wall -DLIBSMBIOS_BUILD
++AM_CXXFLAGS = -Wall -DLIBSMBIOS_BUILD
+ AM_LDADD = $(LIBINTL)
+ AM_LDFLAGS = -L$(top_builddir)/out/ $(am__append_1) $(am__append_2)
+ 
+diff --git a/src/include/smbios/config/compiler/gcc.hpp b/src/include/smbios/config/compiler/gcc.hpp
+index 13d97d9..c8b1b0d 100644
+--- a/src/include/smbios/config/compiler/gcc.hpp
++++ b/src/include/smbios/config/compiler/gcc.hpp
+@@ -113,6 +113,7 @@
+ #  error "Compiler too old. GCC > 3.0 required"
+ #endif
+ //
++#ifdef LIBSMBIOS_BUILD
+ #if (__GNUC__ > 5)
+ #  if defined(LIBSMBIOS_ASSERT_CONFIG)
+ #     error "Unknown compiler version - please run the configure tests and report the results"
+@@ -120,5 +121,4 @@
+ #     warning "Unknown compiler version - please run the configure tests and report the results"
+ #  endif
+ #endif
+-
+-
++#endif
+diff --git a/src/include/smbios/config/compiler/sunpro_cc.hpp b/src/include/smbios/config/compiler/sunpro_cc.hpp
+index 64e5c7e..8fc8095 100644
+--- a/src/include/smbios/config/compiler/sunpro_cc.hpp
++++ b/src/include/smbios/config/compiler/sunpro_cc.hpp
+@@ -123,11 +123,13 @@
+ #endif
+ //
+ // last known and checked version is 0x590:
++#ifdef LIBSMBIOS_BUILD
+ #if (__SUNPRO_CC > 0x590)
+ #  if defined(LIBSMBIOS_ASSERT_CONFIG)
+ #     error "Unknown compiler version - please run the configure tests and report the results"
+ #  endif
+ #endif
++#endif
+ 
+ #ifndef UNREFERENCED_PARAMETER
+ #define UNREFERENCED_PARAMETER(P)  ((void)(P))
+diff --git a/src/include/smbios/config/compiler/visualc.hpp b/src/include/smbios/config/compiler/visualc.hpp
+index 564b09b..d244898 100644
+--- a/src/include/smbios/config/compiler/visualc.hpp
++++ b/src/include/smbios/config/compiler/visualc.hpp
+@@ -171,6 +171,7 @@
+ #endif
+ //
+ // last known and checked version is 1310:
++#ifdef LIBSMBIOS_BUILD
+ #if (_MSC_VER > 1400)
+ #  if defined(LIBSMBIOS_ASSERT_CONFIG)
+ #     error "Unknown compiler version - please run the configure tests and report the results"
+@@ -178,3 +179,4 @@
+ #     pragma message("Unknown compiler version - please run the configure tests and report the results")
+ #  endif
+ #endif
++#endif
+diff --git a/src/include/smbios_c/config/compiler/gcc.h b/src/include/smbios_c/config/compiler/gcc.h
+index 007cc73..a299e72 100644
+--- a/src/include/smbios_c/config/compiler/gcc.h
++++ b/src/include/smbios_c/config/compiler/gcc.h
+@@ -24,6 +24,7 @@
+ #  error "GCC versions < 2.90 not supported"
+ #endif
+ //
++#ifdef LIBSMBIOS_BUILD
+ #if (__GNUC__ > 5)
+ #  if defined(LIBSMBIOS_C_ASSERT_CONFIG)
+ #     error "Unknown compiler version - please run the configure tests and report the results"
+@@ -31,5 +32,4 @@
+ #     warning "Unknown compiler version - please run the configure tests and report the results"
+ #  endif
+ #endif
+-
+-
++#endif
+diff --git a/src/include/smbios_c/config/compiler/visualc.h b/src/include/smbios_c/config/compiler/visualc.h
+index 545d4ef..f44ab62 100644
+--- a/src/include/smbios_c/config/compiler/visualc.h
++++ b/src/include/smbios_c/config/compiler/visualc.h
+@@ -53,6 +53,7 @@
+ #endif
+ //
+ // last known and checked version is 1310:
++#ifdef LIBSMBIOS_BUILD
+ #if (_MSC_VER > 1500)
+ #  if defined(LIBSMBIOS_C_ASSERT_CONFIG)
+ #     error "Unknown compiler version - please run the configure tests and report the results"
+@@ -60,3 +61,4 @@
+ #     pragma message("Unknown compiler version - please run the configure tests and report the results")
+ #  endif
+ #endif
++#endif
+-- 
+2.5.0
+
