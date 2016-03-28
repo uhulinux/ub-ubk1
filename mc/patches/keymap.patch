@@ -1,7 +1,7 @@
 diff -Naur orig/misc/mc.keymap patched/misc/mc.keymap
---- orig/misc/mc.keymap	2014-08-14 15:31:25.000000000 +0200
-+++ patched/misc/mc.keymap	2014-10-06 19:55:34.266807987 +0200
-@@ -118,10 +118,10 @@
+--- orig/misc/mc.keymap	2016-03-12 16:45:47.000000000 +0100
++++ patched/misc/mc.keymap	2016-03-28 12:40:06.320783533 +0200
+@@ -119,10 +119,10 @@
  # SortPrev =
  # SortNext =
  # SortReverse =

@@ -1,0 +1,26 @@
+diff -Naur orig/cmake/FindGLFW3.cmake patched/cmake/FindGLFW3.cmake
+--- orig/cmake/FindGLFW3.cmake	2016-02-28 00:06:14.000000000 +0100
++++ patched/cmake/FindGLFW3.cmake	2016-03-28 16:05:06.985779237 +0200
+@@ -28,8 +28,10 @@
+ 
+ # set up output vars
+ if (GLFW3_FOUND)
++	exec_program (pkg-config ARGS --static --libs glfw3 OUTPUT_VARIABLE GLFW3_PRIVATE_LIBS)
++	set (GLFW3_PRIVATE_LIBS "${GLFW3_PRIVATE_LIBS}" CACHE STRING "glfw3 private libs")
+     set (GLFW3_INCLUDE_DIR ${GLFW3_H_PATH})
+-    set (GLFW3_LIBRARIES ${GLFW3_LIB})
++    set (GLFW3_LIBRARIES ${GLFW3_LIB} ${GLFW3_PRIVATE_LIBS})
+     if (GLFW3_LIB_DBG)
+         set (GLFW3_LIBRARIES_DBG ${GLFW3_LIB_DBG})
+     endif()
+diff -Naur orig/CMakeLists.txt patched/CMakeLists.txt
+--- orig/CMakeLists.txt	2016-03-12 19:17:45.000000000 +0100
++++ patched/CMakeLists.txt	2016-03-28 15:17:45.419688671 +0200
+@@ -79,6 +79,7 @@
+ endif ()
+ 
+ # Look for packages
++find_package(PkgConfig REQUIRED)
+ find_package(PCRE)
+ find_package(Freetype)
+ find_package(Minizip)

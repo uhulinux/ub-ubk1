@@ -1,7 +1,7 @@
 diff -Naur orig/misc/mc.ext.in patched/misc/mc.ext.in
---- orig/misc/mc.ext.in	2013-03-21 11:01:18.000000000 +0100
-+++ patched/misc/mc.ext.in	2013-04-11 17:09:18.267278626 +0200
-@@ -118,35 +118,35 @@
+--- orig/misc/mc.ext.in	2016-03-12 16:45:47.000000000 +0100
++++ patched/misc/mc.ext.in	2016-03-28 12:51:51.716281400 +0200
+@@ -118,45 +118,45 @@
  ### Archives ###
  
  # .tgz, .tpz, .tar.gz, .tar.z, .tar.Z, .ipk, .gem
@@ -26,6 +26,18 @@ diff -Naur orig/misc/mc.ext.in patched/misc/mc.ext.in
  	Open=%cd %p/utar://
  	View=%view{ascii} @EXTHELPERSDIR@/archive.sh view tar.lzma
  
+ # .tar.lz
+-shell/.tar.lz
++shell/i/.tar.lz
+ 	Open=%cd %p/utar://
+ 	View=%view{ascii} @EXTHELPERSDIR@/archive.sh view tar.lz
+ 
+ # .tar.lz4, .tlz4
+-regex/\.t(ar\.lz4|lz4)$
++regex/i/\.t(ar\.lz4|lz4)$
+ 	Open=%cd %p/utar://
+ 	View=%view{ascii} @EXTHELPERSDIR@/archive.sh view tar.lz4
+ 
  # .tar.xz, .txz
 -regex/\.t(ar\.xz|xz)$
 +regex/i/\.t(ar\.xz|xz)$
@@ -44,7 +56,7 @@ diff -Naur orig/misc/mc.ext.in patched/misc/mc.ext.in
  	Open=%cd %p/utar://
  	View=%view{ascii} @EXTHELPERSDIR@/archive.sh view tar.qpr
  
-@@ -186,15 +186,15 @@
+@@ -196,23 +196,23 @@
  	View=%view{ascii} @EXTHELPERSDIR@/archive.sh view alz
  
  # cpio
@@ -52,6 +64,16 @@ diff -Naur orig/misc/mc.ext.in patched/misc/mc.ext.in
 +shell/i/.cpio.Z
  	Open=%cd %p/ucpio://
  	View=%view{ascii} @EXTHELPERSDIR@/archive.sh view cpio.z
+ 
+-shell/.cpio.lz
++shell/i/.cpio.lz
+ 	Open=%cd %p/ucpio://
+ 	View=%view{ascii} @EXTHELPERSDIR@/archive.sh view cpio.lz
+ 
+-shell/.cpio.lz4
++shell/i/.cpio.lz4
+ 	Open=%cd %p/ucpio://
+ 	View=%view{ascii} @EXTHELPERSDIR@/archive.sh view cpio.lz4
  
 -shell/.cpio.xz
 +shell/i/.cpio.xz
