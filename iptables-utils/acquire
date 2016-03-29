@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+iptables-utils-${UB_VERSION}.tar.gz iptables-utils-${UB_VERSION}/
+	ftp://ftp.uhulinux.hu/pub/sources/iptables-utils/

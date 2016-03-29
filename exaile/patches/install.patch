@@ -1,0 +1,11 @@
+diff -Naur orig/Makefile patched/Makefile
+--- orig/Makefile	2014-09-02 06:15:48.000000000 +0200
++++ patched/Makefile	2016-03-29 13:50:30.702641598 +0200
+@@ -55,6 +55,7 @@
+ 	mkdir -p ${EXAILESHAREDIR}/data/migrations/migration_200907100931
+ 	mkdir -p ${DESTDIR}${PREFIX}/share/pixmaps
+ 	mkdir -p ${DESTDIR}${PREFIX}/share/applications
++	mkdir -p ${DESTDIR}${PREFIX}/share/appdata
+ 	mkdir -p ${DESTDIR}${PREFIX}/share/man/man1
+ 	mkdir -p ${DESTDIR}${PREFIX}/share/dbus-1/services
+ 	mkdir -p ${EXAILECONFDIR}
