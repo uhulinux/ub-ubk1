@@ -70,7 +70,6 @@ rte
 sbc
 schroedinger
 scons
-sdl-net
 slib
 trousers
 txt2tags
@@ -81,7 +80,6 @@ usbredir
 vpnc
 waf
 x264
-xapian
 xauth
 xcb-util-renderutil
 xdialog
@@ -120,7 +118,6 @@ ntp
 prelink
 rsync
 sddm
-sdl-pango
 sip
 sofia-sip
 sound-theme-freedesktop
@@ -177,9 +174,6 @@ openvpn
 qscintilla2
 rasqal
 scim
-sdl-gfx
-sdl-image
-smpeg
 spandsp
 tntnet
 wvstreams
@@ -205,7 +199,6 @@ ninja
 openbabel
 reportlab
 rpcbind
-sdl-ttf
 squeak
 telepathy-glib
 telepathy-haze
@@ -234,7 +227,6 @@ mesa-demos
 obexftp
 podofo
 qca
-sdl-mixer
 shiboken
 telepathy-mission-control
 tigervnc
@@ -251,7 +243,6 @@ openssh
 plymouth
 ptlib
 redland
-sdl-sound
 appdata-tools
 ftgl
 gucharmap

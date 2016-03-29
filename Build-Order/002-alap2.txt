@@ -50,6 +50,7 @@ util-linux
 systemd
 e2fsprogs
 reiser4progs
+xapian
 grub2
 libarchive
 cmake

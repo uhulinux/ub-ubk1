@@ -42,3 +42,17 @@ libview
 libvtemm
 libgnomemm2
 libsexymm
+amrwb
+appstream
+augeas
+beecrypt
+physfs
+smpeg
+sdl-gfx
+sdl-image
+sdl-mixer
+sdl-net
+sdl-pango
+sdl-sound
+sdl-sopwith
+sdl-ttf

@@ -9,7 +9,6 @@ gnustep-make
 plib
 allegro
 dumb
-physfs
 bullet
 silly
 cegui

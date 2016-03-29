@@ -61,7 +61,6 @@ komi
 moon-buggy
 pathological
 sdlinvaders
-sdl-sopwith
 spider
 vorton
 wolf4sdl
