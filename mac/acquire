@@ -3,3 +3,4 @@
 mac-${UB_VERSION//+/-}.tar.gz mac-${UB_VERSION//+/-}/
 	http://downloads.sourceforge.net/mac-port/
 	http://slackware.sukkology.net/packages/mac/
+	ftp://ftp.ausics.net/slacky/slackware-13.0/multimedia/mac/3.99.u4.b5/src/
