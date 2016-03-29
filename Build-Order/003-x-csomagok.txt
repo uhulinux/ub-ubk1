@@ -39,6 +39,8 @@ libdmx
 xcb-util
 xcb-util-image
 xcb-util-keysyms
+xcb-util-renderutil
+xcb-util-cursor
 xcb-util-wm
 libclc
 libomxil-bellagio
@@ -46,6 +48,7 @@ mesa
 x.org-server
 mesa
 x.org-server
+x.org-input-acecad
 x.org-input-aiptek
 x.org-input-elographics
 x.org-input-fpit
@@ -94,6 +97,7 @@ glamor-egl
 glew
 x.org-font-utils
 fonts-x.org
+x.org-apps
 x.org-video-ati
 x.org-video-nv
 x.org-video-vesa
@@ -117,3 +121,4 @@ tslib
 libxklavier
 nickle
 x.org-utils
+x.org-serverutils

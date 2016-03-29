@@ -81,7 +81,6 @@ vpnc
 waf
 x264
 xauth
-xcb-util-renderutil
 xdialog
 xdm
 xfsprogs
@@ -128,7 +127,6 @@ twisted-web2
 x265
 xmessage
 xorriso
-x.org-input-acecad
 dcraw
 ebook-tools
 fonts-oxygen
@@ -151,7 +149,6 @@ startup-notification
 unshield
 vbetool
 vcdimager
-xcb-util-cursor
 xdg-user-dirs
 xmlrpc-c
 zvbi
@@ -216,7 +213,6 @@ pinentry
 virtuoso
 wv
 xaw3dxft
-x.org-apps
 clamav
 eigen3
 gexiv2
@@ -266,7 +262,6 @@ openal
 perl-sdl
 udisks2
 upower
-x.org-server-utils
 fox
 lesstif
 recordmydesktop
