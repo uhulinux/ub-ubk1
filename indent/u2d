@@ -1,2 +1,1 @@
 urllist ftp://ftp.gnu.org/gnu/indent/ | parsever | sort -V | tail -n 1
-urllist ftp://ftp.gnu.org/gnu/indent/ | parsever | sort -V | tail -n 1
