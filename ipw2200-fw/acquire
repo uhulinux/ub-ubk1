@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 ipw2200-fw-${UB_VERSION}.tgz ipw2200-fw-${UB_VERSION}/
-	ftp://ftp.archlinux.org/other/packages/ipw2100-fw/
+	http://firmware.openbsd.org/firmware-dist/
