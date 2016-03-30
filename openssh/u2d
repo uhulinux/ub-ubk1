@@ -1,1 +1,1 @@
-urllist http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/ | splitver '^openssh-([0-9.]+p[0-9]).tar.(gz|bz2|xz)$' | sort -V | tail -n1
+urllist https://github.com/openssh/openssh-portable/releases/ | grep -E '^V_' | grep tar| sed s/_/\./g | sed s/V\.//g | sed s/\.tar.*//g | sed s/\.P/p/g| sort -V | tail -n1
