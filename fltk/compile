@@ -1,9 +1,5 @@
 #!/bin/sh -eux
 
-#FLTKConfig.cmake aktualizálása
-sed -e "s/7/${UB_VERSION}/" \
-		< FLTKConfig.cmake \
-		> CMake/FLTKConfig.cmake
 ub_configure \
 	--enable-threads \
 	--enable-xft \

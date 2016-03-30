@@ -9,7 +9,7 @@ cd ../perl-shared
 ub_install
 
 # ugly hack to install ruby binding
-mkdir -p "$UB_INSTALLDIR"/usr/lib/ruby/site_ruby/2.1.0/i686-linux
+mkdir -p "$UB_INSTALLDIR"/usr/lib/ruby/site_ruby/2.3.0/i686-linux
 
 cd ../ruby
 ub_install
