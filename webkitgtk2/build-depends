@@ -1,3 +1,4 @@
+cmake
 dbus-dev
 enchant-dev
 geoclue-dev
@@ -6,8 +7,10 @@ gperf
 gst-plugins-base-dev
 gtk-doc
 gtk2-dev
+hyphen-dev
 icu-dev
 libjpeg-dev
+libnotify-dev
 libsecret-dev
 libsoup-dev
 libwebp-dev
