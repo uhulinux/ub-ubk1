@@ -54,7 +54,7 @@ xapian
 grub2
 libarchive
 cmake
-editline
+libedit
 llvm
 nss
 libesmtp
