@@ -1,0 +1,87 @@
+diff -Naur orig/SConstruct patched/SConstruct
+--- orig/SConstruct	2016-01-08 20:25:48.000000000 +0100
++++ patched/SConstruct	2016-03-31 00:48:12.990301410 +0200
+@@ -905,7 +905,7 @@
+         obj_list = []
+         for s in Flatten(sources):
+             if type(s) is str:
+-                obj_list.append(env.SharedObject(s))
++                obj_list.append(env.SharedObject(s, parse_flags=parse_flags))
+             else:
+                 obj_list.append(s)
+         return env.SharedLibrary(target=target,
+@@ -927,9 +927,11 @@
+                                   [env.StaticObject(s) for s in libgps_sources],
+                                   rtlibs)
+ 
+-compiled_gpsdlib = env.StaticLibrary(target="gpsd",
+-                           source=[env.StaticObject(s, parse_flags=usbflags + bluezflags) for s in libgpsd_sources],
+-                           parse_flags=usbflags + bluezflags)
++compiled_gpsdlib = Library(env=env,
++                           target="gpsd",
++                           sources=libgpsd_sources,
++                           version=libgps_version,
++                           parse_flags=usbflags + rtlibs + bluezflags + ["-lgps"])
+ 
+ libraries = [compiled_gpslib, compiled_gpsdlib]
+ 
+@@ -985,37 +987,37 @@
+ ## Production programs
+ 
+ gpsd = env.Program('gpsd', gpsd_sources,
+-                   LIBS=['gpsd', 'gps_static'], LIBPATH='.',
++                   LIBS=['gpsd', 'gps'], LIBPATH='.',
+                    parse_flags=gpsdflags+gpsflags)
+ gpsdecode = env.Program('gpsdecode', ['gpsdecode.c'],
+-                        LIBS=['gpsd', 'gps_static'], LIBPATH='.',
++                        LIBS=['gpsd', 'gps'], LIBPATH='.',
+                         parse_flags=gpsdflags+gpsflags)
+ gpsctl = env.Program('gpsctl', ['gpsctl.c'],
+-                     LIBS=['gpsd', 'gps_static'], LIBPATH='.',
++                     LIBS=['gpsd', 'gps'], LIBPATH='.',
+                      parse_flags=gpsdflags+gpsflags)
+ gpsmon = env.Program('gpsmon', gpsmon_sources,
+-                     LIBS=['gpsd', 'gps_static'], LIBPATH='.',
++                     LIBS=['gpsd', 'gps'], LIBPATH='.',
+                      parse_flags=gpsdflags + gpsflags + ncurseslibs)
+ gpsdctl = env.Program('gpsdctl', ['gpsdctl.c'],
+-                      LIBS=['gps_static'], LIBPATH='.',
++                      LIBS=['gps'], LIBPATH='.',
+                       parse_flags=gpsflags)
+ gpspipe = env.Program('gpspipe', ['gpspipe.c'],
+-                      LIBS=['gps_static'], LIBPATH='.',
++                      LIBS=['gps'], LIBPATH='.',
+                       parse_flags=gpsflags)
+ gps2udp = env.Program('gps2udp', ['gps2udp.c'],
+-                      LIBS=['gps_static'], LIBPATH='.',
++                      LIBS=['gps'], LIBPATH='.',
+                       parse_flags=gpsflags)
+ gpxlogger = env.Program('gpxlogger', ['gpxlogger.c'],
+-                        LIBS=['gps_static'], LIBPATH='.',
++                        LIBS=['gps'], LIBPATH='.',
+                         parse_flags=gpsflags)
+ lcdgps = env.Program('lcdgps', ['lcdgps.c'],
+-                     LIBS=['gps_static'], LIBPATH='.',
++                     LIBS=['gps'], LIBPATH='.',
+                      parse_flags=gpsflags)
+ cgps = env.Program('cgps', ['cgps.c'],
+-                   LIBS=['gps_static'], LIBPATH='.',
++                   LIBS=['gps'], LIBPATH='.',
+                    parse_flags=gpsflags + ncurseslibs)
+ ntpshmmon = env.Program('ntpshmmon', ['ntpshmmon.c'],
+-                        LIBS=['gps_static'], LIBPATH='.',
++                        LIBS=['gps'], LIBPATH='.',
+                         parse_flags=gpsflags)
+ 
+ binaries = [gpsd, gpsdecode, gpsctl, gpsdctl, gpspipe, gps2udp, gpxlogger, lcdgps, ntpshmmon]
+@@ -1348,8 +1350,9 @@
+ if env["ncurses"]:
+     binaryinstall.append(env.Install(installdir('bindir'), [cgps, gpsmon]))
+ binaryinstall.append(LibraryInstall(env, installdir('libdir'), compiled_gpslib, libgps_version))
++binaryinstall.append(LibraryInstall(env, installdir('libdir'), compiled_gpsdlib, libgps_version))
+ # Work arount a minor bug in InstallSharedLib() link handling
+-env.AddPreAction(binaryinstall, 'rm -f %s/libgps.*' % (installdir('libdir'), ))
++# env.AddPreAction(binaryinstall, 'rm -f %s/libgps.*' % (installdir('libdir'), ))
+ 
+ if qt_env:
+     binaryinstall.append(LibraryInstall(qt_env, installdir('libdir'), compiled_qgpsmmlib, libgps_version))
