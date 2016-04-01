@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 lm_sensors-${UB_VERSION}.tar.bz2 lm_sensors-${UB_VERSION}/
-	http://dl.lm-sensors.org/lm-sensors/releases/
+	http://ftp.osuosl.org/pub/blfs/conglomeration/lmsensors/
+#	http://dl.lm-sensors.org/lm-sensors/releases/
