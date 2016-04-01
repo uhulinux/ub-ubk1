@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 File-HomeDir-${UB_VERSION}.tar.gz File-HomeDir-${UB_VERSION}/
-	https://cpan.metacpan.org/authors/id/A/AD/ADAMK/
+	http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/
+	

@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 MIME-Lite-${UB_VERSION}.tar.gz MIME-Lite-${UB_VERSION}/
-	http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/
+	http://cpan.metacpan.org/authors/id/R/RJ/RJBS/
+	https://cpan.metacpan.org/authors/id/R/RJ/RJBS/
