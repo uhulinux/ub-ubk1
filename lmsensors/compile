@@ -1,3 +1,4 @@
 #!/bin/sh -eux
 
-make user
+make user \
+	BUILD_STATIC_LIB=0

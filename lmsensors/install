@@ -1,12 +1,15 @@
 #!/bin/sh -eux
 
-make user_install \
+make install \
+	PROG_EXTRA=sensord \
+	BUILD_STATIC_LIB=0 \
 	DESTDIR="$UB_INSTALLDIR" \
 	PREFIX="/usr" \
 	MANDIR="/usr/share/man"
 
+mkdir -p "$UB_INSTALLDIR"/usr/lib/systemd/system
+cp -a prog/init/*.service "$UB_INSTALLDIR"/usr/lib/systemd/system/
+
 mkdir -p "$UB_INSTALLDIR"/usr/share/doc/Packages/lmsensors/examples
 cp -r prog/{rrd,tellerstats} "$UB_INSTALLDIR"/usr/share/doc/Packages/lmsensors/examples/
 
-rm -rf "$UB_INSTALLDIR"/usr/include/linux
-rm -rf "$UB_INSTALLDIR"/usr/lib/libsensors.a
