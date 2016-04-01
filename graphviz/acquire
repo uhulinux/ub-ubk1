@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 graphviz-${UB_VERSION}.tar.gz graphviz-${UB_VERSION}/
-	http://www.graphviz.org/pub/graphviz/stable/SOURCES/
+	http://www.graphviz.org/pub/graphviz/ARCHIVE/
