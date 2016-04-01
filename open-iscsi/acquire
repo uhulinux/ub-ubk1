@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 open-iscsi-${UB_VERSION/~/-}.tar.gz open-iscsi-${UB_VERSION/~/-}/
+	http://pkgs.fedoraproject.org/repo/pkgs/iscsi-initiator-utils/open-iscsi-${UB_VERSION/~/-}.tar.gz/8b8316d7c9469149a6cc6234478347f7/
 	http://www.open-iscsi.org/bits/

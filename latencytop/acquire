@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-latencytop-"$UB_VERSION".tar.gz latencytop-"$UB_VERSION"/
-	http://www.latencytop.org/download/
+latencytop_"$UB_VERSION".orig.tar.gz latencytop-"$UB_VERSION"/
+	http://http.debian.net/debian/pool/main/l/latencytop/
