@@ -54,5 +54,4 @@ sdl-mixer
 sdl-net
 sdl-pango
 sdl-sound
-sdl-sopwith
 sdl-ttf
