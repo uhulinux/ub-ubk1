@@ -72,7 +72,6 @@ k3b
 audacity
 xdtv
 mpv
-zapping
 blender
 xawtv
 handbrake
