@@ -5,7 +5,6 @@ ub_compile \
 	--with-krb5=/usr \
 	--enable-vala-bindings \
 	--disable-uoa \
-	--without-phonenumber \
 	--disable-google-auth \
 	--disable-examples \
 	--enable-smime

@@ -4,6 +4,7 @@ itstool
 libgdata-dev
 libgfbgraph-dev
 libgudev-dev
+libmediaart-dev
 libsecret-dev
 libsoup-gnome-dev
 libzapojit-dev

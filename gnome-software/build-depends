@@ -3,8 +3,10 @@ docbook-dtds
 docbook-xsl
 gnome-desktop-dev
 gtk-dev
+gtkspell-dev
 intltool
 itstool
+json-glib-dev
 libarchive-dev
 libnotify-dev
 libsoup-dev

@@ -1,0 +1,27 @@
+From c93fa8cdd89e95486129bdaea693b7e98694e70a Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@igalia.com>
+Date: Sat, 16 Jan 2016 06:38:30 -0600
+Subject: [PATCH 06/10] Fix a critical warning
+
+GLib-CRITICAL **: Source ID 8795 was not found when attempting to
+remove it
+---
+ libempathy-gtk/empathy-chat.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libempathy-gtk/empathy-chat.c b/libempathy-gtk/empathy-chat.c
+index fc35bec..028f5ab 100644
+--- a/libempathy-gtk/empathy-chat.c
++++ b/libempathy-gtk/empathy-chat.c
+@@ -3196,6 +3196,8 @@ save_paned_pos_timeout (gpointer data)
+ 	EmpathyChat *self = data;
+ 	gint hpaned_pos;
+ 
++	self->priv->save_paned_pos_id = 0;
++
+ 	hpaned_pos = gtk_paned_get_position (GTK_PANED (self->priv->hpaned));
+ 
+ 	g_settings_set_int (self->priv->gsettings_ui,
+-- 
+2.5.0
+
