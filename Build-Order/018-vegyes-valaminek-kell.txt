@@ -337,4 +337,4 @@ frei0r
 openimageio
 xsane
 opencolorio
-quemu
+qemu

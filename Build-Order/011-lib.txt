@@ -72,3 +72,4 @@ libvirt-python
 libva-intel-driver
 libva-vdpau-driver
 libvirt-glib
+libcacard
