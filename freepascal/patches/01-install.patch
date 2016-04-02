@@ -1,7 +1,7 @@
-diff -urN fpc-2.6.2.i386-linux.orig/install.sh fpc-2.6.2.i386-linux/install.sh
---- fpc-2.6.2.i386-linux.orig/install.sh	2013-02-16 19:51:46.000000000 +0100
-+++ fpc-2.6.2.i386-linux/install.sh	2014-02-25 11:42:55.987000025 +0100
-@@ -189,45 +189,6 @@
+diff -Naur fpc-3.0.0.i386-linux-orig/install.sh fpc-3.0.0.i386-linux/install.sh
+--- fpc-3.0.0.i386-linux-orig/install.sh	2015-11-24 22:22:21.000000000 +0100
++++ fpc-3.0.0.i386-linux/install.sh	2016-04-02 21:29:30.175524609 +0200
+@@ -208,70 +208,6 @@
  
  OSNAME=`uname -s | tr A-Z a-z`
  
@@ -13,9 +13,34 @@ diff -urN fpc-2.6.2.i386-linux.orig/install.sh fpc-2.6.2.i386-linux/install.sh
 -     else
 -         PREFIX=/boot/home/config
 -     fi
+-     # If we can't write on prefix, we are probably 
+-     # on Haiku with package management system.
+-     # In this case, we have to install fpc in the non-packaged subdir
+-     if [ ! -w "$PREFIX" ]; then
+-     	PREFIX="$PREFIX/non-packaged"
+-     fi
 -  ;;
 -  freebsd)
 -     PREFIX=/usr/local
+-  ;;
+-  sunos)
+-     # Check if GNU llinker is recent enough, version 2.21 is needed at least
+-     GNU_LD=`which gld`
+-     supported_emulations=`"$GNU_LD" --target-help | sed -n "s|.*supported emulations:||p" `
+-     supports_elf_i386_sol2=`echo $supported_emulations | grep -w elf_i386_sol2 `
+-     supports_elf_x86_64_sol2=`echo $supported_emulations | grep -w elf_x86_64_sol2 `
+-     if [ "$supports_elf_i386_sol2" = "" ]; then
+-       echo -n "GNU linker $GNU_LD does not support elf_i386_sol2 emulation, please consider "
+-       echo "upgrading binutils package to at least version 2.21"
+-     elif [ "$supports_elf_x86_64_sol2" = "" ]; then
+-       echo -n "GNU linker $GNU_LD does not support elf_x86_64_sol2 emulation, please consider "
+-       echo "upgrading binutils package to at least version 2.21"
+-     fi
+-     PREFIX=/usr/local
+-     # Use GNU tar if present
+-     if [ "`which gtar`" != "" ]; then
+-       TAR=`which gtar`
+-     fi
 -  ;;
 -  *)
 -     # Install in /usr/local or /usr ?
