@@ -1,1 +1,1 @@
-urllist http://www.freedesktop.org/software/colord/releases/ | splitver '^colord-([0-9]+\.[0-9]+*[02468]\.[0-9]+).tar.xz$' | sort -V | tail -n 1
+urllist http://www.freedesktop.org/software/colord/releases/ | splitver '^colord-([0-9.]+).tar.xz$' | sort -V | tail -n 1
