@@ -2,4 +2,5 @@ gtk-dev
 intltool
 itstool
 libcanberra-dev
+libgames-support-dev
 librsvg-dev

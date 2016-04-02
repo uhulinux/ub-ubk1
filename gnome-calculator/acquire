@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 gnome-calculator-${UB_VERSION}.tar.xz gnome-calculator-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/${UB_VERSION_HEAD2}/
+	ftp://ftp.gnome.org/pub/gnome/sources/gnome-calculator/${UB_VERSION_HEAD2}/

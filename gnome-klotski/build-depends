@@ -1,4 +1,6 @@
 gtk-dev
 intltool
 itstool
+libgames-support-dev
+libgee-dev
 librsvg-dev
