@@ -1,0 +1,58 @@
+From 942395f7b81e4a81922c8bcb1c11f9676d32f3f8 Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@igalia.com>
+Date: Sat, 16 Jan 2016 00:20:15 -0600
+Subject: [PATCH 05/10] Don't crash in window_get_workspace under Wayland
+
+---
+ libempathy-gtk/empathy-ui-utils.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/libempathy-gtk/empathy-ui-utils.c b/libempathy-gtk/empathy-ui-utils.c
+index fb080ce..e662c69 100644
+--- a/libempathy-gtk/empathy-ui-utils.c
++++ b/libempathy-gtk/empathy-ui-utils.c
+@@ -1122,6 +1122,8 @@ out:
+   g_free (cmd);
+ }
+ 
++#ifdef GDK_WINDOWING_X11
++
+ /* Most of the workspace manipulation code has been copied from libwnck
+  * Copyright (C) 2001 Havoc Pennington
+  * Copyright (C) 2005-2007 Vincent Untz
+@@ -1213,18 +1215,24 @@ window_get_workspace (Screen *xscreen,
+   return number;
+ }
+ 
++#endif
++
+ /* Ask X to move to the desktop on which @window currently is
+  * and the present @window. */
+ void
+ empathy_move_to_window_desktop (GtkWindow *window,
+     guint32 timestamp)
+ {
++#ifdef GDK_WINDOWING_X11
+   GdkScreen *screen;
+   Screen *xscreen;
+   GdkWindow *gdk_window;
+   int workspace;
+ 
+   screen = gtk_window_get_screen (window);
++  if (!GDK_IS_X11_SCREEN (screen))
++    goto out;
++
+   xscreen = gdk_x11_screen_get_xscreen (screen);
+   gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
+ 
+@@ -1237,6 +1245,7 @@ empathy_move_to_window_desktop (GtkWindow *window,
+ 
+ out:
+   gtk_window_present_with_time (window, timestamp);
++#endif
+ }
+ 
+ void
+-- 
+2.5.0
+

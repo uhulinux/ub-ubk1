@@ -1,0 +1,40 @@
+From a9ede294c57bc5738be3c33cba4ef88b9a7d4a0e Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@igalia.com>
+Date: Sat, 16 Jan 2016 06:59:50 -0600
+Subject: [PATCH 07/10] Don't call XInitThreads in Wayland
+
+This doesn't fix anything in particular, but seems like a good idea....
+---
+ src/empathy-call.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/empathy-call.c b/src/empathy-call.c
+index 9919041..3bc1488 100644
+--- a/src/empathy-call.c
++++ b/src/empathy-call.c
+@@ -28,6 +28,7 @@
+ #include <tp-account-widgets/tpaw-utils.h>
+ 
+ #ifdef CLUTTER_WINDOWING_X11
++#include <gdk/gdkx.h>
+ #include <X11/Xlib.h>
+ #endif
+ 
+@@ -215,9 +216,11 @@ main (int argc,
+   g_setenv ("GST_DEBUG_DUMP_DOT_DIR", g_get_tmp_dir (), FALSE);
+ 
+ #ifdef GDK_WINDOWING_X11
+-  /* We can't call clutter_gst_init() before gtk_clutter_init(), so no choice
+-   * but to intiialise X11 threading ourself */
+-  XInitThreads ();
++  if (GDK_IS_X11_DISPLAY (gdk_display_get_default ())) {
++    /* We can't call clutter_gst_init() before gtk_clutter_init(), so no choice
++     * but to intiialise X11 threading ourself */
++    XInitThreads ();
++  }
+ #endif
+ 
+   optcontext = g_option_context_new (N_("- Empathy Audio/Video Client"));
+-- 
+2.5.0
+

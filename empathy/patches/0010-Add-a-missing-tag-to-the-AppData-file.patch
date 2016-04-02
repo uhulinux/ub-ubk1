@@ -1,0 +1,22 @@
+From a7ad339a807a2852841e5167f463cc4917ae6f6f Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Mon, 25 Jan 2016 15:37:33 +0000
+Subject: [PATCH 10/10] Add a missing tag to the AppData file
+
+---
+ data/empathy.appdata.xml.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/data/empathy.appdata.xml.in b/data/empathy.appdata.xml.in
+index f23a15b..b6447f2 100644
+--- a/data/empathy.appdata.xml.in
++++ b/data/empathy.appdata.xml.in
+@@ -16,4 +16,5 @@
+   </screenshots>
+   <updatecontact>telepathy@lists.freedesktop.org</updatecontact>
+   <project_group>GNOME</project_group>
++  <translation type="gettext">empathy</translation>
+ </application>
+-- 
+2.5.0
+
