@@ -1,1 +1,0 @@
-urllist http://ftp.debian.org/debian/pool/main/g/gecko-mediaplayer/ | splitver '^gecko-mediaplayer_([0-9.]+).orig.tar.(gz|bz2|xz)$' | sort -V | tail -n 1

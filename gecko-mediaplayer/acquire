@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-gecko-mediaplayer_${UB_VERSION}.orig.tar.gz gecko-mediaplayer-${UB_VERSION}/
-	http://gecko-mediaplayer.googlecode.com/files/
-	http://ftp.debian.org/debian/pool/main/g/gecko-mediaplayer/

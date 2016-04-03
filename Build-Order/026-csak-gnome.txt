@@ -88,7 +88,6 @@ evolution
 gnome-shell-extensions
 gnome-font-viewer
 gnome-todo
-gecko-mediaplayer
 gnome-u2ps
 gnome-weather
 seahorse-sharing
