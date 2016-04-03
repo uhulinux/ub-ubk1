@@ -1,8 +1,11 @@
 #!/usr/bin/env dl
 
-linux-firmware-${UB_VERSION}.tar.xz linux-firmware-${UB_VERSION}/ :linux-firmware
-#	git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+dvb-firmware-20150912.tar.xz dvb-firmware-20150912/ :dvb-firmware
+#	http://www.linuxtv.org/downloads/firmware/
 	http://download.ubk.hu/src/firmware/
+
+wl_apsta-3.130.20.0.o
+	http://downloads.openwrt.org/sources/
 
 nouveau-firmware-20091212.tar.gz nouveau/ :nouveau
 	http://people.freedesktop.org/~pq/nouveau-drm/
@@ -10,13 +13,47 @@ nouveau-firmware-20091212.tar.gz nouveau/ :nouveau
 broadcom-wl-5.100.138.tar.bz2 broadcom-wl-5.100.138/linux/wl_apsta.o
 	http://downloads.openwrt.org/sources/
 
-wl_apsta-3.130.20.0.o
-	http://downloads.openwrt.org/sources/
+ipw2100-fw-1.3.tgz . :ipw2100
+	http://firmware.openbsd.org/firmware-dist/
 
-dvb-firmware-20150912.tar.xz dvb-firmware-20150912/ :dvb-firmware
-#	http://www.linuxtv.org/downloads/firmware/
-	http://download.ubk.hu/src/firmware/
+ipw2200-fw-3.0.tgz ipw2200-fw-3.0/ :ipw2200
+	http://firmware.openbsd.org/firmware-dist/
 
-#dvb-firmware-20121016.tar.xz dvb-firmware-20121016/ :dvb-firmware
-#	http://download.ubk.hu/src/firmware/
+zd1211-firmware-1.4.tar.bz2 zd1211-firmware/ :zd1211
+	http://downloads.sourceforge.net/zd1211/
+	
+# acx
+
+tiacx100
+	http://acx100.erley.org/fw/acx100_1.9.8.b/
+
+tiacx100r0D
+	http://acx100.erley.org/fw/acx100_1.9.8.b/
+
+tiacx100r11
+	http://acx100.erley.org/fw/acx100_1.9.8.b/
+
+tiacx100r15
+	http://acx100.erley.org/fw/acx100_1.9.8.b/
+
+tiacx111
+	http://acx100.erley.org/fw/acx111_1.2.1.34/
+
+tiacx111c16
+	http://acx100.erley.org/fw/acx111_1.2.1.34/
+
+tiacx111c17
+	http://acx100.erley.org/fw/acx111_1.2.1.34/
+
+tiacx111r16
+	http://acx100.erley.org/fw/acx111_1.2.1.34/
+	
+tiacx111r17	
+	http://acx100.erley.org/fw/acx111_1.2.1.34/
+
+tiacx100usbc0D
+	http://acx100.erley.org/fw/acx100_1.0.9-USB/
+
+tiacx111usbc1B
+	http://acx100.erley.org/fw/acx111_2.4.0.70-USB/
 
