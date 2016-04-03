@@ -4,6 +4,7 @@ docbook-dtds
 evolution-data-server-dev
 gconf2-dev
 gnome-doc-utils
+gtk2-dev
 icon-theme-gnome
 intltool
 libnotify-dev

@@ -1,0 +1,12 @@
+diff -Naur orig/data/rygel.desktop.in.in mod/data/rygel.desktop.in.in
+--- orig/data/rygel.desktop.in.in	2016-03-21 20:14:58.000000000 +0100
++++ mod/data/rygel.desktop.in.in	2016-04-03 20:10:09.297450169 +0200
+@@ -3,7 +3,7 @@
+ GenericName=UPnP/DLNA Services
+ Comment=UPnP/DLNA Services
+ Keywords=mediaserver;mediarenderer;share;audio;video;pictures;
+-Categories=
++Categories=GNOME;
+ Exec=rygel
+ Terminal=false
+ Type=Application
