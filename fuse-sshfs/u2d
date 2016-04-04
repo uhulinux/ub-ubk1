@@ -1,1 +1,1 @@
-sflist fuse sshfs-fuse | grep -E '^([0-9.]+)$' | sort -V | tail -n 1
+urllist https://github.com/libfuse/sshfs/releases/ | splitver '^sshfs-fuse-([0-9.]+).tar.gz$' | sort -V | tail -n 1
