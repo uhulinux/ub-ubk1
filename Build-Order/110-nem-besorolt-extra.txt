@@ -1,4 +1,3 @@
-acx-fw
 anki
 audio-entropyd
 falcon
@@ -10,8 +9,6 @@ gnome-core
 gnucash-doc
 grub-customizer
 hoc
-ipw2100-fw
-ipw2200-fw
 jargon
 lightdm-another-gtk-greeter
 lightdm-gtk3-greeter-settings
@@ -31,4 +28,3 @@ smart
 stellarium
 systemd-ui
 xfce4
-zd1211-firmware
