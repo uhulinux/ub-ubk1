@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-lesspipe-"$UB_VERSION".tar.gz lesspipe-"$UB_VERSION"/
-	ftp://ftp.ifh.de/pub/unix/utility/
+"$UB_VERSION".tar.gz lesspipe-"$UB_VERSION"/
+	https://github.com/wofr06/lesspipe/archive/

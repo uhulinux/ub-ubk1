@@ -1,6 +1,6 @@
 #!/usr/bin/env dl
 
 ncpfs-${UB_VERSION}.tar.gz ncpfs-${UB_VERSION}/
-	http://ftp.cvut.cz/ncpfs/
-	ftp://ftp.cvut.cz/ncpfs/
 	ftp://platan.vc.cvut.cz/pub/linux/ncpfs/
+	ftp://mirrors.kernel.org/archive/opensuse/.old-saved.050918/i386/update/4.3/ncpfs/
+	ftp://ftp-stud.fht-esslingen.de/pub/.6/gentoo/distfiles/
