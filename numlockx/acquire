@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 numlockx-${UB_VERSION}.tar.gz numlockx-${UB_VERSION}/
-	http://pkgs.fedoraproject.org/repo/pkgs/numlockx/numlockx-1.2.tar.gz/be9109370447eae23f6f3f8527bb1a67/
+	https://github.com/rg3/numlockx/releases/download/${UB_VERSION}/
