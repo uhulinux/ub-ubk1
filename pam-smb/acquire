@@ -3,3 +3,4 @@
 pam_smb-${UB_VERSION}.tar.gz pam_smb/
 	ftp://ftp.samba.org/pub/samba/pam_smb/v1/
 	ftp://ca.samba.org/pam_smb/v1/
+	ftp://ftp.fhl.net/pub/samba/pam_smb/v1/
