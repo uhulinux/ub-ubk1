@@ -16,4 +16,4 @@ networkmanager-dev
 systemd-dev
 tracker-dev
 vala-dev
-webkit2gtk-dev
+webkitgtk2-dev

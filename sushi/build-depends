@@ -7,4 +7,4 @@ gtksourceview-dev
 intltool
 itstool
 libmusicbrainz-dev
-webkit2gtk-dev
+webkitgtk2-dev
