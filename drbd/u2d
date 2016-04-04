@@ -1,1 +1,0 @@
-urllist http://oss.linbit.com/drbd/ | splitver '^drbd-([0-9.]+).tar.gz$' | sort -V | tail -n 1

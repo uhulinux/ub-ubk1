@@ -1,4 +1,0 @@
-#!/bin/sh -eux
-
-KDIR="/usr/src/linux"
-ub_install
