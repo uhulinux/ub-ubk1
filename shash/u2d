@@ -1,0 +1,1 @@
+urllist ftp://mcrypt.hellug.gr/pub/crypto/mcrypt/shash/ | parsever | sort -V | tail -n 1
