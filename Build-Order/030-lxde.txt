@@ -1,3 +1,4 @@
+openbox
 icon-theme-lxde
 libstatgrab
 lxde-common

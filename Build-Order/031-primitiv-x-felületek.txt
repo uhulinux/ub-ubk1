@@ -15,7 +15,6 @@ pekwm-themes
 pekwm-menu
 pekwm
 openbox-menu
-openbox
 obconf
 menumaker
 blackbox
