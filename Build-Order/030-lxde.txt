@@ -1,3 +1,5 @@
+openbox-menu
+obconf
 openbox
 icon-theme-lxde
 libstatgrab

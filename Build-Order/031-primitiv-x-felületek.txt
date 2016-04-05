@@ -14,8 +14,6 @@ openbox-debian-themes
 pekwm-themes
 pekwm-menu
 pekwm
-openbox-menu
-obconf
 menumaker
 blackbox
 mjwm
