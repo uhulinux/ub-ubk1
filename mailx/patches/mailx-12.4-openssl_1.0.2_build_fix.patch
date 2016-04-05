@@ -1,0 +1,14 @@
+diff -Naur orig/openssl.c patched/openssl.c
+--- orig/openssl.c	2016-04-05 16:39:02.155610707 +0200
++++ patched/openssl.c	2016-04-05 16:40:30.576049160 +0200
+@@ -216,9 +216,7 @@
+ 
+ 	cp = ssl_method_string(uhp);
+ 	if (cp != NULL) {
+-		if (equal(cp, "ssl2"))
+-			method = SSLv2_client_method();
+-		else if (equal(cp, "ssl3"))
++		if (equal(cp, "ssl3"))
+ 			method = SSLv3_client_method();
+ 		else if (equal(cp, "tls1"))
+ 			method = TLSv1_client_method();
