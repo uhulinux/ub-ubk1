@@ -1,1 +1,0 @@
-urllist http://webkitgtk.org/releases/ | grep 'webkitgtk-2.' | parsever | sort -V | tail -n 1

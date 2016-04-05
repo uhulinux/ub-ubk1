@@ -15,7 +15,6 @@ polkit-gnome
 clutter
 glade
 libgnomeui2
-webkit2gtk
 gnome-online-accounts
 clutter-gst2
 clutter-gtk

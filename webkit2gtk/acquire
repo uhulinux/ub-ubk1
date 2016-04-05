@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-webkitgtk-${UB_VERSION}.tar.xz webkitgtk-${UB_VERSION}/
-	http://webkitgtk.org/releases/
