@@ -1,9 +1,11 @@
 colord-dev
 glu-dev
 libevdev-dev
+libgudev-dev
 libinput-dev
 libunwind-dev
 libva-dev
+libwacom-dev
 libxcursor-dev
 libxkbcommon-dev
 libxshmfence-dev
