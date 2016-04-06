@@ -4,6 +4,7 @@ fltk-dev
 jam
 libice-dev
 libjpeg-dev
+libxfixes-dev
 libxft-dev
 libxinerama-dev
 libxkbfile-dev
