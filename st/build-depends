@@ -1,0 +1,5 @@
+libx11-dev
+libxext-dev
+libxft-dev
+ncurses-dev
+x.org-bitmaps

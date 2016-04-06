@@ -1,3 +1,4 @@
+st
 dwm
 dmenu
 afterstep
