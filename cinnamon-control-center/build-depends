@@ -15,6 +15,7 @@ libX11-dev
 libcanberra-dev
 libgnome-keyring-dev
 libgnomekbd-dev
+libgudev-dev
 libnotify-dev
 libwacom-dev
 libxft-dev

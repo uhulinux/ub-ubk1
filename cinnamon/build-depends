@@ -11,6 +11,7 @@ cjs-dev
 dbus-python-dev
 docbook-dtds
 docbook-xsl
+gconf2-dev
 gjs-dev
 gnome-bluetooth-dev
 gnome-common
@@ -25,6 +26,7 @@ intltool
 libcanberra-dev
 libcroco-dev
 libgnomekbd-dev
+libgudev-dev
 libsoup-dev
 libxshmfence-dev
 muffin-dev

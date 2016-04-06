@@ -4,5 +4,6 @@ glib-dev
 gnome-bluetooth-dev
 gnome-common
 intltool
+libcanberra-dev
 libnotify-dev
 libxslt-dev
