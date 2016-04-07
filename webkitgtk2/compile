@@ -1,12 +1,11 @@
 #!/bin/sh -eux
 
+# WebKit2 requires GTK+ 3.x
+
 ub_compile \
-	-DENABLE_WEBKIT2=OFF \
-	-DENABLE_GEOLOCATION=ON \
-	-DENABLE_INTROSPECTION=ON \
-	-DWITH_GTK=2.0 \
-	-DEABLE_JIT=ON \
-	-DPORT=GTK \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DENABLE_GTKDOC=OFF \
-	-DENABLE_MINIBROWSER=ON
+	--enable-webkit1 \
+	--disable-webkit2 \
+	--enable-geolocation \
+	--enable-introspection \
+	--with-gtk=2.0 \
+	--enable-jit

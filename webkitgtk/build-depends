@@ -5,9 +5,9 @@ geoclue-dev
 gobject-introspection-dev
 gperf
 gst-plugins-base-dev
-gtk-dev
 gtk-doc
 gtk2-dev
+hyphen-dev
 icu-dev
 libjpeg-dev
 libnotify-dev
