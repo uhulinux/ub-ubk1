@@ -4,4 +4,4 @@ libx11-dev
 libxmu-dev
 networkmanager-dev
 python-dev
-webkitgtk-dev
+webkit2gtk-dev
