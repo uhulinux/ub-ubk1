@@ -281,7 +281,6 @@ gdal
 packagekit
 gst0.10-plugins-ugly
 gst-plugins-ugly
-webkitgtk2
 spice-gtk
 firefox
 thunderbird

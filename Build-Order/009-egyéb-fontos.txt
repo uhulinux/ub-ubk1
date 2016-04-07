@@ -55,7 +55,9 @@ boost-jam
 fuse
 enchant
 gnome-js-common
-webkitgtk
+webkitgtk2
+webkitgtk3
+webkit2gtk
 seed
 neon
 fltk
