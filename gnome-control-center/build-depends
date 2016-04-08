@@ -60,4 +60,4 @@ telepathy-glib-dev
 tzdata
 upower-dev
 vala-dev
-webkitgtk2-dev
+webkit2gtk-dev
