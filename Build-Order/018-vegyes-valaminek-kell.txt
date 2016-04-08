@@ -40,6 +40,7 @@ c++-gtk-utils
 drv-z42
 eigen2
 enca
+libass
 fonts-dejavu
 fonts-terminus
 glee
