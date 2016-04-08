@@ -2,7 +2,6 @@ cmake
 desktop-file-utils
 gmime-dev
 gnome-doc-utils
-gnome-keyring-dev
 gobject-introspection-dev
 intltool
 libcanberra-dev

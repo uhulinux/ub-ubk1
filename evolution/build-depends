@@ -33,6 +33,6 @@ python-dev
 spamassassin
 startup-notification-dev
 systemd-dev
-webkitgtk-dev
+webkitgtk3-dev
 xcb-util-dev
 xz-dev

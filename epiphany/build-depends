@@ -22,6 +22,6 @@ libxml2-dev
 nss-dev
 sqlite-dev
 systemd-dev
-webkitgtk2-dev
+webkit2gtk-dev
 xcb-util-dev
 xz-dev
