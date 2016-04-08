@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 bluecurve-classic-metacity-theme-${UB_VERSION/[~+]/-}.fc11.src.rpm bluecurve-classic-metacity-theme-${UB_VERSION%[~+]*}.tar.bz2 bluecurve-classic-metacity-theme-${UB_VERSION%[~+]*}/
-	rsync://www.jur-linux.org/fedora/development/source/SRPMS/
+	ftp://ftp-stud.hs-esslingen.de/pub/.2/dl.fedoraproject.org/archive/fedora/linux/releases/11/Everything/source/SRPMS/
