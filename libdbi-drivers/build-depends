@@ -1,4 +1,4 @@
-libdbi
+libdbi-dev
 mysql-dev
 postgresql-dev
 sqlite-dev
