@@ -37,5 +37,5 @@ systemd-dev
 telepathy-farstream-dev
 telepathy-logger-dev
 telepathy-mission-control-dev
-webkitgtk-dev
+webkitgtk3-dev
 xz-dev
