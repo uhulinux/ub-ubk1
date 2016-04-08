@@ -20,5 +20,5 @@ ruby
 upower-dev
 vala-dev
 vte-dev
-webkitgtk-dev
+webkitgtk3-dev
 zeitgeist-dev
