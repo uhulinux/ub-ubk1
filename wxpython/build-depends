@@ -2,6 +2,7 @@ cppunit-dev
 glu-dev
 gst0.10-plugins-base-dev
 gtk-dev
+gtk2-dev
 libjpeg-dev
 libnotify-dev
 libpng-dev
@@ -10,5 +11,5 @@ libtiff-dev
 mesa-dev
 python-dev
 sdl-dev
-webkitgtk-dev
+webkit2gtk-dev
 wxwidgets-dev
