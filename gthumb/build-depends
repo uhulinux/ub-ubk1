@@ -15,4 +15,4 @@ libtiff-dev
 libxshmfence-dev
 python-dev
 systemd-dev
-webkitgtk-dev
+webkit2gtk-dev
