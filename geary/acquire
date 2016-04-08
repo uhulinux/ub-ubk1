@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 geary-${UB_VERSION}.tar.xz geary-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/geary/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/geary/${UB_VERSION_HEAD2}/
+	https://www.mirrorservice.org/sites/ftp.gnome.org/pub/GNOME/sources/geary/0.10/

@@ -9,4 +9,4 @@ libsm-dev
 libxscrnsaver-dev
 libxxf86vm-dev
 systemd-dev
-webkitgtk-dev
+webkit2gtk-dev

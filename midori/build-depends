@@ -7,5 +7,5 @@ libsoup-gnome-dev
 libxml2-dev
 sqlite-dev
 vala
-webkitgtk-dev
+webkitgtk3-dev
 zeitgeist-dev

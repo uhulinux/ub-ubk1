@@ -7,6 +7,6 @@ libxt-dev
 pangox-compat-dev
 sqlite-dev
 systemd-dev
-webkitgtk2-dev
+webkit2gtk-dev
 xz-dev
 yelp-xsl

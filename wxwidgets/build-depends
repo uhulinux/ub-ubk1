@@ -8,4 +8,4 @@ libpng-dev
 libsm-dev
 libtiff-dev
 mesa-dev
-webkitgtk-dev
+webkit2gtk-dev

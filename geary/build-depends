@@ -2,10 +2,11 @@ cmake
 desktop-file-utils
 gmime-dev
 gnome-doc-utils
+gnome-keyring-dev
 gobject-introspection-dev
 intltool
 libcanberra-dev
 libgee-dev
 libnotify-dev
 vala-dev
-webkitgtk-dev
+webkitgtk3-dev
