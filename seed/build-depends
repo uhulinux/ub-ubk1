@@ -11,4 +11,4 @@ libxslt-dev
 libxt-dev
 mpfr-dev
 sqlite-dev
-webkitgtk-dev
+webkitgtk3-dev

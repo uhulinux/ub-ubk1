@@ -6,6 +6,7 @@ gtkhtml-dev
 gtkspell-dev
 intltool
 libcanberra-dev
+libcryptui-dev
 libxshmfence-dev
 systemd-dev
-webkitgtk-dev
+webkitgtk3-dev
