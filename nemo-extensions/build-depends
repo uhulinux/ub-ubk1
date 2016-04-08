@@ -21,5 +21,5 @@ libwebp-dev
 libxshmfence-dev
 nemo-dev
 pygobject2-dev
-webkitgtk-dev
+webkit2gtk-dev
 xcb-util-dev
