@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-tcptrack-${UB_VERSION}.tar.gz tcptrack-${UB_VERSION}/
-	http://www.rhythm.cx/~steve/devel/tcptrack/release/${UB_VERSION}/source/
+v${UB_VERSION}.tar.gz tcptrack-${UB_VERSION}/
+	https://github.com/bchretien/tcptrack/archive/
