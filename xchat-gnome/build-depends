@@ -1,8 +1,9 @@
-cvs
 docbook-dtds
 gconf2-dev
+gnome-common
 gnome-doc-utils
 intltool
+itstool
 libcanberra-dev
 libnotify-dev
 libsexy-dev
@@ -10,3 +11,4 @@ libsm-dev
 openssl-dev
 python-dev
 tcl-dev
+yelp-tools
