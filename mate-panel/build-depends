@@ -1,14 +1,14 @@
 avahi-dev
 dconf-dev
 gobject-introspection-dev
-gtk2-dev
+gtk-dev
 intltool
 itstool
 libcanberra-dev
 libmateweather-dev
 librsvg-dev
 libsm-dev
-libwnck2-dev
+libwnck-dev
 mate-common
 mate-desktop-dev
 mate-menus-dev

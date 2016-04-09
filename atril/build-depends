@@ -2,7 +2,7 @@ caja-dev
 dbus-dev
 djvulibre-dev
 gobject-introspection-dev
-gtk2-dev
+gtk-dev
 intltool
 itstool
 libsecret-dev
@@ -14,6 +14,6 @@ mate-common
 mate-desktop-dev
 mate-icon-theme
 poppler-glib-dev
-webkitgtk2-dev
+webkit2gtk-dev
 xcb-util-dev
 yelp-tools

@@ -5,7 +5,7 @@ if [ -f autogen.sh ]; then
 fi
 
 ub_compile \
-	--with-gtk=2.0 \
+	--with-gtk=3.0 \
 	--without-keyring \
 	--enable-pixbuf \
 	--enable-introspection \

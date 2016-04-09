@@ -1,1 +1,1 @@
-urllist https://github.com/mate-desktop/mate-themes/releases/ | splitver '^mate-themes-gtk3.12-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist https://github.com/mate-desktop/mate-themes/releases/ | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1

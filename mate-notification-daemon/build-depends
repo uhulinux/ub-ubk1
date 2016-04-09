@@ -4,6 +4,6 @@ intltool
 libcanberra-dev
 libnotify-dev
 libsm-dev
-libwnck2-dev
+libwnck-dev
 mate-common
 xcb-util-dev

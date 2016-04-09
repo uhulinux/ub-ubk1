@@ -4,5 +4,5 @@
 # keresi a pygtk-t, ami viszont gtk2-es, így kiakad a build.
 
 ub_compile \
-	--with-gtk=2.0 \
-	--enable-python
+	--with-gtk=3.0 \
+	--disable-python

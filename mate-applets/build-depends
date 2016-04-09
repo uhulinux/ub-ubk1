@@ -2,14 +2,14 @@ avahi-dev
 cpupower
 gobject-introspection-dev
 gst-plugins-base-dev
-gtksourceview2-dev
+gtksourceview-dev
 intltool
 itstool
 libgtop2-dev
 libmateweather-dev
 libnotify-dev
 libsm-dev
-libwnck2-dev
+libwnck-dev
 libxslt-dev
 mate-common
 mate-desktop-dev

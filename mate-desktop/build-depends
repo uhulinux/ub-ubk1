@@ -1,7 +1,7 @@
 dbus-glib-dev
 dconf-dev
 gobject-introspection-dev
-gtk2-dev
+gtk-dev
 intltool
 itstool
 libsm-dev

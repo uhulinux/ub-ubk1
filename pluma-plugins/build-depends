@@ -1,9 +1,5 @@
 dbus-python-dev
-gtksourceview2-dev
+gtksourceview-dev
 intltool
 mate-common
 pluma-dev
-pygtk-dev
-pygtksourceview
-pygtksourceview-dev
-python-dev

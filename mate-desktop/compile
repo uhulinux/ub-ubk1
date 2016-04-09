@@ -2,6 +2,6 @@
 
 ub_compile \
 	--datadir=/usr/share \
-	--with-gtk=2.0 \
+	--with-gtk=3.0 \
 	--enable-mpaste \
 	--enable-deprecation-flags
