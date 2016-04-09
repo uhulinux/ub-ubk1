@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libfilezilla-${UB_VERSION}.tar.bz2 libfilezilla-${UB_VERSION}/
+	http://downloads.sourceforge.net/project/filezilla/libfilezilla/${UB_VERSION}/

@@ -3,6 +3,7 @@
 export WXRC=/usr/bin/wxrc
 
 ub_compile \
-	--with-tinyxml=builtin \
+	--with-pugixml=builtin \
 	--with-wx-config=/usr/bin/wx-config \
-	--disable-autoupdatecheck
+	--disable-autoupdatecheck \
+	--disable-manualupdatecheck
