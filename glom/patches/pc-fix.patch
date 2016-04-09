@@ -1,0 +1,12 @@
+diff -Naur orig/glom/libglom/glom.pc.in mod/glom/libglom/glom.pc.in
+--- orig/glom/libglom/glom.pc.in	2014-12-11 13:11:34.000000000 +0100
++++ mod/glom/libglom/glom.pc.in	2016-04-09 21:17:15.893666316 +0200
+@@ -8,7 +8,7 @@
+ 
+ Name: libglom
+ Description: Library for accessing Glom documents and data structures.
+-Requires: glibmm-2.4 giomm-2.4 libgdamm-5.0 libxml++-2.6 libxslt
++Requires: glibmm-2.4 giomm-2.4 libgdamm-5.0 libxml++-3.0 libxslt
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lglom-@GLOM_ABI_VERSION@
+ Cflags: -I${includedir}/glom-@GLOM_ABI_VERSION@

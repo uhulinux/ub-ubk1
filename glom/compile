@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
+#autoreconf -vif
 export PYTHON=python3
 export PYTHON_VERSION=3.5
 ub_compile
