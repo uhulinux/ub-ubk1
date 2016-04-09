@@ -46,7 +46,6 @@ hostapd
 htop
 hunglish
 jfsutils
-lhasa
 linuxconsole
 logrotate
 man-pages
