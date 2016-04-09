@@ -4,7 +4,7 @@ clamav
 clamav-dev
 freeze
 gzip
-lha
+lhasa-dev
 lzop
 nomarch
 perl
