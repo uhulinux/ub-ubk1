@@ -1,11 +1,11 @@
 mate-common
+mate-polkit
 mate-desktop
 libmatekbd
 libmatemixer
 libmateweather
 mate-icon-theme
 caja
-mate-polkit
 marco
 mate-settings-daemon
 mate-session-manager
@@ -40,4 +40,3 @@ mate-menu
 mate-tweak
 eom-plugins
 pluma-plugins
-mate-system-tools
