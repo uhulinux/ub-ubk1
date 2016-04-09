@@ -1,6 +1,4 @@
 #!/usr/bin/env dl
 
 smssend-${UB_VERSION}.tar.gz smssend/
-	http://zekiller.skytech.org/fichiers/smssend/
-	http://ftp.kaist.ac.kr/geoul/pkgs/freebsd/data/ports/local-distfiles/laszlof/
-	http://ftp.nluug.nl/FreeBSD/ports/local-distfiles/laszlof/
+	 http://ftp.nsysu.edu.tw/FreeBSD/ports/local-distfiles/laszlof/
