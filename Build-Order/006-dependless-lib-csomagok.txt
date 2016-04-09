@@ -24,6 +24,7 @@ libemf
 libexif
 libfame
 libffcall
+libfilezilla
 libgaviotatb
 libgsm
 libgssglue
