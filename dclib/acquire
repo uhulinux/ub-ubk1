@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+dclib-${UB_VERSION}.tar.bz2 dclib-${UB_VERSION}/
+	http://downloads.sourceforge.net/wxdcgui/

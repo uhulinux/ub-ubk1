@@ -1,0 +1,41 @@
+diff -Naur orig/emesene/data/share/applications/emesene.desktop mod/emesene/data/share/applications/emesene.desktop
+--- orig/emesene/data/share/applications/emesene.desktop	2012-09-06 11:01:16.000000000 +0200
++++ mod/emesene/data/share/applications/emesene.desktop	2016-04-09 09:50:15.689937775 +0200
+@@ -40,37 +40,4 @@
+ StartupNotify=true
+ Type=Application
+ Categories=Network;InstantMessaging;
+-X-Ayatana-Desktop-Shortcuts=NewInstance;
+ 
+-[NewInstance Shortcut Group]
+-Name=Open a new instance
+-Name[nl]=Open een nieuwe instantie
+-Name[sl]=Odpre nov primerek
+-Name[pl]=Otwórz nową instancję
+-Name[sq]=Hap një instancë të re
+-Name[sr]=Отвори нова инстанца
+-Name[zh_CN]=打开一个新例程
+-Name[pt]=Abrir uma nova instância
+-Name[ro]=Deschide o instanță nouă
+-Name[hu]=Új példány megnyitása
+-Name[fi]=Avaa uusi instanssi
+-Name[da]=Åbn en ny instans
+-Name[de]=Eine neue Instanz öffnen
+-Name[ast]=Abrir una instancia nueva
+-Name[pt_BR]=Abrir uma nova instância
+-Name[ms]=Buka kejadian baru
+-Name[fr]=Ouvrir une nouvelle instance
+-Name[zh_TW]=開啟一個新的實例
+-Name[tr]=Yeni bir örnek aç
+-Name[th]=เปิดตัวอย่างใหม่
+-Name[ru]=Открыть новую копию
+-Name[es]=Abrir una instancia nueva
+-Name[et]=Ava uus eksemplar
+-Name[cs]=Otevřít novou instanci
+-Name[sv]=Öppna en ny instans
+-Name[it]=Apri una nuova istanza
+-Name[ca]=Obra una nova instància
+-Name[oc]=Dobir una instància novèla
+-Name[af]=Maak nog 'n eksemplaar oop
+-Exec=emesene
+-TargetEnvironment=Unity

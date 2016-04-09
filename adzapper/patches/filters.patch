@@ -1,11 +1,10 @@
-diff -Naurd a/scripts/squid_redirect b/scripts/squid_redirect
---- a/scripts/squid_redirect	2004-10-30 09:16:37.000000000 +0200
-+++ b/scripts/squid_redirect	2004-11-19 18:23:53.130678746 +0100
-@@ -3397,6 +3398,23 @@
- HR http://**/movingrainbowbar.gif
- HR http://(www*.|)crosswinds.net/~donaldhinds/gif/line09a.gif
- HR http://home.beseen.com/hobbies/gammaray2/tiles11.GIF
-+###
+diff -Naur orig/scripts/squid_redirect-nodata mod/scripts/squid_redirect-nodata
+--- orig/scripts/squid_redirect-nodata	2011-10-19 11:56:41.000000000 +0200
++++ mod/scripts/squid_redirect-nodata	2016-04-09 09:14:12.954922914 +0200
+@@ -1111,4 +1111,21 @@
+ }
+ 
+ __DATA__
 +AD http://swift.hu/**/banner/**
 +AD http://ad.adverticum.net/**
 +AD http://kampany.vnubp.hu/banner_hirstart/**
@@ -22,6 +21,5 @@ diff -Naurd a/scripts/squid_redirect b/scripts/squid_redirect
 +ADJS http://cdn.netscape.com/_media/wpsite/popup2.js
 +ADJS http://ar.atwola.com/file/adsPopup2.js
 +ADJS http://cdn.netscape.com/_media/wpsite/adpopunder.js
- # NEXT http://home.att.net/~swchoe/next.gif
- # PREV http://home.att.net/~swchoe/previous.gif
++
  ### END AUTO __DATA__ AREA

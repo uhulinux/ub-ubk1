@@ -1,0 +1,23 @@
+diff -Naur orig/vuze.desktop mod/vuze.desktop
+--- orig/vuze.desktop	2010-04-09 09:55:14.000000000 +0200
++++ mod/vuze.desktop	2016-04-09 09:39:40.237963026 +0200
+@@ -1,10 +1,9 @@
+-[Desktop Entry]
+-Encoding=UTF-8
+-Categories=Java;Network;FileTransfer;P2P
+-Comment=Multimedia Bittorrent Client 
+-Exec=vuze %f
+-GenericName=Multimedia Bittorrent Client
+-Icon=vuze.png
+-MimeType=application/x-bittorrent
+-Name=Vuze
+-Type=Application
++[Desktop Entry]
++Categories=Java;Network;FileTransfer;P2P;
++Comment=Multimedia Bittorrent Client 
++Exec=vuze %f
++GenericName=Multimedia Bittorrent Client
++Icon=vuze
++MimeType=application/x-bittorrent
++Name=Vuze
++Type=Application
