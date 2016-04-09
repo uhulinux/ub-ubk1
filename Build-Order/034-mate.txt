@@ -33,7 +33,6 @@ mate-user-share
 mate-utils
 pluma
 mate-user-guide
-python-caja
 mozo
 mate-applet-uptime
 mate-menu
