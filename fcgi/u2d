@@ -1,1 +1,2 @@
-urllist http://www.fastcgi.com/dist/ | splitver '^fcgi-([0-9.]+.*).tar.gz$' | sed s/-SNAP-/~/g | sort -V | tail -n 1
+#urllist http://www.fastcgi.com/dist/ | splitver '^fcgi-([0-9.]+.*).tar.gz$' | sed s/-SNAP-/~/g | sort -V | tail -n 1
+echo 2.4.1~0910052249

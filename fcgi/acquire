@@ -2,3 +2,4 @@
 
 fcgi-${UB_VERSION%~*}-SNAP-${UB_VERSION#*~}.tar.gz fcgi-${UB_VERSION%~*}-SNAP-${UB_VERSION#*~}/
 	http://www.fastcgi.com/dist/
+	ftp://mirror.de.leaseweb.net/gentoo/distfiles/

@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 cryptopp${UB_VERSION}.zip . :cryptopp/
-	http://prdownloads.sourceforge.net/cryptopp/
+	http://downloads.sourceforge.net/cryptopp/
