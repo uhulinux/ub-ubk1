@@ -53,7 +53,6 @@ pam-smb
 pam-ssh
 pam-usb
 pdflib
-pdfminer
 ppl
 qoauth
 ruby-pg
