@@ -1,0 +1,1 @@
+urllist https://github.com/TimothyGu/libilbc/releases/ | splitver '^([0-9.]+).tar.gz$'
