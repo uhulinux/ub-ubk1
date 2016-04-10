@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-telepathy-qt-${UB_VERSION/~/-}.tar.gz telepathy-qt-${UB_VERSION/~/-}/
-	http://telepathy.freedesktop.org/releases/telepathy-qt/

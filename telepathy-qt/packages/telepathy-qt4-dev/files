@@ -1,0 +1,4 @@
+	/usr/include/telepathy-qt4
+	/usr/lib/libtelepathy-qt4*.a
+@	/usr/lib/libtelepathy-qt4*.so
+	/usr/lib/pkgconfig/TelepathyQt4*.pc

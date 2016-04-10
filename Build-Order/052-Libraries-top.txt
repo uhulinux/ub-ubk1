@@ -2,9 +2,6 @@ alsa-plugins
 anjuta-extras
 automoc4
 bcg729
-
-
-
 clanlib
 cloog
 confuse
@@ -69,7 +66,7 @@ starman
 stfl
 stlport
 taglib-extras
-telepathy-qt4
+telepathy-qt
 telepathy-yell
 termbox
 tse3

@@ -1,0 +1,6 @@
+	/usr/lib/cmake/TelepathyQt4
+	/usr/lib/cmake/TelepathyQt4Farstream
+	/usr/lib/cmake/TelepathyQt4Service
+	/usr/lib/libtelepathy-qt4*.*
+@	/usr/lib/libtelepathy-qt4*.*
+	/usr/share/doc/Packages/telepathy-qt4
