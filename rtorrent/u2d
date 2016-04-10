@@ -1,1 +1,1 @@
-urllist http://libtorrent.rakshasa.no/downloads/ | splitver '^rtorrent-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist https://github.com/rakshasa/rtorrent/releases/ | splitver '^([0-9.]+).tar.gz$' | sort -V | tail -n 1

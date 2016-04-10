@@ -1,6 +1,7 @@
 #!/bin/sh -eux
 
-
+./autogen.sh
+export CXXFLAGS="-std=c++11 -fno-strict-aliasing"
 ub_compile \
 	--with-xmlrpc-c \
 	--enable-ipv6
