@@ -1,10 +1,10 @@
 cmake
 dbus-dev
 kwindowsystem-dev
+libqtxdg-dev
 libx11-dev
 libxcomposite-dev
 libxcursor-dev
 libxdamage-dev
 libxfixes-dev
 libxrender-dev
-libqtxdg-dev
