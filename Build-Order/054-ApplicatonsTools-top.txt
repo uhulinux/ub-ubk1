@@ -182,7 +182,6 @@ ccal
 celestia
 cellwriter
 clamtk
-colibri
 converseen
 cuiterm
 deb-gview
