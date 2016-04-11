@@ -1,0 +1,32 @@
+#!/bin/bash
+
+. /usr/lib/uhubuild/common
+
+rm -f /usr/src/UHUBUILD/UB-3.1/updated
+rm -f /usr/src/UHUBUILD/UB-3.1/no-u2d
+
+BUILD_DIR=/usr/src/UHUBUILD
+cd "$BUILD_DIR"/UB-3.1-git
+
+git pull
+
+for pkg in `ls -d */`; do
+pkg2="${pkg///}"
+
+if [ -s "${pkg2}"/u2d ]; then
+	cd "${pkg2}"
+	newver="$(uhubuild-u2d)"
+	if [ -n "$newver" -a "$newver" != "$(cat version)" ]; then
+		greenecho "${pkg2} $newver"
+		echo "${pkg2} $newver" >> "$BUILD_DIR"/UB-3.1/updated
+	else
+		echo "${pkg2} -"
+	fi
+	cd ..
+else
+	redecho "${pkg2}: nincs u2d"
+	echo "${pkg2}" >> "$BUILD_DIR"/UB-3.1/no-u2d
+fi
+
+done
+
