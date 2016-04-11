@@ -1,4 +1,6 @@
 alsa-lib-dev
+fontconfig-dev
+freetype2-dev
 hermes-dev
 libjpeg-dev
 libmikmod-dev
@@ -8,6 +10,7 @@ libvorbis-dev
 libx11-dev
 libxi-dev
 libxmu-dev
+libxrender-dev
 libxxf86vm-dev
 mesa-dev
 sdl-dev
