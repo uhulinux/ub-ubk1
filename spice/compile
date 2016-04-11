@@ -2,4 +2,5 @@
 
 ub_compile \
 	--disable-client \
-	--enable-smartcard
+	--enable-smartcard \
+	--disable-gui
