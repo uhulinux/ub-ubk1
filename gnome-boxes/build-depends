@@ -1,7 +1,6 @@
-clutter-gtk-dev
+cdrkit
 cyrus-sasl2-dev
 gobject-introspection-dev
-gtk-dev
 gtk-vnc-dev
 intltool
 itstool
@@ -10,11 +9,9 @@ libgovirt-dev
 libgudev-dev
 libosinfo-dev
 libsoup-gnome-dev
-libtasn1-dev
 libvirt-glib-dev
 libxslt-dev
+mtools
 spice-gtk-dev
-systemd-dev
-tracker-dev
-util-linux-dev
+tracker-sparql-dev
 vala-dev

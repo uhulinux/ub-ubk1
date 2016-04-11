@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-colibri-${UB_VERSION}.tar.bz2 colibri-${UB_VERSION}/
-	http://download.kde.org/stable/colibri/
-	http://mirrors.mit.edu/kde/stable/colibri/
