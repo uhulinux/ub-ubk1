@@ -1,10 +1,11 @@
 #!/bin/sh -eux
 
+export UB_MAKE_PROCS=1
 cd "$UB_OBJECTDIR"
 
-# The kernel version shipped with UHU-Linux 2.0 is 2.6.17.
-# Do not increase this version number for UHU-Linux 2.1, since we do want
-# the kernel of UHU-Linux 2.0 to be able to run binaries of UHU-Linux 2.1
+# The kernel version shipped with UHU-Linux 2.2 is 2.6.33.
+# Do not increase this version number for UHU-Linux 3.1, since we do want
+# the kernel of UHU-Linux 2.2 to be able to run binaries of UHU-Linux 3.1
 # (for example in chrooted builds).
 
 UB_CONFIGURE_DIR="$UB_COMPILEDIR" ub_configure \
@@ -15,8 +16,9 @@ UB_CONFIGURE_DIR="$UB_COMPILEDIR" ub_configure \
 	--enable-obsolete-rpc \
 	--with-cpu=i686
 
-#ub_make
 # glibc doesn't like -Os!
+# build failures with -O1 maybe gcc bug:
+# https://sourceware.org/bugzilla/show_bug.cgi?id=19444
 ub_make \
-	CFLAGS="-O1 -mtune=generic" \
+	CFLAGS="-O2 -mtune=generic" \
 	user-defined-trusted-dirs=/usr/local/lib

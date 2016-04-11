@@ -1,7 +1,7 @@
-diff -urN glibc-2.18.orig/Makefile glibc-2.18/Makefile
---- glibc-2.18.orig/Makefile	2013-08-11 00:52:55.000000000 +0200
-+++ glibc-2.18/Makefile	2013-10-14 14:24:57.249048713 +0200
-@@ -173,33 +173,7 @@
+diff -Naur glibc-2.23-orig/Makefile glibc-2.23/Makefile
+--- glibc-2.23-orig/Makefile	2016-02-18 18:54:00.000000000 +0100
++++ glibc-2.23/Makefile	2016-04-10 21:40:18.889707501 +0200
+@@ -151,33 +151,7 @@
  
  subdir-stubs := $(foreach dir,$(subdirs),$(common-objpfx)$(dir)/stubs)
  
