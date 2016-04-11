@@ -9,6 +9,9 @@ CXXFLAGS="$OPT_FLAGS" \
 XCFLAGS="$OPT_FLAGS" \
 TCFLAGS="$OPT_FLAGS" \
 GCJFLAGS="$OPT_FLAGS" \
+
+SED=sed
+
 "$UB_COMPILEDIR"/configure \
 	--prefix=/usr \
 	--infodir=/usr/share/info \
@@ -17,9 +20,19 @@ GCJFLAGS="$OPT_FLAGS" \
 	--host=i686-uhu-linux \
 	--target=i686-uhu-linux \
 	--enable-languages=c,c++,objc,java,fortran \
-	--enable-shared \
 	--enable-targets=all \
+	--enable-checking=release \
+	--enable-shared \
+	--enable-threads=posix \
+	--enable-lto \
+	--enable-plugin \
+	--enable-libmpx \
+	--enable-install-libiberty \
 	--disable-multilib \
+	--disable-libstdcxx-pch \
+	--disable-libssp \
+	--disable-libunwind-exceptions \
+	--disable-werror \
 	--with-gnu-as \
 	--with-gnu-ld \
 	--with-system-zlib \

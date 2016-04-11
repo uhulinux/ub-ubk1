@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+mkdir -p build
+cd build
+
+qmake-qt5 ../WebKit.pro
+
+ub_make

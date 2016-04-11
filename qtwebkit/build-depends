@@ -1,0 +1,8 @@
+extra-cmake-modules
+gperf
+gst-plugins-base-dev
+libwebp-dev
+libxml2-dev
+libxslt-dev
+qt5-dev
+ruby
