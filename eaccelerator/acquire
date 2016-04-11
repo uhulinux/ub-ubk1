@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-eaccelerator-${UB_VERSION}.tar.bz2 eaccelerator-${UB_VERSION}/
-	http://downloads.sourceforge.net/project/eaccelerator/eaccelerator/eAccelerator%20${UB_VERSION}/

@@ -7,7 +7,6 @@ cloog
 confuse
 cryptopp
 dssi
-eaccelerator
 evolution-ews
 facile
 fcgi
