@@ -5,6 +5,6 @@ kconfig-dev
 kcoreaddons-dev
 kwindowsystem-dev
 libdbusmenu-qt-dev
-libqtspeech-dev
 phonon-dev
 qt5-dev
+qtspeech-dev
