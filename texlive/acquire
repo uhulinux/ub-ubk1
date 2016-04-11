@@ -3,5 +3,5 @@
 texlive-${UB_VERSION}-source.tar.xz texlive-${UB_VERSION}-source/
 	ftp://tug.org/historic/systems/texlive/${UB_VERSION:0:4}/
 
-texlive-20150523-texmf.tar.xz texlive-20150523-texmf/
+texlive-${UB_VERSION}-texmf.tar.xz texlive-${UB_VERSION}-texmf/
 	ftp://tug.org/historic/systems/texlive/${UB_VERSION:0:4}/
