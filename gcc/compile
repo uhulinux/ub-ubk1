@@ -27,10 +27,10 @@ SED=sed
 	--enable-lto \
 	--enable-plugin \
 	--enable-libmpx \
+	--enable-libssp \
 	--enable-install-libiberty \
 	--disable-multilib \
 	--disable-libstdcxx-pch \
-	--disable-libssp \
 	--disable-libunwind-exceptions \
 	--disable-werror \
 	--with-gnu-as \
