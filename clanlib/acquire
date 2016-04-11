@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-ClanLib-${UB_VERSION}.tgz ClanLib-${UB_VERSION}/
-	http://www.clanlib.org/download/releases-${UB_VERSION_HEAD1}.0/
+${UB_VERSION}.tar.gz ClanLib-${UB_VERSION}/
+	https://github.com/sphair/ClanLib/archive/
