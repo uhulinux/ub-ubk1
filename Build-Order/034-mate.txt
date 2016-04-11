@@ -39,3 +39,4 @@ mate-menu
 mate-tweak
 eom-plugins
 pluma-plugins
+mate-calc

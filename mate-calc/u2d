@@ -1,0 +1,2 @@
+dir=$(urllist http://pub.mate-desktop.org/releases/ | grep -E '^([0-9]+.[02468])?$' | sort -V | tail -n 1)
+urllist http://pub.mate-desktop.org/releases/$dir/ | splitver '^mate-calc-([0-9.]+).tar.xz$' | sort -V | tail -n 1
