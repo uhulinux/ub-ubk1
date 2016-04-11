@@ -183,7 +183,6 @@ celestia
 cellwriter
 clamtk
 converseen
-cuiterm
 deb-gview
 diffuse
 discwrapper

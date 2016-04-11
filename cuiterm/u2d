@@ -1,1 +1,0 @@
-urllist ftp://linux.pte.hu/pub/CUI/  | splitver '^cuiterm-([0-9.]+).tar.gz$' | sort -V | tail -n 1
