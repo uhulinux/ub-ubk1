@@ -1,0 +1,21 @@
+#!/bin/bash
+
+. /usr/lib/uhubuild/common
+
+for pkg in `ls -d */`; do
+
+if [ -s "$pkg"/u2d ]; then
+	cd "$pkg"
+	newver="$(uhubuild-u2d)"
+	if [ -n "$newver" -a "$newver" != "$(cat version)" ]; then
+		yellowecho "$pkg újabb verzió: $newver"
+	else
+		echo "$pkg nincs újabb verzió"
+	fi
+	cd ..
+else
+	redecho "$pkg nincs u2d"
+fi
+
+done
+
