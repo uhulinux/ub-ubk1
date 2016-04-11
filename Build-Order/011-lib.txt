@@ -34,7 +34,7 @@ libvdpau
 libmygpo-qt4
 liboauth
 liboobs
-libqtspeech
+qtspeech
 libqxt
 libraw
 librpcsecgss
@@ -74,3 +74,4 @@ libva-vdpau-driver
 libvirt-glib
 libcacard
 dclib
+qtwebkit
