@@ -95,7 +95,6 @@ pdmenu
 pfqueue
 piedock
 ploticus
-plusdesktop
 pmount
 poweriso
 ppsei

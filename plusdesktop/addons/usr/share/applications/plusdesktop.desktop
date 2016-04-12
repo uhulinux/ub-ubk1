@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=PlusDesktop
-Comment=Desktop manager
-Comment[hu]=Java alapú munkaasztal
-Exec=plusdesktop
-Icon=/usr/share/pixmaps/plusdesktop.ico
-Terminal=false
-Type=Application
-Categories=Utility;
