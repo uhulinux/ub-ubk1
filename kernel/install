@@ -42,6 +42,3 @@ chmod 755 "$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel
 cp -al "$UB_OBJECTDIR"/. "$UB_INSTALLDIR"/
 
 chmod -R a+rX,u+w,go-w "$UB_INSTALLDIR"
-
-# firmware is shipped by the linux-firmware package
-rm -rfv "$UB_INSTALLDIR"/lib/firmware
