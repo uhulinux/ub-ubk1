@@ -1,5 +1,5 @@
---- orig/anytopdf-1.0.orig	2010-04-08 09:54:15.000000000 +0200
-+++ new/anytopdf-1.0	2010-04-08 09:56:00.000000000 +0200
+--- orig/anytopdf	2010-04-08 09:54:15.000000000 +0200
++++ new/anytopdf	2010-04-08 09:56:00.000000000 +0200
 @@ -32,7 +32,7 @@
  
  # basic configuration and initialisation (you probably won't need to change this)
