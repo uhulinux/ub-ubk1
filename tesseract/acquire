@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-tesseract-ocr-${UB_VERSION}.tar.gz tesseract-ocr/
-	https://tesseract-ocr.googlecode.com/files/
+${UB_VERSION}.tar.gz tesseract-${UB_VERSION}/
+	https://github.com/tesseract-ocr/tesseract/archive/

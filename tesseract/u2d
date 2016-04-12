@@ -1,1 +1,1 @@
-urllist https://tesseract-ocr.googlecode.com/files/ | splitver '^tesseract-ocr-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+urllist https://github.com/tesseract-ocr/tesseract/releases/  | splitver '^([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

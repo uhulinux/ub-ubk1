@@ -1,7 +1,7 @@
-diff -Naurd a/Makefile b/Makefile
---- a/Makefile	2010-02-27 18:15:43.000000000 +0100
-+++ b/Makefile	2011-09-05 19:17:21.000000000 +0200
-@@ -1,7 +1,7 @@
+diff -Naur orig/Makefile mod/Makefile
+--- orig/Makefile	2010-02-27 18:15:43.000000000 +0100
++++ mod/Makefile	2016-04-12 08:38:39.264114364 +0200
+@@ -1,13 +1,13 @@
  # Makefile install script for linuxsms
  
  SCRIPT  = tesseract-gui.py
@@ -10,29 +10,33 @@ diff -Naurd a/Makefile b/Makefile
  
  DESKTOPDIR = share/applications/
  ICONDIR  = share/icons/
-@@ -20,7 +20,7 @@
+ FILESDIR = share/
+ BINDIR = bin/
+-
++PIXMAPDIR = share/pixmaps/
+ default:
+ 	@echo "make install installs the script into /usr"
+ 	@echo "make uninstall removes all files."
+@@ -20,8 +20,8 @@
  	@echo  "copying "$(BASEDIR)$(BINDIR)
  	@cp -f $(DESKTOPDIR)tesseract-gui.desktop $(BASEDIR)$(DESKTOPDIR)
  	@echo  "copying "$(BASEDIR)$(DESKTOPDIR)
 -	@cp -f $(ICONDIR)tesseract-gui-icon.svg $(BASEDIR)$(ICONDIR)
-+	@cp -f $(ICONDIR)tesseract-gui-icon.svg $(BASEDIR)share/pixmaps/
- 	@echo  "copying "$(BASEDIR)$(ICONDIR)
+-	@echo  "copying "$(BASEDIR)$(ICONDIR)
++	@cp -f $(ICONDIR)tesseract-gui-icon.svg $(BASEDIR)$(PIXMAPDIR)
++	@echo  "copying "$(BASEDIR)$(PIXMAPDIR)
  	@cp -fr $(FILESDIR)tesseract-gui/ $(BASEDIR)$(FILESDIR)
  	@echo  "copying "$(BASEDIR)$(FILESDIR)
-diff -Naurd a/share/applications/tesseract-gui.desktop b/share/applications/tesseract-gui.desktop
---- a/share/applications/tesseract-gui.desktop	2009-10-24 12:36:05.000000000 +0200
-+++ b/share/applications/tesseract-gui.desktop	2014-05-06 20:20:00.000000000 +0200
-@@ -1,6 +1,7 @@
- [Desktop Entry]
- Name[es_ES]=TesseractGUI
+ 	@echo "ok"
+diff -Naur orig/share/applications/tesseract-gui.desktop mod/share/applications/tesseract-gui.desktop
+--- orig/share/applications/tesseract-gui.desktop	2009-10-24 12:36:05.000000000 +0200
++++ mod/share/applications/tesseract-gui.desktop	2016-04-12 08:35:52.824432649 +0200
+@@ -3,7 +3,7 @@
  Name=TesseractGUI
-+Comment[hu]=OCR program
  Exec=tesseract-gui.py
  Categories=GNOME;GTK;Office;
- Icon=tesseract-gui-icon.svg
-@@ -8,5 +9,3 @@
+-Icon=tesseract-gui-icon.svg
++Icon=/usr/share/pixmaps/tesseract-gui-icon.svg
+ NoDisplay=false
  StartupNotify=true
  Terminal=false
- Type=Application
--
--
