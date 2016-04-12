@@ -4,5 +4,6 @@ dhcp-client
 dhcp-dev
 glib-dev
 gnet2-dev
+libgudev-dev
 libsynce-dev
 systemd-dev
