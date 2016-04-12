@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-anytopdf-${UB_VERSION}
-	http://anytopdf.googlecode.com/files/anytopdf
+master.zip anytopdf-master/
+	https://github.com/globalcitizen/anytopdf/archive/
