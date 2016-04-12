@@ -101,7 +101,7 @@ moovida
 moovida-plugins-bad
 moovida-plugins-good
 moovida-plugins-ugly
-xbmc
+kodi
 xbmc-addon-xvdr
 vdr-plugin-xvdr
 ec-fonts-mftraced
