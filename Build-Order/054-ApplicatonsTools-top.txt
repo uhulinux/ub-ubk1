@@ -48,7 +48,6 @@ gnote
 gocr
 gourmet
 gparted
-grepmail
 gtkhash
 gtklp
 gtknetcat
