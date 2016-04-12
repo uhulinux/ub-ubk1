@@ -1,7 +1,4 @@
 #!/usr/bin/env dl
 
-#${UB_VERSION}.tar.gz grepmail-${UB_VERSION}/
-#	https://github.com/coppit/grepmail/archive/
-
 grepmail-${UB_VERSION}.tar.gz grepmail-${UB_VERSION}/
-	http://download.sourceforge.net/grepmail/
+	http://search.cpan.org/CPAN/authors/id/D/DC/DCOPPIT/

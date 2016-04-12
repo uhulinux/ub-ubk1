@@ -2,3 +2,4 @@
 
 rand-${UB_VERSION}.tar.gz rand-${UB_VERSION}/
 	http://math.smsu.edu/~erik/files/
+	ftp://ftp.lug.ro/freebsd/ports/distfiles/

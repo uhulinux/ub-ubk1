@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-boxes-${UB_VERSION}.src.tar.gz boxes-${UB_VERSION}/
-	http://boxes.thomasjensen.com/download/
+v${UB_VERSION}.tar.gz boxes-${UB_VERSION}/
+	https://github.com/ascii-boxes/boxes/archive/

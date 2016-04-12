@@ -2,3 +2,4 @@
 
 root-tail-${UB_VERSION}.tar.gz root-tail-${UB_VERSION}/
 	http://www.goof.com/pcg/marc/data/
+	ftp://ftp.muni.cz/pub/linux/gentoo/distfiles/

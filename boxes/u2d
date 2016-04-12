@@ -1,1 +1,1 @@
-urllist http://boxes.thomasjensen.com/download/ | splitver '^boxes-([0-9.]+).src.tar.gz$' | sort -V | tail -n 1
+urllist https://github.com/ascii-boxes/boxes/releases/  | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1

@@ -1,4 +1,5 @@
 perl-date-manip
+perl-file-slurp
 perl-mail-mbox-messageparser
 perl-sort-versions
 perl-timedate
