@@ -1,0 +1,14 @@
+diff -Naur orig/data/terminator.desktop.in mod/data/terminator.desktop.in
+--- orig/data/terminator.desktop.in	2015-09-08 17:27:00.000000000 +0200
++++ mod/data/terminator.desktop.in	2016-04-12 08:04:49.760027961 +0200
+@@ -7,10 +7,3 @@
+ Type=Application
+ Categories=GNOME;GTK;Utility;TerminalEmulator;System;
+ StartupNotify=true
+-X-Ubuntu-Gettext-Domain=terminator
+-X-Ayatana-Desktop-Shortcuts=NewWindow;
+-[NewWindow Shortcut Group]
+-Name=Open a New Window
+-Exec=terminator
+-TargetEnvironment=Unity
+-

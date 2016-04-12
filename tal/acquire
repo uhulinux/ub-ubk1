@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 tal-$UB_VERSION.tar.gz tal-$UB_VERSION/
-	http://thomasjensen.com/software/tal/
+	ftp://ftp.lab.unb.br/pub/netsw/system/tools/text/
