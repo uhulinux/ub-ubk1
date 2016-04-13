@@ -1,4 +1,8 @@
 #!/bin/sh -eux
 
-QTDIR=/usr/lib/qt4 prefix=/usr ./configure
+export QTDIR="/usr/lib/qt4"
+export CFLAGS="-fPIC"
+./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc
 ub_make

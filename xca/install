@@ -2,4 +2,4 @@
 
 make install \
 	destdir="$UB_INSTALLDIR" \
-	mandir="share/man"
+	mandir="usr/share/man"
