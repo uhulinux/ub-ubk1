@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-weatherman-${UB_VERSION}.tar.gz weatherman-${UB_VERSION}/
-	http://darkhorse.nu/weatherman/

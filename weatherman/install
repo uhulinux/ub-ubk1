@@ -1,4 +1,0 @@
-#!/bin/sh -eux
-
-install -Dm755 weatherman "$UB_INSTALLDIR/usr/bin/weatherman"
-install -Dm644 weatherman.1.gz "$UB_INSTALLDIR/usr/share/man/man1/weatherman.1.gz"
