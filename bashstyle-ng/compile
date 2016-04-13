@@ -1,4 +1,5 @@
 #!/bin/sh -eux
 
 export TERM=xterm
-ub_compile #--maint
+ub_configure
+./make build

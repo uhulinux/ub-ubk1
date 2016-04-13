@@ -2,4 +2,4 @@
 
 export TERM=xterm
 export DESTDIR="$UB_INSTALLDIR"
-ub_install
+./make install

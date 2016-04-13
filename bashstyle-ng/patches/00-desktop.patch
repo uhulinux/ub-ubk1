@@ -1,9 +1,0 @@
-diff -Naur orig/data/bs-ng.desktop patched/data/bs-ng.desktop
---- orig/data/bs-ng.desktop	2014-03-20 12:59:30.000000000 +0100
-+++ patched/data/bs-ng.desktop	2016-02-18 23:38:23.774198337 +0100
-@@ -6,4 +6,5 @@
- Name=BashStyle-NG
- Exec=bashstyle
- Comment=Configure Bash, ReadLine, Vim and Nano
-+Comment[hu]=Bash, ReadLine, Vim és Nano beállító
- Categories=GTK;GNOME;Utility;

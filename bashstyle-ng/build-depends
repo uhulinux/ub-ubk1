@@ -17,9 +17,11 @@ net-tools
 newt-dev
 pciutils
 procps
+py3gobject
 pygtk-dev
 python-configobj
-python-dev
+python3-configobj
+python3-dev
 terminfo
 tree
 usbutils
