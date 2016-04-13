@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-urlview-${UB_VERSION}.tar.gz urlview-${UB_VERSION}/
-	ftp://ftp.mutt.org/pub/mutt/contrib/
+urlview_${UB_VERSION}.orig.tar.gz urlview-${UB_VERSION}.orig/
+	http://ftp.debian.org/debian/pool/main/u/urlview/

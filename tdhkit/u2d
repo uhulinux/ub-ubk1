@@ -1,1 +1,1 @@
-urllist http://quisp.sourceforge.net/tdhkit/ | splitver '^tdhkit([0-9.]+).tar.gz$' | sort -V | tail -n 1
+echo Dead package!

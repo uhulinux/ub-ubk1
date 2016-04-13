@@ -1,1 +1,1 @@
-urllist http://code.google.com/p/cout/downloads/ | splitver '^cout-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+echo Google!
