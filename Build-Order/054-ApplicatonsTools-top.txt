@@ -164,7 +164,6 @@ xd
 xdelta
 xinit
 xmacro
-xmbdfed
 xmlstarlet
 xnee
 xstickwin
