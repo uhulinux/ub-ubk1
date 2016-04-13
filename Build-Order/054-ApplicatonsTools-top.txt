@@ -138,7 +138,6 @@ tkinfo
 tmux
 toilet
 translate-toolkit
-translator
 treeform
 trend
 truecrypt
