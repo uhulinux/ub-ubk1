@@ -1,5 +1,5 @@
 #!/bin/sh -eux
 
+export CFLAGS="-std=gnu89"
 ub_compile \
 	--enable-static
-
