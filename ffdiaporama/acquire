@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-ffdiaporama_bin_${UB_VERSION}.tar.gz ffDiaporama/
-	http://download.tuxfamily.org/ffdiaporama/Packages/Stable/
+ffdiaporama_bin_${UB_VERSION}.devel.2014.0701.tar.gz ffDiaporama/
+	http://download.tuxfamily.org/ffdiaporama/Packages/Devel/
 
-ffdiaporama_rsc_${UB_VERSION}.tar.gz .
-	http://download.tuxfamily.org/ffdiaporama/Packages/Stable/
+ffdiaporama_rsc_${UB_VERSION}.devel.2014.0503.tar.gz .
+	http://download.tuxfamily.org/ffdiaporama/Packages/Devel/
