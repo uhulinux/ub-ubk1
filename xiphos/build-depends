@@ -1,3 +1,4 @@
+biblesync
 dbus-glib-dev
 docbook-dtds
 docbook-xsl
@@ -10,3 +11,4 @@ libgsf-dev
 python-dev
 rarian-dev
 sword-dev
+webkitgtk3-dev

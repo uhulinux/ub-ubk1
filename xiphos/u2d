@@ -1,1 +1,2 @@
-sflist gnomesword Xiphos | grep -E '^([0-9.]+)$' | sort -V | tail -n 1
+sflist gnomesword Xiphos/$(sflist gnomesword Xiphos | grep -E '^([0-9.]+)$' | sort -V | tail -n 1) \
+	| grep tar | sed s/\.tar.*//g | sed s/xiphos-//g | sed s/-/./g | sort -V | tail -n 1
