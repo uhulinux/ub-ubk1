@@ -7,8 +7,8 @@ diff -urN paps-0.6.8.orig/src/libpaps.c paps-0.6.8/src/libpaps.c
  #include <pango/pangoft2.h>
 -#include <freetype/ftglyph.h>
 -#include <freetype/ftoutln.h>
-+#include <freetype2/ftglyph.h>
-+#include <freetype2/ftoutln.h>
++#include <freetype2/freetype/ftglyph.h>
++#include <freetype2/freetype/ftoutln.h>
  #include <errno.h>
  #include <stdlib.h>
  #include <stdio.h>
