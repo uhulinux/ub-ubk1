@@ -1,1 +1,1 @@
-urllist http://distfiles.atheme.org/ | splitver '^libguess-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://atheme.org/projects/libguess.html | splitver '^libguess-([0-9.]+).tar.gz$' | sort -V | tail -n 1
