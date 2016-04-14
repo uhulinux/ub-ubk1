@@ -1,1 +1,1 @@
-sflist conglomerate Conglomerate%20XML%20Editor | sort -V | tail -n 1
+urllist https://sourceforge.net/projects/conglomerate/files/Conglomerate%20XML%20Editor/ | grep -E '^([0-9,]+)'| sort -V | tail -n 1
