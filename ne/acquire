@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-ne-${UB_VERSION}.tar.gz ne-${UB_VERSION}/
-	http://ne.dsi.unimi.it/
+ne_${UB_VERSION}.orig.tar.gz ne-${UB_VERSION}/
+	http://ftp.debian.org/debian/pool/main/n/ne/
