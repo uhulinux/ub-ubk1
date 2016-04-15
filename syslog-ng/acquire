@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 syslog-ng_${UB_VERSION}.tar.gz syslog-ng-${UB_VERSION}/
-	http://www.balabit.com/downloads/files/syslog-ng/sources/${UB_VERSION}/source/
+	https://my.balabit.com/downloads/syslog-ng/sources/${UB_VERSION}/source/
+#	https://github.com/balabit/syslog-ng/archive/
