@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-Komodo-Edit-${UB_VERSION}-14067-linux-x86.tar.gz Komodo-Edit-${UB_VERSION}-14067-linux-x86/
-	http://downloads.activestate.com/Komodo/releases/${UB_VERSION}/
+Komodo-Edit-${UB_VERSION_HEAD3}-${UB_VERSION_TAIL1}-linux-x86.tar.gz Komodo-Edit-${UB_VERSION_HEAD3}-${UB_VERSION_TAIL1}-linux-x86/
+	http://downloads.activestate.com/Komodo/releases/${UB_VERSION_HEAD3}/
