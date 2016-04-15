@@ -93,7 +93,6 @@ tix
 ttyconv
 ucblogo
 udftools
-usmb
 vblade
 vnstat
 wdfs
