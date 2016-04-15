@@ -7,7 +7,6 @@ rox-filer
 worker
 xfe
 mc
-thunar-vfs
 ytree
 tuxcmd
 tuxcmd-modules

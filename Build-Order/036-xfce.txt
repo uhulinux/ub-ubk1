@@ -5,6 +5,7 @@ libxfce4ui
 garcon
 libexo
 xfce4-panel
+thunar-vfs
 thunar
 xfce4-settings
 xfce4-session
