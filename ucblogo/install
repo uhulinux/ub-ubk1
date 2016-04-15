@@ -1,5 +1,8 @@
 #!/bin/sh -eux
 
-ub_install
+make \
+	prefix=INFODIR=${UB_INSTALLDIR} \
+	INFODIR=${UB_INSTALLDIR}/usr/share/info \
+install
 
 cp -a ucblogo.png "$UB_INSTALLDIR"/usr/share/pixmaps
