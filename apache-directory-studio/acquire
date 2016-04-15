@@ -2,3 +2,4 @@
 
 ApacheDirectoryStudio-linux-x86-${UB_VERSION}.tar.gz ApacheDirectoryStudio-linux-x86-${UB_VERSION}/
 	http://xenia.sote.hu/ftp/mirrors/www.apache.org//directory/studio/dist/${UB_VERSION}/
+	ftp://ftp.us.es/Mirror/www.apache.org/directory/studio/dist/${UB_VERSION}/
