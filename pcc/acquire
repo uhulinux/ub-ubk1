@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-pcc-${UB_VERSION/~b+/.BETA-}.tgz pcc-${UB_VERSION/~*/.BETA}/
-	ftp://pcc.ludd.ltu.se/pub/pcc-beta/
+pcc-${UB_VERSION_TAIL1/0~b+/}.tgz pcc-${UB_VERSION_TAIL1/0~b+/}/
+	ftp://pcc.ludd.ltu.se/pub/pcc/

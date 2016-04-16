@@ -2,4 +2,6 @@ cmake
 curl-dev
 gtk-dev
 libssh-dev
+sqlite-dev
+webkitgtk2-dev
 wxwidgets-dev

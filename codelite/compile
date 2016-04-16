@@ -2,5 +2,5 @@
 
 # kiszedjük a CRLF jeleket a scriptből
 sed -i 's/\r$//' Runtime/codelite_kill_children
-
+export CXXFLAGS=" -fno-devirtualize"
 ub_compile
