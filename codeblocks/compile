@@ -1,6 +1,7 @@
 #!/bin/sh -eux
 
-export CPPFLAGS+=-fpermissive
+autoreconf -vif
+export CPPFLAGS+=" -DBOOST_ERROR_CODE_HEADER_ONLY"
 export WX_CONFIG_PATH=/usr/bin/wx-config2
 ub_compile \
 	--with-contrib-plugins=all

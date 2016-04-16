@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-codeblocks_${UB_VERSION}-1.tar.gz codeblocks-${UB_VERSION}/
-	http://sourceforge.net/projects/codeblocks/files/Sources/${UB_VERSION/~/-}/
+codeblocks_${UB_VERSION}.tar.gz codeblocks-${UB_VERSION}.release/
+	https://sourceforge.net/projects/codeblocks/files/Sources/${UB_VERSION/~/-}/
