@@ -3,6 +3,7 @@ baloo-dev
 cmake
 extra-cmake-modules
 fontconfig-dev
+ibus-dev
 kactivities-dev
 kauth-dev
 kcmutils-dev
@@ -30,6 +31,7 @@ qt5-plugin-mysql
 qt5-plugin-odbc
 qt5-plugin-psql
 qt5-plugin-tds
+scim-dev
 systemd-dev
 x.org-input-evdev
 x.org-input-synaptics

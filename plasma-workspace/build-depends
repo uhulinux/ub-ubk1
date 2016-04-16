@@ -1,6 +1,8 @@
 baloo-dev
 cmake
 extra-cmake-modules
+gpsd-dev
+iso-codes
 kactivities-dev
 kcmutils-dev
 kcrash-dev
@@ -26,6 +28,7 @@ kxmlrpcclient-dev
 libdbusmenu-qt-dev
 libkscreen-dev
 libksysguard-dev
+libqalculate-dev
 networkmanager-qt-dev
 phonon-dev
 plasma-framework-dev

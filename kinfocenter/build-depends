@@ -1,5 +1,6 @@
 cmake
 extra-cmake-modules
+glu-dev
 kcmutils-dev
 kcompletion-dev
 kconfig-dev
