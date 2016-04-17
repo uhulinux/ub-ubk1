@@ -4,10 +4,6 @@
 
 # qtwebengine: HTML5 fejlesztőknek egy Chromium alapú izé, nem kell
 
-# https://bugreports.qt.io/browse/QTBUG-43412
-# egyelőre viszont qtwayland sem kell 
-# mkdir qtwayland/.git
-
 export LD_LIBRARY_PATH="$(pwd)"/lib
 
 ./configure \
@@ -25,10 +21,9 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-verbose            \
 	-silent             \
 	-optimized-qmake    \
+	-reduce-exports		\
 	-no-qml-debug       \
-	-no-use-gold-linker \
 	-no-journald		\
-	-no-reduce-relocations \
 	-no-separate-debug-info \
 	\
 	-nomake examples    \
