@@ -2,7 +2,7 @@
 
 # deprecated in 5.5: Qt WebKit, Qt Declarative (Qt Quick 1), Qt Script
 
-# qtwebengine: HTML5 fejlesztőknek egy Chromium alapú izé, nem kell
+# qtwebengine: külön csomag
 
 export LD_LIBRARY_PATH="$(pwd)"/lib
 
@@ -27,6 +27,7 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-no-separate-debug-info \
 	\
 	-nomake examples    \
+	-nomake tests		\
 	-skip qtwebengine	\
 	\
 	-accessibility      \
