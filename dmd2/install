@@ -3,7 +3,7 @@
 mkdir -p "$UB_INSTALLDIR"/usr/include/d/druntime
 mkdir -p "$UB_INSTALLDIR"/usr/share/doc/d/phobos
 
-cp -a linux/bin32/dmd "$UB_INSTALLDIR"/usr/bin/
+cp src/dmd/dmd "$UB_INSTALLDIR"/usr/bin/
 cp -a linux/bin32/dumpobj "$UB_INSTALLDIR"/usr/bin/
 cp -a linux/bin32/obj2asm "$UB_INSTALLDIR"/usr/bin/
 cp -a linux/bin32/rdmd "$UB_INSTALLDIR"/usr/bin/
@@ -17,9 +17,9 @@ cp -f src/phobos/{index,unittest}.d "$UB_INSTALLDIR"/usr/include/d/
 
 cp -Rf src/druntime/import "$UB_INSTALLDIR"/usr/include/d/druntime
 
-install -Dm644 linux/lib32/libphobos2.a "$UB_INSTALLDIR"/usr/lib/libphobos2.a
-install -Dm644 src/druntime/lib/libdruntime-linux32.a "$UB_INSTALLDIR"/usr/lib/libdruntime-linux32.a
-ln -s libdruntime-linux32.a "$UB_INSTALLDIR"/usr/lib/libdruntime.a
+install -Dm644 src/phobos/generated/linux/release/32/libphobos2.a "$UB_INSTALLDIR"/usr/lib/libphobos2.a
+install -Dm644 src/druntime//generated/linux/release/32/libdruntime.a "$UB_INSTALLDIR"/usr/lib/libdruntime.a
+
 
 for x in man/man1/*.1; do
 	install -Dm644 $x "$UB_INSTALLDIR/usr/share/man/man1/$(basename $x)"
