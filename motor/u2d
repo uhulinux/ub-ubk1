@@ -1,1 +1,1 @@
-urllist http://developer.berlios.de/project/showfiles.php?group_id=11812  | splitver '^motor_([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+geturl https://sourceforge.net/projects/motor.berlios/files | grep tar.bz2 | sed s/.*motor_//g | sed s/\.tar.*//g | sort -V | tail -n 1
