@@ -86,6 +86,3 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 
 ub_make
 
-#some options we may want to use in the future
-#	-nomake tests       \
-

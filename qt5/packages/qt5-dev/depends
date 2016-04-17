@@ -1,10 +1,7 @@
 gtk2-dev
 icu-dev
 libice-dev
-libjpeg-dev
-libmng-dev
 libsm-dev
-libtiff-dev
 libxi-dev
 mesa-dev
 mtdev-dev
