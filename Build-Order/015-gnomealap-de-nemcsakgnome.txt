@@ -23,6 +23,7 @@ yelp-tools
 dconf-editor
 gnome-vfsmm2
 devhelp
+txt2man
 mdbtools
 vte
 libgnomeuimm2
