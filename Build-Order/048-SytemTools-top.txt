@@ -24,8 +24,6 @@ ipvsadm
 irda-utils
 iscsitarget
 isdn4k-utils
-kerneloops
-ksymoops
 latencytop
 lde
 lsof

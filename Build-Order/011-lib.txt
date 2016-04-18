@@ -75,4 +75,5 @@ libvirt-glib
 libcacard
 dclib
 qtwebkit
+qtwebengine
 biblesync
