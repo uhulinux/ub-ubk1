@@ -154,7 +154,6 @@ vacation
 valkyrie
 vbindiff
 vdpauinfo
-vdrctl
 virt-manager
 virt-viewer
 workrave
