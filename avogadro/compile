@@ -1,5 +1,5 @@
 #!/bin/sh -eux
 
 export QTDIR=/usr/lib/qt4
-
+export CXXFLAGS=" -lX11 -lopenbabel"
 ub_compile
