@@ -1,0 +1,16 @@
+alsa-lib-dev
+dbus-dev
+gperf
+libevent-dev
+libsrtp-dev
+libvpx-dev
+libwebp-dev
+libxml2-dev
+libxscrnsaver-dev
+libxslt-dev
+libxtst-dev
+opus-dev
+pciutils-dev
+pulseaudio-dev
+qt5-dev
+re2c
