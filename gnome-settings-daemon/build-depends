@@ -16,6 +16,7 @@ libgweather-dev
 libnotify-dev
 librsvg-dev
 libwacom-dev
+libxslt-dev
 libxtst-dev
 networkmanager-dev
 polkit-dev
