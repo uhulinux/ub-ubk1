@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
 lupe$UB_VERSION.tar.gz lupe/
-	http://www.oersted.co.jp/~yav/soft/
+	ftp://ftp.tw.freebsd.org/pub/FreeBSD-current/ports/distfiles/
 

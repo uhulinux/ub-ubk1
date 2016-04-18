@@ -1,1 +1,0 @@
-urllist http://www2s.biglobe.ne.jp/~yav/soft/ | splitver '^lupe([0-9]+[a-z]).tgz$' | sort -V | tail -n 1
