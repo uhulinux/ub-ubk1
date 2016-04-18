@@ -34,7 +34,6 @@ gnome-system-log
 gnome-tweak-tool
 gnome-user-docs
 polari
-at-spi2-core
 baobab
 gnome-mplayer
 gnome-nettool
@@ -46,7 +45,6 @@ libzapojit
 mousetweaks
 mx
 policykit-gnome
-at-spi2-atk
 gnome-logs
 libepc
 libgxps
