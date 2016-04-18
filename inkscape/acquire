@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
 inkscape-${UB_VERSION}.tar.bz2 inkscape-${UB_VERSION}/
-	http://downloads.sourceforge.net/inkscape/
+	https://inkscape.org/en/gallery/item/3860/
+
+markers_strokepaint.inx.disabled :share/extensions
+	http://bazaar.launchpad.net/~inkscape.dev/inkscape/RELEASE_0_91_BRANCH/download/head:/markers_strokepaint.-20091128124040-aej0x7yhxng1m6ly-8339/
