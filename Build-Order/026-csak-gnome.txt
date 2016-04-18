@@ -117,6 +117,7 @@ file-roller
 gnome-maps
 sushi
 sound-juicer
+libgfbgraph
 gnome-online-miners
 grilo-plugins
 gnome-documents
