@@ -5,6 +5,7 @@ gconf2-dev
 intltool
 libexif-dev
 libexo-dev
+libgudev-dev
 libjpeg-dev
 libnotify-dev
 libsm-dev
