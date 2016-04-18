@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 openconnect-${UB_VERSION}.tar.gz openconnect-${UB_VERSION}/
+	http://pkgs.fedoraproject.org/repo/pkgs/openconnect/openconnect-${UB_VERSION}.tar.gz/80f397911e1fed43d897d99be3d5f1a1/
 	ftp://ftp.infradead.org/pub/openconnect/

@@ -1,6 +1,7 @@
 #!/usr/bin/env dl
 
-mac-${UB_VERSION//+/-}.tar.gz mac-${UB_VERSION//+/-}/
+mac-${UB_VERSION//+/-}.tar.gz mac-${UB_VERSION//+/-}-s7/
+	http://etree.org/shnutils/shntool/support/formats/ape/unix/3.99-u4-b5-s7/mac-3.99-u4-b5-s7.tar.gz
 	http://downloads.sourceforge.net/mac-port/
 	http://slackware.sukkology.net/packages/mac/
 	ftp://ftp.ausics.net/slacky/slackware-13.0/multimedia/mac/3.99.u4.b5/src/
