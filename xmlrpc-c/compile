@@ -1,5 +1,8 @@
 #!/bin/sh -eux
 
+
+mkdir -p include/curl
+touch include/curl/types.h
 ub_compile \
 	--enable-libxml2-backend	\
 	--disable-abyss-server		\
