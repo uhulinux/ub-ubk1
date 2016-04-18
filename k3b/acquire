@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-k3b-${UB_VERSION}.tar.xz k3b-${UB_VERSION/a/}/
-	http://download.kde.org/stable/k3b/
+k3b-${UB_VERSION}.tar.gz k3b-kf5/
+	git://github.com/KDE/k3b.git@branch:kf5

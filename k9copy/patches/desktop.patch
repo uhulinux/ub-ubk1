@@ -1,0 +1,11 @@
+diff -Naur orig/k9copy_assistant.desktop patched/k9copy_assistant.desktop
+--- orig/k9copy_assistant.desktop	2014-09-29 17:00:12.000000000 +0200
++++ patched/k9copy_assistant.desktop	2016-04-18 13:04:23.645201385 +0200
+@@ -14,7 +14,6 @@
+ GenericName[tr]=DVD Vidyo Yedekleme Aracı
+ GenericName[ru]=Копирование с видео-DVD
+ GenericName[uk]=Копіювання відео-DVD
+-MimeTypes=
+ Terminal=false
+ Icon=k9copy
+ X-DocPath=k9copy/index.html

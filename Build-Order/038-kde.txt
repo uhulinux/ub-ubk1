@@ -101,3 +101,10 @@ sddm-kcm
 systemsettings
 user-manager
 discover
+libkcddb
+k3b
+k9copy
+libkpmcore
+kpartitionmanager
+kate
+krusader

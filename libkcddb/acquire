@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libkcddb-${UB_VERSION}.tar.gz libkcddb-kf5/
+	git://github.com/KDE/libkcddb.git@branch:kf5
