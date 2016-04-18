@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 TwistedWeb2-${UB_VERSION}.tar.bz2 TwistedWeb2-${UB_VERSION}/
+	http://pkgs.fedoraproject.org/repo/pkgs/python-twisted-web2/TwistedWeb2-${UB_VERSION}.tar.bz2/e34b48edf6fef075bd41ddbd215aed32/
 	http://tmrc.mit.edu/mirror/twisted/Web2/${UB_VERSION_HEAD2}/
