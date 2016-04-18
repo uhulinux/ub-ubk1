@@ -1,1 +1,1 @@
-sflist geeqie geeqie | splitver '^geeqie-([0-9.]+)$' | sort -V | tail -n 1
+urllist https://github.com/BestImageViewer/geeqie/releases/ | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1
