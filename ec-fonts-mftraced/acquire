@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-ec-fonts-mftraced-${UB_VERSION}-1.noarch.rpm .
-	http://lilypond.org/download/fonts/
-	http://www.lilypond.org/ftp/fonts/
+ec-fonts-mftraced_${UB_VERSION}-1_all.deb .
+	http://lilypond.org/download/old/ec-fonts-mftraced/
