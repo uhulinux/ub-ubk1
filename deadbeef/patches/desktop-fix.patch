@@ -1,7 +1,7 @@
 diff -Naur orig/deadbeef.desktop.in mod/deadbeef.desktop.in
---- orig/deadbeef.desktop.in	2014-07-31 21:03:51.000000000 +0200
-+++ mod/deadbeef.desktop.in	2015-07-30 12:38:13.477114758 +0200
-@@ -3,60 +3,15 @@
+--- orig/deadbeef.desktop.in	2016-03-15 20:20:56.000000000 +0100
++++ mod/deadbeef.desktop.in	2016-04-19 20:38:55.114353081 +0200
+@@ -3,62 +3,15 @@
  GenericName=Audio Player
  GenericName[pt_BR]=Reprodutor de áudio
  GenericName[ru]=Аудио плеер
@@ -20,6 +20,8 @@ diff -Naur orig/deadbeef.desktop.in mod/deadbeef.desktop.in
  X-PulseAudio-Properties=media.role=music
 -
 -X-Ayatana-Desktop-Shortcuts=Play;Pause;Stop;Next;Prev
+-
+-Keywords=Sound;Music;Audio;Player;Musicplayer;MP3
 -
 -[Play Shortcut Group]
 -Name=Play

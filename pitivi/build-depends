@@ -1,5 +1,8 @@
 gst-plugins-base-dev
+gtk-dev
 intltool
 itstool
-pycairo-dev
-python-dev
+py3cairo-dev
+pygobject-dev
+python3-dev
+python3-numpy

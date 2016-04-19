@@ -6,4 +6,4 @@ gst-editing-services
 gst-libav
 gtk
 libnotify
-pycairo
+py3cairo
