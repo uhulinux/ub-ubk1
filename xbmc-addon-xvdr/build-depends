@@ -1,10 +1,10 @@
 boost-dev
 cmake
+kodi
 libvdpau-dev
 nasm
 python-dev
 udisks
 unrar
 upower-dev
-xbmc
 zip

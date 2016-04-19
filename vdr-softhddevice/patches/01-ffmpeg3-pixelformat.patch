@@ -1,0 +1,189 @@
+Description: FFMPEG 3 API changes
+ PixelFormat -> AVPixelFormat renaming
+Author: Tobias Grimm <etobi@debian.org>
+
+--- a/codec.c
++++ b/codec.c
+@@ -17,7 +17,7 @@
+ ///	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ ///	GNU Affero General Public License for more details.
+ ///
+-///	$Id: 80e63bf6670616eafd90f139ba497cee6cbbf683 $
++///	$Id: d285eb28485bea02cd205fc8be47320dfe0376cf $
+ //////////////////////////////////////////////////////////////////////////////
+ 
+ ///
+@@ -159,8 +159,8 @@
+ **				valid format, the formats are ordered by
+ **				quality.
+ */
+-static enum PixelFormat Codec_get_format(AVCodecContext * video_ctx,
+-    const enum PixelFormat *fmt)
++static enum AVPixelFormat Codec_get_format(AVCodecContext * video_ctx,
++    const enum AVPixelFormat *fmt)
+ {
+     VideoDecoder *decoder;
+ 
+@@ -205,7 +205,7 @@
+     // libav 0.8.5 53.35.0 still needs this
+ #endif
+     if (!decoder->GetFormatDone) {	// get_format missing
+-	enum PixelFormat fmts[2];
++	enum AVPixelFormat fmts[2];
+ 
+ 	fprintf(stderr, "codec: buggy libav, use ffmpeg\n");
+ 	Warning(_("codec: buggy libav, use ffmpeg\n"));
+--- a/video.h
++++ b/video.h
+@@ -17,7 +17,7 @@
+ ///	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ ///	GNU Affero General Public License for more details.
+ ///
+-///	$Id: 7b676db0db3e7773e753356b9a94a1a369ce20bb $
++///	$Id: 83cd827a8744e8c80c8adba6cb87653b0ad58c45 $
+ //////////////////////////////////////////////////////////////////////////////
+ 
+ /// @addtogroup Video
+@@ -60,8 +60,8 @@
+ extern void VideoReleaseSurface(VideoHwDecoder *, unsigned);
+ 
+     /// Callback to negotiate the PixelFormat.
+-extern enum PixelFormat Video_get_format(VideoHwDecoder *, AVCodecContext *,
+-    const enum PixelFormat *);
++extern enum AVPixelFormat Video_get_format(VideoHwDecoder *, AVCodecContext *,
++    const enum AVPixelFormat *);
+ 
+     /// Render a ffmpeg frame.
+ extern void VideoRenderFrame(VideoHwDecoder *, const AVCodecContext *,
+--- a/video.c
++++ b/video.c
+@@ -17,7 +17,7 @@
+ ///	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ ///	GNU Affero General Public License for more details.
+ ///
+-///	$Id: d9534b488d56e3efa4d92a0af07e715a05766e2e $
++///	$Id: bacf89f24503be74d113a83139a277ff2290014a $
+ //////////////////////////////////////////////////////////////////////////////
+ 
+ ///
+@@ -259,8 +259,8 @@
+     void (*const DelHwDecoder) (VideoHwDecoder *);
+     unsigned (*const GetSurface) (VideoHwDecoder *, const AVCodecContext *);
+     void (*const ReleaseSurface) (VideoHwDecoder *, unsigned);
+-    enum PixelFormat (*const get_format) (VideoHwDecoder *, AVCodecContext *,
+-	const enum PixelFormat *);
++    enum AVPixelFormat (*const get_format) (VideoHwDecoder *, AVCodecContext *,
++	const enum AVPixelFormat *);
+     void (*const RenderFrame) (VideoHwDecoder *, const AVCodecContext *,
+ 	const AVFrame *);
+     void *(*const GetHwAccelContext)(VideoHwDecoder *);
+@@ -1552,7 +1552,7 @@
+     /// flags for put surface for different resolutions groups
+     unsigned SurfaceFlagsTable[VideoResolutionMax];
+ 
+-    enum PixelFormat PixFmt;		///< ffmpeg frame pixfmt
++    enum AVPixelFormat PixFmt;		///< ffmpeg frame pixfmt
+     int WrongInterlacedWarned;		///< warning about interlace flag issued
+     int Interlaced;			///< ffmpeg interlaced flag
+     int TopFieldFirst;			///< ffmpeg top field displayed first
+@@ -2546,7 +2546,7 @@
+ ///	FIXME: must check if put/get with this format is supported (see intel)
+ ///
+ static int VaapiFindImageFormat(VaapiDecoder * decoder,
+-    enum PixelFormat pix_fmt, VAImageFormat * format)
++    enum AVPixelFormat pix_fmt, VAImageFormat * format)
+ {
+     VAImageFormat *imgfrmts;
+     int imgfrmt_n;
+@@ -2909,10 +2909,10 @@
+ ///
+ ///	@note + 2 surface for software deinterlace
+ ///
+-static enum PixelFormat Vaapi_get_format(VaapiDecoder * decoder,
+-    AVCodecContext * video_ctx, const enum PixelFormat *fmt)
++static enum AVPixelFormat Vaapi_get_format(VaapiDecoder * decoder,
++    AVCodecContext * video_ctx, const enum AVPixelFormat *fmt)
+ {
+-    const enum PixelFormat *fmt_idx;
++    const enum AVPixelFormat *fmt_idx;
+     VAProfile profiles[vaMaxNumProfiles(VaDisplay)];
+     int profile_n;
+     VAEntrypoint entrypoints[vaMaxNumEntrypoints(VaDisplay)];
+@@ -5706,8 +5706,8 @@
+ 	    const AVCodecContext *))VaapiGetSurface,
+     .ReleaseSurface =
+ 	(void (*const) (VideoHwDecoder *, unsigned))VaapiReleaseSurface,
+-    .get_format = (enum PixelFormat(*const) (VideoHwDecoder *,
+-	    AVCodecContext *, const enum PixelFormat *))Vaapi_get_format,
++    .get_format = (enum AVPixelFormat(*const) (VideoHwDecoder *,
++	    AVCodecContext *, const enum AVPixelFormat *))Vaapi_get_format,
+     .RenderFrame = (void (*const) (VideoHwDecoder *,
+ 	    const AVCodecContext *, const AVFrame *))VaapiSyncRenderFrame,
+     .GetHwAccelContext = (void *(*const)(VideoHwDecoder *))
+@@ -5748,8 +5748,8 @@
+ 	    const AVCodecContext *))VaapiGetSurface,
+     .ReleaseSurface =
+ 	(void (*const) (VideoHwDecoder *, unsigned))VaapiReleaseSurface,
+-    .get_format = (enum PixelFormat(*const) (VideoHwDecoder *,
+-	    AVCodecContext *, const enum PixelFormat *))Vaapi_get_format,
++    .get_format = (enum AVPixelFormat(*const) (VideoHwDecoder *,
++	    AVCodecContext *, const enum AVPixelFormat *))Vaapi_get_format,
+     .RenderFrame = (void (*const) (VideoHwDecoder *,
+ 	    const AVCodecContext *, const AVFrame *))VaapiSyncRenderFrame,
+     .GetHwAccelContext = (void *(*const)(VideoHwDecoder *))
+@@ -5804,7 +5804,7 @@
+     int OutputWidth;			///< real video output width
+     int OutputHeight;			///< real video output height
+ 
+-    enum PixelFormat PixFmt;		///< ffmpeg frame pixfmt
++    enum AVPixelFormat PixFmt;		///< ffmpeg frame pixfmt
+     int WrongInterlacedWarned;		///< warning about interlace flag issued
+     int Interlaced;			///< ffmpeg interlaced flag
+     int TopFieldFirst;			///< ffmpeg top field displayed first
+@@ -7385,10 +7385,10 @@
+ ///			it is terminated by -1 as 0 is a valid format, the
+ ///			formats are ordered by quality.
+ ///
+-static enum PixelFormat Vdpau_get_format(VdpauDecoder * decoder,
+-    AVCodecContext * video_ctx, const enum PixelFormat *fmt)
++static enum AVPixelFormat Vdpau_get_format(VdpauDecoder * decoder,
++    AVCodecContext * video_ctx, const enum AVPixelFormat *fmt)
+ {
+-    const enum PixelFormat *fmt_idx;
++    const enum AVPixelFormat *fmt_idx;
+     VdpDecoderProfile profile;
+     int max_refs;
+ 
+@@ -9545,8 +9545,8 @@
+ 	    const AVCodecContext *))VdpauGetSurface,
+     .ReleaseSurface =
+ 	(void (*const) (VideoHwDecoder *, unsigned))VdpauReleaseSurface,
+-    .get_format = (enum PixelFormat(*const) (VideoHwDecoder *,
+-	    AVCodecContext *, const enum PixelFormat *))Vdpau_get_format,
++    .get_format = (enum AVPixelFormat(*const) (VideoHwDecoder *,
++	    AVCodecContext *, const enum AVPixelFormat *))Vdpau_get_format,
+     .RenderFrame = (void (*const) (VideoHwDecoder *,
+ 	    const AVCodecContext *, const AVFrame *))VdpauSyncRenderFrame,
+     .GetHwAccelContext = (void *(*const)(VideoHwDecoder *))
+@@ -9712,8 +9712,8 @@
+ #endif
+     .ReleaseSurface = NoopReleaseSurface,
+ #if 0
+-    .get_format = (enum PixelFormat(*const) (VideoHwDecoder *,
+-	    AVCodecContext *, const enum PixelFormat *))Noop_get_format,
++    .get_format = (enum AVPixelFormat(*const) (VideoHwDecoder *,
++	    AVCodecContext *, const enum AVPixelFormat *))Noop_get_format,
+     .RenderFrame = (void (*const) (VideoHwDecoder *,
+ 	    const AVCodecContext *, const AVFrame *))NoopSyncRenderFrame,
+     .GetHwAccelContext = (void *(*const)(VideoHwDecoder *))
+@@ -10293,8 +10293,8 @@
+ ///				valid format, the formats are ordered by
+ ///				quality.
+ ///
+-enum PixelFormat Video_get_format(VideoHwDecoder * hw_decoder,
+-    AVCodecContext * video_ctx, const enum PixelFormat *fmt)
++enum AVPixelFormat Video_get_format(VideoHwDecoder * hw_decoder,
++    AVCodecContext * video_ctx, const enum AVPixelFormat *fmt)
+ {
+ #ifdef DEBUG
+     int ms_delay;
