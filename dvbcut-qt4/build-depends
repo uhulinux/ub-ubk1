@@ -1,6 +1,5 @@
 a52dec
 desktop-file-utils
-ffmpeg-dev
 liba52-dev
 libao-dev
 libmad-dev
