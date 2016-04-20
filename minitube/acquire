@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-minitube-${UB_VERSION}.tar.gz minitube/
-	http://flavio.tordini.org/files/minitube/
+${UB_VERSION}.tar.gz minitube-${UB_VERSION}/
+	https://github.com/flaviotordini/minitube/archive/
