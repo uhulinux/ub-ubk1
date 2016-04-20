@@ -9,7 +9,7 @@ libsamplerate-dev
 libvdpau-dev
 libvorbis-dev
 libxml2-dev
-qt4-dev
+qt5-dev
 sdl-dev
 sdl-image-dev
 sdl-mixer-dev

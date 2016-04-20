@@ -6,7 +6,7 @@ diff -Naur orig/src/modules/gtk2/producer_pango.c mod/src/modules/gtk2/producer_
  #include <gdk-pixbuf/gdk-pixbuf.h>
  #include <pango/pangoft2.h>
 -#include <freetype.h>
-+#include <freetype2/freetype.h>
++#include <freetype2/freetype/freetype.h>
  #include <iconv.h>
  #include <pthread.h>
  #include <ctype.h>
