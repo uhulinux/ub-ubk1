@@ -1,4 +1,0 @@
-#!/bin/sh -e
-
-export THE_MACRO_PATH=/usr/share/THE
-xthe "$@"

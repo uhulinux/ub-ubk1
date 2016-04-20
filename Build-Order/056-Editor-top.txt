@@ -29,4 +29,3 @@ ne
 scite
 tea
 texmacs
-the
