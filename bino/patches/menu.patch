@@ -1,6 +1,6 @@
-diff -Naur orig/src/bino.desktop patched/src/bino.desktop
+diff -Naur orig/src/bino.desktop mod/src/bino.desktop
 --- orig/src/bino.desktop	2012-10-13 07:01:40.000000000 +0200
-+++ patched/src/bino.desktop	2014-05-26 20:48:54.041598424 +0200
++++ mod/src/bino.desktop	2016-04-20 20:08:58.216765150 +0200
 @@ -3,6 +3,7 @@
  GenericName=3D video player
  GenericName[de]=3D Videospieler
