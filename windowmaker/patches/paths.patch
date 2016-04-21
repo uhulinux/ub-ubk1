@@ -1,6 +1,6 @@
 diff -Naur orig/WindowMaker/menu mod/WindowMaker/menu
---- orig/WindowMaker/menu	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/menu	2014-12-30 19:53:57.920347366 +0100
+--- orig/WindowMaker/menu	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/menu	2016-04-21 07:12:43.297985465 +0200
 @@ -208,7 +208,7 @@
  		"Background" END
  		"Save Theme" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name,Enter file name:)"
@@ -11,8 +11,8 @@ diff -Naur orig/WindowMaker/menu mod/WindowMaker/menu
  
  	"Session" MENU
 diff -Naur orig/WindowMaker/menu.bg mod/WindowMaker/menu.bg
---- orig/WindowMaker/menu.bg	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/menu.bg	2014-12-30 19:53:57.924347366 +0100
+--- orig/WindowMaker/menu.bg	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/menu.bg	2016-04-21 07:12:43.305985490 +0200
 @@ -209,7 +209,7 @@
  		"Фон" END
  		"Запази темата" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name,Enter file name:)"
@@ -23,8 +23,8 @@ diff -Naur orig/WindowMaker/menu.bg mod/WindowMaker/menu.bg
  
  	"Изход"	MENU
 diff -Naur orig/WindowMaker/menu.fi mod/WindowMaker/menu.fi
---- orig/WindowMaker/menu.fi	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/menu.fi	2014-12-30 19:53:57.952347365 +0100
+--- orig/WindowMaker/menu.fi	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/menu.fi	2016-04-21 07:12:43.361985335 +0200
 @@ -202,7 +202,7 @@
  		"Taustat" END
  		"Tallenna teema" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Teeman nimi,Kirjoita teematiedoston nimi:)"
@@ -34,9 +34,21 @@ diff -Naur orig/WindowMaker/menu.fi mod/WindowMaker/menu.fi
  	"Ulkonäkö" END
  
  	"Lopeta"	MENU
+diff -Naur orig/WindowMaker/menu.fy mod/WindowMaker/menu.fy
+--- orig/WindowMaker/menu.fy	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/menu.fy	2016-04-21 07:12:43.377985307 +0200
+@@ -208,7 +208,7 @@
+ 		"Eftergrûn" END
+ 		"Tema bewarje" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Temanamme,Fier bestânsnamme yn:)"
+ 		"Iconenset bewarje" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(Ikoanensetnamme,Fier bestânsnamme yn:)"
+-		"Foarkarrenhelpmiddel" EXEC /usr/local/GNUstep/Applications/WPrefs.app/WPrefs
++		"Foarkarrenhelpmiddel" EXEC /usr/bin//WPrefs
+ 	"Uterlik" END
+ 
+ 	"Sesje" MENU
 diff -Naur orig/WindowMaker/menu.ko mod/WindowMaker/menu.ko
---- orig/WindowMaker/menu.ko	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/menu.ko	2014-12-30 19:53:57.984347364 +0100
+--- orig/WindowMaker/menu.ko	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/menu.ko	2016-04-21 07:12:43.425985223 +0200
 @@ -163,7 +163,7 @@
  		"세션 지움" CLEAR_SESSION
  	"창 관 리" END
@@ -47,8 +59,8 @@ diff -Naur orig/WindowMaker/menu.ko mod/WindowMaker/menu.ko
  		"테마저장" EXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(테마 이름,파일 이름을 입력하세요:)"
  		"아이콘셋" OPEN_MENU -noext ICON_SETS_DIR ~/GNUstep/Library/WindowMaker/IconSets WITH seticons
 diff -Naur orig/WindowMaker/menu.nl mod/WindowMaker/menu.nl
---- orig/WindowMaker/menu.nl	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/menu.nl	2014-12-30 19:53:57.988347364 +0100
+--- orig/WindowMaker/menu.nl	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/menu.nl	2016-04-21 07:12:43.433985209 +0200
 @@ -208,7 +208,7 @@
  		"Achtergrond" END
  		"Thema opslaan" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Themanaam,Voer bestandsnaam in:)"
@@ -59,8 +71,8 @@ diff -Naur orig/WindowMaker/menu.nl mod/WindowMaker/menu.nl
  
  	"Sessie" MENU
 diff -Naur orig/WindowMaker/menu.ro mod/WindowMaker/menu.ro
---- orig/WindowMaker/menu.ro	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/menu.ro	2014-12-30 19:53:58.004347363 +0100
+--- orig/WindowMaker/menu.ro	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/menu.ro	2016-04-21 07:12:43.457985167 +0200
 @@ -202,7 +202,7 @@
  		"Fundal" END
  		"Salvează Tema" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name,Enter file name:)"
@@ -71,8 +83,8 @@ diff -Naur orig/WindowMaker/menu.ro mod/WindowMaker/menu.ro
  
  	"Ieşire" MENU
 diff -Naur orig/WindowMaker/menu.sk mod/WindowMaker/menu.sk
---- orig/WindowMaker/menu.sk	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/menu.sk	2014-12-30 19:53:58.016347363 +0100
+--- orig/WindowMaker/menu.sk	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/menu.sk	2016-04-21 07:12:43.485985118 +0200
 @@ -216,7 +216,7 @@
  		"Pozadie" END
  		"Uložiť tému" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Meno témy,Zadajte názov súboru:)"
@@ -83,8 +95,8 @@ diff -Naur orig/WindowMaker/menu.sk mod/WindowMaker/menu.sk
  
  	"Koniec" MENU
 diff -Naur orig/WindowMaker/menu.zh_TW mod/WindowMaker/menu.zh_TW
---- orig/WindowMaker/menu.zh_TW	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/menu.zh_TW	2014-12-30 19:53:58.032347362 +0100
+--- orig/WindowMaker/menu.zh_TW	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/menu.zh_TW	2016-04-21 07:12:43.509985076 +0200
 @@ -199,7 +199,7 @@
  		"背景" END
  		"儲存主題" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(主題名稱)"
@@ -95,8 +107,8 @@ diff -Naur orig/WindowMaker/menu.zh_TW mod/WindowMaker/menu.zh_TW
  
  	"離開"	MENU
 diff -Naur orig/WindowMaker/plmenu mod/WindowMaker/plmenu
---- orig/WindowMaker/plmenu	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu	2014-12-30 19:53:58.036347362 +0100
+--- orig/WindowMaker/plmenu	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu	2016-04-21 07:12:43.521985056 +0200
 @@ -93,7 +93,7 @@
     ),
     ("Save Theme", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Theme name)\""),
@@ -107,8 +119,8 @@ diff -Naur orig/WindowMaker/plmenu mod/WindowMaker/plmenu
     ("Session",
      ("Save Session", SAVE_SESSION),
 diff -Naur orig/WindowMaker/plmenu.bg mod/WindowMaker/plmenu.bg
---- orig/WindowMaker/plmenu.bg	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.bg	2014-12-30 19:53:58.040347362 +0100
+--- orig/WindowMaker/plmenu.bg	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.bg	2016-04-21 07:12:43.525985048 +0200
 @@ -94,7 +94,7 @@
     ),
    ("Запази темата", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Theme name)\""),
@@ -119,8 +131,8 @@ diff -Naur orig/WindowMaker/plmenu.bg mod/WindowMaker/plmenu.bg
   ("Изход",
    ("Рестартиране", RESTART),
 diff -Naur orig/WindowMaker/plmenu.da mod/WindowMaker/plmenu.da
---- orig/WindowMaker/plmenu.da	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.da	2014-12-30 19:53:58.044347362 +0100
+--- orig/WindowMaker/plmenu.da	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.da	2016-04-21 07:12:43.533985034 +0200
 @@ -211,17 +211,17 @@
                  (
                  "Temaer",
@@ -152,8 +164,8 @@ diff -Naur orig/WindowMaker/plmenu.da mod/WindowMaker/plmenu.da
                  ),
                  ("Gem Tema", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Tema navn,Indtast navn:)"),
 diff -Naur orig/WindowMaker/plmenu.de mod/WindowMaker/plmenu.de
---- orig/WindowMaker/plmenu.de	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.de	2014-12-30 19:53:58.048347361 +0100
+--- orig/WindowMaker/plmenu.de	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.de	2016-04-21 07:12:43.541985021 +0200
 @@ -66,9 +66,9 @@
    ("Gespeicherte Sitzung löschen", CLEAR_SESSION)
    ),
@@ -177,8 +189,8 @@ diff -Naur orig/WindowMaker/plmenu.de mod/WindowMaker/plmenu.de
    ("Thema speichern", SHEXEC, "getstyle -t $(HOME)/GNUstep/Library/WindowMaker/Themes/\"%a(Themenname)\""),
    ("Iconsatz speichern", SHEXEC, "geticonset $(HOME)/GNUstep/Library/WindowMaker/IconSets/\"%a(Iconsatz-Name)\"")
 diff -Naur orig/WindowMaker/plmenu.es mod/WindowMaker/plmenu.es
---- orig/WindowMaker/plmenu.es	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.es	2014-12-30 19:53:58.048347361 +0100
+--- orig/WindowMaker/plmenu.es	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.es	2016-04-21 07:12:43.545985013 +0200
 @@ -66,9 +66,9 @@
    ("Borrar sesion", CLEAR_SESSION)
    ),
@@ -207,8 +219,8 @@ diff -Naur orig/WindowMaker/plmenu.es mod/WindowMaker/plmenu.es
   ("Salir",
    ("Reiniciar", RESTART),
 diff -Naur orig/WindowMaker/plmenu.fi mod/WindowMaker/plmenu.fi
---- orig/WindowMaker/plmenu.fi	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.fi	2014-12-30 19:53:58.056347361 +0100
+--- orig/WindowMaker/plmenu.fi	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.fi	2016-04-21 07:12:43.553985000 +0200
 @@ -238,17 +238,17 @@
  		(
  		"Teemat",
@@ -249,8 +261,8 @@ diff -Naur orig/WindowMaker/plmenu.fi mod/WindowMaker/plmenu.fi
  	),
  	(
 diff -Naur orig/WindowMaker/plmenu.fr mod/WindowMaker/plmenu.fr
---- orig/WindowMaker/plmenu.fr	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.fr	2014-12-30 19:53:58.060347361 +0100
+--- orig/WindowMaker/plmenu.fr	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.fr	2016-04-21 07:12:43.557984992 +0200
 @@ -66,9 +66,9 @@
     ("Effacer la session", CLEAR_SESSION)
    ),
@@ -273,9 +285,21 @@ diff -Naur orig/WindowMaker/plmenu.fr mod/WindowMaker/plmenu.fr
        ),
     ("Sauver le thème", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes /\"%a(Nom du thème,Entrez un nom de fichier:)\""),
     ("Sauver le jeu d'icônes", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets /\"%a(Nom du jeu d'icônes,Entrez un nom de fichier:)\"")  
+diff -Naur orig/WindowMaker/plmenu.fy mod/WindowMaker/plmenu.fy
+--- orig/WindowMaker/plmenu.fy	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.fy	2016-04-21 07:12:43.569984971 +0200
+@@ -93,7 +93,7 @@
+    ),
+    ("Tema bewarje", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Temanamme)\""),
+    ("Ikoanenset bewarje", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(Ikoanensetnamme)\""),
+-   ("Foarkarrenhelpmiddel", EXEC, "/usr/local/GNUstep/Applications/WPrefs.app/WPrefs")
++   ("Foarkarrenhelpmiddel", EXEC, "/usr/bin//WPrefs")
+    ),
+    ("Sesje",
+     ("Sesje bewarje", SAVE_SESSION),
 diff -Naur orig/WindowMaker/plmenu.hr mod/WindowMaker/plmenu.hr
---- orig/WindowMaker/plmenu.hr	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.hr	2014-12-30 19:53:58.064347361 +0100
+--- orig/WindowMaker/plmenu.hr	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.hr	2016-04-21 07:12:43.573984965 +0200
 @@ -88,17 +88,17 @@
      (
        Teme,
@@ -307,8 +331,8 @@ diff -Naur orig/WindowMaker/plmenu.hr mod/WindowMaker/plmenu.hr
      ),
      (
 diff -Naur orig/WindowMaker/plmenu.ja mod/WindowMaker/plmenu.ja
---- orig/WindowMaker/plmenu.ja	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.ja	2014-12-30 19:53:58.068347361 +0100
+--- orig/WindowMaker/plmenu.ja	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.ja	2016-04-21 07:12:43.585984944 +0200
 @@ -94,7 +94,7 @@
     ),   
    ("設定をテーマとしてセーブ", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Theme name)\""),
@@ -319,8 +343,8 @@ diff -Naur orig/WindowMaker/plmenu.ja mod/WindowMaker/plmenu.ja
   ("終了",
    ("再起動", RESTART),
 diff -Naur orig/WindowMaker/plmenu.ko mod/WindowMaker/plmenu.ko
---- orig/WindowMaker/plmenu.ko	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.ko	2014-12-30 19:53:58.072347360 +0100
+--- orig/WindowMaker/plmenu.ko	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.ko	2016-04-21 07:12:43.589984936 +0200
 @@ -63,7 +63,7 @@
    ),
   ("작업공간", WORKSPACE_MENU),
@@ -331,8 +355,8 @@ diff -Naur orig/WindowMaker/plmenu.ko mod/WindowMaker/plmenu.ko
    ("테마저장", EXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(테마 이름,파일 이름을 입력하세요:)\""),
    ("스 타 일", OPEN_MENU, "-noext /usr/share/WindowMaker/Styles ~/GNUstep/Library/WindowMaker/Styles WITH setstyle"),
 diff -Naur orig/WindowMaker/plmenu.nl mod/WindowMaker/plmenu.nl
---- orig/WindowMaker/plmenu.nl	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.nl	2014-12-30 19:53:58.076347360 +0100
+--- orig/WindowMaker/plmenu.nl	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.nl	2016-04-21 07:12:43.593984929 +0200
 @@ -93,7 +93,7 @@
     ),
     ("Thema opslaan", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Themanaam)\""),
@@ -343,8 +367,8 @@ diff -Naur orig/WindowMaker/plmenu.nl mod/WindowMaker/plmenu.nl
     ("Sessie",
      ("Sessie opslaan", SAVE_SESSION),
 diff -Naur orig/WindowMaker/plmenu.ro mod/WindowMaker/plmenu.ro
---- orig/WindowMaker/plmenu.ro	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.ro	2014-12-30 19:53:58.084347360 +0100
+--- orig/WindowMaker/plmenu.ro	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.ro	2016-04-21 07:12:43.609984902 +0200
 @@ -94,7 +94,7 @@
     ),   
    ("Salvează Tema", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Theme name)\""),
@@ -355,8 +379,8 @@ diff -Naur orig/WindowMaker/plmenu.ro mod/WindowMaker/plmenu.ro
   ("Ieşire",
    ("Repornire", RESTART),
 diff -Naur orig/WindowMaker/plmenu.sk mod/WindowMaker/plmenu.sk
---- orig/WindowMaker/plmenu.sk	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.sk	2014-12-30 19:53:58.084347360 +0100
+--- orig/WindowMaker/plmenu.sk	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.sk	2016-04-21 07:12:43.617984888 +0200
 @@ -94,7 +94,7 @@
     ),   
    ("Uložiť tému", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Theme name)\""),
@@ -367,8 +391,8 @@ diff -Naur orig/WindowMaker/plmenu.sk mod/WindowMaker/plmenu.sk
   ("Koniec",
    ("Reštartovať", RESTART),
 diff -Naur orig/WindowMaker/plmenu.zh_TW mod/WindowMaker/plmenu.zh_TW
---- orig/WindowMaker/plmenu.zh_TW	2014-08-30 14:29:09.000000000 +0200
-+++ mod/WindowMaker/plmenu.zh_TW	2014-12-30 19:53:58.092347360 +0100
+--- orig/WindowMaker/plmenu.zh_TW	2015-08-11 20:41:14.000000000 +0200
++++ mod/WindowMaker/plmenu.zh_TW	2016-04-21 07:12:43.629984867 +0200
 @@ -92,7 +92,7 @@
     ),
    ("儲存主題", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/%a(主題名稱)"),
