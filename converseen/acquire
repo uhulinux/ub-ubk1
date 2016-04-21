@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-converseen-${UB_VERSION}.tar.bz2 converseen-${UB_VERSION}/
-	http://downloads.sourceforge.net/converseen/
+v${UB_VERSION}.tar.gz Converseen-${UB_VERSION}/
+	https://github.com/Faster3ck/Converseen/archive/
