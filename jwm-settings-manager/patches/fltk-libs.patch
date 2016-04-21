@@ -1,0 +1,21 @@
+diff -Naur orig/CMakeLists.txt patched/CMakeLists.txt
+--- orig/CMakeLists.txt	2016-04-02 17:09:20.000000000 +0200
++++ patched/CMakeLists.txt	2016-04-20 23:03:19.619068139 +0200
+@@ -13,7 +13,7 @@
+ set(EXEC "jwm-settings-manager")
+ set(NAME "JWM Settings Manager")
+ # Packages we need
+-FIND_PACKAGE(FLTK REQUIRED NO_MODULE)
++# FIND_PACKAGE(FLTK REQUIRED NO_MODULE)
+ FIND_PACKAGE(X11 REQUIRED)
+ IF(NOT EXISTS ${FLTK_FLUID_EXECUTABLE})
+     # Try to detect full path anyway
+@@ -100,7 +100,7 @@
+ INSTALL(FILES jwm-settings-manager.1 DESTINATION share/man/man1/ PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
+ 
+ ## Linker settings
+-TARGET_LINK_LIBRARIES(jwm-settings-manager JSM fltk_SHARED fltk_images_SHARED ${X11_LIBRARIES} ${X11_X11_LIB} ${X11_Xpm_LIB})
++TARGET_LINK_LIBRARIES(jwm-settings-manager JSM fltk fltk_images ${X11_LIBRARIES} ${X11_X11_LIB} ${X11_Xpm_LIB})
+ ## Install the binary to bin and the library to lib :)
+ install(TARGETS jwm-settings-manager JSM
+ 	RUNTIME DESTINATION bin

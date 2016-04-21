@@ -1,0 +1,11 @@
+diff -Naur orig/data/jwm-settings-manager-desktop.desktop patched/data/jwm-settings-manager-desktop.desktop
+--- orig/data/jwm-settings-manager-desktop.desktop	2016-04-02 17:09:20.000000000 +0200
++++ patched/data/jwm-settings-manager-desktop.desktop	2016-04-20 23:14:51.654499757 +0200
+@@ -2,7 +2,6 @@
+ Name=Desktop Settings
+ Name[en_US]=Desktop Settings
+ Name[en_GB]=Desktop Settings
+-Name[en_US]=Desktop Settings
+ Name[en]=Desktop Settings
+ GenericName=Configuration Tool
+ Icon=jsm-desktop

@@ -1,0 +1,28 @@
+diff -Naur orig/include/Config.h patched/include/Config.h
+--- orig/include/Config.h	2016-04-02 17:09:20.000000000 +0200
++++ patched/include/Config.h	2016-04-20 22:17:16.881368462 +0200
+@@ -9,9 +9,9 @@
+ #include <FL/x.H>
+ //FLTK includes
+ #include <FL/fl_ask.H> //errorJWM
+-#include <Fl/Fl_Menu_Button.H>
+-#include <Fl/Fl_Output.H>
+-#include <Fl/Fl_Double_Window.H>
++#include <FL/Fl_Menu_Button.H>
++#include <FL/Fl_Output.H>
++#include <FL/Fl_Double_Window.H>
+ #include <FL/Fl_File_Chooser.H>
+ //Ubuntu 14.04 is missing SetText() so I have to include this
+ #include "tinyxml2.h"
+diff -Naur orig/include/flPanel.h patched/include/flPanel.h
+--- orig/include/flPanel.h	2016-04-02 17:09:20.000000000 +0200
++++ patched/include/flPanel.h	2016-04-20 22:20:24.610299360 +0200
+@@ -45,7 +45,7 @@
+ 
+ //FLTK stuff
+ #include "../fltk/jwm-panel.h"
+-#include <Fl/Fl_Widget.H>
++#include <FL/Fl_Widget.H>
+ //All the common functions
+ #include "Config.h"
+ 

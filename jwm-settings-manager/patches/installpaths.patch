@@ -1,0 +1,25 @@
+diff -Naur orig/data/CMakeLists.txt patched/data/CMakeLists.txt
+--- orig/data/CMakeLists.txt	2016-04-02 17:09:20.000000000 +0200
++++ patched/data/CMakeLists.txt	2016-04-20 23:17:48.267375533 +0200
+@@ -15,7 +15,7 @@
+ add_subdirectory(themes)
+ 
+ # install icon finder script
+-install (FILES jwmIconFinder DESTINATION usr/bin)
++install (FILES jwmIconFinder DESTINATION bin)
+ 
+ #install themes 
+ install (DIRECTORY themes DESTINATION share/jwm-settings-manager)
+@@ -27,9 +27,9 @@
+ install(FILES icons/jwm-settings-manager.png icons/jwm-settings-manager.xpm DESTINATION share/pixmaps)
+ 
+ # install all icons to our own icon directory
+-install(FILES ${ICONS} DESTINATION usr/share/icons/hicolor/scalable/apps)
+-install(FILES ${ICONS_PNG} DESTINATION usr/share/icons/hicolor/48x48/apps)
+-install(FILES ${ICONS_XPM} DESTINATION usr/share/pixmaps)
++install(FILES ${ICONS} DESTINATION share/icons/hicolor/scalable/apps)
++install(FILES ${ICONS_PNG} DESTINATION share/icons/hicolor/48x48/apps)
++install(FILES ${ICONS_XPM} DESTINATION share/pixmaps)
+ 
+ # install ALL desktop files into /usr/share/applications
+ install(FILES ${APPS} DESTINATION share/applications)
