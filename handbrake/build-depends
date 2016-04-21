@@ -10,6 +10,7 @@ libdca-dev
 libdrm-dev
 libdvdnav-dev
 libdvdread-dev
+libgudev-dev
 liblame-dev
 libnotify-dev
 libtheora-dev
