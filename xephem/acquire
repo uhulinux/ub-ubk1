@@ -2,4 +2,5 @@
 
 xephem-${UB_VERSION}.tar.gz xephem-${UB_VERSION}/
 	http://www.clearskyinstitute.com/cgi-bin/download/
-	ftp://ftp.linuxforum.hu/uhulinux/mirror/http:/www.clearskyinstitute.com/cgi-bin/download/
+	http://97.74.56.125/free/
+	ftp://ftp.tu-freiberg.de/pub/sgi/freeware/source/xephem/
