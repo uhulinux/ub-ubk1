@@ -1,0 +1,1 @@
+urllist http://m.seehuhn.de/programs/ | splitver '^moon-buggy-([0-9.]+).tar.gz$' | sort -V | tail -n 1
