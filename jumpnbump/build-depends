@@ -1,5 +1,3 @@
-%sdl
-%sdl-mixer
-%sdl-net
-%x
-tk
+sdl-mixer-dev
+sdl-net-dev
+tk-dev
