@@ -2,4 +2,4 @@
 
 oneko-${UB_VERSION}.tar.gz oneko-${UB_VERSION}/
 	ftp://ftp.ibiblio.org/pub/Linux/distributions/gentoo/distfiles/
-
+	ftp://ftp.tw.freebsd.org/pub/ports/distfiles/
