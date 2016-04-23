@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-stockfish-${UB_VERSION}-linux.zip stockfish-${UB_VERSION}-linux/
-	http://stockfish.s3.amazonaws.com/
+sf_${UB_VERSION}.tar.gz Stockfish-sf_${UB_VERSION}/
+	https://github.com/official-stockfish/Stockfish/archive/
