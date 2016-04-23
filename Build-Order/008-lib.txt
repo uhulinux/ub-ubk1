@@ -19,7 +19,6 @@ libdmapsharing
 libdv
 libdvdnav
 libexosip2
-libgcrypt
 libical
 libgudev
 libfli
