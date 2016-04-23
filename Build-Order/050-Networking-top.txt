@@ -25,6 +25,7 @@ balsa
 bitchx
 bittorrent
 chromium
+midori
 elinks
 emesene
 evolution-rss

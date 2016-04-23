@@ -17,7 +17,6 @@ gtk-engine-xfce
 thunar-volman
 xfce4-power-manager
 xfce4-notifyd
-xfce4-vala
 thunar-archive-plugin
 thunar-shares-plugin
 thunar-thumbnailers
@@ -40,7 +39,6 @@ xfce4-terminal
 xfce4-mixer
 xarchiver
 xfburn
-midori
 mousepad
 orage
 ristretto
