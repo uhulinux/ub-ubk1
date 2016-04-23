@@ -1,3 +1,4 @@
+libvncserver
 vigra
 libguess
 libexif-gtk
@@ -20,3 +21,4 @@ libspectrum
 timidity
 pigment
 python-pigment
+openscenegraph

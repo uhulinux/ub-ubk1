@@ -5,6 +5,7 @@ ffmpeg-dev
 libxt-dev
 mygui-dev
 ogre-dev
-qt4-dev
+openscenegraph-dev
+qt5-dev
 sdl2-dev
 unshield-dev

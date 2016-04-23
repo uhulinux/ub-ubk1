@@ -1,0 +1,11 @@
+diff -Naur orig/src/osgPlugins/jpeg/ReaderWriterJPEG.cpp mod/src/osgPlugins/jpeg/ReaderWriterJPEG.cpp
+--- orig/src/osgPlugins/jpeg/ReaderWriterJPEG.cpp	2016-03-01 21:25:33.000000000 +0100
++++ mod/src/osgPlugins/jpeg/ReaderWriterJPEG.cpp	2016-04-23 19:38:13.828434337 +0200
+@@ -72,6 +72,7 @@
+ 
+ /* Some versions of jmorecfg.h define boolean, some don't...
+    Those that do also define HAVE_BOOLEAN, so we can guard using that. */
++#define HAVE_BOOLEAN
+ #ifndef HAVE_BOOLEAN
+   typedef int boolean;
+   #define FALSE 0

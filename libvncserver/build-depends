@@ -1,0 +1,8 @@
+cmake
+gnutls-dev
+libgcrypt-dev
+libjpeg-dev
+libpng-dev
+libx11-dev
+openssl-dev
+sdl-dev
