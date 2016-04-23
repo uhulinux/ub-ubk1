@@ -11,3 +11,4 @@ ncurses
 opus
 svgdec
 twoolame
+opencv: ffmpeg 3.0.1 függő

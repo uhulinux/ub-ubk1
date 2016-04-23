@@ -2,3 +2,5 @@
 
 kaffeine-${UB_VERSION}.tar.gz kaffeine-${UB_VERSION}/
 	http://download.sourceforge.net/kaffeine/
+	
+#https://github.com/hiroshiyui/kaffeine

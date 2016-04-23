@@ -1,0 +1,3683 @@
+diff -Naur orig/Changelog patched/Changelog
+--- orig/Changelog	2015-09-06 21:02:33.000000000 +0200
++++ patched/Changelog	2016-04-23 07:35:55.491478830 +0200
+@@ -2,17 +2,7 @@
+ Kaffeine Changelog
+ ------------------
+ 
+-Version (release date):
+-
+-Version 1.3.1 (2015-09-06):
+-  - automatic recordings
+-  - fix for information files for recordings
+-  - translations readded
+-
+-Version 1.3 (2015-08-07):
+-  - option for custom naming for recordings
+-  - option for creating information files for recordings
+-  - other stuff
++Version (unreleased):
+ 
+ Version 1.2 (2011-04-04):
+   - add search function to epg
+diff -Naur orig/CMakeLists.txt patched/CMakeLists.txt
+--- orig/CMakeLists.txt	2015-09-06 21:02:33.000000000 +0200
++++ patched/CMakeLists.txt	2016-04-23 07:36:33.283666231 +0200
+@@ -1,15 +1,49 @@
++cmake_minimum_required(VERSION 2.8.12)
++
+ project(kaffeine)
+ 
+-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
++find_package(ECM 0.0.11 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
+ 
+-find_package(KDE4 REQUIRED)
++include(KDEInstallDirs)
++include(KDECMakeSettings)
++include(KDECompilerSettings)
++include(FeatureSummary)
++include(ECMInstallIcons)
++include(ECMOptionalAddSubdirectory)
++
++find_package(Qt5 REQUIRED COMPONENTS Widgets Network Sql X11Extras)
++find_package(KF5 REQUIRED COMPONENTS 
++    CoreAddons
++    Solid
++    Config
++    ItemModels
++    WidgetsAddons
++    WindowSystem
++    ConfigWidgets
++    Config
++    DBusAddons
++    I18n
++    ConfigWidgets
++    TextWidgets
++    XmlGui
++    KIO
++    NewStuff
++    KDELibs4Support)
+ find_package(X11 REQUIRED)
+ find_package(VLC 1.2 REQUIRED)
++find_package(KF5I18n REQUIRED)
++
++feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+ 
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES} ${VLC_INCLUDE_DIRS}
+                     ${X11_Xscreensaver_INCLUDE_PATH})
+ add_definitions(${KDE4_DEFINITIONS})
+ 
++#used to make porting easier
++add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0)
++
++
+ if(STRICT_BUILD)
+   add_definitions(-Werror -Weverything -Wno-packed -Wno-padded -Wno-sign-conversion -Wno-unreachable-code
+                   -Wno-weak-vtables -ferror-limit=5
+@@ -21,19 +55,21 @@
+                   -DQT_NO_URL_CAST_FROM_STRING -DQT_STRICT_ITERATORS)
+ endif(STRICT_BUILD)
+ 
+-check_include_files(${CMAKE_CURRENT_SOURCE_DIR}/include/frontend.h HAVE_DVB)
+-
+-if(NOT HAVE_DVB)
+-  MESSAGE(STATUS "Disabled features:\nDVB  Digital television support for Linux\n")
++# include(CheckIncludeFiles)
++# check_include_files(${CMAKE_CURRENT_SOURCE_DIR}/include/frontend.h HAVE_DVB)
++#
++# if(NOT HAVE_DVB)
++# MESSAGE(STATUS "Disabled features:\nDVB Digital television support for Linux\n")
+   set(HAVE_DVB 0)
+-endif(NOT HAVE_DVB)
++# endif(NOT HAVE_DVB)
+ 
+ add_subdirectory(deviceactions)
+ add_subdirectory(dtvdaemon)
+ add_subdirectory(icons)
+ add_subdirectory(profiles)
+ add_subdirectory(src)
+-macro_optional_add_subdirectory(po)
++set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS ON)
++ecm_optional_add_subdirectory(po)
+ 
+ if(BUILD_TOOLS)
+   add_subdirectory(tools)
+diff -Naur orig/deviceactions/kaffeine_play_audiocd.desktop patched/deviceactions/kaffeine_play_audiocd.desktop
+--- orig/deviceactions/kaffeine_play_audiocd.desktop	2015-09-06 21:02:33.000000000 +0200
++++ patched/deviceactions/kaffeine_play_audiocd.desktop	2016-04-23 07:35:55.499478869 +0200
+@@ -7,7 +7,7 @@
+ Name=Play Audio CD with Kaffeine
+ Name[bg]=Възпроизвеждане на аудио CD с Kaffeine
+ Name[bs]=Izvođenje Audio CD-ova programom Kaffeine
+-Name[ca]=Reprodueix un CD d'àudio amb el Kaffeine
++Name[ca]=Reprodueix CD d'àudio amb Kaffeine
+ Name[ca@valencia]=Reprodueix CD d'àudio amb Kaffeine
+ Name[cs]=Přehrát audio CD v Kaffeine
+ Name[csb]=Grôj Aùdio CD w Kaffeine
+diff -Naur orig/deviceactions/kaffeine_play_dvd.desktop patched/deviceactions/kaffeine_play_dvd.desktop
+--- orig/deviceactions/kaffeine_play_dvd.desktop	2015-09-06 21:02:33.000000000 +0200
++++ patched/deviceactions/kaffeine_play_dvd.desktop	2016-04-23 07:35:55.511478929 +0200
+@@ -7,7 +7,7 @@
+ Name=Play DVD with Kaffeine
+ Name[bg]=Възпроизвеждане на DVD с Kaffeine
+ Name[bs]=Izvođenje DVD-ova programom Kaffeine
+-Name[ca]=Reprodueix un DVD amb el Kaffeine
++Name[ca]=Reprodueix DVD amb Kaffeine
+ Name[ca@valencia]=Reprodueix DVD amb Kaffeine
+ Name[cs]=Přehrát DVD v Kaffeine
+ Name[csb]=Grôj DVD w Kaffeine
+diff -Naur orig/deviceactions/kaffeine_play_videocd.desktop patched/deviceactions/kaffeine_play_videocd.desktop
+--- orig/deviceactions/kaffeine_play_videocd.desktop	2015-09-06 21:02:33.000000000 +0200
++++ patched/deviceactions/kaffeine_play_videocd.desktop	2016-04-23 07:35:55.511478929 +0200
+@@ -7,7 +7,7 @@
+ Name=Play Video CD with Kaffeine
+ Name[bg]=Възпроизвеждане на CD с видео с Kaffeine
+ Name[bs]=Izvođenje video CD-ova programom Kaffeine
+-Name[ca]=Reprodueix un CD de vídeo amb el Kaffeine
++Name[ca]=Reprodueix CD de vídeo amb Kaffeine
+ Name[ca@valencia]=Reprodueix CD de vídeo amb Kaffeine
+ Name[cs]=Přehrát VCD v Kaffeine
+ Name[csb]=Grôj wideò CD w Kaffeine 
+diff -Naur orig/dtvdaemon/CMakeLists.txt patched/dtvdaemon/CMakeLists.txt
+--- orig/dtvdaemon/CMakeLists.txt	2015-09-06 21:02:33.000000000 +0200
++++ patched/dtvdaemon/CMakeLists.txt	2016-04-23 07:35:55.511478929 +0200
+@@ -4,6 +4,6 @@
+     log.cpp
+     main.cpp)
+ 
+-kde4_add_executable(dtvdaemon ${dtvdaemon_SRCS})
+-target_link_libraries(dtvdaemon ${QT_QTCORE_LIBRARY} ${QT_QTNETWORK_LIBRARY})
++add_executable(dtvdaemon ${dtvdaemon_SRCS})
++target_link_libraries(dtvdaemon Qt5::Core Qt5::Network)
+ install(TARGETS dtvdaemon ${INSTALL_TARGETS_DEFAULT_ARGS})
+diff -Naur orig/.gitignore patched/.gitignore
+--- orig/.gitignore	1970-01-01 01:00:00.000000000 +0100
++++ patched/.gitignore	2016-04-23 07:35:55.511478929 +0200
+@@ -0,0 +1,57 @@
++CMakeCache.txt
++CMakeFiles/
++CMakeTmp/
++Makefile
++cmake_install.cmake
++cmake_uninstall.cmake
++config-kaffeine.h
++deviceactions/CMakeFiles/
++deviceactions/Makefile
++deviceactions/cmake_install.cmake
++dtvdaemon/CMakeFiles/
++dtvdaemon/Makefile
++dtvdaemon/cmake_install.cmake
++dtvdaemon/dtvdaemon_automoc.cpp.files
++dtvdaemon/moc_connection.cpp
++dtvdaemon/moc_dtvdaemon.cpp
++icons/CMakeFiles/
++icons/Makefile
++icons/cmake_install.cmake
++profiles/CMakeFiles/
++profiles/Makefile
++profiles/cmake_install.cmake
++src/CMakeFiles/
++src/Makefile
++src/cmake_install.cmake
++src/kaffeine_automoc.cpp.files
++src/moc_configuration.cpp
++src/moc_configurationdialog.cpp
++src/moc_configurationdialog_p.cpp
++src/moc_dbusobjects.cpp
++src/moc_dvbcam_linux.cpp
++src/moc_dvbchannel.cpp
++src/moc_dvbchanneldialog.cpp
++src/moc_dvbconfigdialog.cpp
++src/moc_dvbdevice.cpp
++src/moc_dvbdevice_linux.cpp
++src/moc_dvbepg.cpp
++src/moc_dvbepgdialog.cpp
++src/moc_dvbepgdialog_p.cpp
++src/moc_dvbliveview.cpp
++src/moc_dvbliveview_p.cpp
++src/moc_dvbmanager.cpp
++src/moc_dvbrecording.cpp
++src/moc_dvbrecording_p.cpp
++src/moc_dvbrecordingdialog.cpp
++src/moc_dvbrecordingdialog_p.cpp
++src/moc_dvbscan.cpp
++src/moc_dvbscandialog.cpp
++src/moc_dvbsi.cpp
++src/moc_dvbtab.cpp
++src/moc_mainwindow.cpp
++src/moc_mediawidget.cpp
++src/moc_osdwidget.cpp
++src/moc_playlistmodel.cpp
++src/moc_playlisttab.cpp
++src/moc_sqlhelper.cpp
++src/tags
+diff -Naur orig/icons/CMakeLists.txt patched/icons/CMakeLists.txt
+--- orig/icons/CMakeLists.txt	2015-09-06 21:02:33.000000000 +0200
++++ patched/icons/CMakeLists.txt	2016-04-23 07:35:55.511478929 +0200
+@@ -2,4 +2,4 @@
+ # Copyright 2007 The Oxygen Team
+ # Creative Common Attribution-ShareAlike 3.0 or LGPL2+ (+ clarification)
+ 
+-kde4_install_icons(${ICON_INSTALL_DIR})
++ecm_install_icons(${ICON_INSTALL_DIR})
+diff -Naur orig/README patched/README
+--- orig/README	2015-09-06 21:02:33.000000000 +0200
++++ patched/README	2016-04-23 07:35:55.511478929 +0200
+@@ -1,15 +1,15 @@
++This is an experimental KF5/Qt5 port of kaffeine. Work is in progress, and may advance too slowly. Please try to fix the compile issues you are facing and lets collaborate to make Kaffeine KDE 5 ready.
++
+ -------------------
+ Installing Kaffeine
+ -------------------
+ 
+ The following development headers are needed (recommended versions):
+-* Qt >= 4.6
+-* KDE >= 4.4
++* Qt >= 5.0
++* KF >= 5.0
+ * libX11
+ * libXss
+ 
+-If build fails for missing VLC directories, install libvlc-dev.
+-
+ For the translations you need:
+ * gettext
+ 
+@@ -22,24 +22,18 @@
+ * -DCMAKE_BUILD_TYPE=<type> (Debug or Release)
+ * -DCMAKE_INSTALL_PREFIX=<path> (installation prefix for Kaffeine, e.g. /usr)
+ 
+-For further information look for generic KDE4 / cmake instructions.
+-
+ --------
+-Homepage
++DEV STATUS
+ --------
+ 
+-http://kaffeine.kde.org
++WiP
+ 
+ -------
+ Authors
+ -------
+ 
+-Maintainer:
+-  Lasse Lindqvist <lasse.k.lindqvist@gmail.com>
+-  
+ Former maintainers:
+-  Christoph Pfister
++  Christoph Pfister <christophpfister@gmail.com>
+   Christophe Thommeret
+   Jürgen Kofler
+-
+ Thanks to various contributors, translators, testers ...
+diff -Naur orig/src/abstractmediawidget.cpp patched/src/abstractmediawidget.cpp
+--- orig/src/abstractmediawidget.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/abstractmediawidget.cpp	2016-04-23 07:35:55.511478929 +0200
+@@ -194,7 +194,7 @@
+ 	Q_UNUSED(currentSubtitle)
+ }
+ 
+-void DummyMediaWidget::setExternalSubtitle(const KUrl &subtitleUrl)
++void DummyMediaWidget::setExternalSubtitle(const QUrl &subtitleUrl)
+ {
+ 	Q_UNUSED(subtitleUrl)
+ }
+diff -Naur orig/src/abstractmediawidget.h patched/src/abstractmediawidget.h
+--- orig/src/abstractmediawidget.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/abstractmediawidget.h	2016-04-23 07:35:55.511478929 +0200
+@@ -22,6 +22,7 @@
+ #define ABSTRACTMEDIAWIDGET_H
+ 
+ #include "mediawidget.h"
++#include <QMap>
+ 
+ class AbstractMediaWidget : public QWidget
+ {
+@@ -61,7 +62,7 @@
+ 	virtual void seek(int time) = 0; // milliseconds
+ 	virtual void setCurrentAudioStream(int currentAudioStream) = 0;
+ 	virtual void setCurrentSubtitle(int currentSubtitle) = 0;
+-	virtual void setExternalSubtitle(const KUrl &subtitleUrl) = 0;
++    virtual void setExternalSubtitle(const QUrl &subtitleUrl) = 0;
+ 	virtual void setCurrentTitle(int currentTitle) = 0;
+ 	virtual void setCurrentChapter(int currentChapter) = 0;
+ 	virtual void setCurrentAngle(int currentAngle) = 0;
+@@ -145,7 +146,7 @@
+ 	void seek(int time); // milliseconds
+ 	void setCurrentAudioStream(int currentAudioStream);
+ 	void setCurrentSubtitle(int currentSubtitle);
+-	void setExternalSubtitle(const KUrl &subtitleUrl);
++    void setExternalSubtitle(const QUrl &subtitleUrl);
+ 	void setCurrentTitle(int currentTitle);
+ 	void setCurrentChapter(int currentChapter);
+ 	void setCurrentAngle(int currentAngle);
+diff -Naur orig/src/backend-vlc/vlcmediawidget.cpp patched/src/backend-vlc/vlcmediawidget.cpp
+--- orig/src/backend-vlc/vlcmediawidget.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/backend-vlc/vlcmediawidget.cpp	2016-04-23 07:35:55.511478929 +0200
+@@ -184,7 +184,7 @@
+ 
+ 	if (vlcMedia == NULL) {
+ 		libvlc_media_player_stop(vlcMediaPlayer);
+-		Log("VlcMediaWidget::play: cannot create media") << source.getUrl().prettyUrl();
++        Log("VlcMediaWidget::play: cannot create media") << source.getUrl().url();
+ 		return;
+ 	}
+ 
+@@ -211,7 +211,7 @@
+ // 	}
+ 
+ 	if (libvlc_media_player_play(vlcMediaPlayer) != 0) {
+-		Log("VlcMediaWidget::play: cannot play media") << source.getUrl().prettyUrl();
++        Log("VlcMediaWidget::play: cannot play media") << source.getUrl().url();
+ 	}
+ }
+ 
+@@ -261,12 +261,12 @@
+ 	libvlc_video_set_spu(vlcMediaPlayer, requestedSubtitle);
+ }
+ 
+-void VlcMediaWidget::setExternalSubtitle(const KUrl &subtitleUrl)
++void VlcMediaWidget::setExternalSubtitle(const QUrl &subtitleUrl)
+ {
+ 	if (libvlc_video_set_subtitle_file(vlcMediaPlayer,
+ 	    subtitleUrl.toEncoded().constData()) == 0) {
+ 		Log("VlcMediaWidget::setExternalSubtitle: cannot set subtitle file") <<
+-			subtitleUrl.prettyUrl();
++            subtitleUrl.url();
+ 	}
+ }
+ 
+diff -Naur orig/src/backend-vlc/vlcmediawidget.h patched/src/backend-vlc/vlcmediawidget.h
+--- orig/src/backend-vlc/vlcmediawidget.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/backend-vlc/vlcmediawidget.h	2016-04-23 07:35:55.511478929 +0200
+@@ -50,7 +50,7 @@
+ 	void seek(int time); // milliseconds
+ 	void setCurrentAudioStream(int currentAudioStream);
+ 	void setCurrentSubtitle(int currentSubtitle);
+-	void setExternalSubtitle(const KUrl &subtitleUrl);
++    void setExternalSubtitle(const QUrl &subtitleUrl);
+ 	void setCurrentTitle(int currentTitle);
+ 	void setCurrentChapter(int currentChapter);
+ 	void setCurrentAngle(int currentAngle);
+diff -Naur orig/src/CMakeLists.txt patched/src/CMakeLists.txt
+--- orig/src/CMakeLists.txt	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/CMakeLists.txt	2016-04-23 07:35:55.515478949 +0200
+@@ -39,10 +39,12 @@
+ 
+ configure_file(config-kaffeine.h.cmake ${CMAKE_BINARY_DIR}/config-kaffeine.h)
+ 
+-kde4_add_executable(kaffeine ${kaffeinedvb_SRCS} ${kaffeine_SRCS})
+-target_link_libraries(kaffeine ${QT_QTSQL_LIBRARY} ${KDE4_KFILE_LIBS} ${KDE4_KIO_LIBS}
+-                      ${KDE4_SOLID_LIBS} ${X11_Xscreensaver_LIB} ${VLC_LIBRARY})
++add_executable(kaffeine ${kaffeinedvb_SRCS} ${kaffeine_SRCS})
++target_link_libraries(kaffeine Qt5::Sql Qt5::DBus Qt5::X11Extras ${KDE4_KFILE_LIBS} KF5::CoreAddons 
++    KF5::Solid KF5::ItemModels KF5::WidgetsAddons KF5::WindowSystem 
++    KF5::DBusAddons KF5::I18n KF5::ConfigWidgets KF5::TextWidgets KF5::XmlGui KF5::NewStuff
++    KF5::KDELibs4Support ${X11_Xscreensaver_LIB} ${VLC_LIBRARY})
+ install(TARGETS kaffeine ${INSTALL_TARGETS_DEFAULT_ARGS})
+ install(FILES scanfile.dvb DESTINATION ${DATA_INSTALL_DIR}/kaffeine)
+ install(PROGRAMS kaffeine.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+-install(FILES kaffeine.appdata.xml DESTINATION share/appdata/)
++
+diff -Naur orig/src/configurationdialog.cpp patched/src/configurationdialog.cpp
+--- orig/src/configurationdialog.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/configurationdialog.cpp	2016-04-23 07:35:55.515478949 +0200
+@@ -34,7 +34,7 @@
+ 
+ ConfigurationDialog::ConfigurationDialog(QWidget *parent) : KPageDialog(parent)
+ {
+-	setCaption(i18nc("@title:window", "Configure Kaffeine"));
++	setWindowTitle(i18nc("@title:window", "Configure Kaffeine"));
+ 
+ 	QWidget *widget = new QWidget(this);
+ 	QGridLayout *gridLayout = new QGridLayout(widget);
+@@ -75,7 +75,7 @@
+ 	gridLayout->setRowStretch(3, 1);
+ 
+ 	KPageWidgetItem *page = new KPageWidgetItem(widget, i18nc("@title:group", "General"));
+-	page->setIcon(KIcon(QLatin1String("configure")));
++	page->setIcon(QIcon::fromTheme(QLatin1String("configure")));
+ 	addPage(page);
+ 
+ 	widget = new QWidget(this);
+@@ -96,7 +96,7 @@
+ 	gridLayout->setRowStretch(2, 1);
+ 
+ 	page = new KPageWidgetItem(widget, i18nc("@title:group", "Diagnostics"));
+-	page->setIcon(KIcon(QLatin1String("page-zoom")));
++	page->setIcon(QIcon::fromTheme(QLatin1String("page-zoom")));
+ 	addPage(page);
+ }
+ 
+@@ -124,7 +124,7 @@
+ DmesgDialog::DmesgDialog(QWidget *parent) : KDialog(parent)
+ {
+ 	setButtons(KDialog::Close);
+-	setCaption(i18nc("@title:window", "dmesg"));
++	setWindowTitle(i18nc("@title:window", "dmesg"));
+ 
+ 	dmesgProcess = new QProcess(this);
+ 	dmesgProcess->setProcessChannelMode(QProcess::MergedChannels);
+diff -Naur orig/src/dbusobjects.cpp patched/src/dbusobjects.cpp
+--- orig/src/dbusobjects.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dbusobjects.cpp	2016-04-23 07:35:55.515478949 +0200
+@@ -21,7 +21,7 @@
+ #include "dbusobjects.h"
+ 
+ #include <QDBusMetaType>
+-#include <KAboutData>
++#include <K4AboutData>
+ #include <KApplication>
+ #include "dvb/dvbmanager.h"
+ #include "dvb/dvbtab.h"
+@@ -91,7 +91,7 @@
+ 
+ QString MprisRootObject::Identity()
+ {
+-	const KAboutData *aboutData = KGlobal::mainComponent().aboutData();
++	const K4AboutData *aboutData = KComponentData::mainComponent().aboutData();
+ 	return aboutData->programName() + QLatin1Char(' ' )+ aboutData->version();
+ }
+ 
+@@ -296,7 +296,7 @@
+ 
+ int MprisTrackListObject::AddTrack(const QString &url, bool playImmediately)
+ {
+-	playlistTab->appendToCurrentPlaylist(QList<KUrl>() << url, playImmediately);
++	playlistTab->appendToCurrentPlaylist(QList<QUrl>() << url, playImmediately);
+ 	return 0;
+ }
+ 
+diff -Naur orig/src/dvb/dvbchannel.cpp patched/src/dvb/dvbchannel.cpp
+--- orig/src/dvb/dvbchannel.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbchannel.cpp	2016-04-23 07:35:55.515478949 +0200
+@@ -22,7 +22,7 @@
+ 
+ #include <QFile>
+ #include <QVariant>
+-#include <KStandardDirs>
++#include <QStandardPaths>
+ #include "../ensurenopendingoperation.h"
+ #include "../log.h"
+ #include "dvbsi.h"
+@@ -127,7 +127,7 @@
+ 
+ 	// compatibility code
+ 
+-	QFile file(KStandardDirs::locateLocal("appdata", QLatin1String("channels.dtv")));
++    QFile file(QStandardPaths::locate(QStandardPaths::DataLocation, QLatin1String("channels.dtv")));
+ 
+ 	if (!file.exists()) {
+ 		return channelModel;
+diff -Naur orig/src/dvb/dvbchanneldialog.cpp patched/src/dvb/dvbchanneldialog.cpp
+--- orig/src/dvb/dvbchanneldialog.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbchanneldialog.cpp	2016-04-23 07:35:55.515478949 +0200
+@@ -122,15 +122,15 @@
+ 			if (index.column() == 0) {
+ 				if (channel->hasVideo) {
+ 					if (!channel->isScrambled) {
+-						return KIcon(QLatin1String("video-television"));
++						return QIcon::fromTheme(QLatin1String("video-television"));
+ 					} else {
+-						return KIcon(QLatin1String("video-television-encrypted"));
++						return QIcon::fromTheme(QLatin1String("video-television-encrypted"));
+ 					}
+ 				} else {
+ 					if (!channel->isScrambled) {
+-						return KIcon(QLatin1String("text-speak"));
++						return QIcon::fromTheme(QLatin1String("text-speak"));
+ 					} else {
+-						return KIcon(QLatin1String("audio-radio-encrypted"));
++						return QIcon::fromTheme(QLatin1String("audio-radio-encrypted"));
+ 					}
+ 				}
+ 			}
+@@ -287,7 +287,7 @@
+ 
+ KAction *DvbChannelView::addEditAction()
+ {
+-	KAction *action = new KAction(KIcon(QLatin1String("configure")), i18nc("@action", "Edit"), this);
++	KAction *action = new KAction(QIcon::fromTheme(QLatin1String("configure")), i18nc("@action", "Edit"), this);
+ 	connect(action, SIGNAL(triggered()), this, SLOT(editChannel()));
+ 	addAction(action);
+ 	return action;
+@@ -295,7 +295,7 @@
+ 
+ KAction *DvbChannelView::addRemoveAction()
+ {
+-	KAction *action = new KAction(KIcon(QLatin1String("edit-delete")), i18nc("@action", "Remove"), this);
++	KAction *action = new KAction(QIcon::fromTheme(QLatin1String("edit-delete")), i18nc("@action", "Remove"), this);
+ 	connect(action, SIGNAL(triggered()), this, SLOT(removeChannel()));
+ 	addAction(action);
+ 	return action;
+diff -Naur orig/src/dvb/dvbconfigdialog.cpp patched/src/dvb/dvbconfigdialog.cpp
+--- orig/src/dvb/dvbconfigdialog.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbconfigdialog.cpp	2016-04-23 07:35:55.515478949 +0200
+@@ -23,7 +23,6 @@
+ #include <QBoxLayout>
+ #include <QButtonGroup>
+ #include <QCheckBox>
+-#include <QDesktopServices>
+ #include <QLabel>
+ #include <QProgressBar>
+ #include <QPushButton>
+@@ -36,17 +35,14 @@
+ #include <KIO/Job>
+ #include <KLineEdit>
+ #include <KLocale>
+-#include <KStandardDirs>
+ #include <KTabWidget>
+ #include "dvbconfig.h"
+ #include "dvbdevice.h"
+ #include "dvbmanager.h"
+-#include "dvbrecording.h"
+ 
+ DvbConfigDialog::DvbConfigDialog(DvbManager *manager_, QWidget *parent) : KDialog(parent),
+ 	manager(manager_)
+ {
+-
+ 	setCaption(i18nc("@title:window", "Configure Television"));
+ 
+ 	tabWidget = new KTabWidget(this);
+@@ -63,7 +59,7 @@
+ 	gridLayout->addWidget(recordingFolderEdit, 0, 1);
+ 
+ 	QToolButton *toolButton = new QToolButton(widget);
+-	toolButton->setIcon(KIcon(QLatin1String("document-open-folder")));
++	toolButton->setIcon(QIcon::fromTheme(QLatin1String("document-open-folder")));
+ 	toolButton->setToolTip(i18n("Select Folder"));
+ 	connect(toolButton, SIGNAL(clicked()), this, SLOT(changeRecordingFolder()));
+ 	gridLayout->addWidget(toolButton, 0, 2);
+@@ -75,7 +71,7 @@
+ 	gridLayout->addWidget(timeShiftFolderEdit, 1, 1);
+ 
+ 	toolButton = new QToolButton(widget);
+-	toolButton->setIcon(KIcon(QLatin1String("document-open-folder")));
++	toolButton->setIcon(QIcon::fromTheme(QLatin1String("document-open-folder")));
+ 	toolButton->setToolTip(i18n("Select Folder"));
+ 	connect(toolButton, SIGNAL(clicked()), this, SLOT(changeTimeShiftFolder()));
+ 	gridLayout->addWidget(toolButton, 1, 2);
+@@ -97,39 +93,6 @@
+ 	gridLayout->addWidget(endMarginBox, 3, 1);
+ 	boxLayout->addLayout(gridLayout);
+ 
+-	gridLayout->addWidget(new QLabel(i18n("Naming style for recordings:")), 4, 0);
+-
+-	namingFormat = new KLineEdit(widget);
+-	namingFormat->setText(manager->getNamingFormat());
+-	namingFormat->setToolTip(i18n("The following substitutions work: \"%year\" for year (YYYY) and the following: %month, %day, %hour, %min, %sec, %channel and %title"));
+-	connect(namingFormat, SIGNAL(textChanged(QString)), this, SLOT(namingFormatChanged(QString)));
+-
+-	gridLayout->addWidget(namingFormat, 4, 1);
+-	boxLayout->addLayout(gridLayout);
+-
+-	validPixmap = KIcon(QLatin1String("dialog-ok-apply")).pixmap(KIconLoader::SizeSmallMedium);
+-	invalidPixmap = KIcon(QLatin1String("dialog-cancel")).pixmap(KIconLoader::SizeSmallMedium);
+-
+-	namingFormatValidLabel = new QLabel(widget);
+-	namingFormatValidLabel->setPixmap(validPixmap);
+-	gridLayout->addWidget(namingFormatValidLabel, 4,2);
+-
+-	gridLayout->addWidget(new QLabel(i18n("Regex for automatic recording:")), 5, 0);
+-
+-	regexLineEdit = new KLineEdit(widget);
+-	regexLineEdit->setText(manager->getRecordingRegex());
+-	regexLineEdit->setToolTip(i18n("Automatically schedules recordings for matching titles."));
+-	gridLayout->addWidget(regexLineEdit, 5, 1);
+-
+-	gridLayout->addWidget(new QLabel(i18n("Action after recording finishes.")),	6, 0);
+-
+-	actionAfterRecordingLineEdit = new KLineEdit(widget);
+-	actionAfterRecordingLineEdit->setText(manager->getActionAfterRecording());
+-	actionAfterRecordingLineEdit->setToolTip(i18n("Leave empty for no command."));
+-	gridLayout->addWidget(actionAfterRecordingLineEdit, 6, 1);
+-
+-	boxLayout->addLayout(gridLayout);
+-
+ 	gridLayout = new QGridLayout();
+ 	gridLayout->addWidget(new QLabel(i18n("Use ISO 8859-1 charset instead of ISO 6937:")),
+ 		1, 0);
+@@ -137,13 +100,6 @@
+ 	override6937CharsetBox = new QCheckBox(widget);
+ 	override6937CharsetBox->setChecked(manager->override6937Charset());
+ 	gridLayout->addWidget(override6937CharsetBox, 1, 1);
+-
+-	gridLayout->addWidget(new QLabel(i18n("Create info files to accompany EPG recordings.")),
+-		2, 0);
+-	createInfoFileBox = new QCheckBox(widget);
+-	createInfoFileBox->setChecked(manager->createInfoFile());
+-	gridLayout->addWidget(createInfoFileBox, 2, 1);
+-
+ 	boxLayout->addLayout(gridLayout);
+ 
+ 	QFrame *frame = new QFrame(widget);
+@@ -151,17 +107,12 @@
+ 	boxLayout->addWidget(frame);
+ 
+ 	boxLayout->addWidget(new QLabel(i18n("Scan data last updated on %1",
+-		KGlobal::locale()->formatDate(manager->getScanDataDate(), KLocale::ShortDate))));
++		KLocale::global()->formatDate(manager->getScanDataDate(), KLocale::ShortDate))));
+ 
+ 	QPushButton *pushButton = new QPushButton(i18n("Update scan data over Internet"), widget);
+ 	connect(pushButton, SIGNAL(clicked()), this, SLOT(updateScanFile()));
+ 	boxLayout->addWidget(pushButton);
+ 
+-	QPushButton *openScanFileButton = new QPushButton(i18n("Edit scanfile"), widget);
+-	connect(openScanFileButton, SIGNAL(clicked()), this, SLOT(openScanFile()));
+-	boxLayout->addWidget(openScanFileButton);
+-	openScanFileButton->setToolTip(i18n("You can add channels manually to this file before scanning for them."));
+-
+ 	frame = new QFrame(widget);
+ 	frame->setFrameShape(QFrame::HLine);
+ 	boxLayout->addWidget(frame);
+@@ -177,8 +128,8 @@
+ 	connect(latitudeEdit, SIGNAL(textChanged(QString)), this, SLOT(latitudeChanged(QString)));
+ 	gridLayout->addWidget(latitudeEdit, 0, 2);
+ 
+-	validPixmap = KIcon(QLatin1String("dialog-ok-apply")).pixmap(KIconLoader::SizeSmallMedium);
+-	invalidPixmap = KIcon(QLatin1String("dialog-cancel")).pixmap(KIconLoader::SizeSmallMedium);
++	validPixmap = QIcon::fromTheme(QLatin1String("dialog-ok-apply")).pixmap(KIconLoader::SizeSmallMedium);
++	invalidPixmap = QIcon::fromTheme(QLatin1String("dialog-cancel")).pixmap(KIconLoader::SizeSmallMedium);
+ 
+ 	latitudeValidLabel = new QLabel(widget);
+ 	latitudeValidLabel->setPixmap(validPixmap);
+@@ -202,7 +153,7 @@
+ 
+ 	// FIXME more general options
+ 
+-	tabWidget->addTab(widget, KIcon(QLatin1String("configure")), i18n("General Options"));
++	tabWidget->addTab(widget, QIcon::fromTheme(QLatin1String("configure")), i18n("General Options"));
+ 
+ 	int i = 1;
+ 
+@@ -214,7 +165,7 @@
+ 			this, SLOT(moveRight(DvbConfigPage*)));
+ 		connect(configPage, SIGNAL(remove(DvbConfigPage*)),
+ 			this, SLOT(remove(DvbConfigPage*)));
+-		tabWidget->addTab(configPage, KIcon(QLatin1String("video-television")), i18n("Device %1", i));
++		tabWidget->addTab(configPage, QIcon::fromTheme(QLatin1String("video-television")), i18n("Device %1", i));
+ 		configPages.append(configPage);
+ 		++i;
+ 	}
+@@ -259,12 +210,6 @@
+ 	dialog->show();
+ }
+ 
+-void DvbConfigDialog::openScanFile()
+-{
+-	QString file(KStandardDirs::locateLocal("appdata", QLatin1String("scanfile.dvb")));
+-	QDesktopServices::openUrl(QUrl(file));
+-}
+-
+ void DvbConfigDialog::latitudeChanged(const QString &text)
+ {
+ 	bool ok;
+@@ -289,24 +234,6 @@
+ 	}
+ }
+ 
+-void DvbConfigDialog::namingFormatChanged(QString text)
+-{
+-	QString temp = text.replace("%year", " ");
+-	temp = temp.replace("%month", " ");
+-	temp = temp.replace("%day", " ");
+-	temp = temp.replace("%hour", " ");
+-	temp = temp.replace("%min", " ");
+-	temp = temp.replace("%sec"," ");
+-	temp = temp.replace("%channel", " ");
+-	temp = temp.replace("%title", " ");
+-
+-	if (!temp.contains("%")) {
+-		namingFormatValidLabel->setPixmap(validPixmap);
+-	} else {
+-		namingFormatValidLabel->setPixmap(invalidPixmap);
+-	}
+-}
+-
+ void DvbConfigDialog::moveLeft(DvbConfigPage *configPage)
+ {
+ 	int index = configPages.indexOf(configPage);
+@@ -328,7 +255,7 @@
+ 	}
+ 
+ 	// configPages and tabWidget indexes differ by one
+-	tabWidget->insertTab(index, configPages.at(index - 1), KIcon(QLatin1String("video-television")),
++	tabWidget->insertTab(index, configPages.at(index - 1), QIcon::fromTheme(QLatin1String("video-television")),
+ 		i18n("Device %1", index));
+ 	tabWidget->setTabText(index + 1, i18n("Device %1", index + 1));
+ 	tabWidget->setCurrentIndex(index);
+@@ -355,7 +282,7 @@
+ 	}
+ 
+ 	// configPages and tabWidget indexes differ by one
+-	tabWidget->insertTab(index, configPages.at(index - 1), KIcon(QLatin1String("video-television")),
++	tabWidget->insertTab(index, configPages.at(index - 1), QIcon::fromTheme(QLatin1String("video-television")),
+ 		i18n("Device %1", index));
+ 	tabWidget->setTabText(index + 1, i18n("Device %1", index + 1));
+ 	tabWidget->setCurrentIndex(index + 1);
+@@ -421,13 +348,9 @@
+ {
+ 	manager->setRecordingFolder(recordingFolderEdit->text());
+ 	manager->setTimeShiftFolder(timeShiftFolderEdit->text());
+-	manager->setNamingFormat(namingFormat->text());
+-	manager->setRecordingRegex(regexLineEdit->text());
+-	manager->setActionAfterRecording(actionAfterRecordingLineEdit->text());
+ 	manager->setBeginMargin(beginMarginBox->value() * 60);
+ 	manager->setEndMargin(endMarginBox->value() * 60);
+ 	manager->setOverride6937Charset(override6937CharsetBox->isChecked());
+-	manager->setCreateInfoFile(createInfoFileBox->isChecked());
+ 
+ 	bool latitudeOk;
+ 	bool longitudeOk;
+@@ -448,7 +371,6 @@
+ 	}
+ 
+ 	manager->updateDeviceConfigs(configUpdates);
+-	manager->getRecordingModel()->findNewRecordings();
+ 
+ 	KDialog::accept();
+ }
+@@ -471,7 +393,7 @@
+ 	progressBar->setRange(0, 100);
+ 	layout->addWidget(progressBar);
+ 
+-	job = KIO::get(KUrl("http://kaffeine.kde.org/scanfile.dvb.qz"), KIO::NoReload,
++	job = KIO::get(QUrl("http://kaffeine.kde.org/scanfile.dvb.qz"), KIO::NoReload,
+ 		       KIO::HideProgressInfo); // FIXME NoReload or Reload?
+ 	job->setAutoDelete(false);
+ 	connect(job, SIGNAL(percent(KJob*,ulong)),
+@@ -531,22 +453,22 @@
+ 	boxLayout->addWidget(new QLabel(i18n("Name: %1", deviceConfig->frontendName)));
+ 
+ 	QBoxLayout *horizontalLayout = new QHBoxLayout();
+-	moveLeftButton = new QPushButton(KIcon(QLatin1String("arrow-left")), i18n("Move Left"), this);
++	moveLeftButton = new QPushButton(QIcon::fromTheme(QLatin1String("arrow-left")), i18n("Move Left"), this);
+ 	connect(moveLeftButton, SIGNAL(clicked()), this, SLOT(moveLeft()));
+ 	horizontalLayout->addWidget(moveLeftButton);
+ 
+ 	if (deviceConfig->device != NULL) {
+-		QPushButton *pushButton = new QPushButton(KIcon(QLatin1String("edit-undo")), i18n("Reset"), this);
++		QPushButton *pushButton = new QPushButton(QIcon::fromTheme(QLatin1String("edit-undo")), i18n("Reset"), this);
+ 		connect(pushButton, SIGNAL(clicked()), this, SIGNAL(resetConfig()));
+ 		horizontalLayout->addWidget(pushButton);
+ 	} else {
+ 		QPushButton *pushButton =
+-			new QPushButton(KIcon(QLatin1String("edit-delete")), i18nc("@action", "Remove"), this);
++			new QPushButton(QIcon::fromTheme(QLatin1String("edit-delete")), i18nc("@action", "Remove"), this);
+ 		connect(pushButton, SIGNAL(clicked()), this, SLOT(removeConfig()));
+ 		horizontalLayout->addWidget(pushButton);
+ 	}
+ 
+-	moveRightButton = new QPushButton(KIcon(QLatin1String("arrow-right")), i18n("Move Right"), this);
++	moveRightButton = new QPushButton(QIcon::fromTheme(QLatin1String("arrow-right")), i18n("Move Right"), this);
+ 	connect(moveRightButton, SIGNAL(clicked()), this, SLOT(moveRight()));
+ 	horizontalLayout->addWidget(moveRightButton);
+ 	boxLayout->addLayout(horizontalLayout);
+diff -Naur orig/src/dvb/dvbconfigdialog.h patched/src/dvb/dvbconfigdialog.h
+--- orig/src/dvb/dvbconfigdialog.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbconfigdialog.h	2016-04-23 07:35:55.515478949 +0200
+@@ -32,7 +32,6 @@
+ class QSpinBox;
+ class QTreeWidget;
+ class KComboBox;
+-class QComboBox;
+ class KJob;
+ class KLineEdit;
+ class KTabWidget;
+@@ -60,10 +59,8 @@
+ 	void changeRecordingFolder();
+ 	void changeTimeShiftFolder();
+ 	void updateScanFile();
+-	void openScanFile();
+ 	void latitudeChanged(const QString &text);
+ 	void longitudeChanged(const QString &text);
+-	void namingFormatChanged(QString text);
+ 	void moveLeft(DvbConfigPage *configPage);
+ 	void moveRight(DvbConfigPage *configPage);
+ 	void remove(DvbConfigPage *configPage);
+@@ -80,19 +77,14 @@
+ 	KLineEdit *timeShiftFolderEdit;
+ 	QSpinBox *beginMarginBox;
+ 	QSpinBox *endMarginBox;
+-	KLineEdit *namingFormat;
+ 	QCheckBox *override6937CharsetBox;
+-	QCheckBox *createInfoFileBox;
+ 	KLineEdit *latitudeEdit;
+ 	KLineEdit *longitudeEdit;
+ 	QPixmap validPixmap;
+ 	QPixmap invalidPixmap;
+ 	QLabel *latitudeValidLabel;
+ 	QLabel *longitudeValidLabel;
+-	QLabel *namingFormatValidLabel;
+ 	QList<DvbConfigPage *> configPages;
+-	KLineEdit *regexLineEdit;
+-	KLineEdit *actionAfterRecordingLineEdit;
+ };
+ 
+ class DvbScanFileDownloadDialog : public KDialog
+diff -Naur orig/src/dvb/dvbdevice_linux.cpp patched/src/dvb/dvbdevice_linux.cpp
+--- orig/src/dvb/dvbdevice_linux.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbdevice_linux.cpp	2016-04-23 07:35:55.519478968 +0200
+@@ -29,15 +29,7 @@
+ #include <fcntl.h>
+ #include <frontend.h>
+ #include <poll.h>
+-#include <sys/socket.h>
+-#include <sys/un.h>
+-#include <sys/types.h>
+ #include <sys/ioctl.h>
+-#include <sys/stat.h>
+-#include <dirent.h>
+-#include <sys/inotify.h>
+-#include <vector>
+-#include <stdlib.h>
+ #include <unistd.h>
+ #include "../log.h"
+ #include "dvbtransponder.h"
+@@ -816,179 +808,15 @@
+ 	}
+ }
+ 
+-struct dvbdev {
+-        time_t stctime;
+-        char checked;
+-        char adapter_name[50];
+-        char node_name[75];
+-        int adapternum;
+-        char lnode[20];
+-};
+-
+-class DvbDeviceMonitor : public QThread
+-{
+-public:
+-        DvbDeviceMonitor(DvbLinuxDeviceManager *ddm)
+-        {
+-                this->ddm = ddm;
+-        }
+-        ~DvbDeviceMonitor()
+-        {
+-        }
+-        void run() {
+-                DIR *dvbdir, *adapterdirp;
+-                struct dirent *dp, *dp2;
+-                struct stat stbuf;
+-                int adapter;
+-                int rescan=0;
+-                int rv;
+-                int ifd;
+-                int found=0;
+-                char adapterdir[50];
+-                char nodename[75];
+-                char buffer[1024];
+-                struct pollfd pfd;
+-                char firstrun_complete=0;
+-                std::vector<struct dvbdev*>adapterlist;
+-                std::vector<struct dvbdev*>::iterator iter;
+-
+-                runstate = 1;
+-
+-                ifd = inotify_init();
+-                inotify_add_watch(ifd, "/dev/dvb", IN_CREATE|IN_DELETE);
+-                fcntl(ifd, F_SETFL, O_NONBLOCK);
+-                pfd.fd = ifd;
+-                pfd.events = POLLIN;
+-
+-                while(runstate) {
+-                        if (firstrun_complete) {
+-                                rv = poll(&pfd, 1, 100);
+-                                switch (rv) {
+-                                case -1:
+-                                        break;
+-                                case 0:
+-                                        continue;
+-                                default:
+-                                        usleep(100000); /* give it some time to settle down */
+-                                        while(read(ifd, buffer, 1024)>0);
+-                                        break;
+-                                }
+-                        } else {
+-                                firstrun_complete=1;
+-                        }
+-
+-                        dvbdir = opendir("/dev/dvb");
+-                        for (iter=adapterlist.begin();iter!=adapterlist.end();iter++) {
+-                                (*iter)->checked=0;
+-                        }
+-                        if (dvbdir) {
+-                                while((dp=readdir(dvbdir))!= 0) {
+-                                        if (strcmp(dp->d_name, ".") == 0 ||
+-                                            strcmp(dp->d_name, "..") == 0)
+-                                                continue;
+-                                        adapter = strtol(&dp->d_name[7], NULL, 10);
+-                                        sprintf(adapterdir, "/dev/dvb/%s", dp->d_name);
+-                                        adapterdirp = opendir(adapterdir);
+-                                        if (adapterdirp) {
+-                                                while((dp2=readdir(adapterdirp))!=0) {
+-                                                        found=0;
+-                                                        if (strcmp(dp2->d_name, ".")==0 ||
+-                                                                strcmp(dp2->d_name, "..")==0)
+-                                                                continue;
+-                                                        sprintf(nodename, "/dev/dvb/%s/%s", dp->d_name, dp2->d_name);
+-                                                        rv = stat(nodename, &stbuf);
+-                                                        for (iter=adapterlist.begin();iter!=adapterlist.end();iter++) {
+-                                                                if (strcmp((*iter)->node_name, nodename)==0 && (*iter)->stctime == stbuf.st_ctime) {
+-                                                                        (*iter)->checked=1;
+-                                                                        found=1;
+-                                                                        break;
+-                                                                }
+-                                                        }
+-                                                        if (found == 0) {
+-                                                                struct dvbdev *dvbdev = (struct dvbdev*)calloc(1, sizeof(struct dvbdev));
+-                                                                dvbdev->checked=1;
+-                                                                dvbdev->stctime = stbuf.st_ctime;
+-                                                                strcpy(dvbdev->adapter_name, dp->d_name);
+-                                                                strcpy(dvbdev->node_name, nodename);
+-                                                                dvbdev->adapternum = adapter;
+-                                                                strcpy(dvbdev->lnode, dp2->d_name);
+-                                                                adapterlist.push_back(dvbdev);
+-                                                                ddm->componentAdded(dp2->d_name, adapter, 0);
+-                                                        }
+-
+-                                                }
+-                                                closedir(adapterdirp);
+-                                        }
+-                                }
+-                                closedir(dvbdir);
+-                        }
+-                        do {
+-                                rescan=0;
+-                                for (iter=adapterlist.begin();iter!=adapterlist.end();iter++) {
+-                                        if ((*iter)->checked==0) {
+-                                                ddm->componentRemoved((*iter)->lnode, (*iter)->adapternum, 0);
+-                                                free(*iter);
+-                                                adapterlist.erase(iter);
+-                                                rescan=1;
+-                                                break;
+-                                        }
+-                                }
+-                        } while (rescan!=0);
+-                }
+-        }
+-        void stop() {
+-                runstate = 0;
+-                wait();
+-        }
+-private:
+-        int runstate;
+-        DvbLinuxDeviceManager *ddm;
+-};
+-
+-#if defined(__APPLE__) || defined(__FreeBSD__) || defined(__sun)
+-#define MACHADDRESS "/tmp/.mediasocket"
+-#else
+-#define ADDRESS     "/de/sundtek/mediasocket"  /* addr to connect */
+-#endif
+-
+ DvbLinuxDeviceManager::DvbLinuxDeviceManager(QObject *parent) : QObject(parent)
+ {
+-        int fd;
+-        int len;
+-        int ret;
+-        struct sockaddr_un saun;
+ 	QObject *notifier = Solid::DeviceNotifier::instance();
+ 	connect(notifier, SIGNAL(deviceAdded(QString)), this, SLOT(componentAdded(QString)));
+ 	connect(notifier, SIGNAL(deviceRemoved(QString)), this, SLOT(componentRemoved(QString)));
+-
+-        memset(&saun, 0x0, sizeof(struct sockaddr_un));
+-        fd = socket(AF_UNIX, SOCK_STREAM, 0);
+-        if (fd==-1) {
+-		monitor = NULL;
+-                return;
+-	}
+-        saun.sun_family = AF_UNIX;
+-#if defined(__APPLE__) || defined(__FreeBSD__) || defined(__sun)
+-        strcpy(saun.sun_path, MACHADDRESS);
+-        len = sizeof(saun.sun_family) + strlen(saun.sun_path)+1;
+-#else
+-        strcpy(&saun.sun_path[1], ADDRESS);
+-        len = sizeof(saun.sun_family) + strlen(&saun.sun_path[1])+1;
+-#endif
+-        if ((ret=::connect(fd, (struct sockaddr*)&saun, len)) < 0) {
+-                close(fd);
+-		monitor = NULL;
+-                return;
+-        }
+-	close(fd);
+-	monitor = new DvbDeviceMonitor(this);
+-	monitor->start();
+ }
+ 
+ DvbLinuxDeviceManager::~DvbLinuxDeviceManager()
+ {
+-	if (monitor)
+-		monitor->stop();
+ }
+ 
+ void DvbLinuxDeviceManager::doColdPlug()
+@@ -999,36 +827,6 @@
+ 	}
+ }
+ 
+-void DvbLinuxDeviceManager::componentAdded(QString node, int adapter, int index) {
+-        int deviceIndex = (adapter << 16) | index;
+-        char adapterstring[10];
+-        DvbLinuxDevice *device = devices.value(deviceIndex, NULL);
+-        if (device == NULL) {
+-                device = new DvbLinuxDevice(this);
+-                devices.insert(deviceIndex, device);
+-        }
+-        sprintf(adapterstring, "adapter%d", adapter);
+-
+-        if (node == "frontend0") {
+-                device->frontendPath.sprintf("/dev/dvb/%s/%s", adapterstring, node.toAscii().data());
+-        } else if (node == "dvr0") {
+-                device->dvrPath.sprintf("/dev/dvb/%s/%s", adapterstring, node.toAscii().data());
+-        } else if (node == "demux0") {
+-                device->demuxPath.sprintf("/dev/dvb/%s/%s", adapterstring, node.toAscii().data());
+-        } else {
+-                return;
+-        }
+-
+-	if (!device->demuxPath.isEmpty() && !device->dvrPath.isEmpty() &&
+-	    !device->frontendPath.isEmpty()) {
+-		device->startDevice("");
+-
+-		if (device->isReady()) {
+-			emit deviceAdded(device);
+-		}
+-	}
+-}
+-
+ void DvbLinuxDeviceManager::componentAdded(const QString &udi)
+ {
+ 	const Solid::DvbInterface *dvbInterface = Solid::Device(udi).as<Solid::DvbInterface>();
+@@ -1146,31 +944,6 @@
+ 	}
+ }
+ 
+-void DvbLinuxDeviceManager::componentRemoved(QString node, int adapter, int index) {
+-        int deviceIndex = (adapter << 16) | index;
+-        char adapterstring[10];
+-        DvbLinuxDevice *device = devices.value(deviceIndex, NULL);
+-        if (device == NULL) {
+-                return;
+-        }
+-        sprintf(adapterstring, "adapter%d", adapter);
+-        if (node == "frontend0") {
+-                device->frontendPath.clear();
+-        } else if (node == "dvr0") {
+-                device->dvrPath.clear();
+-        } else if (node == "demux0") {
+-                device->demuxPath.clear();
+-        } else {
+-                return;
+-        }
+-
+-	if (device->frontendPath.isEmpty() && device->dvrPath.isEmpty() &&
+-            device->demuxPath.isEmpty() && device->isReady()) {
+-		emit deviceRemoved(device);
+-		device->stopDevice();
+-	}
+-}
+-
+ void DvbLinuxDeviceManager::componentRemoved(const QString &udi)
+ {
+ 	DvbLinuxDevice *device = udis.take(udi);
+diff -Naur orig/src/dvb/dvbdevice_linux.h patched/src/dvb/dvbdevice_linux.h
+--- orig/src/dvb/dvbdevice_linux.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbdevice_linux.h	2016-04-23 07:35:55.519478968 +0200
+@@ -90,7 +90,6 @@
+ 	DvbLinuxCam cam;
+ };
+ 
+-class DvbDeviceMonitor;
+ class DvbLinuxDeviceManager : public QObject
+ {
+ 	Q_OBJECT
+@@ -98,8 +97,6 @@
+ 	explicit DvbLinuxDeviceManager(QObject *parent);
+ 	~DvbLinuxDeviceManager();
+ 
+-	void componentAdded(QString node, int adapter, int index);
+-	void componentRemoved(QString node, int adapter, int index);
+ public slots:
+ 	void doColdPlug();
+ 
+@@ -117,7 +114,6 @@
+ 
+ 	QMap<int, DvbLinuxDevice *> devices;
+ 	QMap<QString, DvbLinuxDevice *> udis;
+-	class DvbDeviceMonitor *monitor;
+ };
+ 
+ #endif /* DVBDEVICE_LINUX_H */
+diff -Naur orig/src/dvb/dvbepg.cpp patched/src/dvb/dvbepg.cpp
+--- orig/src/dvb/dvbepg.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbepg.cpp	2016-04-23 07:35:55.519478968 +0200
+@@ -176,11 +176,6 @@
+ 	}
+ }
+ 
+-QMap<DvbSharedRecording, DvbSharedEpgEntry> DvbEpgModel::getRecordings() const
+-{
+-	return recordings;
+-}
+-
+ QMap<DvbEpgEntryId, DvbSharedEpgEntry> DvbEpgModel::getEntries() const
+ {
+ 	return entries;
+@@ -262,7 +257,7 @@
+ }
+ 
+ void DvbEpgModel::scheduleProgram(const DvbSharedEpgEntry &entry, int extraSecondsBefore,
+-	int extraSecondsAfter, bool checkForRecursion)
++	int extraSecondsAfter)
+ {
+ 	if (!entry.isValid() || (entries.value(DvbEpgEntryId(entry)) != entry)) {
+ 		Log("DvbEpgModel::scheduleProgram: invalid entry");
+@@ -283,17 +278,10 @@
+ 		recording.name = entry->title;
+ 		recording.channel = entry->channel;
+ 		recording.begin = entry->begin.addSecs(-extraSecondsBefore);
+-		recording.beginEPG = entry->begin;
+ 		recording.duration =
+ 			entry->duration.addSecs(extraSecondsBefore + extraSecondsAfter);
+-		recording.durationEPG =
+-			entry->duration;
+-		recording.subheading =
+-			entry->subheading;
+-		recording.details =
+-			entry->details;
+ 		const_cast<DvbEpgEntry *>(entry.constData())->recording =
+-			manager->getRecordingModel()->addRecording(recording, checkForRecursion);
++			manager->getRecordingModel()->addRecording(recording);
+ 		recordings.insert(entry->recording, entry);
+ 	} else {
+ 		oldRecording = entry->recording;
+diff -Naur orig/src/dvb/dvbepgdialog.cpp patched/src/dvb/dvbepgdialog.cpp
+--- orig/src/dvb/dvbepgdialog.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbepgdialog.cpp	2016-04-23 07:35:55.519478968 +0200
+@@ -56,7 +56,7 @@
+ 	QBoxLayout *rightLayout = new QVBoxLayout();
+ 	QBoxLayout *boxLayout = new QHBoxLayout();
+ 
+-	KAction *scheduleAction = new KAction(KIcon(QLatin1String("media-record")),
++	KAction *scheduleAction = new KAction(QIcon::fromTheme(QLatin1String("media-record")),
+ 		i18nc("@action:inmenu tv show", "Record Show"), this);
+ 	connect(scheduleAction, SIGNAL(triggered()), this, SLOT(scheduleProgram()));
+ 
+@@ -144,8 +144,8 @@
+ 	QDateTime begin = entry->begin.toLocalTime();
+ 	QTime end = entry->begin.addSecs(QTime().secsTo(entry->duration)).toLocalTime().time();
+ 	text += i18nc("@info tv show start, end", "<font color=#800000>%1 - %2</font><br><br>",
+-		KGlobal::locale()->formatDateTime(begin, KLocale::LongDate),
+-		KGlobal::locale()->formatTime(end));
++		KLocale::global()->formatDateTime(begin, KLocale::LongDate),
++		KLocale::global()->formatTime(end));
+ 	text += entry->details;
+ 	contentLabel->setText(text);
+ }
+@@ -326,17 +326,17 @@
+ 		switch (role) {
+ 		case Qt::DecorationRole:
+ 			if ((index.column() == 2) && entry->recording.isValid()) {
+-				return KIcon(QLatin1String("media-record"));
++				return QIcon::fromTheme(QLatin1String("media-record"));
+ 			}
+ 
+ 			break;
+ 		case Qt::DisplayRole:
+ 			switch (index.column()) {
+ 			case 0:
+-				return KGlobal::locale()->formatDateTime(
++				return KLocale::global()->formatDateTime(
+ 					entry->begin.toLocalTime());
+ 			case 1:
+-				return KGlobal::locale()->formatTime(entry->duration, false, true);
++				return KLocale::global()->formatTime(entry->duration, false, true);
+ 			case 2:
+ 				return entry->title;
+ 			case 3:
+diff -Naur orig/src/dvb/dvbepg.h patched/src/dvb/dvbepg.h
+--- orig/src/dvb/dvbepg.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbepg.h	2016-04-23 07:35:55.519478968 +0200
+@@ -75,13 +75,12 @@
+ 	~DvbEpgModel();
+ 
+ 	QMap<DvbEpgEntryId, DvbSharedEpgEntry> getEntries() const;
+-	QMap<DvbSharedRecording, DvbSharedEpgEntry> getRecordings() const;
+ 	QHash<DvbSharedChannel, int> getEpgChannels() const;
+ 	QList<DvbSharedEpgEntry> getCurrentNext(const DvbSharedChannel &channel) const;
+ 
+ 	DvbSharedEpgEntry addEntry(const DvbEpgEntry &entry);
+ 	void scheduleProgram(const DvbSharedEpgEntry &entry, int extraSecondsBefore,
+-		int extraSecondsAfter, bool checkForRecursion=false);
++		int extraSecondsAfter);
+ 
+ 	void startEventFilter(DvbDevice *device, const DvbSharedChannel &channel);
+ 	void stopEventFilter(DvbDevice *device, const DvbSharedChannel &channel);
+diff -Naur orig/src/dvb/dvbmanager.cpp patched/src/dvb/dvbmanager.cpp
+--- orig/src/dvb/dvbmanager.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbmanager.cpp	2016-04-23 07:35:55.519478968 +0200
+@@ -347,31 +347,11 @@
+ 	return KGlobal::config()->group("DVB").readEntry("EndMargin", 600);
+ }
+ 
+-QString DvbManager::getNamingFormat() const
+-{
+-	return KGlobal::config()->group("DVB").readEntry("NamingFormat", "%title");
+-}
+-
+-QString DvbManager::getRecordingRegex() const
+-{
+-	return KGlobal::config()->group("DVB").readEntry("RecordingRegex", "");
+-}
+-
+-QString DvbManager::getActionAfterRecording() const
+-{
+-	return KGlobal::config()->group("DVB").readEntry("ActionAfterRecording", "");
+-}
+-
+ bool DvbManager::override6937Charset() const
+ {
+ 	return KGlobal::config()->group("DVB").readEntry("Override6937", false);
+ }
+ 
+-bool DvbManager::createInfoFile() const
+-{
+-	return KGlobal::config()->group("DVB").readEntry("CreateInfoFile", false);
+-}
+-
+ void DvbManager::setRecordingFolder(const QString &path)
+ {
+ 	KGlobal::config()->group("DVB").writeEntry("RecordingFolder", path);
+@@ -392,32 +372,12 @@
+ 	KGlobal::config()->group("DVB").writeEntry("EndMargin", endMargin);
+ }
+ 
+-void DvbManager::setNamingFormat(QString namingFormat)
+-{
+-	KGlobal::config()->group("DVB").writeEntry("NamingFormat", namingFormat);
+-}
+-
+-void DvbManager::setRecordingRegex(QString regex)
+-{
+-	KGlobal::config()->group("DVB").writeEntry("RecordingRegex", regex);
+-}
+-
+-void DvbManager::setActionAfterRecording(QString actionAfterRecording)
+-{
+-	KGlobal::config()->group("DVB").writeEntry("ActionAfterRecording", actionAfterRecording);
+-}
+-
+ void DvbManager::setOverride6937Charset(bool override)
+ {
+ 	KGlobal::config()->group("DVB").writeEntry("Override6937", override);
+ 	DvbSiText::setOverride6937(override);
+ }
+ 
+-void DvbManager::setCreateInfoFile(bool createInfoFile)
+-{
+-	KGlobal::config()->group("DVB").writeEntry("CreateInfoFile", createInfoFile);
+-}
+-
+ double DvbManager::getLatitude()
+ {
+ 	return KGlobal::config()->group("DVB").readEntry("Latitude", 0.0);
+diff -Naur orig/src/dvb/dvbmanager.h patched/src/dvb/dvbmanager.h
+--- orig/src/dvb/dvbmanager.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbmanager.h	2016-04-23 07:35:55.519478968 +0200
+@@ -122,22 +122,14 @@
+ 
+ 	QString getRecordingFolder() const;
+ 	QString getTimeShiftFolder() const;
+-	QString getNamingFormat() const;
+-	QString getRecordingRegex() const;
+-	QString getActionAfterRecording() const;
+ 	int getBeginMargin() const; // seconds
+ 	int getEndMargin() const; // seconds
+ 	bool override6937Charset() const;
+-	bool createInfoFile() const;
+ 	void setRecordingFolder(const QString &path);
+ 	void setTimeShiftFolder(const QString &path);
+-	void setNamingFormat(const QString namingFormat);
+-	void setRecordingRegex(const QString regex);
+-	void setActionAfterRecording(const QString actionAfterRecording);
+ 	void setBeginMargin(int beginMargin); // seconds
+ 	void setEndMargin(int endMargin); // seconds
+ 	void setOverride6937Charset(bool override);
+-	void setCreateInfoFile(bool createInfoFile);
+ 
+ 	static double getLatitude();
+ 	static double getLongitude();
+diff -Naur orig/src/dvb/dvbrecording.cpp patched/src/dvb/dvbrecording.cpp
+--- orig/src/dvb/dvbrecording.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbrecording.cpp	2016-04-23 07:35:55.519478968 +0200
+@@ -22,8 +22,6 @@
+ #include "dvbrecording_p.h"
+ 
+ #include <QDir>
+-#include <QMap>
+-#include <QProcess>
+ #include <QSet>
+ #include <QVariant>
+ #include <KStandardDirs>
+@@ -31,7 +29,6 @@
+ #include "../log.h"
+ #include "dvbdevice.h"
+ #include "dvbmanager.h"
+-#include "dvbepg.h"
+ 
+ bool DvbRecording::validate()
+ {
+@@ -40,8 +37,6 @@
+ 		// the seconds and milliseconds aren't visible --> set them to zero
+ 		begin = begin.addMSecs(-(QTime().msecsTo(begin.time()) % 60000));
+ 		end = begin.addSecs(QTime().secsTo(duration));
+-		beginEPG = beginEPG.addMSecs(-(QTime().msecsTo(beginEPG.time()) % 60000));
+-		endEPG = beginEPG.addSecs(QTime().secsTo(durationEPG));
+ 		repeat &= ((1 << 7) - 1);
+ 		return true;
+ 	}
+@@ -54,8 +49,7 @@
+ {
+ 	sqlInit(QLatin1String("RecordingSchedule"),
+ 		QStringList() << QLatin1String("Name") << QLatin1String("Channel") << QLatin1String("Begin") <<
+-		QLatin1String("Duration") << QLatin1String("Repeat") << QLatin1String("Subheading") << QLatin1String("Details")
+-		<< QLatin1String("beginEPG") << QLatin1String("endEPG") << QLatin1String("durationEPG"));
++		QLatin1String("Duration") << QLatin1String("Repeat"));
+ 
+ 	// we regularly recheck the status of the recordings
+ 	// this way we can keep retrying if the device was busy / tuning failed
+@@ -92,11 +86,9 @@
+ 		QString channelName;
+ 		stream >> channelName;
+ 		recording.channel = channelModel->findChannelByName(channelName);
+-		stream >> recording.beginEPG;
+-		recording.begin = recording.beginEPG.toUTC();
+-		recording.beginEPG = recording.beginEPG.toLocalTime();
++		stream >> recording.begin;
++		recording.begin = recording.begin.toUTC();
+ 		stream >> recording.duration;
+-		recording.durationEPG = recording.duration;
+ 		QDateTime end;
+ 		stream >> end;
+ 
+@@ -104,9 +96,6 @@
+ 			stream >> recording.repeat;
+ 		}
+ 
+-		stream >> recording.subheading;
+-		stream >> recording.details;
+-
+ 		if (stream.status() != QDataStream::Ok) {
+ 			Log("DvbRecordingModel::DvbRecordingModel: invalid recordings in file") <<
+ 				file.fileName();
+@@ -145,32 +134,20 @@
+ 	return recordings.value(sqlKey);
+ }
+ 
+-DvbRecording DvbRecordingModel::getCurrentRecording()
+-{
+-	return currentRecording;
+-}
+-
+-void DvbRecordingModel::setCurrentRecording(DvbRecording _currentRecording)
+-{
+-	currentRecording = _currentRecording;
+-}
+-
+ QMap<SqlKey, DvbSharedRecording> DvbRecordingModel::getRecordings() const
+ {
+ 	return recordings;
+ }
+ 
+-DvbSharedRecording DvbRecordingModel::addRecording(DvbRecording &recording, bool checkForRecursion)
++DvbSharedRecording DvbRecordingModel::addRecording(DvbRecording &recording)
+ {
+-	if (checkForRecursion) {
+-		if (hasPendingOperation) {
+-			Log("DvbRecordingModel::addRecording: illegal recursive call");
+-			return DvbSharedRecording();
+-		}
+-
+-		EnsureNoPendingOperation ensureNoPendingOperation(hasPendingOperation);
++	if (hasPendingOperation) {
++		Log("DvbRecordingModel::addRecording: illegal recursive call");
++		return DvbSharedRecording();
+ 	}
+ 
++	EnsureNoPendingOperation ensureNoPendingOperation(hasPendingOperation);
++
+ 	if (!recording.validate()) {
+ 		Log("DvbRecordingModel::addRecording: invalid recording");
+ 		return DvbSharedRecording();
+@@ -239,70 +216,6 @@
+ 	recordingFiles.remove(*recording);
+ 	sqlRemove(*recording);
+ 	emit recordingRemoved(recording);
+-	executeActionAfterRecording(*recording);
+-	findNewRecordings();
+-}
+-
+-void DvbRecordingModel::executeActionAfterRecording(DvbRecording recording)
+-{
+-	QString stopCommand = manager->getActionAfterRecording();
+-
+-	stopCommand.replace("%filename", recording.filename);
+-	if (!stopCommand.isEmpty())
+-	{
+-		QProcess* child = new QProcess();
+-		child->start(stopCommand);
+-		Log("DvbRecordingModel::shutdownWhenEmpty:could not execute cmd");
+-	}
+-	Log("DvbRecordingModel::executeActionAfterRecording executed.");
+-
+-
+-}
+-
+-bool DvbRecordingModel::existsSimilarRecording(DvbEpgEntry recording)
+-{
+-	bool found = false;
+-
+-	DvbEpgEntry entry = recording;
+-	DvbEpgModel *epgModel = manager->getEpgModel();
+-	QMap<DvbSharedRecording, DvbSharedEpgEntry> recordingMap = epgModel->getRecordings();
+-	foreach(DvbSharedRecording key, recordingMap.keys())
+-	{
+-		DvbEpgEntry loopEntry = *(recordingMap.value(key));
+-		if (entry.begin == loopEntry.begin
+-				&& entry.channel == loopEntry.channel
+-				&& entry.duration == loopEntry.duration) {
+-			found = true;
+-			break;
+-		}
+-	}
+-	return found;
+-}
+-
+-void DvbRecordingModel::findNewRecordings()
+-{
+-	DvbEpgModel *epgModel = manager->getEpgModel();
+-	QMap<DvbEpgEntryId, DvbSharedEpgEntry> epgMap = epgModel->getEntries();
+-	foreach(DvbEpgEntryId key, epgMap.keys())
+-	{
+-		DvbEpgEntry entry = *(epgMap.value(key));
+-		QString title = entry.title;
+-		QRegExp recordingRegex = QRegExp(manager->getRecordingRegex());
+-		if (!recordingRegex.isEmpty())
+-			{
+-			if (recordingRegex.indexIn(title) != -1)
+-			{
+-				if (!DvbRecordingModel::existsSimilarRecording(*epgMap.value(key)))
+-				{
+-				epgModel->scheduleProgram(epgMap.value(key), manager->getBeginMargin(),
+-						manager->getEndMargin(), false);
+-				Log("DvbRecordingModel::findNewRecordings: scheduled") << title;
+-				}
+-			}
+-		}
+-	}
+-
+-	Log("DvbRecordingModel::findNewRecordings executed.");
+ }
+ 
+ void DvbRecordingModel::timerEvent(QTimerEvent *event)
+@@ -340,11 +253,6 @@
+ 	query.bindValue(index++, recording->begin.toString(Qt::ISODate) + QLatin1Char('Z'));
+ 	query.bindValue(index++, recording->duration.toString(Qt::ISODate));
+ 	query.bindValue(index++, recording->repeat);
+-	query.bindValue(index++, recording->subheading);
+-	query.bindValue(index++, recording->details);
+-	query.bindValue(index++, recording->beginEPG.toString(Qt::ISODate));
+-	query.bindValue(index++, recording->endEPG.toString(Qt::ISODate));
+-	query.bindValue(index++, recording->durationEPG.toString(Qt::ISODate));
+ }
+ 
+ bool DvbRecordingModel::insertFromSqlQuery(SqlKey sqlKey, const QSqlQuery &query, int index)
+@@ -358,13 +266,6 @@
+ 		QDateTime::fromString(query.value(index++).toString(), Qt::ISODate).toUTC();
+ 	recording->duration = QTime::fromString(query.value(index++).toString(), Qt::ISODate);
+ 	recording->repeat = query.value(index++).toInt();
+-	recording->subheading = query.value(index++).toString();
+-	recording->details = query.value(index++).toString();
+-	recording->beginEPG =
+-		QDateTime::fromString(query.value(index++).toString(), Qt::ISODate).toLocalTime();
+-	recording->endEPG =
+-		QDateTime::fromString(query.value(index++).toString(), Qt::ISODate).toLocalTime();
+-	recording->durationEPG = QTime::fromString(query.value(index++).toString(), Qt::ISODate);
+ 
+ 	if (recording->validate()) {
+ 		recording->setSqlKey(sqlKey);
+@@ -447,39 +348,19 @@
+ 	stop();
+ }
+ 
+-bool DvbRecordingFile::start(DvbRecording &recording)
++bool DvbRecordingFile::start(const DvbRecording &recording)
+ {
+ 	if (!file.isOpen()) {
+ 		QString folder = manager->getRecordingFolder();
+-		QDate currentDate = QDate::currentDate();
+-		QTime currentTime = QTime::currentTime();
+-
+-		QString filename = manager->getNamingFormat();
+-		filename = filename.replace("%year", currentDate.toString("yyyy"));
+-		filename = filename.replace("%month", currentDate.toString("MM"));
+-		filename = filename.replace("%day", currentDate.toString("dd"));
+-		filename = filename.replace("%hour", currentTime.toString("hh"));
+-		filename = filename.replace("%min", currentTime.toString("mm"));
+-		filename = filename.replace("%sec", currentTime.toString("ss"));
+-		filename = filename.replace("%channel", recording.channel->name);
+-		filename = filename.replace("%title", QString(recording.name));
+-		filename = filename.replace(QLatin1Char('/'), QLatin1Char('_'));
+-		if (filename == "") {
+-			filename = QString(recording.name);
+-		}
+-
+-		QString path = folder + QLatin1Char('/') + filename;
+-
++		QString path = folder + QLatin1Char('/') +
++			QString(recording.name).replace(QLatin1Char('/'), QLatin1Char('_'));
+ 
+ 		for (int attempt = 0; attempt < 100; ++attempt) {
+ 			if (attempt == 0) {
+ 				file.setFileName(path + QLatin1String(".m2t"));
+-				recording.filename = filename + QLatin1String(".m2t");
+ 			} else {
+ 				file.setFileName(path + QLatin1Char('-') + QString::number(attempt) +
+ 					QLatin1String(".m2t"));
+-				recording.filename = filename + QLatin1Char('-') + QString::number(attempt) +
+-					QLatin1String(".m2t");
+ 			}
+ 
+ 			if (file.exists()) {
+@@ -514,23 +395,6 @@
+ 			break;
+ 		}
+ 
+-		if (manager->createInfoFile()) {
+-			QString infoFile = path + ".txt";
+-			QFile file(infoFile);
+-			if (file.open(QIODevice::ReadWrite))
+-			{
+-			    QTextStream stream(&file);
+-			    stream << "EPG info" << endl;
+-			    stream << "Title: " + QString(recording.name) << endl;
+-			    stream << "Description: " + QString(recording.subheading) << endl;
+-			    //stream << "Details: " + QString(recording.details) << endl; // Details is almost always empty
+-			    stream << "Channel: " + QString(recording.channel->name) << endl;
+-			    stream << "Date: " + recording.beginEPG.toLocalTime().toString("yyyy-MM-dd") << endl;
+-			    stream << "Start time: " + recording.beginEPG.toLocalTime().toString("hh:mm:ss") << endl;
+-			    stream << "Duration: " + recording.durationEPG.toString("HH:mm:ss") << endl;
+-			}
+-		}
+-
+ 		if (!file.isOpen()) {
+ 			Log("DvbRecordingFile::start: cannot open file") << file.fileName();
+ 			return false;
+@@ -559,8 +423,6 @@
+ 		}
+ 	}
+ 
+-	manager->getRecordingModel()->setCurrentRecording(recording);
+-
+ 	return true;
+ }
+ 
+@@ -590,9 +452,6 @@
+ 	buffers.clear();
+ 	file.close();
+ 	channel = DvbSharedChannel();
+-
+-	manager->getRecordingModel()->executeActionAfterRecording(manager->getRecordingModel()->getCurrentRecording());
+-	manager->getRecordingModel()->findNewRecordings();
+ }
+ 
+ void DvbRecordingFile::deviceStateChanged()
+@@ -624,8 +483,6 @@
+ 				device->startDescrambling(pmtSectionData, this);
+ 			}
+ 		} else {
+-			// TODO
+-
+ 			stop();
+ 		}
+ 	}
+diff -Naur orig/src/dvb/dvbrecording.h patched/src/dvb/dvbrecording.h
+--- orig/src/dvb/dvbrecording.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbrecording.h	2016-04-23 07:35:55.519478968 +0200
+@@ -22,12 +22,10 @@
+ #define DVBRECORDING_H
+ 
+ #include <QDateTime>
+-#include <QTextStream>
+ #include "dvbchannel.h"
+ 
+ class DvbManager;
+ class DvbRecordingFile;
+-class DvbEpgEntry;
+ 
+ class DvbRecording : public SharedData, public SqlKey
+ {
+@@ -46,16 +44,10 @@
+ 	};
+ 
+ 	QString name;
+-	QString filename;
+-	QString subheading;
+-	QString details;
+ 	DvbSharedChannel channel;
+ 	QDateTime begin; // UTC
+ 	QDateTime end; // UTC, read-only
+ 	QTime duration;
+-	QDateTime beginEPG; // What EPG claims to be the beginning of the program, local time
+-	QDateTime endEPG;
+-	QTime durationEPG;
+ 	int repeat; // (1 << 0) (monday) | (1 << 1) (tuesday) | ... | (1 << 6) (sunday)
+ 	Status status; // read-only
+ };
+@@ -71,18 +63,12 @@
+ 	~DvbRecordingModel();
+ 
+ 	bool hasRecordings() const;
+-	void setEmptyAction(QString emptyAction);
+-	QString getEmptyAction();
+ 	bool hasActiveRecordings() const;
+ 	DvbSharedRecording findRecordingByKey(const SqlKey &sqlKey) const;
+ 	QMap<SqlKey, DvbSharedRecording> getRecordings() const;
+-	DvbSharedRecording addRecording(DvbRecording &recording, bool checkForRecursion=false);
++	DvbSharedRecording addRecording(DvbRecording &recording);
+ 	void updateRecording(DvbSharedRecording recording, DvbRecording &modifiedRecording);
+ 	void removeRecording(DvbSharedRecording recording);
+-	void findNewRecordings();
+-	void executeActionAfterRecording(DvbRecording recording);
+-	DvbRecording getCurrentRecording();
+-	void setCurrentRecording(DvbRecording _currentRecording);
+ 
+ signals:
+ 	void recordingAdded(const DvbSharedRecording &recording);
+@@ -97,13 +83,11 @@
+ 	void bindToSqlQuery(SqlKey sqlKey, QSqlQuery &query, int index) const;
+ 	bool insertFromSqlQuery(SqlKey sqlKey, const QSqlQuery &query, int index);
+ 	bool updateStatus(DvbRecording &recording);
+-	bool existsSimilarRecording(DvbEpgEntry recording);
+ 
+ 	DvbManager *manager;
+ 	QMap<SqlKey, DvbSharedRecording> recordings;
+ 	QMap<SqlKey, QExplicitlySharedDataPointer<DvbRecordingFile> > recordingFiles;
+ 	bool hasPendingOperation;
+-	DvbRecording currentRecording;
+ };
+ 
+ #endif /* DVBRECORDING_H */
+diff -Naur orig/src/dvb/dvbrecording_p.h patched/src/dvb/dvbrecording_p.h
+--- orig/src/dvb/dvbrecording_p.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbrecording_p.h	2016-04-23 07:35:55.523478988 +0200
+@@ -38,7 +38,7 @@
+ 	~DvbRecordingFile();
+ 
+ 	// start() returns true if the recording is already running
+-	bool start(DvbRecording &recording);
++	bool start(const DvbRecording &recording);
+ 	void stop();
+ 
+ private slots:
+diff -Naur orig/src/dvb/dvbsi.cpp patched/src/dvb/dvbsi.cpp
+--- orig/src/dvb/dvbsi.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbsi.cpp	2016-04-23 07:35:55.523478988 +0200
+@@ -257,7 +257,7 @@
+ 		case 0x0a: encoding = Iso8859_14; break;
+ 		case 0x0b: encoding = Iso8859_15; break;
+ 		case 0x13: encoding = Gb2312; break;
+-		case 0x14: encoding = Big5; break;
++		case 0x14: encoding = Utf_16be; break;
+ 		case 0x15: encoding = Utf_8; break;
+ 		case 0x10: {
+ 			if (size < 3) {
+@@ -321,6 +321,7 @@
+ 		case Gb2312: codec = QTextCodec::codecForName("GB2312"); break;
+ 		case Big5: codec = QTextCodec::codecForName("BIG5"); break;
+ 		case Utf_8: codec = QTextCodec::codecForName("UTF-8"); break;
++		case Utf_16be: codec = QTextCodec::codecForName("UTF-16BE"); break;
+ 		}
+ 
+ 		Q_ASSERT(codec != NULL);
+@@ -398,7 +399,7 @@
+ 	} else if (mode == 0x3f) {
+ 		// UTF-16
+ 		for (unsigned int i = 0; i < len; i += 2) {
+-			QChar val = ((unsigned char)data[i] * 256) + (unsigned char)data[i+1];
++			QChar val = ((data[i] << 8)| data[i+1]);
+ 			result += val;
+ 		}
+ 	} else {
+diff -Naur orig/src/dvb/dvbsi.h patched/src/dvb/dvbsi.h
+--- orig/src/dvb/dvbsi.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/dvb/dvbsi.h	2016-04-23 07:35:55.523478988 +0200
+@@ -174,7 +174,8 @@
+ 		Gb2312		= 15,
+ 		Big5		= 16,
+ 		Utf_8		= 17,
+-		EncodingTypeMax	= 17
++		Utf_16be  = 18,
++		EncodingTypeMax	= 18
+ 	};
+ 
+ 	static QTextCodec *codecTable[EncodingTypeMax + 1];
+diff -Naur orig/src/kaffeine.appdata.xml patched/src/kaffeine.appdata.xml
+--- orig/src/kaffeine.appdata.xml	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/kaffeine.appdata.xml	1970-01-01 01:00:00.000000000 +0100
+@@ -1,103 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<component type="desktop">
+-  <id>kaffeine.desktop</id>
+-  <metadata_license>CC0-1.0</metadata_license>
+-  <project_license>GPL-2.0+</project_license>
+-  <name>Kaffeine</name>
+-  <name xml:lang="ast">Kaffeine</name>
+-  <name xml:lang="bs">Kaffeine</name>
+-  <name xml:lang="ca">Kaffeine</name>
+-  <name xml:lang="cs">Kaffeine</name>
+-  <name xml:lang="da">Kaffeine</name>
+-  <name xml:lang="de">Kaffeine</name>
+-  <name xml:lang="el">Kaffeine</name>
+-  <name xml:lang="en-GB">Kaffeine</name>
+-  <name xml:lang="es">Kaffeine</name>
+-  <name xml:lang="fr">Kaffeine</name>
+-  <name xml:lang="gl">Kaffeine</name>
+-  <name xml:lang="id">Kaffeine</name>
+-  <name xml:lang="it">Kaffeine</name>
+-  <name xml:lang="ko">Kaffeine</name>
+-  <name xml:lang="nl">Kaffeine</name>
+-  <name xml:lang="pl">Kaffeine</name>
+-  <name xml:lang="pt">Kaffeine</name>
+-  <name xml:lang="pt-BR">Kaffeine</name>
+-  <name xml:lang="sk">Kaffeine</name>
+-  <name xml:lang="sl">Kaffeine</name>
+-  <name xml:lang="sr">Кафеин</name>
+-  <name xml:lang="sr-Latn">Kaffeine</name>
+-  <name xml:lang="sr-ijekavian">Кафеин</name>
+-  <name xml:lang="sr-ijekavianlatin">Kaffeine</name>
+-  <name xml:lang="sv">Kaffeine</name>
+-  <name xml:lang="uk">Kaffeine</name>
+-  <name xml:lang="x-test">xxKaffeinexx</name>
+-  <summary>Multimedia Player</summary>
+-  <summary xml:lang="bs">Multimedijalni plejer</summary>
+-  <summary xml:lang="ca">Reproductor multimèdia</summary>
+-  <summary xml:lang="cs">Přehrávač multimédií</summary>
+-  <summary xml:lang="da">Multimedieafspiller</summary>
+-  <summary xml:lang="de">Multimediawiedergabe</summary>
+-  <summary xml:lang="el">Αναπαραγωγός μουσικής</summary>
+-  <summary xml:lang="en-GB">Multimedia Player</summary>
+-  <summary xml:lang="es">Reproductor multimedia</summary>
+-  <summary xml:lang="fr">Lecteur multimédia</summary>
+-  <summary xml:lang="gl">Reprodutor de son e vídeo</summary>
+-  <summary xml:lang="id">Pemutar Multimedia</summary>
+-  <summary xml:lang="it">Lettore multimediale</summary>
+-  <summary xml:lang="ko">멀티미디어 재생기</summary>
+-  <summary xml:lang="nl">Multimediaspeler</summary>
+-  <summary xml:lang="pl">Odtwarzacz multimedialny</summary>
+-  <summary xml:lang="pt">Leitor Multimédia</summary>
+-  <summary xml:lang="pt-BR">Reprodutor Multimídia</summary>
+-  <summary xml:lang="sk">Multimediálny prehrávač</summary>
+-  <summary xml:lang="sl">Predstavnostni predvajalnik</summary>
+-  <summary xml:lang="sr">Мултимедијски плејер</summary>
+-  <summary xml:lang="sr-Latn">Multimedijski plejer</summary>
+-  <summary xml:lang="sr-ijekavian">Мултимедијски плејер</summary>
+-  <summary xml:lang="sr-ijekavianlatin">Multimedijski plejer</summary>
+-  <summary xml:lang="sv">Multimediaspelare</summary>
+-  <summary xml:lang="uk">Програвач мультимедійних файлів</summary>
+-  <summary xml:lang="x-test">xxMultimedia Playerxx</summary>
+-  <description>
+-    <p>
+-      Kaffeine is a media player. What makes it different from the others is its excellent support of digital TV (DVB).
+-      Kaffeine has user-friendly interface, so that even first time users can start immediately playing their movies:
+-      from DVD (including DVD menus, titles, chapters, etc.), VCD, or a file.
+-    </p>
+-    <p xml:lang="bs">Kaffeine je media player. Ono što ga razlikuje od drugih je odličnu podrška digitalne TV (DVB). Kaffeine ima user-friendly sučelje, tako da čak i novi korisnici mogu odmah početi da igraju svoje filmove: od DVD (uključujući DVD izbornike, naslova, poglavlja, itd), VCD, ili datoteke.</p>
+-    <p xml:lang="ca">El Kaffeine és un reproductor de suports. El que el fa diferent dels altres és el seu excel·lent suport per a la televisió digital (DVB). El Kaffeine té una interfície fàcil d'usar, de manera que fins i tot els usuaris principiants poden començar immediatament a reproduir les seves pel·lícules: des d'un DVD (incloent-hi els menús del DVD, títols, capítols, etc.), VCD o un fitxer.</p>
+-    <p xml:lang="da">Kaffeine er en medieafspiller. Det der gør den anderledes end andre afspillere er dens glimrende understøttelse af digitalt tv (DVB). Kaffeine har en nem brugerflade, så selv helt nye brugere straks kan begynde at afspille deres film fra dvd (inklusiv dvd-menuer, titler, kapitler osv.), VCD eller en fil.</p>
+-    <p xml:lang="el">Το Kaffeine είναι ένας αναπαραγωγός μουσικής. Αυτό που το κάνει διαφορετικό από άλλους είναι η εξαιρετική υποστήριξη για ψηφιακή τηλεόραση (DVB) που διαθέτει. Το Kaffeine έχει φιλικό περιβάλλον χρήσης, έτσι ώστε ακόμη και οι χρήστες που το δοκιμάζουν για πρώτη φορά μπορούν να ξεκινήσουν αμέσως να προβάλλουν ταινίες: από DVD (με DVD μενού, τίτλους, κεφάλαια, κτλ.), VCD ή από αρχείο.</p>
+-    <p xml:lang="en-GB">Kaffeine is a media player. What makes it different from the others is its excellent support of digital TV (DVB). Kaffeine has user-friendly interface, so that even first time users can start immediately playing their movies: from DVD (including DVD menus, titles, chapters, etc.), VCD, or a file.</p>
+-    <p xml:lang="es">Kaffeine es un reproductor multimedia. Lo que lo hace distinto del resto es su excelente implementación de TV digital (DVB). Kaffeine tiene una interfaz de usuario amigable, por lo que incluso los usuarios que lo usan por primera vez pueden comenzar a reproducir sus películas de forma inmediata, ya se trate de un DVD (incluyendo menús de DVD, títulos, capítulos, etc), de un VCD o de un archivo.</p>
+-    <p xml:lang="fr">Kaffeine est un lecteur de média. Il se distingue des autres par son excellente prise en charge de la télévision numérique (DVB, aussi appelée TNT). Kaffeine a une interface conviviale, de sorte que même les novices peuvent lire leurs films immédiatement : à partir d'un DVD (incluant les menus, titres, chapitres, etc.), d'un VCD, ou d'un fichier.</p>
+-    <p xml:lang="gl">Kaffeine é un reprodutor de son e vídeo que se distingue doutros reprodutores pola súa excelente compatibilidade coa televisión dixital (DVB). A interface de Kaffeine é fácil de usar, de xeito que mesmo os usuarios novos poden comezar a reproducir filmes inmediatamente desde DVD (incluíndo menús de DVD, títulos, capítulos, etc.), VCD ou un ficheiro.</p>
+-    <p xml:lang="id">Kaffeine adalah sebuah pemutar media. Apa yang membuatnya berbeda dari yang lainnya adalah dukungan baik pada TV digital (DVB). Kaffeine memiliki antarmuka yang mudah, jadi pengguna pertama pun dapat memulai dengan seketika memutar bioskop mereka: dari DVD (termasuk menu-menu DVD, judul, bab, dll), VCD, atau sebuah berkas file.</p>
+-    <p xml:lang="it">Kaffeine è un lettore multimediale. Ciò che lo rende diverso dagli altri è il suo eccellente supporto della TV digitale (DVB). Kaffeine ha un'interfaccia amichevole, perciò anche i nuovi utenti saranno in grado di riprodurre subito i loro film: da DVD (inclusi i menu dei DVD, titoli, capitoli, ecc.), VCD o un file.</p>
+-    <p xml:lang="ko">Kaffeine은 미디어 재생기입니다. 다른 미디어 재생기와 다른 점은 강력한 디지털 TV(DVB) 지원입니다. Kaffeine은 첫 사용자라도 DVD(DVD 메뉴, 타이틀, 챕터 지원), VCD, 파일에 저장된 동영상을 쉽게 재생할 수 있습니다.</p>
+-    <p xml:lang="nl">Kaffeine is een mediaspeler. Wat het anders maakt ten opzichte van de anderen is zijn uitmuntende ondersteuning van digitale TV (DVB). Kaffeine heeft een gebruikersvriendelijk interface, zodat zelfs gebruikers de eerste keer onmiddellijk kunnen beginnen met het afspelen van hun films: van dvd's (inclusief dvd-menu's, titels, hoofdstukken, etc.), vcd of een bestand.</p>
+-    <p xml:lang="pl">Kaffeine jest odtwarzaczem multimedialny. Od reszty odróżnia go doskonała obsługa telewizji cyfrowej (DVB). Kaffeine posiada interfejs przyjazny użytkownikowi, tak że nawet początkujący użytkownicy mogą od razu zacząć odtwarzać swoje film: z DVD (uwzględniając w tym DVD z menu, tytułami, rozdziałami, itp.), VCD lub pliku.</p>
+-    <p xml:lang="pt">O Kaffeine é um leitor de conteúdos multimédia. O que o torna diferente dos outros é o seu suporte excelente para TV digital (DVB). O Kaffeine tem uma interface de utilizador amigável, para que mesmos os utilizadores iniciais comecem logo a ver os seus filmes: desde os DVD's (incluindo os menus, títulos, capítulos, etc.) aos VCD's e ficheiros individuais.</p>
+-    <p xml:lang="pt-BR">Kaffeine é um reprodutor de mídias. O que o torna diferente dos outros é o seu excelente suporte para TV digital (DVB). O Kaffeine tem uma interface amigável, para que até mesmo os usuários iniciantes possam rapidamente assistir a seus filmes, em DVDs (incluindo os menus, títulos, capítulos, etc.) VCDs e arquivos individuais.</p>
+-    <p xml:lang="sk">Kaffeine prehrávač médií. Čo ho odlišuje od iných prehrávačov médií, je výborná podpora digitálnej TV (DVB). Kaffeine má priateľské rozhranie, takže aj úplne noví používatelia môžu hneď začať prehrávať svoje filmy: z DVD (vrátane DVD ponuky, titulov, kapitol atď.), VCD alebo súbor.</p>
+-    <p xml:lang="sl">Kaffeine je predstavnostni predvajalnik. Od drugih se razlikuje po odlični podpori za digitalno televizijo (DVB). Kaffeine ima uporabniku prijazen vmesnik, ki poenostavi predvajanje filmov iz DVD-jev (vključno z meniji in poglavji), VCD-jev ali datotek .</p>
+-    <p xml:lang="sr">Кафеин је медија плејер. Од осталих плејера издваја се изврсном подршком за дигиталну телевизију (ДВБ). Поседује предусретљиво сучеље, тако да и нови корисници могу одмах да пусте своје филмове: са ДВД‑а (укључујући ДВД меније, наслове, поглавља, итд), ВЦД‑а, или из фајла.</p>
+-    <p xml:lang="sr-Latn">Kaffeine je medija plejer. Od ostalih plejera izdvaja se izvrsnom podrškom za digitalnu televiziju (DVB). Poseduje predusretljivo sučelje, tako da i novi korisnici mogu odmah da puste svoje filmove: sa DVD‑a (uključujući DVD menije, naslove, poglavlja, itd), VCD‑a, ili iz fajla.</p>
+-    <p xml:lang="sr-ijekavian">Кафеин је медија плејер. Од осталих плејера издваја се изврсном подршком за дигиталну телевизију (ДВБ). Поседује предусретљиво сучеље, тако да и нови корисници могу одмах да пусте своје филмове: са ДВД‑а (укључујући ДВД меније, наслове, поглавља, итд), ВЦД‑а, или из фајла.</p>
+-    <p xml:lang="sr-ijekavianlatin">Kaffeine je medija plejer. Od ostalih plejera izdvaja se izvrsnom podrškom za digitalnu televiziju (DVB). Poseduje predusretljivo sučelje, tako da i novi korisnici mogu odmah da puste svoje filmove: sa DVD‑a (uključujući DVD menije, naslove, poglavlja, itd), VCD‑a, ili iz fajla.</p>
+-    <p xml:lang="sv">Kaffeine är en mediaspelare. Vad som skiljer den från övriga är dess utmärkta stöd för digital-tv (DVB). Kaffeine har ett användarvänligt gränssnitt, så att även förstagångsanvändare kan omedelbart börja spela sina filmer: från dvd (inklusive dvd-menyer, titlar, kapitel, etc.), vcd, eller en fil.</p>
+-    <p xml:lang="uk">Kaffeine — мультимедійний програвач. Від інших програвачів його відрізняє чудова підтримка цифрового телебачення (DVB). У Kaffeine передбачено зручний для користувачів інтерфейс: насолодитися фільмами у ньому зможуть навіть початківці. Можна переглянути будь-що: від DVD (з використанням меню DVD, субтитрів, частин тощо) до VCD або окремого файла.</p>
+-    <p xml:lang="x-test">xxKaffeine is a media player. What makes it different from the others is its excellent support of digital TV (DVB). Kaffeine has user-friendly interface, so that even first time users can start immediately playing their movies: from DVD (including DVD menus, titles, chapters, etc.), VCD, or a file.xx</p>
+-  </description>
+-  <url type="homepage">http://kaffeine.kde.org</url>
+-  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kaffeine</url>
+-  <screenshots>
+-    <screenshot type="default">
+-      <image>http://kde.org/images/screenshots/kaffeine.png</image>
+-    </screenshot>
+-  </screenshots>
+-  <project_group>KDE</project_group>
+-  <provides>
+-    <binary>kaffeine</binary>
+-  </provides>
+-</component>
+diff -Naur orig/src/kaffeine.desktop patched/src/kaffeine.desktop
+--- orig/src/kaffeine.desktop	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/kaffeine.desktop	2016-04-23 07:35:55.523478988 +0200
+@@ -1,6 +1,5 @@
+ [Desktop Entry]
+ Name=Kaffeine
+-Name[ast]=Kaffeine
+ Name[bg]=Kaffeine
+ Name[bs]=Kaffeine
+ Name[ca]=Kaffeine
+@@ -73,7 +72,6 @@
+ GenericName[de]=Medienwiedergabe
+ GenericName[el]=Αναπαραγωγέας πολυμέσων
+ GenericName[en_GB]=Media Player
+-GenericName[eo]=Medioludilo
+ GenericName[es]=Reproductor de medios
+ GenericName[et]=Meediafailide mängija
+ GenericName[eu]=Multimedia-erreproduzitzailea
+diff -Naur orig/src/log.cpp patched/src/log.cpp
+--- orig/src/log.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/log.cpp	2016-04-23 07:35:55.523478988 +0200
+@@ -39,7 +39,7 @@
+ 
+ 	void begin(const char *message)
+ 	{
+-		mutex.lock();
++        //mutex.lock();
+ 
+ 		if (buffer.size() > (8176 - 1024)) {
+ 			buffer.remove(0, buffer.indexOf(QLatin1Char('\n'), 1023) + 1);
+@@ -75,19 +75,19 @@
+ 		buffer.append(QLatin1Char('\n'));
+ 		fprintf(stderr, "%s", QTextCodec::codecForLocale()->fromUnicode(
+ 			buffer.constData() + position, buffer.size() - position).constData());
+-		mutex.unlock();
++        //mutex.unlock();
+ 	}
+ 
+-	QMutex mutex;
++    //QMutex mutex;
+ 	QString buffer;
+ 	int position;
+ };
+ 
+ QString Log::getLog()
+ {
+-	if (data != NULL) {
+-		QMutexLocker locker(&data->mutex);
+-		return data->buffer;
++    if (data != NULL) {
++//        QMutexLocker locker(&data->mutex);
++        return data.load()->buffer;
+ 	}
+ 
+ 	return QString();
+@@ -104,27 +104,27 @@
+ 		}
+ 	}
+ 
+-	data->begin(message);
++    data.load()->begin(message);
+ }
+ 
+ void Log::append(qint64 value)
+ {
+-	data->append(value);
++    data.load()->append(value);
+ }
+ 
+ void Log::append(quint64 value)
+ {
+-	data->append(value);
++    data.load()->append(value);
+ }
+ 
+ void Log::append(const QString &string)
+ {
+-	data->append(string);
++    data.load()->append(string);
+ }
+ 
+ void Log::end()
+ {
+-	data->end();
++    data.load()->end();
+ }
+ 
+-QBasicAtomicPointer<LogPrivate> Log::data = Q_BASIC_ATOMIC_INITIALIZER(0);
++QAtomicPointer<LogPrivate> Log::data;
+diff -Naur orig/src/log.h patched/src/log.h
+--- orig/src/log.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/log.h	2016-04-23 07:35:55.523478988 +0200
+@@ -79,7 +79,7 @@
+ 	static void append(const QString &string);
+ 	static void end();
+ 
+-	static QBasicAtomicPointer<LogPrivate> data;
++    static QAtomicPointer<LogPrivate> data;
+ };
+ 
+ #endif /* LOG_H */
+diff -Naur orig/src/main.cpp patched/src/main.cpp
+--- orig/src/main.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/main.cpp	2016-04-23 07:35:55.523478988 +0200
+@@ -19,7 +19,7 @@
+  */
+ 
+ #include <QPointer>
+-#include <KAboutData>
++#include <K4AboutData>
+ #include <KCmdLineArgs>
+ #include <KUniqueApplication>
+ #include "mainwindow.h"
+@@ -63,9 +63,9 @@
+ 
+ int main(int argc, char *argv[])
+ {
+-	KAboutData aboutData("kaffeine", 0, ki18n("Kaffeine"), "1.3-git",
++	K4AboutData aboutData("kaffeine", 0, ki18n("Kaffeine"), "1.3-git",
+ 		ki18n("A media player for KDE with digital TV support."),
+-		KAboutData::License_GPL_V2, ki18n("(C) 2007-2011 The Kaffeine Authors"),
++		K4AboutData::License_GPL_V2, ki18n("(C) 2007-2011 The Kaffeine Authors"),
+ 		KLocalizedString(), "http://kaffeine.kde.org");
+ 
+ 	aboutData.addAuthor(ki18n("Christoph Pfister"), ki18n("Maintainer"),
+diff -Naur orig/src/mainwindow.cpp patched/src/mainwindow.cpp
+--- orig/src/mainwindow.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/mainwindow.cpp	2016-04-23 07:35:55.523478988 +0200
+@@ -29,12 +29,14 @@
+ #include <KInputDialog>
+ #include <kio/deletejob.h>
+ #include <KMenu>
+-#include <KMenuBar>
++#include <QMenuBar>
+ #include <KRecentFilesAction>
+ #include <KShortcutsDialog>
+ #include <KStatusNotifierItem>
+ #include <KTabBar>
+ #include <KToolBar>
++#include <KSharedConfig>
++#include <KConfigGroup>
+ #include "dvb/dvbtab.h"
+ #include "playlist/playlisttab.h"
+ #include "configuration.h"
+@@ -68,7 +70,7 @@
+ private:
+ 	void activate() { }
+ 
+-	QAbstractButton *addShortcut(const QString &name, const KIcon &icon, QWidget *parent);
++	QAbstractButton *addShortcut(const QString &name, const QIcon &icon, QWidget *parent);
+ };
+ 
+ StartTab::StartTab(MainWindow *mainWindow)
+@@ -82,35 +84,35 @@
+ 	gridLayout->setSpacing(15);
+ 
+ 	QAbstractButton *button =
+-		addShortcut(i18n("&1 Play File"), KIcon(QLatin1String("video-x-generic")), this);
++		addShortcut(i18n("&1 Play File"), QIcon(QLatin1String("video-x-generic")), this);
+ 	button->setShortcut(Qt::Key_1);
+ 	connect(button, SIGNAL(clicked()), mainWindow, SLOT(open()));
+ 	gridLayout->addWidget(button, 0, 0);
+ 
+-	button = addShortcut(i18n("&2 Play Audio CD"), KIcon(QLatin1String("media-optical-audio")), this);
++	button = addShortcut(i18n("&2 Play Audio CD"), QIcon(QLatin1String("media-optical-audio")), this);
+ 	button->setShortcut(Qt::Key_2);
+ 	connect(button, SIGNAL(clicked()), mainWindow, SLOT(openAudioCd()));
+ 	gridLayout->addWidget(button, 0, 1);
+ 
+-	button = addShortcut(i18n("&3 Play Video CD"), KIcon(QLatin1String("media-optical")), this);
++	button = addShortcut(i18n("&3 Play Video CD"), QIcon(QLatin1String("media-optical")), this);
+ 	button->setShortcut(Qt::Key_3);
+ 	connect(button, SIGNAL(clicked()), mainWindow, SLOT(openVideoCd()));
+ 	gridLayout->addWidget(button, 0, 2);
+ 
+-	button = addShortcut(i18n("&4 Play DVD"), KIcon(QLatin1String("media-optical")), this);
++	button = addShortcut(i18n("&4 Play DVD"), QIcon(QLatin1String("media-optical")), this);
+ 	button->setShortcut(Qt::Key_4);
+ 	connect(button, SIGNAL(clicked()), mainWindow, SLOT(openDvd()));
+ 	gridLayout->addWidget(button, 1, 0);
+ 
+ #if HAVE_DVB == 1
+-	button = addShortcut(i18n("&5 Digital TV"), KIcon(QLatin1String("video-television")), this);
++	button = addShortcut(i18n("&5 Digital TV"), QIcon(QLatin1String("video-television")), this);
+ 	button->setShortcut(Qt::Key_5);
+ 	connect(button, SIGNAL(clicked()), mainWindow, SLOT(playDvb()));
+ 	gridLayout->addWidget(button, 1, 1);
+ #endif /* HAVE_DVB == 1 */
+ }
+ 
+-QAbstractButton *StartTab::addShortcut(const QString &name, const KIcon &icon, QWidget *parent)
++QAbstractButton *StartTab::addShortcut(const QString &name, const QIcon &icon, QWidget *parent)
+ {
+ 	// QPushButton has visual problems with big icons
+ 	QToolButton *button = new QToolButton(parent);
+@@ -149,40 +151,40 @@
+ {
+ 	// menu structure
+ 
+-	KMenuBar *menuBar = KMainWindow::menuBar();
++	QMenuBar *menuBar = KMainWindow::menuBar();
+ 	collection = new KActionCollection(this);
+ 
+ 	KMenu *menu = new KMenu(i18n("&File"), this);
+ 	menuBar->addMenu(menu);
+ 
+-	KAction *action = KStandardAction::open(this, SLOT(open()), collection);
++	QAction *action = KStandardAction::open(this, SLOT(open()), collection);
+ 	menu->addAction(collection->addAction(QLatin1String("file_open"), action));
+ 
+-	action = new KAction(KIcon(QLatin1String("text-html")),
++	action = new QAction(QIcon(QLatin1String("text-html")),
+ 		i18nc("@action:inmenu", "Open URL..."), collection);
+ 	action->setShortcut(Qt::CTRL | Qt::Key_U);
+ 	connect(action, SIGNAL(triggered(bool)), this, SLOT(openUrl()));
+ 	menu->addAction(collection->addAction(QLatin1String("file_open_url"), action));
+ 
+-	actionOpenRecent = KStandardAction::openRecent(this, SLOT(openUrl(KUrl)), collection);
+-	actionOpenRecent->loadEntries(KGlobal::config()->group("Recent Files"));
++	actionOpenRecent = KStandardAction::openRecent(this, SLOT(openUrl(QUrl)), collection);
++	actionOpenRecent->loadEntries(KSharedConfig::openConfig()->group("Recent Files"));
+ 	menu->addAction(collection->addAction(QLatin1String("file_open_recent"), actionOpenRecent));
+ 
+ 	menu->addSeparator();
+ 
+-	action = new KAction(KIcon(QLatin1String("media-optical-audio")), i18n("Play Audio CD"), collection);
++	action = new QAction(QIcon(QLatin1String("media-optical-audio")), i18n("Play Audio CD"), collection);
+ 	connect(action, SIGNAL(triggered(bool)), this, SLOT(openAudioCd()));
+ 	menu->addAction(collection->addAction(QLatin1String("file_play_audiocd"), action));
+ 
+-	action = new KAction(KIcon(QLatin1String("media-optical")), i18n("Play Video CD"), collection);
++	action = new QAction(QIcon(QLatin1String("media-optical")), i18n("Play Video CD"), collection);
+ 	connect(action, SIGNAL(triggered(bool)), this, SLOT(openVideoCd()));
+ 	menu->addAction(collection->addAction(QLatin1String("file_play_videocd"), action));
+ 
+-	action = new KAction(KIcon(QLatin1String("media-optical")), i18n("Play DVD"), collection);
++	action = new QAction(QIcon(QLatin1String("media-optical")), i18n("Play DVD"), collection);
+ 	connect(action, SIGNAL(triggered(bool)), this, SLOT(openDvd()));
+ 	menu->addAction(collection->addAction(QLatin1String("file_play_dvd"), action));
+ 
+-	action = new KAction(KIcon(QLatin1String("media-optical")), i18nc("@action:inmenu", "Play DVD Folder"),
++	action = new QAction(QIcon(QLatin1String("media-optical")), i18nc("@action:inmenu", "Play DVD Folder"),
+ 		collection);
+ 	connect(action, SIGNAL(triggered()), this, SLOT(playDvdFolder()));
+ 	menu->addAction(collection->addAction(QLatin1String("file_play_dvd_folder"), action));
+@@ -222,11 +224,11 @@
+ 		this, SLOT(navigationBarOrientationChanged(Qt::Orientation)));
+ 
+ 	tabBar = new KTabBar(navigationBar);
+-	tabBar->addTab(KIcon(QLatin1String("start-here-kde")), i18n("Start"));
+-	tabBar->addTab(KIcon(QLatin1String("kaffeine")), i18n("Playback"));
+-	tabBar->addTab(KIcon(QLatin1String("view-media-playlist")), i18n("Playlist"));
++	tabBar->addTab(QIcon(QLatin1String("start-here-kde")), i18n("Start"));
++	tabBar->addTab(QIcon(QLatin1String("kaffeine")), i18n("Playback"));
++	tabBar->addTab(QIcon(QLatin1String("view-media-playlist")), i18n("Playlist"));
+ #if HAVE_DVB == 1
+-	tabBar->addTab(KIcon(QLatin1String("video-television")), i18n("Television"));
++	tabBar->addTab(QIcon(QLatin1String("video-television")), i18n("Television"));
+ #endif /* HAVE_DVB == 1 */
+ 	tabBar->setShape(KTabBar::RoundedWest);
+ 	tabBar->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+@@ -335,7 +337,7 @@
+ 		mediaWidget->setDisplayMode(MediaWidget::FullScreenMode);
+ 		break;
+ 	case Configuration::StartupRememberLastSetting: {
+-		int value = KGlobal::config()->group("MainWindow").readEntry("DisplayMode", 0);
++		int value = KSharedConfig::openConfig()->group("MainWindow").readEntry("DisplayMode", 0);
+ 
+ 		switch (value) {
+ 		case 0:
+@@ -356,7 +358,7 @@
+ 
+ MainWindow::~MainWindow()
+ {
+-	actionOpenRecent->saveEntries(KGlobal::config()->group("Recent Files"));
++	actionOpenRecent->saveEntries(KSharedConfig::openConfig()->group("Recent Files"));
+ 
+ 	if (!temporaryUrls.isEmpty()) {
+ 		KIO::del(temporaryUrls);
+@@ -371,7 +373,7 @@
+ 	case MediaWidget::FullScreenReturnToMinimalMode: value = 2; break;
+ 	}
+ 
+-	KGlobal::config()->group("MainWindow").writeEntry("DisplayMode", value);
++	KSharedConfig::openConfig()->group("MainWindow").writeEntry("DisplayMode", value);
+ }
+ 
+ KCmdLineOptions MainWindow::cmdLineOptions()
+@@ -466,10 +468,10 @@
+ #endif /* HAVE_DVB == 1 */
+ 
+ 	if (args->count() > 0) {
+-		QList<KUrl> urls;
++		QList<QUrl> urls;
+ 
+ 		for (int i = 0; i < args->count(); ++i) {
+-			KUrl url = args->url(i);
++			QUrl url = args->url(i);
+ 
+ 			if (url.isValid()) {
+ 				urls.append(url);
+@@ -533,7 +535,7 @@
+ 
+ void MainWindow::open()
+ {
+-	QList<KUrl> urls = KFileDialog::getOpenUrls(KUrl(), MediaWidget::extensionFilter(), this);
++	QList<QUrl> urls = KFileDialog::getOpenUrls(QUrl(), MediaWidget::extensionFilter(), this);
+ 
+ 	if (urls.size() >= 2) {
+ 		activateTab(PlaylistTabId);
+@@ -548,21 +550,21 @@
+ 	openUrl(KInputDialog::getText(i18nc("@title:window", "Open URL"), i18n("Enter a URL:")));
+ }
+ 
+-void MainWindow::openUrl(const KUrl &url)
++void MainWindow::openUrl(const QUrl &url)
+ {
+ 	if (!url.isValid()) {
+ 		return;
+ 	}
+ 
+ 	// we need to copy "url" because addUrl() may invalidate it
+-	KUrl copy(url);
++	QUrl copy(url);
+ 	actionOpenRecent->addUrl(copy); // moves the url to the top of the list
+ 
+ 	if (currentTabIndex != PlaylistTabId) {
+ 		activateTab(PlayerTabId);
+ 	}
+ 
+-	playlistTab->appendToVisiblePlaylist(QList<KUrl>() << copy, true);
++	playlistTab->appendToVisiblePlaylist(QList<QUrl>() << copy, true);
+ }
+ 
+ void MainWindow::openAudioCd(const QString &device)
+@@ -585,7 +587,7 @@
+ 
+ void MainWindow::playDvdFolder()
+ {
+-	QString folder = KFileDialog::getExistingDirectory(KUrl(), this);
++	QString folder = KFileDialog::getExistingDirectory(QUrl(), this);
+ 
+ 	if (!folder.isEmpty()) {
+ 		openDvd(folder);
+@@ -631,7 +633,7 @@
+ 
+ void MainWindow::configureKaffeine()
+ {
+-	KDialog *dialog = new ConfigurationDialog(this);
++	QDialog *dialog = new ConfigurationDialog(this);
+ 	dialog->setAttribute(Qt::WA_DeleteOnClose, true);
+ 	dialog->setModal(true);
+ 	dialog->show();
+diff -Naur orig/src/mainwindow.h patched/src/mainwindow.h
+--- orig/src/mainwindow.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/mainwindow.h	2016-04-23 07:35:55.527479008 +0200
+@@ -50,7 +50,7 @@
+ 	void displayModeChanged();
+ 	void open();
+ 	void openUrl();
+-	void openUrl(const KUrl &url);
++	void openUrl(const QUrl &url);
+ 	void openAudioCd(const QString &device = QString());
+ 	void openVideoCd(const QString &device = QString());
+ 	void openDvd(const QString &device = QString());
+@@ -83,7 +83,7 @@
+ 	KToolBar *controlBar;
+ 	bool autoHideControlBar;
+ 	QTimer *cursorHideTimer;
+-	QList<KUrl> temporaryUrls;
++	QList<QUrl> temporaryUrls;
+ 
+ 	MediaWidget *mediaWidget;
+ 	QStackedLayout *stackedLayout;
+diff -Naur orig/src/mediawidget.cpp patched/src/mediawidget.cpp
+--- orig/src/mediawidget.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/mediawidget.cpp	2016-04-23 07:35:55.527479008 +0200
+@@ -30,6 +30,7 @@
+ #include <QTimeEdit>
+ #include <QTimer>
+ #include <QX11Info>
++#include <QMimeData>
+ #include <Solid/Block>
+ #include <Solid/Device>
+ #include <KAction>
+@@ -38,6 +39,9 @@
+ #include <KLocalizedString>
+ #include <KMenu>
+ #include <KToolBar>
++#include <KSharedConfig>
++#include <KConfigGroup>
++#include <KUrl>
+ #include <X11/extensions/scrnsaver.h>
+ #include "backend-vlc/vlcmediawidget.h"
+ #include "configuration.h"
+@@ -73,42 +77,42 @@
+ 	layout->addWidget(backend);
+ 	osdWidget = new OsdWidget(this);
+ 
+-	actionPrevious = new KAction(KIcon(QLatin1String("media-skip-backward")), i18n("Previous"), this);
+-	actionPrevious->setShortcut(KShortcut(Qt::Key_PageUp, Qt::Key_MediaPrevious));
++	actionPrevious = new KAction(QIcon::fromTheme(QLatin1String("media-skip-backward")), i18n("Previous"), this);
++	actionPrevious->setShortcut(QKeySequence(Qt::Key_PageUp, Qt::Key_MediaPrevious));
+ 	connect(actionPrevious, SIGNAL(triggered()), this, SLOT(previous()));
+ 	toolBar->addAction(collection->addAction(QLatin1String("controls_previous"), actionPrevious));
+ 	menu->addAction(actionPrevious);
+ 
+ 	actionPlayPause = new KAction(this);
+-	actionPlayPause->setShortcut(KShortcut(Qt::Key_Space, Qt::Key_MediaPlay));
++	actionPlayPause->setShortcut(QKeySequence(Qt::Key_Space, Qt::Key_MediaPlay));
+ 	textPlay = i18n("Play");
+ 	textPause = i18n("Pause");
+-	iconPlay = KIcon(QLatin1String("media-playback-start"));
+-	iconPause = KIcon(QLatin1String("media-playback-pause"));
++	iconPlay = QIcon::fromTheme(QLatin1String("media-playback-start"));
++	iconPause = QIcon::fromTheme(QLatin1String("media-playback-pause"));
+ 	connect(actionPlayPause, SIGNAL(triggered(bool)), this, SLOT(pausedChanged(bool)));
+ 	toolBar->addAction(collection->addAction(QLatin1String("controls_play_pause"), actionPlayPause));
+ 	menu->addAction(actionPlayPause);
+ 
+-	actionStop = new KAction(KIcon(QLatin1String("media-playback-stop")), i18n("Stop"), this);
+-	actionStop->setShortcut(KShortcut(Qt::Key_Backspace, Qt::Key_MediaStop));
++	actionStop = new KAction(QIcon::fromTheme(QLatin1String("media-playback-stop")), i18n("Stop"), this);
++	actionStop->setShortcut(QKeySequence(Qt::Key_Backspace, Qt::Key_MediaStop));
+ 	connect(actionStop, SIGNAL(triggered()), this, SLOT(stop()));
+ 	toolBar->addAction(collection->addAction(QLatin1String("controls_stop"), actionStop));
+ 	menu->addAction(actionStop);
+ 
+-	actionNext = new KAction(KIcon(QLatin1String("media-skip-forward")), i18n("Next"), this);
+-	actionNext->setShortcut(KShortcut(Qt::Key_PageDown, Qt::Key_MediaNext));
++	actionNext = new KAction(QIcon::fromTheme(QLatin1String("media-skip-forward")), i18n("Next"), this);
++	actionNext->setShortcut(QKeySequence(Qt::Key_PageDown, Qt::Key_MediaNext));
+ 	connect(actionNext, SIGNAL(triggered()), this, SLOT(next()));
+ 	toolBar->addAction(collection->addAction(QLatin1String("controls_next"), actionNext));
+ 	menu->addAction(actionNext);
+ 	menu->addSeparator();
+ 
+-	fullScreenAction = new KAction(KIcon(QLatin1String("view-fullscreen")),
++	fullScreenAction = new KAction(QIcon::fromTheme(QLatin1String("view-fullscreen")),
+ 		i18nc("'Playback' menu", "Full Screen Mode"), this);
+ 	fullScreenAction->setShortcut(Qt::Key_F);
+ 	connect(fullScreenAction, SIGNAL(triggered()), this, SLOT(toggleFullScreen()));
+ 	menu->addAction(collection->addAction(QLatin1String("view_fullscreen"), fullScreenAction));
+ 
+-	minimalModeAction = new KAction(KIcon(QLatin1String("view-fullscreen")),
++	minimalModeAction = new KAction(QIcon::fromTheme(QLatin1String("view-fullscreen")),
+ 		i18nc("'Playback' menu", "Minimal Mode"), this);
+ 	minimalModeAction->setShortcut(Qt::Key_Period);
+ 	connect(minimalModeAction, SIGNAL(triggered()), this, SLOT(toggleMinimalMode()));
+@@ -133,23 +137,23 @@
+ 
+ 	KMenu *audioMenu = new KMenu(i18nc("'Playback' menu", "Audio"), this);
+ 
+-	KAction *action = new KAction(KIcon(QLatin1String("audio-volume-high")),
++	KAction *action = new KAction(QIcon::fromTheme(QLatin1String("audio-volume-high")),
+ 		i18nc("'Audio' menu", "Increase Volume"), this);
+-	action->setShortcut(KShortcut(Qt::Key_Plus, Qt::Key_VolumeUp));
++	action->setShortcut(QKeySequence(Qt::Key_Plus, Qt::Key_VolumeUp));
+ 	connect(action, SIGNAL(triggered()), this, SLOT(increaseVolume()));
+ 	audioMenu->addAction(collection->addAction(QLatin1String("controls_increase_volume"), action));
+ 
+-	action = new KAction(KIcon(QLatin1String("audio-volume-low")),
++	action = new KAction(QIcon::fromTheme(QLatin1String("audio-volume-low")),
+ 		i18nc("'Audio' menu", "Decrease Volume"), this);
+-	action->setShortcut(KShortcut(Qt::Key_Minus, Qt::Key_VolumeDown));
++	action->setShortcut(QKeySequence(Qt::Key_Minus, Qt::Key_VolumeDown));
+ 	connect(action, SIGNAL(triggered()), this, SLOT(decreaseVolume()));
+ 	audioMenu->addAction(collection->addAction(QLatin1String("controls_decrease_volume"), action));
+ 
+ 	muteAction = new KAction(i18nc("'Audio' menu", "Mute Volume"), this);
+-	mutedIcon = KIcon(QLatin1String("audio-volume-muted"));
+-	unmutedIcon = KIcon(QLatin1String("audio-volume-medium"));
++	mutedIcon = QIcon::fromTheme(QLatin1String("audio-volume-muted"));
++	unmutedIcon = QIcon::fromTheme(QLatin1String("audio-volume-medium"));
+ 	muteAction->setIcon(unmutedIcon);
+-	muteAction->setShortcut(KShortcut(Qt::Key_M, Qt::Key_VolumeMute));
++	muteAction->setShortcut(QKeySequence(Qt::Key_M, Qt::Key_VolumeMute));
+ 	connect(muteAction, SIGNAL(triggered()), this, SLOT(mutedChanged()));
+ 	toolBar->addAction(collection->addAction(QLatin1String("controls_mute_volume"), muteAction));
+ 	audioMenu->addAction(muteAction);
+@@ -159,11 +163,11 @@
+ 	menu->addMenu(videoMenu);
+ 	menu->addSeparator();
+ 
+-	deinterlaceAction = new KAction(KIcon(QLatin1String("format-justify-center")),
++	deinterlaceAction = new KAction(QIcon::fromTheme(QLatin1String("format-justify-center")),
+ 		i18nc("'Video' menu", "Deinterlace"), this);
+ 	deinterlaceAction->setCheckable(true);
+ 	deinterlaceAction->setChecked(
+-		KGlobal::config()->group("MediaObject").readEntry("Deinterlace", true));
++		KSharedConfig::openConfig()->group("MediaObject").readEntry("Deinterlace", true));
+ 	deinterlaceAction->setShortcut(Qt::Key_I);
+ 	connect(deinterlaceAction, SIGNAL(toggled(bool)), this, SLOT(deinterlacingChanged(bool)));
+ 	backend->setDeinterlacing(deinterlaceAction->isChecked());
+@@ -219,7 +223,7 @@
+ 	autoResizeMenu->addAction(collection->addAction(QLatin1String("controls_autoresize_double"), action));
+ 
+ 	int autoResizeFactor =
+-		KGlobal::config()->group("MediaObject").readEntry("AutoResizeFactor", 0);
++		KSharedConfig::openConfig()->group("MediaObject").readEntry("AutoResizeFactor", 0);
+ 
+ 	switch (autoResizeFactor) {
+ 	case 1:
+@@ -245,13 +249,13 @@
+ 	volumeSlider->setRange(0, 100);
+ 	volumeSlider->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+ 	volumeSlider->setToolTip(action->text());
+-	volumeSlider->setValue(KGlobal::config()->group("MediaObject").readEntry("Volume", 100));
++	volumeSlider->setValue(KSharedConfig::openConfig()->group("MediaObject").readEntry("Volume", 100));
+ 	connect(volumeSlider, SIGNAL(valueChanged(int)), this, SLOT(volumeChanged(int)));
+ 	backend->setVolume(volumeSlider->value());
+ 	action->setDefaultWidget(volumeSlider);
+ 	toolBar->addAction(collection->addAction(QLatin1String("controls_volume_slider"), action));
+ 
+-	jumpToPositionAction = new KAction(KIcon(QLatin1String("go-jump")),
++	jumpToPositionAction = new KAction(QIcon::fromTheme(QLatin1String("go-jump")),
+ 		i18nc("@action:inmenu", "Jump to Position..."), this);
+ 	jumpToPositionAction->setShortcut(Qt::CTRL + Qt::Key_J);
+ 	connect(jumpToPositionAction, SIGNAL(triggered()), this, SLOT(jumpToPosition()));
+@@ -268,35 +272,35 @@
+ 	connect(Configuration::instance(), SIGNAL(longSkipDurationChanged(int)),
+ 		this, SLOT(longSkipDurationChanged(int)));
+ 
+-	longSkipBackwardAction = new KAction(KIcon(QLatin1String("media-skip-backward")),
++	longSkipBackwardAction = new KAction(QIcon::fromTheme(QLatin1String("media-skip-backward")),
+ 		i18nc("submenu of 'Skip'", "Skip %1s Backward", longSkipDuration), this);
+ 	longSkipBackwardAction->setShortcut(Qt::SHIFT + Qt::Key_Left);
+ 	connect(longSkipBackwardAction, SIGNAL(triggered()), this, SLOT(longSkipBackward()));
+ 	navigationMenu->addAction(
+ 		collection->addAction(QLatin1String("controls_long_skip_backward"), longSkipBackwardAction));
+ 
+-	shortSkipBackwardAction = new KAction(KIcon(QLatin1String("media-skip-backward")),
++	shortSkipBackwardAction = new KAction(QIcon::fromTheme(QLatin1String("media-skip-backward")),
+ 		i18nc("submenu of 'Skip'", "Skip %1s Backward", shortSkipDuration), this);
+ 	shortSkipBackwardAction->setShortcut(Qt::Key_Left);
+ 	connect(shortSkipBackwardAction, SIGNAL(triggered()), this, SLOT(shortSkipBackward()));
+ 	navigationMenu->addAction(
+ 		collection->addAction(QLatin1String("controls_skip_backward"), shortSkipBackwardAction));
+ 
+-	shortSkipForwardAction = new KAction(KIcon(QLatin1String("media-skip-forward")),
++	shortSkipForwardAction = new KAction(QIcon::fromTheme(QLatin1String("media-skip-forward")),
+ 		i18nc("submenu of 'Skip'", "Skip %1s Forward", shortSkipDuration), this);
+ 	shortSkipForwardAction->setShortcut(Qt::Key_Right);
+ 	connect(shortSkipForwardAction, SIGNAL(triggered()), this, SLOT(shortSkipForward()));
+ 	navigationMenu->addAction(
+ 		collection->addAction(QLatin1String("controls_skip_forward"), shortSkipForwardAction));
+ 
+-	longSkipForwardAction = new KAction(KIcon(QLatin1String("media-skip-forward")),
++	longSkipForwardAction = new KAction(QIcon::fromTheme(QLatin1String("media-skip-forward")),
+ 		i18nc("submenu of 'Skip'", "Skip %1s Forward", longSkipDuration), this);
+ 	longSkipForwardAction->setShortcut(Qt::SHIFT + Qt::Key_Right);
+ 	connect(longSkipForwardAction, SIGNAL(triggered()), this, SLOT(longSkipForward()));
+ 	navigationMenu->addAction(
+ 		collection->addAction(QLatin1String("controls_long_skip_forward"), longSkipForwardAction));
+ 
+-	toolBar->addAction(KIcon(QLatin1String("player-time")), i18n("Seek Slider"))->setEnabled(false);
++	toolBar->addAction(QIcon::fromTheme(QLatin1String("player-time")), i18n("Seek Slider"))->setEnabled(false);
+ 
+ 	action = new KAction(i18n("Seek Slider"), this);
+ 	seekSlider = new SeekSlider(toolBar);
+@@ -307,7 +311,7 @@
+ 	action->setDefaultWidget(seekSlider);
+ 	toolBar->addAction(collection->addAction(QLatin1String("controls_position_slider"), action));
+ 
+-	menuAction = new KAction(KIcon(QLatin1String("media-optical-video")),
++	menuAction = new KAction(QIcon::fromTheme(QLatin1String("media-optical-video")),
+ 		i18nc("dvd navigation", "DVD Menu"), this);
+ 	connect(menuAction, SIGNAL(triggered()), this, SLOT(toggleMenu()));
+ 	menu->addAction(collection->addAction(QLatin1String("controls_toggle_menu"), menuAction));
+@@ -345,8 +349,8 @@
+ 
+ MediaWidget::~MediaWidget()
+ {
+-	KGlobal::config()->group("MediaObject").writeEntry("Volume", volumeSlider->value());
+-	KGlobal::config()->group("MediaObject").writeEntry("Deinterlace",
++	KSharedConfig::openConfig()->group("MediaObject").writeEntry("Volume", volumeSlider->value());
++	KSharedConfig::openConfig()->group("MediaObject").writeEntry("Deinterlace",
+ 		deinterlaceAction->isChecked());
+ 
+ 	int autoResizeFactor = 0;
+@@ -363,7 +367,7 @@
+ 		break;
+ 	}
+ 
+-	KGlobal::config()->group("MediaObject").writeEntry("AutoResizeFactor", autoResizeFactor);
++	KSharedConfig::openConfig()->group("MediaObject").writeEntry("AutoResizeFactor", autoResizeFactor);
+ }
+ 
+ QString MediaWidget::extensionFilter()
+@@ -397,12 +401,12 @@
+ 		switch (displayMode) {
+ 		case NormalMode:
+ 		case MinimalMode:
+-			fullScreenAction->setIcon(KIcon(QLatin1String("view-fullscreen")));
++			fullScreenAction->setIcon(QIcon::fromTheme(QLatin1String("view-fullscreen")));
+ 			fullScreenAction->setText(i18nc("'Playback' menu", "Full Screen Mode"));
+ 			break;
+ 		case FullScreenMode:
+ 		case FullScreenReturnToMinimalMode:
+-			fullScreenAction->setIcon(KIcon(QLatin1String("view-restore")));
++			fullScreenAction->setIcon(QIcon::fromTheme(QLatin1String("view-restore")));
+ 			fullScreenAction->setText(i18nc("'Playback' menu",
+ 				"Exit Full Screen Mode"));
+ 			break;
+@@ -412,11 +416,11 @@
+ 		case NormalMode:
+ 		case FullScreenMode:
+ 		case FullScreenReturnToMinimalMode:
+-			minimalModeAction->setIcon(KIcon(QLatin1String("view-restore")));
++			minimalModeAction->setIcon(QIcon::fromTheme(QLatin1String("view-restore")));
+ 			minimalModeAction->setText(i18nc("'Playback' menu", "Minimal Mode"));
+ 			break;
+ 		case MinimalMode:
+-			minimalModeAction->setIcon(KIcon(QLatin1String("view-fullscreen")));
++			minimalModeAction->setIcon(QIcon::fromTheme(QLatin1String("view-fullscreen")));
+ 			minimalModeAction->setText(i18nc("'Playback' menu", "Exit Minimal Mode"));
+ 			break;
+ 		}
+@@ -447,7 +451,7 @@
+ 	}
+ }
+ 
+-void MediaWidget::play(const KUrl &url, const KUrl &subtitleUrl)
++void MediaWidget::play(const QUrl &url, const QUrl &subtitleUrl)
+ {
+ 	// FIXME mem-leak
+ 	play(new MediaSourceUrl(url, subtitleUrl));
+@@ -455,10 +459,10 @@
+ 
+ void MediaWidget::playAudioCd(const QString &device)
+ {
+-	KUrl devicePath;
++    QUrl devicePath;
+ 
+ 	if (!device.isEmpty()) {
+-		devicePath = KUrl::fromLocalFile(device);
++        devicePath = QUrl::fromLocalFile(device);
+ 	} else {
+ 		QList<Solid::Device> devices =
+ 			Solid::Device::listFromQuery(QLatin1String("OpticalDisc.availableContent & 'Audio'"));
+@@ -467,7 +471,7 @@
+ 			Solid::Block *block = devices.first().as<Solid::Block>();
+ 
+ 			if (block != NULL) {
+-				devicePath = KUrl::fromLocalFile(block->device());
++                devicePath = QUrl::fromLocalFile(block->device());
+ 			}
+ 		}
+ 	}
+@@ -478,10 +482,10 @@
+ 
+ void MediaWidget::playVideoCd(const QString &device)
+ {
+-	KUrl devicePath;
++    QUrl devicePath;
+ 
+ 	if (!device.isEmpty()) {
+-		devicePath = KUrl::fromLocalFile(device);
++        devicePath = QUrl::fromLocalFile(device);
+ 	} else {
+ 		QList<Solid::Device> devices = Solid::Device::listFromQuery(
+ 			QLatin1String("OpticalDisc.availableContent & 'VideoCd|SuperVideoCd'"));
+@@ -490,7 +494,7 @@
+ 			Solid::Block *block = devices.first().as<Solid::Block>();
+ 
+ 			if (block != NULL) {
+-				devicePath = KUrl::fromLocalFile(block->device());
++                devicePath = QUrl::fromLocalFile(block->device());
+ 			}
+ 		}
+ 	}
+@@ -501,10 +505,10 @@
+ 
+ void MediaWidget::playDvd(const QString &device)
+ {
+-	KUrl devicePath;
++    QUrl devicePath;
+ 
+ 	if (!device.isEmpty()) {
+-		devicePath = KUrl::fromLocalFile(device);
++        devicePath = QUrl::fromLocalFile(device);
+ 	} else {
+ 		QList<Solid::Device> devices =
+ 			Solid::Device::listFromQuery(QLatin1String("OpticalDisc.availableContent & 'VideoDvd'"));
+@@ -513,7 +517,7 @@
+ 			Solid::Block *block = devices.first().as<Solid::Block>();
+ 
+ 			if (block != NULL) {
+-				devicePath = KUrl::fromLocalFile(block->device());
++                devicePath = QUrl::fromLocalFile(block->device());
+ 			}
+ 		}
+ 	}
+@@ -1012,7 +1016,7 @@
+ 	const QMimeData *mimeData = event->mimeData();
+ 
+ 	if (mimeData->hasUrls()) {
+-		emit playlistUrlsDropped(KUrl::List::fromMimeData(mimeData));
++        emit playlistUrlsDropped(KUrl::List::fromMimeData(mimeData));
+ 		event->acceptProposedAction();
+ 	}
+ }
+diff -Naur orig/src/mediawidget.h patched/src/mediawidget.h
+--- orig/src/mediawidget.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/mediawidget.h	2016-04-23 07:35:55.527479008 +0200
+@@ -22,8 +22,8 @@
+ #define MEDIAWIDGET_H
+ 
+ #include <QWidget>
+-#include <KIcon>
+-#include <KUrl>
++#include <QIcon>
++#include <QUrl>
+ 
+ class QActionGroup;
+ class QPushButton;
+@@ -95,7 +95,7 @@
+ 	 */
+ 
+ 	void play(MediaSource *source_);
+-	void play(const KUrl &url, const KUrl &subtitleUrl = KUrl());
++    void play(const QUrl &url, const QUrl &subtitleUrl = QUrl());
+ 	void playAudioCd(const QString &device);
+ 	void playVideoCd(const QString &device);
+ 	void playDvd(const QString &device);
+@@ -145,7 +145,7 @@
+ 	void changeCaption(const QString &caption);
+ 	void resizeToVideo(MediaWidget::ResizeFactor resizeFactor);
+ 
+-	void playlistUrlsDropped(const QList<KUrl> &urls);
++    void playlistUrlsDropped(const QList<QUrl> &urls);
+ 	void osdKeyPressed(int key);
+ 
+ private slots:
+@@ -186,8 +186,8 @@
+ 	KAction *actionPlayPause;
+ 	QString textPlay;
+ 	QString textPause;
+-	KIcon iconPlay;
+-	KIcon iconPause;
++    QIcon iconPlay;
++    QIcon iconPause;
+ 	KAction *actionStop;
+ 	KAction *actionNext;
+ 	KAction *fullScreenAction;
+@@ -198,8 +198,8 @@
+ 	QStringListModel *subtitleModel;
+ 	QString textSubtitlesOff;
+ 	KAction *muteAction;
+-	KIcon mutedIcon;
+-	KIcon unmutedIcon;
++    QIcon mutedIcon;
++    QIcon unmutedIcon;
+ 	QSlider *volumeSlider;
+ 	SeekSlider *seekSlider;
+ 	KAction *longSkipBackwardAction;
+@@ -235,7 +235,7 @@
+ 
+ 	virtual ~MediaSource()
+ 	{
+-		setMediaWidget(NULL);
++        setMediaWidget(NULL);
+ 	}
+ 
+ 	enum Type
+@@ -248,7 +248,7 @@
+ 	};
+ 
+ 	virtual Type getType() const { return Url; }
+-	virtual KUrl getUrl() const { return KUrl(); }
++    virtual QUrl getUrl() const { return QUrl(); }
+ 	virtual bool hideCurrentTotalTime() const { return false; }
+ 	virtual bool overrideAudioStreams() const { return false; }
+ 	virtual bool overrideSubtitles() const { return false; }
+@@ -268,9 +268,9 @@
+ 	virtual void previous() { }
+ 	virtual void next() { }
+ 
+-	void setMediaWidget(MediaWidget *mediaWidget)
++    void setMediaWidget(MediaWidget *mediaWidget)
+ 	{
+-		MediaWidget *oldMediaWidget = weakMediaWidget.data();
++        MediaWidget *oldMediaWidget = weakMediaWidget.data();
+ 
+ 		if (mediaWidget != oldMediaWidget) {
+ 			if (oldMediaWidget != NULL) {
+@@ -282,7 +282,7 @@
+ 	}
+ 
+ private:
+-	QWeakPointer<MediaWidget> weakMediaWidget;
++    QWeakPointer<MediaWidget> weakMediaWidget;
+ };
+ 
+ #endif /* MEDIAWIDGET_H */
+diff -Naur orig/src/mediawidget_p.h patched/src/mediawidget_p.h
+--- orig/src/mediawidget_p.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/mediawidget_p.h	2016-04-23 07:35:55.527479008 +0200
+@@ -53,51 +53,51 @@
+ class MediaSourceUrl : public MediaSource
+ {
+ public:
+-	MediaSourceUrl(const KUrl &url_, const KUrl &subtitleUrl_) : url(url_),
++	MediaSourceUrl(const QUrl &url_, const QUrl &subtitleUrl_) : url(url_),
+ 		subtitleUrl(subtitleUrl_) { }
+ 	~MediaSourceUrl() { }
+ 
+ 	Type getType() const { return Url; }
+-	KUrl getUrl() const { return url; }
++	QUrl getUrl() const { return url; }
+ 
+-	KUrl url;
+-	KUrl subtitleUrl;
++	QUrl url;
++	QUrl subtitleUrl;
+ };
+ 
+ class MediaSourceAudioCd : public MediaSource
+ {
+ public:
+-	explicit MediaSourceAudioCd(const KUrl &url_) : url(url_) { }
++	explicit MediaSourceAudioCd(const QUrl &url_) : url(url_) { }
+ 	~MediaSourceAudioCd() { }
+ 
+ 	Type getType() const { return AudioCd; }
+-	KUrl getUrl() const { return url; }
++	QUrl getUrl() const { return url; }
+ 
+-	KUrl url;
++	QUrl url;
+ };
+ 
+ class MediaSourceVideoCd : public MediaSource
+ {
+ public:
+-	explicit MediaSourceVideoCd(const KUrl &url_) : url(url_) { }
++	explicit MediaSourceVideoCd(const QUrl &url_) : url(url_) { }
+ 	~MediaSourceVideoCd() { }
+ 
+ 	Type getType() const { return VideoCd; }
+-	KUrl getUrl() const { return url; }
++	QUrl getUrl() const { return url; }
+ 
+-	KUrl url;
++	QUrl url;
+ };
+ 
+ class MediaSourceDvd : public MediaSource
+ {
+ public:
+-	explicit MediaSourceDvd(const KUrl &url_) : url(url_) { }
++	explicit MediaSourceDvd(const QUrl &url_) : url(url_) { }
+ 	~MediaSourceDvd() { }
+ 
+ 	Type getType() const { return Dvd; }
+-	KUrl getUrl() const { return url; }
++	QUrl getUrl() const { return url; }
+ 
+-	KUrl url;
++	QUrl url;
+ };
+ 
+ #endif /* MEDIAWIDGET_P_H */
+diff -Naur orig/src/playlist/playlistmodel.cpp patched/src/playlist/playlistmodel.cpp
+--- orig/src/playlist/playlistmodel.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/playlist/playlistmodel.cpp	2016-04-23 07:35:55.527479008 +0200
+@@ -21,16 +21,16 @@
+ #include "playlistmodel.h"
+ 
+ #include <QDir>
+-#include <QDomDocument>
++#include <QtXml/QDomDocument>
+ #include <QMimeData>
+ #include <QSet>
+ #include <QTextStream>
+ #include <QXmlStreamWriter>
+-#include <KGlobal>
+-#include <KLocale>
++#include <QLocale>
++#include <QUrl>
+ #include "../log.h"
+ 
+-bool Playlist::load(const KUrl &url_, Format format)
++bool Playlist::load(const QUrl &url_, Format format)
+ {
+ 	url = url_;
+ 	title = url.fileName();
+@@ -112,28 +112,28 @@
+ 	}
+ }
+ 
+-KUrl Playlist::fromFileOrUrl(const QString &fileOrUrl) const
++QUrl Playlist::fromFileOrUrl(const QString &fileOrUrl) const
+ {
+ 	if (!QFileInfo(fileOrUrl).isRelative()) {
+-		return KUrl::fromLocalFile(fileOrUrl);
++        return QUrl::fromLocalFile(fileOrUrl);
+ 	}
+ 
+-	KUrl trackUrl(fileOrUrl);
++    QUrl trackUrl(fileOrUrl);
+ 
+ 	if (trackUrl.isRelative()) {
+-		trackUrl = url.resolved(KUrl::fromLocalFile(fileOrUrl));
++        trackUrl = url.resolved(QUrl::fromLocalFile(fileOrUrl));
+ 
+ 		if (trackUrl.encodedPath() == url.encodedPath()) {
+-			return KUrl();
++            return QUrl();
+ 		}
+ 	}
+ 
+ 	return trackUrl;
+ }
+ 
+-KUrl Playlist::fromRelativeUrl(const QString &trackUrlString) const
++QUrl Playlist::fromRelativeUrl(const QString &trackUrlString) const
+ {
+-	KUrl trackUrl(trackUrlString);
++    QUrl trackUrl(trackUrlString);
+ 
+ 	if (trackUrl.isRelative()) {
+ 		trackUrl = url.resolved(trackUrl);
+@@ -142,7 +142,7 @@
+ 	return trackUrl;
+ }
+ 
+-QString Playlist::toFileOrUrl(const KUrl &trackUrl) const
++QString Playlist::toFileOrUrl(const QUrl &trackUrl) const
+ {
+ 	QString localFile = trackUrl.toLocalFile();
+ 
+@@ -161,7 +161,7 @@
+ 	}
+ }
+ 
+-QString Playlist::toRelativeUrl(const KUrl &trackUrl) const
++QString Playlist::toRelativeUrl(const QUrl &trackUrl) const
+ {
+ 	if ((trackUrl.scheme() == url.scheme()) && (trackUrl.authority() == url.authority())) {
+ 		QByteArray playlistPath = url.encodedPath();
+@@ -171,7 +171,7 @@
+ 
+ 		if (trackPath.startsWith(playlistPath)) {
+ 			trackPath.remove(0, index + 1);
+-			KUrl relativeUrl;
++            QUrl relativeUrl;
+ 			relativeUrl.setEncodedPath(trackPath);
+ 			relativeUrl.setEncodedQuery(trackUrl.encodedQuery());
+ 			relativeUrl.setEncodedFragment(trackUrl.encodedFragment());
+@@ -519,7 +519,7 @@
+ 	return visiblePlaylist;
+ }
+ 
+-void PlaylistModel::appendUrls(Playlist *playlist, const QList<KUrl> &urls, bool playImmediately)
++void PlaylistModel::appendUrls(Playlist *playlist, const QList<QUrl> &urls, bool playImmediately)
+ {
+ 	insertUrls(playlist, playlist->tracks.size(), urls, playImmediately);
+ }
+@@ -645,12 +645,12 @@
+ 	reset();
+ }
+ 
+-void PlaylistModel::insertUrls(Playlist *playlist, int row, const QList<KUrl> &urls,
++void PlaylistModel::insertUrls(Playlist *playlist, int row, const QList<QUrl> &urls,
+ 	bool playImmediately)
+ {
+-	QList<KUrl> processedUrls;
++    QList<QUrl> processedUrls;
+ 
+-	foreach (const KUrl &url, urls) {
++    foreach (const QUrl &url, urls) {
+ 		QString fileName = url.fileName();
+ 		Playlist::Format format = Playlist::Invalid;
+ 
+@@ -689,7 +689,7 @@
+ 
+ 			for (int i = 0; i < entries.size(); ++i) {
+ 				const QString &entry = entries.at(i);
+-				processedUrls.append(KUrl::fromLocalFile(dir.filePath(entry)));
++                processedUrls.append(QUrl::fromLocalFile(dir.filePath(entry)));
+ 			}
+ 		} else {
+ 			processedUrls.append(url);
+@@ -744,7 +744,7 @@
+ {
+ 	if (role == Qt::DecorationRole) {
+ 		if ((index.row() == visiblePlaylist->currentTrack) && (index.column() == 0)) {
+-			return KIcon(QLatin1String("arrow-right"));
++            return QIcon::fromTheme(QLatin1String("arrow-right"));
+ 		}
+ 	} else if (role == Qt::DisplayRole) {
+ 		switch (index.column()) {
+@@ -767,7 +767,8 @@
+ 			QTime length = visiblePlaylist->at(index.row()).length;
+ 
+ 			if (length.isValid()) {
+-				return KGlobal::locale()->formatTime(length, true, true);
++// FIXME: not sure how to port the following: return KGlobal::locale()->formatTime(length, true, true)
++                return length.toString();
+ 			} else {
+ 				return QVariant();
+ 			}
+@@ -783,15 +784,15 @@
+ 	if ((orientation == Qt::Horizontal) && (role == Qt::DisplayRole)) {
+ 		switch (section) {
+ 		case 0:
+-			return i18nc("playlist track", "Title");
++            return tr("Title", "playlist track");
+ 		case 1:
+-			return i18nc("playlist track", "Artist");
++            return tr("Artist", "playlist track");
+ 		case 2:
+-			return i18nc("playlist track", "Album");
++            return tr("Album", "playlist track");
+ 		case 3:
+-			return i18nc("playlist track", "Track Number");
++            return tr("Track Number", "playlist track");
+ 		case 4:
+-			return i18nc("playlist track", "Length");
++            return tr("Length", "playlist track");
+ 		}
+ 	}
+ 
+@@ -975,7 +976,7 @@
+ 	}
+ 
+ 	if (data->hasUrls()) {
+-		insertUrls(visiblePlaylist, row, KUrl::List::fromMimeData(data), false);
++        insertUrls(visiblePlaylist, row, data->urls(), false);
+ 		return true;
+ 	}
+ 
+diff -Naur orig/src/playlist/playlistmodel.h patched/src/playlist/playlistmodel.h
+--- orig/src/playlist/playlistmodel.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/playlist/playlistmodel.h	2016-04-23 07:35:55.527479008 +0200
+@@ -31,13 +31,13 @@
+ 	PlaylistTrack() : trackNumber(-1), currentSubtitle(-1) { }
+ 	~PlaylistTrack() { }
+ 
+-	KUrl url;
++    QUrl url;
+ 	QString title;
+ 	QString artist;
+ 	QString album;
+ 	int trackNumber;
+ 	QTime length;
+-	QList<KUrl> subtitles;
++    QList<QUrl> subtitles;
+ 	int currentSubtitle;
+ };
+ 
+@@ -60,20 +60,20 @@
+ 		XSPF
+ 	};
+ 
+-	bool load(const KUrl &url_, Format format);
++    bool load(const QUrl &url_, Format format);
+ 	bool save(Format format) const;
+ 
+-	KUrl url;
++    QUrl url;
+ 	QString title;
+ 	QList<PlaylistTrack> tracks;
+ 	int currentTrack;
+ 
+ private:
+ 	void appendTrack(PlaylistTrack &track);
+-	KUrl fromFileOrUrl(const QString &fileOrUrl) const;
+-	KUrl fromRelativeUrl(const QString &trackUrlString) const;
+-	QString toFileOrUrl(const KUrl &trackUrl) const;
+-	QString toRelativeUrl(const KUrl &trackUrl) const;
++    QUrl fromFileOrUrl(const QString &fileOrUrl) const;
++    QUrl fromRelativeUrl(const QString &trackUrlString) const;
++    QString toFileOrUrl(const QUrl &trackUrl) const;
++    QString toRelativeUrl(const QUrl &trackUrl) const;
+ 
+ 	bool loadKaffeinePlaylist(QIODevice *device);
+ 	bool loadM3UPlaylist(QIODevice *device);
+@@ -94,7 +94,7 @@
+ 	void setVisiblePlaylist(Playlist *visiblePlaylist_);
+ 	Playlist *getVisiblePlaylist() const;
+ 
+-	void appendUrls(Playlist *playlist, const QList<KUrl> &urls, bool playImmediately);
++    void appendUrls(Playlist *playlist, const QList<QUrl> &urls, bool playImmediately);
+ 	void removeRows(Playlist *playlist, int row, int count);
+ 	void setCurrentTrack(Playlist *playlist, int track);
+ 	void updateTrackLength(Playlist *playlist, int length);
+@@ -109,7 +109,7 @@
+ 	void playTrack(Playlist *playlist, int track);
+ 
+ private:
+-	void insertUrls(Playlist *playlist, int row, const QList<KUrl> &urls,
++    void insertUrls(Playlist *playlist, int row, const QList<QUrl> &urls,
+ 		bool playImmediately);
+ 
+ 	int columnCount(const QModelIndex &parent) const;
+diff -Naur orig/src/playlist/playlisttab.cpp patched/src/playlist/playlisttab.cpp
+--- orig/src/playlist/playlisttab.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/playlist/playlisttab.cpp	2016-04-23 07:35:55.527479008 +0200
+@@ -26,13 +26,15 @@
+ #include <QSplitter>
+ #include <QTimer>
+ #include <QToolButton>
+-#include <KAction>
+-#include <KActionCollection>
+-#include <KFileDialog>
+-#include <kfilewidget.h>
++#include <QAction>
++#include <QFileDialog>
++#include <QMenu>
++#include <QStandardPaths>
++
+ #include <KLocalizedString>
+-#include <KMenu>
+-#include <KStandardDirs>
++#include <KActionCollection>
++#include <KStandardAction>
++
+ #include "../log.h"
+ #include "playlistmodel.h"
+ 
+@@ -42,10 +44,10 @@
+ {
+ 	playlists.append(temporaryPlaylist);
+ 
+-	QFile file(KStandardDirs::locateLocal("appdata", QLatin1String("playlistsK4")));
++	QFile file(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1String("/playlistsK4"));
+ 
+ 	if (!file.open(QIODevice::ReadOnly)) {
+-		file.setFileName(KStandardDirs::locateLocal("appdata", QLatin1String("playlists")));
++		file.setFileName(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1String("/playlists"));
+ 
+ 		if (!file.open(QIODevice::ReadOnly)) {
+ 			Log("PlaylistBrowserModel::PlaylistBrowserModel: cannot open file") <<
+@@ -126,7 +128,7 @@
+ 
+ PlaylistBrowserModel::~PlaylistBrowserModel()
+ {
+-	QFile file(KStandardDirs::locateLocal("appdata", QLatin1String("playlistsK4")));
++	QFile file(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1String("/playlistsK4"));
+ 
+ 	if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+ 		Log("PlaylistBrowserModel::~PlaylistBrowserModel: cannot open file") <<
+@@ -157,7 +159,7 @@
+ 			QStringList subtitleStrings;
+ 
+ 			for (int j = 0; j < track.subtitles.size(); ++j) {
+-				const KUrl &url = track.subtitles.at(j);
++				const QUrl &url = track.subtitles.at(j);
+ 				subtitleStrings.append(url.url());
+ 			}
+ 
+@@ -182,7 +184,7 @@
+ {
+ 	if (role == Qt::DecorationRole) {
+ 		if (index.row() == currentPlaylist) {
+-			return KIcon(QLatin1String("arrow-right"));
++			return QIcon::fromTheme(QLatin1String("arrow-right"));
+ 		}
+ 	} else if (role == Qt::DisplayRole) {
+ 		return playlists.at(index.row())->title;
+@@ -365,11 +367,11 @@
+ 	QTreeView::keyPressEvent(event);
+ }
+ 
+-PlaylistTab::PlaylistTab(KMenu *menu, KActionCollection *collection, MediaWidget *mediaWidget_) :
++PlaylistTab::PlaylistTab(QMenu *menu, KActionCollection *collection, MediaWidget *mediaWidget_) :
+ 	mediaWidget(mediaWidget_)
+ {
+ 	Playlist *temporaryPlaylist = new Playlist();
+-	temporaryPlaylist->title = i18nc("playlist browser", "Temporary Playlist");
++    temporaryPlaylist->title = i18nc("playlist browser", "Temporary Playlist");
+ 
+ 	playlistModel = new PlaylistModel(temporaryPlaylist, this);
+ 	connect(playlistModel, SIGNAL(playTrack(Playlist*,int)),
+@@ -385,57 +387,57 @@
+ 	connect(mediaWidget, SIGNAL(playlistPrevious()), this, SLOT(playPreviousTrack()));
+ 	connect(mediaWidget, SIGNAL(playlistPlay()), this, SLOT(playCurrentTrack()));
+ 	connect(mediaWidget, SIGNAL(playlistNext()), this, SLOT(playNextTrack()));
+-	connect(mediaWidget, SIGNAL(playlistUrlsDropped(QList<KUrl>)),
+-		this, SLOT(appendUrls(QList<KUrl>)));
++	connect(mediaWidget, SIGNAL(playlistUrlsDropped(QList<QUrl>)),
++		this, SLOT(appendUrls(QList<QUrl>)));
+ 	connect(mediaWidget, SIGNAL(playlistTrackLengthChanged(int)),
+ 		this, SLOT(updateTrackLength(int)));
+ 	connect(mediaWidget,
+ 		SIGNAL(playlistTrackMetadataChanged(QMap<MediaWidget::MetadataType,QString>)),
+ 		this, SLOT(updateTrackMetadata(QMap<MediaWidget::MetadataType,QString>)));
+ 
+-	repeatAction = new KAction(KIcon(QLatin1String("media-playlist-repeat")),
++	repeatAction = new QAction(QIcon::fromTheme(QLatin1String("media-playlist-repeat")),
+ 		i18nc("playlist menu", "Repeat"), this);
+ 	repeatAction->setCheckable(true);
+-	menu->addAction(collection->addAction(QLatin1String("playlist_repeat"), repeatAction));
++	menu->addAction(collection->addAction(QLatin1String("playlist_repeat"),repeatAction));
+ 
+-	randomAction = new KAction(KIcon(QLatin1String("media-playlist-shuffle")),
++	randomAction = new QAction(QIcon::fromTheme(QLatin1String("media-playlist-shuffle")),
+ 		i18nc("playlist menu", "Random"), this);
+ 	randomAction->setCheckable(true);
+ 	menu->addAction(collection->addAction(QLatin1String("playlist_random"), randomAction));
+ 
+-	KAction *addSubtitleAction =
+-		new KAction(KIcon(QLatin1String("application-x-subrip")), i18n("Add Subtitle"), this);
++	QAction *addSubtitleAction =
++		new QAction(QIcon::fromTheme(QLatin1String("application-x-subrip")), i18n("Add Subtitle"), this);
+ 	collection->addAction(QLatin1String("playlist_add_subtitle"), addSubtitleAction);
+ 
+-	KAction *removeTrackAction =
+-		new KAction(KIcon(QLatin1String("edit-delete")), i18nc("@action", "Remove"), this);
++	QAction *removeTrackAction =
++		new QAction(QIcon::fromTheme(QLatin1String("edit-delete")), i18nc("@action", "Remove"), this);
+ 	collection->addAction(QLatin1String("playlist_remove_track"), removeTrackAction);
+ 
+-	KAction *clearAction = new KAction(KIcon(QLatin1String("edit-clear-list")),
++	QAction *clearAction = new QAction(QIcon::fromTheme(QLatin1String("edit-clear-list")),
+ 		i18nc("remove all items from a list", "Clear"), this);
+ 	connect(clearAction, SIGNAL(triggered(bool)), playlistModel, SLOT(clearVisiblePlaylist()));
+ 	menu->addAction(collection->addAction(QLatin1String("playlist_clear"), clearAction));
+ 
+ 	menu->addSeparator();
+ 
+-	KAction *newAction = new KAction(KIcon(QLatin1String("list-add")), i18nc("@action", "New"), this);
++	QAction *newAction = new QAction(QIcon::fromTheme(QLatin1String("list-add")), i18nc("@action", "New"), this);
+ 	connect(newAction, SIGNAL(triggered(bool)), this, SLOT(newPlaylist()));
+ 	menu->addAction(collection->addAction(QLatin1String("playlist_new"), newAction));
+ 
+-	KAction *renameAction = new KAction(KIcon(QLatin1String("edit-rename")),
++	QAction *renameAction = new QAction(QIcon::fromTheme(QLatin1String("edit-rename")),
+ 		i18nc("rename an entry in a list", "Rename"), this);
+ 	connect(renameAction, SIGNAL(triggered(bool)), this, SLOT(renamePlaylist()));
+ 	menu->addAction(collection->addAction(QLatin1String("playlist_rename"), renameAction));
+ 
+-	KAction *removePlaylistAction =
+-		new KAction(KIcon(QLatin1String("edit-delete")), i18nc("@action", "Remove"), this);
++	QAction *removePlaylistAction =
++		new QAction(QIcon::fromTheme(QLatin1String("edit-delete")), i18nc("@action", "Remove"), this);
+ 	connect(removePlaylistAction, SIGNAL(triggered(bool)), this, SLOT(removePlaylist()));
+ 	menu->addAction(collection->addAction(QLatin1String("playlist_remove"), removePlaylistAction));
+ 
+-	KAction *savePlaylistAction = KStandardAction::save(this, SLOT(savePlaylist()), this);
++	QAction *savePlaylistAction = KStandardAction::save(this, SLOT(savePlaylist()), this);
+ 	menu->addAction(collection->addAction(QLatin1String("playlist_save"), savePlaylistAction));
+ 
+-	KAction *savePlaylistAsAction =
++	QAction *savePlaylistAsAction =
+ 		KStandardAction::saveAs(this, SLOT(savePlaylistAs()), this);
+ 	menu->addAction(collection->addAction(QLatin1String("playlist_save_as"), savePlaylistAsAction));
+ 
+@@ -558,13 +560,13 @@
+ {
+ }
+ 
+-void PlaylistTab::appendToCurrentPlaylist(const QList<KUrl> &urls, bool playImmediately)
++void PlaylistTab::appendToCurrentPlaylist(const QList<QUrl> &urls, bool playImmediately)
+ {
+ 	playlistModel->appendUrls(playlistBrowserModel->getCurrentPlaylist(), urls,
+ 		playImmediately);
+ }
+ 
+-void PlaylistTab::appendToVisiblePlaylist(const QList<KUrl> &urls, bool playImmediately)
++void PlaylistTab::appendToVisiblePlaylist(const QList<QUrl> &urls, bool playImmediately)
+ {
+ 	playlistModel->appendUrls(playlistModel->getVisiblePlaylist(), urls, playImmediately);
+ }
+@@ -616,9 +618,10 @@
+ 
+ void PlaylistTab::createFileWidget()
+ {
+-	KFileWidget *fileWidget = new KFileWidget(KUrl(), fileWidgetSplitter);
+-	fileWidget->setFilter(MediaWidget::extensionFilter());
+-	fileWidget->setMode(KFile::Files | KFile::ExistingOnly);
++	QFileDialog *fileWidget = new QFileDialog(fileWidgetSplitter);
++	fileWidget->setDirectoryUrl(QUrl());
++	fileWidget->setNameFilter(MediaWidget::extensionFilter());
++	fileWidget->setFileMode(QFileDialog::ExistingFiles);
+ 	fileWidgetSplitter->setStretchFactor(1, 1);
+ 
+ 	// KFileWidget creates a KUrlComboBox without layout (!), which steals the focus:
+@@ -678,8 +681,7 @@
+ 
+ 	int row = selectedRows.at(0).row();
+ 	Playlist *playlist = playlistModel->getVisiblePlaylist();
+-	QList<KUrl> urls = KFileDialog::getOpenUrls(KUrl(), subtitleExtensionFilter(), this);
+-
++    QList<QUrl> urls = QFileDialog::getOpenFileUrls(this, "", QUrl(), subtitleExtensionFilter());
+ 	if ((row < playlist->tracks.size()) && !urls.isEmpty()) {
+ 		PlaylistTrack &track = playlist->tracks[row];
+ 		track.subtitles += urls;
+@@ -763,7 +765,7 @@
+ 
+ 	if (track != -1) {
+ 		PlaylistTrack &playlistTrack = playlist->tracks[track];
+-		KUrl subtitleUrl;
++		QUrl subtitleUrl;
+ 
+ 		if ((playlistTrack.currentSubtitle >= 0) &&
+ 		    (playlistTrack.currentSubtitle < playlistTrack.subtitles.size())) {
+@@ -775,17 +777,17 @@
+ 
+ 			if (!localFile.isEmpty()) {
+ 				if (QFile::exists(localFile + QLatin1String(".asc"))) {
+-					subtitleUrl = KUrl::fromLocalFile(localFile + QLatin1String(".asc"));
++					subtitleUrl = QUrl::fromLocalFile(localFile + QLatin1String(".asc"));
+ 				} else if (QFile::exists(localFile + QLatin1String(".smi"))) {
+-					subtitleUrl = KUrl::fromLocalFile(localFile + QLatin1String(".smi"));
++					subtitleUrl = QUrl::fromLocalFile(localFile + QLatin1String(".smi"));
+ 				} else if (QFile::exists(localFile + QLatin1String(".srt"))) {
+-					subtitleUrl = KUrl::fromLocalFile(localFile + QLatin1String(".srt"));
++					subtitleUrl = QUrl::fromLocalFile(localFile + QLatin1String(".srt"));
+ 				} else if (QFile::exists(localFile + QLatin1String(".ssa"))) {
+-					subtitleUrl = KUrl::fromLocalFile(localFile + QLatin1String(".ssa"));
++					subtitleUrl = QUrl::fromLocalFile(localFile + QLatin1String(".ssa"));
+ 				} else if (QFile::exists(localFile + QLatin1String(".sub"))) {
+-					subtitleUrl = KUrl::fromLocalFile(localFile + QLatin1String(".sub"));
++					subtitleUrl = QUrl::fromLocalFile(localFile + QLatin1String(".sub"));
+ 				} else if (QFile::exists(localFile + QLatin1String(".txt"))) {
+-					subtitleUrl = KUrl::fromLocalFile(localFile + QLatin1String(".txt"));
++					subtitleUrl = QUrl::fromLocalFile(localFile + QLatin1String(".txt"));
+ 				}
+ 			}
+ 
+@@ -807,7 +809,7 @@
+ 	}
+ }
+ 
+-void PlaylistTab::appendUrls(const QList<KUrl> &urls)
++void PlaylistTab::appendUrls(const QList<QUrl> &urls)
+ {
+ 	playlistModel->appendUrls(playlistModel->getVisiblePlaylist(), urls, true);
+ }
+@@ -848,12 +850,12 @@
+ 	}
+ 
+ 	Playlist *playlist = playlistBrowserModel->getPlaylist(index.row());
+-	KUrl url = playlist->url;
++	QUrl url = playlist->url;
+ 
+ 	if (askName || !url.isValid() ||
+ 	    url.fileName().endsWith(QLatin1String(".kaffeine"), Qt::CaseInsensitive)) {
+-		url = KFileDialog::getSaveUrl(KUrl(), i18nc("file filter",
+-			"*.xspf|XSPF Playlist\n*.m3u|M3U Playlist\n*.pls|PLS Playlist"), this);
++        url = QFileDialog::getSaveFileUrl(this, "", QUrl(), i18nc("file filter",
++			"*.xspf|XSPF Playlist\n*.m3u|M3U Playlist\n*.pls|PLS Playlist"));
+ 
+ 		if (!url.isValid()) {
+ 			return;
+diff -Naur orig/src/playlist/playlisttab.h patched/src/playlist/playlisttab.h
+--- orig/src/playlist/playlisttab.h	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/playlist/playlisttab.h	2016-04-23 07:35:55.531479028 +0200
+@@ -77,11 +77,11 @@
+ {
+ 	Q_OBJECT
+ public:
+-	PlaylistTab(KMenu *menu, KActionCollection *collection, MediaWidget *mediaWidget_);
++	PlaylistTab(QMenu *menu, KActionCollection *collection, MediaWidget *mediaWidget_);
+ 	~PlaylistTab();
+ 
+-	void appendToCurrentPlaylist(const QList<KUrl> &urls, bool playImmediately);
+-	void appendToVisiblePlaylist(const QList<KUrl> &urls, bool playImmediately);
++	void appendToCurrentPlaylist(const QList<QUrl> &urls, bool playImmediately);
++	void appendToVisiblePlaylist(const QList<QUrl> &urls, bool playImmediately);
+ 	void removeTrack(int row);
+ 	void setRandom(bool random);
+ 	void setRepeat(bool repeat);
+@@ -105,7 +105,7 @@
+ 	void playNextTrack();
+ 	void playTrack(Playlist *playlist, int track);
+ 	void playTrack(const QModelIndex &index);
+-	void appendUrls(const QList<KUrl> &urls);
++	void appendUrls(const QList<QUrl> &urls);
+ 	void appendPlaylist(Playlist *playlist, bool playImmediately);
+ 	void updateTrackLength(int length);
+ 	void updateTrackMetadata(const QMap<MediaWidget::MetadataType, QString> &metadata);
+@@ -122,8 +122,8 @@
+ 	PlaylistBrowserView *playlistBrowserView;
+ 	PlaylistModel *playlistModel;
+ 	PlaylistView *playlistView;
+-	KAction *randomAction;
+-	KAction *repeatAction;
++	QAction *randomAction;
++	QAction *repeatAction;
+ };
+ 
+ #endif /* PLAYLISTTAB_H */
+diff -Naur orig/src/sqlhelper.cpp patched/src/sqlhelper.cpp
+--- orig/src/sqlhelper.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/src/sqlhelper.cpp	2016-04-23 07:35:55.531479028 +0200
+@@ -45,8 +45,8 @@
+ 	Q_ASSERT(instance == NULL);
+ 
+ 	if (!QSqlDatabase::isDriverAvailable(QLatin1String("QSQLITE"))) {
+-		KMessageBox::queuedMessageBox(NULL, KMessageBox::Error,
+-			i18nc("message box", "Please install the Qt SQLite plugin."));
++		/*KMessageBox::queuedMessageBox(NULL, KMessageBox::Error,
++			i18nc("message box", "Please install the Qt SQLite plugin."));*/
+ 		return false;
+ 	}
+ 
+@@ -60,8 +60,8 @@
+ 		}
+ 
+ 		details.append(instance->database.lastError().driverText());
+-		KMessageBox::queuedDetailedError(NULL,
+-			i18nc("message box", "Cannot open the SQLite database."), details);
++		/*KMessageBox::queuedDetailedError(NULL,
++			i18nc("message box", "Cannot open the SQLite database."), details);*/
+ 		delete instance;
+ 		instance = NULL;
+ 		return false;
+diff -Naur orig/tools/CMakeLists.txt patched/tools/CMakeLists.txt
+--- orig/tools/CMakeLists.txt	2015-09-06 21:02:33.000000000 +0200
++++ patched/tools/CMakeLists.txt	2016-04-23 07:35:55.531479028 +0200
+@@ -1,11 +1,11 @@
+ add_executable(convertscanfiles convertscanfiles.cpp ../src/dvb/dvbtransponder.cpp)
+-target_link_libraries(convertscanfiles ${QT_QTCORE_LIBRARY})
++target_link_libraries(convertscanfiles Qt5::Core)
+ 
+ add_executable(updatedvbsi updatedvbsi.cpp)
+-target_link_libraries(updatedvbsi ${QT_QTCORE_LIBRARY} ${QT_QTXML_LIBRARY})
++target_link_libraries(updatedvbsi Qt5::Core Qt5::Xml)
+ 
+ add_executable(updatemimetypes updatemimetypes.cpp)
+-target_link_libraries(updatemimetypes ${QT_QTCORE_LIBRARY} ${KDE4_KDECORE_LIBS})
++target_link_libraries(updatemimetypes Qt5::Core )
+ 
+ add_executable(updatesource updatesource.cpp)
+-target_link_libraries(updatesource ${QT_QTCORE_LIBRARY})
++target_link_libraries(updatesource Qt5::Core)
+diff -Naur orig/tools/convertscanfiles.cpp patched/tools/convertscanfiles.cpp
+--- orig/tools/convertscanfiles.cpp	2015-09-06 21:02:33.000000000 +0200
++++ patched/tools/convertscanfiles.cpp	2016-04-23 07:35:55.539479068 +0200
+@@ -215,32 +215,9 @@
+ 		stream.setCodec("UTF-8");
+ 		QList<QString> transponders;
+ 
+-		QString newChannel = "";
+-		QString frq = "";
+-		QString modulation = "";
+-		QString symbolRate = "";
+-		QString fec = "";
+-		QString polar = "";
+-		QString inversion = "";
+-		QString rollOff = "";
+-		QString streamid = "";
+-		QString plscode = "";
+-		QString plsmode = "";
+-		QString bandwith = "";
+-		QString fec_hi = "";
+-		QString fec_lo = "";
+-		QString t_mode = "";
+-		QString g_interval = "";
+-		QString hierarchy = "";
+-
+-
+ 		while (!stream.atEnd()) {
+ 			QString line = stream.readLine();
+ 
+-			if (line.contains("[") && line.contains("]")) {
+-				newChannel = "";
+-				continue;
+-			}
+ 			int pos = line.indexOf('#');
+ 
+ 			if (pos != -1) {
+@@ -252,355 +229,12 @@
+ 			}
+ 
+ 			if (line.isEmpty()) {
+-				//continue;
+-			}
+-			if (line.contains("DELIVERY_SYSTEM")) {
+-				continue;
+-			}
+-			if (line.contains("ELIVERY_SYSTEM")) {
+-				continue;
+-			}
+-			switch (type) {
+-			case DvbTransponderBase::DvbC: {
+-				if (!frq.isEmpty() && !fec.isEmpty() && !symbolRate.isEmpty() && !modulation.isEmpty()) {
+-					line = "C " + frq + " " + symbolRate + " " + fec + " " + modulation.replace("/", "");
+-					qWarning() << line;
+-					frq = "";
+-					modulation = "";
+-					symbolRate = "";
+-					fec = "";		
+-				}
+-				if (line.contains("DELIVERY_SYSTEM = DVBC/ANNEX_A")) {
+-					continue;
+-				}
+-				if (line.contains("FREQUENCY = ")) {
+-					frq = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("INNER_FEC")) {
+-					fec = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("SYMBOL_RATE")) {
+-					symbolRate = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("MODULATION")) {
+-					modulation = line.split(" = ")[1];
+-					//continue;
+-				}
+-				if (line.contains("INVERSION")) {
+-					continue;
+-				}
+-			}
+-
+-			case DvbTransponderBase::DvbS: {
+-				if (line.isEmpty() && !frq.isEmpty()) {
+-					line = "S " + frq + " " + polar[0] + " " + symbolRate + " " + fec;
+-					if (!rollOff.isEmpty()) {
+-						line = line + " " + rollOff;
+-					}
+-					if (!modulation.isEmpty()) {
+-						line = line + " " + modulation.replace("/", "");
+-					}
+-					qWarning() << line;
+-					frq = "";
+-					polar = "";
+-					symbolRate = "";
+-					fec = "";	
+-					modulation = "";	
+-					rollOff = "";
+-					streamid = "";
+-					plscode = "";
+-					plsmode = "";
+-				}
+-				if (line.contains("DELIVERY_SYSTEM = DVBC/ANNEX_A")) {
+-					continue;
+-				}
+-				if (line.contains("FREQUENCY = ")) {
+-					frq = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("POLARIZATION")) {
+-					polar = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("SYMBOL_RATE")) {
+-					symbolRate = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("INNER_FEC")) {
+-					fec = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("INVERSION")) {
+-					inversion = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("ROLLOFF")) {
+-					rollOff = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("MODULATION")) {
+-					modulation = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("STREAM_ID")) {
+-					streamid = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("PLS_CODE")) {
+-					plscode = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("PLS_MODE")) {
+-					plsmode = line.split(" = ")[1];
+-					continue;
+-				}
+-				//continue;
+-
+-			// S 12518000 V 22000000 AUTO
+-			}
+-			case DvbTransponderBase::DvbS2: {
+-				//continue;
+-			}
+-
+-			// # T freq      bw   fec_hi fec_lo mod   transmission-mode guard-interval hierarchy
+-			//   T 530000000 8MHz 2/3    NONE   QAM64 8k                1/8            NONE
+-			case DvbTransponderBase::DvbT: {
+-				if (line.isEmpty() && !frq.isEmpty()) {
+-					line = "T " + frq;
+-					if (!bandwith.isEmpty()) {
+-						int number = bandwith.toInt();
+-						number = number / 1000000;
+-						line = line + " " + QString::number(number) + "MHz";
+-					}
+-					if (!fec_hi.isEmpty()) {
+-						line = line + " " + fec_hi;
+-					} else {
+-						line = line + " AUTO";
+-					}
+-					if (!fec_lo.isEmpty()) {
+-						line = line + " " + fec_lo;
+-					} else {
+-						line = line + " AUTO";
+-					}
+-					if (!modulation.isEmpty()) {
+-						line = line + " " + modulation.replace("/", "").replace("QAMAUTO", "AUTO");
+-					} else {
+-						line = line + " AUTO";
+-					}
+-					if (!t_mode.isEmpty()) {
+-						line = line + " " + t_mode.replace("K", "k");
+-					} else {
+-						line = line + " AUTO";
+-					}
+-					if (!g_interval.isEmpty()) {
+-						line = line + " " + g_interval;
+-					} else {
+-						line = line + " AUTO";
+-					}
+-					if (!hierarchy.isEmpty()) {
+-						line = line + " " + hierarchy;
+-					} else {
+-						line = line + " AUTO";
+-					}
+-					qWarning() << line;
+-					frq = "";
+-					polar = "";
+-					symbolRate = "";
+-					fec = "";	
+-					modulation = "";	
+-					rollOff = "";
+-					streamid = "";
+-					plscode = "";
+-					plsmode = "";
+-					bandwith = "";
+-					fec_hi = "";
+-					fec_lo = "";
+-					t_mode = "";
+-					g_interval = "";
+-					hierarchy = "";
+-				}
+-				if (line.contains("DELIVERY_SYSTEM = DVBC/ANNEX_A")) {
+-					continue;
+-				}
+-				if (line.contains("FREQUENCY = ")) {
+-					frq = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("POLARIZATION")) {
+-					polar = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("SYMBOL_RATE")) {
+-					symbolRate = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("INNER_FEC")) {
+-					fec = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("INVERSION")) {
+-					inversion = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("ROLLOFF")) {
+-					rollOff = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("MODULATION")) {
+-					modulation = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("STREAM_ID")) {
+-					streamid = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("PLS_CODE")) {
+-					plscode = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("PLS_MODE")) {
+-					plsmode = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("BANDWIDTH_HZ")) {
+-					bandwith = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("TRANSMISSION_MODE")) {
+-					t_mode = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("CODE_RATE_HP")) {
+-					fec_hi = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("CODE_RATE_LP")) {
+-					fec_lo = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("HIERARCHY")) {
+-					hierarchy = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("GUARD_INTERVAL")) {
+-					g_interval = line.split(" = ")[1];
+-					continue;
+-				}
+-			}
+-
+-			case DvbTransponderBase::Atsc: {
+-
+-				if (line.isEmpty() && !frq.isEmpty()) {
+-					line = "A " + frq;
+-					if (!modulation.isEmpty()) {
+-						QString temp1 = modulation.split("/")[0];
+-						QString temp2 = modulation.split("/")[1];
+-						if (!(temp1 == "QAM")) {
+-						line = line + " " + temp2 + temp1; } else 
+-						{
+-						line = line + " " + temp1 + temp2;
+-						}
+-					} else {
+-						line = line + " AUTO";
+-					}
+-					qWarning() << line;
+-					frq = "";
+-					polar = "";
+-					symbolRate = "";
+-					fec = "";	
+-					modulation = "";	
+-					rollOff = "";
+-					streamid = "";
+-					plscode = "";
+-					plsmode = "";
+-					bandwith = "";
+-					fec_hi = "";
+-					fec_lo = "";
+-					t_mode = "";
+-					g_interval = "";
+-					hierarchy = "";
+-					inversion = "";
+-				}
+-				if (line.contains("DELIVERY_SYSTEM = DVBC/ANNEX_A")) {
+-					continue;
+-				}
+-				if (line.contains("FREQUENCY = ")) {
+-					frq = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("POLARIZATION")) {
+-					polar = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("SYMBOL_RATE")) {
+-					symbolRate = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("INNER_FEC")) {
+-					fec = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("INVERSION")) {
+-					inversion = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("ROLLOFF")) {
+-					rollOff = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("MODULATION")) {
+-					modulation = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("STREAM_ID")) {
+-					streamid = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("PLS_CODE")) {
+-					plscode = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("PLS_MODE")) {
+-					plsmode = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("BANDWIDTH_HZ")) {
+-					bandwith = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("TRANSMISSION_MODE")) {
+-					t_mode = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("CODE_RATE_HP")) {
+-					fec_hi = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("CODE_RATE_LP")) {
+-					fec_lo = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("HIERARCHY")) {
+-					hierarchy = line.split(" = ")[1];
+-					continue;
+-				}
+-				if (line.contains("GUARD_INTERVAL")) {
+-					g_interval = line.split(" = ")[1];
+-					continue;
+-				}
+-			}
+-			}
+-
+-			if (line.isEmpty()) {
+ 				continue;
+ 			}
+ 
+ 			QString string = parseLine(type, line, fileName);
+ 
+-			if (string.isEmpty() && !(fileName == "ca-AB-Calgary")) {
++			if (string.isEmpty()) {
+ 				qCritical() << "Error: can't parse line" << line << "in file" << fileName;
+ 				return;
+ 			}
+@@ -626,7 +260,7 @@
+ 		}
+ 
+ 		if (transponders.isEmpty()) {
+-			//qWarning() << "Warning: no transponder found in file" << fileName;
++			qWarning() << "Warning: no transponder found in file" << fileName;
+ 			continue;
+ 		}
+ 
+diff -Naur orig/tools/update_scanfile.sh patched/tools/update_scanfile.sh
+--- orig/tools/update_scanfile.sh	2015-09-06 21:02:33.000000000 +0200
++++ patched/tools/update_scanfile.sh	2016-04-23 07:35:55.539479068 +0200
+@@ -3,8 +3,6 @@
+ 
+ mkdir -p kaffeine_build
+ cd kaffeine_build
+-cd ..
+-cd ..
+-cmake -DBUILD_TOOLS=1
++cmake ../kaffeine -DBUILD_TOOLS=1
+ make convertscanfiles
+-tools/convertscanfiles ./tools/dvb ../kaffeine/src/scanfile.dvb
+\ No newline at end of file
++tools/convertscanfiles ../dvb-apps/util/scan ../kaffeine/src/scanfile.dvb

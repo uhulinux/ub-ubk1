@@ -7,12 +7,9 @@ ub_compile \
 	--enable-faad \
 	--enable-svg \
 	--enable-jack \
-	--enable-xosd \
 	--enable-lirc \
 	--enable-xcb \
 	--enable-libva \
 	--enable-nls \
 	--enable-sftp \
-	--enable-matroska \
-	--disable-update-check \
-	--enable-qt=4
+	--disable-update-check

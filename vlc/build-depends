@@ -2,7 +2,7 @@ aalib-dev
 db4-dev
 dirac-dev
 faad2
-ffmpeg-dev
+ffmpeg2.8-dev
 gnome2-vfs-dev
 gst-plugins-base-dev
 lame
@@ -37,13 +37,12 @@ lirc-dev
 livemedia
 lua-dev
 musepack-dev
-opencv-dev
 openslp-dev
 opus-dev
 pango-dev
 popt-dev
 portaudio-dev
-qt4-dev
+qt5-dev
 samba-dev
 sdl-image-dev
 taglib-dev
