@@ -1,7 +1,7 @@
 diff -Naur orig/data/translations/hu_HU.lst mod/data/translations/hu_HU.lst
 --- orig/data/translations/hu_HU.lst	1970-01-01 01:00:00.000000000 +0100
-+++ mod/data/translations/hu_HU.lst	2013-12-02 22:48:49.000000000 +0100
-@@ -0,0 +1,103 @@
++++ mod/data/translations/hu_HU.lst	2016-04-24 13:31:11.479320914 +0200
+@@ -0,0 +1,121 @@
 +# Please, don't change the idx
 +
 +*[idx] 0 [engl] PRESS ANY KEY TO START [trans] Nyomj meg egy billentyűt!
@@ -105,29 +105,44 @@ diff -Naur orig/data/translations/hu_HU.lst mod/data/translations/hu_HU.lst
 +*[idx] 82 [engl] Wind: Blustery [trans] vihar
 +
 +*[idx] 83 [engl] Randomize settings [trans] Véletlenszerű beállítás
++
++*[idx] 84 [engl] Score [trans] Pontszám
++*[idx] 85 [engl] Herring [trans] Hering
++*[idx] 86 [engl] Time [trans] Idő
++*[idx] 87 [engl] Path length [trans] Pályahossz
++*[idx] 88 [engl] Average speed [trans] Átlagsebesség
++*[idx] 89 [engl] Position [trans] Helyezés
++*[idx] 90 [engl] in highscore list [trans] Helyezés
++
++*[idx] 91 [engl] Author [trans] Szerző
++
++*[idx] 92 [engl] Loading courses failed. [trans] Pálya nem betölthető.
++*[idx] 93 [engl] Loading characters failed. [trans] Szereplő nincs.
++*[idx] 94 [engl] Loading environments failed. [trans] Tárgyak betölthetetlenek.
++*[idx] 95 [engl] Loading terrains failed. [trans] Terep betölthetetlen.
++*[idx] 96 [engl] Loading avatars failed. [trans] Szereolő betölthetetlen.
++*[idx] 97 [engl] herrings [trans] Hering
++*[idx] 98 [engl] sec [trans] mp.
 \ No newline at end of file
 diff -Naur orig/data/translations/languages.lst mod/data/translations/languages.lst
---- orig/data/translations/languages.lst	2013-09-01 00:10:30.000000000 +0200
-+++ mod/data/translations/languages.lst	2013-12-02 22:23:43.000000000 +0100
-@@ -12,4 +12,6 @@
- *[lang] ro_RO [language] românã
- *[lang] sk_SK [language] Slovenčina
- *[lang] fi_FI [language] Suomi
--*[lang] sv_SE [language] Svenska 
+--- orig/data/translations/languages.lst	2016-01-15 08:42:02.000000000 +0100
++++ mod/data/translations/languages.lst	2016-04-24 13:20:39.555330641 +0200
+@@ -3,4 +3,5 @@
+ *[lang] fi_FI [language] Finnish
+ *[lang] es_ES [language] Español
+ *[lang] fr_FR [language] français
+-*[lang] pl_PL [language] polski
 \ No newline at end of file
-+*[lang] sv_SE [language] Svenska
++*[lang] pl_PL [language] polski
 +*[lang] hu_HU [language] Magyar
-+ 
-\ No newline at end of file
 diff -Naur orig/data/translations/Makefile.am mod/data/translations/Makefile.am
---- orig/data/translations/Makefile.am	2013-08-14 23:29:17.000000000 +0200
-+++ mod/data/translations/Makefile.am	2013-12-02 22:28:46.000000000 +0100
-@@ -17,6 +17,7 @@
- 	ro_RO.lst	\
- 	sk_SK.lst	\
- 	fi_FI.lst	\
--	sv_SE.lst
-+	sv_SE.lst	\
-+	hu_HU.lst
+--- orig/data/translations/Makefile.am	2016-01-15 08:42:02.000000000 +0100
++++ mod/data/translations/Makefile.am	2016-04-24 15:03:03.693075775 +0200
+@@ -9,6 +9,7 @@
+ 	es_ES.lst	\
+ 	fr_FR.lst	\
+ 	pl_PL.lst	\
++	hu_HU.lst	\
+ 	xx_XX.lst
  
  EXTRA_DIST = $(pkgdata_DATA)

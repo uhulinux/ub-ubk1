@@ -1,7 +1,10 @@
 #!/usr/bin/env dl
 
-${UB_VERSION}.tar.gz oolite-${UB_VERSION}/
-	https://github.com/OoliteProject/oolite/archive/
+#${UB_VERSION}.tar.gz oolite-${UB_VERSION}/
+#	https://github.com/OoliteProject/oolite/archive/
+
+oolite-${UB_VERSION}.tar.gz oolite-cf135bb/
+	git://github.com/OoliteProject/oolite.git@cf135bb
 
 master.zip oolite-binary-resources-master/ :Resources/Binary
 	https://github.com/OoliteProject/oolite-binary-resources/archive/master.zip
