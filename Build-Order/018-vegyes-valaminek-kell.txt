@@ -313,6 +313,7 @@ w3m
 coin
 slim
 sfml
+csfml
 cups-filters
 autotrace
 mftrace
