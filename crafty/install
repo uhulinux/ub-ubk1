@@ -5,3 +5,4 @@ install -d -m 777 "$UB_INSTALLDIR"/usr/lib/crafty
 mv crafty "$UB_INSTALLDIR"/usr/lib/crafty/
 mv book*.bin "$UB_INSTALLDIR"/usr/lib/crafty/
 mv crafty.hlp "$UB_INSTALLDIR"/usr/lib/crafty/
+mkdir -p "$UB_INSTALLDIR"/usr/lib/crafty/TB
