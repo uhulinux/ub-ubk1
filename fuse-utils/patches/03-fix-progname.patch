@@ -1,0 +1,17 @@
+From: fredm@spamcop.net
+Subject: Fix FTBFS with GCC 5
+Bug-Debian: http://bugs.debian.org/799125
+Origin: http://sourceforge.net/p/fuse-emulator/code/5263/
+Index: fuse-emulator-utils/audio2tape.cc
+===================================================================
+--- fuse-emulator-utils.orig/audio2tape.cc
++++ fuse-emulator-utils/audio2tape.cc
+@@ -57,7 +57,7 @@ set_trigger_type_from_string( const std:
+                               libspectrum_byte schmitt_high2low_crossover_point
+                             );
+ 
+-std::string progname;
++char *progname;
+ 
+ const std::string schmitt_str("schmitt");
+ const std::string simple_str("simple");

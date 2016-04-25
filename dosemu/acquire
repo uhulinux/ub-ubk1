@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-dosemu-${UB_VERSION}.tar.gz code-dosemu-${UB_VERSION}/
-       git://git.code.sf.net/p/dosemu/code@tag:dosemu-${UB_VERSION}
+dosemu-${UB_VERSION}.tar.gz code-cc971ea/
+       git://git.code.sf.net/p/dosemu/code@cc971ea
 
 dosemu-freedos-1.0-bin.tgz
 	http://downloads.sourceforge.net/dosemu/

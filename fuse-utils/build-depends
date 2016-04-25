@@ -1,5 +1,6 @@
 audiofile-dev
 bzip2-dev
+ffmpeg2.8-dev
 glib-dev
 libgcrypt-dev
 libspectrum-dev
