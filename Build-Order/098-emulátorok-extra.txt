@@ -1,7 +1,6 @@
 wine
 wine-gecko
 wine-mono
-winexs
 q4wine
 z81
 spectemu
