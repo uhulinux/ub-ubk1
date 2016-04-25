@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-mysql-connector-odbc-${UB_VERSION}-src.tar.gz mysql-connector-odbc-${UB_VERSION}-src/
-	ftp://ftp.crysys.hu/pub/mysql/Downloads/Connector-ODBC/${UB_VERSION_HEAD2}/
-	http://mysql.mirrors.crysys.hit.bme.hu/Downloads/Connector-ODBC/${UB_VERSION_HEAD2}/

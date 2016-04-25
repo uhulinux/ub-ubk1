@@ -23,7 +23,6 @@ gstreamer0.10mm
 gstreamer0.10-vaapi
 gstreamer-vaapi
 gst-rtsp
-gtk2-engine-qtcurve
 gtk2-engine-xfce
 gtk-engine-unico
 gtkglarea
@@ -37,7 +36,6 @@ mojolicious
 mplayer-w32codecs
 msilbc
 musl
-mysql-odbc
 nss-ldap
 nss-mdns
 ntrack
@@ -54,12 +52,10 @@ pam-usb
 pdflib
 ppl
 qoauth
-ruby-pg
 sdl2-net
 snack
 soprano
 spice
-sqlite3-ruby
 starman
 stfl
 stlport

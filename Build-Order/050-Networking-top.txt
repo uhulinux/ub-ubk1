@@ -42,7 +42,6 @@ mutt
 ncftp
 neptun
 ntalk
-opera
 pidgin-libnotify
 pine
 rdesktop
