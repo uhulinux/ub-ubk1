@@ -10,17 +10,3 @@ diff -Naurd a/CMakeLists.txt b/CMakeLists.txt
  		
  		SET( ${_sources} ${${_sources}} ${_out} )
  	ENDFOREACH( curFile )
-diff -Naurd a/menu_data/aqemu.desktop b/menu_data/aqemu.desktop
---- a/menu_data/aqemu.desktop	2009-06-04 09:29:38.000000000 +0200
-+++ b/menu_data/aqemu.desktop	2014-05-06 17:56:34.000000000 +0200
-@@ -1,5 +1,4 @@
- [Desktop Entry]
--Encoding=UTF-8
- Name=AQEMU
- Exec=aqemu
- Terminal=false
-@@ -12,3 +11,4 @@
- Name[en]=AQEMU
- Comment[ru]=Управление виртуальными машинами
- Comment[en]=Virtual machine manager
-+Comment[hu]=Qemu frontend
