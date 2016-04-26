@@ -10,5 +10,4 @@ abiword
 fet
 libreoffice
 qpdfview
-sapgui
 scribus
