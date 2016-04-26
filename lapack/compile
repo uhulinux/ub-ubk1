@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
+sed -e 's|/CMAKE/|/cmake/|' -i CBLAS/CMakeLists.txt
 install -d build
 cd build
 cmake .. \
@@ -7,5 +8,7 @@ cmake .. \
 	-DCMAKE_SKIP_RPATH=ON \
 	-DBUILD_SHARED_LIBS=ON \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_Fortran_COMPILER=gfortran
+	-DCMAKE_Fortran_COMPILER=gfortran \
+	-DLAPACKE=ON \
+	-DCBLAS=ON
 make

@@ -1,18 +1,5 @@
 #!/bin/sh -eux
 
 cd build
-
-install -m644 ../lapacke/include/*.h "$UB_INSTALLDIR"/usr/include/
-
-install -m755 lib/libblas.so "$UB_INSTALLDIR"/usr/lib/
-ln -sf libblas.so "$UB_INSTALLDIR"/usr/lib/libblas.so."$UB_VERSION"
-ln -sf libblas.so "$UB_INSTALLDIR"/usr/lib/libblas.so.3
-
-install -m755 lib/liblapack.so "$UB_INSTALLDIR"/usr/lib/
-install -m755 lib/libtmglib.so "$UB_INSTALLDIR"/usr/lib/
-ln -sf liblapack.so "$UB_INSTALLDIR"/usr/lib/liblapack.so."$UB_VERSION"
-ln -sf liblapack.so "$UB_INSTALLDIR"/usr/lib/liblapack.so.3
-ln -sf libtmglib.so "$UB_INSTALLDIR"/usr/lib/libtmglib.so."$UB_VERSION"
-ln -sf libtmglib.so "$UB_INSTALLDIR"/usr/lib/libtmglib.so.3
-
-install -m755 bin/* "$UB_INSTALLDIR"/usr/bin
+make DESTDIR="$UB_INSTALLDIR" install
+#install -m755 bin/* "$UB_INSTALLDIR"/usr/bin
