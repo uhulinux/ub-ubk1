@@ -1,9 +1,4 @@
 #!/bin/sh -eux
 
-./configure-alt \
-	--prefix=/usr \
-	--datadir=/usr/share \
-	--mandir=/usr/share/man \
-	--ILP32
-
-ub_make
+ub_make \
+	 -f makefile_linux_utf8
