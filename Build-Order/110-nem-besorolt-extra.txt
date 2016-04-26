@@ -20,7 +20,6 @@ ndisgtk
 newlisp
 nouveau-fw
 nvidia
-nvidia-173
 nvidia-304
 nvidia-340
 sddm-config-editor
