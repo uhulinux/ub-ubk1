@@ -1,1 +1,1 @@
-urllist http://mathomatic.orgserve.de/math/download.html | splitver '^mathomatic-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+geturl http://mathomatic.orgserve.de #| splitver '^mathomatic-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
