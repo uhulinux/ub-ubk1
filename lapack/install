@@ -2,4 +2,4 @@
 
 cd build
 make DESTDIR="$UB_INSTALLDIR" install
-#install -m755 bin/* "$UB_INSTALLDIR"/usr/bin
+install -m755 bin/* "$UB_INSTALLDIR"/usr/bin
