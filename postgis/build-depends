@@ -3,6 +3,7 @@ cyrus-sasl2-dev
 expat-dev
 gdal
 geos
+json-c-dev
 libpng-dev
 libtiff-dev
 libungif-dev
