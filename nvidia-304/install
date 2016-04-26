@@ -38,8 +38,8 @@ mv tls "$cellibdir"
 ln -s libwfb.so "$xmoduldir"/libnvidia-wfb.so."$UB_VERSION"
 
 # remove conflicting vdpau lib
-rm "libvdpau.so.$UB_VERSION"
-rm "libvdpau_trace.so.$UB_VERSION"
+#rm "libvdpau.so.$UB_VERSION"
+#rm "libvdpau_trace.so.$UB_VERSION"
 # minden áthelyezése a libekbe
 mv *.so.* "$cellibdir"/
 
