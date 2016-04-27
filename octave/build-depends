@@ -7,12 +7,13 @@ ftgl
 gfortran
 gfortran-lib
 glibc-dev
+glu-dev
 gnuplot
 gperf
 graphicsmagick
 hdf5
 jasper-dev
-lapack
+lapack-dev
 less
 libjpeg-dev
 libpng-dev

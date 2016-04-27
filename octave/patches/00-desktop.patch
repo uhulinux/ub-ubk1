@@ -11,7 +11,7 @@ diff -Naur orig/etc/icons/octave.desktop.in patched/etc/icons/octave.desktop.in
 +Comment[hu]=Matematikai programnyelv
 +TryExec=octave
 +Exec=octave --force-gui
-+Icon=octave-logo.svg
++Icon=/usr/share/octave/4.0.0/imagelib/octave-logo.svg
  Terminal=false
  Type=Application
  Categories=Education;Science;Math;
