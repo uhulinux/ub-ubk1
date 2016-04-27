@@ -226,3 +226,5 @@ xplanet
 xqed
 xsw
 xzoom
+sqlitebrowser
+sqliteman
