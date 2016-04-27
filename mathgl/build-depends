@@ -1,5 +1,6 @@
 cmake
 fltk-dev
+glu-dev
 gsl
 hdf5
 libjpeg-dev
