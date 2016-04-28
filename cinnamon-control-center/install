@@ -1,8 +1,3 @@
 #!/bin/sh -eux
 
 ub_install
-make -C panels/sound DESTDIR="$UB_INSTALLDIR" uninstall
-make -C panels/sound/data DESTDIR="$UB_INSTALLDIR" install
-make -C shell DESTDIR="$UB_INSTALLDIR" uninstall-binPROGRAMS uninstall-directoryDATA uninstall-uiDATA
-rm "$UB_INSTALLDIR"/usr/share/applications/cinnamon-{control-center,datetime-panel,region-panel,sound-panel}.desktop
-rm -R "$UB_INSTALLDIR/etc"
