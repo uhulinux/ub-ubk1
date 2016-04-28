@@ -1,6 +1,5 @@
 claws-mail-themes
 cursor-theme-x.org
-gdm-theme-bluecurve
 gdm-theme-uhu
 gtk-stock-icons
 icon-theme-snow-apple
