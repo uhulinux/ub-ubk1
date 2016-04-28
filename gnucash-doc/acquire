@@ -2,4 +2,4 @@
 
 gnucash-docs-${UB_VERSION}.tar.gz gnucash-docs-${UB_VERSION}/
 	http://www.gnucash.org/pub/gnucash/sources/stable/
-	http://downloads.sourceforge.net/gnucash/
+	http://sourceforge.net/projects/gnucash/files/gnucash-docs/${UB_VERSION}/
