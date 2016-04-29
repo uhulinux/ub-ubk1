@@ -1,6 +1,5 @@
 #!/bin/sh -eux
 
-export DEST="$UB_INSTALLDIR"/usr
-cd sqlitebrowser
-cp -a sqlitebrowser "$DEST"/bin/
-cp -a images/128.png "$DEST"/share/pixmaps/sqlitebrowser.png
+export DESTDIR=${UB_INSTALLDIR}
+ub_install
+

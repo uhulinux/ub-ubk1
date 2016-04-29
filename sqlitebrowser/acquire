@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-sqlitebrowser_200_b1_src.tar.gz trunk/sqlitebrowser/
-	http://downloads.sourceforge.net/sqlitebrowser/
+v${UB_VERSION}.tar.gz sqlitebrowser-${UB_VERSION}/
+	https://github.com/sqlitebrowser/sqlitebrowser/archive/
