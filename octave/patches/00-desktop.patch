@@ -1,12 +1,12 @@
-diff -Naur orig/etc/icons/octave.desktop.in patched/etc/icons/octave.desktop.in
---- orig/etc/icons/octave.desktop.in	2015-05-23 16:21:53.000000000 +0200
-+++ patched/etc/icons/octave.desktop.in	2016-02-19 03:25:10.817672021 +0100
+diff -Naur octave-4.0.2-orig/etc/icons/octave.desktop.in octave-4.0.2/etc/icons/octave.desktop.in
+--- octave-4.0.2-orig/etc/icons/octave.desktop.in	2016-04-20 20:23:57.000000000 +0200
++++ octave-4.0.2/etc/icons/octave.desktop.in	2016-04-29 17:03:18.269624778 +0200
 @@ -1,9 +1,10 @@
  [Desktop Entry]
  Name=GNU Octave
  Comment=Scientific Computing using GNU Octave
 -TryExec=%OCTAVE_PREFIX%/bin/octave
--Exec=%OCTAVE_PREFIX%/bin/octave --force-gui
+-Exec=%OCTAVE_PREFIX%/bin/octave --force-gui %f
 -Icon=%OCTAVE_IMAGEDIR%/octave-logo.svg
 +Comment[hu]=Matematikai programnyelv
 +TryExec=octave

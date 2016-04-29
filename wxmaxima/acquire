@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
-wxMaxima-${UB_VERSION}.tar.gz wxMaxima-${UB_VERSION}/
+wxMaxima-${UB_VERSION}.tar.gz wxmaxima-${UB_VERSION}/
+	https://sourceforge.net/projects/wxmaxima/files/wxMaxima/${UB_VERSION}/wxmaxima-${UB_VERSION}.tar.gz/download
 	http://downloads.sourceforge.net/wxmaxima/

@@ -4,3 +4,5 @@ mathomatic-${UB_VERSION}.tar.bz2 mathomatic-${UB_VERSION}/
 	http://mathomatic.org/
 	http://mathomatic.orgserve.de/
 	ftp://mirror.nl.leaseweb.net/gentoo/distfiles/
+	 ftp://ftp.freebsd.ch/gentoo/distfiles/
+

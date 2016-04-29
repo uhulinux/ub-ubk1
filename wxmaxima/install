@@ -2,5 +2,5 @@
 
 ub_install
 
-cp -a wxmaxima.desktop "$UB_INSTALLDIR"/usr/share/applications/
-ln -s ../wxMaxima/wxmaxima.png "$UB_INSTALLDIR"/usr/share/pixmaps/wxmaxima.png
+# cp -a wxmaxima.desktop "$UB_INSTALLDIR"/usr/share/applications/
+# ln -s ../wxMaxima/wxmaxima.png "$UB_INSTALLDIR"/usr/share/pixmaps/wxmaxima.png

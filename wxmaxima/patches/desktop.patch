@@ -1,14 +1,11 @@
-diff -Naur orig/wxmaxima.desktop patched/wxmaxima.desktop
---- orig/wxmaxima.desktop	2012-01-19 11:05:06.000000000 +0100
-+++ patched/wxmaxima.desktop	2014-06-21 20:00:04.132921336 +0200
-@@ -1,8 +1,9 @@
- [Desktop Entry]
- Name=wxMaxima
- Comment=Perform symbolic and numeric calculations using Maxima
+diff -Naur wxmaxima-16.04.1-orig/data/wxMaxima.desktop wxmaxima-16.04.1/data/wxMaxima.desktop
+--- wxmaxima-16.04.1-orig/data/wxMaxima.desktop	2016-04-06 12:11:47.000000000 +0200
++++ wxmaxima-16.04.1/data/wxMaxima.desktop	2016-04-29 17:30:06.585617390 +0200
+@@ -6,6 +6,7 @@
+ Comment=A graphical user interface that allows symbolic and numeric calculations using Maxima
+ Comment[de]=Eine grafische Oberfläche für Maxima, ein Programm für Symbolische und Numerische Berechnungen
+ Comment[ru]=Графический интерфейс для символьных и числовых вычислений с помощью Maxima
 +Comment[hu]=Matematikai programcsomag
- Exec=wxmaxima %f
--Icon=wxmaxima.png
-+Icon=wxmaxima
- Terminal=false
- Type=Application
- Categories=Education;Science;Math;X-Red-Hat-Base;X-Red-Hat-Base-Only;
+ X-GNOME-FullName=wxMaxima - GUI for Maxima
+ X-GNOME-FullName[ru]=wxMaxima - графический интерфейс для Maxima
+ X-GNOME-FullName[de]=wxMaxima - eine grafische Oberfläche für Maxima
