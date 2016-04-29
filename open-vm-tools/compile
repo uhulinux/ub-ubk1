@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
 export CUSTOM_PROCPS_NAME=procps
+export CXXFLAGS+=' -std=gnu++11'
 ub_compile \
 	--without-kernel-modules
