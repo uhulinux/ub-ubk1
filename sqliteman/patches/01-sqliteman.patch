@@ -24,7 +24,7 @@ diff -Naurd a/sqliteman.desktop b/sqliteman.desktop
  StartupNotify=true
  MimeType=application/x-sqlite3;
 -
-+Categories=Office;Databases;
++Categories=Office;Database;
  # Translations
  GenericName[cs]=Sqlite administrace
 -
