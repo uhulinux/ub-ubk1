@@ -6,7 +6,7 @@ diff -Naur orig/filter/subtitler/load_font.c mod/filter/subtitler/load_font.c
  #include FT_FREETYPE_H
  
 -#include <freetype/ftglyph.h>
-+#include <freetype2/ftglyph.h>
++#include <freetype2/freetype/ftglyph.h>
  
  /**
   * @file bswap.h
