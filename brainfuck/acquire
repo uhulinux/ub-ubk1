@@ -1,10 +1,12 @@
 #!/usr/bin/env dl
 
 bff-${UB_VERSION}.tar.gz bff-${UB_VERSION}/
-	http://swapped.cc/bf/files/
+	ftp://ftp.neva.ru/.3/Linux-Distrib/Gentoo/distfiles/
 
 mandelbrot.b
-	http://swapped.cc/bf/files/
+	ftp://ftp.neva.ru/.3/Linux-Distrib/Gentoo/distfiles/
+	ftp://ftp.freebsd.ch/gentoo/distfiles/mandelbrot.b
 
 random.b
-	http://swapped.cc/bf/files/
+	ftp://ftp.neva.ru/.3/Linux-Distrib/Gentoo/distfiles/
+	ftp://ftp.freebsd.ch/gentoo/distfiles/mandelbrot.b

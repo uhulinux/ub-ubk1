@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-hfsplus_${UB_VERSION}.src.tar.bz2 hfsplus-${UB_VERSION}/
-	http://penguinppc.org/historical/hfsplus/
+hfsplus_${UB_VERSION}.orig.tar.gz hfsplus-${UB_VERSION}/
+	http://ftp.debian.org/debian/pool/main/h/hfsplus/
