@@ -1,4 +1,7 @@
+boost-dev
 libjpeg-dev
+libpng-dev
 libtiff-dev
 libxpm-dev
 libxt-dev
+sdl-dev

@@ -1,0 +1,25 @@
+From 0b403907a366b56fa07ce286e03ef5258d5bba81 Mon Sep 17 00:00:00 2001
+From: Christoph Lipka <c-lipka@users.noreply.github.com>
+Date: Mon, 6 Jan 2014 05:38:39 +0100
+Subject: [PATCH] fix typo in configure.ac
+
+---
+ unix/configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/unix/configure.ac b/unix/configure.ac
+index 29a58c4..9537701 100644
+--- a/unix/configure.ac
++++ b/unix/configure.ac
+@@ -326,7 +326,7 @@ AC_RUN_IFELSE(
+   ],,
+   [AC_MSG_RESULT([cross-compiling])]  # FIXME
+ )
+-  if test $boost_thread_links == '1'; then
++  if test $boost_thread_links = '1'; then
+     break
+   fi
+ done
+-- 
+1.8.5.2
+

@@ -1,0 +1,55 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: use bash as interpreter for scripts using non-posix extensions for "read"
+Bug-Debian: https://bugs.debian.org/772356
+
+--- a/unix/scripts/portfolio.sh
++++ b/unix/scripts/portfolio.sh
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ # ==============================================================================
+ # POV-Ray 3.7 
+ # portfolio.sh - render the POV-Ray portfolio
+@@ -86,7 +86,7 @@ if [ ! -d "$SCENE_DIR" ] ; then
+   echo "  so this script does not work."
+   echo "  Try reinstalling POV-Ray."
+ 	echo "------------------------------------------------------"
+-  read
++  read dontcare
+   exit
+ fi
+ 
+--- a/unix/scripts/allanim.sh
++++ b/unix/scripts/allanim.sh
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ # ==============================================================================
+ # POV-Ray 3.7 
+ # allanim.sh - render all POV-Ray sample animations
+@@ -89,7 +89,7 @@ if [ ! -d "$SCENE_DIR" ] ; then
+   echo "  so this script does not work."
+   echo "  Try reinstalling POV-Ray."
+ 	echo "------------------------------------------------------"
+-  read
++  read dontcare
+   exit
+ fi
+ 
+--- a/unix/scripts/allscene.sh
++++ b/unix/scripts/allscene.sh
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ # ==============================================================================
+ # POV-Ray 3.7 
+ # allscene.sh - render all POV-Ray sample scenes
+@@ -95,7 +95,7 @@ if [ ! -d "$SCENE_DIR" ] ; then
+   echo "  so this script does not work."
+   echo "  Try reinstalling POV-Ray."
+ 	echo "------------------------------------------------------"
+-  read
++  read dontcare
+   exit
+ fi
+ 

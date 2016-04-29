@@ -1,2 +1,1 @@
-alap=$(urllist ftp://ftp.povray.org/pub/povray/Old-Versions/ | grep -E '^Official-' | sort | tail -n 1)
-urllist ftp://ftp.povray.org/pub/povray/Old-Versions/"$alap"/Unix/ | parsever | sort -V | tail -n 1
+urllist http://ftp.debian.org/debian/pool/main/p/povray/ | splitver '^povray_([0-9.]+).orig.tar.gz$' #| sort -V | tail -n 1

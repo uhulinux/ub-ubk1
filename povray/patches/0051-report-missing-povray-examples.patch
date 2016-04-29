@@ -1,0 +1,36 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: report that the povray-examples package is needed
+
+--- a/unix/scripts/allanim.sh
++++ b/unix/scripts/allanim.sh
+@@ -86,7 +86,7 @@ if [ ! -d "$SCENE_DIR" ] ; then
+ 	echo "------------------------------------------------------"
+   echo "  Your POV-Ray installation seems to be defective"
+   echo "  so this script does not work."
+-  echo "  Try reinstalling POV-Ray."
++  echo "  Try installing the povray-examples package."
+ 	echo "------------------------------------------------------"
+   read dontcare
+   exit
+--- a/unix/scripts/allscene.sh
++++ b/unix/scripts/allscene.sh
+@@ -92,7 +92,7 @@ if [ ! -d "$SCENE_DIR" ] ; then
+ 	echo "------------------------------------------------------"
+   echo "  Your POV-Ray installation seems to be defective"
+   echo "  so this script does not work."
+-  echo "  Try reinstalling POV-Ray."
++  echo "  Try installing the povray-examples package."
+ 	echo "------------------------------------------------------"
+   read dontcare
+   exit
+--- a/unix/scripts/portfolio.sh
++++ b/unix/scripts/portfolio.sh
+@@ -83,7 +83,7 @@ if [ ! -d "$SCENE_DIR" ] ; then
+ 	echo "------------------------------------------------------"
+   echo "  Your POV-Ray installation seems to be defective"
+   echo "  so this script does not work."
+-  echo "  Try reinstalling POV-Ray."
++  echo "  Try installing the povray-examples package."
+ 	echo "------------------------------------------------------"
+   read dontcare
+   exit

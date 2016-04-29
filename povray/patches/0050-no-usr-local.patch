@@ -1,0 +1,79 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix references to /usr/local/etc
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/povray/+bug/1343048
+
+--- a/unix/povray.conf
++++ b/unix/povray.conf
+@@ -25,7 +25,8 @@
+ ; setuid or setgid.
+ ;
+ ; POV-Ray will look in two places for this file: in a system-wide directory
+-; (typically /usr/local/etc/povray/3.7/povray.conf) and in the user's home
++; (typically /usr/local/etc/povray/3.7/povray.conf or
++; /etc/povray/3.7/povray.conf) and in the user's home
+ ; directory (as ~/.povray/3.7/povray.conf).  POV-Ray will always use the
+ ; most strict version of what is specified; user settings can only make
+ ; security more strict.
+--- a/unix/scripts/allanim.sh
++++ b/unix/scripts/allanim.sh
+@@ -18,7 +18,7 @@
+ # log:              log all text output of POV-Ray to a file (log.txt)
+ # scene_directory:  if specified the sample scene in this directory are rendered, 
+ #                   otherwise the scene directory is determined form the main 
+-#                   povray ini file (usually /usr/local/share/povray-3.7/scenes).
++#                   povray ini file (usually /usr/share/povray-3.7/scenes).
+ # html_file:        if specified a HTML file with links to the rendered 
+ #                   animations is written.
+ # ==============================================================================
+@@ -28,8 +28,7 @@
+ 
+ VERSION=3.7
+ VER_DIR=povray-$VERSION
+-DEFAULT_DIR=/usr/local
+-SYSCONFDIR=$DEFAULT_DIR/etc
++SYSCONFDIR=/etc
+ 
+ install_dir()
+ {
+--- a/unix/scripts/allscene.sh
++++ b/unix/scripts/allscene.sh
+@@ -20,7 +20,7 @@
+ #                   options for running
+ # scene_directory:  if specified the sample scene in this directory are rendered, 
+ #                   otherwise the scene directory is determined form the main 
+-#                   povray ini file (usually /usr/local/share/povray-3.7/scenes).
++#                   povray ini file (usually /usr/share/povray-3.7/scenes).
+ # html_file:        if specified a HTML file with links to the rendered 
+ #                   images is written.  If Imagemagick 'convert' is installed
+ #                   thumbnails for the images are generated as well.
+@@ -32,8 +32,7 @@
+ 
+ VERSION=3.7
+ VER_DIR=povray-$VERSION
+-DEFAULT_DIR=/usr/local
+-SYSCONFDIR=$DEFAULT_DIR/etc
++SYSCONFDIR=/etc
+ 
+ install_dir()
+ {
+--- a/unix/scripts/portfolio.sh
++++ b/unix/scripts/portfolio.sh
+@@ -19,7 +19,7 @@
+ # scene_directory:  if specified the portfolio scene in this directory are
+ #                   rendered, otherwise the scene directory is determined form
+ #                   the main povray ini file.
+-#                   (usually /usr/local/share/povray-3.7/scenes/portfolio).
++#                   (usually /usr/share/povray-3.7/scenes/portfolio).
+ # ==============================================================================
+ 
+ # test mode
+@@ -27,8 +27,7 @@
+ 
+ VERSION=3.7
+ VER_DIR=povray-$VERSION
+-DEFAULT_DIR=/usr/local
+-SYSCONFDIR=$DEFAULT_DIR/etc
++SYSCONFDIR=/etc
+ 
+ install_dir()
+ {

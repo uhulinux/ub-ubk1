@@ -1,0 +1,19 @@
+Description: ensure that POV_LONG is a 64bit integer
+Author: Andreas Beckmann <anbe@debian.org>
+Bug-Debian: https://bugs.debian.org/745448
+
+--- a/vfe/unix/unixconsole.cpp
++++ b/vfe/unix/unixconsole.cpp
+@@ -355,6 +355,12 @@ static void CleanupBenchmark(vfeUnixSess
+ 
+ int main (int argc, char **argv)
+ {
++	assert(sizeof(POV_LONG) == 8);
++	if (sizeof(POV_LONG) != 8) {
++		fprintf(stderr, "sizeof(POV_LONG) = %d != 8\n", (int)sizeof(POV_LONG));
++		return -sizeof(POV_LONG);
++	}
++
+ 	vfeUnixSession   *session;
+ 	vfeStatusFlags    flags;
+ 	vfeRenderOptions  opts;

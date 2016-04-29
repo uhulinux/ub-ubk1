@@ -1,0 +1,63 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix some typos
+
+--- a/libraries/ilmbase/Imath/ImathFrustum.h
++++ b/libraries/ilmbase/Imath/ImathFrustum.h
+@@ -62,7 +62,7 @@ namespace Imath {
+ //
+ //	The frustum is always located with the eye point at the
+ //	origin facing down -Z. This makes the Frustum class 
+-//	compatable with OpenGL (or anything that assumes a camera
++//	compatible with OpenGL (or anything that assumes a camera
+ //	looks down -Z, hence with a right-handed coordinate system) 
+ //	but not with RenderMan which assumes the camera looks down
+ //	+Z. Additional functions are provided for conversion from
+--- a/source/backend/parser/parse.cpp
++++ b/source/backend/parser/parse.cpp
+@@ -662,7 +662,7 @@ void Parser::Parse_End ()
+ 	{
+ 		if(--Brace_Index < 0)
+ 		{
+-			Warning(0, "Possible '}' brace missmatch.");
++			Warning(0, "Possible '}' brace mismatch.");
+ 			Brace_Index = 0;
+ 		}
+ 		return;
+@@ -9799,7 +9799,7 @@ void Parser::Warn_Compat(int f, const ch
+ 	}
+ 
+ 	Warning(0,"%s\n"
+-	          "  Use of this syntax %s backwards compatable with earlier versions of POV-Ray.\n"
++	          "  Use of this syntax %s backwards compatible with earlier versions of POV-Ray.\n"
+ 	          "  The #version directive or +MV switch will not help.",
+ 	          syn, text);
+ }
+--- a/source/backend/support/task.cpp
++++ b/source/backend/support/task.cpp
+@@ -188,7 +188,7 @@ void Task::TaskThread(const boost::funct
+ 		}
+ 		catch(...)
+ 		{
+-			FatalErrorHandler(POV_EXCEPTION_STRING("An unknown error occured stopping a task!"));
++			FatalErrorHandler(POV_EXCEPTION_STRING("An unknown error occurred stopping a task!"));
+ 			failed = kUncategorizedError;
+ 		}
+ 	}
+@@ -216,7 +216,7 @@ void Task::TaskThread(const boost::funct
+ 	}
+ 	catch(...)
+ 	{
+-		FatalErrorHandler(POV_EXCEPTION_STRING("An unknown error occured running a task!"));
++		FatalErrorHandler(POV_EXCEPTION_STRING("An unknown error occurred running a task!"));
+ 		failed = kUncategorizedError;
+ 	}
+ 
+@@ -240,7 +240,7 @@ void Task::TaskThread(const boost::funct
+ 	}
+ 	catch(...)
+ 	{
+-		FatalErrorHandler(POV_EXCEPTION_STRING("An unknown error occured finishing a task!"));
++		FatalErrorHandler(POV_EXCEPTION_STRING("An unknown error occurred finishing a task!"));
+ 	}
+ 
+ 	timer = NULL;

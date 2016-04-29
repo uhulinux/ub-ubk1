@@ -1,0 +1,15 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: perform render test without display and non-interactively
+Bug-Debian: https://bugs.debian.org/746365
+
+--- a/unix/prebuild.sh
++++ b/unix/prebuild.sh
+@@ -586,7 +586,7 @@
+ # Render a test scene for 'make check'.
+ # This is meant to run before 'make install'.
+ check: all
+-	\$(top_builddir)/unix/povray +i\$(top_srcdir)/scenes/advanced/biscuit.pov -f +d +p +v +w320 +h240 +a0.3 +L\$(top_srcdir)/include
++	\$(top_builddir)/unix/povray +i\$(top_srcdir)/scenes/advanced/biscuit.pov -f -d -p +v +w320 +h240 +a0.3 +L\$(top_srcdir)/include
+ 
+ # Install scripts in povlibdir.
+ nobase_povlib_SCRIPTS = `echo $scriptfiles`

@@ -1,0 +1,58 @@
+From cba5bc5315c538f4ffddf7ae280ec593d6df0e93 Mon Sep 17 00:00:00 2001
+From: Wouter Verhelst <w@uter.be>
+Date: Fri, 6 Dec 2013 08:02:27 +0100
+Subject: [PATCH] Account for changes in boost dependencies
+
+Since <boost/thread/thread.hpp> includes some headers which will already
+call a boost_system function, recent versions of boost require
+-lboost_system before -lboost_thread will work, resulting in a failure
+of this test if not accounted for.
+
+Make it try without -lboost_system first, but try again with it added to
+$LIBS if that fails.
+---
+ unix/configure.ac | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/unix/configure.ac b/unix/configure.ac
+index 51596f8..f82a2d2 100644
+--- a/unix/configure.ac
++++ b/unix/configure.ac
+@@ -308,18 +308,30 @@ else
+   LIBS="$BOOST_THREAD_LIB $LIBS"
+ fi
+ AC_MSG_CHECKING([whether the boost thread library is usable])
++SAVED_LIBS=$LIBS
++boost_thread_links=0
++for extralib in '' '-lboost_system'
++do
++  LIBS=$SAVED_LIBS
++  LIBS="$LIBS $extralib"
+ AC_RUN_IFELSE(
+   [AC_LANG_PROGRAM([[
+ #include <boost/thread/thread.hpp>
+     ]],
+     [[boost::defer_lock_t(); return 0;]])],
+-  [AC_MSG_RESULT([yes])],
+   [
+-    AC_MSG_RESULT([no])
+-    AC_MSG_FAILURE([cannot link with the boost thread library])
+-  ],
++    AC_MSG_RESULT([yes])
++    BOOST_THREAD_LIB="$BOOST_THREAD_LIB $extralib"
++    boost_thread_links=1
++  ],,
+   [AC_MSG_RESULT([cross-compiling])]  # FIXME
+ )
++done
++if test $boost_thread_links != '1'; then
++  AC_MSG_RESULT([no])
++  AC_MSG_FAILURE([cannot link with the boost thread library])
++fi
++
+ AC_DEFINE([USE_OFFICIAL_BOOST], [], [Use the official Boost libraries.])
+ 
+ # Intel Math Kernel library
+-- 
+1.8.5.2
+
