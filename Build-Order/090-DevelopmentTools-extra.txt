@@ -3,6 +3,7 @@ codelite
 ddd
 discount
 eric4
+python3-eric5
 gfxboot
 harbour
 jgrasp

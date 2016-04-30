@@ -101,3 +101,6 @@ xinetd
 xman
 x.org-video-modesetting
 x.org-video-vmware
+apmd
+fonts-ghostscript-std
+iptables-utils

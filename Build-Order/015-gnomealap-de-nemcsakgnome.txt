@@ -31,3 +31,4 @@ yelp
 libgda
 gvfs
 libgdamm
+libgdata

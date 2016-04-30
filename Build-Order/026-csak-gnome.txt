@@ -123,3 +123,5 @@ gnome-boxes
 gtkpod
 gnome-shell
 gnome-terminal
+gnome-python-extras
+gnome-keyring

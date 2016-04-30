@@ -321,6 +321,7 @@ foomatic-db-engine
 espeak
 speechd
 sox
+ffmpeg2.8
 ffmpeg
 xine-lib
 wxsvg

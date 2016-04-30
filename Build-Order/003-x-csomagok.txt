@@ -121,4 +121,4 @@ tslib
 libxklavier
 nickle
 x.org-utils
-x.org-serverutils
+x.org-server-utils
