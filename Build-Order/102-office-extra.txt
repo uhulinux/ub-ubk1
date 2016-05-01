@@ -5,7 +5,6 @@ foxit
 gnucash
 jmoney
 openoffice.org
-tellico
 abiword
 fet
 libreoffice

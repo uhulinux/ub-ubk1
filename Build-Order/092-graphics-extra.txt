@@ -1,4 +1,3 @@
-digikam
 exif
 gexif
 gimp-gap

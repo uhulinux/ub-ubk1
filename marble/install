@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_install
+
+chmod 644 "$UB_INSTALLDIR"/usr/share/applications/marble_kmz.desktop

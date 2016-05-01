@@ -15,7 +15,6 @@ joe
 latexmk
 lexmark7000linux
 lm1100
-lmdb
 lrzsz
 mobile-broadband-provider-info
 oki4linux
@@ -184,7 +183,6 @@ colord-gtk
 git
 glfw2
 goffice08
-gpgmepp
 gtkspell
 hunspell-hu
 icon-theme-tango
@@ -222,7 +220,6 @@ gtkglextmm
 mesa-demos
 obexftp
 podofo
-qca
 shiboken
 telepathy-mission-control
 tigervnc
@@ -233,7 +230,6 @@ gmtk
 gtkhtml
 gtk-vnc
 imlib
-libdebconf-kde
 libstreamanalyzer
 openssh
 plymouth
@@ -299,7 +295,6 @@ openmpi
 qterminal
 smpeg2
 gnonlin
-packagekit-qt
 telepathy-farstream
 telepathy-idle
 foo2zjs

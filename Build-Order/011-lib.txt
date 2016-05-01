@@ -34,7 +34,6 @@ libvdpau
 libmygpo-qt4
 liboauth
 liboobs
-qtspeech
 libqxt
 libraw
 librpcsecgss

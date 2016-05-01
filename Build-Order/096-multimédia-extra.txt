@@ -32,8 +32,6 @@ pitivi
 xvidcap
 lingot
 bino
-k9copy
-kaffeine
 dvbcut-qt4
 dvgrab
 radiotray
@@ -48,7 +46,6 @@ tvtime
 kino
 deadbeef
 clementine
-k3b
 audacity
 xdtv
 mpv

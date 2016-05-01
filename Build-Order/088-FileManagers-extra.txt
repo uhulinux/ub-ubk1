@@ -2,7 +2,6 @@ doublecmd
 eaglemode
 emelfm2
 gentoo
-krusader
 rox-filer
 worker
 xfe

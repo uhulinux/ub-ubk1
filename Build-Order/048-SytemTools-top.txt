@@ -69,7 +69,6 @@ yate
 bonnie++
 estickflashtool
 ide-smart
-kpartitionmanager
 mtx
 freepascal
 lazarus

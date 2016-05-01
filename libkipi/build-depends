@@ -1,0 +1,6 @@
+cmake
+extra-cmake-modules
+kconfig-dev
+kservice-dev
+kxmlgui-dev
+qt5-dev
