@@ -1,0 +1,1 @@
+urllist https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/  | splitver '^ghostpdl-([0-9.]+).tar.gz$' | sort -V | tail -n 1

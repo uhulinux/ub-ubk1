@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-ghostpcl_${UB_VERSION}.tar.bz2 ghostpcl_${UB_VERSION}/
-	ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/AFPL/GhostPCL/
+ghostpdl-${UB_VERSION}.tar.bz2 ghostpdl-${UB_VERSION}/
+	https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${UB_VERSION/./}/
