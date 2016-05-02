@@ -3,6 +3,7 @@ freeglut-dev
 glew-dev
 glu-dev
 gsl-dev
+help2man
 lcms2-dev
 libice-dev
 libjpeg-dev
