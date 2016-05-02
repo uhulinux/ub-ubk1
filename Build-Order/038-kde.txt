@@ -122,3 +122,5 @@ libkipi
 libksane
 marble
 digikam
+kde5
+kde5-apps
