@@ -1,16 +1,3 @@
 #!/bin/sh -eux
 
-#make FPC=/usr/bin/fpc LCL_PLATFORM=gtk2 clean bigide
-#gtkdir=$workdir
-#export LAZPATH=/usr/lib/lazarus
-#export PATH=/usr/lib/lazarus:"$PATH"
-#export CARCH=i686
-#sed -e "s/\\(export\\ lazbuild=\\).*/\\1\"\$(which lazbuild) --primary-config-path=${UB_COMPILEDIR//\//\\\/}\\/lazarus-$CARCH\"/" -i build.sh
-#sed -e "s/%%UB_COMPILEDIR%%/${UB_COMPILEDIR//\//\\\/}/g" -i lazarus/packagefiles.xml
-#export lazbuild=/usr/bin/lazbuild
-
 ./build.sh beta gtk2
-#export lazarus=/usr/lib/lazarus
-#export CPU_TARGET=i686
-#export DC_ARCH=$(echo "--widgetset=$lcl")" "$(echo "--cpu=$CPU_TARGET")
-#lazbuild --lazarusdir=/usr/lib/lazarus src/doublecmd.lpi
