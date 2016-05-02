@@ -1,6 +1,5 @@
 alsa-plugins
 anjuta-extras
-automoc4
 bcg729
 clanlib
 cloog

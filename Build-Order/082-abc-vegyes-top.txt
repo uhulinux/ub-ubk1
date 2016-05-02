@@ -14,7 +14,6 @@ calibre
 curlftpfs
 cyrus-imapd
 dovecot
-drbd
 dump
 efont-unicode
 egenix-mx-base

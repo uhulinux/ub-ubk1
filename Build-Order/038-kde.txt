@@ -1,7 +1,6 @@
 gpgmepp
 lmdb
 libdebconf-kde
-libqtspeech
 packagekit-qt
 phonon
 qca
