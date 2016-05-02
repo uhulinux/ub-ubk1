@@ -1,0 +1,77 @@
+diff -Naur orig/CMakeLists.txt patched/CMakeLists.txt
+--- orig/CMakeLists.txt	2016-05-02 06:28:34.000000000 +0200
++++ patched/CMakeLists.txt	2016-05-02 09:35:46.182127373 +0200
+@@ -129,7 +129,6 @@
+         check_symbol_exists(avformat_find_stream_info "${FFMPEG_HEADERS}" HAVE_FFMPEG_AVFORMAT_FIND_STREAM_INFO)
+         check_symbol_exists(avformat_close_input "${FFMPEG_HEADERS}" HAVE_FFMPEG_AVFORMAT_CLOSE_INPUT)
+         check_symbol_exists(avcodec_open2 "${FFMPEG_HEADERS}" HAVE_FFMPEG_AVCODEC_OPEN2)
+-        check_symbol_exists(avcodec_decode_audio2 "${FFMPEG_HEADERS}" HAVE_FFMPEG_AVCODEC_DECODE_AUDIO2)
+         check_symbol_exists(avcodec_decode_audio3 "${FFMPEG_HEADERS}" HAVE_FFMPEG_AVCODEC_DECODE_AUDIO3)
+         check_symbol_exists(avcodec_decode_audio4 "${FFMPEG_HEADERS}" HAVE_FFMPEG_AVCODEC_DECODE_AUDIO4)
+         include(CheckCSourceCompiles)
+diff -Naur orig/plugins/decoder/ffmpeg/k3bffmpegwrapper.cpp patched/plugins/decoder/ffmpeg/k3bffmpegwrapper.cpp
+--- orig/plugins/decoder/ffmpeg/k3bffmpegwrapper.cpp	2016-05-02 06:28:34.000000000 +0200
++++ patched/plugins/decoder/ffmpeg/k3bffmpegwrapper.cpp	2016-05-02 09:42:15.572058253 +0200
+@@ -328,27 +328,26 @@
+         d->outputBufferPos = d->alignedOutputBuffer;
+         d->outputBufferSize = AVCODEC_MAX_AUDIO_FRAME_SIZE;
+ 
++#ifdef HAVE_FFMPEG_AVCODEC_DECODE_AUDIO4
++		AVFrame *frame = av_frame_alloc();
++		int decoded = 0;
++        int len = ::avcodec_decode_audio4(
++	        FFMPEG_CODEC(d->formatContext->streams[0]),
++	        frame,
++	        &decoded,
++	        &d->packet );
++#else
+ #ifdef HAVE_FFMPEG_AVCODEC_DECODE_AUDIO3
+         int len = ::avcodec_decode_audio3(
+-#else
+-#  ifdef HAVE_FFMPEG_AVCODEC_DECODE_AUDIO2
+-        int len = ::avcodec_decode_audio2(
+-#  else
+-        int len = ::avcodec_decode_audio(
+-#  endif
+-#endif
+-
+             FFMPEG_CODEC(d->formatContext->streams[0]),
+             (short*)d->alignedOutputBuffer,
+             &d->outputBufferSize,
+-#ifdef HAVE_FFMPEG_AVCODEC_DECODE_AUDIO3
+-            &d->packet );
+-#else
+-            d->packetData, d->packetSize );
++            d->packet );
++#endif
+ #endif
+ 
+         if( d->packetSize <= 0 || len < 0 )
+-            ::av_free_packet( &d->packet );
++            ::av_packet_unref( &d->packet );
+         if( len < 0 ) {
+             qDebug() << "(K3bFFMpegFile) decoding failed for " << m_filename;
+             return -1;
+@@ -414,14 +413,19 @@
+     K3bFFMpegFile* file = new K3bFFMpegFile( filename );
+     if( file->open() ) {
+ #ifndef K3B_FFMPEG_ALL_CODECS
++#if LIBAVCODEC_BUILD < AV_VERSION_INT(54,25,0)
++    #define AV_CODEC_ID_WMAV1  CODEC_ID_WMAV1
++    #define AV_CODEC_ID_WMAV2  CODEC_ID_WMAV2
++    #define AV_CODEC_ID_AAC    CODEC_ID_AAC
++#endif
+         //
+         // only allow tested formats. ffmpeg seems not to be too reliable with every format.
+         // mp3 being one of them sadly. Most importantly: allow the libsndfile decoder to do
+         // its thing.
+         //
+-        if( file->type() == CODEC_ID_WMAV1 ||
+-            file->type() == CODEC_ID_WMAV2 ||
+-            file->type() == CODEC_ID_AAC )
++        if( file->type() == AV_CODEC_ID_WMAV1 ||
++            file->type() == AV_CODEC_ID_WMAV2 ||
++            file->type() == AV_CODEC_ID_AAC )
+ #endif
+             return file;
+     }

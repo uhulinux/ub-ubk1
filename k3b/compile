@@ -1,6 +1,9 @@
 #!/bin/sh -eux
 
+PC_PATH=$(pkg-config --variable pc_path pkg-config)
+export PKG_CONFIG_PATH=/usr/lib/ffmpeg2.8/pkgconfig:$PC_PATH
+
 ub_compile \
 	-DCMAKE_PREFIX_PATH=/usr/lib/qt5 \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-	-DK3B_BUILD_FFMPEG_DECODER_PLUGIN=OFF
+#	-DK3B_BUILD_FFMPEG_DECODER_PLUGIN=OFF

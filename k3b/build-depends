@@ -3,6 +3,7 @@ cdparanoia-dev
 cmake
 dbus-dev
 extra-cmake-modules
+ffmpeg-dev
 flac-dev
 id3lib-dev
 karchive-dev
