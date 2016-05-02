@@ -2,3 +2,4 @@
 
 synergy-${UB_VERSION}-r2055-Source.tar.gz synergy-${UB_VERSION}-Source/
 	http://fossfiles.com/synergy/
+	ftp://ftp.usa.openbsd.org/pub/OpenBSD/distfiles/
