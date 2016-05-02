@@ -45,7 +45,6 @@ duke3d-demodata
 gshogi
 gtklife
 hoh
-knights
 oneko
 quake2-demo
 sjeng

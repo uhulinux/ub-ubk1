@@ -1,3 +1,0 @@
-#!/bin/bash
-
-python3 /usr/bin/pyside_postinstall3.py -install

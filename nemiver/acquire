@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-nemiver-${UB_VERSION}.tar.xz nemiver-${UB_VERSION}/
-	http://ftp.acc.umu.se/pub/GNOME/sources/nemiver/${UB_VERSION_HEAD2}/

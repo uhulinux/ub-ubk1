@@ -79,7 +79,6 @@ pyside
 pysmbc
 pysqlite
 python3-psutil
-python3-pyside
 qscintilla2
 python3-qscintilla2
 python-apsw

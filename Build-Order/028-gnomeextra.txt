@@ -48,7 +48,6 @@ xchat-gnome
 gxine
 gitg
 gnome-builder
-nemiver
 rygel
 ekiga
 gnome-phone-manager

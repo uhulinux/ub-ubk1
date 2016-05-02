@@ -6,7 +6,6 @@ icon-theme-snow-apple
 sddm-theme-acidhub
 unicode-screensaver
 griffith-extra-artwork
-knights-themes
 promoe
 sddm-theme-deepspace
 sddm-theme-futuristic
