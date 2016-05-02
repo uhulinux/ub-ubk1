@@ -1,9 +1,10 @@
 gpgmepp
-lmdb
 libdebconf-kde
+lmdb
 packagekit-qt
 phonon
 qca
+qtspeech
 extra-cmake-modules
 attica
 breeze-icons
