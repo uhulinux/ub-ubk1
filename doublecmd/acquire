@@ -1,8 +1,11 @@
 #!/usr/bin/env dl
 
-lazarus-1.2.4-0.tar.gz lazarus/
-	http://sourceforge.net/projects/lazarus/files/Lazarus%20Zip%20_%20GZip/Lazarus%201.2.4/
+#lazarus-1.2.4-0.tar.gz lazarus/
+#	http://sourceforge.net/projects/lazarus/files/Lazarus%20Zip%20_%20GZip/Lazarus%201.2.4/
 
 doublecmd-${UB_VERSION}-src.tar.gz doublecmd-${UB_VERSION}/
 	http://downloads.sourceforge.net/project/doublecmd/Double%20Commander%20Source/
-	
+
+
+#lazarus-20140321-2.tar.gz lazarus/
+#	http://www.herecura.be/files/
