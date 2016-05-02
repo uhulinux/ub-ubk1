@@ -1,10 +1,6 @@
-gconfmm2-dev
-gnome-common
-gst0.10-plugins-base-dev
-gtkmm2-dev
+cmake
+gst-plugins-bad-dev
+gst-plugins-base-dev
+gtkmm-dev
 intltool
-libunique1-dev
-libxml++2-dev
-sqlite-dev
-vlc-dev
-xine-lib-dev
+libv4l-dev

@@ -1,5 +1,4 @@
 #!/bin/sh -eux
 
-ln -sf /usr/share/doc/Licenses/GPL-3 COPYING
-
-ub_compile
+ub_compile  \
+	-DCMAKE_INSTALL_PREFIX=/usr
