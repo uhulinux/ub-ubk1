@@ -24,7 +24,6 @@ gom
 gpx-viewer
 hitori
 iagno
-gnome-dictionary
 gnome-taquin
 gwget
 quadrapassel

@@ -65,8 +65,6 @@ jp2a
 keepassx
 krb5-auth-dialog
 latex2html
-rubber
-latexila
 launchy
 lesspipe
 localepurge
@@ -214,14 +212,10 @@ sdedit
 tbt
 teapot
 terminator
-tesseract
-tesseract-gui
 tulip
 wammu
 wikidpad
 xephem
-sword
-xiphos
 xplanet
 xqed
 xsw

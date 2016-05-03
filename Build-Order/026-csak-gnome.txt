@@ -124,3 +124,6 @@ gnome-shell
 gnome-terminal
 gnome-python-extras
 gnome-keyring
+gnome-dictionary
+gnome-apps
+gnome-core

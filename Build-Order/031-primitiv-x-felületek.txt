@@ -2,7 +2,6 @@ st
 dwm
 dmenu
 afterstep
-edelib
 ede
 trayer
 hsetroot

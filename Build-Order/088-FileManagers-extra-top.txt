@@ -7,6 +7,4 @@ worker
 xfe
 mc
 ytree
-tuxcmd
-tuxcmd-modules
-tuxcmd-modules-unrar
+

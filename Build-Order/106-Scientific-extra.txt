@@ -1,13 +1,6 @@
-euler
-genius
-geogebra
-mathgl
 lapack
 octave
 qtoctave
-mathomatic
-socnetv
-zhu3d
+mathgl
 maxima
 wxmaxima
-librecad

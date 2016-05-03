@@ -184,6 +184,7 @@ git
 glfw2
 goffice08
 gtkspell
+fonts-ghostscript-std
 hunspell-hu
 icon-theme-tango
 jpilot
@@ -335,3 +336,7 @@ openimageio
 xsane
 opencolorio
 qemu
+edelib
+reiserfsprogs
+jfsutils
+apmd

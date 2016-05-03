@@ -43,7 +43,6 @@ hfsutils
 hostapd
 htop
 hunglish
-jfsutils
 linuxconsole
 logrotate
 man-pages
@@ -73,7 +72,6 @@ pinfo
 proftpd
 rar
 rbldnsd
-reiserfsprogs
 reps
 roundup
 rp-pppoe
@@ -100,6 +98,4 @@ xinetd
 xman
 x.org-video-modesetting
 x.org-video-vmware
-apmd
-fonts-ghostscript-std
 iptables-utils

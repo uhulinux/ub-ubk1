@@ -1,0 +1,9 @@
+tuxcmd
+tuxcmd-modules
+tuxcmd-modules-unrar
+source-highlight
+source-highlight-qt4
+geany
+geany-plugins
+photopc
+tygemo

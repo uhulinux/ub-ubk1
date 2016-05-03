@@ -8,8 +8,6 @@ lyx
 nano
 qemacs
 retext
-rhtvision
-setedit
 texmaker
 texstudio
 tilde

@@ -112,7 +112,6 @@ discover
 libkcddb
 k3b
 k9copy
-kaffeine
 libkpmcore
 kpartitionmanager
 kate

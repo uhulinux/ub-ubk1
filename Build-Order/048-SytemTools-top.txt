@@ -1,4 +1,4 @@
-adduser
+usbadduser
 arpwatch
 asterisk
 blktool
@@ -56,19 +56,13 @@ sudo
 sysstat
 tcpdump
 unidesc
-usb-modeswitch-data
-usb-modeswitch
 usermode
 v86d
 vde
 vlan
 xcalib
 xsensors
-pwlib
-yate
 bonnie++
 estickflashtool
 ide-smart
 mtx
-freepascal
-lazarus
