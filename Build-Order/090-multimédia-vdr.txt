@@ -6,8 +6,6 @@ moovida
 moovida-plugins-bad
 moovida-plugins-good
 moovida-plugins-ugly
-vlc
-kaffeine
 kodi
 libdvbcsa
 vdrctl
