@@ -44,6 +44,9 @@ xcb-util-cursor
 xcb-util-wm
 libclc
 libomxil-bellagio
+libva
+mesa
+libva
 mesa
 x.org-server
 mesa

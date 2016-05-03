@@ -62,7 +62,6 @@ libwnck
 libwnck2
 libosinfo
 libwmf
-libva
 librsvg
 libt3widget
 libvirt
