@@ -1,7 +1,6 @@
 freetype2-dev
-lua
-lua-dev
+lua52-dev
 poppler-dev
-python
-qt4-dev
+python-dev
+qt5-dev
 zlib-dev

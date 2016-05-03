@@ -1,16 +1,10 @@
 #!/usr/bin/env dl
 
-figtoipe-20091205.tar.gz .
-	http://downloads.sourceforge.net/ipe7/tools/
-
-pdftoipe-20130124-src.tar.gz .
-	http://downloads.sourceforge.net/ipe7/tools/
-
-svgtoipe-20100608.tar.gz .
-	http://downloads.sourceforge.net/ipe7/tools/
-
-#6e21d1f3b806.tar.gz .
-#	http://hg.mrzv.org/IpePresenter/archive/
-
 ipe-${UB_VERSION}-src.tar.gz ipe-${UB_VERSION}/
-	http://downloads.sourceforge.net/ipe7/
+	http://dl.bintray.com/otfried/generic/ipe/${UB_VERSION_HEAD2}/
+
+b714decd7d5b.tar.gz IpePresenter-b714decd7d5b/ :ipepresenter
+	http://hg.mrzv.org/IpePresenter/archive/
+
+ipe-tools-${UB_VERSION}.tar.gz ipe-tools-2f7819e/
+	 git://github.com/otfried/ipe-tools.git@2f7819e

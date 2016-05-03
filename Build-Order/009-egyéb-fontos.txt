@@ -12,6 +12,7 @@ parted
 smp-utils
 udisks
 lua
+lua52
 ocaml
 swig
 audit
