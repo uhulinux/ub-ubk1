@@ -1,4 +1,4 @@
-usbadduser
+adduser
 arpwatch
 asterisk
 blktool
