@@ -22,3 +22,4 @@ timidity
 pigment
 python-pigment
 openscenegraph
+libdvbcsa

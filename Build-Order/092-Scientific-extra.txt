@@ -1,6 +1,0 @@
-lapack
-octave
-qtoctave
-mathgl
-maxima
-wxmaxima
