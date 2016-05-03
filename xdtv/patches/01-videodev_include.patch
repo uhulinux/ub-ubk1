@@ -1,0 +1,34 @@
+diff -Naur orig/configure patched/configure
+--- orig/configure	2009-03-22 16:02:06.000000000 +0100
++++ patched/configure	2016-05-03 08:21:17.493448438 +0200
+@@ -24756,7 +24756,6 @@
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <sys/types.h>
+-                    #include <linux/videodev.h>
+                     #include <linux/videodev2.h>
+ int
+ main ()
+diff -Naur orig/configure.in patched/configure.in
+--- orig/configure.in	2009-03-21 12:53:15.000000000 +0100
++++ patched/configure.in	2016-05-03 08:21:57.777648197 +0200
+@@ -721,7 +721,6 @@
+ 
+     AC_MSG_CHECKING(for video4linux version 2)
+     AC_TRY_COMPILE([#include <sys/types.h>
+-                    #include <linux/videodev.h>
+                     #include <linux/videodev2.h>],,v4l2_ok=yes,v4l2_ok=no)
+     if test "x$v4l2_ok" = "xyes"; then
+       AC_DEFINE(HAVE_V4L_2,,have video4linux version 2)
+diff -Naur orig/src/grab-v4l2.c patched/src/grab-v4l2.c
+--- orig/src/grab-v4l2.c	2008-12-07 12:43:24.000000000 +0100
++++ patched/src/grab-v4l2.c	2016-05-03 08:21:17.493448438 +0200
+@@ -43,7 +43,7 @@
+ #include "grab.h"
+ #include "channel.h"
+ #ifdef HAVE_V4L_2
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ #include <linux/videodev2.h>
+ #include "colorspace.h"
+ #include "memcpy.h"

@@ -1,6 +1,5 @@
 alsa-lib-dev
 curl-dev
-dbus-dev
 ffmpeg-dev
 libjpeg-dev
 liblame-dev
@@ -19,4 +18,5 @@ x.org-server-utils
 xaw3d-dev
 xterm
 xvid-dev
+yasm
 zvbi-dev
