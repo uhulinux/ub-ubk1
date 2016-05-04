@@ -1,4 +1,4 @@
-libX11-dev
+libx11-dev
 libmikmod-dev
 libpng-dev
 libungif-dev

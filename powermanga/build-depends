@@ -1,5 +1,5 @@
-libX11-dev
-libXext-dev
-libXxf86dga-dev
+libx11-dev
+libxext-dev
+libxxf86dga-dev
 libpng-dev
 sdl-mixer-dev

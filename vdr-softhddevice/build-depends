@@ -1,6 +1,6 @@
 alsa-lib-dev
 ffmpeg-dev
-libX11-dev
+libx11-dev
 libva-dev
 libva-intel-driver
 libva-vdpau-driver
