@@ -5,3 +5,5 @@ ub_install
 # install preconfigured conffiles
 mkdir -p "$UB_INSTALLDIR"/usr/share/lirc/remotes
 cp -a remotes/. "$UB_INSTALLDIR"/usr/share/lirc/remotes/
+#ütközés a man-pages csomaggal
+mv "$UB_INSTALLDIR"/usr/share/man/man4/lirc.4 "$UB_INSTALLDIR"/usr/share/man/man4/Lirc.4
