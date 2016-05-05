@@ -1,3 +1,6 @@
 #!/bin/sh -eux
 
+# Use the headers from the kernel #427684
+rm include/linux/if_pppol2tp.h || die
+
 ub_compile
