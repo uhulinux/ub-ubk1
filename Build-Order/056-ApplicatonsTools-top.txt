@@ -14,7 +14,6 @@ cdtest
 cfe
 checkinstall
 cksfv
-cpufrequtils
 cw
 dos2unix
 duff
