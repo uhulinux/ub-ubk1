@@ -1,1 +1,0 @@
-urllist ftp://82.96.64.7/pub/linux/utils/kernel/cpufreq/ | splitver '^cpufrequtils-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

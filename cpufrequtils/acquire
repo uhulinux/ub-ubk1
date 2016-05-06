@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-cpufrequtils-${UB_VERSION}.tar.bz2 cpufrequtils-${UB_VERSION}/
-	http://www.kernel.org/pub/linux/utils/kernel/cpufreq/
-	ftp://82.96.64.7/pub/linux/utils/kernel/cpufreq/
