@@ -10,6 +10,7 @@ gawk
 grep
 gzip
 hdparm
+hwdata
 iproute2
 iputils
 joe
