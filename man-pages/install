@@ -23,6 +23,8 @@ rm "$UB_INSTALLDIR"/usr/share/man/man5/passwd.5
 # x.org
 mv "$UB_INSTALLDIR"/usr/share/man/man4/{mouse,mouse_serial}.4
 
+# lirc szállít újabbat
+rm "$UB_INSTALLDIR"/usr/share/man/man4/lirc.4
 
 rm "$UB_INSTALLDIR"/usr/share/man/man5/tzfile.5
 rm "$UB_INSTALLDIR"/usr/share/man/man8/{tzselect,zdump,zic}.8
