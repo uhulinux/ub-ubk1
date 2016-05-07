@@ -3,7 +3,9 @@ aoetools
 attr
 bash
 binutils
+btrfs-progs
 coreutils
+cryptsetup
 dhcpcd
 e2fsprogs
 gawk
