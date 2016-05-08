@@ -1,6 +1,6 @@
 fontforge
 fonts-ghostscript-std
-guile-dev
+guile1.8-dev
 mftrace
 netpbm
 pango-dev
