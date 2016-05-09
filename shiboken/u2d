@@ -1,1 +1,0 @@
-urllist http://download.qt-project.org/official_releases/pyside/ | grep shiboken| parsever | sort -V | tail -n 1

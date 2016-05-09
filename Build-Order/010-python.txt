@@ -75,7 +75,6 @@ pypdf
 pypoppler
 pyqt4
 pyqt5-python2
-pyside
 pysmbc
 pysqlite
 python3-psutil

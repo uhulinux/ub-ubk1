@@ -221,7 +221,6 @@ gtkglextmm
 mesa-demos
 obexftp
 podofo
-shiboken
 telepathy-mission-control
 tigervnc
 vim
