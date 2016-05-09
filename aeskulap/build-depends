@@ -1,5 +1,6 @@
 gconfmm2-dev
 gtk2-dev
+intltool
 libglademm2-dev
 libjpeg-dev
 libpng-dev
