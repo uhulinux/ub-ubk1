@@ -1,3 +1,8 @@
-glamor-egl-dev
+cairo-dev
+libxcursor-dev
+libxinerama-dev
+libxrandr-dev
+libxtst-dev
 libxvmc-dev
 x.org-server-dev
+xcb-util-dev
