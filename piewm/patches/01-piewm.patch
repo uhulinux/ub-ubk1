@@ -1,6 +1,6 @@
-diff -Naurd orig/iconmgr.c mod/iconmgr.c
+diff -Naur orig/iconmgr.c patched/iconmgr.c
 --- orig/iconmgr.c	1998-01-08 07:02:45.000000000 +0100
-+++ mod/iconmgr.c	2009-03-16 16:38:54.000000000 +0100
++++ patched/iconmgr.c	2016-05-10 21:49:01.584387270 +0200
 @@ -43,7 +43,7 @@
  #include <X11/Xos.h>
  #include <X11/Xmu/CharSet.h>
@@ -10,9 +10,9 @@ diff -Naurd orig/iconmgr.c mod/iconmgr.c
  
  int iconmgr_textx = siconify_width+11;
  WList *Active = NULL;
-diff -Naurd orig/icons.c mod/icons.c
+diff -Naur orig/icons.c patched/icons.c
 --- orig/icons.c	1998-01-08 07:00:35.000000000 +0100
-+++ mod/icons.c	2009-03-16 16:39:47.000000000 +0100
++++ patched/icons.c	2016-05-10 21:49:01.584387270 +0200
 @@ -144,7 +144,7 @@
      return ((v + multiple - 1) / multiple) * multiple;
  }
@@ -22,9 +22,9 @@ diff -Naurd orig/icons.c mod/icons.c
  PlaceIcon(TwmWindow *tmp_win, int def_x, int def_y, int *final_x, int *final_y)
  {
      IconRegion	*ir;
-diff -Naurd orig/Makefile mod/Makefile
+diff -Naur orig/Makefile patched/Makefile
 --- orig/Makefile	1998-01-08 06:08:58.000000000 +0100
-+++ mod/Makefile	2009-12-06 19:21:13.000000000 +0100
++++ patched/Makefile	2016-05-10 21:51:50.053222662 +0200
 @@ -109,12 +109,12 @@
           IMAKESRC = $(CONFIGSRC)/imake
          DEPENDSRC = $(CONFIGSRC)/util
@@ -103,3 +103,15 @@ diff -Naurd orig/Makefile mod/Makefile
  
  piewm: $(OBJS) $(DEPLIBS)
  	$(RM) $@
+@@ -614,11 +614,6 @@
+ 	$(INSTALL) $(INSTALLFLAGS) $(INSTDATFLAGS) system.twmrc $(DESTDIR)$(TWMDIR)
+ #
+ 
+-install:: ssetroot
+-	@if [ -d $(DESTDIR)$(BINDIR) ]; then set +x; \
+-	else (set -x; $(MKDIRHIER) $(DESTDIR)$(BINDIR)); fi
+-	$(INSTALL) $(INSTALLFLAGS) $(INSTBINFLAGS) ssetroot $(DESTDIR)$(BINDIR)/xsetroot
+-
+ gram.h gram.c: gram.y
+ 	$(YACC) $(YFLAGS) gram.y
+ 	$(MV) y.tab.c gram.c

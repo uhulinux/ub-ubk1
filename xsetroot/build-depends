@@ -1,0 +1,5 @@
+libx11-dev
+libxcursor-dev
+libxmu-dev
+x.org-bitmaps
+x.org-util-macros

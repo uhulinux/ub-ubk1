@@ -125,3 +125,4 @@ libxklavier
 nickle
 x.org-utils
 x.org-server-utils
+xsetroot
