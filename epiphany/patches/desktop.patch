@@ -1,0 +1,12 @@
+diff -Naur orig/data/epiphany.desktop.in patched/data/epiphany.desktop.in
+--- orig/data/epiphany.desktop.in	2015-10-07 03:37:24.000000000 +0200
++++ patched/data/epiphany.desktop.in	2016-05-10 06:58:35.701430800 +0200
+@@ -10,7 +10,7 @@
+ Type=Application
+ Icon=web-browser
+ Categories=Network;GNOME;GTK;WebBrowser;
+-MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;multipart/related;application/x-mimearchive;message/rfc822;
++MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-mimearchive;message/rfc822;
+ Actions=Incognito;
+ 
+ [Desktop Action Incognito]
