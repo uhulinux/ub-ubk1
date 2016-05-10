@@ -1,2 +1,1 @@
-minor=$(urllist http://ftp.gnome.org/pub/GNOME/sources/glib/ | splitver '^([0-9.]+)' | sort -V | tail -n 1)
-urllist http://ftp.gnome.org/pub/GNOME/sources/glib/"$minor"/ | parsever | sort -V | tail -n 1
+u2dgnome glib
