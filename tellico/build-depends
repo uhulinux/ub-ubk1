@@ -8,7 +8,7 @@ kconfigwidgets-dev
 kcoreaddons-dev
 kcrash-dev
 kdelibs4support-dev
-kdoctools-dev
+kdoctools
 kfilemetadata-dev
 kguiaddons-dev
 khtml-dev

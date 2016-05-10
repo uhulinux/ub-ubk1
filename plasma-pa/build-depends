@@ -2,7 +2,7 @@ cmake
 extra-cmake-modules
 kcoreaddons-dev
 kdeclarative-dev
-kdoctools-dev
+kdoctools
 kglobalaccel-dev
 ki18n-dev
 plasma-framework-dev

@@ -7,7 +7,6 @@ kconfig-dev
 kconfigwidgets-dev
 kcoreaddons-dev
 kdbusaddons-dev
-kdoctools-dev
 ki18n-dev
 kjobwidgets-dev
 kservice-dev

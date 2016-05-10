@@ -2,7 +2,7 @@ cmake
 extra-cmake-modules
 kcompletion-dev
 kcoreaddons-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 kiconthemes-dev
 kio-dev

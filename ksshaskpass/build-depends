@@ -1,7 +1,7 @@
 cmake
 extra-cmake-modules
 kcoreaddons-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 kwallet-dev
 kwidgetsaddons-dev
