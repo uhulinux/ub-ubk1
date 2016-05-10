@@ -1,0 +1,49 @@
+diff -Naur orig/startkde/startkde.cmake patched/startkde/startkde.cmake
+--- orig/startkde/startkde.cmake	2016-04-19 13:20:13.000000000 +0200
++++ patched/startkde/startkde.cmake	2016-05-10 23:01:10.993855652 +0200
+@@ -17,10 +17,14 @@
+ # we have to unset this for Darwin since it will screw up KDE's dynamic-loading
+ unset DYLD_FORCE_FLAT_NAMESPACE
+ 
++# qml import path
++export QML_IMPORT_PATH=/usr/lib/qt5/qml
++export QML2_IMPORT_PATH=/usr/lib/qt5/qml
++
+ # in case we have been started with full pathname spec without being in PATH
+ bindir=`echo "$0" | sed -n 's,^\(/.*\)/[^/][^/]*$,\1,p'`
+ if [ -n "$bindir" ]; then
+-  qbindir=`qtpaths --binaries-dir`
++  qbindir=`/usr/lib/qt5/bin/qtpaths --binaries-dir`
+   qdbus=$qbindir/qdbus
+   case $PATH in
+     $bindir|$bindir:*|*:$bindir|*:$bindir:*) ;;
+@@ -202,7 +206,7 @@
+ # better use the Autostart folder.
+ 
+ # TODO: Use GenericConfigLocation once we depend on Qt 5.4
+-scriptpath=`qtpaths --paths ConfigLocation | tr ':' '\n' | sed 's,$,/plasma-workspace,g'`
++scriptpath=`/usr/lib/qt5/bin/qtpaths --paths ConfigLocation | tr ':' '\n' | sed 's,$,/plasma-workspace,g'`
+ 
+ # Add /env/ to the directory to locate the scripts to be sourced
+ for prefix in `echo $scriptpath`; do
+diff -Naur orig/startkde/startplasmacompositor.cmake patched/startkde/startplasmacompositor.cmake
+--- orig/startkde/startplasmacompositor.cmake	2016-04-19 13:20:13.000000000 +0200
++++ patched/startkde/startplasmacompositor.cmake	2016-05-10 22:58:41.381113763 +0200
+@@ -6,7 +6,7 @@
+ # in case we have been started with full pathname spec without being in PATH
+ bindir=`echo "$0" | sed -n 's,^\(/.*\)/[^/][^/]*$,\1,p'`
+ if [ -n "$bindir" ]; then
+-  qbindir=`qtpaths --binaries-dir`
++  qbindir=`/usr/lib/qt5/bin/qtpaths --binaries-dir`
+   qdbus=$qbindir/qdbus
+   case $PATH in
+     $bindir|$bindir:*|*:$bindir|*:$bindir:*) ;;
+@@ -139,7 +139,7 @@
+ # better use the Autostart folder.
+ 
+ # TODO: Use GenericConfigLocation once we depend on Qt 5.4
+-scriptpath=`qtpaths --paths ConfigLocation | tr ':' '\n' | sed 's,$,/plasma-workspace,g'`
++scriptpath=`/usr/lib/qt5/bin/qtpaths --paths ConfigLocation | tr ':' '\n' | sed 's,$,/plasma-workspace,g'`
+ 
+ # Add /env/ to the directory to locate the scripts to be sourced
+ for prefix in `echo $scriptpath`; do

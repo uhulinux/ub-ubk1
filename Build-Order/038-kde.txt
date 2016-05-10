@@ -116,6 +116,7 @@ kaffeine
 libkpmcore
 kpartitionmanager
 kate
+konsole
 krusader
 tellico
 libkipi
