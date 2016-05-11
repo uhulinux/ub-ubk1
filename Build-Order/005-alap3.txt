@@ -72,7 +72,6 @@ slang
 gpm
 newt
 eggdbus
-db1
 iproute2
 libproxy
 glib-networking
