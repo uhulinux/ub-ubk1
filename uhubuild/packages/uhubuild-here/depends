@@ -14,5 +14,4 @@ sed
 sortdir
 tar
 uhubuild-common
-uhubuild-helpers
 util-linux

@@ -1,5 +1,4 @@
 	/usr/bin/uhubuild-chrootbuild
 	/usr/lib/uhubuild/uhubuild-chrootbuild
 	/usr/lib/uhubuild/uhubuild-depends
-	/usr/lib/uhubuild/uhubuild-dpkg-wrapper
 	/usr/lib/uhubuild/uhubuild-prepare-chroot
