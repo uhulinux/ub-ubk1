@@ -2,6 +2,7 @@ cmake
 extra-cmake-modules
 kdbusaddons-dev
 kdelibs4support-dev
+kdoctools
 khotkeys-dev
 ki18n-dev
 kiconthemes-dev

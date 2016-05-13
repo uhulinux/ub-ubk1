@@ -6,6 +6,7 @@ kcoreaddons-dev
 kdbusaddons-dev
 kdeclarative-dev
 kdelibs4support-dev
+kdoctools
 ki18n-dev
 kiconthemes-dev
 kinit-dev

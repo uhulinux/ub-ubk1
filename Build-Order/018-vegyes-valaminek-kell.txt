@@ -272,7 +272,6 @@ plack
 telepathy-salut
 cdrdao
 freerdp
-libqapt
 spamassassin
 gdal
 packagekit
