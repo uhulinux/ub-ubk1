@@ -2,4 +2,5 @@
 
 ub_compile \
 	--enable-devel \
-	--enable-libipq
+	--enable-libipq \
+	--disable-nftables
