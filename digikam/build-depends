@@ -5,6 +5,7 @@ extra-cmake-modules
 kbookmarks-dev
 kconfig-dev
 kcoreaddons-dev
+kdoctools
 kfilemetadata-dev
 ki18n-dev
 kiconthemes-dev
