@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
-shadow-${UB_VERSION}.tar.bz2 shadow-${UB_VERSION}/
+shadow-${UB_VERSION}.tar.xz shadow-${UB_VERSION}/
+	http://pkg-shadow.alioth.debian.org/releases/
 	http://pkg-shadow.alioth.debian.org/releases/old/

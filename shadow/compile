@@ -3,11 +3,7 @@
 ub_configure \
 	--libdir=/lib \
 	--with-gnu-ld \
-	--disable-desrpc \
 	--with-libcrack \
-	--with-md5crypt \
-	--with-libcrypt \
 	--with-libpam \
-	--without-included-gettext \
 	--without-selinux
 make CFLAGS=-fPIC

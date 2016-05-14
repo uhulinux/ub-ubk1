@@ -16,6 +16,8 @@ glibc
 tzdata
 glibc
 pam
+attr
+acl
 shadow
 uhu-pkg
 uhu-base
@@ -27,7 +29,6 @@ uhu-sysinfo
 uhu-utils
 uhu-wallpapers-ubk
 uhu-zeroconf
-attr
 autoconf
 automake
 make
@@ -106,7 +107,6 @@ unzip
 which
 zip
 7zip
-acl
 libcap
 po4a
 dpkg
