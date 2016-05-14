@@ -5,7 +5,6 @@ packagekit-qt
 phonon
 qca
 qtspeech
-extra-cmake-modules
 attica
 breeze-icons
 bluez-qt

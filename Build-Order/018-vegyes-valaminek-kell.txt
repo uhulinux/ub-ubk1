@@ -70,7 +70,6 @@ sbc
 schroedinger
 scons
 slib
-trousers
 txt2tags
 uhu-pixmaps
 unmakeself
