@@ -1,2 +1,2 @@
-echo none
+urllist http://ftp.debian.org/debian/pool/main/t/txt2man/ | splitver '^txt2man_([0-9.]+).orig.tar.gz$' | sort -V | tail -n 1
 
