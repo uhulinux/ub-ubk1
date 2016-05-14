@@ -25,7 +25,6 @@ man-db
 pilot-link
 protobuf
 strace
-taglib
 vorbis-tools
 wget
 dahdi-linux
