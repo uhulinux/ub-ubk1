@@ -248,28 +248,3 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  
  #
  # If set to a non-zero number, the shadow utilities will make sure that
-diff -Naur orig/fix patched/fix
---- orig/fix	1970-01-01 01:00:00.000000000 +0100
-+++ patched/fix	2016-05-14 16:13:09.897557230 +0200
-@@ -0,0 +1,21 @@
-+#!/bin/bash
-+
-+for FUNCTION in FAIL_DELAY               \
-+                FAILLOG_ENAB             \
-+                LASTLOG_ENAB             \
-+                MAIL_CHECK_ENAB          \
-+                OBSCURE_CHECKS_ENAB      \
-+                PORTTIME_CHECKS_ENAB     \
-+                QUOTAS_ENAB              \
-+                CONSOLE MOTD_FILE        \
-+                FTMP_FILE NOLOGINS_FILE  \
-+                ENV_HZ PASS_MIN_LEN      \
-+                SU_WHEEL_ONLY            \
-+                CRACKLIB_DICTPATH        \
-+                PASS_CHANGE_TRIES        \
-+                PASS_ALWAYS_WARN         \
-+                CHFN_AUTH ENCRYPT_METHOD \
-+                ENVIRON_FILE
-+do
-+    sed -i "s/^${FUNCTION}/# &/" etc/login.defs
-+done
