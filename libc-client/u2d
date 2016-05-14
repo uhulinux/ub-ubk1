@@ -1,0 +1,1 @@
+urllist ftp://ftp.cac.washington.edu/imap/ | grep -E '^imap-([0-9])' | sed s/imap-//g | sed s/\.tar.*//g | sort -V | tail -n 1

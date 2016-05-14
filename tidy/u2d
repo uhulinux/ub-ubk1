@@ -1,0 +1,1 @@
+urllist ftp://bo.mirror.garr.it/1/mandrake/official/2007.0/SRPMS/main/release/ | grep -E '^tidy'| sed s/tidy-// | sed s/-.*//
