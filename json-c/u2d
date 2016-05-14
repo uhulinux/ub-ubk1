@@ -1,0 +1,1 @@
+urllist https://github.com/json-c/json-c/releases/ | grep tar.gz | splitver '^json-c-([0-9.\-]+).tar.gz$' | sort -V | tail -n 1 | sed s/-/~/
