@@ -10,3 +10,86 @@ umask 0077
 if [ ! -f /var/mail/root ]; then
 	: > /var/mail/root
 fi
+
+#groups
+if ! egrep -i "^root" /etc/group; then
+	groupadd -g 0 root
+fi
+
+if ! egrep -i "^bin" /etc/group; then
+	groupadd -g 1 bin
+fi
+
+if ! egrep -i "^daemon" /etc/group; then
+	groupadd -g 2 daemon
+fi
+
+if ! egrep -i "^adm" /etc/group; then
+	groupadd -g 3 adm
+fi
+
+if ! egrep -i "^tty" /etc/group; then
+	groupadd -g 5 tty
+fi
+
+if ! egrep -i "^lp" /etc/group; then
+	groupadd -g 7 lp
+fi
+
+if ! egrep -i "^mail" /etc/group; then
+	groupadd -g 12 mail
+fi
+
+if ! egrep -i "^audio" /etc/group; then
+	groupadd -g 50 audio
+fi
+
+if ! egrep -i "^video" /etc/group; then
+	groupadd -g 51 video
+fi
+
+if ! egrep -i "^media" /etc/group; then
+	groupadd -g 52 media
+fi
+
+if ! egrep -i "^nobody" /etc/group; then
+	groupadd -g 99 nobody
+fi
+
+if ! egrep -i "^nogroup" /etc/group; then
+	groupadd -g 99 -o nogroup
+fi
+
+if ! egrep -i "^users" /etc/group; then
+	groupadd -g 999 users
+fi
+
+# users
+if ! egrep -i "^root" /etc/passwd; then
+	useradd -u 0 -g 0 -d /root -s /bin/sh root
+fi
+
+if ! egrep -i "^bin" /etc/passwd; then
+	useradd -u 1 -g 1 -d /bin -s /bin/false bin
+fi
+
+if ! egrep -i "^daemon" /etc/passwd; then
+	useradd -u 2 -g 2 -d /sbin -s /bin/false daemon
+fi
+
+if ! egrep -i "^adm" /etc/passwd; then
+	useradd -u 3 -g 3 -d /var/adm -s /bin/false adm
+fi
+
+if ! egrep -i "^lp" /etc/passwd; then
+	useradd -u 4 -g 7 -d /var/spool/lpd -s /bin/false lp
+fi
+
+if ! egrep -i "^mail" /etc/passwd; then
+	useradd -u 8 -g 12 -d /var/mail -s /bin/false mail
+fi
+
+if ! egrep -i "^nobody" /etc/passwd; then
+	useradd -u 99 -g 99 -c Nobody -d / -s /bin/sh nobody
+fi
+
