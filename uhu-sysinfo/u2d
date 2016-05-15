@@ -1,1 +1,1 @@
-urllist ftp://ftp.uhulinux.hu/pub/sources/uhu-sysinfo/ | splitver '^uhu-sysinfo-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://download.ubk.hu/src/uhu/uhu-sysinfo/ | splitver '^uhu-sysinfo-([0-9.]+).tar.gz$' | sort -V | tail -n 1

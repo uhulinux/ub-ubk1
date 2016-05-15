@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 build-em-all-$UB_VERSION.tar.gz build-em-all-$UB_VERSION/
-	ftp://ftp.uhulinux.hu/pub/sources/build-em-all/
+	http://download.ubk.hu/src/uhu/build-em-all/

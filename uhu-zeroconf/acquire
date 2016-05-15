@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 uhu-zeroconf-${UB_VERSION}.tar.gz uhu-zeroconf-${UB_VERSION}/
-	ftp://ftp.uhulinux.hu/pub/sources/uhu-zeroconf/
+	http://download.ubk.hu/src/uhu/uhu-zeroconf/

@@ -1,1 +1,1 @@
-urllist ftp://ftp.uhulinux.hu/pub/sources/utf8filename/ | splitver '^utf8filename-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://download.ubk.hu/src/uhu/utf8filename/ | splitver '^utf8filename-([0-9.]+).tar.gz$' | sort -V | tail -n 1

@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
 setuser-${UB_VERSION}.tar.gz setuser-${UB_VERSION}/
-	ftp://ftp.uhulinux.hu/pub/sources/setuser/
+	http://download.ubk.hu/src/uhu/setuser/
 
