@@ -1,30 +1,25 @@
 diff -Naur orig/etc/login.defs patched/etc/login.defs
---- orig/etc/login.defs	2014-05-09 12:20:28.000000000 +0200
-+++ patched/etc/login.defs	2016-05-14 16:21:59.204181920 +0200
-@@ -5,18 +5,6 @@
+--- orig/etc/login.defs	2006-07-16 11:00:20.000000000 +0200
++++ patched/etc/login.defs	2016-05-15 20:27:58.613145333 +0200
+@@ -7,12 +7,7 @@
  #
- 
+ # Delay in seconds before being allowed another attempt after a login failure
  #
--# Delay in seconds before being allowed another attempt after a login failure
--# Note: When PAM is used, some modules may enforce a minimum delay (e.g.
--#       pam_unix(8) enforces a 2s delay)
--#
 -FAIL_DELAY		3
 -
 -#
--# Enable logging and display of /var/log/faillog login(1) failure info.
+-# Enable logging and display of /var/log/faillog login failure info.
 -#
 -FAILLOG_ENAB		yes
--
--#
- # Enable display of unknown usernames when login(1) failures are recorded.
++FAIL_DELAY		1
+ 
  #
- LOG_UNKFAIL_ENAB	no
-@@ -27,34 +15,6 @@
+ # Enable display of unknown usernames when login failures are recorded.
+@@ -25,98 +20,25 @@
  LOG_OK_LOGINS		no
  
  #
--# Enable logging and display of /var/log/lastlog login(1) time info.
+-# Enable logging and display of /var/log/lastlog login time info.
 -#
 -LASTLOG_ENAB		yes
 -
@@ -47,31 +42,32 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
 -PORTTIME_CHECKS_ENAB	yes
 -
 -#
--# Enable setting of ulimit, umask, and niceness from passwd(5) gecos field.
+-# Enable setting of ulimit, umask, and niceness from passwd gecos field.
 -#
 -QUOTAS_ENAB		yes
 -
 -#
- # Enable "syslog" logging of su(1) activity - in addition to sulog file logging.
- # SYSLOG_SG_ENAB does the same for newgrp(1) and sg(1).
- #
-@@ -62,26 +22,11 @@
- SYSLOG_SG_ENAB		yes
- 
- #
--# If defined, either full pathname of a file containing device names or
--# a ":" delimited list of device names.  Root logins will be allowed only
--# from these devices.
+-# Enable "syslog" logging of su activity - in addition to sulog file logging.
+-# SYSLOG_SG_ENAB does the same for newgrp and sg.
 -#
--CONSOLE		/etc/securetty
--#CONSOLE	console:tty01:tty02:tty03:tty04
+-SYSLOG_SU_ENAB		yes
+-SYSLOG_SG_ENAB		yes
 -
 -#
- # If defined, all su(1) activity is logged to this file.
+ # If defined, either full pathname of a file containing device names or
+ # a ":" delimited list of device names.  Root logins will be allowed only
+ # upon these devices.
  #
- #SULOG_FILE	/var/log/sulog
+-CONSOLE		/etc/securetty
++#CONSOLE		/etc/securetty
+ #CONSOLE	console:tty01:tty02:tty03:tty04
  
  #
+-# If defined, all su activity is logged to this file.
+-#
+-#SULOG_FILE	/var/log/sulog
+-
+-#
 -# If defined, ":" delimited list of "message of the day" files to
 -# be displayed upon login.
 -#
@@ -79,30 +75,39 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
 -#MOTD_FILE	/etc/motd:/usr/lib/news/news-motd
 -
 -#
- # If defined, this file will be output before each login(1) prompt.
+-# If defined, this file will be output before each login prompt.
+-#
+-#ISSUE_FILE	/etc/issue
+-
+-#
+ # If defined, file which maps tty line to TERM environment parameter.
+ # Each line of the file is in a format something like "vt100  tty01".
  #
- #ISSUE_FILE	/etc/issue
-@@ -93,19 +38,6 @@
  #TTYTYPE_FILE	/etc/ttytype
  
  #
--# If defined, login(1) failures will be logged here in a utmp format.
--# last(1), when invoked as lastb(1), will read /var/log/btmp, so...
+-# If defined, login failures will be logged here in a utmp format.
+-# last, when invoked as lastb, will read /var/log/btmp, so...
 -#
 -FTMP_FILE	/var/log/btmp
 -
 -#
--# If defined, name of file whose presence will inhibit non-root
--# logins.  The content of this file should be a message indicating
+-# If defined, name of file whose presence which will inhibit non-root
+-# logins.  The contents of this file should be a message indicating
 -# why logins are inhibited.
 -#
 -NOLOGINS_FILE	/etc/nologin
 -
 -#
- # If defined, the command name to display when running "su -".  For
- # example, if this is defined as "su" then ps(1) will display the
- # command as "-su".  If not defined, then ps(1) will display the
-@@ -118,7 +50,7 @@
+-# If defined, the command name to display when running "su -".  For
+-# example, if this is defined as "su" then a "ps" will display the
+-# command is "-su".  If not defined, then "ps" would display the
+-# name of the shell actually being run, e.g. something like "-sh".
+-#
+-SU_NAME		su
+-
+-#
+ # *REQUIRED*
  #   Directory where mailboxes reside, _or_ name of file, relative to the
  #   home directory.  If you _do_ define both, MAIL_DIR takes precedence.
  #
@@ -111,10 +116,17 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  #MAIL_FILE	.mail
  
  #
-@@ -138,14 +70,6 @@
- #ENV_TZ		/etc/tzname
+@@ -129,21 +51,6 @@
+ #HUSHLOGIN_FILE	/etc/hushlogins
  
  #
+-# If defined, either a TZ environment parameter spec or the
+-# fully-rooted pathname of a file containing such a spec.
+-#
+-#ENV_TZ		TZ=CST6CDT
+-#ENV_TZ		/etc/tzname
+-
+-#
 -# If defined, an HZ environment parameter spec.
 -#
 -# for Linux/x86
@@ -126,8 +138,12 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  # *REQUIRED*  The default PATH settings, for superuser and normal users.
  #
  # (they are minimal, add the rest in the shell startup files)
-@@ -164,7 +88,7 @@
- # set TTYPERM to either 622 or 600.
+@@ -159,10 +66,10 @@
+ # If you have a "write" program which is "setgid" to a special group
+ # which owns the terminals, define TTYGROUP to the group number and
+ # TTYPERM to 0620.  Otherwise leave TTYGROUP commented out and assign
+-# TTYPERM to either 622 or 600.
++# TTYPERM to either 0622 or 0600.
  #
  TTYGROUP	tty
 -TTYPERM		0600
@@ -135,18 +151,28 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  
  #
  # Login configuration initializations:
-@@ -179,8 +103,8 @@
+@@ -170,7 +77,6 @@
+ #	ERASECHAR	Terminal ERASE character ('\010' = backspace).
+ #	KILLCHAR	Terminal KILL character ('\025' = CTRL/U).
+ #	UMASK		Default "umask" value.
+-#	ULIMIT		Default "ulimit" value.
+ #
+ # The ERASECHAR and KILLCHAR are used only on System V machines.
+ # The ULIMIT is used only if the system supports it.
+@@ -178,38 +84,22 @@
  #
  # Prefix these values with "0" to get octal, "0x" to get hexadecimal.
  #
 -ERASECHAR	0177
 -KILLCHAR	025
+-UMASK		022
+-#ULIMIT		2097152
 +#ERASECHAR	0177
 +#KILLCHAR	025
- #ULIMIT		2097152
++#UMASK		022
  
- # Default initial "umask" value used by login(1) on non-PAM enabled systems.
-@@ -197,28 +121,13 @@
+ #
+ # Password aging controls:
  #
  #	PASS_MAX_DAYS	Maximum number of days a password may be used.
  #	PASS_MIN_DAYS	Minimum number of days allowed between password changes.
@@ -167,15 +193,31 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
 -SU_WHEEL_ONLY	no
 -
 -#
--# If compiled with cracklib support, sets the path to the dictionaries
+-# If compiled with cracklib support, where are the dictionaries
 -#
 -CRACKLIB_DICTPATH	/var/cache/cracklib/cracklib_dict
 -
 -#
- # Min/max values for automatic uid selection in useradd(8)
+ # Min/max values for automatic uid selection in useradd
  #
  UID_MIN			 1000
-@@ -255,16 +164,6 @@
+@@ -218,13 +108,13 @@
+ #
+ # Min/max values for automatic gid selection in groupadd
+ #
+-GID_MIN			  100
++GID_MIN			 1000
+ GID_MAX			60000
+ 
+ #
+ # Max number of login retries if password is bad
+ #
+-LOGIN_RETRIES		5
++LOGIN_RETRIES		3
+ 
+ #
+ # Max time in seconds for login
+@@ -232,28 +122,6 @@
  LOGIN_TIMEOUT		60
  
  #
@@ -189,62 +231,72 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
 -PASS_ALWAYS_WARN	yes
 -
 -#
- # Number of significant characters in the password for crypt().
- # Default is 8, don't change unless your crypt() is better.
- # Ignored if MD5_CRYPT_ENAB set to "yes".
-@@ -272,11 +171,6 @@
- #PASS_MAX_LEN		8
- 
- #
--# Require password before chfn(1)/chsh(1) can make any changes.
+-# Number of significant characters in the password for crypt().
+-# Default is 8, don't change unless your crypt() is better.
+-# Ignored if MD5_CRYPT_ENAB set to "yes".
+-#
+-#PASS_MAX_LEN		8
+-
+-#
+-# Require password before chfn/chsh can make any changes.
 -#
 -CHFN_AUTH		yes
 -
 -#
- # Which fields may be changed by regular users using chfn(1) - use
+ # Which fields may be changed by regular users using chfn - use
  # any combination of letters "frwh" (full name, room number, work
  # phone, home phone).  If not defined, no changes are allowed.
-@@ -307,19 +201,6 @@
- #MD5_CRYPT_ENAB	no
+@@ -262,44 +130,10 @@
+ CHFN_RESTRICT		rwh
  
  #
--# Only works if compiled with ENCRYPTMETHOD_SELECT defined:
--# If set to MD5, MD5-based algorithm will be used for encrypting password
--# If set to SHA256, SHA256-based algorithm will be used for encrypting password
--# If set to SHA512, SHA512-based algorithm will be used for encrypting password
--# If set to DES, DES-based algorithm will be used for encrypting password (default)
--# Overrides the MD5_CRYPT_ENAB option
+-# Password prompt (%s will be replaced by user name).
 -#
--# Note: If you use PAM, it is recommended to use a value consistent with
--# the PAM modules configuration.
--#
--#ENCRYPT_METHOD DES
+-# XXX - it doesn't work correctly yet, for now leave it commented out
+-# to use the default which is just "Password: ".
+-#LOGIN_STRING		"%s's Password: "
 -
 -#
- # Only works if ENCRYPT_METHOD is set to SHA256 or SHA512.
- #
- # Define the number of SHA rounds.
-@@ -350,13 +231,7 @@
+-# Only works if compiled with MD5_CRYPT defined:
+-# If set to "yes", new passwords will be encrypted using the MD5-based
+-# algorithm compatible with the one used by recent releases of FreeBSD.
+-# It supports passwords of unlimited length and longer salt strings.
+-# Set to "no" if you need to copy encrypted passwords to other systems
+-# which don't understand the new algorithm.  Default is "no".
+-#
+-#MD5_CRYPT_ENAB	no
+-
+-#
+-# List of groups to add to the user's supplementary group set
+-# when logging in on the console (as determined by the CONSOLE
+-# setting).  Default is none.
+-#
+-# Use with caution - it is possible for users to gain permanent
+-# access to these groups, even when not logged in on the console.
+-# How to do it is left as an exercise for the reader...
+-#
+-#CONSOLE_GROUPS		floppy:audio:cdrom
+-
+-#
  # Should login be allowed if we can't cd to the home directory?
- # Default is no.
- #
+-# Default in no.
+-#
 -DEFAULT_HOME	yes
 -
 -#
 -# If this file exists and is readable, login environment will be
 -# read from it.  Every line should be in the form name=value.
--#
++# Default is no.
+ #
 -ENVIRON_FILE	/etc/environment
 +DEFAULT_HOME	no
  
  #
  # If defined, this command is run when removing a user.
-@@ -372,7 +247,7 @@
+@@ -315,5 +149,5 @@
  #
- # This also enables userdel(8) to remove user groups if no members exist.
+ # This also enables userdel to remove user groups if no members exist.
  #
 -USERGROUPS_ENAB yes
 +USERGROUPS_ENAB no
  
- #
- # If set to a non-zero number, the shadow utilities will make sure that

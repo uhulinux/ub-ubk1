@@ -1,0 +1,20 @@
+diff -Naur shadow-4.0.14.orig/lib/getdef.c shadow-4.0.14/lib/getdef.c
+--- shadow-4.0.14.orig/lib/getdef.c	2005-12-03 00:23:34.000000000 +0100
++++ shadow-4.0.14/lib/getdef.c	2006-02-01 18:09:57.000000000 +0100
+@@ -320,7 +320,7 @@
+ 	if ((fp = fopen (def_fname, "r")) == NULL) {
+ 		SYSLOG ((LOG_CRIT, "cannot open login definitions %s [%m]",
+ 			 def_fname));
+-		exit (1);
++		return;
+ 	}
+ 
+ 	/*
+@@ -367,7 +367,6 @@
+ 	if (ferror (fp)) {
+ 		SYSLOG ((LOG_CRIT, "cannot read login definitions %s [%m]",
+ 			 def_fname));
+-		exit (1);
+ 	}
+ 
+ 	(void) fclose (fp);

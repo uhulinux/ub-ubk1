@@ -1,0 +1,25 @@
+diff -Naur shadow-4.0.17.orig/src/login.c shadow-4.0.17/src/login.c
+--- shadow-4.0.17.orig/src/login.c	2006-07-10 06:11:32.000000000 +0200
++++ shadow-4.0.17/src/login.c	2006-07-14 13:28:29.000000000 +0200
+@@ -608,10 +608,10 @@
+ 			if (!gethostname (hostn, sizeof (hostn)))
+ 				snprintf (login_prompt,
+ 					  sizeof (login_prompt),
+-					  _("%s login: "), hostn);
++					  "%s login: ", hostn);
+ 			else
+ 				snprintf (login_prompt,
+-					  sizeof (login_prompt), _("login: "));
++					  sizeof (login_prompt), "login: ");
+ 
+ 			retcode =
+ 			    pam_set_item (pamh, PAM_USER_PROMPT, login_prompt);
+@@ -766,7 +766,7 @@
+ 					exit (1);
+ 				}
+ 				preauth_flag = 0;
+-				login_prompt (_("\n%s login: "), username,
++				login_prompt ("\n%s login: ", username,
+ 					      sizeof username);
+ 				continue;
+ 			}

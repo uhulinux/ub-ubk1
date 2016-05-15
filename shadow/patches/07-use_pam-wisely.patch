@@ -1,0 +1,181 @@
+diff -Naur orig/etc/pam.d/Makefile.in patched/etc/pam.d/Makefile.in
+--- orig/etc/pam.d/Makefile.in	2006-08-03 12:25:09.000000000 +0200
++++ patched/etc/pam.d/Makefile.in	2016-05-15 20:11:44.672315821 +0200
+@@ -201,18 +201,8 @@
+ pamd_files = \
+ 	passwd \
+ 	su \
+-	useradd \
+-	chage \
+-	chgpasswd \
+-	chpasswd \
+-	groupadd \
+-	groupdel \
+ 	groupmems \
+-	groupmod \
+-	login \
+-	newusers \
+-	useradd \
+-	usermod
++	login
+ 
+ @USE_PAM_TRUE@pamddir = $(sysconfdir)/pam.d
+ @USE_PAM_TRUE@pamd_DATA = $(pamd_files)
+diff -Naur orig/src/chage.c patched/src/chage.c
+--- orig/src/chage.c	2006-07-19 18:38:57.000000000 +0200
++++ patched/src/chage.c	2016-05-15 19:39:20.322674312 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: chage.c,v 1.73 2006/07/11 13:15:41 kloczek Exp $"
+ 
+diff -Naur orig/src/chgpasswd.c patched/src/chgpasswd.c
+--- orig/src/chgpasswd.c	2006-06-20 22:00:04.000000000 +0200
++++ patched/src/chgpasswd.c	2016-05-15 19:39:20.322674312 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: chgpasswd.c,v 1.5 2006/06/20 20:00:04 kloczek Exp $"
+ 
+diff -Naur orig/src/chpasswd.c patched/src/chpasswd.c
+--- orig/src/chpasswd.c	2006-06-24 12:18:55.000000000 +0200
++++ patched/src/chpasswd.c	2016-05-15 19:39:20.322674312 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: chpasswd.c,v 1.37 2006/06/24 10:18:55 kloczek Exp $"
+ 
+diff -Naur orig/src/groupadd.c patched/src/groupadd.c
+--- orig/src/groupadd.c	2016-05-15 19:38:28.470417190 +0200
++++ patched/src/groupadd.c	2016-05-15 19:39:20.322674312 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: groupadd.c,v 1.55 2006/07/28 17:38:52 kloczek Exp $"
+ 
+diff -Naur orig/src/groupdel.c patched/src/groupdel.c
+--- orig/src/groupdel.c	2016-05-15 19:38:28.470417190 +0200
++++ patched/src/groupdel.c	2016-05-15 19:39:20.322674312 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: groupdel.c,v 1.31 2006/01/18 19:55:15 kloczek Exp $"
+ 
+diff -Naur orig/src/groupmod.c patched/src/groupmod.c
+--- orig/src/groupmod.c	2006-07-28 19:38:52.000000000 +0200
++++ patched/src/groupmod.c	2016-05-15 19:39:20.322674312 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: groupmod.c,v 1.41 2006/07/28 17:38:52 kloczek Exp $"
+ 
+diff -Naur orig/src/Makefile.in patched/src/Makefile.in
+--- orig/src/Makefile.in	2006-08-03 12:25:15.000000000 +0200
++++ patched/src/Makefile.in	2016-05-15 20:08:56.259480707 +0200
+@@ -379,16 +379,16 @@
+ 		 $(top_builddir)/lib/libshadow.la
+ 
+ AM_CPPFLAGS = -DLOCALEDIR=\"$(datadir)/locale\"
+-chage_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
++chage_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
+ chfn_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
+-chgpasswd_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
++chgpasswd_LDADD = $(LDADD) $(LIBSELINUX)
+ chsh_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
+-chpasswd_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
++chpasswd_LDADD = $(LDADD) $(LIBSELINUX)
+ gpasswd_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
+-groupadd_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
+-groupdel_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
++groupadd_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
++groupdel_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
+ groupmems_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
+-groupmod_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
++groupmod_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
+ grpck_LDADD = $(LDADD) $(LIBSELINUX)
+ grpconv_LDADD = $(LDADD) $(LIBSELINUX)
+ grpunconv_LDADD = $(LDADD) $(LIBSELINUX)
+@@ -398,7 +398,7 @@
+ 
+ login_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT)
+ newgrp_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT)
+-newusers_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
++newusers_LDADD = $(LDADD) $(LIBSELINUX)
+ nologin_LDADD = 
+ passwd_LDADD = $(LDADD) $(LIBPAM) $(LIBCRACK) $(LIBAUDIT) $(LIBSELINUX)
+ pwck_LDADD = $(LDADD) $(LIBSELINUX)
+@@ -409,9 +409,9 @@
+ 	suauth.c
+ 
+ su_LDADD = $(LDADD) $(LIBPAM)
+-useradd_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
+-userdel_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
+-usermod_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
++useradd_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
++userdel_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
++usermod_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
+ vipw_LDADD = $(LDADD) $(LIBSELINUX)
+ all: all-am
+ 
+diff -Naur orig/src/newusers.c patched/src/newusers.c
+--- orig/src/newusers.c	2006-03-07 16:50:33.000000000 +0100
++++ patched/src/newusers.c	2016-05-15 19:39:20.326674331 +0200
+@@ -34,6 +34,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: newusers.c,v 1.33 2006/03/07 15:47:32 kloczek Exp $"
+ 
+diff -Naur orig/src/useradd.c patched/src/useradd.c
+--- orig/src/useradd.c	2016-05-15 19:38:28.470417190 +0200
++++ patched/src/useradd.c	2016-05-15 19:39:20.326674331 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: useradd.c,v 1.100 2006/07/28 17:42:48 kloczek Exp $"
+ 
+diff -Naur orig/src/userdel.c patched/src/userdel.c
+--- orig/src/userdel.c	2016-05-15 19:38:28.474417210 +0200
++++ patched/src/userdel.c	2016-05-15 19:39:20.326674331 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: userdel.c,v 1.66 2006/07/10 04:11:32 kloczek Exp $"
+ 
+diff -Naur orig/src/usermod.c patched/src/usermod.c
+--- orig/src/usermod.c	2006-07-28 19:42:48.000000000 +0200
++++ patched/src/usermod.c	2016-05-15 19:39:20.326674331 +0200
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <config.h>
++#undef USE_PAM
+ 
+ #ident "$Id: usermod.c,v 1.71 2006/07/28 17:42:48 kloczek Exp $"
+ 

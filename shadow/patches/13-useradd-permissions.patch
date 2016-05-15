@@ -1,0 +1,12 @@
+diff -Naur shadow-4.0.15.orig/src/useradd.c shadow-4.0.15/src/useradd.c
+--- shadow-4.0.15.orig/src/useradd.c	2006-03-07 16:50:33.000000000 +0100
++++ shadow-4.0.15/src/useradd.c	2006-04-21 18:48:27.000000000 +0200
+@@ -1567,7 +1567,7 @@
+ 		}
+ 		chown (user_home, user_id, user_gid);
+ 		chmod (user_home,
+-		       0777 & ~getdef_num ("UMASK", GETDEF_DEFAULT_UMASK));
++		       0700);
+ 		home_added++;
+ #ifdef WITH_AUDIT
+ 		audit_logger (AUDIT_USER_CHAUTHTOK, Prog,

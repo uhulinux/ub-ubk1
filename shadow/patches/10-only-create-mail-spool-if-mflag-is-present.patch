@@ -1,0 +1,12 @@
+diff -Naur shadow-4.0.5.orig/src/useradd.c shadow-4.0.5/src/useradd.c
+--- shadow-4.0.5.orig/src/useradd.c	2004-10-24 20:24:33.000000000 +0200
++++ shadow-4.0.5/src/useradd.c	2004-11-02 12:29:58.991801469 +0100
+@@ -1768,7 +1768,7 @@
+ 			 Prog);
+ 	}
+ 
+-	create_mail ();
++	if (mflg) create_mail ();
+ 
+ 	nscd_flush_cache ("passwd");
+ 	nscd_flush_cache ("group");

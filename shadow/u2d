@@ -1,1 +1,0 @@
-urllist http://pkg-shadow.alioth.debian.org/releases/ | parsever | sort -V | tail -n 1
