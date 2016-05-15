@@ -1,1 +1,1 @@
-_geturl http://www.oracle.com/technetwork/java/javase/downloads/index.html | grep -E 'Java Platform \(JDK\) ([0-9]+u[0-9]+)' | sed -r 's/^.*Java Platform \(JDK\) ([0-9]+)u([0-9]+)$/\1.0.\2/'
+urllist http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/ | splitver '^jdk-([0-9u]+)-linux-i586.tar.gz$' | sed s/u/\.0\./
