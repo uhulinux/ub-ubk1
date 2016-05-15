@@ -1,1 +1,1 @@
-urllist http://www.procmail.org/ | splitver '^procmail-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist ftp://ftp.ucsb.edu/pub/mirrors/procmail/ | splitver '^procmail-([0-9.]+).tar.gz$' | sort -V | tail -n 1

@@ -1,1 +1,1 @@
-_geturl http://hu1.php.net/downloads.php | splitver 'Current Stable PHP ([0-9.]+).*'
+urllist http://ftp.osuosl.org/pub/blfs/conglomeration/php/ | parsever | sort -V | tail -n 1

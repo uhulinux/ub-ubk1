@@ -1,1 +1,1 @@
-urllist http://cups.org/ | splitver '^cups-([0-9.]+)-source.tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+urllist http://cups.org/ | splitver '^release-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

@@ -1,2 +1,2 @@
-rele=$(urllist http://freedesktop.org/software/geoclue/releases/  | sort -V | tail -n 1)
+rele=$(urllist http://freedesktop.org/software/geoclue/releases/ | grep '^[0-9]' | sort -V | tail -n 1)
 urllist http://freedesktop.org/software/geoclue/releases/$rele/ | parsever | sort -V | tail -n 1
