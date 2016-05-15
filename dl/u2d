@@ -1,1 +1,1 @@
-urllist ftp://ftp.uhulinux.hu/pub/sources/dl/ | splitver '^dl-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+urllist http://download.ubk.hu/src/uhu/dl/ | splitver '^dl-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

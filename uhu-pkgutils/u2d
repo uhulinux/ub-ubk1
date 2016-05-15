@@ -1,1 +1,1 @@
-urllist ftp://ftp.uhulinux.hu/pub/sources/uhu-pkgutils/ | splitver '^uhu-pkgutils-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://download.ubk.hu/src/uhu/uhu-pkgutils/ | splitver '^uhu-pkgutils-([0-9.]+).tar.gz$' | sort -V | tail -n 1
