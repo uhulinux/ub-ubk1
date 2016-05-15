@@ -1,0 +1,12 @@
+diff -Naur shadow-4.0.5.orig/src/useradd.c shadow-4.0.5/src/useradd.c
+--- shadow-4.0.5.orig/src/useradd.c	2004-10-24 20:24:33.000000000 +0200
++++ shadow-4.0.5/src/useradd.c	2004-10-28 12:35:33.499475976 +0200
+@@ -1282,6 +1282,8 @@
+ 
+ 	if (!sflg)
+ 		user_shell = def_shell;
++	
++	create_mail_spool = def_create_mail_spool;
+ }
+ 
+ /*

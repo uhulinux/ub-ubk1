@@ -1,7 +1,13 @@
-diff -Naur orig/etc/login.defs patched/etc/login.defs
---- orig/etc/login.defs	2006-07-16 11:00:20.000000000 +0200
-+++ patched/etc/login.defs	2016-05-15 20:27:58.613145333 +0200
-@@ -7,12 +7,7 @@
+diff -Naur shadow-4.0.16.orig/etc/login.defs shadow-4.0.16/etc/login.defs
+--- shadow-4.0.16.orig/etc/login.defs	2005-09-01 21:57:45.000000000 +0200
++++ shadow-4.0.16/etc/login.defs	2006-06-19 20:15:37.000000000 +0200
+@@ -1,18 +1,11 @@
+ #
+ # /etc/login.defs - Configuration control definitions for the shadow package.
+ #
+-#	$Id: login.defs,v 1.8 2005/09/01 19:57:45 kloczek Exp $
+-#
+ 
  #
  # Delay in seconds before being allowed another attempt after a login failure
  #
@@ -15,7 +21,7 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  
  #
  # Enable display of unknown usernames when login failures are recorded.
-@@ -25,98 +20,25 @@
+@@ -25,98 +18,25 @@
  LOG_OK_LOGINS		no
  
  #
@@ -116,7 +122,7 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  #MAIL_FILE	.mail
  
  #
-@@ -129,21 +51,6 @@
+@@ -129,21 +49,6 @@
  #HUSHLOGIN_FILE	/etc/hushlogins
  
  #
@@ -138,7 +144,7 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  # *REQUIRED*  The default PATH settings, for superuser and normal users.
  #
  # (they are minimal, add the rest in the shell startup files)
-@@ -159,10 +66,10 @@
+@@ -159,10 +64,10 @@
  # If you have a "write" program which is "setgid" to a special group
  # which owns the terminals, define TTYGROUP to the group number and
  # TTYPERM to 0620.  Otherwise leave TTYGROUP commented out and assign
@@ -151,7 +157,7 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  
  #
  # Login configuration initializations:
-@@ -170,7 +77,6 @@
+@@ -170,7 +75,6 @@
  #	ERASECHAR	Terminal ERASE character ('\010' = backspace).
  #	KILLCHAR	Terminal KILL character ('\025' = CTRL/U).
  #	UMASK		Default "umask" value.
@@ -159,7 +165,7 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  #
  # The ERASECHAR and KILLCHAR are used only on System V machines.
  # The ULIMIT is used only if the system supports it.
-@@ -178,38 +84,22 @@
+@@ -178,38 +82,22 @@
  #
  # Prefix these values with "0" to get octal, "0x" to get hexadecimal.
  #
@@ -201,7 +207,7 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  # Min/max values for automatic uid selection in useradd
  #
  UID_MIN			 1000
-@@ -218,13 +108,13 @@
+@@ -218,13 +106,13 @@
  #
  # Min/max values for automatic gid selection in groupadd
  #
@@ -217,7 +223,7 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  
  #
  # Max time in seconds for login
-@@ -232,28 +122,6 @@
+@@ -232,28 +120,6 @@
  LOGIN_TIMEOUT		60
  
  #
@@ -246,7 +252,7 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  # Which fields may be changed by regular users using chfn - use
  # any combination of letters "frwh" (full name, room number, work
  # phone, home phone).  If not defined, no changes are allowed.
-@@ -262,44 +130,10 @@
+@@ -262,44 +128,10 @@
  CHFN_RESTRICT		rwh
  
  #
@@ -293,7 +299,34 @@ diff -Naur orig/etc/login.defs patched/etc/login.defs
  
  #
  # If defined, this command is run when removing a user.
-@@ -315,5 +149,5 @@
+@@ -309,32 +141,11 @@
+ #USERDEL_CMD	/usr/sbin/userdel_local
+ 
+ #
+-# When prompting for password without echo, getpass() can optionally
+-# display a random number (in the range 1 to GETPASS_ASTERISKS) of '*'
+-# characters for each character typed.  This feature is designed to
+-# confuse people looking over your shoulder when you enter a password :-).
+-# Also, the new getpass() accepts both Backspace (8) and Delete (127)
+-# keys to delete previous character (to cope with different terminal
+-# types), Control-U to delete all characters, and beeps when there are
+-# no more characters to delete, or too many characters entered.
+-#
+-# Setting GETPASS_ASTERISKS to 1 results in more traditional behaviour -
+-# exactly one '*' displayed for each character typed.
+-#
+-# Setting GETPASS_ASTERISKS to 0 disables the '*' characters (Backspace,
+-# Delete, Control-U and beep continue to work as described above).
+-#
+-# Setting GETPASS_ASTERISKS to -1 reverts to the traditional getpass()
+-# without any new features.  This is the default.
+-#
+-#GETPASS_ASTERISKS 1
+-
+-#
+ # Enable setting of the umask group bits to be the same as owner bits
+ # (examples: 022 -> 002, 077 -> 007) for non-root users, if the uid is
+ # the same as gid, and username is the same as the primary group name.
  #
  # This also enables userdel to remove user groups if no members exist.
  #

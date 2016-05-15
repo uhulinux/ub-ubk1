@@ -1,0 +1,43 @@
+diff -Naur shadow-4.0.16/src/useradd.c shadow-4.0.17/src/useradd.c
+--- shadow-4.0.16/src/useradd.c	2006-05-30 20:28:45.000000000 +0200
++++ shadow-4.0.17/src/useradd.c	2006-06-22 13:30:32.000000000 +0200
+@@ -1599,24 +1605,24 @@
+ 		if (fd < 0) {
+ 			perror (_("Creating mailbox file"));
+ 			return;
++		}
+ 
+-			gr = getgrnam ("mail");
+-			if (!gr) {
+-				fprintf (stderr,
+-					 _
+-					 ("Group 'mail' not found. Creating the user mailbox file with 0600 mode.\n"));
+-				gid = user_gid;
+-				mode = 0600;
+-			} else {
+-				gid = gr->gr_gid;
+-				mode = 0660;
+-			}
++		gr = getgrnam ("mail");
++		if (!gr) {
++			fprintf (stderr,
++				 _
++				 ("Group 'mail' not found. Creating the user mailbox file with 0600 mode.\n"));
++			gid = user_gid;
++			mode = 0600;
++		} else {
++			gid = gr->gr_gid;
++			mode = 0660;
++		}
+ 
+-			if (fchown (fd, user_id, gid) || fchmod (fd, mode))
+-				perror (_("Setting mailbox file permissions"));
++		if (fchown (fd, user_id, gid) || fchmod (fd, mode))
++			perror (_("Setting mailbox file permissions"));
+ 
+-			close (fd);
+-		}
++		close (fd);
+ 	}
+ }
+ 
