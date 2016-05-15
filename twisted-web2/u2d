@@ -1,0 +1,2 @@
+mappa=$(urllist http://twistedmatrix.com/Releases/Web2/ | grep -E '^[0-9]' | sort -V | tail -n 1)
+urllist http://twistedmatrix.com/Releases/Web2/$mappa/ | parsever | sort -V | tail -n 1
