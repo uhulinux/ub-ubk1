@@ -1,1 +1,1 @@
-urllist http://rofi.roger-ferrer.org/eiciel/files/ | splitver '^eiciel-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+urllist http://ftp.debian.org/debian/pool/main/e/eiciel/ | splitver '^eiciel_([0-9.]+).orig.tar.bz2$' | sort -V | tail -n 1
