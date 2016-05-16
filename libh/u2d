@@ -1,1 +1,1 @@
-urllist http://libh.slashusr.org/ | splitver '^libh-([0-9].+).tar.bz2$' | sort -V | tail -n 1
+urllist http://libh.sourceforge.net/ | splitver '^libh-([0-9].+).tar.bz2$' | sort -V | tail -n 1
