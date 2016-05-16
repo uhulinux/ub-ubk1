@@ -1,1 +1,1 @@
-sflist libcue libcue | grep -E '^([0-9.]+)$' | sort -V | tail -n 1
+urllist https://github.com/lipnitsk/libcue/releases/ | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1
