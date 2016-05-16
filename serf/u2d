@@ -1,1 +1,1 @@
-urllist http://serf.googlecode.com/svn/src_releases/ | parsever | sort -V | tail -n 1
+urllist http://ftp.debian.org/debian/pool/main/s/serf/ | splitver '^serf_([0-9.]+).orig.tar.gz$' | sort -V | tail -n 1

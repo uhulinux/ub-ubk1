@@ -1,1 +1,1 @@
-urllist http://tango.freedesktop.org/releases/ | splitver '^icon-naming-utils-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://pkgs.fedoraproject.org/repo/pkgs/icon-naming-utils/ | splitver '^icon-naming-utils-([0-9.]+).tar.gz$' | sort -V | tail -n 1
