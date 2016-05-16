@@ -1,1 +1,1 @@
-urllist http://tango.freedesktop.org/releases/ | splitver '^tango-icon-theme-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://ftp.debian.org/debian/pool/main/t/tango-icon-theme/ | splitver '^tango-icon-theme_([0-9.]+).orig.tar.gz$' | sort -V | tail -n 1
