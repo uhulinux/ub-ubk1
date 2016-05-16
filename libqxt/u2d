@@ -1,1 +1,1 @@
-urllist http://dev.libqxt.org/libqxt/wiki/Home | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://ftp.debian.org/debian/pool/main/libq/libqxt/ | splitver '^libqxt_([0-9.]+).orig.tar.gz$' | sort -V | tail -n 1
