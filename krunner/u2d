@@ -1,2 +1,1 @@
-dir=$(urllist http://download.kde.org/stable/frameworks/ | grep -E '^([0-9])' | sort -V | tail -n 1)
-urllist http://download.kde.org/stable/frameworks/$dir/portingAids/ | splitver '^krunner-([0-9.]+).tar.xz$' | sort -V | tail -n 1
+urllist https://github.com/KDE/krunner/releases/ | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1
