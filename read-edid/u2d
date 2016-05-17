@@ -1,0 +1,1 @@
+urllist http://polypux.org/projects/read-edid/ | splitver 'read-edid-([0-9.]+).tar.gz$' | sort -V | tail -1

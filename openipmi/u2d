@@ -1,1 +1,1 @@
-sflist openipmi OpenIPMI%202.0%20Library | splitver '^OpenIPMI-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+urllist http://ftp.debian.org/debian/pool/main/o/openipmi/ | splitver 'openipmi_([0-9.]+).orig.tar.gz$' | sort -V | tail -1
