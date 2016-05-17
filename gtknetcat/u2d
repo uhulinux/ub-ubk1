@@ -1,1 +1,1 @@
-sflist lxde GtkNetCat%20%28GUI%20for%20netcat%29 | sort -V | tail -n 1 | sed 's/GtkNetCat%20//'
+urllist https://sourceforge.net/projects/lxde/files/GtkNetCat%20%28GUI%20for%20netcat%29/ | grep -E '^GtkNetCat ' | sort -V | tail -n 1 | sed 's/GtkNetCat *//'
