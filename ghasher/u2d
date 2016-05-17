@@ -1,1 +1,2 @@
-echo dead package
+urllist http://pkgs.fedoraproject.org/repo/pkgs/ghasher/ | parsever | sort -V | tail -n 1
+

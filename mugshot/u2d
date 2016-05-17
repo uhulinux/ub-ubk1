@@ -1,1 +1,1 @@
-urllist https://launchpad.net/mugshot/+download | splitver '^mugshot-([0-9.]+).tar.xz$' | sort -V | tail -n 1 | sed 's/%20//'
+urllist https://launchpad.net/mugshot/+download | grep mugshot | parsever | sort -V | tail -n 1

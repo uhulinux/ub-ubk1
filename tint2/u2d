@@ -1,1 +1,1 @@
-urllist http://code.google.com/p/tint2/downloads/ | splitver '^tint2-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+urllist http://pkgs.fedoraproject.org/repo/pkgs/tint2/ | parsever | sort -V | tail -n 1

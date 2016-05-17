@@ -1,1 +1,1 @@
-urllist http://fossfiles.com/synergy/ | splitver '.*synergy-([0-9.]+)-r([0-9.]+)-Source.tar.gz$' | sort -V | tail -n 1
+urllist http://pkgs.fedoraproject.org/repo/pkgs/synergy/ | splitver '^synergy-([0-9.]+)-r([0-9.]+)-Source.tar.gz$' | sort -V | tail -n 1

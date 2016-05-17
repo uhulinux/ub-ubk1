@@ -1,2 +1,1 @@
-minor=$(urllist https://launchpad.net/gencfsm/trunk/ | splitver '^([0-9.]+)' | sort -V | tail -n 1)
-urllist https://launchpad.net/gencfsm/trunk/"$minor"/+download/ | splitver '^gnome-encfs-manager_([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+urllist https://launchpad.net/gencfsm/trunk/ | grep gnome-encfs-manager_ | sed s/_/-/g | parsever  | sort -V | tail -n 1
