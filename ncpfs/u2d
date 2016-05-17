@@ -1,1 +1,1 @@
-echo dead package
+urllist http://pkgs.fedoraproject.org/repo/pkgs/ncpfs/ | parsever | sort -V | tail -1

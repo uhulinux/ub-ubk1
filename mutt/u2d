@@ -1,1 +1,1 @@
-sflist mutt mutt | parsever | sort -V | tail -n 1
+urllist http://pkgs.fedoraproject.org/repo/pkgs/mutt/ | parsever | sort -V | tail -n 1

@@ -1,1 +1,1 @@
-echo dead package
+urllist http://ftp.debian.org/debian/pool/main/n/netkit-ntalk/ | splitver 'netkit-ntalk_([0-9.]+).orig.tar.gz$' | sort -V | tail -1

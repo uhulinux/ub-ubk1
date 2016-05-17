@@ -1,0 +1,1 @@
+urllist http://pkgs.fedoraproject.org/repo/pkgs/telnet/ | parsever | sort -V | tail -1
