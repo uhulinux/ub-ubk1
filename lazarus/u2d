@@ -1,3 +1,1 @@
-alap=$(sflist lazarus Lazarus%20Zip%20_%20GZip/ | grep -E '^Lazarus%20([0-9.]+)$' | sort -V | tail -n 1)
-sflist lazarus Lazarus%20Zip%20_%20GZip/$alap | splitver '^lazarus-([0-9.]+)'-0.tar.gz |sort -V | tail -n 1
-
+_geturl https://sourceforge.net/projects/lazarus/files/Lazarus%20Zip%20_%20GZip/ | grep 'latest version' | sed s/.*lazarus-// | sed s/-.*//

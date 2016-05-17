@@ -1,1 +1,1 @@
-urllist http://www.open-iscsi.org/bits/ | splitver '^open-iscsi-([0-9.-]+).tar.gz$' | sort -V | tail -n 1 | tr '-' '~'
+urllist http://ftp.debian.org/debian/pool/main/o/open-iscsi/ | splitver '^open-iscsi_([0-9.-]+).orig.tar.gz$' | sort -V | tail -n 1 | sed s/0\./0~/
