@@ -1,1 +1,1 @@
-urllist http://virt-manager.org/download/sources/virt-viewer/ | parsever | sort -V | tail -n 1
+urllist http://pkgs.fedoraproject.org/repo/pkgs/virt-viewer/ | parsever | sort -V | tail -n 1
