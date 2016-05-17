@@ -1,1 +1,1 @@
-sflist treeform TreeForm%20Unified | splitver '^TreeForm%20([0-9.]+)$' | sort -V | tail -n 1
+urllist https://sourceforge.net/projects/treeform/files/TreeForm%20Unified/ | grep -E '^TreeForm' | sed 's/^TreeForm *//g' | sed 's/.*Un.*//g' | sort -V | tail -n 1

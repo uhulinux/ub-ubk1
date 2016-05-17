@@ -1,1 +1,1 @@
-echo dead package
+urllist http://thomasjensen.com/software/tal/ | grep tal- | parsever | sort -V | tail -n 1

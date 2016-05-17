@@ -1,1 +1,1 @@
-echo dead package
+urllist http://elfga.com/~erik/files/ | grep -E '^rand-' | parsever | sort -V | tail -n 1

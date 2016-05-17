@@ -1,1 +1,1 @@
-urllist http://dev.yorhel.nl/download/ | splitver '^ncdu-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://pkgs.fedoraproject.org/repo/pkgs/ncdu/ | parsever | sort -V | tail -n 1
