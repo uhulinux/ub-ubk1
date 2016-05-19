@@ -1,6 +1,8 @@
 #!/bin/sh -eux
 
-mkdir .git
+if [ ! -d .git ]; then
+	mkdir .git
+fi
 
 qmake-qt5 qtspeech.pro
 

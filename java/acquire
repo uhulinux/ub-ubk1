@@ -4,3 +4,4 @@
 
 jdk-${UB_VERSION/.0./u}-linux-i586.tar.gz jdk1.${UB_VERSION/.0./.0_}/
 	http://download.ubk.hu/src/java/
+	ftp://ftp.uhulinux.hu/pub/sources/java/

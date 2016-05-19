@@ -2,3 +2,4 @@
 
 libpgf-${UB_VERSION}-src.tar.gz libpgf/
 	http://downloads.sourceforge.net/libpgf/
+	https://sourceforge.net/projects/libpgf/files/libpgf/${UB_VERSION}/libpgf-src-${UB_VERSION}.tar.gz/download

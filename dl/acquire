@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 dl-${UB_VERSION}.tar.gz dl-${UB_VERSION}/
-	http://download.ubk.hu/src/uhu/dl/
+	ftp://ftp.uhulinux.hu/pub/sources/dl/

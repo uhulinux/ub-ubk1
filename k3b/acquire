@@ -2,3 +2,4 @@
 
 k3b-${UB_VERSION}.tar.gz k3b-kf5/
 	git://github.com/KDE/k3b.git@branch:kf5
+

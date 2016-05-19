@@ -1,0 +1,175 @@
+diff -Naur orig/init patched/init
+--- orig/init	2014-08-14 15:12:37.000000000 +0200
++++ patched/init	2015-08-31 15:45:18.788948719 +0200
+@@ -178,6 +178,137 @@
+ 
+ start_udev
+ 
++# root=
++if [ -n "$root" ]; then
++	if [ -z "$o" ]; then
++		o="defaults"
++	fi
++	case "$root" in
++		aoe:e*.*)
++			dev="${root#aoe:}"
++			aoe_start "$dev"
++			rootmount /dev/etherd/"$dev"
++			;;
++		aoecloop:e*.*)
++			dev="${root#aoecloop:}"
++			aoe_start "$dev"
++			modprobe cloop file="/dev/etherd/$dev"
++			udevadm settle
++			blockdev --setra 0 /dev/cloop0
++			live_start /dev/cloop0
++			;;
++		aoelive:e*.*)
++			dev="${root#aoelive:}"
++			aoe_start "$dev"
++			live_start /dev/etherd/"$dev"
++			;;
++		aoelivesq:e*.*)
++			dev="${root#aoelivesq:}"
++			aoe_start "$dev"
++			modprobe loop
++			udevadm settle
++			mkdir /tmp/squashfs
++			mount -o loop /dev/etherd/"$dev" /tmp/squashfs
++			imgdev=$(losetup -f --show /tmp/squashfs/uhulinux.img)
++			udevadm settle
++			umount -l /tmp/squashfs
++			live_start "$imgdev"
++			;;
++		lvm:*)
++			raid_start
++			lvm_start
++			vol="${root#lvm:}"
++			rootmount /dev/mapper/"$vol"
++			;;
++		UUID=*)
++			dev="/dev/disk/by-uuid/${root#UUID=}"
++			btrfs device scan
++			udevadm settle
++			if [ -e "$dev" ]; then
++				rootmount "$dev"
++			else
++				raid_start
++				if [ -e "$dev" ]; then
++					rootmount "$dev"
++				else
++					lvm_start
++					rootmount "$dev"
++				fi
++			fi
++			;;
++		/dev/*)
++			case "$root" in
++				/dev/md*)
++					raid_start
++					;;
++			esac
++			udevadm settle
++			if [ -n "${lukspw:-}" ]; then
++				for i in /dev/disk/by-type/crypto_LUKS/*; do
++					echo -n "$lukspw" | cryptsetup luksOpen "$i" "${i##*/}"
++				done
++				udevadm settle
++			fi
++			btrfs device scan
++			udevadm settle
++			if [ -e "$root" ]; then
++				rootmount "$root"
++			else
++				raid_start
++				if [ -e "$root" ]; then
++					rootmount "$root"
++				else
++					lvm_start
++					rootmount "$root"
++				fi
++			fi
++			;;
++		livecd:*)
++			mkdir -p /tmp/cd
++			name="${root#livecd:}"
++			dev="/dev/disk/by-label/${name//_/\x20}"
++		
++			i=0
++			while [ ! -e "$dev" ]; do
++				sleep 0.1
++				if [ $i -ge 300 ]; then
++					echo
++					break
++				fi
++				echo -n .
++				let i++
++			done
++		
++			if [ -e "$dev" ]; then
++				mount -o ro "$dev" /tmp/cd || continue
++				imgdev=""
++				if [ -f /tmp/cd/uhulinux.img ]; then
++					modprobe loop
++					udevadm settle
++					mkdir /tmp/squashfs
++					mount -o loop /tmp/cd/uhulinux.img /tmp/squashfs
++					imgdev=$(losetup -f --show /tmp/squashfs/uhulinux.img)
++					udevadm settle
++					umount -l /tmp/cd
++					umount -l /tmp/squashfs
++				fi
++				live_start "$imgdev"
++			else
++				echo "$dev not found" >&2
++			fi
++			;;
++		shell)
++			echo "Shells are available on consoles Alt-F2, Alt-F3, Alt-F4. Exit them to proceed." >&2
++			echo -n "Waiting..." >&2
++			openvt -c 2 /bin/bash -w &
++			openvt -c 3 /bin/bash -w &
++			openvt -c 4 /bin/bash -w &
++			wait
++			;;
++	esac
++else # not root=
++
++# boot=
+ if [ -z "$boot" ]; then
+ 	echo "boot parameter not defined"
+ 	bash
+@@ -225,6 +356,22 @@
+ 		vol="${boot#lvm:}"
+ 		rootmount /dev/mapper/"$vol"
+ 		;;
++	UUID=*)
++		dev="/dev/disk/by-uuid/${boot#UUID=}"
++		btrfs device scan
++		udevadm settle
++		if [ -e "$dev" ]; then
++			rootmount "$dev"
++		else
++			raid_start
++			if [ -e "$dev" ]; then
++				rootmount "$dev"
++			else
++				lvm_start
++				rootmount "$dev"
++			fi
++		fi
++		;;
+ 	/dev/*)
+ 		case "$boot" in
+ 			/dev/md*)
+@@ -300,7 +447,9 @@
+ 	bash
+ fi
+ 
+-fi
++fi # boot=
++
++fi # root= / boot=
+ 
+ while [ ! -x /mnt/"${INIT:-/usr/lib/systemd/systemd}" ]; do
+ 	echo "${INIT:-/usr/lib/systemd/systemd} not fount under /mnt." >&2

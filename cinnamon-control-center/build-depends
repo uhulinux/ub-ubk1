@@ -11,13 +11,13 @@ ibus-dev
 intltool
 iso-codes
 krb5-dev
-libx11-dev
 libcanberra-dev
 libgnome-keyring-dev
 libgnomekbd-dev
 libgudev-dev
 libnotify-dev
 libwacom-dev
+libx11-dev
 libxft-dev
 libxslt-dev
 modemmanager-dev

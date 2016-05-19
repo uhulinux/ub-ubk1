@@ -1,14 +1,16 @@
-diff -Naurd a/wpa_supplicant/Makefile b/wpa_supplicant/Makefile
---- a/wpa_supplicant/Makefile	2010-01-12 15:55:02.000000000 +0100
-+++ b/wpa_supplicant/Makefile	2010-02-20 23:24:47.974925326 +0100
-@@ -6,8 +6,8 @@
+diff -Naur wpa_supplicant-2.5-orig/wpa_supplicant/Makefile wpa_supplicant-2.5/wpa_supplicant/Makefile
+--- wpa_supplicant-2.5-orig/wpa_supplicant/Makefile	2015-09-27 21:02:05.000000000 +0200
++++ wpa_supplicant-2.5/wpa_supplicant/Makefile	2016-05-12 11:26:59.209558993 +0200
+@@ -6,9 +6,9 @@
  CFLAGS = -MMD -O2 -Wall -g
  endif
  
 -export LIBDIR ?= /usr/local/lib/
+-export INCDIR ?= /usr/local/include/
 -export BINDIR ?= /usr/local/sbin/
 +export LIBDIR ?= /usr/lib/
++export INCDIR ?= /usr/include/
 +export BINDIR ?= /usr/sbin/
  PKG_CONFIG ?= pkg-config
  
- CFLAGS += -I../src
+ CFLAGS += $(EXTRA_CFLAGS)

@@ -1,5 +1,6 @@
 cairo-dev
 libxcursor-dev
+libxfont-dev
 libxinerama-dev
 libxrandr-dev
 libxtst-dev

@@ -1,5 +1,5 @@
 cmake
-libx11-dev
 liblxqt-dev
 libqtxdg-dev
+libx11-dev
 qt5-dev

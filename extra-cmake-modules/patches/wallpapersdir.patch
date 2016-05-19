@@ -1,0 +1,33 @@
+diff -Naur orig/attic/modules/FindPyKDE4.cmake patched/attic/modules/FindPyKDE4.cmake
+--- orig/attic/modules/FindPyKDE4.cmake	2016-02-13 13:26:05.000000000 +0100
++++ patched/attic/modules/FindPyKDE4.cmake	2016-03-13 21:07:04.931803441 +0100
+@@ -78,7 +78,7 @@
+     _set_fancy(SERVICETYPES_INSTALL_DIR "${SHARE_INSTALL_PREFIX}/kde4/servicetypes" "The install dir for servicestypes desktop files")
+     _set_fancy(SOUND_INSTALL_DIR        "${SHARE_INSTALL_PREFIX}/sounds"         "The install dir for sound files")
+     _set_fancy(TEMPLATES_INSTALL_DIR    "${SHARE_INSTALL_PREFIX}/templates"      "The install dir for templates (Create new file...)")
+-    _set_fancy(WALLPAPER_INSTALL_DIR    "${SHARE_INSTALL_PREFIX}/wallpapers"     "The install dir for wallpapers")
++    _set_fancy(WALLPAPER_INSTALL_DIR    "${SHARE_INSTALL_PREFIX}/backgrounds"    "The install dir for wallpapers")
+     _set_fancy(KCONF_UPDATE_INSTALL_DIR "${DATA_INSTALL_DIR}/kconf_update"       "The kconf_update install dir")
+     # this one shouldn't be used anymore
+     _set_fancy(APPLNK_INSTALL_DIR       "${SHARE_INSTALL_PREFIX}/applnk"         "Is this still used ?")
+diff -Naur orig/kde-modules/KDEInstallDirs.cmake patched/kde-modules/KDEInstallDirs.cmake
+--- orig/kde-modules/KDEInstallDirs.cmake	2016-02-13 13:26:05.000000000 +0100
++++ patched/kde-modules/KDEInstallDirs.cmake	2016-03-13 21:06:34.955654797 +0100
+@@ -87,7 +87,7 @@
+ # ``TEMPLATEDIR``
+ #     templates (``DATAROOTDIR/templates``) [``TEMPLATES_INSTALL_DIR``]
+ # ``WALLPAPERDIR``
+-#     desktop wallpaper images (``DATAROOTDIR/wallpapers``)
++#     desktop wallpaper images (``DATAROOTDIR/backgrounds``)
+ #     [``WALLPAPER_INSTALL_DIR``]
+ # ``APPDIR``
+ #     application desktop files (``DATAROOTDIR/applications``)
+@@ -531,7 +531,7 @@
+ _define_relative(TEMPLATEDIR DATAROOTDIR "templates"
+     "templates"
+     TEMPLATES_INSTALL_DIR)
+-_define_relative(WALLPAPERDIR DATAROOTDIR "wallpapers"
++_define_relative(WALLPAPERDIR DATAROOTDIR "backgrounds"
+     "desktop wallpaper images"
+     WALLPAPER_INSTALL_DIR)
+ _define_relative(APPDIR DATAROOTDIR "applications"

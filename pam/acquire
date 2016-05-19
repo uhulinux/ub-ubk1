@@ -13,7 +13,7 @@ pam-1.1.6-3.fc18.1.src.rpm pam-redhat-0.99.10-1.tar.bz2 pam-redhat-0.99.10-1/pam
 #	ftp://ftp.pld-linux.org/software/pam/
 
 pam_envfeed-0.5.tar.gz pam_envfeed-0.5/ :modules/pam_envfeed
-	http://download.ubk.hu/src/uhu/pam_envfeed/
+	ftp://ftp.uhulinux.hu/pub/sources/pam_envfeed/
 
 pam_locallogin-0.2.tar.gz pam_locallogin-0.2/ :modules/pam_locallogin
-	http://download.ubk.hu/src/uhu/pam_locallogin/
+	ftp://ftp.uhulinux.hu/pub/sources/pam_locallogin/

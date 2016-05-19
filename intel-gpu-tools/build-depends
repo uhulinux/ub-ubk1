@@ -1,4 +1,5 @@
 cairo-dev
+gtk-doc
 libdrm-dev
 libpciaccess-dev
 libxrandr-dev

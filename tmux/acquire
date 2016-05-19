@@ -2,3 +2,4 @@
 
 tmux-${UB_VERSION}.tar.gz tmux-${UB_VERSION}/
 	http://downloads.sourceforge.net/tmux/
+	http://pkgs.fedoraproject.org/repo/pkgs/tmux/tmux-${UB_VERSION}.tar.gz/9fb6b443392c3978da5d599f1e814eaa/

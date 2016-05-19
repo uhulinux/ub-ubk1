@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
 ub_compile \
-	--enable-embedded-perl
+	--enable-embedded-perl \

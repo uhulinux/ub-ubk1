@@ -2,3 +2,4 @@
 
 ipython-${UB_VERSION}.tar.gz ipython-${UB_VERSION}/
 	http://pypi.python.org/packages/source/i/ipython/
+	https://pypi.python.org/packages/4e/c7/519b95112dba6f3ae91530bcb8564454c575fcb1fdb323b2b0ee9eff1227/ipython-${UB_VERSION}.tar.gz#md5=9c7c28eddbc39eb874d2c22025772d63

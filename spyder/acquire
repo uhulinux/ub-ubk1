@@ -2,3 +2,4 @@
 
 spyder-${UB_VERSION}.zip spyder-${UB_VERSION}/
 	http://spyderlib.googlecode.com/files/
+	https://pypi.python.org/packages/fb/37/09b789dbe321894afe1657f11f0026a5ea79987f1c30176b92ee648b3faa/

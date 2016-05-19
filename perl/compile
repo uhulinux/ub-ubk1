@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
+export UB_MAKE_PROCS=2
 sh Configure -des \
 	-Dprefix="/usr"              \
 	-Dvendorprefix="/usr"        \

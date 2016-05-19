@@ -1,2 +1,5 @@
+alsa-lib-dev
+dbus-glib-dev
 gtk2
-python
+libxt-dev
+python-dev
