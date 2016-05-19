@@ -1,1 +1,1 @@
-urllist http://johncheetham.com/projects/gshogi/ | splitver '^gshogi-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist https://github.com/johncheetham/gshogi/releases/ | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1

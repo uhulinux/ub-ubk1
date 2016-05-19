@@ -1,2 +1,5 @@
-dir=$(sflist simutrans pak128 | sed s/"pak128 for "// | sed s/"RC "// | sed s/" ".*// | grep -E '^([0-4])$' | sort | tail -n 1 | sed s/-/\./)
-sflist simutrans pak128/"$dir"/
+string=$(urllist https://sourceforge.net/projects/simutrans/files/pak128/ | grep 'pak128 for ' | sort -V | tail -n 1 | sed s/,.*//g | sed 's/.*for *//g')
+head1=$(echo $string | sed s/.*\(//g)
+rev=$(echo $string | sed 's/ .*//g')
+revv=$(echo $string | sed s/" "*\(.*//g | sed 's/[A-Z]* *//g')
+echo "${head1}.${rev}~$revv"

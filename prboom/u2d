@@ -1,1 +1,1 @@
-sflist prboom 'prboom%20stable' | sort -V | tail -n 1
+urllist http://pkgs.fedoraproject.org/repo/pkgs/prboom/ | parsever | sort -V | tail -n 1

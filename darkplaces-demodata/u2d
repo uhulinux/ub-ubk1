@@ -1,1 +1,1 @@
-urllist ftp://ftp.idsoftware.com/idstuff/quake/ | splitver '^qsw([0-9]+)_[0-9+].zip$'| sort -V | tail -n 1
+urllist ftp://ftp.fu-berlin.de/pc/games/idgames/idstuff/quake/ | splitver '^qsw([0-9]+)_[0-9+].zip$'| sort -V | tail -n 1
