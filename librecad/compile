@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-qmake-qt4 librecad.pro
-
-ub_make
-

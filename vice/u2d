@@ -1,1 +1,0 @@
-sflist vice-emu releases | parsever | sort -V | tail -n 1

@@ -1,1 +1,0 @@
-urllist http://icculus.org/d2x/src | splitver '^d2x-([0-9.]+).tar.gz$' | sort -V | tail -n 1

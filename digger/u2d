@@ -1,3 +1,0 @@
-datum=$(urllist https://github.com/sobomax/digger/releases/ | splitver '^digger-([0-9.]+).tar.gz$' | sort -V | tail -n 1)
-verzio=$(echo ${datum:0:8}.${datum:8})
-echo $verzio

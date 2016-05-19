@@ -1,2 +1,0 @@
-verzio=$(sflist vorton Vorton-Source | splitver '^Beta-([0-9.]+)$' | sort -V | tail -n 1)
-echo $verzio~beta

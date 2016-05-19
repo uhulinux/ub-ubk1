@@ -1,0 +1,12 @@
+#!/bin/sh -eux
+
+cd PORT/linux
+install -m644 libdb.a               "$UB_INSTALLDIR"/usr/lib/libdb1.a
+install -m755 libdb.so.2            "$UB_INSTALLDIR"/usr/lib/libdb1.so.2
+ln -sf libdb1.so.2                  "$UB_INSTALLDIR"/usr/lib/libdb1.so
+ln -sf libdb1.so.2                  "$UB_INSTALLDIR"/usr/lib/libdb.so.2
+mkdir -p                            "$UB_INSTALLDIR"/usr/include/db1
+install -m644 ../include/ndbm.h     "$UB_INSTALLDIR"/usr/include/db1/
+install -m644 ../../include/db.h    "$UB_INSTALLDIR"/usr/include/db1/
+install -m644 ../../include/mpool.h "$UB_INSTALLDIR"/usr/include/db1/
+install -s -m755 db_dump185         "$UB_INSTALLDIR"/usr/bin/db1_dump185

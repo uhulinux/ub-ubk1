@@ -1,1 +1,0 @@
-urllist https://launchpad.net/lightdm-gtk-greeter-settings/+download/ | splitver '^lightdm-gtk-greeter-settings-([0-9.]+).tar.gz$' | sort -V | tail -n 1

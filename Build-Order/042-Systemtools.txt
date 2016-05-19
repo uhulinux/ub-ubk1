@@ -1,6 +1,0 @@
-usb-modeswitch-data
-usb-modeswitch
-pwlib
-yate
-freepascal
-lazarus

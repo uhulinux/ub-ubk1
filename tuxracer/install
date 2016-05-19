@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_install
-
-mkdir -p "$UB_INSTALLDIR"/usr/share/tuxracer
-cp -a tuxracer-data/. "$UB_INSTALLDIR"/usr/share/tuxracer/

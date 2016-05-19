@@ -1,3 +1,0 @@
-#!/bin/sh
-
-quake2 +set basedir /usr/share/games/quake2

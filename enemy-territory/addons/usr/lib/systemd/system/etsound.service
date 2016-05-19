@@ -1,8 +1,0 @@
-[Unit]
-Description=Enemy Territory oss sound
-
-[Service]
-ExecStart=/usr/bin/etsound
-
-[Install]
-WantedBy=multi-user.target

@@ -1,4 +1,0 @@
-#!/bin/sh -eux
-
-cd src
-make build ARCH=x86-32

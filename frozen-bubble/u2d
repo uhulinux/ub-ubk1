@@ -1,1 +1,0 @@
-urllist http://www.frozen-bubble.org/downloads/ | splitver '^frozen-bubble-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

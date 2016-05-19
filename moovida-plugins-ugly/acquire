@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-moovida-plugins-ugly-${UB_VERSION}.tar.gz elisa-plugins-ugly-${UB_VERSION}/
-	https://launchpad.net/moovida/${UB_VERSION_HEAD2}/${UB_VERSION}/+download/

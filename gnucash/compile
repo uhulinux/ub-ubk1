@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_compile \
-	--with-html-engine=webkit \
-	--enable-locale-specific-tax \
-	--enable-python

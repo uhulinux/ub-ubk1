@@ -1,1 +1,0 @@
-sflist supertuxkart SuperTuxKart | sed -e s/-/~/ | sort -V | tail -n 1

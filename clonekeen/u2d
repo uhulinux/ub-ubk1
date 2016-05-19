@@ -1,2 +1,0 @@
-sflist clonekeen clonekeen | sort -V | tail -n 1
-

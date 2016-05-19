@@ -1,0 +1,28 @@
+--- db.1.85/PORT/linux/Makefile.old	Fri Apr 20 17:14:35 2001
++++ db.1.85/PORT/linux/Makefile	Fri Apr 20 17:14:57 2001
+@@ -47,20 +47,20 @@
+ %.o: ../../hash/%.c
+ 	$(CL) -I../../hash -g -o $@ $<
+ %.os: ../../hash/%.c
+-	$(CL) -I../../hash -fpic -o $@ $<
++	$(CL) -I../../hash -fPIC -o $@ $<
+ %.o: ../../btree/%.c
+ 	$(CL) -I../../btree -g -o $@ $<
+ %.os: ../../btree/%.c
+-	$(CL) -I../../btree -fpic -o $@ $<
++	$(CL) -I../../btree -fPIC -o $@ $<
+ db.o: ../../db/db.c
+ 	$(CL) -g -o $@ $<
+ db.os: ../../db/db.c
+-	$(CL) -fpic -o $@ $<
++	$(CL) -fPIC -o $@ $<
+ mpool.o: ../../mpool/mpool.c
+ 	$(CL) -g -o $@ $<
+ mpool.os: ../../mpool/mpool.c
+-	$(CL) -fpic -o $@ $<
++	$(CL) -fPIC -o $@ $<
+ %.o: ../../recno/%.c
+ 	$(CL) -I../../recno -g -o $@ $<
+ %.os: ../../recno/%.c
+-	$(CL) -I../../recno -fpic -o $@ $<
++	$(CL) -I../../recno -fPIC -o $@ $<

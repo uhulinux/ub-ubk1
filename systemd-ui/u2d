@@ -1,2 +1,0 @@
-urllist http://www.freedesktop.org/software/systemd/ | grep ui | parsever | sort -V | tail -n 1
-

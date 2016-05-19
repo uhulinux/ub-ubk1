@@ -1,1 +1,0 @@
-sflist heroes heroes-data | sort -V | tail -n 1

@@ -1,1 +1,0 @@
-urllist http://pkgs.fedoraproject.org/repo/pkgs/pingus/ | splitver '^pingus-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

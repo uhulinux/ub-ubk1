@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Marathon-${UB_VERSION}-Data.zip .
-	http://files3.bungie.org/trilogy/

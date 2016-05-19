@@ -1,2 +1,0 @@
-sflist trackballs trackballs | sort -V | tail -n 1
-

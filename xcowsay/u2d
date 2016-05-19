@@ -1,1 +1,0 @@
-urllist http://www.nickg.me.uk/files/ | splitver '^xcowsay-([0-9.]+).tar.gz$' | sort -V | tail -n 1

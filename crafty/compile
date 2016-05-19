@@ -1,4 +1,0 @@
-#!/bin/sh -eux
-
-sed -i '/PopCnt/s/arg1/x/' boolean.c
-make unix-gcc-profile

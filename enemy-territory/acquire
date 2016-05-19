@@ -1,7 +1,0 @@
-#!/usr/bin/env dl
-
-et-linux-${UB_VERSION}.x86.run
-	ftp://home.oppserver.net/unix/games/et/
-
-ET-${UB_VERSION}b.zip .
-	ftp://ftp.idsoftware.com/idstuff/et/

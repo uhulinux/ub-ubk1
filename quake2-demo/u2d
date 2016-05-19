@@ -1,1 +1,0 @@
-urllist ftp://ftp.fu-berlin.de/pc/games/idgames/idstuff/quake2/ | splitver '^q2-([0-9]+)-demo-x86.exe$'| sort -V | tail -n 1

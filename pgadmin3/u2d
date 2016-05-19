@@ -1,1 +1,0 @@
-urllist http://ftp.postgresql.org/pub/pgadmin3/release/ | sed -e' s/-/~/g' | tr -d 'v' | grep -E '^([0-9.]+)$' | sort -V | tail -n 1

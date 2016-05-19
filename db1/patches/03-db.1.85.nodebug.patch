@@ -1,0 +1,30 @@
+--- db.1.85/PORT/linux/Makefile	Thu Aug 16 18:47:21 2001
++++ db.1.85/PORT/linux/Makefile	Thu Aug 16 18:47:29 2001
+@@ -45,22 +45,22 @@
+ db_dump185.o: db_dump185.c
+ 	$(CL) -o $@ $<
+ %.o: ../../hash/%.c
+-	$(CL) -I../../hash -g -o $@ $<
++	$(CL) -I../../hash -o $@ $<
+ %.os: ../../hash/%.c
+ 	$(CL) -I../../hash -fPIC -o $@ $<
+ %.o: ../../btree/%.c
+-	$(CL) -I../../btree -g -o $@ $<
++	$(CL) -I../../btree -o $@ $<
+ %.os: ../../btree/%.c
+ 	$(CL) -I../../btree -fPIC -o $@ $<
+ db.o: ../../db/db.c
+-	$(CL) -g -o $@ $<
++	$(CL) -o $@ $<
+ db.os: ../../db/db.c
+ 	$(CL) -fPIC -o $@ $<
+ mpool.o: ../../mpool/mpool.c
+-	$(CL) -g -o $@ $<
++	$(CL) -o $@ $<
+ mpool.os: ../../mpool/mpool.c
+ 	$(CL) -fPIC -o $@ $<
+ %.o: ../../recno/%.c
+-	$(CL) -I../../recno -g -o $@ $<
++	$(CL) -I../../recno -o $@ $<
+ %.os: ../../recno/%.c
+ 	$(CL) -I../../recno -fPIC -o $@ $<

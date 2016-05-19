@@ -1,1 +1,0 @@
-urllist http://www.hinterbergen.de/mala/min12xx/ | parsever | sort -V | tail -n 1

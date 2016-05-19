@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=xawtv
-Comment=TV viewer
-Comment[hu]=TV-néző program
-Exec=xawtv
-Icon=/usr/share/pixmaps/xawtv48x48.xpm
-Type=Application
-Categories=AudioVideo;Video;TV;

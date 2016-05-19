@@ -1,2 +1,0 @@
-urllist https://handbrake.fr/downloads.php | sed s/.*Hand/Hand/g | splitver '^HandBrake-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
-

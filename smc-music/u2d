@@ -1,2 +1,0 @@
-urllist https://sourceforge.net/projects/smclone/files/Addon%20-%20Music/ | splitver '^([0-9.]+)$' | sort -V | tail -n 1
-

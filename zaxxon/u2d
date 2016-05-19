@@ -1,1 +1,0 @@
-urllist https://www.allegro.cc/depot/ZaxxonRetroRemake/ | splitver '^1503#zaxrr.wip.([0-9.]+).tgz$' | sort -V | tail -n1

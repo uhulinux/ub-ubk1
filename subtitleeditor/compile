@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-autoreconf -vif
-ub_compile \
-	--enable-ccache \
-	--with-default-audio-sink=pulsesink \
-	--with-default-video-sink=xvimagesink

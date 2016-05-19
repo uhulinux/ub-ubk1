@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-mkdir -p ${UB_INSTALLDIR}/usr/share/{geogebra,pixmaps}
-cp geogebra/* -t ${UB_INSTALLDIR}/usr/share/geogebra/
-convert geogebra-logo.svg ${UB_INSTALLDIR}/usr/share/pixmaps/geogebra.png

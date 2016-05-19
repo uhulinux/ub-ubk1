@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-
-export CFLAGS=" -O0 -march=i686 -mtune=generic "
-ub_compile
-

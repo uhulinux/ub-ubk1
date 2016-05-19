@@ -1,1 +1,0 @@
-urllist http://launchpad.net/ndisgtk/ | parsever | sort -V | tail -n 1

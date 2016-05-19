@@ -1,9 +1,0 @@
-gst-libav
-gst-plugins-bad
-gst-plugins-good
-gst-plugins-ugly
-gtk
-intltool
-libnotify
-python3
-xdg-user-dirs-gtk

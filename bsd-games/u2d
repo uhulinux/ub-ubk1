@@ -1,1 +1,0 @@
-urllist http://ibiblio.org/pub/Linux/games/ | splitver '^bsd-games-([0-9.]+).tar.gz$' | sort -V | tail -n 1

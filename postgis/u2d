@@ -1,1 +1,0 @@
-urllist http://download.osgeo.org/postgis/source/ | parsever | sort -V | tail -n 1

@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-ub_compile
-cd po
-make update-gmo

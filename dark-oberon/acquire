@@ -1,7 +1,0 @@
-#!/usr/bin/env dl
-
-dark-oberon-${UB_VERSION/~/-}.tar.gz dark-oberon-${UB_VERSION/~/-}/
-      http://downloads.sourceforge.net/dark-oberon/
-
-#dark-oberon-1.0.2-0.rc2.4mdv2010.0.src.rpm dark-oberon-1.0.2-RC2.tar.lzma dark-oberon-1.0.2-RC2/
-#	ftp://ftp.uwsg.indiana.edu/linux/mandrake/official/2010.0/SRPMS/contrib/release/

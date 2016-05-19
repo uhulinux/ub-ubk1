@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-anki-${UB_VERSION}.tgz anki-${UB_VERSION}/
-	http://ankisrs.net/download/mirror/

@@ -1,1 +1,0 @@
-sflist mnemosyne-proj mnemosyne | splitver '^mnemosyne-([0-9.]+)$' | sort -V | tail -n 1

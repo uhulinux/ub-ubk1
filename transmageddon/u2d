@@ -1,1 +1,0 @@
-urllist http://www.linuxrising.org/files/ | parsever | sort -V | tail -n 1

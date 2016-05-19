@@ -1,1 +1,0 @@
-sflist pinball pinball | splitver '^pinball-([0-9.]+)$' | sort -V | tail -n 1

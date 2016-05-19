@@ -1,7 +1,0 @@
-#!/usr/bin/env dl
-
-skype-${UB_VERSION}.tar.bz2 skype-${UB_VERSION}/
-	http://download.skype.com/linux/
-
-skype_hu_${UB_VERSION}.tar.gz . :lang/
-	http://urbalazs.hu/blog/uploads/	

@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-# --with-external-ffmpeg is mehetne, csak rengeteg a linker hiba...
-
-ub_compile \
-	--disable-x264

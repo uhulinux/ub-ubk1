@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-DESTDIR="$UB_INSTALLDIR" \
-	./install.sh \
-	/usr

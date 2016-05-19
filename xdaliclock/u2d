@@ -1,2 +1,0 @@
-urllist http://pkgs.fedoraproject.org/repo/pkgs/xdaliclock/ | parsever | sort -V | tail -n 1
-

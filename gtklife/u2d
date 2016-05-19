@@ -1,1 +1,0 @@
-urllist http://ironphoenix.org/tril/gtklife/ | parsever | sort -V | tail -n 1

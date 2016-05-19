@@ -1,1 +1,0 @@
-urllist http://download.savannah.gnu.org/releases/bino/ | parsever | sort -V | tail -n 1

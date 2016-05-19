@@ -1,2 +1,0 @@
-dir=$(sflist bombono bombono-dvd | sort -V | tail -n 1)
-sflist bombono bombono-dvd/$dir/ | parsever  | sort -V | tail -n 1

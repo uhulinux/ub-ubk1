@@ -1,1 +1,0 @@
-urllist https://archive.apache.org/dist/openoffice/ | grep -E '^[0-9.]+$' | sort -V | tail -n 1

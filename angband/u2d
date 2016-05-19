@@ -1,3 +1,0 @@
-MAJORMINOR=$(urllist http://rephial.org/downloads/ | grep -E '^[0-9]+\.[0-9]+' | sort -V | tail -n 1)
-urllist http://rephial.org/downloads/$MAJORMINOR/ | splitver '^angband-([0-9]+\.[0-9]+\.[0-9]+)\.tar\.gz' | sort -V | tail -n 1
-

@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_install
-
-mkdir -p "$UB_INSTALLDIR"/usr/share/mime/packages
-cp anki.xml "$UB_INSTALLDIR"/usr/share/mime/packages

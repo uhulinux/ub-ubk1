@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=CriticalMass
-Type=Application
-Icon=critter
-Exec=critter
-StartupNotify=true
-Categories=Game;ArcadeGame;

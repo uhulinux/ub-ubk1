@@ -1,1 +1,0 @@
-urllist http://criticalmass.sourceforge.net/ | sed s/?download// | splitver '^CriticalMass-([0-9.]+).tar.bz2$' | sort -V | tail -n 1

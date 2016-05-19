@@ -1,4 +1,0 @@
-#!/bin/sh -eux
-
-ub_make \
-	 -f makefile_linux_utf8

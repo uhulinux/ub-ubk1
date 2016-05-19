@@ -1,7 +1,0 @@
-#!/usr/bin/env dl
-
-Audacity-${UB_VERSION}.tar.gz audacity-Audacity-${UB_VERSION}/
-	https://github.com/audacity/audacity/archive/
-
-#audacity-${UB_VERSION}.tar.gz audacity-6c73bab/
-#	git://github.com/audacity/audacity.git@6c73bab

@@ -1,7 +1,0 @@
-#!/usr/bin/env dl
-
-AlephOne-${UB_VERSION_TAIL1}.tar.bz2 AlephOne-${UB_VERSION_TAIL1}/
-	http://download.sourceforge.net/marathon/
-
-README.md
-	http://download.sourceforge.net/marathon/
