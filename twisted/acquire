@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Twisted-${UB_VERSION}.tar.bz2 Twisted-${UB_VERSION}/
-	http://pypi.python.org/packages/source/T/Twisted/

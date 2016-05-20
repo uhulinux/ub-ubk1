@@ -1,0 +1,12 @@
+diff -Naur orig/coherence/__init__.py mod/coherence/__init__.py
+--- orig/coherence/__init__.py	2010-01-02 16:35:20.000000000 +0100
++++ mod/coherence/__init__.py	2016-05-20 16:07:43.132974160 +0200
+@@ -24,8 +24,6 @@
+     if twisted_version < Version("twisted", 2, 5, 0):
+         raise ImportError("Twisted >= 2.5 is required. Please install it.")
+ 
+-    if twisted_web_version < Version("twisted.web", 2, 5, 0):
+-        raise ImportError("Twisted.Web >= 2.5 is required. Please install it")
+ except ImportError, exc:
+     # log error to stderr, might be useful for debugging purpose
+     for arg in exc.args:
