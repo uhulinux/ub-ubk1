@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Komodo Edit 8
+Name=Komodo Edit
 GenericName=Editor
 Comment=Free multi-platform editor that makes it easy to write quality code.
 Exec=komodo %F
