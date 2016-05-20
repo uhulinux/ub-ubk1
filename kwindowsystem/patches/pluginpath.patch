@@ -1,9 +1,0 @@
-diff -Naur orig/src/config-kwindowsystem.h.cmake patched/src/config-kwindowsystem.h.cmake
---- orig/src/config-kwindowsystem.h.cmake	2015-08-04 13:44:33.000000000 +0200
-+++ patched/src/config-kwindowsystem.h.cmake	2015-11-07 03:48:59.123910926 +0100
-@@ -10,4 +10,4 @@
- #cmakedefine01 KWINDOWSYSTEM_HAVE_XRENDER
- 
- /* Path to xcb plugin */
--#define XCB_PLUGIN_PATH "${CMAKE_INSTALL_PREFIX}/${PLUGIN_INSTALL_DIR}/org.kde.kwindowsystem.platforms/KF5WindowSystemX11Plugin.so"
-+#define XCB_PLUGIN_PATH "${PLUGIN_INSTALL_DIR}/kf5/org.kde.kwindowsystem.platforms/KF5WindowSystemX11Plugin.so"
