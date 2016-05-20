@@ -7,6 +7,6 @@ python-chardet
 python-mako
 python-notify
 python-setuptools
+python-twisted
 pyxdg
-twisted
 twisted-web2

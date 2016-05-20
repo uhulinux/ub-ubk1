@@ -7,6 +7,6 @@ libxslt
 loudmouth-dev
 openssl-dev
 python-dev
+python-twisted
 sqlite-dev
 telepathy-glib-dev
-twisted
