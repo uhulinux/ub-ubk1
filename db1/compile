@@ -1,4 +1,0 @@
-#!/bin/sh -eux
-
-cd PORT/linux
-ub_compile
