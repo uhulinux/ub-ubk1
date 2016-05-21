@@ -1,0 +1,30 @@
+diff -Naur orig/main/fpicker/source/unx/kde4/KDE4FilePicker.cxx patched/main/fpicker/source/unx/kde4/KDE4FilePicker.cxx
+--- orig/main/fpicker/source/unx/kde4/KDE4FilePicker.cxx	2014-02-25 09:19:17.000000000 +0100
++++ patched/main/fpicker/source/unx/kde4/KDE4FilePicker.cxx	2014-05-04 23:44:35.523209507 +0200
+@@ -51,7 +51,12 @@
+ #define Region QtXRegion
+ 
+ //kde has an enum that uses this...OO does too
++#define LO_SETTINGS_MOUSE SETTINGS_MOUSE
+ #undef SETTINGS_MOUSE
++#define LO_SETTINGS_LOCALE SETTINGS_LOCALE
++#undef SETTINGS_LOCALE
++#define LO_SETTINGS_STYLE SETTINGS_STYLE
++#undef SETTINGS_STYLE
+ 
+ #include <kfiledialog.h>
+ #include <kwindowsystem.h>
+@@ -64,6 +69,13 @@
+ 
+ #undef Region
+ 
++#define SETTINGS_MOUSE LO_SETTINGS_MOUSE
++#undef LO_SETTINGS_MOUSE
++#define SETTINGS_LOCALE LO_SETTINGS_LOCALE
++#undef LO_SETTINGS_LOCALE
++#define SETTINGS_STYLE LO_SETTINGS_STYLE
++#undef LO_SETTINGS_STYLE
++
+ using namespace ::com::sun::star;
+ 
+ using namespace ::com::sun::star::ui::dialogs;

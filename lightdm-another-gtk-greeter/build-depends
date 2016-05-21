@@ -1,0 +1,7 @@
+gnome-common
+gnome-doc-utils
+gobject-introspection-dev
+gtk-dev
+intltool
+libxkbfile-dev
+lightdm-dev

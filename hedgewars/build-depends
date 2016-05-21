@@ -1,0 +1,15 @@
+cmake
+ffmpeg-dev
+freeglut-dev
+freepascal
+libx11-dev
+libxext-dev
+libxt-dev
+lua-dev
+physfs-dev
+qt4-dev
+sdl-dev
+sdl-image-dev
+sdl-mixer-dev
+sdl-net-dev
+sdl-ttf-dev

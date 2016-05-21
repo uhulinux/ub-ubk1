@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pgadmin3-${UB_VERSION}.tar.gz pgadmin3-${UB_VERSION}/
+	http://ftp.postgresql.org/pub/pgadmin3/release/v${UB_VERSION}/src/

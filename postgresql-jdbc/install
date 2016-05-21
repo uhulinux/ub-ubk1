@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/postgresql
+cp *.jar "$UB_INSTALLDIR"/usr/lib/postgresql/

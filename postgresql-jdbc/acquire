@@ -1,0 +1,13 @@
+#!/usr/bin/env dl
+
+postgresql-${UB_VERSION_HEAD2}-${UB_VERSION_TAIL1}.jdbc2.jar
+	http://jdbc.postgresql.org/download/
+
+postgresql-${UB_VERSION_HEAD2}-${UB_VERSION_TAIL1}.jdbc2ee.jar
+	http://jdbc.postgresql.org/download/
+
+postgresql-${UB_VERSION_HEAD2}-${UB_VERSION_TAIL1}.jdbc3.jar
+	http://jdbc.postgresql.org/download/
+
+postgresql-${UB_VERSION_HEAD2}-${UB_VERSION_TAIL1}.jdbc4.jar
+	http://jdbc.postgresql.org/download/

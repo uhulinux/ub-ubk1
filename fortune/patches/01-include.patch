@@ -1,0 +1,12 @@
+diff -urN fortune-1.0.orig/fortune.c fortune-1.0/fortune.c
+--- fortune-1.0.orig/fortune.c	2002-12-29 22:06:03.000000000 +0100
++++ fortune-1.0/fortune.c	2002-12-29 22:06:55.000000000 +0100
+@@ -19,7 +19,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+-/* #include <stdio.h> */
++#include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <time.h>

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+3dduke${UB_VERSION/./}.zip .
+     ftp://ftp.gamers.org/pub/mirrors/ftp.3drealms.com/share/

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+lrelease-qt5 qpdfview.pro
+qmake-qt5 qpdfview.pro
+make

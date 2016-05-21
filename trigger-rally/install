@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+adatdir="$UB_INSTALLDIR"/usr/share/games/trigger/trigger-${UB_VERSION}-data
+mkdir -p "$adatdir"
+install -m775 trigger $UB_INSTALLDIR/usr/bin/trigger
+mv trigger-rally-${UB_VERSION}-data/* "$adatdir"/
+chown -R :users "$adatdir" 
+chmod -R g+rw "$adatdir"

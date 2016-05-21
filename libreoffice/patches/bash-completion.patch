@@ -1,0 +1,38 @@
+From 2ec813b4bb8340dea7e4f04cf571a2b2d88a7626 Mon Sep 17 00:00:00 2001
+From: rezso <rezso@rezso.net>
+Date: Sat, 26 Dec 2015 10:51:22 +0100
+Subject: [PATCH] don't use bash completion compatibility dir
+
+Change-Id: I575f6fc9c1605bb7ec07842928f85c2eeadc72f8
+Reviewed-on: https://gerrit.libreoffice.org/20954
+Reviewed-by: rezso <rezso@rezso.net>
+Reviewed-by: Miklos Vajna <vmiklos@collabora.co.uk>
+Tested-by: Miklos Vajna <vmiklos@collabora.co.uk>
+---
+ bin/distro-install-desktop-integration |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/bin/distro-install-desktop-integration b/bin/distro-install-desktop-integration
+index ed31d5b..e9332aa 100755
+--- a/bin/distro-install-desktop-integration
++++ b/bin/distro-install-desktop-integration
+@@ -178,12 +178,12 @@ ln -sf $INSTALLDIR/program/soffice $DESTDIR$PREFIXDIR/bin/soffice
+ test -f $DESTDIR/gid_Module_Root_Brand && echo "$PREFIXDIR/bin/soffice" >>$DESTDIR/gid_Module_Root_Brand
+ 
+ # create bash completion
+-mkdir -p $DESTDIR/etc/bash_completion.d
+-./bin/generate-bash-completion bin/bash-completion.in $DESTDIR/etc/bash_completion.d/$INSTALLDIRNAME.sh
+-test -f $DESTDIR/gid_Module_Root_Brand && echo "/etc/bash_completion.d/$INSTALLDIRNAME.sh" >>$DESTDIR/gid_Module_Root_Brand
++mkdir -p $DESTDIR/usr/share/bash-completion/completions
++./bin/generate-bash-completion bin/bash-completion.in $DESTDIR/usr/share/bash-completion/completions/$INSTALLDIRNAME.sh
++test -f $DESTDIR/gid_Module_Root_Brand && echo "/usr/share/bash-completion/completions/$INSTALLDIRNAME.sh" >>$DESTDIR/gid_Module_Root_Brand
+ if test "$WITH_COMPAT_OOWRAPPERS" = "TRUE" ; then
+-    ./bin/generate-bash-completion --compat-oowrappers bin/bash-completion.in $DESTDIR/etc/bash_completion.d/ooffice.sh
+-    test -f $DESTDIR/gid_Module_Root_Brand && echo "/etc/bash_completion.d/ooffice.sh" >>$DESTDIR/gid_Module_Root_Brand
++    ./bin/generate-bash-completion --compat-oowrappers bin/bash-completion.in $DESTDIR/usr/share/bash-completion/completions/ooffice.sh
++    test -f $DESTDIR/gid_Module_Root_Brand && echo "/usr/share/bash-completion/completions/ooffice.sh" >>$DESTDIR/gid_Module_Root_Brand
+ fi
+ 
+ echo "Install $OOINSTDIR/basis$VERSION/program/java-set-classpath";
+-- 
+1.7.9.5

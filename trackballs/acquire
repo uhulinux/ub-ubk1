@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+trackballs-${UB_VERSION}.tar.gz trackballs-${UB_VERSION}/
+	http://downloads.sourceforge.net/trackballs/

@@ -1,0 +1,47 @@
+--- convert-dictionary
++++ convert-dictionary
+@@ -0,0 +1,17 @@
++#!/usr/bin/perl
++
++use strict;
++use warnings;
++use Encode qw/from_to/;
++
++my $delim = $ARGV[0];
++my $charset1 = $ARGV[1];
++my $charset2 = $ARGV[2];
++
++while (<STDIN>) {
++	my ($s1, $s2) = split('\\'.$delim, $_, 2);
++	from_to($s1, $charset1, "UTF-8");
++	from_to($s2, $charset2, "UTF-8") if defined $s2;
++	print $s1;
++	print $delim . $s2 if defined $s2;
++}
+--- read-utf8-dictionary.patch
++++ read-utf8-dictionary.patch
+@@ -0,0 +1,24 @@
++--- Buffer.java
+++++ Buffer.java
++@@ -36,10 +36,18 @@
++             if(entry != null)
++             {
++                 int offset = 0;
++-                int loadedBytesCount = 0;
++-                int entryLength = (int)entry.getSize();
+++                int loadedBytesCount = 0; // Wrong name, should be loadedCharactersCount!
+++                int entryLength = 0;
+++                buffer = new char[4096];
+++                InputStreamReader isr = new InputStreamReader(zf.getInputStream(entry), "UTF-8");
+++                while(loadedBytesCount >= 0)
+++                {
+++                    entryLength += loadedBytesCount;
+++                    loadedBytesCount = isr.read(buffer, 0, 4096);
+++                }
+++                loadedBytesCount = 0;
++                 buffer = new char[entryLength];
++-                InputStreamReader isr = new InputStreamReader(zf.getInputStream(entry));
+++                isr = new InputStreamReader(zf.getInputStream(entry), "UTF-8");
++                 do
++                 {
++                     if(loadedBytesCount >= entryLength)

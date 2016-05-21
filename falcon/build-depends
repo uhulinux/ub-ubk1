@@ -1,0 +1,5 @@
+cmake
+curl-dev
+gtk2-dev
+pcre-dev
+sqlite-dev

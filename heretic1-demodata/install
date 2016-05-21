@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+gamesdir="$UB_INSTALLDIR"/usr/share/games
+mkdir -p "$gamesdir"/{heretic,vavoom}
+cp heretic1.wad "$gamesdir"/heretic/
+ln -s "$gamesdir"/heretic/heretic1.wad "$gamesdir"/vavoom/heretic1.wad

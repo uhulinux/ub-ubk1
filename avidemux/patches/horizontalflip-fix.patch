@@ -1,0 +1,17 @@
+diff -Naur orig/avidemux_plugins/ADM_videoFilters6/horizontalFlip/CMakeLists.txt mod/avidemux_plugins/ADM_videoFilters6/horizontalFlip/CMakeLists.txt
+--- orig/avidemux_plugins/ADM_videoFilters6/horizontalFlip/CMakeLists.txt	2015-06-10 07:42:47.000000000 +0200
++++ mod/avidemux_plugins/ADM_videoFilters6/horizontalFlip/CMakeLists.txt	2015-07-25 14:31:00.636869211 +0200
+@@ -1,9 +1,9 @@
+ INCLUDE(vf_plugin)
+ 
+ 
+-SET(ADM_hf_hflip_SRCS horizontalFlip.cpp)
++SET(ADM_vf_hflip_SRCS horizontalFlip.cpp)
+ 
+-ADD_VIDEO_FILTER(ADM_hf_hflip ${ADM_hf_hflip_SRCS})
++ADD_VIDEO_FILTER(ADM_vf_hflip ${ADM_vf_hflip_SRCS})
+ 
+-INIT_VIDEO_FILTER(ADM_hf_hflip)
+-INSTALL_VIDEO_FILTER(ADM_hf_hflip)
++INIT_VIDEO_FILTER(ADM_vf_hflip)
++INSTALL_VIDEO_FILTER(ADM_vf_hflip)

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+vice-${UB_VERSION}.tar.gz vice-${UB_VERSION}/
+	http://downloads.sourceforge.net/vice-emu/releases/

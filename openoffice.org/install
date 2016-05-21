@@ -1,0 +1,33 @@
+#!/bin/sh -eux
+
+cd main
+
+source ./LinuxX86Env.Set.sh
+ 
+export DESTDIR="$UB_INSTALLDIR"
+export KDEMAINDIR=/usr
+export GNOMEDIR=/usr
+export ICON_SOURCE_DIR="$UB_COMPILEDIR"/main/sysui/desktop/icons
+export GNOME_MIME_THEME=hicolor
+
+dmake install DESTDIR="$UB_INSTALLDIR" prefix=/usr/lib
+
+# desktop fájlok, ikonok, mime típusok etc.
+# a 'dmake install' valamiért nem csinálja meg.
+
+dmake sysui
+
+cd sysui/"$INPATH"/misc/openoffice
+./create_tree.sh
+
+# nincs cde
+rm -f "$UB_INSTALLDIR"/usr/lib/openoffice4/program/cde-open-url
+
+# az /usr/bin/soffice a libreoffice csomagban már létezik
+rm -f "$UB_INSTALLDIR"/usr/bin/soffice
+ln -sf /usr/lib/openoffice4/program/soffice "$UB_INSTALLDIR"/usr/bin/ooffice
+
+# compatibility links
+ln -s openoffice4 "$UB_INSTALLDIR"/usr/bin/openoffice
+ln -s openoffice4 "$UB_INSTALLDIR"/usr/bin/OpenOffice.org
+ln -s openoffice4 "$UB_INSTALLDIR"/usr/bin/openoffice.org

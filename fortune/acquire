@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+fortune-${UB_VERSION}.tar.gz fortune-${UB_VERSION}/
+	http://download.ubk.hu/src/uhu/fortune/

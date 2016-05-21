@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+bombono-dvd-${UB_VERSION}.tar.bz2 bombono-dvd-${UB_VERSION}/
+	http://downloads.sourceforge.net/bombono/

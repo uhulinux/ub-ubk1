@@ -1,0 +1,9 @@
+#!/bin/sh -eux
+
+etdir=$UB_INSTALLDIR/usr/share/games/enemy-territory
+mkdir -p $etdir
+install -Dm 755 {et,etded}.x86 $etdir/
+mv {etmain,pb} $etdir/
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/pixmaps
+mv ET.xpm "$UB_INSTALLDIR"/usr/share/pixmaps/enemy-territory.xpm

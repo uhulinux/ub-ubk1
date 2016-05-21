@@ -1,0 +1,11 @@
+gnuchess
+gstreamer0.10-dev
+gtk2-dev
+intltool
+librsvg-dev
+libvorbis-dev
+pygtk-dev
+pysqlite
+pyxml
+sqlite-dev
+texinfo

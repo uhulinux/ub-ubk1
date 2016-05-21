@@ -1,0 +1,11 @@
+diff -Naur xdtv-2.4.1cvs15-orig//alevt/exp-gfx.c xdtv-2.4.1cvs15//alevt/exp-gfx.c
+--- xdtv-2.4.1cvs15-orig//alevt/exp-gfx.c	2006-08-09 16:57:46.000000000 +0200
++++ xdtv-2.4.1cvs15//alevt/exp-gfx.c	2011-10-27 21:06:25.000000000 +0200
+@@ -3,6 +3,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <zlib.h>
+ 
+ #include "lang.h"
+ #include "export.h"

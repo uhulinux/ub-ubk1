@@ -1,0 +1,17 @@
+#!/bin/bash -eux
+
+./configure \
+	--disable-hardening \
+	--disable-java \
+	--disable-docs \
+	--target-arch=x86 \
+	--target-cpu=i686 \
+	--with-linux="$(echo /lib/modules/*.i386/build/)"
+
+source ./env.sh
+kmk all
+
+cd ./out/linux.x86/release/bin/src
+ub_make \
+	KERN_DIR="/usr/src/`readlink /usr/src/linux`"
+

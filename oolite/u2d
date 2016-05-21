@@ -1,0 +1,2 @@
+urllist https://github.com/OoliteProject/oolite/releases/ | splitver '^([0-9.abc]+).tar.gz$' | sort -V | tail -n1
+

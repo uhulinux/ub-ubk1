@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Frozen Bubble Editor
+Exec=frozen-bubble-editor
+Comment=Level editor
+Comment[hu]=Pályaszerkesztő
+Icon=/usr/share/frozen-bubble/gfx/menu/small_ping.png
+Categories=Game;ArcadeGame;

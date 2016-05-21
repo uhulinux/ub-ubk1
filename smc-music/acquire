@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+SMC_Music_${UB_VERSION}_high.zip .
+    http://download.sourceforge.net/smclone/

@@ -1,0 +1,58 @@
+diff -Naur orig/distro-configs/LibreOfficeUHU.conf patched/distro-configs/LibreOfficeUHU.conf
+--- orig/distro-configs/LibreOfficeUHU.conf	1970-01-01 01:00:00.000000000 +0100
++++ patched/distro-configs/LibreOfficeUHU.conf	2015-11-15 01:30:53.063469986 +0100
+@@ -0,0 +1,54 @@
++--build=i686-linux
++--host=i686-linux
++--prefix=/usr
++--sysconfdir=/etc
++--localstatedir=/var
++--mandir=/usr/share/man
++--infodir=/usr/share/info
++--with-lang=en-GB hu
++--with-vendor=ubk.hu
++--with-help
++--with-fonts
++--with-external-tar=src
++--with-system-libs
++--with-system-headers
++--without-java
++--without-system-npapi-headers
++--without-system-jars
++--without-system-bluez
++--without-system-graphite
++--without-system-libabw
++--without-system-libcdr
++--without-system-libcmis
++--without-system-libebook
++--without-system-libexttextcat
++--without-system-libfreehand
++--without-system-libmspub
++--without-system-libmwaw
++--without-system-libpagemaker
++--without-system-lpsolve
++--without-system-mysql-cppconn
++--without-system-mythes
++--without-system-orcus
++--disable-fetch-external
++--disable-coinmp
++--disable-dbgutil
++--disable-debug
++--disable-gltf
++--disable-gstreamer-0-10
++--disable-tde
++--disable-tdeab
++--disable-liblangtag
++--disable-odk
++--disable-firebird-sdbc
++--disable-pdfimport
++--enable-postgresql-sdbc
++--enable-crashdump
++--enable-gstreamer-1-0
++--enable-python
++--enable-extra-font
++--enable-ext-mariadb-connector
++--enable-ext-nlpsolver
++--enable-gio
++--enable-gtk3
++--enable-release-build

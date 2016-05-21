@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+opensfx-${UB_VERSION}.zip opensfx-${UB_VERSION}/
+	http://bundles.openttdcoop.org/opensfx/releases/

@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+mkdir download
+cp x265-9329-0d30d2641875-1.5.tar.bz2 \
+    fdk-aac-v0.1.1-6-gbae4553.tar.bz2 \
+    download/
+
+./configure \
+    --prefix=/usr \
+    --force \
+    --disable-gtk-update-checks
+cd build
+make

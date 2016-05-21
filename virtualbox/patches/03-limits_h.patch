@@ -1,0 +1,11 @@
+diff -Naur orig/src/VBox/Devices/Storage/DrvHostDVD.cpp patched/src/VBox/Devices/Storage/DrvHostDVD.cpp
+--- orig/src/VBox/Devices/Storage/DrvHostDVD.cpp	2014-07-15 19:24:35.000000000 +0200
++++ patched/src/VBox/Devices/Storage/DrvHostDVD.cpp	2014-08-30 15:04:36.659208694 +0200
+@@ -35,6 +35,7 @@
+ # define USE_MEDIA_POLLING
+ 
+ #elif defined RT_OS_LINUX
++# include <limits.h>
+ # include <sys/ioctl.h>
+ # include <linux/version.h>
+ /* All the following crap is apparently not necessary anymore since Linux

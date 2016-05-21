@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_make \
+	DATADIR=/usr/share \
+	LIBDIR=/usr/lib

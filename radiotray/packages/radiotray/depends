@@ -1,0 +1,9 @@
+gst0.10-plugins-bad
+gst0.10-plugins-base
+gst0.10-plugins-good
+gst0.10-plugins-ugly
+gst0.10-python
+libappindicator
+python
+python-lxml
+pyxdg

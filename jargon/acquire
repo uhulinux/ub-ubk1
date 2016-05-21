@@ -1,0 +1,6 @@
+#!/usr/bin/env dl
+
+jargon-${UB_VERSION}.tar.gz jargon-${UB_VERSION}/html :/usr/share/jargon
+	http://www.catb.org/~esr/jargon/
+	ftp://ftp.fu-berlin.de/doc/jargon/
+	http://binhex.eu.org/docs/

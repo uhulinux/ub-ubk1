@@ -1,0 +1,2 @@
+dir=$(sflist simutrans pak64/ | grep -E '^([0-4])' | sort | tail -n 1)
+sflist simutrans pak64/"$dir"/ | splitver '^simupak64-([0-9\-]+).zip$' | sed s%-%\.%g | sort -V | tail -n 1

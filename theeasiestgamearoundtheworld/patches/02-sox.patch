@@ -1,0 +1,21 @@
+diff -urN theeasiestgamearoundtheworld.orig/theeasiestgamearoundtheworld theeasiestgamearoundtheworld/theeasiestgamearoundtheworld
+--- theeasiestgamearoundtheworld.orig/theeasiestgamearoundtheworld	1999-08-06 00:24:07.000000000 +0200
++++ theeasiestgamearoundtheworld/theeasiestgamearoundtheworld	2003-05-09 16:14:16.000000000 +0200
+@@ -12,7 +12,7 @@
+ proc shooting {} {
+ global labelvar
+ after 20
+-exec wavplay -q reload.wav &
++exec play reload.wav &
+ hunt configure -file hunter2.gif
+ update
+ after 100
+@@ -25,7 +25,7 @@
+ hunt configure -file hunter4.gif
+ update
+ after 1000
+-exec wavplay -q fire.wav &
++exec play fire.wav &
+ hunt configure -file hunter5.gif
+ update
+ after 40

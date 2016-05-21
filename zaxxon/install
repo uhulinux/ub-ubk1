@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+sharedir="$UB_INSTALLDIR"/usr/share
+datadir="$sharedir"/games/zaxxon
+pixmapdir=$sharedir/pixmaps
+mkdir -p $datadir
+install --mode=644  *.dat $datadir/
+install --mode=755 zaxrr $datadir/
+chmod 0777 "$datadir"
+mkdir -p $pixmapdir
+cp zax80x80.png $pixmapdir/zaxxon.png

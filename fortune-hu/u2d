@@ -1,0 +1,1 @@
+urllist http://download.ubk.hu/src/uhu/fortune-hu/ | splitver '^fortune-hu-([0-9.]+).tar.gz$' | sort -V | tail -n 1

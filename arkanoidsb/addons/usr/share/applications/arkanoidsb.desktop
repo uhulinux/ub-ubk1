@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Arkanoidsb
+GenericName=Arkanoid Space Ball
+GenericName[hu]=Arkanoid űrlabda
+Comment=New generation of arkanoid style game.
+Comment[hu]=Arkanoid játék új nemzedék
+Exec=arkanoidsb
+Categories=Game;ArcadeGame;
+Icon=/usr/share/games/arkanoidsb/arkanoidsb.png

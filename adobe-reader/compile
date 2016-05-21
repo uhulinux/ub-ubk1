@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+tail -c+6889 AdbeRdr9.5.5-1_i486linux_enu.bin | xz -qqd | tar x
+rm -rf AdbeRdr9.5.5-1_i486linux_enu.bin
+cd AdobeReader
+tar -xf COMMON.TAR
+tar -xf ILINXR.TAR
+rm -rf COMMON.TAR
+rm -rf ILINXR.TAR
+patch -p1 -i $UB_SRCDIR/patches/01-desktop.patch.skip
+patch -p1 -i $UB_SRCDIR/patches/02-prefs.patch.skip
+# Bug on log created by Adobe Reader browser plugin https://bugs.launchpad.net/ubuntu/+source/acroread/+bug/986841
+bspatch Adobe/Reader9/Browser/intellinux/nppdf.so Adobe/Reader9/Browser/intellinux/nppdf.so $UB_SRCDIR/patches/nppdf.bsdiff.skip

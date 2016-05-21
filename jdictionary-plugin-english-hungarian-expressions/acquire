@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+SmartEngHunExp-${UB_VERSION//./_}.jar
+	http://download.sourceforge.net/jdictionary/

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+celdir=$UB_INSTALLDIR/usr/share/games/openttd/data
+mkdir -p -m 755 $celdir
+install -m 644 o* $celdir/

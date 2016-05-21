@@ -1,0 +1,27 @@
+--- read-utf8-dictionary.patch
++++ read-utf8-dictionary.patch
+@@ -0,0 +1,24 @@
++--- Buffer.java
+++++ Buffer.java
++@@ -36,10 +36,18 @@
++             if(entry != null)
++             {
++                 int offset = 0;
++-                int loadedBytesCount = 0;
++-                int entryLength = (int)entry.getSize();
+++                int loadedBytesCount = 0; // Wrong name, should be loadedCharactersCount!
+++                int entryLength = 0;
+++                buffer = new char[4096];
+++                InputStreamReader isr = new InputStreamReader(zf.getInputStream(entry), "UTF-8");
+++                while(loadedBytesCount >= 0)
+++                {
+++                    entryLength += loadedBytesCount;
+++                    loadedBytesCount = isr.read(buffer, 0, 4096);
+++                }
+++                loadedBytesCount = 0;
++                 buffer = new char[entryLength];
++-                InputStreamReader isr = new InputStreamReader(zf.getInputStream(entry));
+++                isr = new InputStreamReader(zf.getInputStream(entry), "UTF-8");
++                 do
++                 {
++                     if(loadedBytesCount >= entryLength)

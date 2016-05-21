@@ -1,0 +1,21 @@
+diff -Naur orig/source/CMakeLists.txt mod/source/CMakeLists.txt
+--- orig/source/CMakeLists.txt	2008-10-23 21:20:17.000000000 +0200
++++ mod/source/CMakeLists.txt	2009-04-15 19:28:43.000000000 +0200
+@@ -961,7 +961,7 @@
+ "#!/bin/sh
+ # Needed to make symlinks/shortcuts work.
+ # the binaries must run with correct working directory
+-\"${CMAKE_INSTALL_PREFIX}/${BINDIR}/vavoom.bin\" $* -basedir \"${CMAKE_INSTALL_PREFIX}/${DATADIR}\" ${IWADDIR}
++\"/usr/${BINDIR}/vavoom.bin\" $* -basedir \"/usr/${DATADIR}\" ${IWADDIR}
+ exit $?
+ ")
+ 	install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/vavoom DESTINATION ${BINDIR})
+@@ -1011,7 +1011,7 @@
+ "#!/bin/sh
+ # Needed to make symlinks/shortcuts work.
+ # the binaries must run with correct working directory
+-\"${CMAKE_INSTALL_PREFIX}/${BINDIR}/vavoom-dedicated.bin\" $* -basedir \"${CMAKE_INSTALL_PREFIX}/${DATADIR}\" ${IWADDIR}
++\"/usr/${BINDIR}/vavoom-dedicated.bin\" $* -basedir \"/usr/${DATADIR}\" ${IWADDIR}
+ exit $?
+ ")
+ 	install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/vavoom-dedicated DESTINATION ${BINDIR})

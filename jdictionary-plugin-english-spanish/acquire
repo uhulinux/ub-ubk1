@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Smart_English_Spanish-${UB_VERSION//./_}.jar
+	http://download.sourceforge.net/jdictionary/

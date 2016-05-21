@@ -1,0 +1,1 @@
+urllist http://www.infodrom.org/projects/dbview/download/ | splitver '^dbview-([0-9.]+).tar.gz$' | sort -V | tail -n 1

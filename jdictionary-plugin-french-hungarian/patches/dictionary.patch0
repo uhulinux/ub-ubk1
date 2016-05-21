@@ -1,0 +1,21 @@
+--- dictionary.patch
++++ dictionary.patch
+@@ -0,0 +1,18 @@
++--- resources/dictionary/French_Hungarian
+++++ resources/dictionary/French_Hungarian
++@@ -3560,7 +3560,6 @@
++  hymne national m. | nemzeti himnusz |
++  hymne m. | himnusz |
++  hystérie f. | hisztéria |
++- háromszínû | tricolore |
++  hâte f. | sietség |
++  hâter | gyorsít |
++  hâter | siettet |
++@@ -7235,6 +7234,7 @@
++  tribunal m. | bíróság |
++  tricher | csal |
++  tricher | hamisan játszik |
+++ tricolore | háromszínű |
++  tricoter | köt |
++  trier | válogat |
++  trinquer | koccint |

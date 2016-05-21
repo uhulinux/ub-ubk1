@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+gamesdir="$UB_INSTALLDIR"/usr/share/games
+mkdir -p "$gamesdir"/{doom,vavoom}
+cp doom1.wad "$gamesdir"/doom/
+ln -s "$gamesdir"/doom/doom1.wad "$gamesdir"/vavoom/doom1.wad

@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+cd cpp
+qmake-qt5 PREFIX=$UB_INSTALLDIR
+make

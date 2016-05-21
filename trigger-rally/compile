@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+./autogen.sh
+adatdir=/usr/share/games/trigger/trigger-${UB_VERSION}-data
+ub_configure --datadir="$adatdir"
+jam -qa

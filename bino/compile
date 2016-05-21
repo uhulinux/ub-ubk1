@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+sed -i '/CXXFLAGS/s/fPIE/fPIC/;/LDFLAGS/s/pie/fpic/' configure
+ub_compile

@@ -1,0 +1,59 @@
+diff -Naur orig/src/VBox/HostDrivers/Support/linux/Makefile patched/src/VBox/HostDrivers/Support/linux/Makefile
+--- orig/src/VBox/HostDrivers/Support/linux/Makefile	2016-03-04 20:29:25.000000000 +0100
++++ patched/src/VBox/HostDrivers/Support/linux/Makefile	2016-03-08 20:15:06.594518088 +0100
+@@ -300,7 +300,6 @@
+ install: $(MODULE)
+ 	@mkdir -p $(MODULE_DIR); \
+ 	install -m 0644 -o root -g root $(MODULE).$(MODULE_EXT) $(MODULE_DIR); \
+-	PATH="$(PATH):/bin:/sbin" depmod -a; \
+ 	rm -f /etc/vbox/module_not_compiled
+ 
+ install_rpm: $(MODULE)
+diff -Naur orig/src/VBox/HostDrivers/VBoxNetAdp/linux/Makefile patched/src/VBox/HostDrivers/VBoxNetAdp/linux/Makefile
+--- orig/src/VBox/HostDrivers/VBoxNetAdp/linux/Makefile	2016-03-04 20:29:26.000000000 +0100
++++ patched/src/VBox/HostDrivers/VBoxNetAdp/linux/Makefile	2016-03-08 20:14:38.890380711 +0100
+@@ -203,7 +203,6 @@
+ install: $(MODULE)
+ 	@mkdir -p $(MODULE_DIR); \
+ 	install -m 0644 -o root -g root $(MODULE).$(MODULE_EXT) $(MODULE_DIR); \
+-	PATH="$(PATH):/bin:/sbin" depmod -a; \
+ 	rm -f /etc/vbox/module_not_compiled
+ 
+ install_rpm: $(MODULE)
+diff -Naur orig/src/VBox/HostDrivers/VBoxNetFlt/linux/Makefile patched/src/VBox/HostDrivers/VBoxNetFlt/linux/Makefile
+--- orig/src/VBox/HostDrivers/VBoxNetFlt/linux/Makefile	2016-03-04 20:29:26.000000000 +0100
++++ patched/src/VBox/HostDrivers/VBoxNetFlt/linux/Makefile	2016-03-08 20:14:58.078475860 +0100
+@@ -207,7 +207,6 @@
+ install: $(MODULE)
+ 	@mkdir -p $(MODULE_DIR); \
+ 	install -m 0644 -o root -g root $(MODULE).$(MODULE_EXT) $(MODULE_DIR); \
+-	PATH="$(PATH):/bin:/sbin" depmod -a; \
+ 	rm -f /etc/vbox/module_not_compiled
+ 
+ install_rpm: $(MODULE)
+diff -Naur orig/src/VBox/HostDrivers/VBoxPci/linux/Makefile patched/src/VBox/HostDrivers/VBoxPci/linux/Makefile
+--- orig/src/VBox/HostDrivers/VBoxPci/linux/Makefile	2016-03-04 20:29:27.000000000 +0100
++++ patched/src/VBox/HostDrivers/VBoxPci/linux/Makefile	2016-03-08 20:14:50.450438034 +0100
+@@ -205,8 +205,7 @@
+ 
+ install: $(MODULE)
+ 	@mkdir -p $(MODULE_DIR); \
+-	install -m 0644 -o root -g root $(MODULE).$(MODULE_EXT) $(MODULE_DIR); \
+-	PATH="$(PATH):/bin:/sbin" depmod -a;
++	install -m 0644 -o root -g root $(MODULE).$(MODULE_EXT) $(MODULE_DIR);
+ 
+ install_rpm: $(MODULE)
+ 	@mkdir -p $(MODULE_DIR); \
+diff -Naur orig/src/VBox/Installer/linux/Makefile.include.footer patched/src/VBox/Installer/linux/Makefile.include.footer
+--- orig/src/VBox/Installer/linux/Makefile.include.footer	2016-03-04 20:29:33.000000000 +0100
++++ patched/src/VBox/Installer/linux/Makefile.include.footer	2016-03-08 20:14:19.530284709 +0100
+@@ -85,8 +85,7 @@
+ 
+ install: $(MODULE)
+ 	@mkdir -p $(MODULE_DIR); \
+-	install -m 0644 -o root -g root $(MODULE).$(MODULE_EXT) $(MODULE_DIR); \
+-	PATH="$(PATH):/bin:/sbin" depmod -a;
++	install -m 0644 -o root -g root $(MODULE).$(MODULE_EXT) $(MODULE_DIR);
+ 
+ endif # eq($(MAKECMDGOALS),clean)
+ 

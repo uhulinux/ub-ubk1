@@ -1,0 +1,2 @@
+minor=$(urllist http://mirrors.ibiblio.org/wine/source/ | splitver '^([0-9.]+)$' | sort -V | tail -n 1)
+urllist http://mirrors.ibiblio.org/wine/source/"$minor" | splitver '^wine-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

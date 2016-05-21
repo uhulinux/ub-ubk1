@@ -1,0 +1,1 @@
+urllist http://sed.free.fr/rubix/ | splitver '^rubix-([0-9.]+).tar.bz2$' | sort -V | tail -n 1 | sed 's/_/./g'

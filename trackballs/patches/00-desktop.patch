@@ -1,0 +1,29 @@
+diff -Naur orig/share/icons/Makefile.in patched/share/icons/Makefile.in
+--- orig/share/icons/Makefile.in	2007-05-25 17:09:16.000000000 +0200
++++ patched/share/icons/Makefile.in	2016-02-20 13:33:26.245561378 +0100
+@@ -369,9 +369,7 @@
+ 	uninstall-iconsDATA
+ 
+ 
+-trackballs.desktop: trackballs.desktop.in
+-	cp trackballs.desktop.in trackballs.desktop
+-	echo "Exec=$(bindir)/trackballs" >> trackballs.desktop
++trackballs.desktop:
+ 
+ install-iconsDATA:
+ 	$(mkinstalldirs) $(iconsdir)/32x32/apps
+diff -Naur orig/share/icons/trackballs.desktop patched/share/icons/trackballs.desktop
+--- orig/share/icons/trackballs.desktop	2007-04-07 14:53:25.000000000 +0200
++++ patched/share/icons/trackballs.desktop	2016-02-20 13:26:49.607594556 +0100
+@@ -1,9 +1,10 @@
+ [Desktop Entry]
+ GenericName=Marble Madness type game
++GenericName[hu]=Labdagörgető
+ Name=Trackballs
+ Icon=trackballs
+ Type=Application
+ Terminal=0
+ MimeType=application/x-executable
+ Categories=Game;ArcadeGame;
+-Exec=/usr/local/bin/trackballs
++Exec=trackballs

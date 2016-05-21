@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+opengfx-${UB_VERSION}.zip opengfx-${UB_VERSION}.tar opengfx-${UB_VERSION}/
+	http://bundles.openttdcoop.org/opengfx/releases/${UB_VERSION}/

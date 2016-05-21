@@ -1,0 +1,14 @@
+diff -Naur orig/src/platformtheme/CMakeLists.txt patched/src/platformtheme/CMakeLists.txt
+--- orig/src/platformtheme/CMakeLists.txt	2016-04-03 22:42:57.000000000 +0200
++++ patched/src/platformtheme/CMakeLists.txt	2016-05-10 20:20:01.059873216 +0200
+@@ -56,10 +56,3 @@
+ endif()
+ 
+ install(TARGETS KDEPlatformTheme DESTINATION ${KDE_INSTALL_QTPLUGINDIR}/platformthemes)
+-
+-install(FILES frameworksintegration-5.16-font.upd
+-  DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR}
+-  )
+-install(PROGRAMS frameworksintegration-5.16-font.sh
+-  DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR}
+-  )

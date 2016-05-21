@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR/usr/share/games/fillets-ng"
+cp -a font images music script sound "$UB_INSTALLDIR/usr/share/games/fillets-ng/"

@@ -1,0 +1,3 @@
+#!/bin/sh -eux
+
+make GNUSTEP_MAKEFILES="/usr/share/GNUstep/Makefiles" -f Makefile release-deployment

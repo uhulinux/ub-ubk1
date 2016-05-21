@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/lib/theeasiestgamearoundtheworld
+cp -a theeasiestgamearoundtheworld *.gif *.wav "$UB_INSTALLDIR"/usr/lib/theeasiestgamearoundtheworld/

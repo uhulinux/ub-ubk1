@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=xdtv
+Comment=TV viewer
+Comment[hu]=TV-néző program
+Exec=xdtv
+Icon=/usr/share/xdtv/icons/xdtv.xpm
+Type=Application
+Categories=AudioVideo;Video;TV;

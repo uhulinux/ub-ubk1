@@ -1,0 +1,1 @@
+urllist http://www.bigorno.net/xrick/download.html  | splitver '^xrick-([0-9.]+).tgz$' | sort -V | tail -n 1

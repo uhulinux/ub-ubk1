@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+autoreconf -i
+./configure \
+	--prefix=/usr \
+	--enable-gnomeui \
+	--enable-ethernet \
+	--with-alsa \
+	--enable-fullscreen \
+	--disable-ffmpeg
+ub_make

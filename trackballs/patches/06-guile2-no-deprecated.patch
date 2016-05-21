@@ -1,0 +1,1493 @@
+diff -Naur orig/share/levels/fourSeasons_2.scm patched/share/levels/fourSeasons_2.scm
+--- orig/share/levels/fourSeasons_2.scm	2004-02-08 21:21:36.000000000 +0100
++++ patched/share/levels/fourSeasons_2.scm	2013-05-13 19:53:14.140143683 +0200
+@@ -23,7 +23,7 @@
+ 
+ 
+ (if (> (difficulty) *easy*)
+-	(begin
++	(let ()
+ 	  (define enemy-1 (new-mr-black 198.5 175.5))
+ 	  (if (= (difficulty) *hard*) (set-modtime enemy-1 *mod-spike* -1.))
+ 	  (set-acceleration enemy-1 2.0)
+diff -Naur orig/share/levels/frg5.scm patched/share/levels/frg5.scm
+--- orig/share/levels/frg5.scm	2006-10-18 19:59:14.000000000 +0200
++++ patched/share/levels/frg5.scm	2013-05-13 19:53:14.144143706 +0200
+@@ -26,16 +26,11 @@
+ 
+ (diamond 190.0 182.0)
+ 
++(define speed .3)
+ (cond
+- ((= (difficulty) *easy*)
+-         (define speed .4)
+- )
+- ((= (difficulty) *normal*)
+-         (define speed .3)
+- )
+- ((= (difficulty) *hard*)
+-         (define speed .2)
+- )
++ ((= (difficulty) *easy*) (set! speed .4))
++ ((= (difficulty) *normal*) (set! speed .3))
++ ((= (difficulty) *hard*) (set! speed .2))
+ )
+ 
+ (add-cyclic-platform 204 191 204 191 4.9 6.4 1. speed)
+diff -Naur orig/share/levels/frg9.scm patched/share/levels/frg9.scm
+--- orig/share/levels/frg9.scm	2006-10-30 21:23:38.000000000 +0100
++++ patched/share/levels/frg9.scm	2013-05-13 19:53:14.144143706 +0200
+@@ -65,16 +65,11 @@
+ (add-flag 208 219 30 0 1.5)
+ (add-flag 209 216 30 0 1.5)
+ 
++(define speed .4)
+ (cond
+- ((= (difficulty) *easy*)
+-         (define speed .6)
+- )
+- ((= (difficulty) *normal*)
+-         (define speed .4)
+- )
+- ((= (difficulty) *hard*)
+-         (define speed .2)
+- )
++ ((= (difficulty) *easy*) (set! speed .6))
++ ((= (difficulty) *normal*) (set! speed .4))
++ ((= (difficulty) *hard*) (set! speed .2))
+ )
+ 
+ (add-cyclic-platform 220 238 220 238 3.0 5.0 1. speed)
+diff -Naur orig/share/levels/hxtst.scm patched/share/levels/hxtst.scm
+--- orig/share/levels/hxtst.scm	2003-03-29 23:59:44.000000000 +0100
++++ patched/share/levels/hxtst.scm	2013-05-13 19:53:14.144143706 +0200
+@@ -26,7 +26,7 @@
+ 
+ ;; This would create a forcefield and a switch turning it on/off
+ (if (= (difficulty) *hard*)
+-	(begin
++	(let ()
+ 	  (define ff (forcefield 251.5 250.5 0.0 
+ 							 2.0 0.0 0.0 
+ 							 0.5 *ff-kill*))
+diff -Naur orig/share/levels/lv1.scm patched/share/levels/lv1.scm
+--- orig/share/levels/lv1.scm	2007-05-25 16:58:49.000000000 +0200
++++ patched/share/levels/lv1.scm	2013-05-13 19:53:14.144143706 +0200
+@@ -39,7 +39,7 @@
+ 
+ ;; This creates a forcefield and a switch turning it on/off
+ (if (= (difficulty) *hard*)
+-    (begin
++    (let ()
+       (define ff (forcefield 251.5 250.5 0.0 
+ 			     2.0 0.0 0.0 
+ 			     0.5 *ff-kill*))
+diff -Naur orig/src/animator.cc patched/src/animator.cc
+--- orig/src/animator.cc	2007-05-17 17:08:30.000000000 +0200
++++ patched/src/animator.cc	2013-05-13 21:37:12.913725458 +0200
+@@ -41,7 +41,7 @@
+   if(position >= length && repeat & ANIMATOR_1_BOUNCE) { direction=-direction; position=length*2.0-position; }
+   if(position >= length && repeat & ANIMATOR_1_WRAP) { position=position - length; }
+ 
+-  scm_apply_1(fun,scm_double2num(getValue()),SCM_EOL);
++  scm_apply_1(fun,scm_from_double(getValue()),SCM_EOL);
+ 
+   if(position <= 0 && repeat & ANIMATOR_0_REMOVE) { remove(); return; }
+   if(position >= length && repeat & ANIMATOR_1_REMOVE) { remove(); return; }
+diff -Naur orig/src/game.cc patched/src/game.cc
+--- orig/src/game.cc	2007-05-25 12:24:42.000000000 +0200
++++ patched/src/game.cc	2013-05-13 19:53:14.104143347 +0200
+@@ -65,7 +65,7 @@
+   /* Load the bootup script */
+   char scmname[256];
+   snprintf(scmname,sizeof(scmname),"%s/levels/boot.scm",SHARE_DIR);
+-  gh_eval_file(scmname);
++  scm_c_primitive_load(scmname);
+ 
+   player1 = new Player(gamer);
+   loadLevel(name);
+@@ -110,7 +110,7 @@
+ 
+   if(map) delete map;
+   map = new Map(mapname);
+-  gh_eval_file(scmname);
++  scm_c_primitive_load(scmname);
+ 
+   if(player1)
+     player1->timeLeft = startTime;
+diff -Naur orig/src/guile.cc patched/src/guile.cc
+--- orig/src/guile.cc	2007-05-25 16:22:16.000000000 +0200
++++ patched/src/guile.cc	2013-05-13 22:01:13.215018985 +0200
+@@ -101,7 +101,7 @@
+   SCM_ASSERT(SCM_NUMBERP(x),x,SCM_ARG1,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(y),y,SCM_ARG2,FUNC_NAME);
+   if(Game::current)
+-	return smobAnimated_make(new Black(scm_num2dbl(x,FUNC_NAME),scm_num2dbl(y,FUNC_NAME)));
++	return smobAnimated_make(new Black(scm_to_double(x),scm_to_double(y)));
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+@@ -115,7 +115,7 @@
+   SCM_ASSERT(SCM_NUMBERP(x),x,SCM_ARG1,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(y),y,SCM_ARG2,FUNC_NAME);
+   if(Game::current)
+-	return smobAnimated_make(new Baby(scm_num2dbl(x,FUNC_NAME),scm_num2dbl(y,FUNC_NAME)));
++	return smobAnimated_make(new Baby(scm_to_double(x),scm_to_double(y)));
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+@@ -132,9 +132,9 @@
+   SCM_ASSERT(SCM_NUMBERP(dy),dy,SCM_ARG4,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(radius),radius,SCM_ARG5,FUNC_NAME);
+   if(Game::current)
+-	return smobAnimated_make(new Teleport(scm_num2int(x,SCM_ARG1,FUNC_NAME),
+-	                  scm_num2int(y,SCM_ARG2,FUNC_NAME),scm_num2int(dx,SCM_ARG3,FUNC_NAME),
+-			  scm_num2int(dy,SCM_ARG4,FUNC_NAME),scm_num2dbl(radius,FUNC_NAME)));
++	return smobAnimated_make(new Teleport(scm_to_int(x),
++	                  scm_to_int(y),scm_to_int(dx),
++			  scm_to_int(dy),scm_to_double(radius)));
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+@@ -152,10 +152,10 @@
+   SCM_ASSERT(SCM_NUMBERP(size),size,SCM_ARG5,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(speed),speed,SCM_ARG5,FUNC_NAME);
+   if(Game::current)
+-	return smobAnimated_make(new Bird(scm_num2int(x,SCM_ARG1,FUNC_NAME),
+-	                  scm_num2int(y,SCM_ARG2,FUNC_NAME),scm_num2int(dx,SCM_ARG3,FUNC_NAME),
+-			  scm_num2int(dy,SCM_ARG4,FUNC_NAME),
+-			  scm_num2dbl(size,FUNC_NAME),scm_num2dbl(speed,FUNC_NAME)));
++	return smobAnimated_make(new Bird(scm_to_int(x),
++	                  scm_to_int(y),scm_to_int(dx),
++			  scm_to_int(dy),
++			  scm_to_double(size),scm_to_double(speed)));
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+@@ -171,9 +171,9 @@
+   SCM_ASSERT(SCM_NUMBERP(points),points,SCM_ARG3,s_add_flag);
+   SCM_ASSERT(SCM_NUMBERP(visible),visible,SCM_ARG4,s_add_flag);
+   SCM_ASSERT(SCM_REALP(radius),radius,SCM_ARG5,s_add_flag);
+-  Flag *flag = new Flag(scm_num2int(x,SCM_ARG1,s_add_flag),scm_num2int(y,SCM_ARG1,s_add_flag),
+-						scm_num2int(points,SCM_ARG1,s_add_flag),
+-						scm_num2int(visible,SCM_ARG1,s_add_flag),scm_num2dbl(radius,s_add_flag));
++  Flag *flag = new Flag(scm_to_int(x),scm_to_int(y),
++						scm_to_int(points),
++						scm_to_int(visible),scm_to_double(radius));
+   return smobAnimated_make(flag);
+ }
+ #undef FUNC_NAME
+@@ -193,13 +193,13 @@
+   SCM_ASSERT(SCM_REALP(freq),freq,SCM_ARG6,s_add_colormodifier);
+   SCM_ASSERT(SCM_REALP(phase),phase,SCM_ARG7,s_add_colormodifier);
+   ColorModifier *colormodifier = new ColorModifier(
+-     scm_num2int(col,SCM_ARG1,s_add_colormodifier),
+-     scm_num2int(x,SCM_ARG2,s_add_colormodifier),
+-     scm_num2int(y,SCM_ARG3,s_add_colormodifier),
+-     scm_num2dbl(min,s_add_colormodifier),
+-     scm_num2dbl(max,s_add_colormodifier),
+-     scm_num2dbl(freq,s_add_colormodifier),
+-     scm_num2dbl(phase,s_add_colormodifier));
++     scm_to_int(col),
++     scm_to_int(x),
++     scm_to_int(y),
++     scm_to_double(min),
++     scm_to_double(max),
++     scm_to_double(freq),
++     scm_to_double(phase));
+   return smobAnimated_make(colormodifier);
+ }
+ #undef FUNC_NAME
+@@ -219,17 +219,17 @@
+   SCM_ASSERT(SCM_REALP(max),max,SCM_ARG5,s_add_heightmodifier);
+   SCM_ASSERT(SCM_REALP(freq),freq,SCM_ARG6,s_add_heightmodifier);
+   SCM_ASSERT(SCM_REALP(phase),phase,SCM_ARG7,s_add_heightmodifier);
+-  if (SCM_NUMBERP(n1))  not1 = scm_num2int(n1,SCM_ARG1,s_add_colormodifier);
+-  if (SCM_NUMBERP(n2))  not1 = scm_num2int(n2,SCM_ARG1,s_add_colormodifier);
+-  if (SCM_NUMBERP(n3))  not1 = scm_num2int(n3,SCM_ARG1,s_add_colormodifier);
++  if (SCM_NUMBERP(n1))  not1 = scm_to_int(n1);
++  if (SCM_NUMBERP(n2))  not1 = scm_to_int(n2);
++  if (SCM_NUMBERP(n3))  not1 = scm_to_int(n3);
+   HeightModifier *heightmodifier = new HeightModifier(
+-     scm_num2int(corner,SCM_ARG1,s_add_heightmodifier),
+-     scm_num2int(x,SCM_ARG2,s_add_heightmodifier),
+-     scm_num2int(y,SCM_ARG3,s_add_heightmodifier),
+-     scm_num2dbl(min,s_add_heightmodifier),
+-     scm_num2dbl(max,s_add_heightmodifier),
+-     scm_num2dbl(freq,s_add_heightmodifier),
+-     scm_num2dbl(phase,s_add_heightmodifier),
++     scm_to_int(corner),
++     scm_to_int(x),
++     scm_to_int(y),
++     scm_to_double(min),
++     scm_to_double(max),
++     scm_to_double(freq),
++     scm_to_double(phase),
+      not1, not2, not3);
+   return smobAnimated_make(heightmodifier);
+ }
+@@ -244,9 +244,9 @@
+   SCM_ASSERT(SCM_NUMBERP(x),x,SCM_ARG1,s_add_flag);
+   SCM_ASSERT(SCM_NUMBERP(y),y,SCM_ARG2,s_add_flag);
+   SCM_ASSERT(SCM_REALP(radius),radius,SCM_ARG5,s_add_cactus);
+-  Cactus *cactus = new Cactus(scm_num2int(x,SCM_ARG1,s_add_cactus),
+-                              scm_num2int(y,SCM_ARG1,s_add_cactus),
+-			      scm_num2dbl(radius,s_add_cactus));
++  Cactus *cactus = new Cactus(scm_to_int(x),
++                              scm_to_int(y),
++			      scm_to_double(radius));
+   return smobAnimated_make(cactus);
+ }
+ #undef FUNC_NAME
+@@ -263,9 +263,9 @@
+   SCM_ASSERT(SCM_REALP(speed),speed,SCM_ARG3,s_add_spike);
+   SCM_ASSERT(SCM_REALP(phase),phase,SCM_ARG4,s_add_spike);
+   Coord3d pos;
+-  pos[0] = scm_num2dbl(x,s_add_spike);
+-  pos[1] = scm_num2dbl(y,s_add_spike);
+-  Spike *spike = new Spike(pos,scm_num2dbl(speed,s_add_spike),scm_num2dbl(phase,s_add_spike));
++  pos[0] = scm_to_double(x);
++  pos[1] = scm_to_double(y);
++  Spike *spike = new Spike(pos,scm_to_double(speed),scm_to_double(phase));
+   return smobAnimated_make(spike);
+ }
+ #undef FUNC_NAME
+@@ -282,10 +282,10 @@
+   SCM_ASSERT(SCM_REALP(phase),phase,SCM_ARG4,s_add_sidespike);
+   SCM_ASSERT(SCM_NUMBERP(side),side,SCM_ARG5,s_add_sidespike);
+   Coord3d pos;
+-  pos[0] = scm_num2dbl(x,s_add_sidespike);
+-  pos[1] = scm_num2dbl(y,s_add_sidespike);
+-  SideSpike *sidespike = new SideSpike(pos,scm_num2dbl(speed,s_add_sidespike),
+-      scm_num2dbl(phase,s_add_sidespike),scm_num2int(side,SCM_ARG5,s_add_sidespike));
++  pos[0] = scm_to_double(x);
++  pos[1] = scm_to_double(y);
++  SideSpike *sidespike = new SideSpike(pos,scm_to_double(speed),
++      scm_to_double(phase),scm_to_int(side));
+   return smobAnimated_make(sidespike);
+ }
+ #undef FUNC_NAME
+@@ -302,7 +302,7 @@
+   SCM_ASSERT(scm_is_string(nextLevel),nextLevel,SCM_ARG4,s_add_goal);
+   char *sname = scm_to_locale_string(nextLevel);
+   if(sname) {
+-    Animated *a = (Animated*) new Goal(scm_num2int(x,SCM_ARG1,s_add_goal),scm_num2int(y,SCM_ARG1,s_add_goal),SCM_NFALSEP(rotate),sname);
++    Animated *a = (Animated*) new Goal(scm_to_int(x),scm_to_int(y),SCM_NFALSEP(rotate),sname);
+     return smobAnimated_make(a);
+   }
+   return SCM_UNSPECIFIED;
+@@ -319,13 +319,13 @@
+ 	char *sname = scm_to_locale_string(text);
+ 	if(strlen(sname) > 0) {
+ 	  Coord3d pos;
+-	  pos[0] = scm_num2dbl(x,FUNC_NAME);
+-	  pos[1] = scm_num2dbl(y,FUNC_NAME);
++	  pos[0] = scm_to_double(x);
++	  pos[1] = scm_to_double(y);
+ 	  if(SCM_NUMBERP(z))
+-		pos[2] = scm_num2dbl(z,FUNC_NAME);
++		pos[2] = scm_to_double(z);
+ 	  else
+ 		pos[2] = Game::current->map->getHeight(pos[0],pos[1]) + 2.0;
+-	  Sign *s = new Sign(sname,scm_num2dbl(duration,FUNC_NAME),scm_num2dbl(scale,FUNC_NAME),scm_num2dbl(rotation,FUNC_NAME),pos);
++	  Sign *s = new Sign(sname,scm_to_double(duration),scm_to_double(scale),scm_to_double(rotation),pos);
+ 	  return smobAnimated_make(s);
+ 	}
+   }
+@@ -345,12 +345,12 @@
+   SCM_ASSERT(SCM_NUMBERP(length),length,SCM_ARG4,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(resurrecting),resurrecting,SCM_ARG5,FUNC_NAME);
+   Coord3d position;
+-  position[0] = scm_num2dbl(x,FUNC_NAME);
+-  position[1] = scm_num2dbl(y,FUNC_NAME);
++  position[0] = scm_to_double(x);
++  position[1] = scm_to_double(y);
+   position[2] = 0.0;
+-  return smobAnimated_make(new ModPill(position,scm_num2int(kind,SCM_ARG3,FUNC_NAME),
+-				       scm_num2int(length,SCM_ARG4,FUNC_NAME),
+-				       scm_num2int(resurrecting,SCM_ARG5,FUNC_NAME)));
++  return smobAnimated_make(new ModPill(position,scm_to_int(kind),
++				       scm_to_int(length),
++				       scm_to_int(resurrecting)));
+ }
+ #undef FUNC_NAME
+ 
+@@ -370,13 +370,13 @@
+   SCM_ASSERT(SCM_NUMBERP(allow),allow,SCM_ARG7,FUNC_NAME);
+ 
+   Coord3d pos, dir;
+-  pos[0] = scm_num2dbl(x,FUNC_NAME);
+-  pos[1] = scm_num2dbl(y,FUNC_NAME);
+-  pos[2] = Game::current->map->getHeight(pos[0],pos[1]) + scm_num2dbl(z,FUNC_NAME);
+-  dir[0] = scm_num2dbl(dx,FUNC_NAME);
+-  dir[1] = scm_num2dbl(dy,FUNC_NAME);
+-  dir[2] = scm_num2dbl(dz,FUNC_NAME);
+-  ForceField *ff = new ForceField(pos,dir,scm_num2dbl(height,FUNC_NAME),scm_num2int(allow,SCM_ARG7,FUNC_NAME));
++  pos[0] = scm_to_double(x);
++  pos[1] = scm_to_double(y);
++  pos[2] = Game::current->map->getHeight(pos[0],pos[1]) + scm_to_double(z);
++  dir[0] = scm_to_double(dx);
++  dir[1] = scm_to_double(dy);
++  dir[2] = scm_to_double(dz);
++  ForceField *ff = new ForceField(pos,dir,scm_to_double(height),scm_to_int(allow));
+   return smobAnimated_make(ff);
+ }
+ #undef FUNC_NAME
+@@ -391,7 +391,7 @@
+   SCM_ASSERT(SCM_NUMBERP(y),y,SCM_ARG2,FUNC_NAME);
+   SCM_ASSERT(SCM_NFALSEP(scm_procedure_p(on)),on,SCM_ARG3,FUNC_NAME);
+   SCM_ASSERT(SCM_NFALSEP(scm_procedure_p(off)),off,SCM_ARG3,FUNC_NAME);
+-  CSwitch *sw = new CSwitch(scm_num2dbl(x,FUNC_NAME),scm_num2dbl(y,FUNC_NAME),on,off);
++  CSwitch *sw = new CSwitch(scm_to_double(x),scm_to_double(y),on,off);
+   return smobAnimated_make(sw);
+ }
+ #undef FUNC_NAME
+@@ -410,13 +410,13 @@
+   SCM_ASSERT(SCM_NUMBERP(z1),z1,SCM_ARG6,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(radius),radius,SCM_ARG6,FUNC_NAME);
+   Coord3d from,to;
+-  from[0] = scm_num2dbl(x0,FUNC_NAME);
+-  from[1] = scm_num2dbl(y0,FUNC_NAME);
+-  from[2] = scm_num2dbl(z0,FUNC_NAME);
+-  to[0] = scm_num2dbl(x1,FUNC_NAME);
+-  to[1] = scm_num2dbl(y1,FUNC_NAME);
+-  to[2] = scm_num2dbl(z1,FUNC_NAME);
+-  Pipe *pipe = new Pipe(from,to,scm_num2dbl(radius,FUNC_NAME));
++  from[0] = scm_to_double(x0);
++  from[1] = scm_to_double(y0);
++  from[2] = scm_to_double(z0);
++  to[0] = scm_to_double(x1);
++  to[1] = scm_to_double(y1);
++  to[2] = scm_to_double(z1);
++  Pipe *pipe = new Pipe(from,to,scm_to_double(radius));
+   return smobAnimated_make(pipe);
+ }
+ #undef FUNC_NAME
+@@ -432,10 +432,10 @@
+   SCM_ASSERT(SCM_NUMBERP(z0),z0,SCM_ARG3,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(radius),radius,SCM_ARG4,FUNC_NAME);
+   Coord3d pos;
+-  pos[0] = scm_num2dbl(x0,FUNC_NAME);
+-  pos[1] = scm_num2dbl(y0,FUNC_NAME);
+-  pos[2] = scm_num2dbl(z0,FUNC_NAME);
+-  PipeConnector *pipeConnector = new PipeConnector(pos,scm_num2dbl(radius,FUNC_NAME));
++  pos[0] = scm_to_double(x0);
++  pos[1] = scm_to_double(y0);
++  pos[2] = scm_to_double(z0);
++  PipeConnector *pipeConnector = new PipeConnector(pos,scm_to_double(radius));
+   return smobAnimated_make(pipeConnector); 
+ }
+ #undef FUNC_NAME
+@@ -449,11 +449,11 @@
+   SCM_ASSERT(SCM_NUMBERP(x),x,SCM_ARG1,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(y),y,SCM_ARG2,FUNC_NAME);
+   Coord3d pos;
+-  pos[0] = scm_num2dbl(x,FUNC_NAME);
+-  pos[1] = scm_num2dbl(y,FUNC_NAME);
++  pos[0] = scm_to_double(x);
++  pos[1] = scm_to_double(y);
+   pos[2] = Game::current->map->getHeight(pos[0],pos[1])+0.4;
+   if(SCM_NUMBERP(z))
+-	pos[2] = scm_num2dbl(z,FUNC_NAME);
++	pos[2] = scm_to_double(z);
+   Diamond *d=new Diamond(pos);
+   return smobAnimated_make(d);
+ }
+@@ -471,10 +471,10 @@
+   SCM_ASSERT(SCM_NUMBERP(randomSpeed),randomSpeed,SCM_ARG4,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(radius),radius,SCM_ARG5,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(strength),strength,SCM_ARG6,FUNC_NAME);
+-  Fountain *fountain = new Fountain(scm_num2dbl(randomSpeed,FUNC_NAME),scm_num2dbl(radius,FUNC_NAME),scm_num2dbl(strength,FUNC_NAME));
+-  fountain->position[0]=scm_num2dbl(x,FUNC_NAME);
+-  fountain->position[1]=scm_num2dbl(y,FUNC_NAME);
+-  fountain->position[2]=scm_num2dbl(z,FUNC_NAME);
++  Fountain *fountain = new Fountain(scm_to_double(randomSpeed),scm_to_double(radius),scm_to_double(strength));
++  fountain->position[0]=scm_to_double(x);
++  fountain->position[1]=scm_to_double(y);
++  fountain->position[2]=scm_to_double(z);
+   return smobAnimated_make(fountain);
+ }
+ #undef FUNC_NAME
+@@ -493,10 +493,10 @@
+   SCM_ASSERT(SCM_NUMBERP(x),x,SCM_ARG2,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(y),y,SCM_ARG3,FUNC_NAME);
+   Animated *anim = (Animated*) SCM_CDR(obj);
+-  anim->position[0] = scm_num2dbl(x,FUNC_NAME);
+-  anim->position[1] = scm_num2dbl(y,FUNC_NAME);
++  anim->position[0] = scm_to_double(x);
++  anim->position[1] = scm_to_double(y);
+   if(SCM_NUMBERP(z))
+-	anim->position[2] = scm_num2dbl(z,FUNC_NAME);
++	anim->position[2] = scm_to_double(z);
+   else
+ 	anim->has_moved();
+   return SCM_UNSPECIFIED;
+@@ -511,7 +511,7 @@
+ {
+   SCM_ASSERT(IS_ANIMATED(obj),obj,SCM_ARG1,FUNC_NAME);
+   Animated *anim = (Animated*) SCM_CDR(obj);
+-  return scm_double2num(anim->position[0]);
++  return scm_from_double(anim->position[0]);
+ }
+ #undef FUNC_NAME
+ 
+@@ -523,7 +523,7 @@
+ {
+   SCM_ASSERT(IS_ANIMATED(obj),obj,SCM_ARG1,FUNC_NAME);
+   Animated *anim = (Animated*) SCM_CDR(obj);
+-  return scm_double2num(anim->position[1]);
++  return scm_from_double(anim->position[1]);
+ }
+ #undef FUNC_NAME
+ 
+@@ -535,7 +535,7 @@
+ {
+   SCM_ASSERT(IS_ANIMATED(obj),obj,SCM_ARG1,FUNC_NAME);
+   Animated *anim = (Animated*) SCM_CDR(obj);
+-  return scm_double2num(anim->position[2]);
++  return scm_from_double(anim->position[2]);
+ }
+ #undef FUNC_NAME
+ 
+@@ -548,9 +548,9 @@
+   SCM_ASSERT(IS_ANIMATED(s_obj),s_obj,SCM_ARG1,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(s_mod),s_mod,SCM_ARG2,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(s_time),s_time,SCM_ARG3,FUNC_NAME);
+-  int mod = scm_num2int(s_mod,SCM_ARG2,FUNC_NAME);
++  int mod = scm_to_int(s_mod);
+   SCM_ASSERT(mod>=0 && mod < NUM_MODS, s_mod, SCM_ARG2, FUNC_NAME);
+-  double time = scm_num2dbl(s_time,FUNC_NAME);
++  double time = scm_to_double(s_time);
+   Animated *anim = (Animated*) SCM_CDR(s_obj);
+   Ball *ball = dynamic_cast<Ball*>(anim);
+   if(ball)
+@@ -570,7 +570,7 @@
+   Animated *anim = (Animated*) SCM_CDR(obj);
+   Black *black = dynamic_cast<Black*>(anim);
+   if(black) {
+-    black->acceleration = scm_num2dbl(accel,FUNC_NAME);
++    black->acceleration = scm_to_double(accel);
+     return obj;
+   }
+   else
+@@ -589,7 +589,7 @@
+   Animated *anim = (Animated*) SCM_CDR(obj);
+   Black *black = dynamic_cast<Black*>(anim);
+   if(black) {
+-    black->horizon = scm_num2dbl(horizon,FUNC_NAME);
++    black->horizon = scm_to_double(horizon);
+     return obj;
+   }
+   else
+@@ -609,10 +609,10 @@
+   SCM_ASSERT(SCM_NUMBERP(g),g,SCM_ARG3,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(b),b,SCM_ARG4,FUNC_NAME);
+   Animated *anim = (Animated*) SCM_CDR(obj);
+-  anim->primaryColor[0] = scm_num2dbl(r,FUNC_NAME);
+-  anim->primaryColor[1] = scm_num2dbl(g,FUNC_NAME);
+-  anim->primaryColor[2] = scm_num2dbl(b,FUNC_NAME);
+-  if(SCM_NUMBERP(a)) anim->primaryColor[3] = scm_num2dbl(a,FUNC_NAME);
++  anim->primaryColor[0] = scm_to_double(r);
++  anim->primaryColor[1] = scm_to_double(g);
++  anim->primaryColor[2] = scm_to_double(b);
++  if(SCM_NUMBERP(a)) anim->primaryColor[3] = scm_to_double(a);
+   return obj;
+ }
+ #undef FUNC_NAME
+@@ -628,10 +628,10 @@
+   SCM_ASSERT(SCM_NUMBERP(g),g,SCM_ARG3,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(b),b,SCM_ARG4,FUNC_NAME);
+   Animated *anim = (Animated*) SCM_CDR(obj);
+-  anim->secondaryColor[0] = scm_num2dbl(r,FUNC_NAME);
+-  anim->secondaryColor[1] = scm_num2dbl(g,FUNC_NAME);
+-  anim->secondaryColor[2] = scm_num2dbl(b,FUNC_NAME);
+-  if(SCM_NUMBERP(a)) anim->secondaryColor[3] = scm_num2dbl(a,FUNC_NAME);
++  anim->secondaryColor[0] = scm_to_double(r);
++  anim->secondaryColor[1] = scm_to_double(g);
++  anim->secondaryColor[2] = scm_to_double(b);
++  if(SCM_NUMBERP(a)) anim->secondaryColor[3] = scm_to_double(a);
+   return obj;
+ }
+ #undef FUNC_NAME
+@@ -647,10 +647,10 @@
+   SCM_ASSERT(SCM_NUMBERP(g),g,SCM_ARG3,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(b),b,SCM_ARG4,FUNC_NAME);
+   Animated *anim = (Animated*) SCM_CDR(obj);
+-  anim->specularColor[0] = scm_num2dbl(r,FUNC_NAME);
+-  anim->specularColor[1] = scm_num2dbl(g,FUNC_NAME);
+-  anim->specularColor[2] = scm_num2dbl(b,FUNC_NAME);
+-  if(SCM_NUMBERP(a)) anim->specularColor[3] = scm_num2dbl(a,FUNC_NAME);
++  anim->specularColor[0] = scm_to_double(r);
++  anim->specularColor[1] = scm_to_double(g);
++  anim->specularColor[2] = scm_to_double(b);
++  if(SCM_NUMBERP(a)) anim->specularColor[3] = scm_to_double(a);
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+@@ -664,7 +664,7 @@
+   SCM_ASSERT(IS_ANIMATED(anim),anim,SCM_ARG1,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(flag),flag,SCM_ARG2,FUNC_NAME);
+   SCM_ASSERT(SCM_BOOLP(state),state,SCM_ARG3,FUNC_NAME);
+-  int iflag=scm_num2int(flag,SCM_ARG2,FUNC_NAME);
++  int iflag=scm_to_int(flag);
+   Animated *a = (Animated*) SCM_CDR(anim);
+   if(SCM_FALSEP(state))
+ 	a->flags = a->flags & (~iflag);
+@@ -685,8 +685,8 @@
+   SCM_ASSERT(SCM_NUMBERP(backward),backward,SCM_ARG3,FUNC_NAME);
+   Pipe *p = dynamic_cast<Pipe*>((Animated*)SCM_CDR(pipe));
+   if(p) {
+-	p->windForward = scm_num2dbl(forward,FUNC_NAME);
+-	p->windBackward = scm_num2dbl(backward,FUNC_NAME);
++	p->windForward = scm_to_double(forward);
++	p->windBackward = scm_to_double(backward);
+   }
+   return pipe;
+ }
+@@ -700,11 +700,11 @@
+   SCM_ASSERT(SCM_NUMBERP(speed),speed,SCM_ARG2,FUNC_NAME);
+   Spike *spike = dynamic_cast<Spike*>((Animated*)SCM_CDR(obj));
+   if(spike) {
+-	spike->speed = scm_num2dbl(speed,FUNC_NAME);
++	spike->speed = scm_to_double(speed);
+   } else {
+ 	CyclicPlatform *platform = dynamic_cast<CyclicPlatform*>((GameHook*)SCM_CDR(obj));
+ 	if(platform) {
+-	  platform->speed = scm_num2dbl(speed,FUNC_NAME);
++	  platform->speed = scm_to_double(speed);
+ 	}
+   }
+   return obj;
+@@ -738,7 +738,7 @@
+   SCM_ASSERT(SCM_NUMBERP(str),str,SCM_ARG2,FUNC_NAME);
+   Fountain *fountain=dynamic_cast<Fountain*>((Animated*)SCM_CDR(obj));
+   SCM_ASSERT(fountain,obj,SCM_ARG1,FUNC_NAME);
+-  fountain->strength=scm_num2dbl(str,FUNC_NAME);
++  fountain->strength=scm_to_double(str);
+   return obj;
+ }
+ #undef FUNC_NAME
+@@ -753,9 +753,9 @@
+   SCM_ASSERT(SCM_NUMBERP(vz),vz,SCM_ARG4,FUNC_NAME);
+   Fountain *fountain=dynamic_cast<Fountain*>((Animated*)SCM_CDR(obj));
+   SCM_ASSERT(fountain,obj,SCM_ARG1,FUNC_NAME);
+-  fountain->velocity[0]=scm_num2dbl(vx,FUNC_NAME);
+-  fountain->velocity[1]=scm_num2dbl(vy,FUNC_NAME);
+-  fountain->velocity[2]=scm_num2dbl(vz,FUNC_NAME);
++  fountain->velocity[0]=scm_to_double(vx);
++  fountain->velocity[1]=scm_to_double(vy);
++  fountain->velocity[2]=scm_to_double(vz);
+   return obj;
+ }
+ #undef FUNC_NAME
+@@ -768,7 +768,7 @@
+   SCM_ASSERT(IS_ANIMATED(obj),obj,SCM_ARG1,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(points),points,SCM_ARG2,FUNC_NAME);
+   Animated *animated = (Animated*) SCM_CDR(obj);
+-  animated->scoreOnDeath = scm_num2dbl(points,FUNC_NAME);
++  animated->scoreOnDeath = scm_to_double(points);
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+@@ -781,7 +781,7 @@
+   SCM_ASSERT(IS_ANIMATED(obj),obj,SCM_ARG1,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(points),points,SCM_ARG2,FUNC_NAME);
+   Animated *animated = (Animated*) SCM_CDR(obj);
+-  animated->timeOnDeath = scm_num2dbl(points,FUNC_NAME);
++  animated->timeOnDeath = scm_to_double(points);
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+@@ -794,10 +794,10 @@
+   SCM_ASSERT(SCM_NUMBERP(unitType),unitType,SCM_ARG1,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(score),score,SCM_ARG2,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(time),time,SCM_ARG3,FUNC_NAME);
+-  int type=(int) scm_num2dbl(unitType,FUNC_NAME);
++  int type=(int) scm_to_double(unitType);
+   SCM_ASSERT(type>=0&&type<SCORE_MAX,unitType,SCM_ARG1,FUNC_NAME);
+-  Game::defaultScores[type][0]=scm_num2dbl(score,FUNC_NAME);
+-  Game::defaultScores[type][1]=scm_num2dbl(time,FUNC_NAME);
++  Game::defaultScores[type][0]=scm_to_double(score);
++  Game::defaultScores[type][1]=scm_to_double(time);
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+@@ -824,14 +824,14 @@
+   SCM_ASSERT(SCM_REALP(offset),offset,SCM_ARG7,s_add_cyclic_platform);
+   SCM_ASSERT(SCM_REALP(speed),speed,SCM_ARG7,s_add_cyclic_platform);
+   CyclicPlatform *platform = 
+-    new CyclicPlatform(scm_num2int(x1,SCM_ARG1,s_add_cyclic_platform),
+-		       scm_num2int(y1,SCM_ARG1,s_add_cyclic_platform),
+-		       scm_num2int(x2,SCM_ARG1,s_add_cyclic_platform),
+-		       scm_num2int(y2,SCM_ARG1,s_add_cyclic_platform),
+-		       scm_num2dbl(low,s_add_cyclic_platform),
+-		       scm_num2dbl(high,s_add_cyclic_platform),
+-		       scm_num2dbl(offset,s_add_cyclic_platform),
+-		       scm_num2dbl(speed,s_add_cyclic_platform));
++    new CyclicPlatform(scm_to_int(x1),
++		       scm_to_int(y1),
++		       scm_to_int(x2),
++		       scm_to_int(y2),
++		       scm_to_double(low),
++		       scm_to_double(high),
++		       scm_to_double(offset),
++		       scm_to_double(speed));
+   return smobGameHook_make(platform);
+ }
+ #undef FUNC_NAME
+@@ -848,11 +848,11 @@
+   SCM_ASSERT(SCM_NUMBERP(v1),v1,SCM_ARG5,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(repeat),repeat,SCM_ARG6,FUNC_NAME);
+   SCM_ASSERT(SCM_BOOLP(fun)|SCM_NFALSEP(scm_procedure_p(fun)),fun,SCM_ARG7,FUNC_NAME);
+-  Animator *a = new Animator(scm_num2dbl(length,FUNC_NAME), 
+-							 scm_num2dbl(position,FUNC_NAME), 
+-							 scm_num2dbl(direction,FUNC_NAME), 
+-							 scm_num2dbl(v0,FUNC_NAME), scm_num2dbl(v1,FUNC_NAME), 
+-							 scm_num2int(repeat,SCM_ARG5,FUNC_NAME), 
++  Animator *a = new Animator(scm_to_double(length), 
++							 scm_to_double(position), 
++							 scm_to_double(direction), 
++							 scm_to_double(v0), scm_to_double(v1), 
++							 scm_to_int(repeat), 
+ 							 SCM_BOOLP(fun) ? NULL : fun);
+   return smobGameHook_make(a);
+ }
+@@ -884,7 +884,7 @@
+   SCM_ASSERT(IS_GAMEHOOK(animator),animator,SCM_ARG1,FUNC_NAME);
+   Animator *a = dynamic_cast<Animator*>((GameHook*)SCM_CDR(animator));
+   SCM_ASSERT(a,animator,SCM_ARG1,FUNC_NAME);
+-  return scm_double2num(a->getValue());
++  return scm_from_double(a->getValue());
+ }
+ #undef FUNC_NAME
+ 			
+@@ -897,7 +897,7 @@
+   SCM_ASSERT(SCM_NUMBERP(direction),direction,SCM_ARG2,FUNC_NAME);
+   Animator *a = dynamic_cast<Animator*>((GameHook*)SCM_CDR(animator));
+   SCM_ASSERT(a,animator,SCM_ARG1,FUNC_NAME);
+-  a->direction = scm_num2dbl(direction,FUNC_NAME);
++  a->direction = scm_to_double(direction);
+   return animator;
+ }
+ #undef FUNC_NAME
+@@ -911,7 +911,7 @@
+   SCM_ASSERT(SCM_NUMBERP(position),position,SCM_ARG2,FUNC_NAME);
+   Animator *a = dynamic_cast<Animator*>((GameHook*)SCM_CDR(animator));
+   SCM_ASSERT(a,animator,SCM_ARG1,FUNC_NAME);
+-  a->position = fmod(scm_num2dbl(position,FUNC_NAME),a->length);
++  a->position = fmod(scm_to_double(position),a->length);
+   return animator;
+ }
+ #undef FUNC_NAME
+@@ -928,10 +928,10 @@
+ { Game::current->isNight=1; Game::current->wantedFogThickness=0; return SCM_UNSPECIFIED; }
+ SCM_DEFINE(fog,"fog",0,1,0,(SCM v),"Turns on a fog.")
+ {
+-  if(!(SCM_NUMBERP(v) && scm_num2dbl(v,s_fog) == 0.0))
++  if(!(SCM_NUMBERP(v) && scm_to_double(v) == 0.0))
+ 	Game::current->isNight=0; 
+   if(SCM_NUMBERP(v))
+-	Game::current->wantedFogThickness=scm_num2dbl(v,s_fog); 
++	Game::current->wantedFogThickness=scm_to_double(v); 
+   else
+ 	Game::current->wantedFogThickness=1.0;
+   return SCM_UNSPECIFIED; 
+@@ -946,9 +946,9 @@
+   SCM_ASSERT(SCM_NUMBERP(r),r,SCM_ARG1,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(g),g,SCM_ARG2,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(b),b,SCM_ARG3,FUNC_NAME);
+-  Game::current->fogColor[0] = scm_num2dbl(r,FUNC_NAME);
+-  Game::current->fogColor[1] = scm_num2dbl(g,FUNC_NAME);
+-  Game::current->fogColor[2] = scm_num2dbl(b,FUNC_NAME);
++  Game::current->fogColor[0] = scm_to_double(r);
++  Game::current->fogColor[1] = scm_to_double(g);
++  Game::current->fogColor[2] = scm_to_double(b);
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+@@ -1006,7 +1006,7 @@
+ 			"Sets the starting time for this track.")
+ #define FUNC_NAME s_start_time
+ {
+-  int it=scm_num2int(t,SCM_ARG1,FUNC_NAME);
++  int it=scm_to_int(t);
+   if(Game::current)
+     Game::current->startTime = it;
+   return SCM_UNSPECIFIED;
+@@ -1017,7 +1017,7 @@
+ SCM_DEFINE (set_time, "set-time", 1, 0, 0,(SCM t), "Sets the time left for player.")
+ #define FUNC_NAME s_set_time
+ { 
+-  int it=scm_num2int(t,SCM_ARG1,FUNC_NAME);
++  int it=scm_to_int(t);
+   if(Game::current && Game::current->player1)
+ 	Game::current->player1->timeLeft = it;
+   return SCM_UNSPECIFIED;
+@@ -1026,7 +1026,7 @@
+ 
+ /*********** get_time ************/
+ SCM_DEFINE (get_time, "get-time", 0, 0, 0,(), "Returns how much time the player has left.")
+-{ return scm_int2num(Game::current->player1->timeLeft);}
++{ return scm_from_int(Game::current->player1->timeLeft);}
+ 
+ /*********** add time ************/
+ SCM_DEFINE (add_time, "add-time", 1, 0, 0,
+@@ -1034,10 +1034,10 @@
+ 			"Adds time for the user.")
+ #define FUNC_NAME s_add_time
+ {
+-  int it=scm_num2int(t,SCM_ARG1,FUNC_NAME);
++  int it=scm_to_int(t);
+   if(Game::current && Game::current->player1) {
+     Game::current->player1->timeLeft += it;
+-    return scm_int2num(Game::current->player1->timeLeft);
++    return scm_from_int(Game::current->player1->timeLeft);
+   } else
+     return SCM_UNSPECIFIED;
+ }
+@@ -1047,7 +1047,7 @@
+ SCM_DEFINE (set_score, "set-score", 1, 0, 0,(SCM t), "Sets the score for player.")
+ #define FUNC_NAME s_set_score
+ { 
+-  int it=scm_num2int(t,SCM_ARG1,FUNC_NAME);
++  int it=scm_to_int(t);
+   if(Game::current && Game::current->player1)
+ 	Game::current->player1->score = it;
+   return SCM_UNSPECIFIED;
+@@ -1056,16 +1056,16 @@
+ 
+ /*********** get_score ************/
+ SCM_DEFINE (get_score, "get-score", 0, 0, 0,(), "Returns the players score.")
+-{ return scm_int2num(Game::current->player1->score);}
++{ return scm_from_int(Game::current->player1->score);}
+ 
+ /*********** add_score ************/
+ SCM_DEFINE (add_score, "add-score", 1, 0, 0,(SCM t), "Adds points to the players score.")
+ #define FUNC_NAME s_add_score
+ { 
+-  int it=scm_num2int(t,SCM_ARG1,FUNC_NAME);
++  int it=scm_to_int(t);
+   if(Game::current && Game::current->player1) {
+     Game::current->player1->score += it;
+-    return scm_int2num(Game::current->player1->score);
++    return scm_from_int(Game::current->player1->score);
+   } else 
+     return SCM_UNSPECIFIED;
+ }
+@@ -1080,8 +1080,8 @@
+   SCM_ASSERT(SCM_NUMBERP(x),x,SCM_ARG1,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(y),y,SCM_ARG2,FUNC_NAME);
+   if(Game::current) {
+-	Game::current->map->startPosition[0] = scm_num2dbl(x,FUNC_NAME);
+-	Game::current->map->startPosition[1] = scm_num2dbl(y,FUNC_NAME);
++	Game::current->map->startPosition[0] = scm_to_double(x);
++	Game::current->map->startPosition[1] = scm_to_double(y);
+ 	Game::current->map->startPosition[2] = Game::current->map->getHeight(Game::current->map->startPosition[0],
+ 																		 Game::current->map->startPosition[1]);
+   }
+@@ -1098,7 +1098,7 @@
+ #define FUNC_NAME s_snow
+ {
+   SCM_ASSERT(SCM_NUMBERP(strength),strength,SCM_ARG1,FUNC_NAME);
+-  Game::current->weather->snow(scm_num2dbl(strength,FUNC_NAME));
++  Game::current->weather->snow(scm_to_double(strength));
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+@@ -1110,14 +1110,14 @@
+ #define FUNC_NAME s_rain
+ {
+   SCM_ASSERT(SCM_NUMBERP(strength),strength,SCM_ARG1,FUNC_NAME);
+-  Game::current->weather->rain(scm_num2dbl(strength,FUNC_NAME));
++  Game::current->weather->rain(scm_to_double(strength));
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+ 
+ /*********** difficulty ***********/
+ SCM_DEFINE (difficulty, "difficulty", 0, 0, 0,(),"Returns the difficulty we are currently playing on.")
+-{ return scm_long2num(Settings::settings->difficulty); }
++{ return scm_from_long(Settings::settings->difficulty); }
+ 
+ /*********** use-grid ************/
+ SCM_DEFINE (use_grid, "use-grid", 1, 0, 0, (SCM v), "Turns the grid on/off")
+@@ -1133,7 +1133,7 @@
+ { 
+   SCM_ASSERT(SCM_NUMBERP(v),v,SCM_ARG1,FUNC_NAME);
+   if(Game::current)
+-	Game::current->jumpFactor=scm_num2dbl(v,FUNC_NAME);
++	Game::current->jumpFactor=scm_to_double(v);
+ }
+ #undef FUNC_NAME
+ 
+@@ -1143,7 +1143,7 @@
+ { 
+   SCM_ASSERT(SCM_NUMBERP(v),v,SCM_ARG1,FUNC_NAME);
+   if(Game::current)
+-	Game::current->oxygenFactor=scm_num2dbl(v,FUNC_NAME);
++	Game::current->oxygenFactor=scm_to_double(v);
+ }
+ #undef FUNC_NAME
+ 
+@@ -1157,9 +1157,9 @@
+   SCM_ASSERT(SCM_NUMBERP(y1),y1,SCM_ARG4,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(flag),flag,SCM_ARG5,FUNC_NAME);
+   SCM_ASSERT(SCM_BOOLP(state),state,SCM_ARG6,FUNC_NAME);
+-  int ix0=scm_num2int(x0,SCM_ARG1,FUNC_NAME),iy0=scm_num2int(y0,SCM_ARG2,FUNC_NAME),
+-	ix1=scm_num2int(x1,SCM_ARG3,FUNC_NAME),iy1=scm_num2int(y1,SCM_ARG4,FUNC_NAME),
+-	iflag=scm_num2int(flag,SCM_ARG5,FUNC_NAME);
++  int ix0=scm_to_int(x0),iy0=scm_to_int(y0),
++	ix1=scm_to_int(x1),iy1=scm_to_int(y1),
++	iflag=scm_to_int(flag);
+   for(int x=min(ix0,ix1);x<=max(ix0,ix1);x++)
+ 	for(int y=min(iy0,iy1);y<=max(iy0,iy1);y++) {
+ 	  Cell& c=Game::current->map->cell(x,y);
+@@ -1184,14 +1184,14 @@
+   SCM_ASSERT(SCM_NUMBERP(y1),y1,SCM_ARG4,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(vx),vx,SCM_ARG5,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(vy),vy,SCM_ARG6,FUNC_NAME);
+-  int ix0=scm_num2int(x0,SCM_ARG1,FUNC_NAME),iy0=scm_num2int(y0,SCM_ARG2,FUNC_NAME),
+-	ix1=scm_num2int(x1,SCM_ARG3,FUNC_NAME),iy1=scm_num2int(y1,SCM_ARG4,FUNC_NAME);
++  int ix0=scm_to_int(x0),iy0=scm_to_int(y0),
++	ix1=scm_to_int(x1),iy1=scm_to_int(y1);
+   for(int x=min(ix0,ix1);x<=max(ix0,ix1);x++)
+ 	for(int y=min(iy0,iy1);y<=max(iy0,iy1);y++) {
+ 	  Cell& c=Game::current->map->cell(x,y);
+ 	  c.displayListDirty=1;
+-	  c.velocity[0] = scm_num2dbl(vx,FUNC_NAME);
+-	  c.velocity[1] = scm_num2dbl(vy,FUNC_NAME);
++	  c.velocity[0] = scm_to_double(vx);
++	  c.velocity[1] = scm_to_double(vy);
+ 	}
+   return SCM_UNSPECIFIED;
+ }
+@@ -1211,18 +1211,18 @@
+   SCM_ASSERT(SCM_NUMBERP(h2),h2,SCM_ARG7,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(h3),h3,SCM_ARG7,FUNC_NAME);
+   
+-  int ix0=scm_num2int(x0,SCM_ARG1,FUNC_NAME),iy0=scm_num2int(y0,SCM_ARG2,FUNC_NAME),
+-	ix1=scm_num2int(x1,SCM_ARG3,FUNC_NAME),iy1=scm_num2int(y1,SCM_ARG4,FUNC_NAME);
++  int ix0=scm_to_int(x0),iy0=scm_to_int(y0),
++	ix1=scm_to_int(x1),iy1=scm_to_int(y1);
+   for(int x=min(ix0,ix1);x<=max(ix0,ix1);x++)
+ 	for(int y=min(iy0,iy1);y<=max(iy0,iy1);y++) {
+ 	  Cell& c=Game::current->map->cell(x,y);
+-	  c.heights[0] = scm_num2dbl(h0,FUNC_NAME);
+-	  c.heights[1] = scm_num2dbl(h1,FUNC_NAME);
+-	  c.heights[2] = scm_num2dbl(h2,FUNC_NAME);
+-	  c.heights[3] = scm_num2dbl(h3,FUNC_NAME);
++	  c.heights[0] = scm_to_double(h0);
++	  c.heights[1] = scm_to_double(h1);
++	  c.heights[2] = scm_to_double(h2);
++	  c.heights[3] = scm_to_double(h3);
+ 	  c.displayListDirty=1;
+ 	  if(SCM_NUMBERP(h4))
+-		c.heights[4] = scm_num2dbl(h4,FUNC_NAME);
++		c.heights[4] = scm_to_double(h4);
+ 	  else c.heights[4] = (c.heights[0] + c.heights[1] + c.heights[2] + c.heights[3]) / 4.;
+ 	}
+   return SCM_UNSPECIFIED;
+@@ -1244,18 +1244,18 @@
+   SCM_ASSERT(SCM_NUMBERP(h2),h2,SCM_ARG7,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(h3),h3,SCM_ARG7,FUNC_NAME);
+   
+-  int ix0=scm_num2int(x0,SCM_ARG1,FUNC_NAME),iy0=scm_num2int(y0,SCM_ARG2,FUNC_NAME),
+-	ix1=scm_num2int(x1,SCM_ARG3,FUNC_NAME),iy1=scm_num2int(y1,SCM_ARG4,FUNC_NAME);
++  int ix0=scm_to_int(x0),iy0=scm_to_int(y0),
++	ix1=scm_to_int(x1),iy1=scm_to_int(y1);
+   for(int x=min(ix0,ix1);x<=max(ix0,ix1);x++)
+ 	for(int y=min(iy0,iy1);y<=max(iy0,iy1);y++) {
+ 	  Cell& c=Game::current->map->cell(x,y);
+-	  c.waterHeights[0] = scm_num2dbl(h0,FUNC_NAME);
+-	  c.waterHeights[1] = scm_num2dbl(h1,FUNC_NAME);
+-	  c.waterHeights[2] = scm_num2dbl(h2,FUNC_NAME);
+-	  c.waterHeights[3] = scm_num2dbl(h3,FUNC_NAME);
++	  c.waterHeights[0] = scm_to_double(h0);
++	  c.waterHeights[1] = scm_to_double(h1);
++	  c.waterHeights[2] = scm_to_double(h2);
++	  c.waterHeights[3] = scm_to_double(h3);
+ 	  c.displayListDirty=1;
+ 	  if(SCM_NUMBERP(h4))
+-		c.waterHeights[4] = scm_num2dbl(h4,FUNC_NAME);
++		c.waterHeights[4] = scm_to_double(h4);
+ 	  else c.waterHeights[4] = (c.waterHeights[0] + c.waterHeights[1] + c.waterHeights[2] + c.waterHeights[3]) / 4.;
+ 	}
+   return SCM_UNSPECIFIED;
+@@ -1275,20 +1275,20 @@
+   SCM_ASSERT(SCM_NUMBERP(r),r,SCM_ARG6,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(g),g,SCM_ARG7,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(b),b,SCM_ARG7,FUNC_NAME);
+-  int i=scm_num2int(corner,SCM_ARG5,FUNC_NAME);
++  int i=scm_to_int(corner);
+   SCM_ASSERT(i>=0&&i<=5,corner,SCM_ARG5,FUNC_NAME);
+ 
+-  int ix0=scm_num2int(x0,SCM_ARG1,FUNC_NAME),iy0=scm_num2int(y0,SCM_ARG2,FUNC_NAME),
+-	ix1=scm_num2int(x1,SCM_ARG3,FUNC_NAME),iy1=scm_num2int(y1,SCM_ARG4,FUNC_NAME);
++  int ix0=scm_to_int(x0),iy0=scm_to_int(y0),
++	ix1=scm_to_int(x1),iy1=scm_to_int(y1);
+   for(int x=min(ix0,ix1);x<=max(ix0,ix1);x++)
+ 	for(int y=min(iy0,iy1);y<=max(iy0,iy1);y++) {
+ 	  Cell& c=Game::current->map->cell(x,y);
+-	  c.colors[i][0] = (GLfloat) scm_num2dbl(r,FUNC_NAME);
+-	  c.colors[i][1] = (GLfloat) scm_num2dbl(g,FUNC_NAME);
+-	  c.colors[i][2] = (GLfloat) scm_num2dbl(b,FUNC_NAME);
++	  c.colors[i][0] = (GLfloat) scm_to_double(r);
++	  c.colors[i][1] = (GLfloat) scm_to_double(g);
++	  c.colors[i][2] = (GLfloat) scm_to_double(b);
+ 	  c.displayListDirty=1;
+ 	  if(SCM_NUMBERP(a))	  
+-		c.colors[i][3] = (GLfloat) scm_num2dbl(a,FUNC_NAME);
++		c.colors[i][3] = (GLfloat) scm_to_double(a);
+ 	  else
+ 		c.colors[i][3] = 1.0;
+ 	}
+@@ -1309,20 +1309,20 @@
+   SCM_ASSERT(SCM_NUMBERP(r),r,SCM_ARG6,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(g),g,SCM_ARG7,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(b),b,SCM_ARG7,FUNC_NAME);
+-  int i=scm_num2int(corner,SCM_ARG5,FUNC_NAME);
++  int i=scm_to_int(corner);
+   SCM_ASSERT(i>=0&&i<=4,corner,SCM_ARG5,FUNC_NAME);
+ 
+-  int ix0=scm_num2int(x0,SCM_ARG1,FUNC_NAME),iy0=scm_num2int(y0,SCM_ARG2,FUNC_NAME),
+-	ix1=scm_num2int(x1,SCM_ARG3,FUNC_NAME),iy1=scm_num2int(y1,SCM_ARG4,FUNC_NAME);
++  int ix0=scm_to_int(x0),iy0=scm_to_int(y0),
++	ix1=scm_to_int(x1),iy1=scm_to_int(y1);
+   for(int x=min(ix0,ix1);x<=max(ix0,ix1);x++)
+ 	for(int y=min(iy0,iy1);y<=max(iy0,iy1);y++) {
+ 	  Cell& c=Game::current->map->cell(x,y);
+-	  c.wallColors[i][0] = (GLfloat) scm_num2dbl(r,FUNC_NAME);
+-	  c.wallColors[i][1] = (GLfloat) scm_num2dbl(g,FUNC_NAME);
+-	  c.wallColors[i][2] = (GLfloat) scm_num2dbl(b,FUNC_NAME);
++	  c.wallColors[i][0] = (GLfloat) scm_to_double(r);
++	  c.wallColors[i][1] = (GLfloat) scm_to_double(g);
++	  c.wallColors[i][2] = (GLfloat) scm_to_double(b);
+ 	  c.displayListDirty=1;
+ 	  if(SCM_NUMBERP(a))	  
+-		c.wallColors[i][3] = (GLfloat) scm_num2dbl(a,FUNC_NAME);
++		c.wallColors[i][3] = (GLfloat) scm_to_double(a);
+ 	  else
+ 		c.wallColors[i][3] = 1.0;
+ 	}
+@@ -1346,8 +1346,8 @@
+ { 
+   SCM_ASSERT(SCM_NUMBERP(xy),xy,SCM_ARG1,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(z),z,SCM_ARG2,FUNC_NAME);
+-  ((MainMode*)GameMode::current)->wantedXYAngle = scm_num2dbl(xy,FUNC_NAME);
+-  ((MainMode*)GameMode::current)->wantedZAngle = scm_num2dbl(z,FUNC_NAME);
++  ((MainMode*)GameMode::current)->wantedXYAngle = scm_to_double(xy);
++  ((MainMode*)GameMode::current)->wantedZAngle = scm_to_double(z);
+ }
+ #undef FUNC_NAME
+ 
+@@ -1357,7 +1357,7 @@
+ #define FUNC_NAME s_restart_time
+ { 
+   SCM_ASSERT(SCM_NUMBERP(t),t,SCM_ARG1,FUNC_NAME);
+-  Game::current->player1->timeOnDeath=scm_num2dbl(t,FUNC_NAME);
++  Game::current->player1->timeOnDeath=scm_to_double(t);
+ }
+ #undef FUNC_NAME
+ 
+@@ -1394,7 +1394,7 @@
+ 
+   char *songName=scm_to_locale_string(song);
+   if(songName) {
+-    setMusicPreference(songName,scm_num2int(weight,SCM_ARG2,FUNC_NAME));
++    setMusicPreference(songName,scm_to_int(weight));
+   }
+   return SCM_UNSPECIFIED;
+ }
+@@ -1414,7 +1414,7 @@
+   SCM_ASSERT(SCM_NUMBERP(y),y,SCM_ARG2,FUNC_NAME);
+   SCM_ASSERT(SCM_NUMBERP(r),r,SCM_ARG3,FUNC_NAME);
+   SCM_ASSERT(SCM_NFALSEP(scm_procedure_p(expr)),expr,SCM_ARG4,FUNC_NAME);
+-  new Trigger(scm_num2dbl(x,FUNC_NAME),scm_num2dbl(y,FUNC_NAME),scm_num2dbl(r,FUNC_NAME),expr);
++  new Trigger(scm_to_double(x),scm_to_double(y),scm_to_double(r),expr);
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+@@ -1432,7 +1432,7 @@
+   else SCM_ASSERT(SCM_NFALSEP(scm_procedure_p(entering)),entering,SCM_ARG4,FUNC_NAME);
+   if(SCM_FALSEP(leaving)) leaving=NULL;
+   else SCM_ASSERT(SCM_NFALSEP(scm_procedure_p(leaving)),leaving,SCM_ARG5,FUNC_NAME);
+-  new SmartTrigger(scm_num2dbl(x,FUNC_NAME),scm_num2dbl(y,FUNC_NAME),scm_num2dbl(r,FUNC_NAME),entering,leaving);
++  new SmartTrigger(scm_to_double(x),scm_to_double(y),scm_to_double(r),entering,leaving);
+   return SCM_UNSPECIFIED;
+ }
+ #undef FUNC_NAME
+@@ -1449,7 +1449,7 @@
+   /* It is safe to always cast pointer into a GameHook since Animated
+      objects inherit from GameHook */
+   GameHook *h = (GameHook*) SCM_CDR(subject);
+-  h->registerHook((GameHookEvent)(int)scm_num2dbl(event,FUNC_NAME),SCM_FALSEP(callback)?NULL:callback);
++  h->registerHook((GameHookEvent)(int)scm_to_double(event),SCM_FALSEP(callback)?NULL:callback);
+   return subject;
+ }
+ #undef FUNC_NAME
+@@ -1465,7 +1465,7 @@
+   /* It is safe to always cast pointer into a GameHook since Animated
+      objects inherit from GameHook */
+   GameHook *h = (GameHook*) SCM_CDR(subject);
+-  SCM callback = h->getHook((GameHookEvent)(int)scm_num2dbl(event,FUNC_NAME));
++  SCM callback = h->getHook((GameHookEvent)(int)scm_to_double(event));
+   if(callback) return callback;
+   else return SCM_BOOL_F;
+ }
+@@ -1475,73 +1475,73 @@
+ /*===========             CONSTANTS          ============*/
+ /*=======================================================*/
+ 
+-SCM_GLOBAL_VARIABLE_INIT(s_mod_speed,"*mod-speed*",scm_long2num(MOD_SPEED));
+-SCM_GLOBAL_VARIABLE_INIT(s_mod_jump,"*mod-jump*",scm_long2num(MOD_JUMP));
+-SCM_GLOBAL_VARIABLE_INIT(s_mod_spike,"*mod-spike*",scm_long2num(MOD_SPIKE));
+-SCM_GLOBAL_VARIABLE_INIT(s_mod_glass,"*mod-glass*",scm_long2num(MOD_GLASS));
+-SCM_GLOBAL_VARIABLE_INIT(s_mod_dizzy,"*mod-dizzy*",scm_long2num(MOD_DIZZY));
+-SCM_GLOBAL_VARIABLE_INIT(s_mod_frozen,"*mod-frozen*",scm_long2num(MOD_FROZEN));
+-SCM_GLOBAL_VARIABLE_INIT(s_mod_float,"*mod-float*",scm_long2num(MOD_FLOAT));
+-SCM_GLOBAL_VARIABLE_INIT(s_mod_extra_life,"*mod-extra-life*",scm_long2num(MOD_EXTRA_LIFE));
+-SCM_GLOBAL_VARIABLE_INIT(s_mod_large,"*mod-large*",scm_long2num(MOD_LARGE));
+-SCM_GLOBAL_VARIABLE_INIT(s_mod_small,"*mod-small*",scm_long2num(MOD_SMALL));
+-SCM_GLOBAL_VARIABLE_INIT(s_mod_nitro,"*mod-nitro*",scm_long2num(MOD_NITRO));
+-
+-SCM_GLOBAL_VARIABLE_INIT(s_easy,"*easy*",scm_long2num(0));
+-SCM_GLOBAL_VARIABLE_INIT(s_normal,"*normal*",scm_long2num(1));
+-SCM_GLOBAL_VARIABLE_INIT(s_hard,"*hard*",scm_long2num(2));
+-
+-SCM_GLOBAL_VARIABLE_INIT(s_ff_nothing,"*ff-nothing*",scm_long2num(0));
+-SCM_GLOBAL_VARIABLE_INIT(s_ff_kill1,"*ff-kill1*",scm_long2num(FF_KILL1));
+-SCM_GLOBAL_VARIABLE_INIT(s_ff_bounce1,"*ff-bounce1*",scm_long2num(FF_BOUNCE1));
+-SCM_GLOBAL_VARIABLE_INIT(s_ff_kill2,"*ff-kill2*",scm_long2num(FF_KILL2));
+-SCM_GLOBAL_VARIABLE_INIT(s_ff_bounce2,"*ff-bounce2*",scm_long2num(FF_BOUNCE2));
+-SCM_GLOBAL_VARIABLE_INIT(s_ff_bounce,"*ff-bounce*",scm_long2num(FF_BOUNCE1+FF_BOUNCE2));
+-SCM_GLOBAL_VARIABLE_INIT(s_ff_kill,"*ff-kill*",scm_long2num(FF_KILL1+FF_KILL2));
+-
+-SCM_GLOBAL_VARIABLE_INIT(s_soft_enter,"*soft-enter*",scm_long2num(PIPE_SOFT_ENTER));
+-SCM_GLOBAL_VARIABLE_INIT(s_soft_exit,"*soft-exit*",scm_long2num(PIPE_SOFT_EXIT));
+-
+-SCM_GLOBAL_VARIABLE_INIT(s_cell_ice,"*cell-ice*",scm_long2num(CELL_ICE));
+-SCM_GLOBAL_VARIABLE_INIT(s_cell_acid,"*cell-acid*",scm_long2num(CELL_ACID));
+-SCM_GLOBAL_VARIABLE_INIT(s_cell_sand,"*cell-sand*",scm_long2num(CELL_SAND));
+-SCM_GLOBAL_VARIABLE_INIT(s_cell_kill,"*cell-kill*",scm_long2num(CELL_KILL));
+-SCM_GLOBAL_VARIABLE_INIT(s_cell_trampoline,"*cell-trampoline*",scm_long2num(CELL_TRAMPOLINE));
+-SCM_GLOBAL_VARIABLE_INIT(s_cell_nogrid,"*cell-nogrid*",scm_long2num(CELL_NOGRID));
+-SCM_GLOBAL_VARIABLE_INIT(s_cell_track,"*cell-track*",scm_long2num(CELL_TRACK));
+-
+-SCM_GLOBAL_VARIABLE_INIT(s_animator_0_remove,"*animator-0-remove*",scm_long2num(ANIMATOR_0_REMOVE));
+-SCM_GLOBAL_VARIABLE_INIT(s_animator_0_stop,"*animator-0-stop*",scm_long2num(ANIMATOR_0_STOP));
+-SCM_GLOBAL_VARIABLE_INIT(s_animator_0_bounce,"*animator-0-bounce*",scm_long2num(ANIMATOR_0_BOUNCE));
+-SCM_GLOBAL_VARIABLE_INIT(s_animator_0_wrap,"*animator-0-wrap*",scm_long2num(ANIMATOR_0_WRAP));
+-SCM_GLOBAL_VARIABLE_INIT(s_animator_1_remove,"*animator-1-remove*",scm_long2num(ANIMATOR_1_REMOVE));
+-SCM_GLOBAL_VARIABLE_INIT(s_animator_1_stop,"*animator-1-stop*",scm_long2num(ANIMATOR_1_STOP));
+-SCM_GLOBAL_VARIABLE_INIT(s_animator_1_bounce,"*animator-1-bounce*",scm_long2num(ANIMATOR_1_BOUNCE));
+-SCM_GLOBAL_VARIABLE_INIT(s_animator_1_wrap,"*animator-1-wrap*",scm_long2num(ANIMATOR_1_WRAP));
+-SCM_GLOBAL_VARIABLE_INIT(s_animator_remove,"*animator-remove*",scm_long2num(ANIMATOR_0_REMOVE+ANIMATOR_1_REMOVE));
+-SCM_GLOBAL_VARIABLE_INIT(s_animator_stop,"*animator-stop*",scm_long2num(ANIMATOR_0_STOP+ANIMATOR_1_STOP));
+-SCM_GLOBAL_VARIABLE_INIT(s_animator_wrap,"*animator-bounce*",scm_long2num(ANIMATOR_0_BOUNCE+ANIMATOR_1_BOUNCE));
+-SCM_GLOBAL_VARIABLE_INIT(s_animator_bounce,"*animator-wrap*",scm_long2num(ANIMATOR_0_WRAP+ANIMATOR_1_WRAP));
+-
+-SCM_GLOBAL_VARIABLE_INIT(s_cell_ne,"*cell-ne*",scm_long2num(Cell::NORTH+Cell::EAST));
+-SCM_GLOBAL_VARIABLE_INIT(s_cell_nw,"*cell-nw*",scm_long2num(Cell::NORTH+Cell::WEST));
+-SCM_GLOBAL_VARIABLE_INIT(s_cell_se,"*cell-se*",scm_long2num(Cell::SOUTH+Cell::EAST));
+-SCM_GLOBAL_VARIABLE_INIT(s_cell_sw,"*cell-sw*",scm_long2num(Cell::SOUTH+Cell::WEST));
+-SCM_GLOBAL_VARIABLE_INIT(s_cell_center,"*cell-center*",scm_long2num(Cell::CENTER));
++SCM_GLOBAL_VARIABLE_INIT(s_mod_speed,"*mod-speed*",scm_from_long(MOD_SPEED));
++SCM_GLOBAL_VARIABLE_INIT(s_mod_jump,"*mod-jump*",scm_from_long(MOD_JUMP));
++SCM_GLOBAL_VARIABLE_INIT(s_mod_spike,"*mod-spike*",scm_from_long(MOD_SPIKE));
++SCM_GLOBAL_VARIABLE_INIT(s_mod_glass,"*mod-glass*",scm_from_long(MOD_GLASS));
++SCM_GLOBAL_VARIABLE_INIT(s_mod_dizzy,"*mod-dizzy*",scm_from_long(MOD_DIZZY));
++SCM_GLOBAL_VARIABLE_INIT(s_mod_frozen,"*mod-frozen*",scm_from_long(MOD_FROZEN));
++SCM_GLOBAL_VARIABLE_INIT(s_mod_float,"*mod-float*",scm_from_long(MOD_FLOAT));
++SCM_GLOBAL_VARIABLE_INIT(s_mod_extra_life,"*mod-extra-life*",scm_from_long(MOD_EXTRA_LIFE));
++SCM_GLOBAL_VARIABLE_INIT(s_mod_large,"*mod-large*",scm_from_long(MOD_LARGE));
++SCM_GLOBAL_VARIABLE_INIT(s_mod_small,"*mod-small*",scm_from_long(MOD_SMALL));
++SCM_GLOBAL_VARIABLE_INIT(s_mod_nitro,"*mod-nitro*",scm_from_long(MOD_NITRO));
++
++SCM_GLOBAL_VARIABLE_INIT(s_easy,"*easy*",scm_from_long(0));
++SCM_GLOBAL_VARIABLE_INIT(s_normal,"*normal*",scm_from_long(1));
++SCM_GLOBAL_VARIABLE_INIT(s_hard,"*hard*",scm_from_long(2));
++
++SCM_GLOBAL_VARIABLE_INIT(s_ff_nothing,"*ff-nothing*",scm_from_long(0));
++SCM_GLOBAL_VARIABLE_INIT(s_ff_kill1,"*ff-kill1*",scm_from_long(FF_KILL1));
++SCM_GLOBAL_VARIABLE_INIT(s_ff_bounce1,"*ff-bounce1*",scm_from_long(FF_BOUNCE1));
++SCM_GLOBAL_VARIABLE_INIT(s_ff_kill2,"*ff-kill2*",scm_from_long(FF_KILL2));
++SCM_GLOBAL_VARIABLE_INIT(s_ff_bounce2,"*ff-bounce2*",scm_from_long(FF_BOUNCE2));
++SCM_GLOBAL_VARIABLE_INIT(s_ff_bounce,"*ff-bounce*",scm_from_long(FF_BOUNCE1+FF_BOUNCE2));
++SCM_GLOBAL_VARIABLE_INIT(s_ff_kill,"*ff-kill*",scm_from_long(FF_KILL1+FF_KILL2));
++
++SCM_GLOBAL_VARIABLE_INIT(s_soft_enter,"*soft-enter*",scm_from_long(PIPE_SOFT_ENTER));
++SCM_GLOBAL_VARIABLE_INIT(s_soft_exit,"*soft-exit*",scm_from_long(PIPE_SOFT_EXIT));
++
++SCM_GLOBAL_VARIABLE_INIT(s_cell_ice,"*cell-ice*",scm_from_long(CELL_ICE));
++SCM_GLOBAL_VARIABLE_INIT(s_cell_acid,"*cell-acid*",scm_from_long(CELL_ACID));
++SCM_GLOBAL_VARIABLE_INIT(s_cell_sand,"*cell-sand*",scm_from_long(CELL_SAND));
++SCM_GLOBAL_VARIABLE_INIT(s_cell_kill,"*cell-kill*",scm_from_long(CELL_KILL));
++SCM_GLOBAL_VARIABLE_INIT(s_cell_trampoline,"*cell-trampoline*",scm_from_long(CELL_TRAMPOLINE));
++SCM_GLOBAL_VARIABLE_INIT(s_cell_nogrid,"*cell-nogrid*",scm_from_long(CELL_NOGRID));
++SCM_GLOBAL_VARIABLE_INIT(s_cell_track,"*cell-track*",scm_from_long(CELL_TRACK));
++
++SCM_GLOBAL_VARIABLE_INIT(s_animator_0_remove,"*animator-0-remove*",scm_from_long(ANIMATOR_0_REMOVE));
++SCM_GLOBAL_VARIABLE_INIT(s_animator_0_stop,"*animator-0-stop*",scm_from_long(ANIMATOR_0_STOP));
++SCM_GLOBAL_VARIABLE_INIT(s_animator_0_bounce,"*animator-0-bounce*",scm_from_long(ANIMATOR_0_BOUNCE));
++SCM_GLOBAL_VARIABLE_INIT(s_animator_0_wrap,"*animator-0-wrap*",scm_from_long(ANIMATOR_0_WRAP));
++SCM_GLOBAL_VARIABLE_INIT(s_animator_1_remove,"*animator-1-remove*",scm_from_long(ANIMATOR_1_REMOVE));
++SCM_GLOBAL_VARIABLE_INIT(s_animator_1_stop,"*animator-1-stop*",scm_from_long(ANIMATOR_1_STOP));
++SCM_GLOBAL_VARIABLE_INIT(s_animator_1_bounce,"*animator-1-bounce*",scm_from_long(ANIMATOR_1_BOUNCE));
++SCM_GLOBAL_VARIABLE_INIT(s_animator_1_wrap,"*animator-1-wrap*",scm_from_long(ANIMATOR_1_WRAP));
++SCM_GLOBAL_VARIABLE_INIT(s_animator_remove,"*animator-remove*",scm_from_long(ANIMATOR_0_REMOVE+ANIMATOR_1_REMOVE));
++SCM_GLOBAL_VARIABLE_INIT(s_animator_stop,"*animator-stop*",scm_from_long(ANIMATOR_0_STOP+ANIMATOR_1_STOP));
++SCM_GLOBAL_VARIABLE_INIT(s_animator_wrap,"*animator-bounce*",scm_from_long(ANIMATOR_0_BOUNCE+ANIMATOR_1_BOUNCE));
++SCM_GLOBAL_VARIABLE_INIT(s_animator_bounce,"*animator-wrap*",scm_from_long(ANIMATOR_0_WRAP+ANIMATOR_1_WRAP));
++
++SCM_GLOBAL_VARIABLE_INIT(s_cell_ne,"*cell-ne*",scm_from_long(Cell::NORTH+Cell::EAST));
++SCM_GLOBAL_VARIABLE_INIT(s_cell_nw,"*cell-nw*",scm_from_long(Cell::NORTH+Cell::WEST));
++SCM_GLOBAL_VARIABLE_INIT(s_cell_se,"*cell-se*",scm_from_long(Cell::SOUTH+Cell::EAST));
++SCM_GLOBAL_VARIABLE_INIT(s_cell_sw,"*cell-sw*",scm_from_long(Cell::SOUTH+Cell::WEST));
++SCM_GLOBAL_VARIABLE_INIT(s_cell_center,"*cell-center*",scm_from_long(Cell::CENTER));
+ 
+ /** flags for animated objects **/
+-SCM_GLOBAL_VARIABLE_INIT(s_bird_ch,"*bird-constant-height*",scm_long2num(BIRD_CONSTANT_HEIGHT));
++SCM_GLOBAL_VARIABLE_INIT(s_bird_ch,"*bird-constant-height*",scm_from_long(BIRD_CONSTANT_HEIGHT));
+ 
+-SCM_GLOBAL_VARIABLE_INIT(s_event_death,"*death*",scm_long2num(GameHookEvent_Death));
+-SCM_GLOBAL_VARIABLE_INIT(s_event_spawn,"*spawn*",scm_long2num(GameHookEvent_Spawn));
+-SCM_GLOBAL_VARIABLE_INIT(s_event_tick,"*tick*",scm_long2num(GameHookEvent_Tick));
+-
+-SCM_GLOBAL_VARIABLE_INIT(s_score_player,"*score-player*",scm_long2num(SCORE_PLAYER));
+-SCM_GLOBAL_VARIABLE_INIT(s_score_black,"*score-black*",scm_long2num(SCORE_BLACK));
+-SCM_GLOBAL_VARIABLE_INIT(s_score_baby,"*score-baby*",scm_long2num(SCORE_BABY));
+-SCM_GLOBAL_VARIABLE_INIT(s_score_bird,"*score-bird*",scm_long2num(SCORE_BIRD));
+-SCM_GLOBAL_VARIABLE_INIT(s_score_cactus,"*score-cactus*",scm_long2num(SCORE_CACTUS));
+-SCM_GLOBAL_VARIABLE_INIT(s_score_flag,"*score-flag*",scm_long2num(SCORE_FLAG));
++SCM_GLOBAL_VARIABLE_INIT(s_event_death,"*death*",scm_from_long(GameHookEvent_Death));
++SCM_GLOBAL_VARIABLE_INIT(s_event_spawn,"*spawn*",scm_from_long(GameHookEvent_Spawn));
++SCM_GLOBAL_VARIABLE_INIT(s_event_tick,"*tick*",scm_from_long(GameHookEvent_Tick));
++
++SCM_GLOBAL_VARIABLE_INIT(s_score_player,"*score-player*",scm_from_long(SCORE_PLAYER));
++SCM_GLOBAL_VARIABLE_INIT(s_score_black,"*score-black*",scm_from_long(SCORE_BLACK));
++SCM_GLOBAL_VARIABLE_INIT(s_score_baby,"*score-baby*",scm_from_long(SCORE_BABY));
++SCM_GLOBAL_VARIABLE_INIT(s_score_bird,"*score-bird*",scm_from_long(SCORE_BIRD));
++SCM_GLOBAL_VARIABLE_INIT(s_score_cactus,"*score-cactus*",scm_from_long(SCORE_CACTUS));
++SCM_GLOBAL_VARIABLE_INIT(s_score_flag,"*score-flag*",scm_from_long(SCORE_FLAG));
+ 
+ 
+ void initGuileInterface() {
+diff -Naur orig/src/guile.cc.x patched/src/guile.cc.x
+--- orig/src/guile.cc.x	2007-05-25 16:40:36.000000000 +0200
++++ patched/src/guile.cc.x	2013-05-13 21:39:06.578774573 +0200
+@@ -1,142 +1,142 @@
+ /* cpp arguments: guile.cc -DLOCALEDIR="/usr/local/share/locale" -DHAVE_CONFIG_H -I. -I.. -DSHARE_DIR="/usr/local/share/trackballs" -DPACKAGE="trackballs" -DVERSION="1.1.4" -g -O2 -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -I./ -I../ */
+- scm_c_define_gsubr (s_player, 0, 0, 0, (SCM (*)()) player); ;
+- scm_c_define_gsubr (s_new_mr_black, 2, 0, 0, (SCM (*)()) new_mr_black); ;
+- scm_c_define_gsubr (s_new_baby, 2, 0, 0, (SCM (*)()) new_baby); ;
+- scm_c_define_gsubr (s_add_teleport, 5, 0, 0, (SCM (*)()) add_teleport); ;
+- scm_c_define_gsubr (s_add_bird, 6, 0, 0, (SCM (*)()) add_bird); ;
+- scm_c_define_gsubr (s_add_flag, 5, 0, 0, (SCM (*)()) add_flag); ;
+- scm_c_define_gsubr (s_add_colormodifier, 7, 0, 0, (SCM (*)()) add_colormodifier); ;
+- scm_c_define_gsubr (s_add_heightmodifier, 7, 3, 0, (SCM (*)()) add_heightmodifier); ;
+- scm_c_define_gsubr (s_add_cactus, 3, 0, 0, (SCM (*)()) add_cactus); ;
+- scm_c_define_gsubr (s_add_spike, 4, 0, 0, (SCM (*)()) add_spike); ;
+- scm_c_define_gsubr (s_add_sidespike, 5, 0, 0, (SCM (*)()) add_sidespike); ;
+- scm_c_define_gsubr (s_add_goal, 4, 0, 0, (SCM (*)()) add_goal); ;
+- scm_c_define_gsubr (s_sign, 6, 1, 0, (SCM (*)()) sign); ;
+- scm_c_define_gsubr (s_add_modpill, 5, 0, 0, (SCM (*)()) add_modpill); ;
+- scm_c_define_gsubr (s_forcefield, 8, 0, 0, (SCM (*)()) forcefield); ;
+- scm_c_define_gsubr (s_fun_switch, 4, 0, 0, (SCM (*)()) fun_switch); ;
+- scm_c_define_gsubr (s_new_pipe, 7, 0, 0, (SCM (*)()) new_pipe); ;
+- scm_c_define_gsubr (s_pipe_connector, 4, 0, 0, (SCM (*)()) pipe_connector); ;
+- scm_c_define_gsubr (s_diamond, 2, 1, 0, (SCM (*)()) diamond); ;
+- scm_c_define_gsubr (s_fountain, 6, 0, 0, (SCM (*)()) fountain); ;
+- scm_c_define_gsubr (s_set_position, 3, 1, 0, (SCM (*)()) set_position); ;
+- scm_c_define_gsubr (s_get_position_x, 1, 0, 0, (SCM (*)()) get_position_x); ;
+- scm_c_define_gsubr (s_get_position_y, 1, 0, 0, (SCM (*)()) get_position_y); ;
+- scm_c_define_gsubr (s_get_position_z, 1, 0, 0, (SCM (*)()) get_position_z); ;
+- scm_c_define_gsubr (s_set_modtime, 3, 0, 0, (SCM (*)()) set_modtime); ;
+- scm_c_define_gsubr (s_set_acceleration, 2, 0, 0, (SCM (*)()) set_acceleration); ;
+- scm_c_define_gsubr (s_set_horizon, 2, 0, 0, (SCM (*)()) set_horizon); ;
+- scm_c_define_gsubr (s_set_primary_color, 4, 1, 0, (SCM (*)()) set_primary_color); ;
+- scm_c_define_gsubr (s_set_secondary_color, 4, 1, 0, (SCM (*)()) set_secondary_color); ;
+- scm_c_define_gsubr (s_set_specular_color, 4, 1, 0, (SCM (*)()) set_specular_color); ;
+- scm_c_define_gsubr (s_set_flag, 3, 0, 0, (SCM (*)()) set_flag); ;
+- scm_c_define_gsubr (s_set_wind, 3, 0, 0, (SCM (*)()) set_wind); ;
+- scm_c_define_gsubr (s_set_speed, 2, 0, 0, (SCM (*)()) set_speed); ;
+- scm_c_define_gsubr (s_set_texture, 2, 0, 0, (SCM (*)()) set_texture); ;
+- scm_c_define_gsubr (s_set_fountain_strength, 2, 0, 0, (SCM (*)()) set_fountain_strength); ;
+- scm_c_define_gsubr (s_set_fountain_velocity, 4, 0, 0, (SCM (*)()) set_fountain_velocity); ;
+- scm_c_define_gsubr (s_score_on_death, 2, 0, 0, (SCM (*)()) score_on_death); ;
+- scm_c_define_gsubr (s_time_on_death, 2, 0, 0, (SCM (*)()) time_on_death); ;
+- scm_c_define_gsubr (s_default_on_death, 3, 0, 0, (SCM (*)()) default_on_death); ;
+- scm_c_define_gsubr (s_add_cyclic_platform, 8, 0, 0, (SCM (*)()) add_cyclic_platform); ;
+- scm_c_define_gsubr (s_animator, 7, 0, 0, (SCM (*)()) animator); ;
+- scm_c_define_gsubr (s_set_onoff, 2, 0, 0, (SCM (*)()) set_onoff); ;
+- scm_c_define_gsubr (s_animator_value, 1, 0, 0, (SCM (*)()) animator_value); ;
+- scm_c_define_gsubr (s_set_animator_direction, 2, 0, 0, (SCM (*)()) set_animator_direction); ;
+- scm_c_define_gsubr (s_set_animator_position, 2, 0, 0, (SCM (*)()) set_animator_position); ;
+- scm_c_define_gsubr (s_day, 0, 0, 0, (SCM (*)()) day); ;
+- scm_c_define_gsubr (s_night, 0, 0, 0, (SCM (*)()) night); ;
+- scm_c_define_gsubr (s_fog, 0, 1, 0, (SCM (*)()) fog); ;
+- scm_c_define_gsubr (s_thick_fog, 0, 0, 0, (SCM (*)()) thick_fog); ;
+- scm_c_define_gsubr (s_fog_color, 3, 0, 0, (SCM (*)()) fog_color); ;
+- scm_c_define_gsubr (s_set_bonus_level, 1, 0, 0, (SCM (*)()) set_bonus_level); ;
+- scm_c_define_gsubr (s_set_track_name, 1, 0, 0, (SCM (*)()) set_track_name); ;
+- scm_c_define_gsubr (s_set_author, 1, 0, 0, (SCM (*)()) set_author); ;
+- scm_c_define_gsubr (s_start_time, 1, 0, 0, (SCM (*)()) start_time); ;
+- scm_c_define_gsubr (s_set_time, 1, 0, 0, (SCM (*)()) set_time); ;
+- scm_c_define_gsubr (s_get_time, 0, 0, 0, (SCM (*)()) get_time); ;
+- scm_c_define_gsubr (s_add_time, 1, 0, 0, (SCM (*)()) add_time); ;
+- scm_c_define_gsubr (s_set_score, 1, 0, 0, (SCM (*)()) set_score); ;
+- scm_c_define_gsubr (s_get_score, 0, 0, 0, (SCM (*)()) get_score); ;
+- scm_c_define_gsubr (s_add_score, 1, 0, 0, (SCM (*)()) add_score); ;
+- scm_c_define_gsubr (s_set_start_position, 2, 0, 0, (SCM (*)()) set_start_position); ;
+- scm_c_define_gsubr (s_snow, 1, 0, 0, (SCM (*)()) snow); ;
+- scm_c_define_gsubr (s_rain, 1, 0, 0, (SCM (*)()) rain); ;
+- scm_c_define_gsubr (s_difficulty, 0, 0, 0, (SCM (*)()) difficulty); ;
+- scm_c_define_gsubr (s_use_grid, 1, 0, 0, (SCM (*)()) use_grid); ;
+- scm_c_define_gsubr (s_map_is_transparent, 1, 0, 0, (SCM (*)()) map_is_transparent); ;
+- scm_c_define_gsubr (s_jump, 1, 0, 0, (SCM (*)()) jump); ;
+- scm_c_define_gsubr (s_scale_oxygen, 1, 0, 0, (SCM (*)()) scale_oxygen); ;
+- scm_c_define_gsubr (s_set_cell_flag, 6, 0, 0, (SCM (*)()) set_cell_flag); ;
+- scm_c_define_gsubr (s_set_cell_velocity, 6, 0, 0, (SCM (*)()) set_cell_velocity); ;
+- scm_c_define_gsubr (s_set_cell_heights, 8, 1, 0, (SCM (*)()) set_cell_heights); ;
+- scm_c_define_gsubr (s_set_cell_water_heights, 8, 1, 0, (SCM (*)()) set_cell_water_heights); ;
+- scm_c_define_gsubr (s_set_cell_colors, 8, 1, 0, (SCM (*)()) set_cell_colors); ;
+- scm_c_define_gsubr (s_set_cell_wall_colors, 8, 1, 0, (SCM (*)()) set_cell_wall_colors); ;
+- scm_c_define_gsubr (s_play_effect, 1, 0, 0, (SCM (*)()) play_effect); ;
+- scm_c_define_gsubr (s_camera_angle, 2, 0, 0, (SCM (*)()) camera_angle); ;
+- scm_c_define_gsubr (s_restart_time, 1, 0, 0, (SCM (*)()) restart_time); ;
+- scm_c_define_gsubr (s_clear_song_preferences, 0, 0, 0, (SCM (*)()) clear_song_preferences); ;
+- scm_c_define_gsubr (s_force_next_song, 0, 0, 0, (SCM (*)()) force_next_song); ;
+- scm_c_define_gsubr (s_set_song_preference, 2, 0, 0, (SCM (*)()) set_song_preference); ;
+- scm_c_define_gsubr (s_trigger, 4, 0, 0, (SCM (*)()) trigger); ;
+- scm_c_define_gsubr (s_smart_trigger, 5, 0, 0, (SCM (*)()) smart_trigger); ;
+- scm_c_define_gsubr (s_on_event, 3, 0, 0, (SCM (*)()) on_event); ;
+- scm_c_define_gsubr (s_get_event_callback, 2, 0, 0, (SCM (*)()) get_event_callback); ;
+- s_mod_speed = scm_permanent_object (scm_c_define ("*mod-speed*", scm_long2num(0))); ;
+- s_mod_jump = scm_permanent_object (scm_c_define ("*mod-jump*", scm_long2num(1))); ;
+- s_mod_spike = scm_permanent_object (scm_c_define ("*mod-spike*", scm_long2num(2))); ;
+- s_mod_glass = scm_permanent_object (scm_c_define ("*mod-glass*", scm_long2num(3))); ;
+- s_mod_dizzy = scm_permanent_object (scm_c_define ("*mod-dizzy*", scm_long2num(4))); ;
+- s_mod_frozen = scm_permanent_object (scm_c_define ("*mod-frozen*", scm_long2num(5))); ;
+- s_mod_float = scm_permanent_object (scm_c_define ("*mod-float*", scm_long2num(6))); ;
+- s_mod_extra_life = scm_permanent_object (scm_c_define ("*mod-extra-life*", scm_long2num(7))); ;
+- s_mod_large = scm_permanent_object (scm_c_define ("*mod-large*", scm_long2num(9))); ;
+- s_mod_small = scm_permanent_object (scm_c_define ("*mod-small*", scm_long2num(8))); ;
+- s_mod_nitro = scm_permanent_object (scm_c_define ("*mod-nitro*", scm_long2num(10))); ;
+- s_easy = scm_permanent_object (scm_c_define ("*easy*", scm_long2num(0))); ;
+- s_normal = scm_permanent_object (scm_c_define ("*normal*", scm_long2num(1))); ;
+- s_hard = scm_permanent_object (scm_c_define ("*hard*", scm_long2num(2))); ;
+- s_ff_nothing = scm_permanent_object (scm_c_define ("*ff-nothing*", scm_long2num(0))); ;
+- s_ff_kill1 = scm_permanent_object (scm_c_define ("*ff-kill1*", scm_long2num(1))); ;
+- s_ff_bounce1 = scm_permanent_object (scm_c_define ("*ff-bounce1*", scm_long2num(2))); ;
+- s_ff_kill2 = scm_permanent_object (scm_c_define ("*ff-kill2*", scm_long2num(4))); ;
+- s_ff_bounce2 = scm_permanent_object (scm_c_define ("*ff-bounce2*", scm_long2num(8))); ;
+- s_ff_bounce = scm_permanent_object (scm_c_define ("*ff-bounce*", scm_long2num(2 +8))); ;
+- s_ff_kill = scm_permanent_object (scm_c_define ("*ff-kill*", scm_long2num(1 +4))); ;
+- s_soft_enter = scm_permanent_object (scm_c_define ("*soft-enter*", scm_long2num(1))); ;
+- s_soft_exit = scm_permanent_object (scm_c_define ("*soft-exit*", scm_long2num(2))); ;
+- s_cell_ice = scm_permanent_object (scm_c_define ("*cell-ice*", scm_long2num((1 << 0)))); ;
+- s_cell_acid = scm_permanent_object (scm_c_define ("*cell-acid*", scm_long2num((1 << 1)))); ;
+- s_cell_sand = scm_permanent_object (scm_c_define ("*cell-sand*", scm_long2num((1 << 2)))); ;
+- s_cell_kill = scm_permanent_object (scm_c_define ("*cell-kill*", scm_long2num((1 << 3)))); ;
+- s_cell_trampoline = scm_permanent_object (scm_c_define ("*cell-trampoline*", scm_long2num((1 << 4)))); ;
+- s_cell_nogrid = scm_permanent_object (scm_c_define ("*cell-nogrid*", scm_long2num((1 << 5)))); ;
+- s_cell_track = scm_permanent_object (scm_c_define ("*cell-track*", scm_long2num((1 << 6)))); ;
+- s_animator_0_remove = scm_permanent_object (scm_c_define ("*animator-0-remove*", scm_long2num(1))); ;
+- s_animator_0_stop = scm_permanent_object (scm_c_define ("*animator-0-stop*", scm_long2num(2))); ;
+- s_animator_0_bounce = scm_permanent_object (scm_c_define ("*animator-0-bounce*", scm_long2num(4))); ;
+- s_animator_0_wrap = scm_permanent_object (scm_c_define ("*animator-0-wrap*", scm_long2num(8))); ;
+- s_animator_1_remove = scm_permanent_object (scm_c_define ("*animator-1-remove*", scm_long2num(16))); ;
+- s_animator_1_stop = scm_permanent_object (scm_c_define ("*animator-1-stop*", scm_long2num(32))); ;
+- s_animator_1_bounce = scm_permanent_object (scm_c_define ("*animator-1-bounce*", scm_long2num(64))); ;
+- s_animator_1_wrap = scm_permanent_object (scm_c_define ("*animator-1-wrap*", scm_long2num(128))); ;
+- s_animator_remove = scm_permanent_object (scm_c_define ("*animator-remove*", scm_long2num(1 +16))); ;
+- s_animator_stop = scm_permanent_object (scm_c_define ("*animator-stop*", scm_long2num(2 +32))); ;
+- s_animator_wrap = scm_permanent_object (scm_c_define ("*animator-bounce*", scm_long2num(4 +64))); ;
+- s_animator_bounce = scm_permanent_object (scm_c_define ("*animator-wrap*", scm_long2num(8 +128))); ;
+- s_cell_ne = scm_permanent_object (scm_c_define ("*cell-ne*", scm_long2num(Cell::NORTH+Cell::EAST))); ;
+- s_cell_nw = scm_permanent_object (scm_c_define ("*cell-nw*", scm_long2num(Cell::NORTH+Cell::WEST))); ;
+- s_cell_se = scm_permanent_object (scm_c_define ("*cell-se*", scm_long2num(Cell::SOUTH+Cell::EAST))); ;
+- s_cell_sw = scm_permanent_object (scm_c_define ("*cell-sw*", scm_long2num(Cell::SOUTH+Cell::WEST))); ;
+- s_cell_center = scm_permanent_object (scm_c_define ("*cell-center*", scm_long2num(Cell::CENTER))); ;
+- s_bird_ch = scm_permanent_object (scm_c_define ("*bird-constant-height*", scm_long2num(1))); ;
+- s_event_death = scm_permanent_object (scm_c_define ("*death*", scm_long2num(GameHookEvent_Death))); ;
+- s_event_spawn = scm_permanent_object (scm_c_define ("*spawn*", scm_long2num(GameHookEvent_Spawn))); ;
+- s_event_tick = scm_permanent_object (scm_c_define ("*tick*", scm_long2num(GameHookEvent_Tick))); ;
+- s_score_player = scm_permanent_object (scm_c_define ("*score-player*", scm_long2num(0))); ;
+- s_score_black = scm_permanent_object (scm_c_define ("*score-black*", scm_long2num(1))); ;
+- s_score_baby = scm_permanent_object (scm_c_define ("*score-baby*", scm_long2num(2))); ;
+- s_score_bird = scm_permanent_object (scm_c_define ("*score-bird*", scm_long2num(3))); ;
+- s_score_cactus = scm_permanent_object (scm_c_define ("*score-cactus*", scm_long2num(4))); ;
+- s_score_flag = scm_permanent_object (scm_c_define ("*score-flag*", scm_long2num(5))); ;
++ scm_c_define_gsubr (s_player, 0, 0, 0, (void *) player); ;
++ scm_c_define_gsubr (s_new_mr_black, 2, 0, 0, (void *) new_mr_black); ;
++ scm_c_define_gsubr (s_new_baby, 2, 0, 0, (void *) new_baby); ;
++ scm_c_define_gsubr (s_add_teleport, 5, 0, 0, (void *) add_teleport); ;
++ scm_c_define_gsubr (s_add_bird, 6, 0, 0, (void *) add_bird); ;
++ scm_c_define_gsubr (s_add_flag, 5, 0, 0, (void *) add_flag); ;
++ scm_c_define_gsubr (s_add_colormodifier, 7, 0, 0, (void *) add_colormodifier); ;
++ scm_c_define_gsubr (s_add_heightmodifier, 7, 3, 0, (void *) add_heightmodifier); ;
++ scm_c_define_gsubr (s_add_cactus, 3, 0, 0, (void *) add_cactus); ;
++ scm_c_define_gsubr (s_add_spike, 4, 0, 0, (void *) add_spike); ;
++ scm_c_define_gsubr (s_add_sidespike, 5, 0, 0, (void *) add_sidespike); ;
++ scm_c_define_gsubr (s_add_goal, 4, 0, 0, (void *) add_goal); ;
++ scm_c_define_gsubr (s_sign, 6, 1, 0, (void *) sign); ;
++ scm_c_define_gsubr (s_add_modpill, 5, 0, 0, (void *) add_modpill); ;
++ scm_c_define_gsubr (s_forcefield, 8, 0, 0, (void *) forcefield); ;
++ scm_c_define_gsubr (s_fun_switch, 4, 0, 0, (void *) fun_switch); ;
++ scm_c_define_gsubr (s_new_pipe, 7, 0, 0, (void *) new_pipe); ;
++ scm_c_define_gsubr (s_pipe_connector, 4, 0, 0, (void *) pipe_connector); ;
++ scm_c_define_gsubr (s_diamond, 2, 1, 0, (void *) diamond); ;
++ scm_c_define_gsubr (s_fountain, 6, 0, 0, (void *) fountain); ;
++ scm_c_define_gsubr (s_set_position, 3, 1, 0, (void *) set_position); ;
++ scm_c_define_gsubr (s_get_position_x, 1, 0, 0, (void *) get_position_x); ;
++ scm_c_define_gsubr (s_get_position_y, 1, 0, 0, (void *) get_position_y); ;
++ scm_c_define_gsubr (s_get_position_z, 1, 0, 0, (void *) get_position_z); ;
++ scm_c_define_gsubr (s_set_modtime, 3, 0, 0, (void *) set_modtime); ;
++ scm_c_define_gsubr (s_set_acceleration, 2, 0, 0, (void *) set_acceleration); ;
++ scm_c_define_gsubr (s_set_horizon, 2, 0, 0, (void *) set_horizon); ;
++ scm_c_define_gsubr (s_set_primary_color, 4, 1, 0, (void *) set_primary_color); ;
++ scm_c_define_gsubr (s_set_secondary_color, 4, 1, 0, (void *) set_secondary_color); ;
++ scm_c_define_gsubr (s_set_specular_color, 4, 1, 0, (void *) set_specular_color); ;
++ scm_c_define_gsubr (s_set_flag, 3, 0, 0, (void *) set_flag); ;
++ scm_c_define_gsubr (s_set_wind, 3, 0, 0, (void *) set_wind); ;
++ scm_c_define_gsubr (s_set_speed, 2, 0, 0, (void *) set_speed); ;
++ scm_c_define_gsubr (s_set_texture, 2, 0, 0, (void *) set_texture); ;
++ scm_c_define_gsubr (s_set_fountain_strength, 2, 0, 0, (void *) set_fountain_strength); ;
++ scm_c_define_gsubr (s_set_fountain_velocity, 4, 0, 0, (void *) set_fountain_velocity); ;
++ scm_c_define_gsubr (s_score_on_death, 2, 0, 0, (void *) score_on_death); ;
++ scm_c_define_gsubr (s_time_on_death, 2, 0, 0, (void *) time_on_death); ;
++ scm_c_define_gsubr (s_default_on_death, 3, 0, 0, (void *) default_on_death); ;
++ scm_c_define_gsubr (s_add_cyclic_platform, 8, 0, 0, (void *) add_cyclic_platform); ;
++ scm_c_define_gsubr (s_animator, 7, 0, 0, (void *) animator); ;
++ scm_c_define_gsubr (s_set_onoff, 2, 0, 0, (void *) set_onoff); ;
++ scm_c_define_gsubr (s_animator_value, 1, 0, 0, (void *) animator_value); ;
++ scm_c_define_gsubr (s_set_animator_direction, 2, 0, 0, (void *) set_animator_direction); ;
++ scm_c_define_gsubr (s_set_animator_position, 2, 0, 0, (void *) set_animator_position); ;
++ scm_c_define_gsubr (s_day, 0, 0, 0, (void *) day); ;
++ scm_c_define_gsubr (s_night, 0, 0, 0, (void *) night); ;
++ scm_c_define_gsubr (s_fog, 0, 1, 0, (void *) fog); ;
++ scm_c_define_gsubr (s_thick_fog, 0, 0, 0, (void *) thick_fog); ;
++ scm_c_define_gsubr (s_fog_color, 3, 0, 0, (void *) fog_color); ;
++ scm_c_define_gsubr (s_set_bonus_level, 1, 0, 0, (void *) set_bonus_level); ;
++ scm_c_define_gsubr (s_set_track_name, 1, 0, 0, (void *) set_track_name); ;
++ scm_c_define_gsubr (s_set_author, 1, 0, 0, (void *) set_author); ;
++ scm_c_define_gsubr (s_start_time, 1, 0, 0, (void *) start_time); ;
++ scm_c_define_gsubr (s_set_time, 1, 0, 0, (void *) set_time); ;
++ scm_c_define_gsubr (s_get_time, 0, 0, 0, (void *) get_time); ;
++ scm_c_define_gsubr (s_add_time, 1, 0, 0, (void *) add_time); ;
++ scm_c_define_gsubr (s_set_score, 1, 0, 0, (void *) set_score); ;
++ scm_c_define_gsubr (s_get_score, 0, 0, 0, (void *) get_score); ;
++ scm_c_define_gsubr (s_add_score, 1, 0, 0, (void *) add_score); ;
++ scm_c_define_gsubr (s_set_start_position, 2, 0, 0, (void *) set_start_position); ;
++ scm_c_define_gsubr (s_snow, 1, 0, 0, (void *) snow); ;
++ scm_c_define_gsubr (s_rain, 1, 0, 0, (void *) rain); ;
++ scm_c_define_gsubr (s_difficulty, 0, 0, 0, (void *) difficulty); ;
++ scm_c_define_gsubr (s_use_grid, 1, 0, 0, (void *) use_grid); ;
++ scm_c_define_gsubr (s_map_is_transparent, 1, 0, 0, (void *) map_is_transparent); ;
++ scm_c_define_gsubr (s_jump, 1, 0, 0, (void *) jump); ;
++ scm_c_define_gsubr (s_scale_oxygen, 1, 0, 0, (void *) scale_oxygen); ;
++ scm_c_define_gsubr (s_set_cell_flag, 6, 0, 0, (void *) set_cell_flag); ;
++ scm_c_define_gsubr (s_set_cell_velocity, 6, 0, 0, (void *) set_cell_velocity); ;
++ scm_c_define_gsubr (s_set_cell_heights, 8, 1, 0, (void *) set_cell_heights); ;
++ scm_c_define_gsubr (s_set_cell_water_heights, 8, 1, 0, (void *) set_cell_water_heights); ;
++ scm_c_define_gsubr (s_set_cell_colors, 8, 1, 0, (void *) set_cell_colors); ;
++ scm_c_define_gsubr (s_set_cell_wall_colors, 8, 1, 0, (void *) set_cell_wall_colors); ;
++ scm_c_define_gsubr (s_play_effect, 1, 0, 0, (void *) play_effect); ;
++ scm_c_define_gsubr (s_camera_angle, 2, 0, 0, (void *) camera_angle); ;
++ scm_c_define_gsubr (s_restart_time, 1, 0, 0, (void *) restart_time); ;
++ scm_c_define_gsubr (s_clear_song_preferences, 0, 0, 0, (void *) clear_song_preferences); ;
++ scm_c_define_gsubr (s_force_next_song, 0, 0, 0, (void *) force_next_song); ;
++ scm_c_define_gsubr (s_set_song_preference, 2, 0, 0, (void *) set_song_preference); ;
++ scm_c_define_gsubr (s_trigger, 4, 0, 0, (void *) trigger); ;
++ scm_c_define_gsubr (s_smart_trigger, 5, 0, 0, (void *) smart_trigger); ;
++ scm_c_define_gsubr (s_on_event, 3, 0, 0, (void *) on_event); ;
++ scm_c_define_gsubr (s_get_event_callback, 2, 0, 0, (void *) get_event_callback); ;
++ s_mod_speed = scm_permanent_object (scm_c_define ("*mod-speed*", scm_from_long(0))); ;
++ s_mod_jump = scm_permanent_object (scm_c_define ("*mod-jump*", scm_from_long(1))); ;
++ s_mod_spike = scm_permanent_object (scm_c_define ("*mod-spike*", scm_from_long(2))); ;
++ s_mod_glass = scm_permanent_object (scm_c_define ("*mod-glass*", scm_from_long(3))); ;
++ s_mod_dizzy = scm_permanent_object (scm_c_define ("*mod-dizzy*", scm_from_long(4))); ;
++ s_mod_frozen = scm_permanent_object (scm_c_define ("*mod-frozen*", scm_from_long(5))); ;
++ s_mod_float = scm_permanent_object (scm_c_define ("*mod-float*", scm_from_long(6))); ;
++ s_mod_extra_life = scm_permanent_object (scm_c_define ("*mod-extra-life*", scm_from_long(7))); ;
++ s_mod_large = scm_permanent_object (scm_c_define ("*mod-large*", scm_from_long(9))); ;
++ s_mod_small = scm_permanent_object (scm_c_define ("*mod-small*", scm_from_long(8))); ;
++ s_mod_nitro = scm_permanent_object (scm_c_define ("*mod-nitro*", scm_from_long(10))); ;
++ s_easy = scm_permanent_object (scm_c_define ("*easy*", scm_from_long(0))); ;
++ s_normal = scm_permanent_object (scm_c_define ("*normal*", scm_from_long(1))); ;
++ s_hard = scm_permanent_object (scm_c_define ("*hard*", scm_from_long(2))); ;
++ s_ff_nothing = scm_permanent_object (scm_c_define ("*ff-nothing*", scm_from_long(0))); ;
++ s_ff_kill1 = scm_permanent_object (scm_c_define ("*ff-kill1*", scm_from_long(1))); ;
++ s_ff_bounce1 = scm_permanent_object (scm_c_define ("*ff-bounce1*", scm_from_long(2))); ;
++ s_ff_kill2 = scm_permanent_object (scm_c_define ("*ff-kill2*", scm_from_long(4))); ;
++ s_ff_bounce2 = scm_permanent_object (scm_c_define ("*ff-bounce2*", scm_from_long(8))); ;
++ s_ff_bounce = scm_permanent_object (scm_c_define ("*ff-bounce*", scm_from_long(2 +8))); ;
++ s_ff_kill = scm_permanent_object (scm_c_define ("*ff-kill*", scm_from_long(1 +4))); ;
++ s_soft_enter = scm_permanent_object (scm_c_define ("*soft-enter*", scm_from_long(1))); ;
++ s_soft_exit = scm_permanent_object (scm_c_define ("*soft-exit*", scm_from_long(2))); ;
++ s_cell_ice = scm_permanent_object (scm_c_define ("*cell-ice*", scm_from_long((1 << 0)))); ;
++ s_cell_acid = scm_permanent_object (scm_c_define ("*cell-acid*", scm_from_long((1 << 1)))); ;
++ s_cell_sand = scm_permanent_object (scm_c_define ("*cell-sand*", scm_from_long((1 << 2)))); ;
++ s_cell_kill = scm_permanent_object (scm_c_define ("*cell-kill*", scm_from_long((1 << 3)))); ;
++ s_cell_trampoline = scm_permanent_object (scm_c_define ("*cell-trampoline*", scm_from_long((1 << 4)))); ;
++ s_cell_nogrid = scm_permanent_object (scm_c_define ("*cell-nogrid*", scm_from_long((1 << 5)))); ;
++ s_cell_track = scm_permanent_object (scm_c_define ("*cell-track*", scm_from_long((1 << 6)))); ;
++ s_animator_0_remove = scm_permanent_object (scm_c_define ("*animator-0-remove*", scm_from_long(1))); ;
++ s_animator_0_stop = scm_permanent_object (scm_c_define ("*animator-0-stop*", scm_from_long(2))); ;
++ s_animator_0_bounce = scm_permanent_object (scm_c_define ("*animator-0-bounce*", scm_from_long(4))); ;
++ s_animator_0_wrap = scm_permanent_object (scm_c_define ("*animator-0-wrap*", scm_from_long(8))); ;
++ s_animator_1_remove = scm_permanent_object (scm_c_define ("*animator-1-remove*", scm_from_long(16))); ;
++ s_animator_1_stop = scm_permanent_object (scm_c_define ("*animator-1-stop*", scm_from_long(32))); ;
++ s_animator_1_bounce = scm_permanent_object (scm_c_define ("*animator-1-bounce*", scm_from_long(64))); ;
++ s_animator_1_wrap = scm_permanent_object (scm_c_define ("*animator-1-wrap*", scm_from_long(128))); ;
++ s_animator_remove = scm_permanent_object (scm_c_define ("*animator-remove*", scm_from_long(1 +16))); ;
++ s_animator_stop = scm_permanent_object (scm_c_define ("*animator-stop*", scm_from_long(2 +32))); ;
++ s_animator_wrap = scm_permanent_object (scm_c_define ("*animator-bounce*", scm_from_long(4 +64))); ;
++ s_animator_bounce = scm_permanent_object (scm_c_define ("*animator-wrap*", scm_from_long(8 +128))); ;
++ s_cell_ne = scm_permanent_object (scm_c_define ("*cell-ne*", scm_from_long(Cell::NORTH+Cell::EAST))); ;
++ s_cell_nw = scm_permanent_object (scm_c_define ("*cell-nw*", scm_from_long(Cell::NORTH+Cell::WEST))); ;
++ s_cell_se = scm_permanent_object (scm_c_define ("*cell-se*", scm_from_long(Cell::SOUTH+Cell::EAST))); ;
++ s_cell_sw = scm_permanent_object (scm_c_define ("*cell-sw*", scm_from_long(Cell::SOUTH+Cell::WEST))); ;
++ s_cell_center = scm_permanent_object (scm_c_define ("*cell-center*", scm_from_long(Cell::CENTER))); ;
++ s_bird_ch = scm_permanent_object (scm_c_define ("*bird-constant-height*", scm_from_long(1))); ;
++ s_event_death = scm_permanent_object (scm_c_define ("*death*", scm_from_long(GameHookEvent_Death))); ;
++ s_event_spawn = scm_permanent_object (scm_c_define ("*spawn*", scm_from_long(GameHookEvent_Spawn))); ;
++ s_event_tick = scm_permanent_object (scm_c_define ("*tick*", scm_from_long(GameHookEvent_Tick))); ;
++ s_score_player = scm_permanent_object (scm_c_define ("*score-player*", scm_from_long(0))); ;
++ s_score_black = scm_permanent_object (scm_c_define ("*score-black*", scm_from_long(1))); ;
++ s_score_baby = scm_permanent_object (scm_c_define ("*score-baby*", scm_from_long(2))); ;
++ s_score_bird = scm_permanent_object (scm_c_define ("*score-bird*", scm_from_long(3))); ;
++ s_score_cactus = scm_permanent_object (scm_c_define ("*score-cactus*", scm_from_long(4))); ;
++ s_score_flag = scm_permanent_object (scm_c_define ("*score-flag*", scm_from_long(5))); ;
+diff -Naur orig/src/guile.h patched/src/guile.h
+--- orig/src/guile.h	2007-05-17 17:09:28.000000000 +0200
++++ patched/src/guile.h	2013-05-13 19:53:14.104143347 +0200
+@@ -21,7 +21,6 @@
+ #ifndef GUILE_H
+ #define GUILE_H
+ 
+-#include <guile/gh.h>
+ #include <libguile.h>
+ 
+ void initGuileInterface();
+diff -Naur orig/src/mmad.cc patched/src/mmad.cc
+--- orig/src/mmad.cc	2007-05-17 15:24:06.000000000 +0200
++++ patched/src/mmad.cc	2013-05-13 19:53:14.144143706 +0200
+@@ -38,6 +38,7 @@
+ #include "hofMode.h"
+ #include <SDL/SDL_image.h>
+ #include <unistd.h>
++#include <stdlib.h>
+ #include <settingsMode.h>
+ #include <settings.h>
+ #include <setupMode.h>
+@@ -543,6 +544,9 @@
+   char guileLoadPath[256+16];/*longest effective share directory plus"GUILE_LOAD_PATH="*/
+   program_name = argv[0];
+ 
++  /* Disable guile deprecated warning, unless explicitly requested */
++  setenv("GUILE_WARN_DEPRECATED", "no", 0);
++
+   /*** Autmatic detection of SHARE_DIR ***/
+   effectiveShareDir[0]=0;
+   /* From environment variable */

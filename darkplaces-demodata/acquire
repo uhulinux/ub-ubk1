@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+quake${UB_VERSION}.zip .
+      ftp://ftp.idsoftware.com/idstuff/quake/

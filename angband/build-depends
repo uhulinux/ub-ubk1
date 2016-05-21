@@ -1,0 +1,7 @@
+libsm-dev
+libx11-dev
+ncurses-dev
+python-docutils
+sdl-image-dev
+sdl-mixer-dev
+sdl-ttf-dev

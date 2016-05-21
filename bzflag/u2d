@@ -1,0 +1,1 @@
+urllist http://sourceforge.net/projects/bzflag/files/bzflag%20source/ | splitver '^([0-9]+\.[0-9]+\.[0-9]+)$' | sort -V | tail -n 1

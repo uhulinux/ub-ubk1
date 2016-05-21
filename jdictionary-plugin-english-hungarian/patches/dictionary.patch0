@@ -1,0 +1,70 @@
+--- dictionary.patch
++++ dictionary.patch
+@@ -0,0 +1,67 @@
++--- resources/dictionary/EngHun
+++++ resources/dictionary/EngHun
++@@ -35453,16 +35453,16 @@
++  coup d'oeil : pillantás :
++  coup d'oeil : szempillantás :
++  coup d'oeil : tekintet :
++- coup de gráce : kegyelemdöfés :
+++ coup de grâce : kegyelemdöfés :
++  coup de main : hirtelen támadás :
++  coup de main : merész támadás :
++- coup de théátre : fontos esemény :
++- coup de théátre : meglepő fordulat :
++- coup de théátre : szenzációs esemény :
++- coup de théátre : szenzációs meglepetés :
++- coup de théátre : színpadi csattanó :
++- coup de théátre : színpadi fogás :
++- coup de théátre : váratlan esemény :
+++ coup de théâtre : fontos esemény :
+++ coup de théâtre : meglepő fordulat :
+++ coup de théâtre : szenzációs esemény :
+++ coup de théâtre : szenzációs meglepetés :
+++ coup de théâtre : színpadi csattanó :
+++ coup de théâtre : színpadi fogás :
+++ coup de théâtre : váratlan esemény :
++  coupe : csukott hintó :
++  coupe : csukott kocsi :
++  coupe : félfülke :
++@@ -102547,22 +102547,39 @@
++  nailbrush : körömkefe :
++  nail-file : körömreszelő :
++  naive : gyermeteg :
+++ naïve : gyermeteg :
++  naive : mesterkéletlen :
+++ naïve : mesterkéletlen :
++  naive : naiv :
+++ naïve : naiv :
++  naiveté : ártatlanság :
+++ naïveté : ártatlanság :
++  naiveté : gyermetegség :
+++ naïveté : gyermetegség :
++  naiveté : mesterkéletlenség :
+++ naïveté : mesterkéletlenség :
++  naiveté : naivitás :
+++ naïveté : naivitás :
++  naiveté : nyíltság :
+++ naïveté : nyíltság :
++  naiveté : őszinteség :
+++ naïveté : őszinteség :
++  naiveté : természetesség :
+++ naïveté : természetesség :
++  naivety : ártatlanság :
+++ naïvety : ártatlanság :
++  naivety : gyermetegség :
+++ naïvety : gyermetegség :
++  naivety : mesterkéletlenség :
+++ naïvety : mesterkéletlenség :
++  naivety : naivitás :
+++ naïvety : naivitás :
++  naivety : nyíltság :
+++ naïvety : nyíltság :
++  naivety : őszinteség :
+++ naïvety : őszinteség :
++  naivety : természetesség :
+++ naïvety : természetesség :
++  naked : csupasz :
++  naked : meztelen :
++  namby-pamby : affektált :

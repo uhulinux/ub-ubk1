@@ -1,0 +1,1 @@
+urllist http://linux.tlk.fr/games/Powermanga/download/| splitver '^powermanga-([0-9.]+).tgz$' | sort -V | tail -n 1

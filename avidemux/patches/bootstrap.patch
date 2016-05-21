@@ -1,0 +1,21 @@
+diff -Naur orig/bootStrap.bash mod/bootStrap.bash
+--- orig/bootStrap.bash	2016-03-05 09:22:54.000000000 +0100
++++ mod/bootStrap.bash	2016-04-19 21:20:44.836654687 +0200
+@@ -42,7 +42,7 @@
+         mkdir $BUILDDIR || fail mkdir
+         cd $BUILDDIR 
+         cmake $PKG $FAKEROOT $QT_FLAVOR -DCMAKE_EDIT_COMMAND=vim -DAVIDEMUX_SOURCE_DIR=$TOP -DCMAKE_INSTALL_PREFIX=/usr $EXTRA $ASAN $DEBUG -G "$BUILDER" $SOURCEDIR || fail cmakeZ
+-        make  $PARAL >& /tmp/log$BUILDDIR || fail "make, result in /tmp/log$BUILDDIR"
++        make  $PARAL
+ 	if  [ "x$PKG" != "x" ] ; then
+           $FAKEROOT_COMMAND make package DESTDIR=$FAKEROOT_DIR/tmp || fail package
+ 	fi
+@@ -183,7 +183,7 @@
+ 
+ export TOP=$PWD
+ export POSTFIX=""
+-export FAKEROOT_DIR=$PWD/install
++export FAKEROOT_DIR=$UB_INSTALLDIR
+ echo "Top dir : $TOP"
+ echo "Fake installation directory=$FAKEROOT_DIR"
+ if [ "x$debug" = "x1" ] ; then echo   

@@ -1,0 +1,13 @@
+--- dictionary.patch
++++ dictionary.patch
+@@ -0,0 +1,10 @@
++--- resources/dictionary/English_Serbian
+++++ resources/dictionary/English_Serbian
++@@ -28657,7 +28657,6 @@
++  i/o supervisor | u/i supervizor |
++  i/o switching | u/i prebacivanje |
++  i/o-limited | u/i ogranicen |
++- i¤zv¤-¤zµa¢ z | djpЄo-djsj-wpi-px |
++  iambic | jampski |
++  ib. | na istom mestu |
++  ibex | ibis |

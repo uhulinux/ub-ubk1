@@ -1,0 +1,91 @@
+--- orig/src/glHelp.cc.orig	2010-03-07 17:24:16.000000000 +0100
++++ patched/src/glHelp.cc	2010-03-07 17:24:16.000000000 +0100
+@@ -62,9 +62,7 @@ GLuint mousePointerTexture;
+ void draw2DString(TTF_Font *font,char *string, int x,int y,Uint8 red, Uint8 green, Uint8 blue) {
+   int w,h;
+   SDL_Color fgColor={255,255,255};
+-  SDL_Color bgColor={0,0,0};
+   SDL_Surface *text;
+-  SDL_Rect rect;
+   GLuint texture;
+   GLfloat texcoord[4];
+   GLfloat texMinX, texMinY;
+@@ -517,7 +515,6 @@ int loadTexture(char *name, Font *font)
+ 
+ void glHelpInit() {  
+   char str[256];
+-  GLfloat texCoords[4];
+ 
+   qobj = gluNewQuadric();
+   gluQuadricDrawStyle(qobj,GLU_FILL);
+@@ -613,12 +610,12 @@ void regenerateSphereDisplaylists() {
+ 
+ #define FRAME 50
+ 
+-int bindTexture(char *name) {
++void bindTexture(char *name) {
+   int i;
+   for(i=0;i<numTextures;i++)
+ 	if(strcmp(name,textureNames[i])==0) {
+ 	  glBindTexture(GL_TEXTURE_2D,textures[i]);
+-	  return i;
++	  return;
+ 	}
+   // YP: if the texture is not found, try to load it
+   //     and add it in the list
+@@ -626,7 +623,7 @@ int bindTexture(char *name) {
+   if(i >= 0) glBindTexture(GL_TEXTURE_2D,textures[i]);
+ }
+ 
+-int resetTextures() {
++void resetTextures() {
+   GLfloat texCoord[4];
+   char str[256];
+   SDL_Surface *surface;
+@@ -647,14 +644,13 @@ int resetTextures() {
+     }
+     if(!surface) {
+       printf(_("Warning: Failed to load texture %s\n"),str);
+-      return 0;  // error (a valid texture entry)
++      return;  // error is ignored (a valid texture entry)
+     } else {
+       glDeleteTextures(1, &textures[i] );
+       textures[i] = LoadTexture(surface,texCoord, linear, NULL);
+       SDL_FreeSurface(surface);
+     }
+   }  
+-  
+ }
+ 
+ /* Calculates and displays current framerate */
+@@ -945,8 +941,6 @@ GLuint LoadTexture(SDL_Surface *surface,
+     SDL_Surface *source=SDL_ConvertSurface(surface,image->format,SDL_SWSURFACE);
+     SDL_LockSurface(source);
+     SDL_LockSurface(image);
+-    Uint32 *destPixels=(Uint32*)image->pixels;
+-    Uint32 *sourcePixels=(Uint32*)source->pixels;
+     for(int x=0;x<area.w;x++)
+       for(int y=0;y<area.h;y++)
+ 	*((Uint32*)(((char*)image->pixels)+x*image->format->BytesPerPixel+y*image->pitch)) =
+@@ -1010,7 +1004,7 @@ GLuint LoadTexture(SDL_Surface *surface,
+ // YP: draw a spike with TRIANGLE_FAN. less time used by C->GL
+ //     copies, and reduction of glBegin/glEnd number.
+ void drawSpike(Coord3d a,Coord3d b,Coord3d c, Coord3d d) {
+-  Coord3d ab, ac, ad;
++  Coord3d ab, ac, ad = {0,0,0};
+   Coord3d normal1, normal2, normal3;
+ 
+   sub(b,a,ab);
+--- orig/src/glHelp.h.orig	2006-08-05 17:22:32.000000000 +0200
++++ patched/src/glHelp.h	2010-03-07 17:24:16.000000000 +0100
+@@ -76,8 +76,8 @@ GLuint LoadTexture(SDL_Surface *surface,
+ 
+ SDL_Surface *getSurfaceFromRGB(char *);
+ int loadTexture(char *name, Font *font = NULL); // preloads a texture from file and returns position in textures array
+-int bindTexture(char *name); // binds texture. Also returns index in textures array used for this.
+-int resetTextures(); //Reloads all textures
++void bindTexture(char *name);			// Binds texture
++void resetTextures();				// Reloads all textures
+ 
+ void createForcefieldTextures();     /** Create a set of special textures for forcefields that are animated over time. */
+ void resetForcefieldsTextures();

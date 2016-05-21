@@ -1,0 +1,97 @@
+diff -Naur orig/install.sh patch/install.sh
+--- $UHU_COMPILEDIR/install.sh	2007-08-10 16:21:31.000000000 +0200
++++ $UHU_COMPILEDIR/install.sh	2007-08-10 16:55:47.000000000 +0200
+@@ -5,53 +5,25 @@
+ ##
+ 
+ # programs
+-export BIN=/usr/local/bin
++export BIN=$UB_INSTALLDIR/usr/bin
+ 
+ # data files
+-export DATA=/usr/local/share/games/HoH
+-
++export DATA=$UB_INSTALLDIR/usr/share/games/HoH
++export DATAB=/usr/share/games/HoH
+ # documentation
+-export DOCS=/usr/local/share/doc/HoH
++export DOCS=$UB_INSTALLDIR/usr/share/doc/Packages/HoH
+ 
+ 
+ ##
+ ## Now say what's going to happen
+ ##
+ 
+-echo
+-echo Head-Over-Heels installer
+-echo -------------------------
+-echo
+-echo Head Over Heels will be installed in the following directories
+-echo \(You may need to be logged in as root for this to work.\):
+-echo
+-echo Program: $BIN/
+-echo Datafiles: $DATA/
+-echo Documenatation: $DOCS/
+-echo
+-echo ..if you want to change this, edit the 'install.sh' file.
+-echo
+-echo 
+-echo Press ENTER to continue, or Control-C to quit.
+-echo
+-read
+-
+-echo ---------------------------
+-echo
+-
+-##
+-## Now do the installation
+-##
+-
+-echo
+-echo Installing..
+-
+ 
+ mkdir -p $BIN
+ rm -f $BIN/hoh >& /dev/null
+ echo "#!/bin/bash" > $BIN/hoh
+-echo "export LD_LIBRARY_PATH=$DATA/runtime" >> $BIN/hoh
+-echo "cd $DATA" >> $BIN/hoh
++echo "export LD_LIBRARY_PATH=$DATAB/runtime" >> $BIN/hoh
++echo "cd $DATAB" >> $BIN/hoh
+ echo "exec ./HoH \$@" >> $BIN/hoh
+ 
+ if ! test -f $BIN/hoh
+@@ -82,33 +54,4 @@
+ 	exit
+ fi
+ 
+-##
+-## Make an uninstaller
+-##
+-
+-export GOAWAY=$BIN/hoh-uninstall
+-
+-echo echo This will remove Head Over Heels > $GOAWAY
+-echo echo >> $GOAWAY
+-echo echo Press ENTER to continue, or Control-C to quit.>> $GOAWAY
+-echo echo >> $GOAWAY
+-echo read >> $GOAWAY
+-echo rm -f $BIN/hoh >> $GOAWAY
+-echo rm -rf $DATA >> $GOAWAY
+-echo rm -rf $DOCS >> $GOAWAY
+-echo rm -f $BIN/hoh-uninstall >> $GOAWAY
+-echo echo >> $GOAWAY
+-echo echo Done. >> $GOAWAY
+-chmod +x $GOAWAY
+-
+-echo
+-echo
+-echo ---------------------------
+-echo
+-echo Done
+-echo
+-echo You can start the game by typing \'hoh\'
+-echo
+-echo You can remove the game by typing \'hoh-uninstall\'
+-echo
+ 

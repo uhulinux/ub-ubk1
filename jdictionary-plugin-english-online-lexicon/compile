@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+export PATH="$PATH:/usr/lib/java/bin"
+
+jar -xf *.jar
+
+iconv -f ISO-8859-2 -t UTF-8 <InfoSheet >InfoSheet.new
+mv InfoSheet.new InfoSheet
+
+jar -uf *.jar InfoSheet

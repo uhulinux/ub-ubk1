@@ -1,0 +1,8 @@
+--- a/data/pitivi.desktop.in.in.orig	2014-05-01 22:14:16.000000000 +0200
++++ a/data/pitivi.desktop.in.in	2014-05-01 22:14:22.000000000 +0200
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=Pitivi
+ _GenericName=Video Editor
+ _Comment=Create and edit your own movies

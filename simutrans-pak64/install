@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+cd simutrans
+installhely="$UB_INSTALLDIR"/usr/share/games/simutrans
+# install data
+  install -m755 -d "$installhely"
+  cp -r pak "$installhely"
+
+# set permissions
+  find "$installhely" -type d -exec chmod 755 {} +
+  find "$installhely" -type f -exec chmod 644 {} +

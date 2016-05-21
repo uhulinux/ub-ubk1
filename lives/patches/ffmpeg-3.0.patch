@@ -1,0 +1,12 @@
+diff -Naur orig/lives-plugins/plugins/decoders/mpegts_decoder.c patched/lives-plugins/plugins/decoders/mpegts_decoder.c
+--- orig/lives-plugins/plugins/decoders/mpegts_decoder.c	2016-03-08 16:00:09.000000000 +0100
++++ patched/lives-plugins/plugins/decoders/mpegts_decoder.c	2016-05-02 10:54:37.393588184 +0200
+@@ -1023,7 +1023,7 @@
+ static void new_pes_packet(PESContext *pes, AVPacket *pkt) {
+   av_init_packet(pkt);
+ 
+-#if !HAVE_AVPACKET_UNREF
++#if FF_API_DESTRUCT_PACKET
+   pkt->destruct = av_destruct_packet;
+ #endif
+ 

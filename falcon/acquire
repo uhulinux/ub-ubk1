@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+Falcon-${UB_VERSION}.tgz Falcon-${UB_VERSION}/
+	http://www.falconpl.org/project_dl/_official_rel/

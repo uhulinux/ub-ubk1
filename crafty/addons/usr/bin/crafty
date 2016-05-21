@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export CRAFTY_BOOK_PATH=/usr/lib/crafty
+export CRAFTY_TB_PATH=/usr/lib/crafty/TB
+export CRAFTY_RC_PATH=/etc
+export CRAFTY_LOG_PATH=~
+/usr/lib/crafty/crafty "$@"

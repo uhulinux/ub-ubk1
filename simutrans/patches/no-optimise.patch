@@ -1,0 +1,40 @@
+diff -Naur orig/Makefile mod/Makefile
+--- orig/Makefile	2015-11-01 00:53:52.000000000 +0100
++++ mod/Makefile	2016-01-04 17:32:54.235990485 +0100
+@@ -71,15 +71,6 @@
+ SDL_CONFIG     ?= sdl-config
+ SDL2_CONFIG    ?= sdl2-config
+ 
+-ifneq ($(OPTIMISE),)
+-  CFLAGS += -O3
+-  ifeq ($(findstring $(OSTYPE), amiga),)
+-    CFLAGS += -minline-all-stringops
+-  endif
+-else
+-  CFLAGS += -O
+-endif
+-
+ ifdef DEBUG
+   ifeq ($(shell expr $(DEBUG) \>= 1), 1)
+     CFLAGS += -g -DDEBUG
+diff -Naur orig/makeobj/Makefile mod/makeobj/Makefile
+--- orig/makeobj/Makefile	2014-06-23 21:42:17.000000000 +0200
++++ mod/makeobj/Makefile	2016-01-04 17:34:09.696233228 +0100
+@@ -42,17 +42,6 @@
+   CXXFLAGS   += -DUSE_HW -DUSE_C
+ endif
+ 
+-ifneq ($(OPTIMISE),)
+-  CFLAGS   += -O3 -fno-schedule-insns
+-  CXXFLAGS += -O3 -fno-schedule-insns
+-  ifneq ($(OSTYPE),mac)
+-    CFLAGS  += -minline-all-stringops
+-  endif
+-else
+-  CFLAGS   += -O
+-  CXXFLAGS += -O
+-endif
+-
+ ifdef DEBUG
+   ifeq ($(shell expr $(DEBUG) \>= 1), 1)
+     CFLAGS   += -g -DDEBUG

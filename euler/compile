@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+sed -i 's/extern int command_count;/static int command_count;/' src/command.c
+sed -i 's/CLK_TCK/CLOCKS_PER_SEC/' src/main.c
+ub_compile
