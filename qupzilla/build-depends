@@ -3,3 +3,4 @@ libxml2-dev
 libxslt-dev
 pulseaudio-dev
 qt5-dev
+qtwebkit-dev
