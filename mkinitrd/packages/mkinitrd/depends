@@ -3,13 +3,16 @@ aoetools
 attr
 bash
 binutils
+btrfs-progs
 coreutils
+cryptsetup
 dhcpcd
 e2fsprogs
 gawk
 grep
 gzip
 hdparm
+hwdata
 iproute2
 iputils
 joe
