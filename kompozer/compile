@@ -17,5 +17,4 @@ ub_compile \
 	--enable-places \
 	--disable-installer \
 	--enable-java \
-	--disable-jpeg \
 	--enable-javaxpcom
