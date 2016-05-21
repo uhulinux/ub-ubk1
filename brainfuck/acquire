@@ -1,12 +1,11 @@
 #!/usr/bin/env dl
 
 bff-${UB_VERSION}.tar.gz bff-${UB_VERSION}/
-	ftp://ftp.neva.ru/.3/Linux-Distrib/Gentoo/distfiles/
+	http://esoteric.voxelperfect.net/files/brainfuck/impl/
 
 mandelbrot.b
-	ftp://ftp.neva.ru/.3/Linux-Distrib/Gentoo/distfiles/
-	ftp://ftp.freebsd.ch/gentoo/distfiles/mandelbrot.b
+	http://esoteric.voxelperfect.net/files/brainfuck/src/
 
 random.b
-	ftp://ftp.neva.ru/.3/Linux-Distrib/Gentoo/distfiles/
-	ftp://ftp.freebsd.ch/gentoo/distfiles/mandelbrot.b
+	http://esoteric.voxelperfect.net/files/brainfuck/src/
+
