@@ -1,0 +1,55 @@
+diff -rup binutils-2.26.orig/bfd/libaout.h binutils-2.26/bfd/libaout.h
+--- binutils-2.26.orig/bfd/libaout.h	2016-03-15 09:50:29.080059305 +0000
++++ binutils-2.26/bfd/libaout.h	2016-03-15 09:53:26.178070524 +0000
+@@ -448,9 +448,7 @@ struct  aout_data_struct
+ #define obj_aout_sym_hashes(bfd)           (adata (bfd).sym_hashes)
+ #define obj_aout_dynamic_info(bfd)         (adata (bfd).dynamic_info)
+ 
+-/* We take the address of the first element of an asymbol to ensure that the
+-   macro is only ever applied to an asymbol.  */
+-#define aout_symbol(asymbol) ((aout_symbol_type *)(&(asymbol)->the_bfd))
++#define aout_symbol(asymbol) ((aout_symbol_type *) (asymbol))
+ 
+ /* Information we keep for each a.out section.  This is currently only
+    used by the a.out backend linker.  */
+diff -rup binutils-2.26.orig/bfd/libcoff.h binutils-2.26/bfd/libcoff.h
+--- binutils-2.26.orig/bfd/libcoff.h	2016-03-15 09:50:29.080059305 +0000
++++ binutils-2.26/bfd/libcoff.h	2016-03-15 09:54:02.826279784 +0000
+@@ -192,9 +192,7 @@ struct xcoff_tdata
+ 
+ #define xcoff_data(abfd) ((abfd)->tdata.xcoff_obj_data)
+ 
+-/* We take the address of the first element of an asymbol to ensure that the
+-   macro is only ever applied to an asymbol.  */
+-#define coffsymbol(asymbol) ((coff_symbol_type *)(&((asymbol)->the_bfd)))
++#define coffsymbol(asymbol) ((coff_symbol_type *) (asymbol))
+ 
+ /* Tdata for sections in XCOFF files.  This is used by the linker.  */
+ 
+diff -rup binutils-2.26.orig/bfd/libcoff-in.h binutils-2.26/bfd/libcoff-in.h
+--- binutils-2.26.orig/bfd/libcoff-in.h	2016-03-15 09:50:29.080059305 +0000
++++ binutils-2.26/bfd/libcoff-in.h	2016-03-15 09:53:44.989177935 +0000
+@@ -188,9 +188,7 @@ struct xcoff_tdata
+ 
+ #define xcoff_data(abfd) ((abfd)->tdata.xcoff_obj_data)
+ 
+-/* We take the address of the first element of an asymbol to ensure that the
+-   macro is only ever applied to an asymbol.  */
+-#define coffsymbol(asymbol) ((coff_symbol_type *)(&((asymbol)->the_bfd)))
++#define coffsymbol(asymbol) ((coff_symbol_type *) (asymbol))
+ 
+ /* Tdata for sections in XCOFF files.  This is used by the linker.  */
+ 
+--- binutils-2.26.orig/gas/config/obj-elf.h	2016-03-15 09:50:29.143059664 +0000
++++ binutils-2.26/gas/config/obj-elf.h	2016-03-15 10:36:26.342646864 +0000
+@@ -93,8 +93,8 @@ extern void elf_begin (void);
+ #define LOCAL_LABEL_PREFIX '.'
+ #endif
+ 
+-/* should be conditional on address size! */
+-#define elf_symbol(asymbol) ((elf_symbol_type *) (&(asymbol)->the_bfd))
++/* Should be conditional on address size!  */
++#define elf_symbol(asymbol) ((elf_symbol_type *) (asymbol))
+ 
+ #ifndef S_GET_SIZE
+ #define S_GET_SIZE(S) \
