@@ -1,6 +1,6 @@
 diff -Naur orig/src/filemanager/boxes.c patched/src/filemanager/boxes.c
---- orig/src/filemanager/boxes.c	2016-03-12 16:45:47.000000000 +0100
-+++ patched/src/filemanager/boxes.c	2016-03-28 12:37:43.424074946 +0200
+--- orig/src/filemanager/boxes.c	2016-05-07 17:42:52.000000000 +0200
++++ patched/src/filemanager/boxes.c	2016-05-22 18:36:43.881410257 +0200
 @@ -104,9 +104,11 @@
  static unsigned long panel_listing_types_id, panel_user_format_id, panel_brief_cols_id;
  static unsigned long mini_user_status_id, mini_user_format_id;
@@ -29,7 +29,7 @@ diff -Naur orig/src/filemanager/boxes.c patched/src/filemanager/boxes.c
  
  /* --------------------------------------------------------------------------------------------- */
  
-@@ -885,6 +889,7 @@
+@@ -888,6 +892,7 @@
  
  /* --------------------------------------------------------------------------------------------- */
  
@@ -37,7 +37,7 @@ diff -Naur orig/src/filemanager/boxes.c patched/src/filemanager/boxes.c
  #ifndef HAVE_CHARSET
  void
  display_bits_box (void)
-@@ -1001,6 +1006,7 @@
+@@ -1004,6 +1009,7 @@
      }
  }
  #endif /* HAVE_CHARSET */
@@ -47,7 +47,7 @@ diff -Naur orig/src/filemanager/boxes.c patched/src/filemanager/boxes.c
  /** Show tree in a box, not on a panel */
 diff -Naur orig/src/filemanager/boxes.h patched/src/filemanager/boxes.h
 --- orig/src/filemanager/boxes.h	2016-03-12 16:45:47.000000000 +0100
-+++ patched/src/filemanager/boxes.h	2016-03-28 12:37:43.424074946 +0200
++++ patched/src/filemanager/boxes.h	2016-05-22 18:36:43.881410257 +0200
 @@ -25,7 +25,9 @@
                         int *brief_cols);
  const panel_field_t *sort_box (dir_sort_options_t * op, const panel_field_t * sort_field);
@@ -59,9 +59,9 @@ diff -Naur orig/src/filemanager/boxes.h patched/src/filemanager/boxes.h
  void jobs_cmd (void);
  char *cd_dialog (void);
 diff -Naur orig/src/filemanager/midnight.c patched/src/filemanager/midnight.c
---- orig/src/filemanager/midnight.c	2016-03-12 16:45:48.000000000 +0100
-+++ patched/src/filemanager/midnight.c	2016-03-28 12:37:43.424074946 +0200
-@@ -1169,9 +1169,11 @@
+--- orig/src/filemanager/midnight.c	2016-05-07 17:42:52.000000000 +0200
++++ patched/src/filemanager/midnight.c	2016-05-22 18:36:43.881410257 +0200
+@@ -1166,9 +1166,11 @@
          diff_view_cmd ();
          break;
  #endif
@@ -74,9 +74,9 @@ diff -Naur orig/src/filemanager/midnight.c patched/src/filemanager/midnight.c
          edit_cmd ();
          break;
 diff -Naur orig/src/setup.c patched/src/setup.c
---- orig/src/setup.c	2016-03-12 16:45:48.000000000 +0100
-+++ patched/src/setup.c	2016-03-28 12:37:43.424074946 +0200
-@@ -294,11 +294,13 @@
+--- orig/src/setup.c	2016-05-07 17:42:52.000000000 +0200
++++ patched/src/setup.c	2016-05-22 18:36:43.885410277 +0200
+@@ -295,11 +295,13 @@
      { "safe_delete", &safe_delete },
      { "mouse_repeat_rate", &mou_auto_repeat },
      { "double_click_speed", &double_click_speed },
