@@ -1,0 +1,24 @@
+diff -Naur DMCRadio-1.1.4-orig/configure DMCRadio-1.1.4/configure
+--- DMCRadio-1.1.4-orig/configure	2005-01-09 16:07:18.000000000 +0100
++++ DMCRadio-1.1.4/configure	2012-05-14 09:16:55.000000000 +0200
+@@ -1426,7 +1426,7 @@
+ 
+ fi
+ 
+-for ac_hdr in linux/videodev.h
++for ac_hdr in libv4l1-videodev.h
+ do
+ ac_safe=`echo "$ac_hdr" | sed 'y%./+-%__p_%'`
+ echo $ac_n "checking for $ac_hdr""... $ac_c" 1>&6
+diff -Naur DMCRadio-1.1.4-orig/radiodev.c DMCRadio-1.1.4/radiodev.c
+--- DMCRadio-1.1.4-orig/radiodev.c	2005-01-09 16:07:18.000000000 +0100
++++ DMCRadio-1.1.4/radiodev.c	2012-05-14 09:17:17.000000000 +0200
+@@ -19,7 +19,7 @@
+ #include <machine/ioctl_bt848.h>
+ #endif
+ #else
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ #endif
+ 
+ #define FALSE 0
