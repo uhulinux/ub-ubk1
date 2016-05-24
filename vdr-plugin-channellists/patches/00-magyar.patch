@@ -1,20 +1,8 @@
 diff -Naur orig/po/hu_HU.po mod/po/hu_HU.po
---- orig/po/hu_HU.po	2008-01-21 22:09:25.000000000 +0100
-+++ mod/po/hu_HU.po	2013-01-01 20:31:09.000000000 +0100
-@@ -9,81 +9,82 @@
- "Project-Id-Version: VDR 1.5.7\n"
- "Report-Msgid-Bugs-To: <see README>\n"
- "POT-Creation-Date: 2008-01-21 18:23+0100\n"
--"PO-Revision-Date: 2008-01-21 18:12+0100\n"
--"Last-Translator: Istvan Koenigsberger <istvnko@hotmail.com>, Guido Josten <guido.josten@t-online.de>\n"
--"Language-Team: <vdr@linuxtv.org>\n"
-+"PO-Revision-Date: 2013-01-01 20:31+0100\n"
-+"Last-Translator: Kiss Attila <attus@enterpriseforever.com>\n"
-+"Language-Team:  <vdr@linuxtv.org>\n"
- "MIME-Version: 1.0\n"
- "Content-Type: text/plain; charset=ISO-8859-2\n"
+--- orig/po/hu_HU.po	2013-03-19 11:47:35.000000000 +0100
++++ mod/po/hu_HU.po	2016-05-24 12:32:56.707546758 +0200
+@@ -18,73 +18,73 @@
  "Content-Transfer-Encoding: 8bit\n"
-+"X-Generator: Poedit 1.5.3\n"
  
  msgid "Manage your channellists"
 -msgstr ""
@@ -37,7 +25,7 @@ diff -Naur orig/po/hu_HU.po mod/po/hu_HU.po
  
  msgid "Hide main menu entry"
 -msgstr ""
-+msgstr "menübelépés elrejtés"
++msgstr "menübelépés elrejté"
  
  msgid "Action after switch"
 -msgstr ""
@@ -76,7 +64,7 @@ diff -Naur orig/po/hu_HU.po mod/po/hu_HU.po
  
  msgid "Delete channellist?"
 -msgstr ""
-+msgstr "csatornalisták törlése?"
++msgstr "csatornalisták törlése"
  
  msgid "Save"
 -msgstr ""
@@ -88,7 +76,7 @@ diff -Naur orig/po/hu_HU.po mod/po/hu_HU.po
  
  msgid "Waiting..."
 -msgstr ""
-+msgstr "Várjunk.."
++msgstr "Várunk..."
  
  msgid "Button$Script"
 -msgstr ""
@@ -103,7 +91,8 @@ diff -Naur orig/po/hu_HU.po mod/po/hu_HU.po
 +msgstr "másol"
  
  msgid "Button$Delete"
- msgstr "Törölni"
+-msgstr "Törölni"
++msgstr "töröl"
  
  msgid "Button$Save"
 -msgstr ""
