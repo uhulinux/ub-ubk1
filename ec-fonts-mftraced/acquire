@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-ec-fonts-mftraced_${UB_VERSION}-1_all.deb .
-	http://lilypond.org/download/old/ec-fonts-mftraced/

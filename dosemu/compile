@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
+UB_MAKE_PROCS=1
 ub_compile \
 	--sysconfdir=/etc/dosemu \
 	--with-fdtarball=dosemu-freedos-1.0-bin.tgz

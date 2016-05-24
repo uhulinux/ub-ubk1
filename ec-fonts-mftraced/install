@@ -1,3 +1,0 @@
-#!/bin/sh -eux
-
-cp -a usr/share/texmf "$UB_INSTALLDIR"/usr/share/
