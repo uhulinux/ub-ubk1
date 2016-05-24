@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
+find . -iname ".svn" -print0 | xargs -0 rm -r
 ub_configure \
 	--datadir=/usr/share/games/ \
 	usdatadir=usr/share/games/ultimatestunts
