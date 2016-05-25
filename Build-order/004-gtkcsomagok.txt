@@ -1,0 +1,10 @@
+at-spi2-core
+at-spi2-atk
+atk
+gdk-pixbuf
+pango
+gtk2
+pycairo
+pygobject2
+pygtk
+gtk

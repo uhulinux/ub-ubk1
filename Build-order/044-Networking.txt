@@ -1,0 +1,11 @@
+claws-contacts
+claws-mail
+claws-mail-themes
+ufw
+gufw
+belle-sip
+linphone
+skyutils
+smssend
+lzop
+amavisd-new
