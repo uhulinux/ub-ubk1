@@ -41,6 +41,7 @@ pam
 pkgconfig
 pyxml
 cairo
+graphite2
 harfbuzz
 gobject-introspection
 cairo
