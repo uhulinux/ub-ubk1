@@ -5,11 +5,13 @@ cd build
 UB_CONFIGURE_DIR=../ ub_configure \
 	--disable-native-texlive-build \
 	--with-banner-add=/UHU-Linux \
-	--with-system-icu \
-	--with-system-poppler \
 	--with-system-freetype2 \
+	--with-system-gd \
+	--with-system-icu \
 	--with-system-libpng \
+	--with-system-poppler \
 	--with-system-zlib \
+	--with-system-zziplib \
 	--with-x \
 	--enable-luatex \
 	--disable-psutils \

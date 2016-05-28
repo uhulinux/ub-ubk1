@@ -1,8 +1,8 @@
 fontforge
 freetype2-dev
 gd
-icu
 icu-dev
+libgd-dev
 libice-dev
 libpng-dev
 libxaw-dev
@@ -11,3 +11,4 @@ libxpm-dev
 poppler-dev
 ruby
 tk
+zziplib-dev
