@@ -6,4 +6,4 @@ libdnet-dev
 libice-dev
 libsm-dev
 libxtst-dev
-procps
+procps-dev

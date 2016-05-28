@@ -18,7 +18,7 @@ perl-params-validate
 postfix
 postgresql-client
 postgresql-dev
-procps
+procps-dev
 qstat
 radiusclient-dev
 samba-client

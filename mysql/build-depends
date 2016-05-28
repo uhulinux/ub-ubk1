@@ -3,6 +3,6 @@ cracklib-dev
 libevent-dev
 libxml2-dev
 openssl-dev
-procps
+procps-dev
 sharutils
 systemd-dev

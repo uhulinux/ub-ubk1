@@ -1,6 +1,6 @@
 acl-dev
 attr-dev
-audit
+audit-dev
 cryptsetup-dev
 dbus-dev
 docbook-dtds

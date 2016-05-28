@@ -15,5 +15,5 @@ libvisual-dev
 libxshmfence-dev
 mjpegtools-dev
 opencv-dev
-procps
+procps-dev
 sox-dev

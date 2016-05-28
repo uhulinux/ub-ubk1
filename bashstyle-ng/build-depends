@@ -16,7 +16,7 @@ lynx
 net-tools
 newt-dev
 pciutils
-procps
+procps-dev
 py3gobject
 pygtk-dev
 python-configobj

@@ -4,5 +4,5 @@ libedit-dev
 libx11-dev
 net-tools
 openssl-dev
-procps
+procps-dev
 tcp-wrappers-dev
