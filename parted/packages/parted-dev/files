@@ -1,6 +1,7 @@
 	/lib/*.a
 	/lib/*.la
 @	/lib/*.so
+	/lib/pkgconfig
 	/usr/bin/*-config
 	/usr/include
 	/usr/lib/**/*.a
