@@ -1,6 +1,7 @@
 apache-dev
 apr-util-dev
 aspell-dev
+audit-dev
 cracklib-dev
 curl-dev
 cyrus-sasl2
