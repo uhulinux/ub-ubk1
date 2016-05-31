@@ -1,3 +1,4 @@
 #!/bin/bash
 
-systemctl -f enable gdm
+#systemctl -f enable gdm
+usermod -G gdm,video gdm
