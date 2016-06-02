@@ -1,6 +1,7 @@
 bluedevil
 breeze
 breeze-gtk
+breeze-icons
 discover
 kde-cli-tools
 kde-gtk-config
@@ -21,6 +22,7 @@ kwayland-integration
 kwin
 milou
 oxygen
+oxygen-icons5
 plasma-desktop
 plasma-mediacenter
 plasma-nm
