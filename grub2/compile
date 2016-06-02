@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_compile \
-	--with-grubdir=grub2 \
-	--program-transform-name=s,grub,grub2, \
-	--disable-werror

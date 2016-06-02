@@ -1,0 +1,6 @@
+#!/bin/sh -eux
+
+ub_compile \
+	--with-grubdir=grub \
+	--enable-efiemu \
+	--disable-werror

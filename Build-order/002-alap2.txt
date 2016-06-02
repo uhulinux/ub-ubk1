@@ -52,7 +52,7 @@ systemd
 e2fsprogs
 reiser4progs
 xapian
-grub2
+grub
 libarchive
 cmake
 libedit
