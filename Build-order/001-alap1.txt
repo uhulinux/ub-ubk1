@@ -23,7 +23,7 @@ uhu-pkg
 uhu-base
 uhu-utils
 uhu-initscripts
-uhu-installer-ubk
+uhu-installer
 uhu-pkgutils
 uhu-sysinfo
 uhu-utils
