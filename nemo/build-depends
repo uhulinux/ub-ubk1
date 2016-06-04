@@ -11,5 +11,6 @@ libexif-dev
 libnotify-dev
 libsm-dev
 libxml2-dev
-pygobject2-dev
-python-polib
+py3gobject
+pygobject-dev
+python3-polib

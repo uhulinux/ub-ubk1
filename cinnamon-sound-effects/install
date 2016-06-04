@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-celdir="$UB_INSTALLDIR"/usr/share/mint-artwork-cinnamon/sounds
-mkdir -p "$celdir"
-cp  sounds/* "$celdir"/
