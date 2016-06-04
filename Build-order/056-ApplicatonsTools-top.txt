@@ -110,7 +110,6 @@ translate-toolkit
 gramps
 xmlstarlet
 numlockx
-xsw
 teapot
 aview
 a2png
