@@ -1,7 +1,7 @@
 apt
 coreutils
 diffutils
-dpkg
+dpkg >= 1.15.4
 findutils
 grep
 sed
