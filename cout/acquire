@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-cout-${UB_VERSION}.tar.bz2 cout-${UB_VERSION}/
-	http://cout.googlecode.com/files/
