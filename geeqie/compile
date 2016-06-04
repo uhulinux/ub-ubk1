@@ -3,5 +3,4 @@
 export LDFLAGS='-Wl,--as-needed'
 
 ub_compile \
-	--enable-lirc \
-	--enable-gps
+	--enable-lirc
