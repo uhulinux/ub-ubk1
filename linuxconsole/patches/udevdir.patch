@@ -1,13 +1,15 @@
 diff -Naur orig/utils/Makefile mod/utils/Makefile
---- orig/utils/Makefile	2015-12-17 08:51:26.000000000 +0100
-+++ mod/utils/Makefile	2016-02-18 14:22:06.093910201 +0100
-@@ -79,7 +79,7 @@
+--- orig/utils/Makefile	2016-04-19 22:20:50.000000000 +0200
++++ mod/utils/Makefile	2016-06-05 17:55:31.786353271 +0200
+@@ -84,8 +84,8 @@
  	install $(PROGRAMS) $(DESTDIR)$(PREFIX)/bin
  	install -d $(DESTDIR)$(PREFIX)/share/joystick
  	install extract filter ident $(DESTDIR)$(PREFIX)/share/joystick
--	install -d $(DESTDIR)/lib/udev
+-	install -d $(DESTDIR)/lib/udev/rules.d
 -	install js-set-enum-leds $(DESTDIR)/lib/udev
-+	install -d $(DESTDIR)/usr/lib/udev
+-	install 80-stelladaptor-joystick.rules $(DESTDIR)/lib/udev/rules.d
++	install -d $(DESTDIR)/usr/lib/udev/rules.d
 +	install js-set-enum-leds $(DESTDIR)/usr/lib/udev
++	install 80-stelladaptor-joystick.rules $(DESTDIR)/usr/lib/udev/rules.d
  
  .PHONY: compile clean distclean install
