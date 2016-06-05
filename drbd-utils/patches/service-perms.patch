@@ -1,0 +1,12 @@
+diff -Naur orig/scripts/Makefile.in patched/scripts/Makefile.in
+--- orig/scripts/Makefile.in	2015-12-16 15:22:52.000000000 +0100
++++ patched/scripts/Makefile.in	2016-06-05 21:06:53.127204682 +0200
+@@ -65,7 +65,7 @@
+ # yes, debian apparently allows installing both types from the same package
+ ifneq ($(initscripttype),sysv)		# "systemd" or "both"
+ 	install -d $(DESTDIR)$(systemdunitdir)
+-	install -m 755 drbd.service $(DESTDIR)$(systemdunitdir)/
++	install -m 644 drbd.service $(DESTDIR)$(systemdunitdir)/
+ 	install -d $(DESTDIR)/lib/drbd/
+ 	install -m 755 drbd $(DESTDIR)/lib/drbd/
+ 	install -d $(DESTDIR)$(tmpfilesdir)/
