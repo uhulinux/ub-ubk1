@@ -1,7 +1,0 @@
-pam config
-logrotate
-pppoatm
-libsrp, USE_SRP=y
-options
-mpls
-enable radius
