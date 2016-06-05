@@ -1,18 +1,18 @@
-diff -Naur orig/tmpfiles.d/legacy.conf patched/tmpfiles.d/legacy.conf
+diff -Naur orig/tmpfiles.d/legacy.conf mod/tmpfiles.d/legacy.conf
 --- orig/tmpfiles.d/legacy.conf	2015-06-09 01:06:17.000000000 +0200
-+++ patched/tmpfiles.d/legacy.conf	2016-01-16 17:17:38.526604945 +0100
++++ mod/tmpfiles.d/legacy.conf	2016-06-05 16:00:18.559632901 +0200
 @@ -24,7 +24,7 @@
  # On modern systems a BSD file lock is a better choice if
  # serialization is needed on those devices.
  
 -d /run/lock/lockdev 0775 root lock -
-+# d /run/lock/lockdev 0775 root lock -
++#d /run/lock/lockdev 0775 root lock -
  
  # /forcefsck, /fastboot and /forcequotacheck are deprecated in favor of the
  # kernel command line options 'fsck.mode=force', 'fsck.mode=skip' and
-diff -Naur orig/tmpfiles.d/systemd.conf.m4 patched/tmpfiles.d/systemd.conf.m4
+diff -Naur orig/tmpfiles.d/systemd.conf.m4 mod/tmpfiles.d/systemd.conf.m4
 --- orig/tmpfiles.d/systemd.conf.m4	2015-01-22 15:14:36.000000000 +0100
-+++ patched/tmpfiles.d/systemd.conf.m4	2016-01-16 17:19:01.039014102 +0100
++++ mod/tmpfiles.d/systemd.conf.m4	2016-06-05 16:03:11.807277837 +0200
 @@ -8,7 +8,7 @@
  # See tmpfiles.d(5) for details
  
@@ -22,3 +22,41 @@ diff -Naur orig/tmpfiles.d/systemd.conf.m4 patched/tmpfiles.d/systemd.conf.m4
  
  d /run/systemd/ask-password 0755 root root -
  d /run/systemd/seats 0755 root root -
+@@ -17,9 +17,9 @@
+ d /run/systemd/machines 0755 root root -
+ d /run/systemd/shutdown 0755 root root -
+ m4_ifdef(`ENABLE_NETWORKD',
+-d /run/systemd/netif 0755 systemd-network systemd-network -
+-d /run/systemd/netif/links 0755 systemd-network systemd-network -
+-d /run/systemd/netif/leases 0755 systemd-network systemd-network -
++d /run/systemd/netif 0755 root root -
++d /run/systemd/netif/links 0755 root root -
++d /run/systemd/netif/leases 0755 root root -
+ )m4_dnl
+ 
+ d /run/log 0755 root root -
+diff -Naur orig/tmpfiles.d/systemd-remote.conf mod/tmpfiles.d/systemd-remote.conf
+--- orig/tmpfiles.d/systemd-remote.conf	2014-12-05 01:26:51.000000000 +0100
++++ mod/tmpfiles.d/systemd-remote.conf	2016-06-05 16:03:47.339207320 +0200
+@@ -7,5 +7,5 @@
+ 
+ # See tmpfiles.d(5) for details
+ 
+-z /var/log/journal/remote 2755 root systemd-journal-remote - -
+-z /run/log/journal/remote 2755 root systemd-journal-remote - -
++z /var/log/journal/remote 2755 root root - -
++z /run/log/journal/remote 2755 root root - -
+diff -Naur orig/tmpfiles.d/var.conf mod/tmpfiles.d/var.conf
+--- orig/tmpfiles.d/var.conf	2015-06-17 20:27:50.000000000 +0200
++++ mod/tmpfiles.d/var.conf	2016-06-05 16:24:36.504951327 +0200
+@@ -12,8 +12,8 @@
+ L /var/run - - - - ../run
+ 
+ d /var/log 0755 - - -
+-f /var/log/wtmp 0664 root utmp -
+-f /var/log/btmp 0600 root utmp -
++f /var/log/wtmp 0664 root root -
++f /var/log/btmp 0600 root root -
+ 
+ d /var/cache 0755 - - -
+ 
