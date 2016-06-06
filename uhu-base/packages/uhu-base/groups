@@ -4,6 +4,7 @@ daemon      2
 adm         3
 tty         5
 lp          7
+wheel      10
 mail       12
 audio      50
 video      51
