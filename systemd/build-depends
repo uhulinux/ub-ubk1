@@ -13,7 +13,6 @@ intltool
 kmod-dev
 libcap-dev
 libgcrypt-dev
-libmicrohttpd-dev
 libqrencode-dev
 libtasn1-dev
 libxkbcommon-dev

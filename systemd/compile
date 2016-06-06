@@ -7,7 +7,8 @@ autoreconf -vif
 
 ub_compile \
 	--with-pamlibdir=/lib/security \
+	--with-ntp-servers=pool.ntp.org \
 	--enable-manpages \
 	--enable-compat-libs \
 	--enable-split-usr \
-	--with-ntp-servers=pool.ntp.org
+	--disable-microhttpd

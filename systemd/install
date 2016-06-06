@@ -16,7 +16,7 @@ find "$UB_INSTALLDIR"/usr/lib/udev/ -type f -maxdepth 1 | while read n; do
 done
 
 for file in "$UB_INSTALLDIR"/usr/lib/udev/rules.d/*.rules; do
-	for group in dialout uucp kmem disk floppy; do
+	for group in cdrom dialout disk floppy input kmem utmp uucp; do
 		sed -e "s/GROUP=\"$group\"/GROUP=\"media\"/g" -i "$file"
 	done
 done
