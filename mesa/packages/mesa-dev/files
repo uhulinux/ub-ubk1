@@ -5,10 +5,13 @@
 	/usr/include
 	/usr/lib/**/*.a
 	/usr/lib/**/*.la
-@	/usr/lib/**/*.so
+@	/usr/lib/*.so
 	/usr/lib/*/include
 	/usr/lib/*Conf.sh
+@	/usr/lib/d3d/*.so
+@	/usr/lib/mesa/*.so
 	/usr/lib/pkgconfig
+@	/usr/lib/vdpau/*.so
 	/usr/share/aclocal
 	/usr/share/man/**/man1/*-config.1*
 	/usr/share/man/**/man3
