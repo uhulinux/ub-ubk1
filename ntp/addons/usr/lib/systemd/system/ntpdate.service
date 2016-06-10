@@ -6,7 +6,7 @@ Wants=time-sync.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/libexec/ntpdate-wrapper
+ExecStart=/usr/sbin/ntpdate -b 0.hu.pool.ntp.org
 RemainAfterExit=yes
 
 [Install]

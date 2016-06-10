@@ -5,7 +5,7 @@ After=syslog.target ntpdate.service sntp.service
 [Service]
 Type=forking
 EnvironmentFile=-/etc/sysconfig/ntpd
-ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS
+ExecStart=/usr/sbin/ntpd $OPTIONS
 PrivateTmp=true
 
 [Install]
