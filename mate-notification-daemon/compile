@@ -4,5 +4,4 @@ if [ -f autogen.sh ]; then
 	NOCONFIGURE=1 ./autogen.sh
 fi
 
-ub_compile \
-	--with-gtk=3.0
+ub_compile
