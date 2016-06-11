@@ -1,7 +1,3 @@
 #!/bin/sh -eux
 
-if [ -f autogen.sh ]; then
-	NOCONFIGURE=1 ./autogen.sh
-fi
-
 ub_compile
