@@ -5,3 +5,6 @@ Description=ADSL Daemon
 Type=forking
 ExecStart=/usr/sbin/pppoe-start
 ExecStop=/usr/sbin/pppoe-stop
+
+[Install]
+WantedBy=multi-user.target
