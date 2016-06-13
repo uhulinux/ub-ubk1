@@ -6,3 +6,6 @@ After=network.target
 Type=forking
 PIDFile=var/run/lirc/lircd.pid
 ExecStart=/usr/sbin/lircd --driver=default --device=/dev/lirc0 --permission=0666
+
+[Install]
+WantedBy=multi-user.target
