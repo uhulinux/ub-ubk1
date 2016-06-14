@@ -1,4 +1,3 @@
 #!/bin/bash
 
 systemctl enable chronyd
-systemctl enable chrony-wait
