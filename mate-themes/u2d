@@ -1,1 +1,2 @@
-urllist https://github.com/mate-desktop/mate-themes/releases/ | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1
+# a subdir mindig a gtk verziót jelzi, ez most 3.20
+urllist http://pub.mate-desktop.org/releases/themes/3.20/ | splitver '^mate-themes-([0-9.]+).tar.xz$' | sort -V | tail -n 1
