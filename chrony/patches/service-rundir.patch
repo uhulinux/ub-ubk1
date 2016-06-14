@@ -1,0 +1,12 @@
+diff -Naur orig/examples/chronyd.service patched/examples/chronyd.service
+--- orig/examples/chronyd.service	2016-06-07 11:20:59.000000000 +0200
++++ patched/examples/chronyd.service	2016-06-14 01:58:41.186985985 +0200
+@@ -5,7 +5,7 @@
+ 
+ [Service]
+ Type=forking
+-PIDFile=/var/run/chronyd.pid
++PIDFile=/run/chronyd.pid
+ EnvironmentFile=-/etc/sysconfig/chronyd
+ ExecStart=/usr/sbin/chronyd $OPTIONS
+ 
