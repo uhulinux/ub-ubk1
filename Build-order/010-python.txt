@@ -78,6 +78,7 @@ pyqt5-python2
 pysmbc
 pysqlite
 python3-psutil
+pyyaml
 qscintilla2
 python3-qscintilla2
 python-apsw
