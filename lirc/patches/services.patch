@@ -1,0 +1,64 @@
+diff -Naur orig/systemd/irexec.service patched/systemd/irexec.service
+--- orig/systemd/irexec.service	2016-05-23 19:18:48.000000000 +0200
++++ patched/systemd/irexec.service	2016-06-17 10:27:16.656988384 +0200
+@@ -1,13 +1,13 @@
+ [Unit]
+ Description=LIRC Infrared Signal Exec
+-Documentation=System daemon handling events from IR remotes decoded \
+-by lircd
++; Documentation=System daemon handling events from IR remotes decoded \
++; by lircd
+ 
+ [Service]
+ ; user =
+-: group =
++; group =
+ Type=simple
+-ExecStart=/usr/sbin/irexec /etc/lirc/irexec.lircrc
++ExecStart=/usr/bin/irexec /etc/lirc/irexec.lircrc
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff -Naur orig/systemd/lircd.service patched/systemd/lircd.service
+--- orig/systemd/lircd.service	2016-05-23 19:18:48.000000000 +0200
++++ patched/systemd/lircd.service	2016-06-17 10:26:32.312267481 +0200
+@@ -1,8 +1,8 @@
+ [Unit]
+ Description=LIRC Infrared Signal Decoder
+-Documentation=Decodes input from IR remote controls, also supporting writes \
+-to the device
+-Wants=lircd-setup.service
++; Documentation=Decodes input from IR remote controls, also supporting writes \
++; to the device
++; Wants=lircd-setup.service
+ After=network.target lircd-setup.service
+ 
+ [Service]
+diff -Naur orig/systemd/lircd-uinput.service patched/systemd/lircd-uinput.service
+--- orig/systemd/lircd-uinput.service	2016-05-23 19:18:48.000000000 +0200
++++ patched/systemd/lircd-uinput.service	2016-06-17 10:26:11.119922968 +0200
+@@ -1,9 +1,9 @@
+ [Unit]
+ After=lircd.service
+ Description=Forward LIRC button presses as uinput events
+-Documentation=Daemon which forwards LIRC button presses to the \
+-kernel uinput device, making LIRC-decoded IR remote input \
+-available as regular /dev/input events
++; Documentation=Daemon which forwards LIRC button presses to the \
++; kernel uinput device, making LIRC-decoded IR remote input \
++; available as regular /dev/input events
+ 
+ [Service]
+ Type=simple
+diff -Naur orig/systemd/lircmd.service patched/systemd/lircmd.service
+--- orig/systemd/lircmd.service	2016-05-23 19:18:48.000000000 +0200
++++ patched/systemd/lircmd.service	2016-06-17 10:28:17.657971544 +0200
+@@ -1,7 +1,7 @@
+ [Unit]
+ Wants=lircd.socket
+ Description=LIRC Infrared Mouse Event Signal Decoder
+-Documentation=Converts input decoded by lircd to mouse movements and clicks
++; Documentation=Converts input decoded by lircd to mouse movements and clicks
+ 
+ [Service]
+ Type=simple
