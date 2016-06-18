@@ -1,4 +1,0 @@
-/etc/ntp.conf
-/etc/sysconfig/ntpd
-/etc/sysconfig/ntpdate
-/etc/sysconfig/sntp

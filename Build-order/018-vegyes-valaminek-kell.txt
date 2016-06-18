@@ -111,7 +111,7 @@ memphis
 mercurial
 mtools
 ndiswrapper
-ntp
+chrony
 prelink
 rsync
 sddm

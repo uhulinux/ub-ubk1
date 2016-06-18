@@ -1,2 +1,0 @@
-# Options for sntp
-OPTIONS="-s 0.hu.pool.ntp.org"
