@@ -55,7 +55,6 @@ jdictionary
 junit
 less
 libupnp
-libyaml
 linebreak
 livemedia
 makeself
