@@ -15,5 +15,9 @@ mv usr/share/lirc-remotes ${UB_INSTALLDIR}/usr/share/lirc/remotes
 mkdir -p ${UB_INSTALLDIR}/etc/udev/rules.d
 cp contrib/60-lirc.rules ${UB_INSTALLDIR}/etc/udev/rules.d/
 
-# !! ez letiltaná a kernel lirc-et, talán egy új csomagba kellene tenni !!
+# Ez letiltja a kernel lirc-et, lehasított csomagrész
 cp contrib/99-remote-control-lirc.rules ${UB_INSTALLDIR}/etc/udev/rules.d/
+
+# Doksi html fájlok
+mkdir -p ${UB_INSTALLDIR}/usr/share/doc/lirc
+cp -a doc/plugindocs ${UB_INSTALLDIR}/usr/share/doc/lirc/
