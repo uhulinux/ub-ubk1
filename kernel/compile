@@ -53,11 +53,11 @@ make \
 
 # check module licenses
 [  -d  "$UB_OBJECTDIR"/lib/modules/"$VERSION" ]
-echo "checking for missing licenses..."
-if find "$UB_OBJECTDIR"/lib/modules/"$VERSION" -name "*.ko" -type f | while read f; do NEW_MODINFO=1 modinfo -F license "$f" | grep -q '' || echo "$f"; done | grep ''; then
+echo "checking for missing or incorrect license tags..."
+( find $UB_OBJECTDIR/lib/modules/$VERSION -name '*.ko' | xargs /sbin/modinfo -l | \
+	grep -E -v 'GPL( v2)?$|Dual BSD/GPL$|Dual MPL/GPL$|GPL and additional rights$' ) && \
 	echo "error: there are modules without license tag. please fix."
 #	exit 1
-fi
 
 # check module symbols
 if depmod -nea -b "$UB_OBJECTDIR" -F "$UB_OBJECTDIR"/boot/System.map "$VERSION" 2>&1 | grep "^WARNING:"; then
