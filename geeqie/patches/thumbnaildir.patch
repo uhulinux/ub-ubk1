@@ -1,0 +1,15 @@
+diff -Naur orig/src/thumb_standard.h patched/src/thumb_standard.h
+--- orig/src/thumb_standard.h	2016-05-27 11:37:56.000000000 +0200
++++ patched/src/thumb_standard.h	2016-06-19 19:51:19.872220084 +0200
+@@ -23,7 +23,11 @@
+ #define THUMB_STANDARD_H
+ 
+ 
++#if GLIB_CHECK_VERSION (2, 34, 0)
++#define THUMB_FOLDER_GLOBAL ".cache/thumbnails"
++#else
+ #define THUMB_FOLDER_GLOBAL ".thumbnails"
++#endif
+ #define THUMB_FOLDER_LOCAL  ".thumblocal"
+ #define THUMB_FOLDER_NORMAL "normal"
+ #define THUMB_FOLDER_LARGE  "large"
