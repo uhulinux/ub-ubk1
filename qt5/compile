@@ -16,7 +16,7 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-confirm-license	\
 	-shared             \
 	-largefile          \
-	-c++11              \
+	-c++std 11          \
 	-rpath              \
 	-verbose            \
 	-silent             \
@@ -49,6 +49,8 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-system-zlib        \
 	-system-xcb         \
 	-system-xkbcommon-x11 \
+	-qt-doubleconversion \
+	-no-libproxy		\
 	\
 	-openssl-linked     \
 	\
@@ -60,7 +62,7 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-mtdev				\
 	\
 	-glib               \
-	-gtkstyle           \
+	-gtk				\
 	-opengl             \
 	-no-linuxfb         \
 	-no-openvg          \
@@ -70,14 +72,13 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-sm                 \
 	-xshape             \
 	-xsync              \
-	-xinerama           \
 	-xcursor            \
 	-xfixes             \
 	-xrandr             \
 	-xrender            \
 	-mitshm             \
 	-fontconfig         \
-	-xinput             \
+	-xinput2            \
 	-xkb                \
 	\
 	-lcrypto            \
