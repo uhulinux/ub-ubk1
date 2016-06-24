@@ -1,7 +1,5 @@
 #!/bin/bash -eux
 
-cp -a linux-firmware/* ${UB_INSTALLDIR}/lib/firmware/
-
 cp -r nouveau ${UB_INSTALLDIR}/lib/firmware/
 
 # cd ../dvb-firmware
