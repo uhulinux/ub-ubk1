@@ -30,9 +30,12 @@ ub_replace "^EXTRAVERSION =[\t ]*\(\.\([0-9]\+\)\)*.*" "EXTRAVERSION = \1-${VERS
 #cp arch/x86/configs/i386_defconfig .config
 cp .config."$ARCH" .config
 cp .config."$ARCH" arch/x86/configs/"$ARCH"_defconfig
-make ARCH="$ARCH" oldconfig
 
-diff -u <(grep -v '^#' .config|sort) <(grep -v '^#' arch/x86/configs/"$ARCH"_defconfig|sort)
+# make ARCH="$ARCH" oldconfig
+# diff -u <(grep -v '^#' .config|sort) <(grep -v '^#' arch/x86/configs/"$ARCH"_defconfig|sort)
+
+make prepare
+yes "" | make config >/dev/null
 
 make ARCH="$ARCH" -j"$NUMCPUS" scripts
 make ARCH="$ARCH" -j"$NUMCPUS" bzImage
@@ -58,6 +61,7 @@ echo "checking for missing or incorrect license tags..."
 	grep -E -v 'GPL( v2)?$|Dual BSD/GPL$|Dual MPL/GPL$|GPL and additional rights$' ) && \
 	echo "error: there are modules without license tag. please fix."
 #	exit 1
+
 
 # check module symbols
 if depmod -nea -b "$UB_OBJECTDIR" -F "$UB_OBJECTDIR"/boot/System.map "$VERSION" 2>&1 | grep "^WARNING:"; then
@@ -108,3 +112,4 @@ ln -sf ../../../usr/src/linux-"$VERSION" "$UB_OBJECTDIR"/lib/modules/"$VERSION"/
 # done
 
 ln -s "bzImage.$ARCH" "$UB_OBJECTDIR/boot/bzImage"
+
