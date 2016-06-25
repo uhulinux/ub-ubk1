@@ -12,6 +12,7 @@ rm $forras.run
 cd $forras
 patch -i "$UB_SRCDIR"/patches/menu.patch.skip
 cd kernel
+patch -i "$UB_SRCDIR"/patches/disable-mtrr.patch.skip
 make SYSSRC=/usr/src/linux KERNEL_UNAME="$KVER" MODULE_ROOT=$moduldir module
 #akdályok leküzdése a telepítéshez
 sed -e 's/suser-sanity-check //g' -i Makefile.kbuild
