@@ -1,8 +1,9 @@
 #!/bin/bash -eux
 
+cp -a linux-firmware/* ${UB_INSTALLDIR}/lib/firmware/
+
 cp -r nouveau ${UB_INSTALLDIR}/lib/firmware/
 
-# cd ../dvb-firmware
 cp -a dvb-firmware/* ${UB_INSTALLDIR}/lib/firmware
 
 cp tiacx*  "$UB_INSTALLDIR"/lib/firmware/
@@ -14,3 +15,50 @@ cp ipw2200/*.fw  "$UB_INSTALLDIR"/lib/firmware/
 cp zd1211/zd1211* "$UB_INSTALLDIR"/lib/firmware/
 
 chmod 755 ${UB_INSTALLDIR}/lib/firmware/b43{,legacy}
+
+# a microcodectl és a kernel csomagban is lévő ütköző mappák és fájlok
+mappasor="3com
+	acenic
+	adaptec
+	advansys
+	av7110
+	bnx2
+	bnx2x
+	cis
+	cpia2
+	cxgb3
+	e100
+	edgeport
+	emi26
+	emi62
+	ess
+	kaweth
+	keyspan_pda
+	korg
+	matrox
+	ositech
+	qlogic
+	r128
+	radeon
+	sun
+	tehuti
+	tigon
+	ttusb-budget
+	yam
+	yamaha
+	amd-ucode"
+kernelfilesor="atmsar11
+	mts_cdma
+	mts_edge
+	mts_gsm
+	ti_3410
+	ti_5052
+	whiteheat
+	whiteheat_loader"
+# ütközések törlése
+for i in $mappasor;do
+rm -rf ${UB_INSTALLDIR}/lib/firmware/$i
+done
+for i in $kernelfilesor;do
+rm -f ${UB_INSTALLDIR}/lib/firmware/${i}.fw
+done

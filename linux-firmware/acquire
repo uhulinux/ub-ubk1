@@ -1,8 +1,11 @@
 #!/usr/bin/env dl
 
-dvb-firmware-20150912.tar.xz dvb-firmware-20150912/ :dvb-firmware
-#	http://www.linuxtv.org/downloads/firmware/
-	http://download.ubk.hu/src/firmware/
+linux-firmware-${UB_VERSION}.tar.gz linux-firmware-80d463b/ :linux-firmware
+      git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git@80d463b
+
+# dvb
+0.0.51.tar.gz dvb-firmware-0.0.51/firmware :dvb-firmware
+	https://github.com/OpenELEC/dvb-firmware/archive/0.0.51.tar.gz
 
 wl_apsta-3.130.20.0.o
 	http://downloads.openwrt.org/sources/
