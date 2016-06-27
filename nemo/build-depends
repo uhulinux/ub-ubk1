@@ -8,6 +8,7 @@ gtk-doc
 gvfs
 intltool
 libexif-dev
+libgcrypt-dev
 libnotify-dev
 libsm-dev
 libxml2-dev
