@@ -9,6 +9,7 @@ gobject-introspection-dev
 gst-plugins-bad-dev
 intltool
 itstool
+libcap-dev
 libchamplain-dev
 libgudev-dev
 libnotify-dev
