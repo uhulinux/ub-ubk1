@@ -1,14 +1,27 @@
 #!/bin/sh -eux
 
-export CFLAGS="-fno-lto"
+# users:
+# coredump: systemd-coredump
+# microhttpd: systemd-jornal-{gateway,remote}
+# libcurl: systemd-jornal-upload
+# --with-default-dnssec=no: a dnssec experimental
+
+mv {usb,pci}.ids ma-{large,medium,small}.txt hwdb/
+
 # compile fix
-sed -r -i 's/\blibsystemd-(login|journal|id128|daemon).c \\/\\/' Makefile.am
-autoreconf -vif
+sed -i "s/\-flto/\-fno\-lto/g" configure.ac
+
+./autogen.sh
 
 ub_compile \
 	--with-pamlibdir=/lib/security \
 	--with-ntp-servers=pool.ntp.org \
+	--with-default-dnssec=no \
 	--enable-manpages \
-	--enable-compat-libs \
 	--enable-split-usr \
-	--disable-microhttpd
+	--disable-libcurl \
+	--disable-microhttpd \
+	--disable-coredump
+
+cd hwdb
+./ids-update.pl

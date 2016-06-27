@@ -19,6 +19,7 @@ libxkbcommon-dev
 libxslt
 lvm-dev
 python-dev
+python-lxml
 tcp-wrappers-dev
 util-linux-dev
 xz-dev
