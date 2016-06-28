@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-bluecurve-gtk-themes-${UB_VERSION/[~+]/-}.fc11.src.rpm bluecurve-gtk-themes-${UB_VERSION%[~+]*}.tar.bz2 bluecurve-gtk-themes-${UB_VERSION%[~+]*}/
-	ftp://ftp.ie.debian.org/disk1/fedora-archive/fedora/linux/releases/11/Everything/source/SRPMS/
+bluecurve-gtk-themes-${UB_VERSION/[~+]/-}.fc12.src.rpm bluecurve-gtk-themes-${UB_VERSION%[~+]*}.tar.bz2 bluecurve-gtk-themes-${UB_VERSION%[~+]*}/
+	ftp://ftp.ie.debian.org/disk1/fedora-archive/fedora/linux/releases/12/Everything/source/SRPMS/
