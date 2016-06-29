@@ -17,6 +17,9 @@ tzdata
 glibc
 pam
 attr
+libcap
+libgpg-error
+libgcrypt
 acl
 shadow
 uhu-pkg
@@ -66,7 +69,6 @@ icu
 libaal
 libdaemon
 libffi
-libgpg-error
 libidn
 libjpeg
 libpng
@@ -107,7 +109,6 @@ unzip
 which
 zip
 7zip
-libcap
 po4a
 dpkg
 mkinitrd
@@ -115,7 +116,6 @@ optipng
 help2man
 coreutils
 sqlite
-libgcrypt
 jasper
 intltool
 gawk
