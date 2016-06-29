@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 freepats-${UB_VERSION}.tar.bz2 freepats/
-	ftp://ftp.slackware.com/.1/vectorlinux/stretchedthin/MMBD/source/deps/freepats/20060219/src/
-	ftp://ftp.cc.uoc.gr/mirrors/linux/vectorlinux/stretchedthin/MMBD/source/deps/freepats/20060219/src/
+	http://freepats.zenvoid.org/
