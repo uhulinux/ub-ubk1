@@ -5,6 +5,8 @@ gnome-desktop-dev
 gtk-dev
 intltool
 json-glib-dev
+libcap-dev
+libgcrypt-dev
 librsvg-dev
 libsm-dev
 libxslt

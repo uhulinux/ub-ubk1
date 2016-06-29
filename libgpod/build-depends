@@ -1,5 +1,6 @@
 gdk-pixbuf-dev
 intltool
+libcap-dev
 libid3tag-dev
 libplist-dev
 libsgutils

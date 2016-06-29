@@ -1,3 +1,4 @@
 gobject-introspection-dev
+libcap-dev
 libusb-dev
 systemd-dev

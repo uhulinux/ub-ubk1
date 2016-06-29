@@ -9,6 +9,7 @@ icon-theme-gnome
 intltool
 krb5-dev
 libcanberra-dev
+libcap-dev
 libnotify-dev
 libusb-compat-dev
 libxpm-dev

@@ -3,6 +3,7 @@ dbus-dev
 gstreamer-dev
 gtk-dev
 gtk2-dev
+libgcrypt-dev
 libsm-dev
 libsndfile-dev
 libvorbis-dev
