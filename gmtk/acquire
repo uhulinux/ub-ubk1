@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gmtk-${UB_VERSION}.tar.gz gmtk-${UB_VERSION}/
-	https://gmtk.googlecode.com/svn/packages/

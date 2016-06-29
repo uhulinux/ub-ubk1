@@ -225,7 +225,6 @@ tigervnc
 vim
 xaw3d
 xscreensaver
-gmtk
 gtkhtml
 gtk-vnc
 imlib

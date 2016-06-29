@@ -34,7 +34,6 @@ gnome-tweak-tool
 gnome-user-docs
 polari
 baobab
-gnome-mplayer
 gnome-nettool
 gnome-power-manager
 gnome-python
