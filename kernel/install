@@ -15,23 +15,102 @@ case "$UB_VERSION" in
 		;;
 esac
 
-VERSION="$VERSION_BASE"
-
 export KBUILD_BUILD_TIMESTAMP="$(LC_ALL=C LANG=C date)"
+
+# for ARCH in x86_64 i386; do
+ARCH="i386"
+VERSION="${VERSION_BASE}.$ARCH"
+
+# /boot
+mkdir -p "$UB_OBJECTDIR/boot"
+cp -a System.map            "$UB_OBJECTDIR/boot/System.map-$VERSION"
+cp -a arch/x86/boot/bzImage "$UB_OBJECTDIR/boot/bzImage-$VERSION"
+
+ln -s "bzImage-$VERSION" "$UB_OBJECTDIR/boot/bzImage.$ARCH"
+
+# modules
+make \
+	INSTALL_PATH="$UB_OBJECTDIR/boot" \
+	INSTALL_MOD_PATH="$UB_OBJECTDIR" \
+	modules_install mod-fw=
+
+# check module licenses
+[  -d  "$UB_OBJECTDIR"/lib/modules/"$VERSION" ]
+echo "checking for missing or incorrect license tags..."
+( find $UB_OBJECTDIR/lib/modules/$VERSION -name '*.ko' | xargs /sbin/modinfo -l | \
+	grep -E -v 'GPL( v2)?$|Dual BSD/GPL$|Dual MPL/GPL$|GPL and additional rights$' ) && \
+	echo "error: there are modules without license tag. please fix."
+#	exit 1
+
+# check module symbols
+if depmod -nea -b "$UB_OBJECTDIR" -F "$UB_OBJECTDIR"/boot/System.map "$VERSION" 2>&1 | grep "^WARNING:"; then
+	echo "fix WARNINGs above!"
+	exit 1
+fi
+
+# install headers
+make \
+	INSTALL_HDR_PATH="$UB_OBJECTDIR"/usr/ \
+	headers_install
+
+find $UB_OBJECTDIR/usr/include \
+     \( -name .install -o -name .check -o \
+     	-name ..install.cmd -o -name ..check.cmd \) | xargs rm -f
+
+# And save the headers/makefiles etc for building modules against
+
+mkdir -p "$UB_OBJECTDIR/usr/src/linux-$VERSION"
+rm -f "$UB_OBJECTDIR/usr/src/linux"
+ln -sf "linux-$VERSION" "$UB_OBJECTDIR/usr/src/linux"
+
+cp -av --parents .config Makefile Module.symvers arch/x86/Makefile arch/x86/Makefile_32.cpu scripts "$UB_OBJECTDIR"/usr/src/linux/
+cp --parents `find  -type f -name "Makefile*" -o -name "Kconfig*"` "$UB_OBJECTDIR"/usr/src/linux/
+cp -av include "$UB_OBJECTDIR"/usr/src/linux/
+cp -av arch/x86/include/asm/. "$UB_OBJECTDIR"/usr/src/linux/include/asm/
+cp -a --parents arch/x86/include "$UB_OBJECTDIR"/usr/src/linux/
+
+if [ -s Module.markers ]; then
+  cp Module.markers $UB_OBJECTDIR/lib/modules/$VERSION/build
+fi
+if [ -d arch/$ARCH/scripts ]; then
+	cp -a arch/$ARCH/scripts $UB_OBJECTDIR/lib/modules/$VERSION/build/arch/$ARCH/ || :
+fi
+if [ -f arch/$ARCH/*lds ]; then
+	cp -a arch/$ARCH/*lds $UB_OBJECTDIR/lib/modules/$VERSION/build/arch/$ARCH/ || :
+fi
+
+rm -rf $UB_OBJECTDIR/usr/src/linux/$VERSION/build/Documentation
+rm -f $UB_OBJECTDIR/usr/src/linux/$VERSION/build/scripts/*.o
+rm -f $UB_OBJECTDIR/usr/src/linux/$VERSION/build/scripts/*/*.o
+find "$UB_OBJECTDIR/usr/include/" -name ..install.cmd -print0 | xargs -r0 rm -v
+find "$UB_OBJECTDIR/usr/include/" -name .install -print0 | xargs -r0 rm -v
+
+rm -f $UB_OBJECTDIR/lib/modules/$VERSION/build
+ln -sf ../../../usr/src/linux-$VERSION $UB_OBJECTDIR/lib/modules/$VERSION/build
+rm $UB_OBJECTDIR/lib/modules/$VERSION/source
+ln -sf ../../../usr/src/linux-$VERSION $UB_OBJECTDIR/lib/modules/$VERSION/source
+
+# remove mISDN headers
+rm -f "$UB_OBJECTDIR"/usr/src/linux/include/linux/mISDN*
+
+# System.map
+cp -a System.map "$UB_OBJECTDIR/lib/modules/$VERSION/"
+
+# done
+
+ln -s "bzImage.$ARCH" "$UB_OBJECTDIR/boot/bzImage"
 
 # mkinitrd
 cat >"$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel <<END
 #!/bin/sh
 
-# mkinitramfs $VERSION.x86_64
-mkinitramfs $VERSION.i386
-
-
-# rm -f /boot/initramfs.x86_64.cpio.gz
-# ln -s initramfs-$VERSION.x86_64.cpio.gz /boot/initramfs.x86_64.cpio.gz
-
+mkinitramfs $VERSION_BASE.i386
 rm -f /boot/initramfs.i386.cpio.gz
-ln -s initramfs-$VERSION.i386.cpio.gz /boot/initramfs.i386.cpio.gz
+ln -s initramfs-$VERSION_BASE.i386.cpio.gz /boot/initramfs.i386.cpio.gz
+
+# mkinitramfs $VERSION_BASE.x86_64
+# rm -f /boot/initramfs.x86_64.cpio.gz
+# ln -s initramfs-$VERSION_BASE.x86_64.cpio.gz /boot/initramfs.x86_64.cpio.gz
 
 rm -f /boot/initramfs.cpio.gz
 ln -s initramfs.i386.cpio.gz /boot/initramfs.cpio.gz

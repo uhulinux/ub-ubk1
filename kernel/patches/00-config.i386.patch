@@ -1,10 +1,10 @@
 diff -Naur orig/.config.i386 patched/.config.i386
 --- orig/.config.i386	1970-01-01 01:00:00.000000000 +0100
-+++ patched/.config.i386	2016-06-20 23:49:03.000000000 +0200
++++ patched/.config.i386	2016-06-29 01:12:51.000000000 +0200
 @@ -0,0 +1,8374 @@
 +#
 +# Automatically generated file; DO NOT EDIT.
-+# Linux/i386 4.4.13-1.i386 Kernel Configuration
++# Linux/x86 4.4.14-1.i386 Kernel Configuration
 +#
 +# CONFIG_64BIT is not set
 +CONFIG_X86_32=y
