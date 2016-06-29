@@ -4,6 +4,8 @@ docbook2man
 gobject-introspection-dev
 intltool
 lcms2-dev
+libcap-dev
+libgcrypt-dev
 libgudev-dev
 libgusb-dev
 libusb-dev

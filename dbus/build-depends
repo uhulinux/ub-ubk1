@@ -1,5 +1,7 @@
 doxygen
 expat-dev
+libcap-dev
+libgcrypt-dev
 libsm-dev
 libx11-dev
 systemd-dev

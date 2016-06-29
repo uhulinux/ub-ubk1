@@ -3,6 +3,7 @@ geocode-glib-dev
 gtk-doc
 intltool
 json-glib-dev
+libcap-dev
 libsoup-dev
 modemmanager-dev
 systemd-dev

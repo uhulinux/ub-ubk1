@@ -2,4 +2,5 @@ colord-dev
 gobject-introspection-dev
 gtk-dev
 intltool
+libcap-dev
 vala-dev

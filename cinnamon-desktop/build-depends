@@ -2,6 +2,7 @@ gnome-common
 gobject-introspection-dev
 gtk-dev
 intltool
+libgcrypt-dev
 libxkbcommon-dev
 libxkbfile-dev
 pulseaudio-dev

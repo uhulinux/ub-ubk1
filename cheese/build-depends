@@ -12,6 +12,7 @@ gst-plugins-good
 intltool
 itstool
 libcanberra-dev
+libcap-dev
 libgudev-dev
 librsvg-dev
 libxtst-dev
