@@ -3,6 +3,7 @@ glib-dev
 gnome-keyring-dev
 gtk-dev
 intltool
+libcap-dev
 libgudev-dev
 libsecret-dev
 networkmanager-dev

@@ -7,6 +7,8 @@ gtk-dev
 gtk2-dev
 intltool
 libarchive-dev
+libcap-dev
+libgcrypt-dev
 libxt-dev
 networkmanager-dev
 pm-utils

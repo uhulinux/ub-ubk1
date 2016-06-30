@@ -1,4 +1,5 @@
 glib-dev
+libcap-dev
 libgudev-dev
 libxml2-dev
 systemd-dev

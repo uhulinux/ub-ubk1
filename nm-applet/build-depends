@@ -5,6 +5,7 @@ gobject-introspection-dev
 gtk-dev
 intltool
 iso-codes
+libcap-dev
 libgnome-keyring-dev
 libgudev-dev
 libnotify-dev

@@ -1,5 +1,6 @@
 alsa-lib-dev
 jack-dev
+libcap-dev
 libftdi-compat-dev
 libftdi1-dev
 libsm-dev

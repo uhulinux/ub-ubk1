@@ -1,3 +1,4 @@
+audit-dev
 dbus-glib-dev
 docbook-dtds
 docbook-xsl
@@ -5,6 +6,8 @@ expat-dev
 gobject-introspection-dev
 intltool
 js17-dev
+libcap-dev
 libffi-dev
+libgcrypt-dev
 libxslt
 systemd-dev

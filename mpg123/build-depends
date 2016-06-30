@@ -1,5 +1,6 @@
 db4-dev
 jack-dev
+libgcrypt-dev
 openal-dev
 portaudio-dev
 pulseaudio-dev

@@ -1,4 +1,7 @@
+audit-dev
 iproute2
+libcap-dev
+libgcrypt-dev
 liblzo-dev
 openssl-dev
 systemd-dev

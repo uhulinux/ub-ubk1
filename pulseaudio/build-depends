@@ -11,6 +11,7 @@ jack-dev
 json-c-dev
 libasyncns-dev
 libcap-dev
+libgcrypt-dev
 liboil-dev
 libsamplerate-dev
 libsm-dev
