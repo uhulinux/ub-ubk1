@@ -8,7 +8,6 @@ ddrescue
 ebtables
 ethtool
 hashalot
-ide-smart
 lde
 lsof
 lsscsi
