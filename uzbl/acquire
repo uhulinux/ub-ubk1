@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-uzbl-${UB_VERSION}.tar.gz uzbl-${UB_VERSION}/
-	git://github.com/Dieterbe/uzbl.git@${UB_VERSION}
+v${UB_VERSION}.tar.gz uzbl-${UB_VERSION}/
+	https://github.com/uzbl/uzbl/archive/
