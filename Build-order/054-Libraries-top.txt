@@ -51,7 +51,6 @@ gst-rtsp
 bcg729
 anjuta-extras
 dssi
-opentts
 keybinder
 snack
 gtkglarea
