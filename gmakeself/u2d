@@ -1,1 +1,2 @@
-echo git
+curl -s https://raw.githubusercontent.com/ghost1227/gmakeself/master/gmakeself | grep ver= | sed s/ver=// | sed s/\"//g
+
