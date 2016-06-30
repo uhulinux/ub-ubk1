@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 tdhkit$UB_VERSION.tar.gz tdhkit$UB_VERSION/
-	ftp://ftp.lug.ro/freebsd/ports/distfiles/
-
+	http://www.sourcefiles.org/Utilities/Console/Q-T/
