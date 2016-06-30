@@ -3,6 +3,7 @@ db4-dev
 dirac-dev
 faad2
 ffmpeg2.8-dev
+fluidsynth-dev
 gnome2-vfs-dev
 gst-plugins-base-dev
 lame
@@ -42,7 +43,7 @@ opus-dev
 pango-dev
 popt-dev
 portaudio-dev
-qt5-dev
+qt4-dev
 samba-dev
 sdl-image-dev
 taglib-dev
