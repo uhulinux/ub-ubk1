@@ -20,7 +20,6 @@ rsh
 tcpcgi
 telnet
 tftp
-web-cyradm
 emil
 p0f
 tcptrack

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-web-cyradm-${UB_VERSION}.tar.gz web-cyradm-${UB_VERSION}/ 
-	ftp://ftp.sbin.org/pub/mail/cyrus/
