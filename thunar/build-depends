@@ -2,8 +2,10 @@ dbus-glib-dev
 gamin-dev
 gtk2-dev
 intltool
+libcap-dev
 libexif-dev
 libexo-dev
+libgcrypt-dev
 libjpeg-dev
 libnotify-dev
 libusb-dev

@@ -1,3 +1,5 @@
+libcap-dev
+libgcrypt-dev
 openssl-dev
 systemd-dev
 tcp-wrappers-dev

@@ -1,1 +1,4 @@
+audit-dev
+libcap-dev
+libgcrypt-dev
 systemd-dev

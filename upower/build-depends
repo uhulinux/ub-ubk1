@@ -3,6 +3,7 @@ docbook-dtds
 docbook-xsl
 gobject-introspection-dev
 intltool
+libcap-dev
 libgudev-dev
 libimobiledevice-dev
 libusb-dev
