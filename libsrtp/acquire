@@ -1,7 +1,4 @@
 #!/usr/bin/env dl
 
-#srtp-${UB_VERSION}.tgz srtp/
-#	http://downloads.sourceforge.net/srtp/
-
-srtp-${UB_VERSION}.tar.gz srtp-master/
-	git://git.linphone.org/srtp.git@master
+v${UB_VERSION}.tar.gz libsrtp-${UB_VERSION}/
+	https://github.com/cisco/libsrtp/archive/
