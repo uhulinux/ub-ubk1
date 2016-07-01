@@ -1,1 +1,1 @@
-echo dead package
+curl -s https://raw.githubusercontent.com/globalcitizen/anytopdf/master/anytopdf | grep 'VERSION =' | sed s/\'\;//g | sed s/.*\'//
