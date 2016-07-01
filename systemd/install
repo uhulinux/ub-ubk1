@@ -40,12 +40,6 @@ done
 # compat symlinks
 for i in libsystemd-{daemon,id128,journal,login}; do
 	ln -s libsystemd.pc "$UB_INSTALLDIR"/usr/lib/pkgconfig/"$i".pc
-	ln -s libsystemd.so.0 "$UB_INSTALLDIR"/usr/lib/"$i".so.0
+#	ln -s libsystemd.so.0 "$UB_INSTALLDIR"/usr/lib/"$i".so.0
 done
-
-# systemd 221 compat symlinks
-ln -s libsystemd.so.0.15.0 "$UB_INSTALLDIR"/usr/lib/libsystemd-daemon.so.0.0.12
-ln -s libsystemd.so.0.15.0 "$UB_INSTALLDIR"/usr/lib/libsystemd-id128.so.0.0.28
-ln -s libsystemd.so.0.15.0 "$UB_INSTALLDIR"/usr/lib/libsystemd-journal.so.0.11.5
-ln -s libsystemd.so.0.15.0 "$UB_INSTALLDIR"/usr/lib/libsystemd-login.so.0.9.3
 

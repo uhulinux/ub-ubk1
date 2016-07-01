@@ -1,5 +1,5 @@
+	/lib/**/*.la
 	/lib/*.a
-	/lib/*.la
 @	/lib/*.so
 	/usr/bin/*-config
 	/usr/include
