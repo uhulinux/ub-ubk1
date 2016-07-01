@@ -1,20 +1,25 @@
 #!/bin/bash -eux
 
+mkdir -p ${UB_INSTALLDIR}/lib/firmware
+
 cp -a linux-firmware/* ${UB_INSTALLDIR}/lib/firmware/
 
 cp -r nouveau ${UB_INSTALLDIR}/lib/firmware/
 
 cp -a dvb-firmware/* ${UB_INSTALLDIR}/lib/firmware
 
-cp tiacx*  "$UB_INSTALLDIR"/lib/firmware/
+rm -Rf ${UB_INSTALLDIR}/lib/firmware/.git
+rm -f ${UB_INSTALLDIR}/lib/firmware/Makefile
 
-cp ipw2100/*.fw  "$UB_INSTALLDIR"/lib/firmware/
-
-cp ipw2200/*.fw  "$UB_INSTALLDIR"/lib/firmware/
-
-cp zd1211/zd1211* "$UB_INSTALLDIR"/lib/firmware/
-
-chmod 755 ${UB_INSTALLDIR}/lib/firmware/b43{,legacy}
+docdir=${UB_INSTALLDIR}/usr/share/doc/Packages/linux-firmware
+mkdir -p ${docdir}
+mv ${UB_INSTALLDIR}/lib/firmware/GPL-3 ${docdir}/
+mv ${UB_INSTALLDIR}/lib/firmware/LICENCE* ${docdir}/
+mv ${UB_INSTALLDIR}/lib/firmware/LICENSE* ${docdir}/
+mv ${UB_INSTALLDIR}/lib/firmware/README ${docdir}/
+mv ${UB_INSTALLDIR}/lib/firmware/WHENCE ${docdir}/
+mv ${UB_INSTALLDIR}/lib/firmware/license-*.txt ${docdir}/
+mv ${UB_INSTALLDIR}/lib/firmware/dvb-*.fw.license.txt ${docdir}/
 
 # a microcodectl és a kernel csomagban is lévő ütköző mappák és fájlok
 mappasor="3com
@@ -62,3 +67,4 @@ done
 for i in $kernelfilesor;do
 rm -f ${UB_INSTALLDIR}/lib/firmware/${i}.fw
 done
+
