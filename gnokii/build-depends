@@ -1,6 +1,7 @@
 bluez-dev
 gtk2-dev
 intltool
+libcap-dev
 libusb-compat-dev
 libusb-dev
 libxpm-dev

@@ -5,6 +5,7 @@ json-c-dev
 libcap-dev
 libdbi
 libesmtp-dev
+libgcrypt-dev
 libnet
 openssl-dev
 popt-dev
