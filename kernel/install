@@ -32,7 +32,8 @@ ln -s "bzImage-$VERSION" "$UB_OBJECTDIR/boot/bzImage.$ARCH"
 make \
 	INSTALL_PATH="$UB_OBJECTDIR/boot" \
 	INSTALL_MOD_PATH="$UB_OBJECTDIR" \
-	modules_install mod-fw=
+	modules_install
+#	modules_install mod-fw=
 
 # check module licenses
 [  -d  "$UB_OBJECTDIR"/lib/modules/"$VERSION" ]
