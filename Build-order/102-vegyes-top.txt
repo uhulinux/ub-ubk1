@@ -8,7 +8,7 @@ mysql-jdbc
 postgresql-jdbc
 anki
 fish
-nouveau-fw
+nouveau-vdpau-fw
 audio-entropyd
 newlisp
 aspell-dict-english
