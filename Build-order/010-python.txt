@@ -51,6 +51,7 @@ ipython
 libvirt-python
 psycopg2
 py3cairo
+pyasn1
 pybluez
 pycairo
 pychess
@@ -98,7 +99,6 @@ python-dateutil
 python-decorator
 python-distutils-extra
 python-docutils
-python-ecdsa
 python-elib.intl
 python-elixir
 python-epsilon
