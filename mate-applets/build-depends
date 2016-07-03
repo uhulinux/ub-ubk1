@@ -5,7 +5,6 @@ gst-plugins-base-dev
 gtksourceview-dev
 intltool
 itstool
-libcap-dev
 libgtop2-dev
 libmateweather-dev
 libnotify-dev

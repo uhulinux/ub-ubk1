@@ -4,8 +4,6 @@ docbook-xsl
 gobject-introspection-dev
 gtk-doc
 intltool
-libcap-dev
-libgcrypt-dev
 libgudev-dev
 libmbim-dev
 libqmi-dev

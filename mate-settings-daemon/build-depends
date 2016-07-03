@@ -3,8 +3,6 @@ dconf-dev
 gtk-dev
 intltool
 libcanberra-dev
-libcap-dev
-libgcrypt-dev
 libmatekbd-dev
 libmatemixer-dev
 libnotify-dev

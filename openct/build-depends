@@ -1,5 +1,4 @@
 doxygen
-libcap-dev
 libusb-compat-dev
 libusb-dev
 pcsc-lite-dev

@@ -5,8 +5,6 @@ gobject-introspection-dev
 gtk-dev
 gtk-doc
 intltool
-libcap-dev
 libffi-dev
-libgcrypt-dev
 polkit-dev
 systemd-dev

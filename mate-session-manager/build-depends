@@ -1,7 +1,6 @@
 dbus-glib-dev
 gtk-dev
 intltool
-libcap-dev
 libsm-dev
 libxslt-dev
 libxtst-dev
