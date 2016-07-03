@@ -1,1 +1,0 @@
-urllist http://coherence.beebits.net/download/ | splitver '^Coherence-([0-9.]+).tar.gz$' | sort -V | tail -n 1

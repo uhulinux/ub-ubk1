@@ -1,1 +1,0 @@
-urllist http://telepathy.freedesktop.org/releases/telepathy-python/ | splitver '^telepathy-python-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

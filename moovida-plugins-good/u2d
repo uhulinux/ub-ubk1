@@ -1,1 +1,0 @@
-urllist http://ftp.debian.org/debian/pool/main/m/moovida-plugins-good/ | sed s/\+.*//g | splitver '^moovida-plugins-good_([0-9.]+)$' | sort -V | tail -n 1

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Axiom-${UB_VERSION}.tar.gz Axiom-${UB_VERSION}/
-	https://pypi.python.org/packages/source/A/Axiom/

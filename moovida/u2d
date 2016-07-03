@@ -1,1 +1,0 @@
-urllist http://ftp.debian.org/debian/pool/main/m/moovida/ | sed s/\+.*//g | splitver '^moovida_([0-9.]+)$' | sort -V | tail -n 1

@@ -17,10 +17,6 @@ dvdauthor
 dvdstyler
 audacious
 audacious-plugins
-moovida
-moovida-plugins-bad
-moovida-plugins-good
-moovida-plugins-ugly
 kodi
 vdr
 vdr-plugin-text2skin

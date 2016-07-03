@@ -77,6 +77,5 @@ libmp3splt
 libmpeg2
 libmsn
 taglib
-libmtag
 libmtp
 libvpx

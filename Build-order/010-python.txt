@@ -10,7 +10,6 @@ python-dip
 python-doc
 python-iniparse
 python-ipaddr
-python-libmtag
 python-lxml
 python-nose
 python-simplejson
@@ -43,7 +42,6 @@ pytz
 pyxattr
 pyxdg
 pyzmq
-telepathy-python
 wxpython
 wxpython2.8
 cython
@@ -101,14 +99,11 @@ python-distutils-extra
 python-docutils
 python-elib.intl
 python-elixir
-python-epsilon
-python-feedparser
 python-flask
 python-flask-babel
 python-flask-babelex
 python-flask-sqlalchemy
 python-formalchemy
-python-gdata
 python-geraldo
 python-gflags
 python-google-apputils
@@ -125,7 +120,6 @@ python-markupsafe
 python-mechanize
 python-mysql
 python-netifaces
-python-nevow
 python-numpy
 python-pam
 python-paste
@@ -154,7 +148,6 @@ pygtksourceview
 pykaraoke
 pypy
 python-apt
-python-axiom
 python-matplotlib
 python-notify
 python-pbr
