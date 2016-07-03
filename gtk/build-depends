@@ -8,7 +8,6 @@ gnutls-dev
 gobject-introspection-dev
 gtk-doc
 jasper-dev
-libcap-dev
 libepoxy-dev
 libjpeg-dev
 libpng-dev

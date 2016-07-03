@@ -5,7 +5,6 @@ gnome-desktop-dev
 gobject-introspection-dev
 intltool
 itstool
-libcap-dev
 libgdata-dev
 libgudev-dev
 libmediaart-dev

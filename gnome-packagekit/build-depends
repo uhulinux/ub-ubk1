@@ -5,8 +5,6 @@ gtk-doc
 intltool
 itstool
 libcanberra-dev
-libcap-dev
-libgcrypt-dev
 libnotify-dev
 packagekit-dev
 polkit-dev
