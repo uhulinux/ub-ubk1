@@ -1,7 +1,6 @@
 docbook-dtds
 docbook-xsl
 gtk-dev
-libcap-dev
 libdrm-dev
 libpng-dev
 libxslt-dev
