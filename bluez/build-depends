@@ -1,6 +1,5 @@
 cups-dev
 dbus-dev
 glib-dev
-libcap-dev
 libical-dev
 systemd-dev

@@ -1,7 +1,5 @@
 dbus-glib-dev
 gobject-introspection-dev
 intltool
-libcap-dev
-libgcrypt-dev
 polkit-dev
 systemd-dev

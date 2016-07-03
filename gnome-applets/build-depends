@@ -7,7 +7,6 @@ gucharmap-dev
 icon-theme-adwaita
 intltool
 itstool
-libcap-dev
 libgcrypt-dev
 libgnome-keyring-dev
 libgtop2-dev

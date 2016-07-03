@@ -2,8 +2,6 @@ dbus-glib-dev
 gobject-introspection-dev
 gtk-dev
 intltool
-libcap-dev
-libgcrypt-dev
 libxml2-dev
 openldap-dev
 polkit-dev

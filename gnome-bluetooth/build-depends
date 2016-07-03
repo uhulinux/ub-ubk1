@@ -5,6 +5,5 @@ gtk-dev
 intltool
 itstool
 libcanberra-dev
-libcap-dev
 libnotify-dev
 systemd-dev

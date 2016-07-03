@@ -7,7 +7,6 @@ intltool
 itstool
 lcms2-dev
 libcanberra-dev
-libcap-dev
 libexif-dev
 libjpeg-dev
 libtiff-dev
