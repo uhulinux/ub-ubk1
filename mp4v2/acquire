@@ -2,5 +2,5 @@
 
 mp4v2-${UB_VERSION}.tar.bz2 mp4v2-${UB_VERSION}/
 	http://mp4v2.googlecode.com/files/
-
+#	https://github.com/svnpenn/mp4v2/archive/2.1.1.tar.gz
 
