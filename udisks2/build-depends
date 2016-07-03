@@ -4,8 +4,6 @@ expat-dev
 gobject-introspection-dev
 intltool
 libatasmart-dev
-libcap-dev
-libgcrypt-dev
 libgudev-dev
 libxslt
 polkit-dev

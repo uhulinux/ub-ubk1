@@ -1,5 +1,3 @@
-libcap-dev
-libgcrypt-dev
 libgudev-dev
 libxslt
 networkmanager-dev
