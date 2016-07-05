@@ -1,3 +1,4 @@
+doublecmd-help
 funny-manpages
 hoc
 htdig

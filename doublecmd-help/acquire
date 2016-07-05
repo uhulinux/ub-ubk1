@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+doublecmd-help-${UB_VERSION}-src.tar.gz doublecmd-help-${UB_VERSION}/en/ :usr/share/doublecmd/doc/en
+	http://downloads.sourceforge.net/project/doublecmd/Double%20Commander%20Source/
