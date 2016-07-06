@@ -3,3 +3,5 @@
 export TERM=xterm
 export DESTDIR="$UB_INSTALLDIR"
 ./make install
+
+rm -Rf "$UB_INSTALLDIR"/usr/share/pkgconfig
