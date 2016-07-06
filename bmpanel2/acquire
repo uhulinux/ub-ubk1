@@ -1,7 +1,4 @@
 #!/usr/bin/env dl
 
-#bmpanel2-${UB_VERSION/~/}.tar.gz bmpanel2-${UB_VERSION/~/}/
-#	http://bmpanel2.googlecode.com/files/
-
-bm2panel-master.zip bmpanel2-master/
-	https://codeload.github.com/nsf/bmpanel2/zip/master
+bmpanel2-${UB_VERSION/~/}.tar.gz bmpanel2-5ad46c8/
+	git://github.com/nsf/bmpanel2.git@5ad46c8
