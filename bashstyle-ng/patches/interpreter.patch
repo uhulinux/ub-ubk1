@@ -1,9 +1,0 @@
-diff -Naur orig/rc/functions/text2morse mod/rc/functions/text2morse
---- orig/rc/functions/text2morse	2016-02-23 21:18:11.000000000 +0100
-+++ mod/rc/functions/text2morse	2016-04-13 09:19:02.566373091 +0200
-@@ -1,4 +1,4 @@
--#!/usr/bin/env bashstyle --python
-+#!/usr/bin/bashstyle --python
- # short mark, dot or 'dit' (.) = .
- # longer mark, dash or 'dah' (-) = -
- # intra-character gap (between the dots and dashes within a character) = no space
