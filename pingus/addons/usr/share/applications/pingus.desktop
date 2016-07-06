@@ -6,6 +6,6 @@ GenericName[hu]=Lemmings-klón
 Comment=Save the Penguins
 Comment[hu]=Mentsd meg a pingvineket
 Exec=pingus
-Icon=/usr/share/pixmaps/pingus.png
+Icon=pingus
 Terminal=false
 Categories=Game;ActionGame;

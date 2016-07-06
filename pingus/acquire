@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-pingus-${UB_VERSION}.tar.bz2 pingus-${UB_VERSION}/
-	http://pingus.googlecode.com/files/
+v${UB_VERSION}.tar.gz pingus-${UB_VERSION}/
+	https://github.com/Pingus/pingus/archive/
