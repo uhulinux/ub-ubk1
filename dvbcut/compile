@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+autoreconf
+export QTDIR=/usr/lib/qt5
+export CXXFLAGS=' -std=c++11'
+ub_compile \
+	--with-ffmpeg=/usr
+
