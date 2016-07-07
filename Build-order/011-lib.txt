@@ -55,8 +55,6 @@ libvisual-plugins
 libphonenumber
 libopkele
 libquvi
-librapi2
-librra
 libvisio
 libwnck
 libwnck2

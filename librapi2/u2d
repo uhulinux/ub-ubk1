@@ -1,1 +1,0 @@
-sflist synce SynCE/OldReleases | sort -V | tail -n 1

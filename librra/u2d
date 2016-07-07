@@ -1,2 +1,0 @@
-sflist synce SynCE/librra | parsever | sort -V | tail -n 1
-
