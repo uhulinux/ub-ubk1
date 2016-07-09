@@ -1,1 +1,1 @@
-urllist http://www.xmailserver.com/ | splitver '^xmail-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://www.xmailserver.org/xdiff-lib.html | splitver '^libxdiff-([0-9.]+).tar.gz$' | sort -V | tail -n 1
