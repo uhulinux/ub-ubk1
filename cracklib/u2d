@@ -1,1 +1,1 @@
-urllist http://sourceforge.net/projects/cracklib/files/cracklib/ | splitver '^([0-9.]+)$' | sort -V | tail -n 1
+urllist https://github.com/cracklib/cracklib/releases/ | splitver '^cracklib-([0-9.]+).tar.gz$' | sort -V | tail -n 1
