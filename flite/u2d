@@ -1,1 +1,1 @@
-urllist http://www.speech.cs.cmu.edu/flite/packed/ | splitver '^flite-([0-9.]+)$' | sort -V | tail -n 1
+urllist http://www.festvox.org/flite/packed/ | splitver '^flite-([0-9.]+)$' | sort -V | tail -n 1
