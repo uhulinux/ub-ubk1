@@ -1,7 +1,8 @@
 #!/bin/sh -eux
 
-export QTDIR="/usr/lib/qt4"
+export QTDIR="/usr/lib/qt5"
 
 ub_compile \
-	-DWITHOUT_EMBEDDED_DISPLAY=on
-
+	-DWITHOUT_EMBEDDED_DISPLAY=on \
+	-DCMAKE_PREFIX_PATH=/usr/lib/qt5 \
+	-DQT_QMAKE_EXECUTABLE=qmake4
