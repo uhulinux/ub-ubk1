@@ -1,5 +1,9 @@
 #!/bin/sh -eux
 
+if [ -f autogen.sh ]; then
+	./autogen.sh --with-gtk=3.0
+fi
+
 ub_compile \
 	--with-gtk=3.0 \
 	--libexecdir=/usr/libexec/mate

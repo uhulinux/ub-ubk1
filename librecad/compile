@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
-qmake-qt4 librecad.pro
+qmake-qt5 librecad.pro
 
 ub_make
 

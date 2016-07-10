@@ -1,8 +1,8 @@
-diff -Naurdp a/master/conf/normal.conf b/master/conf/normal.conf
---- a/master/conf/normal.conf	2006-03-30 18:01:39.000000000 +0200
-+++ b/master/conf/normal.conf	2006-09-04 16:19:18.000000000 +0200
-@@ -22,11 +22,11 @@ SERVICES {
- #  nntps		cmd="nntpd -s" listen="nntps" prefork=0
+diff -Naur orig/master/conf/normal.conf patched/master/conf/normal.conf
+--- orig/master/conf/normal.conf	2016-05-20 07:52:44.000000000 +0200
++++ patched/master/conf/normal.conf	2016-07-04 11:42:58.597034315 +0200
+@@ -26,11 +26,11 @@
+ #  https		cmd="httpd -s" listen="https" prefork=0
  
    # at least one LMTP is required for delivery
 -#  lmtp		cmd="lmtpd" listen="lmtp" prefork=0
@@ -16,11 +16,11 @@ diff -Naurdp a/master/conf/normal.conf b/master/conf/normal.conf
  }
  
  EVENTS {
-diff -Naurdp a/master/conf/prefork.conf b/master/conf/prefork.conf
---- a/master/conf/prefork.conf	2003-10-22 20:03:10.000000000 +0200
-+++ b/master/conf/prefork.conf	2006-09-04 16:18:28.000000000 +0200
-@@ -22,11 +22,11 @@ SERVICES {
- #  nntps		cmd="nntpd -s" listen="nntps" prefork=1
+diff -Naur orig/master/conf/prefork.conf patched/master/conf/prefork.conf
+--- orig/master/conf/prefork.conf	2016-05-20 07:52:44.000000000 +0200
++++ patched/master/conf/prefork.conf	2016-07-04 11:42:58.597034315 +0200
+@@ -26,11 +26,11 @@
+ #  https		cmd="httpd -s" listen="https" prefork=1
  
    # at least one LMTP is required for delivery
 -#  lmtp		cmd="lmtpd" listen="lmtp" prefork=0

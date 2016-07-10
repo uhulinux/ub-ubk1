@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-libtar-${UB_VERSION}.tar.gz libtar-${UB_VERSION}/
-	ftp://ftp.feep.net/pub/software/libtar/
-	ftp://sourceforge.mirrorservice.org/sites/distfiles.finkmirrors.net/
+libtar_${UB_VERSION}.orig.tar.gz libtar/
+	http://ftp.debian.org/debian/pool/main/libt/libtar/

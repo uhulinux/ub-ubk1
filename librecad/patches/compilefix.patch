@@ -1,0 +1,11 @@
+diff -Naur orig/librecad/src/lib/engine/rs_spline.cpp patched/librecad/src/lib/engine/rs_spline.cpp
+--- orig/librecad/src/lib/engine/rs_spline.cpp	2016-06-20 20:43:27.000000000 +0200
++++ patched/librecad/src/lib/engine/rs_spline.cpp	2016-07-08 01:29:41.274364396 +0200
+@@ -26,6 +26,7 @@
+ 
+ #include<iostream>
+ #include<cmath>
++#include <numeric>
+ #include "rs_spline.h"
+ 
+ 

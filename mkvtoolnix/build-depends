@@ -9,5 +9,6 @@ liblzo-dev
 libmatroska-dev
 libogg-dev
 libvorbis-dev
+po4a
 qt5-dev
 ruby

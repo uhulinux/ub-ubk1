@@ -1,4 +1,5 @@
 #!/bin/sh -eux
 
+rm -f CMakeLists.txt
 export QT4DIR=/usr/lib/qt4
 ub_compile

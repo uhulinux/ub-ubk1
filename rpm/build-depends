@@ -1,6 +1,7 @@
 bzip2-dev
 db4-dev
 file-dev
+libarchive-dev
 libelf-dev
 nss-dev
 popt-dev

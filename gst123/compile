@@ -1,4 +1,3 @@
 #!/bin/sh -eux
 
-sed -i "s_ncurses5_ncurses6_g" configure*
 ub_compile

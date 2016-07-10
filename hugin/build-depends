@@ -5,6 +5,7 @@ fftw3-dev
 freeglut-dev
 glew-dev
 glu-dev
+lcms2-dev
 libjpeg-dev
 libpano13-dev
 libpng-dev

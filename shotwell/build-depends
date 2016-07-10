@@ -12,4 +12,4 @@ libraw-dev
 rest-dev
 sqlite-dev
 vala-dev
-webkitgtk3-dev
+webkit2gtk-dev

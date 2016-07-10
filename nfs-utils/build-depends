@@ -5,6 +5,7 @@ libevent-dev
 libgssapi-dev
 libnfsidmap-dev
 librpcsecgss-dev
+libtirpc-dev
 lvm-dev
 sqlite-dev
 tcp-wrappers-dev

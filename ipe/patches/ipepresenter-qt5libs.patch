@@ -1,6 +1,6 @@
-diff -Naur orig/ipepresenter/Makefile mod/ipepresenter/Makefile
+diff -Naur orig/ipepresenter/Makefile patched/ipepresenter/Makefile
 --- orig/ipepresenter/Makefile	2016-01-05 07:35:58.000000000 +0100
-+++ mod/ipepresenter/Makefile	2016-05-03 20:24:20.079639847 +0200
++++ patched/ipepresenter/Makefile	2016-07-07 01:29:21.410773539 +0200
 @@ -4,14 +4,14 @@
  
  CXX=g++
@@ -11,8 +11,8 @@ diff -Naur orig/ipepresenter/Makefile mod/ipepresenter/Makefile
 -LIBS += -lipecanvas -lipecairo -lipe $(QT_LIBS) $(CAIRO_LIBS)
 +QT_CFLAGS = -fPIC -std=c++11 -I/usr/lib/qt5/include/QtGui -I/usr/lib/qt5/include/QtWidgets -I/usr/lib/qt5/include/QtCore -I//usr/lib/qt5/include
 +QT_LIBS = -lQt5Gui -lQt5Core -lQt5Widgets -L/usr/lib/qt5/lib
-+CPPFLAGS += $(QT_CFLAGS) -I ../src/include -I ../src/ipecanvas
-+LIBS += -lipecanvas -lipecairo -lipe $(QT_LIBS) $(CAIRO_LIBS) -L ../build/lib
++CPPFLAGS += $(QT_CFLAGS) -I../src/ipecanvas -I../src/include
++LIBS += -L../build/lib -lipecanvas -lipecairo -lipe $(QT_LIBS) $(CAIRO_LIBS)
  DESTDIR=/usr/bin
  
 -MOC=moc

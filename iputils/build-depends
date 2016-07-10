@@ -1,3 +1,4 @@
+libcap-dev
+libgcrypt-dev
 libidn-dev
-libsysfs-dev
 openssl-dev

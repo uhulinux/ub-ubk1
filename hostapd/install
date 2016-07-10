@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
 cd hostapd
-ub_install
+ub_install DESTDIR=$UB_INSTALLDIR BINDIR=/usr/bin/

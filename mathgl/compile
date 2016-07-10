@@ -7,5 +7,4 @@ sed -i "s|Fl/|FL/|" include/mgl2/fltk.h
 
 ub_compile \
 	-Denable-fltk=ON \
-	-Denable-hdf5=ON \
-	-Denable-qt=OFF
+	-Denable-hdf5=ON

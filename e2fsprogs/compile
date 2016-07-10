@@ -8,7 +8,6 @@ ub_configure \
 	--bindir=/bin \
 	--libdir=/lib \
 	--sbindir=/sbin \
-	--enable-dynamic-e2fsck \
 	--enable-elf-shlibs \
 	--disable-libblkid \
 	--disable-uuidd \

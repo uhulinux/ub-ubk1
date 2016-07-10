@@ -15,8 +15,5 @@ for SIZE in 16 24 32 48 64 96 128; do
 done
 install -D -m 644 desktop/graphics_icons_and_splash/Icon\ LibreCAD/Icon_Librecad.svg "${UB_INSTALLDIR}/usr/share/icons/hicolor/scalable/apps/librecad.svg"
 mkdir -p "${UB_INSTALLDIR}/usr/share/librecad/"
-mkdir -p "${UB_INSTALLDIR}/usr/share/doc/librecad/"
-cp -r unix/resources/{library,patterns,fonts,qm} "${UB_INSTALLDIR}/usr/share/librecad/"
-cp -r unix/resources/{library,patterns,fonts,qm,doc,plugins} "${UB_INSTALLDIR}/usr/share/librecad/"
-cp -r librecad/support/doc/* "${UB_INSTALLDIR}/usr/share/doc/librecad/"
+cp -r unix/resources/{library,patterns,fonts,qm,plugins} "${UB_INSTALLDIR}/usr/share/librecad/"
 
