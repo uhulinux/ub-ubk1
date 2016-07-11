@@ -5,5 +5,5 @@ gperf
 liblangtag-dev
 librevenge-dev
 libxml2-dev
-mdds-dev
+mdds
 xz-dev
