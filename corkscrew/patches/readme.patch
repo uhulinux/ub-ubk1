@@ -1,6 +1,6 @@
 diff -Naurd a/README b/README
---- a/README	2001-08-23 20:33:54.000000000 +0200
-+++ b/README	2006-09-18 18:48:59.000000000 +0200
+--- a/README.markdown	2001-08-23 20:33:54.000000000 +0200
++++ b/README.markdown	2006-09-18 18:48:59.000000000 +0200
 @@ -47,7 +47,7 @@
  the following line to your ~/.ssh/config file will usually do
  the trick (replace proxy.example.com and 8080 with correct values):

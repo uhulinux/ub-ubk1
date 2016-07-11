@@ -1,1 +1,1 @@
-urllist http://www.agroman.net/corkscrew/ | parsever | sort -V | tail -n 1
+urllist https://github.com/elia/corkscrew/releases/ | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1
