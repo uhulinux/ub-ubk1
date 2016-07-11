@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-unidesc-${UB_VERSION}.tar.bz2 unidesc-${UB_VERSION}/
-	ftp://ftp.fi.freebsd.org/pub/FreeBSD/ports/distfiles/

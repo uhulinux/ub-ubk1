@@ -28,7 +28,6 @@ setserial
 setuser
 statserial
 sysstat
-unidesc
 v86d
 vlan
 blktrace
