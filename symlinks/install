@@ -1,3 +1,7 @@
 #!/bin/sh -eux
 
-ub_install
+make \
+	BINDIR=${UB_INSTALLDIR}/usr/bin \
+	MANDIR=${UB_INSTALLDIR}/usr/share/man/man8 \
+	INSTALL=install \
+	install

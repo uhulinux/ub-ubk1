@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-symlinks-${UB_VERSION}.tar.gz symlinks-${UB_VERSION}/
-	http://www.ibiblio.org/pub/linux/utils/file/
+v${UB_VERSION}.tar.gz symlinks-${UB_VERSION}/
+	https://github.com/brandt/symlinks/archive/
