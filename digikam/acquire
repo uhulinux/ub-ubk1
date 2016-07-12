@@ -2,5 +2,5 @@
 
 digikam-${UB_VERSION/~/-}.tar.bz2 digikam-${UB_VERSION/~/-}/
 #	https://github.com/KDE/digikam/archive/
-#	http://download.kde.org/stable/digikam/
-	http://download.kde.org/unstable/digikam/
+	http://download.kde.org/stable/digikam/
+#	http://download.kde.org/unstable/digikam/
