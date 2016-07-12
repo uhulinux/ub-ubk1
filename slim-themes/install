@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-mkdir -p "$UB_INSTALLDIR"/usr/share/slim/themes
-cp -r * "$UB_INSTALLDIR"/usr/share/slim/themes/
-find "$UB_INSTALLDIR"/usr/share/slim/themes -type f -exec chmod 644 {} \;
