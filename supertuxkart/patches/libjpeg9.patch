@@ -1,6 +1,6 @@
 diff -Naur orig/lib/irrlicht/source/Irrlicht/CImageLoaderJPG.cpp patched/lib/irrlicht/source/Irrlicht/CImageLoaderJPG.cpp
---- orig/lib/irrlicht/source/Irrlicht/CImageLoaderJPG.cpp	2015-04-21 13:32:21.000000000 +0200
-+++ patched/lib/irrlicht/source/Irrlicht/CImageLoaderJPG.cpp	2015-06-14 22:12:32.508476945 +0200
+--- orig/lib/irrlicht/source/Irrlicht/CImageLoaderJPG.cpp	2016-05-12 02:31:37.000000000 +0200
++++ patched/lib/irrlicht/source/Irrlicht/CImageLoaderJPG.cpp	2016-07-11 01:22:25.588774363 +0200
 @@ -66,7 +66,7 @@
  boolean CImageLoaderJPG::fill_input_buffer (j_decompress_ptr cinfo)
  {

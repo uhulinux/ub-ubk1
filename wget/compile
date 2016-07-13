@@ -4,6 +4,4 @@ autoreconf
 ub_compile \
 	--disable-rpath \
 	--with-ssl=openssl \
-	--enable-nls \
-	--sysconfdir=/etc
-
+	--enable-nls

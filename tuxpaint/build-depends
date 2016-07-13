@@ -1,6 +1,7 @@
 alsa-lib-dev
 fontforge
 fribidi-dev
+gperf
 libpaper
 libpng-dev
 librsvg-dev

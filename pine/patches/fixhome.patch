@@ -1,6 +1,6 @@
 diff -Naur orig/pico/osdep/term.cap patched/pico/osdep/term.cap
---- orig/pico/osdep/term.cap	2003-06-05 08:55:18.000000000 +0200
-+++ patched/pico/osdep/term.cap	2013-08-03 04:01:09.752209317 +0200
+--- orig/pico/osdep/term.cap	2004-07-22 00:06:24.000000000 +0200
++++ patched/pico/osdep/term.cap	2016-07-12 00:22:00.218113478 +0200
 @@ -141,8 +141,8 @@
       */
      kpinsert("\033[4J", KEY_PGUP, 1);
@@ -13,8 +13,8 @@ diff -Naur orig/pico/osdep/term.cap patched/pico/osdep/term.cap
      /*
       * vt220?
 diff -Naur orig/pico/osdep/term.inf patched/pico/osdep/term.inf
---- orig/pico/osdep/term.inf	2003-06-05 08:55:34.000000000 +0200
-+++ patched/pico/osdep/term.inf	2013-08-03 04:01:09.756209369 +0200
+--- orig/pico/osdep/term.inf	2004-07-22 00:06:24.000000000 +0200
++++ patched/pico/osdep/term.inf	2016-07-12 00:22:43.474705989 +0200
 @@ -139,8 +139,8 @@
       */
      kpinsert("\033[4J", KEY_PGUP, 1);

@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
-export QTDIR="/usr/lib/qt4"
+export QTDIR="/usr/lib/qt5"
 
-/usr/lib/qt4/bin/qmake PREFIX=/usr/bin
+qmake-qt5 PREFIX=/usr/bin
 make

@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-synergy-${UB_VERSION}-r2055-Source.tar.gz synergy-${UB_VERSION}-Source/
-	http://fossfiles.com/synergy/
-	ftp://ftp.usa.openbsd.org/pub/OpenBSD/distfiles/
+v${UB_VERSION}-stable.tar.gz synergy-${UB_VERSION}-stable/
+	http://pkgs.fedoraproject.org/repo/pkgs/synergy/v${UB_VERSION}-stable.tar.gz/a324798a47445de739a7ed4baf12638f/

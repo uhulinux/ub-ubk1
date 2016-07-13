@@ -1,7 +1,7 @@
-diff -Naurdp a/doc/pine.1 b/doc/pine.1
---- a/doc/pine.1	2004-07-09 22:34:18.000000000 +0200
-+++ b/doc/pine.1	2004-10-04 09:34:35.525695995 +0200
-@@ -335,9 +335,9 @@ uses the following environment variables
+diff -Naur orig/doc/pine.1 patched/doc/pine.1
+--- orig/doc/pine.1	2005-09-15 23:01:32.000000000 +0200
++++ patched/doc/pine.1	2016-07-12 00:10:00.132350298 +0200
+@@ -335,9 +335,9 @@
  .br
  /usr/local/lib/pine.info	Local pointer to system administrator.
  .br
@@ -13,10 +13,10 @@ diff -Naurdp a/doc/pine.1 b/doc/pine.1
  .br
  /tmp/.\\usr\\spool\\mail\\xxxx	Per-folder mailbox lock files.
  .br
-diff -Naurdp a/doc/tech-notes/background.html b/doc/tech-notes/background.html
---- a/doc/tech-notes/background.html	2003-03-26 20:52:51.000000000 +0100
-+++ b/doc/tech-notes/background.html	2004-10-04 09:34:35.526695829 +0200
-@@ -174,9 +174,9 @@ options.  The first MTA specified in the
+diff -Naur orig/doc/tech-notes/background.html patched/doc/tech-notes/background.html
+--- orig/doc/tech-notes/background.html	2003-03-26 20:53:15.000000000 +0100
++++ patched/doc/tech-notes/background.html	2016-07-12 00:10:00.136350362 +0200
+@@ -174,9 +174,9 @@
  <OL>
  
  <LI><EM>sendmail-path</EM> in
@@ -28,7 +28,7 @@ diff -Naurdp a/doc/tech-notes/background.html b/doc/tech-notes/background.html
  
  <LI><EM>sendmail-path</EM> specified on the command line. 
  
-@@ -186,9 +186,9 @@ options.  The first MTA specified in the
+@@ -186,9 +186,9 @@
  
  <LI><EM>smtp-server</EM> in the user's <CODE>.pinerc</CODE> file. 
  
@@ -40,10 +40,10 @@ diff -Naurdp a/doc/tech-notes/background.html b/doc/tech-notes/background.html
  
  <LI><CODE>DF_SENDMAIL_PATH</CODE> defined at compile time.
  
-diff -Naurdp a/doc/tech-notes/cmd-line.html b/doc/tech-notes/cmd-line.html
---- a/doc/tech-notes/cmd-line.html	2003-10-10 23:08:04.000000000 +0200
-+++ b/doc/tech-notes/cmd-line.html	2004-10-04 09:34:35.527695662 +0200
-@@ -87,7 +87,7 @@ screen or standard output. To generate a
+diff -Naur orig/doc/tech-notes/cmd-line.html patched/doc/tech-notes/cmd-line.html
+--- orig/doc/tech-notes/cmd-line.html	2003-10-10 23:08:18.000000000 +0200
++++ patched/doc/tech-notes/cmd-line.html	2016-07-12 00:10:00.136350362 +0200
+@@ -87,7 +87,7 @@
  file, execute
  
  <PRE><CODE>
@@ -52,7 +52,7 @@ diff -Naurdp a/doc/tech-notes/cmd-line.html b/doc/tech-notes/cmd-line.html
  </CODE></PRE>
  <P>
  
-@@ -95,7 +95,7 @@ To generate a system configuration file 
+@@ -95,7 +95,7 @@
  system configuration file, execute
  
  <PRE><CODE>
@@ -61,7 +61,7 @@ diff -Naurdp a/doc/tech-notes/cmd-line.html b/doc/tech-notes/cmd-line.html
  </CODE></PRE>
  <P>
  A system configuration file is not required.
-@@ -273,7 +273,7 @@ Pinerc may be either a local file or a r
+@@ -273,7 +273,7 @@
  <DT> -P <EM>pinerc</EM>
  
  <DD> Uses the named file as the system wide configuration file instead of
@@ -70,10 +70,10 @@ diff -Naurdp a/doc/tech-notes/cmd-line.html b/doc/tech-notes/cmd-line.html
  Pinerc may be either a local file or a remote configuration folder.
  <P>
  
-diff -Naurdp a/doc/tech-notes/config.html b/doc/tech-notes/config.html
---- a/doc/tech-notes/config.html	2004-07-15 19:38:11.000000000 +0200
-+++ b/doc/tech-notes/config.html	2004-10-04 09:34:35.533694663 +0200
-@@ -7,8 +7,8 @@ There is very little in <EM>Pine</EM> wh
+diff -Naur orig/doc/tech-notes/config.html patched/doc/tech-notes/config.html
+--- orig/doc/tech-notes/config.html	2005-08-18 02:08:19.000000000 +0200
++++ patched/doc/tech-notes/config.html	2016-07-12 00:10:00.156350672 +0200
+@@ -7,8 +7,8 @@
  configuration. In most cases, the compiled-in preferences will suit users
  and administrators just fine. When running <EM>Pine</EM> on a UNIX system, the
  default built-in configuration can be changed by setting variables in the
@@ -84,7 +84,7 @@ diff -Naurdp a/doc/tech-notes/config.html b/doc/tech-notes/config.html
  (Actually, these files are whatever the definitions for
  <CODE>SYSTEM_PINERC</CODE> and <CODE>SYSTEM_PINERC_FIXED</CODE>
  in pine/osdep/os-xxx.h are set to.)
-@@ -2857,7 +2857,7 @@ For Unix <EM>Pine</EM> the program <EM>i
+@@ -3048,7 +3048,7 @@
  alternate spell checker.
  If your Unix system has <EM>ispell</EM> it is probably reasonable to make
  it the default speller by configuring it as the default in the
@@ -93,10 +93,10 @@ diff -Naurdp a/doc/tech-notes/config.html b/doc/tech-notes/config.html
  
  <P>
  If this option is not set, then the system's <EM>spell</EM> command is used.
-diff -Naurdp a/doc/tech-notes/config-notes.html b/doc/tech-notes/config-notes.html
---- a/doc/tech-notes/config-notes.html	2004-05-05 23:54:18.000000000 +0200
-+++ b/doc/tech-notes/config-notes.html	2004-10-04 09:34:35.535694330 +0200
-@@ -897,10 +897,10 @@ In increasing order of precedence they a
+diff -Naur orig/doc/tech-notes/config-notes.html patched/doc/tech-notes/config-notes.html
+--- orig/doc/tech-notes/config-notes.html	2005-08-17 00:17:26.000000000 +0200
++++ patched/doc/tech-notes/config-notes.html	2016-07-12 00:10:00.160350730 +0200
+@@ -952,10 +952,10 @@
  </OL>
  <P>
  The fixed configuration file is normally
@@ -109,7 +109,7 @@ diff -Naurdp a/doc/tech-notes/config-notes.html b/doc/tech-notes/config-notes.ht
  set for <EM>PC-Pine</EM>.
  For <EM>PC-Pine</EM>, if the environment variable <EM>$PINECONF</EM> is set, that
  is used for the system-wide configuration.
-@@ -1218,8 +1218,8 @@ A typical configuration would consist of
+@@ -1273,8 +1273,8 @@
  
  <LI> An entry in <CODE>/etc/inetd.conf</CODE> for the alternate service.
  
@@ -120,10 +120,10 @@ diff -Naurdp a/doc/tech-notes/config-notes.html b/doc/tech-notes/config-notes.ht
  
  </UL>
  
-diff -Naurdp a/doc/tech-notes/installation.html b/doc/tech-notes/installation.html
---- a/doc/tech-notes/installation.html	2003-02-06 04:04:26.000000000 +0100
-+++ b/doc/tech-notes/installation.html	2004-10-04 09:34:35.536694164 +0200
-@@ -218,7 +218,7 @@ section for more details.
+diff -Naur orig/doc/tech-notes/installation.html patched/doc/tech-notes/installation.html
+--- orig/doc/tech-notes/installation.html	2003-02-06 04:04:30.000000000 +0100
++++ patched/doc/tech-notes/installation.html	2016-07-12 00:10:00.160350730 +0200
+@@ -218,7 +218,7 @@
  <DD> The name of the file which holds <EM>Pine</EM>
  configuration information for
  all users on the system.  Default on UNIX systems is
@@ -132,7 +132,7 @@ diff -Naurdp a/doc/tech-notes/installation.html b/doc/tech-notes/installation.ht
  
  <DT> SYSTEM_PINERC_FIXED
  
-@@ -226,7 +226,7 @@ all users on the system.  Default on UNI
+@@ -226,7 +226,7 @@
  SYSTEM_PINERC, but only for variables that the administrator wants to keep
  fixed.  That is, users are not allowed to change variables that are
  specified in the FIXED file.  Default on UNIX systems is
@@ -141,7 +141,7 @@ diff -Naurdp a/doc/tech-notes/installation.html b/doc/tech-notes/installation.ht
  
  </DL> <P>
  
-@@ -530,8 +530,8 @@ are no <STRONG>required</STRONG> auxilia
+@@ -530,8 +530,8 @@
  
  There are, however, three optional auxiliary files: 
  <CODE>/usr/local/lib/pine.info</CODE>,
@@ -152,7 +152,7 @@ diff -Naurdp a/doc/tech-notes/installation.html b/doc/tech-notes/installation.ht
  <CODE>pine.info</CODE> contains text on how to get further help on the
  local system.  It is part of the help text for the
  main menu and should probably refer to the local help desk or the system
-@@ -650,11 +650,11 @@ on <EM>Pine</EM>'s configuration. 
+@@ -650,11 +650,11 @@
  
  <DL COMPACT>
  
@@ -166,10 +166,10 @@ diff -Naurdp a/doc/tech-notes/installation.html b/doc/tech-notes/installation.ht
  
  <DD> Non-overridable global configuration file. 
  
-diff -Naurdp a/doc/tech-notes/low-level.html b/doc/tech-notes/low-level.html
---- a/doc/tech-notes/low-level.html	2002-11-01 20:35:48.000000000 +0100
-+++ b/doc/tech-notes/low-level.html	2004-10-04 09:34:35.537693998 +0200
-@@ -1088,7 +1088,7 @@ The Wyse version uses Ctrl-R for on, and
+diff -Naur orig/doc/tech-notes/low-level.html patched/doc/tech-notes/low-level.html
+--- orig/doc/tech-notes/low-level.html	2002-11-01 20:37:01.000000000 +0100
++++ patched/doc/tech-notes/low-level.html	2016-07-12 00:10:00.164350796 +0200
+@@ -1088,7 +1088,7 @@
  
  The second selection is the standard UNIX print command.  The default is
  <EM>lpr</EM>, but it can be changed on a system basis to anything so
@@ -178,10 +178,10 @@ diff -Naurdp a/doc/tech-notes/low-level.html b/doc/tech-notes/low-level.html
  
  The third selection is
  the user's personal choice for a UNIX print command.  The text to be
-diff -Naurdp a/doc/tech-notes/porting.html b/doc/tech-notes/porting.html
---- a/doc/tech-notes/porting.html	1998-09-17 01:09:04.000000000 +0200
-+++ b/doc/tech-notes/porting.html	2004-10-04 09:34:35.538693831 +0200
-@@ -307,11 +307,11 @@ Error messages for incorrect terminal ty
+diff -Naur orig/doc/tech-notes/porting.html patched/doc/tech-notes/porting.html
+--- orig/doc/tech-notes/porting.html	1998-04-08 21:03:12.000000000 +0200
++++ patched/doc/tech-notes/porting.html	2016-07-12 00:10:00.168350854 +0200
+@@ -307,11 +307,11 @@
  <DT>
   ___
  <DD>
@@ -195,10 +195,10 @@ diff -Naurdp a/doc/tech-notes/porting.html b/doc/tech-notes/porting.html
  <DT>
   ___
  <DD>
-diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
---- a/doc/tech-notes.txt	2004-07-15 19:38:42.000000000 +0200
-+++ b/doc/tech-notes.txt	2004-10-04 09:34:35.548692166 +0200
-@@ -333,14 +333,14 @@ SMTP and Sendmail
+diff -Naur orig/doc/tech-notes.txt patched/doc/tech-notes.txt
+--- orig/doc/tech-notes.txt	2005-09-15 23:03:43.000000000 +0200
++++ patched/doc/tech-notes.txt	2016-07-12 00:10:00.192351228 +0200
+@@ -333,14 +333,14 @@
            sendmail-path, smtp-server, and compile-time options. The first
            MTA specified in the following list is used:
            
@@ -217,7 +217,7 @@ diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
           9. DF_SENDMAIL_PATH defined at compile time.
          10. SENDMAIL and SENDMAILFLAGS defined at compile time.
              
-@@ -670,14 +670,14 @@ Compile-time Options
+@@ -670,14 +670,14 @@
     SYSTEM_PINERC
            The name of the file which holds _Pine_ configuration
            information for all users on the system. Default on UNIX
@@ -234,7 +234,7 @@ diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
            
     There are a couple of more obscure options which are in the source
     code because a few people have asked for them or because we changed
-@@ -876,8 +876,8 @@ Installing Pine and Pico on UNIX Platfor
+@@ -876,8 +876,8 @@
     auxiliary files.
     
     There are, however, three optional auxiliary files:
@@ -245,7 +245,7 @@ diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
     how to get further help on the local system. It is part of the help
     text for the main menu and should probably refer to the local help
     desk or the system administrator. If this file doesn't exist a generic
-@@ -976,9 +976,9 @@ Support Files and Environment Variables:
+@@ -976,9 +976,9 @@
     This section lists the various files which _Pine_ uses which are not
     email folders. All of these are the default names of files, they may
     vary based on _Pine_'s configuration.
@@ -257,7 +257,7 @@ diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
            Non-overridable global configuration file.
     /usr/local/lib/pine.info
            Local pointer to system administrator.
-@@ -1200,10 +1200,10 @@ Pine
+@@ -1200,10 +1200,10 @@
            Configuration: Prints a sample system configuration file to the
            screen or standard output. To generate an initial system
            configuration file, execute
@@ -270,7 +270,7 @@ diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
            A system configuration file is not required.
     -convert_sigs _-p pinerc_
            Convert signatures contained in signature files into literal
-@@ -1318,7 +1318,7 @@ Pine
+@@ -1318,7 +1318,7 @@
            configuration folder.
     -P _pinerc_
            Uses the named file as the system wide configuration file
@@ -279,7 +279,7 @@ diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
            _PC-Pine_. Pinerc may be either a local file or a remote
            configuration folder.
     -passfile _passfile_
-@@ -1526,8 +1526,8 @@ Pine Configuration
+@@ -1526,8 +1526,8 @@
     configuration. In most cases, the compiled-in preferences will suit
     users and administrators just fine. When running _Pine_ on a UNIX
     system, the default built-in configuration can be changed by setting
@@ -290,7 +290,7 @@ diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
     the definitions for SYSTEM_PINERC and SYSTEM_PINERC_FIXED in
     pine/osdep/os-xxx.h are set to.) The location of the pine.conf file
     can be changed with the -P command line argument. Both _Pine_ and
-@@ -3608,7 +3608,7 @@ General Configuration Variables
+@@ -3761,7 +3761,7 @@
            spell checker. If your Unix system has _ispell_ it is probably
            reasonable to make it the default speller by configuring it as
            the default in the system configuration file,
@@ -299,7 +299,7 @@ diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
            If this option is not set, then the system's _spell_ command is
            used. The spell command does not work the same as the alternate
            speller. It produces a list of misspelled words on its standard
-@@ -9392,10 +9392,10 @@ Configuration Inheritance
+@@ -10121,10 +10121,10 @@
      5. the system-wide _fixed_ configuration file (Unix _Pine_ only)
         
     The fixed configuration file is normally
@@ -312,7 +312,7 @@ diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
     _PC-Pine_. For _PC-Pine_, if the environment variable _$PINECONF_ is
     set, that is used for the system-wide configuration. This location can
     be set or changed on the command line with the -P flag. The
-@@ -9655,8 +9655,8 @@ SMTP Servers
+@@ -10384,8 +10384,8 @@
       * A program that implements the SMTP or ESMTP protocol via stdio.
       * An entry in /etc/services for the alternate service.
       * An entry in /etc/inetd.conf for the alternate service.
@@ -323,7 +323,7 @@ diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
       _________________________________________________________________
     
  MIME.Types file
-@@ -10840,7 +10840,7 @@ Printers and Printing
+@@ -11569,7 +11569,7 @@
     
     The second selection is the standard UNIX print command. The default
     is _lpr_, but it can be changed on a system basis to anything so
@@ -332,7 +332,7 @@ diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
     
     The third selection is the user's personal choice for a UNIX print
     command. The text to be printed is piped into the command. _Enscript_
-@@ -11294,9 +11294,9 @@ Test Checklist
+@@ -12023,9 +12023,9 @@
            Error messages for incorrect terminal types (try "foo" and
            "vt52")
     ___
@@ -344,9 +344,9 @@ diff -Naurdp a/doc/tech-notes.txt b/doc/tech-notes.txt
     ___
            Flag command (check message status changed in mail folder)
     ___
-diff -Naurdp a/pine/osdep/os-gen.h b/pine/osdep/os-gen.h
---- a/pine/osdep/os-gen.h	2003-05-23 18:06:59.000000000 +0200
-+++ b/pine/osdep/os-gen.h	2004-10-04 09:34:35.549692000 +0200
+diff -Naur orig/pine/osdep/os-gen.h patched/pine/osdep/os-gen.h
+--- orig/pine/osdep/os-gen.h	2003-05-23 18:05:21.000000000 +0200
++++ patched/pine/osdep/os-gen.h	2016-07-12 00:10:00.208351472 +0200
 @@ -163,10 +163,10 @@
  
  /*----- System-wide config file ----------------------------------------*/
@@ -360,9 +360,9 @@ diff -Naurdp a/pine/osdep/os-gen.h b/pine/osdep/os-gen.h
  #endif
  
  
-diff -Naurdp a/pine/osdep/os-lnx.h b/pine/osdep/os-lnx.h
---- a/pine/osdep/os-lnx.h	2003-05-23 18:07:00.000000000 +0200
-+++ b/pine/osdep/os-lnx.h	2004-10-04 09:34:35.549692000 +0200
+diff -Naur orig/pine/osdep/os-lnx.h patched/pine/osdep/os-lnx.h
+--- orig/pine/osdep/os-lnx.h	2003-05-23 18:05:21.000000000 +0200
++++ patched/pine/osdep/os-lnx.h	2016-07-12 00:10:00.208351472 +0200
 @@ -163,10 +163,10 @@
  
  /*----- System-wide config file ----------------------------------------*/
@@ -376,10 +376,10 @@ diff -Naurdp a/pine/osdep/os-lnx.h b/pine/osdep/os-lnx.h
  #endif
  
  
-diff -Naurdp a/pine/pine.hlp b/pine/pine.hlp
---- a/pine/pine.hlp	2004-07-15 19:37:22.000000000 +0200
-+++ b/pine/pine.hlp	2004-10-04 09:37:21.799922431 +0200
-@@ -856,8 +856,7 @@ Unix Pine:
+diff -Naur orig/pine/pine.hlp patched/pine/pine.hlp
+--- orig/pine/pine.hlp	2005-09-28 19:56:29.000000000 +0200
++++ patched/pine/pine.hlp	2016-07-12 00:10:00.236351909 +0200
+@@ -1009,8 +1009,7 @@
   addrbook lu    &lt;pinerc dir&gt;/.addressbook.lu  (appends .lu to addrbk name.)
   postponed#     ~/mail/postponed-msgs
   sentmail#      ~/mail/sent-mail
@@ -389,7 +389,7 @@ diff -Naurdp a/pine/pine.hlp b/pine/pine.hlp
   mimetypes#     ~/.mime.types + /etc/mime.types + /usr/local/lib/mime.types
  
   news-spool	varies across Unix flavors, e.g. /var/spool/news or /usr/spool/news
-@@ -14508,7 +14507,7 @@ but it is also possible to do it entirel
+@@ -15392,7 +15391,7 @@
  Instead of using just plain &quot;bogofilter&quot; as the Categorizer Command,
  the &quot;-u&quot; argument will cause bogofilter to update the database.
  <P>
@@ -398,7 +398,7 @@ diff -Naurdp a/pine/pine.hlp b/pine/pine.hlp
  <P>
  You'd want a couple more aliases or shell scripts called something like
  <EM>change_to_spam</EM>
-@@ -14536,7 +14535,7 @@ at the time you close the folder and bef
+@@ -15420,7 +15419,7 @@
  This is usually ok.
  However, in this case it is a problem because the command
  <P>
@@ -407,7 +407,7 @@ diff -Naurdp a/pine/pine.hlp b/pine/pine.hlp
  <P>
  has the side effect of updating the database.
  So you run the risk of updating the database multiple times for a single
-@@ -14582,7 +14581,7 @@ In summary, the first rule is something 
+@@ -15466,7 +15465,7 @@
    ! Keyword pattern = Bogo
  
    External Categorizer Commands =
@@ -416,7 +416,7 @@ diff -Naurdp a/pine/pine.hlp b/pine/pine.hlp
         Exit Status Interval = (0,0)
         Character Limit      = <No Value Set: using "-1">  (optionally set this)
  
-@@ -18047,7 +18046,7 @@ a semi-colon (;) under Windows; for exam
+@@ -19356,7 +19355,7 @@
  </PRE>
  <!--chtml else-->
  a colon (:) under UNIX; for example:<PRE>
@@ -425,7 +425,7 @@ diff -Naurdp a/pine/pine.hlp b/pine/pine.hlp
  </PRE>
  <!--chtml endif-->
  <P><UL>
-@@ -23032,16 +23031,16 @@ argument (see the &quot;lynx&quot; examp
+@@ -24598,16 +24597,16 @@
  <P>
  So, here are some example entries:
  <PRE>
@@ -446,7 +446,7 @@ diff -Naurdp a/pine/pine.hlp b/pine/pine.hlp
  If it does, then the &quot;_URL_&quot; token is replaced by the selected URL. 
  If the path to &quot;lynx&quot; is invalid,
  then the final path and file C:&#92;BIN&#92;NETSCAPE.BAT must exist.  
-@@ -23134,10 +23133,10 @@ using an existing invocation of the appl
+@@ -24700,10 +24699,10 @@
  An example using the Korn shell and the Netscape browser (first entry wrapped 
  because of its length, but should all appear on one line):
  <P>
@@ -460,10 +460,10 @@ diff -Naurdp a/pine/pine.hlp b/pine/pine.hlp
  <P>
  <!--chtml endif-->
  <P>
-diff -Naurdp a/README b/README
---- a/README	2004-05-07 21:17:40.000000000 +0200
-+++ b/README	2004-10-04 09:34:35.602683177 +0200
-@@ -277,7 +277,7 @@ The executables built by the build scrip
+diff -Naur orig/README patched/README
+--- orig/README	2005-01-18 22:52:25.000000000 +0100
++++ patched/README	2016-07-12 00:10:00.236351909 +0200
+@@ -292,7 +292,7 @@
   pine   The Pine mailer. Once compiled this should work just fine on
          your system with no other files than this binary, and no
          modifications to your system. Optionally you may create two
