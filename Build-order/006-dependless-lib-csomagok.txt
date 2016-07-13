@@ -60,4 +60,3 @@ libyaml
 libzip
 libcfitsio
 libnova
-libx86
