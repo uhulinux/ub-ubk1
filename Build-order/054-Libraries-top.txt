@@ -65,3 +65,4 @@ soprano
 freshplayerplugin
 telepathy-qt
 evolution-ews
+avogadrolibs
