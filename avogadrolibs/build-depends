@@ -1,0 +1,6 @@
+cmake
+eigen3
+glew-dev
+hdf5
+molequeue
+qt5-dev
