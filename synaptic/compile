@@ -2,3 +2,5 @@
 
 ub_compile \
 	--with-pkg-hold
+
+# ub_make -C po update-po
