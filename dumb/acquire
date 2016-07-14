@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 dumb-${UB_VERSION}.tar.gz dumb-${UB_VERSION}/
-	http://garr.dl.sourceforge.net/sourceforge/dumb/
-	http://iweb.dl.sourceforge.net/project/dumb/dumb/${UB_VERSION}/
+	http://downloads.sourceforge.net/project/dumb/dumb/${UB_VERSION}/

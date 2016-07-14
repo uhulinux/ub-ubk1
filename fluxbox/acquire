@@ -2,6 +2,3 @@
 
 fluxbox-${UB_VERSION/~/}.tar.gz fluxbox-${UB_VERSION/~/}/
 	http://download.sourceforge.net/fluxbox/
-
-fluxbox-xdg-menu.py
-	http://fluxbox-xdg-menu.googlecode.com/svn/branches/version-2/
