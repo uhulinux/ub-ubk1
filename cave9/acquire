@@ -1,7 +1,4 @@
 #!/usr/bin/env dl
 
-${UB_VERSION}.tar.gz cave9-${UB_VERSION}/
-	https://github.com/bart9h/cave9/archive/
-
-cave9_data-${UB_VERSION_MINOR}.tgz .
-	http://cave9.googlecode.com/files/
+cave9-${UB_VERSION}.tar.gz cave9-e6896eb/
+	git://github.com/bart9h/cave9.git@e6896eb
