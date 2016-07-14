@@ -2,7 +2,7 @@
 
 amrwb-"$UB_VERSION".tar.bz2 amrwb-"$UB_VERSION"/
 	http://www.penguin.cz/~utx/ftp/amr/
-	ftp://ftp.penguin.cz/pub/users/utx/amr/
+	http://ftp.penguin.cz/pub/users/utx/amr/
 
 26204-b00.zip :.
 	http://www.3gpp.org/ftp/Specs/archive/26_series/26.204/
