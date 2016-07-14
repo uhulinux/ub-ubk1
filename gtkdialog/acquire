@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-gtkdialog-${UB_VERSION}.tar.gz .
-	http://gtkdialog.googlecode.com/files/
+master.zip gtkdialog-master/
+	https://github.com/Cyrax-x/gtkdialog/archive/

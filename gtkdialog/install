@@ -1,6 +1,5 @@
 #!/bin/sh -eux
 
-cd gtkdialog*
 ub_install \
 	UPDATE_ICON_CACHE=true
 
