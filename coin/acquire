@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 Coin-${UB_VERSION}.tar.gz Coin-${UB_VERSION}/
-	http://ftp.coin3d.org/coin/src/all/
 	https://bitbucket.org/Coin3D/coin/downloads/

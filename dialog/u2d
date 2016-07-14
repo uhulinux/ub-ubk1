@@ -1,2 +1,2 @@
-urllist ftp://ftp.us.debian.org/debian/pool/main/d/dialog/ | splitver '^dialog_([0-9]\.[0-9]-[0-9]{8}).orig.tar.gz$' | sort -V | sed s/-/~/g | tail -n 1
+urllist ftp://invisible-island.net/dialog/ | splitver '^dialog-([0-9]\.[0-9]-[0-9]{8}).tgz$' | sort -V | sed s/-/~/g | tail -n 1
 

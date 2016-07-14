@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 Cython-${UB_VERSION}.tar.gz Cython-${UB_VERSION}/
-	http://cython.org/release/
+	https://pypi.python.org/packages/b1/51/bd5ef7dff3ae02a2c6047aa18d3d06df2fb8a40b00e938e7ea2f75544cac/
