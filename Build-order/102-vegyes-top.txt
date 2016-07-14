@@ -18,7 +18,6 @@ aspell-dict-hungarian
 lilo
 mathomatic
 mnemosyne
-gnucash-doc
 postgresql-odbc
 shared-desktop-ontologies
 media-player-info

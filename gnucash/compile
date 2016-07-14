@@ -4,3 +4,6 @@ ub_compile \
 	--with-html-engine=webkit \
 	--enable-locale-specific-tax \
 	--enable-python
+
+cd gnucash-docs
+ub_compile --disable-scrollkeeper

@@ -11,5 +11,6 @@ libxslt-dev
 mesa-dev
 openssl-dev
 python-dev
+rarian-dev
 slib
 webkitgtk2-dev
