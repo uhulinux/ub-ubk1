@@ -1,1 +1,1 @@
-sflist zero-install 0install | grep -E '^[0-9.]+$' | sort -V | tail -n 1
+noupdate: 2.9-től (2.3.5 után) rakat ocaml cucc kell neki

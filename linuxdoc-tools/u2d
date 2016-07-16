@@ -1,1 +1,1 @@
-urllist http://ftp.de.debian.org/debian/pool/main/l/linuxdoc-tools/  | splitver '^linuxdoc-tools_([0-9.]+).orig.tar.gz$' | sort -V | tail -n 1
+noupdate: 0.9.72-től nem készít doksit, onsgmls hibákat okoz

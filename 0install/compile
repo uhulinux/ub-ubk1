@@ -1,4 +1,5 @@
 #!/bin/sh -eux
 
-rm Makefile
+UB_PYTHON=3
+
 ub_compile
