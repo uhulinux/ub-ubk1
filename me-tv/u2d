@@ -1,1 +1,1 @@
-urllist https://launchpad.net/me-tv/ | parsever | sort -V | tail -n 1
+curl -s https://raw.githubusercontent.com/Me-TV/Me-TV/master/VERSION | sed s/-.*//g
