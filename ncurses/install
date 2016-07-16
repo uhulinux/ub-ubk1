@@ -25,4 +25,6 @@ ln -sf ../../lib/libpanelw.so   "$UB_INSTALLDIR"/usr/lib/
 
 for lib in ncurses form panel menu ; do
     ln -s ${lib}w.pc "$UB_INSTALLDIR"/usr/lib/pkgconfig/${lib}.pc
+    ln -s lib${lib}.so.6 "$UB_INSTALLDIR"/lib/lib${lib}.so.5
+    ln -s lib${lib}w.so.6 "$UB_INSTALLDIR"/lib/lib${lib}w.so.5
 done
