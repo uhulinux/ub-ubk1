@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
 
-fvwm-${UB_VERSION}.tar.gz fvwm-05bdfa3/
-	git://github.com/ThomasAdam/fvwm.git@05bdfa3
+version-${UB_VERSION_HEAD2/./_}_${UB_VERSION_TAIL1}.tar.gz fvwm-version-${UB_VERSION_HEAD2/./_}_${UB_VERSION_TAIL1}/
+	https://github.com/fvwmorg/fvwm/archive/
