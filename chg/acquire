@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-chg-${UB_VERSION}.tar.gz chg-${UB_VERSION/*+r/}/
-	hg://bitbucket.org/yuja/chg/@${UB_VERSION/*+r/}
+${UB_VERSION}.tar.bz2 yuja-chg-ed0d352a85b9/
+	https://bitbucket.org/yuja/chg/get/
