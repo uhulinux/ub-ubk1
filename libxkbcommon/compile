@@ -1,3 +1,5 @@
 #!/bin/sh -eux
 
-ub_compile
+ub_compile \
+	--with-default-layout=hu \
+	--with-default-options="grp:alt_shift_toggle"
