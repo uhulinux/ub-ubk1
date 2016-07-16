@@ -43,7 +43,6 @@ sbm
 pinfo
 perl-gd-text
 fonts-jmk
-fusion-icon
 fuse-mhddfs
 perl-extutils-xspp
 iptables-utils
