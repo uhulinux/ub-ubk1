@@ -1,1 +1,1 @@
-urllist http://www.freedesktop.org/software/vaapi/releases/gstreamer-vaapi/ | splitver '^gstreamer-vaapi-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+noupdate: 0.6-tól csak a gstreamer-1.0 API-val fordítható
