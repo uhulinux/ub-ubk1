@@ -1,0 +1,2 @@
+_geturl https://sourceforge.net/projects/jdictionary/files/Plugins%20for%20jDictionary/Smart%20English-German/ | grep ']SmartEngGer-' | \
+	sed s/\.jar.*//g | sed s/.*-//g | sed s/_/\./g | sort -V | tail -n 1

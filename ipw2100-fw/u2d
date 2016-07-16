@@ -1,0 +1,1 @@
+urllist http://firmware.openbsd.org/firmware-dist/ | grep ipw2100 | parsever | sort -V | tail -n 1
