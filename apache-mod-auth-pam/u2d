@@ -1,1 +1,1 @@
-urllist http://pam.sourceforge.net/mod_auth_pam/download.html | parsever | sort -V | tail -n 1
+u2d http://pam.sourceforge.net/mod_auth_pam/download.html

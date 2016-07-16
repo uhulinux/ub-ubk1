@@ -1,2 +1,2 @@
-urllist http://www.netfilter.org/projects/libnfnetlink/files/ | parsever | sort -V | tail -n 1
+u2d http://www.netfilter.org/projects/libnfnetlink/files/
 

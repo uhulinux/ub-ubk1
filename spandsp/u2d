@@ -1,1 +1,1 @@
-urllist http://www.soft-switch.org/downloads/spandsp/ | parsever | sort -V | tail -n 1
+u2d http://www.soft-switch.org/downloads/spandsp/

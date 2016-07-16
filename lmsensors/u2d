@@ -1,1 +1,1 @@
-urllist http://ftp.osuosl.org/pub/blfs/conglomeration/lmsensors/ | parsever | sort -V | tail -n 1
+u2d http://ftp.osuosl.org/pub/blfs/conglomeration/lmsensors/

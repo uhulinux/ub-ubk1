@@ -1,1 +1,1 @@
-urllist http://fy.chalmers.se/~appro/linux/DVD+RW/tools/ | parsever | sort -V | tail -n 1
+u2d http://fy.chalmers.se/~appro/linux/DVD+RW/tools/

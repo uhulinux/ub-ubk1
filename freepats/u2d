@@ -1,1 +1,1 @@
-urllist http://freepats.zenvoid.org/ | parsever | sort -V | tail -n 1
+u2d http://freepats.zenvoid.org/

@@ -1,1 +1,1 @@
-urllist http://dl.suckless.org/dwm/ | parsever | sort -V | tail -n 1
+u2d http://dl.suckless.org/dwm/

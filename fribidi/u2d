@@ -1,1 +1,1 @@
-urllist http://fribidi.org/download/ | parsever | sort -V | tail -n 1
+u2d http://fribidi.org/download/

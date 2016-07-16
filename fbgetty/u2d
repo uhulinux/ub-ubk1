@@ -1,2 +1,2 @@
-urllist http://projects.meuh.org/fbgetty/downloads/ | parsever | sort -V | tail -n 1
+u2d http://projects.meuh.org/fbgetty/downloads/
 

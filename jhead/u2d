@@ -1,1 +1,1 @@
-urllist http://www.sentex.net/~mwandel/jhead/ | parsever | sort -V | tail -n 1
+u2d http://www.sentex.net/~mwandel/jhead/

@@ -1,1 +1,1 @@
-urllist https://www.dropbox.com/download?dl=packages/ | parsever | sort -V | tail -n 1
+u2d https://www.dropbox.com/download?dl=packages/

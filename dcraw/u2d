@@ -1,1 +1,1 @@
-urllist http://www.cybercom.net/~dcoffin/dcraw/archive/ | parsever | sort -V | tail -n 1
+u2d http://www.cybercom.net/~dcoffin/dcraw/archive/

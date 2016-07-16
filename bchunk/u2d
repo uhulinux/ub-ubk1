@@ -1,2 +1,2 @@
-urllist http://he.fi/bchunk/ | parsever | sort -V | tail -n 1
+u2d http://he.fi/bchunk/
 

@@ -1,2 +1,2 @@
-urllist ftp://ftp.uk.freesbie.org/sites/ftp.wiretapped.net/pub/security/authentication/radius/radiusclient/ | parsever | sort -V | tail -n 1
+u2d ftp://ftp.uk.freesbie.org/sites/ftp.wiretapped.net/pub/security/authentication/radius/radiusclient/
 

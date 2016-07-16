@@ -1,2 +1,2 @@
-urllist http://www.iptables.org/projects/libnetfilter_conntrack/files/ | parsever | sort -V | tail -n 1
+u2d http://www.iptables.org/projects/libnetfilter_conntrack/files/
 

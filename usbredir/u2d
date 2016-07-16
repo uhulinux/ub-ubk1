@@ -1,1 +1,1 @@
-urllist http://spice-space.org/download/usbredir/ | parsever | sort -V | tail -n 1
+u2d http://spice-space.org/download/usbredir/

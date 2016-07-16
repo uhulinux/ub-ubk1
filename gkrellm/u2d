@@ -1,1 +1,1 @@
-urllist http://gkrellm.srcbox.net/releases/ | parsever | sort -V | tail -n 1
+u2d http://gkrellm.srcbox.net/releases/

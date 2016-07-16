@@ -1,1 +1,1 @@
-urllist http://ankisrs.net/download/mirror/ | parsever | sort -V | tail -n 1
+u2d http://ankisrs.net/download/mirror/

@@ -1,1 +1,1 @@
-urllist http://www.rkeene.org/oss/rutil_tcpcgi/ | parsever | sort -V | tail -n 1
+u2d http://www.rkeene.org/oss/rutil_tcpcgi/

@@ -1,1 +1,1 @@
-urllist http://downloads.us.xiph.org/releases/celt | grep -E '^celt-0.5.1' | parsever | sort -V | tail -n 1
+u2d http://downloads.us.xiph.org/releases/celt

@@ -1,1 +1,1 @@
-urllist http://www.jpilot.org/download.html | parsever | sort -V | tail -n 1
+u2d http://www.jpilot.org/download.html

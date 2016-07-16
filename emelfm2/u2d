@@ -1,1 +1,1 @@
-urllist http://emelfm2.net/rel/ | parsever | sort -V | tail -n 1
+u2d http://emelfm2.net/rel/

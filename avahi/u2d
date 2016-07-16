@@ -1,1 +1,1 @@
-urllist http://avahi.org/download/ | parsever | sort -V | tail -n 1
+u2d http://avahi.org/download/

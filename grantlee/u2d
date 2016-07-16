@@ -1,1 +1,1 @@
-urllist http://downloads.grantlee.org/ | parsever | sort -V | tail -n 1
+u2d http://downloads.grantlee.org/

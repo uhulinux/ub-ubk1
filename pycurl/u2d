@@ -1,2 +1,2 @@
-urllist http://pycurl.sourceforge.net/download/ | parsever | sort -V | tail -n 1
+u2d http://pycurl.sourceforge.net/download/
 

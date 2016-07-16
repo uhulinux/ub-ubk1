@@ -1,1 +1,1 @@
-urllist http://kernel.org/pub/linux/utils/net/iproute2/ | parsever | sort -V | tail -n 1
+u2d http://kernel.org/pub/linux/utils/net/iproute2/

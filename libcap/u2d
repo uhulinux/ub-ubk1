@@ -1,1 +1,1 @@
-urllist https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/ | parsever | sort -V | tail -n 1
+u2d https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/

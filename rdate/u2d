@@ -1,1 +1,1 @@
-urllist https://www.aelius.com/njh/rdate/ | parsever | sort -V | tail -n 1
+u2d https://www.aelius.com/njh/rdate/

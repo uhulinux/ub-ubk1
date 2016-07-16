@@ -1,1 +1,1 @@
-urllist ftp://invisible-island.net/xterm/ | parsever | sort -V | tail -n 1
+u2d ftp://invisible-island.net/xterm/

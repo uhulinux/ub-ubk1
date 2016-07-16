@@ -1,1 +1,1 @@
-urllist http://www.citi.umich.edu/projects/nfsv4/linux/libgssapi/ | parsever | sort -V | tail -n 1
+u2d http://www.citi.umich.edu/projects/nfsv4/linux/libgssapi/

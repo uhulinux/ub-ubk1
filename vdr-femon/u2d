@@ -1,1 +1,1 @@
-urllist http://www.saunalahti.fi/~rahrenbe/vdr/femon/files | parsever | sort -V | tail -n 1
+u2d http://www.saunalahti.fi/~rahrenbe/vdr/femon/files

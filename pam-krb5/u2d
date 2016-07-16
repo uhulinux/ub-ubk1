@@ -1,1 +1,1 @@
-urllist https://fedorahosted.org/released/pam_krb5/ | parsever | sort -V | tail -n 1
+u2d https://fedorahosted.org/released/pam_krb5/

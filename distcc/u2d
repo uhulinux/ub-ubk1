@@ -1,1 +1,1 @@
-urllist https://github.com/distcc/distcc/releases/ | parsever | sort -V | tail -n 1
+u2d https://github.com/distcc/distcc/releases/

@@ -1,1 +1,1 @@
-urllist ftp://ftp.astron.com/pub/file/ | parsever | sort -V | tail -n1
+u2d ftp://ftp.astron.com/pub/file/

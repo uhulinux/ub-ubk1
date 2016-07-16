@@ -1,1 +1,1 @@
-urllist http://rpm5.org/files/popt/ | parsever | sort -V | tail -n 1
+u2d http://rpm5.org/files/popt/

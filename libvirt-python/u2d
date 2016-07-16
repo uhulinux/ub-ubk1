@@ -1,1 +1,1 @@
-urllist http://libvirt.org/sources/python/ | parsever | sort -V | tail -n 1
+u2d http://libvirt.org/sources/python/

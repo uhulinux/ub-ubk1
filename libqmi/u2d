@@ -1,1 +1,1 @@
-urllist http://www.freedesktop.org/software/libqmi/ | parsever | sort -V | tail -n 1
+u2d http://www.freedesktop.org/software/libqmi/

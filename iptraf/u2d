@@ -1,1 +1,1 @@
-urllist https://fedorahosted.org/releases/i/p/iptraf-ng/ | parsever | sort -V | tail -n 1
+u2d https://fedorahosted.org/releases/i/p/iptraf-ng/

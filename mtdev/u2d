@@ -1,1 +1,1 @@
-urllist http://bitmath.org/code/mtdev/ | parsever | sort -V | tail -n 1
+u2d http://bitmath.org/code/mtdev/

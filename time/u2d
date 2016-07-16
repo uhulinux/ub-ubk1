@@ -1,1 +1,1 @@
-urllist http://ftp.gnu.org/pub/gnu/time/ | parsever
+u2d http://ftp.gnu.org/pub/gnu/time/

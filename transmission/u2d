@@ -1,1 +1,1 @@
-urllist http://download.transmissionbt.com/files/ | parsever | sort -V | tail -n 1
+u2d http://download.transmissionbt.com/files/

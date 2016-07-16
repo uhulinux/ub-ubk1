@@ -1,1 +1,1 @@
-urllist http://gregory.kokanosky.free.fr/v4/linux/nrg2iso.html | parsever | sort -V | tail -n 1
+u2d http://gregory.kokanosky.free.fr/v4/linux/nrg2iso.html

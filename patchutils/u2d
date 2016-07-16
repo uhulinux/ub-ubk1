@@ -1,1 +1,1 @@
-urllist http://cyberelk.net/tim/data/patchutils/stable/ | parsever | sort -V | tail -n 1
+u2d http://cyberelk.net/tim/data/patchutils/stable/
