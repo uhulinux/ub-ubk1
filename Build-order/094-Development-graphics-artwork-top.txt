@@ -25,7 +25,6 @@ pcc
 sddm-theme-acidhub
 sddm-theme-deepspace
 sddm-theme-futuristic
-sddm-theme-numix
 sddm-theme-urbanlifestyle
 shc
 slim-themes
