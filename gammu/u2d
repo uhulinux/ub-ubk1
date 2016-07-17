@@ -1,2 +1,1 @@
-#urllist http://dl.cihar.com/gammu/releases/ | splitver '^gammu-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
-sflist gammu gammu | sort -V | tail -n 1
+u2d http://dl.cihar.com/gammu/releases/
