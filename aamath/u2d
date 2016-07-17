@@ -1,1 +1,1 @@
-urllist http://fuse.superglue.se/aamath/ | splitver '^aamath-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://fuse.superglue.se/aamath/
