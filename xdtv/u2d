@@ -1,1 +1,1 @@
-sflist xawdecode 01%20-%20XdTV | grep -E '^([0-9.]+)$' | sort -V | tail -n 1
+noupdate: nem karbatartott csomag
