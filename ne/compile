@@ -1,5 +1,5 @@
 #!/bin/sh -eux
 
-export PREFIX="/usr"
 ub_make \
-	NE_GLOBAL_DIR=/usr/lib/ne
+	CC=gcc
+	PREFIX=/usr

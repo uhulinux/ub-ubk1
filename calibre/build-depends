@@ -11,6 +11,7 @@ python-dateutil
 python-dev
 python-lxml
 python-pillow
+python-six
 qt5-dev
 sip
 xdg-utils

@@ -1,1 +1,1 @@
-u2d http://www.apache.org/dist/httpd/
+urllist http://www.apache.org/dist/httpd/ | parsever | sort -V | tail -n 1

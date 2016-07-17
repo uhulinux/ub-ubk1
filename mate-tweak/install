@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
-python3 setup.py install --root="$UB_INSTALLDIR"
+export UB_PYTHON=3
+ub_install
 
 # find "$UB_INSTALLDIR"/usr/lib/mate-menu -type f -exec chmod 755 {} \;

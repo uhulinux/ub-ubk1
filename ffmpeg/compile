@@ -20,7 +20,6 @@
 	--enable-libcaca \
 	--enable-libcelt \
 	--enable-libdc1394 \
-	--enable-libdcadec \
 	--enable-libfreetype \
 	--enable-libfaac \
 	--enable-libgsm \

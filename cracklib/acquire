@@ -1,8 +1,5 @@
 #!/usr/bin/env dl
 
-cracklib-${UB_VERSION}.tar.gz cracklib-${UB_VERSION}/
-	http://downloads.sourceforge.net/cracklib/
+cracklib-${UB_VERSION}.tar.gz cracklib-cracklib-${UB_VERSION}/
+	https://github.com/cracklib/cracklib/archive/
 
-# Extended dictionary, it's too large.
-#cracklib-words.gz cracklib-words :dicts
-#	http://downloads.sourceforge.net/cracklib/

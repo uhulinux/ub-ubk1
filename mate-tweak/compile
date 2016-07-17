@@ -1,3 +1,4 @@
 #!/bin/sh -eux
 
-python3 setup.py build
+export UB_PYTHON=3
+ub_compile

@@ -1,1 +1,1 @@
-u2d http://people.redhat.com/sgrubb/audit/
+urllist http://people.redhat.com/sgrubb/audit/ | splitver '^audit-([0-9.]+).tar.gz$' | sort -V | tail -n 1

@@ -8,10 +8,8 @@ cmake \
 	-DCMAKE_PREFIX_PATH=/usr/lib/qt5 \
 	-DUSE_HDF5=ON \
 	-DUSE_PROTOCALL=OFF \
-	-DBUILD_GPL_PLUGINS=ON \
 	-DUSE_MOLEQUEUE=ON\
 	-DUSE_VTK=OFF\
 	-DCMAKE_BUILD_TYPE=Release \
 	..
-sed s/-lQt5OpenGL//g -i avogadro/qtplugins/CMakeFiles/AvogadroQtPlugins.dir/link.txt
 make
