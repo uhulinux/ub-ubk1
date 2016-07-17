@@ -1,2 +1,2 @@
-minor=$(urllist http://sourceforge.net/projects/fwbuilder/files/Current_Packages/ | splitver '^([0-9.]+)' | sort -V | tail -n 1)
-sflist fwbuilder Current_Packages/"$minor" | splitver '^fwbuilder-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+minor=$(urllist http://sourceforge.net/projects/fwbuilder/files/Current_Packages/ | grep '^[0-9]\.' | sort -V | tail -n 1)
+sflist fwbuilder Current_Packages/"$minor" | parsever | sort -V | tail -n 1
