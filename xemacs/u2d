@@ -1,1 +1,2 @@
-urllist http://ftp.xemacs.org/xemacs-21.5/ | splitver '^xemacs-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://pkgs.fedoraproject.org/repo/pkgs/xemacs/ | splitver '^xemacs-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+
