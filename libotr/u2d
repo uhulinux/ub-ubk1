@@ -1,1 +1,1 @@
-urllist https://otr.cypherpunks.ca/ | splitver '^libotr-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d https://otr.cypherpunks.ca/

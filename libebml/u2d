@@ -1,1 +1,1 @@
-urllist http://dl.matroska.org/downloads/libebml/ | splitver '^libebml-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d http://dl.matroska.org/downloads/libebml/

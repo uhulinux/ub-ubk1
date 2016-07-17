@@ -1,1 +1,1 @@
-urllist http://www.syntax-k.de/projekte/teapot/ | splitver '^teapot-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www.syntax-k.de/projekte/teapot/

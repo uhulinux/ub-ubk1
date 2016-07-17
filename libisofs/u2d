@@ -1,1 +1,1 @@
-urllist http://files.libburnia-project.org/releases/ | splitver '^libisofs-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d http://files.libburnia-project.org/releases/

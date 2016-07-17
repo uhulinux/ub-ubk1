@@ -1,1 +1,1 @@
-urllist ftp://ftp.ruby-lang.org/pub/ruby/ | splitver '^ruby-([0-9]+\.[0-9]+\.[0-9]+(-p[0-9]+)?)\.tar\.gz$' | sort -V | sed -e 's,-,.,' | tail -n 1
+u2d ftp://ftp.ruby-lang.org/pub/ruby/

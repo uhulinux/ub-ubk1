@@ -1,1 +1,1 @@
-urllist http://libbsd.freedesktop.org/releases/ | splitver '^libbsd-([0-9].+).tar.xz$' | sort -V | tail -n 1
+u2d http://libbsd.freedesktop.org/releases/

@@ -1,1 +1,1 @@
-urllist http://www.scala-lang.org/files/archive/ | splitver '^scala-([0-9.]+).tgz$' | sort -V | tail -n 1
+u2d http://www.scala-lang.org/files/archive/

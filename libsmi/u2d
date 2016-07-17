@@ -1,1 +1,1 @@
-urllist http://www.ibr.cs.tu-bs.de/projects/libsmi/download/ | splitver '^libsmi-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www.ibr.cs.tu-bs.de/projects/libsmi/download/

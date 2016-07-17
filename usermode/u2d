@@ -1,1 +1,1 @@
-urllist https://fedorahosted.org/releases/u/s/usermode/ | splitver '^usermode-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d https://fedorahosted.org/releases/u/s/usermode/

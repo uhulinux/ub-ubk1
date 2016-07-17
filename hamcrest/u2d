@@ -1,1 +1,1 @@
-urllist https://github.com/hamcrest/JavaHamcrest/releases/ | splitver '^hamcrest-java-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d https://github.com/hamcrest/JavaHamcrest/releases/

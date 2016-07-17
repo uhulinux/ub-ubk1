@@ -1,1 +1,1 @@
-urllist http://downloads.asterisk.org/pub/telephony/libpri/releases/ | splitver '^libpri-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d http://downloads.asterisk.org/pub/telephony/libpri/releases/

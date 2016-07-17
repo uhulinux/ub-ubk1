@@ -1,1 +1,1 @@
-urllist ftp://ftp.gnupg.org/gcrypt/libksba/ | splitver '^libksba-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d ftp://ftp.gnupg.org/gcrypt/libksba/

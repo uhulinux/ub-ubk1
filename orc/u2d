@@ -1,1 +1,1 @@
-urllist http://gstreamer.freedesktop.org/data/src/orc/ | splitver '^orc-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d http://gstreamer.freedesktop.org/data/src/orc/

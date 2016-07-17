@@ -1,1 +1,1 @@
-urllist https://portland.freedesktop.org/download/ | splitver '^xdg-utils-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d https://portland.freedesktop.org/download/

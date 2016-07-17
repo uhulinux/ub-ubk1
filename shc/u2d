@@ -1,1 +1,1 @@
-urllist http://www.datsi.fi.upm.es/~frosal/sources/ | splitver '^shc-([0-9.]+).tgz$' | sort -V | tail -n 1
+u2d http://www.datsi.fi.upm.es/~frosal/sources/

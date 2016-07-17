@@ -1,1 +1,1 @@
-urllist http://www.mesa.nl/pub/mpage/ | splitver '^mpage-([0-9.]+).tgz$' | sort -V | tail -n 1
+u2d http://www.mesa.nl/pub/mpage/

@@ -1,1 +1,1 @@
-urllist http://www.nongnu.org/xbindkeys/ | splitver '^xbindkeys-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www.nongnu.org/xbindkeys/

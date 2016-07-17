@@ -1,1 +1,1 @@
-urllist http://www.freedesktop.org/software/vaapi/releases/gstreamer-vaapi/ | splitver '^gstreamer-vaapi-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d http://www.freedesktop.org/software/vaapi/releases/gstreamer-vaapi/

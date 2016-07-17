@@ -1,1 +1,1 @@
-urllist http://gnome.eu.org/index.php/Evolution_RSS_Reader_Plugin | splitver '^evolution-rss-([0-9.]+).tar.xz$' | sort -V | tail -n 1
+u2d http://gnome.eu.org/index.php/Evolution_RSS_Reader_Plugin

@@ -1,1 +1,1 @@
-urllist https://download.libsodium.org/libsodium/releases/ | splitver '^libsodium-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d https://download.libsodium.org/libsodium/releases/

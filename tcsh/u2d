@@ -1,1 +1,1 @@
-urllist ftp://ftp.astron.com/pub/tcsh/ | splitver '^tcsh-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d ftp://ftp.astron.com/pub/tcsh/

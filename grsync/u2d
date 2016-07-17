@@ -1,1 +1,1 @@
-urllist http://www.opbyte.it/grsync/download.html | splitver '^grsync-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www.opbyte.it/grsync/download.html

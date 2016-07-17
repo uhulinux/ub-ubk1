@@ -1,1 +1,1 @@
-urllist http://www-e.uni-magdeburg.de/jschulen/ocr/download.html | splitver '^gocr-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www-e.uni-magdeburg.de/jschulen/ocr/download.html

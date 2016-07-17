@@ -1,1 +1,1 @@
-urllist http://0pointer.de/lennart/projects/nss-mdns/ | splitver '^nss-mdns-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://0pointer.de/lennart/projects/nss-mdns/

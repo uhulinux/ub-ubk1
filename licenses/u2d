@@ -1,1 +1,1 @@
-urllist http://download.ubk.hu/src/uhu/licenses/ | splitver '^licenses-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://download.ubk.hu/src/uhu/licenses/

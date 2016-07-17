@@ -1,2 +1,2 @@
-urllist http://www2.aquamaniac.de/sites/download/packages.php?package=02/ | sed s/.*=//g \
-	| splitver '^libchipcard-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www2.aquamaniac.de/sites/download/packages.php?package=02/
+	

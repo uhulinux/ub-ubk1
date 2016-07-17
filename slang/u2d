@@ -1,1 +1,1 @@
-urllist ftp://space.mit.edu/pub/davis/slang/v2.2/ | splitver '^slang-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d ftp://space.mit.edu/pub/davis/slang/v2.2/

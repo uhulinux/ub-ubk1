@@ -1,1 +1,1 @@
-urllist https://github.com/googlei18n/libphonenumber/releases/ | splitver '^libphonenumber-([0-9.].+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d https://github.com/googlei18n/libphonenumber/releases/

@@ -1,1 +1,1 @@
-urllist http://www.vanheusden.com/multitail/download.php#stable | splitver '^multitail-([0-9.]+).tgz' | sort -V | tail -n 1
+u2d http://www.vanheusden.com/multitail/download.php#stable

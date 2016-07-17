@@ -1,1 +1,1 @@
-urllist https://www.kernel.org/pub/linux/libs/ieee1394/ | splitver '^libraw1394-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d https://www.kernel.org/pub/linux/libs/ieee1394/

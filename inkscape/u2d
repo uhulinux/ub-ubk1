@@ -1,1 +1,1 @@
-urllist https://launchpad.net/inkscape/+download | splitver '^inkscape-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d https://launchpad.net/inkscape/+download

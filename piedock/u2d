@@ -1,1 +1,1 @@
-urllist http://markusfisch.de/PieDock/ | splitver '^piedock-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d http://markusfisch.de/PieDock/

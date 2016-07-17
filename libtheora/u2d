@@ -1,1 +1,1 @@
-urllist http://downloads.xiph.org/releases/theora/ | splitver '^libtheora-([0-9.]+).tar.(bz2|gz|xz)$' | sort -V | tail -n 1
+u2d http://downloads.xiph.org/releases/theora/

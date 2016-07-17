@@ -1,1 +1,1 @@
-urllist http://www.open-mpi.org/software/ompi/ | splitver '^openmpi-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d http://www.open-mpi.org/software/ompi/

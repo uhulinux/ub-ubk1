@@ -1,1 +1,1 @@
-urllist ftp://ftp2.laffeycomputer.com/pub/current_builds/ | splitver '^rpl-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d ftp://ftp2.laffeycomputer.com/pub/current_builds/

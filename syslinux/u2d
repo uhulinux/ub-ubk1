@@ -1,1 +1,1 @@
-urllist https://www.kernel.org/pub/linux/utils/boot/syslinux/ | splitver '^syslinux-([0-9.]+).tar.xz$' | sort -V | tail -n 1
+u2d https://www.kernel.org/pub/linux/utils/boot/syslinux/

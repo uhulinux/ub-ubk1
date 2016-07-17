@@ -1,1 +1,1 @@
-urllist ftp://ftp.hdfgroup.org/HDF5/current/src/ | splitver '^hdf5-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d ftp://ftp.hdfgroup.org/HDF5/current/src/

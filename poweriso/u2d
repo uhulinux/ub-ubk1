@@ -1,1 +1,1 @@
-urllist http://www.poweriso.com/download.htm | splitver '^poweriso-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www.poweriso.com/download.htm
