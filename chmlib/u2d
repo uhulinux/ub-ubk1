@@ -1,1 +1,1 @@
-urllist http://morte.jedrea.com/~jedwin/projects/chmlib/ | splitver '^chmlib-([0-9.]+).tar.(gz|bz2)$' | sort -V | tail -n 1
+u2d http://morte.jedrea.com/~jedwin/projects/chmlib/

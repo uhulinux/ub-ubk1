@@ -1,1 +1,1 @@
-urllist ftp://invisible-island.net/diffstat/ | splitver '^diffstat-([0-9.]+).tgz$' | sort -V | tail -n 1
+u2d ftp://invisible-island.net/diffstat/

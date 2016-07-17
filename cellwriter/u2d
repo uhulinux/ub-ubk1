@@ -1,1 +1,1 @@
-urllist http://v1.risujin.org/pub/cellwriter/ | splitver '^cellwriter-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://v1.risujin.org/pub/cellwriter/

@@ -1,1 +1,1 @@
-urllist http://createrepo.baseurl.org/download/ | splitver '^createrepo-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d http://createrepo.baseurl.org/download/
