@@ -1,7 +1,0 @@
-#!/usr/bin/env dl
-
-#khelpcenter-${UB_VERSION}.tar.xz khelpcenter-${UB_VERSION}/
-#	http://download.kde.org/stable/plasma/${UB_VERSION}/
-	
-khelpcenter-${UB_VERSION}.tar.xz khelpcenter-5.6.3/
-	http://download.kde.org/stable/plasma/${UB_VERSION_HEAD3}/

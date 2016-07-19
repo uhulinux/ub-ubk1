@@ -61,6 +61,7 @@ frameworkintegration
 kdeclarative
 kcmutils
 kactivities
+kactivities-stats
 plasma-framework
 kdelibs4support
 khtml

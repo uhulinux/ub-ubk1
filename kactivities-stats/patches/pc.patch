@@ -1,0 +1,26 @@
+diff -Naur orig/src/CMakeLists.txt patched/src/CMakeLists.txt
+--- orig/src/CMakeLists.txt	2016-07-02 10:40:16.000000000 +0200
++++ patched/src/CMakeLists.txt	2016-07-18 11:32:07.043574440 +0200
+@@ -106,10 +106,10 @@
+ if (NOT WIN32)
+    configure_file (
+       ${CMAKE_CURRENT_SOURCE_DIR}/libKActivitiesStats.pc.cmake
+-      ${CMAKE_CURRENT_BINARY_DIR}/libKActivitiesStats.pc
++      ${CMAKE_CURRENT_BINARY_DIR}/libKF5ActivitiesStats.pc
+       )
+    install (
+-      FILES ${CMAKE_CURRENT_BINARY_DIR}/libKActivitiesStats.pc
++      FILES ${CMAKE_CURRENT_BINARY_DIR}/libKF5ActivitiesStats.pc
+       DESTINATION ${KDE_INSTALL_LIBDIR}/pkgconfig
+       )
+ endif ()
+diff -Naur orig/src/libKActivitiesStats.pc.cmake patched/src/libKActivitiesStats.pc.cmake
+--- orig/src/libKActivitiesStats.pc.cmake	2016-07-02 10:40:16.000000000 +0200
++++ patched/src/libKActivitiesStats.pc.cmake	2016-07-18 11:32:21.747776832 +0200
+@@ -8,5 +8,5 @@
+ URL: http://www.kde.org
+ Requires:
+ Version: ${KACTIVITIESSTATS_LIB_VERSION_STRING}
+-Libs: -L${LIB_INSTALL_DIR} -lKActivitiesStats
++Libs: -L${LIB_INSTALL_DIR} -lKF5ActivitiesStats
+ Cflags: -I${INCLUDE_INSTALL_DIR}

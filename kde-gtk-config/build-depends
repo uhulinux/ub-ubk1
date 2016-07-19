@@ -1,6 +1,7 @@
 cmake
 extra-cmake-modules
 gtk-dev
+gtk2-dev
 karchive-dev
 kcmutils-dev
 kconfigwidgets-dev
