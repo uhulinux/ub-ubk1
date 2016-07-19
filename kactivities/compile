@@ -1,12 +1,8 @@
 #!/bin/sh -eux
 
-# KACTIVITIES_LIB_VERSION_STRING:
-# src/lib/version.h
-
 ub_compile \
 	-DCMAKE_PREFIX_PATH=/usr/lib/qt5 \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	-DBIN_INSTALL_DIR=/usr/bin \
 	-DLIB_INSTALL_DIR=/usr/lib \
-	-DINCLUDE_INSTALL_DIR=/usr/include \
-	-DKACTIVITIES_LIB_VERSION_STRING="6.2.0"
+	-DINCLUDE_INSTALL_DIR=/usr/include

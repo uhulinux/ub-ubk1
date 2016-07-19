@@ -1,0 +1,11 @@
+diff -Naur orig/src/lib/libKActivities.pc.cmake patched/src/lib/libKActivities.pc.cmake
+--- orig/src/lib/libKActivities.pc.cmake	2016-07-02 10:40:02.000000000 +0200
++++ patched/src/lib/libKActivities.pc.cmake	2016-07-19 11:55:03.796033897 +0200
+@@ -7,6 +7,6 @@
+ Description: libKActivities is a C++ library for using KDE activities
+ URL: http://www.kde.org
+ Requires:
+-Version: ${KACTIVITIES_LIB_VERSION_STRING}
++Version: ${KACTIVITIES_VERSION_STRING}
+ Libs: -L${LIB_INSTALL_DIR} -lKF5Activities
+ Cflags: -I${INCLUDE_INSTALL_DIR}
