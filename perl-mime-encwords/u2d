@@ -1,1 +1,1 @@
-u2dcpan MIME::EncWords
+u2dcpan MIME::EncWords | sed 's/00/./'
