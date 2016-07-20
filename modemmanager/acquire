@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-ModemManager-${UB_VERSION}.tar.gz ModemManager-${UB_VERSION}/
-	http://cgit.freedesktop.org/ModemManager/ModemManager/snapshot/
+ModemManager-${UB_VERSION}.tar.xz ModemManager-${UB_VERSION}/
+	http://www.freedesktop.org/software/ModemManager/

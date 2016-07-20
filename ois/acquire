@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-ois_v${UB_VERSION/./-}.tar.gz ois-v${UB_VERSION/./-}/
-	http://download.sourceforge.net/wgois/Source%20Release/${UB_VERSION}/
+ois-${UB_VERSION}.tar.gz OIS-bb75ccc/
+	git://github.com/wgois/OIS@bb75ccc

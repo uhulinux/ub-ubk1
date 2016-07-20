@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
-vwm-${UB_VERSION}.tar.gz vwm/upstream/
+vwm-${UB_VERSION}.tar.gz vwm/
 	http://downloads.sourceforge.net/vwm/
 	http://www.mediafire.com/download/q8ns25md3741yo4/

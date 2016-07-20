@@ -1,1 +1,1 @@
-urllist http://www.freedesktop.org/software/ModemManager/ | splitver '^ModemManager-([0-9.]+).tar.xz$' | sort -V | tail -n 1
+u2d http://www.freedesktop.org/software/ModemManager/

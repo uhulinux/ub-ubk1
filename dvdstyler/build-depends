@@ -5,6 +5,6 @@ flex
 libexif-dev
 unzip
 wxsvg-dev
-wxwidgets2.8-dev
+wxwidgets-dev
 xmlto
 zip

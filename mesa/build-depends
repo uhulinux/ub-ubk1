@@ -6,6 +6,7 @@ libelf-dev
 libffi-dev
 libomxil-bellagio-dev
 libpciaccess-dev
+libpthread-stubs
 libva-dev
 libvdpau-dev
 libxdamage-dev

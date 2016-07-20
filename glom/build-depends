@@ -1,5 +1,6 @@
 boost-dev
 evince-dev
+gnome-common
 goocanvasmm-dev
 gtkmm-dev
 gtkmm2-dev

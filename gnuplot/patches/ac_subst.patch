@@ -1,0 +1,28 @@
+diff -Naur orig/configure.in patched/configure.in
+--- orig/configure.in	2016-02-04 08:27:52.000000000 +0100
++++ patched/configure.in	2016-07-18 00:13:12.958384861 +0200
+@@ -157,7 +157,6 @@
+ fi
+ 
+ dnl X Window System files.
+-AC_SUBST(LIBRARIES_FOR_X)
+ AC_PATH_XTRA
+ 
+ dnl Needed for LynxOS until AC_PATH_XTRA is fixed
+@@ -172,6 +171,7 @@
+   LIBRARIES_FOR_X="$X_LIBS -lX11 $X_EXTRA_LIBS"
+   AC_DEFINE(X11,1,[ Define if you are using the X11 window system. ])
+ fi
++AC_SUBST(LIBRARIES_FOR_X)
+ AM_CONDITIONAL(BUILD_GNUPLOT_X11, test "$no_x" != yes)
+ 
+ dnl change location of X11 defaults
+@@ -1071,7 +1071,7 @@
+ 
+ if test "${enable_wxwidgets_ok}" = yes ; then
+   WX_CXXFLAGS="`$WX_CONFIG --cxxflags | sed 's/-fno-exceptions//'` $CAIROPANGO_CFLAGS"
+-  WX_LIBS="`$WX_CONFIG --libs` $CAIROPANGO_LIBS"
++  WX_LIBS="`$WX_CONFIG --libs` $CAIROPANGO_LIBS -lX11"
+ 
+   dnl Check for fork(), used for the 'persist' effect
+   AC_FUNC_FORK

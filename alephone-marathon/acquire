@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-Marathon-${UB_VERSION_TAIL1}-Data.zip .
-	http://files3.bungie.org/trilogy/
+Marathon-${UB_VERSION}-Data.zip .
+	https://github.com/Aleph-One-Marathon/alephone/releases/download/release-${UB_VERSION}/
