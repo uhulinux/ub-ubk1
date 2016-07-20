@@ -5,6 +5,7 @@ x.org-xtrans-dev
 imake
 libxdmcp
 xcb-proto
+libpthread-stubs
 libxcb
 libx11
 libxext
