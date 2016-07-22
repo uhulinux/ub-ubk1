@@ -3,8 +3,5 @@
 simutrans-src-${UB_VERSION//./-}.zip .
   http://download.sourceforge.net/simutrans/simutrans/${UB_VERSION//./-}/
 
-#update_texts_23052010.zip 
-# http://download.sourceforge.net/simutrans/simutrans/${UB_VERSION//./-}/
-
-simulinux-x86-${UB_VERSION//./-}.zip .
+simulinux-i86-${UB_VERSION//./-}.zip .
   http://download.sourceforge.net/simutrans/simutrans/${UB_VERSION//./-}/

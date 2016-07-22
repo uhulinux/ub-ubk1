@@ -1,6 +1,6 @@
-diff -Naur orig/simsys.cc mod/simsys.cc
---- orig/simsys.cc	2015-11-05 00:20:56.000000000 +0100
-+++ mod/simsys.cc	2016-01-04 17:40:05.067393242 +0100
+diff -Naur orig/simsys.cc patched/simsys.cc
+--- orig/simsys.cc	2015-11-29 19:41:00.000000000 +0100
++++ patched/simsys.cc	2016-07-23 00:31:29.985170136 +0200
 @@ -168,7 +168,7 @@
  	find_directory(B_USER_DIRECTORY, &userDir);
  	sprintf(buffer, "%s/simutrans", userDir.Path());

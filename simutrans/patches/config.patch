@@ -1,6 +1,6 @@
-diff -Naur orig/config.template mod/config.template
---- orig/config.template	2014-11-16 00:13:53.000000000 +0100
-+++ mod/config.template	2016-01-04 17:27:06.803004358 +0100
+diff -Naur orig/config.template patched/config.template
+--- orig/config.template	2015-01-12 17:09:46.000000000 +0100
++++ patched/config.template	2016-07-23 00:50:12.719665430 +0200
 @@ -8,18 +8,18 @@
  #BACKEND = opengl
  #BACKEND = sdl
