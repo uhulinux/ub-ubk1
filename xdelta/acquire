@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-xdelta-${UB_VERSION}.tar.gz xdelta-${UB_VERSION}/
-	http://downloads.sourceforge.net/xdelta/
+v${UB_VERSION}.tar.gz xdelta-${UB_VERSION}/xdelta3/
+	https://github.com/jmacd/xdelta/archive/

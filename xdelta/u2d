@@ -1,1 +1,1 @@
-urllist http://pkgs.fedoraproject.org/repo/pkgs/xdelta/ | grep xdelta- | parsever | sort -V | tail -1
+# u2dgithub https://github.com/jmacd/xdelta/releases/
