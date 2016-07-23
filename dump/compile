@@ -1,12 +1,7 @@
 #!/bin/sh -eux
 
-autoreconf -vif
 ub_compile \
 	--sbindir=/sbin \
-	--with-binowner=root \
-	--with-bingrp=root \
-	--with-manowner=root \
-	--with-mangrp=root \
-	--with-manmode=644 \
-	--disable-readline \
-	--disable-transselinux
+	--disable-rmt \
+	--disable-ermt \
+	--disable-readline
