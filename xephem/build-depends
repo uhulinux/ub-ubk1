@@ -1,5 +1,4 @@
-imake
-lesstif-dev
-libxext-dev
-libxt-dev
+groff
+libxmu-dev
+libxp-dev
 tzdata
