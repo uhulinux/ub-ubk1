@@ -1,4 +1,3 @@
-perl-algorithm-diff
 perl-anyevent
 perl-appconfig
 perl-archive-extract

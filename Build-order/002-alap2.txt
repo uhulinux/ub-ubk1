@@ -10,6 +10,11 @@ java
 db4
 python
 python-setuptools
+pycrypto
+pyasn1
+python-paramiko
+bzr
+dl
 lcms2
 libxml2
 libxslt

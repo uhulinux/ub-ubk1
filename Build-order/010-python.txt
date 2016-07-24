@@ -5,6 +5,8 @@ python3-doc
 python3-setuptools
 python3-zope.fixers
 sip
+pyasn1
+pycrypto
 python-cddb
 python-dip
 python-doc
@@ -12,6 +14,7 @@ python-iniparse
 python-ipaddr
 python-lxml
 python-nose
+python-paramiko
 python-simplejson
 python-six
 python-slowaes
@@ -49,12 +52,10 @@ ipython
 libvirt-python
 psycopg2
 py3cairo
-pyasn1
 pybluez
 pycairo
 pychess
 pycparser
-pycrypto
 pycups
 pycurl
 pyexcelerator
@@ -88,7 +89,6 @@ python-cffi
 python-chardet
 python-cheetah
 python-cherrypy
-python-coherence
 python-configobj
 python-cryptography
 python-cxfreeze

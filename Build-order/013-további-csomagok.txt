@@ -20,7 +20,6 @@ libqalculate
 libextractor
 libindicate
 libappindicator
-libchamplain
 libgnome2
 libcryptui
 compton

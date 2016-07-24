@@ -19,6 +19,7 @@ gnome-online-accounts
 clutter-gst2
 clutter-gtk
 clutter-gst
+libhamplain
 yelp-tools
 dconf-editor
 gnome-vfsmm2

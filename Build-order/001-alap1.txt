@@ -79,6 +79,7 @@ libjpeg
 libpng
 libsigsegv
 libtool
+libx86
 licenses
 lzip
 lzlib
