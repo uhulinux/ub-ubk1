@@ -6,7 +6,6 @@ krb5-dev
 mysql-client
 mysql-common
 mysql-dev
-ntp
 openldap-dev
 openssh
 openssl-dev

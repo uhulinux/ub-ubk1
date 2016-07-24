@@ -5,4 +5,5 @@ ub_compile \
 	--with-wavpack \
 	--enable-musepack \
 	--enable-vdpau \
-	--with-external-dvdnav
+	--with-external-dvdnav \
+	--without-xcb
