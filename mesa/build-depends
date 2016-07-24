@@ -17,6 +17,7 @@ libxshmfence-dev
 libxvmc-dev
 libxxf86vm-dev
 llvm
+llvm-libs
 python-dev
 systemd-dev
 talloc-dev

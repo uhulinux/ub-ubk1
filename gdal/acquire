@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-gdal-${UB_VERSION}RC2.tar.xz gdal-${UB_VERSION}/
+gdal-${UB_VERSION}.tar.xz gdal-${UB_VERSION}/
 	http://download.osgeo.org/gdal/${UB_VERSION}/

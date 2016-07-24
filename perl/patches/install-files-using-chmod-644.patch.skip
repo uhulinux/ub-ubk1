@@ -1,0 +1,45 @@
+diff -Naurdp perl-5.18.1.orig/dist/ExtUtils-Install/lib/ExtUtils/Install.pm perl-5.18.1/dist/ExtUtils-Install/lib/ExtUtils/Install.pm
+--- perl-5.18.1.orig/dist/ExtUtils-Install/lib/ExtUtils/Install.pm	2013-08-12 04:44:48.000000000 +0200
++++ perl-5.18.1/dist/ExtUtils-Install/lib/ExtUtils/Install.pm	2013-10-14 15:04:51.286908241 +0200
+@@ -797,7 +797,7 @@ sub install { #XXX OS-SPECIFIC
+                 utime($atime,$mtime + $Is_VMS,$targetfile) unless $dry_run>1;
+ 
+ 
+-                $mode = 0444 | ( $mode & 0111 ? 0111 : 0 );
++                $mode = 0644 | ( $mode & 0111 ? 0111 : 0 );
+                 $mode = $mode | 0222
+                     if $realtarget ne $targetfile;
+                 _chmod( $mode, $targetfile, $verbose );
+@@ -1199,7 +1199,7 @@ sub pm_to_blib {
+         }
+         my($mode,$atime,$mtime) = (stat $from)[2,8,9];
+         utime($atime,$mtime+$Is_VMS,$to);
+-        _chmod(0444 | ( $mode & 0111 ? 0111 : 0 ),$to);
++        _chmod(0644 | ( $mode & 0111 ? 0111 : 0 ),$to);
+         next unless $from =~ /\.pm$/;
+         _autosplit($to,$autodir);
+     }
+diff -Naurdp perl-5.18.1.orig/installperl perl-5.18.1/installperl
+--- perl-5.18.1.orig/installperl	2013-08-12 04:44:48.000000000 +0200
++++ perl-5.18.1/installperl	2013-10-14 15:05:34.576483368 +0200
+@@ -386,9 +386,9 @@ foreach my $file (@corefiles) {
+     if (copy_if_diff($file,"$installarchlib/CORE/$file")) {
+ 	if ($file =~ /\.(\Q$so\E|\Q$dlext\E)$/) {
+ 	    strip("-S", "$installarchlib/CORE/$file") if $^O eq 'darwin';
+-	    chmod(0555, "$installarchlib/CORE/$file");
++	    chmod(0755, "$installarchlib/CORE/$file");
+ 	} else {
+-	    chmod(0444, "$installarchlib/CORE/$file");
++	    chmod(0644, "$installarchlib/CORE/$file");
+ 	}
+     }
+ }
+@@ -778,7 +778,7 @@ sub installlib {
+             if (copy_if_diff($_, "$installlib/$name")) {
+                 strip("-S", "$installlib/$name")
+                     if $^O eq 'darwin' and /\.(?:so|$dlext|a)$/;
+-                chmod(/\.(so|$dlext)$/ ? 0555 : 0444, "$installlib/$name");
++                chmod(/\.(so|$dlext)$/ ? 0755 : 0644, "$installlib/$name");
+             }
+ 	}
+     }

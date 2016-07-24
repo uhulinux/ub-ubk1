@@ -1,17 +1,7 @@
 # /etc/apt/sources.list
 
-# Hivatalos ftp és http lelőhelyek
-# Official ftp and http locations
-
-deb ftp://download.uhulinux.hu/pub/uhu/3 ./
-# deb http://download.uhulinux.hu/pub/uhu/3 ./
-
-# UHU tároló mirror ubk.hu-n
-# deb ftp://ftp.ubk.hu/pkg/mirror/download.uhulinux.hu/dists/3/ ./
-# deb http://download.ubk.hu/pkg/mirror/download.uhulinux.hu/dists/3/ ./
-
 # UBK
-deb ftp://ftp.ubk.hu/pkg/3/main ./
-# deb ftp://download.ubk.hu/pkg/3/main ./
-# deb http://download.ubk.hu/pkg/3/main ./
+deb ftp://ftp.ubk.hu/pkg/ubk1/main ./
+# deb ftp://download.ubk.hu/pkg/ubk1/main ./
+# deb http://download.ubk.hu/pkg/ubk1/main ./
 

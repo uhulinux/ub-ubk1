@@ -1,6 +1,8 @@
 #!/bin/sh -eux
 
-cd FreeImage
 ub_install
-cd ../FreeImagefip
-make -f Makefile.fip DESTDIR=$UB_INSTALLDIR install
+
+# freeimageplus
+ub_make clean
+ub_make -f Makefile.fip
+ub_install -f Makefile.fip

@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 serf-${UB_VERSION}.tar.bz2 serf-${UB_VERSION}/
-	http://serf.googlecode.com/svn/src_releases/
+	https://archive.apache.org/dist/serf/

@@ -2,3 +2,4 @@
 
 pyasn1-${UB_VERSION}.tar.gz pyasn1-${UB_VERSION}/
 	https://pypi.python.org/packages/
+	https://sourceforge.net/projects/pyasn1/files/pyasn1/${UB_VERSION}/

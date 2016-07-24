@@ -1,15 +1,15 @@
 diff -Naur orig/doc/makefile patched/doc/makefile
---- orig/doc/makefile	2014-10-15 19:55:49.000000000 +0200
-+++ patched/doc/makefile	2014-10-18 22:32:59.136151857 +0200
+--- orig/doc/makefile	2016-06-22 15:01:11.000000000 +0200
++++ patched/doc/makefile	2016-07-21 23:57:55.592479160 +0200
 @@ -12,14 +12,11 @@
  
  doc: manpages docbook
  
 -examples/sources.list: ../vendor/current/sources.list
--	ln -sf $(shell readlink -f $^) $@
+-	ln -sf '$(abspath $^)' $@
 -
  apt-vendor.ent: ../vendor/current/apt-vendor.ent
- 	ln -sf $(shell readlink -f $^) $@
+ 	ln -sf '$(abspath $^)' $@
  
  # Examples
 -SOURCE = examples/apt.conf examples/sources.list examples/configure-index examples/apt-https-method-example.conf
@@ -17,3 +17,4 @@ diff -Naur orig/doc/makefile patched/doc/makefile
  TO = $(DOC)
  TARGET = binary
  include $(COPY_H)
+

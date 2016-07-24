@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
-QScintilla-gpl-${UB_VERSION}.tar.gz QScintilla-gpl-${UB_VERSION}/
-	http://sourceforge.net/projects/pyqt/files/QScintilla2/QScintilla-${UB_VERSION}/
+QScintilla_gpl-${UB_VERSION}.tar.gz QScintilla_gpl-${UB_VERSION}/
+	https://sourceforge.net/projects/pyqt/files/QScintilla2/QScintilla-${UB_VERSION}/
 	http://www.riverbankcomputing.co.uk/static/Downloads/QScintilla2/

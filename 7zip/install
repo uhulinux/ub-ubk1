@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
-ub_install
+ub_install DEST_DIR="$UB_INSTALLDIR"
 
 #remove duplicate doc files
 rm -rf "$UB_INSTALLDIR"/usr/share/doc/p7zip/{ChangeLog,README}

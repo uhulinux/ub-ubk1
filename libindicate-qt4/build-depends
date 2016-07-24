@@ -1,3 +1,4 @@
 cmake
+libindicate
 libindicate-dev
 qt4-dev

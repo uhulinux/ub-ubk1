@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 SDL_gfx-${UB_VERSION}.tar.gz SDL_gfx-${UB_VERSION}/
+	https://sourceforge.net/projects/sdlgfx/files/SDL_gfx-${UB_VERSION}.tar.gz/download
 	http://www.ferzkopp.net/Software/SDL_gfx-${UB_VERSION_HEAD2}/

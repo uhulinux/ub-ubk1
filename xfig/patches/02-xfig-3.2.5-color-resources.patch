@@ -1,6 +1,6 @@
-diff -Naur orig/Fig-color.bisque.ad mod/Fig-color.bisque.ad
---- orig/Fig-color.bisque.ad	2007-04-12 18:37:46.000000000 +0200
-+++ mod/Fig-color.bisque.ad	2013-12-04 19:44:46.000000000 +0100
+diff -Naur xfig.3.2.5c-orig/Fig-color.bisque.ad xfig.3.2.5c/Fig-color.bisque.ad
+--- xfig.3.2.5c-orig/Fig-color.bisque.ad	2007-04-12 18:37:46.000000000 +0200
++++ xfig.3.2.5c/Fig-color.bisque.ad	2016-07-24 09:22:58.541836938 +0200
 @@ -72,7 +72,7 @@
  Fig*topruler.background:	 		gray95
  Fig*sideruler.background:	 		gray95

@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
-UB_MAKE_PROCS=1
+# UB_MAKE_PROCS=1
 
 ub_compile \
 	-DCMAKE_BUILD_TYPE=Release \

@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-zoo-${UB_VERSION}.tar.gz zoo-${UB_VERSION}/
+zoo-${UB_VERSION}.tar.gz zoo/
 	http://gd.tuwien.ac.at/utils/archivers/zoo/
