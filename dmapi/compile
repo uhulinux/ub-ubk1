@@ -1,6 +1,7 @@
 #!/bin/sh -eux
 
 export DEBUG=-DNDEBUG
+
 autoconf
 ub_compile \
 	--bindir=/bin \
