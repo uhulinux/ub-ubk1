@@ -1,6 +1,5 @@
 ffmpeg2.8
 ffmpeg
-xine-lib
 opencv
 frei0r
 sox
@@ -10,10 +9,8 @@ wxsvg
 ffmpeg-thumbnailer
 mediastreamer
 gegl
-directfb
 xmms2
 gimp
-gst-plugins-bad
 mplayer
 lxmusic
 openimageio

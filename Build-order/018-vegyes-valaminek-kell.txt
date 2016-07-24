@@ -283,6 +283,10 @@ pstoedit
 gst0.10-plugins-good
 gst-plugins-good
 gst0.10-plugins-bad
+gdk-pixbuf # rebuild
+xine-lib
+directfb
+gst-plugins-bad
 telepathy-farstream
 telepathy-idle
 pidgin

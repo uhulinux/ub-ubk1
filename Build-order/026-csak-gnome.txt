@@ -51,7 +51,6 @@ gnome-schedule
 libgnomekbd
 libgnomeprint2
 libgnomeprintui2
-gtksourceview18
 gnome-system-monitor
 opal
 tracker-sparql
@@ -60,6 +59,7 @@ gksu
 gnome-packagekit
 libpeas
 vino
+gnome-keyring
 libgweather
 caribou
 gedit
@@ -123,7 +123,6 @@ gtkpod
 gnome-shell
 gnome-terminal
 gnome-python-extras
-gnome-keyring
 gnome-dictionary
 gnome-apps
 gnome-core
