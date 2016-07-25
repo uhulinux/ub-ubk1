@@ -25,7 +25,7 @@ abevjava
 jdictionary-plugin-english-online-lexicon
 fet
 geogebra
-lightdm-gtk3-greeter-settings
+lightdm-gtk-greeter-settings
 euler
 flamerobin
 smart

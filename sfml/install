@@ -2,4 +2,4 @@
 
 ub_install
 
-install -Dm644 "$UB_INSTALLDIR/usr/share/SFML/cmake/Modules/FindSFML.cmake" "$UB_INSTALLDIR/usr/share/cmake-3.5/Modules/FindSFML.cmake"
+install -Dm644 "$UB_INSTALLDIR/usr/share/SFML/cmake/Modules/FindSFML.cmake" "$UB_INSTALLDIR/usr/share/cmake-3.6/Modules/FindSFML.cmake"

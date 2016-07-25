@@ -300,7 +300,7 @@ qterminal
 smpeg2
 gnonlin
 foo2zjs
-lightdm-gtk3-greeter
+lightdm-gtk-greeter
 pdcurses
 sdl2-image
 sdl2-ttf
