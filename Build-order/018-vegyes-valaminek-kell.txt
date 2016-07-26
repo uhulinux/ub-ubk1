@@ -1,5 +1,4 @@
 alsa-firmware
-aoetools
 c2050
 c2070
 cjet

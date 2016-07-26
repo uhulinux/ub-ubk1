@@ -1,7 +1,9 @@
 asciidoc
+liblzo
+btrfs-progs
+aoetools
 libatomic-ops
 gc
-liblzo
 libtasn1
 libunistring
 nettle

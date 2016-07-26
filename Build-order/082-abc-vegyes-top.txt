@@ -85,7 +85,6 @@ wdfs
 perl-glib-object-introspection
 perl-cairo-gobject
 proftpd
-btrfs-progs
 obexd
 dovecot
 ucblogo
