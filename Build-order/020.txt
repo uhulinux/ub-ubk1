@@ -1,6 +1,6 @@
+ffmpeg
 opencv
 ffmpeg2.8
-ffmpeg
 frei0r
 sox
 espeak
@@ -13,8 +13,7 @@ xmms2
 gimp # xsane symlink nélkül (install)
 mplayer
 openimageio
-xsane # gimp nélkül
-gimp
 xsane
+gimp
 opencolorio
 vlc
