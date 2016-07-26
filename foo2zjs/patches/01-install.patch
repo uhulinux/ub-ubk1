@@ -1,0 +1,47 @@
+diff -Naur orig/Makefile patched/Makefile
+--- orig/Makefile	2009-10-21 20:41:50.000000000 +0200
++++ patched/Makefile	2016-07-26 00:33:52.550019590 +0200
+@@ -16,7 +16,6 @@
+ VERSION=0.0
+ 
+ # Installation prefix...
+-PREFIX=/usr/local
+ PREFIX=/usr
+ PREFIX=$(DESTDIR)/usr
+ 
+@@ -505,7 +504,7 @@
+ #
+ # Installation rules
+ #
+-install: all install-test install-prog install-icc2ps install-extra \
++install: all install-prog install-icc2ps install-extra \
+ 	    install-crd install-foo install-ppd \
+ 	    install-gui install-desktop \
+ 	    install-man install-doc
+@@ -793,8 +792,8 @@
+ 	$(INSTALL) -c -m 755 hplj10xx_gui.tcl $(SHAREZJS)
+ 	
+ 
+-USBDIR=/etc/hotplug/usb
+-UDEVDIR=/etc/udev/rules.d
++USBDIR=$(DESTDIR)/etc/hotplug/usb
++UDEVDIR=$(DESTDIR)/etc/udev/rules.d
+ RULES=hplj10xx.rules
+ install-hotplug: install-hotplug-test install-hotplug-prog
+ 
+@@ -1220,14 +1219,13 @@
+ 	$(INSTALL) -c -m 644 usb_printerid.1 $(MANDIR)/man1/
+ 	$(INSTALL) -c -m 644 printer-profile.1 $(MANDIR)/man1/
+ 
+-doc: README INSTALL manual.pdf
++doc: README INSTALL
+ 
+ install-doc: doc
+ 	#
+ 	# Install documentation
+ 	#
+ 	$(INSTALL) -d -m 755 $(DOCDIR)
+-	$(INSTALL) -c -m 644 manual.pdf $(DOCDIR)
+ 	$(INSTALL) -c -m 644 COPYING $(DOCDIR)
+ 	$(INSTALL) -c -m 644 INSTALL $(DOCDIR)
+ 	$(INSTALL) -c -m 644 INSTALL.osx $(DOCDIR)

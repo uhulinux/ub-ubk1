@@ -1,8 +1,7 @@
 #!/usr/bin/env dl
 
 foo2zjs.tar.gz foo2zjs/
-	ftp://ftp.uhulinux.hu/sources/foo2zjs/${UB_VERSION_MICRO}/
-#	http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+	http://foo2zjs.rkkda.com/foo2zjs.tar.gz
 
 sihp1000.tar.gz
 	http://foo2zjs.rkkda.com/firmware/
@@ -24,12 +23,6 @@ sihpP1006.tar.gz
 
 sihpP1505.tar.gz
 	http://foo2zjs.rkkda.com/firmware/
-
-m22dlicc.exe
-	http://printer.konicaminolta.net/drivers/win2000/
-
-m23dlicc.exe
-	ftp://195.228.155.102/mirror/ftp%3A/ftp.minolta-qms.com/pub/crc/out_going/win/
 
 km2430.tar.gz
 	http://foo2zjs.rkkda.com/icm/
