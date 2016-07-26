@@ -1,6 +1,6 @@
+opencv
 ffmpeg2.8
 ffmpeg
-opencv
 frei0r
 sox
 espeak
@@ -10,10 +10,11 @@ ffmpeg-thumbnailer
 mediastreamer
 gegl
 xmms2
-gimp
+gimp # xsane symlink nélkül (install)
 mplayer
-lxmusic
 openimageio
+xsane # gimp nélkül
+gimp
 xsane
 opencolorio
 vlc

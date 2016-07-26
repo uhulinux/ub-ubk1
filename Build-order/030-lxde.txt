@@ -4,6 +4,7 @@ libstatgrab
 lxde-common
 libfm-extra
 lxinput
+lxmusic
 lxmenu-data
 lxrandr
 menu-cache
