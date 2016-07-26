@@ -14,6 +14,5 @@ gimp # xsane symlink nélkül (install)
 mplayer
 openimageio
 xsane
-gimp
 opencolorio
 vlc
