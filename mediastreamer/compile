@@ -1,7 +1,10 @@
 #!/bin/sh -eux
 
+# speex obsoleted by opus
+
 ub_compile \
 	--enable-glx \
 	--enable-xv \
 	--enable-external-ortp \
+	--disable-speex \
 	--disable-strict

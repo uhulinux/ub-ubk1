@@ -1,5 +1,7 @@
 #!/bin/sh -eux
 
+# --enable-frei0r kell?
+
 ./configure \
     --prefix=/usr \
     --mandir=/usr/share/man \
@@ -11,7 +13,6 @@
 	--enable-avfilter\
 	--enable-avisynth \
 	--enable-avresample \
-	--enable-frei0r \
 	--enable-fontconfig \
 	--enable-gnutls \
 	--enable-gpl \
