@@ -1,1 +1,1 @@
-urllist https://www.freedesktop.org/wiki/Software/icon-theme/ | splitver '^hicolor-icon-theme-([0-9.]+).tar.(bz2|gz|xz)$' | sort -V | tail -n 1
+u2d https://www.freedesktop.org/wiki/Software/icon-theme/

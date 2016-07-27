@@ -1,1 +1,1 @@
-urllist https://launchpad.net/gui-ufw/+download/ | splitver '^gui-ufw-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d https://launchpad.net/gui-ufw/+download/

@@ -1,2 +1,2 @@
-urllist http://xdialog.free.fr/ | splitver '^Xdialog-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d http://xdialog.free.fr/
 

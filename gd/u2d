@@ -1,1 +1,1 @@
-urllist https://bitbucket.org/libgd/gd-libgd/downloads/ | splitver '^libgd-([0-9.]+).tar.xz$' | sort -V | tail -n 1
+u2d https://bitbucket.org/libgd/gd-libgd/downloads/
