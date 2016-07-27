@@ -1,1 +1,1 @@
-urllist http://www.freebsoft.org/pub/projects/speechd/ | splitver '^speech-dispatcher-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www.freebsoft.org/pub/projects/speechd/ speech-dispatcher-

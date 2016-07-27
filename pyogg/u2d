@@ -1,1 +1,1 @@
-urllist http://ekyo.nerim.net/software/pyogg/ | splitver '^pyogg-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://ekyo.nerim.net/software/pyogg/ pyogg-

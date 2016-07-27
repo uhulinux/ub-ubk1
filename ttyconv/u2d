@@ -1,1 +1,1 @@
-urllist http://debian.bedroomlan.org/debian/pool/main/t/ttyconv/ | splitver '^ttyconv_([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d http://debian.bedroomlan.org/debian/pool/main/t/ttyconv/ ttyconv_

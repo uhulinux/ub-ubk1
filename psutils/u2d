@@ -1,1 +1,1 @@
-urllist http://mirrors.ctan.org/obsolete/support/psutils/ | splitver '^psutils-p([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://mirrors.ctan.org/obsolete/support/psutils/ psutils-p

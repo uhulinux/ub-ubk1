@@ -1,1 +1,1 @@
-urllist http://udisks.freedesktop.org/releases/ | splitver '^udisks-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d http://udisks.freedesktop.org/releases/ udisks-

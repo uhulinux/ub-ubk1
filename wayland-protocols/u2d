@@ -1,1 +1,1 @@
-urllist http://wayland.freedesktop.org/releases/ | splitver '^wayland-protocols-([0-9.]+).tar.xz$' | sort -V | tail -n 1
+u2d http://wayland.freedesktop.org/releases/ wayland-protocols-

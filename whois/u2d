@@ -1,1 +1,1 @@
-urllist http://ftp.debian.org/debian/pool/main/w/whois/ | splitver '^whois_([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d http://ftp.debian.org/debian/pool/main/w/whois/ whois_

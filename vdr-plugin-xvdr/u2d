@@ -1,2 +1,2 @@
-urllist https://github.com/pipelka/vdr-plugin-xvdr/releases/ | splitver '^xvdr-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d https://github.com/pipelka/vdr-plugin-xvdr/releases/ xvdr-
 

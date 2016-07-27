@@ -1,1 +1,1 @@
-urllist ftp://invisible-island.net/ncurses/ | splitver '^tack-([0-9a-z.]+).tgz$' | sort -V | tail -n 1
+u2d ftp://invisible-island.net/ncurses/ tack-

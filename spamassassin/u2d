@@ -1,1 +1,1 @@
-urllist http://xenia.sote.hu/ftp/mirrors/www.apache.org/spamassassin/source/ | splitver '^Mail-SpamAssassin-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d http://xenia.sote.hu/ftp/mirrors/www.apache.org/spamassassin/source/ Mail-SpamAssassin-
