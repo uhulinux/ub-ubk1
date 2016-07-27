@@ -1,1 +1,1 @@
-urllist http://www.padl.com/download/ | splitver '^nss_ldap-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d http://www.padl.com/download/ nss_ldap-

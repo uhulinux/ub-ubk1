@@ -1,1 +1,1 @@
-urllist https://launchpad.net/lightdm-gtk-greeter/+download | splitver '^lightdm-gtk-greeter-([0-9.]+).tar.gz$' | sort -V | tail -n 1 | sed 's/%20//'
+u2d https://launchpad.net/lightdm-gtk-greeter/+download lightdm-gtk-greeter-

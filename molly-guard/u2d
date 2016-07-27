@@ -1,1 +1,1 @@
-urllist http://ftp.debian.org/debian/pool/main/m/molly-guard/ | splitver '^molly-guard_([0-9.]+).orig.tar.gz$'
+u2d http://ftp.debian.org/debian/pool/main/m/molly-guard/ molly-guard_

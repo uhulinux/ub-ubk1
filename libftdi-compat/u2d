@@ -1,1 +1,1 @@
-urllist http://www.intra2net.com/en/developer/libftdi/download.php | splitver '^libftdi-([0-9.]+).tar.gz$'  | sort -V | tail -n 1
+u2d http://www.intra2net.com/en/developer/libftdi/download.php libftdi-

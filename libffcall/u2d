@@ -1,1 +1,1 @@
-urllist http://www.haible.de/bruno/packages-ffcall-README.html | splitver '^ffcall-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www.haible.de/bruno/packages-ffcall-README.html ffcall-

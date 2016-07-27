@@ -1,1 +1,1 @@
-urllist http://www.padl.com/download/ | splitver '^pam_ldap-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www.padl.com/download/ pam_ldap-

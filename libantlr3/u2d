@@ -1,1 +1,1 @@
-urllist http://www.antlr3.org/download/C/ | splitver '^libantlr3c-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www.antlr3.org/download/C/ libantlr3c-
