@@ -1,2 +1,1 @@
-minor=$(urllist http://download.gna.org/nfoview/ | splitver '^([0-9.]+)' | sort -V | tail -n 1)
-urllist http://download.gna.org/nfoview/"$minor"/ | parsever | sort -V | tail -n 1
+u2dsubdir http://download.gna.org/nfoview/
