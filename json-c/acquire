@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-json-c-${UB_VERSION}.tar.gz json-c-${UB_VERSION}/
+json-c-${UB_VERSION/~/-}.tar.gz json-c-${UB_VERSION/~/-}/
 	https://s3.amazonaws.com/json-c_releases/releases/

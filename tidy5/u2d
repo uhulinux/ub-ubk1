@@ -1,1 +1,1 @@
-urllist https://github.com/htacg/tidy-html5/releases/ | grep -E '^5.0' | splitver '^([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d https://github.com/htacg/tidy-html5/releases/

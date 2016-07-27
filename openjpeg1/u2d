@@ -1,1 +1,1 @@
-urllist https://github.com/uclouvain/openjpeg/releases/ | splitver '^version.([0-9.]+).tar.gz$' | grep -E '^1\.' | sort -V | tail -n 1
+echo 1$(u2d https://github.com/uclouvain/openjpeg/releases/ version.1)
