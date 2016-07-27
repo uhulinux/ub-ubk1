@@ -1,1 +1,1 @@
-urllist http://www.vervest.org/htp/archive/c/ | parsever  | sort -V | tail -n 1
+u2d http://www.vervest.org/htp/archive/c/

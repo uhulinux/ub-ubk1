@@ -1,1 +1,1 @@
-urllist ftp://oss.sgi.com/projects/xfs/cmd_tars/ | grep xfsprogs- | parsever | sort -V | tail -n 1
+u2d ftp://oss.sgi.com/projects/xfs/cmd_tars/ xfsprogs-

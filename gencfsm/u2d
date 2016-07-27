@@ -1,1 +1,1 @@
-urllist https://launchpad.net/gencfsm/trunk/ | grep gnome-encfs-manager_ | sed s/_/-/g | parsever  | sort -V | tail -n 1
+u2d https://launchpad.net/gencfsm/trunk/ gnome-encfs-manager_

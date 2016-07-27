@@ -1,1 +1,1 @@
-urllist http://www.zavedil.com/software-uptime-applet/ | grep '^mate-applet-uptime' | parsever | sort -V | tail -n 1
+u2d http://www.zavedil.com/software-uptime-applet/

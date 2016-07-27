@@ -1,1 +1,1 @@
-urllist http://fossies.org/linux/misc/old/ | grep pilot-link- | parsever | sort -V | tail -n 1
+u2d http://fossies.org/linux/misc/old/ pilot-link-

@@ -1,1 +1,1 @@
-urllist http://www.sourcefiles.org/Multimedia/Radio/ | grep DMCRadio- | parsever
+u2d http://www.sourcefiles.org/Multimedia/Radio/ DMCRadio-

@@ -1,1 +1,1 @@
-urllist http://pypi.thundersystems.it/ | grep ^postmarkup | parsever
+u2d http://pypi.thundersystems.it/ postmarkup-
