@@ -1,7 +1,13 @@
 ffmpeg
-opencv
 ffmpeg2.8
+opencv
 frei0r
+libquicktime
+mjpegtools
+gst0.10-plugins-bad
+gst-plugins-bad
+xine-lib
+directfb
 sox
 espeak
 speechd
@@ -14,5 +20,12 @@ gimp # xsane symlink nélkül (install)
 mplayer
 openimageio
 xsane
+gimp
 opencolorio
 vlc
+telepathy-farstream
+telepathy-idle
+telepathy-haze
+telepathy-yell
+telepathy-qt
+pidgin

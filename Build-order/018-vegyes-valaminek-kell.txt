@@ -236,7 +236,6 @@ appdata-tools
 ftgl
 gucharmap
 lightdm
-mjpegtools
 strigidaemon
 xfig
 gammu
@@ -281,10 +280,6 @@ nagios-plugins
 pstoedit
 gst0.10-plugins-good
 gst-plugins-good
-gst0.10-plugins-bad
-xine-lib
-directfb
-gst-plugins-bad
 telepathy-farstream
 telepathy-idle
 pidgin
@@ -313,10 +308,6 @@ cups-filters
 autotrace
 mftrace
 foomatic-db-engine
-
-
-directfb
-gst-plugins-bad
 qemu
 edelib
 reiserfsprogs

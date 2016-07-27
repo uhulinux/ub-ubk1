@@ -79,8 +79,8 @@ anjuta
 evolution-data-server
 gnome-panel
 gnome-settings-daemon
+gnome-session
 epiphany
-gnome-initial-setup
 evolution
 gnome-shell-extensions
 gnome-font-viewer
@@ -92,12 +92,12 @@ gedit-plugins
 nautilus
 gnome-screensaver
 grilo
+libchamplain
 eog-plugins
 folks
 gnome-disk-utility
 gnome-user-share
 gnome-color-manager
-gnome-session
 gnome-software
 gnome-contacts
 evince
@@ -126,3 +126,4 @@ gnome-python-extras
 gnome-dictionary
 gnome-apps
 gnome-core
+gnome-initial-setup

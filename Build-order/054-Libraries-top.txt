@@ -32,7 +32,6 @@ sdl2-net
 pdflib
 starman
 g2
-telepathy-yell
 hupnp
 wv2
 gtk2-engine-xfce
@@ -63,6 +62,5 @@ msilbc
 gst-plugins-gl
 soprano
 freshplayerplugin
-telepathy-qt
 evolution-ews
 avogadrolibs

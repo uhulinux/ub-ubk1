@@ -68,7 +68,6 @@ tevent
 ldb
 samba
 gnome2-vfs
-libquicktime
 wxwidgets
 wxwidgets2.8
 libxml++2
