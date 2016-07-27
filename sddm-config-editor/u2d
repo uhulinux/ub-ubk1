@@ -1,1 +1,1 @@
-urllist https://github.com/hagabaka/sddm-config-editor/releases  | splitver '^([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d https://github.com/hagabaka/sddm-config-editor/releases
