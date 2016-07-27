@@ -1,1 +1,1 @@
-urllist http://www.ibiblio.org/pub/Linux/system/printing/ | splitver '^cjet([0-9.]+).tgz'  | sed 's/..$/.&/'  | sed 's/.$/.&/'
+u2d http://www.ibiblio.org/pub/Linux/system/printing/ cjet  | sed 's/..$/.&/'  | sed 's/.$/.&/'

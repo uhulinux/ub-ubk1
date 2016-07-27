@@ -1,1 +1,1 @@
-urllist http://downloads.xiph.org/releases/cdparanoia/ | splitver '^cdparanoia-III-([0-9.]+).src.tgz$' | sort -V | tail -n 1
+u2d http://downloads.xiph.org/releases/cdparanoia/ cdparanoia-III- .src

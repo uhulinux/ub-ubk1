@@ -1,1 +1,1 @@
-urllist http://www.logfish.net/pr/ccbuild/downloads/ | splitver 'ccbuild-([0-9.]+).tar.gz' | sort -V | tail -n 1
+u2d http://www.logfish.net/pr/ccbuild/downloads/ ccbuild-

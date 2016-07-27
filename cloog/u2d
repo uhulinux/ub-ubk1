@@ -1,1 +1,1 @@
-urllist http://www.bastoul.net/cloog/pages/download/count.php3?url=./ | splitver '^cloog-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www.bastoul.net/cloog/pages/download/count.php3?url=./ cloog-

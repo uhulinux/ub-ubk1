@@ -1,1 +1,1 @@
-urllist https://launchpad.net/activity-log-manager/+download/ | splitver 'activity-log-manager-([0-9.]+).tar.xz$' | sort -V | tail -n 1
+u2d https://launchpad.net/activity-log-manager/+download/ activity-log-manager-

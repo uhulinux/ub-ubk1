@@ -1,1 +1,1 @@
-urllist http://unicorn.us.com/pub/ | splitver 'cal([0-9]+).zip$' | sort -V | tail -n 1 | sed 's/1/.1/'
+u2d http://unicorn.us.com/pub/ cal | sed 's/1/.1/'

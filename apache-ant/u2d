@@ -1,2 +1,1 @@
-urllist http://xenia.sote.hu/ftp/mirrors/www.apache.org//ant/source/ | splitver '^apache-ant-([0-9.]+)-src.tar.(gz|bz2|xz)$' | sort -V | tail -n 1
-
+u2d http://xenia.sote.hu/ftp/mirrors/www.apache.org/ant/source/ apache-ant- -src

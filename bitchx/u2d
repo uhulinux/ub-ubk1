@@ -1,1 +1,1 @@
-urllist http://www.bitchx.com/download.php | splitver '^BitchX-([0-9.]+)-final-linux.tar.gz' | sort -V | tail -n 1
+u2d http://www.bitchx.com/download.php BitchX- -final-linux
