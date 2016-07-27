@@ -1,1 +1,1 @@
-urllist http://download.gna.org/hedgewars/ | splitver '^hedgewars-src-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d http://download.gna.org/hedgewars/ hedgewars-src-

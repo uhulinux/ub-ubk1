@@ -1,1 +1,1 @@
-urllist http://mirrors.ibiblio.org/pub/mirrors/ggzgamingzone/ggz/snapshots/ | splitver '^ggz-client-libs-snapshot-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://mirrors.ibiblio.org/pub/mirrors/ggzgamingzone/ggz/snapshots/ ggz-client-libs-snapshot-

@@ -1,1 +1,1 @@
-urllist http://download.geogebra.org/installers/5.0/ | splitver '^GeoGebra-Linux-Portable-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d http://download.geogebra.org/installers/5.0/ GeoGebra-Linux-Portable-
