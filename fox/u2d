@@ -1,2 +1,2 @@
-urllist ftp://ftp.fox-toolkit.org/pub/  | splitver '^fox-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d ftp://ftp.fox-toolkit.org/pub/  fox-
 

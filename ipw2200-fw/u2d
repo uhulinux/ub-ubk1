@@ -1,1 +1,1 @@
-urllist http://firmware.openbsd.org/firmware-dist/ | grep ipw2200 | parsever | sort -V | tail -n 1
+u2d http://firmware.openbsd.org/firmware-dist/ ipw2200-fw-

@@ -1,1 +1,1 @@
-urllist http://www.rarlab.com/rar_add.htm | splitver '^unrarsrc-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://www.rarlab.com/rar_add.htm unrarsrc-

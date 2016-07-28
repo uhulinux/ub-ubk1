@@ -1,2 +1,2 @@
-urllist http://brick.kernel.dk/snaps | splitver '^blktrace-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://brick.kernel.dk/snaps blktrace-
 

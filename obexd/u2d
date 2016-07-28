@@ -1,1 +1,1 @@
-urllist http://www.kernel.org/pub/linux/bluetooth/ | splitver '^obexd-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d http://www.kernel.org/pub/linux/bluetooth/ obexd-

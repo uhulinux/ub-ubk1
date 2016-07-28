@@ -1,2 +1,2 @@
-urllist http://www.live555.com/liveMedia/public/ | splitver '^live.([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d http://www.live555.com/liveMedia/public/ live.
 

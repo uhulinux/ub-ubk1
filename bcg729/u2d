@@ -1,1 +1,1 @@
-urllist http://download.savannah.gnu.org/releases/linphone/plugins/sources/ | splitver '^bcg729-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://download.savannah.gnu.org/releases/linphone/plugins/sources/ bcg729-

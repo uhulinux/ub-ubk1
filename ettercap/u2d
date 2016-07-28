@@ -1,1 +1,1 @@
-urllist https://github.com/Ettercap/ettercap/ | splitver '^v([0-9.]+)$' | sort -V | tail -n 1
+u2d https://github.com/Ettercap/ettercap/releases/ v

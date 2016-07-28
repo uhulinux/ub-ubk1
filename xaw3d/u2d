@@ -1,1 +1,1 @@
-urllist http://xorg.freedesktop.org/archive/individual/lib/ | splitver '^libXaw3d-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d http://xorg.freedesktop.org/archive/individual/lib/ libXaw3d-

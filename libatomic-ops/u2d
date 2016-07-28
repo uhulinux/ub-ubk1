@@ -1,1 +1,1 @@
-urllist http://www.ivmaisoft.com/_bin/atomic_ops/ | splitver '^libatomic_ops-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d http://www.ivmaisoft.com/_bin/atomic_ops/ libatomic_ops-

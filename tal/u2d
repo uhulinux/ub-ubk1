@@ -1,1 +1,1 @@
-urllist http://thomasjensen.com/software/tal/ | grep tal- | parsever | sort -V | tail -n 1
+u2d http://thomasjensen.com/software/tal/ tal-

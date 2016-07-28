@@ -1,1 +1,1 @@
-urllist http://bluez.sourceforge.net/download/ | splitver '^bluez-firmware-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://bluez.sourceforge.net/download/ bluez-firmware-

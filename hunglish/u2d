@@ -1,1 +1,1 @@
-urllist http://lorentey.hu/downloads/hunglish/ | splitver '^hunglish_([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://lorentey.hu/downloads/hunglish/ hunglish_

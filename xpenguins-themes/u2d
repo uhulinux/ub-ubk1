@@ -1,1 +1,1 @@
-urllist http://xpenguins.seul.org/ | grep themes | parsever
+u2d http://xpenguins.seul.org/ xpenguins_themes-

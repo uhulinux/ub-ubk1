@@ -1,1 +1,1 @@
-urllist ftp://ftp.ibiblio.org/pub/Linux/games/strategy/ | splitver '^xjig-([0-9.]+).tgz$' | sort -V | tail -n 1
+u2d ftp://ftp.ibiblio.org/pub/Linux/games/strategy/ xjig-

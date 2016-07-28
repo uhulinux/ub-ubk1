@@ -1,1 +1,1 @@
-urllist ftp://ftp.uk.freebsd.org/pub/OpenBSD/distfiles/ | splitver '^libxdg-basedir-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d ftp://ftp.uk.freebsd.org/pub/OpenBSD/distfiles/ libxdg-basedir-

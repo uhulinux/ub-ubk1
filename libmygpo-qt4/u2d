@@ -1,1 +1,1 @@
-urllist http://stefan.derkits.at/files/libmygpo-qt/ | splitver '^libmygpo-qt.([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://stefan.derkits.at/files/libmygpo-qt/ libmygpo-qt.

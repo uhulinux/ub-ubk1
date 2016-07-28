@@ -1,1 +1,1 @@
-urllist http://registry.gimp.org/files/ | splitver '^gimp-webp_([0-9.]+).tar.gz$'
+u2d http://registry.gimp.org/files/ gimp-webp_

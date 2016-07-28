@@ -1,2 +1,2 @@
-urllist http://pkgs.fedoraproject.org/repo/pkgs/xemacs/ | splitver '^xemacs-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://pkgs.fedoraproject.org/repo/pkgs/xemacs/ xemacs-
 

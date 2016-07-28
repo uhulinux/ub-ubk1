@@ -1,1 +1,1 @@
-urllist http://ftp.de.debian.org/debian/pool/main/d/deb-gview/ | splitver '^deb-gview_([0-9.]+).tar.(bz2|gz|xz)$' | sort -V | tail -n 1
+u2d http://ftp.de.debian.org/debian/pool/main/d/deb-gview/ deb-gview_

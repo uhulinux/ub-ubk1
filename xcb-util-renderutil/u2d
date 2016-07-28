@@ -1,1 +1,1 @@
-urllist http://xcb.freedesktop.org/dist/ | splitver '^xcb-util-renderutil-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d http://xcb.freedesktop.org/dist/ xcb-util-renderutil-

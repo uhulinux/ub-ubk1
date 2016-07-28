@@ -1,1 +1,1 @@
-urllist http://search.cpan.org/CPAN/authors/id/J/JA/JASLONG/ | splitver '^Mail-DKIM-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://search.cpan.org/CPAN/authors/id/J/JA/JASLONG/ Mail-DKIM-

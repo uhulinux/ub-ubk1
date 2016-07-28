@@ -1,1 +1,1 @@
-urllist http://download.librdf.org/source/ | splitver '^redland-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d http://download.librdf.org/source/ redland-

@@ -1,2 +1,2 @@
-ver=$(urllist https://github.com/samsaga2/sjasm/releases/ | splitver '^v([0-9.]+).tar.gz$' | sort -V | tail -n 1)
+ver=$(u2d https://github.com/samsaga2/sjasm/releases/)
 if [ $ver ]; then echo "$ver"; else echo 0.42c; fi

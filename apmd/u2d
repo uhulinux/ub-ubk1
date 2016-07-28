@@ -1,1 +1,1 @@
-urllist ftp://ftp.hu.debian.org/debian/pool/main/a/apmd/ | splitver '^apmd_([0-9.]+).orig.tar.gz$' | sort -V | tail -n 1
+u2d ftp://ftp.hu.debian.org/debian/pool/main/a/apmd/ apmd_ .orig

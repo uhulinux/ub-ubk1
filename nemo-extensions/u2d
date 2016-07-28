@@ -1,1 +1,1 @@
-urllist https://github.com/linuxmint/nemo-extensions/releases/ | splitver '^([0-9.x]+)$' | sort -V | tail -n 1
+u2d https://github.com/linuxmint/nemo-extensions/releases/

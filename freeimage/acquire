@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-FreeImage${UB_VERSION}.tar.gz FreeImage-f6d180b/
+FreeImage${UB_VERSION}.tar.gz FreeImage-f6d180b/ :FreeImage
 	 git://github.com/danoli3/FreeImage.git@f6d180b
