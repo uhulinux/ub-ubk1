@@ -1,7 +1,8 @@
 #!/usr/bin/env dl
 
-foo2zjs.tar.gz foo2zjs/
+foo2zjs-${UB_VERSION}.tar.gz foo2zjs/
 	http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+	http://download.ubk.hu/src/misc/
 
 sihp1000.tar.gz
 	http://foo2zjs.rkkda.com/firmware/

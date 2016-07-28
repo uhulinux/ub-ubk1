@@ -1,4 +1,5 @@
-cabextract
+cups-dev
+cups-filters
 ghostscript
 systemd-dev
 tk

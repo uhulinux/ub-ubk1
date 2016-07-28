@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 idesk-extras-${UB_VERSION}.tar.xz idesk-extras-${UB_VERSION}/
+	ftp://ftp.freebsd.ch/gentoo/distfiles/
 	http://dev.gentoo.org/~hasufell/distfiles/

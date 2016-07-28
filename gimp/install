@@ -2,4 +2,4 @@
 
 ub_install
 
-# ln -s /usr/bin/xsane "${UB_INSTALLDIR}/usr/lib/gimp/2.0/plug-ins/xsane"
+ln -s /usr/bin/xsane "${UB_INSTALLDIR}/usr/lib/gimp/2.0/plug-ins/xsane"
