@@ -206,6 +206,7 @@ perl-test-most
 perl-moo
 perl-mail-spf
 perl-libwww
+perl-text-soundex
 perl-ldap
 perl-http-body
 perl-moox-types-mooselike
