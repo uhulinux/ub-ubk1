@@ -1,1 +1,1 @@
-urllist https://sourceforge.net/projects/magyarispell/files/OOo%20Huhyphn/ | grep -E 'v([0-9]+)' | sort -V | tail -n 1 | sed s/v// | sed s/-.*//
+sflist magyarispell OOo%20Huhyphn  | sort -V | tail -n 1 | sed s/v// | sed s/-.*//

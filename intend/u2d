@@ -1,1 +1,1 @@
-urllist https://sourceforge.net/projects/intend/files/Intend%20C/ | grep -E '^([0-9.]+)' | sort -V | tail -n 1 | sed 's/.RC/~RC/' 
+sflist intend Intend%20C | sort -V | tail -n 1 | sed 's/.RC/~RC/' 
