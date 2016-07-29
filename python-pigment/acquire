@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-pigment-python-${UB_VERSION}.tar.gz pigment-python-${UB_VERSION}/
-	ftp://zenlive.mirrors.tds.net/pub/linux/frugalware/frugalware-testing/source/xlib-extra/pigment-python/
+pigment-python-${UB_VERSION}.tar.bz2 pigment-python-${UB_VERSION}/
+	ftp://ftp.ausics.net/slacky/slackware-13.0/libraries/pigment-python/0.3.12/src/
