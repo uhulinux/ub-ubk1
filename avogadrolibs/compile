@@ -11,5 +11,6 @@ cmake \
 	-DUSE_MOLEQUEUE=ON\
 	-DUSE_VTK=OFF\
 	-DCMAKE_BUILD_TYPE=Release \
+	-DHDF5_INCLUDE_DIRS=/usr/include \
 	..
 make
