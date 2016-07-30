@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
-for i in capi20 capiinfo capifax capiinit rcapid; do
+for i in capiinfo capifax; do
 	cd "$i"
 	aclocal
 	libtoolize --force --automake --copy
