@@ -1,0 +1,11 @@
+diff -Naur orig/src/package.cpp patched/src/package.cpp
+--- orig/src/package.cpp	2016-04-15 19:37:56.000000000 +0200
++++ patched/src/package.cpp	2016-07-29 23:14:17.317266775 +0200
+@@ -46,6 +46,7 @@
+ #include <apt-pkg/versionmatch.h>
+ 
+ #include <algorithm>
++#include <random>
+ 
+ // Own includes
+ #include "backend.h"

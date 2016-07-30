@@ -24,7 +24,9 @@ oxygen-icons5
 solid
 sonnet
 threadweaver
+ki18n
 kunitconversion
+kcoreaddons
 kpty
 kimageformats
 kauth
@@ -104,15 +106,12 @@ powerdevil
 sddm-kcm
 systemsettings
 user-manager
-libqapt
-discover
 libkcddb
 k9copy
 libkpmcore
 kpartitionmanager
 kate
 konsole
-krusader
 libkipi
 libksane
 marble
@@ -120,8 +119,10 @@ digikam
 kde5
 kde5-apps
 
+libqapt
+discover
+krusader
 plasma-mediacenter
 k3b
 kaffeine
 tellico
-

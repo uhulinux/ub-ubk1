@@ -7,7 +7,6 @@ kconfig-dev
 kconfigwidgets-dev
 kcoreaddons-dev
 kcrash-dev
-kdelibs4support-dev
 kdoctools
 kfilemetadata-dev
 kguiaddons-dev
@@ -15,12 +14,15 @@ khtml-dev
 ki18n-dev
 kiconthemes-dev
 kio-dev
+kitemmodels-dev
 kjobwidgets-dev
 knewstuff-dev
 kwallet-dev
 kwidgetsaddons-dev
 kxmlgui-dev
 libdiscid-dev
+libkcddb-dev
+libksane-dev
 libxml2-dev
 libxslt-dev
 poppler-qt5-dev
