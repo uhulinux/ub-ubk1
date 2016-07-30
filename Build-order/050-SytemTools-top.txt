@@ -56,7 +56,6 @@ openipmi
 gsmartcontrol
 latencytop
 isdn4k-utils
-estickflashtool
 openocd
 d-feet
 quota

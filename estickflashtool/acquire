@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-eStickFlashTool_v${UB_VERSION}.tgz eStickFlashTool/
-	http://embsys.technikum-wien.at/staff/horauer/estick/sw/
