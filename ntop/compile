@@ -1,8 +1,8 @@
 #!/bin/sh -eux
 
+# rrdtool 1.6.0-tól nincs librrd_th
+sed -i -e 's/rrd_th/rrd/g' configure.in
+
 ub_compile \
-	--enable-sslv3 \
-	--enable-sslwatchdog \
-	--enable-i18n \
 	--localstatedir=/var/lib \
-	--with-tcpwrap
+	--with-rrd-home=/usr
