@@ -1,0 +1,123 @@
+diff -Naur orig/CMakeLists.txt patched/CMakeLists.txt
+--- orig/CMakeLists.txt	2015-03-22 21:27:46.000000000 +0100
++++ patched/CMakeLists.txt	2016-08-01 01:27:12.771171570 +0200
+@@ -86,21 +86,26 @@
+     loc/converseen_ja_JP.ts
+ )
+ 
+-FIND_PACKAGE(Qt4 REQUIRED)
++FIND_PACKAGE(Qt5Core REQUIRED)
++FIND_PACKAGE(Qt5Gui REQUIRED)
++FIND_PACKAGE(Qt5Network REQUIRED)
++FIND_PACKAGE(Qt5Widgets REQUIRED)
++FIND_PACKAGE(Qt5LinguistTools REQUIRED)
+ FIND_PACKAGE(ImageMagick REQUIRED)
+ FIND_PACKAGE(ImageMagick COMPONENTS Magick++)
+ FIND_PACKAGE(ImageMagick COMPONENTS MagickWand)
+ FIND_PACKAGE(ImageMagick COMPONENTS MagickCore)
+ 
+-INCLUDE(${QT_USE_FILE})
+-QT4_WRAP_UI(converseen_UIS_H ${converseen_UIS})  
+-QT4_WRAP_CPP(converseen_MOC_SRCS ${converseen_MOC_HDRS})  
+-QT4_ADD_RESOURCES(converseen_RESOURCES ${converseen_RESOURCES})
+-QT4_ADD_TRANSLATION(converseen_RESOURCES ${converseen_LANG}) 
++# INCLUDE(${QT_USE_FILE})
++QT5_WRAP_UI(converseen_UIS_H ${converseen_UIS})
++QT5_WRAP_CPP(converseen_MOC_SRCS ${converseen_MOC_HDRS})
++QT5_ADD_RESOURCES(converseen_RESOURCES ${converseen_RESOURCES})
++QT5_ADD_TRANSLATION(converseen_RESOURCES ${converseen_LANG})
+ 
+ ADD_DEFINITIONS(
+ 	-Wall
+ 	-W
++	-std=c++11
+ 	-DMAGICKCORE_HDRI_ENABLE=0
+ 	-DMAGICKCORE_QUANTUM_DEPTH=16
+ 	${QT_DEFINITIONS}
+diff -Naur orig/converseen.pro patched/converseen.pro
+--- orig/converseen.pro	2015-03-22 21:27:46.000000000 +0100
++++ patched/converseen.pro	2016-08-01 01:10:08.695036275 +0200
+@@ -1,5 +1,5 @@
+ TEMPLATE = app
+-QT = gui core network
++QT = gui core network widgets
+ CONFIG += qt \
+  release \
+  warn_on \
+diff -Naur orig/src/inisettings.cpp patched/src/inisettings.cpp
+--- orig/src/inisettings.cpp	2015-03-22 21:27:46.000000000 +0100
++++ patched/src/inisettings.cpp	2016-08-01 00:31:34.011049892 +0200
+@@ -22,7 +22,7 @@
+ */
+ 
+ #include <QDir>
+-#include <QDesktopServices>
++#include <QStandardPaths>
+ #include "inisettings.h"
+ 
+ #define INIFILENAME ".converseen.conf"
+@@ -37,7 +37,7 @@
+ 
+ void IniSettings::init()
+ {
+-	QString myPath =  QDesktopServices::storageLocation(QDesktopServices::DataLocation);
++	QString myPath =  QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+ 	QString iniPath = QString("%1/%2").arg(myPath).arg(INIFILENAME);
+ 
+     settings = new QSettings(iniPath, QSettings::IniFormat);
+diff -Naur orig/src/main.cpp patched/src/main.cpp
+--- orig/src/main.cpp	2015-03-22 21:27:46.000000000 +0100
++++ patched/src/main.cpp	2016-07-31 23:41:59.200738349 +0200
+@@ -35,8 +35,6 @@
+ 
+     QCoreApplication::setApplicationVersion(globals::VERSION);
+ 
+-    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+ 
+     QApplication app( argc, argv );
+diff -Naur orig/src/mainwindowimpl.cpp patched/src/mainwindowimpl.cpp
+--- orig/src/mainwindowimpl.cpp	2015-03-22 21:27:46.000000000 +0100
++++ patched/src/mainwindowimpl.cpp	2016-07-31 23:34:16.277287360 +0200
+@@ -40,7 +40,7 @@
+ 
+ // TODO: Inserire funzione per sostituire tutte le immagini
+ 
+-MainWindowImpl::MainWindowImpl(QWidget * parent, Qt::WFlags f)
++MainWindowImpl::MainWindowImpl(QWidget * parent, Qt::WindowFlags f)
+     : QMainWindow(parent, f)
+ {
+     setupUi(this);
+@@ -93,7 +93,7 @@
+     adjustSize();
+     dockWidget->adjustSize();
+ 
+-    treeWidget->header()->setResizeMode(0, QHeaderView::ResizeToContents);
++    treeWidget->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+ 
+     loadOptions();
+ 
+diff -Naur orig/src/mainwindowimpl.h patched/src/mainwindowimpl.h
+--- orig/src/mainwindowimpl.h	2015-03-22 21:27:46.000000000 +0100
++++ patched/src/mainwindowimpl.h	2016-07-31 23:29:01.772178343 +0200
+@@ -49,7 +49,7 @@
+ {
+     Q_OBJECT
+ public:
+-    MainWindowImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
++    MainWindowImpl( QWidget * parent = 0, Qt::WindowFlags f = 0 );
+     ~MainWindowImpl();
+     void importListFromArgv(QString fileName);
+ 
+diff -Naur orig/src/pixtreewidget.cpp patched/src/pixtreewidget.cpp
+--- orig/src/pixtreewidget.cpp	2015-03-22 21:27:46.000000000 +0100
++++ patched/src/pixtreewidget.cpp	2016-08-01 00:20:20.621608325 +0200
+@@ -27,6 +27,7 @@
+ #include <QDragMoveEvent>
+ #include <QDir>
+ #include <QFileInfo>
++#include <QMimeData>
+ #include <QUrl>
+ #include "pixtreewidget.h"
+ #include "formats.h"

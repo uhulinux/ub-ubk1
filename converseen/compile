@@ -1,15 +1,9 @@
 #!/bin/sh -eux
 
-export QTDIR="/usr/lib/qt4"
+qmake-qt5 \
+	PREFIX="/usr" \
+	INSTALL_ROOT="$UB_INSTALLDIR" \
+	QMAKE_LFLAGS="-Wl,--as-needed"
 
-#qmake-qt4
-cmake \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DImageMagick_Magick++_INCLUDE_DIR:PATH=/usr/include/ImageMagick-6 \
-	-DImageMagick_MagickWand_INCLUDE_DIR:PATH=/usr/include/ImageMagick-6 \
-	-DImageMagick_MagickCore_INCLUDE_DIR:PATH=/usr/include/ImageMagick-6 \
-	-DImageMagick_Magick++_LIBRARY:FILEPATH=/usr/lib/libMagick++-6.Q16HDRI.so \
-	-DImageMagick_MagickWand_LIBRARY:FILEPATH=/usr/lib/libMagickWand-6.Q16HDRI.so \
-	-DImageMagick_MagickCore_LIBRARY:FILEPATH=/usr/lib/libMagickCore-6.Q16HDRI.so
-make
+ub_make
+
