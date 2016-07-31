@@ -1,6 +1,5 @@
 mate-panel
 pygobject
-pygtk
 python-apt
 python-xlib
 pyxdg
