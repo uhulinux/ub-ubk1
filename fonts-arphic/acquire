@@ -2,7 +2,8 @@
 
 ttf-arphic-uming_${UB_VERSION}.orig.tar.gz . :uming
 	http://archive.ubuntu.com/ubuntu/pool/main/t/ttf-arphic-uming/
+	https://launchpad.net/ubuntu/+archive/primary/+files/
 
 ttf-arphic-ukai_${UB_VERSION}.orig.tar.gz . :ukai
 	http://archive.ubuntu.com/ubuntu/pool/main/t/ttf-arphic-ukai/
-
+	https://launchpad.net/ubuntu/+archive/primary/+files/
