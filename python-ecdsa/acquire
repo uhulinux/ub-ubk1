@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ecdsa-${UB_VERSION}.tar.gz ecdsa-${UB_VERSION}/
+	http://pypi.python.org/packages/source/e/ecdsa/

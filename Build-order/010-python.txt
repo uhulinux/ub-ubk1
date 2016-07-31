@@ -97,6 +97,7 @@ python-dateutil
 python-decorator
 python-distutils-extra
 python-docutils
+python-ecdsa
 python-elib.intl
 python-elixir
 python-flask
