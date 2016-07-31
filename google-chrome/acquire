@@ -1,6 +1,7 @@
 #!/usr/bin/env dl
 
 google-chrome-stable-${UB_VERSION}-1.i386.rpm .
+	https://img.cs.montana.edu/linux/fedora/local/23/i386/google-chrome-stable-${UB_VERSION}-1.i386.rpm
 	https://repo.fdzh.org/chrome/rpm/i386/
 	http://mirror.pcbeta.com/google/rpm/i386/google-chrome32/
 	https://dl.google.com/linux/chrome/rpm/stable/i386/
