@@ -1,21 +1,3 @@
-diff -Naur orig/CMakeLists.txt mod/CMakeLists.txt
---- orig/CMakeLists.txt	2010-04-10 13:03:21.000000000 +0200
-+++ mod/CMakeLists.txt	2016-01-24 22:19:09.012247720 +0100
-@@ -160,12 +160,12 @@
- 
- 
- 
--SET(CMAKE_INSTALL_PREFIX "/usr/local")
-+SET(CMAKE_INSTALL_PREFIX "/usr")
- SET(SHAREDIR "share/extcalc/data")
- SET(DOCDIR "share/extcalc/doc")
- SET(DESKTOPDIR "share/applications")
- SET(ICONDIR "share/icons")
--SET(MANDIR "/usr/man")
-+SET(MANDIR "/usr/share/man")
- SET(BINDIR "bin")
- ADD_DEFINITIONS(-DINSTALLDIR=\"\\\"${CMAKE_INSTALL_PREFIX}/share/extcalc\\\"\")
- 
 diff -Naur orig/share/extcalc.desktop mod/share/extcalc.desktop
 --- orig/share/extcalc.desktop	2010-04-09 18:13:47.000000000 +0200
 +++ mod/share/extcalc.desktop	2016-01-24 21:59:37.647786009 +0100
