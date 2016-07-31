@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+v${UB_VERSION}.tar.gz caja-ideviceinfo-1529b49/
+	git+https://bitbucket.org/ubuntu-mate/caja-ideviceinfo.git@1529b49
+#	https://bitbucket.org/ubuntu-mate/caja-ideviceinfo/get/
