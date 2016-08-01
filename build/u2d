@@ -1,1 +1,1 @@
-u2d https://github.com/uhulinux/build/releases/
+urllist https://github.com/uhulinux/build/releases/ | splitver '^([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
