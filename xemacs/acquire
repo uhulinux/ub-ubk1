@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 xemacs-${UB_VERSION}.tar.gz xemacs-${UB_VERSION}/
-	http://pkgs.fedoraproject.org/repo/pkgs/xemacs/
+	http://pkgs.fedoraproject.org/repo/pkgs/xemacs/xemacs-${UB_VERSION}.tar.gz/e093150724b6e55b14bae21739cfe373/

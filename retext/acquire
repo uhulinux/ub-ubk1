@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
+#${UB_VERSION}.tar.gz retext-${UB_VERSION}/
+#	https://github.com/retext-project/retext/archive/
+
 ReText-${UB_VERSION}.tar.gz ReText-${UB_VERSION}/
-	http://downloads.sourceforge.net/retext/
+	https://sourceforge.net/projects/retext/files/ReText-${UB_VERSION_HEAD2}/

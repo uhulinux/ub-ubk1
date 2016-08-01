@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 scite${UB_VERSION//./}.tgz .
-	http://downloads.sourceforge.net/scintilla/
+	https://sourceforge.net/projects/scintilla/files/SciTE/${UB_VERSION}/

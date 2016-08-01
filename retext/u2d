@@ -1,1 +1,1 @@
-sflist retext ReText-4.0 | splitver '^ReText-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+u2d https://github.com/retext-project/retext/releases/ | sort -V | tail -n 1

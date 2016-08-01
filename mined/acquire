@@ -1,7 +1,4 @@
 #!/usr/bin/env dl
 
 mined-${UB_VERSION}.tar.gz mined-${UB_VERSION}/
-    http://sourceforge.net/projects/mined/files/mined/
-    https://sourceforge.net/projects/mined/files/mined/mined%20${UB_VERSION}/mined-${UB_VERSION}.tar.gz/download
-    http://netcologne.dl.sourceforge.net/project/mined/mined/mined%20${UB_VERSION}/
- 
+    https://sourceforge.net/projects/mined/files/mined/mined%20${UB_VERSION}/
