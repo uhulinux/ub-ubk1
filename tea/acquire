@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-tea-${UB_VERSION}.tar.bz2 tea-${UB_VERSION}/
-	http://semiletov.org/tea/dloads/
+tea_${UB_VERSION}.orig.tar.bz2 tea-${UB_VERSION}/
+	http://http.debian.net/debian/pool/main/t/tea/
