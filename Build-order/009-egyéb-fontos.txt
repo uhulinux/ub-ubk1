@@ -62,7 +62,6 @@ webkit2gtk
 seed
 neon
 fltk
-fltk1
 gnome2-mime-data
 tevent
 ldb
