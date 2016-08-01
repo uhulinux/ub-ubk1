@@ -12,7 +12,6 @@ libsm-dev
 libwnck-dev
 libxslt-dev
 mate-common
-mate-desktop-dev
 mate-panel-dev
 mate-settings-daemon-dev
 networkmanager-dev

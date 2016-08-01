@@ -6,7 +6,6 @@ itstool
 libcanberra-dev
 libnotify-dev
 libsm-dev
-libunique-dev
 libxslt-dev
 mate-common
 mate-desktop-dev
