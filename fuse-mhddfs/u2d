@@ -1,1 +1,0 @@
-urllist http://mhddfs.uvw.ru/downloads/ | splitver '^mhddfs_([0-9.]+).tar.gz$' | sort -V | tail -n 1
