@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cd /usr/share/doc/fltk1/examples
-./demo

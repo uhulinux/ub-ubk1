@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=FLTK1 Demo
-Name[hu]=FLTK1 demó
-Comment=FLTK1 Examples
-Comment[hu]=FLTK1 példák
-Icon= fluid
-Exec=fltk1-demo
-Categories=Development;GUIDesigner;
