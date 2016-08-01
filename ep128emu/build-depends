@@ -1,9 +1,13 @@
 dotconf-dev
-fltk1-dev
+fltk-dev
+fontconfig-dev
 glu-dev
+imagemagick
 jack-dev
 libjpeg-dev
 libsndfile-dev
+libxft-dev
+libxinerama-dev
 lua-dev
 portaudio-dev
 scons

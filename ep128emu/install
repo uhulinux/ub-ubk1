@@ -1,22 +1,24 @@
 #!/bin/sh -eux
 
-celdir="$UB_INSTALLDIR"/usr/share/ep128/
-install -d -m 0775 "$celdir"/roms  "$celdir"/disk "$celdir"/config
+DESTDIR="$UB_INSTALLDIR"
+BINDIR="$DESTDIR"/usr/bin
+DATADIR="$DESTDIR"/usr/share/ep128
+PIXMAPDIR="$DESTDIR"/usr/share/pixmaps
+DESKTOPDIR="$DESTDIR"/usr/share/applications
+
+#célkönyvtárak
+mkdir -p "$BINDIR" "$PIXMAPDIR" "$DESKTOPDIR" "$DATADIR"/{roms,disk,config}
+
 mv ep128emu_roms.bin roms/
-cp ep128emu  tapeedit "$UB_INSTALLDIR"/usr/bin
-cp -r roms  config disk "$celdir"
-cp makecfg "$celdir"/makecfg.bin
-usrbin="$UB_INSTALLDIR"/usr/bin/makecfg
-bashstr='#!/bin/bash
-if test ! -d ~/.ep128emu/roms
-then
-mkdir -p ~/.ep128emu/roms
-cp /usr/share/ep128/roms/ep128emu_roms.bin ~/.ep128emu/roms
-fi
-/usr/share/ep128/makecfg.bin'
-# bash indító
-for sorok in "$bashstr"
-	do
-	echo "$sorok" >"$usrbin"
-	done
-chmod +x "$usrbin"
+cp -r roms config disk "$DATADIR"/
+cp resource/*.desktop "$DESKTOPDIR"/
+cp ep128emu tapeedit resource/{zx128emu,cpc464emu} "$BINDIR"/
+
+#ico fájlok konverziója
+convert resource/ep128emu.ico $PIXMAPDIR/ep128emu.png
+convert resource/zx128emu.ico $PIXMAPDIR/zx128emu.png
+convert resource/cpc464em.ico $PIXMAPDIR/cpc464emu.png
+convert resource/tapeedit.ico $PIXMAPDIR/tapeedit.png
+
+#makecfg wrapper célja
+mv makecfg "$DATADIR"/makecfg.bin

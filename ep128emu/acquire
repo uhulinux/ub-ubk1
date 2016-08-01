@@ -3,5 +3,8 @@
 ep128emu_roms.bin 
 	http://ep128emu.enterpriseforever.com/roms/
 
-ep128emu-${UB_VERSION}.tar.bz2 ep128emu-${UB_VERSION}/
-	http://sourceforge.net/projects/ep128emu/files/ep128emu2/ep128emu-${UB_VERSION}/
+#ep128emu-${UB_VERSION}.tar.bz2 ep128emu-${UB_VERSION}/
+#	http://sourceforge.net/projects/ep128emu/files/ep128emu2/ep128emu-${UB_VERSION}/
+
+ep128emu-${UB_VERSION}.tar.gz ep128emu-f147c61/
+	git://github.com/lgblgblgb/ep128emu.git@f147c61
