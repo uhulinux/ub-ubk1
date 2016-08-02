@@ -78,4 +78,5 @@ wayland-protocols
 libunwind
 rpm
 uhubuild
+build
 libsodium

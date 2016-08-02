@@ -51,13 +51,11 @@ cgdb
 runsnakerun
 transifex-client
 aaphoto
-uhubuild
 exif
 dmd2
 intend
 lupe
 hgsubversion
-build
 cursor-theme-x.org
 sweethome3d
 jgrasp
