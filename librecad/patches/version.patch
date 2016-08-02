@@ -1,0 +1,12 @@
+diff -Naur orig/librecad/src/src.pro patched/librecad/src/src.pro
+--- orig/librecad/src/src.pro	2016-06-20 20:43:27.000000000 +0200
++++ patched/librecad/src/src.pro	2016-08-02 05:31:44.385030795 +0200
+@@ -10,7 +10,7 @@
+ DEFINES += DWGSUPPORT
+ DEFINES -= JWW_WRITE_SUPPORT
+ 
+-LC_VERSION="2.1.0"
++LC_VERSION="2.1.1"
+ 
+ # Store intermedia stuff somewhere else
+ GENERATED_DIR = ../../generated/librecad
