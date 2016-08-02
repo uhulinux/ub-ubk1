@@ -1,4 +1,4 @@
-squiacpid
+acpid
 alien
 bluez-firmware
 brainfuck
