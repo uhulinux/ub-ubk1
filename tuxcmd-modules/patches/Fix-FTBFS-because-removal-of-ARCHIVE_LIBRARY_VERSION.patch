@@ -1,6 +1,9 @@
 Description: Fix build failure because of removal of ARCHIVE_LIBRARY_VERSION.
  Use ARCHIVE_VERSION_STRING instead.
+Bug-Debian: http://bugs.debian.org/653233
+Forwarded: not-needed
 Author: Andres Mejia <amejia@debian.org>
+Last-Update: 2011-12-25
 
 --- a/libarchive/libarchive.c
 +++ b/libarchive/libarchive.c
