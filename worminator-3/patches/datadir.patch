@@ -1,6 +1,6 @@
-diff -Naur orig/globals.h mod/globals.h
+diff -Nur orig/globals.h mod/globals.h
 --- orig/globals.h	2006-02-26 22:30:18.000000000 +0100
-+++ mod/globals.h	2007-11-25 17:10:35.000000000 +0100
++++ mod/globals.h	2016-08-02 22:36:12.847724374 +0200
 @@ -83,7 +83,7 @@
  #define MAX_CONSOLE_LINE_LENGTH 512
  
