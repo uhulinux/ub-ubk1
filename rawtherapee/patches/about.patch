@@ -1,6 +1,6 @@
-diff -Naur orig/AboutThisBuild.cmake patched/AboutThisBuild.cmake
---- orig/AboutThisBuild.cmake	2016-05-04 13:12:05.000000000 +0200
-+++ patched/AboutThisBuild.cmake	2016-05-04 19:47:38.721035397 +0200
+diff -Naur RawTherapee-g26d182d-orig/AboutThisBuild.cmake RawTherapee-g26d182d/AboutThisBuild.cmake
+--- RawTherapee-g26d182d-orig/AboutThisBuild.cmake	2016-08-02 19:40:20.000000000 +0200
++++ RawTherapee-g26d182d/AboutThisBuild.cmake	2016-08-02 19:47:38.874417902 +0200
 @@ -1,50 +1,9 @@
  # cmakefile executed within a makefile target
  
@@ -9,13 +9,13 @@ diff -Naur orig/AboutThisBuild.cmake patched/AboutThisBuild.cmake
 -if (REL_INFO_FILE STREQUAL REL_INFO_FILE-NOTFOUND)
 -    # we look for the git command in this paths by order of preference
 -    if (WIN32)
--        find_file(GIT_CMD git.exe HINTS ENV Path PATH_SUFFIXES ../)
+-        find_program(GIT_CMD git.exe HINTS ENV Path PATH_SUFFIXES ../)
 -    elseif (APPLE)
--        find_file(GIT_CMD git PATHS "/opt/local/bin" "/usr/local/bin" "/usr/bin")
--        find_file(GIT_CMD git)
+-        find_program(GIT_CMD git PATHS "/opt/local/bin" "/usr/local/bin" "/usr/bin")
+-        find_program(GIT_CMD git)
 -        set (SHELL "/bin/bash")
 -    else (WIN32) # Linux
--        find_file(GIT_CMD git)
+-        find_program(GIT_CMD git)
 -        set (SHELL "/bin/bash")
 -    endif (WIN32)
 -
@@ -54,9 +54,9 @@ diff -Naur orig/AboutThisBuild.cmake patched/AboutThisBuild.cmake
  endif ()
  
  # build version.h from template
-diff -Naur orig/rtgui/version.h.in patched/rtgui/version.h.in
---- orig/rtgui/version.h.in	2016-05-04 13:12:05.000000000 +0200
-+++ patched/rtgui/version.h.in	2016-05-04 19:35:22.409384224 +0200
+diff -Naur RawTherapee-g26d182d-orig/rtgui/version.h.in RawTherapee-g26d182d/rtgui/version.h.in
+--- RawTherapee-g26d182d-orig/rtgui/version.h.in	2016-08-02 19:40:20.000000000 +0200
++++ RawTherapee-g26d182d/rtgui/version.h.in	2016-08-02 19:48:33.242415628 +0200
 @@ -6,7 +6,7 @@
  
  #define VERSION "${GIT_VERSION}"
