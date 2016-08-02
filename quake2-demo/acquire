@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 q2-${UB_VERSION}-demo-x86.exe
+      ftp://ftp.gamers.org/pub/games/idgames2/idstuff/quake2/
       ftp://ftp.idsoftware.com/idstuff/quake2/
