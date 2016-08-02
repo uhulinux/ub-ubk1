@@ -1,4 +1,4 @@
-acpid
+squiacpid
 alien
 bluez-firmware
 brainfuck
@@ -23,7 +23,7 @@ rbldnsd
 reps
 screen
 sleuthkit
-squirrel2
+squirrel
 sysklogd
 udftools
 vblade

@@ -102,7 +102,7 @@ promoe
 viking
 python3-eric5
 avogadro
-avigadro2
+avogadro2
 aeskulap
 gv
 dia
