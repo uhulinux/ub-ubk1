@@ -33,6 +33,7 @@ tdb
 libogg
 libvorbis
 speex
+speexdsp
 lirc
 fftw3
 id3lib
