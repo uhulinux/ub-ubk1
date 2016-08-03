@@ -4,3 +4,4 @@ libjpeg-dev
 openal-dev
 sdl-dev
 speex-dev
+speexdsp-dev

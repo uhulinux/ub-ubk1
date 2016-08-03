@@ -1,6 +1,6 @@
-diff -Naur orig/Makefile.am mod/Makefile.am
+diff -Nur orig/Makefile.am mod/Makefile.am
 --- orig/Makefile.am	2011-09-14 01:33:32.000000000 +0200
-+++ mod/Makefile.am	2013-08-11 16:30:59.000000000 +0200
++++ mod/Makefile.am	2016-08-03 15:00:46.437327478 +0200
 @@ -16,12 +16,6 @@
  dist-hook:
  	mkdir -p $(distdir)/data
