@@ -1,1 +1,1 @@
-urllist http://gcompris.net/download/ | splitver '^gcompris-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d http://gcompris.net/download/gtk/src/
