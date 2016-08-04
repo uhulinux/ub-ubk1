@@ -2,6 +2,7 @@ cmake
 curl-dev
 ffmpeg-dev
 jasper-dev
+librsvg-dev
 libungif-dev
 libvncserver-dev
 mesa-dev
