@@ -1,3 +1,5 @@
 #!/bin/sh -eux
 
+sed "s%install_prefix.*%${UB_INSTALLDIR}%g" -i configure
+./configure
 ub_install
