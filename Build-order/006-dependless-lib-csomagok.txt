@@ -60,3 +60,4 @@ libyaml
 libzip
 libcfitsio
 libnova
+spglib

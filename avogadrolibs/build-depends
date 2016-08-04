@@ -4,3 +4,5 @@ glew-dev
 hdf5
 molequeue
 qt5-dev
+spglib
+spglib-dev

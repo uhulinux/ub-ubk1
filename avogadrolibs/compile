@@ -12,5 +12,9 @@ cmake \
 	-DUSE_VTK=OFF\
 	-DCMAKE_BUILD_TYPE=Release \
 	-DHDF5_INCLUDE_DIRS=/usr/include \
+	-DSPGLIB_INCLUDE_DIR=/usr/include/spglib \
+	-DSPGLIB_LIBRARY=/usr/lib/libsymspg.so.0 \
+	-DUSE_QT=ON \
 	..
+sed s/-lQt5OpenGL//g -i avogadro/qtplugins/CMakeFiles/AvogadroQtPlugins.dir/link.txt
 make
