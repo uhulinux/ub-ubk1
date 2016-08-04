@@ -1,8 +1,0 @@
-#!/bin/sh
-
-echo "user belövése... :)"
-find . -type f -exec chown rezso:users {} \;
-#find . -type f -exec chmod 644 {} \;
-find . -type d -exec chown rezso:users {} \;
-#find . -type d -exec chmod 755 {} \;
-echo "kész."
