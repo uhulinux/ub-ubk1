@@ -1,0 +1,45 @@
+diff -Naur orig/extern/osgQt/GraphicsWindowQt patched/extern/osgQt/GraphicsWindowQt
+--- orig/extern/osgQt/GraphicsWindowQt	2016-04-06 13:40:42.000000000 +0200
++++ patched/extern/osgQt/GraphicsWindowQt	2016-08-04 08:12:06.000000000 +0200
+@@ -37,9 +37,6 @@
+ // forward declarations
+ class GraphicsWindowQt;
+ 
+-/// The function sets the WindowingSystem to Qt.
+-void initQtWindowingSystem();
+-
+ /** The function sets the viewer that will be used after entering
+  *  the Qt main loop (QCoreApplication::exec()).
+  *
+diff -Naur orig/extern/osgQt/GraphicsWindowQt.cpp patched/extern/osgQt/GraphicsWindowQt.cpp
+--- orig/extern/osgQt/GraphicsWindowQt.cpp	2016-04-06 13:40:42.000000000 +0200
++++ patched/extern/osgQt/GraphicsWindowQt.cpp	2016-08-04 08:12:06.000000000 +0200
+@@ -245,7 +245,6 @@
+     // initialize widget properties
+     _widget->setAutoBufferSwap( false );
+     _widget->setMouseTracking( true );
+-    _widget->setFocusPolicy( Qt::WheelFocus );
+     _widget->setGraphicsWindow( this );
+     useCursor( _traits->useCursor );
+ 
+@@ -639,20 +638,6 @@
+ };
+ 
+ 
+-// declare C entry point for static compilation.
+-extern "C" void graphicswindow_Qt(void)
+-{
+-    osg::GraphicsContext::setWindowingSystemInterface(QtWindowingSystem::getInterface());
+-}
+-
+-
+-void osgQt::initQtWindowingSystem()
+-{
+-    graphicswindow_Qt();
+-}
+-
+-
+-
+ void osgQt::setViewer( osgViewer::ViewerBase *viewer )
+ {
+     HeartBeat::instance()->init( viewer );
