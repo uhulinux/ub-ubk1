@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-distcc-${UB_VERSION}.tar.gz distcc-${UB_VERSION}/
+distcc-${UB_VERSION}.tar.gz distcc-distcc-${UB_VERSION}/
 	https://github.com/distcc/distcc/archive/

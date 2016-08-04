@@ -1,5 +1,10 @@
 #!/bin/sh -eux
 
-ub_compile \
-	--with-gnome \
+./autogen.sh
+ ./configure --prefix=/usr \
+	--with-gtk \
+	--sysconfdir=/etc \
+	--mandir=/usr/share/man \
+	--enable-rfc2553 \
 	--disable-Werror
+make
