@@ -1,14 +1,4 @@
+boost-dev
 enchant-dev
-fontconfig-dev
-freetype2-dev
-glib-dev
-libpng-dev
-libsm-dev
-libx11-dev
-libxi-dev
-libxinerama-dev
-libxrandr-dev
-libxrender-dev
-openssl-dev
-python
-qt4-dev
+python3-dev
+qt5-dev
