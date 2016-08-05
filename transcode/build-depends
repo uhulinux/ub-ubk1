@@ -6,7 +6,7 @@ fftw3-dev
 fontconfig-dev
 freetype2-dev
 graphviz-dev
-imagemagick-dev
+imagemagick6-dev
 jasper-dev
 liba52-dev
 libdv-dev
