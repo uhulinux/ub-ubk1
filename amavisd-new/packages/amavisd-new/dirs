@@ -1,8 +1,8 @@
-/etc/amavisd.d/
+/etc/amavisd.d
 /var/lib/amavis
 /var/lib/amavis/db
 /var/lib/amavis/tmp
 /var/lib/amavis/virusmails
-/var/lock/amavis/
-/var/log/amavis/
-/var/run/amavis/
+/var/lock/amavis
+/var/log/amavis
+/var/run/amavis
