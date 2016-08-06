@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-smssend-${UB_VERSION}.tar.gz smssend/
-	 http://ftp.nsysu.edu.tw/FreeBSD/ports/local-distfiles/laszlof/

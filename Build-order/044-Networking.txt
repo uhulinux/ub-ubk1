@@ -6,6 +6,5 @@ gufw
 belle-sip
 linphone
 skyutils
-smssend
 lzop
 amavisd-new
