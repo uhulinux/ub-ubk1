@@ -1,6 +1,6 @@
 diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firefox.js
---- orig/browser/app/profile/firefox.js	2016-03-03 22:47:48.000000000 +0100
-+++ patched/browser/app/profile/firefox.js	2016-03-09 17:58:05.834376641 +0100
+--- orig/browser/app/profile/firefox.js	2016-08-06 16:35:22.569753227 +0200
++++ patched/browser/app/profile/firefox.js	2016-08-06 16:21:10.000000000 +0200
 @@ -21,6 +21,9 @@
  #endif
  #endif
@@ -11,7 +11,7 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  pref("browser.chromeURL","chrome://browser/content/");
  pref("browser.hiddenWindowChromeURL", "chrome://browser/content/hiddenWindow.xul");
  
-@@ -74,7 +77,8 @@
+@@ -94,7 +97,8 @@
  
  // Disable add-ons that are not installed by the user in all scopes by default.
  // See the SCOPE constants in AddonManager.jsm for values to use here.
@@ -19,9 +19,9 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
 +pref("extensions.autoDisableScopes", 0);
 +pref("extensions.shownSelectionUI", true);
  
- // Require signed add-ons by default
- pref("xpinstall.signatures.required", true);
-@@ -121,12 +125,12 @@
+ // Add-on content security policies.
+ pref("extensions.webextensions.base-content-security-policy", "script-src 'self' https://* moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' https://* moz-extension: blob: filesystem:;");
+@@ -145,12 +149,12 @@
  pref("app.update.cert.checkAttributes", false);
  
  // Whether or not app updates are enabled
@@ -36,7 +36,7 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  
  // See chart in nsUpdateService.js source for more details
  pref("app.update.mode", 1);
-@@ -275,7 +279,7 @@
+@@ -301,7 +305,7 @@
  #endif
  
  // Control autoFill behavior
@@ -44,8 +44,8 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
 +pref("browser.urlbar.autoFill", false);
  pref("browser.urlbar.autoFill.typed", true);
  
- pref("browser.urlbar.unifiedcomplete", true);
-@@ -323,7 +327,7 @@
+ // 0: Match anywhere (e.g., middle of words)
+@@ -351,7 +355,7 @@
  pref("browser.urlbar.suggest.history.onlyTyped",    false);
  
  pref("browser.urlbar.formatting.enabled", true);
@@ -54,7 +54,7 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  
  pref("browser.altClickSave", false);
  
-@@ -853,11 +857,7 @@
+@@ -698,11 +702,7 @@
  // 0 goes Back/Forward
  // 1 act like PgUp/PgDown
  // 2 and other values, nothing
