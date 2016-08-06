@@ -3,5 +3,6 @@
 ${UB_VERSION}.tar.gz stuntrally-${UB_VERSION}/
 	https://github.com/stuntrally/stuntrally/archive/
 
-${UB_VERSION}.zip tracks-${UB_VERSION}/ :data/tracks
-	https://github.com/stuntrally/tracks/archive/
+tracks-${UB_VERSION}.zip tracks-${UB_VERSION}/ :data/tracks
+	https://github.com/stuntrally/tracks/archive/${UB_VERSION}.zip
+
