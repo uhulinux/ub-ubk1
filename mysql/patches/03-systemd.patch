@@ -1,7 +1,7 @@
 diff -Naur orig/cmake/systemd.cmake patched/cmake/systemd.cmake
---- orig/cmake/systemd.cmake	2015-12-23 16:33:29.000000000 +0100
-+++ patched/cmake/systemd.cmake	2015-12-25 04:11:04.834818850 +0100
-@@ -62,8 +62,7 @@
+--- orig/cmake/systemd.cmake	2016-07-14 03:10:16.000000000 +0200
++++ patched/cmake/systemd.cmake	2016-08-07 00:39:12.072371020 +0200
+@@ -63,8 +63,7 @@
                                 ${INSTALL_SYSTEMD_UNITDIR}/mariadb@.service
                                 ${INSTALL_SYSTEMD_UNITDIR}/mariadb@bootstrap.service.d/use_galera_new_cluster.conf")
          IF(DEB)
@@ -12,8 +12,8 @@ diff -Naur orig/cmake/systemd.cmake patched/cmake/systemd.cmake
          MESSAGE(STATUS "Systemd features enabled")
        ELSE()
 diff -Naur orig/support-files/mariadb.service.in patched/support-files/mariadb.service.in
---- orig/support-files/mariadb.service.in	2015-12-23 16:33:33.000000000 +0100
-+++ patched/support-files/mariadb.service.in	2015-12-25 04:12:11.495149400 +0100
+--- orig/support-files/mariadb.service.in	2016-07-14 03:10:31.000000000 +0200
++++ patched/support-files/mariadb.service.in	2016-08-07 00:41:06.990276766 +0200
 @@ -15,7 +15,6 @@
  [Unit]
  Description=MariaDB database server
@@ -22,17 +22,17 @@ diff -Naur orig/support-files/mariadb.service.in patched/support-files/mariadb.s
  
  [Install]
  WantedBy=multi-user.target
-@@ -56,7 +55,6 @@
+@@ -74,7 +73,6 @@
  # Use the [service] section and Environment="MYSQLD_OPTS=...".
  # This isn't a replacement for my.cnf.
  # _WSREP_NEW_CLUSTER is for the exclusive use of the script galera_new_cluster
 -@SYSTEMD_EXECSTARTPRE@
- ExecStart=/usr/sbin/mysqld $MYSQLD_OPTS $_WSREP_NEW_CLUSTER
+ ExecStart=/usr/sbin/mysqld $MYSQLD_OPTS $_WSREP_NEW_CLUSTER $_WSREP_START_POSITION
  @SYSTEMD_EXECSTARTPOST@
  
 diff -Naur orig/support-files/mariadb@.service.in patched/support-files/mariadb@.service.in
---- orig/support-files/mariadb@.service.in	2015-12-23 16:33:33.000000000 +0100
-+++ patched/support-files/mariadb@.service.in	2015-12-25 04:12:59.751388690 +0100
+--- orig/support-files/mariadb@.service.in	2016-07-14 03:10:31.000000000 +0200
++++ patched/support-files/mariadb@.service.in	2016-08-07 00:39:12.076371086 +0200
 @@ -20,7 +20,6 @@
  [Unit]
  Description=MariaDB database server

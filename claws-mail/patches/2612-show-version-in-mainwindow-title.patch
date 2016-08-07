@@ -1,7 +1,7 @@
 diff -Naur orig/src/mainwindow.c patched/src/mainwindow.c
---- orig/src/mainwindow.c	2015-12-15 02:48:05.000000000 +0100
-+++ patched/src/mainwindow.c	2015-12-19 06:18:13.914870783 +0100
-@@ -1453,7 +1453,7 @@
+--- orig/src/mainwindow.c	2016-07-23 03:28:54.000000000 +0200
++++ patched/src/mainwindow.c	2016-07-24 14:27:36.998755872 +0200
+@@ -1460,7 +1460,7 @@
  
  	/* main window */
  	window = GTK_WIDGET(gtkut_window_new(GTK_WINDOW_TOPLEVEL, "mainwindow"));
@@ -10,7 +10,7 @@ diff -Naur orig/src/mainwindow.c patched/src/mainwindow.c
  	gtk_window_set_resizable(GTK_WINDOW(window), TRUE);
  #ifdef GENERIC_UMPC
  	prefs_common.layout_mode = SMALL_LAYOUT;
-@@ -2637,9 +2637,9 @@
+@@ -2647,9 +2647,9 @@
  			   : _("none"));
  
  	if (cur_account)
@@ -23,9 +23,9 @@ diff -Naur orig/src/mainwindow.c patched/src/mainwindow.c
  	g_free(buf);
  
 diff -Naur orig/src/prefs_common.c patched/src/prefs_common.c
---- orig/src/prefs_common.c	2015-12-15 02:48:05.000000000 +0100
-+++ patched/src/prefs_common.c	2015-12-19 06:18:13.918870802 +0100
-@@ -779,6 +779,8 @@
+--- orig/src/prefs_common.c	2016-07-23 03:28:54.000000000 +0200
++++ patched/src/prefs_common.c	2016-07-24 14:27:37.002755931 +0200
+@@ -781,6 +781,8 @@
  	{"layout_mode", "5", &prefs_common.layout_mode, P_INT,
  	 NULL, NULL, NULL},
  #endif
@@ -35,9 +35,9 @@ diff -Naur orig/src/prefs_common.c patched/src/prefs_common.c
  	 NULL, NULL, NULL}, */
  	{"always_show_message_when_selected", "0",
 diff -Naur orig/src/prefs_common.h patched/src/prefs_common.h
---- orig/src/prefs_common.h	2015-11-18 14:40:05.000000000 +0100
-+++ patched/src/prefs_common.h	2015-12-19 06:18:13.918870802 +0100
-@@ -360,6 +360,7 @@
+--- orig/src/prefs_common.h	2016-07-23 03:28:54.000000000 +0200
++++ patched/src/prefs_common.h	2016-07-24 14:27:37.002755931 +0200
+@@ -364,6 +364,7 @@
  
  	/* Interface */
  	gboolean layout_mode;

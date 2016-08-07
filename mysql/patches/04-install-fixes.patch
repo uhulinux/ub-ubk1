@@ -1,7 +1,7 @@
 diff -Naur orig/CMakeLists.txt patched/CMakeLists.txt
---- orig/CMakeLists.txt	2015-10-15 17:43:35.000000000 +0200
-+++ patched/CMakeLists.txt	2015-10-18 18:38:20.907334639 +0200
-@@ -458,11 +458,6 @@
+--- orig/CMakeLists.txt	2016-07-14 03:10:16.000000000 +0200
++++ patched/CMakeLists.txt	2016-08-07 00:43:45.756909680 +0200
+@@ -466,11 +466,6 @@
  #INSTALL_DOCUMENTATION(${CMAKE_BINARY_DIR}/Docs/INFO_SRC
  #                      ${CMAKE_BINARY_DIR}/Docs/INFO_BIN)
  
@@ -14,8 +14,8 @@ diff -Naur orig/CMakeLists.txt patched/CMakeLists.txt
  
  IF(NON_DISTRIBUTABLE_WARNING)
 diff -Naur orig/man/CMakeLists.txt patched/man/CMakeLists.txt
---- orig/man/CMakeLists.txt	2015-10-15 17:43:37.000000000 +0200
-+++ patched/man/CMakeLists.txt	2015-10-18 18:38:20.907334639 +0200
+--- orig/man/CMakeLists.txt	2016-07-14 03:10:17.000000000 +0200
++++ patched/man/CMakeLists.txt	2016-08-07 00:46:25.691561952 +0200
 @@ -15,7 +15,7 @@
  
  SET(MAN1_SERVER innochecksum.1 my_print_defaults.1 myisam_ftdump.1 myisamchk.1
@@ -26,8 +26,8 @@ diff -Naur orig/man/CMakeLists.txt patched/man/CMakeLists.txt
  		mysql_install_db.1
  		mysql_secure_installation.1 mysql_setpermission.1
 diff -Naur orig/support-files/CMakeLists.txt patched/support-files/CMakeLists.txt
---- orig/support-files/CMakeLists.txt	2015-10-15 17:44:15.000000000 +0200
-+++ patched/support-files/CMakeLists.txt	2015-10-18 19:17:45.939062198 +0200
+--- orig/support-files/CMakeLists.txt	2016-07-14 03:10:31.000000000 +0200
++++ patched/support-files/CMakeLists.txt	2016-08-07 00:43:53.093031331 +0200
 @@ -50,7 +50,7 @@
  
  IF(UNIX)
@@ -50,7 +50,7 @@ diff -Naur orig/support-files/CMakeLists.txt patched/support-files/CMakeLists.tx
  
    INSTALL(FILES mysql.m4 DESTINATION ${INSTALL_SHAREDIR}/aclocal COMPONENT Development)
    
-@@ -107,9 +106,6 @@
+@@ -112,9 +111,6 @@
    IF (INSTALL_SYSCONFDIR)
      INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/mysql-log-rotate DESTINATION ${INSTALL_SYSCONFDIR}/logrotate.d
              RENAME mysql COMPONENT SupportFiles)
@@ -60,7 +60,7 @@ diff -Naur orig/support-files/CMakeLists.txt patched/support-files/CMakeLists.tx
  
      INSTALL(FILES rpm/my.cnf DESTINATION ${INSTALL_SYSCONFDIR}
              COMPONENT Common)
-@@ -125,11 +121,5 @@
+@@ -130,11 +126,5 @@
                COMPONENT IniFiles)
      ENDIF()
  
