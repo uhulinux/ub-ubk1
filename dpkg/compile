@@ -5,5 +5,4 @@ ub_compile \
 	--disable-shared \
 	--enable-dselect \
 	--enable-start-stop-daemon \
-	--enable-update-alternatives \
-	--with-zlib=static
+	--enable-update-alternatives
