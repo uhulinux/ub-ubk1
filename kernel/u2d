@@ -1,1 +1,1 @@
-u2d ftp://ftp.kernel.org/pub/linux/kernel/v4.x/
+urllist ftp://ftp.kernel.org/pub/linux/kernel/v3.x/ | grep linux-4.4.*.tar.xz | parsever | sort -V | tail -n 1
