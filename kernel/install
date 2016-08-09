@@ -21,16 +21,8 @@ export KBUILD_BUILD_TIMESTAMP="$(LC_ALL=C LANG=C date)"
 cat >"$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel <<END
 #!/bin/sh
 
-mkinitramfs $VERSION_BASE.i386
-rm -f /boot/initramfs.i386.cpio.gz
-ln -s initramfs-$VERSION_BASE.i386.cpio.gz /boot/initramfs.i386.cpio.gz
+mkinitrd $VERSION_BASE
 
-mkinitramfs $VERSION_BASE.x86_64
-rm -f /boot/initramfs.x86_64.cpio.gz
-ln -s initramfs-$VERSION_BASE.x86_64.cpio.gz /boot/initramfs.x86_64.cpio.gz
-
-rm -f /boot/initramfs.cpio.gz
-ln -s initramfs.i386.cpio.gz /boot/initramfs.cpio.gz
 END
 
 chmod 755 "$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel
