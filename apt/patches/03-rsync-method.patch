@@ -1,7 +1,7 @@
 diff -Naur orig/apt-pkg/acquire-item.h patched/apt-pkg/acquire-item.h
---- orig/apt-pkg/acquire-item.h	2016-06-22 15:01:11.000000000 +0200
-+++ patched/apt-pkg/acquire-item.h	2016-07-22 00:02:02.876528414 +0200
-@@ -160,6 +160,10 @@
+--- orig/apt-pkg/acquire-item.h	2015-08-21 19:35:39.000000000 +0200
++++ patched/apt-pkg/acquire-item.h	2016-08-10 00:39:13.123929955 +0200
+@@ -171,6 +171,10 @@
      *  will be written.
      */
     std::string DestFile;
@@ -13,9 +13,9 @@ diff -Naur orig/apt-pkg/acquire-item.h patched/apt-pkg/acquire-item.h
     /** \brief Invoked by the acquire worker when the object couldn't
      *  be fetched.
 diff -Naur orig/apt-pkg/acquire-method.cc patched/apt-pkg/acquire-method.cc
---- orig/apt-pkg/acquire-method.cc	2016-06-22 15:01:11.000000000 +0200
-+++ patched/apt-pkg/acquire-method.cc	2016-07-22 00:02:02.876528414 +0200
-@@ -155,6 +155,9 @@
+--- orig/apt-pkg/acquire-method.cc	2015-08-21 19:35:39.000000000 +0200
++++ patched/apt-pkg/acquire-method.cc	2016-08-10 00:39:13.123929955 +0200
+@@ -140,6 +140,9 @@
  
     if (UsedMirror.empty() == false)
        std::cout << "UsedMirror: " << UsedMirror << "\n";
@@ -26,9 +26,9 @@ diff -Naur orig/apt-pkg/acquire-method.cc patched/apt-pkg/acquire-method.cc
     std::cout << "\n" << std::flush;
  }
 diff -Naur orig/apt-pkg/acquire-method.h patched/apt-pkg/acquire-method.h
---- orig/apt-pkg/acquire-method.h	2016-06-22 15:01:11.000000000 +0200
-+++ patched/apt-pkg/acquire-method.h	2016-07-22 00:02:02.876528414 +0200
-@@ -66,6 +66,7 @@
+--- orig/apt-pkg/acquire-method.h	2015-08-21 19:35:39.000000000 +0200
++++ patched/apt-pkg/acquire-method.h	2016-08-10 00:39:13.123929955 +0200
+@@ -59,6 +59,7 @@
        time_t LastModified;
        bool IMSHit;
        std::string Filename;
@@ -37,19 +37,19 @@ diff -Naur orig/apt-pkg/acquire-method.h patched/apt-pkg/acquire-method.h
        unsigned long long ResumePoint;
        
 diff -Naur orig/apt-pkg/acquire-worker.cc patched/apt-pkg/acquire-worker.cc
---- orig/apt-pkg/acquire-worker.cc	2016-06-22 15:01:11.000000000 +0200
-+++ patched/apt-pkg/acquire-worker.cc	2016-07-22 00:10:48.305305077 +0200
-@@ -312,6 +312,7 @@
+--- orig/apt-pkg/acquire-worker.cc	2015-08-21 19:35:39.000000000 +0200
++++ patched/apt-pkg/acquire-worker.cc	2016-08-10 00:39:13.127930000 +0200
+@@ -283,6 +283,7 @@
  	    CurrentSize = 0;
  	    TotalSize = strtoull(LookupTag(Message,"Size","0").c_str(), NULL, 10);
  	    ResumePoint = strtoull(LookupTag(Message,"Resume-Point","0").c_str(), NULL, 10);
 +	    Itm->Owner->TmpFile = LookupTag(Message,"Tmp-Filename");
- 	    for (auto const Owner: Itm->Owners)
- 	    {
- 	       Owner->Start(Message, TotalSize);
-@@ -722,7 +723,11 @@
-       return;
+ 	    Itm->Owner->Start(Message,strtoull(LookupTag(Message,"Size","0").c_str(), NULL, 10));
  
+ 	    // Display update before completion
+@@ -601,7 +602,11 @@
+       return;
+  
     struct stat Buf;
 -   if (stat(CurrentItem->Owner->DestFile.c_str(),&Buf) != 0)
 +   int res = 1;
@@ -59,10 +59,10 @@ diff -Naur orig/apt-pkg/acquire-worker.cc patched/apt-pkg/acquire-worker.cc
 +   if (res!=0 && stat(CurrentItem->Owner->DestFile.c_str(),&Buf) != 0)
        return;
     CurrentSize = Buf.st_size;
- }
+    
 diff -Naur orig/methods/makefile patched/methods/makefile
---- orig/methods/makefile	2016-06-22 15:01:11.000000000 +0200
-+++ patched/methods/makefile	2016-07-22 00:02:02.876528414 +0200
+--- orig/methods/makefile	2015-08-21 19:35:39.000000000 +0200
++++ patched/methods/makefile	2016-08-10 00:39:13.127930000 +0200
 @@ -79,6 +79,13 @@
  SOURCE = rsh.cc
  include $(PROGRAM_H)
@@ -76,10 +76,10 @@ diff -Naur orig/methods/makefile patched/methods/makefile
 +
  # The mirror method
  PROGRAM=mirror
- SLIBS = -lapt-pkg $(SOCKETLIBS) -lresolv
+ SLIBS = -lapt-pkg $(SOCKETLIBS)
 diff -Naur orig/methods/rsync.cc patched/methods/rsync.cc
 --- orig/methods/rsync.cc	1970-01-01 01:00:00.000000000 +0100
-+++ patched/methods/rsync.cc	2016-07-22 00:47:36.238181623 +0200
++++ patched/methods/rsync.cc	2016-08-10 00:39:13.131930051 +0200
 @@ -0,0 +1,514 @@
 +// -*- mode: cpp; mode: fold -*-
 +// Description								/*{{{*/
@@ -572,13 +572,13 @@ diff -Naur orig/methods/rsync.cc patched/methods/rsync.cc
 +		 Res.Size = st.st_size;
 +		 // Calculating MD5
 +		 //
-+//		 int fd = open(Itm->DestFile.c_str(), O_RDONLY);
-+//		 if (fd>=0) {
-+//			MD5Summation md5;
-+//			md5.AddFD(fd,st.st_size);
-+//			Res.MD5Sum = md5.Result(); // error: 'struct pkgAcqMethod::FetchResult' has no member named 'MD5Sum'
-+//			close(fd);
-+//		 }
++		 int fd = open(Itm->DestFile.c_str(), O_RDONLY);
++		 if (fd>=0) {
++			MD5Summation md5;
++			md5.AddFD(fd,st.st_size);
++			Res.MD5Sum = md5.Result();
++			close(fd);
++		 }
 +	  }
 +	  URIDone(Res);
 +	  return true;
@@ -597,7 +597,7 @@ diff -Naur orig/methods/rsync.cc patched/methods/rsync.cc
 +}
 diff -Naur orig/methods/rsync-method.h patched/methods/rsync-method.h
 --- orig/methods/rsync-method.h	1970-01-01 01:00:00.000000000 +0100
-+++ patched/methods/rsync-method.h	2016-07-22 00:12:46.326912529 +0200
++++ patched/methods/rsync-method.h	2016-08-10 00:39:13.135930112 +0200
 @@ -0,0 +1,104 @@
 +// -*- mode: cpp; mode: fold -*-
 +// Description								/*{{{*/
@@ -705,7 +705,7 @@ diff -Naur orig/methods/rsync-method.h patched/methods/rsync-method.h
 +#endif
 diff -Naur orig/RSYNC patched/RSYNC
 --- orig/RSYNC	1970-01-01 01:00:00.000000000 +0100
-+++ patched/RSYNC	2016-07-22 00:12:24.082609584 +0200
++++ patched/RSYNC	2016-08-10 00:39:13.131930051 +0200
 @@ -0,0 +1,22 @@
 +rsync method in apt
 +-------------------
@@ -731,7 +731,7 @@ diff -Naur orig/RSYNC patched/RSYNC
 +from your UHU-Linux CD or wherever you have them). Then tell apt to continue.
 diff -Naur orig/RSYNC_HU patched/RSYNC_HU
 --- orig/RSYNC_HU	1970-01-01 01:00:00.000000000 +0100
-+++ patched/RSYNC_HU	2016-07-22 00:12:24.082609584 +0200
++++ patched/RSYNC_HU	2016-08-10 00:39:13.131930051 +0200
 @@ -0,0 +1,25 @@
 +rsync letöltési mód az apt-ben
 +------------------------------
