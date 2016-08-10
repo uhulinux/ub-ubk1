@@ -2,7 +2,6 @@ dotconf-dev
 fltk-dev
 fontconfig-dev
 glu-dev
-imagemagick
 jack-dev
 libjpeg-dev
 libsndfile-dev
