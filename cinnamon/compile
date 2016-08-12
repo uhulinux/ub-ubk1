@@ -1,9 +1,5 @@
 #!/bin/sh -eux
 
-#sed -i -e 's@blueberry@blueman-manager@g'  files/usr/lib/cinnamon-settings/cinnamon-settings.py
-# GNOME Terminal desktop file was renamed in GNOME 3.20
-sed -i 's/gnome-terminal.desktop/org.gnome.Terminal.desktop/' data/org.cinnamon.gschema.xml.in \
-    files/usr/share/cinnamon/applets/panel-launchers@cinnamon.org/settings-schema.json
 ub_compile \
   --disable-rpath \
   --disable-schemas-compile \

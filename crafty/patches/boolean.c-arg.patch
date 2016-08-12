@@ -1,0 +1,12 @@
+diff -Nur orig/boolean.c mod/boolean.c
+--- orig/boolean.c	2016-01-15 23:18:18.000000000 +0100
++++ mod/boolean.c	2016-08-12 15:21:57.542658135 +0200
+@@ -36,7 +36,7 @@
+   return lsb[arg1 >> 48] + 48;
+ }
+ 
+-int PopCnt(uint64_t arg1) {
++int PopCnt(uint64_t x) {
+   int c;
+ 
+   for (c = 0; x; c++)

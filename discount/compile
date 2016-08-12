@@ -1,7 +1,5 @@
 #!/bin/sh -eux
 
-sed -e "s/m 444/m 644/g" -i configure.inc
-
 ./configure.sh \
 	--prefix=/usr \
 	--enable-all-features

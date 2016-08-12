@@ -1,0 +1,29 @@
+diff -Nur orig/CMakeLists.txt mod/CMakeLists.txt
+--- orig/CMakeLists.txt	2010-04-10 13:03:21.000000000 +0200
++++ mod/CMakeLists.txt	2016-08-12 16:28:25.535200029 +0200
+@@ -9,6 +9,7 @@
+ 
+ 
+ FIND_PACKAGE(Qt4 REQUIRED)
++FIND_PACKAGE(OpenGL REQUIRED)
+ 
+ ADD_DEFINITIONS(-DQT3_SUPPORT)
+ 
+@@ -160,7 +161,7 @@
+ 
+ 
+ 
+-SET(CMAKE_INSTALL_PREFIX "/usr/local")
++SET(CMAKE_INSTALL_PREFIX "/usr")
+ SET(SHAREDIR "share/extcalc/data")
+ SET(DOCDIR "share/extcalc/doc")
+ SET(DESKTOPDIR "share/applications")
+@@ -283,7 +284,7 @@
+ )
+ 
+ ADD_EXECUTABLE(extcalc WIN32 ${src_cxx} ${src_h} ${moc_cxx} ${moc_ui_cxx} ${src_ui_cxx} ${ui_h} ${qrc_cxx})
+-TARGET_LINK_LIBRARIES(extcalc ${QT_LIBRARIES})
++TARGET_LINK_LIBRARIES(extcalc ${QT_LIBRARIES} ${OPENGL_LIBRARIES})
+ 
+   INSTALL(TARGETS extcalc RUNTIME DESTINATION bin
+       PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
