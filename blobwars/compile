@@ -1,7 +1,5 @@
 #!/bin/sh -eux
 
-#sed -i -e "/-Werror/d" makefile
-
 make \
 	USEPAK="1" \
 	DATADIR="/usr/share/games/blobwars/" \
