@@ -23,6 +23,11 @@ cat >"$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel <<END
 
 mkinitrd $VERSION_BASE
 
+ln -sf initrd-$VERSION_BASE.gz /boot/initrd.i386.gz
+ln -sf initrd-$VERSION_BASE.gz /boot/initrd-$VERSION_BASE.i386.gz
+ln -sf initrd-$VERSION_BASE.gz /boot/initrd.x86_64.gz
+ln -sf initrd-$VERSION_BASE.gz /boot/initrd-$VERSION_BASE.x86_64.gz
+
 END
 
 chmod 755 "$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel

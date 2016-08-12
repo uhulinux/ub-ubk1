@@ -120,5 +120,5 @@ cp -a System.map "$UB_OBJECTDIR/lib/modules/$VERSION/"
 done
 
 # bzImage symlink
-ln -s "$bzimage.i386" "$UB_OBJECTDIR/boot/$bzimage"
+# ln -s "$bzimage.i386" "$UB_OBJECTDIR/boot/$bzimage"
 
