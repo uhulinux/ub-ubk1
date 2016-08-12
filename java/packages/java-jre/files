@@ -1,6 +1,5 @@
 	/etc/env.d/java-jre.env
-	/etc/envfeed.d/path75.sh
-	/etc/envfeed.d/path76.sh
+	/etc/profile.d/java.sh
 	/usr/lib/firefox/plugins
 	/usr/lib/java/jre
 	/usr/lib/mozilla/plugins

@@ -7,13 +7,7 @@ make INSTALL_ROOT="$UB_INSTALLDIR" install
 ln -s ../lib/qt5/bin/assistant "$UB_INSTALLDIR"/usr/bin/assistant-qt5
 ln -s ../lib/qt5/bin/designer "$UB_INSTALLDIR"/usr/bin/designer-qt5
 ln -s ../lib/qt5/bin/linguist "$UB_INSTALLDIR"/usr/bin/linguist-qt5
-ln -s ../lib/qt5/bin/lrelease "$UB_INSTALLDIR"/usr/bin/lrelease-qt5
-ln -s ../lib/qt5/bin/lupdate "$UB_INSTALLDIR"/usr/bin/lupdate-qt5
-ln -s ../lib/qt5/bin/moc "$UB_INSTALLDIR"/usr/bin/moc-qt5
-ln -s ../lib/qt5/bin/uic "$UB_INSTALLDIR"/usr/bin/uic-qt5
-ln -s ../lib/qt5/bin/qmake "$UB_INSTALLDIR"/usr/bin/qmake-qt5
 ln -s ../lib/qt5/bin/qdbusviewer "$UB_INSTALLDIR"/usr/bin/qdbusviewer-qt5
-ln -s ../lib/qt5/bin/rcc "$UB_INSTALLDIR"/usr/bin/rcc-qt5
 
 # ikonok a desktop fájlokhoz
 install -Dm644 qttools/src/assistant/assistant/images/assistant-128.png \
