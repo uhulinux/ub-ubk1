@@ -25,7 +25,7 @@ ln -sf ../../lib/libpanelw.so   "$UB_INSTALLDIR"/usr/lib/
 
 #freepascal igényli
 ln -s ../../lib/libncursesw.so "$UB_INSTALLDIR"/usr/lib/libtinfo.so.5
-ln -s ../../lib/libtinfo.so.5  "$UB_INSTALLDIR"/usr/lib/libtinfo.so
+ln -s "$UB_INSTALLDIR"/usr/lib/libtinfo.so.5  "$UB_INSTALLDIR"/usr/lib/libtinfo.so
 
 for lib in ncurses form panel menu ; do
     ln -s ${lib}w.pc "$UB_INSTALLDIR"/usr/lib/pkgconfig/${lib}.pc
