@@ -3,7 +3,6 @@
 /dev
 /etc
 /etc/env.d
-/etc/envfeed.d
 /etc/opt
 /etc/skel
 /etc/sysconfig
