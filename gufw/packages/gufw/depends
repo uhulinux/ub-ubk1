@@ -2,4 +2,4 @@ polkit
 pygtk
 python-netifaces
 ufw
-webkitgtk
+webkitgtk3
