@@ -8,5 +8,5 @@ pygobject
 pyicu
 python-pillow
 reportlab
-webkitgtk
+webkitgtk3
 xdg-utils
