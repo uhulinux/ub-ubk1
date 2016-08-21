@@ -1,7 +1,6 @@
 #!/usr/bin/env dl
 
 unifont-${UB_VERSION}.tar.gz unifont-${UB_VERSION_HEAD2}/
+	http://ftp.gnu.org/gnu/unifont/unifont-${UB_VERSION}/
 	http://unifoundry.com/pub/unifont-${UB_VERSION}/
 
-#unifont_${UB_VERSION}.orig.tar.gz unifont-${UB_VERSION}/
-#	ftp://ftp.debian.org/debian/pool/main/u/unifont/

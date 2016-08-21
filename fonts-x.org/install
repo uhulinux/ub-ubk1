@@ -95,3 +95,5 @@ for type in \
 	[ -s $fontdir/$xfreetype/fonts.alias.$uhutype ] || rm $fontdir/$xfreetype/fonts.alias.$uhutype
 done
 find "$fontdir" -name fonts.cache-1 -print0 | xargs -0 -r rm -f
+
+mv "$UB_INSTALLDIR"/usr/share/fonts/TTF "$UB_INSTALLDIR"/usr/share/fonts/truetype

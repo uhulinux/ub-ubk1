@@ -7,5 +7,5 @@ mkdir -p ${UB_INSTALLDIR}/etc/fonts/conf.d
 ln -s /etc/fonts/conf.avail/64-ttf-thai-tlwg.conf ${UB_INSTALLDIR}/etc/fonts/conf.d/
 ln -s /etc/fonts/conf.avail/89-ttf-thai-tlwg-synthetic.conf ${UB_INSTALLDIR}/etc/fonts/conf.d/
 
-mkdir -p ${UB_INSTALLDIR}/usr/share/fonts/TTF/
-cp *.ttf ${UB_INSTALLDIR}/usr/share/fonts/TTF/
+mkdir -p ${UB_INSTALLDIR}/usr/share/fonts/truetype/Thai/
+cp *.ttf ${UB_INSTALLDIR}/usr/share/fonts/truetype/Thai/
