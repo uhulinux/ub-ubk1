@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
+./autogen.sh
 ub_compile \
 	--with-grubdir=grub \
 	--enable-efiemu \

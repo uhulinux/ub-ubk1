@@ -1,4 +1,5 @@
 fonts-dejavu
+fonts-unicode
 freetype2-dev
 fuse-dev
 lvm-dev
