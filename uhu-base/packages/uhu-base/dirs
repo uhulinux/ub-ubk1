@@ -3,6 +3,7 @@
 /dev
 /etc
 /etc/env.d
+/etc/envfeed.d
 /etc/opt
 /etc/skel
 /etc/sysconfig
@@ -30,17 +31,6 @@
 /usr/local/include
 /usr/local/lib
 /usr/local/libexec
-/usr/local/man
-/usr/local/man/man1
-/usr/local/man/man2
-/usr/local/man/man3
-/usr/local/man/man4
-/usr/local/man/man5
-/usr/local/man/man6
-/usr/local/man/man7
-/usr/local/man/man8
-/usr/local/man/man9
-/usr/local/man/mann
 /usr/local/sbin
 /usr/local/share
 /usr/local/src

@@ -1,5 +1,5 @@
-	/etc/env.d/java-jre.env
-	/etc/profile.d/java.sh
+	/etc/envfeed.d/path50-java-jre.sh
+	/etc/profile.d/java-jre.sh
 	/usr/lib/firefox/plugins
 	/usr/lib/java/jre
 	/usr/lib/mozilla/plugins
