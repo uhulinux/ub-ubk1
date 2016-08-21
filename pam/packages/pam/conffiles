@@ -5,8 +5,6 @@
 /etc/pam.d/system-auth
 /etc/pam.d/system-auth-rootok
 /etc/security/access.conf
-/etc/security/chroot.conf
-/etc/security/console.perms
 /etc/security/group.conf
 /etc/security/limits.conf
 /etc/security/pam_env.conf

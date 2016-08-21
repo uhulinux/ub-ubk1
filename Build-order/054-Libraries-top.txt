@@ -28,6 +28,7 @@ pam-mysql
 taglib-extras
 pam-ldap
 pam-usb
+pam-chroot
 sdl2-net
 pdflib
 starman
