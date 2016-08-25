@@ -33,10 +33,10 @@ kauth
 kcompletion
 kcrash
 kdoctools
+kservice
 kglobalaccel
 kjobwidgets
 kpackage
-kservice
 kpeople
 kemoticons
 kdesu
@@ -91,8 +91,10 @@ kwayland-integration
 kwin
 milou
 oxygen
+plasma-mediacenter
 plasma-nm
 plasma-pa
+plasma-integration
 kfilemetadata
 baloo
 plasma-workspace
@@ -104,12 +106,18 @@ polkit-kde-agent-1
 powerdevil
 sddm-kcm
 systemsettings
+libqapt
+discover
 user-manager
 libkcddb
 k9copy
 libkpmcore
 kpartitionmanager
+k3b
+kaffeine
 kate
+krusader
+tellico
 konsole
 libkipi
 libksane
@@ -118,10 +126,3 @@ digikam
 kde5
 kde5-apps
 
-libqapt
-discover
-krusader
-plasma-mediacenter
-k3b
-kaffeine
-tellico

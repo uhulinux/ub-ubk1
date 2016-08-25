@@ -8,6 +8,7 @@ kdecoration-dev
 kguiaddons-dev
 ki18n-dev
 kservice-dev
+kwayland-dev
 kwidgetsaddons-dev
 kwindowsystem-dev
 qt5-dev
