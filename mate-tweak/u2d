@@ -1,1 +1,1 @@
-urllist https://bitbucket.org/ubuntu-mate/mate-tweak/downloads/ | splitver '^([0-9.].+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+urllist https://bitbucket.org/ubuntu-mate/mate-tweak/downloads?tab=tags | splitver '^([0-9.].+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
