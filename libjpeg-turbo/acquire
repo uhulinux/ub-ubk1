@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+libjpeg-turbo-${UB_VERSION}.tar.gz libjpeg-turbo-${UB_VERSION}/
+	http://sourceforge.net/projects/libjpeg-turbo/files/${UB_VERSION}/
+

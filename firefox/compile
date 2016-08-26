@@ -26,7 +26,7 @@ ac_add_options --with-system-libvpx
 ac_add_options --with-system-nss
 ac_add_options --with-system-nspr
 ac_add_options --with-system-zlib
-ac_add_options --without-system-jpeg
+ac_add_options --with-system-jpeg
 ac_add_options --without-system-png
 ac_add_options --enable-system-cairo
 ac_add_options --enable-system-hunspell
