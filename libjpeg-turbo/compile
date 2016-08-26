@@ -3,4 +3,5 @@
 rm -f CMakeLists.txt
 
 ub_compile \
-	--with-jpeg8
+	--with-jpeg8 \
+	--without-turbojpeg

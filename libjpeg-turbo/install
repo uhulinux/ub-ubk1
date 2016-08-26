@@ -3,3 +3,5 @@
 ub_install
 
 install -m644 jpegint.h "${UB_INSTALLDIR}/usr/include"
+
+rm -f "${UB_INSTALLDIR}"/usr/lib/pkgconfig/libturbojpeg.pc

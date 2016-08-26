@@ -1,4 +1,0 @@
-	/usr/include/turbojpeg.h
-	/usr/lib/**/libturbojpeg.la
-@	/usr/lib/**/libturbojpeg.so
-	/usr/lib/pkgconfig/libturbojpeg.pc
