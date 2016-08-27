@@ -2,7 +2,5 @@
 
 python setup.py install --root="$UB_INSTALLDIR"
 
-cp doc/initscript.example "$UB_INSTALLDIR"/etc/init.d/ufw
-
-mkdir -p "$UB_INSTALLDIR"/etc/bash_completion.d
-cp shell-completion/bash "$UB_INSTALLDIR"/etc/bash_completion.d/ufw
+mkdir -p "$UB_INSTALLDIR"/usr/share/bash-completion/completions
+cp shell-completion/bash "$UB_INSTALLDIR"/usr/share/bash-completion/completions/ufw

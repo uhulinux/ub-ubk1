@@ -67,7 +67,7 @@ diff -Naur orig/tools/Makefile.am patched/tools/Makefile.am
  CLEANFILES = $(BUILT_SOURCES)
  
 -profiledir = $(sysconfdir)/profile.d
-+profiledir = $(sysconfdir)/bash_completion.d
++profiledir = $(datadir)/bash-completion/completions
  profile_SCRIPTS = udisks-bash-completion.sh
  
  EXTRA_DIST = $(profile_SCRIPTS)
@@ -79,7 +79,7 @@ diff -Naur orig/tools/Makefile.in patched/tools/Makefile.in
  # ----------------------------------------------------------------------------------------------------
  CLEANFILES = $(BUILT_SOURCES)
 -profiledir = $(sysconfdir)/profile.d
-+profiledir = $(sysconfdir)/bash_completion.d
++profiledir = $(datadir)/bash-completion/completions
  profile_SCRIPTS = udisks-bash-completion.sh
  EXTRA_DIST = $(profile_SCRIPTS)
  all: $(BUILT_SOURCES)

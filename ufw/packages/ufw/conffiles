@@ -1,4 +1,2 @@
-/etc/bash_completion.d/ufw
 /etc/default/ufw
-/etc/init.d/ufw
 /etc/ufw/sysctl.conf
