@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_install
+
+cd po
+for i in `ls` ; do
+	if [ -s $i/kdiff3.po ]; then
+		mkdir -p "$UB_INSTALLDIR"/usr/share/locale/$i/LC_MESSAGES
+		lconvert -if po -of qm -o "$UB_INSTALLDIR"/usr/share/locale/$i/LC_MESSAGES/kdiff3.qm $i/kdiff3.po
+	fi
+done

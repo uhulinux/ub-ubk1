@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+rm -f icons/{16,32}-apps-kdiff3.png
+mv QT4/hi16-app-kdiff3.png icons/16-apps-kdiff3.png
+mv QT4/hi32-app-kdiff3.png icons/32-apps-kdiff3.png
+
+ub_compile \
+	-DCMAKE_PREFIX_PATH=/usr/lib/qt5 \
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_TESTING=OFF
+
