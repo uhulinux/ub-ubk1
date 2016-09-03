@@ -6,6 +6,7 @@ gtk2-dev
 hunspell-dev
 libevent-dev
 libidl2-dev
+libjpeg-turbo-dev
 libnotify-dev
 libvpx-dev
 libx11-dev
