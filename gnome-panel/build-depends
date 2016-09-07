@@ -2,6 +2,7 @@ dconf-dev
 docbook-dtds
 evolution-data-server-dev
 gcr-dev
+gdm-dev
 geocode-glib-dev
 gnome-desktop-dev
 gnome-doc-utils
