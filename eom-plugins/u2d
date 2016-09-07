@@ -1,1 +1,1 @@
-urllist https://bitbucket.org/prezso/eom-plugins/downloads/ | splitver '^([0-9.].+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+urllist https://bitbucket.org/prezso/eom-plugins/downloads?tab=tags | splitver '^([0-9.].+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
