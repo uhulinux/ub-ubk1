@@ -1,6 +1,7 @@
 #!/bin/sh -eux
 
-cd linuxmint-nemo*
+sed -i 's/^Name\(.*\)=.*/Name\1=Nemo/' data/nemo.desktop.in.in
+
 ub_compile \
 	--disable-tracker \
 	--disable-gtk-doc-htlm

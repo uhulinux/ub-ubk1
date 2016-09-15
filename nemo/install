@@ -1,4 +1,3 @@
 #!/bin/sh -eux
 
-cd linuxmint-nemo*
 ub_install
