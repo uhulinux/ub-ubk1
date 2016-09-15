@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-lxqt-admin-${UB_VERSION}.tar.gz lxqt-admin-71b3e6c/
-	git://github.com/lxde/lxqt-admin.git@71b3e6c
+lxqt-admin-${UB_VERSION}.tar.gz lxqt-admin-19cc226/
+	git://github.com/lxde/lxqt-admin.git@19cc226
