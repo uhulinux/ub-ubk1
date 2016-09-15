@@ -14,7 +14,7 @@ diff -Naur orig/data/menu.xml mod/data/menu.xml
  
  <menu id="root-menu" label="Openbox 3">
    <separator label="Applications" />
-+  <menu id="desktop-app-menu""/>
++  <menu id="desktop-app-menu"/>
    <menu id="apps-accessories-menu"/>
    <menu id="apps-editors-menu"/>
    <menu id="apps-graphics-menu"/>
