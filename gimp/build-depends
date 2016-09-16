@@ -15,7 +15,7 @@ lcms2-dev
 libart-lgpl-dev
 libexif-dev
 libgsf-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libmng-dev
 libpng-dev
 librsvg-dev

@@ -1,6 +1,6 @@
 glu-dev
 gtk2-dev
 gtkglext-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libtheora-dev
 lua-dev

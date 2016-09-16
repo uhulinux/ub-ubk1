@@ -1,6 +1,6 @@
 groff
 imake
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libx11-dev
 libxaw-dev

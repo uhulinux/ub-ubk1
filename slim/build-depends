@@ -1,5 +1,5 @@
 cmake
-libjpeg-dev
+libjpeg-turbo-dev
 libxft-dev
 libxmu-dev
 libxrandr-dev

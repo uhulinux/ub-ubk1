@@ -13,7 +13,7 @@ gtk-dev
 intltool
 libgpod-dev
 libid3tag-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libmusicbrainz3-dev
 libogg-dev
 libplist-dev

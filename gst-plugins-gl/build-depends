@@ -2,7 +2,7 @@ glew-dev
 glu-dev
 gst0.10-plugins-base-dev
 gtk2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 liboil-dev
 libpng-dev
 libsm-dev

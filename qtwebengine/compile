@@ -3,6 +3,6 @@
 mkdir -p build
 cd build
 
-qmake-qt5 WEBENGINE_CONFIG+="use_system_icu use_proprietary_codecs" ../qtwebengine.pro
+qmake WEBENGINE_CONFIG+="use_system_icu use_proprietary_codecs" ../qtwebengine.pro
 
 ub_make

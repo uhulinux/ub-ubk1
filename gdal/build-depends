@@ -1,7 +1,7 @@
 curl-dev
 cyrus-sasl2-dev
 expat-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libtiff-dev
 libungif-dev
 libwebp-dev

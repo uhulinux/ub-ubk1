@@ -1,5 +1,5 @@
 avahi-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libx11-dev
 libxdamage-dev
 libxext-dev

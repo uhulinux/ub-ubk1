@@ -1,14 +1,15 @@
 alsa-lib-dev
-clang
 cups-dev
 dbus-dev
+gconf2-dev
+gnome-keyring-dev
 gperf
 gtk2-dev
 krb5-dev
 libdrm-dev
 libevent-dev
 libexif-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libvpx-dev
 libwebp-dev
 libxi-dev

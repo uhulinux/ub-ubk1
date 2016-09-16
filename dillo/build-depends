@@ -1,5 +1,5 @@
 fltk-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libxcursor-dev
 libxft-dev
 libxi-dev

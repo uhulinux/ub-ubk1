@@ -2,7 +2,7 @@ fontconfig-dev
 freetype2-dev
 glib-dev
 libice-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libmng-dev
 libpng-dev
 libsm-dev

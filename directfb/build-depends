@@ -5,7 +5,7 @@ gstreamer-dev
 imlib2-dev
 jasper-dev
 libcddb-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libmad-dev
 libmng-dev
 libpng-dev

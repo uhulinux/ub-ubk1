@@ -4,5 +4,5 @@ intltool
 itstool
 lcms2-dev
 libarchive-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libtiff-dev

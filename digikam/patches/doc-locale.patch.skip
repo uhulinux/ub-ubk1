@@ -1,9 +1,0 @@
-diff -Naur orig/CMakeLists.txt patched/CMakeLists.txt
---- orig/CMakeLists.txt	2016-07-04 00:04:23.000000000 +0200
-+++ patched/CMakeLists.txt	2016-07-19 02:15:59.311542529 +0200
-@@ -241,5 +241,4 @@
- if(DIGIKAMSC_COMPILE_DOC)
-     find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS DocTools)
-     ECM_OPTIONAL_ADD_SUBDIRECTORY(doc)
--    ECM_OPTIONAL_ADD_SUBDIRECTORY(doc-translated)
- endif()

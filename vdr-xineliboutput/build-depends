@@ -1,6 +1,6 @@
 ffmpeg-dev
 libextractor-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libvdpau-dev
 vdr
 vdr-dev

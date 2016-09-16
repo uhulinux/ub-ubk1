@@ -6,7 +6,7 @@ gtk2-dev
 libavc1394-dev
 libdv-dev
 libfaad2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libogg-dev
 libpng-dev
 libraw1394-dev

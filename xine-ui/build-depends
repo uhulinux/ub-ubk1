@@ -3,7 +3,7 @@ curl-dev
 glibc-dev
 gpm-dev
 libidn-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libx11-dev
 libxext-dev

@@ -7,7 +7,7 @@ gdk-pixbuf-dev
 gst-plugins-base-dev
 intltool
 libgsf-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libtiff-dev
 openjpeg-dev

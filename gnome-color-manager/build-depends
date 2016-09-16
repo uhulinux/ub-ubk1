@@ -8,7 +8,7 @@ itstool
 lcms2-dev
 libcanberra-dev
 libexif-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libtiff-dev
 mash-dev
 vte-dev

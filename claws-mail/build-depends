@@ -19,7 +19,7 @@ libcanberra-dev
 libetpan-dev
 libgdata-dev
 libindicate-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libnotify-dev
 liboauth-dev
 libqrencode-dev

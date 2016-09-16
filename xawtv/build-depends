@@ -4,7 +4,7 @@ gpm-dev
 libdv-dev
 libfs-dev
 libice-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libquicktime-dev
 libv4l-dev

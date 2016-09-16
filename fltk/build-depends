@@ -4,7 +4,7 @@ cmake
 desktop-file-utils
 glu-dev
 icon-theme-hicolor
-libjpeg-dev
+libjpeg-turbo-dev
 libxdg-basedir-dev
 libxft-dev
 libxinerama-dev

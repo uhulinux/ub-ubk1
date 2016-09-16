@@ -6,7 +6,7 @@ graphviz-dev
 jasper-dev
 lcms2-dev
 libgsf-dev
-libjpeg-dev
+libjpeg-turbo-dev
 liblqr-dev
 libpng-dev
 librsvg-dev

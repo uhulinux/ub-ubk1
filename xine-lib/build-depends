@@ -19,7 +19,7 @@ libcdio-dev
 libdvdnav-dev
 libfaad2-dev
 libfame-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libmad-dev
 libmng-dev
 libmodplug-dev

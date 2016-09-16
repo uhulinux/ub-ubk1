@@ -5,5 +5,5 @@ gtkmm2-dev
 lcms2-dev
 libcanberra-dev
 libiptcdata-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libtiff-dev

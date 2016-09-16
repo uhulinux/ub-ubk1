@@ -11,7 +11,7 @@ itstool
 lcms2-dev
 libart-lgpl-dev
 libexif-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpeas-dev
 librsvg-dev
 libsm-dev

@@ -9,7 +9,7 @@ gtk-doc
 gtk2-dev
 hyphen-dev
 icu-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libnotify-dev
 libsecret-dev
 libsoup-dev

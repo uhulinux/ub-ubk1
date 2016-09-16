@@ -1,5 +1,5 @@
 gettext
 gtk2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libtiff-dev
 libungif-dev

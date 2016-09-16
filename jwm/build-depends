@@ -1,6 +1,6 @@
 cairo-dev
 fribidi-dev
-libjpeg-dev
+libjpeg-turbo-dev
 librsvg-dev
 libxft-dev
 libxinerama-dev

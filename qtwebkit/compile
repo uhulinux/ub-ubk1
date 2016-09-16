@@ -3,6 +3,6 @@
 mkdir -p build
 cd build
 
-qmake-qt5 ../WebKit.pro
+qmake ../WebKit.pro
 
 ub_make

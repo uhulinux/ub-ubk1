@@ -1,4 +1,4 @@
 cmake
 ffmpeg-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev

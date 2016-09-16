@@ -25,7 +25,7 @@ icu-dev
 lcms2-dev
 libecpg-dev
 libetonyek-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libodfgen-dev
 librsvg-dev
 libvisio-dev

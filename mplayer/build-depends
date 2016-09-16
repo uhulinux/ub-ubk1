@@ -26,7 +26,7 @@ libdvdread-dev
 libfaad2-dev
 libfame-dev
 libgsm-dev
-libjpeg-dev
+libjpeg-turbo-dev
 liblame-dev
 liblzo-dev
 libmad-dev

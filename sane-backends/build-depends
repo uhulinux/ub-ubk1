@@ -3,7 +3,7 @@ cups-dev
 libexif-dev
 libgphoto2-dev
 libieee1284-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libnetsnmp-dev
 libtiff-dev
 libusb-dev

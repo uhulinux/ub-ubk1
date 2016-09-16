@@ -12,7 +12,7 @@ libcaca-dev
 libcdio-dev
 libdv-dev
 libiec61883-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libogg-dev
 liboil-dev
 libraw1394-dev

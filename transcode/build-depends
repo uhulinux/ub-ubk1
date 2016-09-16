@@ -13,7 +13,7 @@ libdv-dev
 libdvdnav-dev
 libfame-dev
 libgsf-dev
-libjpeg-dev
+libjpeg-turbo-dev
 liblame-dev
 liblzo-dev
 libmpeg2-dev

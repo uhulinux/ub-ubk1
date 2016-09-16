@@ -8,7 +8,7 @@ glew-dev
 glib-dev
 glu-dev
 java-jre
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libxml2-dev
 mesa-dev

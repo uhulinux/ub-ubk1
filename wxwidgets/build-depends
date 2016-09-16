@@ -2,7 +2,7 @@ cppunit-dev
 glu-dev
 gst0.10-plugins-base-dev
 gtk-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libnotify-dev
 libpng-dev
 libsm-dev

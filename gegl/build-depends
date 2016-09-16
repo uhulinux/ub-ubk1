@@ -10,7 +10,7 @@ jasper-dev
 json-glib-dev
 lcms2-dev
 libgsf-dev
-libjpeg-dev
+libjpeg-turbo-dev
 liblensfun-dev
 libraw-dev
 librsvg-dev

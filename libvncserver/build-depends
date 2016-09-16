@@ -1,7 +1,7 @@
 cmake
 gnutls-dev
 libgcrypt-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libx11-dev
 openssl-dev

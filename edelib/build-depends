@@ -3,7 +3,7 @@ doxygen
 fltk-dev
 jam
 libice-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libxfixes-dev
 libxft-dev
 libxinerama-dev

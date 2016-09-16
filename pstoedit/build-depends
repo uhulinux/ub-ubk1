@@ -9,7 +9,7 @@ jasper-dev
 libemf-dev
 libgd-dev
 libgsf-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 librsvg-dev
 libsm-dev

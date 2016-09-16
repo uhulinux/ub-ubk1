@@ -9,7 +9,7 @@ gtk-dev
 gtk-doc
 gtk2-dev
 icu-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libnotify-dev
 libsecret-dev
 libsoup-dev

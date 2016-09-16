@@ -7,7 +7,7 @@ gobject-introspection-dev
 gtk-dev
 intltool
 libcacard-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libsoup-dev
 lua-dev
 openssl-dev

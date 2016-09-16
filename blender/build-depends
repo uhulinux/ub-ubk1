@@ -7,7 +7,7 @@ freetype2-dev
 glew-dev
 glu-dev
 libice-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libsm-dev
 libspnav

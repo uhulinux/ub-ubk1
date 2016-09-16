@@ -1,6 +1,6 @@
 curl-dev
 glu-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libode-dev
 libpng-dev
 libx11-dev

@@ -6,7 +6,7 @@ cups-dev
 gnutls-dev
 lcms2-dev
 libart-lgpl-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libsm-dev
 libtasn1-dev

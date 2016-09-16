@@ -3,7 +3,7 @@ freetype2-dev
 ghostscript
 jasper-dev
 lcms2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libtiff-dev
 libwmf-dev

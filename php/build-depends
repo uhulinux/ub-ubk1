@@ -16,7 +16,7 @@ icu-dev
 krb5-dev
 libc-client
 libidn-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libmcrypt-dev
 libnetsnmp-dev
 libpng-dev

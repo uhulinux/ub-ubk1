@@ -3,7 +3,7 @@ gnutls-dev
 gtk-dev
 intltool
 libgcrypt-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libnotify-dev
 libsecret-dev
 libsm-dev

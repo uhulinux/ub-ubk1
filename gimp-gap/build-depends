@@ -2,7 +2,7 @@ faac-dev
 gimp-dev
 intltool
 libfaad2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 liblame-dev
 nasm
 xvid-dev

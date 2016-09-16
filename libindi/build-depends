@@ -4,6 +4,6 @@ curl-dev
 gsl-dev
 libcfitsio
 libfli
-libjpeg-dev
+libjpeg-turbo-dev
 libnova
 libusb-compat-dev

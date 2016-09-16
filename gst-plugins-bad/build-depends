@@ -25,7 +25,7 @@ libfaad2-dev
 libgsf-dev
 libgsm-dev
 libgudev-dev
-libjpeg-dev
+libjpeg-turbo-dev
 liblrdf-dev
 libmms-dev
 libmusicbrainz-dev

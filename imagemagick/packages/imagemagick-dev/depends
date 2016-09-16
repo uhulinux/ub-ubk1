@@ -5,7 +5,7 @@ freetype2-dev
 graphviz-dev
 jasper-dev
 lcms2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 liblqr-dev
 libpng-dev
 librsvg-dev

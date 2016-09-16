@@ -6,7 +6,7 @@ freetds
 freetype2-dev
 gtk-dev
 gtk2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libmng-dev
 libpng-dev
 libsm-dev

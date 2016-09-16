@@ -2,6 +2,10 @@
 
 make INSTALL_ROOT="$UB_INSTALLDIR" install
 
+# Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+find "$UB_INSTALLDIR/usr/lib" -type f -name '*.prl' \
+	-exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+
 # a desktop fájlok kedvéért szimlinkelünk az /usr/bin-be
 
 ln -s ../lib/qt5/bin/assistant "$UB_INSTALLDIR"/usr/bin/assistant-qt5

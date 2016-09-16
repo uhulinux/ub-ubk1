@@ -1,4 +1,4 @@
-libjpeg-dev
+libjpeg-turbo-dev
 libsm-dev
 libtiff-dev
 libx11-dev

@@ -1,5 +1,5 @@
 boost-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libtiff-dev
 libxpm-dev

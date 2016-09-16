@@ -1,7 +1,7 @@
 cmake
 fltk-dev
 gnutls-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libx11-dev
 libxext-dev
 libxtst-dev

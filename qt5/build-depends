@@ -7,6 +7,7 @@ freetype2-dev
 gperf
 gst-plugins-base-dev
 gtk-dev
+gtk2-dev
 harfbuzz-dev
 libinput-dev
 mesa-dev

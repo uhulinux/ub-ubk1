@@ -21,7 +21,7 @@ libchamplain-dev
 libgee-dev
 libgnome-keyring-dev
 libgudev-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libnotify-dev
 librsvg-dev
 libsecret-dev

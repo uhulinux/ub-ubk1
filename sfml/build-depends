@@ -2,7 +2,7 @@ cmake
 doxygen
 freetype2-dev
 glew-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libsndfile-dev
 libxrandr-dev
 mesa-dev

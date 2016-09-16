@@ -1,6 +1,6 @@
 gobject-introspection-dev
 jasper-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libtiff-dev
 libx11-dev

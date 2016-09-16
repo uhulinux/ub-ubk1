@@ -1,5 +1,5 @@
 freetype2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libxt-dev
 python-dev
 python-setuptools

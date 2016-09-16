@@ -9,7 +9,7 @@ jasper-dev
 java-jdk
 libdc1394-dev
 libgphoto2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libraw1394-dev
 libtiff-dev

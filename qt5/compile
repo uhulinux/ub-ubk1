@@ -16,15 +16,16 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-confirm-license	\
 	-shared             \
 	-largefile          \
+	-journald			\
 	-c++std 11          \
-	-rpath              \
 	-verbose            \
 	-silent             \
+	-no-pch             \
 	-optimized-qmake    \
-	-reduce-exports		\
 	-no-qml-debug       \
-	-no-journald		\
-	-no-separate-debug-info \
+	-no-use-gold-linker \
+	-reduce-relocations \
+	-no-rpath           \
 	\
 	-nomake examples    \
 	-nomake tests		\
@@ -49,18 +50,16 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-system-zlib        \
 	-system-xcb         \
 	-system-xkbcommon-x11 \
-	-qt-doubleconversion \
-	-no-libproxy		\
 	\
+	-dbus-linked        \
 	-openssl-linked     \
+	-lcrypto            \
+	-lcrypt             \
+	-lssl               \
 	\
-	-no-nis             \
 	-cups               \
 	-iconv              \
-	-no-pch             \
-	-dbus-linked        \
 	-mtdev				\
-	\
 	-glib               \
 	-gtk				\
 	-opengl             \
@@ -68,6 +67,8 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-no-openvg          \
 	-no-eglfs           \
 	-no-kms             \
+	-no-libproxy		\
+	-no-nis             \
 	\
 	-sm                 \
 	-xshape             \
@@ -80,10 +81,6 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-fontconfig         \
 	-xinput2            \
 	-xkb                \
-	\
-	-lcrypto            \
-	-lcrypt             \
-	-lssl               \
 
 ub_make
 

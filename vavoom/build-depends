@@ -1,7 +1,7 @@
 cmake
 flac-dev
 glu-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libmad-dev
 libmikmod-dev
 libpng-dev

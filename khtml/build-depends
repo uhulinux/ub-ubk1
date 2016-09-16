@@ -14,7 +14,7 @@ kwallet-dev
 kwidgetsaddons-dev
 kwindowsystem-dev
 kxmlgui-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libungif-dev
 phonon-dev

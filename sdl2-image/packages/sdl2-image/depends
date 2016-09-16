@@ -1,4 +1,4 @@
-libjpeg >=
+libjpeg-turbo >=
 libpng >=
 libtiff >=
 libwebp >=

@@ -1,6 +1,6 @@
 alsa-lib-dev
 gtk2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 liblockfile-dev
 libpng-dev
 libsm-dev

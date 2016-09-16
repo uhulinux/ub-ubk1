@@ -5,7 +5,7 @@ gnome2-vfs-dev
 goffice-dev
 gucharmap-dev
 libgnomeui2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 librsvg-dev
 libsm-dev
 libwmf-dev

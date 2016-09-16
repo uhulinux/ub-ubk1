@@ -1,7 +1,7 @@
 alsa-lib-dev
 glu-dev
 libgnomeui2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpcap-dev
 libungif-dev
 libxxf86vm-dev

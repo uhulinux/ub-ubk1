@@ -6,7 +6,7 @@ intltool
 itstool
 lcms2-dev
 libexif-dev
-libjpeg-dev
+libjpeg-turbo-dev
 librsvg-dev
 libsm-dev
 mate-common

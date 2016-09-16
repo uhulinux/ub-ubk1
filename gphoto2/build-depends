@@ -3,7 +3,7 @@ cdk-dev
 gpm-dev
 libexif-dev
 libgphoto2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libmng-dev
 libpng-dev
 libusb-dev

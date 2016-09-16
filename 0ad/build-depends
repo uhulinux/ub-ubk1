@@ -8,7 +8,7 @@ gloox-dev
 glu-dev
 icu-dev
 js-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libogg-dev
 libpng-dev
 libsm-dev

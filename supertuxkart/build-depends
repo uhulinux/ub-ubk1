@@ -6,7 +6,7 @@ freetype2-dev
 fribidi-dev
 gettext
 glu-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libvorbis-dev
 libxt-dev

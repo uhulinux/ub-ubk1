@@ -10,7 +10,7 @@ libcdio-paranoia-dev
 libdrm-dev
 libdvdnav-dev
 libdvdread-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libv4l-dev
 libvdpau-dev
 libxscrnsaver-dev
