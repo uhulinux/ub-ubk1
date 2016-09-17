@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-mesa-demos-${UB_VERSION}.tar.gz mesa-demos-${UB_VERSION}/
-	ftp://ftp.freedesktop.org/pub/mesa/demos/${UB_VERSION}/
-
 icon.png 
 	https://github.com/OpenELEC/unofficial-addons/raw/master/addons/tools/mesa-demos/icon/
+
+mesa-demos-${UB_VERSION}.tar.gz demos-0a8779daf6/
+        git://anongit.freedesktop.org/mesa/demos.git@0a8779daf6

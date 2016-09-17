@@ -1,5 +1,4 @@
 #!/bin/sh -eux
 
 ub_compile \
-	--with-system-data-files=/usr/share/mesa-demos \
-        --bindir=/usr/share/mesa-demos/bin
+           -DCMAKE_INSTALL_PREFIX=/usr/share/mesa-demos
