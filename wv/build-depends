@@ -1,6 +1,6 @@
 glib-dev
 libgsf-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libx11-dev
 libxml2-dev

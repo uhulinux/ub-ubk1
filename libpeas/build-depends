@@ -3,7 +3,7 @@ gjs-dev
 gobject-introspection-dev
 gtk-dev
 intltool
-libjpeg-dev
+libjpeg-turbo-dev
 libxslt-dev
 libxt-dev
 pygobject-dev

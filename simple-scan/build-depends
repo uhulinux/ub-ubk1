@@ -3,7 +3,7 @@ gnome-doc-utils
 gtk-dev
 intltool
 itstool
-libjpeg-dev
+libjpeg-turbo-dev
 packagekit-dev
 python-dev
 sane-backends-dev

@@ -15,7 +15,7 @@ hdf5
 jasper-dev
 lapack-dev
 less
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libtiff-dev
 libwmf-dev

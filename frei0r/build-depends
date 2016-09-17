@@ -5,7 +5,7 @@ gstreamer-dev
 gtk2-dev
 jasper-dev
 libdc1394-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libraw1394-dev
 libtiff-dev
 opencv-dev

@@ -5,7 +5,7 @@ liba52-dev
 libcdio-dev
 libdvdnav-dev
 libid3tag-dev
-libjpeg-dev
+libjpeg-turbo-dev
 liblame-dev
 libmad-dev
 libmpeg2-dev

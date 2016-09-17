@@ -6,7 +6,7 @@ gobject-introspection-dev
 gst-plugins-base-dev
 gtk-dev
 intltool
-libjpeg-dev
+libjpeg-turbo-dev
 libxslt-dev
 libxt-dev
 mpfr-dev

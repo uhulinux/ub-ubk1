@@ -22,7 +22,7 @@ kservice-dev
 kwidgetsaddons-dev
 kxmlgui-dev
 libdvdread-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libkcddb-dev
 liblame-dev
 libmad-dev

@@ -2,7 +2,7 @@ alsa-lib-dev
 fontconfig-dev
 freetype2-dev
 hermes-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libmikmod-dev
 libogg-dev
 libpng-dev

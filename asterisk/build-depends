@@ -6,7 +6,7 @@ h323plus-dev
 jansson
 kernel-dev
 kernel-headers
-libjpeg-dev
+libjpeg-turbo-dev
 liblame-dev
 libnetsnmp-dev
 libogg-dev

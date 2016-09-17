@@ -2,6 +2,6 @@ gimp-dev
 gtk2-dev
 libgphoto2-dev
 libieee1284-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libusb-dev
 sane-backends-dev

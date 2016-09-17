@@ -7,7 +7,7 @@ gamin-dev
 intltool
 libgee06-dev
 libglade2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libsm-dev
 libunique1-dev
 polkit-dev

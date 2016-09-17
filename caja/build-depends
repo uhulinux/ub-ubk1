@@ -4,7 +4,7 @@ gobject-introspection-dev
 gtk-dev
 intltool
 libexif-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libsm-dev
 libunique-dev
 libxml2-dev

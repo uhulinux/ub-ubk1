@@ -8,6 +8,6 @@ ijs
 ijs-dev
 libgcrypt-dev
 libgpg-error-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libtiff-dev
 libxml2-dev

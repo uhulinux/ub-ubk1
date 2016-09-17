@@ -7,5 +7,5 @@ libgcrypt-dev
 libgnomeui2-dev
 libid3tag-dev
 libidn-dev
-libjpeg-dev
+libjpeg-turbo-dev
 vte2-dev

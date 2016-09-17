@@ -4,7 +4,7 @@ glib-dev
 gobject-introspection-dev
 gtk-doc
 jasper-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libsm-dev
 libtiff-dev

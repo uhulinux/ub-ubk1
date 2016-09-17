@@ -1,8 +1,5 @@
 #!/bin/sh -eux
 
-# rrdtool 1.6.0-tól nincs librrd_th
-sed -i -e 's/rrd_th/rrd/g' configure.in
-
 ub_compile \
 	--localstatedir=/var/lib \
 	--with-rrd-home=/usr

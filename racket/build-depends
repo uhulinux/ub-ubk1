@@ -2,7 +2,7 @@ cairo-dev
 desktop-file-utils
 glib-dev
 libffi-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libsigsegv-dev
 libx11-dev

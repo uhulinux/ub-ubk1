@@ -6,7 +6,7 @@ libffi-dev
 libgnomeprint2-dev
 libgnomeprintui2-dev
 libgnomeui2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libx11-dev
 libxml2-dev

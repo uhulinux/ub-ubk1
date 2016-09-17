@@ -6,7 +6,7 @@ intltool
 libexif-dev
 libexo-dev
 libgudev-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libnotify-dev
 libsm-dev
 libusb-dev

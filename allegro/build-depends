@@ -3,7 +3,7 @@ cmake
 db4-dev
 glu-dev
 jack-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libvorbis-dev
 libxcursor-dev

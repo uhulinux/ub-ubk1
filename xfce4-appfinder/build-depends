@@ -2,7 +2,7 @@ gamin-dev
 garcon-dev
 gtk2-dev
 intltool
-libjpeg-dev
+libjpeg-turbo-dev
 libxfce4ui-dev
 libxfce4util-dev
 libxinerama-dev

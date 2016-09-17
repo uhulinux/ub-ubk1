@@ -1,7 +1,7 @@
 cairo-dev
 emacs
 libice-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libungif-dev
 lua-dev

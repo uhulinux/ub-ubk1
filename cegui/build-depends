@@ -14,7 +14,7 @@ glm-dev
 glu-dev
 graphviz-dev
 gtk2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libtinyxml-dev
 libx11-dev

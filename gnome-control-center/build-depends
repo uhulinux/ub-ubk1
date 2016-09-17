@@ -33,7 +33,7 @@ libgnome-keyring-dev
 libgnomekbd-dev
 libgtop2-dev
 libgudev-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libnotify-dev
 libpwquality-dev
 librsvg-dev

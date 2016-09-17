@@ -3,7 +3,7 @@ dbus-glib-dev
 gtk2-dev
 libglade2-dev
 libgnomeui2-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libxslt-dev
 openssl-dev
 perl-xml-parser

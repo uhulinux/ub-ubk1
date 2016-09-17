@@ -19,7 +19,7 @@ libfaad2-dev
 libglade2-dev
 libgsf-dev
 libgsm-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libmms-dev
 libmodplug-dev
 libofa-dev

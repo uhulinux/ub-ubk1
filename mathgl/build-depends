@@ -3,7 +3,7 @@ fltk-dev
 glu-dev
 gsl
 hdf5
-libjpeg-dev
+libjpeg-turbo-dev
 libpng-dev
 libungif-dev
 lzlib

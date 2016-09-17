@@ -4,7 +4,7 @@ gdbm-dev
 geoip-dev
 glib-dev
 libgd-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpcap-dev
 libpng-dev
 libx11-dev

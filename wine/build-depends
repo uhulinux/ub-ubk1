@@ -14,7 +14,7 @@ gst-plugins-base-dev
 lcms2-dev
 libgphoto2-dev
 libgsm-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libpcap-dev
 libpng-dev
 libungif-dev

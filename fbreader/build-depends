@@ -2,7 +2,7 @@ bzip2-dev
 curl-dev
 expat-dev
 fribidi-dev
-libjpeg-dev
+libjpeg-turbo-dev
 libzip-dev
 linebreak
 qt4-dev
