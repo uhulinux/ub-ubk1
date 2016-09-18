@@ -1,0 +1,25 @@
+diff -Naur orig/panel-plugin/Makefile.am patched/panel-plugin/Makefile.am
+--- orig/panel-plugin/Makefile.am	2016-09-15 10:09:41.000000000 +0200
++++ patched/panel-plugin/Makefile.am	2016-09-18 01:29:40.888683490 +0200
+@@ -221,5 +221,7 @@
+ 	$(NULL)
+ 
+ install-exec-hook:
+-	$(LN_S) -f $(exec_prefix)/bin/xfce4-popup-clipman $(DESTDIR)$(exec_prefix)/bin/xfce4-popup-clipman-actions
++	cd $(DESTDIR)$(exec_prefix)/bin && \
++	$(LN_S) xfce4-popup-clipman xfce4-popup-clipman-actions
++
+ 
+diff -Naur orig/panel-plugin/Makefile.in patched/panel-plugin/Makefile.in
+--- orig/panel-plugin/Makefile.in	2016-09-15 10:18:26.000000000 +0200
++++ patched/panel-plugin/Makefile.in	2016-09-18 01:31:23.550003370 +0200
+@@ -1326,7 +1326,8 @@
+ @INTLTOOL_DESKTOP_RULE@
+ 
+ install-exec-hook:
+-	$(LN_S) -f $(exec_prefix)/bin/xfce4-popup-clipman $(DESTDIR)$(exec_prefix)/bin/xfce4-popup-clipman-actions
++	cd $(DESTDIR)$(exec_prefix)/bin && \
++	$(LN_S) xfce4-popup-clipman xfce4-popup-clipman-actions
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
