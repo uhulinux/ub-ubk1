@@ -43,6 +43,7 @@ acidrip
 smtube
 mp3splt-gtk
 ep128emu
+plus4emu
 fuse-utils
 minitube
 pasystray

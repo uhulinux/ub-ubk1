@@ -1,1 +1,1 @@
-sflist ep128emu ep128emu2 | splitver 'ep128emu-([0-9.]+)$' | sort -V | tail -n 1
+urllist https://github.com/istvan-v/ep128emu/releases/ | grep tar.gz | sed s/-/~/g | sed s/\_.*//g
