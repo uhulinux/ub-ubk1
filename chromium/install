@@ -6,17 +6,15 @@ mkdir -p "$UB_INSTALLDIR/usr/lib/chromium/"
 # cp -a out/Release/lib/*.so "$UB_INSTALLDIR/usr/lib/chromium/"
 
 mv out/Release/chrome "$UB_INSTALLDIR/usr/lib/chromium/"
+mv out/Release/chromedriver "$UB_INSTALLDIR/usr/lib/chromium/"
 mv out/Release/chrome_sandbox "$UB_INSTALLDIR/usr/lib/chromium/chrome-sandbox"
-mv out/Release/mksnapshot "$UB_INSTALLDIR/usr/lib/chromium/"
 mv out/Release/chrome.1 "$UB_INSTALLDIR/usr/share/man/man1/chrome.1"
 
 mv out/Release/*.bin "$UB_INSTALLDIR/usr/lib/chromium/"
 mv out/Release/*.pak "$UB_INSTALLDIR/usr/lib/chromium/"
+mv out/Release/*.dat "$UB_INSTALLDIR/usr/lib/chromium/"
 
 mv out/Release/locales/ "$UB_INSTALLDIR/usr/lib/chromium/"
-mv out/Release/pseudo_locales/ "$UB_INSTALLDIR/usr/lib/chromium/"
-mv out/Release/pyproto/ "$UB_INSTALLDIR/usr/lib/chromium/"
-mv out/Release/resources/ "$UB_INSTALLDIR/usr/lib/chromium/"
 
 for size in 16 22 24 32 48 64 128 256; do
 	mkdir -p ${UB_INSTALLDIR}/usr/share/icons/hicolor/${size}x${size}/apps/
@@ -27,4 +25,4 @@ for size in 16 22 24 32 48 64 128 256; do
 	cp ${iconpath}/product_logo_$size.png ${UB_INSTALLDIR}/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png
 done
 
-# ln -s /usr/lib/chromium/chromedriver "$UB_INSTALLDIR/usr/bin/chromedriver"
+ln -s /usr/lib/chromium/chromedriver "$UB_INSTALLDIR/usr/bin/chromedriver"

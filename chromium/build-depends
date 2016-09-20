@@ -1,10 +1,9 @@
 alsa-lib-dev
 cups-dev
 dbus-dev
-gconf2-dev
-gnome-keyring-dev
 gperf
 gtk2-dev
+hwdata
 krb5-dev
 libdrm-dev
 libevent-dev
@@ -25,7 +24,7 @@ opus-dev
 pciutils-dev
 pulseaudio-dev
 python-dev
-speex-dev
+speechd-dev
 systemd-dev
 xdg-utils
 yasm
