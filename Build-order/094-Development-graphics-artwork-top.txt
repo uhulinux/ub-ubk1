@@ -26,6 +26,8 @@ sddm-theme-acidhub
 sddm-theme-deepspace
 sddm-theme-futuristic
 sddm-theme-urbanlifestyle
+sddm-theme-stellar
+sddm-theme-solarized
 shc
 slim-themes
 sparse
