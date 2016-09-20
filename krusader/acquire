@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-krusader-${UB_VERSION}.tar.gz krusader-53465ba/
-	git://github.com/KDE/krusader.git@53465ba
+krusader-${UB_VERSION}.tar.gz krusader-639f6c1/
+	git://github.com/KDE/krusader.git@639f6c1
