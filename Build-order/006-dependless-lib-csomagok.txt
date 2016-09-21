@@ -48,7 +48,6 @@ libquvi-scripts
 libraw1394
 libsigc++
 libsmi
-libstdc++5
 libt3config
 libtar
 libtermkey
