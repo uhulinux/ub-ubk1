@@ -1,6 +1,6 @@
 diff -Naur orig/browser/components/nsBrowserContentHandler.js patched/browser/components/nsBrowserContentHandler.js
---- orig/browser/components/nsBrowserContentHandler.js	2016-08-06 16:36:49.927041581 +0200
-+++ patched/browser/components/nsBrowserContentHandler.js	2016-08-06 16:21:10.000000000 +0200
+--- orig/browser/components/nsBrowserContentHandler.js	2016-09-08 02:17:27.000000000 +0200
++++ patched/browser/components/nsBrowserContentHandler.js	2016-09-20 23:14:08.994974721 +0200
 @@ -498,10 +498,6 @@
          switch (override) {
            case OVERRIDE_NEW_PROFILE:
@@ -12,11 +12,18 @@ diff -Naur orig/browser/components/nsBrowserContentHandler.js patched/browser/co
              break;
            case OVERRIDE_NEW_MSTONE:
              // Check whether we will restore a session. If we will, we assume
-@@ -513,11 +509,6 @@
+@@ -513,18 +509,6 @@
                                 .getService(Components.interfaces.nsISessionStartup);
              willRestoreSession = ss.isAutomaticRestoreEnabled();
  
 -            overridePage = Services.urlFormatter.formatURLPref("startup.homepage_override_url");
+-            // Temporary hack for Firefox 49 to show whatsnew for zh-TW.
+-            // See Bug #1292637
+-            var locale = prefb.getCharPref("general.useragent.locale");
+-            if (locale == "zh-TW") {
+-              overridePage = "https://www.mozilla.org/zh-TW/firefox/49.0/whatsnew/";
+-            }
+-
 -            if (prefb.prefHasUserValue("app.update.postupdate"))
 -              overridePage = getPostUpdateOverridePage(overridePage);
 -
