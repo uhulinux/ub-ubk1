@@ -1,7 +1,7 @@
 #!/bin/sh -eux
 
 autoreconf -fi
-#sed -i 's/LLVM_SO_NAME=.*/LLVM_SO_NAME=LLVM/' configure
+
 ub_compile \
 	--enable-texture-float \
 	--enable-gles1 \
@@ -20,10 +20,8 @@ ub_compile \
 	--enable-shared-glapi \
 	--with-gallium-drivers=i915,ilo,nouveau,r300,r600,radeonsi,svga,swrast \
 	--with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
-	--enable-r600-llvm-compiler \
 	--enable-omx \
 	--enable-nine \
 	--enable-opencl \
 	--enable-opencl-icd
 
-#ub_make
