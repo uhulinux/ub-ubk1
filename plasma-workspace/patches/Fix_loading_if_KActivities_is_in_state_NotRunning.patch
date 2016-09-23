@@ -1,0 +1,21 @@
+diff -Nur orig/shell/shellcorona.cpp mod/shell/shellcorona.cpp
+--- orig/shell/shellcorona.cpp	2016-08-23 14:57:58.000000000 +0200
++++ mod/shell/shellcorona.cpp	2016-09-23 20:36:10.083624693 +0200
+@@ -306,7 +306,7 @@
+ 
+     connect(m_activityController, &KActivities::Controller::serviceStatusChanged, this, &ShellCorona::load, Qt::UniqueConnection);
+ 
+-    if (m_activityController->serviceStatus() == KActivities::Controller::Running) {
++    if (m_activityController->serviceStatus() != KActivities::Controller::Running) {
+         load();
+     }
+ }
+@@ -336,7 +336,7 @@
+ void ShellCorona::load()
+ {
+     if (m_shell.isEmpty() ||
+-        m_activityController->serviceStatus() != KActivities::Controller::Running) {
++        m_activityController->serviceStatus() == KActivities::Controller::Running) {
+         return;
+     }
+ 
