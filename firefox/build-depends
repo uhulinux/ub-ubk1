@@ -8,6 +8,7 @@ libevent-dev
 libidl2-dev
 libjpeg-turbo-dev
 libnotify-dev
+libpng-dev
 libvpx-dev
 libx11-dev
 libxext-dev
