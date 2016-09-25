@@ -1,0 +1,5 @@
+cmake
+liblxqt-dev
+pulseaudio-dev
+qt5-dev
+xdg-user-dirs

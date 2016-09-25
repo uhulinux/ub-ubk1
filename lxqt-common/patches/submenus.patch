@@ -1,6 +1,6 @@
 diff -Naur orig/menu/lxqt-applications.menu mod/menu/lxqt-applications.menu
---- orig/menu/lxqt-applications.menu	2015-06-06 18:51:31.000000000 +0200
-+++ mod/menu/lxqt-applications.menu	2015-06-06 18:47:00.000000000 +0200
+--- orig/menu/lxqt-applications.menu	2016-09-24 00:44:22.000000000 +0200
++++ mod/menu/lxqt-applications.menu	2016-09-25 18:17:26.470760182 +0200
 @@ -28,8 +28,82 @@
  				<Not><Category>System</Category></Not>
  			</And>
@@ -319,8 +319,8 @@ diff -Naur orig/menu/lxqt-applications.menu mod/menu/lxqt-applications.menu
 +		</Menu>
  	</Menu>	 <!-- End Internet -->
  
- 	<!-- Multimedia -->
-@@ -108,6 +403,88 @@
+ 	<!-- LXQt-About -->
+@@ -116,6 +411,88 @@
  				<Category>AudioVideo</Category>
  			</And>
  		</Include>
@@ -409,8 +409,8 @@ diff -Naur orig/menu/lxqt-applications.menu mod/menu/lxqt-applications.menu
  	</Menu>	 <!-- End Multimedia -->
  
  	<!-- Office -->
-@@ -132,6 +509,53 @@
- 				<Not><Category>PackageManager</Category></Not>
+@@ -143,6 +520,53 @@
+ 				<Not><Filename>lxqt-about.desktop</Filename></Not>
  			</And>
  		</Include>
 +		<Exclude>
@@ -463,7 +463,7 @@ diff -Naur orig/menu/lxqt-applications.menu mod/menu/lxqt-applications.menu
  	</Menu>	 <!-- End System Tools -->
  
  	<!-- Other -->
-@@ -182,6 +606,8 @@
+@@ -194,6 +618,8 @@
  			</Or>
  		</Include>
  		<Exclude>

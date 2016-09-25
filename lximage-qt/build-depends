@@ -1,6 +1,7 @@
 cmake
 libexif-dev
 libfm-qt-dev
+liblxqt-dev
 libx11-dev
 menu-cache-dev
 qt5-dev

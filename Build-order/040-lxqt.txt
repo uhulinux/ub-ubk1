@@ -1,9 +1,10 @@
+libqtxdg
+liblxqt
 obconf-qt
 libfm-qt
 pcmanfm-qt
-libqtxdg
 lximage-qt
-liblxqt
+lxqt-l10n
 lxqt-about
 lxqt-common
 lxqt-notificationd
@@ -17,4 +18,9 @@ lxqt-config
 lxqt-powermanagement
 lxqt-runner
 lxqt-panel
+lxqt-sudo
+compton-conf
+pavucontrol-qt
+qtermwidget
+qterminal
 lxqt

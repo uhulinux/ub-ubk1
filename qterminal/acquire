@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-qterminal-${UB_VERSION}.tar.gz qterminal-3392ed7/
-	git://github.com/qterminal/qterminal.git@3392ed7
+${UB_VERSION}.tar.gz qterminal-${UB_VERSION}/
+	https://github.com/lxde/qterminal/archive/
+
+#qterminal-${UB_VERSION}.tar.gz qterminal-3392ed7/
+#	git://github.com/qterminal/qterminal.git@3392ed7

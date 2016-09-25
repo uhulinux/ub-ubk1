@@ -1,4 +1,5 @@
 cmake
+kidletime-dev
 liblxqt-dev
 libqtxdg-dev
 libx11-dev

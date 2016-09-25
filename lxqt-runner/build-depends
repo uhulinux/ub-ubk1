@@ -5,3 +5,4 @@ libqtxdg-dev
 libx11-dev
 lxqt-globalkeys-dev
 menu-cache-dev
+muparser-dev

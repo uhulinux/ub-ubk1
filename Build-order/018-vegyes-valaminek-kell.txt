@@ -137,7 +137,6 @@ opusfile
 osm-gps-map
 polkit-qt
 portaudio
-qtermwidget
 razor
 retrovol
 serf
@@ -289,7 +288,6 @@ dmapi
 gdlmm
 h323plus
 openmpi
-qterminal
 smpeg2
 gnonlin
 foo2zjs

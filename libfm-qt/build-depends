@@ -1,4 +1,5 @@
 cmake
 libfm-dev
+liblxqt-dev
 menu-cache-dev
 qt5-dev

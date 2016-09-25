@@ -1,3 +1,4 @@
 cmake
 libconfig-dev
+liblxqt-dev
 qt5-dev

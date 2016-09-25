@@ -1,3 +1,4 @@
 cmake
+liblxqt-dev
 openbox-dev
 qt5-dev
