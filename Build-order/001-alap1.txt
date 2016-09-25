@@ -75,7 +75,6 @@ libaal
 libdaemon
 libffi
 libidn
-libjpeg
 libjpeg-turbo
 libpng
 libsigsegv
