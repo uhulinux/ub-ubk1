@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kactivitymanagerd-${UB_VERSION}.tar.xz kactivitymanagerd-${UB_VERSION}/
+	http://download.kde.org/stable/plasma/${UB_VERSION}/

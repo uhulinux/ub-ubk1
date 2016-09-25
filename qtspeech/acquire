@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
-qtspeech-${UB_VERSION}.tar.gz qtspeech-aa24a10/
-	git://github.com/qtproject/qtspeech.git@aa24a10
-#	git://code.qt.io/qt/qtspeech.git@aa24a10
+qtspeech-${UB_VERSION}.tar.gz qtspeech-15e98bd/
+	git://github.com/qtproject/qtspeech.git@15e98bd
+#	git://code.qt.io/qt/qtspeech.git@15e98bd

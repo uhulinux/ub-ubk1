@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-k3b-${UB_VERSION}.tar.gz k3b-bc0a540/
-	git://github.com/KDE/k3b.git@bc0a540
+k3b-${UB_VERSION}.tar.gz k3b-8102d39/
+	git://github.com/KDE/k3b.git@8102d39

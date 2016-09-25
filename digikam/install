@@ -2,4 +2,4 @@
 
 ub_install
 
-chmod 644 "$UB_INSTALLDIR"/usr/share/applications/{digikam,showfoto,kipiplugins}.desktop
+chmod 644 "$UB_INSTALLDIR"/usr/share/applications/{kipiplugins,org.kde.{digikam,showfoto}}.desktop
