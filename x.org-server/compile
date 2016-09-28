@@ -34,8 +34,6 @@ ub_compile \
 	--enable-xfake \
 	--enable-xephyr \
 	--enable-secure-rpc \
-	--enable-xwrapper \
-	--enable-pam \
 	--disable-strict-compilation \
 	--disable-install-libxf86config \
 	--disable-tslib \
@@ -52,5 +50,4 @@ ub_compile \
 	
 cd rgb-*
 ub_compile
-
 
