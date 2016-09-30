@@ -1,1 +1,1 @@
-sflist kaffeine current | parsever | sort -V | tail -n1
+u2d https://github.com/KDE/kaffeine/releases/

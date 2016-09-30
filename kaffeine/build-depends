@@ -14,6 +14,7 @@ ktextwidgets-dev
 kwidgetsaddons-dev
 kwindowsystem-dev
 kxmlgui-dev
+libv4l-dev
 libx11-dev
 libxscrnsaver-dev
 qt5-dev
