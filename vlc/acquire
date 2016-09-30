@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-vlc-${UB_VERSION}.tar.xz vlc-${UB_VERSION}/
-	http://download.videolan.org/pub/videolan/vlc/${UB_VERSION}/
+#vlc-${UB_VERSION}.tar.xz vlc-${UB_VERSION}/
+#	http://download.videolan.org/pub/videolan/vlc/${UB_VERSION}/
+
+vlc-${UB_VERSION}.tar.gz vlc-83021a6/
+        git://github.com/videolan/vlc.git@83021a6
