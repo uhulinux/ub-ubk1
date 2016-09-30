@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 mercurial-${UB_VERSION}.tar.gz mercurial-${UB_VERSION}/
-	https://pypi.python.org/packages/source/M/Mercurial/
+	https://www.mercurial-scm.org/release/

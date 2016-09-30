@@ -32,7 +32,8 @@ cp .config."$ARCH" arch/x86/configs/"$ARCH"_defconfig
 # make ARCH="$ARCH" oldconfig
 # diff -u <(grep -v '^#' .config|sort) <(grep -v '^#' arch/x86/configs/"$ARCH"_defconfig|sort)
 
-make prepare
+make oldconfig
+# make prepare
 yes "" | make config >/dev/null
 
 make ARCH="$ARCH" -j"$NUMCPUS" scripts
