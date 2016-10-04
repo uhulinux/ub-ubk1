@@ -7,5 +7,4 @@ Comment[hu]=Általános mappanevek frissítése az aktuális területi beállít
 Terminal=false
 Type=Application
 StartupNotify=false
-NotShowIn=GNOME;LXDE;
 X-KDE-autostart-after=panel
