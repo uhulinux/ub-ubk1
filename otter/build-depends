@@ -6,5 +6,5 @@ qt5-plugin-mysql
 qt5-plugin-odbc
 qt5-plugin-psql
 qt5-plugin-tds
-qtwebkit-dev
+qtwebengine-dev
 sonnet-dev
