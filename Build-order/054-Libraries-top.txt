@@ -46,7 +46,6 @@ gstreamer0.10mm
 ntrack
 jogl
 grantlee
-qoauth
 gst-rtsp
 bcg729
 anjuta-extras

@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-sed -i 's|lib64|lib|' src/src.pro
-
-qmake-qt4
-
-make
