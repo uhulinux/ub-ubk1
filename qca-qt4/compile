@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-export QTDIR=/usr/lib/qt4
-./configure \
-	--prefix=/usr \
-	--release \
-	--no-framework
-	
-ub_make

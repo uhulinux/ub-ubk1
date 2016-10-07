@@ -62,7 +62,6 @@ miniupnpc
 musepack
 ois
 pcsc-lite
-qca-qt4
 qpdf
 radeontool
 sbc

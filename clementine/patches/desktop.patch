@@ -1,32 +1,32 @@
-diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
---- orig/dist/clementine.desktop	2014-04-23 12:16:44.000000000 +0200
-+++ mod/dist/clementine.desktop	2016-01-16 15:33:32.621235503 +0100
-@@ -1,13 +1,14 @@
- [Desktop Entry]
--Version=1.0
- Type=Application
- Name=Clementine
+diff -Naur orig/dist/clementine.desktop patched/dist/clementine.desktop
+--- orig/dist/clementine.desktop	2016-04-19 17:08:35.000000000 +0200
++++ patched/dist/clementine.desktop	2016-10-07 02:27:38.908273136 +0200
+@@ -9,6 +9,7 @@
  GenericName=Clementine Music Player
+ GenericName[ca]=Reproductor de música Clementine
+ GenericName[es]=Reproductor de música Clementine
++GenericName[hu]=Clementine zenegép
  GenericName[pl]=Odtwarzacz muzyki Clementine
  GenericName[pt]=Reprodutor de músicas Clementine
-+GenericName[hu]=Clementine zenegép
+ GenericName[sl]=Predvajalnik glasbe Clementine
+@@ -19,6 +20,7 @@
  Comment=Plays music and last.fm streams
+ Comment[ca]=Reproducció de música i fluxos de Last.fm
+ Comment[es]=Reproducción de música y flujos de Last.fm
++Comment[hu]=Zene és last.fm lejátszó
  Comment[pl]=Odtwarzanie muzyki i strumieni last.fm
  Comment[pt]=Reprodução de músicas e emissões last.fm
-+Comment[hu]=Zenele és last.fm lejátszó
- Exec=clementine %U
- TryExec=clementine
- Icon=application-x-clementine
-@@ -15,240 +16,3 @@
- Categories=AudioVideo;Player;Qt;
+ Comment[sl]=Predvaja glasbo in pretoke last.fm
+@@ -33,249 +35,4 @@
+ Categories=AudioVideo;Player;Qt;Audio;
  StartupNotify=false
  MimeType=application/ogg;application/x-ogg;application/x-ogm-audio;audio/aac;audio/mp4;audio/mpeg;audio/mpegurl;audio/ogg;audio/vnd.rn-realaudio;audio/vorbis;audio/x-flac;audio/x-mp3;audio/x-mpeg;audio/x-mpegurl;audio/x-ms-wma;audio/x-musepack;audio/x-oggflac;audio/x-pn-realaudio;audio/x-scpls;audio/x-speex;audio/x-vorbis;audio/x-vorbis+ogg;audio/x-wav;video/x-ms-asf;x-content/audio-player;x-scheme-handler/zune;x-scheme-handler/itpc;x-scheme-handler/itms;x-scheme-handler/feed;
--X-Ayatana-Desktop-Shortcuts=Play;Pause;Stop;Previous;Next;
--
--[Play Shortcut Group]
+-Actions=Play;Pause;Stop;Previous;Next;
+ 
+-[Desktop Action Play]
 -Name=Play
 -Exec=clementine --play
--TargetEnvironment=Unity
+-OnlyShowIn=Unity;
 -Name[af]=Speel
 -Name[be]=Прайграць
 -Name[bg]=Възпроизвеждане
@@ -37,7 +37,6 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[de]=Wiedergabe
 -Name[el]=Αναπαραγωγή
 -Name[es]=Reproducir
--Name[es_AR]=Reproducir
 -Name[et]=Mängi
 -Name[eu]=Erreproduzitu
 -Name[fa]=پخش
@@ -65,6 +64,9 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[sk]=Hrať
 -Name[sl]=Predvajaj
 -Name[sr]=Пусти
+-Name[sr@ijekavian]=Пусти
+-Name[sr@ijekavianlatin]=Pusti
+-Name[sr@latin]=Pusti
 -Name[sv]=Spela upp
 -Name[tr]=Çal
 -Name[uk]=Відтворити
@@ -72,10 +74,10 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[zh_CN]=播放
 -Name[zh_TW]=播放
 -
--[Pause Shortcut Group]
+-[Desktop Action Pause]
 -Name=Pause
 -Exec=clementine --pause
--TargetEnvironment=Unity
+-OnlyShowIn=Unity;
 -Name[be]=Прыпыніць
 -Name[bg]=Пауза
 -Name[br]=Ehan
@@ -83,7 +85,6 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[cs]=Pozastavit
 -Name[el]=Παύση
 -Name[es]=Pausar
--Name[es_AR]=Pausar
 -Name[et]=Paus
 -Name[eu]=Pausarazi
 -Name[fa]=ایست
@@ -109,6 +110,9 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[sk]=Pozastaviť
 -Name[sl]=Začasno ustavi
 -Name[sr]=Паузирај
+-Name[sr@ijekavian]=Паузирај
+-Name[sr@ijekavianlatin]=Pauziraj
+-Name[sr@latin]=Pauziraj
 -Name[sv]=Gör paus
 -Name[tr]=Duraklat
 -Name[uk]=Призупинити
@@ -116,10 +120,10 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[zh_CN]=暂停
 -Name[zh_TW]=暫停
 -
--[Stop Shortcut Group]
+-[Desktop Action Stop]
 -Name=Stop
 -Exec=clementine --stop
--TargetEnvironment=Unity
+-OnlyShowIn=Unity;
 -Name[be]=Спыніць
 -Name[bg]=Спиране
 -Name[br]=Paouez
@@ -128,7 +132,6 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[de]=Anhalten
 -Name[el]=Σταμάτημα
 -Name[es]=Detener
--Name[es_AR]=Detener
 -Name[et]=Peata
 -Name[eu]=Gelditu
 -Name[fa]=ایست
@@ -156,6 +159,9 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[sk]=Zastaviť
 -Name[sl]=Zaustavi
 -Name[sr]=Заустави
+-Name[sr@ijekavian]=Заустави
+-Name[sr@ijekavianlatin]=Zaustavi
+-Name[sr@latin]=Zaustavi
 -Name[sv]=Stoppa
 -Name[tr]=Durdur
 -Name[uk]=Зупинити
@@ -163,10 +169,10 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[zh_CN]=停止
 -Name[zh_TW]=停止
 -
--[Previous Shortcut Group]
+-[Desktop Action Previous]
 -Name=Previous
 -Exec=clementine --previous
--TargetEnvironment=Unity
+-OnlyShowIn=Unity;
 -Name[af]=Vorige
 -Name[be]=Папярэдні
 -Name[bg]=Предишна
@@ -177,7 +183,6 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[de]=Vorheriger
 -Name[el]=Προηγούμενο
 -Name[es]=Anterior
--Name[es_AR]=Anterior
 -Name[eu]=Aurrekoa
 -Name[fa]=پیشین
 -Name[fi]=Edellinen
@@ -200,7 +205,10 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[ru]=Предыдущий
 -Name[sk]=Predchádzajúca
 -Name[sl]=Predhodni
--Name[sr]=Prethodno
+-Name[sr]=Претходна
+-Name[sr@ijekavian]=Претходна
+-Name[sr@ijekavianlatin]=Prethodna
+-Name[sr@latin]=Prethodna
 -Name[sv]=Föregående
 -Name[tr]=Önceki
 -Name[uk]=Попередня
@@ -209,10 +217,10 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[zh_CN]=上一首
 -Name[zh_TW]=往前
 -
--[Next Shortcut Group]
+-[Desktop Action Next]
 -Name=Next
 -Exec=clementine --next
--TargetEnvironment=Unity
+-OnlyShowIn=Unity;
 -Name[af]=Volgende
 -Name[be]=Далей
 -Name[bg]=Следваща
@@ -223,7 +231,6 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[de]=Weiter
 -Name[el]=Επόμενο
 -Name[es]=Siguiente
--Name[es_AR]=Siguiente
 -Name[eu]=Hurrengoa
 -Name[fa]=پسین
 -Name[fi]=Seuraava
@@ -249,7 +256,10 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[ru]=Дальше
 -Name[sk]=Ďalšia
 -Name[sl]=Naslednji
--Name[sr]=Sledeće
+-Name[sr]=Следећа
+-Name[sr@ijekavian]=Сљедећа
+-Name[sr@ijekavianlatin]=Sljedeća
+-Name[sr@latin]=Sledeća
 -Name[sv]=Nästa
 -Name[tr]=İleri
 -Name[uk]=Наступна
@@ -257,4 +267,3 @@ diff -Naur orig/dist/clementine.desktop mod/dist/clementine.desktop
 -Name[vi]=Tiếp theo
 -Name[zh_CN]=下一首
 -Name[zh_TW]=下一個
--

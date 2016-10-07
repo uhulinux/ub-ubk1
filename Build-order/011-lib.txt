@@ -31,7 +31,6 @@ libt3highlight
 libt3window
 libtorrent
 libvdpau
-libmygpo-qt4
 liboauth
 liboobs
 libqxt

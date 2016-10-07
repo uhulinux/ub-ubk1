@@ -2,3 +2,9 @@
 
 ${UB_VERSION}.tar.gz Clementine-${UB_VERSION}/
 	https://github.com/clementine-player/Clementine/archive/
+	
+1.2.3.tar.gz Clementine-1.2.3/3rdparty/chromaprint :3rdparty
+	https://github.com/clementine-player/Clementine/archive/
+
+1.2.3.tar.gz Clementine-1.2.3/3rdparty/libechonest :3rdparty
+	https://github.com/clementine-player/Clementine/archive/
