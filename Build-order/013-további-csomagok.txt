@@ -30,7 +30,6 @@ libgpod
 libsocialweb
 graphviz
 imagemagick
-libindicate-qt4
 cairomm
 pangomm
 gtkmm2
