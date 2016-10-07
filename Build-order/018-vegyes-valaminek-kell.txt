@@ -126,6 +126,7 @@ xorriso
 dcraw
 ebook-tools
 fonts-oxygen
+fonts-hack
 gtkspell2
 iputils
 js185

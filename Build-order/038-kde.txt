@@ -129,4 +129,3 @@ digikam
 kdiff3
 kde5
 kde5-apps
-
