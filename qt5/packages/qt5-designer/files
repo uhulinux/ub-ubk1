@@ -4,6 +4,10 @@
 	/usr/lib/qt5/bin/designer.debug
 	/usr/lib/qt5/bin/linguist
 	/usr/lib/qt5/bin/linguist.debug
+	/usr/lib/qt5/lib/libQt5Designer.so.*
+@	/usr/lib/qt5/lib/libQt5Designer.so.*
+	/usr/lib/qt5/lib/libQt5DesignerComponents.so.*
+@	/usr/lib/qt5/lib/libQt5DesignerComponents.so.*
 	/usr/lib/qt5/plugins/designer
 	/usr/lib/qt5/translations/designer_*.qm
 	/usr/lib/qt5/translations/linguist_*.qm
