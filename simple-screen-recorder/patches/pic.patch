@@ -1,0 +1,25 @@
+diff -Naur orig/src/Makefile.am patched/src/Makefile.am
+--- orig/src/Makefile.am	2015-11-02 22:13:49.000000000 +0100
++++ patched/src/Makefile.am	2016-10-08 00:59:22.748135649 +0200
+@@ -17,7 +17,7 @@
+ 	$(FFMPEG_LIBS)
+ 
+ if WITH_QT5
+-simplescreenrecorder_CPPFLAGS += $(QT5_CFLAGS)
++simplescreenrecorder_CPPFLAGS += $(QT5_CFLAGS) -fPIC
+ simplescreenrecorder_LDFLAGS += $(QT5_LIBS)
+ else
+ simplescreenrecorder_CPPFLAGS += $(QT4_CFLAGS)
+diff -Naur orig/src/Makefile.in patched/src/Makefile.in
+--- orig/src/Makefile.in	2015-11-02 22:13:49.000000000 +0100
++++ patched/src/Makefile.in	2016-10-08 01:00:00.820655963 +0200
+@@ -91,7 +91,7 @@
+ build_triplet = @build@
+ host_triplet = @host@
+ @ENABLE_SSRPROGRAM_TRUE@bin_PROGRAMS = simplescreenrecorder$(EXEEXT)
+-@ENABLE_SSRPROGRAM_TRUE@@WITH_QT5_TRUE@am__append_1 = $(QT5_CFLAGS)
++@ENABLE_SSRPROGRAM_TRUE@@WITH_QT5_TRUE@am__append_1 = $(QT5_CFLAGS) -fPIC
+ @ENABLE_SSRPROGRAM_TRUE@@WITH_QT5_TRUE@am__append_2 = $(QT5_LIBS)
+ @ENABLE_SSRPROGRAM_TRUE@@WITH_QT5_FALSE@am__append_3 = $(QT4_CFLAGS)
+ @ENABLE_SSRPROGRAM_TRUE@@WITH_QT5_FALSE@am__append_4 = $(QT4_LIBS)
+
