@@ -2,4 +2,5 @@ cmake
 extra-cmake-modules
 mesa-dev
 qt5-dev
+qt5-test
 wayland-dev

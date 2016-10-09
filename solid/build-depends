@@ -1,5 +1,6 @@
 cmake
 extra-cmake-modules
 qt5-dev
+qt5-test
 udisks2-dev
 upower-dev

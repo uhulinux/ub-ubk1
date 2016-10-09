@@ -7,4 +7,5 @@ kdbusaddons-dev
 kservice-dev
 kwindowsystem-dev
 qt5-dev
+qt5-test
 xcb-util-keysyms-dev

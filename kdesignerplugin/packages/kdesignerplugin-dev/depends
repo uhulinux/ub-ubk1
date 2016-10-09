@@ -10,5 +10,6 @@ kplotting-dev
 ktextwidgets-dev
 kwidgetsaddons-dev
 kxmlgui-dev
+qt5-designer-dev
 qt5-dev
 sonnet-dev

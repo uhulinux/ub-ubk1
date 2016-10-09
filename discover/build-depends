@@ -22,4 +22,5 @@ packagekit-qt-dev
 plasma-framework-dev
 qca-dev
 qt5-dev
+qt5-test
 solid-dev

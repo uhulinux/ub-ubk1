@@ -7,3 +7,4 @@ kio-dev
 kpackage-dev
 libepoxy-dev
 qt5-dev
+qt5-test

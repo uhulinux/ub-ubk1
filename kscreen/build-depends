@@ -9,3 +9,4 @@ kwidgetsaddons-dev
 kxmlgui-dev
 libkscreen-dev
 qt5-dev
+qt5-test

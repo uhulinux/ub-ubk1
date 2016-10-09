@@ -1,0 +1,27 @@
+diff -Naur orig/src/CMakeLists.txt patched/src/CMakeLists.txt
+--- orig/src/CMakeLists.txt	2016-10-02 11:48:15.000000000 +0200
++++ patched/src/CMakeLists.txt	2016-10-09 01:25:03.898976124 +0200
+@@ -79,7 +79,6 @@
+     kdecore/k3socketbuffer.cpp
+     kdecore/netsupp.cpp
+     kdecore/kascii.cpp
+-    kdecore/qtest_kde.cpp
+     kdecore/kstandarddirs.cpp
+     kdecore/kglobal.cpp
+     kdecore/kcmdlineargs.cpp
+@@ -331,7 +330,6 @@
+    KF5::UnitConversion
+    KF5::GlobalAccel
+    Qt5::Svg
+-   Qt5::Test # for qtest_kde.cpp
+    ${KIO_EXTRA_LIBS}
+    ${libkdelibs4support_OPTIONAL_LIBS}
+    ${platformLinkLibraries}
+@@ -416,7 +414,6 @@
+     kdecore/kgenericfactory.tcc
+     kdecore/ktypelist.h
+     kdecore/kascii.h
+-    kdecore/qtest_kde.h
+     kdecore/kstandarddirs.h
+     kdecore/kglobal.h
+     kdecore/kcmdlineargs.h
