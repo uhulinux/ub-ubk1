@@ -1,7 +1,8 @@
 alsa-lib-dev
+audiofile-dev
 glib-dev
 gnutls-dev
-gtk2-dev
+gtk-dev
 libpng-dev
 libsamplerate-dev
 libspectrum-dev

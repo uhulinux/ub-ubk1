@@ -1,7 +1,8 @@
 audiofile-dev
-bzip2-dev
-ffmpeg2.8-dev
 glib-dev
 libgcrypt-dev
+libjpeg-turbo-dev
+libpng-dev
 libspectrum-dev
+newt-dev
 zlib-dev

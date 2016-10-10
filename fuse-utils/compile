@@ -2,4 +2,4 @@
 
 ub_compile \
 	PACKAGE_NAME=free-unix-spectrum-emulator-utils \
-	 --with-libgcrypt \
+	 --with-libgcrypt
