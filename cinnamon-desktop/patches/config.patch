@@ -6,7 +6,7 @@ diff -Naur cinnamon-desktop-2.8.0.orig/schemas/org.cinnamon.desktop.background.g
      </key>
      <key name="picture-uri" type="s">
 -      <default>'file://@datadir@/themes/Adwaita/backgrounds/adwaita-timed.xml'</default>
-+      <default>'file://@datadir@/backgrounds/gnome/adwaita-timed.xml'</default>
++      <default>'file://@datadir@/backgrounds/UHU/uhu_linux_ubk.jpg'</default>
        <_summary>Picture URI</_summary>
        <_description>
          URI to use for the background image. Not that the backend only supports
