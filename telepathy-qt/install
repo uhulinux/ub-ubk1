@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-cd telepathy-qt
-ub_install
-cp AUTHORS COPYING NEWS README ../
-cd ../telepathy-qt4
-ub_install
-mkdir -p ${UB_INSTALLDIR}/usr/share/doc/Packages/telepathy-qt4
-cp AUTHORS COPYING NEWS README ${UB_INSTALLDIR}/usr/share/doc/Packages/telepathy-qt4/

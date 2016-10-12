@@ -1,9 +1,0 @@
-cmake
-dbus-dev
-dbus-python-dev
-gst-plugins-base-dev
-libxml2-dev
-python-dev
-qt4-dev
-qt5-dev
-telepathy-farstream-dev

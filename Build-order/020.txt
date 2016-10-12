@@ -26,5 +26,4 @@ telepathy-farstream
 telepathy-idle
 telepathy-haze
 telepathy-yell
-telepathy-qt
 pidgin
