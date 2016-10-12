@@ -33,7 +33,6 @@ sdl2-net
 pdflib
 starman
 g2
-hupnp
 wv2
 gtk2-engine-xfce
 gtk-engine-unico
@@ -60,7 +59,6 @@ gstreamer0.10-vaapi
 alsa-plugins
 msilbc
 gst-plugins-gl
-soprano
 freshplayerplugin
 evolution-ews
 avogadrolibs

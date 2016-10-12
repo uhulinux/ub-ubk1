@@ -173,7 +173,6 @@ wammu
 unibrow
 moserial
 qt-recordmydesktop
-strigiutils
 xplanet
 ghasher
 hardinfo
@@ -193,7 +192,6 @@ electrum
 celestia
 mount-gtk
 gencfsm
-strigiclient
 easytag
 ffdiaporama
 gdesklets

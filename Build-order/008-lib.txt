@@ -59,7 +59,6 @@ libinput
 libiodbc
 libisofs
 liblangtag
-liblastfm
 liblensfun
 liblqr
 liblrdf

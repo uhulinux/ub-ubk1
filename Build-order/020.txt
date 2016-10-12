@@ -1,5 +1,4 @@
 ffmpeg
-ffmpeg2.8
 opencv
 frei0r
 libquicktime

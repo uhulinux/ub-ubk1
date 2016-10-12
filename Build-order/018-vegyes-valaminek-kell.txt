@@ -204,7 +204,6 @@ gupnp-dlna
 notification-daemon
 nvidia-cg-toolkit
 pinentry
-virtuoso
 wv
 xaw3dxft
 clamav
@@ -235,7 +234,6 @@ appdata-tools
 ftgl
 gucharmap
 lightdm
-strigidaemon
 xfig
 gammu
 glfw

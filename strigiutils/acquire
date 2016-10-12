@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-strigiutils-${UB_VERSION}.tar.gz strigiutils-v${UB_VERSION}/
-	git://anongit.kde.org/strigiutils.git@tag:v${UB_VERSION}

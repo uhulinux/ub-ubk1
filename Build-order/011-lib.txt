@@ -33,7 +33,6 @@ libtorrent
 libvdpau
 liboauth
 liboobs
-libqxt
 libraw
 librpcsecgss
 libtirpc
