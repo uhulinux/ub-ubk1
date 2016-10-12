@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-${UB_VERSION}.tar.gz liblastfm-${UB_VERSION}/
-	https://github.com/lastfm/liblastfm/archive/

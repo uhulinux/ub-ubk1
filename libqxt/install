@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_make INSTALL_ROOT="$UB_INSTALLDIR" install
-
-for i in examples extras features ;\
-	do cp -a $i/. "$UB_INSTALLDIR"/usr/share/doc/Qxt/$i/; done;

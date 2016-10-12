@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-./configure \
-	-prefix /usr \
-	-libdir /usr/lib \
-	-docdir /usr/share/doc/Qxt \
-	-qmake-bin /usr/bin/qmake-qt4
-
-ub_make
