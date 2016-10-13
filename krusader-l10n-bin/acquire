@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+krusader-l10n-bin-${UB_VERSION}.tar.gz krusader-l10n-bin-c0b1749/
+	git://github.com/FadeMind/krusader-l10n-bin.git@c0b1749
