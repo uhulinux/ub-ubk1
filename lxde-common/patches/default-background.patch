@@ -1,0 +1,12 @@
+diff -Naur orig/pcmanfm/pcmanfm.conf.in patched/pcmanfm/pcmanfm.conf.in
+--- orig/pcmanfm/pcmanfm.conf.in	2014-10-23 16:08:00.000000000 +0200
++++ patched/pcmanfm/pcmanfm.conf.in	2016-10-11 15:31:28.614220207 +0200
+@@ -4,7 +4,7 @@
+ 
+ [desktop]
+ wallpaper_mode=1
+-wallpaper=@prefix@/share/lxde/wallpapers/lxde_blue.jpg
++wallpaper=@prefix@/share/backgrounds/UHU/uhu_linux_ubk.jpg
+ desktop_bg=#000000
+ desktop_fg=#ffffff
+ desktop_shadow=#000000
