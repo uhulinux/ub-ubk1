@@ -1,5 +1,4 @@
 #!/bin/sh -eux
 
-make install \
-	destdir="$UB_INSTALLDIR" \
-	mandir="usr/share/man"
+ub_install
+
