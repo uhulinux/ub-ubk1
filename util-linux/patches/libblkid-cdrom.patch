@@ -1,0 +1,26 @@
+From 55ad13c26fe5d0e606be5a83937f31b8cf576588 Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Thu, 28 Apr 2016 13:54:01 +0200
+Subject: [PATCH] libblkid: make I/O errors on CDROMs non-fatal
+
+It seems too tricky to get a real size of the data track on hybrid
+disks with audio+data. It seems overkill to analyze all header in
+libblkid and on some disks it's probably possible to get I/O error
+almost everywhere due to crazy copy protection etc.
+diff --git a/libblkid/src/probe.c b/libblkid/src/probe.c
+index 63baed3..5d9f701 100644
+--- a/libblkid/src/probe.c
++++ b/libblkid/src/probe.c
+@@ -615,7 +615,10 @@ static struct blkid_bufinfo *read_buffer(blkid_probe pr, uint64_t real_off, uint
+ 	if (ret != (ssize_t) len) {
+ 		DBG(LOWPROBE, ul_debug("\tread failed: %m"));
+ 		free(bf);
+-		if (ret >= 0)
++
++		/* I/O errors on CDROMs are non-fatal to work with hybrid
++		 * audio+data disks */
++		if (ret >= 0 || blkid_probe_is_cdrom(pr))
+ 			errno = 0;
+ 		return NULL;
+ 	}
+ 

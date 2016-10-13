@@ -10,6 +10,7 @@ ub_compile \
 	--enable-raw \
 	--enable-rdev \
 	--enable-write \
+    --enable-libmount-force-mountinfo \
 	\
 	--disable-kill \
 	\
