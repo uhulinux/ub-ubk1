@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-krusader-${UB_VERSION}.tar.gz krusader-8510d26/
-	git://github.com/KDE/krusader.git@8510d26
+krusader-${UB_VERSION}.tar.gz krusader-d0a854f/
+	git://github.com/KDE/krusader.git@d0a854f
+
+krusader-l10n-bin-${UB_VERSION}.tar.gz krusader-l10n-bin-c0b1749/ :l10n
+	git://github.com/FadeMind/krusader-l10n-bin.git@c0b1749

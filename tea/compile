@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
 export QTDIR="/usr/lib/qt5"
-
-qmake-qt5 PREFIX=/usr/bin
+mv themes/Ягодная themes/Jagodnaja
+qmake PREFIX=/usr/bin
 make

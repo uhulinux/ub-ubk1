@@ -1,0 +1,24 @@
+diff -Nur orig/rlvn.qrc mod/rlvn.qrc
+--- orig/rlvn.qrc	2016-09-16 21:56:10.000000000 +0200
++++ mod/rlvn.qrc	2016-10-14 12:59:45.786710793 +0200
+@@ -59,7 +59,7 @@
+     <file>themes/Smaragd/stylesheet.css</file>
+     <file>themes/Turbo/stylesheet.css</file>
+     <file>themes/Vegan/stylesheet.css</file>
+-    <file>themes/Ягодная/stylesheet.css</file>
++    <file>themes/Jagodnaja/stylesheet.css</file>
+ 
+     <file>palettes/paper-old</file>
+     <file>palettes/paper-toilet</file>
+diff -Nur orig/src.pro mod/src.pro
+--- orig/src.pro	2016-09-16 21:56:10.000000000 +0200
++++ mod/src.pro	2016-10-14 12:59:14.793275527 +0200
+@@ -174,7 +174,7 @@
+     themes/Turbo/stylesheet.css \
+     themes/Turbo/icons/* \
+     themes/Vegan/stylesheet.css \
+-    themes/Ягодная/stylesheet.css 
++    themes/Jagodnaja/stylesheet.css 
+ 
+ 
+ unix:  {
