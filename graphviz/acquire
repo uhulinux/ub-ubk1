@@ -1,6 +1,7 @@
 #!/usr/bin/env dl
 
 graphviz-${UB_VERSION}.tar.gz graphviz-${UB_VERSION}/
+	http://www.graphviz.org/pub/graphviz/stable/SOURCES/
 	http://pkgs.fedoraproject.org/repo/pkgs/graphviz/graphviz-${UB_VERSION}.tar.gz/5b6a829b2ac94efcd5fa3c223ed6d3ae/
 	http://www.graphviz.org/pub/graphviz/ARCHIVE/
 
