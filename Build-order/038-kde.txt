@@ -72,6 +72,7 @@ krunner
 kjsembed
 kio-extras
 kdegraphics-thumbnailers
+kholidays
 kactivitymanagerd
 plasma-workspace-wallpapers
 bluedevil

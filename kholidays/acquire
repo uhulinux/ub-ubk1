@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kholidays-${UB_VERSION}.tar.xz kholidays-${UB_VERSION}/
+	http://download.kde.org/stable/applications/${UB_VERSION_HEAD3}/src/
