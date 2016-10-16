@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-mkdir -p "$UB_INSTALLDIR"/usr/share/java/
-cp -a "junit-$UB_VERSION.jar" "$UB_INSTALLDIR"/usr/share/java/
-ln -s "junit-$UB_VERSION.jar" "$UB_INSTALLDIR"/usr/share/java/junit.jar

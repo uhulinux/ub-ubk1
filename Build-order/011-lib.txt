@@ -50,7 +50,6 @@ libpano13
 libsynce
 libtorrent-rasterbar
 libvisual-plugins
-libphonenumber
 libopkele
 libquvi
 libvisio

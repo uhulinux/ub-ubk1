@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-hamcrest-java-${UB_VERSION}.tar.gz hamcrest-${UB_VERSION}/
-	https://github.com/hamcrest/JavaHamcrest/archive/

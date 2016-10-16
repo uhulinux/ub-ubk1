@@ -1,7 +1,7 @@
-diff -urN screen-3.9.15.orig/config.h.in screen-3.9.15/config.h.in
---- screen-3.9.15.orig/config.h.in	2003-03-13 12:19:53.000000000 +0100
-+++ screen-3.9.15/config.h.in	2003-06-03 14:47:51.000000000 +0200
-@@ -204,7 +204,7 @@
+diff -Naur orig/config.h.in patched/config.h.in
+--- orig/config.h.in	2016-06-19 22:12:54.000000000 +0200
++++ patched/config.h.in	2016-10-15 01:07:43.713190764 +0200
+@@ -192,7 +192,7 @@
   * If screen is installed with permissions to update /etc/utmp (such
   * as if it is installed set-uid root), define UTMPOK.
   */
@@ -10,9 +10,9 @@ diff -urN screen-3.9.15.orig/config.h.in screen-3.9.15/config.h.in
  
  /* Set LOGINDEFAULT to one (1)
   * if you want entries added to /etc/utmp by default, else set it to
-diff -urN screen-3.9.15.orig/etc/screenrc screen-3.9.15/etc/screenrc
---- screen-3.9.15.orig/etc/screenrc	2003-03-13 12:19:54.000000000 +0100
-+++ screen-3.9.15/etc/screenrc	2003-06-03 15:16:06.000000000 +0200
+diff -Naur orig/etc/screenrc patched/etc/screenrc
+--- orig/etc/screenrc	2016-06-19 21:41:03.000000000 +0200
++++ patched/etc/screenrc	2016-10-15 01:09:20.158221028 +0200
 @@ -119,8 +119,6 @@
  bind h
  #make them better
@@ -22,10 +22,10 @@ diff -urN screen-3.9.15.orig/etc/screenrc screen-3.9.15/etc/screenrc
  bind '}' history
  
  # Yet another hack:
-diff -urN screen-3.9.15.orig/Makefile.in screen-3.9.15/Makefile.in
---- screen-3.9.15.orig/Makefile.in	2003-03-13 12:19:53.000000000 +0100
-+++ screen-3.9.15/Makefile.in	2003-06-03 14:41:13.000000000 +0200
-@@ -52,12 +52,12 @@
+diff -Naur orig/Makefile.in patched/Makefile.in
+--- orig/Makefile.in	2016-06-19 21:41:03.000000000 +0200
++++ patched/Makefile.in	2016-10-15 01:08:42.157820373 +0200
+@@ -61,13 +61,13 @@
  SHELL=/bin/sh
  
  CFILES=	screen.c ansi.c fileio.c mark.c misc.c resize.c socket.c \
@@ -33,10 +33,11 @@ diff -urN screen-3.9.15.orig/Makefile.in screen-3.9.15/Makefile.in
 +	search.c tty.c term.c window.c loadav.c putenv.c help.c \
  	termcap.c input.c attacher.c pty.c process.c display.c comm.c \
  	kmapdef.c acls.c braille.c braille_tsi.c logfile.c layer.c \
- 	sched.c teln.c nethack.c encoding.c
+ 	sched.c teln.c nethack.c encoding.c canvas.c layout.c viewport.c \
+ 	list_display.c list_generic.c list_window.c
  OFILES=	screen.o ansi.o fileio.o mark.o misc.o resize.o socket.o \
 -	search.o tty.o term.o window.o utmp.o loadav.o putenv.o help.o \
 +	search.o tty.o term.o window.o loadav.o putenv.o help.o \
  	termcap.o input.o attacher.o pty.o process.o display.o comm.o \
  	kmapdef.o acls.o braille.o braille_tsi.o logfile.o layer.o \
- 	sched.o teln.o nethack.o encoding.o
+ 	list_generic.o list_display.o list_window.o \

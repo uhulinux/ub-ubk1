@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-install -dm755 "$UB_INSTALLDIR"/usr/share/java/hamcrest
-for i in core library generator integration; do
-	cp "hamcrest-$i-$UB_VERSION.jar" "$UB_INSTALLDIR"/usr/share/java/hamcrest
-	ln -s "hamcrest-$i-$UB_VERSION.jar" "$UB_INSTALLDIR"/usr/share/java/hamcrest/"hamcrest-$i.jar"
-done

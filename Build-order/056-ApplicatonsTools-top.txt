@@ -27,7 +27,6 @@ localepurge
 mailcount
 mdb
 multitail
-nevnapok
 nload
 nrg2iso
 numdiff

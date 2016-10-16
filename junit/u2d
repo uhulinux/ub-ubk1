@@ -1,1 +1,0 @@
-timeout 10 curl -m 10 -sLk 'http://search.maven.org/solrsearch/select?q=g%3A%22junit%22%20AND%20a%3A%22junit%22&rows=20&core=gav&wt=xml' | xmllint -format - | grep -E 'junit:junit:([0-9.]+)' | sed -r 's/^.*junit:junit:([0-9.]+).*$/\1/' | sort -V  | tail -n 1

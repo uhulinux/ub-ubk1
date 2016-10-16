@@ -41,7 +41,6 @@ gdb
 geoip
 gnome-common
 gnuchess
-hamcrest
 hddtemp
 hermes
 hunspell
@@ -52,7 +51,6 @@ ispell
 jad
 jam
 jdictionary
-junit
 less
 libupnp
 linebreak
