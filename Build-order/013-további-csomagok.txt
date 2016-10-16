@@ -40,6 +40,7 @@ libvtemm
 libgnomemm2
 libsexymm
 amrwb
+libstemmer
 appstream
 augeas
 beecrypt

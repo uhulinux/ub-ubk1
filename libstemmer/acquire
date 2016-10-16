@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+libstemmer-${UB_VERSION}.tar.gz snowball-6b3b8b5/
+	git://github.com/snowballstem/snowball.git@6b3b8b5
