@@ -1,8 +1,8 @@
 #!/bin/sh -eux
 
-export CXXFLAGS="-I/usr/include/xapian-1.3"
-
 ub_compile \
 	-DCMAKE_PREFIX_PATH=/usr/lib/qt5 \
 	-DQT=ON \
-	-DAPT_SUPPORT=ON
+	-DAPT_SUPPORT=ON \
+	-DDOCUMENTATION=OFF \
+	-DINSTALL_PREBUILT_DOCS=OFF
