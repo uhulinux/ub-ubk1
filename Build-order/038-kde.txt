@@ -3,6 +3,7 @@ lmdb
 packagekit-qt
 phonon
 qca
+kirigami
 attica
 breeze-icons
 bluez-qt

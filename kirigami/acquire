@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kirigami-${UB_VERSION}.tar.xz kirigami-${UB_VERSION}/
+	http://download.kde.org/stable/kirigami/
