@@ -3,7 +3,6 @@ lmdb
 packagekit-qt
 phonon
 qca
-kirigami
 attica
 breeze-icons
 bluez-qt
@@ -112,6 +111,7 @@ powerdevil
 sddm-kcm
 systemsettings
 libqapt
+kirigami
 discover
 user-manager
 libkcddb
