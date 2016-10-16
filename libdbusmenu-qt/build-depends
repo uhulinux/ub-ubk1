@@ -3,3 +3,4 @@ dbus-dev
 doxygen
 qjson-dev
 qt5-dev
+qt5-test

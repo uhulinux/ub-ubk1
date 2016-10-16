@@ -12,7 +12,6 @@ parted
 smp-utils
 udisks
 lua
-lua52
 ocaml
 ocamlbuild
 swig

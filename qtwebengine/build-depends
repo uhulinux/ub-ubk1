@@ -12,5 +12,6 @@ libxtst-dev
 opus-dev
 pciutils-dev
 pulseaudio-dev
+qt5-designer-dev
 qt5-dev
 re2c
