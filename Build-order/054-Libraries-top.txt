@@ -34,7 +34,6 @@ pdflib
 starman
 g2
 wv2
-gtk2-engine-xfce
 gtk-engine-unico
 obexfs
 gst-ffmpeg
