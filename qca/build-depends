@@ -5,3 +5,4 @@ libgcrypt-dev
 nss-dev
 openssl-dev
 qt5-dev
+qt5-test

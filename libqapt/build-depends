@@ -12,4 +12,5 @@ kwidgetsaddons-dev
 kwindowsystem-dev
 libdebconf-kde-dev
 qt5-dev
+qt5-test
 xapian-dev
