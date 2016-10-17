@@ -13,13 +13,13 @@ gtk2-dev
 hunspell-dev
 hunspell-hu
 hyphen-dev
-icu-dev
 java-jdk
 libxslt-dev
 libxt-dev
 nss-dev
 perl-archive-zip
 perl-libwww
+perl-lwp-protocol-https
 perl-xml-parser
 poppler-dev
 python-dev

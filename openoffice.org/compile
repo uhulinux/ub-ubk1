@@ -34,15 +34,15 @@ autoconf
 	--with-ant-home="/usr/lib/apache-ant" \
 	--with-system-libs \
 	--with-system-headers \
+	--without-system-jars \
 	--without-afms \
 	--without-fonts \
 	--without-ppds \
 	--without-junit \
 	--with-system-hyphen \
-	--without-system-icu \
-	--without-system-jars \
-	--without-system-jpeg \
 	--without-system-hsqldb \
+	--without-system-icu \
+	--without-system-jpeg \
 	--without-system-libwpd \
 	--without-system-lucene \
 	--without-system-mdds \

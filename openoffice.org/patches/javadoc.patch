@@ -1,0 +1,11 @@
+diff -Naur orig/main/xmerge/util/build.xml patched/main/xmerge/util/build.xml
+--- orig/main/xmerge/util/build.xml	2015-10-17 18:23:23.000000000 +0200
++++ patched/main/xmerge/util/build.xml	2016-10-15 18:22:50.667459680 +0200
+@@ -53,6 +53,7 @@
+ 	         nodeprecated="true"
+ 	         nodeprecatedlist="true"
+              use="true"
++             additionalparam="-Xdoclint:none -Xmaxwarns 0"
+              Doctitle="Apache OpenOffice XMerge API"
+              windowtitle="Apache OpenOffice XMerge API"
+              classpathref="classpath">
