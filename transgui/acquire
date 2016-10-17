@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 transgui-${UB_VERSION}-src.zip TransGUI/
-	https://transmisson-remote-gui.googlecode.com/files/
+	http://pkgs.fedoraproject.org/repo/pkgs/transgui/transgui-${UB_VERSION}-src.zip/471ed1f3f75a0ebcc9d3a0cb72f2a61c/

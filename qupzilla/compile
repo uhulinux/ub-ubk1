@@ -2,5 +2,5 @@
 
 export USE_WEBGL=true
 
-qmake-qt5 QUPZILLA_PREFIX=/usr/
+qmake QUPZILLA_PREFIX=/usr/
 make

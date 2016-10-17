@@ -1,5 +1,6 @@
 #!/usr/bin/env dl
 
 transmission-${UB_VERSION}.tar.xz transmission-${UB_VERSION}/
+	  https://transmission.cachefly.net/
 	  http://download.transmissionbt.com/files/
 	  http://mirrors.m0k.org/transmission/files/
