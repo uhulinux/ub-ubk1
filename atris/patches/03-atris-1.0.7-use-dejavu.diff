@@ -9,11 +9,11 @@
 -    lfont = TTF_OpenFont("graphics/NewMediumNormal.ttf",36);
 -    hfont = TTF_OpenFont("graphics/NewMediumNormal.ttf",96);
 -    if ( font == NULL ) PANIC("Couldn't open [graphics/NewMediumNormal.ttf].", ATRIS_LIBDIR); 
-+    sfont = TTF_OpenFont("/usr/share/fonts/TTF/DejaVuSans.ttf",18);
-+     font = TTF_OpenFont("/usr/share/fonts/TTF/DejaVuSans.ttf",24);
-+    lfont = TTF_OpenFont("/usr/share/fonts/TTF/DejaVuSans.ttf",36);
-+    hfont = TTF_OpenFont("/usr/share/fonts/TTF/DejaVuSans.ttf",96);
-+    if ( font == NULL ) PANIC("Couldn't open [DejaVuSans.ttf].", "/usr/share/fonts/TTF/"); 
++    sfont = TTF_OpenFont("/usr/share/fonts/truetype/DejaVuSans.ttf",18);
++     font = TTF_OpenFont("/usr/share/fonts/truetype/DejaVuSans.ttf",24);
++    lfont = TTF_OpenFont("/usr/share/fonts/truetype/DejaVuSans.ttf",36);
++    hfont = TTF_OpenFont("/usr/share/fonts/truetype/DejaVuSans.ttf",96);
++    if ( font == NULL ) PANIC("Couldn't open [DejaVuSans.ttf].", "/usr/share/fonts/truetype/"); 
      TTF_SetFontStyle(font, renderstyle);
      TTF_SetFontStyle(sfont, renderstyle);
      /* Initialize scores */
