@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 sgrep-$UB_VERSION.tar.gz sgrep-$UB_VERSION/
+	 ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/
 	ftp://ftp.cs.helsinki.fi/pub/Software/Local/Sgrep/
