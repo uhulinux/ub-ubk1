@@ -3,7 +3,6 @@ cryptopp
 fcgi
 gmm
 google-glog
-judy
 mojolicious
 mplayer-w32codecs
 musl

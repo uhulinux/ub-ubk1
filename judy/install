@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-ub_install
-
-export JUDY="$UB_INSTALLDIR/usr/share/Judy"
-mkdir -p "$JUDY"
-cp -a shop_interm.pdf "$JUDY"/Judy.pdf
-cp -a examples "$JUDY"/
-cp -a judy3b.c "$JUDY"/
