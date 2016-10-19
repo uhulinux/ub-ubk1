@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-mks_${UB_VERSION}-src.zip ./mks_${UB_VERSION}-src/
-	http://monkeystudio.googlecode.com/files/
+mks_${UB_VERSION}-src.tar.gz mks_${UB_VERSION}-src/
+	http://slackware.uk/sbosrcarch/by-md5/1/b/1b76fdaf9293ab160ca90ff919440598/
