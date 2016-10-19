@@ -252,6 +252,7 @@ perl-sdl
 udisks2
 upower
 fox
+fox1.6
 lesstif
 recordmydesktop
 telepathy-gabble
