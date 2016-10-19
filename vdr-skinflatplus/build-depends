@@ -1,3 +1,5 @@
-imagemagick6-dev
+fontconfig-dev
+freetype2-dev
+graphicsmagick-dev
 vdr
 vdr-dev

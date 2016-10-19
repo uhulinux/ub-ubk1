@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-skinflatplus-${UB_VERSION}.tar.gz skinflatplus-${UB_VERSION}/
-	http://projects.vdr-developer.org/attachments/download/1882/
+vdr-skinflatplus-${UB_VERSION}.tar.gz skin-flatplus-e03133d/
+	git://projects.vdr-developer.org/skin-flatplus.git@e03133d
