@@ -12,15 +12,12 @@ fonts-win
 hfsplus
 hfsutils
 htop
-hunglish
 man-pages
-man-pages-hu
 memtest86+
 mpage
 os-prober
 rar
 rbldnsd
-reps
 screen
 sleuthkit
 squirrel

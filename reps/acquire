@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-rePS-${UB_VERSION}.tar.gz rePS-${UB_VERSION}/
-	http://www.inf.bme.hu/~pts/rePS/
-	ftp://ftp.uhulinux.hu/mirror/http%3A/www.inf.bme.hu/~pts/rePS/
