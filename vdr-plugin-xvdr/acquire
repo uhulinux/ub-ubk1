@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-xvdr-${UB_VERSION}.tar.gz vdr-plugin-xvdr-xvdr-${UB_VERSION}/
-  https://github.com/pipelka/vdr-plugin-xvdr/archive/
+xvdr-${UB_VERSION}.tar.gz vdr-plugin-xvdr-2d5e3f6/
+      git://github.com/pipelka/vdr-plugin-xvdr.git@2d5e3f6

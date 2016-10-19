@@ -1,7 +1,7 @@
 curl-dev
 fontconfig-dev
 freetype2-dev
-imagemagick6-dev
+graphicsmagick-dev
 libxml2-dev
 vdr
 vdr-dev
