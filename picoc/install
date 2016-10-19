@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-strip picoc
-cp -a picoc "$UB_INSTALLDIR"/usr/bin/
-#cp -a tests/. "$UB_INSTALLDIR"/usr/share/picoc

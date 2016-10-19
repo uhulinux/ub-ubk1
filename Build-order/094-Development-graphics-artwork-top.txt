@@ -44,7 +44,6 @@ winpdb
 tkpaint
 global
 motor
-picoc
 gob2
 ltrace
 sjasm
