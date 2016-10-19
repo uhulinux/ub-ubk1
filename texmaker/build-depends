@@ -2,6 +2,6 @@ ghostscript
 glib-dev
 libpng-dev
 openssl-dev
-poppler-dev
-poppler-qt4-dev
-qt4-dev
+poppler-qt5-dev
+qt5-dev
+qtwebkit-dev

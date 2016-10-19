@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
-qmake-qt4 \
+qmake \
 	PREFIX=/usr \
 	CONFIG-="debug" \
 	-o Makefile texstudio.pro

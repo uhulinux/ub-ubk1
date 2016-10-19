@@ -9,7 +9,6 @@ guile-dev
 imagemagick-dev
 imlib2-dev
 ispell
-libstdc++5
 libtool
 libxext-dev
 netpbm-dev

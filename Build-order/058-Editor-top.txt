@@ -1,7 +1,5 @@
 dhex
 ht
-jave
-jedit
 le
 mined
 ne
