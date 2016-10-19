@@ -1,0 +1,15 @@
+#!/bin/sh -eux
+
+#mkdir -p "$UB_INSTALLDIR"/usr/share/pixmaps
+#mkdir -p "$UB_INSTALLDIR"/usr/share/applications
+
+python3 install.py \
+	-c \
+	-i "$UB_INSTALLDIR" \
+	-d "/usr/lib/python3.4/site-packages" \
+	-b "/usr/bin"
+
+# rename/remove conflicting files with eric4
+mv "$UB_INSTALLDIR"/usr/share/pixmaps/eric.png "$UB_INSTALLDIR"/usr/share/pixmaps/eric5.png
+rm "$UB_INSTALLDIR"/usr/lib/qt4/qsci/api/python/zope*
+rm "$UB_INSTALLDIR"/usr/lib/qt4/qsci/api/ruby/Ruby*

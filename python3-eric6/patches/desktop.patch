@@ -1,0 +1,26 @@
+diff -Naur eric6-6.1.10-orig/eric/eric6.desktop eric6-6.1.10/eric/eric6.desktop
+--- eric6-6.1.10-orig/eric/eric6.desktop	2016-01-08 15:26:58.574860560 +0100
++++ eric6-6.1.10/eric/eric6.desktop	2016-10-19 18:05:40.835552899 +0200
+@@ -8,9 +8,11 @@
+ Name=eric6@PY_MARKER@
+ Name[de]=eric6@PY_MARKER@
+ Comment=Integrated Development Environment for Python
++Comment[hu]=Python fejlesztő felület
+ Comment[de]=Integrierte Entwicklungsumgebung für Python
+ GenericName=IDE for Python
++GenericName[hu]=Python alkalmazás fejlesztő
+ GenericName[de]=IDE für Python
+-Categories=Qt;Python;Development;IDE;
++Categories=Qt;Development;IDE;
+ StartupNotify=true
+ Keywords=qt;python;development;ide;debugger;editor;unit test;mercurial;subversion;git
+diff -Naur eric6-6.1.10-orig/eric/eric6_webbrowser.desktop eric6-6.1.10/eric/eric6_webbrowser.desktop
+--- eric6-6.1.10-orig/eric/eric6_webbrowser.desktop	2015-01-18 11:55:12.421531140 +0100
++++ eric6-6.1.10/eric/eric6_webbrowser.desktop	2016-10-19 18:06:23.843553693 +0200
+@@ -11,5 +11,5 @@
+ Comment[de]=Web Browser für PyQt5
+ GenericName=Web Browser
+ GenericName[de]=Web Browser
+-Categories=Qt;Python;Network;WebBrowser;
++Categories=Qt;Network;WebBrowser;
+ StartupNotify=true

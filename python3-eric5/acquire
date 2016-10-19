@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-eric5-${UB_VERSION}.tar.gz eric5-${UB_VERSION}/
-	ftp://ftp.gnome.org/mirror/temp/sf2015/e/er/eric-ide/eric5/stable/${UB_VERSION}/
