@@ -4,7 +4,7 @@ c2070
 cjet
 epsonepl
 fbgetty
-fonts-noto
+fonts-hack
 fonts-symbola
 freepats
 geos
