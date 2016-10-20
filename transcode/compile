@@ -10,7 +10,6 @@ UB_UPDATELIBTOOL=yes ub_compile \
 	--enable-ogg \
 	--enable-vorbis \
 	--enable-theora \
-	--disable-pvm3 \
 	--enable-libdv \
 	--enable-libquicktime \
 	--enable-lzo \
@@ -18,7 +17,6 @@ UB_UPDATELIBTOOL=yes ub_compile \
 	--enable-libxml2 \
 	--enable-mjpegtools \
 	--enable-sdl \
-	--enable-imagemagick \
 	--enable-x264 \
 	--enable-xvid \
 	--enable-libmpeg2 \

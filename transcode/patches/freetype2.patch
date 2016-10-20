@@ -4,9 +4,9 @@ diff -Naur orig/filter/subtitler/load_font.c mod/filter/subtitler/load_font.c
 @@ -48,7 +48,7 @@
  #include <ft2build.h>
  #include FT_FREETYPE_H
- 
+
 -#include <freetype/ftglyph.h>
-+#include <freetype2/freetype/ftglyph.h>
- 
++#include FT_GLYPH_H
+
  /**
   * @file bswap.h
