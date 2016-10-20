@@ -1,6 +1,6 @@
 #!/usr/bin/env dl
 
-GeoGebra-Linux-Portable-${UB_VERSION}.tar.bz2 GeoGebra-Linux-Portable-${UB_VERSION}/
+GeoGebra-Linux-Portable-${UB_VERSION//./-}.tar.bz2 GeoGebra-Linux-Portable-${UB_VERSION//./-}/
 	http://download.geogebra.org/installers/5.0/
 
 geogebra-logo.svg
