@@ -2,10 +2,6 @@
 
 sed -i "s/\${GIT_VERSION}/$UB_VERSION/g" rtgui/version.h.in
 
-cmake . \
-    -DCMAKE_CXX_FLAGS="-std=c++11" \
-    -DCMAKE_INSTALL_PREFIX="$UB_INSTALLDIR"/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCACHE_NAME_SUFFIX="" \
-    -DVERSION_SUFFIX=""
-make
+ub_compile \
+    -DCMAKE_CXX_FLAGS="-std=c++11 -msse2"
+
