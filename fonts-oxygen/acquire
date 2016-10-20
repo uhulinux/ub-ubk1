@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-oxygen-fonts-${UB_VERSION}.tar.xz oxygen-fonts-${UB_VERSION}/
-	http://download.kde.org/stable/plasma/${UB_VERSION}/

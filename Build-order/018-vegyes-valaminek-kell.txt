@@ -124,7 +124,7 @@ xmessage
 xorriso
 dcraw
 ebook-tools
-fonts-oxygen
+fonts-noto
 fonts-hack
 gtkspell2
 iputils
