@@ -18,7 +18,6 @@ libpeas-dev
 libsm-dev
 libsoup-gnome-dev
 lirc-dev
-lua-dev
 nautilus-dev
 pygobject-dev
 pylint
