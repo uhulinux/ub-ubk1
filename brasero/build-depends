@@ -16,6 +16,5 @@ libnotify-dev
 libsm-dev
 libsoup-dev
 libsoup-gnome-dev
-lua-dev
 nautilus-dev
 totem-plparser-dev
