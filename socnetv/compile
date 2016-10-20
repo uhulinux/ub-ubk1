@@ -1,5 +1,5 @@
 #!/bin/sh -eux
 
 export QTDIR="/usr/lib/qt5"
-qmake-qt5
+qmake
 ub_make
