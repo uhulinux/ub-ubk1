@@ -98,7 +98,7 @@ poedit
 limoo
 promoe
 viking
-python3-eric5
+python3-eric6
 avogadro
 avogadro2
 aeskulap
