@@ -1,10 +1,9 @@
 #!/bin/sh -eux
 
 export QTDIR="/usr/lib/qt5"
-export MOC=/usr/lib/qt5/bin/moc
-export UIC=/usr/lib/qt5/bin/uic
+
 cd src
-ub_make IPEPREFIX=/usr
+ub_make IPEPREFIX=/usr LUA_PACKAGE=lua5.3
 
 cd ../ipepresenter
 make

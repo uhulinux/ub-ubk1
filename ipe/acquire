@@ -3,8 +3,8 @@
 ipe-${UB_VERSION}-src.tar.gz ipe-${UB_VERSION}/
 	http://dl.bintray.com/otfried/generic/ipe/${UB_VERSION_HEAD2}/
 
-b714decd7d5b.tar.gz IpePresenter-b714decd7d5b/ :ipepresenter
+c62a23291b60.tar.gz IpePresenter-c62a23291b60/ :ipepresenter
 	http://hg.mrzv.org/IpePresenter/archive/
 
-ipe-tools-${UB_VERSION}.tar.gz ipe-tools-2f7819e/
-	 git://github.com/otfried/ipe-tools.git@2f7819e
+ipe-tools-${UB_VERSION}.tar.gz ipe-tools-c29075b/
+	 git://github.com/otfried/ipe-tools.git@c29075b
