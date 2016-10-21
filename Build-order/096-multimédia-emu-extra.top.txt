@@ -47,7 +47,6 @@ plus4emu
 fuse-utils
 minitube
 pasystray
-lilypond
 dosbox
 dvbcut
 free-unix-spectrum-emulator

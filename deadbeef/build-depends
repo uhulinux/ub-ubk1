@@ -8,7 +8,6 @@ intltool
 jansson
 libcddb-dev
 libfaad2-dev
-liblastfm-dev
 libmad-dev
 libnotify-dev
 libzip-dev
