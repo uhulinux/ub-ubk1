@@ -12,7 +12,7 @@ libjpeg-turbo-dev
 librsvg-dev
 libxaw-dev
 libxt-dev
-lua-dev
+lua51-dev
 ocaml
 pango-dev
 python-dev

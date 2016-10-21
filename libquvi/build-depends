@@ -4,4 +4,4 @@ glib-dev
 libgcrypt-dev
 libproxy-dev
 libquvi-scripts
-lua-dev
+lua52-dev

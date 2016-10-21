@@ -1,1 +1,1 @@
-urllist https://github.com/istvan-v/plus4emu/releases/ | grep tar.gz | sed s/-/~/g | sed s/\_.*//g
+urllist https://github.com/istvan-v/plus4emu/releases/ | grep tar.gz | sed s/-/~/g | sed s/\_.*//g | sort -V | tail -n 1

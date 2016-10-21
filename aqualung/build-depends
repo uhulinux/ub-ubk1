@@ -18,7 +18,7 @@ libsamplerate-dev
 libsndfile-dev
 libvorbis-dev
 libxml2-dev
-lua
+lua51-dev
 mac
 nettle-dev
 portaudio-dev
