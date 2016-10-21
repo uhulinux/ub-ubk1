@@ -23,10 +23,9 @@ libsoup-gnome-dev
 libungif-dev
 libvorbis-dev
 libxslt-dev
-lua-dev
 nautilus-dev
 networkmanager-dev
-openjpeg-dev
+openjpeg1-dev
 poppler-glib-dev
 rest-dev
 sqlite-dev

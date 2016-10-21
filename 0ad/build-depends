@@ -16,7 +16,6 @@ libtiff-dev
 libvorbis-dev
 libxcursor-dev
 libxml2-dev
-lua-dev
 miniupnpc-dev
 nspr-dev
 openal-dev
