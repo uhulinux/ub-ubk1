@@ -21,7 +21,6 @@ libx11-dev
 libxinerama-dev
 libxml2-dev
 libxxf86vm-dev
-lua51-dev
 ogre-dev
 ois-dev
 pcre-dev
