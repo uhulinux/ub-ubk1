@@ -2,4 +2,5 @@
 
 autoreconf -vif
 ub_compile \
-	--with-readline=gnu
+	--with-readline=gnu \
+	--with-lua

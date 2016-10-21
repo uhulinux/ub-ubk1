@@ -9,9 +9,15 @@ make \
       INSTALL_MAN="$UB_INSTALLDIR"/usr/share/man/man1 \
 install
 
+mkdir -p "$UB_INSTALLDIR"/usr/lib/pkgconfig
+ln -sf lua53.pc  "$UB_INSTALLDIR"/usr/lib/pkgconfig/lua5.3.pc
+ln -sf lua53.pc  "$UB_INSTALLDIR"/usr/lib/pkgconfig/lua-5.3.pc
+
 ln -s liblua5.3.so "$UB_INSTALLDIR"/usr/lib/liblua.so.5.3
 ln -s liblua5.3.so "$UB_INSTALLDIR"/usr/lib/liblua.so.$UB_VERSION
- 
+
+ln -s lua5.3 "$UB_INSTALLDIR"/usr/bin/lua
+ln -s luac5.3 "$UB_INSTALLDIR"/usr/bin/luac
 cd "$UB_INSTALLDIR"/usr/share/man/man1
 mv lua.1 lua5.3.1
 mv luac.1 luac5.3.1

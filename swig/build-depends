@@ -6,7 +6,7 @@ java-jdk
 libx11-dev
 libxext-dev
 libxt-dev
-lua-dev
+lua53-dev
 ocaml
 pcre-dev
 php

@@ -23,6 +23,7 @@ libsoup-gnome-dev
 libungif-dev
 libvorbis-dev
 libxslt-dev
+lua-dev
 nautilus-dev
 networkmanager-dev
 openjpeg1-dev

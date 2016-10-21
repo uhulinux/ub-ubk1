@@ -1,5 +1,5 @@
 libpcap-dev
-lua-dev
+lua53-dev
 openssl-dev
 pcre-dev
 python-dev

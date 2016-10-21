@@ -1,0 +1,12 @@
+diff -Nur orig/configure.in mod/configure.in
+--- orig/configure.in	2016-09-07 06:14:29.000000000 +0200
++++ mod/configure.in	2016-10-21 18:29:36.342287095 +0200
+@@ -710,7 +710,7 @@
+   [test -z "${with_lua}" && with_lua=yes])
+ 
+ if test "${with_lua}" = yes ; then
+-  PKG_CHECK_MODULES(LUA, [lua], LUAFOUND=yes, [PKG_CHECK_MODULES(LUA, [lua5.1], LUAFOUND=yes, [LUAFOUND=no])])
++  PKG_CHECK_MODULES(LUA, [lua], LUAFOUND=yes, [PKG_CHECK_MODULES(LUA, [lua5.3 lua5.2 lua5.1], LUAFOUND=yes, [LUAFOUND=no])])
+   if test $pkg_failed != no; then
+     AC_MSG_WARN([Could not find support for lua using pkg-config.])
+     with_lua=no

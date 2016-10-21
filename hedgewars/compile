@@ -10,4 +10,4 @@ ub_compile \
 	-DGHFLAGS=-dynamic \
 	-DFONTS_DIRS="/usr/share/fonts/TTF" \
 	-DFPFLAGS="-k/usr/lib/libgcc_s.so.1"
-	#Helping libc >= 2.17, see launchpad bug #1179850
+

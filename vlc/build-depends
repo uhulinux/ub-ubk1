@@ -40,7 +40,7 @@ libxvmc-dev
 libxxf86vm-dev
 lirc-dev
 livemedia
-lua-dev
+lua52-dev
 mpg123-dev
 musepack-dev
 opencv-dev

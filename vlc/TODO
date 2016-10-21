@@ -1,14 +1,6 @@
 crystalhd
-dvdread
-dvdnav
-fluidsynth
 freerdp
-gst-app
 goom
 live555
 mfx
-ncurses
-opus
-svgdec
-twoolame
-opencv: ffmpeg 3.0.1 függő
+lua53

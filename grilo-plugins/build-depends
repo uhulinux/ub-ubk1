@@ -12,7 +12,7 @@ libdmapsharing-dev
 libgdata-dev
 libquvi-dev
 libsoup-gnome-dev
-lua-dev
+lua53-dev
 rest-dev
 totem-plparser-dev
 tracker-dev

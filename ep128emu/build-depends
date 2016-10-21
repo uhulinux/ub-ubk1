@@ -6,7 +6,7 @@ libjpeg-turbo-dev
 libsndfile-dev
 libxft-dev
 libxinerama-dev
-lua-dev
+lua53-dev
 portaudio-dev
 scons
 sdl-dev

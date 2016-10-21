@@ -5,7 +5,7 @@ freepascal
 libx11-dev
 libxext-dev
 libxt-dev
-lua-dev
+lua51-dev
 physfs-dev
 qt4-dev
 sdl-dev

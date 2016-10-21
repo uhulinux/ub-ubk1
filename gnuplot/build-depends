@@ -4,7 +4,7 @@ libice-dev
 libjpeg-turbo-dev
 libpng-dev
 libungif-dev
-lua-dev
+lua53-dev
 pango-dev
 plotutils
 wxwidgets-dev

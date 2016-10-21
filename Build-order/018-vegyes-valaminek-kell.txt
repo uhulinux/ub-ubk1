@@ -2,6 +2,7 @@ alsa-firmware
 c2050
 c2070
 cjet
+docbook2x
 epsonepl
 fbgetty
 fonts-symbola

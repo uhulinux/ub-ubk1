@@ -9,6 +9,9 @@ make \
     INSTALL_MAN="$UB_INSTALLDIR"/usr/share/man/man1 \
 install
 
+mkdir -p "$UB_INSTALLDIR"/usr/lib/pkgconfig
+ln -sf lua52.pc  "$UB_INSTALLDIR"/usr/lib/pkgconfig/lua5.2.pc
+ln -sf lua52.pc  "$UB_INSTALLDIR"/usr/lib/pkgconfig/lua-5.2.pc
 
 ln -s liblua5.2.so "$UB_INSTALLDIR"/usr/lib/liblua.so.5.2
 ln -s liblua5.2.so "$UB_INSTALLDIR"/usr/lib/liblua.so.$UB_VERSION

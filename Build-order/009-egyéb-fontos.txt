@@ -11,7 +11,7 @@ lvm
 parted
 smp-utils
 udisks
-lua
+lua51
 lua52
 lua53
 ocaml

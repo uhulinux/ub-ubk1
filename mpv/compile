@@ -2,5 +2,9 @@
 
 # libass old
 
-waf configure --prefix=/usr --disable-libass --enable-libarchive
+waf configure \
+	--prefix=/usr \
+	--enable-libarchive \
+	--enable-cdda \
+	--enable-encoding
 waf build
