@@ -15,4 +15,4 @@ ub_compile \
 	--enable-nls \
 	--enable-sftp \
 	--disable-update-check \
-        --enable-qt=5
+    --enable-qt=5
