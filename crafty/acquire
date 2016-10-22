@@ -2,9 +2,10 @@
 
 crafty-${UB_VERSION}.zip .
 	http://www.craftychess.com/
+	http://www.craftychess.com/downloads/source/
 
 books.bin
 	ftp://ftp.tw.freebsd.org/pub/distfiles/crafty/
 
 book.bin
-	http://www.craftychess.com/
+	http://www.craftychess.com/downloads/book/
