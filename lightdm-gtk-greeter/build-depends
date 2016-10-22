@@ -2,4 +2,5 @@ gnome-doc-utils
 gobject-introspection-dev
 gtk-dev
 intltool
+libexo-dev
 lightdm-dev
