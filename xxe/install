@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-mkdir -p "$UB_INSTALLDIR"/usr/share/xxe
-cp -a . "$UB_INSTALLDIR"/usr/share/xxe/
-rm "$UB_INSTALLDIR"/usr/share/xxe/bin/*.bat
-rm "$UB_INSTALLDIR"/usr/share/xxe/bin/*.exe
-ln -s ../xxe/bin/icon/xxe.png "$UB_INSTALLDIR"/usr/share/pixmaps/xxe.png

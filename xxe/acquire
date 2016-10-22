@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-xxe-eval-${UB_VERSION//./_}.tar.gz xxe-eval-${UB_VERSION//./_}/
-	http://www.xmlmind.net/xmleditor/_download/
