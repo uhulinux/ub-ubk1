@@ -5,7 +5,7 @@ fribidi-dev
 libsm-dev
 libvorbis-dev
 libxslt
-lua-dev
+lua51-dev
 pango-dev
 python-dev
 ruby

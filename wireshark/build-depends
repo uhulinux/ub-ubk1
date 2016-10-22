@@ -9,7 +9,7 @@ libgcrypt-dev
 libpcap-dev
 libsmi-dev
 libxslt-dev
-lua-dev
+lua52-dev
 openssl-dev
 pcre-dev
 portaudio-dev
