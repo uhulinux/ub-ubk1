@@ -2,4 +2,3 @@
 
 NetworkManager-${UB_VERSION}.tar.xz NetworkManager-${UB_VERSION}/	
 	ftp://ftp.gnome.org/pub/GNOME/sources/NetworkManager/${UB_VERSION_HEAD2}/
-	ftp://ftp.uhulinux.hu/sources/networkmanager/
