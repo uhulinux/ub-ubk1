@@ -45,7 +45,6 @@ xrick
 gshogi
 pysolfc
 rubix
-theeasiestgamearoundtheworld
 xbl
 sdlinvaders
 vorton
