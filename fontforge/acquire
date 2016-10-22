@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-fontforge_full-${UB_VERSION}.tar.bz2 fontforge-${UB_VERSION}/
-	http://downloads.sourceforge.net/fontforge/
+v${UB_VERSION}-b.tar.gz fontforge-${UB_VERSION}/
+	https://github.com/fontforge/fontforge/archive/
