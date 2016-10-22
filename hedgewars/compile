@@ -8,6 +8,6 @@ ub_compile \
 	-DMINIMAL_FLAGS=1 \
 	-DNOVIDEOREC=1 \
 	-DGHFLAGS=-dynamic \
-	-DFONTS_DIRS="/usr/share/fonts/TTF" \
+	-DFONTS_DIRS="/usr/share/fonts/truetype" \
 	-DFPFLAGS="-k/usr/lib/libgcc_s.so.1"
 
