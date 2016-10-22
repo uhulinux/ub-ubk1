@@ -61,7 +61,6 @@ units
 urlview
 vbindiff
 xd
-xxe
 zisofs-tools
 zpaq
 0install
