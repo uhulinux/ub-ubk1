@@ -9,7 +9,6 @@ intltool
 libcacard-dev
 libjpeg-turbo-dev
 libsoup-dev
-lua-dev
 openssl-dev
 polkit-dev
 pulseaudio-dev
