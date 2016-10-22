@@ -7,5 +7,5 @@ cd xye
 rm {AUTHORS,ChangeLog,NEWS,ReadMe.html}
 cd res
 rm -f DejaVuSans*
-ln -s /usr/share/fonts/TTF/DejaVuSans.ttf DejaVuSans.ttf
-ln -s /usr/share/fonts/TTF/DejaVuSans-Bold.ttf DejaVuSans-Bold.ttf
+ln -s /usr/share/fonts/truetype/DejaVuSans.ttf DejaVuSans.ttf
+ln -s /usr/share/fonts/truetype/DejaVuSans-Bold.ttf DejaVuSans-Bold.ttf

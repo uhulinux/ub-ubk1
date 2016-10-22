@@ -42,12 +42,12 @@ ub_compile \
 	--disable-config-hal \
 	--with-sha1=libcrypto \
 	--with-extra-module-dir=/usr/lib/xorg/extra-modules \
-	--with-default-font-path="/usr/share/fonts/local,/usr/share/fonts/misc,/usr/share/fonts/75dpi,/usr/share/fonts/100dpi,/usr/share/fonts/TTF,/usr/share/fonts/Type1,/usr/share/fonts/ghostscript,/usr/share/fonts/unifont,/usr/share/fonts/freefont,/usr/share/fonts/jmk" \
+	--with-default-font-path="/usr/share/fonts/misc,/usr/share/fonts/75dpi,/usr/share/fonts/100dpi,/usr/share/fonts/truetype,/usr/share/fonts/Type1,/usr/share/fonts/ghostscript,/usr/share/fonts/unifont,/usr/share/fonts/freefont" \
 	--with-xkb-output="/var/lib/xkb" \
-	--with-builder-addr="rezso@ubk.hu" \
+	--with-builder-addr="ubk@ubk.hu" \
 	--with-os-name="UHU-Linux" \
 	--with-os-vendor="UHU Baráti kör"
-	
+
 cd rgb-*
 ub_compile
 

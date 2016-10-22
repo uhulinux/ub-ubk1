@@ -4,7 +4,7 @@ ub_configure \
 	--enable-cups \
 	--with-drivers=ALL \
 	--with-ijs \
-	--with-fontpath="/usr/share/fonts/ghostscript:/usr/share/fonts/Type1:/usr/share/fonts/TTF" \
+	--with-fontpath="/usr/share/fonts/ghostscript:/usr/share/fonts/Type1:/usr/share/fonts/truetype" \
 	--with-system-libtiff
 
 ub_make so
