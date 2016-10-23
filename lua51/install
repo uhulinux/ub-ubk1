@@ -14,9 +14,6 @@ cp etc/lua.pc "$UB_INSTALLDIR"/usr/lib/pkgconfig/lua51.pc
 ln -sf lua51.pc  "$UB_INSTALLDIR"/usr/lib/pkgconfig/lua5.1.pc
 ln -sf lua51.pc  "$UB_INSTALLDIR"/usr/lib/pkgconfig/lua-5.1.pc
 
-ln -s liblua5.1.so "$UB_INSTALLDIR"/usr/lib/liblua.so.5.1
-ln -s liblua5.1.so "$UB_INSTALLDIR"/usr/lib/liblua.so.$UB_VERSION
- 
 cd "$UB_INSTALLDIR"/usr/share/man/man1
 mv lua.1 lua5.1.1
 mv luac.1 luac5.1.1
