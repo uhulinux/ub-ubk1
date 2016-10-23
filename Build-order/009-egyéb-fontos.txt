@@ -22,7 +22,6 @@ itstool
 pyxml
 iso-codes
 gtksourceview
-gtksourceview2
 gsl
 man-db
 pilot-link
