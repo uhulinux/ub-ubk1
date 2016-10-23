@@ -1,5 +1,3 @@
-jave
-jedit
 dhex
 ht
 le
