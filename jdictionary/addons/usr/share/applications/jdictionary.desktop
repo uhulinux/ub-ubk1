@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=JDictionary
-Comment=Dictionary
-Comment[hu]=Szótárprogram
-Exec=jdictionary
-Icon=jdictionary
-Categories=Utility;TextTools;Dictionary;

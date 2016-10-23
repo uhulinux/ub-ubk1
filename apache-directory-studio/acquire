@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-ApacheDirectoryStudio-linux-x86-${UB_VERSION}.tar.gz ApacheDirectoryStudio-linux-x86-${UB_VERSION}/
-	http://repo.unpatti.ac.id/apache/directory/studio/dist/${UB_VERSION}/

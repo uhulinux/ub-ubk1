@@ -40,7 +40,6 @@ clamz
 stunnel
 lftp
 nmap
-apache-directory-studio
 xpn
 transgui
 elinks

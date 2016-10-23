@@ -50,7 +50,6 @@ ilbc
 ispell
 jad
 jam
-jdictionary
 less
 libupnp
 linebreak

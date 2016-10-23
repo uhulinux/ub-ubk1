@@ -1,3 +1,0 @@
-Java nyelven készített moduláris szótárprogram. Használatához a kívánt
-szótármodulokat &("plugin"-eket) telepíteni kell. Ezek a &jdictionary-plugin-*
-csomagokban találhatók.

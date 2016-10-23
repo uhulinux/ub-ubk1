@@ -1,1 +1,0 @@
-urllist http://jdbc.postgresql.org/download.html | splitver '^postgresql-([0-9.\-]+).jdbc2.jar$' | sort -V | tail -n 1 | sed s/-/\./g

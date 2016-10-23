@@ -1,1 +1,0 @@
-urllist ftp://ftp.us.es/Mirror/www.apache.org/directory/studio/dist/ | grep -E '^[0-9.v]+$' | sort -V | tail -n 1

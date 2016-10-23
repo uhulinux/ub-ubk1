@@ -1,1 +1,0 @@
-sflist jdictionary jDictionary | grep version | sed 's/.*version //g' | sort | tail -n 1
