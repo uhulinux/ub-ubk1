@@ -3,5 +3,4 @@ gst0.10-python
 icon-theme-gnome
 libgaviotatb
 pycairo
-pygtk
-pygtksourceview
+pygobject

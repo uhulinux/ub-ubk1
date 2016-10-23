@@ -145,7 +145,6 @@ spyder
 gst-python
 pyatspi
 pygame
-pygtksourceview
 pykaraoke
 pypy
 python-apt
