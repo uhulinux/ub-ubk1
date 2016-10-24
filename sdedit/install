@@ -2,4 +2,4 @@
 
 mkdir -p "$UB_INSTALLDIR"/usr/share/java/sdedit
 cd "$UB_SRCDIR"/sources
-cp *.jar "$UB_INSTALLDIR"/usr/share/java/sdedit
+cp *.jar "$UB_INSTALLDIR"/usr/share/java/sdedit/sdedit.jar
