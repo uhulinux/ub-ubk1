@@ -1,7 +1,7 @@
 glew >=
 libogg >=
 libtiff >=
-lua >=
+lua51 >=
 mesa >=
 python >=
 sdl >=
