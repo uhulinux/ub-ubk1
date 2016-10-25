@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-mkdir -p "$UB_INSTALLDIR"/usr/share/conkygui/lib
-cp -a lib/*.jar "$UB_INSTALLDIR"/usr/share/conkygui/lib/
-cp -a conkygui.jar "$UB_INSTALLDIR"/usr/share/conkygui/
-cp -a conkygui "$UB_INSTALLDIR"/usr/bin/
-cp -a conkygui.png "$UB_INSTALLDIR"/usr/share/pixmaps/
-cp -a conkygui.desktop "$UB_INSTALLDIR"/usr/share/applications/
-cp -a man/conkygui.1.gz "$UB_INSTALLDIR"/usr/share/man/man1/

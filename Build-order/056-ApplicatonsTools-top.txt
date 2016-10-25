@@ -120,7 +120,6 @@ eukleides
 discwrapper
 searchmonkey
 terminator
-conkygui
 recutils
 valkyrie
 wikidpad

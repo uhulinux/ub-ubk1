@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-scala-${UB_VERSION}.tgz scala-${UB_VERSION}/
-	http://www.scala-lang.org/downloads/distrib/files/
-	http://www.scala-lang.org/files/archive/

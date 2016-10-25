@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-conkyguiv${UB_VERSION}.tar.bz2 conkyguiv${UB_VERSION}/
-	http://downloads.sourceforge.net/conkygui/

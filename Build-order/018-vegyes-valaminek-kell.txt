@@ -20,7 +20,6 @@ oki4linux
 pcc-libs
 pnm2ppa
 psmisc
-scala
 sipcalc
 smartmontools
 t1utils
