@@ -1,5 +1,6 @@
 avahi-dev
 geocode-glib-dev
+gobject-introspection-dev
 gtk-doc
 intltool
 json-glib-dev
