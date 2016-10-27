@@ -3,5 +3,5 @@
 #${UB_VERSION/~/-}_20161019.tar.gz ep128emu-${UB_VERSION/~/-}_20161019/
 #	https://github.com/istvan-v/ep128emu/archive/
 
-ep128emu-${UB_VERSION/~/-}_20161020.tar.gz ep128emu-a44dd278/
-	git://github.com/istvan-v/ep128emu.git@a44dd278
+ep128emu-${UB_VERSION/~/-}.tar.gz ep128emu-3e3e150/
+	git://github.com/istvan-v/ep128emu.git@3e3e150
