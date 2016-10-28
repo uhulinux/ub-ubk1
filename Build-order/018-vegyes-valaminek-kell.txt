@@ -235,6 +235,7 @@ gucharmap
 lightdm
 xfig
 gammu
+python-gammu
 glfw
 gnokii
 gnumeric
