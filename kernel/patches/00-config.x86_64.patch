@@ -1,10 +1,10 @@
 diff -Naur orig/.config.x86_64 patched/.config.x86_64
 --- orig/.config.x86_64	1970-01-01 01:00:00.000000000 +0100
-+++ patched/.config.x86_64	2016-08-07 18:37:30.000000000 +0200
-@@ -0,0 +1,8155 @@
++++ patched/.config.x86_64	2016-10-26 22:35:15.000000000 +0200
+@@ -0,0 +1,8157 @@
 +#
 +# Automatically generated file; DO NOT EDIT.
-+# Linux/x86_64 4.4.13-1.x86_64 Kernel Configuration
++# Linux/x86 4.4.27-1.x86_64 Kernel Configuration
 +#
 +CONFIG_64BIT=y
 +CONFIG_X86_64=y
@@ -399,7 +399,8 @@ diff -Naur orig/.config.x86_64 patched/.config.x86_64
 +# CONFIG_X86_GOLDFISH is not set
 +CONFIG_X86_INTEL_LPSS=y
 +# CONFIG_X86_AMD_PLATFORM_DEVICE is not set
-+# CONFIG_IOSF_MBI is not set
++CONFIG_IOSF_MBI=m
++# CONFIG_IOSF_MBI_DEBUG is not set
 +CONFIG_X86_SUPPORTS_MEMORY_FAILURE=y
 +CONFIG_SCHED_OMIT_FRAME_POINTER=y
 +CONFIG_HYPERVISOR_GUEST=y
@@ -7175,6 +7176,7 @@ diff -Naur orig/.config.x86_64 patched/.config.x86_64
 +# CONFIG_PHY_PXA_28NM_USB2 is not set
 +CONFIG_BCM_KONA_USB2_PHY=m
 +CONFIG_POWERCAP=y
++# CONFIG_INTEL_RAPL is not set
 +CONFIG_MCB=m
 +CONFIG_MCB_PCI=m
 +
@@ -7881,6 +7883,7 @@ diff -Naur orig/.config.x86_64 patched/.config.x86_64
 +CONFIG_CRYPTO_PCOMP=m
 +CONFIG_CRYPTO_PCOMP2=y
 +CONFIG_CRYPTO_AKCIPHER2=y
++CONFIG_CRYPTO_AKCIPHER=m
 +# CONFIG_CRYPTO_RSA is not set
 +CONFIG_CRYPTO_MANAGER=y
 +CONFIG_CRYPTO_MANAGER2=y
@@ -8042,7 +8045,6 @@ diff -Naur orig/.config.x86_64 patched/.config.x86_64
 +# Certificates for signature checking
 +#
 +# CONFIG_SYSTEM_TRUSTED_KEYRING is not set
-+CONFIG_SYSTEM_TRUSTED_KEYS=""
 +CONFIG_HAVE_KVM=y
 +CONFIG_HAVE_KVM_IRQCHIP=y
 +CONFIG_HAVE_KVM_IRQFD=y
