@@ -1,5 +1,4 @@
 #!/bin/sh -eux
 
 ub_install
-cd l10n
-make install DESTDIR=${UB_INSTALLDIR}
+
