@@ -1,10 +1,12 @@
 #!/bin/sh
 
 systemctl enable icmpredirect_fix
-if [ -f /boot/grub/grub.cfg ]; then
-	mv /boot/grub/grub.cfg /boot/grub/grub.cfg.`date '+%F'`
-fi
+
+exec mkinitrd-installedkernel
 if [ "$(stat -c %d:%i /)" = "$(stat -c %d:%i /proc/1/root/.)" ]; then
+	if [ -f /boot/grub/grub.cfg ]; then
+		mv /boot/grub/grub.cfg /boot/grub/grub.cfg.`date '+%F'`
+	fi
 	exec grub-mkconfig -o /boot/grub/grub.cfg
 fi
-exec mkinitrd-installedkernel
+

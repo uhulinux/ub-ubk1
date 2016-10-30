@@ -4,7 +4,7 @@ msgfmt -c -v -o hu.mo hu.po
 mkdir -p "${UB_INSTALLDIR}/usr/share/locale/hu/LC_MESSAGES/"
 install -m 644 hu.mo "${UB_INSTALLDIR}/usr/share/locale/hu/LC_MESSAGES/uhu-installer.mo"
 
-cp uhu-installer{,-cli} "$UB_INSTALLDIR"/usr/sbin/
+cp uhu-installer "$UB_INSTALLDIR"/usr/sbin/
 
 mkdir -p "$UB_INSTALLDIR"/usr/share/uhu-installer/
 cp uhu-installer.{glade,png} "$UB_INSTALLDIR"/usr/share/uhu-installer/

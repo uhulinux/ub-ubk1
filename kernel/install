@@ -24,15 +24,15 @@ cat >"$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel <<END
 #!/bin/sh
 
 
-mkinitrd $VERSION.x86_64
 mkinitrd $VERSION.i386
+mkinitrd $VERSION.x86_64
 
-
-rm -f /boot/initrd.x86_64.gz
-ln -s initrd-$VERSION.x86_64.gz /boot/initrd.x86_64.gz
 
 rm -f /boot/initrd.i386.gz
 ln -s initrd-$VERSION.i386.gz /boot/initrd.i386.gz
+
+rm -f /boot/initrd.x86_64.gz
+ln -s initrd-$VERSION.x86_64.gz /boot/initrd.x86_64.gz
 
 rm -f /boot/initrd.gz
 ln -s initrd.i386.gz /boot/initrd.gz
