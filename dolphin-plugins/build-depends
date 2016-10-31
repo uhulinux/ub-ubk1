@@ -1,0 +1,9 @@
+cmake
+dolphin-dev
+extra-cmake-modules
+kdelibs4support-dev
+ki18n-dev
+kio-dev
+ktexteditor-dev
+kxmlgui-dev
+qt5-dev

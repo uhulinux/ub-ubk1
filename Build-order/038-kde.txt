@@ -129,5 +129,9 @@ libksane
 marble
 digikam
 kdiff3
+baloo-widgets
+ffmpegthumbs
+dolphin
+dolphin-plugins
 kde5
 kde5-apps
