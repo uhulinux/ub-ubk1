@@ -1,70 +1,48 @@
 #!/bin/bash -eux
 
-mkdir -p ${UB_INSTALLDIR}/lib/firmware
+# mkdir -p ${UB_INSTALLDIR}/lib/firmware
 
-cp -a linux-firmware/* ${UB_INSTALLDIR}/lib/firmware/
+# cp -a linux-firmware/* ${UB_INSTALLDIR}/lib/firmware/
+
+make -C linux-firmware DESTDIR=${UB_INSTALLDIR} install
 
 cp -r nouveau ${UB_INSTALLDIR}/lib/firmware/
 
 cp -a dvb-firmware/* ${UB_INSTALLDIR}/lib/firmware
 
 rm -Rf ${UB_INSTALLDIR}/lib/firmware/.git
-rm -f ${UB_INSTALLDIR}/lib/firmware/Makefile
 
 docdir=${UB_INSTALLDIR}/usr/share/doc/Packages/linux-firmware
 mkdir -p ${docdir}
-mv ${UB_INSTALLDIR}/lib/firmware/GPL-3 ${docdir}/
+mv ${UB_INSTALLDIR}/lib/firmware/GPL-* ${docdir}/
 mv ${UB_INSTALLDIR}/lib/firmware/LICENCE* ${docdir}/
 mv ${UB_INSTALLDIR}/lib/firmware/LICENSE* ${docdir}/
-mv ${UB_INSTALLDIR}/lib/firmware/README ${docdir}/
+mv ${UB_INSTALLDIR}/lib/firmware/README* ${docdir}/
 mv ${UB_INSTALLDIR}/lib/firmware/WHENCE ${docdir}/
 mv ${UB_INSTALLDIR}/lib/firmware/license-*.txt ${docdir}/
 mv ${UB_INSTALLDIR}/lib/firmware/dvb-*.fw.license.txt ${docdir}/
 
-# a microcodectl és a kernel csomagban is lévő ütköző mappák és fájlok
-mappasor="3com
-	acenic
-	adaptec
-	advansys
-	av7110
-	bnx2
-	bnx2x
-	cis
-	cpia2
-	cxgb3
-	e100
-	edgeport
-	emi26
-	emi62
-	ess
-	kaweth
-	keyspan_pda
-	korg
-	matrox
-	ositech
-	qlogic
-	r128
-	radeon
-	sun
-	tehuti
-	tigon
-	ttusb-budget
-	yam
-	yamaha
-	amd-ucode"
-kernelfilesor="atmsar11
-	mts_cdma
-	mts_edge
-	mts_gsm
-	ti_3410
-	ti_5052
-	whiteheat
-	whiteheat_loader"
+rm -Rf ${UB_INSTALLDIR}/lib/firmware/{Makefile,configure,README*,*.txt,*.py}
+
 # ütközések törlése
-for i in $mappasor;do
-rm -rf ${UB_INSTALLDIR}/lib/firmware/$i
+# az if [ -f $i ] kell, mert a dpkg -L listázza a "/."-t is, ami hibát okoz
+for i in $(dpkg -L alsa-firmware bluez-firmware dahdi-linux kernel microcodectl); do
+	if [ -f $i ]; then
+		rm -rf ${UB_INSTALLDIR}/$i
+	fi
 done
-for i in $kernelfilesor;do
-rm -f ${UB_INSTALLDIR}/lib/firmware/${i}.fw
+
+for i in $(dpkg -L acx-fw broadcom-fw ipw2100-fw ipw2200-fw nouveau-vdpau-fw zd1211-fw); do
+	if [ -f $i ]; then
+		rm -rf ${UB_INSTALLDIR}/$i
+	fi
 done
+
+# üres könyvtárak törlése
+find ${UB_INSTALLDIR} -type d -empty -delete
+
+# Trigger a microcode reload for configurations not using early updates
+install -d "${UB_INSTALLDIR}/usr/lib/tmpfiles.d"
+echo 'w /sys/devices/system/cpu/microcode/reload - - - - 1' \
+	>"${UB_INSTALLDIR}/usr/lib/tmpfiles.d/linux-firmware.conf"
 

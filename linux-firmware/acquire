@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-linux-firmware-${UB_VERSION}.tar.gz linux-firmware-80d463b/ :linux-firmware
-      git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git@80d463b
+linux-firmware-${UB_VERSION}.tar.gz linux-firmware-a179db9/ :linux-firmware
+      git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git@a179db9
 
 # dvb
 0.0.51.tar.gz dvb-firmware-0.0.51/firmware :dvb-firmware
