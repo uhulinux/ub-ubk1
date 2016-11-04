@@ -1,0 +1,24 @@
+diff -Naur orig/libs/teckit/configure patched/libs/teckit/configure
+--- orig/libs/teckit/configure	2012-04-26 13:02:04.000000000 +0200
++++ patched/libs/teckit/configure	2016-11-04 15:00:00.213454543 +0100
+@@ -4542,7 +4542,7 @@
+ else
+   if test "x$GXX" = xyes; then
+   kpse_cv_warning_cxxflags=
+-kpse_warn_strings="-Wno-write-strings"
++kpse_warn_strings="-Wno-write-strings -std=c++98"
+ if test "x$enable_compiler_warnings" != xno; then
+   kpse_cv_warning_cxxflags="-Wreturn-type"
+   case `$CXX -dumpversion` in #(
+diff -Naur orig/texk/dvisvgm/configure patched/texk/dvisvgm/configure
+--- orig/texk/dvisvgm/configure	2012-04-26 13:02:04.000000000 +0200
++++ patched/texk/dvisvgm/configure	2016-11-04 15:34:50.301492464 +0100
+@@ -16480,7 +16480,7 @@
+ else
+   if test "x$GXX" = xyes; then
+   kpse_cv_warning_cxxflags=
+-kpse_warn_strings="-Wno-write-strings"
++kpse_warn_strings="-Wno-write-strings -std=c++98"
+ if test "x$enable_compiler_warnings" != xno; then
+   kpse_cv_warning_cxxflags="-Wreturn-type"
+   case `$CXX -dumpversion` in #(
