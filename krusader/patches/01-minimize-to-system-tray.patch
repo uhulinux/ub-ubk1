@@ -1,0 +1,170 @@
+diff -Nur orig/krusader/defaults.h mod/krusader/defaults.h
+--- orig/krusader/defaults.h	2016-10-22 15:30:11.000000000 +0200
++++ mod/krusader/defaults.h	2016-11-05 13:22:52.000000000 +0100
+@@ -52,6 +52,8 @@
+ #define _ShowTerminalEmulator false
+ // Remember Position
+ #define _RememberPos      true
++// Start to tray
++#define _StartToTray      false
+ // Left Tab Bar
+ // Right Tab Bar
+ // Size where lister is the default viewer
+@@ -64,6 +66,8 @@
+ #define _FilelistFont   QFontDatabase::systemFont(QFontDatabase::GeneralFont)
+ // Warn On Exit ////////
+ #define _WarnOnExit     false
++// Minimize To Tray ////
++#define _MinimizeToTray false
+ // Mark Dirs ///////////
+ #define _MarkDirs       false
+ // Show Hidden /////////
+diff -Nur orig/krusader/Konfigurator/kggeneral.cpp mod/krusader/Konfigurator/kggeneral.cpp
+--- orig/krusader/Konfigurator/kggeneral.cpp	2016-10-22 15:30:11.000000000 +0200
++++ mod/krusader/Konfigurator/kggeneral.cpp	2016-11-05 13:22:04.000000000 +0100
+@@ -230,8 +230,9 @@
+ 
+     KONFIGURATOR_CHECKBOX_PARAM settings[] = { //   cfg_class  cfg_name                default             text                              restart tooltip
+         {"Look&Feel", "Warn On Exit",         _WarnOnExit,        i18n("Warn on exit"),           false,  i18n("Display a warning when trying to close the main window.") },    // KDE4: move warn on exit to the other confirmations
++        {"Look&Feel", "Minimize To Tray",     _MinimizeToTray,    i18n("Minimize to tray"),       false,  i18n("The icon will appear in the system tray instead of the taskbar, when Krusader is minimized.") },
+     };
+-    KonfiguratorCheckBoxGroup *cbs = createCheckBoxGroup(2, 0, settings, 1 /*count*/, generalGrp, PAGE_GENERAL);
++    KonfiguratorCheckBoxGroup *cbs = createCheckBoxGroup(2, 0, settings, 2 /*count*/, generalGrp, PAGE_GENERAL);
+     generalGrid->addWidget(cbs, 0, 0);
+ 
+ 
+diff -Nur orig/krusader/Konfigurator/kgstartup.cpp mod/krusader/Konfigurator/kgstartup.cpp
+--- orig/krusader/Konfigurator/kgstartup.cpp	2016-10-22 15:30:11.000000000 +0200
++++ mod/krusader/Konfigurator/kgstartup.cpp	2016-11-05 13:22:31.000000000 +0100
+@@ -108,9 +108,11 @@
+                  "to manually set the main window's size and position at startup.</p>") },
+         {"Startup", "Update Default Panel Settings", _RememberPos, i18n("Update default panel settings"), true,
+             i18n("When settings of a panel are changed, save them as the default for new panels of the same type.") },
++        {"Startup", "Start To Tray", _StartToTray, i18n("Start to tray"), false,
++            i18n("Krusader starts to tray (if minimize to tray is set), without showing the main window") },
+     };
+ 
+-    uiCbGroup = createCheckBoxGroup(2, 0, uiCheckBoxes, 9, uiGrp);
++    uiCbGroup = createCheckBoxGroup(2, 0, uiCheckBoxes, 10, uiGrp);
+     connect(uiCbGroup->find("UI Save Settings"), SIGNAL(stateChanged(int)), this, SLOT(slotDisable()));
+ 
+     uiGrid->addWidget(uiCbGroup, 1, 0);
+diff -Nur orig/krusader/krusader.cpp mod/krusader/krusader.cpp
+--- orig/krusader/krusader.cpp	2016-10-22 15:30:11.000000000 +0200
++++ mod/krusader/krusader.cpp	2016-11-05 13:37:23.000000000 +0100
+@@ -218,6 +218,20 @@
+     status->setWhatsThis(i18n("Statusbar will show basic information "
+                               "about file below mouse pointer."));
+ 
++    // create tray icon (even if not shown)
++    sysTray = new QSystemTrayIcon(this);
++    sysTray->setIcon(krLoader->loadIcon(privIcon(), KIconLoader::Panel, 22));
++    QMenu *trayMenu = new QMenu(this);
++    trayMenu->addSection(QGuiApplication::applicationDisplayName()); // show "title"
++    QAction *restoreAction = new QAction(i18n("Restore"), this);
++    connect(restoreAction, SIGNAL(triggered()), SLOT(showFromTray()));
++    trayMenu->addAction(restoreAction);
++    trayMenu->addSeparator();
++    trayMenu->addAction(actionCollection()->action(KStandardAction::name(KStandardAction::Quit)));
++    sysTray->setContextMenu(trayMenu);
++    // tray is only visible if main window is hidden, so action is always "show"
++    connect(sysTray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), SLOT(showFromTray()));
++
+     setCentralWidget(MAIN_VIEW);
+ 
+     // manage our keyboard short-cuts
+@@ -249,7 +263,12 @@
+         }
+     }
+ 
+-    show();
++    // view initialized; show window or tray
++    if (gs.readEntry("Start To Tray", _StartToTray)) {
++        sysTray->show();
++    } else {
++        show();
++    }
+ 
+     KrTrashHandler::startWatcher();
+     isStarting = false;
+@@ -331,6 +350,31 @@
+         statusBar() ->showMessage(mess, 5000);
+ }
+ 
++void Krusader::showFromTray() {
++    setWindowState((windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
++    show();
++    sysTray->hide();
++}
++
++void Krusader::changeEvent(QEvent *event) {
++    QMainWindow::changeEvent(event);
++    if (isExiting)
++        return;
++
++    // toggle tray when minimizing (if enabled)
++    if(event->type() == QEvent::WindowStateChange) {
++        if(isMinimized()) {
++            KConfigGroup group(krConfig, "Look&Feel");
++            if (group.readEntry("Minimize To Tray", _MinimizeToTray)) {
++                sysTray->show();
++                hide();
++            }
++        } else if(isVisible()) {
++            sysTray->hide();
++        }
++    }
++}
++
+ void Krusader::moveEvent(QMoveEvent *e) {
+     oldPos = e->oldPos();
+     KParts::MainWindow::moveEvent(e);
+@@ -410,6 +454,7 @@
+         cfg.writeEntry("Show FN Keys", KrActions::actToggleFnkeys->isChecked());
+         cfg.writeEntry("Show Cmd Line", KrActions::actToggleCmdline->isChecked());
+         cfg.writeEntry("Show Terminal Emulator", KrActions::actToggleTerminal->isChecked());
++        cfg.writeEntry("Start To Tray", isHidden());
+     }
+ 
+     // save popular links
+diff -Nur orig/krusader/krusader.h mod/krusader/krusader.h
+--- orig/krusader/krusader.h	2016-10-22 15:30:11.000000000 +0200
++++ mod/krusader/krusader.h	2016-11-05 13:23:51.000000000 +0100
+@@ -40,6 +40,7 @@
+ 
+ // QtCore
+ #include <QCommandLineParser>
++#include <QEvent>
+ #include <QStringList>
+ #include <QTimer>
+ // QtGui
+@@ -49,6 +50,7 @@
+ #include <QMoveEvent>
+ // QtWidgets
+ #include <QAction>
++#include <QSystemTrayIcon>
+ 
+ #include <KParts/MainWindow>
+ #include <KConfigWidgets/KStandardAction>
+@@ -135,11 +137,13 @@
+     void doOpenUrl();
+     void slotGotNewStartup(const KStartupInfoId &id, const KStartupInfoData &data);
+     void slotGotRemoveStartup(const KStartupInfoId &id, const KStartupInfoData &data);
++    void showFromTray();
+ 
+ protected:
+     bool queryClose() Q_DECL_OVERRIDE;
+     void setupActions();
+     bool versionControl();  // handle version differences in krusaderrc
++    void changeEvent(QEvent *even) Q_DECL_OVERRIDE;
+     void moveEvent(QMoveEvent *) Q_DECL_OVERRIDE;
+     void resizeEvent(QResizeEvent *) Q_DECL_OVERRIDE;
+     bool event(QEvent *) Q_DECL_OVERRIDE;
+@@ -184,6 +188,7 @@
+     ViewActions *_viewActions;
+     ListPanelActions *_listPanelActions;
+     TabActions *_tabActions;
++    QSystemTrayIcon *sysTray;
+     QPoint       oldPos;
+     QSize        oldSize;
+     bool         isStarting;
