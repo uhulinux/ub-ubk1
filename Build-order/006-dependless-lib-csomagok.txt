@@ -55,6 +55,7 @@ libtinyxml
 libtranscript
 libucl
 libungif
+libx86
 libyaml
 libzip
 libcfitsio

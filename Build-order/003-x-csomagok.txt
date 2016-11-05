@@ -113,7 +113,6 @@ x.org-input-keyboard
 x.org-input-mouse
 x.org-input-synaptics
 x.org-input-wacom
-libx86
 libxalan
 libxaw3d
 libxdg-basedir
