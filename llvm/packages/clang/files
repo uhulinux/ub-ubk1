@@ -7,4 +7,5 @@
 	/usr/lib/libmodernizeCore.a
 	/usr/share/clang
 	/usr/share/doc/clang
+	/usr/share/doc/clang-tools
 	/usr/share/man/man1/clang.1
