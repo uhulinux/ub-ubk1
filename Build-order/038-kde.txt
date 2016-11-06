@@ -124,6 +124,7 @@ kate
 krusader
 tellico
 konsole
+kshutdown
 libkipi
 libksane
 marble

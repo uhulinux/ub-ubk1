@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+mkdir -p build
+cd build
+  cmake ".." \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKS_KF5=ON \
+    -GNinja
+ninja
