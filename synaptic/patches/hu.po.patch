@@ -1,0 +1,120 @@
+diff -Naur orig/po/hu.po patched/po/hu.po
+--- orig/po/hu.po	2016-01-11 10:20:13.000000000 +0100
++++ patched/po/hu.po	2016-11-02 00:01:26.006065559 +0100
+@@ -1109,7 +1109,7 @@
+ 
+ #: ../gtk/gsynaptic.cc:79
+ msgid "-o=? Set an arbitrary configuration option, eg -o dir::cache=/tmp\n"
+-msgstr ""
++msgstr "-o=? Tetszőleges konfigurációs opció beállítása, pl. -o dir::cache=/tmp\n"
+ 
+ #: ../gtk/gsynaptic.cc:80
+ msgid "--upgrade-mode  Call Upgrade and display changes\n"
+@@ -1611,7 +1611,7 @@
+ #: ../gtk/gtkbuilder/window_logview.ui.h:2
+ #: ../gtk/gtkbuilder/dialog_task_descr.ui.h:1
+ msgid "_Close"
+-msgstr ""
++msgstr "_Bezárás"
+ 
+ #: ../gtk/rgpkgdetails.cc:220
+ #, c-format
+@@ -1848,13 +1848,12 @@
+ #: ../gtk/gtkbuilder/dialog_authentication.ui.h:2
+ #: ../gtk/gtkbuilder/dialog_disc_label.ui.h:1
+ #: ../gtk/gtkbuilder/dialog_new_repositroy.ui.h:6
+-#, fuzzy
+ msgid "_Cancel"
+-msgstr "Mégsem"
++msgstr "Még_sem"
+ 
+ #: ../gtk/rgmainwindow.cc:2029 ../gtk/rgmainwindow.cc:3408
+ msgid "_Open"
+-msgstr ""
++msgstr "Meg_nyitás"
+ 
+ #: ../gtk/rgmainwindow.cc:2076 ../gtk/rgmainwindow.cc:2673
+ #: ../gtk/rgmainwindow.cc:2855 ../gtk/rgmainwindow.cc:3040
+@@ -1868,7 +1867,7 @@
+ 
+ #: ../gtk/rgmainwindow.cc:2099 ../gtk/rgmainwindow.cc:3381
+ msgid "_Save"
+-msgstr ""
++msgstr "Men_tés"
+ 
+ #: ../gtk/rgmainwindow.cc:2102
+ msgid "Save full state, not only changes"
+@@ -2436,9 +2435,8 @@
+ msgstr "_Beállítások"
+ 
+ #: ../gtk/gtkbuilder/window_main.ui.h:38
+-#, fuzzy
+ msgid "_Preferences"
+-msgstr "Beállítások"
++msgstr "_Beállítások"
+ 
+ #: ../gtk/gtkbuilder/window_main.ui.h:39
+ msgid "_Repositories"
+@@ -3059,9 +3057,8 @@
+ #: ../gtk/gtkbuilder/window_preferences.ui.h:75
+ #: ../gtk/gtkbuilder/window_setopt.ui.h:2
+ #: ../gtk/gtkbuilder/window_summary.ui.h:3
+-#, fuzzy
+ msgid "_Apply"
+-msgstr "Alkalmaz"
++msgstr "_Alkalmaz"
+ 
+ #: ../gtk/gtkbuilder/window_preferences.ui.h:77
+ #: ../gtk/gtkbuilder/window_disc_name.ui.h:5
+@@ -3069,9 +3066,8 @@
+ #: ../gtk/gtkbuilder/window_repositories.ui.h:11
+ #: ../gtk/gtkbuilder/window_tasks.ui.h:6
+ #: ../gtk/gtkbuilder/dialog_authentication.ui.h:3
+-#, fuzzy
+ msgid "_OK"
+-msgstr "OK"
++msgstr "_OK"
+ 
+ #: ../gtk/gtkbuilder/window_disc_name.ui.h:1
+ msgid ""
+@@ -3152,12 +3148,12 @@
+ #: ../gtk/gtkbuilder/window_filters.ui.h:5
+ #: ../gtk/gtkbuilder/window_repositories.ui.h:8
+ msgid "_New"
+-msgstr ""
++msgstr "Ú_j"
+ 
+ #: ../gtk/gtkbuilder/window_filters.ui.h:6
+ #: ../gtk/gtkbuilder/window_repositories.ui.h:9
+ msgid "_Delete"
+-msgstr ""
++msgstr "_Törlés"
+ 
+ #. TRANSLATORS: this is a label embedded in the "Status" notebook tab, so it describes the "Current [status]"
+ #: ../gtk/gtkbuilder/window_filters.ui.h:8
+@@ -3336,12 +3332,11 @@
+ 
+ #: ../gtk/gtkbuilder/window_repositories.ui.h:2
+ msgid "_Up"
+-msgstr ""
++msgstr "_Fel"
+ 
+ #: ../gtk/gtkbuilder/window_repositories.ui.h:3
+-#, fuzzy
+ msgid "_Down"
+-msgstr "Letöltendő"
++msgstr "_Le"
+ 
+ #: ../gtk/gtkbuilder/window_repositories.ui.h:4
+ msgid "URI:"
+@@ -3554,9 +3549,8 @@
+ msgstr "A szoftvercsomag-telepítések, törlések és frissítések előzményei."
+ 
+ #: ../gtk/gtkbuilder/window_logview.ui.h:4
+-#, fuzzy
+ msgid "_Find"
+-msgstr "Keresés"
++msgstr "_Keresés"
+ 
+ #: ../gtk/gtkbuilder/dialog_quit.ui.h:3
+ msgid ""
