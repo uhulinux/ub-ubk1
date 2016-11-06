@@ -18,6 +18,7 @@ libdiscid
 libdmapsharing
 libdv
 libdvdnav
+libept
 libexosip2
 libical
 libgudev

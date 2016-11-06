@@ -2,6 +2,7 @@ apt-dev
 gnome-common
 gtk-dev
 intltool
+libept-dev
 libglade2-dev
 rarian-dev
 vte-dev
