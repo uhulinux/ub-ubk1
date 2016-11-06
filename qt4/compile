@@ -1,6 +1,7 @@
 #!/bin/sh -eux
 
 export LD_LIBRARY_PATH="$(pwd)"/lib
+export CXXFLAGS+="-std=gnu++98"
 
 ./configure \
 	-platform linux-g++-32 \
@@ -21,6 +22,7 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-no-separate-debug-info \
 	\
 	-nomake examples    \
+	-nomake demos		\
 	\
 	-exceptions         \
 	-accessibility      \

@@ -2,6 +2,9 @@
 
 make INSTALL_ROOT="$UB_INSTALLDIR" install
 
+# nomake examples/demos
+rm -Rf "$UB_INSTALLDIR"/usr/lib/qt4/{demos,examples}
+
 # kiszedjük a static lib utalásokat (QTBUG-12058)
 sed -i -e 's#-L\.\./\.\./WebCore/release ##g;s#-L\.\./\.\./JavaScriptCore/release ##g;s#-lwebcore ##g;s#-ljscore ##g' \
 	"$UB_INSTALLDIR"/usr/lib/qt4/lib/libQtWebKit.la \
@@ -19,7 +22,6 @@ ln -s ../lib/qt4/bin/moc "$UB_INSTALLDIR"/usr/bin/moc-qt4
 ln -s ../lib/qt4/bin/uic "$UB_INSTALLDIR"/usr/bin/uic-qt4
 ln -s ../lib/qt4/bin/qmake "$UB_INSTALLDIR"/usr/bin/qmake-qt4
 ln -s ../lib/qt4/bin/qdbusviewer "$UB_INSTALLDIR"/usr/bin/qdbusviewer-qt4
-ln -s ../lib/qt4/bin/qtdemo "$UB_INSTALLDIR"/usr/bin/qtdemo-qt4
 ln -s ../lib/qt4/bin/rcc "$UB_INSTALLDIR"/usr/bin/rcc-qt4
 
 # ikonok a desktop fájlokhoz
