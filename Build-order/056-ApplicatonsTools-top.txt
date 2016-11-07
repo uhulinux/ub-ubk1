@@ -39,6 +39,7 @@ ppsei
 pv
 pwgen
 pxtools
+qshutdown
 rand
 redis
 rlwrap
