@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 rlog-${UB_VERSION}.tar.gz rlog-${UB_VERSION}/
-	https://rlog.googlecode.com/files/
-	http://freecode.com/urls/f5c7d0648bd2e78cd881eeee507f8319
+	http://pkgs.fedoraproject.org/repo/pkgs/rlog/rlog-${UB_VERSION}.tar.gz/c29f74e0f50d66b20312d049b683ff82/
