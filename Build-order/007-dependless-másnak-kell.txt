@@ -42,7 +42,6 @@ geoip
 gnome-common
 gnuchess
 hddtemp
-hermes
 hunspell
 hwdata
 iasl

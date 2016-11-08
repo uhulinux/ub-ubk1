@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-rm -f autogen.sh
-autoreconf -vif
-
-ub_compile

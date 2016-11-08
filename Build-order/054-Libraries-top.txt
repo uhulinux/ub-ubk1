@@ -51,7 +51,6 @@ keybinder
 snack
 gtkglarea
 gst-plugins-libde265
-clanlib
 gstreamer-vaapi
 gstreamer0.10-vaapi
 alsa-plugins

@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-Hermes-${UB_VERSION}.tar.gz Hermes-${UB_VERSION}/
-	ftp://195.228.155.102/mirror/http:/www.clanlib.org/download/legacy/
-
