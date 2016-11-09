@@ -24,3 +24,4 @@ python-pigment
 openscenegraph
 libdvbcsa
 molequeue
+mono
