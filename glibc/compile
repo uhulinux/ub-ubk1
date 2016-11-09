@@ -14,7 +14,8 @@ UB_CONFIGURE_DIR="$UB_COMPILEDIR" ub_configure \
 	--enable-add-ons \
 	--enable-kernel=2.6.33 \
 	--enable-obsolete-rpc \
-	--with-cpu=i686
+	--with-cpu=i686 \
+	--disable-werror
 
 # glibc doesn't like -Os!
 # build failures with -O1 maybe gcc bug:
