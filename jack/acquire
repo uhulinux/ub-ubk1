@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-v${UB_VERSION}.tar.gz jack2-${UB_VERSION}/
-	https://github.com/jackaudio/jack2/archive/
+#v${UB_VERSION}.tar.gz jack2-${UB_VERSION}/
+#	https://github.com/jackaudio/jack2/archive/
+
+jack2-${UB_VERSION}.tar.gz jack2-f2ece24/	
+	git://github.com/jackaudio/jack2.git@f2ece24

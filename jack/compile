@@ -1,7 +1,8 @@
 #!/bin/sh -eux
 
 ./waf configure \
-		--prefix="$UB_INSTALLDIR"/usr \
+		--prefix=/usr \
 		--dbus \
-		--classic
+		--classic \
+		--alsa
 ./waf build 
