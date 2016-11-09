@@ -1,0 +1,49 @@
+diff -Naur orig/data/99-udisks2.rules patched/data/99-udisks2.rules
+--- orig/data/99-udisks2.rules	1970-01-01 01:00:00.000000000 +0100
++++ patched/data/99-udisks2.rules	2016-11-09 01:15:38.998895101 +0100
+@@ -0,0 +1,5 @@
++# UDISKS_FILESYSTEM_SHARED
++# ==1: mount filesystem to a shared directory (/media/VolumeName)
++# ==0: mount filesystem to a private directory (/run/media/$USER/VolumeName)
++# See udisks(8)
++ENV{ID_FS_USAGE}=="filesystem|other|crypto", ENV{UDISKS_FILESYSTEM_SHARED}="1"
+diff -Naur orig/data/Makefile.am patched/data/Makefile.am
+--- orig/data/Makefile.am	2016-02-29 17:18:12.000000000 +0100
++++ patched/data/Makefile.am	2016-11-09 01:18:53.509321654 +0100
+@@ -26,7 +26,7 @@
+ endif
+ 
+ udevrulesdir = $(udevdir)/rules.d
+-udevrules_DATA = 80-udisks2.rules
++udevrules_DATA = 80-udisks2.rules 99-udisks2.rules
+ 
+ polkitdir        = $(datadir)/polkit-1/actions
+ polkit_in_files  = org.freedesktop.udisks2.policy.in
+@@ -41,6 +41,7 @@
+ 
+ EXTRA_DIST = 						\
+ 	80-udisks2.rules				\
++	99-udisks2.rules				\
+ 	org.freedesktop.UDisks2.xml			\
+ 	$(systemdservice_in_files)			\
+ 	$(dbusservice_in_files)				\
+diff -Naur orig/data/Makefile.in patched/data/Makefile.in
+--- orig/data/Makefile.in	2016-02-29 17:29:41.000000000 +0100
++++ patched/data/Makefile.in	2016-11-09 01:14:38.238135498 +0100
+@@ -357,7 +357,7 @@
+ @HAVE_SYSTEMD_TRUE@systemdservicedir = $(systemdsystemunitdir)
+ @HAVE_SYSTEMD_TRUE@systemdservice_DATA = $(systemdservice_in_files:.service.in=.service)
+ udevrulesdir = $(udevdir)/rules.d
+-udevrules_DATA = 80-udisks2.rules
++udevrules_DATA = 80-udisks2.rules 99-udisks2.rules
+ polkitdir = $(datadir)/polkit-1/actions
+ polkit_in_files = org.freedesktop.udisks2.policy.in
+ polkit_DATA = $(polkit_in_files:.policy.in=.policy)
+@@ -368,6 +368,7 @@
+ 
+ EXTRA_DIST = \
+ 	80-udisks2.rules				\
++	99-udisks2.rules				\
+ 	org.freedesktop.UDisks2.xml			\
+ 	$(systemdservice_in_files)			\
+ 	$(dbusservice_in_files)				\
