@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-v${UB_VERSION}-b.tar.gz fontforge-${UB_VERSION}/
+v${UB_VERSION}-b.tar.gz fontforge-${UB_VERSION}-b/
 	https://github.com/fontforge/fontforge/archive/

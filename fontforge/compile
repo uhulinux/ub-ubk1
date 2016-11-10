@@ -1,3 +1,4 @@
 #!/bin/sh -eux
 
+echo $UB_VERSION > VERSION
 ub_compile
