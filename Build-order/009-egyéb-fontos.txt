@@ -60,7 +60,6 @@ gnome-js-common
 webkitgtk2
 webkitgtk3
 webkit2gtk
-seed
 neon
 fltk
 gnome2-mime-data

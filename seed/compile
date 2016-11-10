@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-sed -i.cflags -e \
-  's|^\([ \t][ \t]*\)CFLAGS=\"[^\$].*$|\1true|' \
-  configure
-ub_compile
