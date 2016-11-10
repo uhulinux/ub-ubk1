@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+export DEBUG=false 
+make dependencies
+make core

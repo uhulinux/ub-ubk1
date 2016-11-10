@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+release-${UB_VERSION}.tar.gz OpenRA-release-${UB_VERSION}/
+    https://github.com/OpenRA/OpenRA/archive/

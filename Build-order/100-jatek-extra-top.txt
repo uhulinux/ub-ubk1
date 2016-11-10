@@ -149,3 +149,4 @@ etracer
 hedgewars
 0ad
 openmw
+openra
