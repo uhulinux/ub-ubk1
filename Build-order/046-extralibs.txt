@@ -24,4 +24,5 @@ python-pigment
 openscenegraph
 libdvbcsa
 molequeue
+libgdiplus
 mono
