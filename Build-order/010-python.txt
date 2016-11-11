@@ -145,7 +145,6 @@ gst-python
 pyatspi
 pygame
 pykaraoke
-pypy
 python-apt
 python-matplotlib
 python-notify

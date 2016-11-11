@@ -1,1 +1,0 @@
-urllist https://bitbucket.org/pypy/pypy/downloads/ | splitver '^pypy-([0-9.]+).linux.tar.bz2$' | sort -V | tail -n 1

@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-# pypy rpython/bin/rpython --make-jobs=4 -Ojit pypy/goal/targetpypystandalone.py
-
-cd pypy/goal
-
-python2 ../../rpython/bin/rpython --make-jobs=4 -Ojit --shared targetpypystandalone

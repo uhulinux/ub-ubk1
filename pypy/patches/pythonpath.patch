@@ -1,9 +1,0 @@
-diff -Naur orig/lib-python/2.7/cgi.py patched/lib-python/2.7/cgi.py
---- orig/lib-python/2.7/cgi.py	2015-11-17 13:10:14.000000000 +0100
-+++ patched/lib-python/2.7/cgi.py	2016-03-01 01:21:30.599421864 +0100
-@@ -1,4 +1,4 @@
--#! /usr/local/bin/python
-+#! /usr/bin/python
- 
- # NOTE: the above "/usr/local/bin/python" is NOT a mistake.  It is
- # intentionally NOT "/usr/bin/env python".  On many systems
