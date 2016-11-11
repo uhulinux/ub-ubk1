@@ -7,3 +7,6 @@ ub_install mandir=/usr/share/man
 install -Dm 644 cpupower.default "$UB_INSTALLDIR/etc/default/cpupower"
 install -Dm 644 cpupower.service "$UB_INSTALLDIR/usr/lib/systemd/system/cpupower.service"
 install -Dm 755 cpupower.systemd "$UB_INSTALLDIR/usr/lib/systemd/scripts/cpupower"
+mkdir -p ${UB_INSTALLDIR}/usr/share/doc/Packages/cpupower
+mv ${UB_INSTALLDIR}/usr/share/doc/packages/cpupower/* ${UB_INSTALLDIR}/usr/share/doc/Packages/cpupower/
+rm -rf ${UB_INSTALLDIR}/usr/share/doc/packages
