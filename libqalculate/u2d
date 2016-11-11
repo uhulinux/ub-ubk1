@@ -1,1 +1,1 @@
-sflist qalculate libqalculate  | splitver '^libqalculate-([0-9.]+)$'| sort -V | tail -n 1
+urllist http://mirror.nus.edu.sg/Debian/pool/main/libq/libqalculate/ | splitver '^libqalculate_([0-9.]+).orig.tar.(gz|bz2|xz)$' | sort -V | tail -n 1

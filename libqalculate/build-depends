@@ -1,6 +1,7 @@
 cln-dev
 glib-dev
 gnuplot
+intltool
 libxml2-dev
 perl-xml-parser
 wget
