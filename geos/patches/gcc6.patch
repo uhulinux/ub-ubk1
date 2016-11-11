@@ -1,0 +1,42 @@
+diff -Naur orig/configure.ac patched/configure.ac
+--- orig/configure.ac	2015-08-14 20:31:26.000000000 +0200
++++ patched/configure.ac	2016-11-11 23:56:51.759461959 +0100
+@@ -197,7 +197,7 @@
+ AC_LANG_PUSH([C++])
+ AC_CACHE_CHECK([for isnan], ac_cv_isnan,
+  [AC_TRY_LINK([#include <cmath>],
+- [double x; int y; y = isnan(x);],
++ [double x; int y; y = std::isnan(x);],
+  ac_cv_isnan=yes,
+  ac_cv_isnan=no
+ )])
+diff -Naur orig/include/geos/platform.h.in patched/include/geos/platform.h.in
+--- orig/include/geos/platform.h.in	2015-08-14 20:23:18.000000000 +0200
++++ patched/include/geos/platform.h.in	2016-11-12 00:06:08.601187627 +0100
+@@ -38,7 +38,7 @@
+ 
+ #if defined(__GNUC__) && defined(_WIN32)
+ /* For MingW the appropriate definitions are included in
+- math.h and float.h but the definitions in 
++ math.h and float.h but the definitions in
+  math.h are only included if __STRICT_ANSI__
+  is not defined.  Since GEOS is compiled with -ansi that
+  means those definitions are not available. */
+@@ -77,7 +77,7 @@
+ # define FINITE(x) (finite(x))
+ #else
+ # if defined(_MSC_VER)
+-#  define FINITE(x) _finite(static_cast<double>(x))    
++#  define FINITE(x) _finite(static_cast<double>(x))
+ # elif defined(__hpux__) && defined(__ia64__)
+ #  define FINITE(x) (_Isfinite(x))
+ # else
+@@ -86,7 +86,7 @@
+ #endif
+ 
+ #if defined(HAVE_ISNAN)
+-# define ISNAN(x) (isnan(x))
++# define ISNAN(x) (std::isnan(x))
+ #else
+ # if defined(_MSC_VER)
+ #  define ISNAN(x) _isnan(x)
