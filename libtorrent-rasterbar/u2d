@@ -1,1 +1,1 @@
-sflist libtorrent libtorrent | splitver '^libtorrent-rasterbar-([0-9.]+).tar.gz$' | sort -V | tail -n 1
+urllist http://ftp.ubuntu.com/ubuntu/ubuntu/pool/universe/libt/libtorrent-rasterbar/ | splitver '^libtorrent-rasterbar_([0-9.]+).orig.tar.(gz|bz2|xz)$' | sort -V | tail -n 1
