@@ -13,6 +13,7 @@ python-ipaddr
 python-lxml
 python-nose
 python-paramiko
+python-setproctitle
 python-simplejson
 python-six
 python-slowaes
