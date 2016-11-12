@@ -60,7 +60,6 @@ lynx
 miniupnpc
 musepack
 ois
-pcsc-lite
 qpdf
 radeontool
 sbc

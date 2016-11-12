@@ -143,7 +143,6 @@ python-urlgrabber
 spyder
 gst-python
 pyatspi
-pygame
 pykaraoke
 python-apt
 python-matplotlib
