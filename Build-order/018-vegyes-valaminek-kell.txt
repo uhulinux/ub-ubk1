@@ -246,7 +246,6 @@ lesstif
 recordmydesktop
 telepathy-gabble
 zeitgeist
-emacs
 graphicsmagick
 hplip
 plack
