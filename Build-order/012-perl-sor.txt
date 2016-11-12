@@ -80,6 +80,7 @@ perl-ole-storage-lite
 perl-package-stash-xs
 perl-params-util
 perl-role-tiny
+perl-sdl
 perl-sgmls
 perl-socket6
 perl-sort-naturally

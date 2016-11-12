@@ -239,7 +239,6 @@ xterm
 conky
 ibus
 openal
-perl-sdl
 udisks2
 upower
 fox
