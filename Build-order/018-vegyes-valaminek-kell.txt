@@ -87,7 +87,6 @@ cdrkit
 cssutils
 ctpl
 exempi
-firebirdsql
 fonttools
 fuse-ntfs-3g
 gavl
@@ -127,7 +126,6 @@ fonts-noto
 fonts-hack
 gtkspell2
 iputils
-js185
 leptonica
 libao
 libtrace

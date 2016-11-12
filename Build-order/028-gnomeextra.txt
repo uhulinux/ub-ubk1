@@ -44,6 +44,7 @@ aisleriot
 syncevolution
 gnome-clocks
 xchat-gnome
+js185
 gxine
 gitg
 gnome-builder

@@ -23,6 +23,7 @@ fet
 geogebra
 lightdm-gtk-greeter-settings
 euler
+firebirdsql
 flamerobin
 smart
 frescobaldi
