@@ -100,7 +100,6 @@ icon-theme-bluecurve
 lsb-release
 lucene++
 luit
-mac
 mdadm
 memphis
 mercurial
@@ -248,7 +247,6 @@ recordmydesktop
 telepathy-gabble
 zeitgeist
 emacs
-gpsd
 graphicsmagick
 hplip
 plack
@@ -300,3 +298,5 @@ edelib
 reiserfsprogs
 jfsutils
 apmd
+gpsd
+mac
