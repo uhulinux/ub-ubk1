@@ -65,6 +65,7 @@ caribou
 gedit
 metacity
 nm-applet
+openbabel
 gnome-chemistry-utils
 gnome-desktop
 totem-plparser

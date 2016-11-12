@@ -164,7 +164,6 @@ rasqal
 scim
 spandsp
 tntnet
-wvstreams
 xdg-user-dirs-gtk
 xosd
 yaz
@@ -184,7 +183,6 @@ js17
 loudmouth
 netpbm
 ninja
-openbabel
 reportlab
 rpcbind
 squeak

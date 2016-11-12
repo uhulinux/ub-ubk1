@@ -53,6 +53,7 @@ fuse-sshfs
 apache-mod-auth-pam
 xfsdump
 linuxconsole
+wvstreams
 wvdial
 fonts-unicode
 perl-gstreamer
