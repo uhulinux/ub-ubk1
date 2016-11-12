@@ -144,13 +144,11 @@ xdg-user-dirs
 xmlrpc-c
 zvbi
 aalib
-audit
 autogen
 cryptsetup
 encfs
 gdl
 ghex
-glamor-egl
 gstreamermm
 gst-libav
 gtksourceviewmm
@@ -159,7 +157,6 @@ mcrypt
 openconnect
 openobex
 openvpn
-qscintilla2
 rasqal
 scim
 spandsp
@@ -219,7 +216,6 @@ gtk-vnc
 imlib
 libstreamanalyzer
 openssh
-bzr
 subversion
 plymouth
 ptlib
