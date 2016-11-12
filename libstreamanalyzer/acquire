@@ -1,7 +1,0 @@
-#!/usr/bin/env dl
-
-# libstreamanalyzer-${UB_VERSION}.tar.gz libstreamanalyzer-v${UB_VERSION}/
-#	git://anongit.kde.org/libstreamanalyzer.git@tag:v${UB_VERSION}
-
-strigi-${UB_VERSION}.tar.bz2 strigi-${UB_VERSION}/
-	http://www.vandenoever.info/software/strigi/

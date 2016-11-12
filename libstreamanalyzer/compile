@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-cd libstreamanalyzer
-ub_compile \
-	-DENABLE_FFMPEG=OFF
