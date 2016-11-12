@@ -1,6 +1,1 @@
-AUTHORS
-COPYING-LGPL
-COPYING-MIT
-ChangeLog
-README.rst
-RELEASE-NOTES.rst
+pycurldoc/*

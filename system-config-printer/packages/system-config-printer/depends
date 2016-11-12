@@ -1,3 +1,5 @@
-pycups
-pycurl
-pysmbc
+py3cups
+python3-dbus
+python3-pycurl
+python3-pysmbc
+python3-requests
