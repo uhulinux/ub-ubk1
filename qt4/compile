@@ -23,8 +23,9 @@ export CXXFLAGS+="-std=gnu++98"
 	\
 	-nomake examples    \
 	-nomake demos		\
+	-nomake docs		\
 	\
-	-exceptions         \
+	-no-exceptions      \
 	-accessibility      \
 	-stl                \
 	\
@@ -34,8 +35,8 @@ export CXXFLAGS+="-std=gnu++98"
 	-plugin-sql-sqlite  \
 	-system-sqlite      \
 	\
-	-qt3support         \
-	-xmlpatterns        \
+	-no-qt3support      \
+	-no-xmlpatterns     \
 	-multimedia         \
 	-audio-backend      \
 	-no-phonon          \
