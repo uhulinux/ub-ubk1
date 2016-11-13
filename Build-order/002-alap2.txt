@@ -13,6 +13,7 @@ python-setuptools
 pycrypto
 pyasn1
 python-paramiko
+pyrex
 bzr
 dl
 lcms2

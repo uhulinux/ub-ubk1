@@ -40,7 +40,6 @@ gconf2
 usbmuxd
 raptor2
 xdg-utils
-pyrex
 openjpeg1
 poppler-data
 gd
