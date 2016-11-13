@@ -298,4 +298,3 @@ reiserfsprogs
 jfsutils
 apmd
 gpsd
-mac

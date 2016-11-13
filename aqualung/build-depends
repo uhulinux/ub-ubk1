@@ -19,7 +19,6 @@ libsndfile-dev
 libvorbis-dev
 libxml2-dev
 lua51-dev
-mac
 nettle-dev
 portaudio-dev
 pulseaudio-dev
