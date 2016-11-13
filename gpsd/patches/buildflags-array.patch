@@ -1,0 +1,20 @@
+From 54db1396cf9631217c220fa4f5f0bd80caac13e6 Mon Sep 17 00:00:00 2001
+From: Bernd Zeimetz <bernd@bzed.de>
+Date: Sun, 1 May 2016 15:47:12 +0200
+Subject: [PATCH] Buildflags need to be splitted into an array.
+
+---
+ SConstruct | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/SConstruct
++++ b/SConstruct
+@@ -264,7 +264,7 @@ for i in ["AR", "ARFLAGS", "CCFLAGS", "C
+             env.Replace(**{j: os.getenv(i)})
+ for flag in ["LDFLAGS", "SHLINKFLAGS", "CPPFLAGS"]:
+     if os.environ.has_key(flag):
+-        env.MergeFlags({flag : [os.getenv(flag)]})
++        env.MergeFlags({flag : Split(os.getenv(flag))})
+ 
+ 
+ # Keep scan-build options in the environment
