@@ -6,6 +6,7 @@ cd build
 	--system-libs \
 	--no-system-jsoncpp \
 	--prefix=/usr \
+	--datadir=/share/cmake \
 	--mandir=/share/man \
 	--docdir=/share/doc/Packages/cmake
 
