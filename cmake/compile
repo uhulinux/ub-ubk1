@@ -5,6 +5,7 @@ cd build
 ../bootstrap \
 	--system-libs \
 	--no-system-jsoncpp \
+	--no-system-libuv \
 	--prefix=/usr \
 	--datadir=/share/cmake \
 	--mandir=/share/man \
