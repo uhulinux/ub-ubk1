@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export LD_LIBRARY_PATH=/usr/share/games/gzdoom
+exec /usr/share/games/gzdoom/gzdoom

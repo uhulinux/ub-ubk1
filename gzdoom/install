@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/games/gzdoom
+cd build
+
+cp -v {gzdoom,gzdoom.pk3,lights.pk3,brightmaps.pk3,output_sdl/liboutput_sdl.so} "$UB_INSTALLDIR"/usr/share/games/gzdoom/
+cp ${UB_SRCDIR}/sources/Doom-1-icon.png "$UB_INSTALLDIR"/usr/share/pixmaps/gzdoom.png

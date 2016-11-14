@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+game-music-emu-${UB_VERSION}.tar.bz2 game-music-emu-${UB_VERSION}/
+	http://pkgs.fedoraproject.org/repo/pkgs/game-music-emu/game-music-emu-${UB_VERSION}.tar.bz2/b98fafb737bc889dc65e7a8b94bd1bf5/

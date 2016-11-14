@@ -141,6 +141,7 @@ gnubik
 stuntrally
 supertux
 vavoom
+gzdoom
 supertuxkart
 opendungeons
 gcompris
