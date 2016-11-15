@@ -36,7 +36,6 @@ baobab
 gnome-nettool
 gnome-power-manager
 gnome-python
-gssdp
 libgnome-media-profiles
 libzapojit
 mousetweaks
