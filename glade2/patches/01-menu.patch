@@ -1,9 +1,0 @@
---- a/data/glade-3.desktop.in.in.orig	2012-09-12 19:32:26.000000000 +0200
-+++ a/data/glade-3.desktop.in.in	2012-09-12 19:36:04.000000000 +0200
-@@ -1,5 +1,5 @@
- [Desktop Entry]
--_Name=Glade
-+Name=Glade2
- _GenericName=Interface Designer
- _X-GNOME-FullName=Glade Interface Designer
- _Comment=Create or open user interface designs for GTK+ applications

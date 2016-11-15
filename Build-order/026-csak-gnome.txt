@@ -28,7 +28,6 @@ libgovirt
 libmediaart
 chemical-mime-data
 gconf-editor
-glade2
 gnome-system-log
 gnome-tweak-tool
 gnome-user-docs
