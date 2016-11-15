@@ -21,8 +21,9 @@ openimageio
 xsane
 opencolorio
 vlc
+pidgin
 telepathy-farstream
 telepathy-idle
 telepathy-haze
 telepathy-yell
-pidgin
+

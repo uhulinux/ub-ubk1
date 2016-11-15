@@ -265,7 +265,6 @@ nagios-plugins
 pstoedit
 gst0.10-plugins-good
 gst-plugins-good
-pidgin
 dhcpcd
 dmapi
 gdlmm
