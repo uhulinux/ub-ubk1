@@ -265,10 +265,7 @@ nagios-plugins
 pstoedit
 gst0.10-plugins-good
 gst-plugins-good
-telepathy-farstream
-telepathy-idle
 pidgin
-telepathy-haze
 dhcpcd
 dmapi
 gdlmm
