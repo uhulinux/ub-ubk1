@@ -3,7 +3,6 @@ gtk2-dev
 imagemagick
 intltool
 libgcrypt-dev
-libglade2-dev
 libgnomeui2-dev
 libice-dev
 libx11-dev

@@ -5,7 +5,6 @@ gtk2-dev
 icon-theme-hicolor
 imagemagick-dev
 itstool
-libglade2-dev
 librsvg-dev
 libsm-dev
 libxml2-dev

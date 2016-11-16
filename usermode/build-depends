@@ -1,6 +1,5 @@
 gtk2-dev
 intltool
-libglade2-dev
 libice-dev
 libsm-dev
 libuser

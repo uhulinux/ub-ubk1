@@ -4,7 +4,6 @@ dbus
 gamin
 glibc-dev
 gtk-dev
-libglade2-dev
 libjpeg-turbo-dev
 libx11-dev
 startup-notification-dev
