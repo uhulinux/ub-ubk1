@@ -11,5 +11,6 @@ libquvi-dev
 libsoup-dev
 libsoup-gnome-dev
 libxml2-dev
+lua52-dev
 openssl-dev
 sqlite-dev
