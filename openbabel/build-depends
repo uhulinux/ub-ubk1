@@ -1,5 +1,5 @@
 cairo-dev
 cmake
-eigen2
+eigen3
 libxml2-dev
 wxwidgets2.8-dev
