@@ -5,5 +5,8 @@ gtk-dev
 intltool
 itstool
 pygobject-dev
+sqlite-dev
+vala
 vte-dev
 xz-dev
+zeitgeist-dev
