@@ -77,12 +77,12 @@ kactivitymanagerd
 plasma-workspace-wallpapers
 bluedevil
 kdecoration
+kwayland
 breeze
 breeze-gtk
 kde-cli-tools
 kde-gtk-config
 kgamma5
-kwayland
 kinfocenter
 libkscreen
 kscreen
