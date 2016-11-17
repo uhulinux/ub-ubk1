@@ -49,7 +49,6 @@ libwpd
 libpano13
 libsynce
 libtorrent-rasterbar
-libvisual-plugins
 libopkele
 libquvi
 libvisio
