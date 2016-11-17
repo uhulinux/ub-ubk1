@@ -71,6 +71,7 @@ vinagre
 gnome-settings-daemon
 grilo
 gnome-control-center
+evolution-data-server
 folks
 gnome-shell
 gnome-session
@@ -81,7 +82,6 @@ seahorse
 eog
 cheese
 anjuta
-evolution-data-server
 gnome-panel
 epiphany
 evolution
