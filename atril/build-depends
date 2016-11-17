@@ -13,6 +13,7 @@ libxml2-dev
 mate-common
 mate-desktop-dev
 mate-icon-theme
+openjpeg1-dev
 poppler-glib-dev
 webkit2gtk-dev
 xcb-util-dev
