@@ -68,6 +68,12 @@ gnome-chemistry-utils
 gnome-desktop
 totem-plparser
 vinagre
+gnome-settings-daemon
+grilo
+gnome-control-center
+folks
+gnome-shell
+gnome-session
 gdm
 gnome-python-desktop
 mutter
@@ -77,8 +83,6 @@ cheese
 anjuta
 evolution-data-server
 gnome-panel
-gnome-settings-daemon
-gnome-session
 epiphany
 evolution
 gnome-shell-extensions
@@ -90,10 +94,8 @@ seahorse-sharing
 gedit-plugins
 nautilus
 gnome-screensaver
-grilo
 libchamplain
 eog-plugins
-folks
 gnome-disk-utility
 gnome-user-share
 gnome-color-manager
@@ -105,7 +107,6 @@ gnome-applets
 totem
 tracker
 empathy
-gnome-control-center
 bijiben
 gnome-music
 seahorse-nautilus
@@ -119,7 +120,6 @@ grilo-plugins
 gnome-documents
 gnome-boxes
 gtkpod
-gnome-shell
 gnome-terminal
 gnome-python-extras
 gnome-dictionary
