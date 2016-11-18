@@ -6,5 +6,4 @@ libpq
 libusb-dev
 mysql-dev
 postgresql-dev
-python-dev
 systemd-dev
