@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-libh-${UB_VERSION}.tar.bz2 libh-${UB_VERSION}/
-	http://libh.sourceforge.net/download/
-

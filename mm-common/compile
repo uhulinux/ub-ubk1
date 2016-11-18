@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-#touch skeletonmm/.gitignore skeletonmm/build/.gitignore skeletonmm/doc/reference/.gitignore skeletonmm/examples/.gitignore
-#touch skeletonmm/skeleton/.gitignore skeletonmm/skeleton/skeletonmm/private/.gitignore
-ub_compile

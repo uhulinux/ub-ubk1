@@ -1,1 +1,0 @@
-sflist libnjb libnjb | sort -V | tail -n 1

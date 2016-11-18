@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-sed -i /curspriv.h/d sdl1/pdcsdl.h
-sed -i s/PDCEX/extern/g sdl1/pdcsdl.h
-
-ub_install
-
-install -c -m 644 sdl1/pdcsdl.h "$UB_INSTALLDIR"/usr/include/xcurses/
-install -c -m 644 sdl1/libpdcurses.a "$UB_INSTALLDIR"/usr/lib/

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-skyutils-${UB_VERSION}.tar.gz skyutils/
-	 http://ftp.nsysu.edu.tw/FreeBSD/ports/local-distfiles/laszlof/

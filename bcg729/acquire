@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-bcg729-${UB_VERSION}.tar.gz bcg729-${UB_VERSION}/
-	http://download.savannah.gnu.org/releases/linphone/plugins/sources/

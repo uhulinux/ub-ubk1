@@ -1,1 +1,0 @@
-sflist libmimedir libmimedir | splitver '^libmimedir-([0-9.]+)$' | sort -V | tail -n 1

@@ -1,3 +1,0 @@
-#!/bin/sh -eux
-
-./waf install --destdir="$UB_INSTALLDIR"

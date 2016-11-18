@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-augeas-${UB_VERSION}.tar.gz augeas-${UB_VERSION}/
-	http://download.augeas.net/

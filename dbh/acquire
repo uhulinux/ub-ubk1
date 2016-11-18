@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libdbh2-${UB_VERSION}.tar.gz libdbh2-${UB_VERSION}/
-	http://sourceforge.net/projects/dbh/files/dbh/${UB_VERSION}/

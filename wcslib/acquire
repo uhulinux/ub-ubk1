@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-wcslib-${UB_VERSION}.tar.bz2 wcslib-${UB_VERSION}/
-	ftp://ftp.atnf.csiro.au/pub/software/wcslib/

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libantlr3c-${UB_VERSION}.tar.gz libantlr3c-${UB_VERSION}/
-	http://www.antlr3.org/download/C/

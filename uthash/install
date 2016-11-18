@@ -1,3 +1,0 @@
-#!/bin/sh -eux
-
-cp -a src/*.h "$UB_INSTALLDIR"/usr/include

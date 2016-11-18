@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-PDFlib-Lite-${UB_VERSION}.tar.gz PDFlib-Lite-${UB_VERSION}/
-	http://www.pdflib.com/binaries/PDFlib/${UB_VERSION//[.|p3]/}/

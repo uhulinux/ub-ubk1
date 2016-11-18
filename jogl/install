@@ -1,8 +1,0 @@
-#!/bin/sh -eux
-
-DST="$UB_INSTALLDIR"/usr
-install -d "$DST"/share/java/jogl/
-install --mode=644 jogl-all.jar "$DST"/share/java/jogl/
-install --mode=644 gluegen-rt.jar "$DST"/share/java/jogl/
-install --mode=755 natives/linux-i586/*.so "$DST"/lib/
-rm -f "$DST"/lib/libnewt.so

@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_compile \
-	--with-gstreamer-api=0.10 \
-	--disable-wayland
-

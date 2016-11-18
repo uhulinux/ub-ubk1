@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-virtualmount-${UB_VERSION}.tar.gz virtualmount-${UB_VERSION}/
-	http://download.ubk.hu/src/uhu/virtualmount/
-

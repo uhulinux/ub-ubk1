@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-cd source/Irrlicht
-ub_install
-ln -s libIrrlicht.so."$UB_VERSION" "$UB_INSTALLDIR"/usr/lib/libIrrlicht.so.1
-cd ../..
-cp -a lib/Linux/libIrrlicht.a "$UB_INSTALLDIR"/usr/lib/

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libchipcard-"$UB_VERSION".tar.gz libchipcard-"$UB_VERSION_HEAD1.0.0"/
-	http://www.aquamaniac.de/sites/download/download.php?package=02&release=24&file=01&dummy=libchipcard-"$UB_VERSION".tar.gz

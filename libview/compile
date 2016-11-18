@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-autoreconf -fi
-export CXXFLAGS+=' -std=c++11'
-CPPFLAGS="-U GTK_DISABLE_DEPRECATED" \
-	ub_compile

@@ -1,1 +1,0 @@
-sflist tse3 TSE3 | sort -V | tail -n 1

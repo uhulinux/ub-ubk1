@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-grantlee-${UB_VERSION/~/-}.tar.gz grantlee-${UB_VERSION/~/-}/
-	http://www.loegria.net/grantlee/
-	http://downloads.grantlee.org/

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libgsystem-${UB_VERSION}.tar.xz libgsystem-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/libgsystem/${UB_VERSION_HEAD2}/

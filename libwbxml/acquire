@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libwbxml-"$UB_VERSION".tar.gz libwbxml-"$UB_VERSION"/
-	http://downloads.sourceforge.net/libwbxml/

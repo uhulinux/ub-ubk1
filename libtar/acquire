@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libtar_${UB_VERSION}.orig.tar.gz libtar/
-	http://ftp.debian.org/debian/pool/main/libt/libtar/
