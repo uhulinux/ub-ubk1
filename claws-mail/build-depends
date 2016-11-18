@@ -27,7 +27,6 @@ libsm-dev
 libxshmfence-dev
 libxslt-dev
 networkmanager-dev
-openjpeg1-dev
 poppler-glib-dev
 pygtk-dev
 spamassassin
