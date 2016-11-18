@@ -214,7 +214,6 @@ xscreensaver
 gtkhtml
 gtk-vnc
 imlib
-libstreamanalyzer
 openssh
 subversion
 plymouth

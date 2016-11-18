@@ -134,5 +134,5 @@ baloo-widgets
 ffmpegthumbs
 dolphin
 dolphin-plugins
-kde5
-kde5-apps
+kde
+kde-apps
