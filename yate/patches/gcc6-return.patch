@@ -1,0 +1,38 @@
+From f6692b95cfaa725dc40747eb45b59b40fbf3503b Mon Sep 17 00:00:00 2001
+From: paulc <paulc@acf43c95-373e-0410-b603-e72c3f656dc1>
+Date: Wed, 20 Jan 2016 10:29:46 +0000
+Subject: [PATCH] Fixed two invalid false to null conversions.
+
+git-svn-id: http://yate.null.ro/svn/yate/trunk@6085 acf43c95-373e-0410-b603-e72c3f656dc1
+---
+ modules/server/tdmcard.cpp | 2 +-
+ modules/server/zapcard.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modules/server/tdmcard.cpp b/modules/server/tdmcard.cpp
+index 7007a1f..00a9944 100644
+--- a/modules/server/tdmcard.cpp
++++ b/modules/server/tdmcard.cpp
+@@ -1048,7 +1048,7 @@ SignallingComponent* TdmInterface::create(const String& type, NamedList& name)
+     if (!(sig && code && code <= count)) {
+ 	Debug(&plugin,DebugWarn,"Section '%s'. Invalid sigchan='%s' for type='%s'",
+ 	    config->c_str(),sig.safe(),sDevType.c_str());
+-	return false;
++	return 0;
+     }
+     TdmInterface* iface = new TdmInterface(name);
+     if (iface->init(devType,code,code,*config,*general,name))
+diff --git a/modules/server/zapcard.cpp b/modules/server/zapcard.cpp
+index d59da97..23eb7bf 100644
+--- a/modules/server/zapcard.cpp
++++ b/modules/server/zapcard.cpp
+@@ -1781,7 +1781,7 @@ SignallingComponent* ZapInterface::create(const String& type, NamedList& name)
+     if (!(sig && code && code <= count)) {
+ 	Debug(&plugin,DebugWarn,"Section '%s'. Invalid sigchan='%s' for type='%s'",
+ 	    config->c_str(),sig.safe(),sDevType.c_str());
+-	return false;
++	return 0;
+     }
+     ZapInterface* iface = new ZapInterface(name);
+     if (iface->init(devType,code,offset+code,*config,*general,name))
+
