@@ -1,2 +1,1 @@
-sflist iperf | parsever | sort -V | tail -n 1
-
+u2d https://github.com/esnet/iperf/releases/
