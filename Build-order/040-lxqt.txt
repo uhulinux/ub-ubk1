@@ -18,7 +18,6 @@ lxqt-config
 lxqt-powermanagement
 lxqt-runner
 lxqt-panel
-sudo
 lxqt-sudo
 compton-conf
 pavucontrol-qt
