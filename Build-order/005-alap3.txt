@@ -100,7 +100,6 @@ libc-client
 mhash
 net-snmp
 tidy
-tidy5
 php
 tdb
 qjson

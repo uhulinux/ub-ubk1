@@ -1,7 +1,6 @@
 liba52
 libaio
 libantlr3
-libantlr3c
 libart-lgpl
 libassuan
 libasyncns
@@ -34,10 +33,8 @@ liblockfile
 libmad
 libmcrypt
 libmigdb
-libmimedir
 libmodplug
 libmowgli
-libmpdclient
 libnet
 libnfnetlink
 libnfs
@@ -49,7 +46,6 @@ libraw1394
 libsigc++
 libsmi
 libt3config
-libtar
 libtermkey
 libtinyxml
 libtranscript

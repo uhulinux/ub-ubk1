@@ -44,10 +44,7 @@ libglademm2
 libgphoto2
 libgsf
 libgssapi
-libgsystem
-libgssh
 libgusb
-libh
 libharu
 libiec61883
 libieee1284
@@ -63,11 +60,9 @@ liblangtag
 liblensfun
 liblqr
 liblrdf
-libmal
 libmatroska
 libmbim
 libmcs
-libmeanwhile
 libmediaart
 libmicrohttpd
 libmikmod
@@ -75,7 +70,6 @@ libmms
 libmnote
 libmp3splt
 libmpeg2
-libmsn
 taglib
 libmtp
 libvpx

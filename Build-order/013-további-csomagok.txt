@@ -6,7 +6,6 @@ libgtkhtml2
 compton-conf
 pcsc-lite
 gwenhywfar
-libchipcard
 libmusicbrainz
 vte2
 libmusicbrainz3
@@ -34,16 +33,11 @@ imagemagick6
 cairomm
 pangomm
 gtkmm2
-libdmtx
 libgnomecanvasmm2
-libview
-libvtemm
 libgnomemm2
 libsexymm
-amrwb
 libstemmer
 appstream
-augeas
 beecrypt
 physfs
 smpeg

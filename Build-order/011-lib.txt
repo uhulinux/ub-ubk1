@@ -1,10 +1,8 @@
 libnfsidmap
 libpgf
 libpipeline
-libpqxx
 libpseudo
 libqrencode
-librcps
 libsoxr
 libspnav
 libsrtp
@@ -15,17 +13,14 @@ libv4l
 libvterm
 libwps
 libnetfilter-conntrack
-libnjb
 libode
 libofx
 libortp
-libotr
 libpri
 libpwquality
 libqmi
 libsexy
 libsmbios
-libstreams
 libstroke
 libt3highlight
 libt3window
@@ -40,7 +35,6 @@ libunicap
 libunique1
 libuser
 libviper
-libwbxml
 libxml++2
 libnice
 libofa

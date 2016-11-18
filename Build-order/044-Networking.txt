@@ -5,6 +5,5 @@ ufw
 gufw
 belle-sip
 linphone
-skyutils
 lzop
 amavisd-new

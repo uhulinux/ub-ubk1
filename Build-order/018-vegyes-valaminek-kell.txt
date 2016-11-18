@@ -268,14 +268,12 @@ gst0.10-plugins-good
 gst-plugins-good
 dhcpcd
 dmapi
-gdlmm
 h323plus
 openmpi
 smpeg2
 gnonlin
 foo2zjs
 lightdm-gtk-greeter
-pdcurses
 sdl2-image
 sdl2-ttf
 mpg123

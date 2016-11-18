@@ -16,7 +16,6 @@ cmucl
 compface
 ctags
 cxxtools
-dbh
 debhelper
 dirac
 dmake
@@ -93,7 +92,6 @@ traceroute
 tre-agrep
 tree
 utf8proc
-uthash
 valgrind
 wavpack
 words
