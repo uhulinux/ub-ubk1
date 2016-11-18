@@ -4,5 +4,3 @@ tesseract
 tesseract-gui
 sword
 xiphos
-rhtvision
-setedit

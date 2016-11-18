@@ -1,7 +1,0 @@
-#!/usr/bin/env dl
-
-#rhtvision-${UB_VERSION_HEAD3}.src.tar.gz tvision/
-#	http://tvision.sourceforge.net/
-
-rhtvision_${UB_VERSION}-1.tar.gz tvision/
-	http://sourceforge.net/projects/tvision/files/UNIX/${UB_VERSION}%20CVS20100714%20Source%20and%20Debian%205.0/

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=SETedit
-Comment=Borland style editor
-Comment[hu]=Borland stílusú szerkesztő
-Exec=setedit %F
-Icon=/usr/share/pixmaps/setedit.png
-Terminal=false
-Categories=Utility;TextEditor;

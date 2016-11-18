@@ -1,7 +1,0 @@
-#!/usr/bin/env dl
-
-#setedit-${UB_VERSION_HEAD3}.tar.gz setedit/
-#	http://setedit.sourceforge.net/
-
-setedit_0.5.7-2.tar.gz setedit/
-	http://sourceforge.net/projects/setedit/files/setedit-unix-devel/0.5.7%20r1294%20Tarball%20%28Source%29/

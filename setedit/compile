@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-./configure \
-	--prefix=/usr \
-	--fhs \
-	--libset \
-	--with-aa
-export UB_MAKE_PROCS=1
-ub_make

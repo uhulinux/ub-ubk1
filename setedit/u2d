@@ -1,1 +1,0 @@
-sflist setedit setedit-unix-devel | grep -E '^([0-9. r]+)(.+)$' | sort -V | tail -n 1 | sed 's/.Tarball.*//' | sed 's/ /~/'
