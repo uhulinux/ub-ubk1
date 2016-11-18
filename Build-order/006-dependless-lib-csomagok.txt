@@ -32,7 +32,6 @@ liblo
 liblockfile
 libmad
 libmcrypt
-libmigdb
 libmodplug
 libmowgli
 libnet
