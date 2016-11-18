@@ -122,11 +122,11 @@ k3b
 kaffeine
 kate
 krusader
+libksane
 tellico
 konsole
 kshutdown
 libkipi
-libksane
 marble
 digikam
 kdiff3
