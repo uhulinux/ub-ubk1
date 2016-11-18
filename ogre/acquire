@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-v${UB_VERSION//./-}.tar.bz2 sinbad-ogre-d454ae1d82e9/
+v${UB_VERSION//./-}.tar.bz2 sinbad-ogre-40c2aa0f49b9/
 	https://bitbucket.org/sinbad/ogre/get/
