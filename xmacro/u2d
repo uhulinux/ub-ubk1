@@ -1,2 +1,0 @@
-sflist xmacro xmacro/pre0.3 | sed s/.*pre// | sed s/\.tar.*// | sed s/-/~pre/
-
