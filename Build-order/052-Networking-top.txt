@@ -56,7 +56,6 @@ rdesktop
 nagios
 bluefish
 transmission
-valknut
 tazweb
 links
 pidgin-libnotify
