@@ -1,4 +1,6 @@
+cln-dev
 gtk2-dev
+intltool
 libglade2-dev
 libgnome2-dev
 libqalculate-dev

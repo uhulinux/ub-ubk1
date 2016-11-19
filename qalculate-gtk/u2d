@@ -1,1 +1,2 @@
-u2d http://pkgs.fedoraproject.org/repo/pkgs/qalculate-gtk/
+urllist https://launchpad.net/ubuntu/+archive/primary/+files/ | splitver '^qalculate-gtk_([0-9.]+).orig.tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+# u2d http://pkgs.fedoraproject.org/repo/pkgs/qalculate-gtk/
