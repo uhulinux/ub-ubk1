@@ -158,7 +158,6 @@ lesspipe
 gkrellm
 rxvt-unicode
 klavaro
-mate-calc
 intel-gpu-tools
 latex2html
 gtklp
