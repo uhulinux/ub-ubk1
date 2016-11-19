@@ -1,0 +1,18 @@
+diff -Nur orig/libcyrus_min.pc.in mod/libcyrus_min.pc.in
+--- orig/libcyrus_min.pc.in	2016-09-27 09:05:13.000000000 +0200
++++ mod/libcyrus_min.pc.in	2016-11-19 20:48:19.790226659 +0100
+@@ -1,4 +1,5 @@
+ prefix = @prefix@
++exec_prefix=@prefix@
+ includedir = ${prefix}/include
+ libdir = @libdir@
+ 
+diff -Nur orig/libcyrus_sieve.pc.in mod/libcyrus_sieve.pc.in
+--- orig/libcyrus_sieve.pc.in	2016-09-27 09:05:13.000000000 +0200
++++ mod/libcyrus_sieve.pc.in	2016-11-19 20:48:05.366261713 +0100
+@@ -1,4 +1,5 @@
+ prefix = @prefix@
++exec_prefix=@prefix@
+ includedir = ${prefix}/include
+ libdir = @libdir@
+ 
