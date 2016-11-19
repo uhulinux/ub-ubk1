@@ -1,0 +1,12 @@
+diff -Nur orig/io/posix/syskeyb.cc mod/io/posix/syskeyb.cc
+--- orig/io/posix/syskeyb.cc	2007-06-14 03:27:21.000000000 +0200
++++ mod/io/posix/syskeyb.cc	2016-11-19 13:55:07.372675895 +0100
+@@ -220,7 +220,7 @@
+ 
+ struct key_keycode {
+ 	ht_key key;
+-	int keycode;
++	unsigned int keycode;
+ };
+ 
+ bool keyb_keypressed()
