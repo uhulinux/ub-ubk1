@@ -126,7 +126,6 @@ valkyrie
 wikidpad
 freemind
 calcoo
-xmacro
 doodle
 paco
 catfish
@@ -159,7 +158,6 @@ lesspipe
 gkrellm
 rxvt-unicode
 klavaro
-extcalc
 mate-calc
 intel-gpu-tools
 latex2html
