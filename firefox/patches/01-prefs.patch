@@ -1,6 +1,6 @@
 diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firefox.js
---- orig/browser/app/profile/firefox.js	2016-09-05 22:12:50.000000000 +0200
-+++ patched/browser/app/profile/firefox.js	2016-09-20 23:09:27.823107600 +0200
+--- orig/browser/app/profile/firefox.js	2016-10-31 21:15:24.000000000 +0100
++++ patched/browser/app/profile/firefox.js	2016-11-16 17:49:28.244178421 +0100
 @@ -21,6 +21,9 @@
  #endif
  #endif
@@ -54,7 +54,7 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  
  pref("browser.altClickSave", false);
  
-@@ -655,11 +659,7 @@
+@@ -654,11 +658,7 @@
  // 0 goes Back/Forward
  // 1 act like PgUp/PgDown
  // 2 and other values, nothing
