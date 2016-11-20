@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-eric4-${UB_VERSION}.tar.gz eric4-${UB_VERSION}/
-	ftp://87.249.28.60/pub/FreeBSD/ports/distfiles/
-	

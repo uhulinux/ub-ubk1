@@ -1,0 +1,30 @@
+diff -Naur eric6-16.11.1-orig/eric/eric6_browser.desktop eric6-16.11.1/eric/eric6_browser.desktop
+--- eric6-16.11.1-orig/eric/eric6_browser.desktop	2016-10-04 17:57:29.000000000 +0200
++++ eric6-16.11.1/eric/eric6_browser.desktop	2016-11-20 19:12:48.118506637 +0100
+@@ -11,5 +11,5 @@
+ Comment[de]=Web Browser für PyQt5 basierend auf QtWebEngine
+ GenericName=Web Browser
+ GenericName[de]=Web Browser
+-Categories=Qt;Python;Network;WebBrowser;QtWebEngine
++Categories=Qt;Network;WebBrowser;
+ StartupNotify=true
+diff -Naur eric6-16.11.1-orig/eric/eric6.desktop eric6-16.11.1/eric/eric6.desktop
+--- eric6-16.11.1-orig/eric/eric6.desktop	2015-01-18 11:56:24.000000000 +0100
++++ eric6-16.11.1/eric/eric6.desktop	2016-11-20 19:10:36.826505098 +0100
+@@ -11,5 +11,5 @@
+ Comment[de]=Integrierte Entwicklungsumgebung für Python
+ GenericName=IDE for Python
+ GenericName[de]=IDE für Python
+-Categories=Qt;Python;Development;IDE;
++Categories=Qt;Development;IDE;
+ StartupNotify=true
+diff -Naur eric6-16.11.1-orig/eric/eric6_webbrowser.desktop eric6-16.11.1/eric/eric6_webbrowser.desktop
+--- eric6-16.11.1-orig/eric/eric6_webbrowser.desktop	2016-07-10 13:01:25.000000000 +0200
++++ eric6-16.11.1/eric/eric6_webbrowser.desktop	2016-11-20 19:13:24.246507060 +0100
+@@ -11,5 +11,5 @@
+ Comment[de]=Web Browser für PyQt basierend auf QtWebKit
+ GenericName=Web Browser
+ GenericName[de]=Web Browser
+-Categories=Qt;Python;Network;WebBrowser;QtWebKit
++Categories=Qt;Network;WebBrowser;
+ StartupNotify=true
