@@ -1,1 +1,1 @@
-sflist eric-ide eric4/stable | splitver '^([0-9.]+)$' | sort -V | tail -n 1
+sflist eric-ide eric6/stable | splitver '^([0-9.]+)$' | sort -V | tail -n 1

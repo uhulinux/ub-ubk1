@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 eric6-${UB_VERSION}.tar.gz eric6-${UB_VERSION}/
-	https://sourceforge.net/projects/eric-ide/files/latest/download?source=files/
-#	ftp://87.249.28.60/pub/FreeBSD/ports/distfiles/
+	https://sourceforge.net/projects/eric-ide/files/eric6/stable/${UB_VERSION}/
