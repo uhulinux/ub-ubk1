@@ -1,0 +1,14 @@
+Description: Add missing dependencies to support parallel building
+ Idea taken from
+ http://www.qtforum.org/article/23715/parallel-build-using-qmake.html#post601404
+Author: Axel Beckert <abe@debian.org>
+
+--- a/main.pro
++++ b/main.pro
+@@ -2,3 +2,6 @@
+ 
+ SUBDIRS = libfunction libevolvotron evolvotron evolvotron_render evolvotron_mutate
+ 
++evolvotron.depends = libevolvotron libfunction
++evolvotron_mutate.depends = libevolvotron libfunction
++evolvotron_render.depends = libevolvotron libfunction
