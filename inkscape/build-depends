@@ -2,8 +2,9 @@ boost-dev
 gc-dev
 gsl-dev
 gtkmm2-dev
-imagemagick-dev
+imagemagick6-dev
 intltool
+libexif-dev
 libjpeg-turbo-dev
 libsigc++-dev
 libwpg-dev

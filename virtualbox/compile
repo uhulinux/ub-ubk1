@@ -1,7 +1,5 @@
 #!/bin/bash -eux
 
-export CXXFLAGS=-std=c++11
-
 ./configure \
 	--disable-hardening \
 	--disable-java \

@@ -1,9 +1,13 @@
 #!/bin/sh -eux
 
-sed -i -e '/^DISTRIBUTION_HOME/s/\/$//' frontend/gtkmm/src/Makefile.*
 NOCONFIGURE=1 ./autogen.sh
-export CXXFLAGS='-std=c++11'
 ub_compile \
-	--enable-dbus \
+	--disable-distribution \
+	--disable-gconf \
 	--disable-xml \
-	--enable-gnome3
+	--enable-dbus \
+	--disable-gnome2 \
+	--enable-gnome3 \
+	--enable-xfce \
+	--enable-mate
+
