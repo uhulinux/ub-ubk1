@@ -1,0 +1,18 @@
+diff -Naur orig/share/applications/ecere.desktop patched/share/applications/ecere.desktop
+--- orig/share/applications/ecere.desktop	2016-08-04 21:33:03.000000000 +0200
++++ patched/share/applications/ecere.desktop	2016-11-20 19:26:25.304341715 +0100
+@@ -1,12 +1,11 @@
+ [Desktop Entry]
+-Version=
+ Name=Ecere IDE
+ Type=Application
+ Comment=Ecere IDE
++Comment[hu]=eC fejlesztői környezet
+ Terminal=false
+ Exec=ecere-ide
+-#Path=$(HOME)
+ Icon=ecere
+-Categories=Development
++Categories=Development;IDE;
+ GenericName=Ecere IDE
+ Keywords=ec;code;development;

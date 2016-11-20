@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-povray_${UB_VERSION}.orig.tar.gz povray-${UB_VERSION}/
-	http://ftp.debian.org/debian/pool/main/p/povray/
+#povray_${UB_VERSION}.orig.tar.gz povray-${UB_VERSION}/
+#	http://ftp.debian.org/debian/pool/main/p/povray/
+	
+povray-${UB_VERSION}.tar.gz povray-fa4a158/
+	git://github.com/POV-Ray/povray.git@fa4a158
