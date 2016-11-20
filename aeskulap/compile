@@ -1,6 +1,4 @@
 #!/bin/sh -eux
 
-export CXXFLAGS="-std=c++11"
-
 ./autogen.sh
 ub_compile

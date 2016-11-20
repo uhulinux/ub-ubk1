@@ -1,6 +1,5 @@
 #!/usr/bin/env dl
 
 pavucontrol-${UB_VERSION}.tar.xz pavucontrol-${UB_VERSION}/
-	http://0pointer.de/lennart/projects/pavucontrol/
-	ftp://ftp.tw.freebsd.org/pub/FreeBSD/FreeBSD-current/ports/distfiles/
+	http://freedesktop.org/software/pulseaudio/pavucontrol/
 	ftp://ftp.slackware.com/.2/gentoo/distfiles/
