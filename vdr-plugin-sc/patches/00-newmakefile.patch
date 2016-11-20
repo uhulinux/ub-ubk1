@@ -21,7 +21,7 @@ diff -Naur orig/Makefile mod/Makefile
 -CXX      ?= g++
 -CXXFLAGS ?= -O2 -g -Wall -Woverloaded-virtual
 +export CFLAGS   = $(call PKGCFG,cflags)
-+export CXXFLAGS = $(call PKGCFG,cxxflags)
++export CXXFLAGS = $(call PKGCFG,cxxflags) -Wno-shift-overflow -Wno-literal-suffix
  
  ### Includes and Defines
  

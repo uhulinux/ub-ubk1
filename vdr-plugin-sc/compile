@@ -1,6 +1,7 @@
 #!/bin/sh -eux
 
 mkdir -p "$UB_INSTALLDIR/usr/lib/vdr"
+
 make USEFSH=1 \
   VIDEODIR=/var/vdr/video \
   CONFDIR=/etc/vdr/ \
@@ -9,4 +10,4 @@ make USEFSH=1 \
   DESTDIR=$UB_INSTALLDIR \
   INCDIR=/usr/include/vdr \
   MAXCAID=64 \
-  LIBDVBCSA=1 
+  LIBDVBCSA=1
