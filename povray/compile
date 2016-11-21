@@ -3,7 +3,6 @@
 cd unix
 ./prebuild.sh
 cd ..
-export CXXFLAGS=' -minline-all-stringops -malign-double'
 ub_compile \
 	COMPILED_BY='UBK <ubk@ubk.hu>' \
-	--disable-optimiz
+	--enable-optimiz
