@@ -1,13 +1,4 @@
 #!/usr/bin/env dl
 
-#${UB_VERSION}.tar.gz oolite-${UB_VERSION}/
-#	https://github.com/OoliteProject/oolite/archive/
-
-oolite-${UB_VERSION}.tar.gz oolite-cf135bb/
-	git://github.com/OoliteProject/oolite.git@cf135bb
-
-master.zip oolite-binary-resources-master/ :Resources/Binary
-	https://github.com/OoliteProject/oolite-binary-resources/archive/master.zip
-
-firefox-4.0.source.js-only.tbz mozilla-2.0/js/ :deps/mozilla/
-	http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz
+oolite-source-${UB_VERSION}.tar.bz2 oolite-source-${UB_VERSION}/
+        https://github.com/OoliteProject/oolite/releases/download/${UB_VERSION}/

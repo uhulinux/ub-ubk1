@@ -1,3 +1,4 @@
 #!/bin/sh -eux
 
-make GNUSTEP_MAKEFILES="/usr/share/GNUstep/Makefiles" -f Makefile release-deployment
+sed -i "/ADDITIONAL_OBJCFLAGS/s/=/= -fobjc-exceptions/" GNUmakefile
+CC=gcc make GNUSTEP_MAKEFILES="/usr/share/GNUstep/Makefiles" -f Makefile release-deployment
