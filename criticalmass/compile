@@ -1,4 +1,5 @@
 #!/bin/sh -eux
 
-sh ./autogen.sh
+touch NEWS README AUTHORS ChangeLog
+autoreconf -vif
 ub_compile

@@ -1,1 +1,2 @@
-urllist http://criticalmass.sourceforge.net/ | sed s/?download// | splitver '^CriticalMass-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+#urllist http://criticalmass.sourceforge.net/ #| sed s/?download// | splitver '^CriticalMass-([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+sflist criticalmass Critical%20Mass | sort -V | tail -n 1 | sed s/-/~/
