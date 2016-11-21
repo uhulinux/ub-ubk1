@@ -1,0 +1,29 @@
+From 39d78880f5e1b4c9fa8fd5e8219d3df21126a9c4 Mon Sep 17 00:00:00 2001
+From: cxl <cxl@f0d560ea-af0d-0410-9eb7-867de7ffcac7>
+Date: Sat, 14 May 2016 05:19:45 +0000
+Subject: [PATCH] Core: abs removed
+
+git-svn-id: svn://ultimatepp.org/upp/trunk@9828 f0d560ea-af0d-0410-9eb7-867de7ffcac7
+---
+ uppsrc/Core/Core.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/uppsrc/Core/Core.h b/uppsrc/Core/Core.h
+index 9dd8182..3060dd8 100644
+--- a/uppsrc/Core/Core.h
++++ b/uppsrc/Core/Core.h
+@@ -361,11 +361,11 @@ static const MemDiagCls sMemDiagHelper__upp__;
+ //some global definitions
+ 
+ #if !defined(STLPORT) && _MSC_VER < 1600
+-inline UPP::int64  abs(UPP::int64 x)          { return x < 0 ? -x : x; }
++//inline UPP::int64  abs(UPP::int64 x)          { return x < 0 ? -x : x; }
+ #endif
+ 
+ #ifdef COMPILER_GCC
+-inline double abs(double x)                   { return fabs(x); }
++//inline double abs(double x)                   { return fabs(x); }
+ #endif
+ 
+ void      RegisterTopic__(const char *topicfile, const char *topic, const char *title, const UPP::byte *data, int len);
+
