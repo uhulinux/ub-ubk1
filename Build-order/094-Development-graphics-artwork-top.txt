@@ -104,7 +104,6 @@ avogadro2
 aeskulap
 gv
 dia
-eric4
 ultimatepp
 codelite
 rawtherapee
