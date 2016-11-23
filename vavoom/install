@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-cmake \
-	-DCMAKE_INSTALL_PREFIX=$UB_INSTALLDIR/usr \
-	-DDATADIR=share/games/vavoom
-ub_install
-pixmapdir="$UB_INSTALLDIR"/usr/share/pixmaps
-mkdir -p $pixmapdir
-cp "$UB_INSTALLDIR"/usr/share/games/vavoom/vavoom.png "$pixmapdir"/

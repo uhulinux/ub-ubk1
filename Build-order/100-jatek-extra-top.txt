@@ -140,7 +140,6 @@ wesnoth
 gnubik
 stuntrally
 supertux
-vavoom
 zdoom
 gzdoom
 supertuxkart
