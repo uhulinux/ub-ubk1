@@ -1,0 +1,7 @@
+dbus-python
+gconf2
+pygobject2
+pygtk
+python-keybinder
+python-psutil
+vte2
