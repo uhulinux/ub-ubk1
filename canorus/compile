@@ -1,11 +1,15 @@
 #!/bin/sh -eux
 
-export QTDIR=/usr/lib/qt4
+mv -f CMakeListsQt5.txt CMakeLists.txt
+mv -f src/CMakeListsQt5.txt src/CMakeLists.txt
+
 export LDFLAGS="-lpthread -lz"
 
 cmake \
-	-DCMAKE_INSTALL_PREFIX:PATH="$UB_INSTALLDIR"/usr \
+	-DCMAKE_PREFIX_PATH=/usr/lib/qt5 \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX="$UB_INSTALLDIR"/usr \
 	-DDEFAULT_DATA_DIR=/usr/share/canorus \
 	-DNO_SWIG=ON \
 	.
-ub_make
+make
