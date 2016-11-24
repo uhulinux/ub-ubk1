@@ -6,7 +6,7 @@ crafty
 dbedit
 dbview
 doom1-demodata
-freedom-data
+freedoom-data
 dreamchess-music
 fairymax
 figlet
