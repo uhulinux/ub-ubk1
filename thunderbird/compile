@@ -4,7 +4,8 @@ CC="ccache gcc -m32"
 CXX="ccache g++ -m32"
 export SHELL=/bin/bash
 export LDFLAGS="-Wl,-rpath,/usr/lib/thunderbird/ -Wl,--no-keep-memory"
-
+export CFLAGS=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+export CXXFLAGS=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 # jpeg: jpeg-turbo, png: >= 1.6.17 + APNG support
 
 : > .mozconfig
