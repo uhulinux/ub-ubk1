@@ -143,6 +143,7 @@ stuntrally
 supertux
 zdoom
 gzdoom
+vavoom
 supertuxkart
 opendungeons
 gcompris
