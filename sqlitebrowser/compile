@@ -3,4 +3,5 @@
 export QTLIB=/usr/lib/qt5
 ub_compile \
 	-DUSE_QT5=TRUE \
-	-DCMAKE_PREFIX_PATH=/usr/lib/qt5
+	-DCMAKE_PREFIX_PATH=/usr/lib/qt5 \
+	-DENABLE_TESTING=OFF

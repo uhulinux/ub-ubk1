@@ -39,6 +39,7 @@ uhu-wallpapers-ubk
 uhu-zeroconf
 autoconf
 automake
+autoconf-archive
 make
 ncurses
 readline
