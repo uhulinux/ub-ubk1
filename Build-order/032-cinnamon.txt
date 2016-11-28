@@ -1,3 +1,4 @@
+xapps
 cinnamon-sound-effects
 cinnamon-translations
 pyinotify

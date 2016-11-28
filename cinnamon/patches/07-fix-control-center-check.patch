@@ -1,12 +1,12 @@
-diff -Naur orig/files/usr/bin/cinnamon-settings mod/files/usr/bin/cinnamon-settings
---- orig/files/usr/bin/cinnamon-settings	2016-04-25 11:11:29.000000000 +0200
-+++ mod/files/usr/bin/cinnamon-settings	2016-04-27 13:09:33.926511833 +0200
-@@ -6,7 +6,7 @@
- 	module = sys.argv[1]
- 	if os.path.exists("/usr/share/cinnamon/cinnamon-settings/modules/cs_%s.py" % module):
- 		os.execvp("/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py", ("",) + tuple(sys.argv[1:]))
--	elif os.path.exists("/usr/bin/cinnamon-control-center"):
-+	elif os.path.exists("/usr/lib/cinnamon-control-center-1/panels"):
- 		os.execvp("/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py", ("",) + tuple(sys.argv[1:]))
- 	elif os.path.exists("/usr/bin/gnome-control-center"):
- 		print "Unknown module %s, calling gnome-control-center" % module
+diff -Nur orig/files/usr/bin/cinnamon-settings mod/files/usr/bin/cinnamon-settings
+--- orig/files/usr/bin/cinnamon-settings	2016-11-23 14:03:02.000000000 +0100
++++ mod/files/usr/bin/cinnamon-settings	2016-11-26 13:48:27.516884689 +0100
+@@ -14,7 +14,7 @@
+         os.execvp("/usr/share/cinnamon/cinnamon-settings/xlet-settings.py", ("", module[0:-1]) + tuple(sys.argv[2:]))
+     if os.path.exists("/usr/share/cinnamon/cinnamon-settings/modules/cs_%s.py" % module):
+         os.execvp("/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py", ("",) + tuple(sys.argv[1:]))
+-    elif os.path.exists("/usr/bin/cinnamon-control-center"):
++    elif os.path.exists("/usr/bin/cinnamon-control-center-1/panels"):
+         os.execvp("/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py", ("",) + tuple(sys.argv[1:]))
+     elif os.path.exists("/usr/bin/gnome-control-center"):
+         print ("Unknown module %s, calling gnome-control-center" % module)

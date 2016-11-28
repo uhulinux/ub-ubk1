@@ -1,6 +1,6 @@
 cinnamon-desktop-dev
 cjs-dev
-clutter-gst2-dev
+clutter-gst-dev
 clutter-gtk-dev
 evince-dev
 gcr-dev
@@ -14,6 +14,7 @@ gtksourceview-dev
 gupnp-dev
 intltool
 libcryptui-dev
+libgudev-dev
 libmusicbrainz-dev
 libnotify-dev
 libsm-dev

@@ -1,8 +1,8 @@
 audit-dev
 cinnamon-desktop-dev
 dbus-glib-dev
-gnome-common
 gnome-doc-utils
+gobject-introspection-dev
 gsettings-desktop-schemas
 intltool
 libgnomekbd-dev

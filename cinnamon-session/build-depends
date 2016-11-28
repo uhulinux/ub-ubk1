@@ -1,6 +1,5 @@
 dbus-glib-dev
 glu-dev
-gnome-common
 gtk-dev
 intltool
 json-glib-dev
