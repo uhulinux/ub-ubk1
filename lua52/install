@@ -12,7 +12,8 @@ install
 mkdir -p "$UB_INSTALLDIR"/usr/lib/pkgconfig
 ln -sf lua52.pc  "$UB_INSTALLDIR"/usr/lib/pkgconfig/lua5.2.pc
 ln -sf lua52.pc  "$UB_INSTALLDIR"/usr/lib/pkgconfig/lua-5.2.pc
- 
+
+mv doc ${UB_INSTALLDIR}/usr/share/doc/lua52
 cd "$UB_INSTALLDIR"/usr/share/man/man1
 mv lua.1 lua5.2.1
 mv luac.1 luac5.2.1

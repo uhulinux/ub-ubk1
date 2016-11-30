@@ -2,3 +2,4 @@
 
 ub_install
 cp example/.libs/fusexmp{,_fh} "$UB_INSTALLDIR"/usr/bin/
+cp -a doc ${UB_INSTALLDIR}/usr/share/doc/fuse

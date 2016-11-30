@@ -11,6 +11,8 @@ make \
 
 install -m 644 etc/codecs.conf etc/input.conf "$UB_INSTALLDIR"/etc/mplayer/
 
+mv DOCS/tech ${UB_INSTALLDIR}/usr/share/doc/mplayer
+
 rm -rf "$UB_INSTALLDIR"/usr/share/mplayer
 mkdir -p "$UB_INSTALLDIR"/usr/share/mplayer
 cp -al skins "$UB_INSTALLDIR"/usr/share/mplayer/

@@ -88,7 +88,6 @@ r24458 | rezso@rezso.net | 2010-11-30 14:15:45 +0100 (Tue, 30 Nov 2010) | 4 line
 ub cleanup
 disable fribidi in configure
 
-
 ------------------------------------------------------------------------
 r24457 | ralesk@uhulinux.hu | 2010-11-29 23:22:15 +0100 (Mon, 29 Nov 2010) | 2 lines
 
@@ -106,7 +105,6 @@ r24453 | galamb15@kabelszat2002.hu | 2010-11-29 20:48:01 +0100 (Mon, 29 Nov 2010
 build-depends fix - libvpx, fribidi, yasm
 fix desktop patch, remove skipped vdpau patches
 compile fix - remove obsolete compile options, enable radio
-
 
 ------------------------------------------------------------------------
 r23745 | rezso@rezso.net | 2010-05-30 16:42:01 +0200 (Sun, 30 May 2010) | 2 lines
@@ -131,12 +129,10 @@ r20024 | galamb15@kabelszat2002.hu | 2009-09-25 14:25:28 +0200 (Fri, 25 Sep 2009
 build-depends fix - replace amrnb/wb with opencore amr
 fix vdpau_feature_set_C_mplayer.patch
 
-
 ------------------------------------------------------------------------
 r19852 | galamb15@kabelszat2002.hu | 2009-09-17 23:15:48 +0200 (Thu, 17 Sep 2009) | 3 lines
 
 build-depends fix - change vdpau-dev to libvdpau-dev
-
 
 ------------------------------------------------------------------------
 r19697 | galamb15@kabelszat2002.hu | 2009-09-05 09:50:47 +0200 (Sat, 05 Sep 2009) | 4 lines
@@ -144,20 +140,17 @@ r19697 | galamb15@kabelszat2002.hu | 2009-09-05 09:50:47 +0200 (Sat, 05 Sep 2009
 1.0~r29251 -> 1.0~r29648
 Add patches produced by Nvidia for VDPAU feature set C
 
-
 ------------------------------------------------------------------------
 r18287 | galamb15@kabelszat2002.hu | 2009-05-04 17:52:27 +0200 (Mon, 04 May 2009) | 3 lines
 
-1.0~r29124 -> 1.0~r29251 
-
+1.0~r29124 -> 1.0~r29251
 
 ------------------------------------------------------------------------
 r17877 | galamb15@kabelszat2002.hu | 2009-04-03 14:53:25 +0200 (Fri, 03 Apr 2009) | 5 lines
 
 1.0~r28347 -> 1.0~r29124
-acquire fix 
+acquire fix
 build-depends fix - add vdpau & jack support
-
 
 ------------------------------------------------------------------------
 r16878 | ralesk@uhulinux.hu | 2009-01-22 03:21:57 +0100 (Thu, 22 Jan 2009) | 7 lines
@@ -517,7 +510,6 @@ acquire kibővítve
 r400 | doome | 2003-03-03 14:28:42 +0100 (Mon, 03 Mar 2003) | 3 lines
 
 ikon bugfix
-
 
 ------------------------------------------------------------------------
 r393 | doome | 2003-03-03 13:55:02 +0100 (Mon, 03 Mar 2003) | 2 lines

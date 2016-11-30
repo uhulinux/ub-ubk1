@@ -11,3 +11,4 @@ cp doc/examples/dhcpd-dhcpv6.conf "$UB_INSTALLDIR"/etc/dhcpd6.conf
 mkdir -p "$UB_INSTALLDIR"/var/db/
 touch "$UB_INSTALLDIR"/var/db/dhcpd.leases
 touch "$UB_INSTALLDIR"/var/db/dhcpd6.leases
+cp -a doc ${UB_INSTALLDIR}/usr/share/doc/dhcp
