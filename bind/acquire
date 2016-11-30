@@ -2,4 +2,3 @@
 
 bind-${UB_VERSION/+/-}.tar.gz bind-${UB_VERSION/+/-}/
 	ftp://ftp.isc.org/isc/bind9/${UB_VERSION/+/-}/
-
