@@ -8,7 +8,7 @@ ln -s /usr/share/lirc/contrib/irman2lirc ${UB_INSTALLDIR}/usr/bin/irman2lirc
 cp doc/lirc.hwdb ${UB_INSTALLDIR}/usr/share/lirc/lirc.hwdb
 
 # Fedora régi remote adatok
-mkdir -p ${UB_INSTALLDIR}/usr/share/lirc 
+mkdir -p ${UB_INSTALLDIR}/usr/share/lirc
 mv usr/share/lirc-remotes ${UB_INSTALLDIR}/usr/share/lirc/remotes
 
 # Az alap kernel rules
