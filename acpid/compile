@@ -2,4 +2,3 @@
 
 ub_compile \
   --sbindir=/usr/bin
-
