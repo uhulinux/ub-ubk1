@@ -6,4 +6,3 @@ mkdir -p "$UB_INSTALLDIR"/usr/share/claws-mail/tools
 cp -r tools/* "$UB_INSTALLDIR"/usr/share/claws-mail/tools/
 rm -f "$UB_INSTALLDIR"/usr/share/claws-mail/tools/Makefile*
 rm -f "$UB_INSTALLDIR"/usr/share/claws-mail/tools/README
-
