@@ -29,7 +29,6 @@ acquire fix
 update destdir patch
 remove duplicate doc files
 
-
 ------------------------------------------------------------------------
 r12728 | pozsy | 2006-06-28 20:07:30 +0200 (Wed, 28 Jun 2006) | 2 lines
 
