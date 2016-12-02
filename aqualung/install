@@ -2,3 +2,4 @@
 
 ub_install
 ln -s ../aqualung/icon_48.png "$UB_INSTALLDIR"/usr/share/pixmaps/aqualung.png
+rm -rf "$UB_INSTALLDIR"/usr/share/doc/aqualung
