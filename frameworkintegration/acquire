@@ -2,4 +2,3 @@
 
 frameworkintegration-${UB_VERSION}.tar.xz frameworkintegration-${UB_VERSION}/
 	http://download.kde.org/stable/frameworks/${UB_VERSION_HEAD2}/
-

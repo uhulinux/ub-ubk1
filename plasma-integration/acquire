@@ -2,4 +2,3 @@
 
 plasma-integration-${UB_VERSION}.tar.xz plasma-integration-${UB_VERSION}/
 	http://download.kde.org/stable/plasma/${UB_VERSION}/
-

@@ -1,4 +1,3 @@
-cmake
 dosfstools
 e2fsprogs
 extra-cmake-modules

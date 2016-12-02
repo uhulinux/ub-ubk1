@@ -2,4 +2,3 @@
 
 plasma-pa-${UB_VERSION}.tar.xz plasma-pa-${UB_VERSION}/
 	http://download.kde.org/stable/plasma/${UB_VERSION}/
-

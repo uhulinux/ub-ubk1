@@ -1,4 +1,3 @@
-cmake
 python-dev
 python-markupsafe
 python-setuptools

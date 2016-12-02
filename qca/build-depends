@@ -1,5 +1,4 @@
 ca-certificates
-cmake
 gpg
 libgcrypt-dev
 nss-dev

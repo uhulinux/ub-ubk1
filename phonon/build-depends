@@ -1,5 +1,4 @@
 alsa-lib-dev
-cmake
 dbus-dev
 extra-cmake-modules
 libxcursor-dev

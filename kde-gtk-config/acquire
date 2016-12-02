@@ -2,4 +2,3 @@
 
 kde-gtk-config-${UB_VERSION}.tar.xz kde-gtk-config-${UB_VERSION}/
 	http://download.kde.org/stable/plasma/${UB_VERSION}/
-

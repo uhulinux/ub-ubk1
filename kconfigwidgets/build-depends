@@ -1,4 +1,3 @@
-cmake
 extra-cmake-modules
 kauth-dev
 kcodecs-dev

@@ -2,4 +2,3 @@
 
 kdeplasma-addons-${UB_VERSION}.tar.xz kdeplasma-addons-${UB_VERSION}/
 	http://download.kde.org/stable/plasma/${UB_VERSION}/
-

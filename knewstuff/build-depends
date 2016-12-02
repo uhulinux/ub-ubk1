@@ -1,5 +1,4 @@
 attica-dev
-cmake
 extra-cmake-modules
 karchive-dev
 kcompletion-dev

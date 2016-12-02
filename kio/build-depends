@@ -1,5 +1,4 @@
 acl-dev
-cmake
 extra-cmake-modules
 karchive-dev
 kauth-dev

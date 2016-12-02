@@ -1,5 +1,4 @@
 breeze
-cmake
 extra-cmake-modules
 kactivities-dev
 kcmutils-dev

@@ -1,4 +1,3 @@
-cmake
 extra-cmake-modules
 kconfigwidgets-dev
 kdeclarative-dev

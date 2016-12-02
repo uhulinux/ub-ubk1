@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-#v${UB_VERSION}.tar.gz libkcddb-${UB_VERSION}/
-#	https://github.com/KDE/libkcddb/archive/
+v${UB_VERSION}.tar.gz libkcddb-${UB_VERSION}/
+	https://github.com/KDE/libkcddb/archive/
 
-v${UB_VERSION}.tar.gz libkcddb-d1b7836/
-	git://github.com/KDE/libkcddb.git@d1b7836
+#v${UB_VERSION}.tar.gz libkcddb-d1b7836/
+#	git://github.com/KDE/libkcddb.git@d1b7836

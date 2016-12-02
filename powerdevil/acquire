@@ -2,4 +2,3 @@
 
 powerdevil-${UB_VERSION}.tar.xz powerdevil-${UB_VERSION}/
 	http://download.kde.org/stable/plasma/${UB_VERSION}/
-

@@ -1,5 +1,4 @@
 breeze
-cmake
 extra-cmake-modules
 kconfig-dev
 kconfigwidgets-dev

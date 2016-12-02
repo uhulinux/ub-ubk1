@@ -1,5 +1,4 @@
 aspell-dev
-cmake
 extra-cmake-modules
 hunspell-dev
 qt5-dev

@@ -2,6 +2,6 @@
 
 kdiff3git-${UB_VERSION}.tar.gz kdiff3-kf5/kdiff3/
 	git://anongit.kde.org/scratch/thomasfischer/kdiff3.git@branch:kf5
-	
+
 kdiff3-${UB_VERSION}.tar.gz kdiff3-${UB_VERSION}/src-QT4/ :QT4
 	https://sourceforge.net/projects/kdiff3/files/kdiff3/${UB_VERSION}/

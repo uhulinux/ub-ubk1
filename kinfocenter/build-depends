@@ -1,4 +1,3 @@
-cmake
 extra-cmake-modules
 glu-dev
 kcmutils-dev

@@ -1,4 +1,3 @@
-cmake
 extra-cmake-modules
 kdoctools
 ki18n-dev

@@ -1,6 +1,5 @@
 attica-dev
 baloo-dev
-cmake
 extra-cmake-modules
 fontconfig-dev
 ibus-dev

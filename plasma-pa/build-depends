@@ -1,4 +1,3 @@
-cmake
 extra-cmake-modules
 gconf2-dev
 kcoreaddons-dev

@@ -2,4 +2,3 @@
 
 plasma-workspace-wallpapers-${UB_VERSION}.tar.xz plasma-workspace-wallpapers-${UB_VERSION}/
 	http://download.kde.org/stable/plasma/${UB_VERSION}/
-

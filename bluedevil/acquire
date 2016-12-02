@@ -2,4 +2,3 @@
 
 bluedevil-${UB_VERSION}.tar.xz bluedevil-${UB_VERSION}/
 	http://download.kde.org/stable/plasma/${UB_VERSION}/
-

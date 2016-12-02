@@ -2,4 +2,3 @@
 
 kwin-${UB_VERSION}.tar.xz kwin-${UB_VERSION}/
 	http://download.kde.org/stable/plasma/${UB_VERSION}/
-

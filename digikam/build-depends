@@ -1,4 +1,3 @@
-cmake
 eigen3
 exiv2-dev
 extra-cmake-modules

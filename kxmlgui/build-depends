@@ -1,5 +1,4 @@
 attica-dev
-cmake
 extra-cmake-modules
 kconfig-dev
 kconfigwidgets-dev

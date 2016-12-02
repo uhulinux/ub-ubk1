@@ -2,4 +2,3 @@
 
 user-manager-${UB_VERSION}.tar.xz user-manager-${UB_VERSION}/
 	http://download.kde.org/stable/plasma/${UB_VERSION}/
-

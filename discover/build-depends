@@ -1,6 +1,5 @@
 appstream-qt-dev
 attica-dev
-cmake
 extra-cmake-modules
 karchive-dev
 kconfig-dev

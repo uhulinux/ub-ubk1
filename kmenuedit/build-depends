@@ -1,4 +1,3 @@
-cmake
 extra-cmake-modules
 kdbusaddons-dev
 kdelibs4support-dev

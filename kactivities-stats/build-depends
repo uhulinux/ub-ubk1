@@ -1,5 +1,4 @@
 boost-dev
-cmake
 extra-cmake-modules
 kactivities-dev
 kconfig-dev

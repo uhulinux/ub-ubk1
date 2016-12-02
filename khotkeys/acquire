@@ -2,4 +2,3 @@
 
 khotkeys-${UB_VERSION}.tar.xz khotkeys-${UB_VERSION}/
 	http://download.kde.org/stable/plasma/${UB_VERSION}/
-

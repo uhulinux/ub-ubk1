@@ -1,5 +1,4 @@
 bluez-qt-dev
-cmake
 extra-cmake-modules
 kactivities-dev
 kauth-dev

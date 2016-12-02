@@ -2,4 +2,3 @@
 
 kinit-${UB_VERSION}.tar.xz kinit-${UB_VERSION}/
 	http://download.kde.org/stable/frameworks/${UB_VERSION_HEAD2}/
-

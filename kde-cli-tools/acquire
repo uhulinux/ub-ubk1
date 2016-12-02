@@ -2,4 +2,3 @@
 
 kde-cli-tools-${UB_VERSION}.tar.xz kde-cli-tools-${UB_VERSION}/
 	http://download.kde.org/stable/plasma/${UB_VERSION}/
-

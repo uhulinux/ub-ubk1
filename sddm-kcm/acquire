@@ -2,4 +2,3 @@
 
 sddm-kcm-${UB_VERSION}.tar.xz sddm-kcm-${UB_VERSION}/
 	http://download.kde.org/stable/plasma/${UB_VERSION}/
-

@@ -1,4 +1,3 @@
-cmake
 extra-cmake-modules
 networkmanager-dev
 qt5-dev

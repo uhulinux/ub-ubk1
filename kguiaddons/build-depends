@@ -1,4 +1,3 @@
-cmake
 extra-cmake-modules
 libxfixes-dev
 qt5-dev

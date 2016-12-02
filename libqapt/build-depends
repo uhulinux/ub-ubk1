@@ -1,5 +1,4 @@
 apt-dev
-cmake
 extra-cmake-modules
 gst-plugins-base-dev
 kcoreaddons-dev
