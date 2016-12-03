@@ -3,4 +3,3 @@
 ub_install
 
 rm -rf "$UB_INSTALLDIR"/tmp
-
