@@ -3,5 +3,5 @@
 Audacity-${UB_VERSION}.tar.gz audacity-Audacity-${UB_VERSION}/
 	https://github.com/audacity/audacity/archive/
 
-#audacity-${UB_VERSION}.tar.gz audacity-6c73bab/
-#	git://github.com/audacity/audacity.git@6c73bab
+audacity-manual-${UB_VERSION}.zip help/
+        http://pkgs.fedoraproject.org/repo/pkgs/audacity/audacity-manual-${UB_VERSION}.zip/af51ad9418c780b8237f5a2efe91ba67/

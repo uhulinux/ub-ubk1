@@ -3,3 +3,4 @@
 ub_install
 
 find "$UB_INSTALLDIR"/usr/share/ -type f -exec chmod -x {} \;
+rm -rf ${UB_INSTALLDIR}/usr/share/doc/catfish
