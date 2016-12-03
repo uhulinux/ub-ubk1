@@ -1,4 +1,5 @@
 chmlib-dev
+cssutils
 icu-dev
 imagemagick-dev
 libinput-dev
@@ -7,11 +8,13 @@ libusb-dev
 libxkbcommon-dev
 podofo-dev
 pyqt5-python2
+python-apsw
 python-dateutil
 python-dev
 python-lxml
 python-pillow
 python-six
 qt5-dev
+qtwebkit-dev
 sip
 xdg-utils

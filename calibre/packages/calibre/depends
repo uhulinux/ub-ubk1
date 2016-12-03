@@ -8,3 +8,5 @@ python-lxml
 python-mechanize
 python-netifaces
 python-pillow
+python-six
+qtwebkit
