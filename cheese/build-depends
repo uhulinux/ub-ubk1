@@ -8,7 +8,7 @@ gnome-doc-utils
 gnome-video-effects
 gobject-introspection-dev
 gst-plugins-bad-dev
-gst-plugins-good
+gst-plugins-good-dev
 intltool
 itstool
 libcanberra-dev

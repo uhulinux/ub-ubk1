@@ -1,7 +1,7 @@
-gst-libav
-gst-plugins-bad
-gst-plugins-good
-gst-plugins-ugly
+gst-libav-dev
+gst-plugins-bad-dev
+gst-plugins-good-dev
+gst-plugins-ugly-dev
 gtk
 intltool
 libnotify

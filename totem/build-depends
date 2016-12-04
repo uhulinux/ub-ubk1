@@ -7,7 +7,7 @@ gnome-desktop-dev
 grilo-dev
 gsettings-desktop-schemas
 gst-plugins-bad-dev
-gst-plugins-good
+gst-plugins-good-dev
 icon-theme-gnome
 intltool
 itstool

@@ -3,7 +3,7 @@ dconf-dev
 desktop-file-utils
 docbook-dtds
 gconf2-dev
-gnome-shell
+gnome-shell-dev
 gnutls-dev
 gsettings-desktop-schemas
 gtk-dev
