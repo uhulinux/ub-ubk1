@@ -13,4 +13,3 @@ export DESTDIR="$UB_INSTALLDIR"
 export SRC_ROOT="$UB_COMPILEDIR"
 
 make distro-pack-install
-

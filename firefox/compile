@@ -53,4 +53,3 @@ cd "$UB_OBJECTDIR"
 "$UB_COMPILEDIR"/configure
 
 ub_make
-
