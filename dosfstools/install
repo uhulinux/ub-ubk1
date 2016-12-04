@@ -1,5 +1,5 @@
 #!/bin/sh -eux
 
 ub_install \
-	PREFIX=/usr \
-	DOCDIR=/usr/share/doc/Packages
+	PREFIX=/usr
+rm -rf ${UB_INSTALLDIR}/usr/share/doc
