@@ -1,7 +1,7 @@
 #!/bin/sh -eux
 
 mkdir -p "$UB_INSTALLDIR"/usr/include/d/druntime
-mkdir -p "$UB_INSTALLDIR"/usr/share/doc/d/phobos
+mkdir -p "$UB_INSTALLDIR"/usr/share/doc/dmd2/phobos
 
 cp src/dmd/dmd "$UB_INSTALLDIR"/usr/bin/
 cp -a linux/bin32/dumpobj "$UB_INSTALLDIR"/usr/bin/
@@ -20,7 +20,6 @@ cp -Rf src/druntime/import "$UB_INSTALLDIR"/usr/include/d/druntime
 install -Dm644 src/phobos/generated/linux/release/32/libphobos2.a "$UB_INSTALLDIR"/usr/lib/libphobos2.a
 install -Dm644 src/druntime//generated/linux/release/32/libdruntime.a "$UB_INSTALLDIR"/usr/lib/libdruntime.a
 
-
 for x in man/man1/*.1; do
 	install -Dm644 $x "$UB_INSTALLDIR/usr/share/man/man1/$(basename $x)"
 done
@@ -31,13 +30,13 @@ done
 
 docs="html/d"
 for x in $(find $docs/*.html $docs/*.gif $docs/*.ico $docs/*.jpg $docs/*.css); do
-	install -Dm644 $x "$UB_INSTALLDIR/usr/share/doc/d/$(basename $x)"
+	install -Dm644 $x "$UB_INSTALLDIR/usr/share/doc/dmd2/$(basename $x)"
 done
 
 for x in $(find $docs/phobos/*.html $docs/phobos/*.gif $docs/phobos/*.css); do
-	install -Dm644 $x "$UB_INSTALLDIR/usr/share/doc/d/phobos/$(basename $x)"
+	install -Dm644 $x "$UB_INSTALLDIR/usr/share/doc/dmd2/phobos/$(basename $x)"
 done
 
-cp -a html/dmlogo.gif "$UB_INSTALLDIR"/usr/share/doc/d/
+cp -a html/dmlogo.gif "$UB_INSTALLDIR"/usr/share/doc/dmd2/
 
-cp -Rf samples "$UB_INSTALLDIR"/usr/share/doc/d/
+cp -Rf samples "$UB_INSTALLDIR"/usr/share/doc/dmd2/
