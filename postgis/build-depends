@@ -1,7 +1,7 @@
 curl-dev
 cyrus-sasl2-dev
 expat-dev
-gdal
+gdal-dev
 geos
 json-c-dev
 libpng-dev
