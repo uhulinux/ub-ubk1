@@ -10,6 +10,6 @@
 	/usr/lib/*Conf.sh
 	/usr/lib/pkgconfig
 	/usr/share/aclocal
-	/usr/share/doc/gnome-python-extras
+	/usr/share/doc/gnucash
 	/usr/share/man/**/man1/*-config.1*
 	/usr/share/man/**/man3
