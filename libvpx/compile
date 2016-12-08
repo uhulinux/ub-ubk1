@@ -3,13 +3,14 @@
 ./configure \
 	--prefix=/usr \
 	--enable-ccache \
-	--target=x86-linux-gcc \
 	--enable-shared \
 	--enable-runtime-cpu-detect \
 	--enable-postproc \
     --enable-pic \
-	--enable-vp8 \
-	--enable-vp9 \
+    --enable-vp8 \
+    --enable-vp9 \
+    --enable-vp9-highbitdepth \
+    --enable-spatial-svc \
     --disable-install-docs \
     --disable-install-srcs
 ub_make
