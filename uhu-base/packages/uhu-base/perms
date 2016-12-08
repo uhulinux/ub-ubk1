@@ -1,6 +1,6 @@
 -         -          555  /proc
 -         -          700  /root
--         -          750  /media
+-         -          755  /media
 -         -         1777  /tmp
 -         -         1777  /tmp/.ICE-unix
 -         -         1777  /tmp/.X11-unix
