@@ -1,0 +1,107 @@
+diff -Nur orig/qtdeclarative/src/imports/particles/particles.pro mod/qtdeclarative/src/imports/particles/particles.pro
+--- orig/qtdeclarative/src/imports/particles/particles.pro	2016-06-11 14:05:08.000000000 +0200
++++ mod/qtdeclarative/src/imports/particles/particles.pro	2016-12-08 11:00:49.832763539 +0100
+@@ -3,6 +3,11 @@
+ TARGETPATH = QtQuick/Particles.2
+ IMPORT_VERSION = 2.0
+ 
++greaterThan(QT_GCC_MAJOR_VERSION, 5) {
++    # Our code is bad. Temporary workaround. Fixed in 5.8
++    QMAKE_CXXFLAGS += -fno-delete-null-pointer-checks -fno-lifetime-dse
++}
++
+ SOURCES += \
+     plugin.cpp
+ 
+diff -Nur orig/qtdeclarative/src/particles/particles.pro mod/qtdeclarative/src/particles/particles.pro
+--- orig/qtdeclarative/src/particles/particles.pro	2016-06-11 14:05:08.000000000 +0200
++++ mod/qtdeclarative/src/particles/particles.pro	2016-12-08 21:50:11.003487846 +0100
+@@ -14,6 +14,11 @@
+     LIBS_PRIVATE += -lgcov
+ }
+ 
++greaterThan(QT_GCC_MAJOR_VERSION, 5) {
++    # Our code is bad. Temporary workaround. Fixed in 5.8
++    QMAKE_CXXFLAGS += -fno-delete-null-pointer-checks -fno-lifetime-dse
++}
++
+ include(particles.pri)
+ 
+ load(qt_module)
+diff -Nur orig/qtdeclarative/src/qml/qml.pro mod/qtdeclarative/src/qml/qml.pro
+--- orig/qtdeclarative/src/qml/qml.pro	2016-06-11 14:05:08.000000000 +0200
++++ mod/qtdeclarative/src/qml/qml.pro	2016-12-08 21:51:00.519404266 +0100
+@@ -17,10 +17,11 @@
+ }
+ 
+ greaterThan(QT_GCC_MAJOR_VERSION, 5) {
+-    # Our code is bad. Temporary workaround.
+-    QMAKE_CXXFLAGS += -fno-delete-null-pointer-checks
++    # Our code is bad. Temporary workaround. Fixed in 5.8
++    QMAKE_CXXFLAGS += -fno-delete-null-pointer-checks -fno-lifetime-dse
+ }
+ 
++
+ QMAKE_DOCS = $$PWD/doc/qtqml.qdocconf
+ 
+ # 2415: variable "xx" of static storage duration was declared but never referenced
+diff -Nur orig/qtdeclarative/src/qmltest/qmltest.pro mod/qtdeclarative/src/qmltest/qmltest.pro
+--- orig/qtdeclarative/src/qmltest/qmltest.pro	2016-06-11 14:05:08.000000000 +0200
++++ mod/qtdeclarative/src/qmltest/qmltest.pro	2016-12-08 21:51:39.467338525 +0100
+@@ -13,6 +13,11 @@
+     DEFINES += QT_QMLTEST_WITH_WIDGETS
+ }
+ 
++greaterThan(QT_GCC_MAJOR_VERSION, 5) {
++    # Our code is bad. Temporary workaround. Fixed in 5.8
++    QMAKE_CXXFLAGS += -fno-delete-null-pointer-checks -fno-lifetime-dse
++}
++
+ # Install qmltestcase.prf into the Qt mkspecs so that "CONFIG += qmltestcase"
+ # can be used in customer applications to build against QtQuickTest.
+ feature.path = $$[QT_INSTALL_DATA]/mkspecs/features
+diff -Nur orig/qtdeclarative/src/quick/quick.pro mod/qtdeclarative/src/quick/quick.pro
+--- orig/qtdeclarative/src/quick/quick.pro	2016-06-11 14:05:08.000000000 +0200
++++ mod/qtdeclarative/src/quick/quick.pro	2016-12-08 11:01:59.520632525 +0100
+@@ -13,6 +13,11 @@
+     LIBS_PRIVATE += -lgcov
+ }
+ 
++greaterThan(QT_GCC_MAJOR_VERSION, 5) {
++    # Our code is bad. Temporary workaround. Fixed in 5.8
++    QMAKE_CXXFLAGS += -fno-delete-null-pointer-checks -fno-lifetime-dse
++}
++
+ QMAKE_DOCS = $$PWD/doc/qtquick.qdocconf
+ 
+ ANDROID_LIB_DEPENDENCIES = \
+diff -Nur orig/qtdeclarative/src/quickwidgets/quickwidgets.pro mod/qtdeclarative/src/quickwidgets/quickwidgets.pro
+--- orig/qtdeclarative/src/quickwidgets/quickwidgets.pro	2016-06-11 14:05:08.000000000 +0200
++++ mod/qtdeclarative/src/quickwidgets/quickwidgets.pro	2016-12-08 21:53:18.519171333 +0100
+@@ -4,6 +4,11 @@
+ 
+ DEFINES   += QT_NO_URL_CAST_FROM_STRING QT_NO_INTEGER_EVENT_COORDINATES
+ 
++greaterThan(QT_GCC_MAJOR_VERSION, 5) {
++    # Our code is bad. Temporary workaround. Fixed in 5.8
++    QMAKE_CXXFLAGS += -fno-delete-null-pointer-checks -fno-lifetime-dse
++}
++
+ HEADERS += \
+     qquickwidget.h \
+     qquickwidget_p.h \
+diff -Nur orig/qtdeclarative/tests/auto/qml/qqmlecmascript/qqmlecmascript.pro mod/qtdeclarative/tests/auto/qml/qqmlecmascript/qqmlecmascript.pro
+--- orig/qtdeclarative/tests/auto/qml/qqmlecmascript/qqmlecmascript.pro	2016-06-11 14:05:08.000000000 +0200
++++ mod/qtdeclarative/tests/auto/qml/qqmlecmascript/qqmlecmascript.pro	2016-12-08 11:03:11.584497044 +0100
+@@ -13,6 +13,11 @@
+ 
+ include (../../shared/util.pri)
+ 
++greaterThan(QT_GCC_MAJOR_VERSION, 5) {
++    # Our code is bad. Temporary workaround. Fixed in 5.8
++    QMAKE_CXXFLAGS += -fno-delete-null-pointer-checks -fno-lifetime-dse
++}
++
+ # QMAKE_CXXFLAGS = -fprofile-arcs -ftest-coverage
+ # LIBS += -lgcov
+ 
