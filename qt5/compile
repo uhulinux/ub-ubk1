@@ -5,7 +5,6 @@
 # qtwebengine: külön csomag
 
 export LD_LIBRARY_PATH="$(pwd)"/lib
-export CXXFLAGS="-fno-delete-null-pointer-checks"
 
 ./configure \
 	-platform linux-g++-32 \
@@ -23,7 +22,7 @@ export CXXFLAGS="-fno-delete-null-pointer-checks"
 	-silent             \
 	-no-pch             \
 	-optimized-qmake    \
-	-qml-debug			\
+	-no-qml-debug		\
 	-no-use-gold-linker \
 	-reduce-relocations \
 	-no-rpath           \
