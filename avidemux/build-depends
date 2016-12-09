@@ -1,6 +1,6 @@
-cmake
 esound-dev
 faac-dev
+fontconfig-dev
 fribidi-dev
 glu-dev
 jack-dev
@@ -16,6 +16,7 @@ libvpx-dev
 libxslt-dev
 libxv-dev
 opencore-amr-dev
+opus-dev
 qt5-dev
 sdl-dev
 x264-dev

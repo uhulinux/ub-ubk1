@@ -26,12 +26,10 @@ fix compile & install
 fix menu patch, desktop files
 add patch to fix bootstrap.bash build
 
-
 ------------------------------------------------------------------------
 r28674 | galamb15@kabelszat2002.hu | 2012-05-07 19:54:19 +0200 (Mon, 07 May 2012) | 3 lines
 
-2.5.5 -> 2.5.6 
-
+2.5.5 -> 2.5.6
 
 ------------------------------------------------------------------------
 r27058 | galamb15@kabelszat2002.hu | 2011-11-07 22:09:06 +0100 (Mon, 07 Nov 2011) | 5 lines
@@ -39,7 +37,6 @@ r27058 | galamb15@kabelszat2002.hu | 2011-11-07 22:09:06 +0100 (Mon, 07 Nov 2011
 2.5.4 -> 2.5.5
 build-depends fix - libvpx
 remove i18n patch
-
 
 ------------------------------------------------------------------------
 r25166 | rezso@rezso.net | 2011-04-03 23:31:21 +0200 (Sun, 03 Apr 2011) | 3 lines
@@ -55,7 +52,6 @@ acquire fix
 add i18n.patch to move i18n files from /usr/bin to /usr/share
 add KDE only desktop file for the alternative Qt4 gui
 
-
 ------------------------------------------------------------------------
 r20135 | galamb15@kabelszat2002.hu | 2009-09-30 09:00:54 +0200 (Wed, 30 Sep 2009) | 7 lines
 
@@ -63,8 +59,7 @@ r20135 | galamb15@kabelszat2002.hu | 2009-09-30 09:00:54 +0200 (Wed, 30 Sep 2009
 build-depends fix - optional qt4 gui, replace amrnb with opencore-amr
 remove obsoleted patches
 fix compile & install
-plugins go to the new avidemux-plugins package because of compilation problems 
-
+plugins go to the new avidemux-plugins package because of compilation problems
 
 ------------------------------------------------------------------------
 r17924 | galamb15@kabelszat2002.hu | 2009-04-08 11:51:20 +0200 (Wed, 08 Apr 2009) | 4 lines

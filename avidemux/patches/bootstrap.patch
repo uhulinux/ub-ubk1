@@ -1,16 +1,16 @@
-diff -Naur orig/bootStrap.bash patched/bootStrap.bash
---- orig/bootStrap.bash	2016-08-05 02:00:33.000000000 +0200
-+++ patched/bootStrap.bash	2016-08-05 02:11:28.863908526 +0200
-@@ -50,7 +50,7 @@
+diff -Nur orig/bootStrap.bash mod/bootStrap.bash
+--- orig/bootStrap.bash	2016-11-19 08:58:39.000000000 +0100
++++ mod/bootStrap.bash	2016-12-09 16:57:46.154051890 +0100
+@@ -54,7 +54,7 @@
          fi
          cd $BUILDDIR 
-         cmake $PKG $FAKEROOT $QT_FLAVOR -DCMAKE_EDIT_COMMAND=vim -DCMAKE_INSTALL_PREFIX=/usr $EXTRA $ASAN $DEBUG -G "$BUILDER" $SOURCEDIR || fail cmakeZ
+         cmake $COMPILER $PKG $FAKEROOT $QT_FLAVOR -DCMAKE_EDIT_COMMAND=vim $INSTALL_PREFIX $EXTRA $ASAN $DEBUG -G "$BUILDER" $SOURCEDIR || fail cmakeZ
 -        make  $PARAL >& /tmp/log$BUILDDIR || fail "make, result in /tmp/log$BUILDDIR"
 +        make  $PARAL
  	if  [ "x$PKG" != "x" ] ; then
            $FAKEROOT_COMMAND make package DESTDIR=$FAKEROOT_DIR/tmp || fail package
  	fi
-@@ -195,7 +195,7 @@
+@@ -238,7 +238,7 @@
  
  export TOP=$PWD
  export POSTFIX=""
