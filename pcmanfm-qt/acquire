@@ -2,4 +2,3 @@
 
 ${UB_VERSION}.tar.gz pcmanfm-qt-${UB_VERSION}/
 	https://github.com/lxde/pcmanfm-qt/archive/
-

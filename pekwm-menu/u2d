@@ -1,1 +1,1 @@
-urllist https://bitbucket.org/nfisher1226/pekwm-menu/downloads/| splitver '^v([0-9.]+).tar.bz2$' | sort -V | tail -n 1
+u2d https://bitbucket.org/nfisher1226/pekwm-menu/downloads?tab=tags v
