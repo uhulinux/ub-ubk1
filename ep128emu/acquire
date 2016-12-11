@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-${UB_VERSION}.tar.gz ep128emu-${UB_VERSION}/
+${UB_VERSION/~/-}_20161210.tar.gz ep128emu-${UB_VERSION/~/-}_20161210/
 	https://github.com/istvan-v/ep128emu/archive/
-
