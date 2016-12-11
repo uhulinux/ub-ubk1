@@ -1,5 +1,4 @@
 alsa-lib-dev
-cmake
 fftw3-dev
 fltk-dev
 fluidsynth-dev
@@ -8,6 +7,7 @@ libsamplerate-dev
 libsndfile-dev
 portaudio-dev
 pulseaudio-dev
-qt4-dev
+qt5-dev
+qt5-test
 sdl-dev
 sdl-sound-dev
