@@ -1,3 +1,5 @@
+lxqt-build-tools
+libsysstat
 libqtxdg
 liblxqt
 obconf-qt

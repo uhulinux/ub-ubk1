@@ -10,7 +10,6 @@ lxrandr
 menu-cache
 openbox-menu
 obconf
-libsysstat
 lxpolkit
 lxterminal
 lxappearance
