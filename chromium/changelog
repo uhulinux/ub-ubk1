@@ -196,7 +196,7 @@ acquire fix
 build-depends fix
 compile fix
 no vertical tabs (removed from source code)
-use shared libs 
+use shared libs
 
 ------------------------------------------------------------------------
 r24220 | janusz@uhulinux.hu | 2010-08-31 09:21:17 +0200 (Tue, 31 Aug 2010) | 6 lines
