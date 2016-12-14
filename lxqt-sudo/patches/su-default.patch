@@ -1,0 +1,13 @@
+diff -Nur orig/sudo.h mod/sudo.h
+--- orig/sudo.h	2016-09-24 00:47:03.000000000 +0200
++++ mod/sudo.h	2016-12-14 11:42:47.607042810 +0100
+@@ -42,8 +42,8 @@
+     enum backend_t
+     {
+         BACK_NONE
+-            , BACK_SUDO
+             , BACK_SU
++            , BACK_SUDO
+     };
+ 
+ public:
