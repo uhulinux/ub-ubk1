@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+cp -r "$UB_COMPILEDIR"/usr "$UB_INSTALLDIR"/
+
+rm -Rf "$UB_INSTALLDIR"/usr/share/lintian
+
+# Categories javítás
+sed -i -e "s/^Categories=.*/Categories=Network;Chat;VideoConference;/" "$UB_INSTALLDIR"/usr/share/applications/ghetto-skype.desktop

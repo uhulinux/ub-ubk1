@@ -56,7 +56,6 @@ paman
 pitivi
 lingot
 pavucontrol
-skype
 paprefs
 me-tv
 grip
