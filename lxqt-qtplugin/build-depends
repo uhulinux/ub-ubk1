@@ -1,5 +1,4 @@
-cmake
 libdbusmenu-qt-dev
 liblxqt-dev
-libqtxdg-dev
 libx11-dev
+lxqt-build-tools

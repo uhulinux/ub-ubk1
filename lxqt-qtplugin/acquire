@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-lxqt-qtplugin-${UB_VERSION}.tar.xz lxqt-qtplugin-${UB_VERSION}/
-	http://downloads.lxqt.org/lxqt/${UB_VERSION}/
+${UB_VERSION}.tar.gz lxqt-qtplugin-${UB_VERSION}/
+	https://github.com/lxde/lxqt-qtplugin/archive/

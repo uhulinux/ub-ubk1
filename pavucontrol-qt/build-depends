@@ -1,5 +1,3 @@
-cmake
 liblxqt-dev
-pulseaudio-dev
-qt5-dev
+lxqt-build-tools
 xdg-user-dirs
