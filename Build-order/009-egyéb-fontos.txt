@@ -7,6 +7,7 @@ sg3-utils
 ladspa
 libksba
 libpipeline
+libqrencode
 lvm
 parted
 smp-utils
@@ -16,7 +17,6 @@ lua52
 lua53
 ocaml
 ocamlbuild
-swig
 subversion
 audit
 itstool

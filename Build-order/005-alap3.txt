@@ -1,6 +1,7 @@
 python3
 python3-setuptools
 python-docutils
+python-lxml
 mercurial
 asciidoc
 liblzo
@@ -119,4 +120,4 @@ check
 geoclue
 js
 gjs
-
+swig

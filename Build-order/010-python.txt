@@ -9,7 +9,6 @@ python-dip
 python-doc
 python-iniparse
 python-ipaddr
-python-lxml
 python-nose
 python-paramiko
 python-setproctitle
