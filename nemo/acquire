@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-nemo-${UB_VERSION}.tar.gz nemo-9e0d3b7/
-                          git://github.com/linuxmint/nemo.git@9e0d3b7
+${UB_VERSION}.tar.gz nemo-${UB_VERSION}/
+        https://github.com/linuxmint/nemo/archive/

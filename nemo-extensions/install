@@ -18,4 +18,3 @@ cp nemo-seahorse/{COPYING,ChangeLog,README,THANKS} $docdir/nemo-seahorse/
 cp nemo-seahorse/{AUTHORS,ChangeLog,COPYING,README} $docdir/nemo-share/
 cp nemo-python/{AUTHORS,ChangeLog,COPYING,README} $docdir/nemo-python/
 cp nemo-preview/{AUTHORS,COPYING,README} $docdir/nemo-preview/
-

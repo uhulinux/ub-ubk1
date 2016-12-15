@@ -18,7 +18,6 @@ libgudev-dev
 libmusicbrainz-dev
 libnotify-dev
 libsm-dev
-libwebp-dev
 libxshmfence-dev
 nemo-dev
 pygobject2-dev

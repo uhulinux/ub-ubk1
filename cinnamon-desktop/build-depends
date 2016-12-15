@@ -1,8 +1,6 @@
 gobject-introspection-dev
 gtk-dev
 intltool
-libxkbcommon-dev
 libxkbfile-dev
 pulseaudio-dev
-systemd-dev
 xkeyboard-config

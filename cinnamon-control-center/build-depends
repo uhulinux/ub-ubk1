@@ -16,12 +16,10 @@ libgnomekbd-dev
 libgudev-dev
 libnotify-dev
 libwacom-dev
-libx11-dev
 libxft-dev
 libxslt-dev
 modemmanager-dev
 nm-applet-dev
 polkit-dev
-pulseaudio-dev
 tzdata
 upower-dev

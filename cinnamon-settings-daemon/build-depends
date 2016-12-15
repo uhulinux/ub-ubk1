@@ -15,6 +15,5 @@ libxslt-dev
 nss-dev
 p11-kit-dev
 polkit-dev
-pulseaudio-dev
 upower-dev
 x.org-input-wacom
