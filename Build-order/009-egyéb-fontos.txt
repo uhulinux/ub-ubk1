@@ -17,6 +17,7 @@ lua53
 ocaml
 ocamlbuild
 swig
+subversion
 audit
 itstool
 pyxml

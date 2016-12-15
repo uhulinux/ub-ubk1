@@ -16,6 +16,7 @@ python-paramiko
 pyrex
 bzr
 dl
+git
 lcms2
 libxml2
 libxslt

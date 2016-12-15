@@ -1,3 +1,7 @@
+python3
+python3-setuptools
+python-docutils
+mercurial
 asciidoc
 liblzo
 btrfs-progs
@@ -95,6 +99,8 @@ qt5
 apache
 apr
 apr-util
+scons
+serf
 aspell
 libc-client
 mhash

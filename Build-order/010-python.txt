@@ -1,8 +1,7 @@
-python3
 python3-dbus
 python3-dip
 python3-doc
-python3-setuptools
+python-docutils
 python3-zope.fixers
 sip
 python-cddb
@@ -95,7 +94,6 @@ python-cssselect
 python-dateutil
 python-decorator
 python-distutils-extra
-python-docutils
 python-ecdsa
 python-elib.intl
 python-elixir

@@ -31,7 +31,6 @@ perl-email-address
 perl-email-date-format
 perl-email-mime-contenttype
 perl-email-mime-encodings
-perl-encode-locale
 perl-extutils-config
 perl-extutils-depends
 perl-extutils-helpers
@@ -46,13 +45,10 @@ perl-file-which
 perl-gpg
 perl-guard
 perl-hash-multivalue
-perl-html-tagset
 perl-html-template
-perl-http-date
 perl-http-parser-xs
 perl-http-server-simple
 perl-http-tiny
-perl-io-html
 perl-io-stringy
 perl-ip-country
 perl-ipc-run
@@ -62,7 +58,6 @@ perl-libintl
 perl-libxml
 perl-list-moreutils
 perl-log-log4perl
-perl-lwp-mediatypes
 perl-math-calc-units
 perl-mime-charset
 perl-mime-types
@@ -70,7 +65,6 @@ perl-mozilla-ca
 perl-msgcat
 perl-netaddr-ip
 perl-net-cidr-lite
-perl-net-http
 perl-net-ident
 perl-net-ip
 perl-net-server
@@ -104,7 +98,6 @@ perl-try-tiny
 perl-unicode-linebreak
 perl-unix-mknod
 perl-unix-syslog
-perl-uri
 perl-version
 perl-xml-generator
 perl-xml-grove
@@ -120,12 +113,9 @@ perl-email-messageid
 perl-email-simple
 perl-eval-closure
 perl-extutils-installpaths
-perl-file-listing
 perl-file-sharedir
-perl-html-parser
 perl-mailtools
 perl-mime-encwords
-perl-module-build
 perl-module-runtime
 perl-net-dns
 perl-net-libidn
@@ -139,7 +129,6 @@ perl-test-nowarnings
 perl-text-diff
 perl-text-glob
 perl-text-patch
-perl-www-robotrules
 perl-xml-twig
 perl-xml-xpath
 perl-convert-uulib
@@ -169,7 +158,6 @@ perl-net-dns-resolver-programmable
 perl-package-deprecationmanager
 perl-class-load
 perl-dbd-pg
-perl-http-message
 perl-pango
 perl-gtk2
 perl-alien-sdl
@@ -185,18 +173,14 @@ perl-class-method-modifiers
 perl-crypt-ciphersaber
 perl-crypt-passwdmd5
 perl-encode-detect
-perl-error
 perl-event-rpc
 perl-file-basedir
 perl-file-desktopentry
 perl-gtk2-ex-formfactory
-perl-http-daemon
-perl-http-negotiate
 perl-linux-desktopfiles
 perl-test-deep
 perl-convert-tnef
 perl-file-mimeinfo
-perl-http-cookies
 perl-xml-filter-buffertext
 perl-xml-libxml
 perl-xml-sax-writer
@@ -206,7 +190,6 @@ perl-mail-dkim
 perl-test-most
 perl-moo
 perl-mail-spf
-perl-libwww
 perl-text-soundex
 perl-ldap
 perl-http-body

@@ -57,7 +57,6 @@ libyajl
 lmsensors
 lsdvd
 luasocket
-lynx
 miniupnpc
 musepack
 ois
@@ -65,7 +64,6 @@ qpdf
 radeontool
 sbc
 schroedinger
-scons
 slib
 txt2tags
 uhu-pixmaps
@@ -103,7 +101,6 @@ lucene++
 luit
 mdadm
 memphis
-mercurial
 mtools
 ndiswrapper
 chrony
@@ -135,7 +132,6 @@ polkit-qt
 portaudio
 razor
 retrovol
-serf
 startup-notification
 unshield
 vbetool
@@ -168,7 +164,6 @@ accountsservice
 alsa-utils
 apache-mod-dnssd
 colord-gtk
-git
 glfw2
 goffice08
 gtkspell
@@ -215,7 +210,6 @@ gtkhtml
 gtk-vnc
 imlib
 openssh
-subversion
 plymouth
 ptlib
 redland
