@@ -1,0 +1,17 @@
+accountsservice-dev
+gnome-bluetooth-dev
+gnome-desktop-dev
+gnome-menus-dev
+gobject-introspection-dev
+ibus-dev
+intltool
+libcanberra-dev
+libnotify-dev
+libpeas-dev
+libwnck-dev
+libxkbfile-dev
+mutter-dev
+polkit-dev
+pulseaudio-dev
+upower-dev
+vala-dev

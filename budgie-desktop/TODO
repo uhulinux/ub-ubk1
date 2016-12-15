@@ -1,0 +1,8 @@
+check RUNTIME depends
+
+session/budgie-desktop-screensaver.desktop.in: gnome-screensaver
+session/budgie-desktop.in: gnome-session
+session/budgie-desktop-nm-applet.desktop.in: nm-applet
+session/budgie-desktop.session.in.in: gnome-settings-daemon
+gnome-control-center
+gnome-themes-standard
