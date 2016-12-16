@@ -2,7 +2,6 @@ libnfsidmap
 libpgf
 libpipeline
 libpseudo
-libqrencode
 libsoxr
 libspnav
 libsrtp
