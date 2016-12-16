@@ -4,10 +4,9 @@ libtiff >=
 lua51 >=
 mesa >=
 python >=
-sdl >=
-sdl-gfx >=
-sdl-image >=
-sdl-mixer >=
-sdl-net >=
-sdl-ttf >=
-widelands-data
+sdl2 >=
+sdl2-gfx >=
+sdl2-image >=
+sdl2-mixer >=
+sdl2-net >=
+sdl2-ttf >=

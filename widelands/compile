@@ -2,7 +2,5 @@
 
 ub_compile \
 	-DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DWL_INSTALL_PREFIX=/usr \
-	-DWL_INSTALL_DATADIR=share/widelands \
-	-DWL_INSTALL_BINDIR=bin
+	-DWL_INSTALL_DATADIR=/usr/share/widelands \
+	-DWL_INSTALL_BASEDIR=/usr
