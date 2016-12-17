@@ -2,4 +2,5 @@
 
 ub_compile \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_BUILD_TYPE=Release
+	-DCMAKE_BUILD_TYPE=Release \
+	-DUSE_QT5_IF_INSTALLED=ON

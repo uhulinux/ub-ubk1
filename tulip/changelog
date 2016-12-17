@@ -32,7 +32,7 @@ r33007 | attus@enterpriseforever.com | 2013-07-30 21:25:05 +0200 (Tue, 30 Jul 20
 acquire fix
 build-depends fix
 install fix
-+ u2d external-ftgl&yajl.patch crash_handling.patch 
++ u2d external-ftgl&yajl.patch crash_handling.patch
 
 ------------------------------------------------------------------------
 r32493 | gbereznai@egon.gyaloglo.hu | 2013-06-11 19:08:26 +0200 (Tue, 11 Jun 2013) | 2 lines

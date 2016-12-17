@@ -1,3 +1,5 @@
 #!/bin/sh -eux
 
-ub_compile
+ub_compile \
+	-DALSOFT_EXAMPLES=OFF \
+	-DALSOFT_TESTS=OFF

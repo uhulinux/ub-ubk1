@@ -4,9 +4,6 @@ for file in $(ls -1 filters); do
   sed -i 's/\r//g' filters/"$file"
 done
 
-export QTDIR="/usr/lib/qt4"
+export QTDIR="/usr/lib/qt5"
 
-QMAKE=qmake-qt4 ./configure \
-	--prefix=/usr \
-	--mandir=/usr/share/man
-make
+ub_compile

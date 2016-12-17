@@ -7,5 +7,6 @@ libx11-dev
 libxslt-dev
 openssl-dev
 python-dev
-qt4-dev
+qt5-dev
+qtwebkit-dev
 xapian-dev

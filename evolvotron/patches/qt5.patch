@@ -1,0 +1,35 @@
+diff -Naur orig/common.pro patched/common.pro
+--- orig/common.pro	2009-10-19 10:59:06.000000000 +0200
++++ patched/common.pro	2016-12-17 14:57:50.257453327 +0100
+@@ -3,7 +3,7 @@
+ 
+ # append debug or release
+ CONFIG+= qt thread stl precompile_header exceptions release       #release  #debug
+-QT += xml
++QT += xml widgets
+ 
+ #######################################
+ # Control platform specific code
+diff -Naur orig/configure patched/configure
+--- orig/configure	2013-01-26 13:48:42.000000000 +0100
++++ patched/configure	2016-12-17 14:53:55.206439160 +0100
+@@ -12,7 +12,7 @@
+ # TODO?: Should perhaps test "which qmake" here.
+ # If not found, add $(QTDIR)/bin to path.  But the ./BUILD script does that.
+ echo "Your qmake version is:"
+-qmake-qt4 --version 
++qmake --version 
+ 
+ echo
+ echo "Your gcc version is (unless qmake is set up to use a different one):"
+@@ -24,8 +24,8 @@
+ VERSION_NUMBER=`./VERSION`
+ 
+ echo
+-echo "Running qmake-qt4 with CONFIG_OPTS=$CONFIG_OPTS VERSION_NUMBER=$VERSION_NUMBER..."
++echo "Running qmake with CONFIG_OPTS=$CONFIG_OPTS VERSION_NUMBER=$VERSION_NUMBER..."
+ 
+-qmake-qt4 "CONFIG_OPTS=$CONFIG_OPTS" "VERSION_NUMBER=$VERSION_NUMBER" main.pro 
++qmake "CONFIG_OPTS=$CONFIG_OPTS" "VERSION_NUMBER=$VERSION_NUMBER" main.pro 
+ 
+ echo "...configuration completed - ready to do 'make' now"

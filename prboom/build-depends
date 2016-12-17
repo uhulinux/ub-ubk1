@@ -1,10 +1,6 @@
 audiofile-dev
 esound-dev
 glu-dev
-libx11-dev
-libxext-dev
-libxt-dev
-qt4-dev
 sdl-dev
 sdl-mixer-dev
 sdl-net-dev

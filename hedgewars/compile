@@ -10,4 +10,3 @@ ub_compile \
 	-DGHFLAGS=-dynamic \
 	-DFONTS_DIRS="/usr/share/fonts/truetype" \
 	-DFPFLAGS="-k/usr/lib/libgcc_s.so.1"
-

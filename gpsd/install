@@ -1,9 +1,4 @@
 #!/bin/sh -eux
 
-export CFLAGS=-std=gnu++98
-export CXXFLAGS=-std=gnu++98
 export DESTDIR="$UB_INSTALLDIR"
 scons install prefix=/usr
-
-#this header is necessary for kdeedu
-cp -a gpsd_config.h "$UB_INSTALLDIR"/usr/include/

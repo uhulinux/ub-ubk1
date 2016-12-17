@@ -7,5 +7,4 @@ libvorbis-dev
 portaudio-dev
 pulseaudio-dev
 qt4-dev
-sdl-sound-dev
 sdl2-dev

@@ -7,7 +7,7 @@
 	| peritus@freemail.hu |		2015-09-09
 
 fix patch
-	
+
 ------------------------------------------------------------------------
 	| peritus@freemail.hu |		2015-07-15
 
@@ -79,7 +79,6 @@ r25315 | peritus@freemail.hu | 2011-04-08 22:23:29 +0200 (Fri, 08 Apr 2011) | 6 
 acquire fix
 build-depends fix
 update patch
-
 
 ------------------------------------------------------------------------
 r23625 | peritus@freemail.hu | 2010-05-16 20:35:39 +0200 (Sun, 16 May 2010) | 3 lines

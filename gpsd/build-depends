@@ -8,6 +8,5 @@ libxext-dev
 libxpm-dev
 libxslt-dev
 python-dev
-qt4-dev
 scons
 xmlto

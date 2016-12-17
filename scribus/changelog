@@ -24,7 +24,6 @@ r32709 | galamb15@kabelszat2002.hu | 2013-07-14 12:16:32 +0200 (Sun, 14 Jul 2013
 acquire fix
 add u2d
 
-
 ------------------------------------------------------------------------
 r28768 | galamb15@kabelszat2002.hu | 2012-05-14 19:08:35 +0200 (Mon, 14 May 2012) | 7 lines
 
@@ -33,7 +32,6 @@ acquire fix
 build-depends fix - qt4
 fix menu and hyph patches
 add scribus-doc package
-
 
 ------------------------------------------------------------------------
 r18965 | ntomasz@uhuklub.hu | 2009-06-21 18:34:08 +0200 (Sun, 21 Jun 2009) | 3 lines

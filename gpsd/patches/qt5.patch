@@ -1,0 +1,48 @@
+diff -Naur orig/compiler.h patched/compiler.h
+--- orig/compiler.h	2016-01-05 01:41:42.000000000 +0100
++++ patched/compiler.h	2016-12-17 16:34:01.286091635 +0100
+@@ -90,7 +90,7 @@
+   /* we are C++ */
+   #if __cplusplus >= 201103L
+     /* C++11 and later has atomics, earlier do not */
+-    atomic_thread_fence(memory_order_seq_cst);
++    std::atomic_thread_fence(std::memory_order_seq_cst);
+   #endif
+ #elif defined HAVE_STDATOMIC_H
+     /* we are C and atomics are in C98 and newer */
+diff -Naur orig/Qgpsmm.pc.in patched/Qgpsmm.pc.in
+--- orig/Qgpsmm.pc.in	2015-05-01 20:27:25.000000000 +0200
++++ patched/Qgpsmm.pc.in	2016-12-17 15:53:24.432219568 +0100
+@@ -8,6 +8,6 @@
+ Description: GPS Daemon communication library - QT binding
+ Version: @VERSION@
+ Libs: -L${libdir} -lQgpsmm
+-Libs.private: -L/usr/lib  -lQtNetwork -lQtCore -lpthread
++Libs.private: -L/usr/lib  -lQt5Network -lQt5Core -lpthread
+ Cflags:  -I${includedir}
+-Requires: QtNetwork
++Requires: Qt5Network
+diff -Naur orig/SConstruct patched/SConstruct
+--- orig/SConstruct	2016-01-08 20:25:48.000000000 +0100
++++ patched/SConstruct	2016-12-17 15:53:49.416495739 +0100
+@@ -785,7 +785,7 @@
+                                           src_suffix=".xml", suffix=".html")
+ 
+     # Determine if Qt network libraries are present, and if not, force qt to off
+-    qt_network = config.CheckPKG('QtNetwork')
++    qt_network = config.CheckPKG('Qt5Network')
+     if not qt_network:
+         env["qt"] = False
+ 
+@@ -813,9 +813,9 @@
+         qt_env.MergeFlags('-DUSE_QT')
+         qt_env.Append(OBJPREFIX='qt-')
+         try:
+-            qt_env.MergeFlags(pkg_config('QtNetwork'))
++            qt_env.MergeFlags(pkg_config('Qt5Network'))
+         except OSError:
+-            announce("pkg_config is confused about the state of QtNetwork.")
++            announce("pkg_config is confused about the state of Qt5Network.")
+             qt_env = None
+     else:
+         qt_env = None
