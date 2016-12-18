@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
-sgrep-$UB_VERSION.tar.gz sgrep-$UB_VERSION/
-	 ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/
-	ftp://ftp.cs.helsinki.fi/pub/Software/Local/Sgrep/
+sgrep_$UB_VERSION.orig.tar.gz sgrep-$UB_VERSION/
+	http://http.debian.net/debian/pool/main/s/sgrep/sgrep_1.94a.orig.tar.gz
+
