@@ -1,2 +1,2 @@
-dir=$(urllist http://pub.mate-desktop.org/releases/ | grep -E '^([0-9.]+)?$' | sort -V | tail -n 1)
-urllist http://pub.mate-desktop.org/releases/$dir/ | splitver '^mate-icon-theme-faenza-([0-9.]+).tar.xz$' | sort -V | tail -n 1
+u2dsubdir http://pub.mate-desktop.org/releases/ mate-icon-theme-faenza-
+u2dsubdir http://pub.mate-desktop.org/releases/ mate-icon-theme-faenza-
