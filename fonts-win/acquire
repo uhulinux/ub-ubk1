@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-winfonts.tar.xz winfonts/
+winfonts-${UB_VERSION}.tar.xz winfonts/
     http://rezso.net/src/winfonts/
