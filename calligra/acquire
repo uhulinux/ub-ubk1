@@ -1,0 +1,5 @@
+#!/usr/bin/env dl
+
+calligra-${UB_VERSION}.tar.gz calligra-${UB_VERSION}/
+	http://download.kde.org/stable/calligra-${UB_VERSION}/
+	http://download.kde.org/unstable/calligra-${UB_VERSION}/

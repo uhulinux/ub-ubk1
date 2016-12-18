@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+#okular-${UB_VERSION}.tar.xz okular-${UB_VERSION}/
+#	http://download.kde.org/stable/applications/${UB_VERSION_HEAD3}/src/
+
+v${UB_VERSION}.tar.gz okular-${UB_VERSION}/
+	https://github.com/KDE/okular/archive/v16.11.80.tar.gz

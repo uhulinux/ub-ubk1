@@ -134,5 +134,8 @@ baloo-widgets
 ffmpegthumbs
 dolphin
 dolphin-plugins
+ark
+okular
+calligra
 kde
 kde-apps
