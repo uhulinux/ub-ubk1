@@ -119,4 +119,3 @@ diff --git a/OgreMain/src/OgreProgressiveMeshGenerator.cpp b/OgreMain/src/OgrePr
  
  void ProgressiveMeshGenerator::addIndexData(IndexData* indexData, bool useSharedVertexLookup, unsigned short submeshID)
  {
-
