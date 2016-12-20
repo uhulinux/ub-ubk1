@@ -1,6 +1,5 @@
 audiofile-dev
 cdparanoia-dev
-cmake
 dbus-dev
 extra-cmake-modules
 ffmpeg-dev
