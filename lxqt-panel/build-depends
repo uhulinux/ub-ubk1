@@ -1,6 +1,6 @@
 alsa-lib-dev
-cmake
 kguiaddons-dev
+kwindowsystem-dev
 libdbusmenu-qt-dev
 liblxqt-dev
 libqtxdg-dev
