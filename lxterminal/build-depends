@@ -1,3 +1,6 @@
-gtk2-dev
+docbook-dtds
+docbook-xsl
+gtk-dev
 intltool
-vte2-dev
+libxslt-dev
+vte-dev

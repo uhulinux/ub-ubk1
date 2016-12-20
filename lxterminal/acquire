@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-lxterminal-$UB_VERSION.tar.gz lxterminal-$UB_VERSION/
-	http://download.sourceforge.net/lxde/
+$UB_VERSION.tar.gz lxterminal-$UB_VERSION/
+	https://github.com/lxde/lxterminal/archive/
