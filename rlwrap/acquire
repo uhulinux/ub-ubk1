@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-rlwrap-${UB_VERSION}.tar.gz rlwrap-${UB_VERSION}/
-	http://utopia.knoware.nl/~hlub/rlwrap/
+v${UB_VERSION}.tar.gz rlwrap-${UB_VERSION}/
+	https://github.com/hanslub42/rlwrap/archive/
