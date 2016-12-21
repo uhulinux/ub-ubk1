@@ -3,6 +3,3 @@
 tiff-"$UB_VERSION".tar.gz tiff-"$UB_VERSION"/
 	http://download.osgeo.org/libtiff/
 	http://download.osgeo.org/libtiff/old/
-	ftp://ftp.remotesensing.org/pub/libtiff/
-	ftp://ftp.remotesensing.org/pub/libtiff/old/
-
