@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 lazarus-${UB_VERSION}-0.tar.gz lazarus/
-	https://sourceforge.net/projects/lazarus/files/Lazarus%20Zip%20_%20GZip/Lazarus%201.6/
+    http://downloads.sourceforge.net/project/lazarus/Lazarus%20Zip%20_%20GZip/Lazarus%20${UB_VERSION}/

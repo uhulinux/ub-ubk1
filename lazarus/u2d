@@ -1,1 +1,1 @@
-_geturl https://sourceforge.net/projects/lazarus/files/Lazarus%20Zip%20_%20GZip/ | grep 'latest version' | sed s/.*lazarus-// | sed s/-.*//
+urllist https://sourceforge.net/projects/lazarus/files/Lazarus%20Zip%20_%20GZip/ | grep '^Lazarus ' | sort -V | tail -n 1 | sed 's/.* //g' 
