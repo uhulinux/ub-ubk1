@@ -73,4 +73,3 @@ ln -s "libvdpau_nvidia.so.$UB_VERSION" libvdpau_nvidia.so
 ln -s "libnvcuvid.so.$UB_VERSION" libnvcuvid.so.1
 ln -s libnvcuvid.so.1 libnvcuvid.so
 ln -s "libcuda.so.$UB_VERSION" libcuda.so
-

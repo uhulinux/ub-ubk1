@@ -7,7 +7,7 @@ moduldir="$UB_COMPILEDIR/lib/modules/"$KVER"/kernel/drivers"
 mkdir -p $moduldir
 #kicsomagolás és belépés
 chmod +x $forras.run
-./$forras.run -x 
+./$forras.run -x
 rm $forras.run
 cd $forras
 patch -i "$UB_SRCDIR"/patches/menu.patch.skip

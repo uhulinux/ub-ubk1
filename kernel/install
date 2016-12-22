@@ -23,10 +23,8 @@ export KBUILD_BUILD_TIMESTAMP="$(LC_ALL=C LANG=C date)"
 cat >"$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel <<END
 #!/bin/sh
 
-
 mkinitrd $VERSION.i386
 mkinitrd $VERSION.x86_64
-
 
 rm -f /boot/initrd.i386.gz
 ln -s initrd-$VERSION.i386.gz /boot/initrd.i386.gz
@@ -44,4 +42,3 @@ chmod 755 "$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel
 cp -al "$UB_OBJECTDIR"/. "$UB_INSTALLDIR"/
 
 chmod -R a+rX,u+w,go-w "$UB_INSTALLDIR"
-

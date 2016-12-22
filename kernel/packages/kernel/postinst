@@ -9,4 +9,3 @@ if [ "$(stat -c %d:%i /)" = "$(stat -c %d:%i /proc/1/root/.)" ]; then
 	fi
 	exec grub-mkconfig -o /boot/grub/grub.cfg
 fi
-

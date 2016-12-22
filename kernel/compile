@@ -122,4 +122,3 @@ done
 
 # bzImage symlink
 # ln -s "$bzimage.i386" "$UB_OBJECTDIR/boot/$bzimage"
-

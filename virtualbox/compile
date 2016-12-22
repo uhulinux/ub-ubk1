@@ -14,4 +14,3 @@ kmk all
 cd ./out/linux.x86/release/bin/src
 ub_make \
 	KERN_DIR="/usr/src/`readlink /usr/src/linux`"
-

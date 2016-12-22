@@ -54,4 +54,3 @@ do
 done
 
 mv Oracle_VM_VirtualBox_Extension_Pack.vbox-extpack "$UB_INSTALLDIR"/usr/lib/virtualbox/ExtensionPacks/
-
