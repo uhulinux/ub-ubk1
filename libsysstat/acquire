@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-libsysstat-${UB_VERSION}.tar.xz libsysstat-${UB_VERSION}/
-	http://downloads.lxqt.org/libsysstat/${UB_VERSION}/
+${UB_VERSION}.tar.gz libsysstat-${UB_VERSION}/
+	https://github.com/lxde/libsysstat/archive/

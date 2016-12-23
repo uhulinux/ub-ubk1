@@ -2,6 +2,3 @@
 
 ${UB_VERSION}.tar.gz lxqt-session-${UB_VERSION}/
 	https://github.com/lxde/lxqt-session/archive/
-
-#lxqt-session-${UB_VERSION}.tar.gz lxqt-session-e7a2e50/
-#	git://github.com/lxde/lxqt-session.git@e7a2e50

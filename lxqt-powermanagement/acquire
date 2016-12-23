@@ -2,6 +2,3 @@
 
 ${UB_VERSION}.tar.gz lxqt-powermanagement-${UB_VERSION}/
 	https://github.com/lxde/lxqt-powermanagement/archive/
-
-#lxqt-powermanagement-${UB_VERSION}.tar.gz lxqt-powermanagement-e837f28/
-#	git://github.com/lxde/lxqt-powermanagement.git@e837f28

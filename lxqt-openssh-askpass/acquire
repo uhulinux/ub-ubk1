@@ -2,6 +2,3 @@
 
 ${UB_VERSION}.tar.gz lxqt-openssh-askpass-${UB_VERSION}/
 	https://github.com/lxde/lxqt-openssh-askpass/archive/
-
-#lxqt-openssh-askpass-${UB_VERSION}.tar.gz lxqt-openssh-askpass-9d3be71/
-#	git://github.com/lxde/lxqt-openssh-askpass.git@9d3be71

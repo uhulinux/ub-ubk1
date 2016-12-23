@@ -2,6 +2,3 @@
 
 ${UB_VERSION}.tar.gz lxqt-notificationd-${UB_VERSION}/
 	https://github.com/lxde/lxqt-notificationd/archive/
-
-#lxqt-notificationd-${UB_VERSION}.tar.gz lxqt-notificationd-0ff373b/
-#	git://github.com/lxde/lxqt-notificationd.git@0ff373b

@@ -2,6 +2,3 @@
 
 ${UB_VERSION}.tar.gz obconf-qt-${UB_VERSION}/
 	https://github.com/lxde/obconf-qt/archive/
-
-#obconf-qt-${UB_VERSION}.tar.gz obconf-qt-9be4609/
-#	git://github.com/lxde/obconf-qt.git@9be4609
