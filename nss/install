@@ -41,7 +41,7 @@ mkdir -p "$UB_INSTALLDIR"/usr/bin
 cat nss-config.in | sed -e "s,@libdir@,/usr/lib,g" \
                         -e "s,@prefix@,/usr,g" \
 						-e "s,@exec_prefix@,/usr,g" \
-						-e "s,@includedir@,/usr/include/nss,g" \
+						-e "s,@includedir@,/usr/include/nss3,g" \
 						-e "s,@MOD_MAJOR_VERSION@,$NSS_VMAJOR,g" \
 						-e "s,@MOD_MINOR_VERSION@,$NSS_VMINOR,g" \
 						-e "s,@MOD_PATCH_VERSION@,$NSS_VPATCH,g" \
