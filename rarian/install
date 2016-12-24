@@ -4,4 +4,3 @@ ub_install
 
 mkdir -p "$UB_INSTALLDIR"/usr/share/xml/scrollkeeper/dtds
 cp data/scrollkeeper-omf.dtd "$UB_INSTALLDIR"/usr/share/xml/scrollkeeper/dtds
-

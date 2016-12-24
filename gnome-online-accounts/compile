@@ -11,4 +11,3 @@ ub_compile \
 	--enable-lastfm \
 	--enable-foursquare \
 	--enable-telepathy
-
