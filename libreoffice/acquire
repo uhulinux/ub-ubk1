@@ -1,15 +1,15 @@
 #!/usr/bin/env dl
 
-libreoffice-${UB_VERSION/~/.}.tar.xz libreoffice-${UB_VERSION/~/.}/
+libreoffice-${UB_VERSION/~/.}-buildfix1.tar.xz libreoffice-${UB_VERSION/~/.}-buildfix1/
 	http://download.documentfoundation.org/libreoffice/src/${UB_VERSION_HEAD3}/
 
-libreoffice-dictionaries-${UB_VERSION/~/.}.tar.xz libreoffice-${UB_VERSION/~/.}/
+libreoffice-dictionaries-${UB_VERSION/~/.}-buildfix1.tar.xz libreoffice-${UB_VERSION/~/.}-buildfix1/
 	http://download.documentfoundation.org/libreoffice/src/${UB_VERSION_HEAD3}/
 
-libreoffice-help-${UB_VERSION/~/.}.tar.xz libreoffice-${UB_VERSION/~/.}/
+libreoffice-help-${UB_VERSION/~/.}-buildfix1.tar.xz libreoffice-${UB_VERSION/~/.}-buildfix1/
 	http://download.documentfoundation.org/libreoffice/src/${UB_VERSION_HEAD3}/
 
-libreoffice-translations-${UB_VERSION/~/.}.tar.xz libreoffice-${UB_VERSION/~/.}/
+libreoffice-translations-${UB_VERSION/~/.}-buildfix1.tar.xz libreoffice-${UB_VERSION/~/.}-buildfix1/
 	http://download.documentfoundation.org/libreoffice/src/${UB_VERSION_HEAD3}/
 
 # extra packs

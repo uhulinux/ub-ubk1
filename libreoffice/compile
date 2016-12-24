@@ -25,8 +25,5 @@ mv *.{gz,zip,bz2} src/
 ./autogen.sh \
 	--with-distro=LibreOfficeUHU
 
-# --disable-gnome-vfs van...
-sed -i 's/uses_gnomevfs=true/uses_gnomevfs=false/g' sysui/desktop/mimetypes/openoffice.applications
-
 # az unitcheck és a slowcheck nem kell
 make build-nocheck
