@@ -3,20 +3,22 @@
 install -m 755 dist/*.OBJ/lib/*.so "$UB_INSTALLDIR"/usr/lib
 
 install -m 644 dist/*.OBJ/lib/*.chk "$UB_INSTALLDIR"/usr/lib
-  
+
 for file in libcrmf.a libnssb.a libnssckfw.a; do
 	install -m 644 dist/*.OBJ/lib/"$file" "$UB_INSTALLDIR"/usr/lib
 done
-	
-for file in certutil modutil pk12util signtool ssltap; do
+
+for file in certutil cmsutil crlutil derdump modutil pk12util pp \
+	shlibsign signtool signver ssltap symkeyutil vfychain vfyserv; do
 	install -m 755 dist/*.OBJ/bin/"$file" "$UB_INSTALLDIR"/usr/bin
 done
-  
+
 mkdir -p "$UB_INSTALLDIR"/usr/include/nss3
 for file in dist/public/nss/*.h; do
 	install -m 644 "$file" "$UB_INSTALLDIR"/usr/include/nss3
 done
 
+ln -s libnssckbi.so "$UB_INSTALLDIR"/usr/lib/libnssckbi-p11-kit.so
 
 NSPR_VERSION=`pkg-config --modversion nspr`
 
@@ -39,12 +41,9 @@ mkdir -p "$UB_INSTALLDIR"/usr/bin
 cat nss-config.in | sed -e "s,@libdir@,/usr/lib,g" \
                         -e "s,@prefix@,/usr,g" \
 						-e "s,@exec_prefix@,/usr,g" \
-						-e "s,@includedir@,/usr/include/nss3,g" \
+						-e "s,@includedir@,/usr/include/nss,g" \
 						-e "s,@MOD_MAJOR_VERSION@,$NSS_VMAJOR,g" \
 						-e "s,@MOD_MINOR_VERSION@,$NSS_VMINOR,g" \
 						-e "s,@MOD_PATCH_VERSION@,$NSS_VPATCH,g" \
 						> "$UB_INSTALLDIR"/usr/bin/nss-config
 chmod 755 "$UB_INSTALLDIR"/usr/bin/nss-config
-
-mkdir -p "$UB_INSTALLDIR"/usr/lib/ssl/certs/
-mk-ca-bundle.pl -f -d file:///"$(readlink -f lib/ckfw/builtins/certdata.txt)" "$UB_INSTALLDIR"/usr/lib/ssl/certs/ca-cert.pem

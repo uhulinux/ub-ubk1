@@ -5,7 +5,6 @@
 	/usr/include
 	/usr/lib/**/*.a
 	/usr/lib/**/*.la
-@	/usr/lib/**/*.so
 	/usr/lib/*/include
 	/usr/lib/*Conf.sh
 	/usr/lib/pkgconfig

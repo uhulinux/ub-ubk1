@@ -1,7 +1,10 @@
 #!/usr/bin/env dl
 
-ca-certificates_"$UB_VERSION"_all.deb .
-	http://ftp.de.debian.org/debian/pool/main/c/ca-certificates/
+CAcert.org_root.crt
+	https://www.cacert.org/certs/root.crt
 
-#ca-certificates_"$UB_VERSION".tar.gz ca-certificates-"$UB_VERSION"/
-#	http://ftp.de.debian.org/debian/pool/main/c/ca-certificates/
+CAcert.org_class3.crt
+	https://www.cacert.org/certs/root.crt
+
+nss-${UB_VERSION}.tar.gz nss-${UB_VERSION}/nss/
+	http://ftp.mozilla.org/pub/security/nss/releases/NSS_${UB_VERSION//./_}_RTM/src/
