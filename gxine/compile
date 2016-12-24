@@ -5,4 +5,3 @@ ub_compile \
 	--with-logo-format=image \
 	--disable-integration-wizard \
 	--disable-deprecated
-
