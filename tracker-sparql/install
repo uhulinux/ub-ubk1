@@ -4,4 +4,3 @@ make DESTDIR="${UB_INSTALLDIR}" -C src/libtracker-common install-libtracker_comm
 make DESTDIR="${UB_INSTALLDIR}" -C src/libtracker-data install-libtracker_dataLTLIBRARIES
 make DESTDIR="${UB_INSTALLDIR}" -C src/libtracker-sparql install
 make DESTDIR="${UB_INSTALLDIR}" -C src/libtracker-sparql-backend install
-
