@@ -5,7 +5,7 @@ if [ -d "/usr/share/ca-certificates" ] ; then
 	# to include their stuff in the db.
 	# However it's too overzealous when the user has custom certs in place.
 	# --fresh is to clean up dangling symlinks
-	/usr/sbin/update-ca-trust
+	/usr/bin/update-ca-trust
 fi
 badcerts=0
 for c in $(find -L /etc/ssl/certs/ -type l) ; do

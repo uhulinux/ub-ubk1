@@ -16,4 +16,4 @@ install -Dm644 CAcert.org_class3.crt "$_certdir"/anchors/
 install -d "$UB_INSTALLDIR"/{etc,usr/share}/ca-certificates/trust-source/{anchors,blacklist}
 
 # Directories used by update-ca-trust (aka "trust extract-compat")
-install -d "$UB_INSTALLDIR"/etc/{ssl/certs/java,ca-certificates/extracted}
+install -d "$UB_INSTALLDIR"/etc/pki/ca-trust/extracted/{java,pem,openssl}
