@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
-autoreconf -if
+# autoreconf -if
 ub_compile
