@@ -1,6 +1,6 @@
 diff -Naur orig/suite/browser/browser-prefs.js patched/suite/browser/browser-prefs.js
---- orig/suite/browser/browser-prefs.js	2015-01-13 05:25:42.000000000 +0100
-+++ patched/suite/browser/browser-prefs.js	2015-01-14 20:25:33.938561179 +0100
+--- orig/suite/browser/browser-prefs.js	2016-12-14 02:58:06.000000000 +0100
++++ patched/suite/browser/browser-prefs.js	2016-12-25 16:38:35.467110976 +0100
 @@ -20,6 +20,9 @@
  pref("startup.homepage_override_url","chrome://navigator-region/locale/region.properties");
  pref("general.skins.selectedSkin", "classic/1.0");
@@ -20,22 +20,20 @@ diff -Naur orig/suite/browser/browser-prefs.js patched/suite/browser/browser-pre
  pref("browser.download.manager.showWhenStarting", true);
  pref("browser.download.manager.focusWhenStarting", false);
  pref("browser.download.manager.closeWhenDone", false);
-@@ -494,12 +497,12 @@
+@@ -479,10 +482,10 @@
  // App-specific update preferences
  
  // Whether or not app updates are enabled
 -pref("app.update.enabled", true);
 +pref("app.update.enabled", false);
   
- // This preference turns on app.update.mode and allows automatic download and
- // install to take place. We use a separate boolean toggle for this to make
- // the UI easier to construct.
+ // This preference allows automatic download and install to take place.
 -pref("app.update.auto", true);
 +pref("app.update.auto", false);
  
- // Defines how the Application Update Service notifies the user about updates:
- //
-@@ -633,7 +636,8 @@
+ // If set to true, the Update Service will present no UI for any event.
+ pref("app.update.silent", false);
+@@ -587,7 +590,8 @@
  // Disable add-ons installed into the shared user and shared system areas by
  // default. This does not include the application directory. See the SCOPE
  // constants in AddonManager.jsm for values to use here.
