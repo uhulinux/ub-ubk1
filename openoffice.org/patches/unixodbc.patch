@@ -1,0 +1,28 @@
+diff -Naur orig/main/dbaccess/source/ui/dlg/odbcconfig.cxx patched/main/dbaccess/source/ui/dlg/odbcconfig.cxx
+--- orig/main/dbaccess/source/ui/dlg/odbcconfig.cxx	2016-11-23 01:11:56.000000000 +0100
++++ patched/main/dbaccess/source/ui/dlg/odbcconfig.cxx	2016-12-25 13:42:47.872942176 +0100
+@@ -65,8 +65,8 @@
+ #define ODBC_LIBRARY		"libiodbc.dylib"
+ #define ODBC_UI_LIBRARY		"libiodbcinst.dylib"
+ #else
+-#define ODBC_LIBRARY_1		"libodbc.so.1"
+-#define ODBC_UI_LIBRARY_1	"libodbcinst.so.1"
++#define ODBC_LIBRARY_1		"libodbc.so.2"
++#define ODBC_UI_LIBRARY_1	"libodbcinst.so.2"
+ #define ODBC_LIBRARY		"libodbc.so"
+ #define ODBC_UI_LIBRARY		"libodbcinst.so"
+ #endif
+@@ -91,13 +91,7 @@
+ #define DONT_TD_VOID
+ #endif
+ 
+-#ifdef SYSTEM_ODBC_HEADERS
+ #include <sqlext.h>
+-#else
+-#ifndef __SQLEXT_H
+-#include <odbc/sqlext.h>
+-#endif
+-#endif
+ 
+ #if defined(WNT)
+ #if defined _MSC_VER

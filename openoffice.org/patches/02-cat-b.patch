@@ -1,0 +1,24 @@
+diff -Naur orig/main/configure.ac patched/main/configure.ac
+--- orig/main/configure.ac	2016-12-25 21:30:44.000000000 +0100
++++ patched/main/configure.ac	2016-12-28 05:06:03.052117787 +0100
+@@ -1420,16 +1420,16 @@
+    AC_MSG_RESULT([yes: allow modules nss, hunspell, hyphen, saxon, rhino, beanshell, graphite, coinmp to be built])
+ else
+    # Disable libraries.
+-   enable_nss_module="no"
+-   enable_hunspell="no"
+-   enable_hyphen="no"
++   enable_nss_module="yes"
++   enable_hunspell="yes"
++   enable_hyphen="yes"
+    enable_saxon="no"
+    enable_javascript="no"
+    enable_graphite="no"
+    enable_coinmp="no"
+    enable_category_b_fonts="no"
+ 
+-   AC_MSG_RESULT([no: disabled modules nss, hunspell, hyphen, saxon, rhino, graphite, coinmp])
++   AC_MSG_RESULT([no: disabled modules saxon, rhino, graphite, coinmp])
+ fi
+ AC_SUBST(ENABLE_CATEGORY_B)
+ 

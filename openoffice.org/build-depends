@@ -14,6 +14,7 @@ hunspell-dev
 hunspell-hu
 hyphen-dev
 java-jdk
+libwpd-dev
 libxslt-dev
 libxt-dev
 nss-dev
@@ -21,7 +22,6 @@ perl-archive-zip
 perl-libwww
 perl-lwp-protocol-https
 perl-xml-parser
-poppler-dev
 python-dev
 redland-dev
 sane-backends-dev

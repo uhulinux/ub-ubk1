@@ -7,16 +7,23 @@ fi
 
 # átpakolunk az /ext_sources alá mindent, mert
 # ott fogja keresni a letöltött forráscsomagokat
-mkdir ext_sources
-mv *.{gz,bz2,tgz,zip} ext_sources/
+if [ ! -d ext_sources ]; then
+	mkdir ext_sources
+fi
+# mv *.{gz,bz2,tgz,zip} ext_sources/
+mv *.bz2 ext_sources/
 
 cd main/
 
+# fix script permissions
+find . \( -name "*.sh" -o -name "*.pl" -o -name "*.py" \) -exec chmod +x {} \;
+
 export JAVA_HOME=/usr/lib/java
-export QT4DIR="/usr/lib/qt4"
-export QT4INC="/usr/lib/qt4/include"
-export QT4LIB="/usr/lib/qt4/lib"
-export LDFLAGS="-Wl,-rpath,/usr/lib/openoffice4/program/"
+
+export LDFLAGS="-Wl,-rpath,/usr/lib/openoffice4/program/ -Wl,--as-needed"
+
+export CPPFLAGS="-Wno-deprecated-declarations"
+export CXXFLAGS="-std=c++11"
 
 autoconf
 
@@ -41,9 +48,9 @@ autoconf
 	--without-junit \
 	--with-system-hyphen \
 	--without-system-hsqldb \
+	--without-system-boost \
 	--without-system-icu \
 	--without-system-jpeg \
-	--without-system-libwpd \
 	--without-system-lucene \
 	--without-system-mdds \
 	--without-system-mythes \
@@ -58,6 +65,8 @@ autoconf
 	--disable-online-update \
 	--disable-pdfimport \
 	--disable-saxon \
+	--disable-unit-tests \
+	--disable-werror \
 	--enable-crashdump \
 	--enable-gio \
 	--enable-gstreamer \
@@ -71,5 +80,3 @@ cd instsetoo_native
 
 # build --all --show -P2 -- -P2
 build --all -P2 -- -P2
-
-

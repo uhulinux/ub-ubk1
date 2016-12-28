@@ -1,29 +1,7 @@
-diff -Naur orig/main/configure.in patched/main/configure.in
---- orig/main/configure.in	2016-09-21 23:02:50.000000000 +0200
-+++ patched/main/configure.in	2016-10-15 03:48:38.895033941 +0200
-@@ -1416,9 +1416,9 @@
-    AC_MSG_RESULT([yes: allow modules nss, hunspell, hyphen, saxon, rhino, beanshell, graphite, coinmp to be built])
- else
-    # Disable libaries.
--   enable_nss_module="no"
--   enable_hunspell="no"
--   enable_hyphen="no"
-+   enable_nss_module="yes"
-+   enable_hunspell="yes"
-+   enable_hyphen="yes"
-    enable_saxon="no"
-    enable_javascript="no"
-    enable_beanshell="no"
-@@ -1426,7 +1426,7 @@
-    enable_coinmp="no"
-    enable_category_b_fonts="no"
- 
--   AC_MSG_RESULT([no: disabled modules nss, hunspell, hyphen, saxon, rhino, beanshell, graphite, coinmp])
-+   AC_MSG_RESULT([no: disabled modules saxon, rhino, beanshell, graphite, coinmp])
- fi
- AC_SUBST(ENABLE_CATEGORY_B)
- 
-@@ -4048,6 +4048,7 @@
+diff -Naur orig/main/configure.ac patched/main/configure.ac
+--- orig/main/configure.ac	2016-12-25 21:30:44.000000000 +0100
++++ patched/main/configure.ac	2016-12-28 05:02:53.950188664 +0100
+@@ -3931,6 +3931,7 @@
  dnl ===================================================================
  dnl Check for system lucene
  dnl ===================================================================
@@ -31,7 +9,7 @@ diff -Naur orig/main/configure.in patched/main/configure.in
  AC_MSG_CHECKING([which lucene to use])
  if test -n "$with_system_lucene" -o -n "$with_system_libs" && \
         test "$with_system_lucene" != "no" && test "$with_system_jars" != "no"; then
-@@ -4125,6 +4126,7 @@
+@@ -4008,6 +4009,7 @@
  AC_SUBST(SYSTEM_LUCENE)
  AC_SUBST(LUCENE_CORE_JAR)
  AC_SUBST(LUCENE_ANALYZERS_JAR)
@@ -39,7 +17,7 @@ diff -Naur orig/main/configure.in patched/main/configure.in
  
  AC_MSG_CHECKING([whether to build the MySQL Connector extension])
  if test -n "$enable_mysql_connector" -a "$enable_mysql_connector" != "no"; then
-@@ -4240,6 +4242,7 @@
+@@ -4123,6 +4125,7 @@
  dnl ===================================================================
  dnl Check for system hsqldb
  dnl ===================================================================
@@ -47,7 +25,7 @@ diff -Naur orig/main/configure.in patched/main/configure.in
  AC_MSG_CHECKING([which hsqldb to use])
  if test -n "$with_system_hsqldb" -o -n "$with_system_libs" && \
         test "$with_system_hsqldb" != "no" && test "$with_system_jars" != "no"; then
-@@ -4284,6 +4287,7 @@
+@@ -4167,6 +4170,7 @@
  fi
  AC_SUBST(SYSTEM_HSQLDB)
  AC_SUBST(HSQLDB_JAR)
@@ -55,7 +33,7 @@ diff -Naur orig/main/configure.in patched/main/configure.in
  
  dnl ===================================================================
  dnl Check for system beanshell
-@@ -6539,8 +6543,8 @@
+@@ -6448,8 +6452,8 @@
  KDE4_LIBS=""
  MOC4="moc"
  if test "$test_kde4" = "yes" -a "$ENABLE_KDE4" = "TRUE" ; then
@@ -66,7 +44,7 @@ diff -Naur orig/main/configure.in patched/main/configure.in
     
     kde_incdirs="/usr/include /usr/include/kde4 $x_includes"
     kde_libdirs="/usr/lib /usr/lib/kde4 /usr/lib/kde4/devel $x_libraries"
-@@ -6597,7 +6601,7 @@
+@@ -6506,7 +6510,7 @@
     AC_PATH_PROG( MOCQT4, moc-qt4, no, [$QT4DIR/bin:$PATH] )
     MOC4="$MOCQT4"
     if test "$MOC4" = "no" ; then
@@ -75,7 +53,7 @@ diff -Naur orig/main/configure.in patched/main/configure.in
        if test "$MOC4" = "no" ; then
           AC_MSG_ERROR([Qt Meta Object Compiler not found.  Please specify the root of your Qt installation by exporting QT4DIR before running "configure".])
        fi
-@@ -7089,7 +7093,6 @@
+@@ -6998,7 +7002,6 @@
     AC_MSG_RESULT([Ant lib directory found.])
  fi
  AC_SUBST(ANT_LIB)
@@ -83,7 +61,7 @@ diff -Naur orig/main/configure.in patched/main/configure.in
  
  ant_minver=1.6.0
  # update for more extensions...
-@@ -7159,6 +7162,7 @@
+@@ -7068,6 +7071,7 @@
    fi
  fi
  rm -f conftest* core core.* *.core

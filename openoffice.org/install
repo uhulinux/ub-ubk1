@@ -3,7 +3,7 @@
 cd main
 
 source ./LinuxX86Env.Set.sh
- 
+
 export DESTDIR="$UB_INSTALLDIR"
 export KDEMAINDIR=/usr
 export GNOMEDIR=/usr

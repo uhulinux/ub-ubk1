@@ -1,0 +1,30 @@
+diff -Naur orig/main/basebmp/inc/basebmp/packedpixeliterator.hxx patched/main/basebmp/inc/basebmp/packedpixeliterator.hxx
+--- orig/main/basebmp/inc/basebmp/packedpixeliterator.hxx	2016-11-23 22:17:07.000000000 +0100
++++ patched/main/basebmp/inc/basebmp/packedpixeliterator.hxx	2016-11-24 19:29:34.432593261 +0100
+@@ -83,7 +83,7 @@
+         num_intraword_positions=sizeof(value_type)*8/bits_per_pixel,
+         /** Bit mask for one pixel (least significant bits)
+          */
+-        bit_mask=~(~0 << bits_per_pixel)
++        bit_mask=~(~0U << bits_per_pixel)
+     };
+ 
+ private:
+@@ -253,7 +253,7 @@
+         num_intraword_positions=sizeof(value_type)*8/bits_per_pixel,
+         /** Bit mask for one pixel (least significant bits)
+          */
+-        bit_mask=~(~0 << bits_per_pixel)
++        bit_mask=~(~0U << bits_per_pixel)
+     };
+ 
+ private:
+@@ -506,7 +506,7 @@
+         num_intraword_positions=sizeof(value_type)*8/bits_per_pixel,
+         /** Bit mask for one pixel (least significant bits)
+          */
+-        bit_mask=~(~0 << bits_per_pixel)
++        bit_mask=~(~0U << bits_per_pixel)
+     };
+ 
+     // TODO(F2): direction of iteration (ImageIterator can be made to
