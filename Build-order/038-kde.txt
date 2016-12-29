@@ -1,3 +1,4 @@
+libdmtx
 gpgmepp
 lmdb
 packagekit-qt
@@ -21,6 +22,7 @@ kwindowsystem
 modemmanager-qt
 networkmanager-qt
 oxygen-icons5
+prison
 solid
 sonnet
 threadweaver
