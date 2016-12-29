@@ -1,1 +1,1 @@
-urllist https://bitbucket.org/cegui/cegui/downloads/ | splitver '^v([0-9\\-]+).tar.bz2$' | sed s/-/\./g | sort -V | tail -n 1
+u2d https://bitbucket.org/cegui/cegui/downloads/ cegui-
