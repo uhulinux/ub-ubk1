@@ -1,7 +1,6 @@
 #!/usr/bin/env dl
 
 crafty-${UB_VERSION}.zip .
-	http://www.craftychess.com/
 	http://www.craftychess.com/downloads/source/
 
 books.bin

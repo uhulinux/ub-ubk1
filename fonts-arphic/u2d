@@ -1,2 +1,1 @@
-urllist http://archive.ubuntu.com/ubuntu/pool/main/t/ttf-arphic-uming/ \
-  | splitver '^ttf-arphic-uming_([0-9.]+).orig.tar.gz$' | sort -V | tail -n 1
+u2d http://ftp.gnome.org/mirror/cdimage/snapshot/Debian/pool/main/t/ttf-arphic-uming/ ttf-arphic-uming_ .orig
