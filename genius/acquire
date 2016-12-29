@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-genius-${UB_VERSION}.tar.gz genius-${UB_VERSION}/
-	http://ftp.5z.com/pub/genius/
+genius_${UB_VERSION}.orig.tar.xz genius-${UB_VERSION}/
+	http://ftp.debian.org/debian/pool/main/g/genius/

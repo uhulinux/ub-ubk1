@@ -1,1 +1,1 @@
-sflist g2 g2 | splitver '^g2-([0-9.]+)$' | sort -V | tail -n 1
+u2d http://ftp.debian.org/debian/pool/main/g/g2/ g2_ .orig

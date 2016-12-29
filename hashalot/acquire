@@ -2,8 +2,3 @@
 
 hashalot_${UB_VERSION}.orig.tar.gz hashalot-${UB_VERSION}.orig/
 	https://launchpad.net/ubuntu/+archive/primary/+files/
-
-#hashalot-${UB_VERSION}.tar.gz hashalot-${UB_VERSION}/
-#	http://www.paranoiacs.org/~sluskyb/hacks/hashalot/
-#	http://www.paranoiacs.org/~sluskyb/hacks/hashalot/old/
-

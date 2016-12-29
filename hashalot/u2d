@@ -1,1 +1,1 @@
-urllist http://www.paranoiacs.org/~sluskyb/hacks/hashalot/  | parsever | sort -V | tail -n 1
+u2d http://ftp.debian.org/debian/pool/main/h/hashalot/ hashalot_ .orig
