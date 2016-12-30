@@ -1,1 +1,1 @@
-urllist http://mirrors.xbmc.org/releases/source/ | splitver '^([0-9.].+).tar.gz$' | sed 's/-[[:alpha:]]*//' | sort -V | tail -n 1
+urllist https://github.com/xbmc/xbmc/ | grep -E '^([0-9.]+)-' | sed s/-.*//g | sort -V | tail -n1

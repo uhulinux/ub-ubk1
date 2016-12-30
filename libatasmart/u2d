@@ -1,1 +1,1 @@
-urllist http://gd.tuwien.ac.at/linux/debian/pool/main/liba/libatasmart/ | splitver '^libatasmart_([0-9.]+).orig.tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d http://ftp.debian.org/debian/pool/main/liba/libatasmart/ libatasmart_ .orig
