@@ -1,1 +1,1 @@
-urllist http://linux.dell.com/libsmbios/download/libsmbios/ | splitver '^libsmbios-([0-9.]+)' | sort -V | tail -n 1 
+u2d https://github.com/dell/libsmbios/releases/ v
