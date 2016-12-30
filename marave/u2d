@@ -1,1 +1,1 @@
-curl -s https://raw.githubusercontent.com/xMoad/marave/master/setup.py | grep version= | sed s/.*=\'// | sed s/\'.*//
+curl -s -k https://raw.githubusercontent.com/xMoad/marave/master/setup.py | grep version= | sed s/.*=\'// | sed s/\'.*//

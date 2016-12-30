@@ -1,1 +1,1 @@
-curl -s https://raw.githubusercontent.com/Me-TV/Me-TV/master/VERSION | sed s/-.*//g
+curl -s -k https://raw.githubusercontent.com/Me-TV/Me-TV/master/VERSION | sed s/-.*//g
