@@ -1,5 +1,4 @@
 libdmtx
-gpgmepp
 lmdb
 packagekit-qt
 phonon
