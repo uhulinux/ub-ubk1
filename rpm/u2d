@@ -1,4 +1,1 @@
-for i in `urllist http://rpm.org/releases/ | splitver '^rpm-([0-9.]+)' | sort -V | tail -n 3`;do
-lista="$lista"$'\n'$(urllist http://rpm.org/releases/rpm-$i/ | parsever)
-done
-echo "$lista" | sort -V | tail -n 1
+u2d https://github.com/rpm-software-management/rpm/releases/ rpm-
