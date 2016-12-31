@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
-autoreconf -fi
-ub_compile
+ub_compile \
+	--enable-languages=cpp,qt
