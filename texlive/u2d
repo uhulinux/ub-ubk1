@@ -1,2 +1,4 @@
-year="$(urllist ftp://tug.org/historic/systems/texlive/ | sort -V | grep -E '^[0-9]+$' | tail -n 1)"
-urllist "ftp://tug.org/historic/systems/texlive/$year" | splitver '^texlive-([0-9.]+)-source.tar.xz$'
+project=ftp://tug.org/historic/systems/texlive
+for year in `urllist $project | grep -E '^[0-9.]+$'`;do
+u2d $project/$year/ texlive- -source
+done | sort -V | tail -n 1
