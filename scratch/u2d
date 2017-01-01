@@ -1,1 +1,1 @@
-urllist http://info.scratch.mit.edu/GPLv2_Licensed_Scratch_Code | splitver '^scratch-([0-9.]+).src.tar.gz$' | sort -V | tail -n 1
+u2d http://pkgs.fedoraproject.org/repo/pkgs/scratch/ scratch- .src
