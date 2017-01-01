@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
 arkanoidsb-${UB_VERSION}.tar.bz2 arkanoidsb/
-	ftp://ftp.tw.freebsd.org/pub/distfiles/
+	http://ftp.internat.freebsd.org/pub/FreeBSD/ports/distfiles/
 
