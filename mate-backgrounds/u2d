@@ -1,1 +1,4 @@
-u2dsubdir http://pub.mate-desktop.org/releases/ mate-backgrounds-
+project=http://pub.mate-desktop.org/releases/
+for dir in `urllist $project | grep -E '^[0-9.]+$'`;do
+u2d $project/$dir mate-backgrounds-
+done | sort -V | tail -n 1
