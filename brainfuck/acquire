@@ -1,11 +1,4 @@
 #!/usr/bin/env dl
 
-bff-${UB_VERSION}.tar.gz bff-${UB_VERSION}/
-	http://esoteric.voxelperfect.net/files/brainfuck/impl/
-
-mandelbrot.b
-	http://esoteric.voxelperfect.net/files/brainfuck/src/
-
-random.b
-	http://esoteric.voxelperfect.net/files/brainfuck/src/
-
+v${UB_VERSION}.tar.gz bff-${UB_VERSION}/
+	https://github.com/apankrat/bff/archive/
