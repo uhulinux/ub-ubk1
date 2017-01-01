@@ -1,3 +1,1 @@
-gitver=$(u2d https://github.com/mozzwald/wolf4sdl/releases/ v)
-webver=$(urllist http://homepage.o2mail.de/mkroll/downloads.html | splitver '^Wolf4SDL-([0-9.]+)-src.zip$' | sort -V | tail -n 1)
-if [ "$gitver" ];then echo "$gitver";else echo "$webver";fi
+curl -s -k https://raw.githubusercontent.com/mozzwald/wolf4sdl/master/Changes.txt | grep ^Wolf4SDL | sed 's/.* v//g' | sed 's/ .*//g' | sort -V | tail -n 1
