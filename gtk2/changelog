@@ -442,7 +442,6 @@ r6883 | janusz | 2004-07-13 10:01:08 +0200 (Tue, 13 Jul 2004) | 4 lines
 - build-depends fix
 - add shared-mime-info to depends
 
-
 ------------------------------------------------------------------------
 r6844 | janusz | 2004-07-12 12:10:45 +0200 (Mon, 12 Jul 2004) | 2 lines
 

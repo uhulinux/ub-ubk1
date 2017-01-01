@@ -3,7 +3,6 @@ doxygen
 gavl-dev
 gstreamer-dev
 gtk2-dev
-jasper-dev
 libdc1394-dev
 libjpeg-turbo-dev
 libraw1394-dev

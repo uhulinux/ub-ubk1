@@ -3,7 +3,6 @@ gdk-pixbuf-dev
 glib-dev
 gobject-introspection-dev
 gtk-doc
-jasper-dev
 libjpeg-turbo-dev
 libpng-dev
 libsm-dev

@@ -5,7 +5,6 @@ freetype2-dev
 ghostscript
 graphviz-dev
 imagemagick-dev
-jasper-dev
 libemf-dev
 libgd-dev
 libgsf-dev

@@ -12,8 +12,7 @@ build-depends fix
 r33185 | galamb15@kabelszat2002.hu | 2013-08-07 21:13:17 +0200 (Wed, 07 Aug 2013) | 4 lines
 
 2.4.2 -> 2.4.6.1
-acquire fix 
-
+acquire fix
 
 ------------------------------------------------------------------------
 r32751 | rezso@rezso.net | 2013-07-15 13:55:36 +0200 (Mon, 15 Jul 2013) | 5 lines
@@ -31,14 +30,12 @@ acquire fix
 fix doc package
 remove libpng compile fix patch
 
-
 ------------------------------------------------------------------------
 r25662 | galamb15@kabelszat2002.hu | 2011-05-31 20:14:34 +0200 (Tue, 31 May 2011) | 5 lines
 
 2.1.0 -> 2.2.0
 build-depends fix - eigen support
 add patch from opencv trunk to compile with libpng 1.5
-
 
 ------------------------------------------------------------------------
 r24269 | galamb15@kabelszat2002.hu | 2010-09-15 20:31:41 +0200 (Wed, 15 Sep 2010) | 5 lines
@@ -47,12 +44,10 @@ r24269 | galamb15@kabelszat2002.hu | 2010-09-15 20:31:41 +0200 (Wed, 15 Sep 2010
 build-depends fix
 doc fix
 
-
 ------------------------------------------------------------------------
 r20897 | galamb15@kabelszat2002.hu | 2009-11-11 20:19:58 +0100 (Wed, 11 Nov 2009) | 3 lines
 
 really split dev package
-
 
 ------------------------------------------------------------------------
 r20896 | galamb15@kabelszat2002.hu | 2009-11-11 20:08:45 +0100 (Wed, 11 Nov 2009) | 6 lines
@@ -61,7 +56,6 @@ r20896 | galamb15@kabelszat2002.hu | 2009-11-11 20:08:45 +0100 (Wed, 11 Nov 2009
 acquire fix
 build-depends fix
 split dev package
-
 
 ------------------------------------------------------------------------
 r17822 | galamb15@kabelszat2002.hu | 2009-03-29 09:29:19 +0200 (Sun, 29 Mar 2009) | 1 line

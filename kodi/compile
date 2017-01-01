@@ -31,5 +31,5 @@ ub_compile \
 	--enable-avahi \
 	--enable-webserver \
 	--enable-optical-drive
-# --with-ffmpeg=shared - ffmpeg 2.4.4 kellene
-# --enable-libusb - udev esetén nem kell, így mindenképp letiltja
+#	--with-ffmpeg=shared
+#	--enable-libusb - udev esetén nem kell, így mindenképp letiltja

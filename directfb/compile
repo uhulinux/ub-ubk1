@@ -12,4 +12,4 @@ ub_compile \
 	--disable-osx \
 	--enable-video4linux2 \
 	--enable-voodoo \
-	--enable-mesa 
+	--enable-mesa

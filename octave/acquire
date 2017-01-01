@@ -1,5 +1,5 @@
 #!/usr/bin/env dl
 
-octave-${UB_VERSION}.tar.xz octave-${UB_VERSION}/
-	ftp://ftp.octave.org/pub/octave/
+octave-${UB_VERSION}.tar.gz octave-${UB_VERSION}/
+	ftp://ftp.octave.org/pub/gnu/octave/
 	ftp://ftp.gnu.org/pub/gnu/octave/

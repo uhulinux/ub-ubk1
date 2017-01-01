@@ -3,7 +3,6 @@ fftw3-dev
 fontconfig-dev
 graphviz-dev
 imagemagick-dev
-jasper-dev
 libemf-dev
 libgd-dev
 libgsf-dev
