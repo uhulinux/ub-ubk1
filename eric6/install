@@ -1,8 +1,0 @@
-#!/bin/sh -eux
-
-mkdir -p "$UB_INSTALLDIR"/usr/lib/qt4/qsci/api/ruby
-
-python install.py \
-	-i "$UB_INSTALLDIR" \
-	-d "/usr/lib/python2.7/site-packages" \
-	-b "/usr/bin"
