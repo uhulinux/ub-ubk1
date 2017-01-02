@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+export CFLAGS="-DNDEBUG"
+ub_compile

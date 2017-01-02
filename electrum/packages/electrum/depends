@@ -1,5 +1,7 @@
 pyqt4
+python-dnspython
 python-ecdsa
+python-jsonrpclib
 python-pbkdf2
 python-protobuf
 python-qrcode
