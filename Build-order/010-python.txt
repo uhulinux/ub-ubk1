@@ -87,6 +87,7 @@ python-chardet
 python-cheetah
 python-cherrypy
 python-configobj
+python-enum
 python-cryptography
 python-cxfreeze
 python-cssselect
