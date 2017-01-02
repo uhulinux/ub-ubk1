@@ -13,10 +13,10 @@ sure that Midori is using safe ciphers for TLS operations.
  1 file changed, 5 insertions(+)
 
 diff --git a/midori/main.c b/midori/main.c
-index 00bc3b4..8954e42 100644
+index a77dae2..94ffa14 100644
 --- a/midori/main.c
 +++ b/midori/main.c
-@@ -143,6 +143,11 @@ main (int    argc,
+@@ -128,6 +128,11 @@ main (int    argc,
      /* Versioned prgname to override menuproxy blacklist */
      g_set_prgname (PACKAGE_NAME "4");
  
