@@ -1,0 +1,32 @@
+diff -Naur ORIG/doc/Makefile UHU/doc/Makefile
+--- ORIG/doc/Makefile	2014-01-31 20:40:05.000000000 +0100
++++ UHU/doc/Makefile	2014-02-17 20:10:22.449516041 +0100
+@@ -3,7 +3,7 @@
+ MAN=$(SOURCES:%.txt=%)
+ HTML=$(SOURCES:%.txt=%.html)
+ PREFIX=/usr/local
+-MANDIR=$(PREFIX)/man
++MANDIR=$(UB_INSTALLDIR)/usr/share/man
+ INSTALL=install -c
+ 
+ all: man html
+@@ -13,7 +13,7 @@
+ html: $(HTML)
+ 
+ %: %.xml
+-	xmlto man $*.xml
++	xmlto man --skip-validation $*.xml
+ 
+ %.xml: %.txt
+ 	asciidoc -d manpage -b docbook -o $@ $<
+@@ -24,8 +24,8 @@
+ install: man
+ 	for i in $(MAN) ; do \
+ 	  subdir=`echo $$i | sed -n 's/..*\.\([0-9]\)$$/man\1/p'` ; \
+-	  $(INSTALL) -d $(DESTDIR)$(MANDIR)/$$subdir && \
+-	  $(INSTALL) $$i $(DESTDIR)$(MANDIR)/$$subdir ; \
++	  $(INSTALL) -d  $(MANDIR)/$$subdir && \
++	  $(INSTALL) $$i $(MANDIR)/$$subdir ; \
+ 	done
+ 
+ clean:

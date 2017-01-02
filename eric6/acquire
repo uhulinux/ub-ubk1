@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+eric6-${UB_VERSION}.tar.gz eric6-${UB_VERSION}/
+	https://sourceforge.net/projects/eric-ide/files/eric6/stable/${UB_VERSION}/

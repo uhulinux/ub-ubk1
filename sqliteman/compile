@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+export QTDIR="/usr/lib/qt4"
+
+cmake . \
+	-DCMAKE_INSTALL_PREFIX:PATH="$UB_INSTALLDIR"/usr \
+	-DWANT_RESOURCES=1
+make

@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+export PATH=/usr/lib/qt4/bin:"$PATH"
+export QTDIR=/usr/lib/qt4
+
+cd Python
+python3 configure.py
+
+sed -i 's/INSTALL_ROOT/UB_INSTALLDIR/g' Makefile
+
+ub_make
