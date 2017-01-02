@@ -6,9 +6,11 @@ python3-zope.fixers
 sip
 python-cddb
 python-dip
+python-dnspython
 python-doc
 python-iniparse
 python-ipaddr
+python-jsonrpclib
 python-nose
 python-paramiko
 python-setproctitle

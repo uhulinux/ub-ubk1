@@ -184,6 +184,7 @@ mugshot
 rapidsvn
 mmex
 krb5-auth-dialog
+zbar
 electrum
 celestia
 mount-gtk
