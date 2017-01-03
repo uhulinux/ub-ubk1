@@ -24,6 +24,8 @@ libxft-dev
 libxml2-dev
 mesa-dev
 pcre-dev
+qscintilla2
+qt4-dev
 readline-dev
 syslinux
 texinfo

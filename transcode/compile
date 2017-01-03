@@ -24,4 +24,5 @@ UB_UPDATELIBTOOL=yes ub_compile \
 	--enable-libv4l2 \
 	--enable-libv4lconvert \
 	--enable-alsa \
-	--enable-faac
+	--enable-faac \
+	--enable-imagemagick
