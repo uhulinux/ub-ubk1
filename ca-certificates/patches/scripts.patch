@@ -1,73 +1,13 @@
-diff -Naur orig/bundle.sh patched/bundle.sh
---- orig/bundle.sh	1970-01-01 01:00:00.000000000 +0100
-+++ patched/bundle.sh	2016-12-24 01:47:49.946530093 +0100
-@@ -0,0 +1,55 @@
-+#!/bin/sh
-+# From Fedora's ca-certificates.spec
-+
-+(
-+  cat <<EOF
-+# This is a bundle of X.509 certificates of public Certificate
-+# Authorities.  It was generated from the Mozilla root CA list.
-+# These certificates are in the OpenSSL "TRUSTED CERTIFICATE"
-+# format and have trust bits set accordingly.
-+# An exception are auxiliary certificates, without positive or negative
-+# trust, but are used to assist in finding a preferred trust path.
-+# Those neutral certificates use the plain BEGIN CERTIFICATE format.
-+#
-+# Source: nss/lib/ckfw/builtins/certdata.txt
-+# Source: nss/lib/ckfw/builtins/nssckbi.h
-+#
-+# Generated from:
-+EOF
-+  cat certs/nssckbi.h | grep -w NSS_BUILTINS_LIBRARY_VERSION | awk '{print "# " $2 " " $3}'
-+  echo '#'
-+) > ca-bundle.trust.crt
-+for f in certs/*.crt; do 
-+  echo "processing $f"
-+  tbits=`sed -n '/^# openssl-trust/{s/^.*=//;p;}' $f`
-+  distbits=`sed -n '/^# openssl-distrust/{s/^.*=//;p;}' $f`
-+  alias=`sed -n '/^# alias=/{s/^.*=//;p;q;}' $f | sed "s/'//g" | sed 's/"//g'`
-+  targs=""
-+  if [ -n "$tbits" ]; then
-+    for t in $tbits; do
-+       targs="${targs} -addtrust $t"
-+    done
-+  fi
-+  if [ -n "$distbits" ]; then
-+    for t in $distbits; do
-+       targs="${targs} -addreject $t"
-+    done
-+  fi
-+  if [ -n "$targs" ]; then
-+    echo "trust flags $targs for $f" >> info.trust
-+    openssl x509 -text -in "$f" -trustout $targs -setalias "$alias" >> ca-bundle.trust.crt
-+  else
-+    echo "no trust flags for $f" >> info.notrust
-+    # p11-kit-trust defines empty trust lists as "rejected for all purposes".
-+    # That's why we use the simple file format
-+    #   (BEGIN CERTIFICATE, no trust information)
-+    # because p11-kit-trust will treat it as a certificate with neutral trust.
-+    # This means we cannot use the -setalias feature for neutral trust certs.
-+    openssl x509 -text -in "$f" >> ca-bundle.neutral-trust.crt
-+  fi
-+done
-+
-+for p in certs/*.p11-kit; do 
-+  cat "$p" >> ca-bundle.supplement.p11-kit
-+done
-+
 diff -Naur orig/certdata2pem.py patched/certdata2pem.py
 --- orig/certdata2pem.py	1970-01-01 01:00:00.000000000 +0100
-+++ patched/certdata2pem.py	2016-12-24 01:49:15.479521641 +0100
-@@ -0,0 +1,201 @@
++++ patched/certdata2pem.py	2016-11-03 08:40:01.000000000 +0100
+@@ -0,0 +1,155 @@
 +#!/usr/bin/python
 +# vim:set et sw=4:
 +#
 +# certdata2pem.py - splits certdata.txt into multiple files
 +#
 +# Copyright (C) 2009 Philipp Kern <pkern@debian.org>
-+# Copyright (C) 2013 Kai Engert <kaie@redhat.com>
 +#
 +# This program is free software; you can redistribute it and/or modify
 +# it under the terms of the GNU General Public License as published by
@@ -89,17 +29,19 @@ diff -Naur orig/certdata2pem.py patched/certdata2pem.py
 +import re
 +import sys
 +import textwrap
-+import urllib
++import io
 +
 +objects = []
-+
-+def printable_serial(obj):
-+  return ".".join(map(lambda x:str(ord(x)), obj['CKA_SERIAL_NUMBER']))
 +
 +# Dirty file parser.
 +in_data, in_multiline, in_obj = False, False, False
 +field, type, value, obj = None, None, None, dict()
-+for line in open('certdata.txt', 'r'):
++
++# Python 3 will not let us decode non-ascii characters if we
++# have not specified an encoding, but Python 2's open does not
++# have an option to set the encoding. Python 3's open is io.open
++# and io.open has been backported to Python 2.6 and 2.7, so use io.open.
++for line in io.open('certdata.txt', 'rt', encoding='utf8'):
 +    # Ignore the file header.
 +    if not in_data:
 +        if line.startswith('BEGINDATA'):
@@ -121,7 +63,7 @@ diff -Naur orig/certdata2pem.py patched/certdata2pem.py
 +            if type == 'MULTILINE_OCTAL':
 +                line = line.strip()
 +                for i in re.finditer(r'\\([0-3][0-7][0-7])', line):
-+                    value += chr(int(i.group(1), 8))
++                    value.append(int(i.group(1), 8))
 +            else:
 +                value += line
 +            continue
@@ -138,127 +80,303 @@ diff -Naur orig/certdata2pem.py patched/certdata2pem.py
 +        field, type = line_parts
 +        value = None
 +    else:
-+        raise NotImplementedError, 'line_parts < 2 not supported.\n' + line
++        raise NotImplementedError('line_parts < 2 not supported.')
 +    if type == 'MULTILINE_OCTAL':
 +        in_multiline = True
-+        value = ""
++        value = bytearray()
 +        continue
 +    obj[field] = value
-+if len(obj.items()) > 0:
++if len(obj) > 0:
 +    objects.append(obj)
 +
++# Read blacklist.
++blacklist = []
++if os.path.exists('blacklist.txt'):
++    for line in open('blacklist.txt', 'r'):
++        line = line.strip()
++        if line.startswith('#') or len(line) == 0:
++            continue
++        item = line.split('#', 1)[0].strip()
++        blacklist.append(item)
++
 +# Build up trust database.
-+trustmap = dict()
++trust = dict()
 +for obj in objects:
 +    if obj['CKA_CLASS'] != 'CKO_NSS_TRUST':
 +        continue
-+    key = obj['CKA_LABEL'] + printable_serial(obj)
-+    trustmap[key] = obj
-+    print " added trust", key
++    if obj['CKA_LABEL'] in blacklist:
++        print("Certificate %s blacklisted, ignoring." % obj['CKA_LABEL'])
++    elif obj['CKA_TRUST_SERVER_AUTH'] == 'CKT_NSS_TRUSTED_DELEGATOR':
++        trust[obj['CKA_LABEL']] = True
++    elif obj['CKA_TRUST_EMAIL_PROTECTION'] == 'CKT_NSS_TRUSTED_DELEGATOR':
++        trust[obj['CKA_LABEL']] = True
++    elif obj['CKA_TRUST_SERVER_AUTH'] == 'CKT_NSS_NOT_TRUSTED':
++        print('!'*74)
++        print("UNTRUSTED BUT NOT BLACKLISTED CERTIFICATE FOUND: %s" % obj['CKA_LABEL'])
++        print('!'*74)
++    else:
++        print("Ignoring certificate %s.  SAUTH=%s, EPROT=%s" % \
++              (obj['CKA_LABEL'], obj['CKA_TRUST_SERVER_AUTH'],
++               obj['CKA_TRUST_EMAIL_PROTECTION']))
 +
-+# Build up cert database.
-+certmap = dict()
 +for obj in objects:
-+    if obj['CKA_CLASS'] != 'CKO_CERTIFICATE':
-+        continue
-+    key = obj['CKA_LABEL'] + printable_serial(obj)
-+    certmap[key] = obj
-+    print " added cert", key
++    if obj['CKA_CLASS'] == 'CKO_CERTIFICATE':
++        if not obj['CKA_LABEL'] in trust or not trust[obj['CKA_LABEL']]:
++            continue
++        bname = obj['CKA_LABEL'][1:-1].replace('/', '_')\
++                                      .replace(' ', '_')\
++                                      .replace('(', '=')\
++                                      .replace(')', '=')\
++                                      .replace(',', '_')
 +
-+def obj_to_filename(obj):
-+    label = obj['CKA_LABEL'][1:-1]
-+    label = label.replace('/', '_')\
-+        .replace(' ', '_')\
-+        .replace('(', '=')\
-+        .replace(')', '=')\
-+        .replace(',', '_')
-+    label = re.sub(r'\\x[0-9a-fA-F]{2}', lambda m:chr(int(m.group(0)[2:], 16)), label)
-+    serial = printable_serial(obj)
-+    return label + ":" + serial
-+
-+trust_types = {
-+  "CKA_TRUST_DIGITAL_SIGNATURE": "digital-signature",
-+  "CKA_TRUST_NON_REPUDIATION": "non-repudiation",
-+  "CKA_TRUST_KEY_ENCIPHERMENT": "key-encipherment",
-+  "CKA_TRUST_DATA_ENCIPHERMENT": "data-encipherment",
-+  "CKA_TRUST_KEY_AGREEMENT": "key-agreement",
-+  "CKA_TRUST_KEY_CERT_SIGN": "cert-sign",
-+  "CKA_TRUST_CRL_SIGN": "crl-sign",
-+  "CKA_TRUST_SERVER_AUTH": "server-auth",
-+  "CKA_TRUST_CLIENT_AUTH": "client-auth",
-+  "CKA_TRUST_CODE_SIGNING": "code-signing",
-+  "CKA_TRUST_EMAIL_PROTECTION": "email-protection",
-+  "CKA_TRUST_IPSEC_END_SYSTEM": "ipsec-end-system",
-+  "CKA_TRUST_IPSEC_TUNNEL": "ipsec-tunnel",
-+  "CKA_TRUST_IPSEC_USER": "ipsec-user",
-+  "CKA_TRUST_TIME_STAMPING": "time-stamping",
-+  "CKA_TRUST_STEP_UP_APPROVED": "step-up-approved",
-+}
-+
-+openssl_trust = {
-+  "CKA_TRUST_SERVER_AUTH": "serverAuth",
-+  "CKA_TRUST_CLIENT_AUTH": "clientAuth",
-+  "CKA_TRUST_CODE_SIGNING": "codeSigning",
-+  "CKA_TRUST_EMAIL_PROTECTION": "emailProtection",
-+}
-+
-+for tobj in objects:
-+    if tobj['CKA_CLASS'] == 'CKO_NSS_TRUST':
-+        key = tobj['CKA_LABEL'] + printable_serial(tobj)
-+        print "producing trust for " + key
-+        trustbits = []
-+        distrustbits = []
-+        openssl_trustflags = []
-+        openssl_distrustflags = []
-+        for t in trust_types.keys():
-+            if tobj.has_key(t) and tobj[t] == 'CKT_NSS_TRUSTED_DELEGATOR':
-+                trustbits.append(t)
-+                if t in openssl_trust:
-+                    openssl_trustflags.append(openssl_trust[t])
-+            if tobj.has_key(t) and tobj[t] == 'CKT_NSS_NOT_TRUSTED':
-+                distrustbits.append(t)
-+                if t in openssl_trust:
-+                    openssl_distrustflags.append(openssl_trust[t])
-+
-+        fname = obj_to_filename(tobj)
-+        try:
-+            obj = certmap[key]
-+        except:
-+            obj = None
-+
-+        if obj != None:
-+            fname += ".crt"
++        # this is the only way to decode the way NSS stores multi-byte UTF-8
++        # and we need an escaped string for checking existence of things
++        # otherwise we're dependant on the user's current locale.
++        if bytes != str:
++            # We're in python 3, convert the utf-8 string to a
++            # sequence of bytes that represents this utf-8 string
++            # then encode the byte-sequence as an escaped string that
++            # can be passed to open() and os.path.exists()
++            bname = bname.encode('utf-8').decode('unicode_escape').encode('latin-1')
 +        else:
-+            fname += ".p11-kit"
++            # Python 2
++            # Convert the unicode string back to its original byte form
++            # (contents of files returned by io.open are returned as
++            #  unicode strings)
++            # then to an escaped string that can be passed to open()
++            # and os.path.exists()
++            bname = bname.encode('utf-8').decode('string_escape')
 +
++        fname = bname + b'.crt'
++        if os.path.exists(fname):
++            print("Found duplicate certificate name %s, renaming." % bname)
++            fname = bname + b'_2.crt'
 +        f = open(fname, 'w')
-+        if obj != None:
-+            f.write("# alias=%s\n"%tobj['CKA_LABEL'])
-+            f.write("# trust=" + " ".join(trustbits) + "\n")
-+            f.write("# distrust=" + " ".join(distrustbits) + "\n")
-+            if openssl_trustflags:
-+                f.write("# openssl-trust=" + " ".join(openssl_trustflags) + "\n")
-+            if openssl_distrustflags:
-+                f.write("# openssl-distrust=" + " ".join(openssl_distrustflags) + "\n")
-+            f.write("-----BEGIN CERTIFICATE-----\n")
-+            f.write("\n".join(textwrap.wrap(base64.b64encode(obj['CKA_VALUE']), 64)))
-+            f.write("\n-----END CERTIFICATE-----\n")
-+        else:
-+            f.write("[p11-kit-object-v1]\n")
-+            f.write("label: ");
-+            f.write(tobj['CKA_LABEL']);
-+            f.write("\n")
-+            f.write("class: certificate\n")
-+            f.write("certificate-type: x-509\n")
-+            f.write("issuer: \"");
-+            f.write(urllib.quote(tobj['CKA_ISSUER']));
-+            f.write("\"\n")
-+            f.write("serial-number: \"");
-+            f.write(urllib.quote(tobj['CKA_SERIAL_NUMBER']));
-+            f.write("\"\n")
-+            if (tobj['CKA_TRUST_SERVER_AUTH'] == 'CKT_NSS_NOT_TRUSTED') or (tobj['CKA_TRUST_EMAIL_PROTECTION'] == 'CKT_NSS_NOT_TRUSTED') or (tobj['CKA_TRUST_CODE_SIGNING'] == 'CKT_NSS_NOT_TRUSTED'):
-+              f.write("x-distrusted: true\n")
-+            f.write("\n\n")
-+        f.close()
-+        print " -> written as '%s', trust = %s, openssl-trust = %s, distrust = %s, openssl-distrust = %s" % (fname, trustbits, openssl_trustflags, distrustbits, openssl_distrustflags)
++        f.write("-----BEGIN CERTIFICATE-----\n")
++        encoded = base64.b64encode(obj['CKA_VALUE']).decode('utf-8')
++        f.write("\n".join(textwrap.wrap(encoded, 64)))
++        f.write("\n-----END CERTIFICATE-----\n")
 +
+diff -Naur orig/update-ca-certificates patched/update-ca-certificates
+--- orig/update-ca-certificates	1970-01-01 01:00:00.000000000 +0100
++++ patched/update-ca-certificates	2017-01-03 07:15:24.310587608 +0100
+@@ -0,0 +1,219 @@
++#!/bin/sh -e
++#
++# update-ca-certificates
++#
++# Copyright (c) 2003 Fumitoshi UKAI <ukai@debian.or.jp>
++# Copyright (c) 2009 Philipp Kern <pkern@debian.org>
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02111-1301,
++# USA.
++#
++
++verbose=0
++fresh=0
++default=0
++CERTSCONF=/etc/ca-certificates.conf
++CERTSDIR=/usr/share/ca-certificates
++LOCALCERTSDIR=/usr/local/share/ca-certificates
++CERTBUNDLE=ca-certificates.crt
++ETCCERTSDIR=/etc/ssl/certs
++HOOKSDIR=/etc/ca-certificates/update.d
++ROOT=""
++RELPATH=""
++
++while [ $# -gt 0 ];
++do
++  case $1 in
++    --verbose|-v)
++      verbose=1;;
++    --fresh|-f)
++      fresh=1;;
++    --default|-d)
++      default=1
++      fresh=1;;
++    --certsconf)
++      shift
++      CERTSCONF="$1";;
++    --certsdir)
++      shift
++      CERTSDIR="$1";;
++    --localcertsdir)
++      shift
++      LOCALCERTSDIR="$1";;
++    --certbundle)
++      shift
++      CERTBUNDLE="$1";;
++    --etccertsdir)
++      shift
++      ETCCERTSDIR="$1";;
++    --hooksdir)
++      shift
++      HOOKSDIR="$1";;
++    --root|-r)
++      shift
++      # Needed as c_rehash wants to read the files directly.
++      # This gets us from $CERTSCONF to $CERTSDIR.
++      RELPATH="../../.."
++      ROOT=$(readlink -f "$1");;
++    --help|-h|*)
++      echo "$0: [--verbose] [--fresh] [--root <dir>]"
++      exit;;
++  esac
++  shift
++done
++
++CERTSCONF="$ROOT$CERTSCONF"
++CERTSDIR="$ROOT$CERTSDIR"
++LOCALCERTSDIR="$ROOT$LOCALCERTSDIR"
++ETCCERTSDIR="$ROOT$ETCCERTSDIR"
++HOOKSDIR="$ROOT$HOOKSDIR"
++
++if [ ! -s "$CERTSCONF" ]
++then
++  fresh=1
++fi
++
++cleanup() {
++  rm -f "$TEMPBUNDLE"
++  rm -f "$ADDED"
++  rm -f "$REMOVED"
++}
++trap cleanup 0
++
++# Helper files.  (Some of them are not simple arrays because we spawn
++# subshells later on.)
++TEMPBUNDLE="$(mktemp -t "${CERTBUNDLE}.tmp.XXXXXX")"
++ADDED="$(mktemp -t "ca-certificates.tmp.XXXXXX")"
++REMOVED="$(mktemp -t "ca-certificates.tmp.XXXXXX")"
++
++# Adds a certificate to the list of trusted ones.  This includes a symlink
++# in /etc/ssl/certs to the certificate file and its inclusion into the
++# bundle.
++add() {
++  CERT="$1"
++  PEM="$ETCCERTSDIR/$(basename "$CERT" .crt | sed -e 's/ /_/g' \
++                                                  -e 's/[()]/=/g' \
++                                                  -e 's/,/_/g').pem"
++  if ! test -e "$PEM" || [ "$(readlink "$PEM")" != "$CERT" ]
++  then
++    ln -sf "${RELPATH}${CERT#$ROOT}" "$PEM"
++    echo "+$PEM" >> "$ADDED"
++  fi
++  # Add trailing newline to certificate, if it is missing (#635570)
++  sed -e '$a\' "$CERT" >> "$TEMPBUNDLE"
++}
++
++remove() {
++  CERT="$1"
++  PEM="$ETCCERTSDIR/$(basename "$CERT" .crt).pem"
++  if test -L "$PEM"
++  then
++    rm -f "$PEM"
++    echo "-$PEM" >> "$REMOVED"
++  fi
++}
++
++cd "$ETCCERTSDIR"
++if [ "$fresh" = 1 ]; then
++  echo "Clearing symlinks in $ETCCERTSDIR..."
++  find . -type l -print | while read symlink
++  do
++    case $(readlink "$symlink") in
++      "$CERTSDIR"*|"$LOCALCERTSDIR"*) rm -f $symlink;;
++    esac
++  done
++  find . -type l -print | while read symlink
++  do
++    test -f "$symlink" || rm -f "$symlink"
++  done
++  echo "done."
++fi
++
++echo "Updating certificates in $ETCCERTSDIR..."
++
++# Add default certificate authorities if requested
++if [ "$default" = 1 ]; then
++  find -L "$CERTSDIR" -type f -name '*.crt' | sort | while read crt
++  do
++    add "$crt"
++  done
++fi
++
++# Handle certificates that should be removed.  This is an explicit act
++# by prefixing lines in the configuration files with exclamation marks (!).
++sed -n -e '/^$/d' -e 's/^!//p' "$CERTSCONF" | while read crt
++do
++  remove "$CERTSDIR/$crt"
++done
++
++sed -e '/^$/d' -e '/^#/d' -e '/^!/d' "$CERTSCONF" | while read crt
++do
++  if ! test -f "$CERTSDIR/$crt"
++  then
++    echo "W: $CERTSDIR/$crt not found, but listed in $CERTSCONF." >&2
++    continue
++  fi
++  add "$CERTSDIR/$crt"
++done
++
++# Now process certificate authorities installed by the local system
++# administrator.
++if [ -d "$LOCALCERTSDIR" ]
++then
++  find -L "$LOCALCERTSDIR" -type f -name '*.crt' | sort | while read crt
++  do
++    add "$crt"
++  done
++fi
++
++rm -f "$CERTBUNDLE"
++
++ADDED_CNT=$(wc -l < "$ADDED")
++REMOVED_CNT=$(wc -l < "$REMOVED")
++
++if [ "$ADDED_CNT" -gt 0 ] || [ "$REMOVED_CNT" -gt 0 ]
++then
++  # only run if set of files has changed
++  if [ "$verbose" = 0 ]
++  then
++    c_rehash . > /dev/null
++  else
++    c_rehash .
++  fi
++fi
++
++chmod 0644 "$TEMPBUNDLE"
++mv -f "$TEMPBUNDLE" "$CERTBUNDLE"
++# Restore proper SELinux label after moving the file
++[ -x /sbin/restorecon ] && /sbin/restorecon "$CERTBUNDLE" >/dev/null 2>&1
++
++echo "$ADDED_CNT added, $REMOVED_CNT removed; done."
++
++if [ -d "$HOOKSDIR" ]
++then
++
++  echo "Running hooks in $HOOKSDIR..."
++  VERBOSE_ARG=
++  [ "$verbose" = 0 ] || VERBOSE_ARG="--verbose"
++  eval run-parts "$VERBOSE_ARG" --test -- "$HOOKSDIR" | while read hook
++  do
++    ( cat "$ADDED"
++      cat "$REMOVED" ) | "$hook" || echo "E: $hook exited with code $?."
++  done
++  echo "done."
++
++fi
++
++# vim:set et sw=2:

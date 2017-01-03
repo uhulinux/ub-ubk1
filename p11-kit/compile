@@ -2,6 +2,6 @@
 
 ub_configure \
 	--with-module-path=/usr/lib/pkcs11 \
-	--with-trust-paths=/etc/ca-certificates/trust-source:/usr/share/ca-certificates/trust-source
+	--with-trust-paths=/etc/ssl/certs/ca-certificates.crt:/usr/share/ca-certificates
 
 ub_make

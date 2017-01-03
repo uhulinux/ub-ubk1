@@ -1,1 +1,2 @@
-p11-kit
+openssl
+run-parts

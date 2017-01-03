@@ -18,7 +18,7 @@ for file in dist/public/nss/*.h; do
 	install -m 644 "$file" "$UB_INSTALLDIR"/usr/include/nss3
 done
 
-ln -s libnssckbi.so "$UB_INSTALLDIR"/usr/lib/libnssckbi-p11-kit.so
+# ln -s libnssckbi.so "$UB_INSTALLDIR"/usr/lib/libnssckbi-p11-kit.so
 
 NSPR_VERSION=`pkg-config --modversion nspr`
 
