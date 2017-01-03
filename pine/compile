@@ -3,7 +3,7 @@
 ln -s /usr krb5
 
 ./build \
-	SSLDIR=/usr/lib/ssl \
+	SSLDIR=/etc/ssl \
 	SSLINCLUDE=/usr/include/openssl \
 	SSLLIB=/usr/lib \
 	lrh

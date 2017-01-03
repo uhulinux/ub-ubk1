@@ -1,3 +1,4 @@
+ca-certificates
 guile-dev
 libatomic-ops-dev
 libgcrypt-dev

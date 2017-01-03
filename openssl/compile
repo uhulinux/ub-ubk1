@@ -4,7 +4,7 @@ sed -ri 's/^=item ([0-9]+)/=item C<\1>/' doc/{apps,crypto,ssl}/*.pod
 
 ./Configure \
 	--prefix=/usr \
-	--openssldir=/usr/lib/ssl \
+	--openssldir=/etc/ssl \
 	enable-tlsext \
 	shared \
 	no-sse2 \
