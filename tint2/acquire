@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 tint2-${UB_VERSION}.tar.gz tint2-${UB_VERSION}/
-	http://pkgs.fedoraproject.org/repo/pkgs/tint2/tint2-${UB_VERSION}.tar.gz/977eac284749323020440d001e458af6/
+	http://pkgs.fedoraproject.org/repo/pkgs/tint2/tint2-${UB_VERSION}.tar.gz/eecb0361b3d1e0b47c58a8967f6ecb35/

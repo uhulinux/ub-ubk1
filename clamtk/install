@@ -15,8 +15,8 @@ install -m 644 images/clamtk.png images/clamtk.xpm "$UB_INSTALLDIR"/usr/share/pi
 install -m 644 clamtk.desktop "$UB_INSTALLDIR"/usr/share/applications/
 
 # help
-install -dm755 "$UB_INSTALLDIR"/usr/share/help/
-cp -dr --no-preserve=ownership help/* "$UB_INSTALLDIR"/usr/share/help/
+#install -dm755 "$UB_INSTALLDIR"/usr/share/help/
+#cp -dr --no-preserve=ownership help/* "$UB_INSTALLDIR"/usr/share/help/
 
 #po
 cd po

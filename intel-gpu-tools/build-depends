@@ -1,7 +1,9 @@
 cairo-dev
 gtk-doc
+kmod-dev
 libdrm-dev
 libpciaccess-dev
 libxrandr-dev
 libxv-dev
+procps-dev
 systemd-dev
