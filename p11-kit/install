@@ -1,3 +1,5 @@
 #!/bin/sh -eux
 
 ub_install
+
+ln -srf "$UB_INSTALLDIR"/usr/bin/update-ca-trust "$UB_INSTALLDIR"/usr/lib/p11-kit/trust-extract-compat

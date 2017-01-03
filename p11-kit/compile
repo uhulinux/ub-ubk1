@@ -2,7 +2,6 @@
 
 ub_configure \
 	--with-module-path=/usr/lib/pkcs11 \
-	--with-trust-paths=/usr/lib/ssl/certs/ca-cert.pem
+	--with-trust-paths=/etc/ca-certificates/trust-source:/usr/share/ca-certificates/trust-source
 
-ub_make \
-	CFLAGS+="-D_XOPEN_SOURCE=600 -D_BSD_SOURCE"
+ub_make
