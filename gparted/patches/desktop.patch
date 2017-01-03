@@ -1,18 +1,6 @@
-diff -Naur gparted-0.26.1-orig/gparted.desktop gparted-0.26.1/gparted.desktop
---- gparted-0.26.1-orig/gparted.desktop	2016-06-13 18:37:14.000000000 +0200
-+++ gparted-0.26.1/gparted.desktop	2016-06-16 19:59:53.577823754 +0200
-@@ -222,7 +222,7 @@
- Comment[zh_CN]=创建、重新组织或删除分区
- Comment[zh_HK]=建立、編輯或刪除分割區
- Comment[zh_TW]=建立、編輯或刪除分割區
--Exec= /usr/local/sbin/gparted %f
-+Exec=gparted %f
- Icon=gparted
- Terminal=false
- Type=Application
-diff -Naur gparted-0.26.1-orig/gparted.desktop.in.in gparted-0.26.1/gparted.desktop.in.in
---- gparted-0.26.1-orig/gparted.desktop.in.in	2016-01-18 17:52:09.000000000 +0100
-+++ gparted-0.26.1/gparted.desktop.in.in	2016-06-16 19:58:11.353826437 +0200
+diff -Nur orig/gparted.desktop.in.in mod/gparted.desktop.in.in
+--- orig/gparted.desktop.in.in	2015-10-14 19:42:48.000000000 +0200
++++ mod/gparted.desktop.in.in	2017-01-03 13:25:02.774913033 +0100
 @@ -3,7 +3,7 @@
  _GenericName=Partition Editor
  _X-GNOME-FullName=GParted Partition Editor
