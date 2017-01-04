@@ -6,8 +6,8 @@ librsvg
 osm-gps-map
 py3icu
 pygobject
-python-pillow
 python3-bsddb3
+python3-pillow
 reportlab
 webkitgtk3
 xdg-utils
