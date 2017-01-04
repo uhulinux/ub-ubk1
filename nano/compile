@@ -7,4 +7,3 @@ ub_compile \
 	--disable-wrapping-as-root \
 	--enable-nanorc \
 	--enable-multibuffer
-
