@@ -35,7 +35,6 @@ r20149 | galamb15@kabelszat2002.hu | 2009-09-30 19:37:48 +0200 (Wed, 30 Sep 2009
 build-depends fix
 add patch to rename getline variable
 
-
 ------------------------------------------------------------------------
 r16721 | janusz@uhulinux.hu | 2008-12-12 00:32:06 +0100 (Fri, 12 Dec 2008) | 2 lines
 

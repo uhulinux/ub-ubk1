@@ -14,6 +14,7 @@ discount
 dpkg-repack
 f2c
 gdm-theme-uhu
+gkrellm-themes
 griffith-extra-artwork
 hla
 icon-theme-snow-apple
