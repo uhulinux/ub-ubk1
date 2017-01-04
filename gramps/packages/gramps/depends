@@ -5,8 +5,9 @@ gtkspell
 librsvg
 osm-gps-map
 pygobject
-pyicu
+py3icu
 python-pillow
+python3-bsddb3
 reportlab
 webkitgtk3
 xdg-utils
