@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-${UB_VERSION/~/-}_20160916.tar.gz plus4emu-${UB_VERSION/~/-}_20160916/
+${UB_VERSION/~/-}_20161230.tar.gz plus4emu-${UB_VERSION/~/-}_20161230/
 	https://github.com/istvan-v/plus4emu/archive/
