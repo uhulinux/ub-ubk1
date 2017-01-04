@@ -18,7 +18,6 @@ ub_configure \
 	--enable-cgi                                       \
 	--enable-cgid                                      \
 	--enable-info                                      \
-	--enable-ssl                                       \
 	--enable-cache                                     \
 	--enable-disk-cahe                                 \
 	--enable-file-cache                                \
