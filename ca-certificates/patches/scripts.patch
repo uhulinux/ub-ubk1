@@ -271,7 +271,7 @@ diff -Naur orig/update-ca-certificates patched/update-ca-certificates
 +                                                  -e 's/,/_/g').pem"
 +  if ! test -e "$PEM" || [ "$(readlink "$PEM")" != "$CERT" ]
 +  then
-+    ln -sf "${RELPATH}${CERT#$ROOT}" "$PEM"
++    ln -sf "${RELPATH}${CERT##$ROOT}" "$PEM"
 +    echo "+$PEM" >> "$ADDED"
 +  fi
 +  # Add trailing newline to certificate, if it is missing (#635570)

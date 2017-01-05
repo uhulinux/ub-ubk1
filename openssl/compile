@@ -10,4 +10,5 @@ sed -ri 's/^=item ([0-9]+)/=item C<\1>/' doc/{apps,crypto,ssl}/*.pod
 	no-sse2 \
 	linux-elf \
 	zlib-dynamic
+make depend
 make
