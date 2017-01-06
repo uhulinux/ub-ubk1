@@ -9,6 +9,7 @@ libxml2-dev
 libxscrnsaver-dev
 libxslt-dev
 libxtst-dev
+nss-dev
 opus-dev
 pciutils-dev
 pulseaudio-dev

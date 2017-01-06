@@ -5,6 +5,6 @@ cd build
 
 export CFLAGS="-fno-delete-null-pointer-checks"
 export CXXFLAGS="-fno-delete-null-pointer-checks"
-qmake WEBENGINE_CONFIG+="use_system_icu use_proprietary_codecs" ../qtwebengine.pro
+qmake WEBENGINE_CONFIG+="use_nss use_system_icu use_proprietary_codecs" ../qtwebengine.pro
 
 ub_make
