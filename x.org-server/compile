@@ -27,6 +27,7 @@ ub_compile \
 	--enable-dbe \
 	--enable-xfree86-utils \
 	--enable-xorg \
+	--enable-xwayland \
 	--enable-dmx \
 	--enable-xvfb \
 	--enable-xnest \
@@ -50,4 +51,3 @@ ub_compile \
 
 cd rgb-*
 ub_compile
-
