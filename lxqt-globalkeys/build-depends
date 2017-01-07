@@ -2,4 +2,4 @@ kwindowsystem-dev
 liblxqt-dev
 libqtxdg-dev
 libx11-dev
-qt5-dev
+lxqt-build-tools

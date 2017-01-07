@@ -1,5 +1,6 @@
 kwindowsystem-dev
 liblxqt-dev
 libqtxdg-dev
+lxqt-build-tools
 polkit-dev
 polkit-qt-dev
