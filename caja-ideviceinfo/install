@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_install
-
-rm -f "$UB_INSTALLDIR"/usr/lib/caja/extensions-2.0/libcaja-ideviceinfo.{a,la}
-

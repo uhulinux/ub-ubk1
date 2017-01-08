@@ -34,11 +34,11 @@ mate-utils
 pluma
 mate-user-guide
 mozo
+mate-applet-lockkeys
 mate-applet-uptime
 mate-menu
 mate-tweak
 eom-plugins
 pluma-plugins
-caja-ideviceinfo
 mate-calc
 mate
