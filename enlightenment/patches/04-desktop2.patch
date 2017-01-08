@@ -1,0 +1,18 @@
+diff -Naur orig/src/modules/mixer/emixer.desktop patched/src/modules/mixer/emixer.desktop
+--- orig/src/modules/mixer/emixer.desktop	2016-06-08 05:01:16.000000000 +0200
++++ patched/src/modules/mixer/emixer.desktop	2017-01-07 15:49:04.566886224 +0100
+@@ -9,6 +9,7 @@
+ Name[tr]=Emixer
+ Icon=emixer
+ Exec=emixer
++Comment=A module to provide a mixer for changing volume.
+ Comment[ca]=Un mòdul per controlar el volum d'àudio i fonts.
+ Comment[de]=Ein Modul, um die Lautstärke und die Datenströme zu steuern.
+ Comment[eo]=Modulo por kontroli sonfortecon kaj fluojn.
+@@ -18,5 +19,5 @@
+ Comment[ms]=Modul untuk mengawal volum dan strim audio.
+ Comment[sr]=Јединица за управљање јечином звука и токова.
+ Comment[tr]=Ses seviyesi ve ses akışı kontrol modülü.
+-Categories=System;Sound;
++Categories=System;AudioVideo;Mixer;
+ StartupWMClass=emixer

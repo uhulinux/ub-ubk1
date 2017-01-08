@@ -1,0 +1,9 @@
+doxygen
+efl-dev
+libunwind-dev
+mesa-dev
+pulseaudio-dev
+weston-dev
+x.org-server-dev
+xcb-util-keysyms-dev
+xkeyboard-config
