@@ -17,7 +17,6 @@ r30738 | galamb15@kabelszat2002.hu | 2013-03-05 21:33:25 +0100 (Tue, 05 Mar 2013
 menu patch fix
 add patch to fix obsolete macros in configure.in
 
-
 ------------------------------------------------------------------------
 r28840 | galamb15@kabelszat2002.hu | 2012-05-16 21:19:57 +0200 (Wed, 16 May 2012) | 4 lines
 
@@ -37,7 +36,6 @@ r23591 | galamb15@kabelszat2002.hu | 2010-05-11 19:27:13 +0200 (Tue, 11 May 2010
 0.63 -> 0.63.1
 menu patch fix
 install fix - delete unnecessary desktop file for KDE
-
 
 ------------------------------------------------------------------------
 r21313 | gbtami@gmail.com | 2009-12-01 13:47:51 +0100 (Tue, 01 Dec 2009) | 4 lines
@@ -65,7 +63,7 @@ r13038 | egmont | 2006-07-11 18:20:49 +0200 (Tue, 11 Jul 2006) | 2 lines
 r13037 | egmont | 2006-07-11 17:58:47 +0200 (Tue, 11 Jul 2006) | 3 lines
 
 0.55.3 -> 0.57.2
-- fix faulty description strings 
+- fix faulty description strings
 
 ------------------------------------------------------------------------
 r12873 | egmont | 2006-06-30 17:10:09 +0200 (Fri, 30 Jun 2006) | 2 lines
