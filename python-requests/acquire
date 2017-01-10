@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-requests-${UB_VERSION}.tar.gz requests-${UB_VERSION}/
-	https://pypi.python.org/packages/source/r/requests/
+v${UB_VERSION}.tar.gz requests-${UB_VERSION}/
+	https://github.com/kennethreitz/requests/archive/
