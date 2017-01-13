@@ -2,4 +2,3 @@
 
 mate-calc-${UB_VERSION}.tar.xz	mate-calc-${UB_VERSION}/
 	http://pub.mate-desktop.org/releases/${UB_VERSION_HEAD2}/
-

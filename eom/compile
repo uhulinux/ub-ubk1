@@ -1,8 +1,3 @@
 #!/bin/sh -eux
 
-# gtk3-nál --disable-python kell, mert gtk3 esetén is
-# keresi a pygtk-t, ami viszont gtk2-es, így kiakad a build.
-
-ub_compile \
-	--with-gtk=3.0 \
-	--disable-python
+ub_compile

@@ -5,6 +5,7 @@ gtk-dev
 intltool
 libexif-dev
 libjpeg-turbo-dev
+libnotify-dev
 libsm-dev
 libunique-dev
 libxml2-dev

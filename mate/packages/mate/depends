@@ -5,7 +5,6 @@ caja-extension-engrampa
 caja-extensions
 engrampa
 eom
-eom-plugins
 marco
 mate-applet-lockkeys
 mate-applet-uptime
@@ -35,4 +34,3 @@ mate-user-guide
 mate-user-share
 mate-utils
 pluma
-pluma-plugins
