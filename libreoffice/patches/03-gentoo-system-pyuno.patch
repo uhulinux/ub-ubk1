@@ -1,7 +1,7 @@
 diff -Naur orig/desktop/scripts/soffice.sh patched/desktop/scripts/soffice.sh
---- orig/desktop/scripts/soffice.sh	2014-12-05 10:23:19.000000000 +0100
-+++ patched/desktop/scripts/soffice.sh	2014-12-09 19:26:30.909063992 +0100
-@@ -127,6 +127,9 @@
+--- orig/desktop/scripts/soffice.sh	2016-12-23 21:08:05.000000000 +0100
++++ patched/desktop/scripts/soffice.sh	2017-01-11 11:17:23.709119111 +0100
+@@ -137,6 +137,9 @@
      exit 1;
  fi
  
@@ -9,28 +9,34 @@ diff -Naur orig/desktop/scripts/soffice.sh patched/desktop/scripts/soffice.sh
 +export PYTHONPATH
 +
  case "`uname -s`" in
- NetBSD|OpenBSD|FreeBSD|DragonFly)
+ NetBSD|OpenBSD|DragonFly)
  # this is a temporary hack until we can live with the default search paths
 diff -Naur orig/pyuno/source/module/uno.py patched/pyuno/source/module/uno.py
---- orig/pyuno/source/module/uno.py	2014-12-05 10:23:19.000000000 +0100
-+++ patched/pyuno/source/module/uno.py	2014-12-09 19:26:30.909063992 +0100
-@@ -16,8 +16,12 @@
- #   except in compliance with the License. You may obtain a copy of
+--- orig/pyuno/source/module/uno.py	2016-12-23 21:08:05.000000000 +0100
++++ patched/pyuno/source/module/uno.py	2017-01-11 11:20:04.494782743 +0100
+@@ -17,6 +17,7 @@
  #   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  #
+ import pyuno
 +import os
  import sys
+ import traceback
+ import warnings
+@@ -24,6 +25,10 @@
+ # since on Windows sal3.dll no longer calls WSAStartup
+ import socket
  
 +sys.path.append('/usr/lib/libreoffice/program')
 +if getattr(os.environ, 'URE_BOOTSTRAP', None) is None:
 +    os.environ['URE_BOOTSTRAP'] = "vnd.sun.star.pathname:/usr/lib/libreoffice/program/fundamentalrc"
- import pyuno
++
+ # Some Python 2/3 compatibility code copied from the six library
+ PY2 = sys.version_info[0] == 2
  
- try:
 diff -Naur orig/pyuno/source/officehelper.py patched/pyuno/source/officehelper.py
---- orig/pyuno/source/officehelper.py	2014-12-05 10:23:19.000000000 +0100
-+++ patched/pyuno/source/officehelper.py	2014-12-09 19:27:03.917227670 +0100
-@@ -44,7 +44,7 @@
+--- orig/pyuno/source/officehelper.py	2016-12-23 21:08:05.000000000 +0100
++++ patched/pyuno/source/officehelper.py	2017-01-11 11:17:23.709119111 +0100
+@@ -45,7 +45,7 @@
          if "UNO_PATH" in os.environ:
              sOffice = os.environ["UNO_PATH"]
          else:
