@@ -14,14 +14,14 @@ done
 
 ln -s /usr/lib/systemd/systemd-udevd "$UB_INSTALLDIR"/sbin/udevd
 
-find "$UB_INSTALLDIR"/usr/lib/udev/ -type f -maxdepth 1 | while read n; do	
+find "$UB_INSTALLDIR"/usr/lib/udev/ -type f -maxdepth 1 | while read n; do
 	name="$(basename $n)"
 	ln -s ../usr/lib/udev/"$name" "$UB_INSTALLDIR"/sbin/"$name"
 done
 
 # hiányzó csoportok helyettesítése
 for file in "$UB_INSTALLDIR"/usr/lib/udev/rules.d/*.rules; do
-	for group in cdrom dialout disk floppy input kmem utmp uucp; do
+	for group in cdrom dialout disk floppy input kmem tape utmp uucp; do
 		sed -e "s/GROUP=\"$group\"/GROUP=\"media\"/g" -i "$file"
 	done
 done
@@ -42,4 +42,3 @@ for i in libsystemd-{daemon,id128,journal,login}; do
 	ln -s libsystemd.pc "$UB_INSTALLDIR"/usr/lib/pkgconfig/"$i".pc
 #	ln -s libsystemd.so.0 "$UB_INSTALLDIR"/usr/lib/"$i".so.0
 done
-
