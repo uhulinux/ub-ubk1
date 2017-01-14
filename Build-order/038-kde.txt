@@ -26,9 +26,10 @@ prison
 solid
 sonnet
 threadweaver
-kfilemetadata
 kwayland
+syntax-highlighting
 ki18n
+kfilemetadata
 kunitconversion
 kcoreaddons
 kpty
@@ -46,7 +47,6 @@ kemoticons
 kdesu
 kconfigwidgets
 kiconthemes
-kjs
 knotifications
 kwallet
 ktextwidgets
@@ -68,10 +68,11 @@ kcmutils
 kactivities
 kactivities-stats
 plasma-framework
+krunner
 kdelibs4support
+kjs
 khtml
 kross
-krunner
 kjsembed
 kio-extras
 kdegraphics-thumbnailers

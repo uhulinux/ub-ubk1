@@ -155,4 +155,3 @@ python-stevedore
 gst0.10-python
 xmldiff
 pdfminer
-extra-cmake-modules
