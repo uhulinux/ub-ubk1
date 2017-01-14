@@ -1,7 +1,0 @@
-extra-cmake-modules
-kcoreaddons-dev
-ki18n-dev
-kiconthemes-dev
-ktextwidgets-dev
-kwidgetsaddons-dev
-qt5-dev

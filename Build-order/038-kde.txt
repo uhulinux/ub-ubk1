@@ -3,6 +3,7 @@ lmdb
 packagekit-qt
 phonon
 qca
+qtspeech
 attica
 breeze-icons
 bluez-qt
@@ -25,6 +26,8 @@ prison
 solid
 sonnet
 threadweaver
+kfilemetadata
+kwayland
 ki18n
 kunitconversion
 kcoreaddons
@@ -44,14 +47,13 @@ kdesu
 kconfigwidgets
 kiconthemes
 kjs
-qtspeech
 knotifications
 kwallet
 ktextwidgets
-libdebconf-kde
 kxmlgui
 kbookmarks
 kio
+baloo
 knewstuff
 kxmlrpcclient
 knotifyconfig
@@ -78,7 +80,6 @@ kactivitymanagerd
 plasma-workspace-wallpapers
 bluedevil
 kdecoration
-kwayland
 breeze
 breeze-gtk
 kde-cli-tools
@@ -96,8 +97,6 @@ kwayland-integration
 kwin
 milou
 oxygen
-kfilemetadata
-baloo
 plasma-mediacenter
 plasma-nm
 plasma-pa
@@ -111,9 +110,6 @@ polkit-kde-agent-1
 powerdevil
 sddm-kcm
 systemsettings
-libqapt
-kirigami
-discover
 user-manager
 libkcddb
 k9copy
