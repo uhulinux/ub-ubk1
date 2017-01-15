@@ -1,0 +1,3 @@
+#!/bin/sh -eux
+
+SBINDIR=/usr/bin ub_install

@@ -1,0 +1,1 @@
+KERNEL=="rfkill", GROUP="media", MODE="0664"
