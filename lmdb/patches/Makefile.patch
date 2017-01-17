@@ -1,21 +1,21 @@
 diff -Naur orig/Makefile patched/Makefile
---- orig/Makefile	2016-02-05 22:22:15.000000000 +0100
-+++ patched/Makefile	2016-02-28 23:38:52.648348214 +0100
-@@ -26,7 +26,8 @@
- CFLAGS	= $(THREADS) $(OPT) $(W) $(XCFLAGS)
+--- orig/Makefile	2016-12-28 19:36:01.000000000 +0100
++++ patched/Makefile	2017-01-15 04:56:35.847124567 +0100
+@@ -27,7 +27,8 @@
  LDLIBS	=
  SOLIBS	=
+ SOEXT	= .so
 -prefix	= /usr/local
 +SOVER   = 0
 +prefix	= /usr
  exec_prefix = $(prefix)
  bindir = $(exec_prefix)/bin
  libdir = $(exec_prefix)/lib
-@@ -38,23 +39,24 @@
+@@ -39,23 +40,25 @@
  
  IHDRS	= lmdb.h
- ILIBS	= liblmdb.a liblmdb.so
-+ELIBS	= liblmdb.so liblmdb.so.$(SOVER) liblmdb.so.$(SOVER).0.0
+ ILIBS	= liblmdb.a liblmdb$(SOEXT)
++ELIBS	= liblmdb.so.$(SOVER)
  IPROGS	= mdb_stat mdb_copy mdb_dump mdb_load
  IDOCS	= mdb_stat.1 mdb_copy.1 mdb_dump.1 mdb_load.1
  PROGS	= $(IPROGS) mtest mtest2 mtest3 mtest4 mtest5
@@ -32,6 +32,7 @@ diff -Naur orig/Makefile patched/Makefile
 +	for f in $(ELIBS); do cp $$f $(DESTDIR)$(libdir); done
  	for f in $(IHDRS); do cp $$f $(DESTDIR)$(includedir); done
  	for f in $(IDOCS); do cp $$f $(DESTDIR)$(mandir)/man1; done
++	ln -s liblmdb.so.$(SOVER) $(DESTDIR)$(libdir)/liblmdb.so
  
  clean:
 -	rm -rf $(PROGS) *.[ao] *.[ls]o *~ testdb
@@ -39,14 +40,12 @@ diff -Naur orig/Makefile patched/Makefile
  
  test:	all
  	rm -rf testdb && mkdir testdb
-@@ -65,7 +67,9 @@
+@@ -66,7 +69,7 @@
  
- liblmdb.so:	mdb.lo midl.lo
+ liblmdb$(SOEXT):	mdb.lo midl.lo
  #	$(CC) $(LDFLAGS) -pthread -shared -Wl,-Bsymbolic -o $@ mdb.o midl.o $(SOLIBS)
 -	$(CC) $(LDFLAGS) -pthread -shared -o $@ mdb.lo midl.lo $(SOLIBS)
-+	$(CC) $(LDFLAGS) -fPIC -Wl,-soname,liblmdb.so.$(SOVER) -pthread -Wl,-Bsymbolic -shared -o $@.$(SOVER).0.0 mdb.lo midl.lo $(SOLIBS)
-+	ln -s $@.$(SOVER).0.0 liblmdb.so.$(SOVER)
-+	ln -s liblmdb.so.$(SOVER) liblmdb.so
++	$(CC) $(LDFLAGS) -fPIC -Wl,-soname,liblmdb.so.$(SOVER) -pthread -Wl,-Bsymbolic -shared -o $@.$(SOVER) mdb.lo midl.lo $(SOLIBS)
  
  mdb_stat: mdb_stat.o liblmdb.a
  mdb_copy: mdb_copy.o liblmdb.a
