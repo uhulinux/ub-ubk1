@@ -30,6 +30,7 @@ ub_compile \
 	--enable-dvdcss \
 	--enable-avahi \
 	--enable-webserver \
-	--enable-optical-drive
-#	--with-ffmpeg=shared
+	--enable-optical-drive \
+	--with-ffmpeg=shared \
+	--with-lirc-device=/var/run/lirc/lircd
 #	--enable-libusb - udev esetén nem kell, így mindenképp letiltja
