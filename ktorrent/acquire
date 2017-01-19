@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ktorrent-${UB_VERSION}.tar.xz ktorrent-${UB_VERSION}/
+	http://download.kde.org/stable/ktorrent/5.0/

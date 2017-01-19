@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kidentitymanagement-${UB_VERSION}.tar.xz kidentitymanagement-${UB_VERSION}/
+	http://download.kde.org/stable/applications/${UB_VERSION}/src/

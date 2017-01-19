@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+v${UB_VERSION}.tar.gz spectacle-${UB_VERSION}/
+	https://github.com/KDE/spectacle/archive/

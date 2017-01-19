@@ -1,0 +1,17 @@
+extra-cmake-modules
+karchive
+kcmutils-dev
+kcoreaddons-dev
+kcrash
+kdelibs4support-dev
+kdesignerplugin-dev
+kdesu-dev
+kdoctools
+khtml-dev
+kparts-dev
+kwidgetsaddons-dev
+python
+qt5-dev
+qt5-test
+qtwebengine-dev
+tidy-dev
