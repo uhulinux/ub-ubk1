@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+${UB_VERSION}.tar.gz skanlite-${UB_VERSION}/
+	https://github.com/KDE/skanlite/archive/

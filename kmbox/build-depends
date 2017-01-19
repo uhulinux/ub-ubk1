@@ -1,0 +1,12 @@
+akonadi-dev
+boost-dev
+extra-cmake-modules
+kconfig-dev
+kcrash-dev
+kio-dev
+kmbox-dev
+kmime-dev
+kservice-dev
+mailcommon-dev
+mailimporter
+qt5-dev

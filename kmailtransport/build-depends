@@ -1,0 +1,13 @@
+akonadi-dev
+akonadi-mime-dev
+boost-dev
+cyrus-sasl2-dev
+extra-cmake-modules
+kcmutils-dev
+kconfigwidgets-dev
+kdoctools
+ki18n-dev
+kio-dev
+kitemmodels-dev
+kmime-dev
+kwallet-dev

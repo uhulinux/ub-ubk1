@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+pimcommon-${UB_VERSION}.tar.xz pimcommon-${UB_VERSION}/
+	http://download.kde.org/stable/applications/${UB_VERSION}/src/

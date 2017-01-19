@@ -1,0 +1,15 @@
+akonadi-dev
+boost-dev
+extra-cmake-modules
+kconfig-dev
+kdbusaddons-dev
+kdoctools
+ki18n-dev
+kio-dev
+kitemmodels-dev
+kmime-dev
+kxmlgui-dev
+libxslt-dev
+qt5-dev
+qt5-test
+shared-mime-info
