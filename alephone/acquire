@@ -2,4 +2,3 @@
 
 AlephOne-${UB_VERSION}.tar.bz2 AlephOne-${UB_VERSION}/
 	https://github.com/Aleph-One-Marathon/alephone/releases/download/release-${UB_VERSION}/
-

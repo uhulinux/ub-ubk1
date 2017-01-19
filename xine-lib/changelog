@@ -30,13 +30,11 @@ build-depends fix - vaapi support
 add u2d
 add missing header to source
 
-
 ------------------------------------------------------------------------
 r29060 | galamb15@kabelszat2002.hu | 2012-06-12 17:18:40 +0200 (Tue, 12 Jun 2012) | 4 lines
 
 1.2.1 -> 1.2.2
 acquire fix - xz
-
 
 ------------------------------------------------------------------------
 r27737 | galamb15@kabelszat2002.hu | 2012-02-19 19:04:17 +0100 (Sun, 19 Feb 2012) | 5 lines
@@ -44,7 +42,6 @@ r27737 | galamb15@kabelszat2002.hu | 2012-02-19 19:04:17 +0100 (Sun, 19 Feb 2012
 1.2.0 -> 1.2.1
 build-depends fix - libbluray
 remove compile fix patches
-
 
 ------------------------------------------------------------------------
 r27491 | rezso@rezso.net | 2012-01-10 23:15:53 +0100 (Tue, 10 Jan 2012) | 4 lines
@@ -71,7 +68,6 @@ r24454 | galamb15@kabelszat2002.hu | 2010-11-29 21:08:47 +0100 (Mon, 29 Nov 2010
 build-depends fix - add libmodplug
 add dxr3 include fix patch
 
-
 ------------------------------------------------------------------------
 r22783 | ntomasz@uhuklub.hu | 2010-03-07 21:24:14 +0100 (Sun, 07 Mar 2010) | 3 lines
 
@@ -81,8 +77,7 @@ build-depends fix
 ------------------------------------------------------------------------
 r21722 | galamb15@kabelszat2002.hu | 2009-12-21 17:26:36 +0100 (Mon, 21 Dec 2009) | 3 lines
 
-1.1.16.3 -> 1.1.17 
-
+1.1.16.3 -> 1.1.17
 
 ------------------------------------------------------------------------
 r20750 | galamb15@kabelszat2002.hu | 2009-11-01 17:13:27 +0100 (Sun, 01 Nov 2009) | 6 lines
@@ -92,7 +87,6 @@ build-depends fix - add pulseaudio support
 homepage fix
 remove obsolete patches
 
-
 ------------------------------------------------------------------------
 r17841 | galamb15@kabelszat2002.hu | 2009-03-30 20:59:55 +0200 (Mon, 30 Mar 2009) | 6 lines
 
@@ -100,7 +94,6 @@ r17841 | galamb15@kabelszat2002.hu | 2009-03-30 20:59:55 +0200 (Mon, 30 Mar 2009
 acquire fix
 build-depends fix - add jack & wavpack support
 add patch to compile with latest ffmpeg
-
 
 ------------------------------------------------------------------------
 r16653 | ralesk@uhulinux.hu | 2008-12-07 02:56:28 +0100 (Sun, 07 Dec 2008) | 2 lines

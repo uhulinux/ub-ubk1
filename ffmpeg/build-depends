@@ -34,7 +34,7 @@ openjpeg1-dev
 openssl-dev
 pulseaudio-dev
 schroedinger-dev
-sdl-dev
+sdl2-dev
 speex-dev
 x264-dev
 x265-dev

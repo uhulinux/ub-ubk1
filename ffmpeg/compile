@@ -22,7 +22,6 @@
 	--enable-libcelt \
 	--enable-libdc1394 \
 	--enable-libfreetype \
-	--enable-libfaac \
 	--enable-libgsm \
 	--enable-libmodplug \
 	--enable-libmp3lame \

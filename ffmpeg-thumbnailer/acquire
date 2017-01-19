@@ -2,5 +2,3 @@
 
 ${UB_VERSION}.tar.gz ffmpegthumbnailer-${UB_VERSION}/
 	https://github.com/dirkvdb/ffmpegthumbnailer/archive/
-
-

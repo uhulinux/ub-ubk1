@@ -2,4 +2,3 @@
 
 ub_compile \
 	--with-buildstamp='UHU Linux'
-

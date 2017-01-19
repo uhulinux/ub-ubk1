@@ -2,7 +2,7 @@
 
 # openexr: nincs ImfMultiPartInputFile.h
 # az openimageio függ az openexr-től, így az is letiltva
-# a cycles pedig az openimageio-tól 
+# a cycles pedig az openimageio-tól
 
 ub_compile \
 	-DCMAKE_SKIP_RPATH=ON \
