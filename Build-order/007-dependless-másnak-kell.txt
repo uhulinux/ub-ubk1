@@ -34,7 +34,6 @@ fmod3
 foomatic-db
 fping
 freeimage
-freeze
 fribidi
 gdb
 geoip
