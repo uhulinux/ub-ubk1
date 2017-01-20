@@ -2,10 +2,3 @@
 
 HandBrake-${UB_VERSION}.tar.bz2 HandBrake-${UB_VERSION}/
 	http://download.handbrake.fr/releases/${UB_VERSION}/
-
-fdk-aac-v0.1.1-6-gbae4553.tar.bz2
-	ftp://ftp.internat.freebsd.org/pub/FreeBSD/distfiles/handbrake/
-	ftp://ftp.tw.freebsd.org/pub/ports/distfiles/handbrake/
-
-x265_1.9.tar.gz
-	http://download.handbrake.fr/contrib/

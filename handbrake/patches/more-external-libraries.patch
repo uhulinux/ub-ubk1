@@ -1,16 +1,17 @@
-diff -Naur orig/make/include/main.defs patched/make/include/main.defs
---- orig/make/include/main.defs	2014-10-16 01:32:41.000000000 +0200
-+++ patched/make/include/main.defs	2015-09-27 14:13:52.190906696 +0200
-@@ -61,12 +61,6 @@
-     MODULES += contrib/x265
+diff -Nur orig/make/include/main.defs mod/make/include/main.defs
+--- orig/make/include/main.defs	2016-12-29 22:07:59.000000000 +0100
++++ mod/make/include/main.defs	2017-01-20 15:26:18.638086173 +0100
+@@ -74,13 +74,8 @@
+ endif
+ 
+ ifeq (1,$(FEATURE.x265))
+-    MODULES += contrib/x265
  endif
  
 -MODULES += contrib/ffmpeg
 -MODULES += contrib/libvpx
 -MODULES += contrib/libdvdread
 -MODULES += contrib/libdvdnav
--MODULES += contrib/libbluray
--
+ MODULES += contrib/libbluray
+ 
  ifneq (,$(filter $(BUILD.system),mingw))
- ifneq ($(HAS.pthread),1)
-     MODULES += contrib/pthreadw32

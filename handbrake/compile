@@ -1,10 +1,5 @@
 #!/bin/sh -eux
 
-mkdir download
-cp x265_1.9.tar.gz \
-   fdk-aac-v0.1.1-6-gbae4553.tar.bz2 \
-    download/
-
 ./configure \
     --prefix=/usr \
     --force \
