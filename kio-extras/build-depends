@@ -22,9 +22,5 @@ openexr-dev
 openslp-dev
 phonon-dev
 qt5-dev
-qt5-plugin-mysql
-qt5-plugin-odbc
-qt5-plugin-psql
-qt5-plugin-tds
 samba-dev
 solid-dev

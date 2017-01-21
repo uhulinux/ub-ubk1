@@ -9,7 +9,3 @@ kio-dev
 kwindowsystem-dev
 kxmlgui-dev
 qt5-dev
-qt5-plugin-mysql
-qt5-plugin-odbc
-qt5-plugin-psql
-qt5-plugin-tds

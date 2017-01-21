@@ -2,7 +2,3 @@ boost-dev
 extra-cmake-modules
 kactivities-dev
 kconfig-dev
-qt5-plugin-mysql
-qt5-plugin-odbc
-qt5-plugin-psql
-qt5-plugin-tds

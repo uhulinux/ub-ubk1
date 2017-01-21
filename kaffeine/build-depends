@@ -4,9 +4,5 @@ kdoctools
 knewstuff-dev
 libv4l-dev
 libxscrnsaver-dev
-qt5-plugin-mysql
-qt5-plugin-odbc
-qt5-plugin-psql
-qt5-plugin-tds
 vlc-dev
 xine-lib-dev

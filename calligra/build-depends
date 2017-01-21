@@ -49,10 +49,6 @@ phonon-dev
 poppler-qt5-dev
 postgresql-dev
 qca-dev
-qt5-plugin-mysql
-qt5-plugin-odbc
-qt5-plugin-psql
-qt5-plugin-tds
 qtwebkit-dev
 sonnet-dev
 threadweaver-dev
