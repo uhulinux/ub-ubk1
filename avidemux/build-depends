@@ -5,6 +5,7 @@ fribidi-dev
 glu-dev
 jack-dev
 liba52-dev
+libass-dev
 libdca-dev
 libfaad2-dev
 liblame-dev
@@ -15,6 +16,7 @@ libvorbis-dev
 libvpx-dev
 libxslt-dev
 libxv-dev
+mp4v2-dev
 opencore-amr-dev
 opus-dev
 qt5-dev
