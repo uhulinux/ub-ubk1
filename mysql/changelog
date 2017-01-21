@@ -53,7 +53,7 @@ mysql -> mariadb
 update compile and install for cmake
 drop empty mysql-doc package
 install needed docs from ub, not with cmake
-don't use bison 3.0, not compatible with mariadb 
+don't use bison 3.0, not compatible with mariadb
 
 ------------------------------------------------------------------------
 r29372 | rezso@rezso.net | 2012-08-11 12:11:02 +0200 (Sat, 11 Aug 2012) | 4 lines
