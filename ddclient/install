@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+install -Dm755 ddclient ${UB_INSTALLDIR}/usr/sbin/
+install -Dm600 sample-etc_ddclient.conf ${UB_INSTALLDIR}/etc/ddclient/ddclient.conf
+install -d {$UB_INSTALLDIR}/var/cache/ddclient

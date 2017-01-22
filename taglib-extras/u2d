@@ -1,0 +1,2 @@
+urllist http://download.kde.org/stable/taglib-extras/ | grep -E '^[0-9]\.' | splitver '^([0-9.]+)$' | sort -V | tail -n 1
+

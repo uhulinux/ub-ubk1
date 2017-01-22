@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+taglib-extras-${UB_VERSION}.tar.gz taglib-extras-${UB_VERSION}/
+	http://download.kde.org/stable/taglib-extras/${UB_VERSION}/src/
