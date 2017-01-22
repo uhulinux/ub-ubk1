@@ -8,7 +8,7 @@ mysql-dev
 openssl-dev
 php
 postgresql-dev
-pwlib-dev
+ptlib-dev
 qt4-dev
 spandsp-dev
 speex-dev
