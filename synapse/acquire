@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+synapse-${UB_VERSION}.tar.xz synapse-${UB_VERSION}/
+	https://launchpad.net/synapse-project/0.3/${UB_VERSION}/+download/

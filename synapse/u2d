@@ -1,0 +1,1 @@
+_geturl https://launchpad.net/synapse-project/ | grep -E 'Latest version' | sed -r 's/^.*Latest version is //' | sort -V | tail -n 1
