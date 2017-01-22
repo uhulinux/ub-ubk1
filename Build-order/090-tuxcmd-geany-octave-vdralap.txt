@@ -9,7 +9,6 @@ photopc
 tygemo
 lapack
 octave
-qtoctave
 mathgl
 maxima
 wxmaxima

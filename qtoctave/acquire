@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-qtoctave_$UB_VERSION.orig.tar.gz qtoctave-$UB_VERSION/
-	http://ftp.debian.org/debian/pool/main/q/qtoctave/
