@@ -135,5 +135,6 @@ dolphin-plugins
 ark
 okular
 calligra
+phonon-backend-vlc
 kde
 kde-apps
