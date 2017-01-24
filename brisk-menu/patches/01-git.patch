@@ -1,0 +1,988 @@
+diff -Naur orig/autogen.sh patched/autogen.sh
+--- orig/autogen.sh	2017-01-01 15:08:33.000000000 +0100
++++ patched/autogen.sh	2017-01-24 00:41:39.000000000 +0100
+@@ -8,6 +8,7 @@
+ prevdir="$PWD"
+ cd "$srcdir"
+ 
++intltoolize --force
+ AUTORECONF=`which autoreconf`
+ if test -z $AUTORECONF;
+ then
+diff -Naur orig/configure.ac patched/configure.ac
+--- orig/configure.ac	2017-01-01 15:08:33.000000000 +0100
++++ patched/configure.ac	2017-01-24 00:41:39.000000000 +0100
+@@ -10,6 +10,25 @@
+ 
+ GLIB_GSETTINGS
+ 
++# Source: https://mail.gnome.org/archives/commits-list/2012-September/msg01730.html
++# adl_RECURSIVE_EVAL(VALUE, RESULT)
++# =================================
++# Interpolate the VALUE in loop until it doesn't change,
++# and set the result to $RESULT.
++# WARNING: It's easy to get an infinite loop with some unsane input.
++# For example ${datadir} becomes ${datarootdir}, and then ${prefix}/share, and
++# finally ${prefix} is replaced by the prefix.
++AC_DEFUN([adl_RECURSIVE_EVAL],
++[_lcl_receval="$1"
++$2=`(test "x$prefix" = xNONE && prefix="$ac_default_prefix"
++     test "x$exec_prefix" = xNONE && exec_prefix="${prefix}"
++     _lcl_receval_old=''
++     while test "[$]_lcl_receval_old" != "[$]_lcl_receval"; do
++       _lcl_receval_old="[$]_lcl_receval"
++       eval _lcl_receval="\"[$]_lcl_receval\""
++     done
++     echo "[$]_lcl_receval")`])
++
+ # Build requirements
+ m4_define([gtk_required_version], [3.18.0])
+ m4_define([glib_required_version], [2.44.0])
+@@ -47,10 +66,24 @@
+                  ]
+ )
+ 
+-AC_CONFIG_FILES([Makefile])
++AC_CONFIG_FILES([Makefile
++                 po/Makefile.in])
++
++IT_PROG_INTLTOOL([0.50.0])
++GETTEXT_PACKAGE=brisk-menu
++AC_SUBST(GETTEXT_PACKAGE)
++AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",
++                   [The prefix for our gettext translation domains.])
++
++
++adl_RECURSIVE_EVAL(["${datadir}/locale"], [MATELOCALEDIR])
++AC_SUBST(MATELOCALEDIR)
++AC_DEFINE_UNQUOTED(MATELOCALEDIR, "$MATELOCALEDIR", [locale directory])
++
+ 
+ AC_OUTPUT
+ 
++AM_GLIB_GNU_GETTEXT
+ AC_MSG_RESULT([
+         brisk-menu $VERSION
+         =====================
+diff -Naur orig/.gitignore patched/.gitignore
+--- orig/.gitignore	2017-01-01 15:08:33.000000000 +0100
++++ patched/.gitignore	2017-01-24 00:41:39.000000000 +0100
+@@ -9,7 +9,7 @@
+ install-sh
+ libtool
+ ltmain.sh
+-m4/
++m4/*.m4
+ missing
+ .deps
+ .dirstamp
+@@ -34,3 +34,8 @@
+ 
+ libsaver-glue.*
+ libsession-glue.*
++
++po/Makefile.in.in
++po/POTFILES
++po/stamp-it
++po/*.gmo
+diff -Naur orig/Makefile.am patched/Makefile.am
+--- orig/Makefile.am	2017-01-01 15:08:33.000000000 +0100
++++ patched/Makefile.am	2017-01-24 00:41:39.000000000 +0100
+@@ -167,3 +167,8 @@
+ 	data/com.solus-project.brisk-menu.gschema.xml
+ 
+ @GSETTINGS_RULES@
++
++SUBDIRS = \
++	. \
++	po
++
+diff -Naur orig/po/brisk-menu.pot patched/po/brisk-menu.pot
+--- orig/po/brisk-menu.pot	1970-01-01 01:00:00.000000000 +0100
++++ patched/po/brisk-menu.pot	2017-01-24 00:41:39.000000000 +0100
+@@ -0,0 +1,43 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++#
++#, fuzzy
++msgid ""
++msgstr ""
++"Project-Id-Version: PACKAGE VERSION\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2017-01-21 04:56+0000\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
++"Language-Team: LANGUAGE <LL@li.org>\n"
++"Language: \n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=CHARSET\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++#. Now add the label
++#: ../src/applet.c:177
++msgid "Menu"
++msgstr ""
++
++#: ../src/applet.c:265
++msgid "Brisk Menu Launcher"
++msgstr ""
++
++#: ../src/category-button.c:130
++msgid "All"
++msgstr ""
++
++#: ../src/menu-session.c:144
++msgid "End the current session"
++msgstr ""
++
++#: ../src/menu-session.c:155
++msgid "Lock the screen"
++msgstr ""
++
++#: ../src/menu-session.c:166
++msgid "Turn off the device"
++msgstr ""
+diff -Naur orig/po/en_GB.po patched/po/en_GB.po
+--- orig/po/en_GB.po	1970-01-01 01:00:00.000000000 +0100
++++ patched/po/en_GB.po	2017-01-24 00:41:39.000000000 +0100
+@@ -0,0 +1,44 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++# 
++#, fuzzy
++msgid ""
++msgstr ""
++"Project-Id-Version: PACKAGE VERSION\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2017-01-21 04:56+0000\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: Ikey Doherty <ikey@solus-project.com>, 2017\n"
++"Language-Team: English (United Kingdom) (https://www.transifex.com/solus-project/teams/68407/en_GB/)\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=CHARSET\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Language: en_GB\n"
++"Plural-Forms: nplurals=2; plural=(n != 1);\n"
++
++#. Now add the label
++#: ../src/applet.c:177
++msgid "Menu"
++msgstr "Menu"
++
++#: ../src/applet.c:265
++msgid "Brisk Menu Launcher"
++msgstr "Brisk Menu Launcher"
++
++#: ../src/category-button.c:130
++msgid "All"
++msgstr "All"
++
++#: ../src/menu-session.c:144
++msgid "End the current session"
++msgstr "End the current session"
++
++#: ../src/menu-session.c:155
++msgid "Lock the screen"
++msgstr "Lock the screen"
++
++#: ../src/menu-session.c:166
++msgid "Turn off the device"
++msgstr "Turn off the device"
+diff -Naur orig/po/es_AR.po patched/po/es_AR.po
+--- orig/po/es_AR.po	1970-01-01 01:00:00.000000000 +0100
++++ patched/po/es_AR.po	2017-01-24 00:41:39.000000000 +0100
+@@ -0,0 +1,44 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++# 
++#, fuzzy
++msgid ""
++msgstr ""
++"Project-Id-Version: PACKAGE VERSION\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2017-01-21 04:56+0000\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: Federico Damián Schonborn <federico.d.schonborn@gmail.com>, 2017\n"
++"Language-Team: Spanish (Argentina) (https://www.transifex.com/solus-project/teams/68407/es_AR/)\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=CHARSET\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Language: es_AR\n"
++"Plural-Forms: nplurals=2; plural=(n != 1);\n"
++
++#. Now add the label
++#: ../src/applet.c:177
++msgid "Menu"
++msgstr "Menú"
++
++#: ../src/applet.c:265
++msgid "Brisk Menu Launcher"
++msgstr "Lanzador del menú Brisk"
++
++#: ../src/category-button.c:130
++msgid "All"
++msgstr "Todo"
++
++#: ../src/menu-session.c:144
++msgid "End the current session"
++msgstr "Finalizar la sesión"
++
++#: ../src/menu-session.c:155
++msgid "Lock the screen"
++msgstr "Bloquear la pantalla"
++
++#: ../src/menu-session.c:166
++msgid "Turn off the device"
++msgstr "Apagar el dispositivo"
+diff -Naur orig/po/fr_FR.po patched/po/fr_FR.po
+--- orig/po/fr_FR.po	1970-01-01 01:00:00.000000000 +0100
++++ patched/po/fr_FR.po	2017-01-24 00:41:39.000000000 +0100
+@@ -0,0 +1,44 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++# 
++#, fuzzy
++msgid ""
++msgstr ""
++"Project-Id-Version: PACKAGE VERSION\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2017-01-21 04:56+0000\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: Bridouzz <justin.berthault@gmail.com>, 2017\n"
++"Language-Team: French (France) (https://www.transifex.com/solus-project/teams/68407/fr_FR/)\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=CHARSET\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Language: fr_FR\n"
++"Plural-Forms: nplurals=2; plural=(n > 1);\n"
++
++#. Now add the label
++#: ../src/applet.c:177
++msgid "Menu"
++msgstr "Menu"
++
++#: ../src/applet.c:265
++msgid "Brisk Menu Launcher"
++msgstr "Lanceur de Menu Brisk"
++
++#: ../src/category-button.c:130
++msgid "All"
++msgstr "Tout"
++
++#: ../src/menu-session.c:144
++msgid "End the current session"
++msgstr "Terminer la session en cours"
++
++#: ../src/menu-session.c:155
++msgid "Lock the screen"
++msgstr "Vérouiller l'écran"
++
++#: ../src/menu-session.c:166
++msgid "Turn off the device"
++msgstr "Éteindre l'appareil"
+diff -Naur orig/po/ja.po patched/po/ja.po
+--- orig/po/ja.po	1970-01-01 01:00:00.000000000 +0100
++++ patched/po/ja.po	2017-01-24 00:41:39.000000000 +0100
+@@ -0,0 +1,44 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++# 
++#, fuzzy
++msgid ""
++msgstr ""
++"Project-Id-Version: PACKAGE VERSION\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2017-01-21 04:56+0000\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: ふうせん Fu-sen. | BALLOON a.k.a. Fu-sen. <balloonakafusen@gmail.com>, 2017\n"
++"Language-Team: Japanese (https://www.transifex.com/solus-project/teams/68407/ja/)\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=CHARSET\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Language: ja\n"
++"Plural-Forms: nplurals=1; plural=0;\n"
++
++#. Now add the label
++#: ../src/applet.c:177
++msgid "Menu"
++msgstr "メニュー"
++
++#: ../src/applet.c:265
++msgid "Brisk Menu Launcher"
++msgstr "Brisk Menu ランチャー"
++
++#: ../src/category-button.c:130
++msgid "All"
++msgstr "すべて"
++
++#: ../src/menu-session.c:144
++msgid "End the current session"
++msgstr "現在のセッションを終了"
++
++#: ../src/menu-session.c:155
++msgid "Lock the screen"
++msgstr "スクリーンをロック"
++
++#: ../src/menu-session.c:166
++msgid "Turn off the device"
++msgstr "デバイスをオフにする"
+diff -Naur orig/po/LINGUAS patched/po/LINGUAS
+--- orig/po/LINGUAS	1970-01-01 01:00:00.000000000 +0100
++++ patched/po/LINGUAS	2017-01-24 00:41:39.000000000 +0100
+@@ -0,0 +1,4 @@
++en_GB
++es_AR
++fr_FR
++ja
+diff -Naur orig/po/POTFILES.in patched/po/POTFILES.in
+--- orig/po/POTFILES.in	1970-01-01 01:00:00.000000000 +0100
++++ patched/po/POTFILES.in	2017-01-24 00:41:39.000000000 +0100
+@@ -0,0 +1,3 @@
++src/applet.c
++src/category-button.c
++src/menu-session.c
+diff -Naur orig/po/update_linguas.sh patched/po/update_linguas.sh
+--- orig/po/update_linguas.sh	1970-01-01 01:00:00.000000000 +0100
++++ patched/po/update_linguas.sh	2017-01-24 00:41:39.000000000 +0100
+@@ -0,0 +1,9 @@
++#!/bin/sh
++tx pull -a --minimum-perc=100
++
++cd po
++rm LINGUAS
++
++for i in *.po ; do
++    echo `echo $i|sed 's/.po$//'` >> LINGUAS
++done
+diff -Naur orig/src/applet.c patched/src/applet.c
+--- orig/src/applet.c	2017-01-01 15:08:33.000000000 +0100
++++ patched/src/applet.c	2017-01-24 00:41:39.000000000 +0100
+@@ -19,6 +19,7 @@
+ #include "key-binder.h"
+ #include "menu-private.h"
+ #include "menu-window.h"
++#include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+ #include <mate-panel-applet.h>
+ BRISK_END_PEDANTIC
+@@ -173,7 +174,7 @@
+         gtk_widget_set_halign(image, GTK_ALIGN_START);
+ 
+         /* Now add the label */
+-        label = gtk_label_new("Menu");
++        label = gtk_label_new(_("Menu"));
+         self->label = label;
+         gtk_box_pack_start(GTK_BOX(layout), label, TRUE, TRUE, 0);
+         gtk_widget_set_margin_end(label, 4);
+@@ -253,8 +254,15 @@
+         if (!g_str_has_prefix(id, "BriskMenu")) {
+                 return FALSE;
+         }
+-        g_set_application_name("Brisk Menu Launcher");
+-        /* TODO: Fix things up to be more useful. */
++        const char *home = NULL;
++        __attribute__((unused)) int ret = 0;
++
++        home = g_get_home_dir();
++        if (home) {
++                ret = chdir(home);
++        }
++
++        g_set_application_name(_("Brisk Menu Launcher"));
+         gtk_widget_show(GTK_WIDGET(applet));
+         return TRUE;
+ }
+diff -Naur orig/src/category-button.c patched/src/category-button.c
+--- orig/src/category-button.c	2017-01-01 15:08:33.000000000 +0100
++++ patched/src/category-button.c	2017-01-24 00:41:39.000000000 +0100
+@@ -16,6 +16,7 @@
+ BRISK_BEGIN_PEDANTIC
+ #include "category-button.h"
+ #include "menu-private.h"
++#include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+ #include <matemenu-tree.h>
+ BRISK_END_PEDANTIC
+@@ -126,8 +127,7 @@
+                 label = matemenu_tree_directory_get_name(self->group);
+                 icon_name = matemenu_tree_directory_get_icon(self->group);
+         } else {
+-                // label = _("All");
+-                label = "All";
++                label = _("All");
+                 icon_name = "starred";
+         }
+ 
+diff -Naur orig/src/entry-button.c patched/src/entry-button.c
+--- orig/src/entry-button.c	2017-01-01 15:08:33.000000000 +0100
++++ patched/src/entry-button.c	2017-01-24 00:41:39.000000000 +0100
+@@ -17,7 +17,6 @@
+ #include "entry-button.h"
+ #include "launcher.h"
+ #include "menu-private.h"
+-#include <gio/gdesktopappinfo.h>
+ #include <gtk/gtk.h>
+ #include <matemenu-tree.h>
+ 
+@@ -48,7 +47,7 @@
+ 
+ G_DEFINE_TYPE(BriskMenuEntryButton, brisk_menu_entry_button, GTK_TYPE_BUTTON)
+ 
+-enum { PROP_ENTRY = 1, PROP_TREE, PROP_LAUNCHER, N_PROPS };
++enum { PROP_ENTRY = 1, PROP_INFO, PROP_TREE, PROP_LAUNCHER, N_PROPS };
+ 
+ static GParamSpec *obj_properties[N_PROPS] = {
+         NULL,
+@@ -63,6 +62,9 @@
+         case PROP_ENTRY:
+                 self->entry = g_value_get_pointer(value);
+                 break;
++        case PROP_INFO:
++                self->info = g_value_get_pointer(value);
++                break;
+         case PROP_TREE:
+                 self->tree = g_value_get_pointer(value);
+                 break;
+@@ -84,6 +86,9 @@
+         case PROP_ENTRY:
+                 g_value_set_pointer(value, self->entry);
+                 break;
++        case PROP_INFO:
++                g_value_set_pointer(value, self->info);
++                break;
+         case PROP_TREE:
+                 g_value_set_pointer(value, self->tree);
+                 break;
+@@ -102,7 +107,7 @@
+  * Construct a new BriskMenuEntryButton object
+  */
+ GtkWidget *brisk_menu_entry_button_new(BriskMenuLauncher *launcher, MateMenuTree *tree,
+-                                       MateMenuTreeEntry *entry)
++                                       MateMenuTreeEntry *entry, GDesktopAppInfo *info)
+ {
+         return g_object_new(BRISK_TYPE_MENU_ENTRY_BUTTON,
+                             "launcher",
+@@ -111,6 +116,8 @@
+                             tree,
+                             "entry",
+                             entry,
++                            "info",
++                            info,
+                             NULL);
+ }
+ 
+@@ -129,17 +136,6 @@
+         G_OBJECT_CLASS(brisk_menu_entry_button_parent_class)->dispose(obj);
+ }
+ 
+-static GIcon *brisk_menu_entry_button_create_gicon(const char *path)
+-{
+-        autofree(GFile) *file = NULL;
+-
+-        file = g_file_new_for_path(path);
+-        if (!file) {
+-                return NULL;
+-        }
+-        return g_file_icon_new(file);
+-}
+-
+ /**
+  * Handle constructor specifics for our button
+  */
+@@ -147,33 +143,26 @@
+ {
+         const gchar *label = NULL;
+         BriskMenuEntryButton *self = NULL;
+-        const gchar *icon_name = NULL;
+-        const gchar *desktop_id = NULL;
++        GIcon *icon = NULL;
+ 
+         self = BRISK_MENU_ENTRY_BUTTON(obj);
+ 
+-        /* matemenu has no gicon support, so do it ourselves. */
+-        icon_name = matemenu_tree_entry_get_icon(self->entry);
+-        if (icon_name && icon_name[0] == '/') {
+-                autofree(GIcon) *ico = brisk_menu_entry_button_create_gicon(icon_name);
+-                gtk_image_set_from_gicon(GTK_IMAGE(self->image), ico, GTK_ICON_SIZE_INVALID);
++        icon = g_app_info_get_icon(G_APP_INFO(self->info));
++        if (icon) {
++                gtk_image_set_from_gicon(GTK_IMAGE(self->image), icon, GTK_ICON_SIZE_INVALID);
+         } else {
+                 gtk_image_set_from_icon_name(GTK_IMAGE(self->image),
+-                                             icon_name,
++                                             "image-missing",
+                                              GTK_ICON_SIZE_INVALID);
+         }
++
+         gtk_image_set_pixel_size(GTK_IMAGE(self->image), 24);
+ 
+         /* Determine our label based on the app */
+-        label = matemenu_tree_entry_get_name(self->entry);
++        label = g_app_info_get_name(G_APP_INFO(self->info));
+         gtk_label_set_label(GTK_LABEL(self->label), label);
+-        gtk_widget_set_tooltip_text(GTK_WIDGET(self), matemenu_tree_entry_get_comment(self->entry));
+-
+-        /* Load our .desktop info */
+-        desktop_id = matemenu_tree_entry_get_desktop_file_path(self->entry);
+-        if (desktop_id) {
+-                self->info = g_desktop_app_info_new_from_filename(desktop_id);
+-        }
++        gtk_widget_set_tooltip_text(GTK_WIDGET(self),
++                                    g_app_info_get_description(G_APP_INFO(self->info)));
+ 
+         G_OBJECT_CLASS(brisk_menu_entry_button_parent_class)->constructed(obj);
+ }
+@@ -207,6 +196,10 @@
+                                                           "The MateMenuTreeEntry",
+                                                           "Entry that this launcher represents",
+                                                           G_PARAM_CONSTRUCT | G_PARAM_READWRITE);
++        obj_properties[PROP_INFO] = g_param_spec_pointer("info",
++                                                         "The GDesktopAppInfo",
++                                                         "Corresponding .desktop file",
++                                                         G_PARAM_CONSTRUCT | G_PARAM_READWRITE);
+         obj_properties[PROP_TREE] = g_param_spec_pointer("tree",
+                                                          "The MateMenuTree",
+                                                          "Tree that this entry belongs to",
+@@ -272,10 +265,8 @@
+         BriskMenuEntryButton *self = BRISK_MENU_ENTRY_BUTTON(widget);
+         GIcon *icon = NULL;
+ 
+-        /* If we have a .desktop & icon, use it */
+-        if (self->info) {
+-                icon = g_app_info_get_icon(G_APP_INFO(self->info));
+-        }
++        /* If we have a .desktop icon, use it */
++        icon = g_app_info_get_icon(G_APP_INFO(self->info));
+ 
+         /* Fallback to the default */
+         if (!icon) {
+@@ -321,9 +312,6 @@
+ {
+         BriskMenuEntryButton *self = BRISK_MENU_ENTRY_BUTTON(widget);
+ 
+-        if (!self->info) {
+-                return;
+-        }
+         const gchar *uris[2];
+ 
+         const gchar *desktop_path = NULL;
+@@ -348,9 +336,6 @@
+ 
+ void brisk_menu_entry_button_launch(BriskMenuEntryButton *self)
+ {
+-        if (!self->info) {
+-                return;
+-        }
+         brisk_menu_launcher_start(self->launcher, GTK_WIDGET(self), G_APP_INFO(self->info));
+ }
+ 
+diff -Naur orig/src/entry-button.h patched/src/entry-button.h
+--- orig/src/entry-button.h	2017-01-01 15:08:33.000000000 +0100
++++ patched/src/entry-button.h	2017-01-24 00:41:39.000000000 +0100
+@@ -11,6 +11,7 @@
+ 
+ #pragma once
+ 
++#include <gio/gdesktopappinfo.h>
+ #include <glib-object.h>
+ #include <gtk/gtk.h>
+ #include <matemenu-tree.h>
+@@ -38,7 +39,7 @@
+  * Construct a new BriskMenuEntryButton from the given entry
+  */
+ GtkWidget *brisk_menu_entry_button_new(BriskMenuLauncher *launcher, MateMenuTree *tree,
+-                                       MateMenuTreeEntry *entry);
++                                       MateMenuTreeEntry *entry, GDesktopAppInfo *info);
+ 
+ void brisk_menu_entry_button_launch(BriskMenuEntryButton *button);
+ 
+diff -Naur orig/src/menu-grabs.c patched/src/menu-grabs.c
+--- orig/src/menu-grabs.c	2017-01-01 15:08:33.000000000 +0100
++++ patched/src/menu-grabs.c	2017-01-24 00:41:39.000000000 +0100
+@@ -60,14 +60,18 @@
+ static gboolean brisk_menu_window_map(GtkWidget *widget, __brisk_unused__ gpointer udata)
+ {
+         GdkWindow *window = NULL;
++        BriskMenuWindow *self = NULL;
++
++        self = BRISK_MENU_WINDOW(widget);
+ 
+         /* Forcibly request focus */
+         window = gtk_widget_get_window(widget);
+         gdk_window_set_accept_focus(window, TRUE);
+         gdk_window_focus(window, GDK_CURRENT_TIME);
+         gtk_window_present(GTK_WINDOW(widget));
++        gtk_widget_grab_focus(self->search);
+ 
+-        brisk_menu_window_grab(BRISK_MENU_WINDOW(widget));
++        brisk_menu_window_grab(self);
+ 
+         return GDK_EVENT_STOP;
+ }
+diff -Naur orig/src/menu-loader.c patched/src/menu-loader.c
+--- orig/src/menu-loader.c	2017-01-01 15:08:33.000000000 +0100
++++ patched/src/menu-loader.c	2017-01-24 00:41:39.000000000 +0100
+@@ -66,10 +66,30 @@
+                         /* Tree entry maps to a BriskMenuEntryButton */
+                         GtkWidget *button = NULL;
+                         MateMenuTreeEntry *entry = MATEMENU_TREE_ENTRY(item);
++                        const gchar *desktop_id = NULL;
++                        const gchar *desktop_file = NULL;
++                        GDesktopAppInfo *info = NULL;
+ 
+-                        button = brisk_menu_entry_button_new(self->launcher, root_tree, entry);
++                        /* Store the .id -> button so we can filter on the last included .id */
++                        desktop_id = matemenu_tree_entry_get_desktop_file_id(entry);
++                        desktop_file = matemenu_tree_entry_get_desktop_file_path(entry);
++
++                        if (!desktop_id || !desktop_file) {
++                                break;
++                        }
++
++                        /* Must have a desktop file */
++                        info = g_desktop_app_info_new_from_filename(desktop_file);
++                        if (!info) {
++                                break;
++                        }
++
++                        button =
++                            brisk_menu_entry_button_new(self->launcher, root_tree, entry, info);
+                         gtk_container_add(GTK_CONTAINER(self->apps), button);
+                         gtk_widget_show_all(button);
++
++                        g_hash_table_insert(self->desktop_store, g_strdup(desktop_id), button);
+                 } break;
+                 default:
+                         break;
+@@ -88,6 +108,9 @@
+ 
+         g_message("debug: menu reloaded");
+ 
++        /* Nuke the current mapping */
++        g_hash_table_remove_all(self->desktop_store);
++
+         brisk_menu_window_set_filters_enabled(self, FALSE);
+ 
+         dir = matemenu_tree_get_root_directory(self->root);
+diff -Naur orig/src/menu-private.h patched/src/menu-private.h
+--- orig/src/menu-private.h	2017-01-01 15:08:33.000000000 +0100
++++ patched/src/menu-private.h	2017-01-24 00:41:39.000000000 +0100
+@@ -78,6 +78,9 @@
+ 
+         /* Global settings for all BriskMenu instances */
+         GSettings *settings;
++
++        /* Acknowledge a single ID "contains" map */
++        GHashTable *desktop_store;
+ };
+ 
+ /* Split the implementation across multiple files for ease of maintenance */
+diff -Naur orig/src/menu-search.c patched/src/menu-search.c
+--- orig/src/menu-search.c	2017-01-01 15:08:33.000000000 +0100
++++ patched/src/menu-search.c	2017-01-24 00:41:39.000000000 +0100
+@@ -15,6 +15,7 @@
+ 
+ BRISK_BEGIN_PEDANTIC
+ #include "menu-private.h"
++#include <gio/gdesktopappinfo.h>
+ #include <gtk/gtk.h>
+ #include <string.h>
+ BRISK_END_PEDANTIC
+@@ -93,7 +94,8 @@
+  *
+  * Returning TRUE means the app should be displayed
+  */
+-static gboolean brisk_menu_window_filter_group(BriskMenuWindow *self, MateMenuTreeEntry *entry)
++__brisk_pure__ static gboolean brisk_menu_window_filter_group(BriskMenuWindow *self,
++                                                              MateMenuTreeEntry *entry)
+ {
+         MateMenuTreeDirectory *parent = NULL;
+ 
+@@ -111,6 +113,24 @@
+         return TRUE;
+ }
+ 
++__brisk_pure__ static gboolean brisk_menu_array_contains(const gchar **fields, size_t n_fields,
++                                                         const gchar *term)
++{
++        for (size_t i = 0; i < n_fields; i++) {
++                if (!fields[i]) {
++                        continue;
++                }
++                autofree(gchar) *contents = g_strstrip(g_ascii_strdown(fields[i], -1));
++                if (g_str_match_string(term, contents, TRUE)) {
++                        return TRUE;
++                }
++                if (strstr(contents, term)) {
++                        return TRUE;
++                }
++        }
++        return FALSE;
++}
++
+ /**
+  * brisk_menu_window_filter_term:
+  *
+@@ -126,28 +146,27 @@
+  * the search itself to be sorted based on the results, with the "most similar"
+  * appearing near the top.
+  */
+-static gboolean brisk_menu_window_filter_term(BriskMenuWindow *self, MateMenuTreeEntry *entry)
++__brisk_pure__ static gboolean brisk_menu_window_filter_term(BriskMenuWindow *self, GAppInfo *info)
+ {
+         const gchar *fields[] = {
+-                matemenu_tree_entry_get_display_name(entry),
+-                matemenu_tree_entry_get_comment(entry),
+-                matemenu_tree_entry_get_name(entry),
+-                matemenu_tree_entry_get_exec(entry),
++                g_app_info_get_display_name(info),
++                g_app_info_get_description(info),
++                g_app_info_get_name(info),
++                g_app_info_get_executable(info),
+         };
++        const gchar *const *keywords = g_desktop_app_info_get_keywords(G_DESKTOP_APP_INFO(info));
+ 
+-        for (size_t i = 0; i < sizeof(fields) / sizeof(fields[0]); i++) {
+-                if (!fields[i]) {
+-                        continue;
+-                }
+-                autofree(gchar) *contents = g_strstrip(g_ascii_strdown(fields[i], -1));
+-                if (g_str_match_string(self->search_term, contents, TRUE)) {
+-                        return TRUE;
+-                }
+-                if (strstr(contents, self->search_term)) {
+-                        return TRUE;
+-                }
++        if (brisk_menu_array_contains(fields, G_N_ELEMENTS(fields), self->search_term)) {
++                return TRUE;
+         }
+-        return FALSE;
++
++        if (!keywords) {
++                return FALSE;
++        }
++
++        return brisk_menu_array_contains((const gchar **)keywords,
++                                         g_strv_length((gchar **)keywords),
++                                         self->search_term);
+ }
+ 
+ /**
+@@ -156,12 +175,15 @@
+  * Responsible for filtering the selection based on active group or search
+  * term.
+  */
+-gboolean brisk_menu_window_filter_apps(GtkListBoxRow *row, gpointer v)
++__brisk_pure__ gboolean brisk_menu_window_filter_apps(GtkListBoxRow *row, gpointer v)
+ {
+         BriskMenuWindow *self = NULL;
+         MateMenuTreeEntry *entry = NULL;
++        GAppInfo *info = NULL;
+         GtkWidget *child = NULL;
+         MateMenuTree *childTree = NULL;
++        const gchar *desktop_id = NULL;
++        GtkWidget *compare_child = NULL;
+ 
+         self = BRISK_MENU_WINDOW(v);
+ 
+@@ -172,11 +194,24 @@
+         /* Grab our Entry widget */
+         child = gtk_bin_get_child(GTK_BIN(row));
+ 
+-        g_object_get(child, "entry", &entry, "tree", &childTree, NULL);
++        g_object_get(child, "entry", &entry, "tree", &childTree, "info", &info, NULL);
+         if (!entry) {
+                 return FALSE;
+         }
+ 
++        /* Desktop ID's are unique, so the last entry added for an ID is the
++         * button we want to display. Basically, a button can be duplicated and
++         * appear in multiple categories. By keeping a unique ID -> button mapping,
++         * we ensure we only ever show it once in the search function.
++         */
++        desktop_id = g_app_info_get_id(info);
++        if (desktop_id) {
++                compare_child = g_hash_table_lookup(self->desktop_store, desktop_id);
++                if (compare_child && compare_child != child) {
++                        return FALSE;
++                }
++        }
++
+         /* Do they belong to the same tree ? */
+         if (self->active_tree && self->active_tree != childTree) {
+                 return FALSE;
+@@ -184,7 +219,7 @@
+ 
+         /* Have search term? Filter on that. */
+         if (self->search_term) {
+-                return brisk_menu_window_filter_term(self, entry);
++                return brisk_menu_window_filter_term(self, info);
+         }
+ 
+         /* Filter based on group */
+diff -Naur orig/src/menu-session.c patched/src/menu-session.c
+--- orig/src/menu-session.c	2017-01-01 15:08:33.000000000 +0100
++++ patched/src/menu-session.c	2017-01-24 00:41:39.000000000 +0100
+@@ -15,6 +15,7 @@
+ 
+ BRISK_BEGIN_PEDANTIC
+ #include "menu-private.h"
++#include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+ BRISK_END_PEDANTIC
+ 
+@@ -140,7 +141,7 @@
+         widget = gtk_button_new_from_icon_name("brisk_system-log-out-symbolic", GTK_ICON_SIZE_MENU);
+         self->button_logout = widget;
+         g_signal_connect_swapped(widget, "clicked", G_CALLBACK(brisk_menu_window_logout), self);
+-        gtk_widget_set_tooltip_text(widget, "End the current session");
++        gtk_widget_set_tooltip_text(widget, _("End the current session"));
+         gtk_widget_set_can_focus(widget, FALSE);
+         gtk_container_add(GTK_CONTAINER(box), widget);
+         style = gtk_widget_get_style_context(widget);
+@@ -151,7 +152,7 @@
+                                                GTK_ICON_SIZE_SMALL_TOOLBAR);
+         self->button_lock = widget;
+         g_signal_connect_swapped(widget, "clicked", G_CALLBACK(brisk_menu_window_lock), self);
+-        gtk_widget_set_tooltip_text(widget, "Lock the screen");
++        gtk_widget_set_tooltip_text(widget, _("Lock the screen"));
+         gtk_widget_set_can_focus(widget, FALSE);
+         gtk_container_add(GTK_CONTAINER(box), widget);
+         style = gtk_widget_get_style_context(widget);
+@@ -162,7 +163,7 @@
+             gtk_button_new_from_icon_name("system-shutdown-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
+         self->button_shutdown = widget;
+         g_signal_connect_swapped(widget, "clicked", G_CALLBACK(brisk_menu_window_shutdown), self);
+-        gtk_widget_set_tooltip_text(widget, "Turn off the device");
++        gtk_widget_set_tooltip_text(widget, _("Turn off the device"));
+         gtk_widget_set_can_focus(widget, FALSE);
+         gtk_container_add(GTK_CONTAINER(box), widget);
+         style = gtk_widget_get_style_context(widget);
+diff -Naur orig/src/menu-sort.c patched/src/menu-sort.c
+--- orig/src/menu-sort.c	2017-01-01 15:08:33.000000000 +0100
++++ patched/src/menu-sort.c	2017-01-24 00:41:39.000000000 +0100
+@@ -23,13 +23,13 @@
+ /**
+  * Compute a score for the given entry based on the input term.
+  */
+-static gint brisk_get_entry_score(MateMenuTreeEntry *entry, gchar *term)
++__brisk_pure__ static gint brisk_get_entry_score(GAppInfo *info, const gchar *term)
+ {
+         gint score = 0;
+         autofree(gchar) *name = NULL;
+         char *find = NULL;
+ 
+-        name = g_ascii_strdown(matemenu_tree_entry_get_name(entry), -1);
++        name = g_ascii_strdown(g_app_info_get_name(info), -1);
+         if (g_str_equal(name, term)) {
+                 score += 100;
+         } else if (g_str_has_prefix(name, term)) {
+@@ -46,11 +46,12 @@
+         return score;
+ }
+ 
+-gint brisk_menu_window_sort(GtkListBoxRow *row1, GtkListBoxRow *row2, gpointer v)
++__brisk_pure__ gint brisk_menu_window_sort(GtkListBoxRow *row1, GtkListBoxRow *row2, gpointer v)
+ {
+         GtkWidget *child1, *child2 = NULL;
+-        MateMenuTreeEntry *entryA, *entryB = NULL;
+-        const gchar *nameA, *nameB = NULL;
++        GAppInfo *infoA, *infoB = NULL;
++        autofree(gchar) *nameA = NULL;
++        autofree(gchar) *nameB = NULL;
+         BriskMenuWindow *self = NULL;
+ 
+         self = BRISK_MENU_WINDOW(v);
+@@ -58,19 +59,18 @@
+         child1 = gtk_bin_get_child(GTK_BIN(row1));
+         child2 = gtk_bin_get_child(GTK_BIN(row2));
+ 
+-        g_object_get(child1, "entry", &entryA, NULL);
+-        g_object_get(child2, "entry", &entryB, NULL);
++        g_object_get(child1, "info", &infoA, NULL);
++        g_object_get(child2, "info", &infoB, NULL);
+ 
+         if (self->search_term) {
+-                gint sc1 = brisk_get_entry_score(entryA, self->search_term);
+-                gint sc2 = brisk_get_entry_score(entryB, self->search_term);
++                gint sc1 = brisk_get_entry_score(infoA, self->search_term);
++                gint sc2 = brisk_get_entry_score(infoB, self->search_term);
+                 return (sc1 > sc2) - (sc1 - sc2);
+         }
+ 
+-        nameA = matemenu_tree_entry_get_display_name(entryA);
+-        nameB = matemenu_tree_entry_get_display_name(entryB);
+-
+-        /* TODO: Get score for the search term. */
++        /* Ensure we compare lower case only */
++        nameA = g_ascii_strdown(g_app_info_get_display_name(infoA), -1);
++        nameB = g_ascii_strdown(g_app_info_get_display_name(infoB), -1);
+         return g_strcmp0(nameA, nameB);
+ }
+ 
+diff -Naur orig/src/menu-window.c patched/src/menu-window.c
+--- orig/src/menu-window.c	2017-01-01 15:08:33.000000000 +0100
++++ patched/src/menu-window.c	2017-01-24 00:41:39.000000000 +0100
+@@ -61,6 +61,7 @@
+         g_clear_object(&self->session);
+         g_clear_object(&self->saver);
+         g_clear_object(&self->settings);
++        g_clear_pointer(&self->desktop_store, g_hash_table_unref);
+ 
+         G_OBJECT_CLASS(brisk_menu_window_parent_class)->dispose(obj);
+ }
+@@ -98,6 +99,7 @@
+         self->launcher = brisk_menu_launcher_new();
+         brisk_menu_window_load_css(self);
+         brisk_menu_window_init_settings(self);
++        self->desktop_store = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, NULL);
+ 
+         gtk_window_set_decorated(GTK_WINDOW(self), FALSE);
+         gtk_window_set_type_hint(GTK_WINDOW(self), GDK_WINDOW_TYPE_HINT_POPUP_MENU);
+@@ -300,6 +302,9 @@
+         gtk_adjustment_set_value(adjustment, 0);
+         adjustment = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(self->sidebar_scroll));
+         gtk_adjustment_set_value(adjustment, 0);
++
++        /* Unselect any current "apps" */
++        gtk_list_box_select_row(GTK_LIST_BOX(self->apps), NULL);
+ }
+ 
+ /**
+diff -Naur orig/src/util.h patched/src/util.h
+--- orig/src/util.h	2017-01-01 15:08:33.000000000 +0100
++++ patched/src/util.h	2017-01-24 00:41:39.000000000 +0100
+@@ -73,6 +73,11 @@
+ #define __brisk_public__ __attribute__((visibility("default")))
+ 
+ /**
++ * Mark the function as a pure function to the compiler
++ */
++#define __brisk_pure__ __attribute__((pure))
++
++/**
+  * Taken out of libnica
+  */
+ #define DEF_AUTOFREE(N, C)                                                                         \
+diff -Naur orig/.tx/config patched/.tx/config
+--- orig/.tx/config	1970-01-01 01:00:00.000000000 +0100
++++ patched/.tx/config	2017-01-24 00:41:39.000000000 +0100
+@@ -0,0 +1,8 @@
++[main]
++host = https://www.transifex.com
++
++[brisk-menu.brisk-menupot]
++file_filter = po/<lang>.po
++source_lang = en
++type = PO
++
