@@ -1,0 +1,12 @@
+akonadi-dev
+boost-dev
+extra-cmake-modules
+kcalcore-dev
+kdelibs4support-dev
+kdoctools
+kholidays-dev
+kidentitymanagement-dev
+kpimtextedit-dev
+libical-dev
+qt5-dev
+qt5-test
