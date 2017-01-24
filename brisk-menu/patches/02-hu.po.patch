@@ -1,0 +1,56 @@
+diff -Naur orig/po/hu.po patched/po/hu.po
+--- orig/po/hu.po	1970-01-01 01:00:00.000000000 +0100
++++ patched/po/hu.po	2017-01-24 00:50:45.508566414 +0100
+@@ -0,0 +1,43 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: PACKAGE VERSION\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2017-01-21 04:56+0000\n"
++"PO-Revision-Date: 2017-01-21 04:56+0000\n"
++"Last-Translator: Ferenc Papp <pappfer@gmail.com>, 2017\n"
++"Language-Team: Hungarian (https://www.transifex.com/solus-project/teams/68407/hu/)\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Language: hu\n"
++"Plural-Forms: nplurals=2; plural=(n != 1);\n"
++
++#. Now add the label
++#: ../src/applet.c:177
++msgid "Menu"
++msgstr "Menü"
++
++#: ../src/applet.c:265
++msgid "Brisk Menu Launcher"
++msgstr "Brisk Menü indító"
++
++#: ../src/category-button.c:130
++msgid "All"
++msgstr "Összes"
++
++#: ../src/menu-session.c:144
++msgid "End the current session"
++msgstr "Jelenlegi munkamenet befejezése"
++
++#: ../src/menu-session.c:155
++msgid "Lock the screen"
++msgstr "Képernyő zárolása"
++
++#: ../src/menu-session.c:166
++msgid "Turn off the device"
++msgstr "Az eszköz kikapcsolása"
+diff -Naur orig/po/LINGUAS patched/po/LINGUAS
+--- orig/po/LINGUAS	2017-01-24 00:41:39.000000000 +0100
++++ patched/po/LINGUAS	2017-01-24 00:45:57.928750036 +0100
+@@ -1,4 +1,5 @@
+ en_GB
+ es_AR
+ fr_FR
++hu
+ ja
