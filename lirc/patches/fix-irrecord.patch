@@ -1,0 +1,12 @@
+diff -Nur orig/lib/irrecord.c mod/lib/irrecord.c
+--- orig/lib/irrecord.c	2016-05-23 19:18:48.000000000 +0200
++++ mod/lib/irrecord.c	2017-01-27 17:15:35.667527854 +0100
+@@ -129,7 +129,7 @@
+ void flushhw(void)
+ {
+ 	size_t size = 1;
+-	char buffer[sizeof(ir_code)];
++	char buffer[PACKET_SIZE];
+ 
+ 	switch (curr_driver->rec_mode) {
+ 	case LIRC_MODE_MODE2:
