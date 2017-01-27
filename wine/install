@@ -50,4 +50,3 @@ sed -i -e "$PROGRAM_ICONFIX" "$UB_INSTALLDIR"/usr/share/icons/hicolor/scalable/a
 install -p -m 644 programs/wordpad/wordpad.svg \
  "$UB_INSTALLDIR"/usr/share/icons/hicolor/scalable/apps/wordpad.svg
 sed -i -e "$PROGRAM_ICONFIX" "$UB_INSTALLDIR"/usr/share/icons/hicolor/scalable/apps/wordpad.svg
-

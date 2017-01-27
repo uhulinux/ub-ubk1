@@ -6,4 +6,3 @@
 ub_compile \
 	--enable-install-program=hostname \
 	--enable-no-install-program=arch,coreutils,groups,kill,su,uptime
-

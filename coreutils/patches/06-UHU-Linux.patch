@@ -1,7 +1,7 @@
-diff -Naurdp a/configure b/configure
---- a/configure	2010-01-07 18:14:15.000000000 +0100
-+++ b/configure	2010-01-08 11:20:23.554598573 +0100
-@@ -25660,7 +25660,7 @@ else
+diff -Naur orig/configure patched/configure
+--- orig/configure	2016-11-30 19:12:35.000000000 +0100
++++ patched/configure	2017-01-27 01:31:33.542952912 +0100
+@@ -34871,7 +34871,7 @@
         mint*)           os='MiNT';;
         mingw*)          os='MinGW';;
         lynxos*)         os='LynxOS';;
