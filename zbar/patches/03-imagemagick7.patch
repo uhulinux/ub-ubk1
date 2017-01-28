@@ -1,0 +1,26 @@
+diff -Naur orig/configure.ac patched/configure.ac
+--- orig/configure.ac	2009-10-23 20:16:44.000000000 +0200
++++ patched/configure.ac	2017-01-28 02:52:00.808763758 +0100
+@@ -285,8 +286,8 @@
+ dnl double check ImageMagick install (bug #2582232)
+    CPPFLAGS_save="$CPPFLAGS"
+    CPPFLAGS="$CPPFLAGS $MAGICK_CFLAGS"
+-   AC_CHECK_HEADER([wand/MagickWand.h], [],
+-     [AC_MSG_FAILURE([ImageMagick package found but wand/MagickWand.h not installed?!
++   AC_CHECK_HEADER([MagickWand/MagickWand.h], [],
++     [AC_MSG_FAILURE([ImageMagick package found but MagickWand/MagickWand.h not installed?!
+ this is a problem with your ImageMagick install,
+ please resolve the inconsistency and try again...])])
+    CPPFLAGS="$CPPFLAGS_save"])
+diff -Naur orig/zbarimg/zbarimg.c patched/zbarimg/zbarimg.c
+--- orig/zbarimg/zbarimg.c	2009-10-23 20:16:44.000000000 +0200
++++ patched/zbarimg/zbarimg.c	2017-01-28 02:37:28.159689462 +0100
+@@ -38,7 +38,7 @@
+ #include <assert.h>
+
+ #include <zbar.h>
+-#include <wand/MagickWand.h>
++#include <MagickWand/MagickWand.h>
+
+ /* in 6.4.5.4 MagickGetImagePixels changed to MagickExportImagePixels.
+  * (still not sure this check is quite right...
