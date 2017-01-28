@@ -1,6 +1,5 @@
 cmake
-imagemagick
-imagemagick6-dev
+imagemagick-dev
 libwmf-dev
 openexr-dev
 qt5-dev

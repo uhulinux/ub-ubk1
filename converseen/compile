@@ -6,4 +6,3 @@ qmake \
 	QMAKE_LFLAGS="-Wl,--as-needed"
 
 ub_make
-
