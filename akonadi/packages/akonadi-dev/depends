@@ -1,5 +1,4 @@
 boost-dev
-extra-cmake-modules
 kcompletion-dev
 kconfig-dev
 kconfigwidgets-dev
@@ -20,9 +19,4 @@ libxml2-dev
 mysql-dev
 mysql-server
 postgresql-dev
-qt5-designer-dev
-qt5-dev
-qt5-plugin-mysql
-qt5-plugin-psql
-qt5-test
 shared-mime-info

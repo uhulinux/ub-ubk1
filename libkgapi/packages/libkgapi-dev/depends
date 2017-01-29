@@ -1,8 +1,8 @@
-extra-cmake-modules
 kcalcore-dev
-kcalutils-dev
 kcontacts-dev
 kdelibs4support-dev
-kdoctools
+kio-dev
+kwindowsystem-dev
 libical-dev
-qt5-dev
+qtwebengine-dev
+qtwebkit-dev
