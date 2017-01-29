@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
 ub_install
-cp doc/nanorc.sample ${UB_INSTALLDIR}/etc/nanorc
+cp doc/sample.nanorc ${UB_INSTALLDIR}/etc/nanorc
