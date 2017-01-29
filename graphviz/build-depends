@@ -13,7 +13,6 @@ librsvg-dev
 libxaw-dev
 libxt-dev
 lua51-dev
-ocaml
 pango-dev
 python-dev
 qt4-dev
