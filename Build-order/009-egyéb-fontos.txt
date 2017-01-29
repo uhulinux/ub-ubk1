@@ -7,7 +7,6 @@ pangox-compat
 sg3-utils
 ladspa
 libksba
-libpipeline
 libqrencode
 lvm
 parted
