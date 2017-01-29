@@ -24,4 +24,4 @@ keybinder
 alsa-plugins
 freshplayerplugin
 evolution-ews
-avogadrolibs
+avogadro2libs
