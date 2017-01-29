@@ -1,1 +1,1 @@
-urllist https://bitbucket.org/prezso/gqview/downloads?tab=tags | splitver '^v([0-9.].+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+u2d https://bitbucket.org/prezso/gqview/downloads?tab=tags v
