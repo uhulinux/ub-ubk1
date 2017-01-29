@@ -24,4 +24,5 @@ xpad
 vile
 conglomerate
 xe
+xed
 texmacs

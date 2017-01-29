@@ -1,0 +1,12 @@
+diff -Nur orig/data/xed.pc.in mod/data/xed.pc.in
+--- orig/data/xed.pc.in	2016-12-12 13:44:11.000000000 +0100
++++ mod/data/xed.pc.in	2017-01-29 19:49:57.334870744 +0100
+@@ -6,7 +6,7 @@
+ 
+ Name: xed
+ Description: xed
+-Requires: gtksourceview-@GTK_API_VERSION@
++Requires: gtksourceview-3.0
+ Version: @VERSION@
+ Cflags: -I${includedir}/xed
+ Libs: -L${libdir}
