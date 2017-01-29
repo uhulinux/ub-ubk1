@@ -1,6 +1,4 @@
 libmediawiki ?
 libvkontakte ?
 --
-libakonadicontact (KDE address book support)
-libkcalcore (calendar data support, https://github.com/KDE/kcalcore)
 libqtkoauth (imgur support, https://github.com/kypeli/kQOAuth)

@@ -1,7 +1,9 @@
+akonadicontact-dev
 eigen3
 exiv2-dev
 extra-cmake-modules
 kbookmarks-dev
+kcalcore-dev
 kconfig-dev
 kcoreaddons-dev
 kdoctools

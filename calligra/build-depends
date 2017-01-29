@@ -1,3 +1,5 @@
+akonadi-dev
+akonadicontact-dev
 curl-dev
 eigen3
 exiv2-dev
@@ -7,11 +9,13 @@ glu-dev
 gsl-dev
 kactivities-dev
 karchive-dev
+kcalcore-dev
 kcmutils-dev
 kcodecs-dev
 kcompletion-dev
 kconfig-dev
 kconfigwidgets-dev
+kcontacts-dev
 kcoreaddons-dev
 kdbusaddons-dev
 kdelibs4support-dev
