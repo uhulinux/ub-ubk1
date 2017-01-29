@@ -4,5 +4,6 @@ kdoctools
 knewstuff-dev
 libv4l-dev
 libxscrnsaver-dev
+qt5-dev
 vlc-dev
 xine-lib-dev

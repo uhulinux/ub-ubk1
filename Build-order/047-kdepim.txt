@@ -1,3 +1,4 @@
+kde-l10n-hu
 grantlee
 grantleetheme
 kcalcore

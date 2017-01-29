@@ -21,4 +21,5 @@ kparts-dev
 ktextwidgets-dev
 kwindowsystem-dev
 phonon-dev
+qt5-dev
 solid-dev

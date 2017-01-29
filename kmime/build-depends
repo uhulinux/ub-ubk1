@@ -1,4 +1,5 @@
 extra-cmake-modules
 kcodecs-dev
 ki18n-dev
+qt5-dev
 qt5-test
