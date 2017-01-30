@@ -10,4 +10,5 @@ cd ../fuse-gtk
 autoreconf -vif
 ub_compile \
 	PACKAGE_NAME=free-unux-spectrum-emulator \
-	--with-gtk
+	--with-gtk \
+	--enable-gtk3

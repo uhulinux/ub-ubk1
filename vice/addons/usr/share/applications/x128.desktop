@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=X128
-Comment=C128 emulator
-Comment[hu]=C128 emulátor
-Exec=x128
-Icon=VICE
-Categories=Game;Emulator;

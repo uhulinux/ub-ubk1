@@ -1,10 +1,15 @@
-alsa-lib-dev
+ffmpeg-dev
 glu-dev
+gtk-dev
 libgnomeui2-dev
-libjpeg-turbo-dev
+libieee1284-dev
+libjpeg-dev
+liblame-dev
 libpcap-dev
 libungif-dev
 libxxf86vm-dev
+mpg123-dev
+portaudio-dev
 pulseaudio-dev
 vte2-dev
 x.org-font-utils

@@ -1,11 +1,19 @@
 #!/bin/sh -eux
 
-autoreconf -i
+autoreconf -vif
 ./configure \
 	--prefix=/usr \
-	--enable-gnomeui \
+	--enable-gnomeui3 \
 	--enable-ethernet \
-	--with-alsa \
 	--enable-fullscreen \
-	--disable-ffmpeg
+	--enable-external-ffmpeg \
+	--enable-lame \
+	--enable-vte \
+	--disable-static-lame \
+	--sysconfdir=/etc \
+	--localstatedir=/var \
+	--mandir=/usr/share/man \
+	--infodir=/usr/share/info \
+	--build=i686-uhu-linux \
+	--host=i686-uhu-linux
 ub_make

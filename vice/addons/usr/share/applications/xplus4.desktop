@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=XPlus4
-Comment=C= Plus4 emulator
-Comment[hu]=C= Plus4 emulátor
-Exec=xplus4
-Icon=VICE
-Categories=Game;Emulator;
