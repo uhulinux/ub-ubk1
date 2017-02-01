@@ -1,7 +1,4 @@
 #!/usr/bin/env dl
 
-#subtitleeditor-${UB_VERSION}.tar.gz subtitleeditor-${UB_VERSION}/
-#	http://download.gna.org/subtitleeditor/${UB_VERSION_HEAD2}/
-	
-subtitleeditor-${UB_VERSION}.tar.gz subtitleeditor-db0b0f8/
-	git://github.com/kitone/subtitleeditor.git@db0b0f8
+subtitleeditor-${UB_VERSION}.tar.gz subtitleeditor-${UB_VERSION}/
+	http://download.gna.org/subtitleeditor/${UB_VERSION_HEAD2}/

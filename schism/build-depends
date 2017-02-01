@@ -1,5 +1,4 @@
 alsa-lib-dev
 libx11-dev
 libxv-dev
-mesa-dev
 sdl-dev

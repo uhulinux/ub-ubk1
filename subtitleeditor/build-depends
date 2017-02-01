@@ -1,7 +1,8 @@
 enchant-dev
-gst0.10-plugins-base-dev
-gst0.10-plugins-good
+gst-plugins-base-dev
+gst-plugins-good
 gstreamermm-dev
+gtk-dev
 gtkmm-dev
 intltool
 iso-codes

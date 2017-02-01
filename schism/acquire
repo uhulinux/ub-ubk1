@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-${UB_VERSION}.tar.bz2 Storlek-schismtracker-df966409c154/
-	https://bitbucket.org/Storlek/schismtracker/get/
+${UB_VERSION}.tar.gz schismtracker-${UB_VERSION}/
+	https://github.com/schismtracker/schismtracker/archive/
