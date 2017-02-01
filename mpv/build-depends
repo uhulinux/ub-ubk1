@@ -1,7 +1,7 @@
 alsa-lib-dev
 enca-dev
 ffmpeg-dev
-gtk2-dev
+gtk-dev
 lcms2-dev
 libarchive-dev
 libass-dev
