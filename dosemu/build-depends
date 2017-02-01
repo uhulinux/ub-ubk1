@@ -1,5 +1,4 @@
 alsa-lib-dev
-git
 gpm-dev
 libice-dev
 libsndfile-dev
