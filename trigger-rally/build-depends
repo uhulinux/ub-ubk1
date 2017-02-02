@@ -3,4 +3,4 @@ glew-dev
 glu-dev
 jam
 physfs-dev
-sdl-image-dev
+sdl2-image-dev
