@@ -12,7 +12,6 @@ json-c-dev
 libasyncns-dev
 libcap-dev
 liboil-dev
-libsamplerate-dev
 libsm-dev
 libsndfile-dev
 libsoxr-dev
@@ -21,7 +20,7 @@ lirc-dev
 openssl-dev
 orc-dev
 sbc-dev
-speex-dev
+speexdsp-dev
 systemd-dev
 tcp-wrappers-dev
 tdb-dev
