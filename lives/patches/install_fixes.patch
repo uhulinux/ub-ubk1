@@ -1,7 +1,7 @@
-diff -Naur orig/Makefile.in patched/Makefile.in
---- orig/Makefile.in	2015-05-03 17:02:43.000000000 +0200
-+++ patched/Makefile.in	2015-07-16 23:35:14.419507721 +0200
-@@ -463,7 +463,7 @@
+diff -Nur orig/Makefile.in mod/Makefile.in
+--- orig/Makefile.in	2017-01-13 03:33:03.000000000 +0100
++++ mod/Makefile.in	2017-02-02 18:29:11.626984331 +0100
+@@ -480,7 +480,7 @@
  builddir = @builddir@
  datadir = @datadir@
  datarootdir = @datarootdir@
@@ -10,12 +10,12 @@ diff -Naur orig/Makefile.in patched/Makefile.in
  dvidir = @dvidir@
  exec_prefix = @exec_prefix@
  host = @host@
-@@ -1075,7 +1075,7 @@
+@@ -1094,7 +1094,7 @@
  	$(MKDIR_P) "$(DESTDIR)$(sharedir)/applications/"
  	cp -f "$(srcdir)/menu-entries/LiVES.desktop" "$(DESTDIR)$(sharedir)/applications/"
  	$(MKDIR_P) "$(DESTDIR)$(sharedir)/pixmaps/"
 -	cp -f "$(srcdir)/menu-entries/lives.xpm" "$(DESTDIR)$(sharedir)/pixmaps/"
 +	cp -f "$(srcdir)/menu-entries/lives.png" "$(DESTDIR)$(sharedir)/pixmaps/"
- 	$(MKDIR_P) "$(DESTDIR)$(sharedir)/app-install/icons/"
- 	cp -f "$(srcdir)/menu-entries/lives.png" "$(DESTDIR)$(sharedir)/app-install/icons/"
+ 	$(MKDIR_P) "$(DESTDIR)$(sharedir)/icons/hicolor/48x48/apps/"
+ 	cp -f "$(srcdir)/menu-entries/lives.png" "$(DESTDIR)$(sharedir)/icons/hicolor/48x48/apps/"
  
