@@ -1,2 +1,1 @@
-dir=$(sflist simutrans pak128 | sed s/"pak128 for "// | sed s/"RC "// | sed s/" ".*// | grep -E '^([0-4])$' | sort | tail -n 1 | sed s/-/\./)
-sflist simutrans pak128/"$dir"/
+sflist simutrans pak128 | sort | tail -n 1 | sed s%.*\(%% | sed s%,.*%% | sed s/.*\%28// | sed s/\%2C.*//
