@@ -3,7 +3,7 @@ cmake
 fluidsynth-dev
 fmod
 glu-dev
-gtk2-dev
+gtk-dev
 libgme-dev
 libjpeg-turbo-dev
 libsndfile-dev
