@@ -34,7 +34,7 @@ update compile script
 ------------------------------------------------------------------------
 r31484 | rezso@rezso.net | 2013-03-28 18:56:22 +0100 (Thu, 28 Mar 2013) | 2 lines
 
-remove updated, skipped patch 
+remove updated, skipped patch
 
 ------------------------------------------------------------------------
 r30901 | janusz@uhulinux.hu | 2013-03-10 13:38:12 +0100 (Sun, 10 Mar 2013) | 2 lines
@@ -81,7 +81,6 @@ acquire fix
 r19828 | peritus@freemail.hu | 2009-09-17 09:38:43 +0200 (Thu, 17 Sep 2009) | 3 lines
 
   1.15.2 -> 1.15.4
-
 
 ------------------------------------------------------------------------
 r18615 | janusz@uhulinux.hu | 2009-05-26 18:21:50 +0200 (Tue, 26 May 2009) | 2 lines
@@ -224,7 +223,6 @@ kitömörített fájlrendszer-struktúrából.
 r424 | pozsy | 2003-03-03 23:06:01 +0100 (Mon, 03 Mar 2003) | 3 lines
 
 patch hogy egybetus is lehessen a csomagnev
-
 
 ------------------------------------------------------------------------
 r421 | egmont | 2003-03-03 21:33:56 +0100 (Mon, 03 Mar 2003) | 2 lines

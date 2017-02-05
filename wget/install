@@ -7,4 +7,3 @@ sed -i \
 	"${UB_INSTALLDIR}"/etc/wgetrc \
 	"${UB_INSTALLDIR}"/usr/share/man/man1/wget.1 \
 	"${UB_INSTALLDIR}"/usr/share/info/wget.info
-	
