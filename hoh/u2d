@@ -1,4 +1,1 @@
-#urllist http://retrospec.sgn.net/game-links.php?link=hoh/ #| splitver '^fairymax_([0-9.]+)-[0-9]_i386.deb$'
-#urllist https://www.freshports.org/games/hohlin/
-#urllist http://portsmon.freebsd.org/portoverview.py?category=games&portname=hohlin
 _geturl https://www.freshports.org/games/hohlin/ | grep SIZE | sed s/.*hohlin-// | sed s/\\.tar.*//
