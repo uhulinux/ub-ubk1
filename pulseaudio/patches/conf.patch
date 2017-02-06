@@ -22,3 +22,15 @@ diff -Naur orig/src/daemon/start-pulseaudio-x11.in patched/src/daemon/start-puls
  
      if [ x"$KDE_FULL_SESSION" = x"true" ]; then
         @PACTL_BINARY@ load-module module-device-manager "do_routing=1" > /dev/null
+diff -Naur orig/src/pulse/client.conf.in patched/src/pulse/client.conf.in
+--- orig/src/pulse/client.conf.in	2016-05-03 08:17:39.000000000 +0200
++++ patched/src/pulse/client.conf.in	2017-01-31 02:47:02.136048662 +0100
+@@ -22,7 +22,7 @@
+ ; default-server =
+ ; default-dbus-server =
+ 
+-; autospawn = yes
++autospawn = no
+ ; daemon-binary = @PA_BINARY@
+ ; extra-arguments = --log-target=syslog
+ 
