@@ -1,1 +1,1 @@
-noupdate: stabil csomag
+_geturl http://www.novellshareware.com/info/westbang.html | grep Version | sed s/.*://
