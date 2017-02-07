@@ -126,6 +126,7 @@ tcl
 tcp-wrappers
 texinfo
 timeslide
+unace
 unarj
 uni2ascii
 unrar
