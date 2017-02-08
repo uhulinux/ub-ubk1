@@ -1,11 +1,10 @@
 [Desktop Entry]
 Categories=AudioVideo;Video;Player;TV;
-Comment[hu]=VDR xbmc felülettel
-Comment=VDR+XBMC
-Exec=vdrxbmc
-Icon=vdrxbmc
-Name=xbmc+vdr
+Comment[hu]=VDR kodi felülettel
+Comment=VDR+KODI
+Exec=vdrkodi
+Icon=vdrkodi
+Name=kodi+vdr
 StartupNotify=true
 Terminal=true
 Type=Application
-Version=1.0
