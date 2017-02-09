@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
 #előkészület
-KVER="$(ls -1 /lib/modules|grep i386)"
+KVER="$(ls -1 /lib/modules | grep i386)"
 forras="NVIDIA-Linux-x86-${UB_VERSION}"
 moduldir="$UB_COMPILEDIR/lib/modules/"$KVER"/kernel/drivers"
 mkdir -p $moduldir
@@ -12,6 +12,7 @@ mv $forras/* ./
 rm $forras.run
 patch -i "$UB_SRCDIR"/patches/menu.patch.skip
 cd kernel
-make SYSSRC=/usr/src/linux KERNEL_UNAME="$KVER" MODULE_ROOT=$moduldir module
+make IGNORE_CC_MISMATCH=yes SYSSRC=/usr/src/linux KERNEL_UNAME="$KVER" MODULE_ROOT=$moduldir module
+export UB_MAKE_PROCS=1
 cd uvm
 make SYSSRC=/usr/src/linux KERNEL_UNAME="$KVER" MODULE_ROOT=$moduldir/uvm module
