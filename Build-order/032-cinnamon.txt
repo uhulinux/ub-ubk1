@@ -15,3 +15,4 @@ nemo-extensions
 cinnamon-control-center
 cinnamon-bluetooth
 cinnamon
+pix
