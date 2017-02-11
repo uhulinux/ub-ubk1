@@ -2,6 +2,7 @@ cyrus-sasl2-dev
 db4-dev
 gdbm
 gdbm-dev
+icu-dev
 krb5-dev
 mysql-common
 mysql-dev
