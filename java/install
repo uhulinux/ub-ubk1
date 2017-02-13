@@ -36,6 +36,5 @@ ln -s /usr/lib/java/jre/lib/i386/libnpjp2.so "$UB_INSTALLDIR"/usr/lib/mozilla/pl
 # fix permissions
 chmod -R a+rX,u+w,go-w "$UB_INSTALLDIR"
 
-# ffmpeg < 0.11, 2.0 kellene
-rm -f "$UB_INSTALLDIR"/usr/lib/java/jre/lib/i386/libavplugin-{53,54}.so
-
+# ffmpeg < 3
+rm -f "$UB_INSTALLDIR"/usr/lib/java/jre/lib/i386/libavplugin-*.so

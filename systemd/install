@@ -26,8 +26,8 @@ for file in "$UB_INSTALLDIR"/usr/lib/udev/rules.d/*.rules; do
 	done
 done
 
-# halt poweroff reboot symlinks
-for i in halt poweroff reboot; do
+# halt poweroff reboot shutdown symlinks
+for i in halt poweroff reboot shutdown; do
 	ln -s systemctl "$UB_INSTALLDIR"/usr/bin/$i
 done
 
