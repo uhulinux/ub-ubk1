@@ -4,8 +4,8 @@ grantleetheme
 kcalcore
 kcontacts
 kontactinterface
-kimap
 kmime
+kimap
 akonadi
 akonadi-mime
 akonadi-contacts
