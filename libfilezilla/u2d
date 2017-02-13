@@ -1,1 +1,1 @@
-sflist filezilla libfilezilla | sort -V | tail -n 1
+u2d http://download.filezilla-project.org/libfilezilla/ libfilezilla-
