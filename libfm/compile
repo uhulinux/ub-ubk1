@@ -4,7 +4,7 @@ ub_configure \
 	--disable-dependecy-tracking \
 	--enable-udisks \
 	--with-gnu-ld \
-	--with-html-dir=/usr/share/doc/libfm/html
+	--with-html-dir=/usr/share/doc/libfm/html \
+	--with-gtk=3
 
-ub_make \
-	LDFLAGS+=' -lgobject-2.0 -lglib-2.0'
+ub_make

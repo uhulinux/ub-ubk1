@@ -1,1 +1,3 @@
-geturl http://sourceforge.net/projects/lxde/files/LXPanel%20%28desktop%20panel%29/LXPanel%200.7.x/ | grep lxpanel |  sed s/.*lxpanel-//g | sed s/\.tar.*//g | sort -V | tail -n 1
+dir=$(sflist lxde | grep LXPanel | sed 's/ /%20/g' | sed s/\(/%28/g | sed s/\)/%29/g)
+dir2=$(urllist https://sourceforge.net/projects/lxde/files/$dir/ | grep LXPanel | grep x | sort | tail -n 1 | sed 's/ /%20/g')
+geturl https://sourceforge.net/projects/lxde/files/$dir/$dir2/ | grep .tar. | sed s/.*lxpanel-//g | sed s/\.tar.*//g | sort -V | tail -n 1

@@ -1,5 +1,5 @@
 atk-dev
 glib-dev
-gtk2-dev
+gtk-dev
 intltool
 pango-dev

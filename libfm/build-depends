@@ -3,7 +3,7 @@ desktop-file-utils
 exiv2-dev
 gettext
 glib-dev
-gtk2-dev
+gtk-dev
 intltool
 menu-cache-dev
 shared-mime-info

@@ -1,5 +1,5 @@
 gpicview >=
-icon-theme-lxde >=
+icon-theme-adwaita >=
 libfm >=
 lxappearance >=
 lxappearance-obconf >=
