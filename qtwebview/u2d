@@ -1,0 +1,3 @@
+dir=$(urllist http://download.qt.io/official_releases/qt/ | grep -E '^(5.[0-9])' | sort -V | tail -n 1)
+release=$(urllist http://download.qt.io/official_releases/qt/$dir/ | grep -E '^(5.[0-9.]+)' | sort -V | tail -n 1)
+urllist http://download.qt.io/official_releases/qt/$dir/$release/submodules/ | splitver '^qtwebview-opensource-src-([0-9.].+).tar.xz$' | sort -V | tail -n 1

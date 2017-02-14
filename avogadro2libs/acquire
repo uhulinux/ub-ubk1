@@ -3,5 +3,5 @@
 #${UB_VERSION}.tar.gz avogadrolibs-${UB_VERSION}/
 #	https://github.com/OpenChemistry/avogadrolibs/archive/
 
-avogadrolibs-${UB_VERSION}.tar.gz avogadrolibs-b9b8bb7/
-	git://github.com/OpenChemistry/avogadrolibs.git@b9b8bb7
+avogadrolibs-${UB_VERSION}.tar.gz avogadrolibs-66d091c/
+	git://github.com/OpenChemistry/avogadrolibs.git@66d091c

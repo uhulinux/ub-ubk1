@@ -4,5 +4,7 @@ glew-dev
 hdf5
 molequeue
 qt5-dev
+qtwebengine-dev
+qtwebview-dev
 spglib
 spglib-dev

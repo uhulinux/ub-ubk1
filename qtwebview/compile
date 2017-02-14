@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+mkdir -p build
+cd build
+
+export CFLAGS="-fno-delete-null-pointer-checks"
+export CXXFLAGS="-fno-delete-null-pointer-checks"
+qmake ../qtwebview.pro
+
+ub_make
