@@ -163,7 +163,6 @@ latex2html
 gtklp
 sqlitebrowser
 fbreader
-sqliteman
 synergy
 wammu
 unibrow

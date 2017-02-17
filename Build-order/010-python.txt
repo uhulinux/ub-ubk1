@@ -141,7 +141,6 @@ python-rdflib
 python-requests
 python-sphinx
 python-urlgrabber
-spyder
 gst-python
 pyatspi
 pykaraoke

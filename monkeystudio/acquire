@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-version-${UB_VERSION}.tar.gz monkeystudio2-version-${UB_VERSION}/
-	https://github.com/pasnox/monkeystudio2/archive/

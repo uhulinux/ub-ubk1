@@ -68,9 +68,7 @@ xwpe
 povray
 gqview
 gfxboot
-monkeystudio
 mtpaint
-tortoisehg
 unicode-screensaver
 scratch
 icon-slicer
@@ -80,7 +78,6 @@ sk1
 gexif
 gtk-stock-icons
 harbour
-hgview
 gphoto2
 gimp-webp
 gtkdialog

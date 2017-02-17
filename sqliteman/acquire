@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-sqliteman-${UB_VERSION}.tar.gz sqliteman-${UB_VERSION}/
-	http://downloads.sourceforge.net/sqliteman/
