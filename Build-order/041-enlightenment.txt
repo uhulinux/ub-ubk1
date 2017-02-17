@@ -2,3 +2,5 @@ luajit
 efl
 enlightenment
 terminology
+ephoto
+equate
