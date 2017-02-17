@@ -80,7 +80,6 @@ pysqlite
 python3-psutil
 pyyaml
 qscintilla2
-python3-qscintilla2
 python-apsw
 python-astroid
 python-babel

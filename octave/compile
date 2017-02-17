@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-ub_compile \
-	--enable-dl \
-	--with-qt=4

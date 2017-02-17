@@ -8,7 +8,6 @@ geany-plugins
 photopc
 tygemo
 lapack
-octave
 mathgl
 maxima
 wxmaxima
