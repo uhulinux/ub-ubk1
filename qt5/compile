@@ -21,8 +21,7 @@ export LD_LIBRARY_PATH="$(pwd)"/lib
 	-verbose            \
 	-silent             \
 	-no-pch             \
-	-optimized-qmake    \
-	-no-qml-debug		\
+	-qml-debug		\
 	-no-use-gold-linker \
 	-reduce-relocations \
 	-no-rpath           \

@@ -21,6 +21,7 @@ re2c
 ruby-dev
 sqlite-dev
 systemd-dev
+tslib-dev
 unixodbc-dev
 xcb-util-dev
 xcb-util-image-dev

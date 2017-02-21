@@ -62,4 +62,5 @@ dclib
 extra-cmake-modules
 qtwebkit
 qtwebengine
+qtwebview
 biblesync

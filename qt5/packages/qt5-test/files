@@ -1,20 +1,6 @@
-@	/usr/lib/pkgconfig/Qt5QuickTest.pc
-@	/usr/lib/pkgconfig/Qt5Test.pc
 	/usr/lib/qt5/bin/qmltestrunner
-	/usr/lib/qt5/include/QtQuickTest
-	/usr/lib/qt5/include/QtTest
-	/usr/lib/qt5/lib/cmake/Qt5QuickTest
-	/usr/lib/qt5/lib/cmake/Qt5Test
-	/usr/lib/qt5/lib/libQt5QuickTest.la
-	/usr/lib/qt5/lib/libQt5QuickTest.prl
-@	/usr/lib/qt5/lib/libQt5QuickTest.so
 	/usr/lib/qt5/lib/libQt5QuickTest.so.*
 @	/usr/lib/qt5/lib/libQt5QuickTest.so.*
-	/usr/lib/qt5/lib/libQt5Test.la
-	/usr/lib/qt5/lib/libQt5Test.prl
-@	/usr/lib/qt5/lib/libQt5Test.so
 	/usr/lib/qt5/lib/libQt5Test.so.*
 @	/usr/lib/qt5/lib/libQt5Test.so.*
-	/usr/lib/qt5/lib/pkgconfig/Qt5QuickTest.pc
-	/usr/lib/qt5/lib/pkgconfig/Qt5Test.pc
 	/usr/lib/qt5/qml/QtTest

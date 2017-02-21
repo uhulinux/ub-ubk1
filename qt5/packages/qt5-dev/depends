@@ -7,7 +7,9 @@ libinput-dev
 mtdev-dev
 openssl-dev
 pulseaudio-dev
+qt5-designer-dev
 sqlite-dev
+tslib-dev
 xcb-util-image-dev
 xcb-util-keysyms-dev
 xcb-util-renderutil-dev

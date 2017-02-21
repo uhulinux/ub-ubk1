@@ -8,7 +8,6 @@ python-dev
 qscintilla2
 qt5-designer-dev
 qt5-dev
-qt5-test
 qtwebkit-dev
 sip
 sqlite-dev
