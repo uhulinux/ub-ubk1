@@ -1,6 +1,8 @@
+boost-dev
 curl-dev
 eigen3
 exiv2-dev
+extra-cmake-modules
 fontconfig-dev
 glew-dev
 glu-dev
@@ -50,6 +52,8 @@ phonon-dev
 poppler-qt5-dev
 postgresql-dev
 qca-dev
+qt5-dev
+qt5-test-dev
 qtwebkit-dev
 sonnet-dev
 threadweaver-dev

@@ -25,7 +25,8 @@ libksane-dev
 libxml2-dev
 libxslt-dev
 poppler-qt5-dev
-qt5-test
+qt5-dev
+qt5-test-dev
 solid-dev
 taglib-dev
 yaz-dev

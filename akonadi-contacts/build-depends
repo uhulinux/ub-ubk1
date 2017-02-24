@@ -15,6 +15,6 @@ kitemmodels-dev
 kmime-dev
 ktextwidgets-dev
 qt5-dev
-qt5-test
+qt5-test-dev
 qtwebengine-dev
 shared-mime-info

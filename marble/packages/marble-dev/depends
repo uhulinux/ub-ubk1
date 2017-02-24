@@ -1,4 +1,3 @@
-extra-cmake-modules
 kconfig-dev
 kcoreaddons-dev
 kcrash-dev
@@ -10,4 +9,3 @@ krunner-dev
 kservice-dev
 kwallet-dev
 plasma-framework-dev
-qt5-dev

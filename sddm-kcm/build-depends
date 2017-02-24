@@ -5,6 +5,7 @@ kcoreaddons-dev
 kdesignerplugin-dev
 ki18n-dev
 kio-dev
+knewstuff-dev
 kxmlgui-dev
 qt5-dev
 xcb-util-image-dev

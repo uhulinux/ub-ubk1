@@ -1,0 +1,12 @@
+diff -Naur orig/src/diff.cpp patched/src/diff.cpp
+--- orig/src/diff.cpp	2017-02-02 10:45:39.000000000 +0100
++++ patched/src/diff.cpp	2017-02-03 23:36:47.472897217 +0100
+@@ -890,7 +890,7 @@
+       {
+          ++lines;
+       }
+-      if ( p[i]=='\0' )
++      if ( p[i]==QChar(0) )
+       {
+          m_bIsText = false;
+       }

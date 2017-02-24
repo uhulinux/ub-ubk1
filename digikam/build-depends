@@ -1,4 +1,5 @@
 akonadi-contacts-dev
+boost-dev
 eigen3
 exiv2-dev
 extra-cmake-modules
@@ -28,7 +29,7 @@ libusb-dev
 marble-dev
 opencv-dev
 qt5-dev
-qt5-test
+qt5-test-dev
 qtwebkit-dev
 sane-backends-dev
 solid-dev

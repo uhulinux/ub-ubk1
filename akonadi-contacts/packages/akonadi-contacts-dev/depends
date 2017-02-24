@@ -1,6 +1,5 @@
 akonadi-dev
 akonadi-mime-dev
-boost-dev
 grantlee-dev
 kcodecs-dev
 kcompletion-dev
@@ -14,4 +13,3 @@ kitemmodels-dev
 kmime-dev
 ktextwidgets-dev
 qtwebengine-dev
-shared-mime-info

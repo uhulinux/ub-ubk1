@@ -9,4 +9,4 @@ kservice-dev
 kwindowsystem-dev
 libgcrypt-dev
 qt5-dev
-qt5-test
+qt5-test-dev

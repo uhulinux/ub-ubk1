@@ -24,6 +24,5 @@ phonon-dev
 poppler-qt5-dev
 qca-dev
 qt5-dev
-qt5-test
-qtspeech-dev
+qt5-test-dev
 threadweaver-dev

@@ -29,6 +29,6 @@ libkleo-dev
 messagelib-dev
 pimcommon-dev
 qt5-dev
-qt5-test
+qt5-test-dev
 qtwebengine-dev
 syndication-dev

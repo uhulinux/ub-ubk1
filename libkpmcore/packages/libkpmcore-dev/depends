@@ -1,10 +1,8 @@
 cmake
-extra-cmake-modules
 ki18n-dev
 kiconthemes-dev
 kio-dev
 kservice-dev
 libatasmart-dev
 parted-dev
-qt5-dev
 util-linux-dev

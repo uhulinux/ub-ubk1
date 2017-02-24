@@ -9,5 +9,5 @@ kidletime-dev
 kio-dev
 lmdb-dev
 qt5-dev
-qt5-test
+qt5-test-dev
 solid-dev

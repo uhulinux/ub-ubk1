@@ -1,5 +1,4 @@
 akonadi-dev
-boost-dev
 kconfig-dev
 kdbusaddons-dev
 ki18n-dev
@@ -8,4 +7,3 @@ kitemmodels-dev
 kmime-dev
 kxmlgui-dev
 libxslt-dev
-shared-mime-info

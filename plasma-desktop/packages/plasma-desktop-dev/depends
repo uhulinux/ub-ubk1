@@ -22,7 +22,6 @@ libxkbfile-dev
 packagekit-qt-dev
 plasma-framework-dev
 plasma-workspace-dev
-qt5-dev
 systemd-dev
 x.org-input-evdev
 x.org-input-synaptics

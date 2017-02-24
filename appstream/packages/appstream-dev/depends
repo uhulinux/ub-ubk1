@@ -1,0 +1,10 @@
+cmake
+gobject-introspection-dev
+intltool
+itstool
+libstemmer-dev
+libxml2-dev
+libyaml-dev
+protobuf-dev
+xapian-dev
+xmlto
