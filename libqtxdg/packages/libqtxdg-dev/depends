@@ -1,5 +1,0 @@
-cmake
-dbus-dev
-file-dev
-icu-dev
-xdg-utils
