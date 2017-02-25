@@ -27,6 +27,7 @@ libqrencode-dev
 libsm-dev
 libxshmfence-dev
 libxslt-dev
+libytnef-dev
 networkmanager-dev
 poppler-glib-dev
 pygtk-dev
