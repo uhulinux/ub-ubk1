@@ -1,7 +1,6 @@
 #!/bin/sh -eux
 
-./drake \
-	install \
+rake install \
 	prefix=${UB_INSTALLDIR}/usr \
 	man1dir=${UB_INSTALLDIR}/usr/share/man/man1/ \
 	mandir=${UB_INSTALLDIR}/usr/share/man

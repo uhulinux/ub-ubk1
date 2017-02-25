@@ -8,6 +8,6 @@ libsndfile-dev
 portaudio-dev
 pulseaudio-dev
 qt5-dev
-qt5-test
+qt5-test-dev
 sdl-dev
 sdl-sound-dev

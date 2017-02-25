@@ -1,4 +1,4 @@
-cmake
+docbook-dtds
 docbook-xsl
 libxslt-dev
 pcre-dev

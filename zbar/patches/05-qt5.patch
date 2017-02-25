@@ -1,7 +1,16 @@
 diff -Naur orig/configure.ac patched/configure.ac
---- orig/configure.ac	2009-10-23 20:16:44.000000000 +0200
-+++ patched/configure.ac	2017-01-28 04:32:48.352833481 +0100
-@@ -368,17 +368,18 @@
+--- orig/configure.ac	2017-02-15 01:07:28.000000000 +0100
++++ patched/configure.ac	2017-02-15 01:37:48.420732476 +0100
+@@ -47,7 +47,7 @@
+   [Library revision])
+ 
+ AM_CPPFLAGS="-I$srcdir/include"
+-AM_CFLAGS="-Wall -Wno-parentheses -Werror"
++AM_CFLAGS="-Wall -Wno-parentheses -fPIC"
+ AM_CXXFLAGS="$AM_CFLAGS"
+ AC_SUBST([AM_CPPFLAGS])
+ AC_SUBST([AM_CFLAGS])
+@@ -467,17 +467,18 @@
  dnl Qt
  AC_ARG_WITH([qt],
    [AS_HELP_STRING([--without-qt],
@@ -24,7 +33,7 @@ diff -Naur orig/configure.ac patched/configure.ac
     AC_MSG_NOTICE([using Qt version $QT_VERSION])])
  
  AM_CONDITIONAL([HAVE_QT], [test "x$with_qt" = "xyes"])
-@@ -457,9 +458,9 @@
+@@ -585,9 +586,9 @@
    [echo "        => the GTK+ widget will *NOT* be built"],
    [AS_IF([test "x$with_python" != "xyes"],
       [echo "        => the PyGTK widget wrapper will *NOT* be built"])])
@@ -33,12 +42,12 @@ diff -Naur orig/configure.ac patched/configure.ac
  AS_IF([test "x$with_qt" != "xyes"],
 -  [echo "        => the Qt4 widget will *NOT* be built"])
 +  [echo "        => the Qt5 widget will *NOT* be built"])
- #echo "NPAPI Plugin     --with-npapi=$with_npapi"
- #AS_IF([test "x$with_mozilla" != "xyes"],
- #  [echo "       => the Mozilla/Firefox/OpenOffice plugin will *NOT* be built"])
+ echo "Java              --with-java=$with_java"
+ AS_IF([test "x$with_java" != "xyes"],
+   [echo "        => the Java interface will *NOT* be built"])
 diff -Naur orig/include/zbar/QZBar.h patched/include/zbar/QZBar.h
---- orig/include/zbar/QZBar.h	2009-10-23 20:16:44.000000000 +0200
-+++ patched/include/zbar/QZBar.h	2017-01-28 04:32:48.352833481 +0100
+--- orig/include/zbar/QZBar.h	2017-02-15 01:07:28.000000000 +0100
++++ patched/include/zbar/QZBar.h	2017-02-15 01:33:41.361788121 +0100
 @@ -26,7 +26,7 @@
  /// @file
  /// Barcode Reader Qt4 Widget
@@ -49,8 +58,8 @@ diff -Naur orig/include/zbar/QZBar.h patched/include/zbar/QZBar.h
  namespace zbar {
  
 diff -Naur orig/include/zbar/QZBarImage.h patched/include/zbar/QZBarImage.h
---- orig/include/zbar/QZBarImage.h	2009-10-23 20:16:44.000000000 +0200
-+++ patched/include/zbar/QZBarImage.h	2017-01-28 04:32:48.352833481 +0100
+--- orig/include/zbar/QZBarImage.h	2017-02-15 01:07:28.000000000 +0100
++++ patched/include/zbar/QZBarImage.h	2017-02-15 01:39:33.774014839 +0100
 @@ -26,7 +26,7 @@
  /// @file
  /// QImage to Image type conversion wrapper
@@ -63,15 +72,15 @@ diff -Naur orig/include/zbar/QZBarImage.h patched/include/zbar/QZBarImage.h
 @@ -54,7 +54,7 @@
          unsigned height = qimg.height();
          set_size(width, height);
-         set_format('B' | ('G' << 8) | ('R' << 16) | ('4' << 24));
+         set_format(zbar_fourcc('B','G','R','4'));
 -        unsigned long datalen = qimg.numBytes();
 +        unsigned long datalen = qimg.byteCount();
          set_data(qimg.bits(), datalen);
  
          if((width * 4 != bpl) ||
 diff -Naur orig/qt/QZBar.cpp patched/qt/QZBar.cpp
---- orig/qt/QZBar.cpp	2009-10-23 20:16:44.000000000 +0200
-+++ patched/qt/QZBar.cpp	2017-01-28 04:32:48.356833528 +0100
+--- orig/qt/QZBar.cpp	2017-02-15 01:07:28.000000000 +0100
++++ patched/qt/QZBar.cpp	2017-02-15 01:33:41.365788168 +0100
 @@ -21,9 +21,9 @@
  //  http://sourceforge.net/projects/zbar
  //------------------------------------------------------------------------
@@ -113,8 +122,8 @@ diff -Naur orig/qt/QZBar.cpp patched/qt/QZBar.cpp
  
          _videoEnabled = !_videoDevice.isEmpty();
 diff -Naur orig/zbar-qt.pc.in patched/zbar-qt.pc.in
---- orig/zbar-qt.pc.in	2009-10-23 20:16:44.000000000 +0200
-+++ patched/zbar-qt.pc.in	2017-01-28 04:33:07.957065582 +0100
+--- orig/zbar-qt.pc.in	2017-02-15 01:07:28.000000000 +0100
++++ patched/zbar-qt.pc.in	2017-02-15 01:33:41.365788168 +0100
 @@ -4,9 +4,9 @@
  includedir=@includedir@
  

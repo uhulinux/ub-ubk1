@@ -2,4 +2,4 @@
 
 ub_configure \
 	--with-rcc=/usr/lib/qt5/bin/rcc
-./drake
+rake

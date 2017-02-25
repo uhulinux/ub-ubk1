@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-zbar-"$UB_VERSION".tar.bz2 zbar-"$UB_VERSION"/
-	    http://sourceforge.net/projects/zbar/files/zbar/"$UB_VERSION"/
+#zbar-${UB_VERSION}.tar.bz2 zbar-${UB_VERSION}/
+#	    http://sourceforge.net/projects/zbar/files/zbar/"$UB_VERSION"/
+
+zbar-${UB_VERSION}.tar.gz ZBar-8edfa5f/
+	    git://github.com/ZBar/ZBar.git@8edfa5f

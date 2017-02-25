@@ -1,3 +1,0 @@
-#!/bin/sh -e
-
-browser http://sqlite.org/lang.html

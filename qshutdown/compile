@@ -2,4 +2,3 @@
 
 qmake qshutdown.pro
 ub_compile
-

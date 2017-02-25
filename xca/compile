@@ -3,4 +3,3 @@
 ./bootstrap
 ub_compile \
 	--with-qt=/usr/lib/qt5
-

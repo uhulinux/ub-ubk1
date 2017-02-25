@@ -1,39 +1,18 @@
-diff -Naur orig/configure patched/configure
---- orig/configure	2009-10-23 20:17:24.000000000 +0200
-+++ patched/configure	2017-01-28 02:59:27.257328095 +0100
-@@ -18709,7 +18709,7 @@
- if test "x$enable_video" != "xno"; then
-   if test "x$win32" = "xno"; then
- 
--for ac_header in linux/videodev.h
-+for ac_header in libv4l1-videodev.h
- do
- as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
- if { as_var=$as_ac_Header; eval "test \"\${$as_var+set}\" = set"; }; then
 diff -Naur orig/configure.ac patched/configure.ac
---- orig/configure.ac	2009-10-23 20:16:44.000000000 +0200
-+++ patched/configure.ac	2017-01-28 03:01:57.659021249 +0100
-@@ -20,7 +20,7 @@
- dnl   - If any interfaces have been added since the last public release,
- dnl     then increment age.
- dnl   - If any interfaces have been removed since the last public release,
--dnl     then set age to 0. 
-+dnl     then set age to 0.
- AC_SUBST([LIB_VERSION], [2:0:2])
- AC_SUBST([RELDATE], [2009-10-23])
- 
-@@ -147,7 +147,7 @@
- with_video="no"
- AS_IF([test "x$enable_video" != "xno"],
-   [AS_IF([test "x$win32" = "xno"],
--    [AC_CHECK_HEADERS([linux/videodev.h], [with_video="v4l1"],
-+    [AC_CHECK_HEADERS([libv4l1-videodev.h], [with_video="v4l1"],
-       [AC_MSG_FAILURE([test for video support failed!
- rebuild your kernel to include video4linux support or
- configure --disable-video to skip building video support.])])
+--- orig/configure.ac	2017-02-15 01:07:28.000000000 +0100
++++ patched/configure.ac	2017-02-15 01:25:37.616110292 +0100
+@@ -182,7 +182,7 @@
+ AS_IF([test "x$enable_video" = "xno"],
+   [],
+   [test "x$win32" = "xno"],
+-  [AC_CHECK_HEADERS([linux/videodev.h], [have_v4l1="yes"])
++  [AC_CHECK_HEADERS([libv4l1-videodev.h], [have_v4l1="yes"])
+    AC_CHECK_HEADERS([linux/videodev2.h], [have_v4l2="yes"])
+    AS_IF([test "x$have_v4l2" = "xno" && test "x$have_v4l1" = "xno"],
+      [AC_MSG_FAILURE([test for video support failed!
 diff -Naur orig/zbar/video/v4l1.c patched/zbar/video/v4l1.c
---- orig/zbar/video/v4l1.c	2009-10-23 20:16:44.000000000 +0200
-+++ patched/zbar/video/v4l1.c	2017-01-28 02:59:27.249328005 +0100
+--- orig/zbar/video/v4l1.c	2017-02-15 01:07:28.000000000 +0100
++++ patched/zbar/video/v4l1.c	2017-02-15 01:26:25.488673644 +0100
 @@ -41,7 +41,7 @@
  #ifdef HAVE_SYS_MMAN_H
  # include <sys/mman.h>

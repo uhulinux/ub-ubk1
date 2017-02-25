@@ -2,7 +2,7 @@
 
 make install
 
-#remove all unnecessary??? python files from /usr/lib 
+#remove all unnecessary??? python files from /usr/lib
 rm -r "$UB_INSTALLDIR"/usr/lib/
 
 #install desktop file
