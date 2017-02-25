@@ -1,6 +1,3 @@
-doxygen
 expat-dev
-graphviz-dev
 libffi-dev
 libxml2-dev
-xmlto
