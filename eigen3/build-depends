@@ -1,7 +1,5 @@
-cmake
 fftw3-dev
 freeglut-dev
 gmp-dev
 gsl-dev
 mpfr-dev
-qt4-dev
