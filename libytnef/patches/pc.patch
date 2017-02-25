@@ -1,0 +1,48 @@
+diff -Naur orig/configure.ac patched/configure.ac
+--- orig/configure.ac	2017-02-14 15:19:04.000000000 +0100
++++ patched/configure.ac	2017-02-25 15:48:23.788977551 +0100
+@@ -73,6 +73,7 @@
+ ytnef/Makefile
+ ytnefprint/Makefile
+ lib/Makefile
++lib/libytnef.pc
+ test-data/Makefile
+ ])
+
+diff -Naur orig/lib/configure.ac patched/lib/configure.ac
+--- orig/lib/configure.ac	2017-02-14 15:19:04.000000000 +0100
++++ patched/lib/configure.ac	2017-02-25 02:50:52.000000000 +0100
+@@ -21,6 +21,6 @@
+ AC_FUNC_MALLOC
+ AC_CHECK_FUNCS([memset])
+
+-AC_CONFIG_FILES([Makefile])
++AC_CONFIG_FILES([Makefile libytnef.pc])
+ AC_OUTPUT
+ AC_OUTPUT(libytnef.spec)
+diff -Naur orig/lib/libytnef.pc.in patched/lib/libytnef.pc.in
+--- orig/lib/libytnef.pc.in	1970-01-01 01:00:00.000000000 +0100
++++ patched/lib/libytnef.pc.in	2017-02-25 02:58:16.956185778 +0100
+@@ -0,0 +1,11 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: libytnef
++Description: Yerase's TNEF Stream Reader library
++URL: https://github.com/Yeraze/ytnef
++Version: @VERSION@
++Libs: -L${libdir} -lytnef
++Cflags: -I${includedir}
+diff -Naur orig/lib/Makefile.am patched/lib/Makefile.am
+--- orig/lib/Makefile.am	2017-02-14 15:19:04.000000000 +0100
++++ patched/lib/Makefile.am	2017-02-25 02:55:12.913839943 +0100
+@@ -8,4 +8,7 @@
+ 	mapi.h mapidefs.h mapitags.h \
+ 	tnef-types.h tnef-errors.h
+
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA = libytnef.pc
++
+ EXTRA_DIST = libytnef.spec

@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+v${UB_VERSION}-2.tar.gz ytnef-${UB_VERSION}-2/
+    https://github.com/Yeraze/ytnef/archive/

@@ -54,6 +54,7 @@ jansson
 kbd
 lame
 libyajl
+libytnef
 lmsensors
 lsdvd
 luasocket
