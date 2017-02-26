@@ -205,7 +205,6 @@ podofo
 telepathy-mission-control
 tigervnc
 vim
-xaw3d
 xscreensaver
 gtkhtml
 gtk-vnc
