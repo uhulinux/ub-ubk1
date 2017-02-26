@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Marave
-Exec=marave-editor
-Icon=/usr/share/icons/marave.svg
-Categories=GTK;GNOME;Office;WordProcessor;

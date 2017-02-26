@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-marave-${UB_VERSION}.tar.gz marave-master/
-	git://github.com/xMoad/marave.git@master

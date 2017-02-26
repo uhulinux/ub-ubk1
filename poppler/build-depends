@@ -5,7 +5,6 @@ libjpeg-turbo-dev
 libxi-dev
 libxml2-dev
 openjpeg-dev
-qt4-dev
 qt5-dev
 qt5-test-dev
 zlib-dev

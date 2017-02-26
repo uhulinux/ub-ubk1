@@ -1,1 +1,0 @@
-sflist srchiliteqt source-highlight-qt | parsever | sort -V | tail -n 1
