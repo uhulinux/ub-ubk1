@@ -4,7 +4,6 @@ htdig
 jargon
 jmoney
 min1200w
-anki
 fish
 nouveau-vdpau-fw
 audio-entropyd
@@ -26,7 +25,6 @@ euler
 firebirdsql
 flamerobin
 smart
-frescobaldi
 ndisgtk
 sddm-config-editor
 foxit

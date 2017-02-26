@@ -82,7 +82,6 @@ gphoto2
 gimp-webp
 gtkdialog
 xzgv
-marave
 xpaint
 cppcheck
 distcc
@@ -96,7 +95,6 @@ poedit
 limoo
 promoe
 viking
-avogadro
 avogadro2
 aeskulap
 gv

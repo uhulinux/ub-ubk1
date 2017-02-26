@@ -130,11 +130,9 @@ python-pexpect
 python-pillow
 python-pip
 python-polib
-python-poppler-qt4
 python-postmarkup
 python-psutil
 python-ptyprocess
-pyenchant
 python-pygments
 python-qrcode
 python-rdflib
