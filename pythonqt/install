@@ -1,0 +1,11 @@
+#!/bin/sh -eux
+
+ub_install
+
+mkdir -p ${UB_INSTALLDIR}/usr/include/PythonQt/{gui,extensions/PythonQt_QtAll}
+cp src/*.h "${UB_INSTALLDIR}"/usr/include/PythonQt/
+cp	src/gui/*.h "${UB_INSTALLDIR}"/usr/include/PythonQt/gui/
+cp	extensions/PythonQt_QtAll/*.h "${UB_INSTALLDIR}"/usr/include/PythonQt/extensions/PythonQt_QtAll/
+
+mkdir -p "${UB_INSTALLDIR}"/usr/lib
+cp -a lib/*.so* "${UB_INSTALLDIR}"/usr/lib/

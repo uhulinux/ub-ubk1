@@ -1,0 +1,27 @@
+diff -Nur orig/build/python.prf mod/build/python.prf
+--- orig/build/python.prf	2016-06-09 13:10:36.000000000 +0200
++++ mod/build/python.prf	2017-02-28 16:46:43.397519559 +0100
+@@ -1,8 +1,8 @@
+-# profile to include and link Python
+-
+-# Change this variable to your python version (2.6, 2.7, 3.3, ...)
+-win32:PYTHON_VERSION=27
+-unix:PYTHON_VERSION=2.7
++# profile to include and link Python
++
++# Change this variable to your python version (2.6, 2.7, 3.3, ...)
++win32:PYTHON_VERSION=27
++unix:PYTHON_VERSION=2.7
+ 
+ macx {
+   # for macx you need to have the Python development kit installed as framework
+@@ -36,6 +36,7 @@
+   # on linux, python-config is used to autodetect Python.
+   # make sure that you have installed a matching python-dev package.
+   
+-  unix:LIBS += $$system(python$${PYTHON_VERSION}-config --libs)
+-  unix:QMAKE_CXXFLAGS += $$system(python$${PYTHON_VERSION}-config --includes)
++  # There's a symbolic link, so we don't need to specify a Python version
++  unix:LIBS += $$system(python3-config --libs)
++  unix:QMAKE_CXXFLAGS += $$system(python3-config --includes)
+ }

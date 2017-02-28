@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_install
+mkdir -p ${UB_INSTALLDIR}/etc/calamares/modules/
+cp src/modules/netinstall/netinstall.yaml ${UB_INSTALLDIR}/etc/calamares/modules/

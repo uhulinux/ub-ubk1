@@ -288,3 +288,5 @@ jfsutils
 apmd
 gpsd
 sudo
+yaml-cpp
+pythonqt

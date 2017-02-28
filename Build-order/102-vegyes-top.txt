@@ -51,3 +51,4 @@ abiword
 genius
 openoffice.org
 libreoffice
+calamares
