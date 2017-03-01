@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 btrfs-progs-v${UB_VERSION}.tar.xz btrfs-progs-v${UB_VERSION}/
-	http://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/
+	https://kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/

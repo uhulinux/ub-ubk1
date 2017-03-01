@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 sbc-${UB_VERSION}.tar.xz sbc-${UB_VERSION}/
-	http://www.kernel.org/pub/linux/bluetooth/
+	https://kernel.org/pub/linux/bluetooth/

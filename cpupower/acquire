@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 linux-${UB_VERSION}.tar.xz linux-${UB_VERSION}/tools/
-	http://ftp.kernel.org/pub/linux/kernel/v4.x/
+	https://kernel.org/pub/linux/kernel/v4.x/

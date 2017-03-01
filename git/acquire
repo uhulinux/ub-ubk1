@@ -1,13 +1,10 @@
 #!/usr/bin/env dl
 
 git-${UB_VERSION}.tar.xz git-${UB_VERSION}/
-	http://kernel.org/pub/software/scm/git/
-	http://git-core.googlecode.com/files/
+	https://kernel.org/pub/software/scm/git/
 
 git-htmldocs-${UB_VERSION}.tar.xz . :docs
-	http://kernel.org/pub/software/scm/git/
-	http://git-core.googlecode.com/files/
+	https://kernel.org/pub/software/scm/git/
 
 git-manpages-${UB_VERSION}.tar.xz . :man
-	http://kernel.org/pub/software/scm/git/
-	http://git-core.googlecode.com/files/
+	https://kernel.org/pub/software/scm/git/
