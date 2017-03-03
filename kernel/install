@@ -35,6 +35,12 @@ ln -s initrd-$VERSION.x86_64.gz /boot/initrd.x86_64.gz
 rm -f /boot/initrd.gz
 ln -s initrd.i386.gz /boot/initrd.gz
 
+# update grub config
+if [ -f /boot/grub/grub.cfg ]; then
+	mv /boot/grub/grub.cfg /boot/grub/grub.cfg.`date '+%F'`
+fi
+exec grub-mkconfig -o /boot/grub/grub.cfg
+
 END
 
 chmod 755 "$UB_INSTALLDIR"/usr/sbin/mkinitrd-installedkernel
