@@ -301,7 +301,6 @@
     - perl-timedate
     - pm-utils
     - postfix
-    - postgresql
     - ppp
     - quota
     - radeontool
@@ -336,9 +335,19 @@
     - xdelta
     - zip
     - zsh
+# kellenek de nem standard és nem required
     - 7zip
     - cabextract
     - rar
+    - libuser
+    - lsb-release
+    - nscd
+    - terminfo
+    - uhu-sysinfo
+    - usermode
+    - vi
+    - xdg-user-dirs
+    - xdg-utils
 - name: "Konsole systemtools"
   description: "Konsole systemtools"
   critical: false
@@ -362,10 +371,37 @@
     - lsscsi
     - mcrypt
     - microcodectl
-# konzolos szerver
+    - minicom
+    - ndiswrapper
+    - pam-ldap
+    - pam-smb
+    - powertop
+    - pretendroot
+    - psacct
+    - pwgen
+    - rdate
+    - rdiff-backup
+    - rng-tools
+    - schedtool
+    - sdparm
+    - setserial
+    - shash
+    - sortdir
+    - sysstat
+# tools
+    - tree
+    - trunc
+    - ttyrec
+    - zisofs-tools
+# nyomtató
+    - a2ps
+    - psutils
+    - min1200w
+    - mpage
+# hálózat/szerver
     - bind
     - bind-utils
-# konzolos hálózati segédeszközök
+    - samba-server
     - ethtool
     - iperf
     - ipsec-tools
@@ -373,6 +409,10 @@
     - iptraf
     - lftp
     - mii-diag
+    - tcpdump
+    - tftp
+    - tftpd
+    - vblade
 - name: "Base felesleges"
   description: "Base felesleges"
   critical: false
@@ -392,74 +432,29 @@
     - tdb
     - lmsensors
     - luit
+    - neon
+    - openipmi
+    - xzoom
 # konzolos felesleges
     - antiword
     - bchunk
+    - open-iscsi
+    - pv
+    - words
+    - ytalk
 # bootloaders
     - syslinux
+    - sbm
 - name: "Base unsorted"
   description: "Base unsorted group"
   critical: false
   selected: true
   packages:
-# rendezetlen
+# Artwork
     - cursor-theme-bluecurve
-    - minicom
-    - mpage
-    - ndiswrapper
-    - neon
-    - nmap
+# GNOME
     - notification-daemon
-    - nscd
-    - openipmi
-    - open-iscsi
-    - pam-ldap
-    - pam-smb
-    - powertop
-    - pretendroot
-    - psacct
-    - psutils
-    - pv
-    - pwgen
     - rarian
-    - rdate
-    - rdesktop
-    - rdiff-backup
-    - rng-tools
-    - samba-server
-    - sbm
-    - schedtool
-    - sdparm
-    - setserial
-    - shash
-    - slmodem
-    - sortdir
-    - strace
-    - sysstat
-    - tcpdump
-    - terminfo
-    - tftp
-    - tftpd
-    - tree
-    - trunc
-    - ttyrec
-    - uhu-sysinfo
-    - uhu-zeroconf
-    - unclutter
-    - usermode
-    - vblade
-    - vi
-    - w3m
-    - words
-    - x11vnc
-    - xbindkeys
-    - xdg-user-dirs
-    - xdg-user-dirs-gtk
-    - xdg-utils
-    - xzoom
-    - ytalk
-    - zisofs-tools
-    - zvbi
 # fonts
     - fonts-bitstream-vera
     - fonts-dejavu
@@ -468,9 +463,12 @@
     - fonts-libertine
     - fonts-symbola
     - fonts-unicode
-# utilities
+# tools
     - dconf-editor
     - gconf-editor
+    - unclutter
+    - xbindkeys
+    - xdg-user-dirs-gtk
 # filesystems
     - gparted
     - gptfdisk
@@ -482,6 +480,7 @@
     - numlockx
     - pcmciautils
     - sysklogd
+    - uhu-zeroconf
 # internet + connections
     - isdn4k-utils
     - curlftpfs
@@ -498,11 +497,16 @@
     - mailcount
     - networkmanager-openvpn
     - networkmanager-pptp
+    - nmap
     - opensshd
     - openvpn
     - php
+    - rdesktop
+    - slmodem
+    - w3m
     - wvdial
     - usb-modeswitch
+    - x11vnc
 - name: "Development"
   description: "Development"
   critical: false
@@ -525,6 +529,7 @@
     - mercurial
     - patchutils
     - pkgconfig
+    - strace
     - subversion
     - subversion-tools
     - uhubuild-here
@@ -550,13 +555,11 @@
   critical: false
   selected: true
   packages:
-    - a2ps
     - foomatic-db
     - foomatic-db-engine
     - gutenprint
     - ghostscript
     - hplip
-    - min1200w
     - system-config-printer
 - name: "Package managers"
   description: "Package managers"
@@ -564,7 +567,6 @@
   selected: true
   packages:
     - dselect
-    - lsb-release
     - synaptic
     - gtk-stock-icons
 - name: "Multimedia libs"
@@ -604,6 +606,7 @@
     - sox
     - mp3info
     - vorbis-tools
+    - zvbi
 - name: "X-org base"
   description: "X-org base"
   critical: false
@@ -679,7 +682,7 @@
     - x.org-video-sis
     - x.org-video-sisusb
     - x.org-video-tdfx
-    - x.org-video-tgapek
+    - x.org-video-tga
     - x.org-video-trident
     - x.org-video-tseng
     - x.org-video-v4l
@@ -690,7 +693,7 @@
   selected: false
   packages:
     - icewm
-    - icewm-xdgmenus
+    - icewm-xdgmenu
     - slim
     - dillo
 - name: "Pekwm"
@@ -817,7 +820,7 @@
     - mplayer
     - vlc
     - gxine
-    - xine
+    - xine-ui
     - dvdauthor
     - flashplayer
     - exaile
