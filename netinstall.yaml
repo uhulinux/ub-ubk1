@@ -827,6 +827,7 @@
 - name: "Filemanagers"
   description: "Filemanagers"
   critical: false
+  selected: false
   packages:
     - tuxcmd
     - doublecmd
