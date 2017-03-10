@@ -694,8 +694,16 @@
   packages:
     - icewm
     - icewm-xdgmenu
+    - icewm-themes
+    - icewm-theme-bluecurve
+    - icewm-theme-winclassic2
+    - icewm-theme-win7
+    - icewm-theme-win31
+    - icewm-theme-ubuntu
+    - icewm-theme-nitrogen
+    - icon-theme-gnome
     - slim
-    - dillo
+    - firefox
 - name: "Pekwm"
   description: "Pekwm windowmanager"
   critical: false
@@ -704,7 +712,15 @@
     - pekwm
     - pekwm-themes
     - slim
-    - dillo
+    - firefox
+- name: "Enlightenment"
+  description: "Enlightenment desktop"
+  critical: false
+  selected: false
+  packages:
+    - enlightenment
+    - gimp
+    - firefox
 - name: "Lxde"
   description: "Lxde desktop"
   critical: false
@@ -793,6 +809,12 @@
   packages:
     - libreoffice
     - openoffice.org
+    - scribus
+    - abevjava
+    - abiword
+    - adobe-reader
+    - gnucash
+    - efax-gtk
 - name: "Internet apps"
   description: "Internet appications"
   critical: false
@@ -808,6 +830,7 @@
     - linphone
     - links
     - dillo
+    - midori
     - firefox
     - opera
     - chromium
@@ -817,13 +840,32 @@
   critical: false
   selected: false
   packages:
+    - flashplayer
     - mplayer
+    - smplayer
+    - smtube
     - vlc
+    - kodi
     - gxine
     - xine-ui
+    - avidemux
     - dvdauthor
-    - flashplayer
     - exaile
+    - audacious
+    - audacity
+    - deadbeef
+- name: "Editors"
+  description: "Editors"
+  critical: false
+  selected: false
+  packages:
+    - leafpad
+    - mousepad
+    - emacs
+    - xemacs
+    - nano
+    - pico
+    - yudit
 - name: "Filemanagers"
   description: "Filemanagers"
   critical: false
