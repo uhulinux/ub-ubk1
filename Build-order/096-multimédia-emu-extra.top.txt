@@ -85,3 +85,4 @@ lives
 blender
 transcode
 dmcradio
+qmmp
