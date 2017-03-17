@@ -57,4 +57,3 @@ ub_compile \
 	--disable-rpath \
 	--with-config-file-path=/etc \
 	--with-config-file-scan-dir=/etc/php.d
-

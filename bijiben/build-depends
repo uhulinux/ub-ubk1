@@ -1,6 +1,7 @@
 db4-dev
-evolution-dev
+evolution-data-server-dev
 gnome-online-accounts-dev
 intltool
 itstool
 tracker-dev
+webkitgtk3-dev

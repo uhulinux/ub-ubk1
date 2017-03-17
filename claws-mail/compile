@@ -8,7 +8,7 @@ fi
 
 ub_compile \
     --enable-crash-dialog \
-    --enable-alternate-addressbook \
+    --disable-alternate-addressbook \
     --disable-gtk3 \
     --disable-ldap \
     --disable-jpilot \

@@ -2,4 +2,3 @@
 
 mkdir -p ${UB_INSTALLDIR}/usr/lib/phpmyfaq/
 mv * ${UB_INSTALLDIR}/usr/lib/phpmyfaq/
-

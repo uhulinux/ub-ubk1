@@ -38,4 +38,3 @@ rm "$UB_INSTALLDIR"/.filemap
 rm "$UB_INSTALLDIR"/.lock
 rm "$UB_INSTALLDIR"/.depdblock
 rm "$UB_INSTALLDIR"/.depdb
-
