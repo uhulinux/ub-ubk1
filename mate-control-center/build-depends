@@ -8,7 +8,6 @@ libice-dev
 libmatekbd-dev
 librsvg-dev
 libsm-dev
-libunique-dev
 libxi-dev
 libxkbfile-dev
 libxscrnsaver-dev

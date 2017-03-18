@@ -7,7 +7,6 @@ libexif-dev
 libjpeg-turbo-dev
 libnotify-dev
 libsm-dev
-libunique-dev
 libxml2-dev
 mate-common
 mate-desktop-dev

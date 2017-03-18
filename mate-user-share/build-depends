@@ -7,6 +7,5 @@ itstool
 libcanberra-dev
 libnotify-dev
 libsm-dev
-libunique-dev
 mate-common
 yelp-tools

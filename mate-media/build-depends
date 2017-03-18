@@ -3,7 +3,6 @@ intltool
 itstool
 libcanberra-dev
 libmatemixer-dev
-libunique-dev
 libxslt-dev
 mate-common
 mate-desktop-dev

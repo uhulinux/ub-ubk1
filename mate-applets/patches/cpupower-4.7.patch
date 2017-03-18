@@ -1,0 +1,15 @@
+diff -Naur orig/cpufreq/src/cpufreq-monitor-libcpufreq.c patched/cpufreq/src/cpufreq-monitor-libcpufreq.c
+--- orig/cpufreq/src/cpufreq-monitor-libcpufreq.c	2017-01-14 21:07:32.000000000 +0100
++++ patched/cpufreq/src/cpufreq-monitor-libcpufreq.c	2017-03-18 00:57:02.458608444 +0100
+@@ -111,11 +111,7 @@
+ 		/* Check whether it failed because
+ 		 * cpu is not online.
+ 		 */
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 7, 0)
+-		if (!cpufreq_cpu_exists (cpu)) {
+-#else
+ 		if (cpupower_is_cpu_online (cpu)) {
+-#endif
+ 			g_object_set (G_OBJECT (monitor), "online", FALSE, NULL);
+ 			return TRUE;
+ 		}

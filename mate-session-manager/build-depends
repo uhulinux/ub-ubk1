@@ -7,6 +7,5 @@ libxtst-dev
 mate-common
 mate-desktop-dev
 systemd-dev
-upower-dev
 x.org-xtrans-dev
 xcb-util-dev
