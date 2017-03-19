@@ -40,7 +40,6 @@ r34605 | attus@enterpriseforever.com | 2013-10-15 09:10:37 +0200 (Tue, 15 Oct 20
 1.8.5 -> 1.10.2
 build-depends fix, u2d csatolva, új foltok alkalmazva
 
-
 ------------------------------------------------------------------------
 r30398 | ntomasz@uhuklub.hu | 2013-02-14 20:25:52 +0100 (Thu, 14 Feb 2013) | 6 lines
 
@@ -55,7 +54,7 @@ r28667 | ntomasz@uhuklub.hu | 2012-05-06 21:20:37 +0200 (Sun, 06 May 2012) | 9 l
 
 1.6.2 -> 1.6.7
 build-depends fix
-- move binaries from /usr/bin to /usr/sbin 
+- move binaries from /usr/bin to /usr/sbin
   need root permissions to use wireshark (suid_wrapper added)
 - drop lua support, cause 5.2 does not work yet
 - drop gnutls support, cause 3.x.x does not work yet
@@ -130,8 +129,7 @@ enable some features (adns, krb5, SSL, LUA, SMI, portaudio, threads, geoip)
 r16907 | ntomasz@uhuklub.hu | 2009-02-08 18:09:56 +0100 (Sun, 08 Feb 2009) | 4 lines
 
 1.0.5 -> 1.0.6
-acquire fix 
-
+acquire fix
 
 ------------------------------------------------------------------------
 r16741 | pozsy@uhulinux.hu | 2008-12-15 17:22:57 +0100 (Mon, 15 Dec 2008) | 2 lines

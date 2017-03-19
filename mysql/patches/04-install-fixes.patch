@@ -1,7 +1,7 @@
 diff -Naur orig/CMakeLists.txt patched/CMakeLists.txt
---- orig/CMakeLists.txt	2017-01-17 20:38:17.000000000 +0100
-+++ patched/CMakeLists.txt	2017-01-21 18:31:38.002033385 +0100
-@@ -470,11 +470,6 @@
+--- orig/CMakeLists.txt	2017-03-11 20:08:54.134741323 +0100
++++ patched/CMakeLists.txt	2017-03-19 19:55:52.228536315 +0100
+@@ -473,11 +473,6 @@
  #INSTALL_DOCUMENTATION(${CMAKE_BINARY_DIR}/Docs/INFO_SRC
  #                      ${CMAKE_BINARY_DIR}/Docs/INFO_BIN)
  
@@ -14,8 +14,8 @@ diff -Naur orig/CMakeLists.txt patched/CMakeLists.txt
  
  IF(NON_DISTRIBUTABLE_WARNING)
 diff -Naur orig/man/CMakeLists.txt patched/man/CMakeLists.txt
---- orig/man/CMakeLists.txt	2017-01-17 20:38:20.000000000 +0100
-+++ patched/man/CMakeLists.txt	2017-01-21 18:31:38.002033385 +0100
+--- orig/man/CMakeLists.txt	2017-03-11 20:08:56.134741323 +0100
++++ patched/man/CMakeLists.txt	2017-03-19 19:55:52.228536315 +0100
 @@ -15,7 +15,7 @@
  
  SET(MAN1_SERVER innochecksum.1 my_print_defaults.1 myisam_ftdump.1 myisamchk.1
@@ -26,8 +26,8 @@ diff -Naur orig/man/CMakeLists.txt patched/man/CMakeLists.txt
  		mysql_install_db.1
  		mysql_secure_installation.1 mysql_setpermission.1
 diff -Naur orig/support-files/CMakeLists.txt patched/support-files/CMakeLists.txt
---- orig/support-files/CMakeLists.txt	2017-01-17 20:38:36.000000000 +0100
-+++ patched/support-files/CMakeLists.txt	2017-01-21 18:36:01.505363679 +0100
+--- orig/support-files/CMakeLists.txt	2017-03-11 20:09:30.134741323 +0100
++++ patched/support-files/CMakeLists.txt	2017-03-19 19:58:13.786164570 +0100
 @@ -50,8 +50,8 @@
  
  IF(UNIX)
@@ -39,7 +39,7 @@ diff -Naur orig/support-files/CMakeLists.txt patched/support-files/CMakeLists.tx
                     ${CMAKE_CURRENT_BINARY_DIR}/${script} @ONLY )
      INSTALL(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${script}
        DESTINATION ${inst_location} COMPONENT Server_Scripts)
-@@ -59,38 +59,19 @@
+@@ -59,29 +59,10 @@
  
    IF(INSTALL_SUPPORTFILESDIR)
      INSTALL(FILES magic DESTINATION ${inst_location} COMPONENT SupportFiles)
@@ -69,19 +69,8 @@ diff -Naur orig/support-files/CMakeLists.txt patched/support-files/CMakeLists.tx
 +  INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/mariadb.pc DESTINATION ${INSTALL_LIBDIR}/pkgconfig COMPONENT Development)
  
    INSTALL(FILES mysql.m4 DESTINATION ${INSTALL_SHAREDIR}/aclocal COMPONENT Development)
--  
-+
-   SET(bindir ${INSTALL_BINDIRABS})
-   SET(sbindir ${INSTALL_SBINDIRABS})
-   SET(scriptdir ${INSTALL_SCRIPTDIRABS})
-   SET(libexecdir ${INSTALL_SBINDIRABS})
-   SET(pkgdatadir ${INSTALL_MYSQLSHAREDIRABS})
--  CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/mysql.server.sh 
-+  CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/mysql.server.sh
-                  ${CMAKE_CURRENT_BINARY_DIR}/mysql.server @ONLY)
-   INSTALL(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/mysql.server
-     DESTINATION ${inst_location} COMPONENT SupportFiles)
-@@ -131,9 +112,6 @@
+   
+@@ -133,9 +114,6 @@
    IF (INSTALL_SYSCONFDIR)
      INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/mysql-log-rotate DESTINATION ${INSTALL_SYSCONFDIR}/logrotate.d
              RENAME mysql COMPONENT SupportFiles)
@@ -91,7 +80,7 @@ diff -Naur orig/support-files/CMakeLists.txt patched/support-files/CMakeLists.tx
  
      INSTALL(FILES rpm/my.cnf DESTINATION ${INSTALL_SYSCONFDIR}
              COMPONENT Common)
-@@ -149,11 +127,5 @@
+@@ -151,11 +129,5 @@
                COMPONENT IniFiles)
      ENDIF()
  
