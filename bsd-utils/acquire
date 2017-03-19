@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-bsdmainutils_${UB_VERSION}ubuntu1.tar.gz bsdmainutils-${UB_VERSION}ubuntu1/
-	http://archive.ubuntu.com/ubuntu/pool/main/b/bsdmainutils/

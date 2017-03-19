@@ -6,7 +6,6 @@ bbe
 bchunk
 bitedit
 boxes
-bsd-utils
 ccal
 ccrypt
 cdialog
