@@ -12,7 +12,7 @@ kcrash-dev
 kdbusaddons-dev
 kdelibs4support-dev
 kdepim-apps-libs-dev
-kdoctools-dev
+kdoctools
 kidentitymanagement-dev
 kimap-dev
 kio-dev

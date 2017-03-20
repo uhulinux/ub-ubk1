@@ -9,7 +9,7 @@ kcmutils-dev
 kdbusaddons-dev
 kdeclarative-dev
 kdelibs4support-dev
-kdoctools-dev
+kdoctools
 kglobalaccel-dev
 ki18n-dev
 knewstuff-dev

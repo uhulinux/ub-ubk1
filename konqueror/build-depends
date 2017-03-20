@@ -6,7 +6,7 @@ kcrash
 kdelibs4support-dev
 kdesignerplugin-dev
 kdesu-dev
-kdoctools-dev
+kdoctools
 khtml-dev
 kparts-dev
 kwidgetsaddons-dev

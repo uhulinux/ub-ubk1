@@ -11,7 +11,7 @@ kconfigwidgets-dev
 kcontacts-dev
 kdbusaddons-dev
 kdesignerplugin-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 kiconthemes-dev
 kidentitymanagement-dev

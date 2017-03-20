@@ -1,5 +1,5 @@
 extra-cmake-modules
-kdoctools-dev
+kdoctools
 pcre-dev
 qt5-dev
 qt5-test-dev

@@ -18,7 +18,7 @@ kcoreaddons-dev
 kdbusaddons-dev
 kdelibs4support-dev
 kdiagram-dev
-kdoctools-dev
+kdoctools
 kguiaddons-dev
 khtml-dev
 ki18n-dev

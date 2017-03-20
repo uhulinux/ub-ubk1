@@ -2,7 +2,7 @@ extra-cmake-modules
 kconfig-dev
 kcoreaddons-dev
 kdelibs4support-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 kiconthemes-dev
 kitemviews-dev

@@ -3,7 +3,7 @@ kauth-dev
 kcodecs-dev
 kconfig-dev
 kcoreaddons-dev
-kdoctools-dev
+kdoctools
 kguiaddons-dev
 ki18n-dev
 kwidgetsaddons-dev

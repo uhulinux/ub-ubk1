@@ -10,7 +10,7 @@ kcalutils-dev
 kcompletion-dev
 kcontacts-dev
 kdelibs4support-dev
-kdoctools-dev
+kdoctools
 kidentitymanagement-dev
 kitemmodels-dev
 kmime-dev

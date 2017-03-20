@@ -1,5 +1,5 @@
 extra-cmake-modules
 kdelibs4support-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 qt5-dev

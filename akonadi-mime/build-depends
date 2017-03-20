@@ -3,7 +3,7 @@ boost-dev
 extra-cmake-modules
 kconfig-dev
 kdbusaddons-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 kio-dev
 kitemmodels-dev

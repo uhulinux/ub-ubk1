@@ -21,7 +21,7 @@ kdbusaddons-dev
 kdelibs4support-dev
 kdepim-apps-libs-dev
 kdesignerplugin-dev
-kdoctools-dev
+kdoctools
 kholidays-dev
 kidentitymanagement-dev
 kimap-dev

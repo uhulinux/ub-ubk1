@@ -1,7 +1,7 @@
 dolphin-dev
 extra-cmake-modules
 kdelibs4support-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 kio-dev
 kparts-dev

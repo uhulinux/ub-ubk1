@@ -6,7 +6,7 @@ kconfig-dev
 kconfigwidgets-dev
 kcoreaddons-dev
 kdelibs4support-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 kio-dev
 knewstuff-dev

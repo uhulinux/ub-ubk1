@@ -5,7 +5,7 @@ cyrus-sasl2-dev
 extra-cmake-modules
 kcmutils-dev
 kconfigwidgets-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 kio-dev
 kitemmodels-dev

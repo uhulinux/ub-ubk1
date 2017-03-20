@@ -3,7 +3,7 @@ kcmutils-dev
 kconfig-dev
 kdelibs4support-dev
 kdesu-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 kiconthemes-dev
 kinit-dev

@@ -1,5 +1,5 @@
 extra-cmake-modules
-kdoctools-dev
+kdoctools
 ki18n-dev
 kio-dev
 kparts-dev

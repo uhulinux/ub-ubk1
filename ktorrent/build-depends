@@ -8,7 +8,7 @@ kcrash-dev
 kdbusaddons-dev
 kdelibs4support-dev
 kdnssd-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 kio-dev
 knotifications-dev

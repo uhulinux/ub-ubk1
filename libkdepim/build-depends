@@ -14,7 +14,7 @@ kcontacts-dev
 kcoreaddons-dev
 kdelibs4support-dev
 kdesignerplugin-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 kiconthemes-dev
 kio-dev

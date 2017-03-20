@@ -5,7 +5,7 @@ kcodecs-dev
 kconfig-dev
 kcoreaddons-dev
 kdelibs4support-dev
-kdoctools-dev
+kdoctools
 ki18n-dev
 kidentitymanagement-dev
 kpimtextedit-dev

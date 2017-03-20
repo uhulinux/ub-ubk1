@@ -10,7 +10,7 @@ kconfig-dev
 kconfigwidgets-dev
 kcoreaddons-dev
 kdbusaddons-dev
-kdoctools-dev
+kdoctools
 khtml-dev
 kiconthemes-dev
 kio-dev

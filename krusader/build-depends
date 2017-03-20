@@ -5,7 +5,7 @@ kcodecs-dev
 kcompletion-dev
 kconfig-dev
 kcoreaddons-dev
-kdoctools-dev
+kdoctools
 kguiaddons-dev
 ki18n-dev
 kiconthemes-dev
