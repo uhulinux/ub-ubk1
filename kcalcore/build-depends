@@ -1,6 +1,6 @@
 extra-cmake-modules
 kdelibs4support-dev
-kdoctools
+kdoctools-dev
 libical-dev
 qt5-dev
 qt5-test

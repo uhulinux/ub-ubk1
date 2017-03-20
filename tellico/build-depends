@@ -6,7 +6,7 @@ kconfig-dev
 kconfigwidgets-dev
 kcoreaddons-dev
 kcrash-dev
-kdoctools
+kdoctools-dev
 kfilemetadata-dev
 kguiaddons-dev
 khtml-dev

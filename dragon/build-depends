@@ -4,7 +4,7 @@ kconfigwidgets-dev
 kcoreaddons-dev
 kcrash-dev
 kdbusaddons-dev
-kdoctools
+kdoctools-dev
 ki18n-dev
 kio-dev
 kjobwidgets-dev

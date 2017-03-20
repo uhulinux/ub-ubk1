@@ -1,6 +1,6 @@
 extra-cmake-modules
 kdelibs4support-dev
-kdoctools
+kdoctools-dev
 knewstuff-dev
 libv4l-dev
 libxscrnsaver-dev

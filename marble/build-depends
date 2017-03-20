@@ -2,7 +2,7 @@ extra-cmake-modules
 kconfig-dev
 kcoreaddons-dev
 kcrash-dev
-kdoctools
+kdoctools-dev
 ki18n-dev
 kio-dev
 knewstuff-dev

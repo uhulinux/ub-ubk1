@@ -3,6 +3,6 @@ kcalcore-dev
 kcalutils-dev
 kcontacts-dev
 kdelibs4support-dev
-kdoctools
+kdoctools-dev
 libical-dev
 qt5-dev

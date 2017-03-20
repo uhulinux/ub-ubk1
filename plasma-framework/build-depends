@@ -6,7 +6,7 @@ kconfigwidgets-dev
 kcoreaddons-dev
 kdbusaddons-dev
 kdeclarative-dev
-kdoctools
+kdoctools-dev
 kglobalaccel-dev
 kguiaddons-dev
 ki18n-dev

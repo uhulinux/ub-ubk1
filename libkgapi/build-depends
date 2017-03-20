@@ -2,7 +2,7 @@ extra-cmake-modules
 kcalcore-dev
 kcontacts-dev
 kdelibs4support-dev
-kdoctools
+kdoctools-dev
 kio-dev
 kwindowsystem-dev
 libical-dev

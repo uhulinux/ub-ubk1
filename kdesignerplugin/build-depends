@@ -3,7 +3,7 @@ kcompletion-dev
 kconfig-dev
 kconfigwidgets-dev
 kcoreaddons-dev
-kdoctools
+kdoctools-dev
 kiconthemes-dev
 kio-dev
 kitemviews-dev

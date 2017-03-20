@@ -4,7 +4,7 @@ kconfig-dev
 kcoreaddons-dev
 kcrash-dev
 kdbusaddons-dev
-kdoctools
+kdoctools-dev
 kglobalaccel-dev
 ki18n-dev
 kiconthemes-dev

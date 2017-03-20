@@ -2,7 +2,7 @@ extra-cmake-modules
 kcmutils-dev
 kconfig-dev
 kdbusaddons-dev
-kdoctools
+kdoctools-dev
 khtml-dev
 ki18n-dev
 kiconthemes-dev

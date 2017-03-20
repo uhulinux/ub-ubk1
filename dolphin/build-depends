@@ -9,7 +9,7 @@ kconfig-dev
 kcoreaddons-dev
 kcrash-dev
 kdbusaddons-dev
-kdoctools
+kdoctools-dev
 kfilemetadata-dev
 ki18n-dev
 kiconthemes-dev

@@ -3,7 +3,7 @@ boost-dev
 extra-cmake-modules
 kcalcore-dev
 kdelibs4support-dev
-kdoctools
+kdoctools-dev
 kholidays-dev
 kidentitymanagement-dev
 kpimtextedit-dev

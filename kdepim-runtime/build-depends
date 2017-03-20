@@ -14,7 +14,7 @@ kconfig-dev
 kconfigwidgets-dev
 kcontacts-dev
 kdelibs4support-dev
-kdoctools
+kdoctools-dev
 kholidays-dev
 kidentitymanagement-dev
 kimap-dev

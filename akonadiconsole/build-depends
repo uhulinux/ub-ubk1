@@ -15,7 +15,7 @@ kcoreaddons-dev
 kcrash-dev
 kdbusaddons-dev
 kdelibs4support-dev
-kdoctools
+kdoctools-dev
 ki18n-dev
 kidentitymanagement-dev
 kimap-dev

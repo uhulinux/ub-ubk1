@@ -1,7 +1,7 @@
 extra-cmake-modules
 kconfig-dev
 kcrash-dev
-kdoctools
+kdoctools-dev
 ki18n-dev
 kiconthemes-dev
 kio-dev

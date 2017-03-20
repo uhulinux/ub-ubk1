@@ -18,7 +18,7 @@ kconfigwidgets-dev
 kcontacts-dev
 kdelibs4support-dev
 kdepim-apps-libs-dev
-kdoctools
+kdoctools-dev
 ki18n-dev
 kiconthemes-dev
 kidentitymanagement-dev

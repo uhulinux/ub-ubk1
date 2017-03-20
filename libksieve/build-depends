@@ -6,7 +6,7 @@ cyrus-sasl2-dev
 extra-cmake-modules
 karchive-dev
 kcontacts-dev
-kdoctools
+kdoctools-dev
 ki18n-dev
 kiconthemes-dev
 kidentitymanagement-dev

@@ -11,7 +11,7 @@ kconfig-dev
 kcontacts-dev
 kcrash-dev
 kdelibs4support-dev
-kdoctools
+kdoctools-dev
 kiconthemes-dev
 kimap-dev
 kitemmodels-dev

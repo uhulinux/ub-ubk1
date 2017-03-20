@@ -8,7 +8,7 @@ kconfig-dev
 kcontacts-dev
 kcrash-dev
 kdelibs4support-dev
-kdoctools
+kdoctools-dev
 ki18n-dev
 kitemmodels-dev
 kmime-dev

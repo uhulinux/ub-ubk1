@@ -2,7 +2,7 @@ extra-cmake-modules
 kcodecs-dev
 kconfig-dev
 kcoreaddons-dev
-kdoctools
+kdoctools-dev
 kiconthemes-dev
 kjobwidgets-dev
 kparts-dev
