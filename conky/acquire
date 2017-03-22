@@ -2,4 +2,3 @@
 
 v${UB_VERSION}.tar.gz conky-${UB_VERSION}/
 	https://github.com/brndnmtthws/conky/archive/
-

@@ -2,6 +2,7 @@ cinnamon-desktop-dev
 colord-dev
 cups-dev
 dbus-glib-dev
+docbook-dtds
 docbook-xsl
 gsettings-desktop-schemas
 intltool

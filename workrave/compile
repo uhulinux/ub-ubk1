@@ -1,5 +1,7 @@
 #!/bin/sh -eux
 
+# xfce: gtk2
+
 NOCONFIGURE=1 ./autogen.sh
 ub_compile \
 	--disable-distribution \
@@ -8,6 +10,5 @@ ub_compile \
 	--enable-dbus \
 	--disable-gnome2 \
 	--enable-gnome3 \
-	--enable-xfce \
-	--enable-mate
-
+	--enable-mate \
+	--disable-xfce
