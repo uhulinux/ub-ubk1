@@ -1,7 +1,7 @@
 diff -Naur orig/src/mainwindow.c patched/src/mainwindow.c
---- orig/src/mainwindow.c	2016-07-23 03:28:54.000000000 +0200
-+++ patched/src/mainwindow.c	2016-07-24 14:27:36.998755872 +0200
-@@ -1460,7 +1460,7 @@
+--- orig/src/mainwindow.c	2017-03-26 11:58:32.134741323 +0200
++++ patched/src/mainwindow.c	2017-03-26 15:06:18.094117103 +0200
+@@ -1462,7 +1462,7 @@
  
  	/* main window */
  	window = GTK_WIDGET(gtkut_window_new(GTK_WINDOW_TOPLEVEL, "mainwindow"));
@@ -10,7 +10,7 @@ diff -Naur orig/src/mainwindow.c patched/src/mainwindow.c
  	gtk_window_set_resizable(GTK_WINDOW(window), TRUE);
  #ifdef GENERIC_UMPC
  	prefs_common.layout_mode = SMALL_LAYOUT;
-@@ -2647,9 +2647,9 @@
+@@ -2650,9 +2650,9 @@
  			   : _("none"));
  
  	if (cur_account)
@@ -23,9 +23,9 @@ diff -Naur orig/src/mainwindow.c patched/src/mainwindow.c
  	g_free(buf);
  
 diff -Naur orig/src/prefs_common.c patched/src/prefs_common.c
---- orig/src/prefs_common.c	2016-07-23 03:28:54.000000000 +0200
-+++ patched/src/prefs_common.c	2016-07-24 14:27:37.002755931 +0200
-@@ -781,6 +781,8 @@
+--- orig/src/prefs_common.c	2017-03-26 11:58:32.134741323 +0200
++++ patched/src/prefs_common.c	2017-03-26 15:06:18.094117103 +0200
+@@ -801,6 +801,8 @@
  	{"layout_mode", "5", &prefs_common.layout_mode, P_INT,
  	 NULL, NULL, NULL},
  #endif
@@ -33,11 +33,11 @@ diff -Naur orig/src/prefs_common.c patched/src/prefs_common.c
 +	 &prefs_common.show_version_in_window_title, P_BOOL, NULL, NULL, NULL},
  	/* {"emulate_emacs", "FALSE", &prefs_common.emulate_emacs, P_BOOL,
  	 NULL, NULL, NULL}, */
- 	{"always_show_message_when_selected", "0",
+ 	{"open_selected_message_on_folder_open", "FALSE",
 diff -Naur orig/src/prefs_common.h patched/src/prefs_common.h
---- orig/src/prefs_common.h	2016-07-23 03:28:54.000000000 +0200
-+++ patched/src/prefs_common.h	2016-07-24 14:27:37.002755931 +0200
-@@ -364,6 +364,7 @@
+--- orig/src/prefs_common.h	2017-03-26 11:58:32.134741323 +0200
++++ patched/src/prefs_common.h	2017-03-26 15:06:18.094117103 +0200
+@@ -360,6 +360,7 @@
  
  	/* Interface */
  	gboolean layout_mode;

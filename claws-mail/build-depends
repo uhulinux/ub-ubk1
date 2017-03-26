@@ -22,7 +22,7 @@ libindicate-dev
 libjpeg-turbo-dev
 libnotify-dev
 liboauth-dev
-libqrencode-dev
+librsvg-dev
 libsm-dev
 libxshmfence-dev
 libxslt-dev

@@ -1,7 +1,7 @@
 diff -Naur orig/src/textview.c patched/src/textview.c
---- orig/src/textview.c	2015-12-15 02:48:05.000000000 +0100
-+++ patched/src/textview.c	2015-12-19 06:13:16.297394977 +0100
-@@ -2268,7 +2268,8 @@
+--- orig/src/textview.c	2017-03-26 11:58:32.134741323 +0200
++++ patched/src/textview.c	2017-03-26 15:04:52.628569111 +0200
+@@ -2277,7 +2277,8 @@
  				procheader_headername_equal(header->name,
  						 "X-Newsreader")) &&
  				(strstr(header->body, "Claws Mail") != NULL ||
