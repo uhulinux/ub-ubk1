@@ -1,0 +1,11 @@
+diff -Naur orig/browser/extensions/moz.build patched/browser/extensions/moz.build
+--- orig/browser/extensions/moz.build	2017-03-21 01:14:58.000000000 +0100
++++ patched/browser/extensions/moz.build	2017-03-29 02:29:25.316722166 +0200
+@@ -9,7 +9,6 @@
+     'deployment-checker',
+     'e10srollout',
+     'pdfjs',
+-    'pocket',
+     'webcompat',
+ ]
+ 
