@@ -3,7 +3,6 @@ intltool
 libexo-dev
 libqrencode-dev
 libsm-dev
-libunique1-dev
 libxfce4ui-dev
 libxfce4util-dev
 libxinerama-dev
