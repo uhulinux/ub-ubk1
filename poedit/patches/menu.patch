@@ -1,11 +1,11 @@
 diff -Naur orig/poedit.desktop patched/poedit.desktop
---- orig/poedit.desktop	2015-01-26 19:26:05.000000000 +0100
-+++ patched/poedit.desktop	2015-02-20 21:09:37.185141694 +0100
-@@ -7,6 +7,7 @@
+--- orig/poedit.desktop	2017-03-14 15:47:27.134741323 +0100
++++ patched/poedit.desktop	2017-03-31 21:07:15.281767315 +0200
+@@ -9,6 +9,7 @@
  GenericName[es]=Editor de catálogos de Gettext
  GenericName[eu]=Gettext katalogo editatzailea
- GenericName[fr]=Outil de traduction
-+GenericName[hu]=Nyelvi fájlokat szerkesztő program
- GenericName[lt]=Gettext katalogų redaktorius
- GenericName[nl]=Gettext-vertaalhulpmiddel
- GenericName[pl]=Edytor pakietów gettext
+ GenericName[fr]=Éditeur de catalogues Gettext
++GenericName[hu]=Gettext fájlokat szerkesztő program
+ GenericName[it]=Editor di cataloghi Gettext
+ GenericName[kk]=Gettext каталогтар түзетушісі
+ GenericName[ky]=Gettext каталогдор редактору
