@@ -7,5 +7,4 @@ libxt-dev
 mesa-dev
 sdl-dev
 sdl-mixer-dev
-tcl
 tcl-dev

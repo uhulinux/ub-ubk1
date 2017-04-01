@@ -5,7 +5,5 @@ libffi-dev
 libxt-dev
 openssl-dev
 sqlite-dev
-tcl
 tcl-dev
-tk
 tk-dev

@@ -3,5 +3,4 @@ libsigsegv-dev
 libx11-dev
 tcl-dev
 texinfo
-tk
 tk-dev
