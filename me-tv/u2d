@@ -1,1 +1,1 @@
-curl -s -k https://raw.githubusercontent.com/Me-TV/Me-TV/master/VERSION | sed s/-.*//g
+curl -s -k https://raw.githubusercontent.com/Me-TV/Me-TV/master/CMakeLists.txt | grep '^project' | grep -o 'VERSION [0-9.]*' | sed 's/VERSION //'
