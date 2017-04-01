@@ -7,13 +7,13 @@ diff -Naur orig/configure patched/configure
      if test -n "$PKG_CONFIG" && \
 -    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"tslib-1.0 >= 1.0.0\""; } >&5
 -  ($PKG_CONFIG --exists --print-errors "tslib-1.0 >= 1.0.0") 2>&5
-+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"tslib-1.4 >= 1.4\""; } >&5
-+  ($PKG_CONFIG --exists --print-errors "tslib-1.4 >= 1.4") 2>&5
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"tslib >= 1.0.0\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "tslib >= 1.0.0") 2>&5
    ac_status=$?
    $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
    test $ac_status = 0; }; then
 -  pkg_cv_TSLIB_CFLAGS=`$PKG_CONFIG --cflags "tslib-1.0 >= 1.0.0" 2>/dev/null`
-+  pkg_cv_TSLIB_CFLAGS=`$PKG_CONFIG --cflags "tslib-1.4 >= 1.4" 2>/dev/null`
++  pkg_cv_TSLIB_CFLAGS=`$PKG_CONFIG --cflags "tslib >= 1.0.0" 2>/dev/null`
  		      test "x$?" != "x0" && pkg_failed=yes
  else
    pkg_failed=yes
@@ -23,13 +23,13 @@ diff -Naur orig/configure patched/configure
      if test -n "$PKG_CONFIG" && \
 -    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"tslib-1.0 >= 1.0.0\""; } >&5
 -  ($PKG_CONFIG --exists --print-errors "tslib-1.0 >= 1.0.0") 2>&5
-+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"tslib-1.4 >= 1.4\""; } >&5
-+  ($PKG_CONFIG --exists --print-errors "tslib-1.4 >= 1.4") 2>&5
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"tslib >= 1.0.0\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "tslib >= 1.0.0") 2>&5
    ac_status=$?
    $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
    test $ac_status = 0; }; then
 -  pkg_cv_TSLIB_LIBS=`$PKG_CONFIG --libs "tslib-1.0 >= 1.0.0" 2>/dev/null`
-+  pkg_cv_TSLIB_LIBS=`$PKG_CONFIG --libs "tslib-1.4 >= 1.4" 2>/dev/null`
++  pkg_cv_TSLIB_LIBS=`$PKG_CONFIG --libs "tslib >= 1.0.0" 2>/dev/null`
  		      test "x$?" != "x0" && pkg_failed=yes
  else
    pkg_failed=yes
@@ -38,10 +38,10 @@ diff -Naur orig/configure patched/configure
  fi
          if test $_pkg_short_errors_supported = yes; then
 -	        TSLIB_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "tslib-1.0 >= 1.0.0" 2>&1`
-+	        TSLIB_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "tslib-1.4 >= 1.4" 2>&1`
++	        TSLIB_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "tslib >= 1.0.0" 2>&1`
          else
 -	        TSLIB_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "tslib-1.0 >= 1.0.0" 2>&1`
-+	        TSLIB_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "tslib-1.4 >= 1.4" 2>&1`
++	        TSLIB_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "tslib >= 1.0.0" 2>&1`
          fi
  	# Put the nasty error message in config.log where it belongs
  	echo "$TSLIB_PKG_ERRORS" >&5
@@ -53,7 +53,7 @@ diff -Naur orig/configure.in patched/configure.in
  enable_tslib=no
  if test "$checkfor_tslib" = "yes"; then
 -  PKG_CHECK_MODULES([TSLIB], [tslib-1.0 >= 1.0.0], [enable_tslib=yes], [enable_tslib=no])
-+  PKG_CHECK_MODULES([TSLIB], [tslib-1.4 >= 1.4], [enable_tslib=yes], [enable_tslib=no])
++  PKG_CHECK_MODULES([TSLIB], [tslib >= 1.0.0], [enable_tslib=yes], [enable_tslib=no])
    if test "$enable_tslib" = "no"; then
       PKG_CHECK_MODULES([TSLIB], [tslib-0.0], [enable_tslib=yes], [enable_tslib=no
         AC_MSG_WARN([*** no tslib -- tslib driver will not be built.])])
