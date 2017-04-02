@@ -3,4 +3,3 @@
 rm -rf CMakeLists.txt
 ub_compile \
 	--enable-python-binding
-

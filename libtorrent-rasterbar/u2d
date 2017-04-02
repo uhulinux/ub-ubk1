@@ -1,1 +1,1 @@
-urllist http://ftp.ubuntu.com/ubuntu/ubuntu/pool/universe/libt/libtorrent-rasterbar/ | splitver '^libtorrent-rasterbar_([0-9.]+).orig.tar.(gz|bz2|xz)$' | sort -V | tail -n 1
+urllist https://github.com/arvidn/libtorrent/releases/ | splitver '^libtorrent-([0-9_]+).tar.gz$' | sed 's/_/./g' | sort -V | tail -n 1

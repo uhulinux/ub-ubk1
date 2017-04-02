@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-libtorrent-rasterbar_${UB_VERSION}.orig.tar.gz libtorrent-rasterbar-${UB_VERSION}/
-	http://ftp.ubuntu.com/ubuntu/ubuntu/pool/universe/libt/libtorrent-rasterbar/
-#		http://downloads.sourceforge.net/project/libtorrent/libtorrent/
+libtorrent-rasterbar-${UB_VERSION}.tar.gz libtorrent-rasterbar-${UB_VERSION}/
+	https://github.com/arvidn/libtorrent/releases/download/libtorrent-${UB_VERSION//./_}/
