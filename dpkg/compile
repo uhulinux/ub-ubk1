@@ -5,4 +5,5 @@ ub_compile \
 	--disable-shared \
 	--enable-dselect \
 	--enable-start-stop-daemon \
-	--enable-update-alternatives
+	--enable-update-alternatives \
+	--enable-disk-preallocate
