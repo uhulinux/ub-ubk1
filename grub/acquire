@@ -3,5 +3,5 @@
 #grub-${UB_VERSION}.tar.xz grub-${UB_VERSION}/
 #	ftp://ftp.gnu.org/gnu/grub/
 
-grub-${UB_VERSION}.tar.gz grub-2fb8cd2/
-	git://git.sv.gnu.org/grub.git@2fb8cd2
+grub-${UB_VERSION}.tar.gz grub-8014b7b/
+	git://git.sv.gnu.org/grub.git@8014b7b
