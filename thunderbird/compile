@@ -4,8 +4,6 @@ CC="ccache gcc -m32"
 CXX="ccache g++ -m32"
 export SHELL=/bin/bash
 export LDFLAGS="-Wl,-rpath,/usr/lib/thunderbird/ -Wl,--no-keep-memory -Wl,-z,relro -Wl,-z,now"
-export CFLAGS=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
-export CXXFLAGS=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 # jpeg: jpeg-turbo, png: >= 1.6.17 + APNG support
 
 : > .mozconfig
@@ -27,25 +25,17 @@ ac_add_options --with-system-nspr
 ac_add_options --with-system-zlib
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-png
-ac_add_options --enable-gstreamer=1.0
 ac_add_options --enable-system-cairo
 ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-gio
-ac_add_options --enable-pango
-ac_add_options --enable-svg
-ac_add_options --enable-canvas
-ac_add_options --enable-xinerama
 ac_add_options --enable-startup-notification
-ac_add_options --enable-libnotify
 ac_add_options --enable-default-toolkit=cairo-gtk2
 ac_add_options --enable-safe-browsing
 ac_add_options --enable-url-classifier
 ac_add_options --disable-debug
 ac_add_options --disable-gconf
 ac_add_options --disable-gnomeui
-ac_add_options --disable-gnomevfs
-ac_add_options --disable-installer
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 ac_add_options --disable-strip
@@ -55,6 +45,8 @@ ac_add_options --disable-necko-wifi
 _EOF_
 
 cd "$UB_OBJECTDIR"
+
+# az UB_CONFIGURE_DIR="$UB_COMPILEDIR" forma nem jó, linker hiba lesz belőle
 "$UB_COMPILEDIR"/configure
 
 ub_make
