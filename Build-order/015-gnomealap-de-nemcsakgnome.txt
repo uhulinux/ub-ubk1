@@ -33,3 +33,4 @@ libgda
 gvfs
 libgdamm
 libgdata
+libpeas

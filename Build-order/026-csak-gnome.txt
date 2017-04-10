@@ -52,7 +52,6 @@ tracker-sparql
 cairo-dock
 gksu
 gnome-packagekit
-libpeas
 vino
 gnome-keyring
 libgweather
