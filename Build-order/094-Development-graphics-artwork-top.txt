@@ -102,7 +102,6 @@ dia
 ultimatepp
 codelite
 rawtherapee
-racket
 enblend
 ufraw
 inkscape

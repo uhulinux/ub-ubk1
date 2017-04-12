@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-racket-${UB_VERSION}-src.tgz racket-${UB_VERSION}/
-	http://download.racket-lang.org/installers/${UB_VERSION}/

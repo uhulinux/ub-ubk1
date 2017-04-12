@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-cd src
-ub_install
-cp -a ../share/pkgs/icons/plt.xpm "$UB_INSTALLDIR"/usr/share/pixmaps/drracket.xpm
-rm -f "$UB_INSTALLDIR"/usr/share/applications/drracket.desktop
-rm -f "$UB_INSTALLDIR"/usr/share/applications/slideshow.desktop
