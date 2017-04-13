@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-build-${UB_VERSION}.tar.gz build-${UB_VERSION}/
-	https://github.com/uhulinux/build/archive/${UB_VERSION}.tar.gz
-    http://download.ubk.hu/src/ubk/build/
+build-${UB_VERSION}.tar.gz build-a53312a/
+    git://github.com/uhulinux/build.git@a53312a

@@ -4,5 +4,6 @@ root      root       755  /usr/bin/build-clean
 root      root       755  /usr/bin/build-clean-all
 uhubuild  uhubuild   755  /var/cache/uhubuild/ccache/2.2
 uhubuild  uhubuild   755  /var/cache/uhubuild/ccache/3
+uhubuild  uhubuild   755  /var/cache/uhubuild/ccache/64
 uhubuild  uhubuild   755  /var/cache/uhubuild/ccache/UBK1
 uhubuild  uhubuild   755  /var/cache/uhubuild/ccache/dev

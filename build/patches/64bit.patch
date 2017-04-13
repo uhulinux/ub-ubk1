@@ -1,0 +1,52 @@
+diff -Nur orig/etc/apt/sources.list-build-64 mod/etc/apt/sources.list-build-64
+--- orig/etc/apt/sources.list-build-64	1970-01-01 01:00:00.000000000 +0100
++++ mod/etc/apt/sources.list-build-64	2017-04-03 17:34:27.008357007 +0200
+@@ -0,0 +1,12 @@
++# /etc/apt/sources.list-build
++#
++# Lokálisan tárolt UHU csomagok, adott esetben a build
++# rendszer megfelelő packages könyvtárai.
++# A Packages, Packages.gz és Release fájlok megléte
++# szükséges a megadott könyvtárban!
++
++deb file:/usr/src/UHUBUILD/packages-64 ./
++
++# UBK
++deb ftp://ftp.ubk.hu/pkg/UBK1/main ./
++# deb http://download.ubk.hu/pkg/UBK1/main ./
+diff -Nur orig/usr/bin/build mod/usr/bin/build
+--- orig/usr/bin/build	2017-04-03 15:59:27.000000000 +0200
++++ mod/usr/bin/build	2017-04-05 22:29:48.000000000 +0200
+@@ -33,6 +33,8 @@
+ 		export UHUBUILD_DISTR=UBK1;;
+ 	build-dev)
+ 		export UHUBUILD_DISTR=dev;;
++	build-64)
++		export UHUBUILD_DISTR=64;;
+ esac
+ 
+ [ "$UID" != 0 ] && {
+@@ -74,13 +76,14 @@
+ export UHUBUILD_COMPILESNAPSHOTDIR="$UHUBUILD_PATH"/misc-${UHUBUILD_DISTR}/snapshot/compile
+ export UHUBUILD_INSTALLSNAPSHOTDIR="$UHUBUILD_PATH"/misc-${UHUBUILD_DISTR}/snapshot/install
+ export UB_UHUCHECK=1
++export UB_ARCH="i386"
+ 
+ for i in "$@"; do
+ 	case $1 in
+ 		-64)
+ 			yellowecho "64 bites fordítás."
+ 			echo
+-			export UB_ARCH="x86_64"
++			export UB_ARCH="amd64"
+ 			shift;;
+ 		-pv|--pack-version)
+ 			yellowecho "Az UB környezet becsomagolása verziókövetéssel fog megtörténni."
+@@ -482,6 +485,7 @@
+ 	# export UHUBUILD_EXTRARELEASE=`date +'%Y%m%h%H%M%S'`
+ 
+ 	# Hajrá, akkor innentől fordítunk...
++	export UHUBUILD_ARCH="${UB_ARCH}"
+ 	uhubuild-chrootbuild "$UHUBUILD_PATH"/UB-${UHUBUILD_DISTR}/"$i" || {
+ 
+ 	# Hiba történt!

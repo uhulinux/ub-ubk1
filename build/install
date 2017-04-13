@@ -3,7 +3,7 @@
 cp -r etc "$UB_INSTALLDIR"/
 cp -r usr "$UB_INSTALLDIR"/
 
-for i in 2.2 3 UBK1 dev; do
+for i in 2.2 3 UBK1 dev 64; do
 	for a in 1 2 3 4 5 ; do
 		mkdir -p "$UB_INSTALLDIR"/var/uhubuild/"$i"/chroot${a}
 	done
