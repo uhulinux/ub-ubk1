@@ -19,8 +19,6 @@ mygui
 fenix
 libspectrum
 timidity
-pigment
-python-pigment
 openscenegraph
 libdvbcsa
 molequeue

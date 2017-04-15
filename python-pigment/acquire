@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-pigment-python-${UB_VERSION}.tar.bz2 pigment-python-${UB_VERSION}/
-	http://pkgs.fedoraproject.org/repo/pkgs/pigment-python/pigment-python-${UB_VERSION}.tar.bz2/d5236f3fe5c94cbd52364d21ffa3e21c/

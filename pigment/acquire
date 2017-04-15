@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-pigment-${UB_VERSION}.tar.gz pigment-${UB_VERSION}/
-	ftp://80.92.105.240/distfiles/
