@@ -58,7 +58,6 @@ lingot
 pavucontrol
 paprefs
 me-tv
-grip
 kino
 vice
 radiotray
