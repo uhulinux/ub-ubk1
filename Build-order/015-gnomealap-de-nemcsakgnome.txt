@@ -4,7 +4,6 @@ gsettings-desktop-schemas
 gtk2-engines
 gmime
 yelp-xsl
-swfdec
 cogl
 gtkmm
 gupnp-igd

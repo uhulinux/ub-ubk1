@@ -14,5 +14,4 @@ sdl-dev
 sdl-image-dev
 sdl-mixer-dev
 sox-dev
-swfdec-dev
 x264-dev

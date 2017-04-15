@@ -1,7 +1,6 @@
 gnome-devel-docs
 eiciel
 gnome-screenshot
-swfdec-gnome
 alacarte
 atomix
 five-or-more

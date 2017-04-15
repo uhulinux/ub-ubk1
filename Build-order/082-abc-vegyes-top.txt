@@ -56,7 +56,6 @@ linuxconsole
 wvstreams
 wvdial
 fonts-unicode
-perl-gstreamer
 tix
 apache-mod-fcgid
 curlftpfs
