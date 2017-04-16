@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 newt-${UB_VERSION}.tar.gz newt-${UB_VERSION}/
-	https://fedorahosted.org/releases/n/e/newt/
+	https://releases.pagure.org/newt/

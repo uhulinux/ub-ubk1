@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 usermode-"$UB_VERSION".tar.xz usermode-"$UB_VERSION"/
-	https://fedorahosted.org/releases/u/s/usermode/
+	https://releases.pagure.org/usermode/

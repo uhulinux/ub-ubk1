@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 cronie-${UB_VERSION}.tar.gz cronie-${UB_VERSION}/
-	https://fedorahosted.org/releases/c/r/cronie/
+	https://github.com/cronie-crond/cronie/archive/
