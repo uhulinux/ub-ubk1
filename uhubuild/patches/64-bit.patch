@@ -1,0 +1,55 @@
+diff -Nur orig/src/uhubuild-chrootbuild mod/src/uhubuild-chrootbuild
+--- orig/src/uhubuild-chrootbuild	2017-04-12 15:01:13.000000000 +0200
++++ mod/src/uhubuild-chrootbuild	2017-04-16 15:40:47.000000000 +0200
+@@ -14,7 +14,7 @@
+ 
+ . /usr/lib/uhubuild/uhubuild-commonenvironment
+ . /usr/lib/uhubuild/uhubuild-common
+-
++export UB_ARCH=${UHUBUILD_ARCH}
+ dieifuser
+ 
+ if [ $# -gt 1 ]; then
+diff -Nur orig/src/uhubuild-prepare-chroot mod/src/uhubuild-prepare-chroot
+--- orig/src/uhubuild-prepare-chroot	2017-04-12 15:01:13.000000000 +0200
++++ mod/src/uhubuild-prepare-chroot	2017-04-16 15:40:47.000000000 +0200
+@@ -66,11 +66,18 @@
+ apt_cachedir="-o Dir::Cache=$UHUBUILD_CHROOTDIR/var/cache/apt"
+ apt_noimmconf="-o APT::Immediate-Configure=false"
+ apt_pkgproblemresolver="-o Debug::pkgProblemResolver=yes"
++apt_arch="-o=APT::Architecture=$UB_ARCH"
++apt_dpkgopts=""
++dpkg_options="--root=$UHUBUILD_CHROOTDIR"
++
++if [ "$UB_ARCH" == "amd64" ];then
++apt_dpkgopts="-o DPkg::Options::=--force-architecture"
++dpkg_options="--root=$UHUBUILD_CHROOTDIR --force-architecture"
++fi
+ 
+-apt_options="$apt_sourcelist $apt_preferences $apt_statusdir $apt_chrootdir $apt_statedir $apt_cachedir $apt_noimmconf $apt_pkgproblemresolver"
+-apt_empty_options="$apt_sourcelist $apt_preferences $apt_empty_statusdir $apt_chrootdir $apt_statedir $apt_cachedir $apt_noimmconf $apt_pkgproblemresolver"
++apt_options="$apt_sourcelist $apt_preferences $apt_statusdir $apt_chrootdir $apt_arch $apt_dpkgopts $apt_statedir $apt_cachedir $apt_noimmconf $apt_pkgproblemresolver"
++apt_empty_options="$apt_sourcelist $apt_preferences $apt_empty_statusdir $apt_chrootdir $apt_arch $apt_dpkgopts $apt_statedir $apt_cachedir $apt_noimmconf $apt_pkgproblemresolver"
+ 
+-dpkg_options="--root=$UHUBUILD_CHROOTDIR"
+ 
+ # Nyitó könyvtár létrehozása.
+ 
+@@ -116,7 +123,7 @@
+ # uhubuild-common telepítése és kilépés, ha az első körben vagyunk.
+ 
+ if [ $# = 0 ]; then
+-	if apt-get $apt_options --yes --force-yes install uhubuild-common; then
++	if apt-get $apt_options --yes --force-yes install uhubuild-common shadow mpc ; then
+ 		# kiraly
+ 		exit
+ 	else
+@@ -139,7 +146,7 @@
+ 
+ tmpfile apt_output
+ 
+-if ! apt-get $apt_empty_options --no-act install uhubuild-common "$@" >"$apt_output" 2>&1; then
++if ! apt-get $apt_empty_options --no-act install uhubuild-common shadow mpc "$@" >"$apt_output" 2>&1; then
+ 	cat "$apt_output" >&2
+ 	die
+ fi
