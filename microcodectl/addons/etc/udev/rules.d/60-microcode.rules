@@ -1,6 +1,0 @@
-# /etc/udev/rules.d/60-microcode.rules
-#
-# Update intel processor microcode
-#
-
-KERNEL=="microcode", RUN+="/sbin/microcode_ctl -Qu"

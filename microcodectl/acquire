@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-microcode_ctl-${UB_VERSION}.tar.xz microcode_ctl-${UB_VERSION}/
-	https://fedorahosted.org/released/microcode_ctl/

@@ -1,1 +1,0 @@
-urllist https://fedorahosted.org/released/microcode_ctl/ | splitver '^microcode_ctl-([0-9.]+).tar.xz$' | grep -E '^1' | sort -V | tail -n 1
