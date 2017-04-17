@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 libepc-${UB_VERSION}.tar.xz libepc-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/libepc/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/libepc/${UB_VERSION_HEAD2}/

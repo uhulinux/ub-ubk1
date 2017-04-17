@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 gspell-${UB_VERSION}.tar.xz gspell-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gspell/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/gspell/${UB_VERSION_HEAD2}/

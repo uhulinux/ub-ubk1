@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 gconfmm-${UB_VERSION}.tar.xz gconfmm-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gconfmm/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/gconfmm/${UB_VERSION_HEAD2}/

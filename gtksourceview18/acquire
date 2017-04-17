@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 gtksourceview-${UB_VERSION}.tar.gz gtksourceview-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gtksourceview/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/gtksourceview/${UB_VERSION_HEAD2}/

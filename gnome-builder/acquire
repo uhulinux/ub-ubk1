@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 gnome-builder-${UB_VERSION}.tar.xz gnome-builder-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-builder/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/gnome-builder/${UB_VERSION_HEAD2}/

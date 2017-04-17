@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 lasem-${UB_VERSION}.tar.xz lasem-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/lasem/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/lasem/${UB_VERSION_HEAD2}/

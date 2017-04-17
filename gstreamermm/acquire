@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 gstreamermm-${UB_VERSION}.tar.xz gstreamermm-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gstreamermm/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/gstreamermm/${UB_VERSION_HEAD2}/

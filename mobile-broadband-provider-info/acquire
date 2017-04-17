@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 mobile-broadband-provider-info-${UB_VERSION}.tar.xz mobile-broadband-provider-info-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/mobile-broadband-provider-info/${UB_VERSION}/
+	https://download.gnome.org/sources/mobile-broadband-provider-info/${UB_VERSION}/

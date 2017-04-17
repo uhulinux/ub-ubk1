@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 gcr-${UB_VERSION}.tar.xz gcr-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gcr/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/gcr/${UB_VERSION_HEAD2}/

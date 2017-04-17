@@ -2,4 +2,4 @@
 
 gstreamer-${UB_VERSION}.tar.xz gstreamer-${UB_VERSION}/
 	http://gstreamer.freedesktop.org/src/gstreamer/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gstreamer/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/gstreamer/${UB_VERSION_HEAD2}/

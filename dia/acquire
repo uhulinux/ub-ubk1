@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 dia-${UB_VERSION}.tar.xz dia-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/dia/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/dia/${UB_VERSION_HEAD2}/

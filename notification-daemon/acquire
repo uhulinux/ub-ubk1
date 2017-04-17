@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 notification-daemon-${UB_VERSION}.tar.xz notification-daemon-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/notification-daemon/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/notification-daemon/${UB_VERSION_HEAD2}/

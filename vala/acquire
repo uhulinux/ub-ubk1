@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 vala-$UB_VERSION.tar.xz vala-$UB_VERSION/
-	ftp://ftp.gnome.org/pub/GNOME/sources/vala/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/vala/${UB_VERSION_HEAD2}/

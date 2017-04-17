@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 libgdamm-${UB_VERSION}.tar.xz libgdamm-${UB_VERSION}/
-	http://ftp.gnome.org/pub/GNOME/sources/libgdamm/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/libgdamm/${UB_VERSION_HEAD2}/

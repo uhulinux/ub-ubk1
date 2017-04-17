@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 glom-${UB_VERSION}.tar.xz glom-${UB_VERSION}/
-	http://ftp.gnome.org/pub/GNOME/sources/glom/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/glom/${UB_VERSION_HEAD2}/

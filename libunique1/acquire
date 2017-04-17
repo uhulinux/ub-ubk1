@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 libunique-${UB_VERSION}.tar.gz libunique-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/libunique/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/libunique/${UB_VERSION_HEAD2}/

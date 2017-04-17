@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 libgames-support-${UB_VERSION}.tar.xz libgames-support-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/libgames-support/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/libgames-support/${UB_VERSION_HEAD2}/

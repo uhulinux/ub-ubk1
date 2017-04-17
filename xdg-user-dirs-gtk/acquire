@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 xdg-user-dirs-gtk-${UB_VERSION}.tar.xz xdg-user-dirs-gtk-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/xdg-user-dirs-gtk/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/xdg-user-dirs-gtk/${UB_VERSION_HEAD2}/

@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 gnome-video-effects-${UB_VERSION}.tar.xz gnome-video-effects-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-video-effects/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/gnome-video-effects/${UB_VERSION_HEAD2}/

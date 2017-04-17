@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 pygtk-${UB_VERSION}.tar.gz pygtk-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/pygtk/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/pygtk/${UB_VERSION_HEAD2}/

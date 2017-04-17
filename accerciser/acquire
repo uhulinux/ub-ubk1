@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 accerciser-${UB_VERSION}.tar.xz accerciser-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/accerciser/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/accerciser/${UB_VERSION_HEAD2}/

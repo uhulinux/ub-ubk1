@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 opal-${UB_VERSION}.tar.xz opal-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/GNOME/sources/opal/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/opal/${UB_VERSION_HEAD2}/

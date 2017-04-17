@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 gdl-${UB_VERSION}.tar.xz gdl-${UB_VERSION}/
-	ftp://ftp.gnome.org/pub/gnome/sources/gdl/${UB_VERSION_HEAD2}/
+	https://download.gnome.org/sources/gdl/${UB_VERSION_HEAD2}/
