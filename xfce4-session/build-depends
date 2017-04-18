@@ -8,7 +8,7 @@ libxinerama-dev
 libxt-dev
 perl-xml-parser
 polkit-dev
-polkit-gnome-dev
+polkit-gnome
 startup-notification-dev
 systemd-dev
 x.org-server-utils

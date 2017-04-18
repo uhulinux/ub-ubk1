@@ -2,4 +2,3 @@
 
 gcompris-${UB_VERSION}.tar.bz2 gcompris-${UB_VERSION}/
 	http://gcompris.net/download/gtk/src/
-

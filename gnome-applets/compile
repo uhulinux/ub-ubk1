@@ -7,5 +7,4 @@ ub_compile \
 	--enable-mini-commander \
 	--disable-battstat \
 	--enable-ipv6 \
-	--without-hal \
 	--with-cpufreq-lib=cpupower

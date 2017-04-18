@@ -1,0 +1,13 @@
+diff -Naur orig/m4/efl.m4 patched/m4/efl.m4
+--- orig/m4/efl.m4	2016-09-13 09:23:52.134741323 +0200
++++ patched/m4/efl.m4	2017-04-09 18:08:17.707042206 +0200
+@@ -180,6 +180,9 @@
+    ecore_sdl)
+       depname="ecore-sdl"
+       ;;
++   ecore_file)
++      depname="ecore-file"
++      ;;
+ esac
+ requirements_pc_[]m4_defn([DOWNEFL])="${depname} >= ${PACKAGE_VERSION} ${requirements_pc_[][]m4_defn([DOWNEFL])}"
+ requirements_cflags_[]m4_defn([DOWNEFL])="-I\$(top_srcdir)/src/lib/${libdirname} -I\$(top_builddir)/src/lib/${libdirname} ${requirements_cflags_[][]m4_defn([DOWNEFL])}"

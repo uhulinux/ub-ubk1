@@ -31,7 +31,6 @@ acquire fix
 build-depends fix
 fix, skip, remove patches
 
-
 ------------------------------------------------------------------------
 r21512 | galamb15@kabelszat2002.hu | 2009-12-04 21:52:45 +0100 (Fri, 04 Dec 2009) | 2 lines
 

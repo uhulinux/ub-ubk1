@@ -12,4 +12,4 @@ ub_compile \
 	--enable-server \
 	--enable-alsaseq \
 	--enable-xft \
-	--with-default-path=/etc 
+	--with-default-path=/etc

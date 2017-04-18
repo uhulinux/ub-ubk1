@@ -3,4 +3,3 @@
 ub_compile \
 	--enable-sound-settings \
 	--enable-pluggable-dialogs
-

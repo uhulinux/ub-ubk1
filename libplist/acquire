@@ -2,5 +2,3 @@
 
 libplist-${UB_VERSION}.tar.bz2 libplist-${UB_VERSION}/
 	http://www.libimobiledevice.org/downloads/
-
-

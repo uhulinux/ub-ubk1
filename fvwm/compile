@@ -2,7 +2,6 @@
 
 autoreconf -vif
 ub_compile \
-	--enable-multibyte \
 	--enable-nls \
 	--enable-iconv \
 	--disable-gtk \
@@ -11,4 +10,3 @@ ub_compile \
 	--enable-xft \
 	--enable-bidi \
 	--with-stroke-library
-

@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 jpilot-${UB_VERSION}.tar.gz jpilot-${UB_VERSION}/
-	http://www.jpilot.org/
+	http://jpilot.org/tarballs/

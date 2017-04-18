@@ -113,8 +113,7 @@ r27872 | ntomasz@uhuklub.hu | 2012-03-14 18:51:45 +0100 (Wed, 14 Mar 2012) | 2 l
 ------------------------------------------------------------------------
 r27429 | galamb15@kabelszat2002.hu | 2011-12-19 18:49:08 +0100 (Mon, 19 Dec 2011) | 3 lines
 
-2.30.1 -> 2.30.2 
-
+2.30.1 -> 2.30.2
 
 ------------------------------------------------------------------------
 r26686 | ntomasz@uhuklub.hu | 2011-10-15 11:51:42 +0200 (Sat, 15 Oct 2011) | 2 lines
@@ -145,7 +144,7 @@ acquire fix
 build-depends fix
 add glib-compile-schemas uhu-pkg files
 move all dev files to the -dev package
-add two dirs (modules and schemas) to glib package 
+add two dirs (modules and schemas) to glib package
 
 ------------------------------------------------------------------------
 r25176 | ntomasz@uhuklub.hu | 2011-04-04 20:27:04 +0200 (Mon, 04 Apr 2011) | 2 lines

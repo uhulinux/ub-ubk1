@@ -33,7 +33,7 @@ nemo-dev
 networkmanager-dev
 notification-daemon
 polkit-dev
-polkit-gnome-dev
+polkit-gnome
 pulseaudio-dev
 python-lxml
 startup-notification-dev

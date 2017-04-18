@@ -11,7 +11,6 @@ acquire fix
 build-depends fix - vala, sqlite, gtk, python-isodate, telepathy-glib
 u2d fix
 
-
 ------------------------------------------------------------------------
 r35966 | attus@enterpriseforever.com | 2013-11-30 11:21:37 +0100 (Sat, 30 Nov 2013) | 2 lines
 
@@ -22,7 +21,6 @@ r27437 | galamb15@kabelszat2002.hu | 2011-12-20 18:28:26 +0100 (Tue, 20 Dec 2011
 
 0.7.1 -> 0.8.2
 build-depends fix - raptor -> raptor2
-
 
 ------------------------------------------------------------------------
 r25102 | galamb15@kabelszat2002.hu | 2011-03-31 19:51:13 +0200 (Thu, 31 Mar 2011) | 1 line

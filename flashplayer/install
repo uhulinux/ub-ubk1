@@ -6,9 +6,14 @@ libdir="$UB_INSTALLDIR"/usr/lib
 mkdir -p "$libdir"/firefox/plugins "$libdir"/mozilla/plugins "$libdir"/flashplayer
 
 install -m 755 libflashplayer.so "$libdir"/firefox/plugins/
-install -m 755 sa/flashplayer "$UB_INSTALLDIR"/usr/bin/flashplayer
-install -m 755 sadebug/flashplayerdebugger "$UB_INSTALLDIR"/usr/bin/
 install -m 755 debug/libflashplayer.so "$libdir"/flashplayer/
+
+if [ -d sa ]; then
+	install -m 755 sa/flashplayer "$UB_INSTALLDIR"/usr/bin/flashplayer
+fi
+if [ -d sadebug ]; then
+	install -m 755 sadebug/flashplayerdebugger "$UB_INSTALLDIR"/usr/bin/
+fi
 
 rm -Rf "$libdir"/kde4
 rm -Rf "$UB_INSTALLDIR"/usr/share/kde4

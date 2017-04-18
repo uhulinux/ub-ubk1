@@ -1,7 +1,7 @@
 diff -Naur orig/gio/glib-compile-schemas.c patched/gio/glib-compile-schemas.c
---- orig/gio/glib-compile-schemas.c	2014-02-03 18:40:41.000000000 +0100
-+++ patched/gio/glib-compile-schemas.c	2014-07-13 15:43:44.823659364 +0200
-@@ -1202,12 +1202,6 @@
+--- orig/gio/glib-compile-schemas.c	2017-03-01 21:13:23.134741323 +0100
++++ patched/gio/glib-compile-schemas.c	2017-04-05 00:42:07.684289725 +0200
+@@ -1217,12 +1217,6 @@
        return;
      }
  

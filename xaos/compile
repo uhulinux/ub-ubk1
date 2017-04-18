@@ -6,4 +6,3 @@ ub_compile \
 	--with-gtk-driver \
 	--with-x11-driver \
 	--with-x
-

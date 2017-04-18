@@ -1,0 +1,20 @@
+diff -Naur orig/cpufreq/src/cpufreq-monitor-libcpufreq.c patched/cpufreq/src/cpufreq-monitor-libcpufreq.c
+--- orig/cpufreq/src/cpufreq-monitor-libcpufreq.c	2016-03-10 23:53:48.134741323 +0100
++++ patched/cpufreq/src/cpufreq-monitor-libcpufreq.c	2017-04-10 23:30:56.166893641 +0200
+@@ -23,6 +23,7 @@
+ 
+ #include <stdlib.h>
+ #include <cpufreq.h>
++#include <cpupower.h>
+ 
+ #include "cpufreq-monitor-libcpufreq.h"
+ #include "cpufreq-utils.h"
+@@ -110,7 +111,7 @@
+ 		/* Check whether it failed because
+ 		 * cpu is not online.
+ 		 */
+-		if (!cpufreq_cpu_exists (cpu)) {
++		if (cpupower_is_cpu_online (cpu)) {
+ 			g_object_set (G_OBJECT (monitor), "online", FALSE, NULL);
+ 			return TRUE;
+ 		}

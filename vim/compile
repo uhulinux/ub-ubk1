@@ -36,4 +36,3 @@ ub_make \
 	VIMRCLOC=/etc \
 	VIMRUNTIMEDIR='$(VIMRTLOC)' \
 	MAKE="make -e"
-

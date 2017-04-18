@@ -2,5 +2,4 @@
 
 NOCONFIGURE=1 ./autogen.sh
 ub_compile \
-	--disable-update-mimedb \
 	--enable-systemd

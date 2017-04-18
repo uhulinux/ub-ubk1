@@ -31,7 +31,6 @@ build-depends fix - cmake
 compile fix - use cmake and disable werror
 remove werror patch
 
-
 ------------------------------------------------------------------------
 r27092 | galamb15@kabelszat2002.hu | 2011-11-10 19:09:34 +0100 (Thu, 10 Nov 2011) | 3 lines
 

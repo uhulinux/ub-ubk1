@@ -5,5 +5,4 @@ ub_compile \
 	--with-x \
 	--enable-startup-notification \
 	--libexecdir=/usr/lib/openbox \
-	--disable-static \
 	--enable-nls

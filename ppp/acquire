@@ -2,4 +2,3 @@
 
 ppp-${UB_VERSION}.tar.gz ppp-${UB_VERSION}/
 	https://download.samba.org/pub/ppp/
-

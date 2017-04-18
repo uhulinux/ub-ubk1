@@ -1,0 +1,27 @@
+From d529e2dd056f05cb1115c2f68bb6f773b4b14948 Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Sun, 5 Mar 2017 14:38:07 +0000
+Subject: Include the right header in GdictClientContext
+
+GdictClientContext implements GdictContext, and since the header for the
+former references the latter, we need to include the correct header
+instead of a generic 'glib-object.h' one.
+---
+ libgdict/gdict-client-context.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libgdict/gdict-client-context.h b/libgdict/gdict-client-context.h
+index 9952434..d68b729 100644
+--- a/libgdict/gdict-client-context.h
++++ b/libgdict/gdict-client-context.h
+@@ -19,7 +19,7 @@
+ #ifndef __GDICT_CLIENT_CONTEXT_H__
+ #define __GDICT_CLIENT_CONTEXT_H__
+ 
+-#include <glib-object.h>
++#include "gdict-context.h"
+ 
+ #define GDICT_TYPE_CLIENT_CONTEXT		(gdict_client_context_get_type ())
+ #define GDICT_CLIENT_CONTEXT(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GDICT_TYPE_CLIENT_CONTEXT, GdictClientContext))
+-- 
+cgit v0.12

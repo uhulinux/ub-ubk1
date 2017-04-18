@@ -2,10 +2,5 @@
 
 ub_install
 
-rm -rf "$UB_INSTALLDIR"/usr/include/libfm
-mv "$UB_INSTALLDIR"/usr/include/libfm-1.0/ "$UB_INSTALLDIR"/usr/include/libfm
-
-#delete libfm-extra
-rm "$UB_INSTALLDIR"/usr/lib/libfm-extra*
-rm "$UB_INSTALLDIR"/usr/include/libfm/{fm-extra.h,fm-xml-file.h,fm-version.h}
-rm "$UB_INSTALLDIR"/usr/lib/pkgconfig/libfm-extra.pc
+# rm -rf "$UB_INSTALLDIR"/usr/include/libfm
+# mv "$UB_INSTALLDIR"/usr/include/libfm-1.0/ "$UB_INSTALLDIR"/usr/include/libfm

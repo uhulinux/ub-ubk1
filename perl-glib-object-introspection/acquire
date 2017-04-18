@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-Glib-Object-Introspection-${UB_VERSION}.tar.gz Glib-Object-Introspection-${UB_VERSION}/
-	http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/
+rel-${UB_VERSION//./-}.tar.gz perl-Glib-Object-Introspection-rel-${UB_VERSION//./-}/
+	https://github.com/GNOME/perl-Glib-Object-Introspection/archive/

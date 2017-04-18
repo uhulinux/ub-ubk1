@@ -20,7 +20,6 @@ r28062 | galamb15@kabelszat2002.hu | 2012-04-07 10:29:40 +0200 (Sat, 07 Apr 2012
 build-depends fix - gtk
 add patch to fix pyglib-2.0-python version
 
-
 ------------------------------------------------------------------------
 r27786 | robot | 2012-03-05 19:45:31 +0100 (Mon, 05 Mar 2012) | 3 lines
 
@@ -37,7 +36,6 @@ r24702 | galamb15@kabelszat2002.hu | 2011-01-17 20:18:09 +0100 (Mon, 17 Jan 2011
 
 0.2.3 -> 0.3.3
 build-depends fix - libdbusmenu
-
 
 ------------------------------------------------------------------------
 r22085 | galamb15@kabelszat2002.hu | 2010-01-26 20:32:56 +0100 (Tue, 26 Jan 2010) | 1 line

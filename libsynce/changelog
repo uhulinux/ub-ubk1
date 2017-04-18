@@ -18,7 +18,6 @@ r28725 | galamb15@kabelszat2002.hu | 2012-05-10 20:26:28 +0200 (Thu, 10 May 2012
 
 build-depends fix - replace hal with udev
 
-
 ------------------------------------------------------------------------
 r28231 | peritus@freemail.hu | 2012-04-15 15:22:48 +0200 (Sun, 15 Apr 2012) | 2 lines
 
@@ -30,8 +29,6 @@ r25398 | peritus@freemail.hu | 2011-04-13 20:15:30 +0200 (Wed, 13 Apr 2011) | 6 
 0.14 -> 0.15
 acquire fix
 build-depends fix
-
-
 
 ------------------------------------------------------------------------
 r21188 | peritus@freemail.hu | 2009-11-25 16:08:44 +0100 (Wed, 25 Nov 2009) | 4 lines

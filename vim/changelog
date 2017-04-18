@@ -41,12 +41,10 @@ r18926 | peritus@freemail.hu | 2009-06-20 20:20:17 +0200 (Sat, 20 Jun 2009) | 4 
  - 7.0 -> 7.2
  - build-depends fix
 
-
 ------------------------------------------------------------------------
 r18925 | peritus@freemail.hu | 2009-06-20 20:10:44 +0200 (Sat, 20 Jun 2009) | 3 lines
 
  - build-depends fix
-
 
 ------------------------------------------------------------------------
 r11941 | egmont | 2006-05-08 15:47:10 +0200 (Mon, 08 May 2006) | 2 lines
@@ -93,7 +91,6 @@ r7032 | tbalazs | 2004-07-27 14:22:25 +0200 (Tue, 27 Jul 2004) | 3 lines
 
 patch fix
 
-
 ------------------------------------------------------------------------
 r7023 | tbalazs | 2004-07-27 12:17:34 +0200 (Tue, 27 Jul 2004) | 17 lines
 
@@ -112,7 +109,6 @@ SIZE  NAME     FIXES
 2882  6.3.012  lalloc(0) error for substitute command with multi-line pattern
 11947 6.3.013  crash when using CTRL-R = in command line uses "normal :cmd"
 1566  6.3.014  default value of 'helplang' is wrong for Chinese and Taiwanese
-
 
 ------------------------------------------------------------------------
 r6506 | egmont | 2004-06-08 12:18:47 +0200 (Tue, 08 Jun 2004) | 2 lines

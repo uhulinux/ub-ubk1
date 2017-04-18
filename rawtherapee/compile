@@ -4,4 +4,3 @@ sed -i "s/\${GIT_VERSION}/$UB_VERSION/g" rtgui/version.h.in
 
 ub_compile \
     -DCMAKE_CXX_FLAGS="-std=c++11 -msse2"
-
