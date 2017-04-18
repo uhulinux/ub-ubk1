@@ -62,7 +62,7 @@ pidgin-libnotify
 qupzilla
 google-chrome
 opera
-xchat
+hexchat
 ettercap
 filezilla
 wireshark

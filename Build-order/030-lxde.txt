@@ -2,7 +2,6 @@ openbox
 icon-theme-lxde
 libstatgrab
 lxde-common
-libfm-extra
 lxinput
 lxmusic
 lxmenu-data
