@@ -44,6 +44,12 @@ fftw3
 id3lib
 nasm
 flac
+celt
+gsl
+glu
+freeglut
+eigen3
+opus
 libsamplerate# libsndfile nélkül
 libsndfile# jack nélkül
 libsamplerate# libsndfile-al
@@ -93,7 +99,6 @@ cron
 libmng
 mtdev
 re2c
-glu
 sdl
 ghostscript
 qt5

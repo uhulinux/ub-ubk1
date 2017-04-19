@@ -23,7 +23,6 @@ itstool
 pyxml
 iso-codes
 gtksourceview
-gsl
 man-db
 pilot-link
 protobuf
@@ -49,7 +48,6 @@ muparser
 djvulibre
 ilmbase
 openexr
-freeglut
 gtkglext
 glibmm
 atkmm

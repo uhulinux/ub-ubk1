@@ -62,7 +62,6 @@ nickle
 nomarch
 npth
 opencore-amr
-opus
 pcre2
 perl-algorithm-diff
 pkcs11

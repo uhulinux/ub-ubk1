@@ -31,7 +31,6 @@ bind
 bodr
 bsdiff
 ca-certificates
-celt
 celt051
 cpupower
 c++-gtk-utils
@@ -194,7 +193,6 @@ pinentry
 wv
 xaw3dxft
 clamav
-eigen3
 gexiv2
 goffice
 gspell
