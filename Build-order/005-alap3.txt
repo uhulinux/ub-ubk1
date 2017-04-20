@@ -97,8 +97,7 @@ wireless-tools
 slang
 gpm
 newt
-libproxy
-glib-networking
+glib-networking #libproxy-nelkül
 libsoup
 networkmanager
 libunique
@@ -108,7 +107,7 @@ postfix
 cron
 libmng
 re2c
-sdl
+libproxy
 ghostscript
 qt5
 poppler
