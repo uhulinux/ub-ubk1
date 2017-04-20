@@ -37,7 +37,6 @@ libmowgli
 libnet
 libnfnetlink
 libnfs
-libnl
 libosip2
 libpaper
 libquvi-scripts

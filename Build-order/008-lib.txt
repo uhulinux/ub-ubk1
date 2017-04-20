@@ -55,7 +55,6 @@ liblensfun
 liblqr
 liblrdf
 libmatroska
-libmbim
 libmcs
 libmediaart
 libmicrohttpd

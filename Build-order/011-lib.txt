@@ -16,7 +16,6 @@ libofx
 libortp
 libpri
 libpwquality
-libqmi
 libsexy
 libsmbios
 libstroke
