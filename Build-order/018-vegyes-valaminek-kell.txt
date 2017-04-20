@@ -61,7 +61,6 @@ musepack
 ois
 qpdf
 radeontool
-sbc
 schroedinger
 slib
 txt2tags
@@ -128,7 +127,6 @@ libtrace
 opusfile
 osm-gps-map
 polkit-qt
-portaudio
 razor
 retrovol
 startup-notification

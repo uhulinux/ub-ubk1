@@ -51,17 +51,13 @@ cython
 ipython
 libvirt-python
 psycopg2
-py3cairo
 pybluez
-pycairo
 pychess
 pycparser
 pycups
 pycurl
 pyexcelerator
 pyflakes
-pygobject
-pygobject2
 pyhyphen
 pyicu
 pylibacl
@@ -78,7 +74,6 @@ pyqt5-python2
 pysmbc
 pysqlite
 python3-psutil
-pyyaml
 qscintilla2
 python-apsw
 python-astroid
@@ -120,7 +115,6 @@ python-markupsafe
 python-mechanize
 python-mysql
 python-netifaces
-python-numpy
 python-pam
 python-paste
 python-pastedeploy
@@ -148,6 +142,5 @@ python-notify
 python-pbr
 python-sqlalchemy-migrate
 python-stevedore
-gst0.10-python
 xmldiff
 pdfminer

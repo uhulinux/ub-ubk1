@@ -2,7 +2,6 @@ libnfsidmap
 libpgf
 libpipeline
 libpseudo
-libsoxr
 libspnav
 libsrtp
 libt3key

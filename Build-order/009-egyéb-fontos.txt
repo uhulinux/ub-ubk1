@@ -35,7 +35,6 @@ gpgme
 gtest
 gcr
 rest
-gconf2
 usbmuxd
 raptor2
 xdg-utils
@@ -58,11 +57,6 @@ webkitgtk3
 webkit2gtk
 neon
 fltk
-gnome2-mime-data
-tevent
-ldb
-samba
-gnome2-vfs
 wxwidgets
 wxwidgets2.8
 libxml++2

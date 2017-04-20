@@ -20,11 +20,8 @@ libdv
 libdvdnav
 libept
 libexosip2
-libical
 libfli
 libfs
-libftdi1
-libftdi-compat
 libgadu
 libgee
 libgee06
@@ -38,7 +35,6 @@ libgit2-glib
 libgnome-keyring
 libgtop2
 libgksu
-libglade2
 libglademm2
 libgphoto2
 libgsf
