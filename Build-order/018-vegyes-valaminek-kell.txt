@@ -30,7 +30,6 @@ beautifulsoup
 bind
 bodr
 bsdiff
-ca-certificates
 celt051
 cpupower
 c++-gtk-utils

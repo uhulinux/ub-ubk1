@@ -21,7 +21,6 @@ subversion
 audit
 itstool
 pyxml
-iso-codes
 gtksourceview
 man-db
 pilot-link

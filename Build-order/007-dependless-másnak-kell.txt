@@ -4,7 +4,6 @@ amrnb
 antiword
 arj
 barcode
-bash-completion
 bdfresize
 bin86
 cabextract
@@ -77,7 +76,6 @@ ragel
 recode
 regina-rexx
 rlog
-run-parts
 sbsms
 silc-toolkit
 soundtouch

@@ -21,7 +21,6 @@ libdvdnav
 libept
 libexosip2
 libical
-libgudev
 libfli
 libfs
 libftdi1
@@ -44,7 +43,6 @@ libglademm2
 libgphoto2
 libgsf
 libgssapi
-libgusb
 libharu
 libiec61883
 libieee1284

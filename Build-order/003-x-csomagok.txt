@@ -49,9 +49,9 @@ libva
 mesa
 libva
 mesa
-x.org-server
+x.org-server #sdl nélkül
 mesa
-x.org-server
+x.org-server #sdl nélkül
 x.org-input-acecad
 x.org-input-aiptek
 x.org-input-elographics
@@ -100,6 +100,7 @@ xkeyboard-config
 glamor-egl
 glew
 x.org-font-utils
+mtdev
 fonts-x.org
 x.org-apps
 x.org-video-ati
@@ -113,14 +114,15 @@ x.org-input-keyboard
 x.org-input-mouse
 x.org-input-synaptics
 x.org-input-wacom
+libxerces
 libxalan
 libxaw3d
 libxdg-basedir
 libxdiff
-libxerces
 libxkbcommon
 libxnvctrl
 tslib
+iso-codes #pyxml nélkül
 libxklavier
 nickle
 x.org-utils

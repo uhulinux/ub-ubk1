@@ -1,10 +1,21 @@
 at-spi2-core
-at-spi2-atk
 atk
-gdk-pixbuf
 pango
+gdk-pixbuf
 gtk2
-pycairo
-pygobject2
-pygtk
-gtk
+vala
+colord
+at-spi2-atk
+gtk #cups nélkül
+avahi
+libatomic-ops
+gc
+libunistring
+guile
+liblzo
+nettle
+libtasn1
+p11-kit
+gnutls
+cups
+gtk #cups-al
