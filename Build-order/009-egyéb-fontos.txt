@@ -30,10 +30,8 @@ vorbis-tools
 wget
 dahdi-linux
 dahdi-tools
-gpg
 gpgme
 gtest
-gcr
 rest
 usbmuxd
 raptor2
@@ -51,8 +49,6 @@ glibmm
 atkmm
 boost-jam
 fuse
-enchant
-webkitgtk2
 webkitgtk3
 webkit2gtk
 neon

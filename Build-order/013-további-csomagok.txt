@@ -21,7 +21,6 @@ libgnome2
 libcryptui
 compton
 libbonoboui2
-geocode-glib
 mutagen
 libgpod
 libsocialweb

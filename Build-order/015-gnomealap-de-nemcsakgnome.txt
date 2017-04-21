@@ -1,6 +1,5 @@
 gcab
 gconfmm2
-gsettings-desktop-schemas
 gtk2-engines
 gmime
 yelp-xsl

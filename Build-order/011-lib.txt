@@ -35,7 +35,6 @@ libviper
 libxml++2
 libnice
 libofa
-libwebp
 libwpd
 libpano13
 libsynce

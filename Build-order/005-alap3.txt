@@ -97,16 +97,27 @@ wireless-tools
 slang
 gpm
 newt
+at
+gsettings-desktop-schemas
 glib-networking #libproxy-nelkül
 libsoup
 networkmanager
 libunique
-at
 procmail
 postfix
 cron
 libmng
 re2c
+enchant
+libgnome-keyring
+geocode-glib
+geoclue
+gpg #pinentry-függés-nélkül
+gcr
+libsecret
+libungif
+libwebp
+webkitgtk2
 libproxy
 ghostscript
 qt5
@@ -131,7 +142,6 @@ yasm
 perl-net-dbus
 system-tools-backends
 check
-geoclue
 js
 gjs
 swig

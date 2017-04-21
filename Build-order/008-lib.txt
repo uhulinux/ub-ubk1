@@ -25,14 +25,12 @@ libfs
 libgadu
 libgee
 libgee06
-libsecret
 libksba
 libssh
 libssh2
 libggz
 libgit2
 libgit2-glib
-libgnome-keyring
 libgtop2
 libgksu
 libglademm2

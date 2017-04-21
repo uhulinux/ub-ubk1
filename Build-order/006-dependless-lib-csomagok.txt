@@ -48,7 +48,6 @@ libtermkey
 libtinyxml
 libtranscript
 libucl
-libungif
 libx86
 libzip
 libcfitsio
