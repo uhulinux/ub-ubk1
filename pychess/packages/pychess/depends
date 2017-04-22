@@ -1,6 +1,5 @@
-gnome-python-desktop
-gst0.10-python
+gst-plugins-base
+gtksourceview
 icon-theme-gnome
-libgaviotatb
 pycairo
 pygobject

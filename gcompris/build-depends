@@ -1,5 +1,6 @@
+gnome-common
 gnuchess
-gstreamer0.10-dev
+gstreamer-dev
 gtk2-dev
 intltool
 librsvg-dev
