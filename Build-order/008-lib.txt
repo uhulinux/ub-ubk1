@@ -44,8 +44,6 @@ libplist
 libimobiledevice
 libindi
 libindicator
-libwacom
-libinput
 libiodbc
 libisofs
 liblangtag

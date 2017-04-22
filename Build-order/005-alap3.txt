@@ -120,6 +120,8 @@ libwebp
 webkitgtk2
 libproxy
 ghostscript
+libwacom
+libinput
 qt5
 poppler
 apache
