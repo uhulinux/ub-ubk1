@@ -38,9 +38,13 @@ dbus-glib
 krb5
 openldap
 postgresql
+libsasl2 #openldap nélkül
+openldap #libsasl2 -vel
+libsasl2 #mégegyszer
+postresql #mégegyszer
 cyrus-sasl2
-openldap
-postgresql
+openldap #végleg
+postgresql #végleg
 cyrus-sasl2
 curl
 apt
