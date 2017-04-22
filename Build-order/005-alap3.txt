@@ -118,7 +118,9 @@ libsecret
 libungif
 libwebp
 webkitgtk2
+webkit2gtk
 libproxy
+glib-networking #libproxyval
 ghostscript
 libwacom
 libinput
