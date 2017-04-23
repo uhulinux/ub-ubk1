@@ -186,7 +186,6 @@ gtksourceview18
 gupnp-dlna
 notification-daemon
 nvidia-cg-toolkit
-pinentry
 wv
 xaw3dxft
 clamav

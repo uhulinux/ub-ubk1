@@ -112,7 +112,7 @@ enchant
 libgnome-keyring
 geocode-glib
 geoclue
-gpg #pinentry-függés-nélkül
+gpg #pinentry-runtime-depends-nélkül
 gcr
 libsecret
 libungif
@@ -126,6 +126,8 @@ libwacom
 libinput
 qt5
 poppler
+pinentry
+gpg #pinentry-runtime-depends-el
 apache
 apr
 apr-util
