@@ -62,7 +62,6 @@ r30189 | galamb15@kabelszat2002.hu | 2013-02-06 17:26:24 +0100 (Wed, 06 Feb 2013
 
 build-depends fix - glu-dev
 
-
 ------------------------------------------------------------------------
 r25999 | galamb15@kabelszat2002.hu | 2011-09-08 20:22:28 +0200 (Thu, 08 Sep 2011) | 3 lines
 
@@ -85,7 +84,6 @@ acquire fix
 r20201 | galamb15@kabelszat2002.hu | 2009-10-02 18:15:39 +0200 (Fri, 02 Oct 2009) | 3 lines
 
 add patch to avoid conflict with glib gsocket from gentoo
-
 
 ------------------------------------------------------------------------
 r18044 | gbtami@gmail.com | 2009-04-16 20:03:28 +0200 (Thu, 16 Apr 2009) | 4 lines

@@ -1,6 +1,6 @@
 cppunit-dev
 glu-dev
-gst0.10-plugins-base-dev
+gst-plugins-base-dev
 gtk-dev
 libjpeg-turbo-dev
 libnotify-dev
