@@ -1,0 +1,11 @@
+diff -Nur orig/po/LINGUAS mod/po/LINGUAS
+--- orig/po/LINGUAS	2015-07-23 14:11:18.000000000 +0200
++++ mod/po/LINGUAS	2017-04-27 15:55:21.966992913 +0200
+@@ -22,7 +22,6 @@
+ ko
+ ml
+ mr
+-mr_IN
+ nb
+ nl
+ or
