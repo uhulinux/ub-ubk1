@@ -1,0 +1,14 @@
+#!/bin/sh -eux
+
+cd rust-std-i686-unknown-linux-gnu
+cp -r lib ${UB_INSTALLDIR}/usr
+
+cd ../rustc
+cp -r bin ${UB_INSTALLDIR}/usr
+cp -r lib ${UB_INSTALLDIR}/usr
+cp -r share ${UB_INSTALLDIR}/usr
+
+cd ../cargo
+cp -r bin ${UB_INSTALLDIR}/usr
+cp -r share/doc ${UB_INSTALLDIR}/usr/share
+cp -r share/man ${UB_INSTALLDIR}/usr/share

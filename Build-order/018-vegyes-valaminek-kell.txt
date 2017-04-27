@@ -247,6 +247,7 @@ gst0.10-plugins-ugly
 gst-plugins-ugly
 spice-gtk
 autoconf2.13
+rust
 firefox
 thunderbird
 nagios-plugins
