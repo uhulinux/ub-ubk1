@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-cronie-${UB_VERSION}.tar.gz cronie-${UB_VERSION}/
+cronie-${UB_VERSION}.tar.gz cronie-cronie-${UB_VERSION}/
 	https://github.com/cronie-crond/cronie/archive/

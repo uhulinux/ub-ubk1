@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
+autoreconf -vif
 SPOOL_DIR="/var/spool/cron/tabs" \
 ub_compile \
 	--enable-anacron \
