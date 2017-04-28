@@ -26,7 +26,6 @@ libgpod
 libsocialweb
 graphviz
 imagemagick
-imagemagick6
 cairomm
 pangomm
 gtkmm2

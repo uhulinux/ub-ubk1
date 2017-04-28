@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-./autogen.sh
-ub_compile \
-	--enable-experimental \
-	--disable-gnome-vfs

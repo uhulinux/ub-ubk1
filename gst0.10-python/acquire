@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-gst-python-${UB_VERSION}.tar.bz2 gst-python-${UB_VERSION}/
-	http://gstreamer.freedesktop.org/src/gst-python/

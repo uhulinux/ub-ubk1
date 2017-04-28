@@ -243,7 +243,6 @@ freerdp
 spamassassin
 gdal
 packagekit
-gst0.10-plugins-ugly
 gst-plugins-ugly
 spice-gtk
 autoconf2.13
@@ -252,7 +251,6 @@ firefox
 thunderbird
 nagios-plugins
 pstoedit
-gst0.10-plugins-good
 gst-plugins-good
 dhcpcd
 dmapi

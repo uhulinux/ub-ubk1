@@ -1,1 +1,0 @@
-urllist http://gstreamer.freedesktop.org/src/gst-plugins-ugly/ | splitver '^gst-plugins-ugly-(0.10.[0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

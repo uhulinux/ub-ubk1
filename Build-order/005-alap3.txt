@@ -56,7 +56,6 @@ jack
 libsndfile# jack-kel
 libasyncns
 gstreamer
-gstreamer0.10
 libvisual
 cdparanoia
 libical
@@ -72,8 +71,6 @@ ldb
 samba
 gnome2-mime-data
 gnome2-vfs
-gst0.10-plugins-base
-gst0.10-python
 qt4
 iptables
 libnl

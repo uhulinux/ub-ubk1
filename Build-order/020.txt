@@ -3,7 +3,6 @@ opencv
 frei0r
 libquicktime
 mjpegtools
-gst0.10-plugins-bad
 gst-plugins-bad
 xine-lib
 directfb

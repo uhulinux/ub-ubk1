@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-autoreconf -vif
-ub_compile \
-	--with-perl=no \
-	--enable-hdri \
-	--with-rsvg
