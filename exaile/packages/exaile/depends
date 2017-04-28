@@ -1,11 +1,10 @@
 dbus-python
-gst0.10-plugins-bad
-gst0.10-plugins-good
-gst0.10-plugins-ugly
-gst0.10-python
+gst-plugins-good
+gst-python
 librsvg
 mutagen
-pygobject2
-pygtk
+pycairo
+pygobject
 python-cddb
 python-notify
+udisks2

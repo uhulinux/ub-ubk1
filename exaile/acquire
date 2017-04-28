@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-exaile-${UB_VERSION}.tar.gz exaile-${UB_VERSION}/
-	http://www.launchpad.net/exaile/${UB_VERSION_HEAD2}.x/${UB_VERSION}/+download/
+#${UB_VERSION}.tar.gz exaile-${UB_VERSION}/
+#	https://github.com/exaile/exaile/archive/
+
+${UB_VERSION}.tar.gz exaile-c17bf04/
+	git://github.com/exaile/exaile.git@c17bf04

@@ -1,8 +1,9 @@
-gst0.10-plugins-bad
-gst0.10-plugins-base
-gst0.10-plugins-good
-gst0.10-plugins-ugly
-gst0.10-python
+gst-plugins-bad
+gst-plugins-base
+gst-plugins-good
+gst-plugins-ugly
+gst-python
 python
 python-lxml
+python-setuptools
 pyxdg
