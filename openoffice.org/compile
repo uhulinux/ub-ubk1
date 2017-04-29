@@ -69,7 +69,6 @@ autoconf
 	--disable-werror \
 	--enable-crashdump \
 	--enable-gio \
-	--enable-gstreamer \
 	--enable-hunspell \
 	--enable-hyphen
 
