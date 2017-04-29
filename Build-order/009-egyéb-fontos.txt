@@ -36,7 +36,6 @@ rest
 usbmuxd
 raptor2
 xdg-utils
-openjpeg1
 poppler-data
 gd
 fontforge

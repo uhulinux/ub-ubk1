@@ -30,7 +30,7 @@ libxext-dev
 libxfixes-dev
 openal-dev
 opencore-amr-dev
-openjpeg1-dev
+openjpeg-dev
 openssl-dev
 pulseaudio-dev
 schroedinger-dev

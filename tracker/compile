@@ -3,5 +3,4 @@
 ub_compile \
 	--enable-libflac \
 	--enable-libvorbis \
-	--with-firefox-plugin-dir=/usr/lib/firefox/browser/extensions \
 	--with-thunderbird-plugin-dir=/usr/lib/thunderbird/extensions

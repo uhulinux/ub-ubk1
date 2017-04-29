@@ -47,7 +47,7 @@ marble-dev
 okular-dev
 opencolorio-dev
 openexr-dev
-openjpeg1-dev
+openjpeg-dev
 phonon-dev
 poppler-qt5-dev
 postgresql-dev

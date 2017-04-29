@@ -27,7 +27,6 @@
 	--enable-libmp3lame \
 	--enable-libopencore-amrnb \
 	--enable-libopencore-amrwb \
-	--enable-libopencv \
 	--enable-libopenjpeg \
 	--enable-libpulse \
 	--enable-libschroedinger \

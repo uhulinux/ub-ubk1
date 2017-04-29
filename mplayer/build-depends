@@ -54,7 +54,7 @@ mesa-dev
 mpg123-dev
 openal-dev
 opencore-amr-dev
-openjpeg1-dev
+openjpeg-dev
 opus-dev
 pulseaudio-dev
 samba-dev

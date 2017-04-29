@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-ub_install
-
-ln -s openjpeg-1.5/openjpeg.h "$UB_INSTALLDIR"/usr/include/openjpeg.h
-ln -s libopenjpeg1.pc "$UB_INSTALLDIR"/usr/lib/pkgconfig/libopenjpeg.pc
-rm -rf "$UB_INSTALLDIR"/usr/share/doc/openjpeg-"$UB_VERSION_HEAD2"
