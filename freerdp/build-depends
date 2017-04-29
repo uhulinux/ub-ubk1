@@ -1,7 +1,5 @@
 cmake
 cups-dev
-gst0.10-plugins-base-dev
-gstreamer0.10-dev
 libx11-dev
 libxcursor-dev
 libxinerama-dev

@@ -7,8 +7,6 @@ enchant-dev
 faad2
 flac-dev
 geoclue-dev
-gst0.10-plugins-base-dev
-gst0.10-plugins-good
 gtk-dev
 intltool
 libgpod-dev

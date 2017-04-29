@@ -5,7 +5,6 @@ farstream-dev
 gconf2-dev
 gnome-online-accounts-dev
 gnutls-dev
-gst0.10-plugins-base-dev
 gtkspell2-dev
 intltool
 krb5-dev
