@@ -202,7 +202,6 @@ vim
 xscreensaver
 gtkhtml
 gtk-vnc
-imlib
 openssh
 plymouth
 ptlib

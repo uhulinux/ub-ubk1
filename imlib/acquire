@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-imlib-${UB_VERSION}.tar.gz imlib-${UB_VERSION}/
-	https://download.gnome.org/sources/imlib/1.9/
-
