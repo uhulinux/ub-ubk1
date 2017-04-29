@@ -227,7 +227,6 @@ ibus
 openal
 udisks2
 upower
-fox
 fox1.6
 lesstif
 recordmydesktop

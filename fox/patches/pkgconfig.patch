@@ -1,9 +1,0 @@
-diff -Naur fox-1.7.54-orig/fox17.pc.in fox-1.7.54/fox17.pc.in
---- fox-1.7.54-orig/fox17.pc.in	2016-01-07 02:46:26.000000000 +0100
-+++ fox-1.7.54/fox17.pc.in	2016-05-11 13:20:58.415287235 +0200
-@@ -14,5 +14,4 @@
- URL: www.fox-toolkit.org
- Version: @FOX_MAJOR_VERSION@.@FOX_MINOR_VERSION@.@FOX_PATCH_LEVEL@
- Libs: -L${libdir} ${FOX_LIBS}
--Libs.private: ${X_LIBS} ${X_BASE_LIBS} ${X_EXTRA_LIBS} ${GL_LIBS} ${LIBS}
- Cflags: -I${includedir}
