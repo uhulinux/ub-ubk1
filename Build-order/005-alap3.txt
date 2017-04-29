@@ -99,7 +99,6 @@ gsettings-desktop-schemas
 glib-networking #libproxy-nelkül
 libsoup
 networkmanager
-libunique
 procmail
 postfix
 cron
