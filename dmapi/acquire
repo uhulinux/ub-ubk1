@@ -1,6 +1,7 @@
 #!/usr/bin/env dl
 
 dmapi-${UB_VERSION}.tar.gz dmapi-${UB_VERSION}/
+	https://www.jabawok.net/gentoo/distfiles/
 	ftp://oss.sgi.com/projects/xfs/cmd_tars/
 	ftp://oss.sgi.com/projects/xfs/previous/
 	ftp://oss.sgi.com/projects/xfs/previous/cmd_tars/
