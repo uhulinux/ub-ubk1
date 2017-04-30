@@ -114,7 +114,6 @@ gnome-online-miners
 grilo-plugins
 gnome-documents
 gnome-boxes
-gtkpod
 gnome-terminal
 gnome-python-extras
 gnome-dictionary

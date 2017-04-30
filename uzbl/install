@@ -1,4 +1,0 @@
-#!/bin/sh -eux
-
-make DESTDIR="$UB_INSTALLDIR" PREFIX=/usr install
-ln -s uzbl-browser "$UB_INSTALLDIR"/usr/bin/uzbl

@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-export CFLAGS+="-DNO_SWORD_SET_RENDER_NOTE_NUMBERS=1"
-export CXXFLAGS+="-DNO_SWORD_SET_RENDER_NOTE_NUMBERS=1"
-./waf configure \
-	--prefix=/usr \
-	--gtk=3
-
-./waf build -v

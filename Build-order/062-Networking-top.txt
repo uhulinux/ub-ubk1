@@ -56,7 +56,6 @@ rdesktop
 nagios
 bluefish
 transmission
-tazweb
 links
 pidgin-libnotify
 qupzilla
@@ -70,7 +69,6 @@ ntop
 geary
 kompozer
 otter
-uzbl
 midori
 sylpheed
 seamonkey

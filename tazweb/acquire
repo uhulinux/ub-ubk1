@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-tazweb-${UB_VERSION}.tar.gz tazweb-${UB_VERSION}/
-	http://mirror.slitaz.org/sources/tazweb/

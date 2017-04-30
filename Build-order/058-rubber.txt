@@ -3,4 +3,3 @@ latexila
 tesseract
 tesseract-gui
 sword
-xiphos
