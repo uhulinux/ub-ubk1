@@ -32,7 +32,6 @@ libunicap
 libunique1
 libuser
 libviper
-libxml++2
 libnice
 libofa
 libwpd

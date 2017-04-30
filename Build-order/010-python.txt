@@ -4,7 +4,7 @@ python3-doc
 python-docutils
 python3-zope.fixers
 sip
-python-bssdb3
+python-bsddb3
 python-cddb
 python-dip
 python-dnspython
