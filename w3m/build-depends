@@ -3,4 +3,5 @@ gc
 gc-dev
 gpm-dev
 imlib2-dev
+libx11-dev
 openssl-dev
