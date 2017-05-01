@@ -1,6 +1,6 @@
 diff -Naur orig/jre/lib/desktop/applications/sun_java.desktop patched/jre/lib/desktop/applications/sun_java.desktop
---- orig/jre/lib/desktop/applications/sun_java.desktop	2014-03-18 08:58:41.000000000 +0100
-+++ patched/jre/lib/desktop/applications/sun_java.desktop	2014-06-24 23:31:39.950867533 +0200
+--- lib/desktop/applications/sun_java.desktop	2014-03-18 08:58:41.000000000 +0100
++++ lib/desktop/applications/sun_java.desktop	2014-06-24 23:31:39.950867533 +0200
 @@ -10,11 +10,10 @@
  # "applications" may take precedence.
  #
@@ -50,20 +50,3 @@ diff -Naur orig/jre/lib/desktop/applications/sun-javaws.desktop patched/jre/lib/
 -Categories=Java;Applications;
 +Categories=Java;
  MimeType=application/x-java-jnlp-file;
-diff -Naur orig/jre/plugin/desktop/sun_java.desktop patched/jre/plugin/desktop/sun_java.desktop
---- orig/jre/plugin/desktop/sun_java.desktop	2014-03-18 08:58:41.000000000 +0100
-+++ patched/jre/plugin/desktop/sun_java.desktop	2014-06-24 23:32:43.551649820 +0200
-@@ -10,11 +10,10 @@
- # "applications" may take precedence.
- #
- [Desktop Entry]
--Encoding=UTF-8
- Name=Java
- Comment=Java Control Panel
- Exec=jcontrol
--Icon=sun-jcontrol.png
-+Icon=sun-jcontrol
- Terminal=false
- Type=Application
--Categories=Application;Settings;Java;X-Red-Hat-Base;X-Ximian-Settings;
-+Categories=Settings;Java;X-Red-Hat-Base;X-Ximian-Settings;

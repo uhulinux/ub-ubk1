@@ -1,5 +1,20 @@
 #!/bin/sh -eux
 
+if [ ${UB_ARCH} == "amd64" ];then
+arch="x64"
+else
+arch="i586"
+fi
+
+tar xf jdk-${UB_VERSION/.0./u}-linux-$arch.tar.gz
+
+cd jdk1.${UB_VERSION/.0./.0_}/jre/lib/desktop/applications
+
+patch -i "$UB_SRCDIR"/patches/01desktop.patch.skip
+cd ../../../plugin/desktop
+patch -i "$UB_SRCDIR"/patches/02desktop.patch.skip
+cd ../../..
+
 mkdir -p "$UB_INSTALLDIR"/usr/lib/java
 cp -ar . "$UB_INSTALLDIR"/usr/lib/java/
 
@@ -27,14 +42,14 @@ rm -Rf "$UB_INSTALLDIR"/usr/lib/java/jre/lib/desktop
 
 # firefox plugin
 mkdir -p "$UB_INSTALLDIR"/usr/lib/firefox/plugins
-ln -s /usr/lib/java/jre/lib/i386/libnpjp2.so "$UB_INSTALLDIR"/usr/lib/firefox/plugins/
+ln -s /usr/lib/java/jre/lib/"$UB_ARCH"/libnpjp2.so "$UB_INSTALLDIR"/usr/lib/firefox/plugins/
 
 # mozilla plugin
 mkdir -p "$UB_INSTALLDIR"/usr/lib/mozilla/plugins
-ln -s /usr/lib/java/jre/lib/i386/libnpjp2.so "$UB_INSTALLDIR"/usr/lib/mozilla/plugins/
+ln -s /usr/lib/java/jre/lib/"$UB_ARCH"/libnpjp2.so "$UB_INSTALLDIR"/usr/lib/mozilla/plugins/
 
 # fix permissions
 chmod -R a+rX,u+w,go-w "$UB_INSTALLDIR"
 
 # ffmpeg < 3
-rm -f "$UB_INSTALLDIR"/usr/lib/java/jre/lib/i386/libavplugin-*.so
+rm -f "$UB_INSTALLDIR"/usr/lib/java/jre/lib/"$UB_ARCH"/libavplugin-*.so
