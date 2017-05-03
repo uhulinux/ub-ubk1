@@ -1,6 +1,13 @@
 #!/bin/sh -eux
 
-export UB_MAKE_PROCS=1
+# A -O3 veszélyes
+ub_replace -O3 -O2 configure
+ub_replace -O3 -O2 common/incdebug.m4
+
+i386="--enable-32bit"
+if [ "$UB_ARCH" == "amd64" ];then
+    i386=""
+fi
 ub_compile \
-	--enable-32bit \
-	--with-regutil
+	--with-regutil \
+	"$i386"

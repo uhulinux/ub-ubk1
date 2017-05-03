@@ -6,6 +6,6 @@ Regina-REXX-${UB_VERSION}.tar.gz Regina-REXX-${UB_VERSION}/
 
 regina.pdf
 	http://downloads.sourceforge.net/regina-rexx/regina-documentation/${UB_VERSION}/
-	
+
 regutil.pdf
 	http://downloads.sourceforge.net/regina-rexx/regina-documentation/${UB_VERSION}/

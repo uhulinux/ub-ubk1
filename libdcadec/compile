@@ -1,5 +1,8 @@
 #!/bin/sh -eux
 
+# A -O3 veszélyes
+ub_replace -O3 -O2 Makefile
+
 export PREFIX='/usr'
 export CONFIG_SHARED='TRUE'
 

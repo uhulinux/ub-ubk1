@@ -2,6 +2,9 @@
 
 export CXXFLAGS=""
 
+# A -O3 veszélyes
+ub_replace -O3 -O2 Makefile
+
 # Fix Makefile
 sed -i \
     -e '/^TINYXML_USE_STL/ s|=.*|= YES|' \
