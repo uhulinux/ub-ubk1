@@ -2,4 +2,5 @@
 
 ub_install \
 	MANDIR="/usr/share/man" \
-	RAISE_SETFCAP=no
+	RAISE_SETFCAP=no \
+    lib=/lib
