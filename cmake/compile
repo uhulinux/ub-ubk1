@@ -1,5 +1,12 @@
 #!/bin/sh -eux
 
+# A -O3 veszélyes
+
+ub_replace -O3 -O2 Modules/Compiler/GNU.cmake
+ub_replace -O3 -O2 Modules/Compiler/GNU-Fortran.cmake
+ub_replace -O3 -O2 Modules/Compiler/Intel.cmake
+ub_replace -O3 -O2 Modules/Compiler/PathScale.cmake
+
 mkdir build
 cd build
 ../bootstrap \

@@ -64,7 +64,7 @@ r28884 | gbtami@gmail.com | 2012-05-23 11:12:11 +0200 (Wed, 23 May 2012) | 2 lin
 r26998 | gbtami@gmail.com | 2011-11-05 10:58:50 +0100 (Sat, 05 Nov 2011) | 3 lines
 
 Add excludes to save pyconfig.h for Python3 package
-Fix tkinter files 
+Fix tkinter files
 
 ------------------------------------------------------------------------
 r26349 | gbtami@gmail.com | 2011-09-29 08:20:46 +0200 (Thu, 29 Sep 2011) | 2 lines

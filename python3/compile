@@ -1,5 +1,8 @@
 #!/bin/sh -eux
 
+# A -O3 veszélyes
+ub_replace -O3 -O2 configure
+
 ub_configure \
 	--without-ensurepip
 ub_make

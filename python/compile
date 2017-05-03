@@ -1,5 +1,8 @@
 #!/bin/sh -eux
 
+# A -O3 veszélyes
+ub_replace -O3 -O2 configure
+
 ub_configure \
 	--enable-unicode=ucs4 \
 	--with-system-expat \
