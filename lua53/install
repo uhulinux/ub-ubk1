@@ -16,4 +16,3 @@ ln -sf lua53.pc  "$UB_INSTALLDIR"/usr/lib/pkgconfig/lua-5.3.pc
 cd "$UB_INSTALLDIR"/usr/share/man/man1
 mv lua.1 lua5.3.1
 mv luac.1 luac5.3.1
-

@@ -22,7 +22,7 @@ acquire fix
 ------------------------------------------------------------------------
 r19561 | ntomasz@uhuklub.hu | 2009-08-20 11:55:54 +0200 (Thu, 20 Aug 2009) | 4 lines
 
-fix previous commit: 
+fix previous commit:
  * restore dropped FLAGS=-I"$(pwd)/interface")
    needs for paranoia_cachemodel_size()
 
