@@ -80,6 +80,13 @@ perl-text-diff
 perl-text-patch
 perl-file-sharedir
 perl-alien-sdl
+perl-test-nowarnings
+perl-test-deep
+perl-test-differences
+perl-sub-uplevel
+perl-test-exception
+perl-tree-dagnode
+perl-test-warn
 perl-test-most
 perl-sdl
 perl-sgmls
@@ -92,14 +99,12 @@ perl-strictures
 perl-sub-exporter-progressive
 perl-sub-install
 perl-sub-name
-perl-sub-uplevel
 perl-sys-hostname-long
 perl-term-readkey
 perl-test-tcp
 perl-text-csv
 perl-text-csv-xs
 perl-text-wrapi18n
-perl-tree-dagnode
 perl-try-tiny
 perl-unicode-linebreak
 perl-unix-mknod
@@ -129,8 +134,6 @@ perl-params-validate
 perl-path-class
 perl-template-toolkit
 perl-test-base
-perl-test-exception
-perl-test-nowarnings
 perl-text-glob
 perl-xml-twig
 perl-xml-xpath
@@ -147,9 +150,7 @@ perl-mail-mbox-messageparser
 perl-mime-tools
 perl-module-implementation
 perl-sub-exporter
-perl-test-differences
 perl-test-output
-perl-test-warn
 perl-xml-sax
 perl-xml-semanticdiff
 perl-cairo
@@ -181,7 +182,6 @@ perl-file-basedir
 perl-file-desktopentry
 perl-gtk2-ex-formfactory
 perl-linux-desktopfiles
-perl-test-deep
 perl-convert-tnef
 perl-file-mimeinfo
 perl-xml-filter-buffertext
