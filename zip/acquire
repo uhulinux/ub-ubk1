@@ -5,4 +5,3 @@
 
 zip${UB_VERSION//./}.tar.gz  zip${UB_VERSION//./}
 	http://downloads.sourceforge.net/infozip/zip30.tar.gz
-
