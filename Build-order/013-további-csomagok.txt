@@ -38,10 +38,8 @@ beecrypt
 physfs
 smpeg
 pygame
-sdl-gfx
 sdl-image
 sdl-mixer
 sdl-net
-sdl-pango
 sdl-sound
 sdl-ttf

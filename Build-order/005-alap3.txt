@@ -64,6 +64,8 @@ sbc
 libsoxr
 pulseaudio
 sdl
+sdl-gfx
+sdl-pango
 libtheora
 gst-plugins-base
 tevent

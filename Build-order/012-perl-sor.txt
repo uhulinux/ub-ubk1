@@ -74,6 +74,13 @@ perl-ole-storage-lite
 perl-package-stash-xs
 perl-params-util
 perl-role-tiny
+perl-tie-simple
+perl-algorithm-diff
+perl-text-diff
+perl-text-patch
+perl-file-sharedir
+perl-alien-sdl
+perl-test-most
 perl-sdl
 perl-sgmls
 perl-socket6
@@ -92,7 +99,6 @@ perl-test-tcp
 perl-text-csv
 perl-text-csv-xs
 perl-text-wrapi18n
-perl-tie-simple
 perl-tree-dagnode
 perl-try-tiny
 perl-unicode-linebreak
@@ -113,7 +119,6 @@ perl-email-messageid
 perl-email-simple
 perl-eval-closure
 perl-extutils-installpaths
-perl-file-sharedir
 perl-mailtools
 perl-mime-encwords
 perl-module-runtime
@@ -126,9 +131,7 @@ perl-template-toolkit
 perl-test-base
 perl-test-exception
 perl-test-nowarnings
-perl-text-diff
 perl-text-glob
-perl-text-patch
 perl-xml-twig
 perl-xml-xpath
 perl-convert-uulib
