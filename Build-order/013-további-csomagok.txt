@@ -1,7 +1,6 @@
 libspectre
 clucene-core
 libgtkhtml2
-compton-conf
 pcsc-lite
 gwenhywfar
 libmusicbrainz
