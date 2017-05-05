@@ -78,7 +78,6 @@ r24048 | galamb15@kabelszat2002.hu | 2010-07-29 20:40:24 +0200 (Thu, 29 Jul 2010
 acquire fix
 install fix - no examples
 
-
 ------------------------------------------------------------------------
 r23388 | gbtami@gmail.com | 2010-04-29 10:36:41 +0200 (Thu, 29 Apr 2010) | 4 lines
 
@@ -98,7 +97,6 @@ r20927 | galamb15@kabelszat2002.hu | 2009-11-12 19:31:53 +0100 (Thu, 12 Nov 2009
 2.5 -> 2.6
 add patch to fix version number
 disable pic and assertions to build opengtl
-
 
 ------------------------------------------------------------------------
 r18199 | galamb15@kabelszat2002.hu | 2009-04-25 09:00:46 +0200 (Sat, 25 Apr 2009) | 1 line
