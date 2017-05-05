@@ -1,6 +1,6 @@
 gconf2-dev
 glib-dev
-gnome-keyring-dev
+libgnome-keyring-dev
 gobject-introspection-dev
 intltool
 json-glib-dev
