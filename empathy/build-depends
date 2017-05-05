@@ -5,10 +5,10 @@ folks-dev
 gcr-dev
 geoclue-dev
 geocode-glib-dev
+gnome-common
 gnome-desktop-dev
 gnome-doc-utils
 gnome-online-accounts-dev
-gnutls-dev
 gsettings-desktop-schemas
 gst-plugins-bad-dev
 gst-plugins-base-dev
@@ -37,5 +37,6 @@ systemd-dev
 telepathy-farstream-dev
 telepathy-logger-dev
 telepathy-mission-control-dev
-webkitgtk3-dev
+webkit2gtk-dev
 xz-dev
+yelp-tools

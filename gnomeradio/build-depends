@@ -3,7 +3,6 @@ gnome-doc-utils
 gst-plugins-base-dev
 intltool
 itstool
-libgnome-media-profiles-dev
 libgnomeui2-dev
 libv4l-dev
 lirc-dev

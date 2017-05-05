@@ -4,6 +4,7 @@ db4-dev
 evolution-data-server-dev
 geoclue-dev
 geocode-glib-dev
+gnome-common
 gnome-desktop-dev
 gnome-doc-utils
 gnome-online-accounts-dev
@@ -33,6 +34,6 @@ python-dev
 spamassassin
 startup-notification-dev
 systemd-dev
-webkitgtk3-dev
+webkit2gtk-dev
 xcb-util-dev
 xz-dev

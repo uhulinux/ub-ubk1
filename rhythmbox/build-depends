@@ -26,5 +26,4 @@ systemd-dev
 tdb-dev
 totem-plparser-dev
 vala-dev
-webkitgtk3-dev
 xcb-util-dev
