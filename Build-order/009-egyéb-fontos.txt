@@ -49,7 +49,6 @@ atkmm
 boost-jam
 fuse
 webkitgtk3
-webkit2gtk
 neon
 fltk
 wxwidgets
