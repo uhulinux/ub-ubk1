@@ -1,4 +1,5 @@
 #!/bin/sh -eux
 
 make addtst
-make
+export CFLAGS+="-fPIC"
+make CCFLAGS=" -c $CFLAGS"
