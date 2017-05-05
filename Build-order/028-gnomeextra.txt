@@ -57,4 +57,3 @@ glom
 cairo-dock-plugins
 gnome-photos
 rhythmbox
-budgie-desktop
