@@ -10,6 +10,7 @@ platform="-platform linux-g++-32"
 fi
 
 export LD_LIBRARY_PATH="$(pwd)"/lib
+export UB_MAKE_PROCS=2
 
 ./configure \
 	$platform \
