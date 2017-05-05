@@ -13,13 +13,9 @@ plotutils
 emacs
 gnuplot
 libqalculate
-libextractor
 libindicate
 libappindicator
-libgnome2
 libcryptui
-compton
-libbonoboui2
 mutagen
 libgpod
 libsocialweb

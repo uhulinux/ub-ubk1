@@ -108,6 +108,8 @@ sddm
 sip
 sofia-sip
 sound-theme-freedesktop
+libgnome2
+libbonoboui2
 squashfs-tools
 syslinux
 python-twisted

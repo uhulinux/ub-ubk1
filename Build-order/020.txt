@@ -1,4 +1,5 @@
 ffmpeg
+libextractor
 opencv
 frei0r
 libquicktime
