@@ -1,18 +1,7 @@
-From b8e096f75c9a2fb3a5f02146f0e52ccae796aa87 Mon Sep 17 00:00:00 2001
-From: hasufell <hasufell@gentoo.org>
-Date: Sun, 6 Oct 2013 14:39:02 +0200
-Subject: [PATCH] use stdout to avoid broken tmp files
-
-e.g. fontconfig errors will break parsing
----
- idesktool | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
-
-diff --git a/idesktool b/idesktool
-index 931ad6f..90e5ceb 100755
---- a/idesktool
-+++ b/idesktool
-@@ -88,10 +88,10 @@ end" > ~/.ideskrc
+diff -Naur orig/idesktool patched/idesktool
+--- orig/idesktool	2005-09-12 12:50:12.134741323 +0200
++++ patched/idesktool	2017-05-06 00:02:50.047573804 +0200
+@@ -88,10 +88,10 @@
  newcaption()
  {
  
@@ -25,7 +14,7 @@ index 931ad6f..90e5ceb 100755
  retval=$?
  case $retval in
       0) cap=$(cat ~/.idesktop/inputbox.tmp.$$)
-@@ -132,10 +132,10 @@ modcaption=NoCaption$$
+@@ -132,10 +132,10 @@
  fi
  
  
@@ -38,7 +27,7 @@ index 931ad6f..90e5ceb 100755
  retval=$?
  
  case $retval in
-@@ -187,10 +187,10 @@ modifycaption()
+@@ -187,10 +187,10 @@
  
  {
  
@@ -51,7 +40,7 @@ index 931ad6f..90e5ceb 100755
  retval=$?
  case $retval in
       0) cap=$(cat ~/.idesktop/inputbox.tmp.$$)
-@@ -235,10 +235,10 @@ modcaption=NoCaption$$
+@@ -235,10 +235,10 @@
  fi
  
  
@@ -64,13 +53,13 @@ index 931ad6f..90e5ceb 100755
  retval=$?
  case $retval in 
  1) rm -f ~/.idesktop/inputbox.tmp.$$
-@@ -423,13 +423,13 @@ argyyep()
+@@ -423,13 +423,13 @@
  
  firstwindow=argyyep
  
 -$DIALOG --title "idesktool 1.36" \
 +$DIALOG --stdout --title "idesktool 1.36" \
-         --radiolist "Desktop Icon Manager" 18 40 0 \
+         --radiolist "Desktop Icon Manager" 0 0 0 \
          "Properties" "View or Edit This Icon" off \
          "Delete" "    Remove This Icon" off \
          "New" "       Add a New Icon" off \
@@ -80,23 +69,23 @@ index 931ad6f..90e5ceb 100755
  
  retval=$?
  
-@@ -469,13 +469,13 @@ argynope()
+@@ -469,13 +469,13 @@
  
  firstwindow=argynope
  
 -$DIALOG --title "idesktool 1.36" \
 +$DIALOG --stdout --title "idesktool 1.36" \
-         --radiolist "Desktop Icon Manager" 18 40 0 \
+         --radiolist "Desktop Icon Manager" 0 0 0 \
          "Properties" "View or Edit an Icon" off \
          "Delete" "    Remove an Icon" off \
          "New" "       Add a new Icon" off \
          "Refresh" "   Reload the Desktop" off \
 -	"Configure" " Edit iDesk's conf. file" off 2> ~/.idesktop/checklist.tmp.$$	
-+	"Configure" " Edit iDesk's conf. file" off 1> ~/.idesktop/checklist.tmp.$$
++	"Configure" " Edit iDesk's conf. file" off 1> ~/.idesktop/checklist.tmp.$$	
  retval=$?
  
  case $retval in
-@@ -511,8 +511,8 @@ esac
+@@ -511,8 +511,8 @@
  ##########################################################
  editconfig()
  {
@@ -107,6 +96,3 @@ index 931ad6f..90e5ceb 100755
  
  case $? in
    0) cat ~/.idesktop/editbox.txt.$$ > ~/.ideskrc
--- 
-1.8.3.2
-

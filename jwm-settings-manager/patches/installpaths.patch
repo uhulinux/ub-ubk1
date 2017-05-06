@@ -1,16 +1,7 @@
 diff -Naur orig/data/CMakeLists.txt patched/data/CMakeLists.txt
---- orig/data/CMakeLists.txt	2016-04-02 17:09:20.000000000 +0200
-+++ patched/data/CMakeLists.txt	2016-04-20 23:17:48.267375533 +0200
-@@ -15,7 +15,7 @@
- add_subdirectory(themes)
- 
- # install icon finder script
--install (FILES jwmIconFinder DESTINATION usr/bin)
-+install (FILES jwmIconFinder DESTINATION bin)
- 
- #install themes 
- install (DIRECTORY themes DESTINATION share/jwm-settings-manager)
-@@ -27,9 +27,9 @@
+--- orig/data/CMakeLists.txt	2016-12-13 16:29:57.134741323 +0100
++++ patched/data/CMakeLists.txt	2017-05-06 00:27:05.529421668 +0200
+@@ -24,9 +24,9 @@
  install(FILES icons/jwm-settings-manager.png icons/jwm-settings-manager.xpm DESTINATION share/pixmaps)
  
  # install all icons to our own icon directory

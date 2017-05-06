@@ -16,3 +16,4 @@ cinnamon-control-center
 cinnamon-bluetooth
 cinnamon
 pix
+xreader

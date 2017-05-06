@@ -1,6 +1,5 @@
 #!/bin/sh -eux
 
-
 make \
 	PREEFIX=/usr \
 	X11INC=/usr/include/X11 \
