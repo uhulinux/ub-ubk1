@@ -8,7 +8,6 @@ pcmanfm-qt
 lximage-qt
 lxqt-l10n
 lxqt-about
-lxqt-common
 lxqt-notificationd
 lxqt-openssh-askpass
 lxqt-globalkeys
