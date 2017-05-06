@@ -19,7 +19,6 @@ r30706 | galamb15@kabelszat2002.hu | 2013-03-05 18:46:21 +0100 (Tue, 05 Mar 2013
 build-depends fix - glu
 add patch to disable smooth_opengl3 demo
 
-
 ------------------------------------------------------------------------
 r29618 | ralesk@uhulinux.hu | 2012-10-03 11:47:54 +0200 (Wed, 03 Oct 2012) | 1 line
 
