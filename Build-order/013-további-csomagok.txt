@@ -24,8 +24,6 @@ imagemagick
 cairomm
 pangomm
 gtkmm2
-libgnomecanvasmm2
-libgnomemm2
 libsexymm
 libstemmer
 appstream

@@ -165,6 +165,8 @@ apache-mod-dnssd
 colord-gtk
 glfw2
 goffice08
+openmpi
+openssh
 gtkspell
 fonts-ghostscript-std
 hunspell-hu
@@ -177,14 +179,11 @@ ninja
 reportlab
 rpcbind
 squeak
-telepathy-glib
-telepathy-rakia
 transfig
 apache-ant
 farstream
 fluidsynth
 gst-editing-services
-gtksourceview18
 gupnp-dlna
 notification-daemon
 nvidia-cg-toolkit
@@ -204,7 +203,6 @@ vim
 xscreensaver
 gtkhtml
 gtk-vnc
-openssh
 plymouth
 ptlib
 redland
@@ -255,7 +253,6 @@ gst-plugins-good
 dhcpcd
 dmapi
 h323plus
-openmpi
 smpeg2
 gnonlin
 foo2zjs
