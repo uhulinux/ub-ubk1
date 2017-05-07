@@ -26,7 +26,6 @@ xmlto
 rarian
 opensp
 openjade
-texlive
 gnome-doc-utils
 gtk-doc
 linuxdoc-tools

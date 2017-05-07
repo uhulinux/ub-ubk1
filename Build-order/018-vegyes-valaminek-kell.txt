@@ -169,6 +169,7 @@ openmpi
 openssh
 gtkspell
 fonts-ghostscript-std
+texlive
 hunspell-hu
 icon-theme-tango
 jpilot
