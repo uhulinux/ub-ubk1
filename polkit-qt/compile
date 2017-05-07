@@ -2,4 +2,5 @@
 
 export USE_QT5=YES
 export  CMAKE_PREFIX_PATH=/usr/lib/qt5
-ub_compile
+ub_compile \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib
