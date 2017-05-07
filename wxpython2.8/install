@@ -7,7 +7,7 @@ python2 setup.py \
 	UNICODE=1 \
 	WX_CONFIG=/usr/bin/wx-config2 \
 	install \
-	--root="$UB_INSTALLDIR" 
+	--root="$UB_INSTALLDIR"
 
 rm -rf "${UB_INSTALLDIR}"/usr/bin
 rm -f "${UB_INSTALLDIR}"/usr/lib/python2.7/site-packages/{wx.pth,wxversion.py*}

@@ -1,5 +1,10 @@
 #!/bin/bash -eux
 
+# A -O3 veszélyes
+ub_replace -O3 -O2 src/png/scripts/makefile.linux
+ub_replace -O3 -O2 wxPython/config.py
+ub_replace -O3 -O2 wxPython/wx/build/config.py
+
 ./configure \
 	--prefix=/usr \
 	--libdir=/usr/lib \
