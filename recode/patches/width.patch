@@ -1,11 +1,11 @@
-diff -Naurdp recode-3.6.orig/src/recodext.h recode-3.6/src/recodext.h
---- recode-3.6.orig/src/recodext.h	2001-01-04 15:36:54.000000000 +0100
-+++ recode-3.6/src/recodext.h	2009-12-01 18:35:13.000000000 +0100
-@@ -218,7 +218,7 @@ struct recode_symbol
+diff -Naur Recode-master-orig/src/recodext.h Recode-master/src/recodext.h
+--- Recode-master-orig/src/recodext.h	2014-02-02 20:58:48.000000000 +0100
++++ Recode-master/src/recodext.h	2017-05-07 09:48:38.774328772 +0200
+@@ -410,7 +410,7 @@
      enum recode_symbol_type type : 3;
  
      /* Non zero if this one should be ignored.  */
--    bool ignore : 2;
+-    bool ignore : 1;
 +    bool ignore;
    };
  
