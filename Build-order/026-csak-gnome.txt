@@ -6,6 +6,7 @@ libgnomeui2
 gnome-keyring
 telepathy-glib
 telepathy-rakia
+telephaty-mission-control
 gnome-online-accounts
 memphis
 libchamplain
@@ -40,6 +41,9 @@ libgames-support
 policykit
 gupnp-av
 icon-theme-gnome
+
+gtkhtml
+
 lasem
 libgnomecups
 libgovirt
