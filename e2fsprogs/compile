@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
+export CFLAGS="-fPIC"
 cd "$UB_OBJECTDIR"
 
 UB_CONFIGURE_DIR="$UB_COMPILEDIR" \
