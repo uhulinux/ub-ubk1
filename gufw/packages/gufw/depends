@@ -1,5 +1,6 @@
+icon-theme-gnome-symbolic
 polkit
-pygtk
-python-netifaces
+py3gobject
+python3-distutils-extra
 ufw
-webkitgtk3
+webkit2gtk
