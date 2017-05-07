@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-${UB_VERSION}.tar.gz compton-conf-${UB_VERSION}/
-	https://github.com/lxde/compton-conf/archive/
-
-#4f65d6f046d39ad3deebcca7662e411940f9bcd3.zip compton-conf-4f65d6f046d39ad3deebcca7662e411940f9bcd3/
+#${UB_VERSION}.tar.gz compton-conf-${UB_VERSION}/
 #	https://github.com/lxde/compton-conf/archive/
+
+${UB_VERSION}.tar.gz compton-conf-04fafe0/
+	git://github.com/lxde/compton-conf.git@04fafe0

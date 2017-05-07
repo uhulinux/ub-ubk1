@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-${UB_VERSION}.tar.gz lxqt-panel-${UB_VERSION}/
-	https://github.com/lxde/lxqt-panel/archive/
+#${UB_VERSION}.tar.gz lxqt-panel-${UB_VERSION}/
+#	https://github.com/lxde/lxqt-panel/archive/
+
+${UB_VERSION}.tar.gz lxqt-panel-76ed5c1/
+	git://github.com/lxde/lxqt-panel.git@76ed5c1

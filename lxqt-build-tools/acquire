@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-${UB_VERSION}.tar.gz lxqt-build-tools-${UB_VERSION}/
-	https://github.com/lxde/lxqt-build-tools/archive/
+#${UB_VERSION}.tar.gz lxqt-build-tools-${UB_VERSION}/
+#	https://github.com/lxde/lxqt-build-tools/archive/
+
+${UB_VERSION}.tar.gz lxqt-build-tools-2fbc431/
+	git://github.com/lxde/lxqt-build-tools.git@2fbc431

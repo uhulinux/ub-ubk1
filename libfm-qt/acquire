@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-${UB_VERSION}.tar.gz libfm-qt-${UB_VERSION}/
-	https://github.com/lxde/libfm-qt/archive/
+#${UB_VERSION}.tar.gz libfm-qt-${UB_VERSION}/
+#	https://github.com/lxde/libfm-qt/archive/
+
+${UB_VERSION}.tar.gz libfm-qt-cd7e750/
+	git://github.com/lxde/libfm-qt.git@cd7e750
