@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-bluecurve-gtk-themes-${UB_VERSION/[~+]/-}.fc12.src.rpm bluecurve-gtk-themes-${UB_VERSION%[~+]*}.tar.bz2 bluecurve-gtk-themes-${UB_VERSION%[~+]*}/
-	ftp://ftp.ie.debian.org/disk1/fedora-archive/fedora/linux/releases/12/Everything/source/SRPMS/
+bluecurve-gtk-themes-${UB_VERSION}-4.el6.nux.src.rpm bluecurve-gtk-themes-${UB_VERSION}.tar.bz2 bluecurve-gtk-themes-${UB_VERSION}/
+        https://li.nux.ro/download/nux/dextop/el6/SRPMS/
+
+# bluecurve-gtk-themes-${UB_VERSION/[~+]/-}.fc12.src.rpm bluecurve-gtk-themes-${UB_VERSION%[~+]*}.tar.bz2 bluecurve-gtk-themes-${UB_VERSION%[~+]*}/
+#	ftp://ftp.ie.debian.org/disk1/fedora-archive/fedora/linux/releases/12/Everything/source/SRPMS/
