@@ -1,4 +1,5 @@
 #!/bin/sh -eux
 
+rm CMakeLists.txt
 ub_compile \
-	-Denable-ladspa=ON
+        --enable-ladspa=ON

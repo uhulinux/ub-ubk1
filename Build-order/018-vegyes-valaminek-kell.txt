@@ -44,7 +44,6 @@ glm
 gloox
 goocanvas
 griffith
-gsound
 hdf5
 icon-naming-utils
 icoutils
@@ -202,7 +201,6 @@ telepathy-mission-control
 tigervnc
 vim
 xscreensaver
-gtkhtml
 gtk-vnc
 plymouth
 ptlib
@@ -220,7 +218,6 @@ gnumeric
 rrdtool
 sane-backends
 sdl2
-telepathy-logger
 x11vnc
 xterm
 conky
@@ -231,12 +228,10 @@ upower
 fox1.6
 lesstif
 recordmydesktop
-telepathy-gabble
 zeitgeist
 graphicsmagick
 hplip
 plack
-telepathy-salut
 cdrdao
 freerdp
 spamassassin
