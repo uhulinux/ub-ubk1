@@ -1,0 +1,16 @@
+diff -Nur orig/sh.proc.c mod/sh.proc.c
+--- orig/sh.proc.c	2015-02-22 22:40:14.000000000 +0100
++++ mod/sh.proc.c	2017-05-08 12:27:06.205825318 +0200
+@@ -47,10 +47,8 @@
+ # define HZ 16
+ #endif /* aiws */
+ 
+-#if defined(_BSD) || (defined(IRIS4D) && __STDC__) || defined(__lucid) || defined(__linux__) || defined(__GNU__) || defined(__GLIBC__)
+-# if !defined(__ANDROID__)
+-#  define BSDWAIT
+-# endif
++#if defined(_BSD) || (defined(IRIS4D) && __STDC__) || defined(__lucid)
++# define BSDWAIT
+ #endif /* _BSD || (IRIS4D && __STDC__) || __lucid || glibc */
+ #ifndef WTERMSIG
+ # define WTERMSIG(w)	(((union wait *) &(w))->w_termsig)
