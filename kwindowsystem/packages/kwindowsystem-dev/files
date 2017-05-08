@@ -12,6 +12,7 @@
 	/usr/lib/pkgconfig
 	/usr/lib/qt5/mkspecs
 	/usr/share/aclocal
+	/usr/share/cmake
 	/usr/share/gtk-doc
 	/usr/share/man/**/man1/*-config.1*
 	/usr/share/man/**/man3

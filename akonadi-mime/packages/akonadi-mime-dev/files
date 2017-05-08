@@ -14,6 +14,7 @@
 	/usr/lib/qt5/mkspecs
 	/usr/share/**/gir-1.0
 	/usr/share/aclocal
+	/usr/share/cmake
 	/usr/share/devhelp
 	/usr/share/gtk-doc
 	/usr/share/man/**/man1/*-config.1*

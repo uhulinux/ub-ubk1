@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 libkgapi-${UB_VERSION}.tar.xz libkgapi-${UB_VERSION}/
-	http://download.kde.org/stable/libkgapi/${UB_VERSION}/src/
+	https://download.kde.org/stable/applications/${UB_VERSION}/src/
