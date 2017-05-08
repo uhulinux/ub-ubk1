@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
-cd rust-std-i686-unknown-linux-gnu
+cd rust-std-x86_64-unknown-linux-gnu
 cp -r lib ${UB_INSTALLDIR}/usr
 
 cd ../rustc
