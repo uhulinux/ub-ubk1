@@ -19,6 +19,7 @@ libidn-dev
 libjpeg-turbo-dev
 libmcrypt-dev
 libnetsnmp-dev
+libnl-dev
 libpng-dev
 libtiff-dev
 libxpm-dev

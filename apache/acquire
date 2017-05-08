@@ -2,4 +2,5 @@
 
 httpd-${UB_VERSION}.tar.gz httpd-${UB_VERSION}/
 	http://xenia.sote.hu/ftp/mirrors/www.apache.org/httpd/
-	http://www.apache.org/dist/httpd/
+	https://www.apache.org/dist/httpd/
+    http://archive.apache.org/dist/httpd/

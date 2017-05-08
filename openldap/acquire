@@ -3,4 +3,3 @@
 openldap-${UB_VERSION}.tgz openldap-${UB_VERSION}/
 	ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/
 	ftp://sunsite.cnlab-switch.ch/mirror/OpenLDAP/openldap-release/
-
