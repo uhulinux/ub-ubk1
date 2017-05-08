@@ -10,6 +10,8 @@ telephaty-mission-control
 telepathy-logger
 telepathy-gabble
 telepathy-salut
+gst-plugins-good
+gnonlin
 gnome-online-accounts
 memphis
 libchamplain
@@ -21,6 +23,7 @@ gvfs
 libgdamm
 libgdata
 gsound
+
 
 gnome2-audio
 fonts-cantarell
@@ -46,6 +49,7 @@ gupnp-av
 icon-theme-gnome
 
 gtkhtml
+zeitgeist
 
 lasem
 libgnomecups

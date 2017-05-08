@@ -232,7 +232,6 @@ zeitgeist
 graphicsmagick
 hplip
 plack
-cdrdao
 freerdp
 spamassassin
 gdal
@@ -245,12 +244,11 @@ firefox
 thunderbird
 nagios-plugins
 pstoedit
-gst-plugins-good
 dhcpcd
 dmapi
 h323plus
 smpeg2
-gnonlin
+cups-filters
 foo2zjs
 lightdm-gtk-greeter
 sdl2-image
@@ -263,7 +261,6 @@ coin
 slim
 sfml
 csfml
-cups-filters
 autotrace
 mftrace
 foomatic-db-engine

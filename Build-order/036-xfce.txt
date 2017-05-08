@@ -4,6 +4,7 @@ xfconf
 libxfce4ui
 garcon
 libexo
+lightdm-gt2-greeter
 xfce4-panel
 thunar
 xfce4-settings
