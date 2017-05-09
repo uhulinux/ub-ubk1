@@ -1,3 +1,7 @@
+ufw
+gufw
+lzop
+amavisd-new
 adzapper
 akii
 corkscrew
@@ -71,9 +75,16 @@ kompozer
 otter
 midori
 sylpheed
+claws-mail
+claws-contacts
+claws-mail-themes
+rust
+firefox
 seamonkey
 chromium
 balsa
 evolution-rss
 skype
 ghetto-skype
+belle-sip
+linphone

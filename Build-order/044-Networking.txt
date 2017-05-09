@@ -1,9 +1,0 @@
-claws-contacts
-claws-mail
-claws-mail-themes
-ufw
-gufw
-belle-sip
-linphone
-lzop
-amavisd-new
