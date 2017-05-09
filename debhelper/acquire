@@ -2,3 +2,4 @@
 
 debhelper_${UB_VERSION}.tar.xz debhelper/
 	ftp://ftp.debian.org/debian/pool/main/d/debhelper/
+	ftp://ftp.br.debian.org/deepin/deepin/pool/main/d/debhelper/

@@ -160,7 +160,6 @@ xosd
 yaz
 accountsservice
 alsa-utils
-apache-mod-dnssd
 colord-gtk
 glfw2
 goffice08
@@ -272,3 +271,5 @@ gpsd
 sudo
 yaml-cpp
 pythonqt
+apache-mod-dnssd
+
