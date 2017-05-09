@@ -16,4 +16,4 @@ ub_compile \
 	\
 	--disable-login \
 	--disable-nologin \
-	--disable-chfn-chsh 
+	--disable-chfn-chsh
