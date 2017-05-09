@@ -30,7 +30,7 @@ yakuake
 k9copy
 libkpmcore
 kpartitionmanager
-#k3b
+k3b
 kaffeine
 krusader
 tellico
