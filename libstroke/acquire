@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 libstroke-${UB_VERSION}.tar.gz libstroke-${UB_VERSION}/
-	http://etla.net/libstroke/
+	ftp://ftp.fr.netbsd.org/pub/pkgsrc/distfiles/
