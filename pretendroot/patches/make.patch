@@ -1,0 +1,10 @@
+diff -Naur pretendroot-0.9-orig/Makefile pretendroot-0.9/Makefile
+--- pretendroot-0.9-orig/Makefile	2003-07-19 13:27:22.000000000 +0200
++++ pretendroot-0.9/Makefile	2017-04-18 20:10:07.912733762 +0200
+@@ -1,5 +1,5 @@
+ libpretendroot.so: libpretendroot.c
+-	gcc -Wall -shared -ldl -o libpretendroot.so libpretendroot.c
++	gcc -fPIC -Wall -shared -ldl -o libpretendroot.so libpretendroot.c
+ 
+ clean:
+ 	rm -f libpretendroot.so

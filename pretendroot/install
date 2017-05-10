@@ -2,4 +2,3 @@
 
 install -m 755 pretendroot ${UB_INSTALLDIR}/usr/bin/
 install -m 755 libpretendroot.so ${UB_INSTALLDIR}/usr/lib/
-
