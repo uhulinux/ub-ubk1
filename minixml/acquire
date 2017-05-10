@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-mxml-${UB_VERSION}.tar.gz mxml-${UB_VERSION}/
-	http://www.msweet.org/files/project3/
+release-${UB_VERSION}.tar.gz mxml-release-${UB_VERSION}/
+	https://github.com/michaelrsweet/mxml/archive/

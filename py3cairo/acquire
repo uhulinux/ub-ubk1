@@ -3,6 +3,5 @@
 pycairo-${UB_VERSION}.tar.bz2 pycairo-${UB_VERSION}/
 	http://cairographics.org/releases/
 
-
 waf-1.7.15.tar.bz2 waf-1.7.15/waf
-	http://waf.googlecode.com/files/
+	http://download.openpkg.org/components/cache/waf/
