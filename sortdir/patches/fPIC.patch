@@ -1,0 +1,10 @@
+diff -Naur sortdir-0.6-orig/Makefile sortdir-0.6/Makefile
+--- sortdir-0.6-orig/Makefile	2003-07-19 13:27:44.000000000 +0200
++++ sortdir-0.6/Makefile	2017-04-18 20:33:50.433419339 +0200
+@@ -1,5 +1,5 @@
+ libsortdir.so: libsortdir.c
+-	gcc -Wall -shared -ldl -o libsortdir.so libsortdir.c
++	gcc -fPIC -Wall -shared -ldl -o libsortdir.so libsortdir.c
+ 
+ clean:
+ 	rm -f libsortdir.so
