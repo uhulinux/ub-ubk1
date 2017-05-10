@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-libcue-master.zip libcue-master/
-	https://github.com/lipnitsk/libcue/archive/master.zip
+libcue-${UB_VERSION}.tar.gz libcue-07fffbe/
+	git://github.com/lipnitsk/libcue.git@07fffbe
