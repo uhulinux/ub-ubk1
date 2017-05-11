@@ -270,4 +270,6 @@ sudo
 yaml-cpp
 pythonqt
 apache-mod-dnssd
+openal
+
 
