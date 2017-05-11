@@ -8,4 +8,3 @@ lsof_${UB_VERSION}.tar.gz lsof_${UB_VERSION}/README.lsof_${UB_VERSION}
 
 lsof_${UB_VERSION}.tar.gz lsof_${UB_VERSION}/RELEASE.SUMMARY_${UB_VERSION}
 	ftp://ftp.cert.dfn.de/pub/tools/admin/lsof/
-

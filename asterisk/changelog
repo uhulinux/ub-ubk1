@@ -45,12 +45,10 @@ r22993 | doome | 2010-03-24 16:08:39 +0100 (Wed, 24 Mar 2010) | 3 lines
 
 - saynumber works properly over 1000
 
-
 ------------------------------------------------------------------------
 r22992 | doome | 2010-03-24 15:25:51 +0100 (Wed, 24 Mar 2010) | 3 lines
 
 - hungarian saynumber with two tones
-
 
 ------------------------------------------------------------------------
 r22713 | peritus@freemail.hu | 2010-03-04 14:10:52 +0100 (Thu, 04 Mar 2010) | 3 lines
@@ -63,12 +61,10 @@ r18512 | doome | 2009-05-21 06:31:21 +0200 (Thu, 21 May 2009) | 3 lines
 
 - use colors in fork mode, too
 
-
 ------------------------------------------------------------------------
 r18511 | doome | 2009-05-21 06:03:13 +0200 (Thu, 21 May 2009) | 3 lines
 
 - enable console colorization
-
 
 ------------------------------------------------------------------------
 r18324 | janusz@uhulinux.hu | 2009-05-06 11:50:30 +0200 (Wed, 06 May 2009) | 4 lines
@@ -87,7 +83,6 @@ added app_backticks
 working fax & misdn
 added minimal service file
 added ilbc codec
-
 
 ------------------------------------------------------------------------
 r15961 | pozsy@uhulinux.hu | 2008-09-04 19:31:40 +0200 (Thu, 04 Sep 2008) | 2 lines

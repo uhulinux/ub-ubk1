@@ -2,4 +2,3 @@
 
 yes "" | ./Configure linux
 make
-

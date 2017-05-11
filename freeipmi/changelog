@@ -95,8 +95,7 @@ build-depends fix
 r20230 | galamb15@kabelszat2002.hu | 2009-10-06 10:44:32 +0200 (Tue, 06 Oct 2009) | 4 lines
 
 0.6.6 -> 0.7.13
-acquire fix 
-
+acquire fix
 
 ------------------------------------------------------------------------
 r16060 | janusz@uhulinux.hu | 2008-09-10 12:58:26 +0200 (Wed, 10 Sep 2008) | 2 lines

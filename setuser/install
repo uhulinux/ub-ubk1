@@ -3,4 +3,3 @@
 mkdir -p ${UB_INSTALLDIR}/usr/sbin
 
 install -m 755 -s setuser ${UB_INSTALLDIR}/usr/sbin/
-

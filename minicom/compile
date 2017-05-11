@@ -2,4 +2,3 @@
 
 ub_compile \
 	--enable-dfl-port=/dev/modem
-
