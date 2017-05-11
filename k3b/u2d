@@ -1,1 +1,2 @@
-noupdate: git branch forrás
+dir=$(urllist http://download.kde.org/stable/applications/ | grep -E '^([0-9])' | sort -V | tail -n 1)
+u2d http://download.kde.org/stable/applications/$dir/src/ k3b-

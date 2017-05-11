@@ -1,4 +1,6 @@
 #!/usr/bin/env dl
 
-k9copy_${UB_VERSION}.orig.tar.xz k9copy/
-	http://main.mepis-deb.org/mepiscr/testrepo/pool/test/k/k9copy/
+# saját forrás: nem jön le http-n, plusz az eredeti csak tar, nem tar.gz
+ 
+k9copy-${UB_VERSION}.tar.gz k9copy/
+	ftp://download.ubk.hu/src/misc/
