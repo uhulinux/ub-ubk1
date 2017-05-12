@@ -3,4 +3,4 @@
 chmod +x install
 DESTDIR="$UB_INSTALLDIR" ./install
 
-rm "$UB_INSTALLDIR"/usr/share/man/{es,nl}/man1/dcraw.1
+rm "$UB_INSTALLDIR"/usr/share/man/{es,eo,nl}/man1/dcraw.1
