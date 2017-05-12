@@ -38,7 +38,6 @@ irssi
 deluge
 ytalk
 bittorrent
-pine
 clamz
 stunnel
 lftp
@@ -66,6 +65,7 @@ google-chrome
 opera
 hexchat
 ettercap
+libfilezilla
 filezilla
 wireshark
 ntop

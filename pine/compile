@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-ln -s /usr krb5
-
-./build \
-	SSLDIR=/etc/ssl \
-	SSLINCLUDE=/usr/include/openssl \
-	SSLLIB=/usr/lib \
-	lrh
