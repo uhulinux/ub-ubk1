@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-nttcp-${UB_VERSION}.tar.gz nttcp-${UB_VERSION}/
-	ftp://ftp.tu-freiberg.de/pub/sgi/freeware/source/nttcp/

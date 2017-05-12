@@ -1,3 +1,4 @@
+inetutils
 ufw
 gufw
 lzop
@@ -15,7 +16,6 @@ ncpfs
 noip-duc
 nstx
 ntalk
-nttcp
 phpmyfaq
 pptpclient
 tcpcgi
@@ -38,7 +38,6 @@ clamz
 stunnel
 lftp
 nmap
-xpn
 transgui
 elinks
 grsync
