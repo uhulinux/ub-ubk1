@@ -3,4 +3,5 @@
 # export CFLAGS+="-Wno-error"
 ub_compile \
 	--disable-werror \
-	--enable-static
+	--enable-static \
+	--enable-64-bit-bfd
