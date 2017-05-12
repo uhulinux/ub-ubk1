@@ -6,7 +6,6 @@ adzapper
 akii
 corkscrew
 finger
-ftp
 htpdate
 icmptx
 iodine
@@ -19,10 +18,7 @@ ntalk
 nttcp
 phpmyfaq
 pptpclient
-rsh
 tcpcgi
-telnet
-tftp
 emil
 p0f
 tcptrack

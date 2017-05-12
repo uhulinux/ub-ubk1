@@ -1,0 +1,24 @@
+#!/bin/bash -eux
+
+# hostname : coreutils
+# ifconfig : net-tools
+# logger : util-linux
+# ping : iputils
+# ping6 : iputils
+# talk : ntalk
+# traceroute : traceroute
+# whois : whois
+# syslogd : sysklogd
+# talkd : ntalkd
+
+ub_compile \
+	--disable-hostname \
+	--disable-ifconfig \
+	--disable-logger \
+	--disable-ping \
+	--disable-ping6 \
+	--disable-talk \
+	--disable-traceroute \
+	--disable-whois \
+	--disable-syslogd \
+	--disable-talkd

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-netkit-rsh_${UB_VERSION}.orig.tar.gz netkit-rsh-${UB_VERSION}/
-	http://ftp.debian.org/debian/pool/main/n/netkit-rsh/
