@@ -19,7 +19,6 @@ libdmapsharing
 libdv
 libdvdnav
 libept
-libexosip2
 libfli
 libfs
 libgadu

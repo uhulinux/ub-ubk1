@@ -1,6 +1,5 @@
 liba52
 libaio
-libantlr3
 libart-lgpl
 libassuan
 libasyncns
@@ -36,7 +35,6 @@ libmowgli
 libnet
 libnfnetlink
 libnfs
-libosip2
 libpaper
 libquvi-scripts
 libraw1394

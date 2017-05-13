@@ -1,8 +1,0 @@
-#!/bin/sh -eux
-
-archopt=""
-if [ "$UB_ARCH" == "amd64" ];then
-archopt="--enable-64bit"
-fi
-ub_compile \
-    $archopt
