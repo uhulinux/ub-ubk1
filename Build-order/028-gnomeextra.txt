@@ -20,7 +20,6 @@ gnome-robots
 gnome-shell-extension-sensors
 gnome-sound-recorder
 gnubiff
-gom
 gpx-viewer
 hitori
 iagno
