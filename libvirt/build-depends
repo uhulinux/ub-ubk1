@@ -4,6 +4,7 @@ curl-dev
 cyrus-sasl2-dev
 fuse-dev
 gnutls-dev
+libcap-dev
 libnl-dev
 libpcap-dev
 libpciaccess-dev

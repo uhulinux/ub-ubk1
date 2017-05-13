@@ -2,5 +2,6 @@ cyrus-sasl2-dev
 gobject-introspection-dev
 intltool
 itstool
+libcap-dev
 libvirt-dev
 vala-dev

@@ -6,6 +6,7 @@ gobject-introspection-dev
 gtk-doc
 intltool
 iptables
+libcap-dev
 libgudev-dev
 libndp-dev
 libnl-dev
