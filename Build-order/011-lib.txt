@@ -13,7 +13,6 @@ libwps
 libnetfilter-conntrack
 libode
 libofx
-libortp
 libpri
 libpwquality
 libsexy

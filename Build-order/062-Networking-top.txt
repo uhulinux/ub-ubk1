@@ -80,5 +80,8 @@ balsa
 evolution-rss
 skype
 ghetto-skype
+bctoolbox
+libortp
+mediastreamer
 belle-sip
 linphone

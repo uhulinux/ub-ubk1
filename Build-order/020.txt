@@ -12,7 +12,6 @@ espeak
 speechd
 wxsvg
 ffmpeg-thumbnailer
-mediastreamer
 gegl
 xmms2
 gimp
