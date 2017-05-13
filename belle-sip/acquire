@@ -1,8 +1,0 @@
-#!/usr/bin/env dl
-
-belle-sip-${UB_VERSION}.tar.gz belle-sip-${UB_VERSION}/
-	http://ftp.acc.umu.se/mirror/gnu.org/savannah/linphone/belle-sip/
-	http://download.savannah.gnu.org/releases/linphone/belle-sip/
-
-antlr.jar
-	http://www.antlr3.org/download/antlr-3.4-complete.jar

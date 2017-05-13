@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-ortp-${UB_VERSION}.tar.gz ortp-${UB_VERSION}/
-	http://download-mirror.savannah.nongnu.org/releases/linphone/ortp/sources/

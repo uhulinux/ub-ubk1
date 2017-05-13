@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_compile \
-	-DICON_UPDATE=OFF \
-	-DDESKTOP_UPDATE=OFF \
-	-DDESKTOP_VALIDATE=OFF

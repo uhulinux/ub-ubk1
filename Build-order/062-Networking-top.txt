@@ -64,7 +64,6 @@ libfilezilla
 filezilla
 wireshark
 ntop
-geary
 kompozer
 otter
 midori
@@ -77,11 +76,6 @@ firefox
 seamonkey
 chromium
 balsa
-evolution-rss
 skype
 ghetto-skype
-bctoolbox
-libortp
-mediastreamer
-belle-sip
-linphone
+

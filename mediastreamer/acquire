@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-mediastreamer-${UB_VERSION}.tar.gz mediastreamer-${UB_VERSION}/
-	http://mirror.lihnidos.org/GNU/savannah//linphone/mediastreamer/
-	http://download.savannah.gnu.org/releases/linphone/mediastreamer/

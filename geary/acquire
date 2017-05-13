@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-geary-${UB_VERSION}.tar.xz geary-${UB_VERSION}/
-	https://download.gnome.org/sources/geary/${UB_VERSION_HEAD2}/

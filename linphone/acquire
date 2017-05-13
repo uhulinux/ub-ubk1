@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-linphone-${UB_VERSION}.tar.gz linphone-${UB_VERSION}/
-	http://ftp.acc.umu.se/mirror/gnu.org/savannah/linphone/${UB_VERSION_HEAD2}.x/sources/
-	http://download.savannah.gnu.org/releases/linphone/${UB_VERSION_HEAD2}.x/sources/
