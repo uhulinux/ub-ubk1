@@ -33,6 +33,5 @@ gnome-shell
 gnome-panel
 gnome-applets
 totem
-sound-juicer
 gnome-terminal
 gnome-initial-setup

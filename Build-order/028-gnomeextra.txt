@@ -43,6 +43,7 @@ aisleriot
 syncevolution
 gnome-clocks
 xchat-gnome
+sound-juicer
 js185
 gxine
 gitg
