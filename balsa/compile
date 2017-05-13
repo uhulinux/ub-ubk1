@@ -9,4 +9,5 @@ ub_compile \
 	--with-compface \
 	--with-libsecret \
 	--with-canberra \
-	--with-ldap
+	--with-ldap \
+	--with-html-widget=webkit2

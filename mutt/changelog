@@ -123,14 +123,12 @@ r7033 | tbalazs | 2004-07-27 14:24:34 +0200 (Tue, 27 Jul 2004) | 3 lines
 
 - revert buggy patch
 
-
 ------------------------------------------------------------------------
 r7024 | tbalazs | 2004-07-27 12:21:30 +0200 (Tue, 27 Jul 2004) | 5 lines
 
 - Compressed folders
 - Authors initials in the headers
 - Quote patch
-
 
 ------------------------------------------------------------------------
 r6786 | egmont | 2004-06-29 17:01:44 +0200 (Tue, 29 Jun 2004) | 2 lines

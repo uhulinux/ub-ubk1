@@ -1,9 +1,9 @@
 diff -Naur orig/tools/stunnel.service.in patched/tools/stunnel.service.in
---- orig/tools/stunnel.service.in	2015-06-01 16:25:32.000000000 +0200
-+++ patched/tools/stunnel.service.in	2015-10-23 19:35:14.201790754 +0200
+--- orig/tools/stunnel.service.in	2016-12-13 12:28:35.134741323 +0100
++++ patched/tools/stunnel.service.in	2017-05-12 10:51:42.485533340 +0200
 @@ -1,10 +1,11 @@
  [Unit]
- Description=SSL tunnel for network daemons
+ Description=TLS tunnel for network daemons
 -After=syslog.target
 +After=network.target
  

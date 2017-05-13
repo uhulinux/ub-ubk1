@@ -16,4 +16,4 @@ libxshmfence-dev
 networkmanager-dev
 openldap-dev
 openssl-dev
-webkitgtk3-dev
+webkit2gtk-dev

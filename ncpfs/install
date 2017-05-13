@@ -3,5 +3,5 @@
 make \
 	DESTDIR="$UB_INSTALLDIR" \
 	install
-    
+
 ln -sf libncp.so.2.3.0 "$UB_INSTALLDIR"/usr/lib/libncp.so.2.3

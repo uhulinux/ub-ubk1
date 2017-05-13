@@ -1,2 +1,1 @@
-verzio=$(sflist adzapper adzapper | sort -V | tail -n 1)
-sflist adzapper adzapper/20090301/ | parsever
+u2d http://adzapper.sourceforge.net/

@@ -23,9 +23,8 @@ u2d
 r16895 | ntomasz@uhuklub.hu | 2009-02-05 23:37:53 +0100 (Thu, 05 Feb 2009) | 5 lines
 
 1.5.0 -> 1.6.0
-acquire fix	
+acquire fix
 build-depends fix
-
 
 ------------------------------------------------------------------------
 r13627 | pozsy | 2006-11-23 10:32:17 +0100 (Thu, 23 Nov 2006) | 4 lines
