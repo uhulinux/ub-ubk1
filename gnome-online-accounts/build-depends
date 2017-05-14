@@ -10,6 +10,7 @@ gtk-doc
 intltool
 json-glib-dev
 krb5-dev
+libcap-dev
 libjpeg-turbo-dev
 libnotify-dev
 libsecret-dev

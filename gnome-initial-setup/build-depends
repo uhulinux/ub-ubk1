@@ -12,6 +12,7 @@ ibus-dev
 intltool
 itstool
 krb5-dev
+libcap-dev
 libgnome-keyring-dev
 libgudev-dev
 libgweather-dev
