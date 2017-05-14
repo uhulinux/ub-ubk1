@@ -10,13 +10,11 @@ ccal
 ccrypt
 cdialog
 cdtest
-cfe
 checkinstall
 cksfv
 cw
 dos2unix
 duff
-ffe
 gmakeself
 gocr
 help2info
@@ -61,7 +59,6 @@ uncrustify
 units
 urlview
 vbindiff
-xd
 zisofs-tools
 zpaq
 0install
@@ -70,10 +67,8 @@ csvdb
 ised
 ncdu
 renameutils
-dbmtools
 jp2a
 vacation
-code2pdf
 ocrad
 pdmenu
 tbt

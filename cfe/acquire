@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-cfe-${UB_VERSION}.tar.gz cfe-${UB_VERSION}/
-	ftp://ftp.tw.freebsd.org/pub/distfiles/

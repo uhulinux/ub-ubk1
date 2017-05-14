@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-chmod -x LICENSE.TERMS README
-export UB_MAKE_PROCS=1
-ub_compile

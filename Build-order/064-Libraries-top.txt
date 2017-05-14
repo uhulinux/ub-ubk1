@@ -1,5 +1,4 @@
 cryptopp
-fcgi
 mplayer-w32codecs
 musl
 pam-smb
