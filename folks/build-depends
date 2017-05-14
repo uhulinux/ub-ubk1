@@ -5,6 +5,7 @@ evolution-data-server-dev
 gobject-introspection-dev
 intltool
 krb5-dev
+libcap-dev
 libgee-dev
 libsocialweb-dev
 telepathy-glib-dev
