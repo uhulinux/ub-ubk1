@@ -1,4 +1,5 @@
 acl-dev
+docbook-dtds
 docbook-xsl
 expat-dev
 gobject-introspection-dev

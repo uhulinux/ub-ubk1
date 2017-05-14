@@ -1,5 +1,6 @@
 binutils-dev
 cmake
+docbook-dtds
 docbook-xsl
 docbook2man
 doxygen

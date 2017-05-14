@@ -1,6 +1,7 @@
 avahi-dev
 boost-dev
 docbook-dtds
+docbook-xsl
 evolution-data-server-dev
 gconf2-dev
 gnome-doc-utils

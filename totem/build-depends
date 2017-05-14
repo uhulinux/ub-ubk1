@@ -3,6 +3,7 @@ clutter-gtk-dev
 curl-dev
 dbus-glib-dev
 docbook-dtds
+docbook-xsl
 gnome-desktop-dev
 grilo-dev
 gsettings-desktop-schemas

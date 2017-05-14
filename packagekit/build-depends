@@ -1,5 +1,6 @@
 apt-dev
 bash-completion
+docbook-dtds
 docbook-xsl
 gobject-introspection-dev
 gstreamermm-dev

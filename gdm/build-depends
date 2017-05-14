@@ -3,6 +3,7 @@ check-dev
 dbus-glib-dev
 dconf
 docbook-dtds
+docbook-xsl
 gnome-doc-utils
 gobject-introspection-dev
 intltool

@@ -1,6 +1,7 @@
 appstream-glib-dev
 avahi-dev
 docbook-dtds
+docbook-xsl
 gcr-dev
 gettext
 gnome-desktop-dev

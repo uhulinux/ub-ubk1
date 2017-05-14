@@ -1,4 +1,5 @@
 dbus-glib-dev
+docbook-dtds
 docbook-xsl
 glib-dev
 gtk-doc

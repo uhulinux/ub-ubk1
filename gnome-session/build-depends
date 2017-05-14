@@ -1,5 +1,6 @@
 dbus-glib-dev
 docbook-dtds
+docbook-xsl
 gconf2-dev
 gnome-desktop-dev
 gtk-dev

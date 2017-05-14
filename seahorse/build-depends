@@ -1,5 +1,6 @@
 avahi-dev
 docbook-dtds
+docbook-xsl
 gcr-dev
 gnome-doc-utils
 gobject-introspection-dev

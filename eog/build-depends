@@ -1,5 +1,6 @@
 dbus-glib-dev
 docbook-dtds
+docbook-xsl
 exempi-dev
 gdk-pixbuf-dev
 gnome-desktop-dev

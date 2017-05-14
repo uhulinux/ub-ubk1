@@ -2,6 +2,7 @@ appdata-tools
 dconf-dev
 desktop-file-utils
 docbook-dtds
+docbook-xsl
 gconf2-dev
 gnome-shell-dev
 gnutls-dev

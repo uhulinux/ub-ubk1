@@ -1,5 +1,6 @@
 dbus-dev
 docbook-dtds
+docbook-xsl
 gdl-dev
 gnome-dictionary-dev
 gnome-doc-utils

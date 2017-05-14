@@ -1,5 +1,6 @@
 dbus-dev
 dbus-glib-dev
+docbook-dtds
 docbook-xsl
 gtk2-dev
 icon-theme-hicolor
