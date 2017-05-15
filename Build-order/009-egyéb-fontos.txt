@@ -48,7 +48,6 @@ glibmm
 atkmm
 boost-jam
 fuse
-webkitgtk3
 neon
 fltk
 wxwidgets
