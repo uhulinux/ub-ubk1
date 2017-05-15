@@ -2,3 +2,7 @@
 
 mmex_${UB_VERSION}_src.tar.bz2 mmex_${UB_VERSION}/
 	http://downloads.sourceforge.net/moneymanagerex/
+
+# 1.1.0-tól
+#v${UB_VERSION}.tar.gz moneymanagerex-${UB_VERSION}/
+#	https://github.com/moneymanagerex/moneymanagerex/archive/

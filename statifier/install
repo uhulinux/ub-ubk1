@@ -2,4 +2,3 @@
 
 export DESTDIR="$UB_INSTALLDIR"
 ub_install
-

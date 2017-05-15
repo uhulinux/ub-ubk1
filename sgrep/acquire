@@ -2,4 +2,3 @@
 
 sgrep_$UB_VERSION.orig.tar.gz sgrep-$UB_VERSION/
 	http://http.debian.net/debian/pool/main/s/sgrep/sgrep_1.94a.orig.tar.gz
-

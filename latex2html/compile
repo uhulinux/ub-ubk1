@@ -5,4 +5,3 @@
 ub_configure \
 	--shlibdir=/usr/share/latex2html
 ub_make
-

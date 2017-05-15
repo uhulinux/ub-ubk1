@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-tmux-${UB_VERSION}.tar.gz tmux-${UB_VERSION}/
-	http://downloads.sourceforge.net/tmux/
-	http://pkgs.fedoraproject.org/repo/pkgs/tmux/tmux-${UB_VERSION}.tar.gz/fcfd1611d705d8b31df3c26ebc93bd3e/
+${UB_VERSION}.tar.gz tmux-${UB_VERSION}/
+	https://github.com/tmux/tmux/archive/

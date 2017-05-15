@@ -1,5 +1,7 @@
 boost-dev
 curl-dev
+docbook-dtds
+docbook-xsl
 expat-dev
 file-dev
 flac-dev
@@ -9,6 +11,7 @@ liblzo-dev
 libmatroska-dev
 libogg-dev
 libvorbis-dev
+libxslt
 po4a
 qt5-dev
 ruby

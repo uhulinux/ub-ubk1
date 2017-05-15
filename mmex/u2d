@@ -1,1 +1,1 @@
-sflist moneymanagerex moneymanagerex/ | splitver '^Version ([0-9.]+)$' | sort -V | tail -n 1
+u2d https://github.com/moneymanagerex/moneymanagerex/releases/ v

@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-tint2-${UB_VERSION}.tar.gz tint2-${UB_VERSION}/
-	http://pkgs.fedoraproject.org/repo/pkgs/tint2/tint2-${UB_VERSION}.tar.gz/eecb0361b3d1e0b47c58a8967f6ecb35/
+tint2-${UB_VERSION}.tar.gz tint2-v${UB_VERSION}/
+	git+https://gitlab.com/o9000/tint2.git@tag:v${UB_VERSION}

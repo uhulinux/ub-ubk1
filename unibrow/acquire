@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-unibrow-2012.12.tar.xz unibrow-2012.12/
+unibrow-${UB_VERSION}.tar.xz unibrow-${UB_VERSION}/
 	http://xyne.archlinux.ca/projects/unibrow/src/

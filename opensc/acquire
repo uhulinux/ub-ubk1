@@ -2,5 +2,3 @@
 
 opensc-"$UB_VERSION".tar.gz opensc-"$UB_VERSION"/
 	http://downloads.sourceforge.net/opensc/
-	
-

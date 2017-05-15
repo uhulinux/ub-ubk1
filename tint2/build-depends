@@ -1,5 +1,4 @@
 cairo-dev
-cmake
 glib-dev
 gtk2-dev
 imlib2-dev
@@ -9,5 +8,4 @@ libxcomposite-dev
 libxinerama-dev
 libxrandr-dev
 pango-dev
-pygtk-dev
 startup-notification-dev
