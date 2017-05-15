@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 xephem-${UB_VERSION}.tgz xephem-${UB_VERSION}/
-	http://www.clearskyinstitute.com/xephem/xephem-3.7.7.tgz
+	http://www.clearskyinstitute.com/xephem/
