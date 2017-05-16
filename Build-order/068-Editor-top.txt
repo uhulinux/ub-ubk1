@@ -10,7 +10,6 @@ tilde
 qemacs
 yudit
 komodoedit
-jasspa
 leafpad
 efte
 xemacs

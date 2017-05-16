@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-cd me"$UB_VERSION"/src
-#./build
-make -f linux26.gmk

@@ -45,7 +45,6 @@ iptables-utils
 roundup
 ttyconv
 a2ps
-php-xdiff
 efont-unicode
 node
 dump
