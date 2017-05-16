@@ -1,0 +1,13 @@
+dbus-dev
+libxml2-dev
+libxslt-dev
+openssl-dev
+pulseaudio-dev
+python3-dbus
+python3-dev
+qt5-dev
+qtwebengine-dev
+qtwebkit-dev
+qtwebview-dev
+sip
+sqlite-dev

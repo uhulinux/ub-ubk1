@@ -71,6 +71,7 @@ pypdf
 pypoppler
 pyqt4
 pyqt5-python2
+pyqt5-python3
 pysmbc
 pysqlite
 python3-psutil
@@ -81,6 +82,7 @@ python-babel
 python-beaker
 python-cffi
 python-chardet
+python3-chardet
 python-cheetah
 python-cherrypy
 python-configobj
