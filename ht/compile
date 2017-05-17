@@ -2,4 +2,4 @@
 
 ub_compile \
 	--with-included-lzo \
-	--enable-release 
+	--enable-release

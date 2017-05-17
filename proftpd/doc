@@ -1,9 +1,9 @@
 COPYING
 CREDITS
 NEWS
-README
 README.LDAP
 README.PAM
+README.md
 README.modules
 doc/Configuration.html
 doc/faq.html

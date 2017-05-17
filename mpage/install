@@ -6,4 +6,3 @@ make \
 	LIBDIR=${UB_INSTALLDIR}/usr/share \
 	MANDIR=${UB_INSTALLDIR}/usr/share/man/man1 \
 	install
-

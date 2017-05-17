@@ -2,4 +2,3 @@
 
 dump-${UB_VERSION}.tar.gz dump-${UB_VERSION}/
 	http://download.sourceforge.net/dump/
-

@@ -3,4 +3,3 @@
 ub_install \
 	SBINDIR=${UB_INSTALLDIR}/sbin \
 	MANDIR=${UB_INSTALLDIR}/usr/share/man/man8
-

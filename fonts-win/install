@@ -2,4 +2,3 @@
 
 mkdir -p ${UB_INSTALLDIR}/usr/share/fonts/truetype/Win
 cp -a *.ttf ${UB_INSTALLDIR}/usr/share/fonts/truetype/Win
-

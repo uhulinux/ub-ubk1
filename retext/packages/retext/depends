@@ -1,3 +1,7 @@
-pyqt4
-python-markdown
-qt4
+pyqt5-python3
+python3-chardet
+python3-docutils
+python3-markdown
+python3-markupsafe
+python3-pyenchant
+python3-pygments

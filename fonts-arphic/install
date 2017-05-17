@@ -5,4 +5,3 @@ cp -a ukai/ukai.ttc "$UB_INSTALLDIR/usr/share/fonts/truetype"
 cp -a ukai/fonts.dir "$UB_INSTALLDIR/usr/share/fonts/truetype/fonts.dir.ukai"
 cp -a uming/uming.ttc "$UB_INSTALLDIR/usr/share/fonts/truetype"
 cp -a uming/fonts.dir "$UB_INSTALLDIR/usr/share/fonts/truetype/fonts.dir.uming"
-

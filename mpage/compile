@@ -5,4 +5,3 @@ make \
 	BINDIR=/usr/bin \
 	LIBDIR=/usr/share \
 	MANDIR=/usr/share/man/man1
-

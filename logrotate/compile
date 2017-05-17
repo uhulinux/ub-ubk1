@@ -1,3 +1,6 @@
 #!/bin/sh -eux
 
-make
+./autogen.sh
+ub_compile \
+	--with-default-mail-command=/usr/bin/mail \
+	--with-state-file-path=/var/lib/logrotate/status

@@ -1,15 +1,12 @@
 #!/bin/sh -eux
 
+ub_replace sphinx-build sphinx-build2 configure
+
 rm -rf et
 rm -rf syslog
 
 UB_MAKE_PROCS=1 \
 ub_compile \
-	--without-bdb \
 	--enable-murder \
-	--enable-netscapehack \
-	--enable-listext \
 	--with-com_err=/usr \
-	--with-syslogfacility=MAIL \
-	--with-service-path=/usr/libexec/cyrus-imapd \
-	--with-cyrus-prefix=/usr/libexec/cyrus-imapd
+	--with-syslogfacility=MAIL
