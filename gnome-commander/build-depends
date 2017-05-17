@@ -6,6 +6,7 @@ gnome-doc-utils
 gtk2-dev
 gvfs
 intltool
+libcap-dev
 libgnomeui2-dev
 libgsf-dev
 libtiff-dev

@@ -9,6 +9,7 @@ gst-plugins-base-dev
 intltool
 itstool
 json-glib-dev
+libcap-dev
 libdmapsharing-dev
 libgpod-dev
 libmtp-dev
