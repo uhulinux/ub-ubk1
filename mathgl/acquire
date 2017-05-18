@@ -1,7 +1,0 @@
-#!/usr/bin/env dl
-
-mathgl-${UB_VERSION}.tar.gz mathgl-${UB_VERSION}/
-	http://downloads.sourceforge.net/mathgl/
-
-STIX_font.tgz .
-	http://downloads.sourceforge.net/mathgl/

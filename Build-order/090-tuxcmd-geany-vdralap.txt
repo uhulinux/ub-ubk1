@@ -7,7 +7,6 @@ geany-plugins
 photopc
 tygemo
 lapack
-mathgl
 maxima
 wxmaxima
 dvdauthor
