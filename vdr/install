@@ -3,7 +3,7 @@
 make \
   DESTDIR=$UB_INSTALLDIR \
   install
-  
+
 #plugin fejlesztői cuccok, a vdr-sc pluginhoz kell
 mkdir -p $UB_INSTALLDIR/usr/include/vdr/PLUGINS
 cd PLUGINS/src
