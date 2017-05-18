@@ -3,7 +3,6 @@ cinnamon-sound-effects
 cinnamon-translations
 pyinotify
 cinnamon-menus
-keybinder3
 cinnamon-desktop
 cinnamon-screensaver
 cinnamon-session
