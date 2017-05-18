@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-grub-${UB_VERSION}.tar.xz grub-${UB_VERSION}/
-	ftp://ftp.gnu.org/gnu/grub/
+#grub-${UB_VERSION}.tar.xz grub-${UB_VERSION}/
+#	ftp://ftp.gnu.org/gnu/grub/
 
-#grub-${UB_VERSION}.tar.gz grub-8014b7b/
-#	git://git.sv.gnu.org/grub.git@8014b7b
+grub-${UB_VERSION}.tar.gz grub-8014b7b/ :grub
+	git://git.sv.gnu.org/grub.git@8014b7b

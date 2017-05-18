@@ -1,6 +1,6 @@
 === modified file 'themes/starfield/theme.txt'
---- old/themes/starfield/theme.txt	2012-09-13 18:02:04 +0000
-+++ new/themes/starfield/theme.txt	2014-07-31 11:26:54 +0000
+--- old/grub/themes/starfield/theme.txt	2012-09-13 18:02:04 +0000
++++ new/grub/themes/starfield/theme.txt	2014-07-31 11:26:54 +0000
 @@ -47,9 +47,9 @@
  	top = 20%
  	height = 50%	
