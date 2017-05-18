@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
-if [ ! "$UB_ARCH" == "amd64" ];then
+if [ "$UB_ARCH" != "amd64" ];then
     cd grub
     ./autogen.sh
     ub_compile \
