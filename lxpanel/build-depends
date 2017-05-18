@@ -4,7 +4,9 @@ glib-dev
 gtk-dev
 intltool
 keybinder3-dev
+libcap-dev
 libfm-dev
+libgcrypt-dev
 libwnck-dev
 libxml2-dev
 lxmenu-data

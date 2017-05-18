@@ -6,6 +6,7 @@ lxinput
 lxmusic
 lxmenu-data
 lxrandr
+libfm
 menu-cache
 openbox-menu
 obconf
@@ -14,12 +15,12 @@ lxterminal
 lxappearance
 lxdm
 lxtask
-libfm
 lxsession
 lxappearance-obconf
 pcmanfm
-lxpanel
+keybinder3
 lxshortcut
 lxnm
 gpicview
+lxpanel
 lxde
