@@ -1,5 +1,6 @@
 colord-dev
 glu-dev
+libcap-dev
 libevdev-dev
 libgudev-dev
 libinput-dev
