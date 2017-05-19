@@ -1,1 +1,0 @@
-sflist upp upp | sort -V | tail -n 1

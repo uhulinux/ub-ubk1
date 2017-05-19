@@ -94,7 +94,6 @@ avogadro2
 aeskulap
 gv
 dia
-ultimatepp
 codelite
 rawtherapee
 enblend
