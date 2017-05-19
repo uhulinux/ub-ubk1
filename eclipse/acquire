@@ -1,7 +1,0 @@
-#!/usr/bin/env dl
-
-eclipse-SDK-${UB_VERSION_HEAD2}-linux-gtk.tar.gz eclipse/
-	http://download.eclipse.org/eclipse/downloads/drops4/R-${UB_VERSION_HEAD2}-${UB_VERSION_TAIL1}/
-
-#eclipse-SDK-${UB_VERSION_HEAD3}-linux-gtk.tar.gz eclipse/
-#	http://download.eclipse.org/eclipse/downloads/drops4/R-${UB_VERSION_HEAD3}-${UB_VERSION_TAIL1}/

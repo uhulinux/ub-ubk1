@@ -4,7 +4,6 @@ basex
 build-em-all
 cflow
 colorgcc
-conio
 cpanm
 cscope
 ctcompare
@@ -18,7 +17,6 @@ gkrellm-themes
 griffith-extra-artwork
 hla
 icon-theme-snow-apple
-mku
 p2c
 patchutils
 pcc
@@ -59,7 +57,6 @@ lupe
 hgsubversion
 cursor-theme-x.org
 sweethome3d
-jgrasp
 ccbuild
 clisp
 evolvotron
@@ -72,12 +69,10 @@ mtpaint
 unicode-screensaver
 scratch
 icon-slicer
-eclipse
 viewnior
 sk1
 gexif
 gtk-stock-icons
-harbour
 gphoto2
 gimp-webp
 gtkdialog

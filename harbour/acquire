@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-harbour-${UB_VERSION}.tar.bz2 harbour-${UB_VERSION}/
-	http://downloads.sourceforge.net/harbour-project/

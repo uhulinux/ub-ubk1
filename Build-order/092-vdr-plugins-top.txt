@@ -14,7 +14,6 @@ vdr-live
 vdr-dvbapi
 vdr-plugin-sc
 vdr-wirbelscan
-vdr-plugin-dvd
 oscam
 vdr-skinsoppalusikka
 vdr-plugin-skinenigmang

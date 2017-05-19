@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-jgrasp${UB_VERSION_HEAD2/./}${UB_VERSION_TAIL1/+/_}.zip jgrasp/
-	http://www.jgrasp.org/dl4g/jgrasp/jgrasp203_02.zip

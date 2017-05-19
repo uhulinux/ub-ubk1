@@ -1,5 +1,0 @@
-#!/bin/sh -eux
-
-make
-
-rm ./lib/linux/gcc/libexpat.a

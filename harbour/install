@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-make DESTDIR="$UB_INSTALLDIR"/usr install
-
-mv -f "$UB_INSTALLDIR"/usr/etc/* "$UB_INSTALLDIR"/etc
-
-rm -f "$UB_INSTALLDIR"/usr/lib/libexpat.a

@@ -1,1 +1,0 @@
-sflist harbour-project source | sort -V | tail -n 1
