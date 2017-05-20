@@ -5,7 +5,7 @@ sed -i -e '1{
   /^#!/d
 }' examples/ex*.c
 sed -i -e '1s/$/ -lX11/' examples/ex4.c
-    
+
 ./configure --prefix=/usr
 make
 

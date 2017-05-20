@@ -4,9 +4,6 @@ export UB_MAKE_PROCS=1
 
 ./configure \
 	--disable-schemas-compile \
-	--disable-desktop-update \
-	--disable-desktop-validate \
-	--disable-icon-update \
 	--prefix=/usr
 
 ub_make

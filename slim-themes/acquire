@@ -11,7 +11,7 @@ slim-lake.tar.gz . :/usr/share/slim/themes
 
 slim-mindlock.tar.gz . :/usr/share/slim/themes
 	http://downloads.sourceforge.net/project/slim.berlios/
-	
+
 slim-parallel-dimensions.tar.gz . :/usr/share/slim/themes
 	http://downloads.sourceforge.net/project/slim.berlios/
 

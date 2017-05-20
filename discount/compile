@@ -3,5 +3,5 @@
 ./configure.sh \
 	--prefix=/usr \
 	--enable-all-features
-  
+
 ub_make
