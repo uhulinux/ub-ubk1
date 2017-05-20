@@ -1,1 +1,0 @@
-urllist ftp://ftp.gnome.org/mirror/trisquel/packages/pool/main/n/nstx/ | grep tar | sort -V | tail -n 1 | sed s/nstx_// | sed s/\.orig.*// | sed s/-/~/

@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-cd libsrc
-make
-make libchron
-cd ..
-cd src
-make
-cd ..

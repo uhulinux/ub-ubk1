@@ -22,20 +22,16 @@ ico2xpm
 jhead
 localepurge
 mailcount
-mdb
 multitail
 nload
 nrg2iso
 numdiff
-o3read
-paq
 pcspk
 pfqueue
 poweriso
 ppsei
 pv
 pwgen
-pxtools
 qshutdown
 rand
 redis
@@ -47,10 +43,7 @@ statifier
 supercat
 symlinks
 tack
-tal
-tdhkit
 time
-tkinfo
 treeform
 trunc
 ttyrec
@@ -97,7 +90,6 @@ vdpauinfo
 gourmet
 piedock
 rdiff-backup
-root-tail
 diffball
 translate-toolkit
 gramps
@@ -106,7 +98,6 @@ numlockx
 teapot
 aview
 a2png
-pmount
 xinit
 xzoom
 cifs-utils
@@ -123,7 +114,6 @@ calcoo
 doodle
 paco
 catfish
-unclutter
 parcellite
 truecrypt
 lshw
@@ -163,7 +153,6 @@ unibrow
 moserial
 qt-recordmydesktop
 xplanet
-ghasher
 hardinfo
 eterm
 activity-log-manager

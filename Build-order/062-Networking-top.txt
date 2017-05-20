@@ -4,7 +4,6 @@ gufw
 lzop
 amavisd-new
 adzapper
-akii
 corkscrew
 finger
 htpdate
@@ -12,14 +11,11 @@ icmptx
 iodine
 iperf
 ncftp
-ncpfs
 noip-duc
-nstx
 ntalk
 phpmyfaq
 pptpclient
 tcpcgi
-emil
 p0f
 tcptrack
 bitchx

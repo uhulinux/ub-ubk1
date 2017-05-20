@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-pmount-${UB_VERSION}.tar.bz2 pmount-${UB_VERSION}/
-	http://pkgs.fedoraproject.org/lookaside/pkgs/pmount/
-	ftp://ftp.belnet.be/mirror/pub/ftp.frugalware.org/pub/frugalware/frugalware-1.9/source/apps/pmount/

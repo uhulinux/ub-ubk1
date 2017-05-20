@@ -1,3 +1,0 @@
-#!/bin/sh -eux
-
-cp nstxcd nstxd "$UB_INSTALLDIR"/usr/sbin/

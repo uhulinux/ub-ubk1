@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=tkInfo
-Comment=Info file viewer
-Comment[hu]=Info fájlok megtekintése
-Exec=tkinfo
-Categories=Utility;Documentation;

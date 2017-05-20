@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-libtoolize
-aclocal
-autoconf
-autoheader
-automake -a -c -f
-export CFLAGS="-std=gnu89"
-ub_compile

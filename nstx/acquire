@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-nstx_${UB_VERSION/~/-}.orig.tar.gz nstx-${UB_VERSION/~/-}/
-	ftp://ftp.gnome.org/mirror/trisquel/packages/pool/main/n/nstx/

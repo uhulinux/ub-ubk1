@@ -12,11 +12,9 @@ lde
 lsof
 lsscsi
 madwifi-tools
-mii-diag
 minicom
 mtx
 open-iscsi
-pmtools
 psacct
 rdate
 read-edid

@@ -1,3 +1,0 @@
-#!/bin/sh -eux
-
-cp -a paq"$UB_VERSION" "$UB_INSTALLDIR"/usr/bin/

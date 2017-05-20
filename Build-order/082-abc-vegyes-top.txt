@@ -9,8 +9,6 @@ fonts-libertine
 fonts-shareware
 fonts-thai
 fonts-win
-hfsplus
-hfsutils
 htop
 man-pages
 memtest86+
@@ -43,9 +41,7 @@ fonts-jmk
 perl-extutils-xspp
 iptables-utils
 roundup
-ttyconv
 a2ps
-efont-unicode
 node
 dump
 fuse-sshfs
@@ -76,7 +72,6 @@ x.org-video-vmware
 apache-mod-auth-openid
 mt-daapd
 partimage
-wdfs
 perl-glib-object-introspection
 perl-cairo-gobject
 proftpd

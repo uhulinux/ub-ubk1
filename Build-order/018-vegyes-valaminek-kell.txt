@@ -97,7 +97,6 @@ lsb-release
 lucene++
 luit
 mdadm
-memphis
 mtools
 ndiswrapper
 chrony

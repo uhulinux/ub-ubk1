@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-akii-${UB_VERSION}.tar.gz akii-${UB_VERSION}/
-	http://ftp.cc.uoc.gr/mirrors/linux/frugalware/frugalware-stable/source/apps-extra/akii/

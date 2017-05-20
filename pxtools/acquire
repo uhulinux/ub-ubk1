@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-pxtools-${UB_VERSION}.tar.gz pxtools-${UB_VERSION}/
-	http://jan.kneschke.de/downloads/pxtools/

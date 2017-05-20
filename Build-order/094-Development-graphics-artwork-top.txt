@@ -17,7 +17,6 @@ gkrellm-themes
 griffith-extra-artwork
 hla
 icon-theme-snow-apple
-p2c
 patchutils
 pcc
 sddm-theme-acidhub
@@ -40,7 +39,6 @@ lxlogo
 ncc
 uniconvertor
 winpdb
-tkpaint
 global
 motor
 gob2
@@ -60,7 +58,6 @@ ccbuild
 clisp
 evolvotron
 mscgen
-xwpe
 povray
 gqview
 gfxboot

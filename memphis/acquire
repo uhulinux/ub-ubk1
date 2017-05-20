@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-memphis-${UB_VERSION}.tar.gz memphis-${UB_VERSION}/
-	http://wenner.ch/files/public/mirror/memphis/

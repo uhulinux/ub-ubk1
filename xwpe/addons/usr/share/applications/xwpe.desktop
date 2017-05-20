@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=XWPE
-Comment=XWPE IDE
-Comment[hu]=XWindow Programming Environment
-Exec=xwpe %F
-Icon=xwpe-bm
-Terminal=true
-Categories=Development;IDE;

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-wdfs-"$UB_VERSION".tar.gz wdfs-"$UB_VERSION"/
-	http://noedler.de/projekte/wdfs/

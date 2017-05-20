@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-xwpe-${UB_VERSION}.tar.gz xwpe-${UB_VERSION}/
-	http://www.identicalsoftware.com/xwpe/

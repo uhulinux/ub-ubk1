@@ -1,1 +1,0 @@
-urllist http://piotrkosoft.net/pub/unix/software/mirrors/ftp.sunet.se/unix/mail/emil/ | grep -E '^emil' | grep tar | sed s/emil-//g | sed s/\.tar.*//g | sort -V | tail -n 1 | sed s/-/~/

@@ -15,7 +15,6 @@ telepathy-yell
 gst-plugins-good
 gnonlin
 gnome-online-accounts
-memphis
 libchamplain
 gnome-vfsmm2
 mdbtools
@@ -107,7 +106,6 @@ evolution
 gnome-shell-extensions
 gnome-font-viewer
 gnome-todo
-gnome-u2ps
 gnome-weather
 seahorse-sharing
 gedit-plugins

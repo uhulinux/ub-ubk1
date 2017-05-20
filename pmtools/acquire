@@ -1,6 +1,0 @@
-#!/usr/bin/env dl
-
-pmtools-${UB_VERSION}.tar.gz pmtools/
-	ftp://archlinux.mirrors.linux.ro/gentoo/distfiles/
-	http://www.lesswatts.org/patches/linux_acpi/
-	http://ftp2.uk.freebsd.org/sites/ftp.kernel.org/pub/linux/kernel/people/lenb/acpi/utils/
