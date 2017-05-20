@@ -1,1 +1,1 @@
-urllist http://ftp.debian.org/debian/pool/main/p/povray/ | splitver '^povray_([0-9.]+).orig.tar.gz$' #| sort -V | tail -n 1
+u2d https://github.com/POV-Ray/povray/releases/ v
