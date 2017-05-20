@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-lupe$UB_VERSION.tar.gz lupe/
-	ftp://ftp.tw.freebsd.org/pub/FreeBSD-current/ports/distfiles/
-

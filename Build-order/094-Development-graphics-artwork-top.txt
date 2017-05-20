@@ -53,7 +53,6 @@ aaphoto
 exif
 dmd2
 intend
-lupe
 hgsubversion
 cursor-theme-x.org
 sweethome3d
