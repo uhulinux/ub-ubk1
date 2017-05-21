@@ -3,6 +3,7 @@ dbus-glib-dev
 intltool
 itstool
 libatasmart-dev
+libcap-dev
 libnotify-dev
 libxnvctrl
 libxslt-dev

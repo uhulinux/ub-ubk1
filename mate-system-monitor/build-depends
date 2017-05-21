@@ -2,6 +2,7 @@ dbus-glib-dev
 gtkmm-dev
 intltool
 itstool
+libcap-dev
 libgtop2-dev
 librsvg-dev
 libsm-dev
