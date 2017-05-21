@@ -70,7 +70,6 @@ bino
 deadbeef
 moc
 xawtv
-xdtv
 virtualbox
 audacity
 mpv
