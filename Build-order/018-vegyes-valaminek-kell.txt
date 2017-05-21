@@ -68,7 +68,6 @@ unmakeself
 upx
 usbredir
 vpnc
-waf
 x264
 xauth
 xdialog
@@ -173,7 +172,6 @@ jpilot
 js17
 loudmouth
 netpbm
-ninja
 reportlab
 rpcbind
 squeak

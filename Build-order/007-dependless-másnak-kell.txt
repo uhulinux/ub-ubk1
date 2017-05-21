@@ -17,7 +17,6 @@ ctags
 cxxtools
 debhelper
 dirac
-dmake
 dmidecode
 dotconf
 dvd+rw-tools

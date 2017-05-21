@@ -67,7 +67,6 @@ sylpheed
 claws-mail
 claws-contacts
 claws-mail-themes
-rust
 firefox
 seamonkey
 chromium
