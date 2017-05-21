@@ -5,6 +5,7 @@ gtk-dev
 intltool
 itstool
 libcanberra-dev
+libcap-dev
 libmateweather-dev
 librsvg-dev
 libsm-dev
