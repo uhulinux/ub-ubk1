@@ -3,7 +3,6 @@ desktop-file-utils
 intltool
 itstool
 libcanberra-dev
-libcap-dev
 libgtop2-dev
 libice-dev
 libmatekbd-dev

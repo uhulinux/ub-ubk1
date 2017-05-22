@@ -5,8 +5,6 @@ gnome-doc-utils
 intltool
 itstool
 libcanberra-dev
-libcap-dev
-libgcrypt-dev
 libnotify-dev
 libsm-dev
 mate-common

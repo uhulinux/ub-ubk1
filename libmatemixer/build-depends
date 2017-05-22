@@ -1,7 +1,6 @@
 alsa-lib-dev
 dbus-dev
 intltool
-libgcrypt-dev
 mate-common
 pulseaudio-dev
 systemd-dev
