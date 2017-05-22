@@ -3,12 +3,12 @@
 cp -R fuse fuse-gtk
 cd fuse
 ub_compile \
-	PACKAGE_NAME=free-unux-spectrum-emulator \
+	PACKAGE_NAME=free-unix-spectrum-emulator \
 	--with-sdl
 	mv fuse fuse-sdl
 cd ../fuse-gtk
 autoreconf -vif
 ub_compile \
-	PACKAGE_NAME=free-unux-spectrum-emulator \
+	PACKAGE_NAME=free-unix-spectrum-emulator \
 	--with-gtk \
 	--enable-gtk3

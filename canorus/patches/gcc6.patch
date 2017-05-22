@@ -1,6 +1,6 @@
 diff -Naur orig/src/layout/drawabletuplet.cpp patched/src/layout/drawabletuplet.cpp
---- orig/src/layout/drawabletuplet.cpp	2015-04-11 11:06:45.000000000 +0200
-+++ patched/src/layout/drawabletuplet.cpp	2016-11-24 17:25:15.774764730 +0100
+--- orig/src/layout/drawabletuplet.cpp	2017-05-20 11:58:42.134741211 +0200
++++ patched/src/layout/drawabletuplet.cpp	2017-05-20 22:17:29.877292393 +0200
 @@ -10,13 +10,14 @@
  #include <QPen>
  #include <QPainter>
@@ -17,14 +17,3 @@ diff -Naur orig/src/layout/drawabletuplet.cpp patched/src/layout/drawabletuplet.
  	setYPos( (c && qMin(y1, y2)>c->yPos())?qMin(y1, y2):(qMin(y1,y2)-height()) );
  }
  
-diff -Naur orig/src/score/sheet.cpp patched/src/score/sheet.cpp
---- orig/src/score/sheet.cpp	2015-04-11 11:06:44.000000000 +0200
-+++ patched/src/score/sheet.cpp	2016-11-24 17:18:04.683130652 +0100
-@@ -6,6 +6,7 @@
- */
- 
- #include <QHash>
-+#include <QObject>
- 
- #include "score/document.h"
- #include "score/context.h"

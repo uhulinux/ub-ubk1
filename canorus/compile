@@ -1,8 +1,5 @@
 #!/bin/sh -eux
 
-mv -f CMakeListsQt5.txt CMakeLists.txt
-mv -f src/CMakeListsQt5.txt src/CMakeLists.txt
-
 export LDFLAGS="-lpthread -lz"
 
 cmake \

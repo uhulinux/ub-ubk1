@@ -31,7 +31,6 @@ acquire fix
 build-depends fix
 fix menu patch, remove compile fix patches, disable es man pages
 
-
 ------------------------------------------------------------------------
 r27482 | rezso@rezso.net | 2012-01-10 21:03:06 +0100 (Tue, 10 Jan 2012) | 4 lines
 

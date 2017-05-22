@@ -82,5 +82,5 @@ mlt
 lives
 blender
 transcode
-dmcradio
 qmmp
+dmcradio

@@ -35,13 +35,11 @@ r20137 | galamb15@kabelszat2002.hu | 2009-09-30 09:46:55 +0200 (Wed, 30 Sep 2009
 build-depends fix - add some x libs because configure search for them
 add simple patch to fix conflicting variable names with new glibc
 
-
 ------------------------------------------------------------------------
 r18940 | peritus@freemail.hu | 2009-06-20 21:40:38 +0200 (Sat, 20 Jun 2009) | 4 lines
 
  - acquire fix
  - build-depends fix
-
 
 ------------------------------------------------------------------------
 r14162 | egmont | 2007-08-15 12:13:17 +0200 (Wed, 15 Aug 2007) | 2 lines

@@ -1,15 +1,17 @@
-diff -Naur orig/src/audacity.desktop.in mod/src/audacity.desktop.in
---- orig/src/audacity.desktop.in	2015-07-11 12:02:22.000000000 +0200
-+++ mod/src/audacity.desktop.in	2015-08-26 15:09:01.347196763 +0200
-@@ -5,10 +5,12 @@
- Name[uk]=Audacity
- GenericName=Sound Editor
+diff -Naur orig/src/audacity.desktop.in patched/src/audacity.desktop.in
+--- orig/src/audacity.desktop.in	2017-03-13 22:02:21.134741211 +0100
++++ patched/src/audacity.desktop.in	2017-05-21 15:16:40.842352029 +0200
+@@ -4,12 +4,14 @@
+ GenericName[ca]=Editor d'àudio
  GenericName[de]=Audio-Editor
+ GenericName[fr]=Éditeur audio
 +GenericName[hu]=Hangszerkesztő
  GenericName[ru]=Редактор звуковых файлов
  GenericName[uk]=Редактор звукових файлів
  Comment=Record and edit audio files
+ Comment[ca]=Enregistreu i editeu els fitxers d'àudio
  Comment[de]=Audio-Dateien aufnehmen und bearbeiten
+ Comment[fr]=Enregistrer et éditer des fichiers audio
 +Comment[hu]=Hangfájlok felvétele és szerkesztése
  Comment[ru]=Запись и редактирование звуковых файлов
  Comment[uk]=Запис і редагування звукових файлів

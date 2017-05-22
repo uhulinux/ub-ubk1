@@ -1,4 +1,1 @@
-project=http://mirrors.ibiblio.org/wine/source
-for i in `urllist $project | grep -E '^[0-9.]+$' | sort -V`;do
-u2d $project/$i
-done | sort -V | tail -n 1
+u2d https://dl.winehq.org/wine/source/2.x/

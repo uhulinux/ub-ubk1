@@ -33,12 +33,10 @@ acquire fix
 build-depends fix
 add patches from Arch to build with latest kernel, v4l2 support, libquicktime support
 
-
 ------------------------------------------------------------------------
 r18932 | peritus@freemail.hu | 2009-06-20 20:47:40 +0200 (Sat, 20 Jun 2009) | 3 lines
 
  - build-depends fix
-
 
 ------------------------------------------------------------------------
 r12872 | egmont | 2006-06-30 17:08:27 +0200 (Fri, 30 Jun 2006) | 2 lines

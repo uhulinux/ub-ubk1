@@ -4,4 +4,3 @@
  rm -rf doc
  mkdir -p "$UB_INSTALLDIR"/usr/share/tuxguitar/
  cp -a . "$UB_INSTALLDIR"/usr/share/tuxguitar/
- 
