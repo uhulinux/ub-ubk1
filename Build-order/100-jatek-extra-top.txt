@@ -2,7 +2,6 @@
 alephone-marathon
 atris-sounds
 cowsay
-crafty
 dbedit
 dbview
 doom1-demodata
@@ -12,7 +11,6 @@ fairymax
 figlet
 fillets-data
 fortune
-fortune-en
 fortune-hu
 golems
 heretic1-demodata
@@ -21,11 +19,9 @@ heroes-hq-sound-tracks
 heroes-sound-effects
 heroes-sound-tracks
 jumpnbump-levels
-nanochess
 openttd-opengfx
 openttd-openmsx
 openttd-opensfx
-shokidoki
 simutrans-pak64
 simutrans-pak128
 smc-music
@@ -63,7 +59,6 @@ njam
 enemy-territory
 jumpnbump
 pysol-sound-server
-spider
 xdaliclock
 blobwars
 openttd
@@ -80,7 +75,6 @@ gav
 tomatoes
 zaxxon
 bb
-oneko
 xsnow
 miniracer
 lincity
