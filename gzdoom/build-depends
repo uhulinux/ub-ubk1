@@ -1,7 +1,6 @@
 bzip2-dev
 cmake
 fluidsynth-dev
-fmod
 glu-dev
 gtk-dev
 libgme-dev

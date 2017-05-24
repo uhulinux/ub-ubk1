@@ -15,7 +15,7 @@ r19069 | ntomasz@uhuklub.hu | 2009-06-27 19:28:28 +0200 (Sat, 27 Jun 2009) | 7 l
 acquire, build-depends, homepage fix
 compile and install fix
 add --disable-version-check to compile (thx Egmont for notice in bugtracker id=582)
-drop gcc4 patches and menu patch 
+drop gcc4 patches and menu patch
 install own desktop file instead of from source
 
 ------------------------------------------------------------------------

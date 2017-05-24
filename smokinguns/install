@@ -5,4 +5,3 @@ install -Dm 755 "build/release-linux-i386/smokinguns.i386" "$UB_INSTALLDIR/usr/b
 install -Dm 755 "build/release-linux-i386/smokinguns_dedicated.i386" "$UB_INSTALLDIR/usr/bin/smokinguns_dedicated"
 
 install -Dm 644 "misc/smokinguns.png" "$UB_INSTALLDIR/usr/share/pixmaps/smokinguns.png"
-

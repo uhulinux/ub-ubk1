@@ -1,5 +1,5 @@
 #!/bin/sh -eux
 
-export DEBUG=false 
+export DEBUG=false
 make dependencies
 make core

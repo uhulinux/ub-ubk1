@@ -4,4 +4,3 @@ export WITH_ALLEGRO=y
 ./configure \
 	--prefix=/usr
 make
-

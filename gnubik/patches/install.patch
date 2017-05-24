@@ -1,6 +1,6 @@
 diff -Naur orig/icons/automake.mk patched/icons/automake.mk
---- orig/icons/automake.mk	2015-04-12 16:40:54.000000000 +0200
-+++ patched/icons/automake.mk	2016-07-11 01:54:51.376456613 +0200
+--- orig/icons/automake.mk	2017-04-03 14:10:35.134741211 +0200
++++ patched/icons/automake.mk	2017-05-24 00:41:21.536632927 +0200
 @@ -1,6 +1,6 @@
  themedir = $(DESTDIR)$(datadir)/icons/hicolor
  context = apps
@@ -9,21 +9,3 @@ diff -Naur orig/icons/automake.mk patched/icons/automake.mk
  
  install-icons:
  	for size in $(sizes); do \
-@@ -18,7 +18,7 @@
- 	done 
- 	gtk-update-icon-cache --ignore-theme-index $(themedir)
- 
--desktopdir=$(datadir)/applications
-+desktopdir=$(DESTDIR)$(datadir)/applications
- 
- install-desktop:
- 	$(MKDIR_P) $(desktopdir)
-@@ -36,7 +36,7 @@
- install-data-hook: $(INSTALL_DATA_HOOKS)
- uninstall-hook: $(UNINSTALL_DATA_HOOKS)
- 
--desktop_DATA = icons/gen-dot-desktop.scm
-+# desktop_DATA = icons/gen-dot-desktop.scm
- 
- EXTRA_DIST += icons/logo22.xcf icons/logo32.xcf icons/logo48.xcf
- EXTRA_DIST += icons/logo16.png icons/logo22.png icons/logo32.png icons/logo48.png

@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-fortune-${UB_VERSION}.tar.gz fortune-${UB_VERSION}/
-	http://download.ubk.hu/src/uhu/fortune/
+fortune-mod-${UB_VERSION}.tar.xz fortune-mod-${UB_VERSION}/
+	http://www.shlomifish.org/open-source/projects/fortune-mod/arcs/

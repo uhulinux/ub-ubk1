@@ -28,8 +28,6 @@ r25419 | peritus@freemail.hu | 2011-04-18 18:21:23 +0200 (Mon, 18 Apr 2011) | 4 
 
 2.32 -> 2.35
 
-
-
 ------------------------------------------------------------------------
 r23285 | peritus@freemail.hu | 2010-04-23 18:23:32 +0200 (Fri, 23 Apr 2010) | 2 lines
 
@@ -42,7 +40,7 @@ r18793 | peritus@freemail.hu | 2009-06-15 20:20:15 +0200 (Mon, 15 Jun 2009) | 35
 acquire fix
 build-depends fix
 
-verziókövetés 
+verziókövetés
 
 M    build-depends
 M    version
@@ -68,7 +66,7 @@ Index: acquire
 --- acquire	(revision 18792)
 +++ acquire	(working copy)
 @@ -2,3 +2,4 @@
- 
+
  xdaliclock-${UB_VERSION}.tar.gz xdaliclock-${UB_VERSION}/
  	http://www.jwz.org/xdaliclock/
 +	http://www.sourcefiles.org/Toys/Clocks/

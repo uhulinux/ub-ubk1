@@ -18,7 +18,6 @@ ub_configure \
 	--localedir=/usr/share/locale\
 	with_highscores=/var/games/trackballs/highScores
 
-
 ub_make \
 	docdir=/usr/share/doc \
 	pixmapsdir=/usr/share/pixmaps \

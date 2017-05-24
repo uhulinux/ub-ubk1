@@ -1,4 +1,3 @@
 #!/bin/sh -eux
 
-install -m 755 fortune "$UB_INSTALLDIR"/usr/bin/
-install -m 644 debian/fortune.6 "$UB_INSTALLDIR"/usr/share/man/man6/
+ub_install
