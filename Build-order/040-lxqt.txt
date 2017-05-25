@@ -20,6 +20,7 @@ lxqt-powermanagement
 lxqt-runner
 lxqt-panel
 lxqt-sudo
+compton
 compton-conf
 pavucontrol-qt
 qtermwidget
