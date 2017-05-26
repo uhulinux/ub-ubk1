@@ -1,4 +1,3 @@
 #!/bin/sh -eux
 
-autoconf
 ub_compile

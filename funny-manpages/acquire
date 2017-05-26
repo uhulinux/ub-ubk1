@@ -5,4 +5,3 @@ asr-manpages_${UB_VERSION}.orig.tar.gz asr-manpages-${UB_VERSION}.orig/
 
 funny-manpages_${UB_VERSION}.orig.tar.gz funny-manpages-${UB_VERSION}.orig/
 	ftp://ftp.debian.org/debian/pool/main/f/funny-manpages/
-

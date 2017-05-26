@@ -1,7 +1,6 @@
 funny-manpages
 hoc
 htdig
-jargon
 jmoney
 min1200w
 fish
@@ -13,16 +12,13 @@ aspell-dict-german
 aspell-dict-hungarian
 lilo
 mathomatic
-mnemosyne
 postgresql-odbc
 shared-desktop-ontologies
 media-player-info
 abevjava
 fet
-geogebra
 lightdm-gtk-greeter-settings
 euler
-firebirdsql
 flamerobin
 smart
 ndisgtk

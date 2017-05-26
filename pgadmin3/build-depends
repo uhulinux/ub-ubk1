@@ -4,5 +4,4 @@ libxslt-dev
 openssl-dev
 postgresql-dev
 postgresql-server
-wxwidgets-dev
 wxwidgets2.8-dev

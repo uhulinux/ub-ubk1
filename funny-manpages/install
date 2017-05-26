@@ -9,4 +9,3 @@ for i in *fun; do
 	j="${j##*.}"
 	cp -a "$i" "${UB_INSTALLDIR}/usr/share/man/man${j}/"
 done
-

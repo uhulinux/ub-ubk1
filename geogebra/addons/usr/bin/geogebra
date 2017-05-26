@@ -1,7 +1,0 @@
-#!/bin/sh
-
-GG_PATH="/usr/share"
-export GG_CONFIG_PATH="$HOME"
-export JAVACMD="/usr/lib/java/jre/bin/java"
-
-exec "$GG_PATH/geogebra/geogebra" "$@"
