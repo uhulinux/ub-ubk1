@@ -58,6 +58,9 @@ mv	tls "$cellibdir"
 # minden áthelyezése a libekbe
 mv *.so.* "$cellibdir"/
 
+# remove conflicting mesa lib
+rm -f "$cellibdir"/libGLESv2.so.2
+
 #linkgyártások
 cd "$cellibdir"
 ln -s libwfb.so xorg/modules/libnvidia-wfb.so."$UB_VERSION"
