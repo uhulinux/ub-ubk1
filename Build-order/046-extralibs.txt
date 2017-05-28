@@ -12,6 +12,7 @@ allegro
 dumb
 silly
 ogre
+devil
 cegui
 cegui0.7
 mygui

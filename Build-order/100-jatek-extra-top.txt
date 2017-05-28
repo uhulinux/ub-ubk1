@@ -125,6 +125,7 @@ eduke32
 frogatto
 prboom
 smc
+tsc
 x-moto
 alephone
 tuxracer
