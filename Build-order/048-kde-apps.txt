@@ -21,7 +21,6 @@ okular
 libkomparediff2
 kompare
 ksystemlog
-
 krita
 libktorrent
 ktorrent
@@ -38,9 +37,6 @@ kshutdown
 digikam
 kdiff3
 calligra
-
 libkdegames
 kdegames
-
 kde-apps
-

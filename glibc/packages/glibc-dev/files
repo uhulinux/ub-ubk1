@@ -5,8 +5,8 @@
 	/usr/bin/sprof
 	/usr/bin/xtrace
 	/usr/include
-	/usr/lib/*.a
-	/usr/lib/*.o
-	/usr/lib/*.so
+	/usr/lib*/*.a
+	/usr/lib*/*.o
+	/usr/lib*/*.so
 	/usr/sbin/iconvconfig
 	/usr/sbin/zic

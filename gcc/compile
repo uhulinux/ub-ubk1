@@ -10,15 +10,26 @@ XCFLAGS="$OPT_FLAGS" \
 TCFLAGS="$OPT_FLAGS" \
 GCJFLAGS="$OPT_FLAGS" \
 
-SED=sed
+if [ "$UB_ARCH" == "amd64" ]; then
+	hostflags=(
+	--build=x86_64-gnu-linux
+	--host=x86_64-gnu-linux
+	--target=x86_64-gnu-linux
+	)
+else
+	hostflags=(
+	--build=i686-gnu-linux
+	--host=i686-gnu-linux
+	--target=i686-gnu-linux
+	)
+fi
+
+SED=sed \
 
 "$UB_COMPILEDIR"/configure \
 	--prefix=/usr \
 	--infodir=/usr/share/info \
 	--mandir=/usr/share/man \
-	--build=i686-uhu-linux \
-	--host=i686-uhu-linux \
-	--target=i686-uhu-linux \
 	--enable-languages=c,c++,objc,java,fortran \
 	--enable-targets=all \
 	--enable-checking=release \
@@ -28,6 +39,7 @@ SED=sed
 	--enable-plugin \
 	--enable-libmpx \
 	--enable-libssp \
+	--enable-tls \
 	--enable-install-libiberty \
 	--disable-multilib \
 	--disable-libstdcxx-pch \
@@ -40,7 +52,7 @@ SED=sed
 	--with-arch-64=core2 \
 	--with-cpu-32=i686 \
 	--with-cpu-64=core2 \
-	--with-tune=generic
+	--with-tune=generic \
+	${hostflags[@]}
 
 ub_make -j4
-

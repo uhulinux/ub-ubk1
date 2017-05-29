@@ -8,6 +8,19 @@ cd "$UB_OBJECTDIR"
 # the kernel of UHU-Linux 2.2 to be able to run binaries of UHU-Linux 3.1
 # (for example in chrooted builds).
 
+if [ "$UB_ARCH" == "amd64" ];then
+UB_CONFIGURE_DIR="$UB_COMPILEDIR" ub_configure \
+	--with-headers=/usr/include \
+	--with-tls \
+	--enable-add-ons \
+	--enable-kernel=2.6.33 \
+	--enable-obsolete-rpc \
+	--enable-bind-now \
+	--disable-profile \
+	--enable-lock-elision \
+	--disable-werror \
+	libc_cv_slibdir=/lib
+else
 UB_CONFIGURE_DIR="$UB_COMPILEDIR" ub_configure \
 	--with-headers=/usr/include \
 	--with-tls \
@@ -16,6 +29,7 @@ UB_CONFIGURE_DIR="$UB_COMPILEDIR" ub_configure \
 	--enable-obsolete-rpc \
 	--with-cpu=i686 \
 	--disable-werror
+fi
 
 # glibc doesn't like -Os!
 # build failures with -O1 maybe gcc bug:
