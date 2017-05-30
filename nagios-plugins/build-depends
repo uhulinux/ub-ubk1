@@ -3,7 +3,6 @@ bind-utils
 fping
 iputils
 krb5-dev
-libnetsnmp-dev
 mysql-client
 mysql-common
 mysql-dev
