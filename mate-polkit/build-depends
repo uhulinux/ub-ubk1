@@ -1,8 +1,6 @@
 gobject-introspection-dev
 gtk-dev
 intltool
-libcap-dev
-libgcrypt-dev
 mate-common
 polkit-dev
 systemd-dev

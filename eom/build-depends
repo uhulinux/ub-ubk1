@@ -5,9 +5,7 @@ gtk-dev
 intltool
 itstool
 lcms2-dev
-libcap-dev
 libexif-dev
-libgcrypt-dev
 libjpeg-turbo-dev
 libpeas-dev
 librsvg-dev
