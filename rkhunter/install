@@ -20,4 +20,4 @@ rm -f "${UB_INSTALLDIR}/var/lib/rkhunter/tmp/"{group,passwd}
 # we trust in udev
 sed -i 's|^#ALLOWHIDDENDIR=/dev/.udev$|ALLOWHIDDENDIR=/dev/.udev|' \
     "${UB_INSTALLDIR}/etc/rkhunter.conf"
-ln -s ../../share/doc/Packages/rkhunter "$UB_INSTALLDIR"/usr/lib/rkhunter/docs
+# ln -s ../../share/doc/Packages/rkhunter "$UB_INSTALLDIR"/usr/lib/rkhunter/docs
