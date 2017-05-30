@@ -3,7 +3,9 @@ exempi-dev
 gobject-introspection-dev
 gtk-dev
 intltool
+libcap-dev
 libexif-dev
+libgcrypt-dev
 libjpeg-turbo-dev
 libnotify-dev
 libsm-dev
