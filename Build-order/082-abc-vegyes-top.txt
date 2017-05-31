@@ -42,7 +42,6 @@ perl-extutils-xspp
 iptables-utils
 roundup
 a2ps
-node
 dump
 fuse-sshfs
 apache-mod-auth-pam

@@ -72,5 +72,6 @@ seamonkey
 chromium
 balsa
 skype
+node
 ghetto-skype
 
