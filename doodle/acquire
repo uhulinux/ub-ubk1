@@ -2,3 +2,4 @@
 
 doodle-${UB_VERSION}.tar.gz doodle-${UB_VERSION}/
 	http://grothoff.org/christian/doodle/download/
+	http://download.openpkg.org/components/cache/doodle/
