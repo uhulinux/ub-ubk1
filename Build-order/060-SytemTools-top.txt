@@ -11,7 +11,6 @@ hashalot
 lde
 lsof
 lsscsi
-madwifi-tools
 minicom
 mtx
 open-iscsi
@@ -29,13 +28,11 @@ sysstat
 v86d
 vlan
 blktrace
-arpwatch
 freeipmi
 firecontrol
 ipsec-tools
 ipvsadm
 iscsitarget
-slmodem
 pcmciautils
 blktool
 irda-utils

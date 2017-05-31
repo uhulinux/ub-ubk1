@@ -1,4 +1,0 @@
-#!/bin/sh -eux
-
-cd modem
-ub_make SUPPORT_ALSA=1

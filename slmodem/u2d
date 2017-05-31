@@ -1,1 +1,0 @@
-urllist http://linmodems.technion.ac.il/packages/smartlink/ | splitver '^slmodem-([0-9.\-]+).tar.gz$' | sort -V | tail -n 1 | sed s/-/~/g

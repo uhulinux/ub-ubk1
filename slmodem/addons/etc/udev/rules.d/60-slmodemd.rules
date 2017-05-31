@@ -1,3 +1,0 @@
-# /etc/udev/rules.d/60-slmodemd.rules
-
-ACTION=="add", SUBSYSTEM=="sound", DEVPATH=="/class/sound/pcmC0D6p", RUN+="/sbin/slmodemdstart"

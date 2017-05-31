@@ -1,3 +1,0 @@
-#!/bin/sh -eux
-
-cp modem/slmodemd "$UB_INSTALLDIR"/sbin/
