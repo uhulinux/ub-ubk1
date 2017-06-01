@@ -10,5 +10,6 @@ cmake .. \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_Fortran_COMPILER=gfortran \
 	-DLAPACKE=ON \
-	-DCBLAS=ON
+	-DCBLAS=ON \
+	-DCMAKE_INSTALL_LIBDIR=/usr/lib
 make
