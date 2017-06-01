@@ -4,7 +4,6 @@ le
 mined
 ne
 nano
-retext
 cream
 tilde
 qemacs

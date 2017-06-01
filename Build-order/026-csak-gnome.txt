@@ -27,11 +27,8 @@ gsound
 gnome2-audio
 fonts-cantarell
 gnome-backgrounds
-gnome-theme-bluecurve
 gnome-video-effects
 icon-theme-gnome-extras
-metacity-theme-bluecurve
-metacity-theme-bluecurve-classic
 gnome-getting-started-docs
 icon-theme-gnome-symbolic
 pyatspi

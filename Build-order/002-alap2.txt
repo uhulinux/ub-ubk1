@@ -40,7 +40,7 @@ postgresql
 cyrus-sasl2 #openldap nélkül
 openldap #cyrus-sasl2 -vel
 cyrus-sasl2 #mégegyszer
-postresql #mégegyszer
+postgresql #mégegyszer
 cyrus-sasl2 #mégegyszer
 openldap #végleg
 postgresql #végleg

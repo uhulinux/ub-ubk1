@@ -82,7 +82,6 @@ python-babel
 python-beaker
 python-cffi
 python-chardet
-python3-chardet
 python-cheetah
 python-cherrypy
 python-configobj
