@@ -1,9 +1,9 @@
 gconf2-dev
 glib-dev
-libgnome-keyring-dev
 gobject-introspection-dev
 intltool
 json-glib-dev
+libgnome-keyring-dev
 libgudev-dev
 libsoup-gnome-dev
 libxslt
