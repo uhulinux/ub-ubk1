@@ -6,7 +6,7 @@ libgnomeui2
 gnome-keyring
 telepathy-glib
 telepathy-rakia
-telephaty-mission-control
+telepathy-mission-control
 telepathy-logger
 telepathy-gabble
 telepathy-salut
