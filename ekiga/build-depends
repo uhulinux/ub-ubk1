@@ -1,5 +1,6 @@
 avahi-dev
 boost-dev
+db4-dev
 docbook-dtds
 docbook-xsl
 evolution-data-server-dev
