@@ -1,3 +1,4 @@
 #!/bin/sh -eux
 
-ub_compile
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib .
