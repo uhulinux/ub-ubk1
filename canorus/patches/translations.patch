@@ -1,7 +1,7 @@
-diff -Naur orig/src/CMakeLists.txt patched/src/CMakeLists.txt
---- orig/src/CMakeLists.txt	2017-05-20 17:57:52.000000000 +0200
-+++ patched/src/CMakeLists.txt	2017-05-20 22:58:00.829151501 +0200
-@@ -705,26 +705,20 @@
+diff -Naur canorus-0.7.3rc1-orig/src/CMakeLists.txt canorus-0.7.3rc1/src/CMakeLists.txt
+--- canorus-0.7.3rc1-orig/src/CMakeLists.txt	2017-05-21 15:04:40.000000000 +0200
++++ canorus-0.7.3rc1/src/CMakeLists.txt	2017-06-02 22:10:01.114895322 +0200
+@@ -706,26 +706,20 @@
  ###############
  # Translation #
  ###############
@@ -17,7 +17,7 @@ diff -Naur orig/src/CMakeLists.txt patched/src/CMakeLists.txt
 -###############
 -# Dev Install #
 -###############
--message("CANORUS_DEV_INSTALL " ${CANORUS_DEV_INSTALL})
+-message("CANORUS_DEV_INSTALL " ${CANORUS_DEV_INSTALL} " CANORUS_INSTALL_PREFIX " ${CANORUS_INSTALL_PREFIX})
 -IF(${CANORUS_DEV_INSTALL} MATCHES True)
 -    ADD_CUSTOM_COMMAND(
 -        TARGET canorus
