@@ -1,0 +1,18 @@
+diff -Nur orig/examples/ex1.c mod/examples/ex1.c
+--- orig/examples/ex1.c	2017-06-03 16:25:33.000000000 +0200
++++ mod/examples/ex1.c	2017-06-03 17:30:58.116943624 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/tcc -run
++#!/usr/bin/tcc -run
+ #include <tcclib.h>
+ 
+ int main()
+diff -Nur orig/examples/ex4.c mod/examples/ex4.c
+--- orig/examples/ex4.c	2017-06-03 16:25:33.000000000 +0200
++++ mod/examples/ex4.c	2017-06-03 17:31:11.700918830 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/tcc -run -L/usr/X11R6/lib -lX11
++#!/usr/bin/tcc -run -L/usr/X11R6/lib -lX11
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <X11/Xlib.h>
