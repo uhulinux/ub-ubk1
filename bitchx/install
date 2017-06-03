@@ -2,5 +2,5 @@
 
 ub_install
 
-ln -sf BitchX-"$UB_VERSION"-final "$UB_INSTALLDIR"/usr/bin/BitchX
-ln -sf BitchX-"$UB_VERSION"-final "$UB_INSTALLDIR"/usr/bin/bitchx
+#ln -sf BitchX-"$UB_VERSION"-final "$UB_INSTALLDIR"/usr/bin/BitchX
+#ln -sf BitchX-"$UB_VERSION"-final "$UB_INSTALLDIR"/usr/bin/bitchx

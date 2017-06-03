@@ -1,0 +1,79 @@
+diff -Nur orig/configure mod/configure
+--- orig/configure	2013-11-16 01:09:33.000000000 +0100
++++ mod/configure	2017-06-03 13:45:35.632885765 +0200
+@@ -10631,9 +10631,9 @@
+ case "$with_ssl" in
+     yes|check)
+ 
+-echo "$as_me:$LINENO: checking for SSLeay in -lcrypto" >&5
+-echo $ECHO_N "checking for SSLeay in -lcrypto... $ECHO_C" >&6
+-if test "${ac_cv_lib_crypto_SSLeay+set}" = set; then
++echo "$as_me:$LINENO: checking for ERR_get_error in -lcrypto" >&5
++echo $ECHO_N "checking for ERR_get_error in -lcrypto... $ECHO_C" >&6
++if test "${ac_cv_lib_crypto_ERR_get_error+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+@@ -10651,11 +10651,11 @@
+ #endif
+ /* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+-char SSLeay ();
++char ERR_get_error ();
+ int
+ main ()
+ {
+-SSLeay ();
++ERR_get_error ()
+   ;
+   return 0;
+ }
+@@ -10682,20 +10682,20 @@
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; }; then
+-  ac_cv_lib_crypto_SSLeay=yes
++  ac_cv_lib_crypto_ERR_get_error=yes
+ else
+   echo "$as_me: failed program was:" >&5
+ sed 's/^/| /' conftest.$ac_ext >&5
+ 
+-ac_cv_lib_crypto_SSLeay=no
++ac_cv_lib_crypto_ERR_get_error=no
+ fi
+ rm -f conftest.err conftest.$ac_objext \
+       conftest$ac_exeext conftest.$ac_ext
+ LIBS=$ac_check_lib_save_LIBS
+ fi
+-echo "$as_me:$LINENO: result: $ac_cv_lib_crypto_SSLeay" >&5
+-echo "${ECHO_T}$ac_cv_lib_crypto_SSLeay" >&6
+-if test $ac_cv_lib_crypto_SSLeay = yes; then
++echo "$as_me:$LINENO: result: $ac_cv_lib_crypto_ERR_get_error" >&5
++echo "${ECHO_T}$ac_cv_lib_crypto_ERR_get_error" >&6
++if test $ac_cv_lib_crypto_ERR_get_error = yes; then
+   cat >>confdefs.h <<_ACEOF
+ #define HAVE_LIBCRYPTO 1
+ _ACEOF
+@@ -10704,7 +10704,7 @@
+ 
+ fi
+ 
+-      if test x"$ac_cv_lib_crypto_SSLeay" = x"yes"; then
++      if test x"$ac_cv_lib_crypto_ERR_get_error" = x"yes"; then
+ 
+ echo "$as_me:$LINENO: checking for SSL_accept in -lssl" >&5
+ echo $ECHO_N "checking for SSL_accept in -lssl... $ECHO_C" >&6
+diff -Nur orig/configure.in mod/configure.in
+--- orig/configure.in	2013-11-16 01:08:31.000000000 +0100
++++ mod/configure.in	2017-06-03 13:48:53.588064258 +0200
+@@ -566,8 +566,8 @@
+ esac
+ case "$with_ssl" in
+     yes|check)
+-      AC_CHECK_LIB([crypto], [SSLeay], [], [], [])
+-      if test x"$ac_cv_lib_crypto_SSLeay" = x"yes"; then
++      AC_CHECK_LIB([crypto], [ERR_get_error], [], [], [])
++      if test x"$ac_cv_lib_crypto_ERR_get_error" = x"yes"; then
+         AC_CHECK_LIB([ssl], [SSL_accept], [], [], [])
+       fi
+       if test x"$ac_cv_lib_ssl_SSL_accept" = x"yes"; then
