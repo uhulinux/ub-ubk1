@@ -2,3 +2,4 @@
 
 subtitleeditor-${UB_VERSION}.tar.gz subtitleeditor-${UB_VERSION}/
 	http://download.gna.org/subtitleeditor/${UB_VERSION_HEAD2}/
+    https://ftp.openbsd.org/pub/OpenBSD/distfiles/
