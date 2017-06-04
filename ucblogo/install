@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
+rm -r csls/CVS
 make \
 	prefix=INFODIR=${UB_INSTALLDIR} \
 	INFODIR=${UB_INSTALLDIR}/usr/share/info \
