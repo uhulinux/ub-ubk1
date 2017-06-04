@@ -1,15 +1,21 @@
 #!/bin/sh -eux
 
+if [ "$UB_ARCH" == "amd64" ];then
+export model="64"
+else
+export model="32"
+fi
+
 mkdir -p "$UB_INSTALLDIR"/usr/include/d/druntime
 mkdir -p "$UB_INSTALLDIR"/usr/share/doc/dmd2/phobos
 
 cp src/dmd/dmd "$UB_INSTALLDIR"/usr/bin/
-cp -a linux/bin32/dumpobj "$UB_INSTALLDIR"/usr/bin/
-cp -a linux/bin32/obj2asm "$UB_INSTALLDIR"/usr/bin/
-cp -a linux/bin32/rdmd "$UB_INSTALLDIR"/usr/bin/
+cp -a linux/bin$model/dumpobj "$UB_INSTALLDIR"/usr/bin/
+cp -a linux/bin$model/obj2asm "$UB_INSTALLDIR"/usr/bin/
+cp -a linux/bin$model/rdmd "$UB_INSTALLDIR"/usr/bin/
 
-echo -e "[Environment]\nDFLAGS=-m32 -I/usr/include/d -I/usr/include/d/druntime/import -L-L/usr/lib -L-lrt" > linux/bin32/dmd.conf
-cp -a linux/bin32/dmd.conf "$UB_INSTALLDIR"/etc/
+echo -e "[Environment]\nDFLAGS=-m$model -I/usr/include/d -I/usr/include/d/druntime/import -L-L/usr/lib -L-lrt" > linux/bin$model/dmd.conf
+cp -a linux/bin$model/dmd.conf "$UB_INSTALLDIR"/etc/
 
 cp -Rf src/phobos/std "$UB_INSTALLDIR"/usr/include/d
 cp -Rf src/phobos/etc "$UB_INSTALLDIR"/usr/include/d
@@ -17,8 +23,8 @@ cp -f src/phobos/{index,unittest}.d "$UB_INSTALLDIR"/usr/include/d/
 
 cp -Rf src/druntime/import "$UB_INSTALLDIR"/usr/include/d/druntime
 
-install -Dm644 src/phobos/generated/linux/release/32/libphobos2.a "$UB_INSTALLDIR"/usr/lib/libphobos2.a
-install -Dm644 src/druntime//generated/linux/release/32/libdruntime.a "$UB_INSTALLDIR"/usr/lib/libdruntime.a
+install -Dm644 src/phobos/generated/linux/release/$model/libphobos2.a "$UB_INSTALLDIR"/usr/lib/libphobos2.a
+install -Dm644 src/druntime//generated/linux/release/$model/libdruntime.a "$UB_INSTALLDIR"/usr/lib/libdruntime.a
 
 for x in man/man1/*.1; do
 	install -Dm644 $x "$UB_INSTALLDIR/usr/share/man/man1/$(basename $x)"

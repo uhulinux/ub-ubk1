@@ -1,22 +1,27 @@
 #!/bin/sh -eux
 
-export PATH=$PATH:$UB_COMPILEDIR/linux/bin32
+if [ "$UB_ARCH" == "amd64" ];then
+export model="64"
+else
+export model="32"
+fi
+export PATH=$PATH:$UB_COMPILEDIR/linux/bin$model
 cd src/dmd
 ub_make \
 	-f posix.mak \
-	MODEL="32" \
+	MODEL="$model" \
 	RELEASE=1
 cd ../..
 cd src/druntime
 ub_make \
 	-f posix.mak \
-	MODEL="32" \
+	MODEL="$model" \
 	RELEASE=1
 cd ../..
 
 cd src/phobos
 ub_make \
 	-f posix.mak \
-	MODEL="32"
+	MODEL="$model"
 	RELEASE=1
 cd ../..
