@@ -13,7 +13,7 @@ for i in ctags etags ; do
 done
 mv "$UB_INSTALLDIR"/usr/share/man/*.1 "$UB_INSTALLDIR"/usr/share/man/man1/
 
-rm "$UB_INSTALLDIR"/usr/lib/xemacs-21.5-b34/i686-uhu-linux/modules/auto-autoloads.el~
+rm -f "$UB_INSTALLDIR"/usr/lib/xemacs-21.5-b34/i686-uhu-linux/modules/auto-autoloads.el~
 
 cd "$UB_INSTALLDIR"/usr/share/info
 rm -f dir info.info cl.info widget.info texinfo* termcap* standards*

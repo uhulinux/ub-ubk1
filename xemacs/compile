@@ -20,4 +20,5 @@ ub_compile \
 	--with-xfs \
 	--disable-sound \
 	--with-mule \
-	--without-debug
+	--without-debug \
+	--with-system-malloc
