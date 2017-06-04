@@ -19,7 +19,6 @@ abevjava
 fet
 lightdm-gtk-greeter-settings
 euler
-flamerobin
 smart
 ndisgtk
 sddm-config-editor
