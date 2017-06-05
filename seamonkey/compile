@@ -1,7 +1,12 @@
 #!/bin/sh -eux
 
-CC="ccache gcc -m32"
-CXX="ccache g++ -m32"
+if [ "$UB_ARCH" == "amd64" ];then
+mode="64"
+else
+mode="32"
+fi
+CC="ccache gcc -m${mode}"
+CXX="ccache g++ -m${mode}"
 export SHELL=/bin/bash
 export LDFLAGS="-Wl,-rpath,/usr/lib/seamonkey/ -Wl,--no-keep-memory -Wl,-z,relro -Wl,-z,now"
 export CFLAGS=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
@@ -10,8 +15,6 @@ export CXXFLAGS=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedul
 
 : > .mozconfig
 cat > .mozconfig << _EOF_
-ac_add_options --host='i686-uhu-linux'
-ac_add_options --target='i686-uhu-linux'
 ac_add_options --prefix=/usr
 ac_add_options --enable-application=suite
 ac_add_options --enable-release
