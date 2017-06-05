@@ -6,5 +6,5 @@ ub_compile \
 	--qimage-libdir=/usr/lib/qt5/lib \
 	--qimage-includedir=/usr/lib/qt5/include \
 	--avformat-swscale \
-	--target-arch=i386 \
+#	--target-arch=i386 \
 #	--avformat-vdpau
