@@ -1,5 +1,12 @@
 #!/bin/sh -eux
 
+if [ "$UB_ARCH" == "amd64" ];then
+arch="x86_64"
+else
+arch="i386"
+fi
+rpm2cpio google-chrome-stable-${UB_VERSION}-1.${arch}.rpm | cpio -idmv
+
 mv opt/google/chrome/PepperFlash/ "$UB_INSTALLDIR"/usr/lib/PepperFlash/
 mv opt/google "$UB_INSTALLDIR"/usr/lib
 
