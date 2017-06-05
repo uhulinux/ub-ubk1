@@ -1,5 +1,4 @@
 bladeenc
-cdp
 fmtools
 tuxguitar
 wine-gecko
