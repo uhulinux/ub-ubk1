@@ -141,6 +141,8 @@ tdb
 qjson
 gssdp
 gupnp
+scheme48
+scsh-libs
 scsh
 yasm
 perl-net-dbus
