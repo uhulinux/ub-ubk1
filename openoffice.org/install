@@ -1,8 +1,11 @@
 #!/bin/sh -eux
 
 cd main
-
+if [ "$UB_ARCH" == "amd64" ];then
+source ./LinuxX86-64Env.Set.sh
+else
 source ./LinuxX86Env.Set.sh
+fi
 
 export DESTDIR="$UB_INSTALLDIR"
 export KDEMAINDIR=/usr
