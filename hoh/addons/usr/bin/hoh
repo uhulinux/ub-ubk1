@@ -1,5 +1,0 @@
-#!/bin/bash
-
-export LD_LIBRARY_PATH=/usr/share/games/HoH/runtime
-cd /usr/share/games/HoH
-exec padsp ./HoH "$@"

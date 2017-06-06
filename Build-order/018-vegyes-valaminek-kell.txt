@@ -268,5 +268,6 @@ yaml-cpp
 pythonqt
 apache-mod-dnssd
 openal
+xerces-c
 
 

@@ -1,1 +1,1 @@
-_geturl https://www.freshports.org/games/hohlin/ | grep SIZE | sed s/.*hohlin-// | sed s/\\.tar.*//
+u2d https://github.com/dougmencken/HeadOverHeels/releases/ v 

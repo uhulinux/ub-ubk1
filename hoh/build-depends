@@ -1,1 +1,3 @@
-libx11
+allegro-dev
+libvorbis-dev
+xerces-c-dev

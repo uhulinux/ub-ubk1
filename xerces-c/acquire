@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+xerces-c-${UB_VERSION}.tar.gz xerces-c-${UB_VERSION}/
+	http://apache.osuosl.org/xerces/c/3/sources/

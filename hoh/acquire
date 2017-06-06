@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-hohlin-101.tar.bz2 hoh-install-1.01/
-	http://retrospec.sgn.net/games/hoh/bin/
+headoverheels-${UB_VERSION}.tar.gz HeadOverHeels-f0f470c/
+	git://github.com/dougmencken/HeadOverHeels.git@f0f470c
