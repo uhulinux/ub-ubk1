@@ -25,62 +25,27 @@ export LDFLAGS="-Wl,-rpath,/usr/lib/openoffice4/program/ -Wl,--as-needed"
 export CPPFLAGS="-Wno-deprecated-declarations"
 export CXXFLAGS="-std=c++11"
 
-autoconf
-if [ "$UB_ARCH" == "amd64" ];then
-./configure \
-	--prefix="/usr"             \
-	--sysconfdir="/etc"         \
-	--localstatedir="/var"      \
-	--mandir="/usr/share/man"   \
-	--infodir="/usr/share/info" \
+# hostflags 32 és 64 bithez
+if [ "$UB_ARCH" == "amd64" ]; then
+	hostflags=(
 	--build="amd64-uhu-linux"    \
 	--host="amd64-uhu-linux"     \
-	--with-lang="en-GB hu" \
-	--with-vendor="ubk.hu" \
-	--with-jdk-home="/usr/lib/java" \
-	--with-ant-home="/usr/lib/apache-ant" \
-	--with-system-libs \
-	--with-system-headers \
-	--without-system-jars \
-	--without-afms \
-	--without-fonts \
-	--without-ppds \
-	--without-junit \
-	--with-system-hyphen \
-	--without-system-hsqldb \
-	--without-system-boost \
-	--without-system-icu \
-	--without-system-jpeg \
-	--without-system-lucene \
-	--without-system-mdds \
-	--without-system-mythes \
-	--disable-beanshell \
-	--disable-coinmp \
-	--disable-epm \
-	--disable-fetch-external \
-	--disable-gconf \
-	--disable-gnome-vfs \
-	--disable-kde4 \
-	--disable-odk \
-	--disable-online-update \
-	--disable-pdfimport \
-	--disable-saxon \
-	--disable-unit-tests \
-	--disable-werror \
-	--enable-crashdump \
-	--enable-gio \
-	--enable-hunspell \
-	--enable-hyphen
-source ./LinuxX86-64Env.Set.sh
+	)
 else
+	hostflags=(
+	--build="i686-uhu-linux"    \
+	--host="i686-uhu-linux"     \
+	)
+fi
+
+autoconf
+
 ./configure \
 	--prefix="/usr"             \
 	--sysconfdir="/etc"         \
 	--localstatedir="/var"      \
 	--mandir="/usr/share/man"   \
 	--infodir="/usr/share/info" \
-	--build="i686-uhu-linux"    \
-	--host="i686-uhu-linux"     \
 	--with-lang="en-GB hu" \
 	--with-vendor="ubk.hu" \
 	--with-jdk-home="/usr/lib/java" \
@@ -116,11 +81,16 @@ else
 	--enable-crashdump \
 	--enable-gio \
 	--enable-hunspell \
-	--enable-hyphen
-source ./LinuxX86Env.Set.sh
-	fi
+	--enable-hyphen \
+	${hostflags[@]}
 
-	./bootstrap
+if [ "$UB_ARCH" == "amd64" ]; then
+	source ./LinuxX86-64Env.Set.sh
+else
+	source ./LinuxX86Env.Set.sh
+fi
+
+./bootstrap
 cd instsetoo_native
 
 # build --all --show -P2 -- -P2
