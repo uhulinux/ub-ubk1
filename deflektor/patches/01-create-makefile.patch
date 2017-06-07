@@ -14,7 +14,7 @@ diff -Naur orig/makefile mod/makefile
 +BINSUF = 
 +OBJSUF = .o
 +LFLAGS = -s -lfmodex `allegro-config --libs`
-+CFLAGS = -I$(INCDIR) -I/usr/include/fmodex -w -O3
++CFLAGS = -m$(MODE) -I$(INCDIR) -I/usr/include/fmodex -w -O2
 +OBJDIR = ./
 +BINDIR = ./
 +TEMP = $(wildcard $(SRCDIR)/*$(SRCSUF))
