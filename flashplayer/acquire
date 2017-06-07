@@ -8,16 +8,8 @@
 # flash download page:
 # http://www.adobe.com/support/flashplayer/downloads.html
 
-install_flash_player_${UB_VERSION}_linux.tar.gz .
+flash_player_npapi_linux-${UB_VERSION}-i386.tar.gz
 	https://fpdownload.adobe.com/get/flashplayer/pdc/${UB_VERSION}/flash_player_npapi_linux.i386.tar.gz
 
-flashplayer_${UB_VERSION}_plugin_debug.tar.gz .:debug/
-	https://fpdownload.macromedia.com/pub/flashplayer/updaters/${UB_VERSION_MAJOR}/flash_player_npapi_linux_debug.i386.tar.gz
-
-# 64 bit only
-
-#flashplayer_${UB_VERSION}_sa_debug.tar.gz .:sadebug/
-#	https://fpdownload.macromedia.com/pub/flashplayer/updaters/${UB_VERSION_MAJOR}/flash_player_sa_linux_debug.i386.tar.gz
-
-#flashplayer_${UB_VERSION}_sa.tar.gz .:sa/
-#	https://fpdownload.macromedia.com/pub/flashplayer/updaters/${UB_VERSION_MAJOR}/flash_player_sa_linux.i386.tar.gz
+flash_player_npapi_linux-${UB_VERSION}-x86_64.tar.gz
+	https://fpdownload.adobe.com/get/flashplayer/pdc/${UB_VERSION}/flash_player_npapi_linux.x86_64.tar.gz
