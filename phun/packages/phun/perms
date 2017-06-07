@@ -3,7 +3,6 @@
 -         -          755  /usr/share/Phun/lib/libboost_filesystem-mt.so
 -         -          755  /usr/share/Phun/lib/libboost_system-mt.so
 -         -          755  /usr/share/Phun/lib/libboost_thread-mt.so
--         -          755  /usr/share/Phun/lib/libpng.so.3
 -         -          755  /usr/share/Phun/lib/libzip.so.1
 -         -          755  /usr/share/Phun/phun
 -         -          755  /usr/share/Phun/phun.bin
