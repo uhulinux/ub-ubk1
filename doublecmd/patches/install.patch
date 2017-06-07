@@ -1,6 +1,15 @@
-diff -Naur orig/install/linux/install.sh patched/install/linux/install.sh
---- orig/install/linux/install.sh	2016-09-18 13:46:42.134741323 +0200
-+++ patched/install/linux/install.sh	2017-04-14 14:38:14.451701282 +0200
+diff -Nur orig/install/linux/install.sh mod/install/linux/install.sh
+--- orig/install/linux/install.sh	2016-09-18 13:46:42.000000000 +0200
++++ mod/install/linux/install.sh	2017-06-07 17:04:44.571344482 +0200
+@@ -10,7 +10,7 @@
+ # Determine library directory
+ if [ "$CPU_TARGET" = "x86_64" ] && [ ! -f "/etc/debian_version" ]
+    then
+-       LIB_SUFFIX=64
++       LIB_SUFFIX=
+    else
+        LIB_SUFFIX=
+ fi
 @@ -107,9 +107,9 @@
      install -d -m 755                      $DC_INSTALL_PREFIX/usr/share/man/man1
      install -c -m 644 install/linux/*.1    $DC_INSTALL_PREFIX/usr/share/man/man1
