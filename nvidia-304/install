@@ -1,6 +1,12 @@
 #!/bin/bash -eux
 #kernel verzió
-KVER="$(ls -1 /lib/modules|grep i386)"
+if [ "$UB_ARCH" == "amd64" ];then
+KVER="$(ls -1 /lib/modules | grep x86_64)"
+forras="NVIDIA-Linux-x86_64-${UB_VERSION}"
+else
+KVER="$(ls -1 /lib/modules | grep i386)"
+forras="NVIDIA-Linux-x86-${UB_VERSION}"
+fi
 #célkönyvtárak
 #libek
 cellibdir="$UB_INSTALLDIR"/usr/lib
@@ -25,7 +31,9 @@ mkdir -p "$cellibdir"/nvidia \
 mv lib $UB_INSTALLDIR/
 
 # utils csomag kézi installálása
-cd NVIDIA-Linux-x86-"${UB_VERSION}"
+cd $forras
+#doksik
+mv html LICENSE NVIDIA_Changelog README.txt ../
 # biztonságba helyezés a régi módon
 mv libglx.so."$UB_VERSION" "$cellibdir"/nvidia/
 #Áthelyezzük a nem a $cellibdir alá kerülő *.so-kat

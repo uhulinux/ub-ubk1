@@ -1,6 +1,7 @@
 #!/usr/bin/env dl
 
 NVIDIA-Linux-x86-${UB_VERSION}.run
-	http://download.nvidia.com/XFree86/Linux-x86/${UB_VERSION_HEAD2}/
-	ftp://download.nvidia.com/XFree86/Linux-x86/${UB_VERSION}/
-	http://us.download.nvidia.com/XFree86/Linux-x86/${UB_VERSION}/
+	http://download.nvidia.com/XFree86/Linux-x86/${UB_VERSION}/
+
+NVIDIA-Linux-x86_64-${UB_VERSION}.run
+	http://download.nvidia.com/XFree86/Linux-x86_64/${UB_VERSION}/
