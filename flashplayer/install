@@ -1,21 +1,21 @@
 #!/bin/sh -eux
 
-cp -a usr "$UB_INSTALLDIR"/
-libdir="$UB_INSTALLDIR"/usr/lib
+if [ "$UB_ARCH" = "amd64" ]; then
+	tar -xzvf flash_player_npapi_linux-${UB_VERSION}-x86_64.tar.gz
+else
+	tar -xzvf flash_player_npapi_linux-${UB_VERSION}-i386.tar.gz
+fi
+rm -f flash_player_npapi_linux-*.tar.gz
 
-mkdir -p "$libdir"/firefox/plugins "$libdir"/mozilla/plugins "$libdir"/flashplayer
+libdir="$UB_INSTALLDIR/usr/lib"
+
+cp -a usr "$UB_INSTALLDIR"/
+
+mkdir -p "$libdir"/{firefox,mozilla}/plugins
 
 install -m 755 libflashplayer.so "$libdir"/firefox/plugins/
-install -m 755 debug/libflashplayer.so "$libdir"/flashplayer/
 
-if [ -d sa ]; then
-	install -m 755 sa/flashplayer "$UB_INSTALLDIR"/usr/bin/flashplayer
-fi
-if [ -d sadebug ]; then
-	install -m 755 sadebug/flashplayerdebugger "$UB_INSTALLDIR"/usr/bin/
-fi
-
-rm -Rf "$libdir"/kde4
+rm -Rf "$UB_INSTALLDIR"/usr/lib/kde4
 rm -Rf "$UB_INSTALLDIR"/usr/share/kde4
 
 ln -s ../../firefox/plugins/libflashplayer.so "$libdir"/mozilla/plugins/
