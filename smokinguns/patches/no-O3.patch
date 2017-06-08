@@ -1,0 +1,60 @@
+diff -Nur orig/Makefile mod/Makefile
+--- orig/Makefile	2012-05-28 23:22:31.000000000 +0200
++++ mod/Makefile	2017-06-08 20:54:28.946013610 +0200
+@@ -308,18 +308,18 @@
+     CLIENT_CFLAGS += -DUSE_CODEC_VORBIS
+   endif
+ 
+-  OPTIMIZEVM = -O3 -funroll-loops -fomit-frame-pointer
++  OPTIMIZEVM = -O2 -funroll-loops -fomit-frame-pointer
+   OPTIMIZE = $(OPTIMIZEVM) -ffast-math
+ 
+   ifeq ($(ARCH),x86_64)
+-    OPTIMIZEVM = -O3 -fomit-frame-pointer -funroll-loops \
++    OPTIMIZEVM = -O2 -fomit-frame-pointer -funroll-loops \
+       -falign-loops=2 -falign-jumps=2 -falign-functions=2 \
+       -fstrength-reduce
+     OPTIMIZE = $(OPTIMIZEVM) -ffast-math
+     HAVE_VM_COMPILED = true
+   else
+   ifeq ($(ARCH),i386)
+-    OPTIMIZEVM = -O3 -march=i586 -fomit-frame-pointer \
++    OPTIMIZEVM = -O2 -march=i586 -fomit-frame-pointer \
+       -funroll-loops -falign-loops=2 -falign-jumps=2 \
+       -falign-functions=2 -fstrength-reduce
+     OPTIMIZE = $(OPTIMIZEVM) -ffast-math
+@@ -530,14 +530,14 @@
+   endif
+ 
+   ifeq ($(ARCH),x64)
+-    OPTIMIZEVM = -O3 -fno-omit-frame-pointer \
++    OPTIMIZEVM = -O2 -fno-omit-frame-pointer \
+       -falign-loops=2 -funroll-loops -falign-jumps=2 -falign-functions=2 \
+       -fstrength-reduce
+     OPTIMIZE = $(OPTIMIZEVM) --fast-math
+     HAVE_VM_COMPILED = true
+   endif
+   ifeq ($(ARCH),x86)
+-    OPTIMIZEVM = -O3 -march=i586 -fno-omit-frame-pointer \
++    OPTIMIZEVM = -O2 -march=i586 -fno-omit-frame-pointer \
+       -falign-loops=2 -funroll-loops -falign-jumps=2 -falign-functions=2 \
+       -fstrength-reduce
+     OPTIMIZE = $(OPTIMIZEVM) -ffast-math
+@@ -825,7 +825,7 @@
+   CLIENT_CFLAGS = $(SDL_CFLAGS)
+   SERVER_CFLAGS =
+ 
+-  OPTIMIZEVM = -O3 -funroll-loops
++  OPTIMIZEVM = -O2 -funroll-loops
+ 
+   ifeq ($(ARCH),sparc)
+     OPTIMIZEVM += -O3 \
+@@ -877,7 +877,7 @@
+ # SETUP AND BUILD -- GENERIC
+ #############################################################################
+   BASE_CFLAGS=-DNO_VM_COMPILED
+-  OPTIMIZE = -O3
++  OPTIMIZE = -O2
+ 
+   SHLIBEXT=so
+   SHLIBCFLAGS=-fPIC
