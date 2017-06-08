@@ -3,7 +3,7 @@ diff -Naur orig/src/Makefile patched/src/Makefile
 +++ patched/src/Makefile	2015-07-30 23:22:16.774378708 +0200
 @@ -1,4 +1,4 @@
 -CXXFLAGS= -O3 -fomit-frame-pointer
-+CXXFLAGS ?= -O3 -fomit-frame-pointer
++CXXFLAGS ?= -O2 -fomit-frame-pointer
  override CXXFLAGS+= -Wall -fsigned-char -fno-exceptions -fno-rtti
  
  PLATFORM= $(shell uname -s)

@@ -20,7 +20,7 @@ diff -Naur orig/makefile mod/makefile
 +# If you need extra link options (like more librarys, add to LFLAGS var)
 +LFLAGS = -s -laldmb -ldumb `allegro-config --libs ` -lm
 +# Compiler flags
-+CFLAGS = -w -I$(INCDIR) -O3
++CFLAGS = -w -I$(INCDIR) -O2
 +# Dirs
 +OBJDIR = ./
 +BINDIR = ./
