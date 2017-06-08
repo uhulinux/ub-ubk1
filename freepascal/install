@@ -16,6 +16,9 @@ ub_replace "$UB_INSTALLDIR" "" "$UB_INSTALLDIR/etc/fpc.cfg"
 ub_replace "$UB_INSTALLDIR" "" "$UB_INSTALLDIR/etc/fppkg.cfg"
 ub_replace "$UB_INSTALLDIR" "" "$UB_INSTALLDIR/etc/fppkg/default"
 
+# allways -fPIC
+echo -e "#ifdef cpux86_64\n# for x86_64 use -fPIC by default\n-Cg\n#endif" >> "$UB_INSTALLDIR/etc/fpc.cfg"
+
 # fix symlink
 rm "$UB_INSTALLDIR/usr/bin/ppc${arch}"
 ln -s "../lib/fpc/$UB_VERSION/ppc${arch}" "$UB_INSTALLDIR/usr/bin/ppc${arch}"
