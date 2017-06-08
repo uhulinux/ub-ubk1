@@ -20,7 +20,7 @@ diff -Naur orig/makefile mod/makefile
 +# If you need extra link options (like more librarys, add to LFLAGS var)
 +LFLAGS = -s -lfmodex `allegro-config --libs` -lcurl
 +# Compiler flags
-+CFLAGS = -I/usr/include/fmodex -I$(INCDIR) -w -O3
++CFLAGS = -I/usr/include/fmodex -I$(INCDIR) -w -O2
 +# Dirs
 +OBJDIR = ./
 +BINDIR = ./
