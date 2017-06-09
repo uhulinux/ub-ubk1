@@ -2,7 +2,7 @@
 
 ub_compile \
         -DCMAKE_BUILD_TYPE=Release \
-        -DFMOD_LIBRARY=/usr/lib/libfmodex-4.44.46.so \
+        -DFMOD_LIBRARY=/usr/lib/libfmodex.so \
         -DFMOD_INCLUDE_DIR=/usr/include/fmodex \
         -DGME_INCLUDE_DIR=/usr/include/gme \
         -DFORCE_INTERNAL_GME=OFF
