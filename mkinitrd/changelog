@@ -545,7 +545,7 @@ r5042 | doome | 2003-12-15 13:54:27 +0100 (Mon, 15 Dec 2003) | 4 lines
 
 0.4 -> 0.5
 - load BusLogic
-- use a static insmod (instead of buggy busybox) 
+- use a static insmod (instead of buggy busybox)
 
 ------------------------------------------------------------------------
 r5040 | doome | 2003-12-15 09:29:59 +0100 (Mon, 15 Dec 2003) | 2 lines
