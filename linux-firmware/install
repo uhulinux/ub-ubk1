@@ -26,7 +26,7 @@ rm -Rf ${UB_INSTALLDIR}/lib/firmware/{Makefile,configure,README*,*.txt,*.py}
 
 # ütközések törlése
 # az if [ -f $i ] kell, mert a dpkg -L listázza a "/."-t is, ami hibát okoz
-for i in $(dpkg -L alsa-firmware bluez-firmware dahdi-linux kernel microcodectl); do
+for i in $(dpkg -L alsa-firmware bluez-firmware kernel microcodectl); do
 	if [ -f $i ]; then
 		rm -rf ${UB_INSTALLDIR}/$i
 	fi
@@ -37,7 +37,8 @@ for i in $(dpkg -L acx-fw broadcom-fw ipw2100-fw ipw2200-fw nouveau-vdpau-fw zd1
 		rm -rf ${UB_INSTALLDIR}/$i
 	fi
 done
-
+# ez mégis bennmaradt
+rm -rf ${UB_INSTALLDIR}/yamaha
 # üres könyvtárak törlése
 find ${UB_INSTALLDIR} -type d -empty -delete
 
@@ -45,4 +46,3 @@ find ${UB_INSTALLDIR} -type d -empty -delete
 install -d "${UB_INSTALLDIR}/usr/lib/tmpfiles.d"
 echo 'w /sys/devices/system/cpu/microcode/reload - - - - 1' \
 	>"${UB_INSTALLDIR}/usr/lib/tmpfiles.d/linux-firmware.conf"
-

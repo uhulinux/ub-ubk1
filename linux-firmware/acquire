@@ -9,4 +9,3 @@ linux-firmware-${UB_VERSION}.tar.gz linux-firmware-a179db9/ :linux-firmware
 
 nouveau-firmware-20091212.tar.gz nouveau/ :nouveau
 	http://people.freedesktop.org/~pq/nouveau-drm/
-
