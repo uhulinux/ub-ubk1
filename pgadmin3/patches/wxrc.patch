@@ -1,0 +1,12 @@
+diff -Naur orig/pgadmin/ui/embed-xrc patched/pgadmin/ui/embed-xrc
+--- orig/pgadmin/ui/embed-xrc	2016-01-07 13:47:32.134741211 +0100
++++ patched/pgadmin/ui/embed-xrc	2017-06-10 18:41:34.883945864 +0200
+@@ -12,7 +12,7 @@
+ 
+ echo Rebuilding xrcdialogs.cpp...
+ 
+-wxrc -c -o $( dirname $0 )/xrcDialogs.cpp.new $( dirname $0 )/*.xrc
++wxrc2 -c -o $( dirname $0 )/xrcDialogs.cpp.new $( dirname $0 )/*.xrc
+ 
+ diff $( dirname $0 )/xrcDialogs.cpp.new $( dirname $0 )/xrcDialogs.cpp 1> /dev/null
+ rc=$?
