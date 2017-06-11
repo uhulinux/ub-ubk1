@@ -14,7 +14,6 @@ libxv-dev
 mesa-dev
 openssl-dev
 pixman-dev
-sdl-dev
 systemd-dev
 wayland-dev
 x.org-font-utils

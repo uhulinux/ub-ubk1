@@ -49,9 +49,9 @@ libva
 mesa
 libva
 mesa
-x.org-server #sdl nélkül
+x.org-server
 mesa
-x.org-server #sdl nélkül
+x.org-server
 x.org-input-acecad
 x.org-input-aiptek
 x.org-input-elographics
