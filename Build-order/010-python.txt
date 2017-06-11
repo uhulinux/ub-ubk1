@@ -46,7 +46,6 @@ pyxattr
 pyxdg
 pyzmq
 wxpython
-wxpython2.8
 cython
 ipython
 libvirt-python
