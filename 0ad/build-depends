@@ -22,6 +22,6 @@ openal-dev
 openexr-dev
 python-dev
 sdl2-dev
-wxwidgets2.8-dev
+wxwidgets-dev
 zip
 zlib-dev

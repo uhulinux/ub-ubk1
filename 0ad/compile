@@ -1,8 +1,5 @@
 #!/bin/sh -eux
 
-export WX_CONFIG=/usr/bin/wx-config2
-export SHELL=/bin/bash
-
 cd build/workspaces
 ./update-workspaces.sh \
       --bindir=/usr/bin \

@@ -1,4 +1,3 @@
 #!/bin/sh -eux
 
-export WX_CONFIG=/usr/bin/wx-config2
 make LFLAGS+="-ldl"

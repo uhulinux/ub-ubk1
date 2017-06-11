@@ -7,4 +7,4 @@ libmikmod-dev
 libpng-dev
 openal-dev
 sdl-mixer-dev
-wxwidgets2.8-dev
+wxwidgets-dev

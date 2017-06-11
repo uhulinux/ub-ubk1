@@ -16,5 +16,5 @@ python-dev
 sqlite-dev
 swig
 vigra-dev
-wxwidgets2.8-dev
+wxwidgets-dev
 zip
