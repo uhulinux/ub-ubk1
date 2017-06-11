@@ -15,7 +15,6 @@ asciidoc
 btrfs-progs
 aoetools
 guile1.8
-gnutls
 openjpeg
 icon-theme-hicolor
 shared-mime-info
