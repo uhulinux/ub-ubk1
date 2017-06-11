@@ -122,7 +122,7 @@ libxdiff
 libxkbcommon
 libxnvctrl
 tslib
-iso-codes #pyxml nélkül
+iso-codes
 libxklavier
 nickle
 x.org-utils
