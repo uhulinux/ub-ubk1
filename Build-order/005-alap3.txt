@@ -125,9 +125,9 @@ qt5
 poppler
 pinentry
 gpg #pinentry-runtime-depends-el
-apache
 apr
 apr-util
+apache
 scons
 serf
 aspell
