@@ -1,0 +1,119 @@
+diff -Nur orig/libs/convert/makefile mod/libs/convert/makefile
+--- orig/libs/convert/makefile	2015-11-22 22:42:37.000000000 +0100
++++ mod/libs/convert/makefile	2017-06-12 17:58:55.061866013 +0200
+@@ -1,6 +1,6 @@
+ BOOST_ROOT = $(DEVROOT)/boost
+ 
+-cflags    = -O3 -Iinclude -I$(BOOST_ROOT) -Wno-unused-variable -Wno-uninitialized
++cflags    = -O2 -Iinclude -I$(BOOST_ROOT) -Wno-unused-variable -Wno-uninitialized
+ ldflags   = -lboost_timer -lboost_system -lboost_chrono
+ 
+ target_1  = convert-test-callable           test/callable.cpp
+diff -Nur orig/libs/numeric/odeint/performance/Makefile mod/libs/numeric/odeint/performance/Makefile
+--- orig/libs/numeric/odeint/performance/Makefile	2015-12-07 17:14:46.000000000 +0100
++++ mod/libs/numeric/odeint/performance/Makefile	2017-06-12 17:59:16.869833635 +0200
+@@ -10,7 +10,7 @@
+ # BOOST_ROOT = /path/to/boost
+ 
+ INCLUDES += -I../../include/ -I$(BOOST_ROOT)
+-GCCFLAGS = -O3 -ffast-math -DNDEBUG
++GCCFLAGS = -O2 -ffast-math -DNDEBUG
+ # disabling -ffast-math might give slightly better performance
+ ICCFLAGS = -Ofast -xHost -ip -inline-forceinline -DNDEBUG
+ # Possible options: -fp-model source -no-fma
+diff -Nur orig/libs/numeric/odeint/performance/SIMD/Makefile mod/libs/numeric/odeint/performance/SIMD/Makefile
+--- orig/libs/numeric/odeint/performance/SIMD/Makefile	2015-12-07 17:14:46.000000000 +0100
++++ mod/libs/numeric/odeint/performance/SIMD/Makefile	2017-06-12 17:59:29.445814962 +0200
+@@ -20,7 +20,7 @@
+ 
+ CXX = icpc
+ CC = icpc
+-CXXFLAGS = -O3 -x${ARCH} -std=c++0x -fno-alias -inline-forceinline -DNDEBUG ${INCLUDES}
++CXXFLAGS = -O2 -x${ARCH} -std=c++0x -fno-alias -inline-forceinline -DNDEBUG ${INCLUDES}
+ # -ip
+ 
+ # GCC COMPILER
+diff -Nur orig/libs/serialization/CMake/CMakeLists.txt mod/libs/serialization/CMake/CMakeLists.txt
+--- orig/libs/serialization/CMake/CMakeLists.txt	2015-10-05 18:11:01.000000000 +0200
++++ mod/libs/serialization/CMake/CMakeLists.txt	2017-06-12 18:00:06.565759849 +0200
+@@ -30,7 +30,7 @@
+   #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++98")
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+   set(CMAKE_CXX_FLAGS_DEBUG "-g -O0" )
+-  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-g -O3" )
++  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-g -O2" )
+   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -dead_strip")
+   set(COMPILER_SUPPORTS_CXX11 TRUE)
+ endif()
+diff -Nur orig/tools/build/src/engine/build.jam mod/tools/build/src/engine/build.jam
+--- orig/tools/build/src/engine/build.jam	2015-10-16 20:55:36.000000000 +0200
++++ mod/tools/build/src/engine/build.jam	2017-06-12 18:07:01.673107764 +0200
+@@ -215,9 +215,9 @@
+ ## GCC 2.x, 3.x, 4.x
+ toolset gcc gcc : "-o " : -D
+     : -pedantic -fno-strict-aliasing
+-    [ opt --release : [ opt --symbols : -g : -s ] -O3 ]
++    [ opt --release : [ opt --symbols : -g : -s ] -O2 ]
+     [ opt --debug : -g -O0 -fno-inline ]
+-    [ opt --profile : -O3 -g -pg ]
++    [ opt --profile : -O2 -g -pg ]
+     -I$(--python-include) -I$(--extra-include) -Wno-long-long
+     : -L$(--python-lib[1]) -l$(--python-lib[2]) ;
+ ## GCC 2.x, 3.x on CYGWIN but without cygwin1.dll
+@@ -237,7 +237,7 @@
+ ## Intel C/C++ for Linux
+ toolset intel-linux icc : "-o " : -D
+     :
+-    [ opt --release : -Xlinker -s -O3 ]
++    [ opt --release : -Xlinker -s -O2 ]
+     [ opt --debug : -g -O0 -p ]
+     -I$(--python-include) -I$(--extra-include)
+     : -L$(--python-lib[1]) -l$(--python-lib[2]) ;
+diff -Nur orig/tools/build/src/tools/clang-linux.jam mod/tools/build/src/tools/clang-linux.jam
+--- orig/tools/build/src/tools/clang-linux.jam	2015-10-16 20:55:36.000000000 +0200
++++ mod/tools/build/src/tools/clang-linux.jam	2017-06-12 18:02:10.689575560 +0200
+@@ -70,7 +70,7 @@
+ toolset.flags clang-linux.compile.c++ OPTIONS <cxxflags> ;
+ 
+ toolset.flags clang-linux.compile OPTIONS <optimization>off   : ;
+-toolset.flags clang-linux.compile OPTIONS <optimization>speed : -O3 ;
++toolset.flags clang-linux.compile OPTIONS <optimization>speed : -O2 ;
+ toolset.flags clang-linux.compile OPTIONS <optimization>space : -Os ;
+ 
+ # note: clang silently ignores some of these inlining options
+diff -Nur orig/tools/build/src/tools/gcc.jam mod/tools/build/src/tools/gcc.jam
+--- orig/tools/build/src/tools/gcc.jam	2015-10-16 20:55:36.000000000 +0200
++++ mod/tools/build/src/tools/gcc.jam	2017-06-12 18:02:32.829542688 +0200
+@@ -370,7 +370,7 @@
+ 
+ # Declare flags and action for compilation.
+ toolset.flags gcc.compile OPTIONS <optimization>off   : -O0 ;
+-toolset.flags gcc.compile OPTIONS <optimization>speed : -O3 ;
++toolset.flags gcc.compile OPTIONS <optimization>speed : -O2 ;
+ toolset.flags gcc.compile OPTIONS <optimization>space : -Os ;
+ 
+ toolset.flags gcc.compile OPTIONS <inlining>off  : -fno-inline ;
+diff -Nur orig/tools/build/src/tools/gcc.py mod/tools/build/src/tools/gcc.py
+--- orig/tools/build/src/tools/gcc.py	2015-10-16 20:55:36.000000000 +0200
++++ mod/tools/build/src/tools/gcc.py	2017-06-12 18:02:55.069509667 +0200
+@@ -275,7 +275,7 @@
+ 
+ # Declare flags and action for compilation
+ flags('gcc.compile', 'OPTIONS', ['<optimization>off'], ['-O0'])
+-flags('gcc.compile', 'OPTIONS', ['<optimization>speed'], ['-O3'])
++flags('gcc.compile', 'OPTIONS', ['<optimization>speed'], ['-O2'])
+ flags('gcc.compile', 'OPTIONS', ['<optimization>space'], ['-Os'])
+ 
+ flags('gcc.compile', 'OPTIONS', ['<inlining>off'], ['-fno-inline'])
+diff -Nur orig/tools/build/src/tools/pathscale.jam mod/tools/build/src/tools/pathscale.jam
+--- orig/tools/build/src/tools/pathscale.jam	2015-10-16 20:55:36.000000000 +0200
++++ mod/tools/build/src/tools/pathscale.jam	2017-06-12 18:04:13.845383089 +0200
+@@ -74,7 +74,7 @@
+ 
+ # Declare flags and actions for compilation
+ flags pathscale.compile OPTIONS <optimization>off   : -O0 ;
+-flags pathscale.compile OPTIONS <optimization>speed : -O3 ;
++flags pathscale.compile OPTIONS <optimization>speed : -O2 ;
+ flags pathscale.compile OPTIONS <optimization>space : -Os ;
+ 
+ flags pathscale.compile OPTIONS <inlining>off  : -noinline ;
