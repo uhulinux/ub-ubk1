@@ -5,6 +5,5 @@ gobject-introspection-dev
 gtk-dev
 libgcrypt-dev
 libsoup-dev
-memphis-dev
 sqlite-dev
 vala-dev
