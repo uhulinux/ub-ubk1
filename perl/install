@@ -9,6 +9,12 @@ ln -sf perl"$UB_VERSION" "$UB_INSTALLDIR"/usr/bin/perl5
 
 mv "$UB_INSTALLDIR"/usr/lib/{perl5/"$UB_VERSION"/*/CORE/libperl.so,}
 
+if [ "$UB_ARCH" == "amd64" ]; then
+	archdir="i386-linux-thread-multi-ld"
+else
+	archdir="i386-linux-thread-multi-64int-ld"
+fi
+
 # Generate .ph headers
 for i in \
 	asm/termios.h \
@@ -21,7 +27,7 @@ for i in \
 	wait.h
 do
 	LD_LIBRARY_PATH="$UB_INSTALLDIR"/usr/lib \
-	"$UB_INSTALLDIR"/usr/bin/perl -Ilib "$UB_INSTALLDIR"/usr/bin/h2ph -a -d "$UB_INSTALLDIR"/usr/lib/perl5/"$UB_VERSION"/i386-linux-thread-multi-64int-ld "$i"
+	"$UB_INSTALLDIR"/usr/bin/perl -Ilib "$UB_INSTALLDIR"/usr/bin/h2ph -a -d "$UB_INSTALLDIR"/usr/lib/perl5/"$UB_VERSION"/"$archdir" "$i"
 done
 
 # Fix up xsubpp
