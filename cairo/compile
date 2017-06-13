@@ -4,4 +4,5 @@ export UB_MAKE_PROCS=1
 ub_compile \
 	--enable-tee \
 	--enable-xlib-xcb \
-	--enable-gl
+	--enable-gl \
+	--disable-ssse3
