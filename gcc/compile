@@ -49,9 +49,9 @@ SED=sed \
 	--with-gnu-ld \
 	--with-system-zlib \
 	--with-arch-32=i686 \
-	--with-arch-64=core2 \
+	--with-arch-64=k8 \
 	--with-cpu-32=i686 \
-	--with-cpu-64=core2 \
+	--with-cpu-64=k8 \
 	--with-tune=generic \
 	${hostflags[@]}
 
