@@ -1,0 +1,11 @@
+diff -Nur orig/qtbase/mkspecs/linux-g++-64/qmake.conf mod/qtbase/mkspecs/linux-g++-64/qmake.conf
+--- orig/qtbase/mkspecs/linux-g++-64/qmake.conf	2017-06-14 15:55:05.000000000 +0200
++++ mod/qtbase/mkspecs/linux-g++-64/qmake.conf	2017-06-14 17:35:53.607034614 +0200
+@@ -12,6 +12,7 @@
+ include(../common/linux.conf)
+ 
+ QMAKE_CFLAGS            = -m64
++QMAKE_CFLAGS           += k8
+ QMAKE_LFLAGS            = -m64
+ QMAKE_CFLAGS_RELEASE   += -O2
+ 
