@@ -1,9 +1,3 @@
 #!/bin/sh -eux
 
-if [ "$UB_ARCH" == "amd64" ];then
-opts=" --disable-sse2 --disable-ssse3"
-else
-opts=""
-fi
-ub_compile \
-    $opts
+ub_compile
