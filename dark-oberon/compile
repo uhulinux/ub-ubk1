@@ -1,7 +1,5 @@
 #!/bin/sh -eux
 
-make -C src \
-	"SOUND=1" \
-	"GAMES_DATADIR=/usr/share/games" \
-	"PN=dark-oberon" \
-	../dark-oberon
+cd src
+sh create_makefile.sh
+make
