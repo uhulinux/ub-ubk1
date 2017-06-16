@@ -1,0 +1,66 @@
+diff -Nur orig/gfx/skia/generate_mozbuild.py mod/gfx/skia/generate_mozbuild.py
+--- orig/gfx/skia/generate_mozbuild.py	2017-04-11 06:15:16.000000000 +0200
++++ mod/gfx/skia/generate_mozbuild.py	2017-06-16 17:05:11.988148190 +0200
+@@ -28,7 +28,7 @@
+     if CONFIG['_MSC_VER']:
+         skia_opt_flags += ['-O2']
+     elif CONFIG['GNU_CC']:
+-        skia_opt_flags += ['-O3']
++        skia_opt_flags += ['-O2']
+ 
+ """
+ 
+diff -Nur orig/gfx/skia/moz.build mod/gfx/skia/moz.build
+--- orig/gfx/skia/moz.build	2017-04-11 06:15:16.000000000 +0200
++++ mod/gfx/skia/moz.build	2017-06-16 17:04:43.932189551 +0200
+@@ -20,7 +20,7 @@
+     if CONFIG['_MSC_VER']:
+         skia_opt_flags += ['-O2']
+     elif CONFIG['GNU_CC']:
+-        skia_opt_flags += ['-O3']
++        skia_opt_flags += ['-O2']
+ 
+ UNIFIED_SOURCES += [
+     'skia/src/core/SkAAClip.cpp',
+diff -Nur orig/js/src/ctypes/libffi/configure mod/js/src/ctypes/libffi/configure
+--- orig/js/src/ctypes/libffi/configure	2016-05-12 19:13:14.000000000 +0200
++++ mod/js/src/ctypes/libffi/configure	2017-06-16 17:07:13.703968747 +0200
+@@ -15997,9 +15997,9 @@
+ 	       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+ $as_echo "$ac_res" >&6; }
+ if test x"`eval 'as_val=${'$as_CACHEVAR'};$as_echo "$as_val"'`" = xyes; then :
+-  CFLAGS="-O3 -qansialias -w $xlc_opt"
++  CFLAGS="-O2 -qansialias -w $xlc_opt"
+ else
+-  CFLAGS="-O3 -qansialias -w"
++  CFLAGS="-O2 -qansialias -w"
+                 echo "******************************************************"
+                 echo "*  You seem to have the IBM  C compiler.  It is      *"
+                 echo "*  recommended for best performance that you use:    *"
+@@ -16014,7 +16014,7 @@
+ 
+          ;;
+ 
+-    intel) CFLAGS="-O3 -ansi_alias"
++    intel) CFLAGS="-O2 -ansi_alias"
+ 	if test "x$acx_maxopt_portable" = xno; then
+ 	  icc_archflag=unknown
+ 	  icc_flags=""
+@@ -16193,7 +16193,7 @@
+ 
+     gnu)
+      # default optimization flags for gcc on all systems
+-     CFLAGS="-O3 -fomit-frame-pointer"
++     CFLAGS="-O2 -fomit-frame-pointer"
+ 
+      # -malign-double for x86 systems
+      # LIBFFI -- DON'T DO THIS - CHANGES ABI
+@@ -16693,7 +16693,7 @@
+ 	echo "* (otherwise, a default of CFLAGS=-O3 will be used)    *"
+ 	echo "********************************************************"
+ 	echo ""
+-        CFLAGS="-O3"
++        CFLAGS="-O2"
+   fi
+ 
+   as_CACHEVAR=`$as_echo "ax_cv_check_cflags__$CFLAGS" | $as_tr_sh`

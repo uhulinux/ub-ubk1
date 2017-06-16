@@ -1,8 +1,8 @@
 #!/bin/sh -eux
 
 if [ "$UB_ARCH" == "amd64" ];then
-CC="ccache gcc -m64"
-CXX="ccache g++ -m64"
+CC="ccache gcc -march=k8 -m64"
+CXX="ccache g++ -march=k8 -m64"
 else
 CC="ccache gcc -m32"
 CXX="ccache g++ -m32"
