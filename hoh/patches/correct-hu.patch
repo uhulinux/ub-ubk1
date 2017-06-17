@@ -1,0 +1,12 @@
+diff -Nur orig/gamedata/text/hu_HU.xml mod/gamedata/text/hu_HU.xml
+--- orig/gamedata/text/hu_HU.xml	2017-06-17 12:45:01.419712650 +0200
++++ mod/gamedata/text/hu_HU.xml	2017-06-17 10:12:42.000000000 +0200
+@@ -53,7 +53,7 @@
+ 
+   <text id="keyboard-menu" x="0" y="0">
+     <properties>
+-      <ustring>Tastatur</ustring>
++      <ustring>Irányítás</ustring>
+     </properties>
+   </text>
+ 
