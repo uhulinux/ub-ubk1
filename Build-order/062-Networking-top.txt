@@ -74,5 +74,4 @@ balsa
 skype
 node
 ghetto-skype
-xchat
 
