@@ -149,3 +149,4 @@ hedgewars
 0ad
 openmw
 openra
+spider
