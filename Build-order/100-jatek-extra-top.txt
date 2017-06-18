@@ -9,6 +9,7 @@ freedoom-data
 dreamchess-music
 fairymax
 figlet
+fillets
 fillets-data
 fortune
 fortune-hu
