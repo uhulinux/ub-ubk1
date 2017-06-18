@@ -1,4 +1,7 @@
 #!/usr/bin/env dl
 
-uhubuild-${UB_VERSION}.tar.gz uhubuild-ubk-f2775d2/
-	git://github.com/uhulinux/uhubuild-ubk.git@f2775d2
+${UB_VERSION}.tar.gz uhubuild-ubk-${UB_VERSION}/
+	https://github.com/uhulinux/uhubuild-ubk/archive/
+
+#v${UB_VERSION}.tar.gz uhubuild-ubk-8c01fc4/
+#	git://github.com/uhulinux/uhubuild-ubk.git@8c01fc4
