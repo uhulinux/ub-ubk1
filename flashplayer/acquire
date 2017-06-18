@@ -10,6 +10,8 @@
 
 flash_player_npapi_linux-${UB_VERSION}-i386.tar.gz
 	https://fpdownload.adobe.com/get/flashplayer/pdc/${UB_VERSION}/flash_player_npapi_linux.i386.tar.gz
+	http://download.ubk.hu/src/flashplayer/${UB_VERSION}/
 
 flash_player_npapi_linux-${UB_VERSION}-x86_64.tar.gz
 	https://fpdownload.adobe.com/get/flashplayer/pdc/${UB_VERSION}/flash_player_npapi_linux.x86_64.tar.gz
+	http://download.ubk.hu/src/flashplayer/${UB_VERSION}/
