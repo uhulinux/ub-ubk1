@@ -57,3 +57,4 @@ xsensors
 open-vm-tools
 usermode
 asterisk
+xdotool
