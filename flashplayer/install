@@ -1,21 +1,19 @@
 #!/bin/sh -eux
 
 if [ "$UB_ARCH" = "amd64" ]; then
-	tar -xzvf flash_player_npapi_linux-${UB_VERSION}-x86_64.tar.gz
+	tar -xzvf flash_player_ppapi_linux-${UB_VERSION}-x86_64.tar.gz
 else
-	tar -xzvf flash_player_npapi_linux-${UB_VERSION}-i386.tar.gz
+	tar -xzvf flash_player_ppapi_linux-${UB_VERSION}-i386.tar.gz
 fi
-rm -f flash_player_npapi_linux-*.tar.gz
+rm -f flash_player_ppapi_linux-*.tar.gz
 
 libdir="$UB_INSTALLDIR/usr/lib"
 
-cp -a usr "$UB_INSTALLDIR"/
-
+mkdir -p "$libdir"/adobe-flashplugin
 mkdir -p "$libdir"/{firefox,mozilla}/plugins
 
-install -m 755 libflashplayer.so "$libdir"/firefox/plugins/
+install -m 755 libpepflashplayer.so "$libdir"/adobe-flashplugin/
+install -m 644 manifest.json "$libdir"/adobe-flashplugin/
 
-rm -Rf "$UB_INSTALLDIR"/usr/lib/kde4
-rm -Rf "$UB_INSTALLDIR"/usr/share/kde4
-
-ln -s ../../firefox/plugins/libflashplayer.so "$libdir"/mozilla/plugins/
+ln -s ../../adobe-flashplugin/libpepflashplayer.so "$libdir"/firefox/plugins/
+ln -s ../../adobe-flashplugin/libpepflashplayer.so "$libdir"/mozilla/plugins/
