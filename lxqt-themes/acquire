@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+lxqt-themes-${UB_VERSION}.tar.gz lxqt-themes-f1737e9/
+	git://github.com/lxde/lxqt-themes.git@f1737e9

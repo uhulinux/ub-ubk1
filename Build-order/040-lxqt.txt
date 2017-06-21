@@ -25,4 +25,5 @@ compton-conf
 pavucontrol-qt
 qtermwidget
 qterminal
+lxqt-themes
 lxqt
