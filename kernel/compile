@@ -21,7 +21,13 @@ NUMCPUS="$(grep ^processor /proc/cpuinfo|wc -l)"
 
 rm -f localversion*
 
-for ARCH in x86_64 i386; do
+if [ "$UB_ARCH" == "amd64" ];then
+archok="x86_64"
+else
+archok="x86_64 i386"
+fi
+
+for ARCH in $archok; do
 VERSION="${VERSION_BASE}.$ARCH"
 ub_replace "^EXTRAVERSION =[\t ]*\(\.\([0-9]\+\)\)*.*" "EXTRAVERSION = \1-${VERSION#*-}" Makefile
 
