@@ -13,6 +13,7 @@ lxqt-qtplugin >=
 lxqt-runner >=
 lxqt-session >=
 lxqt-sudo >=
+lxqt-themes
 obconf-qt >=
 pavucontrol-qt >=
 pcmanfm-qt >=
