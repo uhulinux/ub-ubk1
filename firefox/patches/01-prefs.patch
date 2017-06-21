@@ -1,6 +1,6 @@
 diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firefox.js
---- orig/browser/app/profile/firefox.js	2016-10-31 21:15:24.000000000 +0100
-+++ patched/browser/app/profile/firefox.js	2016-12-31 13:10:56.141392190 +0100
+--- orig/browser/app/profile/firefox.js	2017-06-05 22:45:13.000000000 +0200
++++ patched/browser/app/profile/firefox.js	2017-06-16 11:36:53.553189323 +0200
 @@ -21,6 +21,12 @@
  #endif
  #endif
@@ -14,7 +14,7 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  pref("browser.chromeURL","chrome://browser/content/");
  pref("browser.hiddenWindowChromeURL", "chrome://browser/content/hiddenWindow.xul");
  
-@@ -62,7 +68,8 @@
+@@ -66,7 +72,8 @@
  
  // Disable add-ons that are not installed by the user in all scopes by default.
  // See the SCOPE constants in AddonManager.jsm for values to use here.
@@ -24,8 +24,8 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  
  // Add-on content security policies.
  pref("extensions.webextensions.base-content-security-policy", "script-src 'self' https://* moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' https://* moz-extension: blob: filesystem:;");
-@@ -113,12 +120,12 @@
- pref("app.update.cert.checkAttributes", false);
+@@ -115,12 +122,12 @@
+ pref("app.update.backgroundMaxErrors", 10);
  
  // Whether or not app updates are enabled
 -pref("app.update.enabled", true);
@@ -39,7 +39,7 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  
  // If set to true, the Update Service will present no UI for any event.
  pref("app.update.silent", false);
-@@ -256,7 +263,7 @@
+@@ -261,7 +268,7 @@
  #endif
  
  // Control autoFill behavior
@@ -48,16 +48,16 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  pref("browser.urlbar.autoFill.typed", true);
  
  // 0: Match anywhere (e.g., middle of words)
-@@ -306,7 +313,7 @@
+@@ -311,7 +318,7 @@
  pref("browser.urlbar.suggest.history.onlyTyped",    false);
  
  pref("browser.urlbar.formatting.enabled", true);
 -pref("browser.urlbar.trimURLs", true);
 +pref("browser.urlbar.trimURLs", false);
  
- pref("browser.altClickSave", false);
- 
-@@ -654,11 +661,7 @@
+ #if defined(NIGHTLY_BUILD)
+ pref("browser.urlbar.oneOffSearches", true);
+@@ -678,11 +685,7 @@
  // 0 goes Back/Forward
  // 1 act like PgUp/PgDown
  // 2 and other values, nothing

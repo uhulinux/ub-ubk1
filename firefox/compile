@@ -8,8 +8,6 @@ CC="ccache gcc -m32"
 CXX="ccache g++ -m32"
 fi
 
-export SHELL=/bin/bash
-
 export LDFLAGS="-Wl,-rpath,/usr/lib/firefox/ -Wl,--no-keep-memory -Wl,-z,relro -Wl,-z,now"
 
 # jpeg: jpeg-turbo, png: >= 1.6.28 + APNG support
@@ -23,7 +21,7 @@ ac_add_options --enable-application=browser
 ac_add_options --enable-release
 ac_add_options --enable-official-branding
 ac_add_options --enable-crashreporter
-ac_add_options --enable-optimize="-O2"
+ac_add_options --enable-optimize=-O2
 ac_add_options --with-pthreads
 ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
@@ -51,7 +49,6 @@ ac_add_options --disable-strip
 ac_add_options --disable-install-strip
 ac_add_options --disable-elf-hack
 ac_add_options --disable-necko-wifi
-ac_add_options --enable-rust
 _EOF_
 
 if [ "$UB_ARCH" == "amd64" ];then
