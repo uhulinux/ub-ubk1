@@ -15,6 +15,7 @@
 /opt
 /proc
 /root
+/run
 /sbin
 /srv
 /sys
