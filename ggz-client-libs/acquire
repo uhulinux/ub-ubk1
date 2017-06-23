@@ -2,3 +2,4 @@
 
 ggz-client-libs-snapshot-${UB_VERSION}.tar.gz ggz-client-libs-snapshot-${UB_VERSION}/
 	http://mirrors.ibiblio.org/pub/mirrors/ggzgamingzone/ggz/snapshots/
+    http://pkgs.fedoraproject.org/repo/pkgs/ggz-client-libs/ggz-client-libs-snapshot-${UB_VERSION}.tar.gz/9be065d5b757079a092a97f6d750b3a5/
