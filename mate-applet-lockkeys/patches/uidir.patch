@@ -1,0 +1,57 @@
+diff -Naur orig/mate-applet-lockkeys.spec.in patched/mate-applet-lockkeys.spec.in
+--- orig/mate-applet-lockkeys.spec.in	2017-01-15 18:13:48.134739579 +0100
++++ patched/mate-applet-lockkeys.spec.in	2017-06-23 01:46:39.479223061 +0200
+@@ -32,7 +32,7 @@
+ mkdir -p $RPM_BUILD_ROOT@ICONSDIR@/hicolor/32x32/apps
+ mkdir -p $RPM_BUILD_ROOT@DATAROOTDIR@/mate-panel/applets
+ mkdir -p $RPM_BUILD_ROOT@DATAROOTDIR@/dbus-1/services
+-mkdir -p $RPM_BUILD_ROOT@DATAROOTDIR@/mate-2.0/ui/
++mkdir -p $RPM_BUILD_ROOT@DATAROOTDIR@/mate/ui/
+ mkdir -p $RPM_BUILD_ROOT@DATAROOTDIR@/glib-2.0/schemas
+ 
+ for DIR in `find po/ -maxdepth 1 -mindepth 1 -type d | sed s/po.//g`; do
+@@ -81,7 +81,7 @@
+ @ICONSDIR@/hicolor/32x32/apps/applet_lockkeys.png
+ @DATAROOTDIR@/mate-panel/applets/org.mate.applets.LockkeysApplet.mate-panel-applet
+ @DATAROOTDIR@/dbus-1/services/org.mate.panel.applet.LockkeysApplet.service
+-@DATAROOTDIR@/mate-2.0/ui/lockkeys-applet-menu.xml
++@DATAROOTDIR@/mate/ui/lockkeys-applet-menu.xml
+ @DATAROOTDIR@/glib-2.0/schemas/org.mate.panel.applet.LockkeysApplet.gschema.xml
+ 
+ %changelog
+diff -Naur orig/src/main.c patched/src/main.c
+--- orig/src/main.c	2017-01-15 18:13:48.134739579 +0100
++++ patched/src/main.c	2017-06-23 01:45:48.934599364 +0200
+@@ -645,7 +645,7 @@
+ 	GtkActionGroup *action_group = gtk_action_group_new ("Lockkeys Applet Actions");
+ 	gtk_action_group_add_actions (action_group, applet_menu_actions, G_N_ELEMENTS (applet_menu_actions), applet);
+ 	gtk_action_group_set_translation_domain (action_group, PACKAGE_NAME);
+-	mate_panel_applet_setup_menu_from_file(applet->applet, "/usr/share/mate-2.0/ui/lockkeys-applet-menu.xml", action_group);
++	mate_panel_applet_setup_menu_from_file(applet->applet, "/usr/share/mate/ui/lockkeys-applet-menu.xml", action_group);
+ 
+ 	gtk_widget_show_all(GTK_WIDGET(applet_widget));
+ 
+diff -Naur orig/src/Makefile.am patched/src/Makefile.am
+--- orig/src/Makefile.am	2017-01-15 18:13:48.134739579 +0100
++++ patched/src/Makefile.am	2017-06-23 01:46:11.786946979 +0200
+@@ -17,7 +17,7 @@
+ appletdir = $(datadir)/mate-panel/applets
+ applet_DATA = org.mate.applets.LockkeysApplet.mate-panel-applet
+ 
+-xmluidir = $(datadir)/mate-2.0/ui
++xmluidir = $(datadir)/mate/ui
+ xmlui_DATA = lockkeys-applet-menu.xml
+ EXTRA_DIST = lockkeys-applet-menu.xml
+ 
+diff -Naur orig/src/Makefile.in patched/src/Makefile.in
+--- orig/src/Makefile.in	2017-01-15 18:14:07.134739579 +0100
++++ patched/src/Makefile.in	2017-06-23 01:46:00.626777223 +0200
+@@ -360,7 +360,7 @@
+ lockkeys_applet_SOURCES = main.c applet.h 
+ appletdir = $(datadir)/mate-panel/applets
+ applet_DATA = org.mate.applets.LockkeysApplet.mate-panel-applet
+-xmluidir = $(datadir)/mate-2.0/ui
++xmluidir = $(datadir)/mate/ui
+ xmlui_DATA = lockkeys-applet-menu.xml
+ EXTRA_DIST = lockkeys-applet-menu.xml
+ servicedir = $(datadir)/dbus-1/services
