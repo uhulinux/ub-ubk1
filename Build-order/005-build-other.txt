@@ -3,3 +3,4 @@ dmake
 rust
 waf
 ninja
+meson
