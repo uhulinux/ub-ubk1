@@ -1,4 +1,3 @@
-# kde-l10n-hu (a 17.04-ben csak kde4-hez vannak fordítások)
 grantlee
 grantleetheme
 kcalcore

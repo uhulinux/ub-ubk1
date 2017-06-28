@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-kde-l10n-hu-${UB_VERSION}.tar.xz kde-l10n-hu-${UB_VERSION}/5/
-	http://download.kde.org/stable/applications/${UB_VERSION}/src/kde-l10n/
