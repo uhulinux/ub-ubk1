@@ -13,6 +13,7 @@ glew-dev
 glm-dev
 glu-dev
 gperf
+gpgmepp-dev
 gst-plugins-base-dev
 gtk-dev
 gtk2-dev

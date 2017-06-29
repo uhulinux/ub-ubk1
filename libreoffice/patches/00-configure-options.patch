@@ -32,7 +32,6 @@ diff -Naur orig/distro-configs/LibreOfficeUHU.conf patched/distro-configs/LibreO
 +--without-system-mysql-cppconn
 +--without-system-mythes
 +--without-system-orcus
-+--disable-fetch-external
 +--disable-coinmp
 +--disable-dbgutil
 +--disable-debug
@@ -43,9 +42,10 @@ diff -Naur orig/distro-configs/LibreOfficeUHU.conf patched/distro-configs/LibreO
 +--disable-odk
 +--disable-firebird-sdbc
 +--disable-pdfimport
-+--enable-postgresql-sdbc
 +--enable-avahi
++--disable-fetch-external
 +--enable-gstreamer-1-0
++--enable-postgresql-sdbc
 +--enable-python
 +--enable-ext-mariadb-connector
 +--enable-ext-nlpsolver
