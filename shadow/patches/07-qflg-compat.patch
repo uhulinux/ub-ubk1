@@ -1,0 +1,153 @@
+diff -Naur orig/src/groupadd.c patched/src/groupadd.c
+--- orig/src/groupadd.c	2015-11-17 17:45:15.134739579 +0100
++++ patched/src/groupadd.c	2017-06-29 18:06:04.319792950 +0200
+@@ -384,12 +384,13 @@
+ 		{"key",        required_argument, NULL, 'K'},
+ 		{"non-unique", no_argument,       NULL, 'o'},
+ 		{"password",   required_argument, NULL, 'p'},
++		{"quiet",      no_argument,       NULL, 'q'},
+ 		{"system",     no_argument,       NULL, 'r'},
+ 		{"root",       required_argument, NULL, 'R'},
+ 		{NULL, 0, NULL, '\0'}
+ 	};
+ 
+-	while ((c = getopt_long (argc, argv, "fg:hK:op:rR:",
++	while ((c = getopt_long (argc, argv, "fg:hK:op:qrR:",
+ 		                 long_options, NULL)) != -1) {
+ 		switch (c) {
+ 		case 'f':
+@@ -441,6 +442,9 @@
+ 			pflg = true;
+ 			group_passwd = optarg;
+ 			break;
++		case 'q': 	/* set 'force' flag for backward compatibility with old UHU patch */
++			fflg = true;
++			break;
+ 		case 'r':
+ 			rflg = true;
+ 			break;
+diff -Naur orig/src/groupdel.c patched/src/groupdel.c
+--- orig/src/groupdel.c	2015-11-17 17:45:15.134739579 +0100
++++ patched/src/groupdel.c	2017-06-29 04:06:39.246077038 +0200
+@@ -319,16 +319,19 @@
+ 	int c;
+ 	static struct option long_options[] = {
+ 		{"help", no_argument,       NULL, 'h'},
++		{"quiet", no_argument,      NULL, 'q'},
+ 		{"root", required_argument, NULL, 'R'},
+ 		{NULL, 0, NULL, '\0'}
+ 	};
+ 
+-	while ((c = getopt_long (argc, argv, "hfR:",
++	while ((c = getopt_long (argc, argv, "hfqR:",
+ 	                         long_options, NULL)) != -1) {
+ 		switch (c) {
+ 		case 'h':
+ 			usage (E_SUCCESS);
+ 			/*@notreached@*/break;
++		case 'q': /* no operation, just for backward compatibility with old UHU patch */
++			break;
+ 		case 'R': /* no-op, handled in process_root_flag () */
+ 			break;
+ 		case 'f':
+diff -Naur orig/src/useradd.c patched/src/useradd.c
+--- orig/src/useradd.c	2017-05-17 21:19:44.134739579 +0200
++++ patched/src/useradd.c	2017-06-29 18:30:46.443400683 +0200
+@@ -158,6 +158,7 @@
+     Mflg = false,		/* do not create user's home directory even if CREATE_HOME is set */
+     Nflg = false,		/* do not create a group having the same name as the user, but add the user to def_group (or the group specified with -g) */
+     oflg = false,		/* permit non-unique user ID to be specified with -u */
++    qflg = false,		/* quiet, skip existing user */
+     rflg = false,		/* create a system account */
+     sflg = false,		/* shell program for new account */
+     uflg = false,		/* specify user ID for new account */
+@@ -773,6 +774,7 @@
+ 	(void) fputs (_("  -o, --non-unique              allow to create users with duplicate\n"
+ 	                "                                (non-unique) UID\n"), usageout);
+ 	(void) fputs (_("  -p, --password PASSWORD       encrypted password of the new account\n"), usageout);
++	(void) fputs (_("  -q, --quiet                   succeed quietly if user+uid already exists\n"), usageout);
+ 	(void) fputs (_("  -r, --system                  create a system account\n"), usageout);
+ 	(void) fputs (_("  -R, --root CHROOT_DIR         directory to chroot into\n"), usageout);
+ 	(void) fputs (_("  -s, --shell SHELL             login shell of the new account\n"), usageout);
+@@ -1047,6 +1049,7 @@
+ 			{"no-user-group",  no_argument,       NULL, 'N'},
+ 			{"non-unique",     no_argument,       NULL, 'o'},
+ 			{"password",       required_argument, NULL, 'p'},
++			{"quiet",    	   no_argument,       NULL, 'q'},
+ 			{"system",         no_argument,       NULL, 'r'},
+ 			{"root",           required_argument, NULL, 'R'},
+ 			{"shell",          required_argument, NULL, 's'},
+@@ -1059,9 +1062,9 @@
+ 		};
+ 		while ((c = getopt_long (argc, argv,
+ #ifdef WITH_SELINUX
+-		                         "b:c:d:De:f:g:G:hk:K:lmMNop:rR:s:u:UZ:",
++		                         "b:c:d:De:f:g:G:hk:K:lmMNop:qrR:s:u:UZ:",
+ #else				/* !WITH_SELINUX */
+-		                         "b:c:d:De:f:g:G:hk:K:lmMNop:rR:s:u:U",
++		                         "b:c:d:De:f:g:G:hk:K:lmMNop:qrR:s:u:U",
+ #endif				/* !WITH_SELINUX */
+ 		                         long_options, NULL)) != -1) {
+ 			switch (c) {
+@@ -1227,6 +1230,9 @@
+ 				}
+ 				user_pass = optarg;
+ 				break;
++			case 'q':
++				qflg = true;
++				break;
+ 			case 'r':
+ 				rflg = true;
+ 				break;
+@@ -2148,6 +2154,9 @@
+ 	 * Start with a quick check to see if the user exists.
+ 	 */
+ 	if (getpwnam (user_name) != NULL) { /* local, no need for xgetpwnam */
++		if (qflg) {
++			exit (E_SUCCESS);
++		}
+ 		fprintf (stderr, _("%s: user '%s' already exists\n"), Prog, user_name);
+ #ifdef WITH_AUDIT
+ 		audit_logger (AUDIT_ADD_USER, Prog,
+@@ -2167,6 +2176,9 @@
+ 	if (Uflg) {
+ 		/* local, no need for xgetgrnam */
+ 		if (getgrnam (user_name) != NULL) {
++			if (qflg) {
++				exit (E_SUCCESS);
++			}
+ 			fprintf (stderr,
+ 			         _("%s: group %s exists - if you want to add this user to that group, use -g.\n"),
+ 			         Prog, user_name);
+diff -Naur orig/src/userdel.c patched/src/userdel.c
+--- orig/src/userdel.c	2015-11-17 17:45:15.134739579 +0100
++++ patched/src/userdel.c	2017-06-29 04:05:48.505403624 +0200
+@@ -1004,6 +1004,7 @@
+ 		static struct option long_options[] = {
+ 			{"force",        no_argument,       NULL, 'f'},
+ 			{"help",         no_argument,       NULL, 'h'},
++			{"quiet",        no_argument, 		NULL, 'q'},
+ 			{"remove",       no_argument,       NULL, 'r'},
+ 			{"root",         required_argument, NULL, 'R'},
+ #ifdef WITH_SELINUX
+@@ -1013,9 +1014,9 @@
+ 		};
+ 		while ((c = getopt_long (argc, argv,
+ #ifdef WITH_SELINUX             
+-		                         "fhrR:Z",
++		                         "fhqrR:Z",
+ #else				/* !WITH_SELINUX */
+-		                         "fhrR:",
++		                         "fhqrR:",
+ #endif				/* !WITH_SELINUX */
+ 		                         long_options, NULL)) != -1) {
+ 			switch (c) {
+@@ -1025,6 +1026,8 @@
+ 			case 'h':
+ 				usage (E_SUCCESS);
+ 				break;
++			case 'q':  /* no operation, just for backward compatibility with old UHU patch */
++				break;
+ 			case 'r':	/* remove home dir and mailbox */
+ 				rflg = true;
+ 				break;
