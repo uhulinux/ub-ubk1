@@ -5,5 +5,7 @@ ub_configure \
 	--with-gnu-ld \
 	--with-libcrack \
 	--with-libpam \
-	--without-selinux
+	--without-selinux \
+	--with-group-name-max-length=32
+
 make CFLAGS=-fPIC
