@@ -1,0 +1,39 @@
+diff -Naur orig/src/panel/meson.build patched/src/panel/meson.build
+--- orig/src/panel/meson.build	2017-04-18 01:33:55.134741211 +0200
++++ patched/src/panel/meson.build	2017-05-21 13:44:32.742449276 +0200
+@@ -59,9 +59,9 @@
+ ]
+ 
+ # For popdown/popup methods
+-if dep_gtk322.found()
+-    budgie_panel_vala_args += ['-D', 'HAVE_GTK_322']
+-endif
++# if dep_gtk322.found()
++#    budgie_panel_vala_args += ['-D', 'HAVE_GTK_322']
++# endif
+ 
+ executable(
+     'budgie-panel', panel_sources,
+diff -Naur orig/src/wm/meson.build patched/src/wm/meson.build
+--- orig/src/wm/meson.build	2017-04-18 01:33:55.134741211 +0200
++++ patched/src/wm/meson.build	2017-05-21 13:30:22.067370495 +0200
+@@ -43,11 +43,6 @@
+         '--vapidir', dir_libconfig,
+ ]
+ 
+-if dep_mutter.version().version_compare('>=3.21.0')
+-    rpath = dep_mutter.get_pkgconfig_variable('typelibdir')
+-    budgie_wm_vala_args += ['--girdir', rpath]
+-endif
+-
+ executable(
+     'budgie-wm', budgie_wm_sources,
+     dependencies: budgie_wm_deps,
+@@ -57,7 +52,6 @@
+     c_args: [
+         '-DGNOME_DESKTOP_USE_UNSTABLE_API',
+     ],
+-    install_rpath: rpath,
+ )
+ 
+ # gschemas
