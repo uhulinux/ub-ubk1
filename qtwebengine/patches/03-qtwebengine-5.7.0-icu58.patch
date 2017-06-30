@@ -1,6 +1,6 @@
-diff -Naur orig/src/3rdparty/chromium/third_party/WebKit/Source/platform/text/TextBreakIterator.cpp patched/src/3rdparty/chromium/third_party/WebKit/Source/platform/text/TextBreakIterator.cpp
---- orig/src/3rdparty/chromium/third_party/WebKit/Source/platform/text/TextBreakIterator.cpp	2016-05-26 15:53:47.000000000 +0200
-+++ patched/src/3rdparty/chromium/third_party/WebKit/Source/platform/text/TextBreakIterator.cpp	2017-03-11 15:17:29.007747193 +0100
+diff -Naur qtwebengine-opensource-src-5.7.0.orig/src/3rdparty/chromium/third_party/WebKit/Source/platform/text/TextBreakIterator.cpp qtwebengine-opensource-src-5.7.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/text/TextBreakIterator.cpp
+--- qtwebengine-opensource-src-5.7.0.orig/src/3rdparty/chromium/third_party/WebKit/Source/platform/text/TextBreakIterator.cpp	2016-11-15 17:07:38.680665385 -0800
++++ qtwebengine-opensource-src-5.7.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/text/TextBreakIterator.cpp	2016-11-15 17:12:17.564001354 -0800
 @@ -26,6 +26,9 @@
  #include "wtf/StdLibExtras.h"
  #include "wtf/text/CharacterNames.h"
@@ -11,7 +11,7 @@ diff -Naur orig/src/3rdparty/chromium/third_party/WebKit/Source/platform/text/Te
  namespace blink {
  
  unsigned numGraphemeClusters(const String& string)
-@@ -122,13 +125,19 @@
+@@ -122,13 +125,18 @@
      { B(0, 0, 0, 0, 0, 0, 0, 0), B(0, 0, 0, 0, 0, 0, 0, 0), 0, B(0, 0, 0, 0, 0, 0, 0, 0), 0, 0, 0, B(0, 0, 0, 0, 0, 0, 0, 0), 0, 0, 0, B(0, 0, 0, 0, 0, 0, 0, 0) }, // DEL
  };
  
@@ -20,7 +20,6 @@ diff -Naur orig/src/3rdparty/chromium/third_party/WebKit/Source/platform/text/Te
 +#else
 +#define BA_LB_COUNT U_LB_COUNT
 +#endif
-+
  // Line breaking table for CSS word-break: break-all. This table differs from
  // asciiLineBreakTable in:
  // - Indices are Line Breaking Classes defined in UAX#14 Unicode Line Breaking
@@ -32,7 +31,7 @@ diff -Naur orig/src/3rdparty/chromium/third_party/WebKit/Source/platform/text/Te
      // XX AI AL B2 BA BB BK CB    CL CM CR EX GL HY ID IN    IS LF NS NU OP PO PR QU    SA SG SP SY ZW NL WJ H2    H3 JL JT JV CP CJ HL RI
      { B(0, 0, 0, 0, 0, 0, 0, 0), B(0, 0, 0, 0, 0, 0, 0, 0), B(0, 0, 0, 0, 0, 0, 0, 0), B(0, 0, 0, 0, 0, 0, 0, 0), B(0, 0, 0, 0, 0, 0, 0, 0) }, // XX
      { B(0, 1, 1, 0, 1, 0, 0, 0), B(0, 0, 0, 0, 0, 1, 0, 0), B(0, 0, 0, 1, 1, 0, 1, 0), B(1, 0, 0, 0, 0, 0, 0, 0), B(0, 0, 0, 0, 0, 0, 1, 0) }, // AI
-@@ -178,7 +187,7 @@
+@@ -178,7 +186,7 @@
  #undef AL
  
  static_assert(WTF_ARRAY_LENGTH(asciiLineBreakTable) == asciiLineBreakTableLastChar - asciiLineBreakTableFirstChar + 1, "asciiLineBreakTable should be consistent");
@@ -41,7 +40,7 @@ diff -Naur orig/src/3rdparty/chromium/third_party/WebKit/Source/platform/text/Te
  
  static inline bool shouldBreakAfter(UChar lastCh, UChar ch, UChar nextCh)
  {
-@@ -209,7 +218,7 @@
+@@ -209,7 +217,7 @@
  
  static inline bool shouldBreakAfterBreakAll(ULineBreak lastLineBreak, ULineBreak lineBreak)
  {
