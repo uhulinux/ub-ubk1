@@ -1,10 +1,11 @@
 dbus-dev
+dbus-python-dev
 libxml2-dev
 libxslt-dev
 openssl-dev
 pulseaudio-dev
-python3-dbus
 python3-dev
+python-dev
 qt5-dev
 qtwebengine-dev
 qtwebkit-dev

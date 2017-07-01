@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_install INSTALL_ROOT="$UB_INSTALLDIR"
-
-mkdir -p ${UB_INSTALLDIR}/usr/share/doc/pyqt5
-cp -a doc examples ${UB_INSTALLDIR}/usr/share/doc/pyqt5/
