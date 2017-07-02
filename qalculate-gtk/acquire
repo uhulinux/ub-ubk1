@@ -1,5 +1,6 @@
 #!/usr/bin/env dl
 
 qalculate-gtk-${UB_VERSION}.tar.gz qalculate-gtk-${UB_VERSION}/
+    https://github.com/Qalculate/qalculate-gtk/releases/download/v${UB_VERSION}/
 	https://fossies.org/linux/privat/
 #	http://downloads.sourceforge.net/qalculate/

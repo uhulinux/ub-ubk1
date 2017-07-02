@@ -1,9 +1,6 @@
 #!/bin/sh -eux
 
-KVER=$(uname -r | sed 's/\.x.*\|\.i.*//g')
-	KVERS_UNAME="$KVER".x86_64 ub_compile
-	KVERS_UNAME="$KVER".x86_64 ub_install
-if [ "$UB_ARCH" == "i386" ];then
-	KVERS_UNAME="$KVER".i386 ub_compile
-	KVERS_UNAME="$KVER".i386 ub_install
-fi
+for i in $(ls -1 /lib/modules); do
+	KVERS_UNAME="$i" ub_compile
+	KVERS_UNAME="$i" ub_install
+done
