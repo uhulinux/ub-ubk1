@@ -69,8 +69,7 @@ pyparsing
 pypdf
 pypoppler
 pyqt4
-pyqt5-python2
-pyqt5-python3
+pyqt5
 pysmbc
 pysqlite
 python3-psutil
