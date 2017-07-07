@@ -1,0 +1,68 @@
+diff -Nur orig/gamedata/text/hu_HU.xml mod/gamedata/text/hu_HU.xml
+--- orig/gamedata/text/hu_HU.xml	2017-06-17 10:12:42.000000000 +0200
++++ mod/gamedata/text/hu_HU.xml	2017-07-07 14:17:41.031708960 +0200
+@@ -132,6 +132,36 @@
+     </properties>
+   </text>
+ 
++  <text id="video-menu" x="0" y="0">
++    <properties>
++      <ustring>videó</ustring>
++    </properties>
++  </text>
++
++  <text id="full-screen" x="93" y="182">
++    <properties>
++      <ustring>teli kép</ustring>
++    </properties>
++  </text>
++
++  <text id="draw-shadows" x="0" y="0">
++    <properties>
++      <ustring>árnyék</ustring>
++    </properties>
++  </text>
++
++  <text id="draw-background" x="0" y="0">
++    <properties>
++      <ustring>háttér</ustring>
++    </properties>
++  </text>
++
++  <text id="graphic-set" x="0" y="0">
++    <properties>
++      <ustring>grafika</ustring>
++    </properties>
++  </text>
++
+   <text id="audio-menu" x="0" y="0">
+     <properties>
+       <ustring>hang</ustring>
+@@ -317,6 +347,9 @@
+       <ustring>Enrique García</ustring>
+     </properties>
+     <properties font="regular" color="white">
++      <ustring>Douglas Mencken</ustring>
++    </properties>
++    <properties font="regular" color="white">
+       <ustring> </ustring>
+     </properties>
+     <properties font="big" color="multicolor">
+@@ -464,7 +497,7 @@
+       <ustring>Computer Emuzone</ustring>
+     </properties>
+     <properties font="regular" color="orange">
+-      <ustring>Und</ustring>
++      <ustring>Továbbá</ustring>
+     </properties>
+     <properties font="regular" color="white">
+       <ustring>Alberto Rodríguez Santos</ustring>
+@@ -581,7 +614,7 @@
+       <ustring>Az újraélesztö hal lehetövé teszi</ustring>
+     </properties>
+     <properties font="big" color="orange">
+-      <ustring>az SPACE megnyomásával a játék mentést</ustring>
++      <ustring>a SPACE megnyomásával a játék mentést</ustring>
+     </properties>
+   </text>
+ 
