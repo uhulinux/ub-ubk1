@@ -3,7 +3,6 @@ lmdb
 packagekit-qt
 phonon
 qca
-qtspeech
 attica
 breeze-icons
 bluez-qt

@@ -1,9 +1,0 @@
-#!/bin/sh -eux
-
-if [ ! -d .git ]; then
-	mkdir .git
-fi
-
-qmake qtspeech.pro
-
-ub_make
