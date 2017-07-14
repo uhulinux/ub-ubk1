@@ -21,7 +21,6 @@ libspectrum
 timidity
 openscenegraph
 libdvbcsa
-molequeue
 libgdiplus
 libgme
 mono
