@@ -1,8 +1,6 @@
 alsa-lib-dev
 dbus-dev
-ffmpeg-dev
 gperf
-icu-dev
 libevent-dev
 libsrtp-dev
 libvpx-dev
@@ -18,4 +16,3 @@ pulseaudio-dev
 qt5-designer-dev
 qt5-dev
 re2c
-yasm

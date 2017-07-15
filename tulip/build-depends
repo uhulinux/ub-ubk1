@@ -1,8 +1,8 @@
 binutils-dev
 cmake
+docbook2man
 docbook-dtds
 docbook-xsl
-docbook2man
 doxygen
 freetype2-dev
 glew-dev

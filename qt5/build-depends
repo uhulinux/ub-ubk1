@@ -6,15 +6,15 @@ freetds
 freetype2-dev
 gperf
 gst-plugins-base-dev
-gtk-dev
 gtk2-dev
+gtk-dev
 harfbuzz-dev
 libinput-dev
 mesa-dev
 mtdev-dev
 mysql-dev
 pciutils-dev
-pcre-dev
+pcre2-dev
 postgresql-dev
 pulseaudio-dev
 re2c

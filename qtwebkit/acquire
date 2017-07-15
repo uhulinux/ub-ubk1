@@ -1,4 +1,5 @@
 #!/usr/bin/env dl
 
 qtwebkit-opensource-src-${UB_VERSION}.tar.xz qtwebkit-opensource-src-${UB_VERSION}/
-	http://download.qt.io/community_releases/${UB_VERSION_HEAD2}/${UB_VERSION}/
+	http://download.qt.io/official_releases/qt/${UB_VERSION_HEAD2}/${UB_VERSION}/submodules/
+	http://download.qt.io/community_releases/${UB_VERSION_HEAD2}/${UB_VERSION}-final/

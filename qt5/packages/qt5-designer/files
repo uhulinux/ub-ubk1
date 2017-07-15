@@ -9,10 +9,10 @@
 	/usr/lib/qt5/bin/lrelease.debug
 	/usr/lib/qt5/bin/lupdate
 	/usr/lib/qt5/bin/lupdate.debug
-	/usr/lib/qt5/lib/libQt5Designer.so.*
-@	/usr/lib/qt5/lib/libQt5Designer.so.*
 	/usr/lib/qt5/lib/libQt5DesignerComponents.so.*
 @	/usr/lib/qt5/lib/libQt5DesignerComponents.so.*
+	/usr/lib/qt5/lib/libQt5Designer.so.*
+@	/usr/lib/qt5/lib/libQt5Designer.so.*
 	/usr/lib/qt5/phrasebooks
 	/usr/lib/qt5/plugins/designer
 	/usr/lib/qt5/translations/designer_*.qm

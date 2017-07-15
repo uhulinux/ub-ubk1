@@ -28,7 +28,7 @@ plasma-workspace-dev
 qt5-dev
 scim-dev
 systemd-dev
+xkeyboard-config
 x.org-input-evdev
 x.org-input-synaptics
 x.org-server-dev
-xkeyboard-config

@@ -4,16 +4,10 @@
 
 # qtwebengine: külön csomag
 
-platform=""
-if [ "UB_ARCH" == "i386" ];then
-platform="-platform linux-g++-32"
-fi
-
 export LD_LIBRARY_PATH="$(pwd)"/lib
-export UB_MAKE_PROCS=2
 
 ./configure \
-	$platform \
+	-platform linux-g++-32 \
 	-prefix /usr/lib/qt5 \
 	-sysconfdir /etc/xdg \
 	\
@@ -21,13 +15,12 @@ export UB_MAKE_PROCS=2
 	-opensource         \
 	-confirm-license	\
 	-shared             \
-	-largefile          \
 	-journald			\
-	-c++std auto        \
+	-c++std c++1z       \
 	-verbose            \
 	-silent             \
 	-no-pch             \
-	-qml-debug		\
+	-qml-debug			\
 	-no-use-gold-linker \
 	-reduce-relocations \
 	-no-rpath           \
@@ -43,7 +36,6 @@ export UB_MAKE_PROCS=2
 	-plugin-sql-odbc    \
 	-plugin-sql-sqlite  \
 	\
-	-audio-backend      \
 	-gstreamer 1.0		\
 	\
 	-system-freetype	\
@@ -58,34 +50,25 @@ export UB_MAKE_PROCS=2
 	\
 	-dbus-linked        \
 	-openssl-linked     \
-	-lcrypto            \
-	-lcrypt             \
-	-lssl               \
+	-ssl               \
 	\
 	-cups               \
-	-iconv              \
-	-mtdev				\
 	-glib               \
 	-gtk				\
 	-opengl             \
+	-no-iconv           \
 	-no-linuxfb         \
-	-no-openvg          \
 	-no-eglfs           \
-	-no-ssse3           \
 	-no-kms             \
 	-no-libproxy		\
-	-no-nis             \
 	\
-	-sm                 \
-	-xshape             \
-	-xsync              \
-	-xcursor            \
-	-xfixes             \
-	-xrandr             \
-	-xrender            \
-	-mitshm             \
 	-fontconfig         \
 	-xinput2            \
+	-evdev				\
+	-mtdev				\
+	-libinput			\
+	-tslib				\
 	-xkb                \
+	-xcb-xlib			\
 
 ub_make

@@ -3,10 +3,10 @@
 	/usr/lib/qt5/include/QtDesignerComponents
 	/usr/lib/qt5/lib/cmake/Qt5Designer
 	/usr/lib/qt5/lib/cmake/Qt5LinguistTools
-	/usr/lib/qt5/lib/libQt5Designer.la
-	/usr/lib/qt5/lib/libQt5Designer.prl
-@	/usr/lib/qt5/lib/libQt5Designer.so
 	/usr/lib/qt5/lib/libQt5DesignerComponents.la
 	/usr/lib/qt5/lib/libQt5DesignerComponents.prl
 @	/usr/lib/qt5/lib/libQt5DesignerComponents.so
+	/usr/lib/qt5/lib/libQt5Designer.la
+	/usr/lib/qt5/lib/libQt5Designer.prl
+@	/usr/lib/qt5/lib/libQt5Designer.so
 	/usr/lib/qt5/lib/pkgconfig/Qt5Designer.pc

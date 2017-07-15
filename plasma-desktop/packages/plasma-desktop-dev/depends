@@ -23,7 +23,7 @@ packagekit-qt-dev
 plasma-framework-dev
 plasma-workspace-dev
 systemd-dev
+xkeyboard-config
 x.org-input-evdev
 x.org-input-synaptics
 x.org-server-dev
-xkeyboard-config
