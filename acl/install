@@ -8,7 +8,7 @@ ub_install \
 	PKG_MAN_DIR="$UB_INSTALLDIR"/usr/share/man \
 	install-lib \
 	install-dev
-
+cd "$UB_INSTALLDIR"/bin/
 for progs in chacl getfacl setfacl; do
-	ln -s $progs "$UB_INSTALLDIR"/usr/bin/$progs
+	cp $progs "$UB_INSTALLDIR"/usr/bin/
 done
