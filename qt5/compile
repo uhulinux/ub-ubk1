@@ -4,10 +4,16 @@
 
 # qtwebengine: külön csomag
 
+if [ "$UB_ARCH" == "amd64" ];then
+platform="-platform linux-g++-64"
+else
+platform="-platform linux-g++-32"
+fi
+
 export LD_LIBRARY_PATH="$(pwd)"/lib
 
 ./configure \
-	-platform linux-g++-32 \
+	"$platform" \
 	-prefix /usr/lib/qt5 \
 	-sysconfdir /etc/xdg \
 	\
