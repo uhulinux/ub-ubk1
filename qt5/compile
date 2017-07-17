@@ -13,7 +13,7 @@ fi
 export LD_LIBRARY_PATH="$(pwd)"/lib
 
 ./configure \
-	"$platform" \
+	$platform \
 	-prefix /usr/lib/qt5 \
 	-sysconfdir /etc/xdg \
 	\
