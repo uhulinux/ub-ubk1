@@ -15,8 +15,8 @@ glu-dev
 gperf
 gpgmepp-dev
 gst-plugins-base-dev
-gtk-dev
 gtk2-dev
+gtk-dev
 harfbuzz-dev
 hunspell
 hunspell-dev
