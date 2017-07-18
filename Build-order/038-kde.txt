@@ -3,6 +3,7 @@ lmdb
 packagekit-qt
 phonon
 qca
+extra-cmake-modules
 attica
 breeze-icons
 bluez-qt
