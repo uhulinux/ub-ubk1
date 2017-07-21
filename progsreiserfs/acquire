@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-progsreiserfs-${UB_VERSION}.tar.gz progsreiserfs-${UB_VERSION}/
-	https://sources.archlinux.org/other/progsreiserfs/

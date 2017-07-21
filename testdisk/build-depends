@@ -2,6 +2,5 @@ e2fsprogs-dev
 fuse-ntfs-3g-dev
 libjpeg-turbo-dev
 openssl-dev
-progsreiserfs-dev
 util-linux-dev
 zlib-dev
