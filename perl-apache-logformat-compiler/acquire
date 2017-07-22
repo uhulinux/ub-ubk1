@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Apache-LogFormat-Compiler-${UB_VERSION}.tar.gz Apache-LogFormat-Compiler-${UB_VERSION}/
-	http://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/

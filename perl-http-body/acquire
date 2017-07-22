@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-HTTP-Body-${UB_VERSION}.tar.gz HTTP-Body-${UB_VERSION}/
-	http://search.cpan.org/CPAN/modules/by-module/HTTP/

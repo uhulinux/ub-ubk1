@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-File-ShareDir-Install-${UB_VERSION}.tar.gz File-ShareDir-Install-${UB_VERSION}/
-	http://cpan.metacpan.org/modules/by-module/File/

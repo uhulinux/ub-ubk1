@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Moose-${UB_VERSION}.tar.gz Moose-${UB_VERSION}/
-	http://cpan.metacpan.org/authors/id/E/ET/ETHER/

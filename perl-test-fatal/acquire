@@ -1,6 +1,0 @@
-#!/usr/bin/env dl
-
-Test-Fatal-${UB_VERSION}.tar.gz Test-Fatal-${UB_VERSION}/
-	http://cpan.metacpan.org/authors/id/R/RJ/RJBS/
-	https://cpan.metacpan.org/authors/id/R/RJ/RJBS/
-	https://cpan.metacpan.org/authors/id/R/RJ/RJBS/

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Plack-${UB_VERSION}.tar.gz Plack-${UB_VERSION}/
-	http://search.cpan.org/CPAN/modules/by-module/Plack/

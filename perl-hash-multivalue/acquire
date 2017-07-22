@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-Hash-MultiValue-${UB_VERSION}.tar.gz Hash-MultiValue-${UB_VERSION}/
-	http://search.cpan.org/CPAN/modules/by-module/Hash/
