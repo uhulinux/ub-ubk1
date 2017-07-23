@@ -36,7 +36,6 @@ egenix-mx-base
 perl-date-calc
 sbm
 pinfo
-perl-gd-text
 fonts-jmk
 perl-extutils-xspp
 iptables-utils

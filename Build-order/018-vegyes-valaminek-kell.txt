@@ -227,7 +227,6 @@ recordmydesktop
 zeitgeist
 graphicsmagick
 hplip
-plack
 freerdp
 spamassassin
 gdal
