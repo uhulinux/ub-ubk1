@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-#tellico-${UB_VERSION}.tar.gz tellico-${UB_VERSION}/
-#	http://tellico-project.org/files/
+tellico-${UB_VERSION}.tar.xz tellico-${UB_VERSION}/
+	http://tellico-project.org/files/
 
-tellico-${UB_VERSION}.tar.gz tellico-3abae41/
-	git://github.com/KDE/tellico.git@3abae41
+#tellico-${UB_VERSION}.tar.gz tellico-3abae41/
+#	git://github.com/KDE/tellico.git@3abae41
