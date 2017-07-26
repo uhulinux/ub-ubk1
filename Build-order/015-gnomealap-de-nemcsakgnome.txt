@@ -11,6 +11,7 @@ zenity
 appstream-glib
 polkit-gnome
 clutter
+glade2
 glade
 clutter-gst2
 clutter-gtk
