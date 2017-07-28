@@ -1,6 +1,6 @@
 diff -Naur orig/suite/browser/browser-prefs.js patched/suite/browser/browser-prefs.js
---- orig/suite/browser/browser-prefs.js	2016-12-14 02:58:06.000000000 +0100
-+++ patched/suite/browser/browser-prefs.js	2016-12-25 16:38:35.467110976 +0100
+--- orig/suite/browser/browser-prefs.js	2017-07-07 07:15:27.134739579 +0200
++++ patched/suite/browser/browser-prefs.js	2017-07-26 23:08:54.544551815 +0200
 @@ -20,6 +20,9 @@
  pref("startup.homepage_override_url","chrome://navigator-region/locale/region.properties");
  pref("general.skins.selectedSkin", "classic/1.0");
@@ -26,7 +26,7 @@ diff -Naur orig/suite/browser/browser-prefs.js patched/suite/browser/browser-pre
  // Whether or not app updates are enabled
 -pref("app.update.enabled", true);
 +pref("app.update.enabled", false);
-  
+ 
  // This preference allows automatic download and install to take place.
 -pref("app.update.auto", true);
 +pref("app.update.auto", false);
