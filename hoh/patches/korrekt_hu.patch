@@ -1,0 +1,34 @@
+diff -Nur orig/gamedata/text/en_US.xml mod/gamedata/text/en_US.xml
+--- orig/gamedata/text/en_US.xml	2017-07-31 20:28:49.000000000 +0200
++++ mod/gamedata/text/en_US.xml	2017-07-31 21:11:32.000000000 +0200
+@@ -401,7 +401,7 @@
+       <ustring>Hungarian translation</ustring>
+     </properties>
+     <properties font="regular" color="white">
+-      <ustring>attuska</ustring>
++      <ustring>Attila Kiss</ustring>
+     </properties>
+     <properties font="regular" color="white">
+       <ustring> </ustring>
+diff -Nur orig/gamedata/text/hu_HU.xml mod/gamedata/text/hu_HU.xml
+--- orig/gamedata/text/hu_HU.xml	2017-07-31 20:28:49.000000000 +0200
++++ mod/gamedata/text/hu_HU.xml	2017-07-31 21:04:25.000000000 +0200
+@@ -3,6 +3,18 @@
+ <language xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="language.xsd">
+ 
++  <text id="yep" x="0" y="0">
++    <properties>
++      <ustring>igen</ustring>
++    </properties>
++  </text>
++
++  <text id="nope" x="0" y="0">
++    <properties>
++      <ustring>nem</ustring>
++    </properties>
++  </text>
++
+   <text id="new-game" x="170" y="150">
+     <properties>
+       <ustring>Új játék</ustring>
