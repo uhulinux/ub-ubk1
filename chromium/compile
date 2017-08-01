@@ -1,9 +1,14 @@
 #!/bin/sh -eux
 
+if [ $((`stat -f -c "%a" .`*`stat -f -c "%s" .`/(1024*1024*1024))) -lt 7 ]; then
+	echo "At least 7 GB free space is required!"
+	exit 1
+fi
+
 #	-Denable_google_now=0
 #	-Denable_hotwording=0
 #   -Drelease_extra_cflags=" -fno-delete-null-pointer-checks"
-#	-Dcomponent="shared_library"
+#	-Dcomponent="shared_library" -> is_component_build=true
 
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
@@ -34,29 +39,20 @@ use_cups=true
 use_gconf=false
 use_gio=false
 use_gnome_keyring=false
-use_gtk3=false
+use_gtk3=true
 use_kerberos=false
-use_nss_certs=true
 use_pulseaudio=true
 link_pulseaudio=true
 ")
 
+# a chromium szeret patkolt, nem kiadott libeket használni
+# (libjpeg, libpng, libvpx, libwebp, libxml, libevent, zlib stb.)
+# csak ezeket érdemes használni a rendszerből
 _syslibs=(
-#	ffmpeg
 	flac
-	harfbuzz-ng
-	icu
-	libevent
-#	libjpeg (linker error)
-#	libpng (linker error)
-	libvpx
-	libwebp
-	libxml
-	libxslt
-#	re2
-#	snappy
+#	harfbuzz-ng (>= 1.4.2, 'hb_variation_t' undeclared)
+#	icu (>= 59.1)
 	yasm
-#	zlib (linker error)
 )
 
 # external usb.ids (hwdata)
@@ -64,15 +60,29 @@ sed "s|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g" -i device/usb/
 
 build/linux/unbundle/replace_gn_files.py --system-libraries "${_syslibs[@]}"
 
+# gn a buildhoz
+tools/gn/bootstrap/bootstrap.py -v --no-clean --no-rebuild
+
+# node
+mkdir -p third_party/node/linux/node-linux-x64/bin
+ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
+
+# others
+third_party/libaddressinput/chromium/tools/update-strings.py
+touch chrome/test/data/webui/i18n_process_css_test.html
+
 export LDFLAGS+="-Wl,-rpath,/usr/lib/chromium/ -Wl,--no-keep-memory"
 
-# gn a buildhoz, először simán gcc-vel, utána önmagával
-# a --gn-gen-args utáni sorok nem kezdőshetnek tab karakterrel!
-tools/gn/bootstrap/bootstrap.py -v --gn-gen-args " ${_flags[@]} "
+# a ninja létrehozza az out/Release könyvtárat, de leáll, ha nincs az alatt
+# egy out/Release - oda viszont semmi nem kerül
+mkdir -p out/Release/out/Release
 
-# build chrome: az --args utáni sorok nem kezdőshetnek tab karakterrel!
+# build chrome: az --args utáni sorok nem kezdődhetnek tab karakterrel!
 out/Release/gn gen out/Release -v --script-executable=/usr/bin/python2 \
 	--args=" ${_flags[@]} "
+
+# gn args list - kihagyható, de segít a lehetséges opciók megadásához
+out/Release/gn args --list $UB_COMPILEDIR/out/Release
 
 # ninja, a 34-től a make nem támogatott
 

@@ -1,8 +1,8 @@
-diff -Naurdp bash-4.0.orig/config-top.h bash-4.0/config-top.h
---- bash-4.0.orig/config-top.h	2009-01-04 20:32:23.000000000 +0100
-+++ bash-4.0/config-top.h	2009-10-28 20:06:45.000000000 +0100
-@@ -75,7 +75,7 @@
- #define KSH_COMPATIBLE_SELECT
+diff -Naur orig/config-top.h patched/config-top.h
+--- orig/config-top.h	2016-05-19 20:34:02.134739579 +0200
++++ patched/config-top.h	2017-07-29 16:03:54.463066291 +0200
+@@ -87,7 +87,7 @@
+ #define DEFAULT_BASHRC "~/.bashrc"
  
  /* System-wide .bashrc file for interactive shells. */
 -/* #define SYS_BASHRC "/etc/bash.bashrc" */

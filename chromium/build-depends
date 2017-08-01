@@ -2,8 +2,8 @@ alsa-lib-dev
 cups-dev
 dbus-dev
 gperf
-gtk-dev
 gtk2-dev
+gtk-dev
 hwdata
 krb5-dev
 libdrm-dev
@@ -19,6 +19,7 @@ libxslt-dev
 libxtst-dev
 mesa-dev
 ninja
+node
 nspr-dev
 nss-dev
 opus-dev
