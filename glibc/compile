@@ -18,6 +18,7 @@ UB_CONFIGURE_DIR="$UB_COMPILEDIR" ub_configure \
 	--enable-bind-now \
 	--disable-profile \
 	--enable-lock-elision \
+	--enable-obsolete-nsl \
 	--disable-werror \
 	libc_cv_slibdir=/lib
 else
@@ -28,7 +29,8 @@ UB_CONFIGURE_DIR="$UB_COMPILEDIR" ub_configure \
 	--enable-kernel=2.6.33 \
 	--enable-obsolete-rpc \
 	--with-cpu=i686 \
-	--disable-werror
+	--disable-werror \
+	--enable-obsolete-nsl
 fi
 
 # glibc doesn't like -Os!
