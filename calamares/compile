@@ -2,6 +2,6 @@
 
 ub_compile \
 	-DCMAKE_PREFIX_PATH=/usr/lib/qt5 \
-	-DCMAKE_BUILD_TYPE=Debug \
+	-DCMAKE_BUILD_TYPE=Release \
 	-DWITH_PARTITIONMANAGER=1 \
 	-DWITH_PYTHONQT=ON
