@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-calamares-${UB_VERSION}.tar.gz calamares-d67245f/
-	git://github.com/uhulinux/calamares.git@d67245f
+calamares-${UB_VERSION}.tar.gz calamares-3e5d909/
+	git://github.com/uhulinux/calamares.git@3e5d909
