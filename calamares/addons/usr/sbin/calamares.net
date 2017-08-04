@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cp -f /usr/share/calamares/settings.conf.net /usr/share/calamares/settings.conf
+cp -f /usr/share/calamares/modules/welcome.conf.net /usr/share/calamares/modules/welcome.conf
+
+calamares
