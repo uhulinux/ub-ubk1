@@ -27,5 +27,3 @@ ub_compile \
 	--without-netapi \
 	--with-dbus
 fi
-
-

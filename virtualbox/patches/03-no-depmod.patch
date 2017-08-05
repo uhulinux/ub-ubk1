@@ -1,7 +1,7 @@
 diff -Naur orig/src/VBox/HostDrivers/Support/linux/Makefile patched/src/VBox/HostDrivers/Support/linux/Makefile
---- orig/src/VBox/HostDrivers/Support/linux/Makefile	2016-03-04 20:29:25.000000000 +0100
-+++ patched/src/VBox/HostDrivers/Support/linux/Makefile	2016-03-08 20:15:06.594518088 +0100
-@@ -300,7 +300,6 @@
+--- orig/src/VBox/HostDrivers/Support/linux/Makefile	2017-07-27 15:18:15.134739579 +0200
++++ patched/src/VBox/HostDrivers/Support/linux/Makefile	2017-08-05 00:46:31.354323836 +0200
+@@ -307,7 +307,6 @@
  install: $(MODULE)
  	@mkdir -p $(MODULE_DIR); \
  	install -m 0644 -o root -g root $(MODULE).$(MODULE_EXT) $(MODULE_DIR); \
@@ -10,9 +10,9 @@ diff -Naur orig/src/VBox/HostDrivers/Support/linux/Makefile patched/src/VBox/Hos
  
  install_rpm: $(MODULE)
 diff -Naur orig/src/VBox/HostDrivers/VBoxNetAdp/linux/Makefile patched/src/VBox/HostDrivers/VBoxNetAdp/linux/Makefile
---- orig/src/VBox/HostDrivers/VBoxNetAdp/linux/Makefile	2016-03-04 20:29:26.000000000 +0100
-+++ patched/src/VBox/HostDrivers/VBoxNetAdp/linux/Makefile	2016-03-08 20:14:38.890380711 +0100
-@@ -203,7 +203,6 @@
+--- orig/src/VBox/HostDrivers/VBoxNetAdp/linux/Makefile	2017-07-27 15:18:16.134739579 +0200
++++ patched/src/VBox/HostDrivers/VBoxNetAdp/linux/Makefile	2017-08-05 00:46:31.378324232 +0200
+@@ -209,7 +209,6 @@
  install: $(MODULE)
  	@mkdir -p $(MODULE_DIR); \
  	install -m 0644 -o root -g root $(MODULE).$(MODULE_EXT) $(MODULE_DIR); \
@@ -21,9 +21,9 @@ diff -Naur orig/src/VBox/HostDrivers/VBoxNetAdp/linux/Makefile patched/src/VBox/
  
  install_rpm: $(MODULE)
 diff -Naur orig/src/VBox/HostDrivers/VBoxNetFlt/linux/Makefile patched/src/VBox/HostDrivers/VBoxNetFlt/linux/Makefile
---- orig/src/VBox/HostDrivers/VBoxNetFlt/linux/Makefile	2016-03-04 20:29:26.000000000 +0100
-+++ patched/src/VBox/HostDrivers/VBoxNetFlt/linux/Makefile	2016-03-08 20:14:58.078475860 +0100
-@@ -207,7 +207,6 @@
+--- orig/src/VBox/HostDrivers/VBoxNetFlt/linux/Makefile	2017-07-27 15:18:16.134739579 +0200
++++ patched/src/VBox/HostDrivers/VBoxNetFlt/linux/Makefile	2017-08-05 00:46:31.390324430 +0200
+@@ -213,7 +213,6 @@
  install: $(MODULE)
  	@mkdir -p $(MODULE_DIR); \
  	install -m 0644 -o root -g root $(MODULE).$(MODULE_EXT) $(MODULE_DIR); \
@@ -32,9 +32,9 @@ diff -Naur orig/src/VBox/HostDrivers/VBoxNetFlt/linux/Makefile patched/src/VBox/
  
  install_rpm: $(MODULE)
 diff -Naur orig/src/VBox/HostDrivers/VBoxPci/linux/Makefile patched/src/VBox/HostDrivers/VBoxPci/linux/Makefile
---- orig/src/VBox/HostDrivers/VBoxPci/linux/Makefile	2016-03-04 20:29:27.000000000 +0100
-+++ patched/src/VBox/HostDrivers/VBoxPci/linux/Makefile	2016-03-08 20:14:50.450438034 +0100
-@@ -205,8 +205,7 @@
+--- orig/src/VBox/HostDrivers/VBoxPci/linux/Makefile	2017-07-27 15:18:17.134739579 +0200
++++ patched/src/VBox/HostDrivers/VBoxPci/linux/Makefile	2017-08-05 00:46:31.406324695 +0200
+@@ -211,8 +211,7 @@
  
  install: $(MODULE)
  	@mkdir -p $(MODULE_DIR); \
@@ -45,9 +45,9 @@ diff -Naur orig/src/VBox/HostDrivers/VBoxPci/linux/Makefile patched/src/VBox/Hos
  install_rpm: $(MODULE)
  	@mkdir -p $(MODULE_DIR); \
 diff -Naur orig/src/VBox/Installer/linux/Makefile.include.footer patched/src/VBox/Installer/linux/Makefile.include.footer
---- orig/src/VBox/Installer/linux/Makefile.include.footer	2016-03-04 20:29:33.000000000 +0100
-+++ patched/src/VBox/Installer/linux/Makefile.include.footer	2016-03-08 20:14:19.530284709 +0100
-@@ -85,8 +85,7 @@
+--- orig/src/VBox/Installer/linux/Makefile.include.footer	2017-07-27 15:18:21.134739579 +0200
++++ patched/src/VBox/Installer/linux/Makefile.include.footer	2017-08-05 00:46:31.406324695 +0200
+@@ -91,8 +91,7 @@
  
  install: $(MODULE)
  	@mkdir -p $(MODULE_DIR); \
