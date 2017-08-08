@@ -118,7 +118,6 @@ python-pam
 python-paste
 python-pastedeploy
 python-pbkdf2
-python-pep8
 python-pexpect
 python-pillow
 python-pip
@@ -134,6 +133,7 @@ python-sphinx
 python-urlgrabber
 gst-python
 pyatspi
+pycodestyle
 pykaraoke
 python-apt
 python-matplotlib
