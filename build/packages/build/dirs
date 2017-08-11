@@ -1,4 +1,6 @@
-/var/cache/uhubuild/ccache/2.2
-/var/cache/uhubuild/ccache/3
-/var/cache/uhubuild/ccache/UBK1
-/var/cache/uhubuild/ccache/dev
+/var/cache/uhubuild/ccache/2.2/i386
+/var/cache/uhubuild/ccache/3/i386
+/var/cache/uhubuild/ccache/dev/amd64
+/var/cache/uhubuild/ccache/dev/i386
+/var/cache/uhubuild/ccache/UBK1/amd64
+/var/cache/uhubuild/ccache/UBK1/i386
