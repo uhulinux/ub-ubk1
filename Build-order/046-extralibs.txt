@@ -1,6 +1,5 @@
 libvncserver
 vigra
-libguess
 libexif-gtk
 libetonyek
 libodfgen

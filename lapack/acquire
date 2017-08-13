@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-lapack-${UB_VERSION}.tgz lapack-${UB_VERSION}/
-	http://www.netlib.org/lapack/

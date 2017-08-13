@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libftdi-${UB_VERSION}.tar.gz libftdi-${UB_VERSION}/
-	http://www.intra2net.com/en/developer/libftdi/download/

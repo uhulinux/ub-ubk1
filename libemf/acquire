@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-libemf-${UB_VERSION}.tar.gz libemf-${UB_VERSION}/
-	https://sourceforge.net/projects/libemf/files/libemf/${UB_VERSION}/

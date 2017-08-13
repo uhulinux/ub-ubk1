@@ -6,7 +6,5 @@ libstemmer-dev
 libxml2-dev
 libyaml-dev
 protobuf-dev
-qt5-dev
-qt5-test-dev
 xapian-dev
 xmlto

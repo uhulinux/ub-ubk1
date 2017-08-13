@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-live."$UB_VERSION".tar.gz live/
-	http://ftp.videolan.org/contrib/live555/

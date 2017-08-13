@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-qtwebview-opensource-src-${UB_VERSION}.tar.xz qtwebview-opensource-src-${UB_VERSION}/
-	http://download.qt.io/official_releases/qt/${UB_VERSION_HEAD2}/${UB_VERSION}/submodules/

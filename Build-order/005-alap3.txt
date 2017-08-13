@@ -32,7 +32,6 @@ libogg
 libvorbis
 speex
 speexdsp
-libftdi-compat
 libftdi1
 libyaml
 pyyaml
@@ -82,7 +81,6 @@ wpasupplicant
 libmbim
 libqmi
 modemmanager
-eggdbus
 iproute2
 libidl2
 orbit2

@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-ub_install
-
-cp -a src/include/smbios "$UB_INSTALLDIR"/usr/include/
-rm -f "$UB_INSTALLDIR"/usr/lib/lib*.a

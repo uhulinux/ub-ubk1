@@ -1,1 +1,0 @@
-urllist http://cgit.freedesktop.org/~david/eggdbus/ | splitver '^\?id=([0-9.]+)$' | sort -V | tail -n 1

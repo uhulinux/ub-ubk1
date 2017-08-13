@@ -6,7 +6,6 @@ geany
 geany-plugins
 photopc
 tygemo
-lapack
 maxima
 wxmaxima
 dvdauthor

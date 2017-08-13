@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-libfli1_${UB_VERSION}.orig.tar.gz libfli1-${UB_VERSION}/
-	http://downloads.sourceforge.net/indi/
-	ftp://ftp.lt.debian.org/ubuntu/pool/main/libf/libfli1/

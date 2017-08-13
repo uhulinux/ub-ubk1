@@ -24,7 +24,6 @@ psmisc
 sipcalc
 smartmontools
 t1utils
-alsa-oss
 babl
 beautifulsoup
 bind
@@ -85,7 +84,6 @@ exempi
 fonttools
 fuse-ntfs-3g
 gavl
-ggz-client-libs
 goocanvasmm
 gtk2-engine-murrine
 gtk2-theme-bluecurve
@@ -154,7 +152,6 @@ scim
 spandsp
 tntnet
 xdg-user-dirs-gtk
-xosd
 yaz
 accountsservice
 alsa-utils
@@ -170,7 +167,6 @@ hunspell-hu
 icon-theme-tango
 jpilot
 js17
-loudmouth
 netpbm
 reportlab
 rpcbind
@@ -189,7 +185,6 @@ clamav
 gexiv2
 goffice
 gspell
-gtkglextmm
 mesa-demos
 obexftp
 podofo
@@ -239,8 +234,6 @@ nagios-plugins
 pstoedit
 dhcpcd
 dmapi
-h323plus
-smpeg2
 cups-filters
 foo2zjs
 lightdm-gtk-greeter
@@ -253,7 +246,6 @@ w3m
 coin
 slim
 sfml
-csfml
 autotrace
 mftrace
 foomatic-db-engine

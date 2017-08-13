@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-liboobs-${UB_VERSION}.tar.gz liboobs-${UB_VERSION}/
-	https://download.gnome.org/sources/liboobs/${UB_VERSION_HEAD2}/

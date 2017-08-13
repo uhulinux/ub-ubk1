@@ -1,4 +1,0 @@
-#!/bin/sh -eux
-
-cd z80ex-${UB_VERSION}
-ub_compile

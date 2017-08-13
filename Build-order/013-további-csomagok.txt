@@ -2,7 +2,6 @@ libspectre
 clucene-core
 libgtkhtml2
 pcsc-lite
-gwenhywfar
 libmusicbrainz
 vte2
 libmusicbrainz3
@@ -13,8 +12,6 @@ plotutils
 emacs
 gnuplot
 libqalculate
-libindicate
-libappindicator
 libcryptui
 mutagen
 libgpod
@@ -24,7 +21,6 @@ imagemagick
 cairomm
 pangomm
 gtkmm2
-libsexymm
 libstemmer
 appstream
 beecrypt

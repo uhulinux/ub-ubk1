@@ -1,6 +1,0 @@
-#!/bin/sh -eux
-
-for i in `find . -iname 'Makefile.in'`; do
-	ub_replace "-D[A-Z_]*DISABLE_DEPRECATED" "" "$i"
-done
-ub_compile

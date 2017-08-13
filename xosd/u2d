@@ -1,1 +1,0 @@
-sflist libxosd libxosd | splitver '^xosd-([0-9.]+)$'

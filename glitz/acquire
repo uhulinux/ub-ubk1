@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-glitz-${UB_VERSION}.tar.gz glitz-${UB_VERSION}/
-	http://www.cairographics.org/snapshots/

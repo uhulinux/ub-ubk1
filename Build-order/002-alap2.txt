@@ -1,5 +1,4 @@
 ruby
-glitz
 fontconfig
 libtiff
 tk

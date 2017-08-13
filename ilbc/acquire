@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-msilbc-2.0.1.tar.gz msilbc-2.0.1/ilbc-rfc3951.tar.gz ilbc-rfc3951/
-	http://download-mirror.savannah.gnu.org/releases/linphone/plugins/sources/

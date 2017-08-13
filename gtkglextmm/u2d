@@ -1,1 +1,0 @@
-sflist gtkglext gtkglextmm | sort -V | tail -n 1

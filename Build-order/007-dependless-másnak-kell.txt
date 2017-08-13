@@ -1,5 +1,4 @@
 acpitool
-adns
 amrnb
 antiword
 arj
@@ -8,7 +7,6 @@ bdfresize
 bin86
 cabextract
 c-ares
-cdk
 chmlib
 chrpath
 cmucl
@@ -16,7 +14,6 @@ compface
 ctags
 cxxtools
 debhelper
-dirac
 dmidecode
 dotconf
 dvd+rw-tools
@@ -41,14 +38,12 @@ hddtemp
 hunspell
 hwdata
 iasl
-ilbc
 ispell
 jad
 jam
 less
 libupnp
 linebreak
-livemedia
 makeself
 mdds
 mhonarc
@@ -73,8 +68,6 @@ radiusclient
 ragel
 recode
 regina-rexx
-rlog
-sbsms
 silc-toolkit
 soundtouch
 spice-protocol

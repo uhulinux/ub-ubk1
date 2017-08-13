@@ -28,7 +28,6 @@ libxkbui
 libxmu
 libdrm
 pixman
-liboldx
 freetype2
 libxpm
 x.org-bitmaps
@@ -118,7 +117,6 @@ libxerces
 libxalan
 libxaw3d
 libxdg-basedir
-libxdiff
 libxkbcommon
 libxnvctrl
 tslib

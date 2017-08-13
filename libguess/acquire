@@ -1,6 +1,0 @@
-#!/usr/bin/env dl
-
-libguess-${UB_VERSION}.tar.bz2 libguess-${UB_VERSION}/
-	http://pkgs.fedoraproject.org/repo/pkgs/libguess/libguess-${UB_VERSION}.tar.bz2/9a17e973bc03814170b4ed03172348dc/
-	http://distfiles.atheme.org/
-	http://audacious-media-player.org/release/

@@ -1,6 +1,5 @@
 aalib-dev
 db4-dev
-dirac-dev
 faad2
 ffmpeg-dev
 fluidsynth-dev
@@ -57,5 +56,4 @@ taglib-dev
 vcdimager-dev
 x11vnc
 xcb-util-keysyms-dev
-xosd-dev
 yasm

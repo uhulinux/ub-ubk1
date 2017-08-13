@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-rlog-${UB_VERSION}.tar.gz rlog-${UB_VERSION}/
-	http://pkgs.fedoraproject.org/repo/pkgs/rlog/rlog-${UB_VERSION}.tar.gz/c29f74e0f50d66b20312d049b683ff82/

@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-xosd-${UB_VERSION}.tar.gz xosd-${UB_VERSION}/
-	http://downloads.sourceforge.net/libxosd/

@@ -3,7 +3,6 @@ mplayer-w32codecs
 musl
 pam-smb
 utf8filename
-lightning
 ppl
 pam-krb5
 gflags
@@ -14,7 +13,6 @@ pam-usb
 pam-chroot
 sdl2-net
 g2
-gtk-engine-unico
 obexfs
 opensc
 ntrack

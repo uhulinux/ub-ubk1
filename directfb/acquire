@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-DirectFB-${UB_VERSION}.tar.gz DirectFB-${UB_VERSION}/
-	http://sources.webos-ports.org/downloads//

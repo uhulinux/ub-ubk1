@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-loudmouth-${UB_VERSION}.tar.gz loudmouth-${UB_VERSION}/
-	https://download.gnome.org/sources/loudmouth/${UB_VERSION_HEAD2}/

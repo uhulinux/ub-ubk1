@@ -1,5 +1,0 @@
-#!/usr/bin/env dl
-
-libmcs-${UB_VERSION}.tbz2 libmcs-${UB_VERSION}/
-	http://pkgs.fedoraproject.org/repo/pkgs/libmcs/libmcs-0.7.2.tbz2/9fc91a8e860a0ab99316824aebb1d40a/
-	http://distfiles.atheme.org/

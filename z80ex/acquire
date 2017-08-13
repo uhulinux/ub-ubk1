@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-z80ex-${UB_VERSION}.tar.gz .
-	http://downloads.sourceforge.net/z80ex/

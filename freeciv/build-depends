@@ -1,7 +1,6 @@
 curl-dev
 cyrus-sasl2-dev
 gtk-dev
-libggz-dev
 libxt-dev
 lua52-dev
 sdl-dev

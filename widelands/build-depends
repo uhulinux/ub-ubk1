@@ -1,7 +1,6 @@
 boost-dev
 cmake
 doxygen
-ggz-client-libs-dev
 glew-dev
 glu-dev
 icu-dev

@@ -5,7 +5,6 @@ opencv
 frei0r
 libquicktime
 mjpegtools
-directfb
 gst-plugins-bad
 sox
 espeak
