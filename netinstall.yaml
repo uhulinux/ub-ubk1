@@ -246,7 +246,6 @@
     - dmidecode
     - dump
     - ed
-    - eggdbus
     - flex
     - fontforge
     - gcc
@@ -268,7 +267,6 @@
     - libnl
     - libpcap
     - libqmi
-    - libsmbios
     - libsoup
     - libtirpc
     - libtool
@@ -418,8 +416,6 @@
     - libinput
     - qt5
     - tslib
-    - cdk
-    - glitz
     - tdb
     - lmsensors
     - luit
