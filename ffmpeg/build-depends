@@ -1,6 +1,5 @@
 alsa-lib-dev
 celt-dev
-dirac-dev
 faac-dev
 faad2
 frei0r-dev
@@ -13,7 +12,6 @@ libbluray-dev
 libcaca-dev
 libcdio-paranoia-dev
 libdc1394-dev
-libdcadec-dev
 libfaad2-dev
 libgsm-dev
 liblame-dev

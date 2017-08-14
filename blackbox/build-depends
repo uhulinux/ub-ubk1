@@ -1,8 +1,6 @@
 libdmx-dev
 libdrm-dev
 libfontenc-dev
-libfs-dev
-liboldx-dev
 libpng-dev
 libsm-dev
 libx11-dev

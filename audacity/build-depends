@@ -14,7 +14,6 @@ libsndfile-dev
 libvorbis-dev
 portaudio-dev
 portsmf-dev
-sbsms-dev
 soundtouch-dev
 taglib-dev
 util-linux-dev

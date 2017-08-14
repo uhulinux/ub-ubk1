@@ -12,7 +12,6 @@ libavc1394-dev
 libcddb-dev
 libdca-dev
 libdvbpsi-dev
-libdvdcss-dev
 libdvdnav-dev
 libfaad2-dev
 libgsf-dev
@@ -25,7 +24,6 @@ libnfs-dev
 libnotify-dev
 libproxy-dev
 librsvg-dev
-libsmbios-dev
 libsoxr-dev
 libssh2-dev
 libsysfs-dev
@@ -38,7 +36,6 @@ libxt-dev
 libxvmc-dev
 libxxf86vm-dev
 lirc-dev
-livemedia
 lua52-dev
 mpg123-dev
 musepack-dev

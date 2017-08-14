@@ -2,7 +2,6 @@ aalib-dev
 alsa-lib-dev
 gpm-dev
 libdv-dev
-libfs-dev
 libice-dev
 libjpeg-turbo-dev
 libpng-dev

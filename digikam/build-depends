@@ -24,7 +24,6 @@ libkipi-dev
 libksane-dev
 liblensfun-dev
 liblqr-dev
-libpgf-dev
 libusb-dev
 marble-dev
 opencv-dev

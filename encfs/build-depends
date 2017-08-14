@@ -2,4 +2,3 @@ boost-dev
 cmake
 fuse-dev
 openssl-dev
-rlog-dev

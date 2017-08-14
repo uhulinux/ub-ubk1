@@ -2,7 +2,6 @@ doxygen
 expat-dev
 freetype2-dev
 glew-dev
-glitz-dev
 libjpeg-turbo-dev
 libpng-dev
 libx11-dev

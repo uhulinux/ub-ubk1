@@ -1,6 +1,4 @@
 dbus-glib-dev
 gtk2-dev
-libguess-dev
-libmcs-dev
 libmowgli-dev
 libsm-dev

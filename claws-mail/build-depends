@@ -18,7 +18,6 @@ libcanberra-dev
 libetpan-dev
 libgdata-dev
 libical-dev
-libindicate-dev
 libjpeg-turbo-dev
 libnotify-dev
 liboauth-dev

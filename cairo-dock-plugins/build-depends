@@ -6,7 +6,6 @@ fftw3-dev
 gnome-menus-dev
 gvfs
 intltool
-libappindicator-dev
 libdbusmenu-gtk3-dev
 libetpan-dev
 libexif-dev

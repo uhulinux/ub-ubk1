@@ -2,7 +2,6 @@ alsa-lib-dev
 curl-dev
 dahdi-linux-dev
 dahdi-tools-dev
-h323plus-dev
 jansson
 kernel-dev
 kernel-headers

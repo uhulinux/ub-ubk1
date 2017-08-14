@@ -1,6 +1,5 @@
 libexif-dev
 libjpeg-turbo-dev
-libsmbios-dev
 libusb-dev
 libxml2-dev
 systemd-dev

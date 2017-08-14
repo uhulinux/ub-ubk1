@@ -3,7 +3,6 @@ curl-dev
 dbus-glib-dev
 ffmpeg-dev
 gtk2-dev
-libbinio-dev
 libcddb-dev
 libcue-dev
 libfaad2-dev

@@ -9,6 +9,5 @@ python-dev
 qt5-dev
 qtwebengine-dev
 qtwebkit-dev
-qtwebview-dev
 sip
 sqlite-dev

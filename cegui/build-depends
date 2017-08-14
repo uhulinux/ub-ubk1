@@ -1,7 +1,6 @@
 boost-dev
 cmake
 devil-dev
-directfb-dev
 doxygen
 expat-dev
 freeglut-dev
@@ -10,7 +9,6 @@ freetype2-dev
 fribidi-dev
 glew-dev
 glfw-dev
-glitz-dev
 glm-dev
 glu-dev
 graphviz-dev

@@ -5,7 +5,6 @@ libnice-dev
 libsm-dev
 libsoup-dev
 libxslt
-loudmouth-dev
 openssl-dev
 python-dev
 python-twisted
