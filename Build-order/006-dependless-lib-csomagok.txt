@@ -9,6 +9,7 @@ libconfig
 libcue
 libdbi
 libdca
+libdcadec
 libdnet
 libdvbpsi
 libdvdread
