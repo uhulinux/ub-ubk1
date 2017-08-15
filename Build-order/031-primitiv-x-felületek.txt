@@ -35,7 +35,6 @@ windowmaker
 bmpanel2
 fbpanel
 piewm
-vwm
 weston
 idesk
 idesk-extras
