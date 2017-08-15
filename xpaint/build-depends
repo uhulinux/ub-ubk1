@@ -1,5 +1,4 @@
 imake
-libpgf-dev
 libtiff-dev
 libxaw-dev
 openjpeg-dev
