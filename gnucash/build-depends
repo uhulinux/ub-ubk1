@@ -3,7 +3,6 @@ guile-dev
 intltool
 libatomic-ops-dev
 libdbi-dev
-libdbi-drivers
 libgnomecanvas2-dev
 libofx-dev
 libunistring-dev

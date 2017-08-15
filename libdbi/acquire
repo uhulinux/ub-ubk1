@@ -2,3 +2,6 @@
 
 libdbi-${UB_VERSION}.tar.gz libdbi-${UB_VERSION}/
 	http://downloads.sourceforge.net/libdbi/
+
+libdbi-drivers-${UB_VERSION}.tar.gz libdbi-drivers-${UB_VERSION}/ :drivers
+	http://downloads.sourceforge.net/libdbi-drivers/
