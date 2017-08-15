@@ -16,7 +16,6 @@ java-jre
 liba52-dev
 libcdio-dev
 libdcadec-dev
-libdvdcss-dev
 libfaad2-dev
 liblzo-dev
 libmad-dev
