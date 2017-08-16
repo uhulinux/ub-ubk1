@@ -12,3 +12,6 @@ uhubuild  uhubuild   755  /var/cache/uhubuild/ccache/dev/i386
 uhubuild  uhubuild   755  /var/cache/uhubuild/ccache/UBK1
 uhubuild  uhubuild   755  /var/cache/uhubuild/ccache/UBK1/amd64
 uhubuild  uhubuild   755  /var/cache/uhubuild/ccache/UBK1/i386
+uhubuild  uhubuild   755  /var/cache/uhubuild/ccache/UBK2
+uhubuild  uhubuild   755  /var/cache/uhubuild/ccache/UBK2/amd64
+uhubuild  uhubuild   755  /var/cache/uhubuild/ccache/UBK2/i386

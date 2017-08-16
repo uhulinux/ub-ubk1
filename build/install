@@ -3,7 +3,7 @@
 cp -r etc "$UB_INSTALLDIR"/
 cp -r usr "$UB_INSTALLDIR"/
 
-for dist in 2.2 3 UBK1 dev; do
+for dist in 2.2 3 UBK1 UBK2 dev; do
 	for arch in i386 amd64; do
 		for a in 1 2 3 ; do
 			mkdir -p "$UB_INSTALLDIR"/var/uhubuild/"$dist"/"$arch"/chroot${a}
@@ -30,6 +30,7 @@ ln -s "$UB_INSTALLDIR"/usr/bin/build \
 done
 ln -s "$UB_INSTALLDIR"/usr/bin/build \
 	"$UB_INSTALLDIR"/usr/bin/build-ubk1
-
+ln -s "$UB_INSTALLDIR"/usr/bin/build \
+	"$UB_INSTALLDIR"/usr/bin/build-ubk2
 # mkdir -p "$UB_INSTALLDIR"/usr/share/doc/Packages
 # cp "$UB_SRCDIR"/changelog "$UB_INSTALLDIR"/usr/share/doc/Packages
