@@ -4,7 +4,6 @@ mpc
 zlib
 xz
 cppp
-isl
 gcc
 kmod
 net-tools
