@@ -2,11 +2,9 @@ curl-dev
 db4-dev
 docbook-dtds
 docbook-xsl
-doxygen
 dpkg-dev
 fonts-x.org-ttf
-graphviz
-gtest
+liblz4-dev
 libxslt-dev
 po4a
 python
