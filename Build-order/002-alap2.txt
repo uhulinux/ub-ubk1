@@ -45,6 +45,7 @@ openldap #végleg
 postgresql #végleg
 cyrus-sasl2 #végleg
 curl
+liblz4
 apt
 glib
 gamin
