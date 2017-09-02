@@ -52,7 +52,7 @@ diff -Naur orig/src/groupdel.c patched/src/groupdel.c
  		case 'f':
 diff -Naur orig/src/useradd.c patched/src/useradd.c
 --- orig/src/useradd.c	2017-08-20 02:11:23.133050866 +0200
-+++ patched/src/useradd.c	2017-08-24 21:27:48.367613072 +0200
++++ patched/src/useradd.c	2017-09-02 22:24:37.312164055 +0200
 @@ -158,6 +158,7 @@
      Mflg = false,		/* do not create user's home directory even if CREATE_HOME is set */
      Nflg = true,		/* do not create a group having the same name as the user, but add the user to def_group (or the group specified with -g) */
@@ -108,6 +108,17 @@ diff -Naur orig/src/useradd.c patched/src/useradd.c
  			perror (_("Creating mailbox file"));
  			return;
  		}
+@@ -2016,8 +2022,8 @@
+ 		gid = user_gid;
+ 		mode = 0600;
+ 
+-		if (   (fchown (fd, user_id, gid) != 0)
+-		    || (fchmod (fd, mode) != 0)) {
++		if (!qflg && ((fchown (fd, user_id, gid) != 0)
++		    || (fchmod (fd, mode) != 0))) {
+ 			perror (_("Setting mailbox file permissions"));
+ 		}
+ 
 @@ -2138,6 +2144,9 @@
  	 * Start with a quick check to see if the user exists.
  	 */
