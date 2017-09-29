@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-${UB_VERSION}.tar.gz mkinitrd-ubk-${UB_VERSION}/
-	https://github.com/uhulinux/mkinitrd-ubk/archive/
+${UB_VERSION}.tar.gz mkinitrd-${UB_VERSION}/
+	https://github.com/uhulinux/mkinitrd/archive/

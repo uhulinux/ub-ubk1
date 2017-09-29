@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-${UB_VERSION}.tar.gz dl-ubk-${UB_VERSION}/
-	https://github.com/uhulinux/dl-ubk/archive/
+${UB_VERSION}.tar.gz dl-${UB_VERSION}/
+	https://github.com/uhulinux/dl/archive/
