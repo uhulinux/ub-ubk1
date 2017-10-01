@@ -2,8 +2,8 @@ alsa-lib-dev
 autoconf2.13
 curl-dev
 dbus-glib-dev
-gtk2-dev
 gtk-dev
+gtk2-dev
 hunspell-dev
 libevent-dev
 libidl2-dev
