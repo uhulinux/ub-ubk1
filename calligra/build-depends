@@ -1,7 +1,6 @@
 boost-dev
 curl-dev
 eigen3
-exiv2-dev
 extra-cmake-modules
 fontconfig-dev
 glew-dev

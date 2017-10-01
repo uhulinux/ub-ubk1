@@ -1,6 +1,5 @@
 dbus-glib-dev
 desktop-file-utils
-exiv2-dev
 gettext
 glib-dev
 gtk-dev
