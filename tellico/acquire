@@ -2,6 +2,3 @@
 
 tellico-${UB_VERSION}.tar.xz tellico-${UB_VERSION}/
 	http://tellico-project.org/files/
-
-#tellico-${UB_VERSION}.tar.gz tellico-a64ee13/
-#	git://github.com/KDE/tellico.git@a64ee13

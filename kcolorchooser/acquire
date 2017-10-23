@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-v${UB_VERSION}.tar.gz kcolorchooser-${UB_VERSION}/
-	https://github.com/KDE/kcolorchooser/archive/
+kcolorchooser-${UB_VERSION}.tar.xz kcolorchooser-${UB_VERSION}/
+	https://download.kde.org/stable/applications/${UB_VERSION_HEAD3}/src/

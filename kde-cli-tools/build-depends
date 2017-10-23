@@ -1,4 +1,5 @@
 extra-cmake-modules
+kactivities-dev
 kcmutils-dev
 kconfig-dev
 kdelibs4support-dev

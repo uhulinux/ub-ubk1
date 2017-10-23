@@ -1,14 +1,5 @@
 kajongg: python3-twisted >= 16.6.0
-kgoldrunner: kde4
-kigo: kde4
 kolf: kde4
-konquest: kde4
-kreversi: kde4
 ksirk: kde4
-ksnakeduel: kde4
-kspaceduel: kde4
-ksudoku: kde4
-kubrick: kde4
-lskat: kde4
 palapeli: kde4
 

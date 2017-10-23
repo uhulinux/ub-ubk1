@@ -1,7 +1,4 @@
 #!/usr/bin/env dl
 
-#${UB_VERSION}.tar.gz lxqt-policykit-${UB_VERSION}/
-#	https://github.com/lxde/lxqt-policykit/archive/
-
-${UB_VERSION}.tar.gz lxqt-policykit-abbe37f/
-	git://github.com/lxde/lxqt-policykit.git@abbe37f
+${UB_VERSION}.tar.gz lxqt-policykit-${UB_VERSION}/
+	https://github.com/lxde/lxqt-policykit/archive/

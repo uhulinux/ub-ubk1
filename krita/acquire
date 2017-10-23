@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-v${UB_VERSION}.tar.gz krita-${UB_VERSION}/
-	https://github.com/KDE/krita/archive/
+krita-${UB_VERSION}.tar.gz krita-${UB_VERSION}/
+	https://download.kde.org/stable/krita/${UB_VERSION}/

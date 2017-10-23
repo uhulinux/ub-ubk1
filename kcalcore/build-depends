@@ -3,3 +3,4 @@ kdelibs4support-dev
 kdoctools
 libical-dev
 qt5-dev
+qt5-test-dev

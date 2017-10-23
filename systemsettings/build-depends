@@ -1,4 +1,5 @@
 extra-cmake-modules
+kactivities-stats-dev
 kcmutils-dev
 kconfig-dev
 kdbusaddons-dev
@@ -7,6 +8,7 @@ khtml-dev
 ki18n-dev
 kiconthemes-dev
 kio-dev
+kirigami2-dev
 kitemviews-dev
 kservice-dev
 kwindowsystem-dev

@@ -1,7 +1,4 @@
 #!/usr/bin/env dl
 
-#k3b-${UB_VERSION}.tar.gz k3b-ad01f86/
-#	git://github.com/KDE/k3b.git@ad01f86
-
 k3b-${UB_VERSION}.tar.xz k3b-${UB_VERSION}/
 	https://download.kde.org/stable/applications/${UB_VERSION}/src/

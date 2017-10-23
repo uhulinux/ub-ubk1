@@ -1,7 +1,4 @@
 #!/usr/bin/env dl
 
-#${UB_VERSION}.tar.gz kaffeine-${UB_VERSION}/
-#	https://github.com/KDE/kaffeine/archive/
-
 kaffeine-${UB_VERSION}.tar.xz kaffeine-${UB_VERSION}/
-	http://download.kde.org/stable/kaffeine/${UB_VERSION}/src/
+	https://download.kde.org/stable/kaffeine/${UB_VERSION}/src/

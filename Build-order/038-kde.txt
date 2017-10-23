@@ -68,6 +68,7 @@ kcmutils
 kactivities
 kactivities-stats
 plasma-framework
+kirigami2
 krunner
 kdelibs4support
 kjs

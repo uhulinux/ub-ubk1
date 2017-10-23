@@ -1,7 +1,4 @@
 #!/usr/bin/env dl
 
-#${UB_VERSION}.tar.gz lxqt-session-${UB_VERSION}/
-#	https://github.com/lxde/lxqt-session/archive/
-
-${UB_VERSION}.tar.gz lxqt-session-ef3756a/
-	git://github.com/lxde/lxqt-session.git@ef3756a
+${UB_VERSION}.tar.gz lxqt-session-${UB_VERSION}/
+	https://github.com/lxde/lxqt-session/archive/

@@ -2,4 +2,3 @@
 
 v${UB_VERSION/~/_}.tar.gz compton-${UB_VERSION/~/_}/
 	https://github.com/chjj/compton/archive/
-

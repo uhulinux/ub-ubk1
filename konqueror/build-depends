@@ -1,8 +1,9 @@
 extra-cmake-modules
-karchive
+kactivities-dev
+karchive-dev
 kcmutils-dev
 kcoreaddons-dev
-kcrash
+kcrash-dev
 kdelibs4support-dev
 kdesignerplugin-dev
 kdesu-dev

@@ -1,5 +1,6 @@
 attica-dev
 baloo-dev
+boost-dev
 extra-cmake-modules
 fontconfig-dev
 ibus-dev
@@ -26,6 +27,7 @@ packagekit-qt-dev
 plasma-framework-dev
 plasma-workspace-dev
 qt5-dev
+qt5-test-dev
 scim-dev
 systemd-dev
 xkeyboard-config

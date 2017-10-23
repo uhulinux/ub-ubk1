@@ -4,13 +4,13 @@
 	/usr/bin/*-config
 	/usr/include
 	/usr/lib/**/*.a
-	/usr/lib/**/*.la
-@	/usr/lib/**/*.so
-	/usr/lib/**/mkspecs
-	/usr/lib/*/include
-	/usr/lib/*Conf.sh
 	/usr/lib/cmake
+	/usr/lib/*Conf.sh
+	/usr/lib/*/include
+	/usr/lib/**/*.la
+	/usr/lib/**/mkspecs
 	/usr/lib/pkgconfig
+@	/usr/lib/**/*.so
 	/usr/share/aclocal
 	/usr/share/gtk-doc
 	/usr/share/man/**/man1/*-config.1*

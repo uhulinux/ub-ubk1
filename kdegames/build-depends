@@ -1,4 +1,5 @@
 extra-cmake-modules
+glu-dev
 kdelibs4support-dev
 kdoctools
 knotifyconfig-dev
