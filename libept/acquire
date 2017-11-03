@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 libept_${UB_VERSION}.tar.xz libept-${UB_VERSION}/
-	ftp://ftp.debian.org/debian/pool/main/libe/libept/
+	http://ftp.debian.org/debian/pool/main/libe/libept/

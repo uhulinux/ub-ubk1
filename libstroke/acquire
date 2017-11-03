@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-libstroke-${UB_VERSION}.tar.gz libstroke-${UB_VERSION}/
-	ftp://ftp.fr.netbsd.org/pub/pkgsrc/distfiles/
+libstroke_${UB_VERSION}.orig.tar.gz libstroke-${UB_VERSION}/
+	http://ftp.debian.org/debian/pool/main/libs/libstroke/

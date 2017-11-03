@@ -4,4 +4,4 @@
 #	http://www.jumpbump.mine.nu/port/
 
 jumpnbump_${UB_VERSION}+dfsg1.orig.tar.gz jumpnbump-${UB_VERSION}+dfsg1/
-	ftp://ftp.debian.org/debian/pool/main/j/jumpnbump/
+	http://ftp.debian.org/debian/pool/main/j/jumpnbump/
