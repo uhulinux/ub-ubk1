@@ -1,1 +1,1 @@
-u2d http://download.gna.org/hedgewars/ hedgewars-src-
+urllist https://github.com/hedgewars/hw/releases/ | splitver '^([0-9.]+)-release.tar.gz$' | sort -V | tail -n 1
