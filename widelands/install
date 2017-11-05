@@ -3,3 +3,5 @@
 ub_install
 mv ${UB_INSTALLDIR}/usr/{widelands,wl_map_object_info,wl_render_richtext,wl_map_info} ${UB_INSTALLDIR}/usr/bin/
 rm -r "$UB_INSTALLDIR"/usr/{ChangeLog,COPYING,CREDITS,VERSION}
+# data csomag postinst szkriptbe a verzió
+sed "s/ubversion/$UB_VERSION/" -i $UB_SRCDIR/packages/widelands/postinst

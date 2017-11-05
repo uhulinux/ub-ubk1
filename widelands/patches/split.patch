@@ -1,0 +1,41 @@
+diff -Nur orig/CMakeLists.txt mod/CMakeLists.txt
+--- orig/CMakeLists.txt	2016-11-10 08:28:01.000000000 +0100
++++ mod/CMakeLists.txt	2017-11-04 21:24:03.918836234 +0100
+@@ -257,37 +257,7 @@
+ add_subdirectory(src)
+ 
+ # install files to the correct locations here
+-install(
+-  DIRECTORY
+-    data/campaigns
+-    data/i18n
+-    data/images
+-    data/scripting
+-    data/shaders
+-    data/tribes
+-    data/txts
+-    data/world
+-  DESTINATION ${WL_INSTALL_DATADIR}
+-  CONFIGURATIONS Debug;Release
+-  COMPONENT CoreDataFiles
+-)
+-
+-install(
+-  DIRECTORY
+-    data/maps
+-  DESTINATION ${WL_INSTALL_DATADIR}
+-  CONFIGURATIONS Debug;Release
+-  COMPONENT MapFiles
+-)
+ 
+-install(
+-  DIRECTORY
+-    data/music
+-    data/sound
+-  DESTINATION ${WL_INSTALL_DATADIR}
+-  CONFIGURATIONS Debug;Release
+-  COMPONENT MusicFiles
+-)
+ 
+ install(
+   FILES

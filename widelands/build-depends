@@ -1,6 +1,5 @@
 boost-dev
 cmake
-doxygen
 glew-dev
 glu-dev
 icu-dev
