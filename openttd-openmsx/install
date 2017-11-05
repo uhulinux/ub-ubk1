@@ -1,5 +1,3 @@
 #!/bin/sh -eux
 
-celdir=$UB_INSTALLDIR/usr/share/games/openttd/gm
-mkdir -p -m 755 $celdir
-install -m 644 *.mid *.obm $celdir/
+sed "s/ubversion/$UB_VERSION/" -i $UB_SRCDIR/packages/openttd-openmsx/postinst
