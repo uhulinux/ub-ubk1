@@ -1,10 +1,10 @@
 #!/bin/sh -eux
-adathely=$UB_INSTALLDIR/usr/share/games/dangerdeep
+
+#postinst szkriptbe a verzió
+sed "s/ubversion/$UB_VERSION/" -i $UB_SRCDIR/packages/dangerdeep/postinst
 ikonhely=$UB_INSTALLDIR/usr/share/pixmaps
 mandir=$UB_INSTALLDIR/usr/share/man/man6
-mkdir -p $adathely $ikonhely $mandir
+mkdir -p $ikonhely $mandir
 scons installbindir=$UB_INSTALLDIR/usr/bin datadir='/usr/share/games/dangerdeep' install
 cp dftd_icon.xpm $ikonhely/
 cp doc/man/dangerdeep.6 $mandir/
-cd data
-cp -r * $adathely
