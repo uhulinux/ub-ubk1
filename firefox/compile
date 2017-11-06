@@ -57,7 +57,7 @@ ac_add_options --disable-necko-wifi
 _EOF_
 
 if [ "$UB_ARCH" == "amd64" ];then
-sed -i 's/i686/amd64/' .mozconfig
+sed -i 's/i686-gnu-linux/x86_64-gnu-linux/' .mozconfig
 fi
 
 cd "$UB_OBJECTDIR"

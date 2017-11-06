@@ -15,6 +15,8 @@ export CXXFLAGS=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedul
 
 : > .mozconfig
 cat > .mozconfig << _EOF_
+ac_add_options --host='i686-gnu-linux'
+ac_add_options --target='i686-gnu-linux'
 ac_add_options --prefix=/usr
 ac_add_options --enable-application=suite
 ac_add_options --enable-release
@@ -50,6 +52,10 @@ ac_add_options --disable-install-strip
 ac_add_options --disable-elf-hack
 ac_add_options --disable-necko-wifi
 _EOF_
+
+if [ "$UB_ARCH" == "amd64" ];then
+sed -i 's/i686-gnu-linux/x86_64-gnu-linux/' .mozconfig
+fi
 
 cd "$UB_OBJECTDIR"
 

@@ -14,8 +14,8 @@ export LDFLAGS="-Wl,-rpath,/usr/lib/thunderbird/ -Wl,--no-keep-memory -Wl,-z,rel
 
 : > .mozconfig
 cat > .mozconfig << _EOF_
-ac_add_options --host='i686-uhu-linux'
-ac_add_options --target='i686-uhu-linux'
+ac_add_options --host='i686-gnu-linux'
+ac_add_options --target='i686-gnu-linux'
 ac_add_options --prefix=/usr
 ac_add_options --enable-application=mail
 ac_add_options --enable-release
@@ -51,7 +51,7 @@ ac_add_options --disable-necko-wifi
 _EOF_
 
 if [ "$UB_ARCH" == "amd64" ];then
-sed -i 's/i686/amd64/' .mozconfig
+sed -i 's/i686-gnu-linux/x86_64-gnu-linux/' .mozconfig
 fi
 
 cd "$UB_OBJECTDIR"
