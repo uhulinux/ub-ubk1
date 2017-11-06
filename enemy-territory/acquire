@@ -3,5 +3,6 @@
 et-linux-${UB_VERSION}.x86.run
 	ftp://home.oppserver.net/unix/games/et/
 
-ET-${UB_VERSION}b.zip .
-	ftp://ftp.idsoftware.com/idstuff/et/
+et-${UB_VERSION}b.zip .
+    http://trackbase.eu/files//et/full/
+#	ftp://ftp.idsoftware.com/idstuff/et/

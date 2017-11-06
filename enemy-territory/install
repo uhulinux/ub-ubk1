@@ -1,9 +1,18 @@
 #!/bin/sh -eux
 
-etdir=$UB_INSTALLDIR/usr/share/games/enemy-territory
-mkdir -p $etdir
-install -Dm 755 {et,etded}.x86 $etdir/
-mv {etmain,pb} $etdir/
-
-mkdir -p "$UB_INSTALLDIR"/usr/share/pixmaps
-mv ET.xpm "$UB_INSTALLDIR"/usr/share/pixmaps/enemy-territory.xpm
+if [ ${UB_ARCH} == "i386" ];then
+    etdir=$UB_INSTALLDIR/usr/share/games/enemy-territory
+    mkdir -p $etdir
+    install -Dm 755 {et,etded}.x86 $etdir/
+    mv {etmain,pb} $etdir/
+    mkdir -p "$UB_INSTALLDIR"/usr/share/{applications,pixmaps}
+    mv ET.xpm "$UB_INSTALLDIR"/usr/share/pixmaps/enemy-territory.xpm
+else
+    cd ${UB_SRCDIR}
+    echo bash > packages/enemy-territory/depends
+    rm -rf addons
+    echo "64 biten ez a játék nem futtatható" >packages/enemy-territory/description/hu
+    echo "64 biten üres játékcsomag" >packages/enemy-territory/summary/hu
+    rm -f doc
+    cd -
+fi
