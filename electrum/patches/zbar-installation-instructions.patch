@@ -1,0 +1,13 @@
+diff --git a/lib/qrscanner.py b/lib/qrscanner.py
+index 6a9c2d1..a39cfc3 100644
+--- a/lib/qrscanner.py
++++ b/lib/qrscanner.py
+@@ -42,7 +42,7 @@ except OSError:
+ 
+ def scan_barcode(device='', timeout=-1, display=True, threaded=False):
+     if libzbar is None:
+-        raise RuntimeError("Cannot start QR scanner; zbar not available.")
++        raise RuntimeError("Cannot start QR scanner; zbar not available. Try 'sudo dnf install zbar-pygtk'")
+     libzbar.zbar_symbol_get_data.restype = c_char_p
+     proc = libzbar.zbar_processor_create(threaded)
+     libzbar.zbar_processor_request_size(proc, 640, 480)

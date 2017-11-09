@@ -14,6 +14,8 @@ python-ipaddr
 python-jsonrpclib
 python-nose
 python-paramiko
+python-pyaes
+python-socks
 python-setproctitle
 python-simplejson
 python-six

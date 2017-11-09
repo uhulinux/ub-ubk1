@@ -1,5 +1,7 @@
 #!/bin/sh -eux
 
 #python mki18n.py
+rm -rf packages
+rm -rf Electrum.egg-info
 pyrcc4 icons.qrc -o gui/qt/icons_rc.py
 ub_compile

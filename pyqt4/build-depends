@@ -2,9 +2,8 @@ dbus-dev
 dbus-python-dev
 icu-dev
 openssl-dev
-python-dev
 python3-dev
-qscintilla2
+python-dev
 qt4-dev
 sip
 sqlite-dev
