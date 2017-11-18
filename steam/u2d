@@ -1,0 +1,1 @@
+urllist http://repo.steampowered.com/steam/archive/precise/ | splitver '^steam-([0-9.]+).tar.(gz|bz2|xz)$' | sort -V | tail -n 1

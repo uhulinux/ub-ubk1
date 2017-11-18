@@ -1,0 +1,81 @@
+diff -Naur steam-orig/steam.desktop steam/steam.desktop
+--- steam-orig/steam.desktop	2013-11-26 22:27:09.000000000 +0100
++++ steam/steam.desktop	2017-11-07 20:52:00.834000846 +0100
+@@ -1,11 +1,12 @@
+ [Desktop Entry]
+ Name=Steam
+ Comment=Application for managing and playing games on Steam
++Comment[hu]=Alkalmazás játékok kezelésére, futtatására
+ Exec=/usr/bin/steam %U
+ Icon=steam
+ Terminal=false
+ Type=Application
+-Categories=Network;FileTransfer;Game;
++Categories=Game;
+ MimeType=x-scheme-handler/steam;
+ Actions=Store;Community;Library;Servers;Screenshots;News;Settings;BigPicture;Friends;
+ 
+@@ -14,6 +15,7 @@
+ Name[de]=Shop
+ Name[es]=Tienda
+ Name[fr]=Magasin
++Name[hu]=Áruház
+ Name[it]=Negozio
+ Name[pt]=Loja
+ Name[ru]=Магазин
+@@ -25,6 +27,7 @@
+ Name=Community
+ Name[es]=Comunidad
+ Name[fr]=Communauté
++Name[hu]=Közösség
+ Name[it]=Comunità
+ Name[pt]=Comunidade
+ Name[ru]=Сообщество
+@@ -37,6 +40,7 @@
+ Name[de]=Bibliothek
+ Name[es]=Biblioteca
+ Name[fr]=Bibliothèque
++Name[hu]=Könyvtár
+ Name[it]=Libreria
+ Name[pt]=Biblioteca
+ Name[ru]=Библиотека
+@@ -49,6 +53,7 @@
+ Name[de]=Server
+ Name[es]=Servidores
+ Name[fr]=Serveurs
++Name[hu]=Szerver
+ Name[it]=Server
+ Name[pt]=Servidores
+ Name[ru]=Серверы
+@@ -60,6 +65,7 @@
+ Name=Screenshots
+ Name[es]=Capturas
+ Name[fr]=Captures d'écran
++Name[hu]=Képernyőképek
+ Name[it]=Screenshot
+ Name[ru]=Скриншоты
+ Name[zh_CN]=截图
+@@ -71,6 +77,7 @@
+ Name[de]=Neuigkeiten
+ Name[es]=Noticias
+ Name[fr]=Actualités
++Name[hu]=Hírek
+ Name[it]=Notizie
+ Name[pt]=Notícias
+ Name[ru]=Новости
+@@ -83,6 +90,7 @@
+ Name[de]=Einstellungen
+ Name[es]=Parámetros
+ Name[fr]=Paramètres
++Name[hu]=Beállítások
+ Name[it]=Impostazioni
+ Name[pt]=Configurações
+ Name[ru]=Настройки
+@@ -99,6 +107,7 @@
+ Name[de]=Freunde
+ Name[es]=Amigos
+ Name[fr]=Amis
++Name[hu]=Barátok
+ Name[it]=Amici
+ Name[pt]=Amigos
+ Name[ru]=Друзья

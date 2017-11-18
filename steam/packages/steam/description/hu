@@ -1,0 +1,8 @@
+A csomag egy kliensprogram a népszerű játékszerverhez.
+Az induláskor megjelenik egy telepítő terminálprogram ami csak
+akkor működne ha az aktuális felhasználó rendszergazdai joggal
+rendelkezne (szerepelne a &sudoerrs fájlban) de erre semmi
+szükség, egyszerűen be kell zárni és kisvártatva elindul a
+program.
+Első induláskor frissíti magát, előfordulhat, hogy a telepítő
+terminál többször is megjelenik, mindannyiszor be kell zárni.

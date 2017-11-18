@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+steam_${UB_VERSION}.tar.gz steam/
+    http://repo.steampowered.com/steam/archive/precise/
