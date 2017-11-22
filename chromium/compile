@@ -5,6 +5,21 @@ if [ $((`stat -f -c "%a" .`*`stat -f -c "%s" .`/(1024*1024*1024))) -lt 7 ]; then
 	exit 1
 fi
 
+if [ "$UB_ARCH" == "amd64" ];then
+export BUILD_CC="x86_64-gnu-linux-gcc"
+export BUILD_CXX="x86_64-gnu-linux-g++"
+export BUILD_AR="ar"
+export BUILD_NM="nm"
+cpu="x64"
+else
+export BUILD_CC="i686-gnu-linux-gcc"
+export BUILD_CXX="i686-gnu-linux-g++"
+export BUILD_AR="ar"
+export BUILD_NM="nm"
+cpu="x86"
+fi
+export BUILD_CXXFLAGS="-fno-delete-null-pointer-checks"
+
 #	-Denable_google_now=0
 #	-Denable_hotwording=0
 #   -Drelease_extra_cflags=" -fno-delete-null-pointer-checks"
@@ -15,6 +30,9 @@ _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 _flags=("
+target_cpu=\"${cpu}\"
+host_toolchain=\"//build/toolchain/linux/unbundle:host\"
+v8_snapshot_toolchain=\"//build/toolchain/linux/unbundle:host\"
 is_debug=false
 is_clang=false
 clang_use_chrome_plugins=false
@@ -27,6 +45,7 @@ use_gold=false
 use_allocator=\"none\"
 enable_nacl=false
 enable_nacl_nonsfi=false
+enable_swiftshader=true
 enable_widevine=false
 enable_hangout_services_extension=false
 ffmpeg_branding=\"Chrome\"
@@ -36,6 +55,7 @@ google_api_key=\"${_google_api_key}\"
 google_default_client_id=\"${_google_default_client_id}\"
 google_default_client_secret=\"${_google_default_client_secret}\"
 use_cups=true
+use_custom_libcxx=false
 use_gconf=false
 use_gio=false
 use_gnome_keyring=false
@@ -60,30 +80,24 @@ sed "s|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g" -i device/usb/
 
 build/linux/unbundle/replace_gn_files.py --system-libraries "${_syslibs[@]}"
 
-# gn a buildhoz
-tools/gn/bootstrap/bootstrap.py -v --no-clean --no-rebuild
-
 # node
 mkdir -p third_party/node/linux/node-linux-x64/bin
 ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
 
 # others
 third_party/libaddressinput/chromium/tools/update-strings.py
-touch chrome/test/data/webui/i18n_process_css_test.html
+
+# gn a buildhoz
+tools/gn/bootstrap/bootstrap.py -v --no-clean --no-rebuild
 
 export LDFLAGS+="-Wl,-rpath,/usr/lib/chromium/ -Wl,--no-keep-memory"
 
-# a ninja létrehozza az out/Release könyvtárat, de leáll, ha nincs az alatt
-# egy out/Release - oda viszont semmi nem kerül
-mkdir -p out/Release/out/Release
-
-# build chrome: az --args utáni sorok nem kezdődhetnek tab karakterrel!
+# build options: az --args utáni sorok nem kezdődhetnek tab karakterrel!
 out/Release/gn gen out/Release -v --script-executable=/usr/bin/python2 \
 	--args=" ${_flags[@]} "
 
 # gn args list - kihagyható, de segít a lehetséges opciók megadásához
 out/Release/gn args --list $UB_COMPILEDIR/out/Release
 
-# ninja, a 34-től a make nem támogatott
-
+# ninja
 LC_ALL=C ninja -C out/Release -v pdf chrome chrome_sandbox chromedriver

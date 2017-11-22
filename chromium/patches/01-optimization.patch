@@ -1,7 +1,7 @@
 diff -Naur orig/build/config/compiler/BUILD.gn patched/build/config/compiler/BUILD.gn
 --- orig/build/config/compiler/BUILD.gn	2017-07-25 21:04:48.000000000 +0200
 +++ patched/build/config/compiler/BUILD.gn	2017-07-30 20:07:13.079852364 +0200
-@@ -1570,7 +1570,7 @@
+@@ -1690,7 +1690,7 @@
      } else if (optimize_for_fuzzing) {
        cflags = [ "-O1" ] + common_optimize_on_cflags
      } else {
@@ -13,7 +13,7 @@ diff -Naur orig/build/config/compiler/BUILD.gn patched/build/config/compiler/BUI
 diff -Naur orig/v8/gypfiles/toolchain.gypi patched/v8/gypfiles/toolchain.gypi
 --- orig/v8/gypfiles/toolchain.gypi	2017-07-25 21:06:36.000000000 +0200
 +++ patched/v8/gypfiles/toolchain.gypi	2017-07-30 20:08:37.701108212 +0200
-@@ -1215,8 +1215,8 @@
+@@ -1195,8 +1195,8 @@
                # Don't use -O3 with sanitizers.
                ['asan==0 and msan==0 and lsan==0 \
                  and tsan==0 and ubsan==0 and ubsan_vptr==0', {
@@ -24,7 +24,7 @@ diff -Naur orig/v8/gypfiles/toolchain.gypi patched/v8/gypfiles/toolchain.gypi
                  }, {
                  'cflags': ['-O2'],
                  'cflags!': ['-O3'],
-@@ -1333,8 +1333,8 @@
+@@ -1311,8 +1311,8 @@
                # Don't use -O3 with sanitizers.
                ['asan==0 and msan==0 and lsan==0 \
                  and tsan==0 and ubsan==0 and ubsan_vptr==0', {
