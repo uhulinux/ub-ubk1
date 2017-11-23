@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-mutagen-${UB_VERSION}.tar.gz mutagen-${UB_VERSION}/
-	https://bitbucket.org/lazka/mutagen/downloads/
+release-${UB_VERSION}.tar.gz mutagen-release-${UB_VERSION}/
+	https://github.com/quodlibet/mutagen/archive/
