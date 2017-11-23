@@ -4,6 +4,5 @@ rm -rf CMakeLists.txt
 ./autogen.sh
 ub_compile \
 	--with-ssl \
-	--with-python \
 	--with-lua \
-	--with-gtk3
+	--with-gtk=3

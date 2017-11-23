@@ -13,6 +13,7 @@ cd build
 	--system-libs \
 	--no-system-jsoncpp \
 	--no-system-libuv \
+	--no-system-librhash \
 	--prefix=/usr \
 	--datadir=/share/cmake \
 	--mandir=/share/man \
