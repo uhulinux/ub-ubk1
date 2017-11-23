@@ -3,5 +3,5 @@
 #v${UB_VERSION}.tar.gz calamares-${UB_VERSION}/
 #	https://github.com/uhulinux/calamares/archive/
 
-calamares-${UB_VERSION}.tar.gz calamares-9426030/
-	git://github.com/uhulinux/calamares.git@9426030
+calamares-${UB_VERSION}.tar.gz calamares-0e254c8/
+	git://github.com/uhulinux/calamares.git@0e254c8
