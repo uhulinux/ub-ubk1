@@ -1,7 +1,7 @@
 diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 --- orig/src/modules/chrootcfg/main.py	1970-01-01 01:00:00.000000000 +0100
-+++ mod/src/modules/chrootcfg/main.py	2017-11-24 16:45:24.000000000 +0100
-@@ -0,0 +1,246 @@
++++ mod/src/modules/chrootcfg/main.py	2017-11-25 19:54:58.000000000 +0100
+@@ -0,0 +1,255 @@
 +#!/usr/bin/env python3
 +# -*- coding: utf-8 -*-
 +#
@@ -118,7 +118,7 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +#        for line in iter(process.stdout.readline, b''):
 +#            pkgs = re.findall(r'\((\d+)\)', line.decode())
 +#            dl = re.findall(r'downloading\s+(.*).ubk.uhu', line.decode())
-+#            inst = re.findall(r'installing(.*)\.\.\.', line.decode())
++#            inst = re.findall(r'Unpacking(.*)\.\.\.', line.decode())
 +
 +#            if pkgs:
 +#                self.tracker.total = (int(pkgs[0]))
@@ -186,8 +186,9 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +            open(uresfile, 'a').close()
 +
 +    def chrootinit(self):
++        global  chrootdir, apt_options, dpkg_options, installcmd, pkgs
 +        chrootdir = self.root
-+        # Az apt működéséhez szükséges csomagok feltérképezéséhez szükségesek
++        # Változók az apt működéséhez szükséges csomagok feltérképezéséhez
 +        minpkgs = "uhu-base apt dpkg diffutils findutils"
 +        statusdir = "/var/lib/dpkg/status"
 +        empty_statusdir = "/var/lib/dpkg-empty/status"
@@ -200,30 +201,37 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +        apt_statedir = " -o Dir::State=" + chrootdir + statedir
 +        apt_cachedir = " -o Dir::Cache=" + chrootdir + cachedir
 +        apt_noimmconf = " -o APT::Immediate-Configure=false"
-+        dpkg_options = " --root=" + chrootdir
 +        apt_farok = apt_chrootdir + apt_statedir + apt_cachedir
 +        apt_farokcucc = apt_farok + apt_noimmconf
-+        apt_options = apt_statusdir + apt_farokcucc
 +        apt_empty_options = apt_empty_statusdir + apt_farokcucc
++        apt_options = apt_statusdir + apt_farokcucc
++        dpkg_options = " --root=" + chrootdir
++        installcmd = "apt-get " + apt_options + " --yes --force-yes install "
++
 +        # Igazi és üres dpkg adatbázis létrehozása
 +        # Hibakezelés kell még!
 +        os.system("apt-get " + apt_empty_options + " update")
-+        # Mely csomagok fognak kelleni.
++
++        # Mely csomagok kellenek? Kiíratás egy ideiglenes fájlba.
 +        tmpcmd1 = "apt-get " + apt_empty_options + " --no-act install "
 +        tmpcmd2 = " | grep " + "'^Inst ' | cut -d' ' -f2 > /tmp/tmpfile"
 +        os.system(tmpcmd1 + minpkgs + tmpcmd2)
-+        # kiolvassuk a tmpfile tartalmát egy listaváltozóba
++
++        # kiolvassuk a tmpfile tartalmát a pkgs listaváltozóba.
 +        pkgs = [line.rstrip('\n') for line in open('/tmp/tmpfile')]
 +        # Nem kell többé a tmpfile
 +        os.system("rm -f /tmp/tmpfile")
-+        # Na, most telepítünk és konfigurálunk mindenkit, aki kell.
++        # Na, most telepíthetünk és konfigurálhatunk mindenkit, aki kell.
 +        # Hibakezelés kell még!
-+        installcmd = "apt-get " + apt_options + " --yes --force-yes install "
++        return chrootdir, apt_options, dpkg_options, installcmd, pkgs
++
++    def chrootbuild(self):
 +        for pkg in pkgs:
 +            os.system(installcmd + pkg)
-+        # postinst
-+        os.system("chroot " + chrootdir + " /sbin/uhu-pkg postinst +")
-+        # Végső simítások.
++            # postinst
++            os.system("chroot " + chrootdir + " /sbin/uhu-pkg postinst +")
++
++    def chroot_apt_clean(self):
 +        os.system("rm -rf " + chrootdir + "/var/lib/dpkg-empty")
 +        os.system("dpkg " + dpkg_options + " --clear-avail")
 +
@@ -237,10 +245,11 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +        os.umask(cal_umask)
 +
 +    def run(self):
-+        self.prepare()
-+        self.chrootinit()
++        self.prepare()          # Chroot alapozás
++        self.chrootinit()       # Chroot telepítési előkészületek
++        self.chrootbuild()      # Chroot telepítése
++        self.chroot_apt_clean() # Végső simítások
 +        return None
-+
 +
 +def run():
 +    """ Create chroot and install apt """
