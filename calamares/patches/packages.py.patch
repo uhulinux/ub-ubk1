@@ -1,0 +1,28 @@
+diff -Nur orig/src/modules/packages/main.py mod/src/modules/packages/main.py
+--- orig/src/modules/packages/main.py	2017-11-14 16:18:58.000000000 +0100
++++ mod/src/modules/packages/main.py	2017-11-24 19:13:22.000000000 +0100
+@@ -219,6 +219,7 @@
+ 
+     def install(self, pkgs, from_local=False):
+         check_target_env_call(["apt-get", "-q", "-y", "install"] + pkgs)
++        check_target_env_call(["apt-get", "clean"])
+ 
+     def remove(self, pkgs):
+         check_target_env_call(["apt-get", "--purge", "-q", "-y",
+@@ -364,11 +365,11 @@
+         group_packages = len(entry[key])
+         if key == "install":
+             _change_mode(INSTALL)
+-            if all([isinstance(x, str) for x in entry[key]]):
+-                pkgman.install(entry[key])
+-            else:
+-                for package in entry[key]:
+-                    pkgman.install_package(package)
++#            if all([isinstance(x, str) for x in entry[key]]):
++#                pkgman.install(entry[key])
++#            else:
++            for package in entry[key]:
++                pkgman.install_package(package)
+         elif key == "try_install":
+             _change_mode(INSTALL)
+             # we make a separate package manager call for each package so a
