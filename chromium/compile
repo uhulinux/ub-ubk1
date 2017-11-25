@@ -18,7 +18,6 @@ export BUILD_AR="ar"
 export BUILD_NM="nm"
 cpu="x86"
 fi
-export BUILD_CXXFLAGS="-fno-delete-null-pointer-checks"
 
 #	-Denable_google_now=0
 #	-Denable_hotwording=0
@@ -70,8 +69,6 @@ link_pulseaudio=true
 # csak ezeket érdemes használni a rendszerből
 _syslibs=(
 	flac
-#	harfbuzz-ng (>= 1.4.2, 'hb_variation_t' undeclared)
-#	icu (>= 59.1)
 	yasm
 )
 
