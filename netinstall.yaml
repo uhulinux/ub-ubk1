@@ -681,6 +681,14 @@
     - icon-theme-gnome
     - slim
     - firefox
+- name: "Lumina"
+  description: "Lumina windowmanager"
+  critical: false
+  selected: false
+  packages:
+    - lumina
+    - slim
+    - firefox
 - name: "Pekwm"
   description: "Pekwm windowmanager"
   critical: false
@@ -690,15 +698,6 @@
     - pekwm-themes
     - slim
     - firefox
-- name: "Enlightenment"
-  description: "Enlightenment desktop"
-  critical: false
-  selected: false
-  packages:
-    - enlightenment
-    - gimp
-    - firefox
-- name: "Lxde"
   description: "Lxde desktop"
   critical: false
   selected: false
