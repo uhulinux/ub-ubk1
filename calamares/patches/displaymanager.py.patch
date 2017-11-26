@@ -1,7 +1,16 @@
 diff -Nur orig/src/modules/displaymanager/main.py mod/src/modules/displaymanager/main.py
 --- orig/src/modules/displaymanager/main.py	2017-11-14 16:18:58.000000000 +0100
-+++ mod/src/modules/displaymanager/main.py	2017-11-24 21:27:11.419656288 +0100
-@@ -415,57 +415,26 @@
++++ mod/src/modules/displaymanager/main.py	2017-11-26 22:53:05.000000000 +0100
+@@ -51,6 +51,8 @@
+     DesktopEnvironment('/usr/bin/budgie-desktop', 'budgie-desktop'),
+     DesktopEnvironment('/usr/bin/i3', 'i3'),
+     DesktopEnvironment('/usr/bin/startdde', 'deepin'),
++    DesktopEnvironment('/usr/bin/icewm-session', 'icewm-session'),
++    DesktopEnvironment('/usr/bin/start-lumina-desktop', 'Lumina-DE'),
+     DesktopEnvironment('/usr/bin/openbox-session', 'openbox')
+ ]
+ 
+@@ -415,57 +417,26 @@
  
      # Setup slim
      if "slim" in displaymanagers:
@@ -62,7 +71,7 @@ diff -Nur orig/src/modules/displaymanager/main.py mod/src/modules/displaymanager
              if default_desktop_environment is not None:
                  os.system(
                      "sed -i -e \"s/^.*user-session=.*/user-session={!s}/\" "
-@@ -507,6 +476,7 @@
+@@ -507,6 +478,7 @@
  
      # Setup gdm
      if "gdm" in displaymanagers:
@@ -70,7 +79,7 @@ diff -Nur orig/src/modules/displaymanager/main.py mod/src/modules/displaymanager
          if have_dm("gdm", root_mount_point):
              if enable_basic_setup:
                  if libcalamares.utils.target_env_call(
-@@ -589,6 +559,7 @@
+@@ -589,6 +561,7 @@
  
      # Setup lxdm
      if "lxdm" in displaymanagers:
