@@ -687,7 +687,7 @@
   selected: false
   packages:
     - lumina
-    - slim
+    - sddm
     - firefox
 - name: "Pekwm"
   description: "Pekwm windowmanager"
