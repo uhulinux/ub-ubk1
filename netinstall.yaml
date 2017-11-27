@@ -681,13 +681,15 @@
     - icon-theme-gnome
     - slim
     - firefox
-- name: "Lumina"
-  description: "Lumina windowmanager"
+- name: "Openbox"
+  description: "Openbox windowmanager"
   critical: false
   selected: false
   packages:
-    - lumina
-    - sddm
+    - openbox
+    - openbox-debian-dthemes
+    - openbox-menu
+    - slim
     - firefox
 - name: "Pekwm"
   description: "Pekwm windowmanager"
@@ -698,6 +700,23 @@
     - pekwm-themes
     - slim
     - firefox
+- name: "Lumina"
+  description: "Lumina windowmanager"
+  critical: false
+  selected: false
+  packages:
+    - lumina
+    - sddm
+    - firefox
+- name: "enlightenment"
+  description: "enlightenment windowmanager"
+  critical: false
+  selected: false
+  packages:
+    - enlightenment
+    - slim
+    - firefox
+- name: "LXDE"
   description: "Lxde desktop"
   critical: false
   selected: false
@@ -750,6 +769,15 @@
     - gnome-terminal
     - firefox
     - sddm
+- name: "Budgie"
+  description: "Budgie desktop"
+  critical: false
+  selected: false
+  packages:
+    - budgie-desktop
+    - gnome-terminal
+    - firefox
+    - gdm
 - name: "Gnome"
   description: "Gnome desktop"
   critical: false
