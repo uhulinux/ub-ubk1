@@ -1,7 +1,7 @@
 diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 --- orig/src/modules/chrootcfg/main.py	1970-01-01 01:00:00.000000000 +0100
-+++ mod/src/modules/chrootcfg/main.py	2017-11-25 19:54:58.000000000 +0100
-@@ -0,0 +1,255 @@
++++ mod/src/modules/chrootcfg/main.py	2017-11-27 21:02:02.000000000 +0100
+@@ -0,0 +1,142 @@
 +#!/usr/bin/env python3
 +# -*- coding: utf-8 -*-
 +#
@@ -32,124 +32,7 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +from libcalamares.utils import check_target_env_call, target_env_call, debug
 +from os.path import join
 +
-+
-+class OperationTracker:
-+    def __init__(self):
-+        self._downloaded = 0
-+        self._installed = 0
-+        self._total = 0
-+        self._progress = float(0)
-+
-+    @property
-+    def downloaded(self):
-+        return self._downloaded
-+
-+    @downloaded.setter
-+    def downloaded(self, value):
-+        self._downloaded = value
-+
-+    @property
-+    def installed(self):
-+        return self._installed
-+
-+    @installed.setter
-+    def installed(self, value):
-+        self._installed = value
-+
-+    @property
-+    def total(self):
-+        return self._total
-+
-+    @total.setter
-+    def total(self, value):
-+        self._total = value
-+
-+    @property
-+    def progress(self):
-+        return self._progress
-+
-+    @progress.setter
-+    def progress(self, value):
-+        self._progress = value
-+
-+    def send_progress(self, counter, phase):
-+        for p in range(phase):
-+            if self.total == 0:
-+                continue
-+            step = 0.05
-+            step += 0.95 * (counter / float(self.total))
-+            self.progress += step / self.total
-+
-+            debug("Progress: {}".format(self.progress))
-+
-+        libcalamares.job.setprogress(self.progress)
-+
-+
 +ON_POSIX = 'posix' in sys.builtin_module_names
-+
-+
-+class PacmanController:
-+    def __init__(self, root):
-+        self.__root = root
-+        self.__operations = \
-+            libcalamares.globalstorage.value("packageOperations")
-+        self.__tracker = OperationTracker()
-+
-+    @property
-+    def tracker(self):
-+        return self.__tracker
-+
-+    @property
-+    def root(self):
-+        return self.__root
-+
-+    @property
-+    def operations(self):
-+        return self.__operations
-+
-+    def parse_output(self, cmd):
-+        cal_env = os.environ
-+        cal_env["LC_ALL"] = "C"
-+        last = []
-+        phase = 0
-+
-+#        process = subprocess.Popen(cmd, env=cal_env, bufsize=1, stdout=subprocess.PIPE, close_fds=ON_POSIX)
-+
-+#        for line in iter(process.stdout.readline, b''):
-+#            pkgs = re.findall(r'\((\d+)\)', line.decode())
-+#            dl = re.findall(r'downloading\s+(.*).ubk.uhu', line.decode())
-+#            inst = re.findall(r'Unpacking(.*)\.\.\.', line.decode())
-+
-+#            if pkgs:
-+#                self.tracker.total = (int(pkgs[0]))
-+#                debug("Number of packages: {}".format(self.tracker.total))
-+
-+#            if dl:
-+#                    if dl != last:
-+#                self.tracker.downloaded += 1
-+#                    phase = 1
-+#                    debug("Downloading: {}".format(dl[0]))
-+#                    debug("Downloaded packages: {}".format(self.tracker.downloaded))
-+#                    self.tracker.send_progress(self.tracker.downloaded, phase)
-+
-+#                last = dl
-+#                elif inst:
-+#                self.tracker.installed += 1
-+#                phase = 2
-+#                debug("Installing: {}".format(inst[0]))
-+#                debug("Installed packages: {}".format(self.tracker.installed))
-+#                self.tracker.send_progress(self.tracker.installed, phase)
-+
-+
-+#        if process.returncode != 0:
-+#            return process.kill()
-+
-+        return None
-+
-+    def install(self, local=False):
-+        args = ["apt-get"]
-+        cmd = args + self.operations["install"]
-+        self.parse_output(cmd)
 +
 +class ChrootController:
 +    def __init__(self):
@@ -226,8 +109,12 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +        return chrootdir, apt_options, dpkg_options, installcmd, pkgs
 +
 +    def chrootbuild(self):
++        completed_packages = 0
++        total_packages=len(pkgs)
 +        for pkg in pkgs:
 +            os.system(installcmd + pkg)
++            completed_packages = completed_packages + 1
++            libcalamares.job.setprogress(completed_packages * 1.0 / total_packages)
 +            # postinst
 +            os.system("chroot " + chrootdir + " /sbin/uhu-pkg postinst +")
 +
