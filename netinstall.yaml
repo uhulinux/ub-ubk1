@@ -687,7 +687,7 @@
   selected: false
   packages:
     - openbox
-    - openbox-debian-dthemes
+    - openbox-debian-themes
     - openbox-menu
     - slim
     - firefox
