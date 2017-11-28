@@ -1,166 +1,3 @@
-- name: "Chroot-apt-Base"
-  description: "Chroot-apt-Base group"
-  hidden: true
-  selected: false
-  critical: true
-  packages:
-    - uhu-base
-    - libcap
-    - coreutils
-    - krb5
-    - licenses
-    - audit
-    - zlib
-    - cracklib
-    - pam
-    - shadow
-    - uhu-pkg
-    - glibc
-    - ncurses
-    - readline
-    - bash
-    - attr
-    - acl
-    - bzip2
-    - libgpg-error
-    - libgcrypt
-    - libstdc++
-    - gcc-libs
-    - db4
-    - expat
-    - gdbm
-    - libffi
-    - perl
-    - openssl
-    - sqlite
-    - python
-    - xz
-    - python3
-    - fbgetty
-    - pcre
-    - grep
-    - kmod
-    - libidn
-    - libpng
-    - libqrencode
-    - dosfstools
-    - gmp
-    - libsigsegv
-    - mpfr
-    - gawk
-    - sed
-    - uhu-utils
-    - util-linux
-    - systemd
-    - lvm
-    - popt
-    - cryptsetup
-    - dbus
-    - diffutils
-    - pbzip2
-    - pigz
-    - rmt
-    - tar
-    - dpkg
-    - findutils
-    - freetype2
-    - libelf
-    - glib
-    - gamin
-    - nspr
-    - js17
-    - libusb
-    - libusb-compat
-    - libxml2
-    - polkit
-    - run-parts
-    - ca-certificates
-    - cyrus-sasl2
-    - openldap
-    - perl-http-date
-    - perl-file-listing
-    - perl-html-tagset
-    - perl-html-parser
-    - perl-encode-locale
-    - perl-io-html
-    - perl-lwp-mediatypes
-    - perl-uri
-    - perl-http-message
-    - perl-http-cookies
-    - perl-http-daemon
-    - perl-http-negotiate
-    - perl-net-http
-    - perl-www-robotrules
-    - perl-libwww
-    - curl
-    - libassuan
-    - libksba
-    - npth
-    - atk
-    - fontconfig
-    - libpciaccess
-    - libdrm
-    - libxau
-    - libxdmcp
-    - libxcb
-    - libx11
-    - libxfixes
-    - libxdamage
-    - libxext
-    - libxrender
-    - libxshmfence
-    - libxxf86vm
-    - libomxil-bellagio
-    - libedit
-    - llvm-libs
-    - wayland
-    - mesa
-    - pixman
-    - cairo
-    - libjpeg-turbo
-    - jasper
-    - libtiff
-    - gdk-pixbuf
-    - graphite2
-    - libice
-    - libsm
-    - libxi
-    - libxtst
-    - at-spi2-core
-    - at-spi2-atk
-    - lcms2
-    - libgudev
-    - libgusb
-    - colord
-    - libdaemon
-    - avahi
-    - libatomic-ops
-    - gc
-    - libltdl
-    - libunistring
-    - guile
-    - libtasn1
-    - nettle
-    - p11-kit
-    - gnutls
-    - cups
-    - icu
-    - harfbuzz
-    - icon-theme-hicolor
-    - libepoxy
-    - libxcomposite
-    - libxinerama
-    - libxkbcommon
-    - libxft
-    - pango
-    - shared-mime-info
-    - gtk
-    - gcr
-    - gtk2
-    - libsecret
-    - pinentry
-    - gpg
-    - apt
 - name: "Critical"
   description: "Critical group"
   hidden: true
@@ -173,7 +10,6 @@
     - dbus-launch
     - e2fsprogs
     - elfutils
-    - gmp
     - hdparm
     - iproute2
     - iptables
@@ -414,7 +250,6 @@
     - qt5
     - tslib
     - tdb
-    - lmsensors
     - luit
     - neon
     - openipmi
@@ -665,143 +500,370 @@
     - x.org-video-tseng
     - x.org-video-v4l
     - x.org-video-voodoo
-- name: "Icewm"
-  description: "Icewm windowmanager"
+- name: "Window managers"
+  description: "Simple window managers"
   critical: false
   selected: false
-  packages:
-    - icewm
-    - icewm-xdgmenu
-    - icewm-themes
-    - icewm-theme-winclassic2
-    - icewm-theme-win7
-    - icewm-theme-win31
-    - icewm-theme-ubuntu
-    - icewm-theme-nitrogen
-    - icon-theme-gnome
-    - slim
-    - firefox
-- name: "Openbox"
-  description: "Openbox windowmanager"
+  subgroups:
+    -   name: "Icewm"
+        description: "Icewm windowmanager"
+        critical: false
+        selected: false
+        subgroups:
+            -   name: "Icewm base"
+                description:    "Icewm base packages"
+                critical: false
+                selected: false
+                packages:
+                - icewm
+                - icewm-xdgmenu
+                - slim
+                - icon-theme-gnome
+            -   name: "Icewm-themes"
+                description: "Icewm extra themes"
+                critical: false
+                selected: false
+                packages:
+                - icewm-themes
+                - icewm-theme-winclassic2
+                - icewm-theme-win7
+                - icewm-theme-win31
+                - icewm-theme-ubuntu
+                - icewm-theme-nitrogen
+    -   name: "Openbox"
+        description: "Openbox windowmanager"
+        critical: false
+        selected: false
+        packages:
+        - openbox
+        - openbox-debian-themes
+        - openbox-menu
+        - slim
+    -   name: "Pekwm"
+        description: "Pekwm windowmanager"
+        critical: false
+        selected: false
+        packages:
+        - pekwm
+        - pekwm-themes
+        - slim
+- name: "Light desktops"
+  description: "Simple desktops"
   critical: false
   selected: false
-  packages:
-    - openbox
-    - openbox-debian-themes
-    - openbox-menu
-    - slim
-    - firefox
-- name: "Pekwm"
-  description: "Pekwm windowmanager"
+  subgroups:
+    -   name: "Lumina"
+        description: "Lumina DE"
+        critical: false
+        selected: false
+        packages:
+        - lumina
+        - sddm
+    -   name: "Enlightenment"
+        description: "enlightenment DE"
+        critical: false
+        selected: false
+        packages:
+        - enlightenment
+        - slim
+    -   name: "LXDE"
+        description: "Lxde desktop"
+        critical: false
+        selected: false
+        subgroups:
+            -   name: "LXDE base"
+                description: "LXDE base packages"
+                critical: false
+                selected: false
+                packages:
+                -   lxpanel
+                -   lxsession
+                -   lxtask
+                -   lxde-common
+                -   icon-theme-adwaita
+                -   lxappearance
+                -   lxappearance-obconf
+                -   libfm
+                -   pcmanfm
+                -   xscreensaver
+                -   lxinput
+                -   lxmenu-data
+                -   menu-cache
+                -   obconf
+                -   openbox
+                -   lxdm
+            -   name: "LXDE extra"
+                description: "LXDE extra packages"
+                critical: false
+                selected: false
+                packages:
+                -   gpicview
+                -   lxmusic
+                -   lxrandr
+                -   lxterminal
+    -   name: "LXQT"
+        description: "Lxqt desktop"
+        critical: false
+        selected: false
+        subgroups:
+            -   name: "LXQT base"
+                description: "LXQT base packages"
+                critical: false
+                selected: false
+                packages:
+                - compton-conf
+                - lxqt-about
+                - lxqt-admin
+                - lxqt-config
+                - lxqt-l10n
+                - lxqt-notificationd
+                - lxqt-panel
+                - lxqt-policykit
+                - lxqt-powermanagement
+                - lxqt-qtplugin
+                - lxqt-runner
+                - lxqt-session
+                - lxqt-sudo
+                - obconf-qt
+                - pavucontrol-qt
+                - pcmanfm-qt
+                - sddm
+            -   name: "LXQT extra"
+                description: "LXQT extra packages"
+                critical: false
+                selected: false
+                packages:
+                - lximage-qt
+                - lxqt-openssh-askpass
+                - lxqt-themes
+                - qterminal
+                - qtermwidget
+                - xarchiver
+                - qpdfview
+
+- name: "Big Desktops"
+  description: "Desktop environments"
   critical: false
   selected: false
-  packages:
-    - pekwm
-    - pekwm-themes
-    - slim
-    - firefox
-- name: "Lumina"
-  description: "Lumina windowmanager"
-  critical: false
-  selected: false
-  packages:
-    - lumina
-    - sddm
-    - firefox
-- name: "enlightenment"
-  description: "enlightenment windowmanager"
-  critical: false
-  selected: false
-  packages:
-    - enlightenment
-    - slim
-    - firefox
-- name: "LXDE"
-  description: "Lxde desktop"
-  critical: false
-  selected: false
-  packages:
-    - lxde
-    - firefox
-- name: "Lxqt"
-  description: "Lxqt desktop"
-  critical: false
-  selected: false
-  packages:
-    - lxqt
-    - sddm
-    - firefox
-    - qpdfview
-- name: "Mate"
-  description: "Mate desktop"
-  critical: false
-  selected: false
-  packages:
-    - mate
-    - firefox
-    - sddm
-- name: "Xfce"
-  description: "Xfce desktop"
-  critical: false
-  selected: false
-  packages:
-    - atril
-    - lightdm
-    - lightdm-gtk-greeter
-    - firefox
-    - xfce
-- name: "KDE"
-  description: "KDE Plasma desktop"
-  critical: false
-  selected: false
-  packages:
-    - kde
-    - kde-apps
-    - kde-apps-pim
-    - sddm
-    - sddm-theme-breeze
-- name: "Cinnamon"
-  description: "Cinnamon desktop"
-  critical: false
-  selected: false
-  packages:
-    - cinnamon
-    - gnome-terminal
-    - firefox
-    - sddm
-- name: "Budgie"
-  description: "Budgie desktop"
-  critical: false
-  selected: false
-  packages:
-    - budgie-desktop
-    - gnome-terminal
-    - firefox
-    - gdm
-- name: "Gnome"
-  description: "Gnome desktop"
-  critical: false
-  selected: false
-  packages:
-    - gnome-core
-    - blueman
-    - evolution
-    - gedit
-    - gksu
-    - gnome2-mime-data
-    - gnome-packagekit
-    - gnome-power-manager
-    - gnome-screensaver
-    - gnome-session
-    - gnome-tweak-tool
-    - gnome-weather
-    - gthumb
-    - planner
-    - sound-juicer
-    - vinagre
-    - kino
-    - gnome-commander
-    - gnome-apps
+  subgroups:
+
+    -   name: "Mate"
+        description: "Mate desktop"
+        critical: false
+        selected: false
+        subgroups:
+
+            -   name: "MATE base"
+                description: "MATE base packages"
+                critical: false
+                selected: false
+                packages:
+                - caja
+                - caja-extensions
+                - marco
+                - mate-control-center
+                - mate-desktop
+                - mate-menu
+                - mate-menus
+                - mate-notification-daemon
+                - mate-panel
+                - mate-polkit
+                - mate-power-manager
+                - mate-screensaver
+                - mate-session-manager
+                - mate-settings-daemon
+                - mate-icon-theme
+                - mate-system-monitor
+                - mate-terminal
+                - mate-backgrounds
+                - mate-applets
+                - atril
+                - caja-extension-atril
+                - engrampa
+                - caja-extension-engrampa
+                - pluma
+                - sddm
+
+            -   name: "MATE extra"
+                description: "MATE extra apps, applets and themes"
+                critical: false
+                selected: false
+                packages:
+                - brisk-menu
+                - eom
+                - mate-calc
+                - mate-media
+                - mate-applet-lockkeys
+                - mate-applet-uptime
+                - mate-indicator-applet
+                - mate-sensors-applet
+                - mate-themes
+                - mate-icon-theme-faenza
+                - mate-tweak
+                - mate-user-guide
+                - mate-user-share
+                - mate-utils
+
+    -   name: "Xfce"
+        description: "Xfce desktop"
+        critical: false
+        selected: false
+        packages:
+        - xfce
+        - atril
+        - lightdm
+        - lightdm-gtk-greeter
+
+    -   name: "KDE"
+        description: "KDE Plasma desktop"
+        critical: false
+        selected: false
+        subgroups:
+            -   name: "Plasma base"
+                description: "Plasma base packages"
+                critical: false
+                selected: false
+                packages:
+                - kde
+                - sddm
+
+            -   name: "KDE apps"
+                description: "KDE applications"
+                critical: false
+                selected: false
+                packages:
+                - ark
+                - calligra
+                - digikam
+                - dolphin
+                - dolphin-plugins
+                - filelight
+                - gwenview
+                - k3b
+                - k9copy
+                - kaffeine
+                - kate
+                - kcalc
+                - kdiff3
+                - khelpcenter
+                - konqueror
+                - konsole
+                - kpartitionmanager
+                - krusader
+                - ksystemlog
+                - marble-apps
+                - okular
+                - spectacle
+                - tellico
+
+            -   name: "KDE apps-pim"
+                description: "KDE pim applications"
+                critical: false
+                selected: false
+                packages:
+                - kde-apps-pim
+
+    -   name: "Cinnamon"
+        description: "Cinnamon desktop"
+        critical: false
+        selected: false
+        packages:
+        - cinnamon
+        - gnome-terminal
+        - sddm
+        
+    -   name: "Budgie"
+        description: "Budgie desktop"
+        critical: false
+        selected: false
+        packages:
+        - budgie-desktop
+        - gnome-terminal
+        - gdm
+        
+    -   name: "Gnome"
+        description: "Gnome desktop"
+        critical: false
+        selected: false
+        subgroups:
+            -   name: "Gnome base"
+                description: "Gnome base packages"
+                critical: false
+                selected: false
+                packages:
+                - gnome-core
+                - gdm
+                - blueman
+                - gnome-screensaver
+                - gnome-session
+                - evolution
+                - gnome-tweak-tool
+                - gedit
+                - gksu
+                - gnome-power-manager
+                - gnome2-mime-data
+
+            -   name: "Gnome apps"
+                description: "Gnome applications"
+                critical: false
+                selected: false
+                packages:
+                - gnome-packagekit
+                - gnome-weather
+                - gthumb
+                - planner
+                - sound-juicer
+                - vinagre
+                - kino
+                - gnome-commander
+                - accerciser
+                - anjuta
+                - bijiben
+                - brasero
+                - gitg
+                - gnome-boxes
+                - gnome-builder
+                - gnome-calendar
+                - gnome-clocks
+                - gnome-dictionary
+                - gnome-maps
+                - gnome-music
+                - gnome-nettool
+                - gnome-photos
+                - gnome-sound-recorder
+                - gnome-todo
+                - polari
+                - rygel
+                - seahorse
+                - nautilus-sendto
+                - gnome-color-manager
+                - gnome-devel-docs
+                - gnome-documents
+
+            -   name: "Gnome games"
+                description: "Gnome games"
+                critical: false
+                selected: false
+                packages:
+                - aisleriot
+                - five-or-more
+                - four-in-a-row
+                - hitori
+                - iagno
+                - lightsoff
+                - tali
+                - swell-foop
+                - gnome-klotski
+                - gnome-mahjongg
+                - gnome-mines
+                - gnome-nibbles
+                - gnome-sudoku
+                - gnome-taquin
+                - gnome-tetravex
+                - gnome-chess
+                - gnome-robots
+                - quadrapassel
+
 - name: "Office"
   description: "Office apps"
   critical: false
@@ -814,24 +876,55 @@
     - adobe-reader
     - gnucash
     - efax-gtk
-- name: "Internet apps"
-  description: "Internet appications"
-  critical: false
-  selected: false
-  packages:
-    - pidgin
-    - claws-mail
-    - thunderbird
-    - ekiga
-    - gftp
-    - gftp-gtk
-    - filezilla
-    - links
-    - dillo
-    - midori
-    - firefox
-    - opera
-    - chromium
+
+-   name:   "Internet apps"
+    description:    "Internet appications"
+    critical:   false
+    selected:   false
+    subgroups:
+    -   name:   "Browsers"
+        description:    "Internet browsers"
+        critical:   false
+        selected:   false
+        packages:
+        -   firefox
+        -   opera
+        -   chromium
+        -   midori
+        -   otter
+        -   dillo
+        -   qupzilla
+        -   links
+        -   links-x11
+        -   epiphany
+
+    -   name:   "Email"
+        description:    "Internet mail"
+        critical:   false
+        selected:   false
+        packages:
+        -   thunderbird
+        -   claws-mail     
+        -   kmail
+        -   evolution
+
+    -   name:   "File transfer"
+        description:    "File transfer"
+        critical:   false
+        selected:   false
+        packages:
+        -   gftp
+        -   gftp-gtk
+        -   filezilla
+        
+    -   name:   "Other"
+        description:    "Other internet applications"
+        critical:   false
+        selected:   false
+        packages:
+        -   pidgin
+        -   ekiga
+
 - name: "Multimedia"
   description: "Multimedia apps"
   critical: false
