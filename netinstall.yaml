@@ -83,8 +83,6 @@
     - ed
     - flex
     - fontforge
-    - gcc
-    - gdb
     - gettext
     - glib-networking
     - gpm
@@ -107,13 +105,13 @@
     - libtool
     - libungif
     - libx86
+    - libwacom
+    - libinput
     - logrotate
     - lsof
     - lynx
-    - m4
-    - make
-    - man-pages
     - mc
+    - man-pages
     - memtest86+
     - mobile-broadband-provider-info
     - modemmanager
@@ -132,11 +130,12 @@
     - postfix
     - ppp
     - quota
+    - make
+    - gcc
     - radeontool
     - recode
     - rfkill
     - rpcbind
-    - rpm
     - rp-pppoe
     - rsync
     - screen
@@ -146,35 +145,49 @@
     - sudo
     - tcl
     - tcp-wrappers
-    - tcsh
     - texinfo
     - time
     - traceroute
     - trousers
-    - unace
-    - unrar
-    - unzip
     - vbetool
-    - vim
-    - wget
     - wireless-tools
     - wpasupplicant
     - xdelta
-    - zip
-    - zsh
 # kellenek de nem standard és nem required
-    - 7zip
-    - cabextract
-    - rar
     - libuser
     - lsb-release
     - nscd
     - terminfo
     - uhu-sysinfo
     - usermode
-    - vi
     - xdg-user-dirs
     - xdg-utils
+  subgroups:
+    -   name: "packagers"
+        description: "Konsole packagers"
+        critical: false
+        selected: true
+        packages:
+        - zip
+        - unace
+        - unrar
+        - unzip
+        - 7zip
+        - cabextract
+        - rar
+        - rpm
+    -   name: "development tools"
+        description: "development tools"
+        critical: false
+        selected: true
+        packages:
+        - vi
+        - vim
+        - m4
+        - wget
+        - zsh
+        - tcsh
+        - gdb
 - name: "Konsole systemtools"
   description: "Konsole systemtools"
   critical: false
@@ -245,81 +258,125 @@
     - json-c
     - gconf2
     - fftw3
-    - libwacom
-    - libinput
-    - qt5
     - tslib
     - tdb
     - luit
     - neon
     - openipmi
     - xzoom
-# konzolos felesleges
-    - antiword
-    - bchunk
-    - open-iscsi
-    - pv
-    - words
-    - ytalk
-# bootloaders
-    - syslinux
-    - sbm
+
+  subgroups:
+    -   name: "Konsole"
+        description: "Konsole felesleges"
+        critical: false
+        selected: false
+        packages:
+        - antiword
+        - bchunk
+        - open-iscsi
+        - pv
+        - words
+        - ytalk
+
+    -   name: "bootloaders"
+        description: "bootloaders felesleges"
+        critical: false
+        selected: false
+        packages:
+        - syslinux
+        - sbm
+
 - name: "Base unsorted"
   description: "Base unsorted group"
   critical: false
   selected: true
-  packages:
-# Artwork
-    - cursor-theme-bluecurve
-# GNOME
-    - notification-daemon
-    - rarian
-# fonts
-    - fonts-bitstream-vera
-    - fonts-dejavu
-    - fonts-freeware
-    - fonts-liberation
-    - fonts-libertine
-    - fonts-symbola
-    - fonts-unicode
-# tools
-    - xbindkeys
-    - xdg-user-dirs-gtk
-# filesystems
-    - gparted
-    - gptfdisk
-    - gvfs
-    - nfs4-utils
-    - nrg2iso
-    - smartmontools
-# systemtools
-    - numlockx
-    - pcmciautils
-    - sysklogd
-    - uhu-zeroconf
-# internet + connections
-    - isdn4k-utils
-    - curlftpfs
-    - bluez
-    - bluez-firmware
-    - bluez-hcidump
-    - apache
-    - apache-mod-fcgid
-    - apache-mod-php
-    - fuse-smbnetfs
-    - fuse-sshfs
-    - tigervnc
-    - networkmanager-openvpn
-    - networkmanager-pptp
-    - nmap
-    - opensshd
-    - openvpn
-    - php
-    - rdesktop
-    - w3m
-    - wvdial
-    - usb-modeswitch
-    - x11vnc
+  subgroups:
+
+    -   name: "Artwork"
+        description: "Base artwork group"
+        critical: false
+        selected: true
+        packages:
+        - cursor-theme-bluecurve
+
+    -   name: "GNOME"
+        description: "Base GNOME group"
+        critical: false
+        selected: true
+        packages:
+        - notification-daemon
+        - rarian
+
+    -   name: "Fonts"
+        description: "Base fonts group"
+        critical: false
+        selected: true
+        packages:
+        - fonts-bitstream-vera
+        - fonts-dejavu
+        - fonts-freeware
+        - fonts-liberation
+        - fonts-libertine
+        - fonts-symbola
+        - fonts-unicode
+
+    -   name: "tools"
+        description: "Base tools group"
+        critical: false
+        selected: true
+        packages:
+        - xbindkeys
+        - xdg-user-dirs-gtk
+
+    -   name: "Filesystems"
+        description: "Base filesystems group"
+        critical: false
+        selected: true
+        packages:
+        - gparted
+        - gptfdisk
+        - gvfs
+        - nfs4-utils
+        - nrg2iso
+        - smartmontools
+
+    -   name: "systemtools"
+        description: "Base systemtools group"
+        critical: false
+        selected: true
+        packages:
+        - numlockx
+        - pcmciautils
+        - sysklogd
+        - uhu-zeroconf
+
+    -   name: "internet + connections"
+        description: "Base internet + connections group"
+        critical: false
+        selected: true
+        packages:
+        - isdn4k-utils
+        - curlftpfs
+        - bluez
+        - bluez-firmware
+        - bluez-hcidump
+        - apache
+        - apache-mod-fcgid
+        - apache-mod-php
+        - fuse-smbnetfs
+        - fuse-sshfs
+        - tigervnc
+        - networkmanager-openvpn
+        - networkmanager-pptp
+        - nmap
+        - opensshd
+        - openvpn
+        - php
+        - rdesktop
+        - w3m
+        - wvdial
+        - usb-modeswitch
+        - x11vnc
 - name: "Development"
   description: "Development"
   critical: false
@@ -422,82 +479,120 @@
   description: "X-org base"
   critical: false
   selected: true
-  packages:
-    - cursor-theme-x.org
-    - fonts-x.org-base
-    - fonts-x.org-iso-10646
-    - fonts-x.org-iso-8859-1
-    - fonts-x.org-other
-    - fonts-x.org-ttf
-    - fonts-x.org-type1
-    - libevdev
-    - libxv
-    - mtdev
-    - x.org-apps
-    - x.org-bitmaps
-    - x.org-font-utils
-    - x.org-input-evdev
-    - x.org-input-keyboard
-    - x.org-input-mouse
-    - x.org-input-synaptics
-    - x.org-server
-    - x.org-utils
-    - x.org-video-amd
-    - x.org-video-ati
-    - x.org-video-i128
-    - x.org-video-i740
-    - x.org-video-i810
-    - x.org-video-nouveau
-    - x.org-video-vesa
-    - x.org-video-openchrome
-    - xauth
-    - xcb-util
-    - xcb-util-image
-    - xcb-util-keysyms
-    - xcb-util-renderutil
-    - xcb-util-wm
-    - xinit
-    - xkb-utils
-    - xkeyboard-config
-    - xterm
-- name: "Xorg old drivers"
-  description: "Xorg old drivers"
-  critical: false
-  selected: false
-  packages:
-    - x.org-input-acecad
-    - x.org-input-aiptek
-    - x.org-input-elographics
-    - x.org-input-fpit
-    - x.org-input-hyperpen
-    - x.org-input-joystick
-    - x.org-input-mutouch
-    - x.org-input-penmount
-    - x.org-input-vmmouse
-    - x.org-input-void
-    - x.org-video-apm
-    - x.org-video-ark
-    - x.org-video-ast
-    - x.org-video-chips
-    - x.org-video-cirrus
-    - x.org-video-dummy
-    - x.org-video-fbdev
-    - x.org-video-glint
-    - x.org-video-neomagic
-    - x.org-video-nv
-    - x.org-video-rendition
-    - x.org-video-s3
-    - x.org-video-s3virge
-    - x.org-video-savage
-    - x.org-video-siliconmotion
-    - x.org-video-sis
-    - x.org-video-sisusb
-    - x.org-video-tdfx
-    - x.org-video-tga
-    - x.org-video-trident
-    - x.org-video-tseng
-    - x.org-video-v4l
-    - x.org-video-voodoo
+  subgroups:
+  
+    -   name: "X-org base"
+        description: "X-org base"
+        critical: false
+        selected: true
+        packages:
+        - x.org-server
+        - xinit
+        - libxv
+        - xauth
+        subgroups:
+
+        -   name: "X-org fonts, themes"
+            description: "X-org base fonts, themes"
+            critical: false
+            selected: true       
+            packages:
+            - fonts-x.org-base
+            - fonts-x.org-iso-10646
+            - fonts-x.org-iso-8859-1
+            - fonts-x.org-other
+            - fonts-x.org-ttf
+            - fonts-x.org-type1
+            - cursor-theme-x.org
+            - x.org-bitmaps
+
+        -   name: "X-org inputs"
+            description: "X-org input drivers"
+            critical: false
+            selected: true       
+            packages:
+            - x.org-input-evdev
+            - x.org-input-keyboard
+            - x.org-input-mouse
+            - x.org-input-synaptics
+            - libevdev
+            - mtdev
+
+        -   name: "X-org video drivers"
+            description: "X-org base video drivers"
+            critical: false
+            selected: true       
+            packages:
+            - x.org-video-amd
+            - x.org-video-ati
+            - x.org-video-i128
+            - x.org-video-i740
+            - x.org-video-i810
+            - x.org-video-nouveau
+            - x.org-video-vesa
+            - x.org-video-openchrome
+
+        -   name: "X-org base utils"
+            description: "X-org base base utils"
+            critical: false
+            selected: true       
+            packages:
+            - x.org-font-utils
+            - x.org-utils
+            - xcb-util
+            - xcb-util-image
+            - xcb-util-keysyms
+            - xcb-util-renderutil
+            - xcb-util-wm
+            - xkb-utils
+            - xkeyboard-config
+
+        -   name: "X-org base apps"
+            description: "X-org base base applications"
+            critical: false
+            selected: true       
+            packages:
+            - x.org-apps
+            - xterm
+
+    -   name: "Xorg old drivers"
+        description: "Xorg old drivers"
+        critical: false
+        selected: false
+        packages:
+        - x.org-input-acecad
+        - x.org-input-aiptek
+        - x.org-input-elographics
+        - x.org-input-fpit
+        - x.org-input-hyperpen
+        - x.org-input-joystick
+        - x.org-input-mutouch
+        - x.org-input-penmount
+        - x.org-input-vmmouse
+        - x.org-input-void
+        - x.org-video-apm
+        - x.org-video-ark
+        - x.org-video-ast
+        - x.org-video-chips
+        - x.org-video-cirrus
+        - x.org-video-dummy
+        - x.org-video-fbdev
+        - x.org-video-glint
+        - x.org-video-neomagic
+        - x.org-video-nv
+        - x.org-video-rendition
+        - x.org-video-s3
+        - x.org-video-s3virge
+        - x.org-video-savage
+        - x.org-video-siliconmotion
+        - x.org-video-sis
+        - x.org-video-sisusb
+        - x.org-video-tdfx
+        - x.org-video-tga
+        - x.org-video-trident
+        - x.org-video-tseng
+        - x.org-video-v4l
+        - x.org-video-voodoo
 - name: "Window managers"
   description: "Simple window managers"
   critical: false
@@ -537,6 +632,13 @@
         - openbox-debian-themes
         - openbox-menu
         - slim
+    -   name: "Fluxbox"
+        description: "Fluxbox windowmanager"
+        critical: false
+        selected: false
+        packages:
+        - fluxbox
+        - slim
     -   name: "Pekwm"
         description: "Pekwm windowmanager"
         critical: false
@@ -544,6 +646,13 @@
         packages:
         - pekwm
         - pekwm-themes
+        - slim
+    -   name: "WindowMaker"
+        description: "Windowmaker windowmanager"
+        critical: false
+        selected: false
+        packages:
+        - windowmaker
         - slim
 - name: "Light desktops"
   description: "Simple desktops"
