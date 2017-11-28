@@ -283,8 +283,6 @@
     - fonts-symbola
     - fonts-unicode
 # tools
-    - dconf-editor
-    - gconf-editor
     - xbindkeys
     - xdg-user-dirs-gtk
 # filesystems
@@ -771,7 +769,8 @@
         - cinnamon
         - gnome-terminal
         - sddm
-        
+        - pix
+
     -   name: "Budgie"
         description: "Budgie desktop"
         critical: false
@@ -832,16 +831,19 @@
                 - gnome-photos
                 - gnome-sound-recorder
                 - gnome-todo
+                - gnome-color-manager
+                - gnome-devel-docs
+                - gnome-documents
+                - gnomeradio
                 - polari
                 - rygel
                 - seahorse
                 - nautilus-sendto
-                - gnome-color-manager
-                - gnome-devel-docs
-                - gnome-documents
+                - dconf-editor
+                - gconf-editor
 
             -   name: "Gnome games"
-                description: "Gnome games"
+                description: "Games for gnome"
                 critical: false
                 selected: false
                 packages:
@@ -864,6 +866,41 @@
                 - gnome-robots
                 - quadrapassel
 
+- name: "Graphical Display Managers"
+  description: "Display Managers"
+  critical: false
+  selected: false
+  subgroups:
+    -   name: "sddm"
+        description: "QT5 Display Manager"
+        critical: false
+        selected: false
+        packages:
+        - sddm
+        - sddm-config-editor
+        - sddm-theme-solarized
+        - sddm-theme-urbanlifestyle
+    -   name: "lightdm"
+        description: "GTK Light Display Manager"
+        critical: false
+        selected: false
+        packages:
+        - lightdm
+        - ligtdm-gtk-greeter
+        - ligtdm-gtk-greeter-settings
+    -   name: "slim"
+        description: "GTK Simple Display Manager"
+        critical: false
+        selected: false
+        packages:
+        - slim
+        - slim-themes
+    -   name: "gdm"
+        description: "Gnome Display Manager"
+        critical: false
+        selected: false
+        packages:
+        - gdm
 - name: "Office"
   description: "Office apps"
   critical: false
@@ -904,6 +941,7 @@
         selected:   false
         packages:
         -   thunderbird
+        -   balsa
         -   claws-mail     
         -   kmail
         -   evolution
@@ -924,26 +962,136 @@
         packages:
         -   pidgin
         -   ekiga
+        -   seamonkey
 
 - name: "Multimedia"
   description: "Multimedia apps"
   critical: false
   selected: false
-  packages:
-    - flashplayer
-    - mplayer
-    - smplayer
-    - smtube
-    - vlc
-    - kodi
-    - gxine
-    - xine-ui
-    - avidemux
-    - dvdauthor
-    - exaile
-    - audacious
-    - audacity
-    - deadbeef
+  subgroups:
+    -   name: "Video & audio players"
+        description: "Video & audio players"
+        critical: false
+        selected: false
+        packages:
+        - ffmpeg
+        - bino
+        - mplayer
+        - smplayer
+        - smtube
+        - vlc
+        - kaffeine
+        - kodi
+        - gxine
+        - xine-ui
+        
+    -   name: "Youtube players & downloaders"
+        description: "Youtube players & downloaders"
+        critical: false
+        selected: false
+        packages:
+        - flashplayer
+        - minitube
+        - smtube
+        - youtube-dl
+        
+    -   name: "Audio players"
+        description: "Audio players"
+        critical: false
+        selected: false
+        packages:
+        - playmidi
+        - exaile
+        - rhytmbox
+        - xmms2
+        - deadbeef
+        - clemetine
+        - aqualung
+        - audacious
+        - dmcradio
+        - mpg123
+        - radiotray
+        
+    -   name: "Editors"
+        description: "Video & audio editors"
+        critical: false
+        selected: false
+        packages:
+        - avidemux
+        - handbrake
+        - lives
+        - audacity
+        - lmms
+        - bombono-dvd
+        - canorus
+        - devede
+        - dvdstyler
+        - dvdrip
+        - dvdauthor
+
+    -   name: "TV"
+        description: "Analog & DVB TV players"
+        critical: false
+        selected: false
+        subgroups:
+        -   name: "Analog TV player"
+            description: "Analog TV players"
+            critical: false
+            selected: false
+            packages:
+            - tvtime
+            - xawtv
+        -   name: "DVB"
+            description: "DVB players"
+            critical: false
+            selected: false
+            packages:
+            - kaffeine
+            subgroups:      
+            -   name: "VDR"
+                description: "Video & Disk Recorder"
+                critical: false
+                selected: false
+                subgroups:
+                -   name: "VDR base"
+                    description: "VDR base packages"
+                    critical: false
+                    selected: false
+                    packages:
+                    - vdr
+                -   name: "VDR plugins"
+                    description: "VDR plugins"
+                    critical: false
+                    selected: false
+                    packages:
+                    - vdr-dvbapi
+                    - vdr-epgfixer
+                    - vdr-femon
+                    - vdr-live
+                    - vdr-osdteletext
+                    - vdr-plugin-chanman
+                    - vdr-plugin-channellists
+                    - vdr-plugin-sc
+                    - vdr-plugin-streamdev
+                    - vdr-plugin-xvdr
+                    - vdr-plugin-zappilot
+                    - vdr-remote
+                    - vdr-screenshot
+                    - vdr-softhddevice
+                    - vdr-tvguide
+                    - vdr-wirbelscan
+                    - vdr-xine
+                    - vdr-xineliboutput
+                    - kodi-addon-xvdr
+                -   name: "VDR tools"
+                    description: "VDR tools"
+                    critical: false
+                    selected: false
+                    packages:
+                    - w-scan
+                    - vdrctl
+                    - oscam
+            
 - name: "Editors"
   description: "Editors"
   critical: false
