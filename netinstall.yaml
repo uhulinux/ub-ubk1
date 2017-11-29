@@ -62,6 +62,7 @@
     - which
     - whois
     - kernel
+
 - name: "Standard"
   description: "Standard group"
   hidden: true
@@ -163,6 +164,7 @@
     - xdg-user-dirs
     - xdg-utils
   subgroups:
+
     -   name: "packagers"
         description: "Konsole packagers"
         critical: false
@@ -176,6 +178,7 @@
         - cabextract
         - rar
         - rpm
+
     -   name: "development tools"
         description: "development tools"
         critical: false
@@ -188,6 +191,7 @@
         - zsh
         - tcsh
         - gdb
+
 - name: "Konsole systemtools"
   description: "Konsole systemtools"
   critical: false
@@ -248,6 +252,7 @@
     - lftp
     - tcpdump
     - vblade
+
 - name: "Base felesleges"
   description: "Base felesleges"
   critical: false
@@ -266,6 +271,7 @@
     - xzoom
 
   subgroups:
+
     -   name: "Konsole"
         description: "Konsole felesleges"
         critical: false
@@ -377,6 +383,7 @@
         - wvdial
         - usb-modeswitch
         - x11vnc
+
 - name: "Development"
   description: "Development"
   critical: false
@@ -404,6 +411,7 @@
     - uhubuild-here
     - uhubuild-under-chroot
     - uhu-pkgutils
+
 - name: "Graphics"
   description: "Graphics"
   critical: false
@@ -419,6 +427,7 @@
     - gphoto2
     - sane-frontends
     - simple-scan
+
 - name: "Printing"
   description: "Printing"
   critical: false
@@ -430,6 +439,7 @@
     - ghostscript
     - hplip
     - system-config-printer
+
 - name: "Package managers"
   description: "Package managers"
   critical: false
@@ -438,6 +448,7 @@
     - dselect
     - synaptic
     - gtk-stock-icons
+
 - name: "Multimedia libs"
   description: "Multimedia libs"
   critical: false
@@ -475,6 +486,7 @@
     - mp3info
     - vorbis-tools
     - zvbi
+
 - name: "X-org base"
   description: "X-org base"
   critical: false
@@ -593,16 +605,19 @@
         - x.org-video-tseng
         - x.org-video-v4l
         - x.org-video-voodoo
+
 - name: "Window managers"
   description: "Simple window managers"
   critical: false
   selected: false
   subgroups:
+
     -   name: "Icewm"
         description: "Icewm windowmanager"
         critical: false
         selected: false
         subgroups:
+
             -   name: "Icewm base"
                 description:    "Icewm base packages"
                 critical: false
@@ -612,6 +627,7 @@
                 - icewm-xdgmenu
                 - slim
                 - icon-theme-gnome
+
             -   name: "Icewm-themes"
                 description: "Icewm extra themes"
                 critical: false
@@ -623,6 +639,7 @@
                 - icewm-theme-win31
                 - icewm-theme-ubuntu
                 - icewm-theme-nitrogen
+
     -   name: "Openbox"
         description: "Openbox windowmanager"
         critical: false
@@ -632,6 +649,7 @@
         - openbox-debian-themes
         - openbox-menu
         - slim
+
     -   name: "Fluxbox"
         description: "Fluxbox windowmanager"
         critical: false
@@ -639,6 +657,7 @@
         packages:
         - fluxbox
         - slim
+
     -   name: "Pekwm"
         description: "Pekwm windowmanager"
         critical: false
@@ -647,6 +666,7 @@
         - pekwm
         - pekwm-themes
         - slim
+
     -   name: "WindowMaker"
         description: "Windowmaker windowmanager"
         critical: false
@@ -654,11 +674,13 @@
         packages:
         - windowmaker
         - slim
+
 - name: "Light desktops"
   description: "Simple desktops"
   critical: false
   selected: false
   subgroups:
+
     -   name: "Lumina"
         description: "Lumina DE"
         critical: false
@@ -666,6 +688,7 @@
         packages:
         - lumina
         - sddm
+
     -   name: "Enlightenment"
         description: "enlightenment DE"
         critical: false
@@ -674,10 +697,12 @@
         - enlightenment
         - slim
     -   name: "LXDE"
+
         description: "Lxde desktop"
         critical: false
         selected: false
         subgroups:
+
             -   name: "LXDE base"
                 description: "LXDE base packages"
                 critical: false
@@ -699,6 +724,7 @@
                 -   obconf
                 -   openbox
                 -   lxdm
+
             -   name: "LXDE extra"
                 description: "LXDE extra packages"
                 critical: false
@@ -708,11 +734,13 @@
                 -   lxmusic
                 -   lxrandr
                 -   lxterminal
+
     -   name: "LXQT"
         description: "Lxqt desktop"
         critical: false
         selected: false
         subgroups:
+
             -   name: "LXQT base"
                 description: "LXQT base packages"
                 critical: false
@@ -735,6 +763,7 @@
                 - pavucontrol-qt
                 - pcmanfm-qt
                 - sddm
+
             -   name: "LXQT extra"
                 description: "LXQT extra packages"
                 critical: false
@@ -826,6 +855,7 @@
         critical: false
         selected: false
         subgroups:
+
             -   name: "Plasma base"
                 description: "Plasma base packages"
                 critical: false
@@ -894,6 +924,7 @@
         critical: false
         selected: false
         subgroups:
+
             -   name: "Gnome base"
                 description: "Gnome base packages"
                 critical: false
@@ -975,11 +1006,12 @@
                 - gnome-robots
                 - quadrapassel
 
-- name: "Graphical Display Managers"
-  description: "Display Managers"
+- name: "Display Managers"
+  description: "Graphical Display Managers"
   critical: false
   selected: false
   subgroups:
+
     -   name: "sddm"
         description: "QT5 Display Manager"
         critical: false
@@ -989,14 +1021,16 @@
         - sddm-config-editor
         - sddm-theme-solarized
         - sddm-theme-urbanlifestyle
+
     -   name: "lightdm"
         description: "GTK Light Display Manager"
         critical: false
         selected: false
         packages:
         - lightdm
-        - ligtdm-gtk-greeter
-        - ligtdm-gtk-greeter-settings
+        - lightdm-gtk-greeter
+        - lightdm-gtk-greeter-settings
+
     -   name: "slim"
         description: "GTK Simple Display Manager"
         critical: false
@@ -1004,12 +1038,14 @@
         packages:
         - slim
         - slim-themes
+
     -   name: "gdm"
         description: "Gnome Display Manager"
         critical: false
         selected: false
         packages:
         - gdm
+
 - name: "Office"
   description: "Office apps"
   critical: false
@@ -1028,6 +1064,7 @@
     critical:   false
     selected:   false
     subgroups:
+
     -   name:   "Browsers"
         description:    "Internet browsers"
         critical:   false
@@ -1078,6 +1115,7 @@
   critical: false
   selected: false
   subgroups:
+
     -   name: "Video & audio players"
         description: "Video & audio players"
         critical: false
@@ -1111,10 +1149,10 @@
         packages:
         - playmidi
         - exaile
-        - rhytmbox
+        - rhythmbox
         - xmms2
         - deadbeef
-        - clemetine
+        - clementine
         - aqualung
         - audacious
         - dmcradio
@@ -1143,31 +1181,36 @@
         critical: false
         selected: false
         subgroups:
-        -   name: "Analog TV player"
+
+        -   name: "Analog TV viewers"
             description: "Analog TV players"
             critical: false
             selected: false
             packages:
             - tvtime
             - xawtv
+
         -   name: "DVB"
-            description: "DVB players"
+            description: "DVB viewers & PVR"
             critical: false
             selected: false
             packages:
             - kaffeine
-            subgroups:      
+            subgroups:
+
             -   name: "VDR"
-                description: "Video & Disk Recorder"
+                description: "Video Disk Recorder"
                 critical: false
                 selected: false
                 subgroups:
+
                 -   name: "VDR base"
                     description: "VDR base packages"
                     critical: false
                     selected: false
                     packages:
                     - vdr
+
                 -   name: "VDR plugins"
                     description: "VDR plugins"
                     critical: false
@@ -1192,6 +1235,7 @@
                     - vdr-xine
                     - vdr-xineliboutput
                     - kodi-addon-xvdr
+
                 -   name: "VDR tools"
                     description: "VDR tools"
                     critical: false
@@ -1212,6 +1256,7 @@
     - xemacs
     - nano
     - yudit
+
 - name: "Filemanagers"
   description: "Filemanagers"
   critical: false
@@ -1223,6 +1268,7 @@
     - worker
     - emelfm2
     - eaglemode
+
 - name: "Games"
   description: "Games"
   critical: false
