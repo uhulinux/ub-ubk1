@@ -1,7 +1,7 @@
 diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 --- orig/src/modules/chrootcfg/main.py	1970-01-01 01:00:00.000000000 +0100
-+++ mod/src/modules/chrootcfg/main.py	2017-11-27 21:02:02.000000000 +0100
-@@ -0,0 +1,142 @@
++++ mod/src/modules/chrootcfg/main.py	2017-11-29 21:57:28.820962027 +0100
+@@ -0,0 +1,144 @@
 +#!/usr/bin/env python3
 +# -*- coding: utf-8 -*-
 +#
@@ -33,6 +33,7 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +from os.path import join
 +
 +ON_POSIX = 'posix' in sys.builtin_module_names
++
 +
 +class ChrootController:
 +    def __init__(self):
@@ -69,7 +70,7 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +            open(uresfile, 'a').close()
 +
 +    def chrootinit(self):
-+        global  chrootdir, apt_options, dpkg_options, installcmd, pkgs
++        global chrootdir, apt_options, dpkg_options, installcmd, pkgs
 +        chrootdir = self.root
 +        # Változók az apt működéséhez szükséges csomagok feltérképezéséhez
 +        minpkgs = "uhu-base apt dpkg diffutils findutils"
@@ -110,11 +111,11 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +
 +    def chrootbuild(self):
 +        completed_packages = 0
-+        total_packages=len(pkgs)
++        total = len(pkgs)
 +        for pkg in pkgs:
 +            os.system(installcmd + pkg)
 +            completed_packages = completed_packages + 1
-+            libcalamares.job.setprogress(completed_packages * 1.0 / total_packages)
++            libcalamares.job.setprogress(completed_packages * 1.0 / total)
 +            # postinst
 +            os.system("chroot " + chrootdir + " /sbin/uhu-pkg postinst +")
 +
@@ -132,11 +133,12 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +        os.umask(cal_umask)
 +
 +    def run(self):
-+        self.prepare()          # Chroot alapozás
-+        self.chrootinit()       # Chroot telepítési előkészületek
-+        self.chrootbuild()      # Chroot telepítése
-+        self.chroot_apt_clean() # Végső simítások
++        self.prepare()           # Chroot alapozás
++        self.chrootinit()        # Chroot telepítési előkészületek
++        self.chrootbuild()       # Chroot telepítése
++        self.chroot_apt_clean()  # Végső simítások
 +        return None
++
 +
 +def run():
 +    """ Create chroot and install apt """
