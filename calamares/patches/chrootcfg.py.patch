@@ -1,6 +1,6 @@
 diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 --- orig/src/modules/chrootcfg/main.py	1970-01-01 01:00:00.000000000 +0100
-+++ mod/src/modules/chrootcfg/main.py	2017-11-29 21:57:28.820962027 +0100
++++ mod/src/modules/chrootcfg/main.py	2017-11-30 14:50:06.598566918 +0100
 @@ -0,0 +1,144 @@
 +#!/usr/bin/env python3
 +# -*- coding: utf-8 -*-
@@ -97,9 +97,9 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +        os.system("apt-get " + apt_empty_options + " update")
 +
 +        # Mely csomagok kellenek? Kiíratás egy ideiglenes fájlba.
-+        tmpcmd1 = "apt-get " + apt_empty_options + " --no-act install "
-+        tmpcmd2 = " | grep " + "'^Inst ' | cut -d' ' -f2 > /tmp/tmpfile"
-+        os.system(tmpcmd1 + minpkgs + tmpcmd2)
++        tmpcmd = "apt-get " + apt_empty_options + " --no-act install " \
++            + minpkgs + " | grep " + "'^Inst ' | cut -d' ' -f2 > /tmp/tmpfile"
++        os.system(tmpcmd)
 +
 +        # kiolvassuk a tmpfile tartalmát a pkgs listaváltozóba.
 +        pkgs = [line.rstrip('\n') for line in open('/tmp/tmpfile')]
@@ -115,11 +115,11 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +        for pkg in pkgs:
 +            os.system(installcmd + pkg)
 +            completed_packages = completed_packages + 1
-+            libcalamares.job.setprogress(completed_packages * 1.0 / total)
-+            # postinst
-+            os.system("chroot " + chrootdir + " /sbin/uhu-pkg postinst +")
++            completed_ratio = completed_packages * 1.0 / total
++            libcalamares.job.setprogress(completed_ratio)
 +
 +    def chroot_apt_clean(self):
++        os.system("chroot " + chrootdir + " /sbin/uhu-pkg postinst +")
 +        os.system("rm -rf " + chrootdir + "/var/lib/dpkg-empty")
 +        os.system("dpkg " + dpkg_options + " --clear-avail")
 +
