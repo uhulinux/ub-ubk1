@@ -1,16 +1,15 @@
 [Desktop Entry]
-Categories=Qt;System;
-Comment[hu_HU]=A rendszer telepítése hálózat nélkül
-Comment=System installer offline
-Exec=calamares.live
-GenericName[hu_HU]=Rendszer telepítő
+Type=Application
+Name=Calamares_live
+Name[hu]=Calamares offline
 GenericName=System installer offline
+GenericName[hu]=Rendszertelepítő hálózat nélkül
+Comment=System installer offline
+Comment[hu]=A rendszer telepítése hálózat nélkül
+Exec=calamares_live
+TryExec=calamares_live
 Icon=calamares
-Keywords=calamares;system;installer
-Name[hu_HU]=Calamares.live
-Name=Calamares.live
 StartupNotify=true
 Terminal=false
-TryExec=calamares.live
-Type=Application
-X-KDE-SubstituteUID=false
+Categories=System;
+Keywords=calamares;system;installer

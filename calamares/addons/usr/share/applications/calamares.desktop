@@ -1,15 +1,15 @@
 [Desktop Entry]
-Categories=Qt;System;
-Comment[hu_HU]=A rendszer telepítése hálózattal, csomag választással
+Type=Application
+Name=Calamares_net
+Name[hu]=Calamares online
+GenericName=System online installer
+GenericName[hu]=Rendszertelepítő hálózattal
 Comment=System installer with network and package selections
-Exec=calamares.net
-GenericName[hu_HU]=Rendszertelepítő
-GenericName=System installer
+Comment[hu]=A rendszer telepítése hálózattal és csomag választással
+Exec=calamares_net
+TryExec=calamares_net
 Icon=calamares
-Keywords=calamares;system;installer
-Name[hu_HU]=Calamares.net
-Name=Calamares.net
 StartupNotify=true
 Terminal=true
-TryExec=calamares.net
-Type=Application
+Categories=System;
+Keywords=calamares;system;installer
