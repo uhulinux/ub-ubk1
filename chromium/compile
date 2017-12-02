@@ -6,21 +6,21 @@ if [ $((`stat -f -c "%a" .`*`stat -f -c "%s" .`/(1024*1024*1024))) -lt 7 ]; then
 fi
 
 if [ "$UB_ARCH" == "amd64" ];then
-export BUILD_CC="x86_64-gnu-linux-gcc"
-export BUILD_CXX="x86_64-gnu-linux-g++"
-export BUILD_AR="ar"
-export BUILD_NM="nm"
+export CC="x86_64-gnu-linux-gcc"
+export CXX="x86_64-gnu-linux-g++"
+export AR="ar"
+export NM="nm"
 cpu="x64"
 else
-export BUILD_CC="i686-gnu-linux-gcc"
-export BUILD_CXX="i686-gnu-linux-g++"
-export BUILD_AR="ar"
-export BUILD_NM="nm"
+export CC="i686-gnu-linux-gcc"
+export CXX="i686-gnu-linux-g++"
+export AR="ar"
+export NM="nm"
 cpu="x86"
 fi
 
-#   -Drelease_extra_cflags=" -fno-delete-null-pointer-checks"
-#	-Dcomponent="shared_library" -> is_component_build=true
+# -Drelease_extra_cflags=" -fno-delete-null-pointer-checks"
+# -Dcomponent="shared_library" -> is_component_build=true
 
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
@@ -28,7 +28,6 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 # host_toolchain=\"//build/toolchain/linux/unbundle:host\"
 # v8_snapshot_toolchain=\"//build/toolchain/linux/unbundle:host\"
-# -nostdlib++ -> -stdlib=libc++
 
 _flags=("
 host_cpu=\"${cpu}\"
