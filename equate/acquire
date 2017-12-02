@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 equate-$UB_VERSION.tar.gz equate-5ee65c6/
-	git://git.enlightenment.org/apps/equate.git@5ee65c6
+	git+https://git.enlightenment.org/apps/equate.git@5ee65c6

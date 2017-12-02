@@ -1,7 +1,7 @@
 diff -Naur orig/data/tuxcmd.desktop patched/data/tuxcmd.desktop
---- orig/data/tuxcmd.desktop	2009-11-15 17:00:35.000000000 +0100
-+++ patched/data/tuxcmd.desktop	2016-02-20 13:37:09.946670652 +0100
-@@ -1,6 +1,8 @@
+--- orig/data/tuxcmd.desktop	2009-11-15 17:00:35.134739579 +0100
++++ patched/data/tuxcmd.desktop	2017-12-02 02:24:41.830277333 +0100
+@@ -1,9 +1,11 @@
  [Desktop Entry]
 +Encoding=UTF-8
  Name=Tux Commander
@@ -10,3 +10,7 @@ diff -Naur orig/data/tuxcmd.desktop patched/data/tuxcmd.desktop
  Exec=tuxcmd
  Icon=tuxcmd
  Terminal=false
+ Type=Application
+-Categories=GTK;Utility;
++Categories=GTK;Utility;System;FileManager;FileTools;
+ StartupNotify=true
