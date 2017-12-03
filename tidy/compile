@@ -1,8 +1,3 @@
 #!/bin/sh -eux
 
-bash build/gnuauto/setup.sh
-
-ub_compile \
-	--enable-access \
-	--enable-utf16 \
-	--enable-asian
+ub_compile

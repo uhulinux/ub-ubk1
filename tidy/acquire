@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-tidy-${UB_VERSION}-1mdk.src.rpm tidy_src.tar.bz2 ./tidy/
-	ftp://bo.mirror.garr.it/1/mandrake/official/2007.0/SRPMS/main/release/
+${UB_VERSION}.tar.gz tidy-html5-${UB_VERSION}/
+	https://github.com/htacg/tidy-html5/archive/
