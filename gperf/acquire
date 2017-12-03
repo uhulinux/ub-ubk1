@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 gperf-${UB_VERSION}.tar.gz gperf-${UB_VERSION}/
-	ftp://ftp.cw.net/pub/gnu/gperf/
+	http://ftp.gnu.org/pub/gnu/gperf/

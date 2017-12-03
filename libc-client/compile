@@ -1,6 +1,10 @@
 #!/bin/sh -eux
 
-ub_make lnp \
+make -j1 \
 	SSLTYPE=unix \
+    lnp \
+	PASSWDTYPE=pam \
+	GSSDIR=/usr \
 	SHLIBBASE=c-client \
-	SHLIBNAME=libc-client.so.1
+	SHLIBNAME=libc-client.so.1 \
+	EXTRACFLAGS="-fPIC"

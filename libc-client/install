@@ -3,7 +3,8 @@
 install -m 644 ./c-client/c-client.a "$UB_INSTALLDIR"/usr/lib/
 ln -s c-client.a  "$UB_INSTALLDIR"/usr/lib/libc-client.a
 
-install -m 755 ./c-client/libc-client.so.1 $UB_INSTALLDIR/usr/lib/
+install -m 755 ./c-client/libc-client.so.1.0.0 $UB_INSTALLDIR/usr/lib/
+ln -s libc-client.so.1.0.0 $UB_INSTALLDIR/usr/lib/libc-client.so.1
 ln -s libc-client.so.1 $UB_INSTALLDIR/usr/lib/libc-client.so
 
 mkdir -p $UB_INSTALLDIR/usr/include/imap
