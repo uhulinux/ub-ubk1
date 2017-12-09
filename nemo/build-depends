@@ -1,6 +1,6 @@
+accountsservice-dev
 cinnamon-desktop-dev
 dconf-dev
-desktop-file-utils
 exempi-dev
 gnome-common
 gobject-introspection-dev
@@ -9,9 +9,11 @@ gvfs
 intltool
 libexif-dev
 libgcrypt-dev
+libgnomekbd-dev
 libnotify-dev
 libsm-dev
 libxml2-dev
 py3gobject
 pygobject-dev
 python3-polib
+xapps-dev

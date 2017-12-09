@@ -2,6 +2,7 @@ cairo-dev
 gnome-common
 gobject-introspection-dev
 gtk-dev
+gtk-doc
 intltool
 libgnomekbd-dev
 libx11-dev

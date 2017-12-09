@@ -1,12 +1,14 @@
-diff -Naur orig/data/nemo.desktop.in.in mod/data/nemo.desktop.in.in
---- orig/data/nemo.desktop.in.in	2016-09-15 18:12:48.000000000 +0200
-+++ mod/data/nemo.desktop.in.in	2016-09-16 07:52:52.168469727 +0200
-@@ -65,7 +65,7 @@
- Name[he]=קבצים
- Name[hi]=फ़ाइल
+diff -Nur orig/data/nemo.desktop.in.in mod/data/nemo.desktop.in.in
+--- orig/data/nemo.desktop.in.in	2017-11-20 11:10:50.000000000 +0100
++++ mod/data/nemo.desktop.in.in	2017-12-08 11:59:21.492344595 +0100
+@@ -40,8 +40,8 @@
+ Name[fr_CA]=Fichiers
+ Name[fr_FR]=Fichiers
  Name[hr]=Nemo
 -Name[hu]=Fájlok
+-Name[hu_HU]=Fájlok
 +Name[hu]=Nemo
- Name[hy]=Files
- Name[id]=Berkas
- Name[ig]=Files
++Name[hu_HU]=Nemo
+ Name[is]=Skrár
+ Name[ko]=파일
+ Name[ko_KR]=파일

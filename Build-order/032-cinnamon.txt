@@ -1,3 +1,4 @@
+js38
 xapps
 cinnamon-sound-effects
 cinnamon-translations

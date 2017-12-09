@@ -1,7 +1,7 @@
 	/usr/bin
+	/usr/libexec
 	/usr/lib/nemo-preview/girepository-1.0
 	/usr/lib/nemo-preview/libnemo-preview*.so
-	/usr/libexec
 	/usr/share/dbus-1
 	/usr/share/doc/Packages/nemo-preview
 	/usr/share/locale/**/LC_MESSAGES/nemo-preview.*

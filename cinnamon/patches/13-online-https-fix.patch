@@ -1,49 +1,21 @@
-diff -Naur orig/files/usr/share/cinnamon/cinnamon-settings/bin/Spices.py mod/files/usr/share/cinnamon/cinnamon-settings/bin/Spices.py
---- orig/files/usr/share/cinnamon/cinnamon-settings/bin/Spices.py	2016-04-25 11:11:29.000000000 +0200
-+++ mod/files/usr/share/cinnamon/cinnamon-settings/bin/Spices.py	2016-04-27 22:58:27.000000000 +0200
-@@ -25,6 +25,8 @@
-     import thread
-     from time import sleep
+diff -Nur orig/files/usr/share/cinnamon/cinnamon-settings/bin/Spices.py mod/files/usr/share/cinnamon/cinnamon-settings/bin/Spices.py
+--- orig/files/usr/share/cinnamon/cinnamon-settings/bin/Spices.py	2017-11-23 10:56:12.000000000 +0100
++++ mod/files/usr/share/cinnamon/cinnamon-settings/bin/Spices.py	2017-12-08 18:33:51.794523353 +0100
+@@ -14,6 +14,8 @@
+     import time
      from PIL import Image
+     import config
 +    import ssl
 +    ssl._create_default_https_context = ssl._create_unverified_context
  except Exception, detail:
      print detail
      sys.exit(1)
-@@ -33,12 +35,11 @@
-     import json
- except ImportError:
-     import simplejson as json
--
- home = os.path.expanduser("~")
+@@ -27,7 +29,7 @@
  locale_inst = '%s/.local/share/locale' % home
  settings_dir = '%s/.cinnamon/configs/' % home
  
 -URL_SPICES_HOME = "http://cinnamon-spices.linuxmint.com"
 +URL_SPICES_HOME = "https://cinnamon-spices.linuxmint.com"
- URL_SPICES_APPLET_LIST = URL_SPICES_HOME + "/json/applets.json"
- URL_SPICES_THEME_LIST = URL_SPICES_HOME + "/json/themes.json"
- URL_SPICES_DESKLET_LIST = URL_SPICES_HOME + "/json/desklets.json"
-@@ -387,8 +388,12 @@
- 
-     def load_assets_thread(self, f, icon_path, url):
-         valid = True
--
--        self.download(f, icon_path, url)
-+        try:
-+            urllib2.urlopen(url).getcode()
-+        except:
-+            valid = False
-+        if valid:
-+            self.download(f, icon_path, url)
- 
-         self.load_assets_done()
-         thread.exit()
-@@ -693,7 +698,6 @@
-         blockSize = 1024 * 8
-         try:
-             urlobj = urllib2.urlopen(url)
--            assert urlobj.getcode() == 200
-         except Exception, detail:
-             f.close()
-             self.abort_download = ABORT_ERROR
+ URL_MAP = {
+     'applet': URL_SPICES_HOME + "/json/applets.json",
+     'theme': URL_SPICES_HOME + "/json/themes.json",

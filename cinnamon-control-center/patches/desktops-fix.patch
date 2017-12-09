@@ -12,18 +12,6 @@ diff -Naur orig/panels/color/cinnamon-color-panel.desktop.in.in mod/panels/color
  X-Cinnamon-Settings-Panel=color
  # Translators: those are keywords for the color control-center panel
  _Keywords=Color;ICC;Profile;Calibrate;Printer;Display;
-diff -Naur orig/panels/datetime/cinnamon-datetime-panel.desktop.in mod/panels/datetime/cinnamon-datetime-panel.desktop.in
---- orig/panels/datetime/cinnamon-datetime-panel.desktop.in	2015-05-19 17:23:24.000000000 +0200
-+++ mod/panels/datetime/cinnamon-datetime-panel.desktop.in	2015-06-02 14:41:50.724108805 +0200
-@@ -5,7 +5,7 @@
- Type=Application
- StartupNotify=true
- Categories=GTK;Settings;X-cinnamon-SystemSettings;X-Cinnamon-Settings-Panel;
--OnlyShowIn=X-Cinnamon;
-+OnlyShowIn=Cinnamon;
- X-Cinnamon-Settings-Panel=datetime
- # Translators: those are keywords for the date and time control-center panel
- _Keywords=Clock;Timezone;Location;
 diff -Naur orig/panels/display/cinnamon-display-panel.desktop.in.in mod/panels/display/cinnamon-display-panel.desktop.in.in
 --- orig/panels/display/cinnamon-display-panel.desktop.in.in	2015-05-19 17:23:24.000000000 +0200
 +++ mod/panels/display/cinnamon-display-panel.desktop.in.in	2015-06-02 14:42:05.896074329 +0200

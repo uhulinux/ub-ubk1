@@ -1,3 +1,4 @@
+accountsservice-dev
 cinnamon-desktop-dev
 cjs-dev
 clutter-gst-dev
@@ -8,8 +9,8 @@ gnome-common
 gnome-keyring-dev
 gpg
 gpgme-dev
-gtk-doc
 gtk2-dev
+gtk-doc
 gtksourceview-dev
 gupnp-dev
 intltool
@@ -23,3 +24,4 @@ nemo-dev
 pygobject2-dev
 webkit2gtk-dev
 xcb-util-dev
+xreader-dev

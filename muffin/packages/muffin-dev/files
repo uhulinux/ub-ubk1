@@ -1,16 +1,16 @@
 	/lib/*.a
 	/lib/*.la
-@	/lib/*.so
 	/lib/pkgconfig
+@	/lib/*.so
 	/usr/bin/*-config
 	/usr/include
 	/usr/lib/**/*.a
-	/usr/lib/**/*.gir
-	/usr/lib/**/*.la
-@	/usr/lib/**/*.so
-	/usr/lib/*/include
 	/usr/lib/*Conf.sh
+	/usr/lib/**/*.gir
+	/usr/lib/*/include
+	/usr/lib/**/*.la
 	/usr/lib/pkgconfig
+@	/usr/lib/**/*.so
 	/usr/share/aclocal
 	/usr/share/devhelp
 	/usr/share/gir-1.0

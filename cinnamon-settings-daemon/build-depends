@@ -1,3 +1,4 @@
+accountsservice-dev
 cinnamon-desktop-dev
 colord-dev
 cups-dev
@@ -6,6 +7,7 @@ docbook-dtds
 docbook-xsl
 gsettings-desktop-schemas
 intltool
+lcms2-dev
 libcanberra-dev
 libgnomekbd-dev
 libgudev-dev

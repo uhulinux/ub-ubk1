@@ -2,4 +2,5 @@
 
 ub_compile \
 	--disable-tracker \
-	--disable-gtk-doc-htlm
+	--disable-selinux \
+	--disable-gtk-doc
