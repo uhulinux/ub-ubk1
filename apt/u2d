@@ -1,1 +1,1 @@
-urllist 'http://snapshot.debian.org/package/apt/' | splitver '^([0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?)$' | sort -V | tail -n 1
+u2d http://download.ubk.hu/src/debian/apt/ apt_
