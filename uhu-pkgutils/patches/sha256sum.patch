@@ -1,0 +1,28 @@
+diff -Naur orig/src/uhu-scanpkgs patched/src/uhu-scanpkgs
+--- orig/src/uhu-scanpkgs	2005-08-08 17:38:06.134739579 +0200
++++ patched/src/uhu-scanpkgs	2017-09-04 02:18:16.551504086 +0200
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ 
+-use Digest::MD5;
++# use Digest::MD5;
++use Digest::SHA qw(sha256_hex);
+ use POSIX;
+ use IO::Handle;
+ use Getopt::Long;
+@@ -98,10 +99,12 @@
+ 		system 'dpkg-deb', '-I', $info{$_}{Filename}, 'control';
+ 		print "Filename: ".$info{$_}{Filename}."\n";
+ 		print "Size: ".(-s $info{$_}{Filename})."\n";
+-		my $md5 = Digest::MD5->new;
++#		my $md5 = Digest::MD5->new;
++		my $sha256 = Digest::SHA->new(256);
+ 		open FILE, $info{$_}{Filename};
+ 		binmode FILE;
+-		print "MD5Sum: ".Digest::MD5->new->addfile(*FILE)->hexdigest."\n";
++#		print "MD5: ".Digest::MD5->new->addfile(*FILE)->hexdigest."\n";
++		print "SHA256: ".$sha256->addfile(*FILE)->hexdigest."\n";
+ 	}
+ 	print "\n";
+ }
