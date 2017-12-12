@@ -2,6 +2,7 @@ binutils-dev
 boost-dev
 cmake
 curl-dev
+db4-dev
 enet-dev
 gamin-dev
 gloox-dev

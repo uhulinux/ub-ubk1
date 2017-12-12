@@ -1,15 +1,20 @@
 #!/bin/sh -eux
 
 sysarch=$(uname -m)
+if [ "$(dpkg --print-architecture)" == "i386" ];then
+buildsys="i686"
+else
+buildsys="x86_64"
+fi
 
 if [ "$UB_ARCH" == "amd64" ]; then
-	export CTARGET="x86_64-uhu-linux"
-	export CHOST="$sysarch-uhu-linux"
-	export CBUILD="$sysarch-uhu-linux"
+	export CTARGET="x86_64-gnu-linux"
+	export CHOST="$buildsys-gnu-linux"
+	export CBUILD="$buildsys-gnu-linux"
 else
-	export CTARGET="i686-uhu-linux"
-	export CHOST="$sysarch-uhu-linux"
-	export CBUILD="$sysarch-uhu-linux"
+	export CTARGET="i686-gnu-linux"
+	export CHOST="$buildsys-gnu-linux"
+	export CBUILD="$buildsys-gnu-linux"
 fi
 
 cd build/workspaces
