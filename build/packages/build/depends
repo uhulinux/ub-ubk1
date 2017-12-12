@@ -1,4 +1,4 @@
 hunspell
-uhubuild-common >= 1.0.5
-uhubuild-here >= 1.0.5
-uhubuild-under-chroot >= 1.0.5
+uhubuild-common >= 1.1.7
+uhubuild-here >= 1.1.7
+uhubuild-under-chroot >= 1.1.7

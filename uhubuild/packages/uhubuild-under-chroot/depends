@@ -1,4 +1,4 @@
-apt
+apt >= 1.4.7
 coreutils
 diffutils
 dpkg >= 1.15.4
