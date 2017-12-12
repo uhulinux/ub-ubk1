@@ -1,4 +1,4 @@
-apt >= 1.4.7
+apt >= 1.1
 coreutils
 cpp
 diffutils
