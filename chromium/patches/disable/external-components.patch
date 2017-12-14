@@ -1,39 +1,26 @@
-author: Michael Gilbert <mgilbert@debian.org>
-description: disable loading external components
-
---- a/chrome/browser/extensions/external_component_loader.cc
-+++ b/chrome/browser/extensions/external_component_loader.cc
-@@ -38,33 +38,12 @@ ExternalComponentLoader::~ExternalCompon
+diff -Naur orig/chrome/browser/extensions/external_component_loader.cc patched/chrome/browser/extensions/external_component_loader.cc
+--- orig/chrome/browser/extensions/external_component_loader.cc	2017-12-06 21:05:23.000000000 +0100
++++ patched/chrome/browser/extensions/external_component_loader.cc	2017-12-08 02:04:26.512250970 +0100
+@@ -34,22 +34,6 @@
  
  void ExternalComponentLoader::StartLoading() {
-   prefs_.reset(new base::DictionaryValue());
+   auto prefs = std::make_unique<base::DictionaryValue>();
 -#if defined(GOOGLE_CHROME_BUILD)
--  AddExternalExtension(extension_misc::kInAppPaymentsSupportAppId);
+-  AddExternalExtension(extension_misc::kInAppPaymentsSupportAppId, prefs.get());
 -#endif  // defined(GOOGLE_CHROME_BUILD)
 -
 -  if (HotwordServiceFactory::IsHotwordAllowed(profile_))
--    AddExternalExtension(extension_misc::kHotwordSharedModuleId);
+-    AddExternalExtension(extension_misc::kHotwordSharedModuleId, prefs.get());
 -
 -#if defined(OS_CHROMEOS)
 -  {
 -    base::CommandLine* const command_line =
 -        base::CommandLine::ForCurrentProcess();
 -    if (!command_line->HasSwitch(chromeos::switches::kDisableNewZIPUnpacker))
--      AddExternalExtension(extension_misc::kZIPUnpackerExtensionId);
+-      AddExternalExtension(extension_misc::kZIPUnpackerExtensionId,
+-                           prefs.get());
 -  }
 -#endif
  
    if (media_router::MediaRouterEnabled(profile_) &&
        FeatureSwitch::load_media_router_component_extension()->IsEnabled()) {
-     AddExternalExtension(extension_misc::kMediaRouterStableExtensionId);
-   }
- 
--#if BUILDFLAG(ENABLE_APP_LIST) && defined(OS_CHROMEOS)
--  std::string google_now_extension_id;
--  if (GetGoogleNowExtensionId(&google_now_extension_id))
--    AddExternalExtension(google_now_extension_id);
--#endif
--
-   LoadFinished();
- }
- 

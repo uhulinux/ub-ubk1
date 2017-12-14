@@ -6,16 +6,16 @@ if [ $((`stat -f -c "%a" .`*`stat -f -c "%s" .`/(1024*1024*1024))) -lt 7 ]; then
 fi
 
 if [ "$UB_ARCH" == "amd64" ];then
-export CC="x86_64-gnu-linux-gcc"
-export CXX="x86_64-gnu-linux-g++"
-export AR="ar"
-export NM="nm"
+# export CC="x86_64-gnu-linux-gcc"
+# export CXX="x86_64-gnu-linux-g++"
+# export AR="ar"
+# export NM="nm"
 cpu="x64"
 else
-export CC="i686-gnu-linux-gcc"
-export CXX="i686-gnu-linux-g++"
-export AR="ar"
-export NM="nm"
+# export CC="i686-gnu-linux-gcc"
+# export CXX="i686-gnu-linux-g++"
+# export AR="ar"
+# export NM="nm"
 cpu="x86"
 fi
 
@@ -28,13 +28,13 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 # host_toolchain=\"//build/toolchain/linux/unbundle:host\"
 # v8_snapshot_toolchain=\"//build/toolchain/linux/unbundle:host\"
+# clang_base_path=\"/usr\"
 
 _flags=("
 host_cpu=\"${cpu}\"
 target_cpu=\"${cpu}\"
 is_debug=false
 is_clang=false
-clang_base_path=\"/usr\"
 clang_use_chrome_plugins=false
 linux_use_bundled_binutils=false
 fatal_linker_warnings=false

@@ -1,0 +1,11 @@
+diff -Naur orig/third_party/webrtc/p2p/base/port.cc patched/third_party/webrtc/p2p/base/port.cc
+--- orig/third_party/webrtc/p2p/base/port.cc	2017-12-06 21:06:48.000000000 +0100
++++ patched/third_party/webrtc/p2p/base/port.cc	2017-12-08 09:38:57.427838026 +0100
+@@ -11,6 +11,7 @@
+ #include "p2p/base/port.h"
+ 
+ #include <algorithm>
++#include <cmath>
+ #include <vector>
+ 
+ #include "p2p/base/common.h"

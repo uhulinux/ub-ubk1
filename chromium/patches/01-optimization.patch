@@ -1,7 +1,7 @@
 diff -Naur orig/build/config/compiler/BUILD.gn patched/build/config/compiler/BUILD.gn
 --- orig/build/config/compiler/BUILD.gn	2017-07-25 21:04:48.000000000 +0200
 +++ patched/build/config/compiler/BUILD.gn	2017-07-30 20:07:13.079852364 +0200
-@@ -1690,7 +1690,7 @@
+@@ -1752,7 +1752,7 @@
      } else if (optimize_for_fuzzing) {
        cflags = [ "-O1" ] + common_optimize_on_cflags
      } else {
