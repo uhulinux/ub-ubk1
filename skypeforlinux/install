@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+if [ "$UB_ARCH" == "amd64" ];then
+     cp -a usr "$UB_INSTALLDIR"/
+fi

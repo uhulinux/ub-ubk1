@@ -1,0 +1,7 @@
+#!/usr/bin/env dl
+
+#skypeforlinux_${UB_VERSION}_amd64.deb .
+#	https://repo.skype.com/deb/pool/main/s/skypeforlinux/
+
+skypeforlinux_${UB_VERSION/~/-}.x86_64.rpm .
+	https://repo.skype.com/rpm/stable/

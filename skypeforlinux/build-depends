@@ -1,0 +1,14 @@
+alsa-lib-dev
+dbus-dev
+gconf2-dev
+libsigc++-dev
+libx11-dev
+libxcursor-dev
+libxext-dev
+libxkbfile-dev
+libxrandr-dev
+libxscrnsaver-dev
+libxt-dev
+libxv-dev
+pulseaudio-dev
+qt4-dev
