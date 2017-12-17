@@ -1,0 +1,12 @@
+diff -Naur orig/lib/dpkg/dpkg.h patched/lib/dpkg/dpkg.h
+--- orig/lib/dpkg/dpkg.h	2017-02-22 22:50:39.134739579 +0100
++++ patched/lib/dpkg/dpkg.h	2017-12-14 01:57:53.527583034 +0100
+@@ -52,7 +52,7 @@
+ #define MAXCONFFILENAME     1000
+ #define MAXDIVERTFILENAME   1024
+ #define MAXCONTROLFILENAME  100
+-#define DEBEXT             ".deb"
++#define DEBEXT             ".ubk.uhu"
+ #define REMOVECONFFEXTS    "~", ".bak", "%", \
+                            DPKGTEMPEXT, DPKGNEWEXT, DPKGOLDEXT, DPKGDISTEXT
+ 

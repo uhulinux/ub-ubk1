@@ -1,7 +1,7 @@
 diff -Naur orig/src/prefs_common.c patched/src/prefs_common.c
---- orig/src/prefs_common.c	2017-03-26 15:06:18.094117103 +0200
-+++ patched/src/prefs_common.c	2017-03-26 15:12:29.604105629 +0200
-@@ -455,7 +455,7 @@
+--- orig/src/prefs_common.c	2017-12-17 14:05:29.420338840 +0100
++++ patched/src/prefs_common.c	2017-12-17 14:09:43.383380732 +0100
+@@ -450,7 +450,7 @@
  	{"msgview_date_format", "FALSE", &prefs_common.msgview_date_format, P_BOOL,
  	 NULL, NULL, NULL},
  

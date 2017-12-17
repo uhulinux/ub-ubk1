@@ -3,7 +3,7 @@
 @	/lib/*.so
 	/usr/include
 	/usr/lib/**/*.a
-	/usr/lib/**/*.la
-@	/usr/lib/**/*.so
 	/usr/lib/*/include
+	/usr/lib/**/*.la
 	/usr/lib/pkgconfig
+@	/usr/lib/**/*.so

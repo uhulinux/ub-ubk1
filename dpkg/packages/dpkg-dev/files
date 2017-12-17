@@ -31,6 +31,7 @@
 	/usr/share/man/**/man1/dpkg-shlibdeps.1
 	/usr/share/man/**/man1/dpkg-source.1
 	/usr/share/man/**/man1/dpkg-vendor.1
+	/usr/share/man/**/man5/deb.5
 	/usr/share/man/**/man5/deb-control.5
 	/usr/share/man/**/man5/deb-extra-override.5
 	/usr/share/man/**/man5/deb-old.5
@@ -43,4 +44,3 @@
 	/usr/share/man/**/man5/deb-symbols.5
 	/usr/share/man/**/man5/deb-triggers.5
 	/usr/share/man/**/man5/deb-version.5
-	/usr/share/man/**/man5/deb.5
