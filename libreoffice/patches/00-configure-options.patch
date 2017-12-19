@@ -44,7 +44,7 @@ diff -Naur orig/distro-configs/LibreOfficeUHU.conf patched/distro-configs/LibreO
 +--disable-firebird-sdbc
 +--disable-pdfimport
 +--enable-avahi
-+--disable-fetch-external
++--enable-fetch-external
 +--enable-gstreamer-1-0
 +--enable-postgresql-sdbc
 +--enable-python
