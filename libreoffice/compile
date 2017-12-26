@@ -29,6 +29,8 @@ else
 	)
 fi
 
+export QT5DIR=/usr/lib/qt5
+
 # ha van a distro-configs alatt megfelelő tartalmú .conf fájl, ekkor az
 # ./autogen.sh --with-distro=<conffile> is használható
 # a LibreOfficeUHU.conf fájlhoz

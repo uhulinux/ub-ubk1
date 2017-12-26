@@ -46,6 +46,7 @@ nss-dev
 openldap-dev
 perl-archive-zip
 python3-dev
+qt5-dev
 redland-dev
 sane-backends-dev
 startup-notification-dev
