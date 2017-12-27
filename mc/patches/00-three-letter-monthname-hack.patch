@@ -1,7 +1,7 @@
 diff -Naur orig/lib/timefmt.c patched/lib/timefmt.c
---- orig/lib/timefmt.c	2016-03-12 16:45:47.000000000 +0100
-+++ patched/lib/timefmt.c	2016-03-28 12:35:59.315558700 +0200
-@@ -143,7 +143,20 @@
+--- orig/lib/timefmt.c	2017-11-18 18:45:59.134739579 +0100
++++ patched/lib/timefmt.c	2017-12-27 17:52:19.098530882 +0100
+@@ -144,7 +144,20 @@
      else
          fmt = user_recent_timeformat;
  
@@ -24,8 +24,8 @@ diff -Naur orig/lib/timefmt.c patched/lib/timefmt.c
      return timebuf;
  }
 diff -Naur orig/lib/timefmt.h patched/lib/timefmt.h
---- orig/lib/timefmt.h	2016-03-12 16:45:47.000000000 +0100
-+++ patched/lib/timefmt.h	2016-03-28 12:35:59.315558700 +0200
+--- orig/lib/timefmt.h	2017-03-04 18:51:38.134739579 +0100
++++ patched/lib/timefmt.h	2017-12-27 17:52:19.098530882 +0100
 @@ -11,7 +11,7 @@
  
  /*** typedefs(not structures) and defined constants **********************************************/

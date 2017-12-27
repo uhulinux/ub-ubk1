@@ -4,7 +4,6 @@ ub_compile \
 	--with-screen=slang \
 	--enable-vfs       \
 	--enable-vfs-undelfs \
-	--enable-vfs-smbfs \
 	--enable-charset
 
 cd po
