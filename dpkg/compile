@@ -7,3 +7,6 @@ ub_compile \
 	--enable-start-stop-daemon \
 	--enable-update-alternatives \
 	--enable-disk-preallocate
+
+rm -f po/hu.gmo
+msgfmt po/hu.po -o po/hu.gmo
