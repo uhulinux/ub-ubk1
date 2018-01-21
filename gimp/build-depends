@@ -6,8 +6,8 @@ dbus-glib-dev
 gegl-dev
 ghostscript
 gpm-dev
-gtk-doc
 gtk2-dev
+gtk-doc
 intltool
 iso-codes
 jasper-dev
