@@ -3,4 +3,5 @@
 ub_compile \
 	-DCMAKE_PREFIX_PATH=/usr/lib/qt5 \
 	-DCMAKE_BUILD_TYPE=Release \
-	-DWITH_PYTHONQT=ON
+	-DWITH_PYTHONQT=ON \
+	-DCMAKE_INSTALL_LIBDIR=/usr/lib

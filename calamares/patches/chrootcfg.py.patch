@@ -1,7 +1,7 @@
 diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 --- orig/src/modules/chrootcfg/main.py	1970-01-01 01:00:00.000000000 +0100
-+++ mod/src/modules/chrootcfg/main.py	2017-11-30 14:50:06.598566918 +0100
-@@ -0,0 +1,144 @@
++++ mod/src/modules/chrootcfg/main.py	2018-01-25 21:00:01.691815721 +0100
+@@ -0,0 +1,146 @@
 +#!/usr/bin/env python3
 +# -*- coding: utf-8 -*-
 +#
@@ -73,7 +73,7 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +        global chrootdir, apt_options, dpkg_options, installcmd, pkgs
 +        chrootdir = self.root
 +        # Változók az apt működéséhez szükséges csomagok feltérképezéséhez
-+        minpkgs = "uhu-base apt dpkg diffutils findutils"
++        minpkgs = "uhu-base apt dpkg diffutils findutils packagekit"
 +        statusdir = "/var/lib/dpkg/status"
 +        empty_statusdir = "/var/lib/dpkg-empty/status"
 +        statedir = "/var/state/apt"
@@ -90,7 +90,7 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +        apt_empty_options = apt_empty_statusdir + apt_farokcucc
 +        apt_options = apt_statusdir + apt_farokcucc
 +        dpkg_options = " --root=" + chrootdir
-+        installcmd = "apt-get " + apt_options + " --yes --force-yes install "
++        installcmd = "apt-get " + apt_options + " --yes install "
 +
 +        # Igazi és üres dpkg adatbázis létrehozása
 +        # Hibakezelés kell még!
@@ -112,11 +112,13 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +    def chrootbuild(self):
 +        completed_packages = 0
 +        total = len(pkgs)
-+        for pkg in pkgs:
-+            os.system(installcmd + pkg)
-+            completed_packages = completed_packages + 1
-+            completed_ratio = completed_packages * 1.0 / total
-+            libcalamares.job.setprogress(completed_ratio)
++#        for pkg in pkgs:
++        pkg=' '.join(map(str, pkgs))
++        os.system(installcmd + pkg)
++#        completed_packages = completed_packages + 1
++        completed_packages = total
++        completed_ratio = completed_packages * 1.0 / total
++        libcalamares.job.setprogress(completed_ratio)
 +
 +    def chroot_apt_clean(self):
 +        os.system("chroot " + chrootdir + " /sbin/uhu-pkg postinst +")
