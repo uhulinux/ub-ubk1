@@ -1,260 +1,14 @@
-- name: "Critical"
-  description: "Critical group"
-  hidden: true
-  selected: true
-  critical: true
-  packages:
-    - aoetools
-    - cpio
-    - dbus-glib
-    - dbus-launch
-    - e2fsprogs
-    - elfutils
-    - hdparm
-    - iproute2
-    - iptables
-    - iputils
-    - joe
-    - libatasmart
-    - libidn
-    - libimobiledevice
-    - liblzo
-    - libmnl
-    - libnetfilter-conntrack
-    - libnfnetlink
-    - libplist
-    - mdadm
-    - mtools
-    - net-tools
-    - parted
-    - pciutils
-    - procps
-    - psmisc
-    - squashfs-tools
-    - sysfsutils
-    - tzdata
-    - uhu-initscripts
-    - upower
-    - usbmuxd
-    - usbutils
-    - xfsprogs
-    - btrfs-progs
-    - binutils
-    - dhcpcd
-    - fuse
-    - fuse-ntfs-3g
-    - grub
-    - gzip
-    - kbd
-    - less
-    - linuxconsole
-    - linux-firmware
-    - mkinitrd
-    - udisks2
-    - os-prober
-    - reiser4progs
-    - reiserfsprogs
-    - file
-    - finger
-    - glibc-locales
-    - udftools
-    - udisks
-    - which
-    - whois
-    - kernel
-
 - name: "Standard"
   description: "Standard group"
   hidden: true
   selected: true
   critical: false
   packages:
-    - adduser
-    - at
-    - bash-completion
-    - bc
-    - beecrypt
-    - bison
-    - chrony
-    - cron
-    - dhcp-client
-    - dhcp-server
-    - dmidecode
-    - dump
-    - ed
-    - flex
-    - fontforge
-    - gettext
-    - glib-networking
-    - gpm
-    - guile1.8
-    - hunspell
-    - hunspell-hu
-    - indent
-    - ispell
-    - jfsutils
-    - lesspipe
-    - libgssapi
-    - libgssglue
-    - libmbim
-    - libndp
-    - libnl
-    - libpcap
-    - libqmi
-    - libsoup
-    - libtirpc
-    - libtool
-    - libungif
-    - libx86
-    - libwacom
-    - libinput
-    - logrotate
-    - lsof
-    - lynx
-    - mc
-    - man-pages
-    - memtest86+
-    - mobile-broadband-provider-info
-    - modemmanager
-    - mpc
     - mysql-server
     - mysql-client
-    - networkmanager
-    - newt
-    - nfs-utils
-    - nss
-    - openslp
-    - openssh
-    - patch
-    - perl-timedate
-    - pm-utils
-    - postfix
-    - ppp
-    - quota
-    - make
-    - gcc
-    - radeontool
-    - recode
-    - rfkill
-    - rpcbind
-    - rp-pppoe
-    - rsync
-    - screen
-    - sharutils
-    - slang
-    - strace
-    - sudo
-    - tcl
-    - tcp-wrappers
-    - texinfo
-    - time
-    - traceroute
-    - trousers
-    - vbetool
-    - wireless-tools
-    - wpasupplicant
-    - xdelta
-# kellenek de nem standard és nem required
-    - libuser
-    - lsb-release
-    - nscd
-    - terminfo
-    - uhu-sysinfo
-    - usermode
-    - xdg-user-dirs
-    - xdg-utils
-  subgroups:
 
-    -   name: "packagers"
-        description: "Konsole packagers"
-        critical: false
-        selected: true
-        packages:
-        - zip
-        - unace
-        - unrar
-        - unzip
-        - 7zip
-        - cabextract
-        - rar
-        - rpm
-
-    -   name: "development tools"
-        description: "development tools"
-        critical: false
-        selected: true
-        packages:
-        - vi
-        - vim
-        - m4
-        - wget
-        - zsh
-        - tcsh
-        - gdb
-
-- name: "Konsole systemtools"
-  description: "Konsole systemtools"
-  critical: false
-  selected: true
-  packages:
-# konzolos systemtools
-    - apmd
-    - acpitool
-    - blktool
-    - bonnie++
-    - cdctl
-    - bridge-utils
-    - convmv
-    - dmidecode
-    - drbd-utils
-    - hashalot
-    - hddtemp
-    - irda-utils
-    - iscsitarget
-    - htop
-    - lsscsi
-    - mcrypt
-    - minicom
-    - ndiswrapper
-    - pam-ldap
-    - pam-smb
-    - powertop
-    - pretendroot
-    - psacct
-    - pwgen
-    - rdate
-    - rdiff-backup
-    - rng-tools
-    - schedtool
-    - sdparm
-    - setserial
-    - shash
-    - sortdir
-    - sysstat
-# tools
-    - tree
-    - trunc
-    - ttyrec
-    - zisofs-tools
-# nyomtató
-    - a2ps
-    - psutils
-    - min1200w
-    - mpage
-# hálózat/szerver
-    - bind
-    - bind-utils
-    - samba-server
-    - ethtool
-    - iperf
-    - ipsec-tools
-    - iptables-utils
-    - lftp
-    - tcpdump
-    - vblade
-
-- name: "Base felesleges"
-  description: "Base felesleges"
+- name: "Base vegyes"
+  description: "Base vegyes"
   critical: false
   selected: false
   packages:
@@ -273,7 +27,7 @@
   subgroups:
 
     -   name: "Konsole"
-        description: "Konsole felesleges"
+        description: "Konsole vegyes"
         critical: false
         selected: false
         packages:
@@ -285,7 +39,7 @@
         - ytalk
 
     -   name: "bootloaders"
-        description: "bootloaders felesleges"
+        description: "bootloaders vegyes"
         critical: false
         selected: false
         packages:
@@ -293,41 +47,28 @@
         - sbm
 
 - name: "Base unsorted"
-  description: "Base unsorted group"
+  description: "Base unsorted"
   critical: false
   selected: true
   subgroups:
 
     -   name: "Artwork"
-        description: "Base artwork group"
+        description: "Base artwork"
         critical: false
         selected: true
         packages:
         - cursor-theme-bluecurve
 
     -   name: "GNOME"
-        description: "Base GNOME group"
+        description: "Base GNOME"
         critical: false
         selected: true
         packages:
         - notification-daemon
         - rarian
 
-    -   name: "Fonts"
-        description: "Base fonts group"
-        critical: false
-        selected: true
-        packages:
-        - fonts-bitstream-vera
-        - fonts-dejavu
-        - fonts-freeware
-        - fonts-liberation
-        - fonts-libertine
-        - fonts-symbola
-        - fonts-unicode
-
     -   name: "tools"
-        description: "Base tools group"
+        description: "Base tools"
         critical: false
         selected: true
         packages:
@@ -335,7 +76,7 @@
         - xdg-user-dirs-gtk
 
     -   name: "Filesystems"
-        description: "Base filesystems group"
+        description: "Base filesystems"
         critical: false
         selected: true
         packages:
@@ -347,7 +88,7 @@
         - smartmontools
 
     -   name: "systemtools"
-        description: "Base systemtools group"
+        description: "Base systemtools"
         critical: false
         selected: true
         packages:
@@ -357,7 +98,7 @@
         - uhu-zeroconf
 
     -   name: "internet + connections"
-        description: "Base internet + connections group"
+        description: "Base internet + connections"
         critical: false
         selected: true
         packages:
@@ -383,34 +124,6 @@
         - wvdial
         - usb-modeswitch
         - x11vnc
-
-- name: "Development"
-  description: "Development"
-  critical: false
-  selected: true
-  packages:
-    - autoconf
-    - automake
-    - bzr
-    - ccache
-    - d-feet
-    - db4-utils
-    - diffstat
-    - desktop-file-utils
-    - dl
-    - gettext-tools
-    - git
-    - intltool
-    - ltrace
-    - man-db
-    - mercurial
-    - patchutils
-    - pkgconfig
-    - strace
-    - subversion
-    - uhubuild-here
-    - uhubuild-under-chroot
-    - uhu-pkgutils
 
 - name: "Graphics"
   description: "Graphics"
