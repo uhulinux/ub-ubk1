@@ -85,7 +85,7 @@ diff -Nur orig/src/modules/chrootcfg/main.py mod/src/modules/chrootcfg/main.py
 +        apt_statedir = " -o Dir::State=" + chrootdir + statedir
 +        apt_cachedir = " -o Dir::Cache=" + chrootdir + cachedir
 +        apt_noimmconf = " -o APT::Immediate-Configure=false"
-+        apt_farok = apt_chrootdir + apt_statedir + apt_cachedir + apt_noimconf
++        apt_farok = apt_chrootdir + apt_statedir + apt_cachedir + apt_noimmconf
 +        apt_empty_options = apt_empty_statusdir + apt_farok
 +        apt_options = apt_statusdir + apt_farok
 +        dpkg_options = " --root=" + chrootdir
