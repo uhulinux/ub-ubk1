@@ -1,16 +1,13 @@
 diff -Naur orig/chrome/browser/extensions/external_component_loader.cc patched/chrome/browser/extensions/external_component_loader.cc
---- orig/chrome/browser/extensions/external_component_loader.cc	2017-12-06 21:05:23.000000000 +0100
-+++ patched/chrome/browser/extensions/external_component_loader.cc	2017-12-08 02:04:26.512250970 +0100
-@@ -34,22 +34,6 @@
+--- orig/chrome/browser/extensions/external_component_loader.cc	2018-01-24 21:05:41.000000000 +0100
++++ patched/chrome/browser/extensions/external_component_loader.cc	2018-01-27 01:16:59.413126066 +0100
+@@ -31,19 +31,6 @@
  
  void ExternalComponentLoader::StartLoading() {
    auto prefs = std::make_unique<base::DictionaryValue>();
 -#if defined(GOOGLE_CHROME_BUILD)
 -  AddExternalExtension(extension_misc::kInAppPaymentsSupportAppId, prefs.get());
 -#endif  // defined(GOOGLE_CHROME_BUILD)
--
--  if (HotwordServiceFactory::IsHotwordAllowed(profile_))
--    AddExternalExtension(extension_misc::kHotwordSharedModuleId, prefs.get());
 -
 -#if defined(OS_CHROMEOS)
 -  {

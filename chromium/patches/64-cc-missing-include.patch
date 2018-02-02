@@ -1,0 +1,11 @@
+diff -Naur orig/cc/paint/raw_memory_transfer_cache_entry.cc patched/cc/paint/raw_memory_transfer_cache_entry.cc
+--- orig/cc/paint/raw_memory_transfer_cache_entry.cc	2018-01-24 21:05:39.000000000 +0100
++++ patched/cc/paint/raw_memory_transfer_cache_entry.cc	2018-01-27 13:16:28.596602576 +0100
+@@ -2,6 +2,7 @@
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
++#include <cstring>
+ #include "cc/paint/raw_memory_transfer_cache_entry.h"
+ 
+ namespace cc {
