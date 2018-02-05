@@ -18,7 +18,6 @@ cp -p "$UB_COMPILEDIR"/posix/gai.conf    "$UB_INSTALLDIR"/etc/
 
 rm -f "$UB_INSTALLDIR"/etc/ld.so.cache
 rm -f "$UB_INSTALLDIR"/usr/libexec/pt_chown
-rm -f "$UB_INSTALLDIR"/usr/bin/tzselect
 
 # install nscd init scripts
 mkdir -p "$UB_INSTALLDIR"/usr/lib/tmpfiles.d/
