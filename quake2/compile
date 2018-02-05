@@ -1,5 +1,11 @@
 #!/bin/sh -eux
 
+if [ "$UB_ARCH" == "amd64" ];then
+export ARCH="x86_64"
+else
+export ARCH="i386"
+fi
+
 make \
   SDLDIR=/usr/lib \
   BUILD_X11=YES \
