@@ -1,0 +1,11 @@
+diff -Nur orig/bin/frozen-bubble mod/bin/frozen-bubble
+--- orig/bin/frozen-bubble	2018-02-07 19:27:43.000000000 +0100
++++ mod/bin/frozen-bubble	2018-02-07 20:46:42.912458539 +0100
+@@ -35,6 +35,7 @@
+ 
+ #use diagnostics;
+ use strict;
++use lib '/usr/lib/perl5/5.22.2/IO';
+ 
+ use vars qw($TARGET_ANIM_SPEED $BUBBLE_SIZE $ROW_SIZE $LAUNCHER_SPEED $BUBBLE_SPEED $MALUS_BUBBLE_SPEED $TIME_APPEARS_NEW_ROOT
+             %POS %POS_1P %POS_2P %MENUPOS $KEYS %actions %angle %pdata $app %apprects $event %rects %sticked_bubbles %root_bubbles
