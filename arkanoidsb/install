@@ -1,7 +1,30 @@
 #!/bin/sh -eux
 
-dataroot="$UB_INSTALLDIR"/usr/share/games/arkanoidsb
-mkdir -p $dataroot
-cp -R * "$dataroot"/
-rm "$dataroot"/README #hogy ne legyen két helyen
-chmod +rx "$dataroot"/{*,res/*}
+if [ "$UB_ARCH" == "i386" ];then
+    dataroot="$UB_INSTALLDIR"/usr/share/games/arkanoidsb
+    mkdir -p $dataroot
+    cp -R * "$dataroot"/
+    rm "$dataroot"/README #hogy ne legyen két helyen
+    chmod +rx "$dataroot"/{*,res/*}
+    #desktop
+    desktopfile=$UB_INSTALLDIR/usr/share/applications/arkanoidsb.desktop
+    echo '[Desktop Entry]' >> $desktopfile
+    echo 'Type=Application' >> $desktopfile
+    echo 'Name=Arkanoidsb' >> $desktopfile
+    echo 'GenericName=Arkanoid Space Ball' >> $desktopfile
+    echo 'GenericName[hu]=Arkanoid űrlabda' >> $desktopfile
+    echo 'Comment=New generation of arkanoid style game.' >> $desktopfile
+    echo 'Comment[hu]=Arkanoid játék új nemzedék' >> $desktopfile
+    echo 'Exec=arkanoidsb' >> $desktopfile
+    echo 'Categories=Game;ArcadeGame;' >> $desktopfile
+    echo 'Icon=/usr/share/games/arkanoidsb/arkanoidsb.png' >> $desktopfile
+    # indító
+    binfile=$UB_INSTALLDIR/usr/bin/arkanoidsb
+    echo '#!/bin/bash' >> $binfile
+    echo cd /usr/share/games/arkanoidsb >> $binfile
+    echo ./arkanoidsb -w >> $binfile
+    chmod +x $binfile
+else
+rm $UB_SRCDIR/packages/arkanoidsb/depends
+touch $UB_SRCDIR/packages/arkanoidsb/depends
+fi
