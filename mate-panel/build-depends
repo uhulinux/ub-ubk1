@@ -9,7 +9,6 @@ libmateweather-dev
 librsvg-dev
 libsm-dev
 libwnck-dev
-mate-common
 mate-desktop-dev
 mate-menus-dev
 networkmanager-dev

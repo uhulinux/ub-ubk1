@@ -2,5 +2,4 @@ gtk-dev
 intltool
 libsoup-dev
 libxml2-dev
-mate-common
 tzdata

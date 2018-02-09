@@ -4,7 +4,6 @@ itstool
 libcanberra-dev
 libmatemixer-dev
 libxslt-dev
-mate-common
 mate-desktop-dev
 mate-panel-dev
 pulseaudio-dev

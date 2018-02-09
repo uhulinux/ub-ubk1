@@ -10,7 +10,6 @@ libsm-dev
 libspectre-dev
 libtiff-dev
 libxml2-dev
-mate-common
 mate-desktop-dev
 mate-icon-theme
 poppler-glib-dev

@@ -7,7 +7,6 @@ libnotify-dev
 libxnvctrl
 libxslt-dev
 lmsensors-dev
-mate-common
 mate-panel-dev
 openssl-dev
 systemd-dev

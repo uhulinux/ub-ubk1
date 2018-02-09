@@ -8,6 +8,5 @@ libjpeg-turbo-dev
 libnotify-dev
 libsm-dev
 libxml2-dev
-mate-common
 mate-desktop-dev
 xcb-util-dev
