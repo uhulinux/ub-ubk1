@@ -5,7 +5,6 @@ gtk-dev
 intltool
 itstool
 libsm-dev
-mate-common
 rarian-dev
 startup-notification-dev
 xcb-util-dev

@@ -7,7 +7,6 @@ librsvg-dev
 libsm-dev
 libwnck-dev
 libxslt-dev
-mate-common
 mate-icon-theme
 systemd-dev
 xcb-util-dev

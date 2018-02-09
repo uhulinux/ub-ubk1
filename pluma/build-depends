@@ -5,7 +5,6 @@ iso-codes
 itstool
 libpeas-dev
 libsm-dev
-mate-common
 mate-desktop-dev
 xcb-util-dev
 yelp-tools

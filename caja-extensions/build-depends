@@ -3,7 +3,6 @@ dbus-glib-dev
 gtk-dev
 gupnp-dev
 intltool
-mate-common
 mate-desktop-dev
 util-linux-dev
 xcb-util-dev

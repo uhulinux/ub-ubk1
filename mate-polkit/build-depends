@@ -1,6 +1,5 @@
 gobject-introspection-dev
 gtk-dev
 intltool
-mate-common
 polkit-dev
 systemd-dev

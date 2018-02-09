@@ -10,7 +10,6 @@ libjpeg-turbo-dev
 libpeas-dev
 librsvg-dev
 libsm-dev
-mate-common
 mate-desktop-dev
 mate-icon-theme
 util-linux-dev

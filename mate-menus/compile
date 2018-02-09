@@ -1,8 +1,5 @@
 #!/bin/sh -eux
 
-if [ -f autogen.sh ]; then
-	NOCONFIGURE=1 ./autogen.sh
-fi
-
+NOCONFIGURE=1 ./autogen.sh
 ub_compile \
 	--enable-deprecation-flags

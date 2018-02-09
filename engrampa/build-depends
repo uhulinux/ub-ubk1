@@ -5,5 +5,4 @@ itstool
 json-glib-dev
 libsm-dev
 libxslt-dev
-mate-common
 yelp-tools
