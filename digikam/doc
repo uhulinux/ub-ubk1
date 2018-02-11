@@ -2,6 +2,6 @@ COPYING
 COPYING.LIB
 core/AUTHORS
 core/NEWS
-core/README
+core/README.md
 core/TODO
 doc/COPYING.DOC

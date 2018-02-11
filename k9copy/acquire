@@ -3,4 +3,4 @@
 # saját forrás: nem jön le http-n, plusz az eredeti csak tar, nem tar.gz
 
 k9copy-${UB_VERSION}.tar.gz k9copy/
-	ftp://download.ubk.hu/src/misc/
+	http://download.ubk.hu/src/misc/
