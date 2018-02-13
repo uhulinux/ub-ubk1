@@ -1,9 +1,13 @@
+kdiagram
 grantlee
 grantleetheme
+syndication
 kcalcore
 kcontacts
 kontactinterface
+kdav
 kmime
+ksmtp
 kimap
 akonadi
 akonadi-mime
@@ -28,13 +32,11 @@ messagelib
 mailcommon
 akonadi-calendar
 calendarsupport
-kdiagram
 eventviews
 incidenceeditor
 libkgapi
 kdepim-addons
 kalarmcal
-kdav
 kdepim-runtime
 pim-data-exporter
 kmail
@@ -43,7 +45,6 @@ mbox-importer
 akonadi-calendar-tools
 akonadiconsole
 akonadi-import-wizard
-syndication
 akregator
 kaddressbook
 kjots

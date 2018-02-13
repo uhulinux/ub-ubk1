@@ -27,6 +27,7 @@ ktorrent
 skanlite
 yakuake
 k9copy
+kdenlive
 libkpmcore
 kpartitionmanager
 k3b

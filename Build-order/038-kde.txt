@@ -67,8 +67,9 @@ kdeclarative
 kcmutils
 kactivities
 kactivities-stats
-plasma-framework
 kirigami2
+qqc2-desktop-style
+plasma-framework
 krunner
 kdelibs4support
 kjs
@@ -99,7 +100,6 @@ kwayland-integration
 kwin
 milou
 oxygen
-plasma-mediacenter
 plasma-nm
 plasma-pa
 plasma-integration
