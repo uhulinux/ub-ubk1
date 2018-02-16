@@ -138,6 +138,7 @@ pyatspi
 pycodestyle
 pykaraoke
 python-apt
+python-cycler
 python-matplotlib
 python-notify
 python-pbr

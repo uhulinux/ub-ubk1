@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-matplotlib-${UB_VERSION}.tar.gz matplotlib-${UB_VERSION}/
-	http://pypi.python.org/packages/source/m/matplotlib/
+matplotlib-${UB_VERSION}.tar.gz matplotlib-${UB_VERSION}/ :py2
+	https://pypi.org/packages/source/m/matplotlib/

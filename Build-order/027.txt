@@ -34,3 +34,5 @@ gnome-applets
 totem
 gnome-terminal
 gnome-initial-setup
+gst-validate
+gst-transcoder
