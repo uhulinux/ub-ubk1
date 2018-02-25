@@ -2,8 +2,9 @@ gst-plugins-bad
 gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
-gst-python
-python
-python-lxml
-python-setuptools
-pyxdg
+gtk-dev
+python3
+python3-gst
+python3-lxml
+python3-setuptools
+python3-xdg
