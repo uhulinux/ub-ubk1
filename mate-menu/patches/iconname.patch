@@ -1,7 +1,7 @@
 diff -Naur orig/mate_menu/easybuttons.py patched/mate_menu/easybuttons.py
 --- orig/mate_menu/easybuttons.py	2015-12-15 00:47:17.000000000 +0100
 +++ patched/mate_menu/easybuttons.py	2015-12-19 05:52:10.335117409 +0100
-@@ -218,11 +218,11 @@
+@@ -229,11 +229,11 @@
  
      def getIcon ( self, iconSize ):
          if not self.iconName:
