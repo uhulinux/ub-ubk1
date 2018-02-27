@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-headoverheels-${UB_VERSION}.tar.gz HeadOverHeels-c9fd60e/
-	git://github.com/dougmencken/HeadOverHeels.git@c9fd60e
+headoverheels-${UB_VERSION}.tar.gz HeadOverHeels-1bb01dd/
+	git://github.com/dougmencken/HeadOverHeels.git@1bb01dd

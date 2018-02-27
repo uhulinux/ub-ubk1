@@ -1,0 +1,12 @@
+diff -Naur HeadOverHeels-f6940c2/src/gui/Screen.hpp patched/src/gui/Screen.hpp
+--- HeadOverHeels-f6940c2/src/gui/Screen.hpp	2018-02-26 21:49:49.000000000 +0100
++++ patched/src/gui/Screen.hpp	2018-02-27 09:00:24.835751969 +0100
+@@ -14,7 +14,7 @@
+ #include <list>
+ #include <allegro.h>
+ #include "Widget.hpp"
+-
++#include <algorithm>
+ 
+ namespace gui
+ {
