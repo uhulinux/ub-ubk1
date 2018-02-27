@@ -1,12 +1,8 @@
-gcc
-glibc-dev
 gpm-dev
 libsigc++-dev
-libstdc++-dev
-libt3key
-libt3window
-libtool
-libtranscript
+libt3key-dev
+libt3window-dev
+libtranscript-dev
 libunistring-dev
 libxau-dev
 libxcb-dev
