@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-griffith-${UB_VERSION}.tar.xz griffith-${UB_VERSION}/
-	http://launchpad.net/griffith/trunk/${UB_VERSION}/+download/
+archive.tar.gz griffith-${UB_VERSION}-05b5803f770818d6309b0946e77de6e523b51fc9/
+	https://gitlab.com/Strit/griffith/repository/${UB_VERSION}/
