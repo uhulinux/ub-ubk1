@@ -5,7 +5,6 @@ dbus-glib-dev
 gtk2-dev
 gtk-dev
 hunspell-dev
-libevent-dev
 libidl2-dev
 libjpeg-turbo-dev
 libnotify-dev
