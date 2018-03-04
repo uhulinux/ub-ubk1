@@ -57,7 +57,8 @@ lmarbles
 ltris
 lbreakout
 njam
-enemy-territory
+enemy-territory-data
+etlegacy
 jumpnbump
 pysol-sound-server
 xdaliclock
