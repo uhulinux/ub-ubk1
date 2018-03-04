@@ -13,7 +13,7 @@ export LDFLAGS="-Wl,-rpath,/usr/lib/firefox/ -Wl,--no-keep-memory -Wl,-z,relro -
 # új opciók:
 # --disable-clang-plugin
 # --disable-stylo : 32 biten alapból tiltva a rust bindgen miatt,
-#					de 64 biten külön tiltni kell
+#					de 64 biten külön tiltani kell
 : > .mozconfig
 cat > .mozconfig << _EOF_
 ac_add_options --host='i686-gnu-linux'
