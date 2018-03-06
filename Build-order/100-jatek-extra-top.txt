@@ -87,7 +87,6 @@ gtklife
 dreamchess
 heroes
 simutrans
-deflektor
 sdl-sopwith
 xblast
 quake2
