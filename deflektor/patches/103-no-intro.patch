@@ -1,0 +1,20 @@
+diff -Nur orig/deflektor.c mod/deflektor.c
+--- orig/deflektor.c	2008-06-09 00:16:38.000000000 +0200
++++ mod/deflektor.c	2018-03-06 08:03:36.707895298 +0100
+@@ -87,13 +87,13 @@
+  // Esperamos un segundo sin hacer nada para que de tiempo a establecer el modo gráfico
+  clear_bitmap(buffer);
+  for(f=0;f<38;f++)
+-  {
+-   fm_volcar();
++ {
++  fm_volcar();
+   }
+ 
+  leer_cfg();
+  leer_pnt();
+- intro();
++ //intro();
+ 
+  menu_principal();
+ 
