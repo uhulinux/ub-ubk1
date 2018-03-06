@@ -1,7 +1,0 @@
-#!/usr/bin/env dl
-
-BitTorrent-${UB_VERSION}-GPL.tar.gz BitTorrent-${UB_VERSION}-GPL/BitTorrent_mainline_library_python.tar python_bt_codebase_library/
-	ftp://82.162.138.211/pub/Install/BitTorrent/linux/
-
-BitTorrent-${UB_VERSION}-GPL.tar.gz BitTorrent-${UB_VERSION}-GPL/BitTorrent_mainline_python.tar python_bt_codebase/
-	ftp://82.162.138.211/pub/Install/BitTorrent/linux/
