@@ -1,6 +1,6 @@
-diff -Nur orig/audio.c mod/audio.c
+diff -Naur orig/audio.c mod/audio.c
 --- orig/audio.c	2006-02-04 18:02:46.000000000 +0100
-+++ mod/audio.c	2016-08-02 23:36:49.358591965 +0200
++++ mod/audio.c	2013-06-25 20:19:50.000000000 +0200
 @@ -42,8 +42,8 @@
   FMOD_System_Create(&sistema);
   FMOD_System_Init(sistema, 16, FMOD_INIT_NORMAL, NULL);
@@ -12,10 +12,10 @@ diff -Nur orig/audio.c mod/audio.c
  }
  
  //******************************************************************************
-diff -Nur orig/deflektor.c mod/deflektor.c
+diff -Naur orig/deflektor.c mod/deflektor.c
 --- orig/deflektor.c	2008-06-09 00:16:38.000000000 +0200
-+++ mod/deflektor.c	2016-08-02 23:43:49.441095925 +0200
-@@ -132,8 +132,9 @@
++++ mod/deflektor.c	2013-06-25 20:15:04.000000000 +0200
+@@ -132,8 +132,8 @@
   set_display_switch_mode(SWITCH_AMNESIA);
   set_trans_blender(0,0,0,240);
   clear_bitmap(buffer=create_bitmap(RES_X,RES_Y));
@@ -23,11 +23,10 @@ diff -Nur orig/deflektor.c mod/deflektor.c
 - f_fnt=load_datafile("fuentes.dat");
 + f_grf=load_datafile("/usr/share/games/deflektor/grf.dat");
 + f_fnt=load_datafile("/usr/share/games/deflektor/fuentes.dat");
-+
   for(l=0;l<=IMG_X*IMG_Y;loseta[l++]=NULL);
  
   borde[0]=(BITMAP *)(f_grf[0].dat);
-@@ -165,7 +166,7 @@
+@@ -165,7 +165,7 @@
   char no_encontrado=0;
   PACKFILE *f_dat=NULL;
  
@@ -36,7 +35,7 @@ diff -Nur orig/deflektor.c mod/deflektor.c
     pack_fclose(f_dat);
   else
    {
-@@ -173,7 +174,7 @@
+@@ -173,7 +173,7 @@
     allegro_message("ERROR: fichero grf.dat no encontrado\nERROR: file grf.dat not found");
    }
  
@@ -45,7 +44,7 @@ diff -Nur orig/deflektor.c mod/deflektor.c
     pack_fclose(f_dat);
   else
    {
-@@ -181,7 +182,7 @@
+@@ -181,7 +181,7 @@
     allegro_message("ERROR: fichero fuentes.dat no encontrado\nERROR: file fuentes.dat not found");
    }
  
@@ -54,7 +53,7 @@ diff -Nur orig/deflektor.c mod/deflektor.c
     pack_fclose(f_dat);
   else
    {
-@@ -189,7 +190,7 @@
+@@ -189,7 +189,7 @@
     allegro_message("ERROR: fichero intro.dat no encontrado\nERROR: file intro.dat not found");
    }
  
@@ -63,7 +62,7 @@ diff -Nur orig/deflektor.c mod/deflektor.c
     pack_fclose(f_dat);
   else
    {
-@@ -197,7 +198,7 @@
+@@ -197,7 +197,7 @@
     allegro_message("ERROR: fichero msc.dat no encontrado\nERROR: file msc.dat not found");
    }
  
@@ -72,40 +71,16 @@ diff -Nur orig/deflektor.c mod/deflektor.c
     pack_fclose(f_dat);
   else
    {
-@@ -965,7 +966,7 @@
+@@ -965,7 +965,7 @@
   short x,y,contador;
   BITMAP *mapa_intro=NULL;
   char voz=-1;
 - DATAFILE *f_intro=load_datafile("intro.dat");
-+ DATAFILE *f_intro=load_datafile("/usr/share/games/deflektorintro.dat");
++ DATAFILE *f_intro=load_datafile("/usr/share/games/deflektor/intro.dat");
  
   parar_musica();
   mapa_intro=(BITMAP *)(f_intro[0].dat);
-@@ -1051,12 +1052,12 @@
-  if(juego_pausado)
-   {
-    juego_pausado=0;
--   dlg_cambiar_texto_boton(1,0,idioma==0?"Pausa":"Pause");
-+   dlg_cambiar_texto_boton(1,0,"Pause");
-    return 0;
-   }
- 
-  juego_pausado=1;
-- dlg_cambiar_texto_boton(1,0,idioma==0?"Seguir":"Go on");
-+ dlg_cambiar_texto_boton(1,0,"Go on");
- 
-  do
-   {
-@@ -1076,7 +1077,7 @@
-  else
-   {// Se sale del juego
-    juego_pausado=0;
--   dlg_cambiar_texto_boton(1,0,idioma==0?"Pausa":"Pause");
-+   dlg_cambiar_texto_boton(1,0,"Pause");
-   }
- 
-  return salir;
-@@ -1190,7 +1191,7 @@
+@@ -1190,7 +1190,7 @@
  //******************************************************************************
  void leer_cfg(void)
  {
@@ -114,7 +89,7 @@ diff -Nur orig/deflektor.c mod/deflektor.c
  
   if(cfg)
    {
-@@ -1230,7 +1231,7 @@
+@@ -1230,7 +1230,7 @@
  //******************************************************************************
  void escribir_cfg(void)
  {
@@ -123,7 +98,7 @@ diff -Nur orig/deflektor.c mod/deflektor.c
   pack_fwrite(&idioma, sizeof(char), cfg);
   pack_fwrite(&volson, sizeof(char), cfg);
   pack_fwrite(&volmus, sizeof(char), cfg);
-@@ -1247,7 +1248,7 @@
+@@ -1247,7 +1247,7 @@
   short f;
   int fin, pot;
   char c;
@@ -132,7 +107,7 @@ diff -Nur orig/deflektor.c mod/deflektor.c
  
   for(f=0;f<29*9;max_txt[f++]=0);
   for(f=0;f<9;   max_pnt[f++]=0);
-@@ -1280,7 +1281,7 @@
+@@ -1280,7 +1280,7 @@
  void escribir_pnt(void)
  {
   char f,n;
@@ -141,18 +116,3 @@ diff -Nur orig/deflektor.c mod/deflektor.c
  
   for(f=0;f<9 && max_pnt[f];f++)
    {
-diff -Nur orig/internet.c mod/internet.c
---- orig/internet.c	2006-03-17 19:51:12.000000000 +0100
-+++ mod/internet.c	2016-08-02 23:35:49.370594348 +0200
-@@ -3,9 +3,9 @@
- #include "stdio.h"
- 
- // USE HERE THE PROPER DEFINITION FOR THE OS YOU ARE COMPILING DEFLEKTOR ON 
--#define DEFL_WIN // Windows
-+//#define DEFL_WIN // Windows
- //#define DEFL_MAC // Macintosh
--//#define DEFL_LNX // Linux
-+#define DEFL_LNX // Linux
- //#define DEFL_OTR // Other
- 
- #ifdef DEFL_WIN

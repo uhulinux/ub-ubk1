@@ -1,3 +1,5 @@
 #!/bin/bash
 
-  padsp deflektor.bin "$@"
+cd /usr/share/games/deflektor
+
+padsp ./deflektor "$@"
