@@ -22,7 +22,6 @@ bitchx
 fetchmail
 mailx
 whois
-genesis
 nrpe
 wput
 emesene
