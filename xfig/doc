@@ -1,7 +1,6 @@
 CHANGES
-Doc/FORMAT*
-Doc/TODO
-Doc/xfig-howto.pdf
+doc/FORMAT*
+doc/TODO
+doc/xfig-howto.pdf
 FIGAPPS
-LATEX.AND.XFIG
 README

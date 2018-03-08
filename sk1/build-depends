@@ -1,7 +1,6 @@
+imagemagick-dev
 lcms2-dev
-libxcursor-dev
-libxext-dev
+pango-dev
 pycairo-dev
 python-dev
-tcl-dev
-tk-dev
+python-setuptools

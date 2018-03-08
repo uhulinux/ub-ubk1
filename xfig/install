@@ -6,11 +6,6 @@ make \
 	LIBDIR=/usr/share \
 	MANDIR=/usr/share/man/man1 \
 	XAPPLOADDIR=/usr/share/X11/app-defaults \
-install.all
+install
 
-#rm "${UB_INSTALLDIR}/usr/share/app-defaults"
-find "${UB_INSTALLDIR}/usr/share/xfig/Libraries" -type f -exec chmod 0644 {} \;
-find "${UB_INSTALLDIR}/usr/share/xfig/Libraries" -type d -exec chmod 0755 {} \;
-find "${UB_INSTALLDIR}/usr/share/doc/xfig" -type f -exec chmod 0644 {} \;
-find "${UB_INSTALLDIR}/usr/share/doc/xfig" -type d -exec chmod 0755 {} \;
 mv "$UB_INSTALLDIR"/usr/bin/xfig "$UB_INSTALLDIR"/usr/bin/xfig.bin

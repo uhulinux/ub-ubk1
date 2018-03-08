@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-xfig.${UB_VERSION}.full.tar.gz xfig.${UB_VERSION}/
+xfig-${UB_VERSION}.tar.xz xfig-${UB_VERSION}/
 	http://downloads.sourceforge.net/mcj/
-	ftp://epb.lbl.gov/xfig/

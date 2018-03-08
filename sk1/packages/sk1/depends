@@ -1,5 +1,5 @@
 pycairo
-pygtk
+pycups
 python-pillow
-python-tkinter
 reportlab
+wxpython
