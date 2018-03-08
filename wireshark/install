@@ -1,18 +1,4 @@
 #!/bin/sh -eux
 
 ub_install
-
-install -D -m 644 wireshark.desktop "$UB_INSTALLDIR"/usr/share/applications/
-
-export python_sitedir=`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))"`
-mkdir -p "$UB_INSTALLDIR""$python_sitedir"
-install -m644 tools/wireshark_be.py tools/wireshark_gen.py "$UB_INSTALLDIR""$python_sitedir"/
-
-for quality in hi lo; do
-	for size in 16 32 48; do
-		install -D -m 644 image/${quality}${size}-app-wireshark.png \
-		  "$UB_INSTALLDIR"/usr/share/icons/${quality}color/${size}x${size}/apps/wireshark.png
-	done
-done
-
-mv "$UB_INSTALLDIR"/usr/bin/* "$UB_INSTALLDIR"/usr/sbin/
+mv "$UB_INSTALLDIR"/usr/bin/* "$UB_INSTALLDIR"/usr/sbin

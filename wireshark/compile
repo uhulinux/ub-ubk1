@@ -1,8 +1,4 @@
 #!/bin/sh -eux
 
-rm -rf CMakeLists.txt
-./autogen.sh
 ub_compile \
-	--with-ssl \
-	--with-lua \
-	--with-gtk=3
+    -DCMAKE_PREFIX_PATH=/usr/lib/qt5
