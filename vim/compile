@@ -4,9 +4,10 @@
 
 ub_configure \
 	--enable-multibyte \
+	--with-compiledby='UHU-Linux' \
 	--disable-gpm \
-	--without-x \
-	--enable-gui=no
+	--with-x=no \
+	--disable-gui
 ub_make \
 	VIMRCLOC=/etc \
 	VIMRUNTIMEDIR='$(VIMRTLOC)' \
@@ -19,8 +20,20 @@ install src/vim Install/vi
 
 ub_configure \
 	--enable-multibyte \
-	--without-x \
-	--enable-gui=no
+	--with-compiledby='UHU-Linux' \
+	--with-x=no \
+	--disable-gui \
+	--enable-features=huge \
+	--enable-gpm \
+	--enable-acl \
+	--enable-cscope \
+	--enable-netbeams \
+	--enable-perlinterp=dynamic \
+	--enable-pythoninterp=dynamic \
+	--enable-python3interp=dynamic \
+	--enable-rubyinterp=dynamic \
+	--enable-luainterp=dynamic \
+	--enable-tclinterp=dynamic
 ub_make \
 	VIMRCLOC=/etc \
 	VIMRUNTIMEDIR='$(VIMRTLOC)' \
@@ -31,7 +44,21 @@ install src/vim Install/vim
 # Végül a komoly verzió (leendő /usr/bin/gvim): gpm, X, gtk.
 
 ub_configure \
-	--enable-multibyte
+	--enable-multibyte \
+	--with-compiledby='UHU-Linux' \
+	--with-x=yes \
+	--enable-gui=gtk3 \
+	--enable-features=huge \
+	--enable-gpm \
+	--enable-acl \
+	--enable-cscope \
+	--enable-netbeams \
+	--enable-perlinterp=dynamic \
+	--enable-pythoninterp=dynamic \
+	--enable-python3interp=dynamic \
+	--enable-rubyinterp=dynamic \
+	--enable-luainterp=dynamic \
+	--enable-tclinterp=dynamic
 ub_make \
 	VIMRCLOC=/etc \
 	VIMRUNTIMEDIR='$(VIMRTLOC)' \

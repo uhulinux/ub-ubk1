@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=GVim
-Comment=Vi IMproved, graphical version
-Comment[hu]=Vim, grafikus felület
-Icon=/usr/share/pixmaps/vim_small.gif
-Exec=gvim %F
-Categories=Utility;TextEditor;
