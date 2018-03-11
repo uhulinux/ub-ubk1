@@ -146,3 +146,5 @@ python-sqlalchemy-migrate
 python-stevedore
 xmldiff
 pdfminer
+python-regex
+python-html5-parser
