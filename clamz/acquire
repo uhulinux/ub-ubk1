@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-clamz_${UB_VERSION}.orig.tar.gz clamz-${UB_VERSION}/
-	http://ftp.debian.org/debian/pool/main/c/clamz/

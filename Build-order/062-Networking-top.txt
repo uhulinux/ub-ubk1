@@ -29,7 +29,6 @@ irssi
 deluge
 ytalk
 qbittorrent
-clamz
 stunnel
 lftp
 nmap
