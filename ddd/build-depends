@@ -1,7 +1,6 @@
 freetype2-dev
-lesstif
-lesstif-dev
 libx11-dev
 libxext-dev
 libxmu-dev
 libxt-dev
+openmotif-dev

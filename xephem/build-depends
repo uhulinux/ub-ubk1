@@ -1,5 +1,5 @@
 groff
-lesstif-dev
 libxmu-dev
 libxp-dev
+openmotif-dev
 tzdata

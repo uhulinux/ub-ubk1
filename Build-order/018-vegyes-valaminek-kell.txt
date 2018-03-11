@@ -217,7 +217,7 @@ openal
 udisks2
 upower
 fox1.6
-lesstif
+openmotif
 recordmydesktop
 zeitgeist
 graphicsmagick
