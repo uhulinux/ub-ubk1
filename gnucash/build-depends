@@ -1,5 +1,5 @@
 goffice08-dev
-guile-dev
+guile1.8-dev
 intltool
 libatomic-ops-dev
 libdbi-dev
