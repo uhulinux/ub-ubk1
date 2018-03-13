@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-nfoview-${UB_VERSION}.tar.xz nfoview-${UB_VERSION}/
-	http://download.gna.org/nfoview/${UB_VERSION_HEAD2}/
-	http://pkgs.fedoraproject.org/repo/pkgs/nfoview/nfoview-${UB_VERSION}.tar.xz/47f0db47cdd99cac3f23d94b07f3edbe/
+${UB_VERSION}.tar.gz nfoview-${UB_VERSION}/
+	https://github.com/otsaloma/nfoview/archive/
