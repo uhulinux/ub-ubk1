@@ -6,9 +6,9 @@ less
 net-tools
 pciutils
 py3gobject
-python-configobj
 python3-configobj
 python3-dev
+python-configobj
 tree
 usbutils
 wget
