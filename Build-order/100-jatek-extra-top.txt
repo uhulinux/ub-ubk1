@@ -69,7 +69,7 @@ westbang
 worminator-3
 xjig
 powermanga
-descent2
+d2x-rebirth
 pushover
 sokoban
 caph
