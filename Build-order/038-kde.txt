@@ -1,6 +1,5 @@
 libdmtx
 lmdb
-packagekit-qt
 phonon
 qca
 extra-cmake-modules

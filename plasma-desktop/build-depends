@@ -23,7 +23,6 @@ libcanberra-dev
 libevdev-dev
 libxcb-dev
 libxkbfile-dev
-packagekit-qt-dev
 plasma-framework-dev
 plasma-workspace-dev
 qt5-dev

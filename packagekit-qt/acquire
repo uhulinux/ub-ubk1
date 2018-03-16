@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-PackageKit-Qt-${UB_VERSION}.tar.xz ./PackageKit-Qt-${UB_VERSION}/
-	http://www.freedesktop.org/software/PackageKit/releases/
