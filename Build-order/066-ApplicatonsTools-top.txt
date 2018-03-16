@@ -108,7 +108,6 @@ searchmonkey
 terminator
 recutils
 valkyrie
-wikidpad
 freemind
 calcoo
 doodle

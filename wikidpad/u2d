@@ -1,3 +1,0 @@
-echo "2.2"
-# a 2.3 csak beta
-# sflist wikidpad wikidpad | grep -E '^([0-9])' | sort -V | tail -n 1

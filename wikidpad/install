@@ -1,7 +1,0 @@
-#!/bin/sh -eux
-
-rm -rf WikidPadHelp
-unzip $UB_SRCDIR/sources/WikidPadHelp_hu_HU_2.1beta07.zip
-celdir=$UB_INSTALLDIR/usr/lib/wikidpad
-mkdir -p $celdir
-cp -r * $celdir/
