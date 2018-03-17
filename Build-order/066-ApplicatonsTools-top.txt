@@ -126,7 +126,6 @@ diffuse
 xephem
 phun
 regexxer
-gtknetcat
 gdmap
 qt5ct
 homebank
