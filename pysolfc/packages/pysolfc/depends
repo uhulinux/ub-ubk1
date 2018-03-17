@@ -1,4 +1,7 @@
+imagemagick
 pysol-sound-server
-python
-python-pillow
-python-tkinter
+python3
+python3-pillow
+python3-random2
+python3-six
+python3-tkinter
