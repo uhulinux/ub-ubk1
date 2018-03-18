@@ -3,6 +3,13 @@
 # A -O3 veszélyes
 ub_replace -O3 -O2 configure
 
+# a tk függ a tcl-től
+TCLTKLIBS=$(pkg-config --libs tk)
+
 ub_configure \
-	--without-ensurepip
+	--with-system-expat \
+	--with-system-ffi \
+	--without-ensurepip \
+	--with-tcltk-includes='-I/usr/include' \
+	--with-tcltk-libs="-L/usr/lib $TCLTKLIBS"
 ub_make

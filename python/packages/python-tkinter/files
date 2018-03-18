@@ -1,1 +1,2 @@
-	/usr/lib/python*/lib-dynload/_tkinter.so
+	/usr/lib/python2*/lib-dynload/_tkinter.so
+	/usr/lib/python2*/lib-tk
