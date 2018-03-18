@@ -1,0 +1,42 @@
+diff -Naur orig/src/Makefile patched/src/Makefile
+--- orig/src/Makefile	2004-10-18 10:51:16.000000000 +0200
++++ patched/src/Makefile	2018-03-18 22:04:53.741862342 +0100
+@@ -7,8 +7,7 @@
+ 
+ SHELL = /bin/sh
+ 
+-PYTHON = python2.3
+-PYTHON = python
++PYTHON = python3
+ 
+ all build:
+ 	$(PYTHON) setup.py build
+diff -Naur orig/src/setup.py.in patched/src/setup.py.in
+--- orig/src/setup.py.in	2004-10-18 10:51:16.000000000 +0200
++++ patched/src/setup.py.in	2018-03-18 23:08:42.768602789 +0100
+@@ -66,7 +66,7 @@
+             if not re.search(r"^\/+usr\/+include\/*$", v):
+                 include_dirs.append(v)
+         elif s == "-D" and v:
+-            n = string.find(v, "=")
++            n = str.find(v, "=")
+             if n < 0:
+                 define_macros.append((v, None))
+             else:
+@@ -91,7 +91,7 @@
+                 append_next = extra
+         else:
+             ##raise Exception, "unknown flag " + f
+-            print "WARNING: unknown compiler option " + f
++            print ("WARNING: unknown compiler option " + f)
+             extra.append(f)
+ 
+ for flags in (SDL_CFLAGS, SMPEG_CFLAGS,):
+@@ -179,6 +179,6 @@
+ if __name__ == "__main__":
+     for o in ext.extra_objects:
+         assert os.path.isfile(o), o
+-    apply(setup, (), setup_args)
++    setup( *(), **setup_args)
+     sys.exit(0)
+ 
