@@ -1,3 +1,4 @@
-libogg-dev
+glu-dev
 sdl-image-dev
 sdl-mixer-dev
+sdl-ttf-dev

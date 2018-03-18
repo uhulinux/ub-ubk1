@@ -51,7 +51,7 @@ moon-buggy
 atris
 pathological
 xye
-arkanoidsb
+sdl-ball
 barrage
 lmarbles
 ltris
@@ -75,7 +75,6 @@ sokoban
 caph
 gav
 tomatoes
-zaxxon
 bb
 xsnow
 miniracer
