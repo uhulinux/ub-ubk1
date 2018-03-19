@@ -1,0 +1,14 @@
+diff -Naur orig/configure.in patched/configure.in
+--- orig/configure.in	2018-03-19 02:39:27.499051010 +0100
++++ patched/configure.in	2018-03-19 02:42:34.544757628 +0100
+@@ -27,8 +27,8 @@
+ 
+ #AC_PREREQ(2.59)
+ AC_INIT([HP Linux Imaging and Printing], [3.16.11], [3.16.11], [hplip])
+-#AM_INIT_AUTOMAKE([1.9 foreign])
+-AM_INIT_AUTOMAKE
++AM_INIT_AUTOMAKE([1.9 foreign])
++#AM_INIT_AUTOMAKE
+ AC_DISABLE_STATIC
+ 
+ # Checks for programs.

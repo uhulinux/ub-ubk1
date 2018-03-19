@@ -1,18 +1,19 @@
 #!/bin/sh -eux
 
+autoreconf -vif
 ub_compile \
 	--enable-scan-build \
 	--enable-gui-build \
 	--enable-fax-build \
+	--disable-foomatic-rip-hplip-install \
+	--enable-pp-build \
+	--enable-qt4 \
+	--disable-qt5 \
+	--enable-hpcups-install \
 	--enable-hpijs-install \
+	--enable-cups-drv-install \
 	--enable-policykit \
 	--enable-foomatic-ppd-install \
 	--enable-foomatic-drv-install \
 	--enable-cups-ppd-install \
-	--enable-foomatic-rip-hplip-install \
-	--enable-udev-acl-rules \
-	--enable-qt4 \
-	--enable-pp-build \
-	--enable-hpcups-install \
-	--enable-cups-drv-install \
 	--enable-new-hpcups
