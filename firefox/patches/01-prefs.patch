@@ -1,11 +1,12 @@
 diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firefox.js
---- orig/browser/app/profile/firefox.js	2017-11-06 21:16:05.134739579 +0100
-+++ patched/browser/app/profile/firefox.js	2017-11-18 15:32:19.520273167 +0100
-@@ -21,6 +21,12 @@
+--- orig/browser/app/profile/firefox.js	2018-03-15 23:12:05.000000000 +0100
++++ patched/browser/app/profile/firefox.js	2018-03-20 01:32:33.461502169 +0100
+@@ -21,6 +21,13 @@
  #endif
  #endif
  
 +pref("intl.locale.matchOS", true);
++pref("intl.locale.requested", "");
 +pref("shell.checkDefaultApps", 0);
 +
 +// google NS_ERROR_NET_INADEQUATE_SECURITY
@@ -14,7 +15,7 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  pref("browser.chromeURL","chrome://browser/content/");
  pref("browser.hiddenWindowChromeURL", "chrome://browser/content/hiddenWindow.xul");
  
-@@ -65,7 +71,8 @@
+@@ -62,7 +69,8 @@
  
  // Disable add-ons that are not installed by the user in all scopes by default.
  // See the SCOPE constants in AddonManager.jsm for values to use here.
@@ -24,16 +25,7 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  // Scopes to scan for changes at startup.
  pref("extensions.startupScanScopes", 0);
  
-@@ -134,7 +141,7 @@
- pref("app.update.backgroundMaxErrors", 10);
- 
- // Whether or not app updates are enabled
--pref("app.update.enabled", true);
-+pref("app.update.enabled", false);
- 
- // Whether or not to use the doorhanger application update UI.
- pref("app.update.doorhanger", true);
-@@ -154,7 +161,7 @@
+@@ -155,7 +163,7 @@
  // If set to true, the Update Service will automatically download updates when
  // app updates are enabled per the app.update.enabled preference and if the user
  // can apply updates.
@@ -42,7 +34,7 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  
  // If set to true, the Update Service will present no UI for any event.
  pref("app.update.silent", false);
-@@ -291,7 +298,7 @@
+@@ -294,7 +302,7 @@
  #endif
  
  // Control autoFill behavior
@@ -51,7 +43,7 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  pref("browser.urlbar.autoFill.typed", true);
  pref("browser.urlbar.speculativeConnect.enabled", true);
  
-@@ -334,7 +341,7 @@
+@@ -336,7 +344,7 @@
  pref("browser.urlbar.suggest.history.onlyTyped",    false);
  
  pref("browser.urlbar.formatting.enabled", true);
@@ -60,7 +52,7 @@ diff -Naur orig/browser/app/profile/firefox.js patched/browser/app/profile/firef
  
  pref("browser.urlbar.oneOffSearches", true);
  
-@@ -732,11 +739,7 @@
+@@ -751,11 +759,7 @@
  // 0 goes Back/Forward
  // 1 act like PgUp/PgDown
  // 2 and other values, nothing

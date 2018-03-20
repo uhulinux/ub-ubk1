@@ -1,7 +1,5 @@
 #!/bin/sh -eux
 
-export SHELL=/bin/bash
-
 cd "$UB_OBJECTDIR"
 
 ub_install
@@ -15,11 +13,6 @@ ln -s /usr/lib/firefox/firefox "$UB_INSTALLDIR"/usr/bin/firefox
 if [ ! -f "$UB_INSTALLDIR"/usr/lib/firefox/run-mozilla.sh ]; then
 	cp "$UB_COMPILEDIR"/build/unix/run-mozilla.sh "$UB_INSTALLDIR"/usr/lib/firefox/run-mozilla.sh
 fi
-
-ln -s firefox "$UB_INSTALLDIR"/usr/lib/firefox-"$UB_VERSION"
-# ln -s firefox-devel "$UB_INSTALLDIR"/usr/lib/firefox-devel-"$UB_VERSION"
-# ln -s firefox-"$UB_VERSION" "$UB_INSTALLDIR"/usr/include/firefox
-# ln -s firefox-"$UB_VERSION" "$UB_INSTALLDIR"/usr/share/idl/firefox
 
 mkdir -p "$UB_INSTALLDIR"/usr/lib/firefox/browser/extensions/langpack-hu@firefox.mozilla.org
 cp -aR "$UB_COMPILEDIR"/langpack-hu/. "$UB_INSTALLDIR"/usr/lib/firefox/browser/extensions/langpack-hu@firefox.mozilla.org/
