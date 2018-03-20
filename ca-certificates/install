@@ -7,9 +7,8 @@ mkdir -p "$_certdir"/mozilla
 # mozilla certificates
 install -Dm644 certs/*.crt "$_certdir"/mozilla/
 
-# cacert.org certificates
+# cacert.org certificate
 install -Dm644 CAcert.org_root.crt "$_certdir"/
-install -Dm644 CAcert.org_class3.crt "$_certdir"/
 
 install -Dm755 update-ca-certificates "${UB_INSTALLDIR}"/usr/sbin/
 

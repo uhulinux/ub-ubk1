@@ -42,6 +42,7 @@ ac_add_options --disable-crashreporter
 ac_add_options --disable-stylo
 ac_add_options --disable-debug
 ac_add_options --disable-gconf
+ac_add_options --disable-necko-wifi
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 ac_add_options --disable-strip
@@ -53,8 +54,8 @@ if [ "$UB_ARCH" == "amd64" ];then
 echo "ac_add_options --host=x86_64-gnu-linux" >> .mozconfig
 echo "ac_add_options --target=x86_64-gnu-linux" >> .mozconfig
 else
-echo "ac_add_options --host='i686-gnu-linux" >> .mozconfig
-echo "ac_add_options --target='i686-gnu-linux" >> .mozconfig
+echo "ac_add_options --host=i686-gnu-linux" >> .mozconfig
+echo "ac_add_options --target=i686-gnu-linux" >> .mozconfig
 fi
 
 # cd "$UB_OBJECTDIR"
