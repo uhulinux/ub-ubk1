@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-pysol-sound-server-${UB_VERSION}.tar.bz2 pysol-sound-server-${UB_VERSION}/
-	http://www.pysol.org/download/pysol/
+pysol-sound-server-${UB_VERSION}.tar.gz pysol-sound-server-550b6ba/
+	git://github.com/shlomif/pysol-sound-server.git@550b6ba

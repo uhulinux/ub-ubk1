@@ -1,6 +1,6 @@
 imagemagick
 pysol-sound-server
-python-pillow
-python-random2
-python-six
-python-tkinter
+python3-pillow
+python3-random2
+python3-six
+python3-tkinter
