@@ -6,7 +6,7 @@ diff -Naur orig/data/freshwrapper.conf.example patched/data/freshwrapper.conf.ex
  # not, you should manually enter the right path. Multiple paths could
  # be specified, separated by colon.
 -#pepperflash_path = "/opt/google/chrome/PepperFlash/libpepflashplayer.so"
-+pepperflash_path = "/usr/lib/PepperFlash/libpepflashplayer.so,/usr/lib/adobe-flashplugin/libpepflashplayer.so"
++pepperflash_path = "/usr/lib/adobe-flashplugin/libpepflashplayer.so"
  
  # "Command-line" arguments for Flash
  flash_command_line = "enable_hw_video_decode=1,enable_stagevideo_auto=1"

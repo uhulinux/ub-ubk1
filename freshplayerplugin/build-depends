@@ -1,5 +1,4 @@
 alsa-lib-dev
-cmake
 ffmpeg-dev
 gtk2-dev
 libconfig-dev
