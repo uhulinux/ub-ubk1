@@ -1,3 +1,5 @@
 #!/bin/sh -eux
 
 make INSTALL_ROOT="$UB_INSTALLDIR" install
+# míg a mesa nouveau vacak
+mv "$UB_INSTALLDIR"/usr/bin/qupzilla "$UB_INSTALLDIR"/usr/bin/qupzilla.bin
