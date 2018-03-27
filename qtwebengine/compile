@@ -5,6 +5,13 @@ cd build
 
 export CFLAGS="-fno-delete-null-pointer-checks"
 export CXXFLAGS="-fno-delete-null-pointer-checks"
+
+if [ $UB_ARCH == "amd64" ]; then
+qmake -set QMAKE_XSPEC linux-g++-64
+else
+qmake -set QMAKE_XSPEC linux-g++-32
+fi
+
 qmake WEBENGINE_CONFIG+="use_nss use_system_icu use_proprietary_codecs" ../qtwebengine.pro
 
 ub_make

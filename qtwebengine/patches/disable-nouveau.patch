@@ -1,0 +1,14 @@
+diff -Naur orig/src/3rdparty/chromium/gpu/config/software_rendering_list_json.cc patched/src/3rdparty/chromium/gpu/config/software_rendering_list_json.cc
+--- orig/src/3rdparty/chromium/gpu/config/software_rendering_list_json.cc	2017-06-20 11:10:02.000000000 +0200
++++ patched/src/3rdparty/chromium/gpu/config/software_rendering_list_json.cc	2018-03-25 20:12:10.388455782 +0200
+@@ -329,10 +329,6 @@
+       "vendor_id": "0x10de",
+       "gl_vendor": "(?i)nouveau.*",
+       "driver_vendor": "Mesa",
+-      "driver_version": {
+-        "op": "<",
+-        "value": "10.1"
+-      },
+       "features": [
+         "all"
+       ]
