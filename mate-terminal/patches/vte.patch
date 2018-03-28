@@ -1,0 +1,42 @@
+diff -Naur orig/configure.ac patched/configure.ac
+--- orig/configure.ac	2018-01-29 21:21:56.000000000 +0100
++++ patched/configure.ac	2018-03-28 16:31:06.913247883 +0200
+@@ -41,7 +41,7 @@
+ GLIB_REQUIRED=2.50.0
+ GIO_REQUIRED=2.50.0
+ GTK_REQUIRED=3.22.0
+-VTE_REQUIRED=0.46
++VTE_REQUIRED=0.38
+ DCONF_REQUIRED=0.13.4
+ 
+ PKG_CHECK_MODULES([TERM],
+diff -Naur orig/src/terminal-screen.c patched/src/terminal-screen.c
+--- orig/src/terminal-screen.c	2018-01-29 20:47:11.000000000 +0100
++++ patched/src/terminal-screen.c	2018-03-28 16:31:00.813180287 +0200
+@@ -993,9 +993,11 @@
+ 
+ 	if (!prop_name || prop_name == I_(TERMINAL_PROFILE_SILENT_BELL))
+ 		vte_terminal_set_audible_bell (vte_terminal, !terminal_profile_get_property_boolean (profile, TERMINAL_PROFILE_SILENT_BELL));
++#if VTE_CHECK_VERSION (0, 40, 0)
+ 	if (!prop_name || prop_name == I_(TERMINAL_PROFILE_WORD_CHARS))
+ 		vte_terminal_set_word_char_exceptions (vte_terminal,
+ 		                                       terminal_profile_get_property_string (profile, TERMINAL_PROFILE_WORD_CHARS));
++#endif
+ 	if (!prop_name || prop_name == I_(TERMINAL_PROFILE_SCROLL_ON_KEYSTROKE))
+ 		vte_terminal_set_scroll_on_keystroke (vte_terminal,
+ 		                                      terminal_profile_get_property_boolean (profile, TERMINAL_PROFILE_SCROLL_ON_KEYSTROKE));
+diff -Naur orig/src/terminal-window.c patched/src/terminal-window.c
+--- orig/src/terminal-window.c	2018-01-29 21:15:24.000000000 +0100
++++ patched/src/terminal-window.c	2018-03-28 16:39:50.751074674 +0200
+@@ -1202,7 +1202,11 @@
+     if (screen != priv->active_screen)
+         return;
+ 
++#if VTE_CHECK_VERSION (0, 46, 0)
+     can_search = vte_terminal_search_get_regex (VTE_TERMINAL (screen)) != NULL;
++#else
++    can_search = vte_terminal_search_get_gregex (VTE_TERMINAL (screen)) != NULL;
++#endif
+ 
+     action = gtk_action_group_get_action (priv->action_group, "SearchFindNext");
+     gtk_action_set_sensitive (action, can_search);
