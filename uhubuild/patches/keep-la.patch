@@ -1,0 +1,9 @@
+diff -Naur orig/src/steps/cleanup patched/src/steps/cleanup
+--- orig/src/steps/cleanup	2018-03-27 02:44:29.000000000 +0200
++++ patched/src/steps/cleanup	2018-03-27 17:58:09.307863940 +0200
+@@ -19,4 +19,4 @@
+ find "$UB_INSTALLDIR" -name .xvpics -delete
+ 
+ # .la
+-find "$UB_INSTALLDIR" -name *.la -delete
++# find "$UB_INSTALLDIR" -name *.la -delete
