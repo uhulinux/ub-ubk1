@@ -5,4 +5,4 @@ diff -Nur orig/src/compiz-start.desktop.in mod/src/compiz-start.desktop.in
  Icon=compiz
  StartupNotify=true
  Categories=Utility;
-+NotShowIn=GNOME;Cinnamon;
++OnlyShowIn=MATE;

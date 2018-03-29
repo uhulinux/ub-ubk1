@@ -5,4 +5,4 @@ diff -Nur orig/simple-ccsm.desktop.in mod/simple-ccsm.desktop.in
  Type=Application
  Categories=Settings;DesktopSettings;
  StartupNotify=true
-+NotShowIn=GNOME;Cinnamon;
++OnlyShowIn=MATE;

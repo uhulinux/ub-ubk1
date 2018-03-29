@@ -8,4 +8,4 @@ diff -Nur orig/fusion-icon.desktop mod/fusion-icon.desktop
 -X-GNOME-Autostart-Phase=WindowManager
 -X-GNOME-Provides=windowmanager
 -X-GNOME-WMName=fusion-icon
-+NotShowIn=GNOME;Cinnamon;
++OnlyShowIn=MATE;
