@@ -46,3 +46,4 @@ genius
 openoffice.org
 libreoffice
 calamares
+ripmime

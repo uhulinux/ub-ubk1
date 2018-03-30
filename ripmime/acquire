@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+ripmime-${UB_VERSION}.tar.gz ripmime-${UB_VERSION}/
+	http://www.pldaniels.com/ripmime/
