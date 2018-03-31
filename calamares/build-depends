@@ -16,7 +16,6 @@ parted-dev
 polkit-qt-dev
 python3-dev
 pythonqt-dev
-qt5-test-dev
 qtwebengine-dev
 systemd-dev
 yaml-cpp

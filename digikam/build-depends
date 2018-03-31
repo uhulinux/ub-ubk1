@@ -28,7 +28,6 @@ libusb-dev
 marble-dev
 opencv-dev
 qt5-dev
-qt5-test-dev
 qtwebkit-dev
 sane-backends-dev
 solid-dev

@@ -16,6 +16,5 @@ kmime-dev
 ktextwidgets-dev
 prison-dev
 qt5-dev
-qt5-test-dev
 qtwebengine-dev
 shared-mime-info

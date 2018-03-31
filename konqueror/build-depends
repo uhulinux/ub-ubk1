@@ -13,6 +13,5 @@ kparts-dev
 kwidgetsaddons-dev
 python
 qt5-dev
-qt5-test-dev
 qtwebengine-dev
 tidy-dev

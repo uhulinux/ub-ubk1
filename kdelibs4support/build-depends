@@ -5,7 +5,6 @@ kconfigwidgets-dev
 kcrash-dev
 kdbusaddons-dev
 kded-dev
-kdesignerplugin-dev
 kdoctools
 kemoticons-dev
 kglobalaccel-dev
@@ -25,4 +24,3 @@ kxmlgui-dev
 networkmanager-dev
 qt5-designer-dev
 qt5-dev
-qt5-test-dev

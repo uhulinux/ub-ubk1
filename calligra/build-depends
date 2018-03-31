@@ -52,7 +52,6 @@ poppler-qt5-dev
 postgresql-dev
 qca-dev
 qt5-dev
-qt5-test-dev
 qtwebkit-dev
 sonnet-dev
 threadweaver-dev

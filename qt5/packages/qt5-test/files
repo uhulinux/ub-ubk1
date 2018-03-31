@@ -1,6 +1,0 @@
-	/usr/lib/qt5/bin/qmltestrunner
-	/usr/lib/qt5/lib/libQt5QuickTest.so.*
-@	/usr/lib/qt5/lib/libQt5QuickTest.so.*
-	/usr/lib/qt5/lib/libQt5Test.so.*
-@	/usr/lib/qt5/lib/libQt5Test.so.*
-	/usr/lib/qt5/qml/QtTest

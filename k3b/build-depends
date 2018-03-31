@@ -33,7 +33,6 @@ libsamplerate-dev
 libsndfile-dev
 libvorbis-dev
 qt5-dev
-qt5-test-dev
 qtwebkit-dev
 solid-dev
 taglib-dev

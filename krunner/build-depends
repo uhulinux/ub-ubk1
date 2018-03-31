@@ -6,6 +6,5 @@ kio-dev
 kservice-dev
 plasma-framework-dev
 qt5-dev
-qt5-test-dev
 solid-dev
 threadweaver-dev

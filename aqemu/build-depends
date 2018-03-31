@@ -3,5 +3,4 @@ libpng-dev
 libx11-dev
 openssl-dev
 qt5-dev
-qt5-test-dev
 tigervnc

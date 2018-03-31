@@ -21,5 +21,4 @@ kwindowsystem-dev
 libkdepim-dev
 pimcommon-dev
 qt5-dev
-qt5-test-dev
 qtwebengine-dev

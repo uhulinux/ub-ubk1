@@ -26,7 +26,6 @@ libxkbfile-dev
 plasma-framework-dev
 plasma-workspace-dev
 qt5-dev
-qt5-test-dev
 scim-dev
 systemd-dev
 xkeyboard-config
