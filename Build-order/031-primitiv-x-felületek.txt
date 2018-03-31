@@ -38,3 +38,5 @@ piewm
 weston
 idesk
 idesk-extras
+lua-lgi
+awesome

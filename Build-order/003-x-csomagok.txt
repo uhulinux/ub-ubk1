@@ -42,6 +42,7 @@ xcb-util-keysyms
 xcb-util-renderutil
 xcb-util-cursor
 xcb-util-wm
+xcb-util-xrm
 libclc
 libomxil-bellagio
 libva
