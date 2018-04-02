@@ -1,8 +1,8 @@
 alsa-lib-dev
 dbus-dev
 gstreamer-dev
-gtk-dev
 gtk2-dev
+gtk-dev
 libsm-dev
 libsndfile-dev
 libvorbis-dev
