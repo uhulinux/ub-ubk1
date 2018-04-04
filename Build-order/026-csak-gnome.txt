@@ -113,7 +113,6 @@ eog-plugins
 gnome-disk-utility
 gnome-user-share
 gnome-color-manager
-gnome-software
 evince
 brasero
 gnome-applets
