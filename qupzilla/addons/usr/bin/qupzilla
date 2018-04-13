@@ -5,4 +5,4 @@ if [ "$(/sbin/lsmod | grep nouveau)" ];then
 opts='--disable-gpu'
 fi
 #echo $opts
-qupzilla.bin $opts @
+qupzilla.bin $opts "$@"
