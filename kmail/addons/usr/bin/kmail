@@ -1,0 +1,7 @@
+#!/bin/bash
+# nouveau crash elkerülése
+
+if [ "$(/sbin/lsmod | grep nouveau)" ];then
+export QT_XCB_FORCE_SOFTWARE_OPENGL=1
+fi
+kmail.bin "$@"
