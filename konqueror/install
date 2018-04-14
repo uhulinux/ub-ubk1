@@ -1,3 +1,4 @@
 #!/bin/sh -eux
 
 ub_install
+mv ${UB_INSTALLDIR}/usr/bin/konqueror ${UB_INSTALLDIR}/usr/bin/konqueror.bin
