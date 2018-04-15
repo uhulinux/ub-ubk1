@@ -1,5 +1,4 @@
 cairo-dev
-cmake
 libx11-dev
 libxext-dev
 libxt-dev

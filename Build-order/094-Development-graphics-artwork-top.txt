@@ -19,6 +19,8 @@ hla
 icon-theme-snow-apple
 patchutils
 pcc
+pekwm-themes-hewphoria
+pekwm-win-themes
 sddm-theme-acidhub
 sddm-theme-deepspace
 sddm-theme-futuristic
