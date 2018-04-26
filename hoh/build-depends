@@ -1,3 +1,4 @@
 allegro-dev
+libogg-dev
 libvorbis-dev
-xerces-c-dev
+tinyxml2-dev

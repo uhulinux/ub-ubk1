@@ -21,3 +21,4 @@ keybinder
 alsa-plugins
 freshplayerplugin
 evolution-ews
+tinyxml2
