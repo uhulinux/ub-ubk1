@@ -1,8 +1,9 @@
-js38
+js52
 xapps
 cinnamon-sound-effects
 cinnamon-translations
 pyinotify
+python-xapp
 cinnamon-menus
 cinnamon-desktop
 cinnamon-screensaver
