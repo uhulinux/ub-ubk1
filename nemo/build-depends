@@ -13,6 +13,7 @@ libgnomekbd-dev
 libnotify-dev
 libsm-dev
 libxml2-dev
+meson
 py3gobject
 pygobject-dev
 python3-polib

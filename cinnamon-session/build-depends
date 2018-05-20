@@ -8,5 +8,7 @@ libcap-dev
 libgcrypt-dev
 libsm-dev
 libxshmfence-dev
+meson
 systemd-dev
+xapps-dev
 x.org-xtrans-dev

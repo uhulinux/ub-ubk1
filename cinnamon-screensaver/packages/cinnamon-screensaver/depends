@@ -1,2 +1,5 @@
-pygobject
+cinnamon-desktop
+py3cairo
+py3gobject
+python3-setproctitle
 xapps

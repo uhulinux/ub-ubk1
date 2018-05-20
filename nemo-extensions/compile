@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
-extensions="nemo-fileroller nemo-seahorse nemo-share nemo-preview"
+extensions="nemo-fileroller nemo-image-converter nemo-preview nemo-seahorse nemo-share"
 for progs in ${extensions}; do
 cd $progs
   autoreconf -vif

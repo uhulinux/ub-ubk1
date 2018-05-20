@@ -35,5 +35,5 @@ notification-daemon
 polkit-dev
 polkit-gnome
 pulseaudio-dev
-python-lxml
+python3-lxml
 startup-notification-dev
