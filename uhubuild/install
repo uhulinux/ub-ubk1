@@ -58,7 +58,34 @@ for dist in UBK1 UBK2; do
 		mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/packages-"$dist"/"$arch"
 		cd "$UB_INSTALLDIR"/usr/src/UHUBUILD/packages-"$dist"/"$arch"
 		uhu-scanpkgs
-		echo "Label: UHU Linux" > Release
+		echo "Label: UHU-Linux" > Release
+		echo "Origin: UHU Linux Baráti Kör" >> Release
+		echo "Version: $dist" >> Release
+	done # arch
+
+	ln -s "$UB_INSTALLDIR"/usr/bin/build-clean \
+		"$UB_INSTALLDIR"/usr/bin/build-clean-"$dist"
+
+	ln -s "$UB_INSTALLDIR"/usr/bin/build \
+		"$UB_INSTALLDIR"/usr/bin/build-"$dist"
+done
+
+for dist in UBK3; do
+	for arch in amd64; do
+		for a in 1 2 3 ; do
+			mkdir -p "$UB_INSTALLDIR"/var/uhubuild/"$dist"/"$arch"/chroot${a}
+		done
+		mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/UB-"$dist"
+		mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/misc-"$dist"/extrarelease/"$arch"
+		mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/misc-"$dist"/failed/"$arch"
+		mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/misc-"$dist"/snapshot/compile/"$arch"
+		mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/misc-"$dist"/snapshot/install/"$arch"
+		mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/misc-"$dist"/logpack/"$arch"
+		mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/misc-"$dist"/tmp/"$arch"
+		mkdir -p "$UB_INSTALLDIR"/usr/src/UHUBUILD/packages-"$dist"/"$arch"
+		cd "$UB_INSTALLDIR"/usr/src/UHUBUILD/packages-"$dist"/"$arch"
+		uhu-scanpkgs
+		echo "Label: UHU-Linux" > Release
 		echo "Origin: UHU Linux Baráti Kör" >> Release
 		echo "Version: $dist" >> Release
 	done # arch
@@ -74,5 +101,7 @@ ln -s "$UB_INSTALLDIR"/usr/bin/build \
 	"$UB_INSTALLDIR"/usr/bin/build-ubk1
 ln -s "$UB_INSTALLDIR"/usr/bin/build \
 	"$UB_INSTALLDIR"/usr/bin/build-ubk2
+ln -s "$UB_INSTALLDIR"/usr/bin/build \
+	"$UB_INSTALLDIR"/usr/bin/build-ubk3
 # mkdir -p "$UB_INSTALLDIR"/usr/share/doc/Packages
 # cp "$UB_SRCDIR"/changelog "$UB_INSTALLDIR"/usr/share/doc/Packages
