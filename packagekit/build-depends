@@ -1,8 +1,10 @@
+appstream-dev
+apt-dev
 bash-completion
 docbook-dtds
 docbook-xsl
 gobject-introspection-dev
-gstreamermm-dev
+gst-plugins-base-dev
 gtk2-dev
 gtk-dev
 intltool
