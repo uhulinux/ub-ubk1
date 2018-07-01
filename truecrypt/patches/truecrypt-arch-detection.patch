@@ -9,7 +9,7 @@ diff -urN truecrypt-7.0a-source/Makefile truecrypt-7.0a-source.fixed/Makefile
 -ifeq "$(ARCH)" "unknown"
 -	ARCH = $(shell uname -m)
 -endif
-+ARCH = $(shell uname -m)
++ARCH = $(UB_ARCH)
  
  ifneq (,$(filter i386 i486 i586 i686 x86,$(ARCH)))
  	CPU_ARCH = x86
