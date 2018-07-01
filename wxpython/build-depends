@@ -1,7 +1,7 @@
 cppunit-dev
 glu-dev
-gtk-dev
 gtk2-dev
+gtk-dev
 libjpeg-turbo-dev
 libnotify-dev
 libpng-dev

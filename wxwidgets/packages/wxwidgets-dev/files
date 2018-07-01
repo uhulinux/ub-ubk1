@@ -1,13 +1,11 @@
 	/lib/*.a
-	/lib/*.la
 @	/lib/*.so
 	/usr/bin/*-config
 	/usr/bin/wxrc*
 	/usr/include
 	/usr/lib/**/*.a
-	/usr/lib/**/*.la
-	/usr/lib/*/include
 	/usr/lib/*Conf.sh
+	/usr/lib/*/include
 	/usr/lib/pkgconfig
 	/usr/share/aclocal
 	/usr/share/man/**/man1/*-config.1*

@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-wxWidgets-${UB_VERSION}.tar.bz2 wxWidgets-${UB_VERSION}/
-	http://download.sourceforge.net/wxwindows/
+v${UB_VERSION}.tar.gz wxWidgets-${UB_VERSION}/
+	https://github.com/wxWidgets/wxWidgets/archive/

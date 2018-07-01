@@ -13,4 +13,5 @@ ub_compile \
 	--with-libpng=sys \
 	--with-libxpm=sys \
 	--with-libjpeg=sys \
-	--with-libtiff=sys
+	--with-libtiff=sys \
+	--with-regex=builtin
