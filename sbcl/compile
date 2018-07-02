@@ -1,0 +1,26 @@
+#!/bin/sh -eux
+
+export CFLAGS+=" -D_GNU_SOURCE -fno-omit-frame-pointer -DSBCL_HOME=/usr/lib/sbcl"
+export GNUMAKE="make"
+  if [[ ${UB_ARCH} = amd64  ]]; then
+    enable_disable_largefile=enable
+    arch="x86-64"
+  else
+    enable_disable_largefile=disable
+    arch="x86"
+  fi
+export SBCL_HOME=/usr/lib/sbcl
+export SBCL_ARCH=$arch
+
+# Make a multi-threaded SBCL, disable LARGEFILE
+cat >customize-target-features.lisp <<EOF
+(lambda (features)
+  (flet ((enable (x) (pushnew x features))
+         (disable (x) (setf features (remove x features))))
+  (enable :sb-thread)
+  (enable :sb-core-compression)
+  (${enable_disable_largefile} :largefile)))
+EOF
+
+sh make.sh sbcl --prefix=/usr
+make -C doc/manual info

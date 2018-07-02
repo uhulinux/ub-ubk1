@@ -6,6 +6,7 @@ geany
 geany-plugins
 photopc
 tygemo
+sbcl
 maxima
 wxmaxima
 dvdauthor

@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+SBCL_HOME="" INSTALL_ROOT=${UB_INSTALLDIR}/usr sh install.sh
+
+mkdir -p ${UB_INSTALLDIR}/usr/share/sbcl-source
+cp -R src contrib ${UB_INSTALLDIR}/usr/share/sbcl-source/
+
+find ${UB_INSTALLDIR}/usr/share/sbcl-source -type f \
+    \( -name \*.fasl -o -name \*.o -o -name \*.log -o -name \*.so -o -name a.out \) -delete
+
+rm ${UB_INSTALLDIR}/usr/share/sbcl-source/src/runtime/sbcl{,.nm}
+
+rm -rf ${UB_INSTALLDIR}/usr/share/doc/sbcl

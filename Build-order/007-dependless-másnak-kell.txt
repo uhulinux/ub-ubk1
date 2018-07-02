@@ -9,7 +9,6 @@ cabextract
 c-ares
 chmlib
 chrpath
-cmucl
 compface
 ctags
 cxxtools
