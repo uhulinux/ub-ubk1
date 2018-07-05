@@ -7,7 +7,6 @@ gegl-dev
 ghostscript
 gpm-dev
 gtk2-dev
-gtk-doc
 intltool
 iso-codes
 jasper-dev
@@ -17,6 +16,7 @@ libexif-dev
 libgsf-dev
 libjpeg-turbo-dev
 libmng-dev
+libmypaint-dev
 libpng-dev
 librsvg-dev
 libsm-dev
@@ -25,6 +25,7 @@ libwmf-dev
 libxpm-dev
 libxshmfence-dev
 libxslt
+mypaint-brushes
 poppler-dev
 poppler-glib-dev
 pygtk-dev

@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-gimp-webp_${UB_VERSION}.tar.gz gimp-webp_${UB_VERSION}/
-	http://registry.gimp.org/files/
+${UB_VERSION}.tar.gz gimp-webp-${UB_VERSION}/
+	https://github.com/nathan-osman/gimp-webp/archive/

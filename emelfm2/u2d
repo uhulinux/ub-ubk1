@@ -1,1 +1,1 @@
-u2d http://emelfm2.net/rel/
+_geturl http://freshmeat.sourceforge.net/projects/emelfm2/releases/ | grep -E '\[??\]' | grep \* | sed 's/.*]//g' | splitver '^([0-9.]+)$' | sort -V | tail -n 1
