@@ -1,0 +1,5 @@
+Az &iwad fájlokat a ~/.config/zandronum/ alá kell elhelyezni.
+A /usr/share/games/dooom mappába telepedett fájlokkal
+használható, ahova a &freedom-data csomag pakol,
+vagy a /usr/share/ganes/heretic mappába, ahova
+a &heretic-demodata csomag pakol &iwad fájlokat

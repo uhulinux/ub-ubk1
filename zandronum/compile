@@ -1,0 +1,15 @@
+#!/bin/sh -eux
+
+mkdir -p {client,server}
+cd client
+cmake \
+    -DFORCE_INTERNAL_GME=OFF \
+..
+make
+
+cd ../server
+cmake \
+        -DSERVERONLY=ON \
+    -DFORCE_INTERNAL_GME=OFF \
+..
+make

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Zandronum
+GenericName=Doom Engine
+GenericName[hu]=Doom motor
+Exec=zandronum
+Type=Application
+Categories=Game;ActionGame
+StartupNotify=true
+Icon=zandronum

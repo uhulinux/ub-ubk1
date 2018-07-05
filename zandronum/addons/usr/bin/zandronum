@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export LD_LIBRARY_PATH=/usr/share/games/zandronum/
+exec /usr/share/games/zandronum/zandronum "${@}"

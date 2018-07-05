@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/games/zandronum
+cp -v server/zandronum-server client/{zandronum,zandronum.pk3,skulltag_actors.pk3,brightmaps.pk3,output_sdl/liboutput_sdl.so} "$UB_INSTALLDIR"/usr/share/games/zandronum/

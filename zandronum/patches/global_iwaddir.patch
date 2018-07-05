@@ -1,0 +1,12 @@
+diff -Nur orig/src/gameconfigfile.cpp mod/src/gameconfigfile.cpp
+--- orig/src/gameconfigfile.cpp	2016-11-17 21:33:22.000000000 +0100
++++ mod/src/gameconfigfile.cpp	2016-11-22 21:08:53.792154655 +0100
+@@ -111,6 +111,8 @@
+ 		SetSection ("IWADSearch.Directories", true);
+ 		SetValueForKey ("Path", ".", true);
+ 		SetValueForKey ("Path", "$DOOMWADDIR", true);
++		SetValueForKey ("Path", "/usr/share/games/doom", true);
++		SetValueForKey ("Path", "/usr/share/games/heretic", true);
+ #ifdef __APPLE__
+ 		char cpath[PATH_MAX];
+ 		FSRef folder;

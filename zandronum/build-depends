@@ -1,0 +1,16 @@
+cmake
+fluidsynth-dev
+fmod
+glew-dev
+glu-dev
+gtk2-dev
+libgme-dev
+libjpeg-turbo-dev
+mpg123-dev
+nasm
+openal-dev
+openssl-dev
+sdl-dev
+sqlite-dev
+timidity
+zlib-dev

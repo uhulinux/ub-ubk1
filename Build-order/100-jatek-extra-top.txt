@@ -151,3 +151,4 @@ openra
 spider
 deflektor
 rocksndiamonds
+zandronum

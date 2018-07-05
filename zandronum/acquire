@@ -1,0 +1,10 @@
+#!/usr/bin/env dl
+
+ZA_-${UB_VERSION}.tar.bz2	Torr_Samaho-zandronum-dd3c3b57023f/
+	https://bitbucket.org/Torr_Samaho/zandronum/get/ZA_3.0.tar.bz2
+
+sqlite-autoconf-3180000.tar.gz :sqlite/sqlite-74559194e1dd9b9d577cac001c0e9d370856671b.tar.gz
+	https://www.sqlite.org/2017/
+
+sqlite-autoconf-3180000.tar.gz sqlite-autoconf-3180000/ :sqlite
+	https://www.sqlite.org/2017/
