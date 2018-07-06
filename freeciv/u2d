@@ -1,2 +1,1 @@
-branch=$(sflist freeciv | grep F | sort -V | tail -n 1 | sed s/" "/%20/)
-sflist freeciv "$branch" | splitver '^([0-9.]+)$' | sort -V | tail -n 1
+u2d http://files.freeciv.org/stable/ freeciv-

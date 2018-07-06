@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 quake${UB_VERSION}.zip .
-      ftp://ftp.idsoftware.com/idstuff/quake/
+      https://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake/

@@ -1,1 +1,1 @@
-sflist prboom 'prboom%20stable' | sort -V | tail -n 1
+urllist https://sourceforge.net/projects/prboom/files/prboom%20stable/ | grep -E '^[0-9]\.' | sort -V | tail -n 1
