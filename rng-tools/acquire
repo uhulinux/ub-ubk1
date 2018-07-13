@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 rng-tools-${UB_VERSION}.tar.gz rng-tools-${UB_VERSION}/
-	http://download.sourceforge.net/gkernel/
+	https://src.fedoraproject.org/repo/pkgs/rng-tools/rng-tools-${UB_VERSION}.tar.gz/sha512/c00ac28c059ba689f114480958fe993e2199a1428137b151779a0331b9cc5a667f08770aa7b28d98c801166a509e8bd40d6b92f5c29b6ff73eb50a1cb0f2dd13/

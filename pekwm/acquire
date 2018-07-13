@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-pekwm-${UB_VERSION}.tar.bz2 pekwm-${UB_VERSION}/
-	http://pekwm.org/files/
+pekwm-${UB_VERSION}.tar.gz pekwm-6d68faf/
+	git://github.com/pekdon/pekwm.git@6d68faf

@@ -1,8 +1,8 @@
 docbook-dtds
 docbook-xsl
 gnome-doc-utils
-gtkmm-dev
 gtkmm2-dev
+gtkmm-dev
 intltool
 libsm-dev
 parted-dev

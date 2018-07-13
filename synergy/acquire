@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-v${UB_VERSION}-stable.tar.gz synergy-${UB_VERSION}-stable/
-	http://pkgs.fedoraproject.org/repo/pkgs/synergy/v${UB_VERSION}-stable.tar.gz/a324798a47445de739a7ed4baf12638f/
+v${UB_VERSION}-stable.tar.gz synergy-core-${UB_VERSION}-stable/
+	https://github.com/symless/synergy-core/archive/

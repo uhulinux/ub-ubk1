@@ -1,6 +1,6 @@
-diff -Naur TransGUI-orig/Makefile TransGUI/Makefile
---- TransGUI-orig/Makefile	2012-09-20 17:34:55.000000000 +0200
-+++ TransGUI/Makefile	2016-07-30 11:50:37.641625266 +0200
+diff -Nur orig/Makefile mod/Makefile
+--- orig/Makefile	2017-12-21 15:38:04.000000000 +0100
++++ mod/Makefile	2018-01-09 17:41:03.248733516 +0100
 @@ -907,7 +907,7 @@
  endif
  ifndef INSTALL_PREFIX

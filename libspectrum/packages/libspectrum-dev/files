@@ -1,4 +1,5 @@
 	/usr/include
 	/usr/lib/**/*.la
+	/usr/lib/pkgconfig
 @	/usr/lib/**/*.so
 	/usr/share/man/**/man3

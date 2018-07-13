@@ -1,1 +1,1 @@
-urllist http://ftp.debian.org/debian/pool/main/t/transgui/ | splitver '.*transgui_([0-9.]+).orig.tar.gz$' | sort -V | tail -n 1
+u2d https://github.com/transmission-remote-gui/transgui/releases/ v

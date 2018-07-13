@@ -1,6 +1,6 @@
-diff -Naur orig/codepage.inc patched/codepage.inc
---- orig/codepage.inc	2014-06-25 01:39:41.000000000 +0200
-+++ patched/codepage.inc	2015-10-02 13:08:19.266075870 +0200
+diff -Nur links-2.16/codepage.inc links-2.16.patched/codepage.inc
+--- links-2.16/codepage.inc	2016-06-10 20:53:40.000000000 +0200
++++ links-2.16.patched/codepage.inc	2018-07-07 12:26:07.685498966 +0200
 @@ -3903,11 +3903,11 @@
  	{ "ISO 8859-14 (Celtic)", aliases_8859_14, table_8859_14 },
  	{ "ISO 8859-15 (Western European)", aliases_8859_15, table_8859_15 },
@@ -18,10 +18,10 @@ diff -Naur orig/codepage.inc patched/codepage.inc
  	{ "CP 437 (US)", aliases_cp437, table_cp437 },
  	{ "CP 737 (Greek)", aliases_cp737, table_cp737 },
  	{ "CP 850 (Western European)", aliases_cp850, table_cp850 },
-diff -Naur orig/default.c patched/default.c
---- orig/default.c	2015-09-13 19:11:40.000000000 +0200
-+++ patched/default.c	2015-10-02 13:08:19.266075870 +0200
-@@ -2019,10 +2019,10 @@
+diff -Nur links-2.16/default.c links-2.16.patched/default.c
+--- links-2.16/default.c	2018-04-22 21:31:36.000000000 +0200
++++ links-2.16.patched/default.c	2018-07-07 12:28:11.713340926 +0200
+@@ -2105,10 +2105,10 @@
  int async_lookup = 1;
  int download_utime = 0;
  
@@ -36,47 +36,47 @@ diff -Naur orig/default.c patched/default.c
  int aggressive_cache = 1;
  
  struct ipv6_options ipv6_options = { ADDR_PREFERENCE_DEFAULT };
-diff -Naur orig/session.c patched/session.c
---- orig/session.c	2015-07-27 23:58:10.000000000 +0200
-+++ patched/session.c	2015-10-02 13:08:19.266075870 +0200
-@@ -2716,7 +2716,6 @@
+diff -Nur links-2.16/session.c links-2.16.patched/session.c
+--- links-2.16/session.c	2018-05-07 18:11:07.000000000 +0200
++++ links-2.16.patched/session.c	2018-07-07 12:29:26.029246231 +0200
+@@ -2891,7 +2891,6 @@
  	add_to_list(sessions, ses);
  	if (first_use) {
  		first_use = 0;
--		msg_box(term, NULL, TEXT_(T_WELCOME), AL_CENTER | AL_EXTD_TEXT, TEXT_(T_WELCOME_TO_LINKS), cast_uchar "\n\n", TEXT_(T_BASIC_HELP), NULL, NULL, 1, TEXT_(T_OK), NULL, B_ENTER | B_ESC);
+-		msg_box(term, NULL, TEXT_(T_WELCOME), AL_CENTER, TEXT_(T_WELCOME_TO_LINKS), cast_uchar "\n\n", TEXT_(T_BASIC_HELP), MSG_BOX_END, NULL, 1, TEXT_(T_OK), msg_box_null, B_ENTER | B_ESC);
  	}
  	return ses;
  }
-diff -Naur orig/Unicode/cp1251.cp patched/Unicode/cp1251.cp
---- orig/Unicode/cp1251.cp	2004-01-07 10:56:47.000000000 +0100
-+++ patched/Unicode/cp1251.cp	2015-10-02 13:08:19.266075870 +0200
+diff -Nur links-2.16/Unicode/cp1251.cp links-2.16.patched/Unicode/cp1251.cp
+--- links-2.16/Unicode/cp1251.cp	2004-01-07 10:56:47.000000000 +0100
++++ links-2.16.patched/Unicode/cp1251.cp	2018-07-07 12:30:26.329169395 +0200
 @@ -1,4 +1,4 @@
 -Window$ 1251 (Cyrillic)
 +Windows 1251 (Cyrillic)
  "windows-1251", "1251", "cp1251"
  
  0x20	0x0020	# SPACE
-diff -Naur orig/Unicode/cp1252.cp patched/Unicode/cp1252.cp
---- orig/Unicode/cp1252.cp	2004-01-07 10:56:47.000000000 +0100
-+++ patched/Unicode/cp1252.cp	2015-10-02 13:08:19.270075890 +0200
+diff -Nur links-2.16/Unicode/cp1252.cp links-2.16.patched/Unicode/cp1252.cp
+--- links-2.16/Unicode/cp1252.cp	2004-01-07 10:56:47.000000000 +0100
++++ links-2.16.patched/Unicode/cp1252.cp	2018-07-07 12:30:43.733147217 +0200
 @@ -1,4 +1,4 @@
 -Window$ 1252 (Western European)
 +Windows 1252 (Western European)
  "windows-1252", "1252"
  
  0x00	0x0000	#NULL
-diff -Naur orig/Unicode/cp1256.cp patched/Unicode/cp1256.cp
---- orig/Unicode/cp1256.cp	2004-01-07 10:56:47.000000000 +0100
-+++ patched/Unicode/cp1256.cp	2015-10-02 13:08:19.270075890 +0200
+diff -Nur links-2.16/Unicode/cp1256.cp links-2.16.patched/Unicode/cp1256.cp
+--- links-2.16/Unicode/cp1256.cp	2004-01-07 10:56:47.000000000 +0100
++++ links-2.16.patched/Unicode/cp1256.cp	2018-07-07 12:31:00.841125418 +0200
 @@ -1,4 +1,4 @@
 -Window$ 1256 (Arabic)
-+Window2 1256 (Arabic)
++Windows 1256 (Arabic)
  "windows-1256", "1256", "cp1256"
  #
  #    Name:     cp1256 to Unicode table
-diff -Naur orig/Unicode/cp1257.cp patched/Unicode/cp1257.cp
---- orig/Unicode/cp1257.cp	2004-10-22 20:11:32.000000000 +0200
-+++ patched/Unicode/cp1257.cp	2015-10-02 13:08:19.270075890 +0200
+diff -Nur links-2.16/Unicode/cp1257.cp links-2.16.patched/Unicode/cp1257.cp
+--- links-2.16/Unicode/cp1257.cp	2004-10-22 20:11:32.000000000 +0200
++++ links-2.16.patched/Unicode/cp1257.cp	2018-07-07 12:31:23.629096381 +0200
 @@ -1,4 +1,4 @@
 -Window$ 1257 (Baltic)
 +Windows 1257 (Baltic)

@@ -1,6 +1,8 @@
 #!/bin/sh -eux
 
-./configure \
-	--with-layout=fhs-system \
-	--prefix=/usr \
-	--sysconfdir=/etc/GNUstep
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc/GNUstep \
+    --enable-native-objc-exceptions
+make

@@ -1,6 +1,6 @@
-diff -Naurd a/writepng.c b/writepng.c
---- a/writepng.c	2009-06-12 22:58:50.000000000 +0200
-+++ b/writepng.c	2011-12-01 18:44:50.000000000 +0100
+diff -Nur orig/writepng.c mod/writepng.c
+--- orig/writepng.c	2017-07-18 20:48:25.000000000 +0200
++++ mod/writepng.c	2017-10-15 18:12:12.522859909 +0200
 @@ -240,6 +240,7 @@
       double skewsin = sin(skew), skewcos = cos(skew);
       REAL minoverlay = 0, maxoverlay = 0;
@@ -9,30 +9,11 @@ diff -Naurd a/writepng.c b/writepng.c
  
       /* we must use direct color for translucent overlays */
       if (overlay)
-@@ -309,7 +310,7 @@
-      }
-      /* Set error handling.  REQUIRED if you aren't supplying your own *
-       * error hadnling functions in the png_create_write_struct() call. */
--     if (setjmp(png_ptr->jmpbuf)) {
-+     if (setjmp(png_jmpbuf(png_ptr))) {
- 	  /* If we get here, we had a problem reading the file */
- 	  fclose(fp);
- 	  png_destroy_write_struct(&png_ptr, (png_infopp) NULL);
-@@ -334,8 +335,6 @@
+@@ -334,7 +335,6 @@
  		       PNG_INTERLACE_NONE,
  		       PNG_COMPRESSION_TYPE_BASE, PNG_FILTER_TYPE_BASE);
       else {
 -	  png_colorp palette;
--
  	  png_set_IHDR(png_ptr, info_ptr, width, height, 8 /* bit_depth */ ,
  		       PNG_COLOR_TYPE_PALETTE,
  		       PNG_INTERLACE_NONE,
-@@ -434,7 +433,7 @@
-      png_write_end(png_ptr, info_ptr);
- 
-      /* if you malloced the palette, free it here */
--     free(info_ptr->palette);
-+     free(palette);
- 
-      /* if you allocated any text comments, free them here */
- 

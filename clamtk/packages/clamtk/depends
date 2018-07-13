@@ -10,5 +10,6 @@ perl-libwww
 perl-lwp-protocol-https
 perl-net-dns
 perl-text-csv
+perl-try-tiny
 python
 zenity

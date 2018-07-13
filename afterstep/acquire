@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-AfterStep-${UB_VERSION}.tar.gz afterstep-devel-${UB_VERSION}/
-	ftp://ftp.afterstep.org/stable/
+${UB_VERSION}.tar.gz afterstep-devel-${UB_VERSION}/
+	https://github.com/sashavasko/afterstep-devel/archive/

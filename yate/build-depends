@@ -1,8 +1,6 @@
 alsa-lib-dev
 amrnb-dev
 dahdi-linux-dev
-doxygen
-glibc-dev
 libgsm-dev
 mysql-dev
 openssl-dev

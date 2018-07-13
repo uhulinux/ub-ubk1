@@ -11,6 +11,6 @@ rm -Rf "$UB_INSTALLDIR"/usr/share/lintian
 ln -s /usr/lib/ghetto-skype/ghetto-skype "$UB_INSTALLDIR"/usr/bin/ghetto-skype
 
 # Exec javítás
-sed -i -e "s/^Exec=.*/Exec=ghetto-skype/" "$UB_INSTALLDIR"/usr/share/applications/"Ghetto Skype.desktop"
+sed -i -e "s/^Exec=.*/Exec=ghetto-skype/" "$UB_INSTALLDIR"/usr/share/applications/"ghetto-skype.desktop"
 # Categories javítás
-sed -i -e "s/^Categories=.*/Categories=Network;Chat;VideoConference;/" "$UB_INSTALLDIR"/usr/share/applications/"Ghetto Skype.desktop"
+sed -i -e "s/^Categories=.*/Categories=Network;Chat;VideoConference;/" "$UB_INSTALLDIR"/usr/share/applications/"ghetto-skype.desktop"

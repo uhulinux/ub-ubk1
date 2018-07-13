@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
+export PREFIX='/usr'
 ub_install
 
 mkdir -p "$UB_INSTALLDIR"/usr/lib/pkgconfig

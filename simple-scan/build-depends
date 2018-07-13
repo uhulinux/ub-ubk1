@@ -1,10 +1,13 @@
+cairo-dev
 colord-dev
+gdk-pixbuf-dev
 gnome-doc-utils
 gtk-dev
 intltool
 itstool
+libgusb-dev
 libjpeg-turbo-dev
-packagekit-dev
+meson
 python-dev
 sane-backends-dev
 sqlite-dev

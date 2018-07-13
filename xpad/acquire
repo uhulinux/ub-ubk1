@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 xpad-${UB_VERSION}.tar.bz2 xpad-${UB_VERSION}/
-	https://launchpad.net/xpad/trunk/${UB_VERSION_HEAD2}/+download/
-	https://launchpadlibrarian.net/253130390/
+	https://launchpad.net/xpad/trunk/${UB_VERSION}/+download/

@@ -3,9 +3,3 @@
 make \
 	DESTDIR=${UB_INSTALLDIR} \
 	install
-
-rm "$UB_INSTALLDIR"/usr/include/rpcsvc/rquota.{h,x}
-rm -rf ${UB_INSTALLDIR}/usr/inclide/rpcsvc
-
-chmod -R u+rwX "$UB_INSTALLDIR"
-rm -rf ${UB_INSTALLDIR}/usr/inclide/rpcsvc

@@ -18,4 +18,4 @@ ln -sf ../share/Komodo-Edit-"$UB_VERSION_MAJOR"/bin/komodo "$UB_INSTALLDIR"/usr/
 
 rm -f "$UB_INSTALLDIR"/usr/share/Komodo-Edit-"$UB_VERSION_MAJOR"/share/desktop/*.desktop
 rmdir "$UB_INSTALLDIR"/usr/share/Komodo-Edit-"$UB_VERSION_MAJOR"/share/desktop
-sed s%/var/uhubuild/work/install%%g -i ${UB_INSTALLDIR}/usr/share/Komodo-Edit-10/lib/python/bin/python-config
+sed s%/var/uhubuild/work/install%%g -i ${UB_INSTALLDIR}/usr/share/Komodo-Edit-"$UB_VERSION_MAJOR"/lib/python/bin/python-config

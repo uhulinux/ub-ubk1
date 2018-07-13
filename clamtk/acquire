@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-clamtk-${UB_VERSION}.tar.gz clamtk-${UB_VERSION}/
-	https://bitbucket.org/dave_theunsub/clamtk/downloads/
+clamtk-${UB_VERSION}.tar.xz clamtk-${UB_VERSION}/
+	https://bitbucket.org/davem_/clamtk/downloads/

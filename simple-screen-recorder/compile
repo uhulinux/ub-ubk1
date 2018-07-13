@@ -1,4 +1,4 @@
 #!/bin/sh -eux
 
 ub_compile \
-	--with-qt5
+	-DWITH_QT5=TRUE

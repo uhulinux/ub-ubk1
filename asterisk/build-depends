@@ -4,7 +4,6 @@ dahdi-linux-dev
 dahdi-tools-dev
 jansson
 kernel-dev
-kernel-headers
 libjpeg-turbo-dev
 liblame-dev
 libnetsnmp-dev
