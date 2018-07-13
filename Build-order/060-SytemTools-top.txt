@@ -13,6 +13,7 @@ lsof
 lsscsi
 minicom
 mtx
+open-isns
 open-iscsi
 psacct
 rdate

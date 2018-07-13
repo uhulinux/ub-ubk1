@@ -1,3 +1,5 @@
+libvirt-glib
 libvirt-python
 python-ipaddr
+python-requests
 python-urlgrabber
