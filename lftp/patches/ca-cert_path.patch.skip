@@ -1,9 +1,0 @@
-diff -urN lftp-4.4.16.orig/lftp.conf lftp-4.4.16/lftp.conf
---- lftp-4.4.16.orig/lftp.conf	2013-12-11 10:50:52.000000000 +0100
-+++ lftp-4.4.16/lftp.conf	2014-07-03 10:06:54.284753477 +0200
-@@ -88,3 +88,5 @@
- # set ftp:anon-pass "mozilla@"
- # set ftp:client ""
- # set http:user-agent "Mozilla/4.7 [en] (WinNT; I)"
-+
-+set ssl:ca-file "/usr/lib/ssl/certs/ca-cert.pem"

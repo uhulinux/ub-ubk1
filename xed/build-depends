@@ -1,9 +1,7 @@
 enchant-dev
-gettext-tools
-gnome-common
 gobject-introspection-dev
+gspell-dev
 gtk-dev
-gtk-doc
 gtksourceview-dev
 intltool
 iso-codes
@@ -11,4 +9,5 @@ itstool
 libpeas-dev
 libsm-dev
 libxml2-dev
+xapps-dev
 yelp-tools

@@ -1,6 +1,6 @@
-diff -Naur orig/ac/debugging_profiling.m4 patched/ac/debugging_profiling.m4
---- orig/ac/debugging_profiling.m4	2017-06-25 10:17:12.134739579 +0200
-+++ patched/ac/debugging_profiling.m4	2017-07-15 12:03:46.743811035 +0200
+diff -Nur orig/ac/debugging_profiling.m4 mod/ac/debugging_profiling.m4
+--- orig/ac/debugging_profiling.m4	2017-10-14 16:38:43.000000000 +0200
++++ mod/ac/debugging_profiling.m4	2017-10-16 09:51:40.000000000 +0200
 @@ -13,7 +13,7 @@
    [enable_profiling=no])
  
@@ -19,19 +19,19 @@ diff -Naur orig/ac/debugging_profiling.m4 patched/ac/debugging_profiling.m4
    fi
  
    opt_features_yes="$opt_features_yes\n   * compiler optimizations ($OPTIMIZATION_CFLAGS)"
-diff -Naur orig/configure patched/configure
---- orig/configure	2017-06-25 10:17:15.134739579 +0200
-+++ patched/configure	2017-07-15 12:03:29.439521345 +0200
-@@ -1446,7 +1446,7 @@
-   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+diff -Nur orig/configure mod/configure
+--- orig/configure	2017-10-14 16:38:48.000000000 +0200
++++ mod/configure	2017-10-16 09:53:05.000000000 +0200
+@@ -1454,7 +1454,7 @@
+                           the MKVToolNix home page (yes)
    --enable-debug          compile with debug information (no)
    --enable-profiling      compile with profiling information (no)
 -  --enable-optimization   compile with optimization: -O3 (yes)
 +  --enable-optimization   compile with optimization: -O2 (yes)
-   --enable-precompiled-headers
-                           enable the generation and use of precompiled headers
-                           (auto)
-@@ -6613,7 +6613,7 @@
+   --enable-addrsan        compile with address sanitization turned on (no)
+   --enable-ubsan          compile with sanitization for undefined behavior
+                           turned on (no)
+@@ -6643,7 +6643,7 @@
      opt_features_no="$opt_features_no\n   * full optimization: due to an issue in mingw g++ full optimization cannot be used"
  
    else

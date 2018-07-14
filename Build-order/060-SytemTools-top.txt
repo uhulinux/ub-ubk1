@@ -55,6 +55,7 @@ openocd
 d-feet
 quota
 xsensors
+libmspack
 open-vm-tools
 usermode
 asterisk
