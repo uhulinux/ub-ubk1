@@ -1,27 +1,3 @@
 #!/bin/sh -eux
 
-#Az üzenetfájl ékezetleneítése, mivel az UTF-8 karakterkészlettel nem tud mit kezdeni ez az ősi jatek.
-#sajnos jobbat nem tudtam kitalálni
-
-msgunfmt po/hu.gmo -o po/hu.po
-msgconv -t UTF-8 po/hu.po -o po/hu.po
-for i in á/a é/e í/i ó/o ö/o ő/o ú/u ü/u ű/u Á/A É/E Í/I Ó/O Ö/O Ő/O Ú/U Ü/U Ű/U
-do
-sed s/"$i"/g -i po/hu.po
-done
-msgfmt po/hu.po -o po/hu.gmo
-
-# a fordítás is döcögős...
-ub_configure \
-	--datadir=/usr/share/games\
-	--datarootdir=/usr/share\
-	--localedir=/usr/share/locale\
-	with_highscores=/var/games/trackballs/highScores
-
-ub_make \
-	docdir=/usr/share/doc \
-	pixmapsdir=/usr/share/pixmaps \
-	applicationsdir=/usr/share/applications \
-	localedir=/usr/share/locale \
-	desktopdir=/usr/share/applications \
-	with_highscores=/var/games/trackballs/highScores
+ub_compile

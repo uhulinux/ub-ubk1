@@ -1,0 +1,11 @@
+--- hedgewars-src-0.9.24/gameServer/CMakeLists.txt~	2018-03-30 09:50:39.000000000 -0500
++++ hedgewars-src-0.9.24/gameServer/CMakeLists.txt	2018-04-18 10:16:33.902793617 -0500
+@@ -5,7 +5,7 @@
+ 
+ include(${CMAKE_MODULE_PATH}/CheckHaskellPackageExists.cmake)
+ 
+-check_haskell_package_exists(base "Control.Exception" mask 1)
++#check_haskell_package_exists(base "Control.Exception" mask 1)
+ check_haskell_package_exists(containers "Data.Map" size 1)
+ check_haskell_package_exists(vector "Data.Vector" length 1)
+ check_haskell_package_exists(bytestring "Data.ByteString" pack 1)

@@ -1,5 +1,2 @@
-cmake
-doxygen
 freeglut-dev
 glu-dev
-graphviz-dev

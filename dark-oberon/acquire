@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-dark-oberon.tar.gz dark-oberon/dark-oberon/
-    http://dark-oberon.cvs.sourceforge.net/viewvc/dark-oberon/?view=tar
+dark-oberon-${UB_VERSION/~/-}.tar.gz dark-oberon-376de02/
+   git://github.com/viruch/dark-oberon.git@376de02

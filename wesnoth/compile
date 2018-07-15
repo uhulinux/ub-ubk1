@@ -3,4 +3,5 @@
 ub_compile \
 	-DENABLE_OMP=ON \
 	-DENABLE_TOOLS=ON \
-	-DMANDIR=share/man
+	-DMANDIR=share/man \
+	-DFIFO_DIR=/var/run/wesnothd

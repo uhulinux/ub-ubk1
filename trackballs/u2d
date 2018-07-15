@@ -1,2 +1,2 @@
-sflist trackballs trackballs | sort -V | tail -n 1
+u2d https://github.com/trackballs/trackballs/releases/ v
 

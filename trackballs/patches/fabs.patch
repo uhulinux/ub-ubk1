@@ -1,0 +1,34 @@
+diff -Nur trackballs-1.3.1/src/forcefield.cc trackballs-1.3.1.patched/src/forcefield.cc
+--- trackballs-1.3.1/src/forcefield.cc	2018-05-17 01:35:05.000000000 +0200
++++ trackballs-1.3.1.patched/src/forcefield.cc	2018-07-14 17:28:49.395059440 +0200
+@@ -31,12 +31,12 @@
+   primaryColor = Color(0.3, 1.0, 0.3, 1.0);
+   secondaryColor = Color(1.0, 1.0, 1.0, 1.0);
+   bounceFactor = 2.5;
+-  boundingBox[0][0] = -abs(dir[0]);
+-  boundingBox[0][1] = -abs(dir[1]);
+-  boundingBox[0][2] = -abs(dir[2]) - h;
+-  boundingBox[1][0] = +abs(dir[0]);
+-  boundingBox[1][1] = +abs(dir[1]);
+-  boundingBox[1][2] = +abs(dir[2]) + h;
++  boundingBox[0][0] = -fabs(dir[0]);
++  boundingBox[0][1] = -fabs(dir[1]);
++  boundingBox[0][2] = -fabs(dir[2]) - h;
++  boundingBox[1][0] = +fabs(dir[0]);
++  boundingBox[1][1] = +fabs(dir[1]);
++  boundingBox[1][2] = +fabs(dir[2]) + h;
+ }
+ void ForceField::generateBuffers(const GLuint *idxbufs, const GLuint *databufs,
+                                  const GLuint *vaolist, bool /*mustUpdate*/) const {
+diff -Nur trackballs-1.3.1/src/trampoline.cc trackballs-1.3.1.patched/src/trampoline.cc
+--- trackballs-1.3.1/src/trampoline.cc	2018-05-17 01:35:05.000000000 +0200
++++ trackballs-1.3.1.patched/src/trampoline.cc	2018-07-14 17:31:58.856041273 +0200
+@@ -32,7 +32,7 @@
+   Real dh = std::min(0.5 * t, c.sunken - 1e-5);
+   for (int i = 0; i < 5; i++) c.heights[i] += dh;
+   c.sunken -= dh;
+-  if (abs(c.sunken) < 2e-5 && abs(dh) < 1e-10) {
++  if (fabs(c.sunken) < 2e-5 && fabs(dh) < 1e-10) {
+     remove();
+     // Reset cell to no-trampoline-active state
+     for (int i = 0; i < 5; i++) c.heights[i] += c.sunken;

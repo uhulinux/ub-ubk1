@@ -1,6 +1,6 @@
 diff -Nur orig/build/resources/0ad.desktop mod/build/resources/0ad.desktop
 --- orig/build/resources/0ad.desktop	2016-11-14 10:50:36.000000000 +0100
-+++ mod/build/resources/0ad.desktop	2017-08-11 21:19:26.511818441 +0200
++++ mod/build/resources/0ad.desktop	2017-10-30 08:50:47.552172348 +0100
 @@ -1,5 +1,4 @@
  [Desktop Entry]
 -Version=1.0

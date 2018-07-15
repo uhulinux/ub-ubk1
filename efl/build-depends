@@ -31,5 +31,5 @@ pango-dev
 poppler-dev
 pulseaudio-dev
 wayland-dev
-x.org-server-dev
 xine-lib-dev
+x.org-server-dev

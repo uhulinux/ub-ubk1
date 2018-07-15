@@ -1,7 +1,7 @@
 #!/bin/sh -eux
 
 rm -r misc/liblua misc/libphysfs
-export QTDIR=/usr/lib/qt4
+export QTDIR=/usr/lib/qt5
 UB_MAKE_PROCS=1
 ub_compile \
 	-DNOSERVER=1 \
