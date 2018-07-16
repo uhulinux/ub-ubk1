@@ -1,7 +1,7 @@
-diff -Naur orig/data/default.mjwm mod/data/default.mjwm
---- orig/data/default.mjwm	2014-11-15 18:14:15.000000000 +0100
-+++ mod/data/default.mjwm	2015-03-27 17:04:37.274582784 +0100
-@@ -14,17 +14,17 @@
+diff -Nur mjwm-4.0.0/data/default.mjwm mjwm-4.0.0.patched/data/default.mjwm
+--- mjwm-4.0.0/data/default.mjwm	2014-11-15 18:14:15.000000000 +0100
++++ mjwm-4.0.0.patched/data/default.mjwm	2018-07-16 14:24:49.000000000 +0200
+@@ -14,17 +14,22 @@
  #Editors:mousepad.png:TextEditor
  # will add an entry for Mousepad under Editors subcategory
  
@@ -12,20 +12,25 @@ diff -Naur orig/data/default.mjwm mod/data/default.mjwm
 -Games:applications-games:Game
 -Graphics:applications-graphics:Graphics
 +Beállítás:gnome-settings:Settings
++Rendszer:applications-system:System
 +Alkalmazások:applications-accessories:Utility
 +Fejlesztés:applications-development:Development
++Csomagkezelő:applications-system:PackageManager
 +Oktatás:applications-science:Education
-+Játék:applications-games:Game
-+Grafika:applications-graphics:Graphics
++Tudomány:applications-science:Science
  Internet:applications-internet:Network
 -Multimedia:applications-multimedia:AudioVideo
 -Office:applications-office:Office
 -Science:applications-science:Science
 -System:applications-system:System
 +Multimédia:applications-multimedia:AudioVideo
++Játék:applications-games:Game
++Grafika:applications-graphics:Graphics
++Fájkezelő:file-manager:FileManager
++Szövegkezelő:text-editor:TextEditor
++Terminál:terminal:TerminalEmulator
 +Hivatal:applications-office:Office
-+Tudomány:applications-science:Science
-+Rendszer:applications-system:System
++Számológép:calc:Calculator
  
  # You can add multiple category names to a subcategory. The desktop entries would be merged in the final menu.
  
