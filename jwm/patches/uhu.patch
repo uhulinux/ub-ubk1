@@ -9,8 +9,8 @@ diff -Nur jwm-2.3.7/contrib/Makefile jwm-2.3.7.patched/contrib/Makefile
  
 diff -Nur jwm-2.3.7/example.jwmrc jwm-2.3.7.patched/example.jwmrc
 --- jwm-2.3.7/example.jwmrc	2017-07-22 02:02:42.000000000 +0200
-+++ jwm-2.3.7.patched/example.jwmrc	2018-07-15 22:01:12.237686556 +0200
-@@ -3,21 +3,23 @@
++++ jwm-2.3.7.patched/example.jwmrc	2018-07-16 11:49:14.225197331 +0200
+@@ -3,21 +3,24 @@
  
      <!-- The root menu. -->
      <RootMenu onroot="12">
@@ -34,6 +34,7 @@ diff -Nur jwm-2.3.7/example.jwmrc jwm-2.3.7.patched/example.jwmrc
 -                xprop | xmessage -file -
 +        <Menu icon="folder.png" label="JWM eszközök">
 +            <Program icon="uhu-32x32.png" label="Menügenerátor">jwmuhumenu</Program>
++            <Program icon="jwm-settings-manager" label="JWM beállítások">jwm-settings-manager</Program>
 +            <Program icon="fonts.png" label="Betűkészletek">xfontsel</Program>
 +            <Program icon="preferences-system-windows.png" label="Ablak tulajdonságok">
              </Program>
@@ -42,7 +43,7 @@ diff -Nur jwm-2.3.7/example.jwmrc jwm-2.3.7.patched/example.jwmrc
                  xwininfo | xmessage -file -
              </Program>
          </Menu>
-@@ -26,8 +28,10 @@
+@@ -26,8 +29,10 @@
              xlock -mode blank
          </Program>
          <Separator/>
@@ -55,7 +56,7 @@ diff -Nur jwm-2.3.7/example.jwmrc jwm-2.3.7.patched/example.jwmrc
      </RootMenu>
  
      <!-- Options for program groups. -->
-@@ -52,9 +56,9 @@
+@@ -52,9 +57,9 @@
      <!-- Tray at the bottom. -->
      <Tray x="0" y="-1" autohide="off">
  
@@ -67,10 +68,13 @@ diff -Nur jwm-2.3.7/example.jwmrc jwm-2.3.7.patched/example.jwmrc
          <Spacer width="2"/>
  
          <Pager labeled="true"/>
-@@ -134,8 +138,14 @@
-         /usr/share/icons/wm-icons/32x32-aquafusion
-     </IconPath>
+@@ -131,11 +136,14 @@
+          for icons in multiple paths.
+       -->
      <IconPath>
+-        /usr/share/icons/wm-icons/32x32-aquafusion
+-    </IconPath>
+-    <IconPath>
 -        /usr/local/share/jwm
 +        /usr/share/jwm
      </IconPath>
@@ -83,7 +87,7 @@ diff -Nur jwm-2.3.7/example.jwmrc jwm-2.3.7.patched/example.jwmrc
  
      <!-- Virtual Desktops -->
      <!-- Desktop tags can be contained within Desktops for desktop names. -->
-@@ -144,7 +154,10 @@
+@@ -144,7 +152,10 @@
                contained within a Desktop tag to give a specific background
                for that desktop.
           -->
@@ -95,7 +99,7 @@ diff -Nur jwm-2.3.7/example.jwmrc jwm-2.3.7.patched/example.jwmrc
      </Desktops>
  
      <!-- Double click speed (in milliseconds) -->
-@@ -188,4 +201,9 @@
+@@ -188,4 +199,9 @@
      <Key mask="A" key="Up">udesktop</Key>
      <Key mask="A" key="Down">ddesktop</Key>
  
