@@ -1,3 +1,5 @@
 #!/bin/sh -eux
 
 ub_install
+#jwm szállítja az egyetlen jó témát
+rm -rf ${UB_INSTALLDIR}/usr/share/jwm-settings-manager/themes
