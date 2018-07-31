@@ -1,0 +1,21 @@
+From c4a46bd7ca155b40bbd5c5337331a2638b1ab341 Mon Sep 17 00:00:00 2001
+From: attus <attus@enterpriseforever.com>
+Date: Tue, 31 Jul 2018 21:20:20 +0200
+Subject: =?UTF-8?q?G=C3=A9p=20=C3=BAjraind=C3=ADt=C3=A1s?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+
+diff --git a/data/themes/CMakeLists.txt b/data/themes/CMakeLists.txt
+index cb86894..0334db1 100644
+--- a/data/themes/CMakeLists.txt
++++ b/data/themes/CMakeLists.txt
+@@ -71,6 +71,7 @@ set(RESTART_ICON "view-refresh")
+ set(SHUTERDOWN "<Separator/>
+ 	<Restart label=\"JWM újraindítás\" icon=\"${RESTART_ICON}\"/>
+ 	<Exit icon=\"${LOGOUT_ICON}\" label=\"Kilépés\" confirm=\"true\" />
++	<Program label=\"Gép újraindítás\" icon=\"${RESTART_ICON}\">systemct reboot</Program>
+ 	<Program icon=\"${SHUTDOWN_ICON}\" label=\"${SHUTDOWN_NAME}\">${SHUTDOWN_PROGRAM}</Program>")
+ ## MAIN MENU
+ set(JWM_ROOT_NUM "2")
