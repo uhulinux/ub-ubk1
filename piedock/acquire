@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-piedock-${UB_VERSION}.tar.bz2 piedock-${UB_VERSION}/
-	http://markusfisch.de/downloads/
