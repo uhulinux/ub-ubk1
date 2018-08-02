@@ -7,13 +7,22 @@ else
 fi
 
 #célkönyvtárak
-moduldir="$UB_INSTALLDIR"/lib/modules/"$KVER"/kernel/drivers
 cellibdir="$UB_INSTALLDIR"/usr/lib
+
+moduldir="$UB_INSTALLDIR"/lib/modules/"$KVER"/kernel/drivers
+
+#moduldir="$cellibdir"/modules/"$KVER"/kernel/drivers
+
 xmoduldir="$cellibdir"/xorg/modules
-desktopdir="$UB_INSTALLDIR"/usr/share/applications
-mandir="$UB_INSTALLDIR"/usr/share/man/man1/
+sharedir="$UB_INSTALLDIR"/usr/share
+desktopdir="$sharedir"/applications
+mandir="$sharedir"/man/man1
 vendordir="$UB_INSTALLDIR"/etc/OpenCL/vendors
-pixmapdir="$UB_INSTALLDIR"/usr/share/pixmaps/
+pixmapdir="$sharedir"/pixmaps/
+egldir="$sharedir"/egl/egl_external_platform.d
+vulcandir="$sharedir"/vulcan/icd.d
+xconfdir="$sharedir"/X11/x.org.conf.d
+glvnddir="$sharedir"/glvnd/egl_vendor.d
 
 #könyvtárgyártás
 mkdir -p "$cellibdir"/nvidia \
@@ -22,18 +31,25 @@ mkdir -p "$cellibdir"/nvidia \
 	"$desktopdir" \
 	"$mandir" \
 	"$vendordir" \
-	"$pixmapdir"
+	"$pixmapdir" \
+	"$egldir" \
+	"$vulcandir" \
+	"$xconfdir" \
+	"$glvnddir"
 
 #kernelmodulok
-cp kernel/nvidia.ko "$moduldir"/
+cp kernel/*.ko "$moduldir"/
 
 # binárisok
 mv	nvidia-xconfig \
 	nvidia-settings \
 	nvidia-bug-report.sh \
 	nvidia-smi \
-	tls_test \
-	tls_test_dso.so \
+	nvidia-cuda-mps-server \
+	nvidia-cuda-mps-control \
+	nvidia-modprobe \
+	nvidia-persistenced \
+	nvidia-debugdump \
 	"$UB_INSTALLDIR"/usr/bin/
 
 # desktop
@@ -47,12 +63,26 @@ mv	*.1 "$mandir"/
 # vendor
 mv	nvidia.icd "$vendordir"/
 
+# glvnd
+mv 10_nvidia.json "$glvnddir"/
+
 # biztonságba helyezés a régi módon
 mv	libglx.so."$UB_VERSION" "$cellibdir"/nvidia/
 
 #Áthelyezzük a nem a $cellibdir alá kerülő *.so-kat
 mv	nvidia_drv.so "$xmoduldir"/drivers/
 mv	tls "$cellibdir"
+
+#wailand, vulcan
+mv 10_nvidia_wayland.json $egldir/
+mv nvidia_icd.json.template $vulcandir/nvidia_icd.json
+
+#xorg.conf.d
+mv nvidia-drm-outputclass.conf $xconfdir/10-nvidia-drm-outputclass.conf
+
+#persistenced
+mv nvidia-persistenced-init/systemd/nvidia-persistenced.service.template \
+    $UB_INSTALLDIR/usr/lib/systemd/system/nvidia-persistenced.service
 
 # remove conflicting vdpau lib
 ###Jó nekünk az!
@@ -62,13 +92,22 @@ mv	tls "$cellibdir"
 # minden áthelyezése a libekbe
 mv *.so.* "$cellibdir"/
 
-# remove conflicting mesa lib
-rm -f "$cellibdir"/libGLESv2.so.2
+# remove conflicting libglvnd libs      # package vs libglvnd
+#rm -f "$cellibdir"/libGLESv2.so.2       # file vs link
+#rm -f "$cellibdir"/libGL.so.1.0.0       # file vs file
+#rm -f "$cellibdir"/libGLX.so.0          # file vs link
+#rm -f "$cellibdir"/libGLdispatch.so.0   # file vs link
+#rm -f "$cellibdir"/libOpenGL.so.0       # file vs link
 
 #linkgyártások
 cd "$cellibdir"
-ln -s libwfb.so xorg/modules/libnvidia-wfb.so."$UB_VERSION"
-ln -s "libvdpau_nvidia.so.$UB_VERSION" libvdpau_nvidia.so
-ln -s "libnvcuvid.so.$UB_VERSION" libnvcuvid.so.1
-ln -s libnvcuvid.so.1 libnvcuvid.so
-ln -s "libcuda.so.$UB_VERSION" libcuda.so
+
+ln -s libwfb.so xorg/modules/libnvidia-wfb.so.${UB_VERSION}
+ln -s libvdpau_nvidia.so.${UB_VERSION} libvdpau_nvidia.so.1
+ln -s libvdpau_nvidia.so.1 libvdpau_nvidia.so
+for i in `ls -1 libnv*`;do
+lib=$(echo $i | sed s/\.${UB_VERSION}//g)
+solink=$(echo $lib | sed s/so\..*/so/)
+ln -s $i $lib.1
+ln -s $lib.1 $solink
+done

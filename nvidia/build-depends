@@ -1,8 +1,8 @@
 glu-dev
-gtk-dev
 gtk2
+gtk-dev
 kernel-dev
-kernel-headers
+libelf-dev
 libxv
 libxvmc
 x.org-server
