@@ -1,5 +1,4 @@
 boost-dev
-cmake
 ffmpeg-dev
 fftw3-dev
 freealut-dev
@@ -22,4 +21,3 @@ openjpeg-dev
 python3-dev
 scons
 sdl-dev
-zlib-dev

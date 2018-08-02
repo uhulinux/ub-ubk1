@@ -1,14 +1,12 @@
-diff -Naur orig/src/smplayer.pro mod/src/smplayer.pro
---- orig/src/smplayer.pro	2016-03-28 01:52:35.000000000 +0200
-+++ mod/src/smplayer.pro	2016-04-19 19:58:06.873303176 +0200
-@@ -23,8 +23,8 @@
+diff -Nur orig/src/smplayer.pro mod/src/smplayer.pro
+--- orig/src/smplayer.pro	2017-12-10 23:28:59.000000000 +0100
++++ mod/src/smplayer.pro	2018-01-11 12:10:15.742463997 +0100
+@@ -24,7 +24,7 @@
  DEFINES += MPCGUI
  DEFINES += SKINS
  DEFINES += MPRIS2
 -DEFINES += UPDATE_CHECKER
--DEFINES += CHECK_UPGRADED
 +#DEFINES += UPDATE_CHECKER
-+#DEFINES += CHECK_UPGRADED
+ #DEFINES += CHECK_UPGRADED
  DEFINES += AUTO_SHUTDOWN_PC
- DEFINES += CAPTURE_STREAM
- DEFINES += BOOKMARKS
+ #DEFINES += CAPTURE_STREAM

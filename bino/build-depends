@@ -2,5 +2,6 @@ ffmpeg-dev
 freeglut-dev
 glew-dev
 libass-dev
+-lirc-dev
 openal-dev
 qt5-dev
