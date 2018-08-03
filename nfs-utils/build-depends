@@ -4,7 +4,7 @@ krb5-dev
 libcap-dev
 libevent-dev
 libgssapi-dev
-libnfsidmap-dev
+-libnfsidmap-dev
 libtirpc-dev
 lvm-dev
 sqlite-dev
