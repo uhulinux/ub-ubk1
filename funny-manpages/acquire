@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-asr-manpages_${UB_VERSION}.orig.tar.gz asr-manpages-${UB_VERSION}.orig/
+asr-manpages_1.3.orig.tar.gz asr-manpages-1.3.orig/
 	http://ftp.debian.org/debian/pool/main/a/asr-manpages/
 
-funny-manpages_${UB_VERSION}.orig.tar.gz funny-manpages-${UB_VERSION}.orig/
+funny-manpages_${UB_VERSION}.orig.tar.gz funny-manpages/
 	http://ftp.debian.org/debian/pool/main/f/funny-manpages/

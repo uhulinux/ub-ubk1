@@ -1,6 +1,16 @@
 #!/bin/sh -eux
 
- cp doc/* ./
- rm -rf doc
- mkdir -p "$UB_INSTALLDIR"/usr/share/tuxguitar/
- cp -a . "$UB_INSTALLDIR"/usr/share/tuxguitar/
+arch="x86"
+if [ "$UB_ARCH" == "amd64" ];then
+    arch="x86_64"
+fi
+
+tar -xzvf tuxguitar-${UB_VERSION}-linux-${arch}.tar.gz
+
+cd tuxguitar-${UB_VERSION}-linux-${arch}
+
+cp doc/* ../
+rm -rf doc
+
+mkdir -p "$UB_INSTALLDIR"/usr/share/tuxguitar/
+cp -a . "$UB_INSTALLDIR"/usr/share/tuxguitar/

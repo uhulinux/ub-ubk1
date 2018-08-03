@@ -3,8 +3,8 @@ desktop-file-utils
 flex
 glib-dev
 gmp-dev
-gnome-doc-utils
 gnome2-vfs-dev
+gnome-doc-utils
 gtk2-dev
 gtksourceview-dev
 icon-theme-hicolor

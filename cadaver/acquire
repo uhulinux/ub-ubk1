@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-cadaver-${UB_VERSION}.tar.gz cadaver-${UB_VERSION}/
-	http://www.webdav.org/cadaver/
+cadaver_${UB_VERSION}.orig.tar.gz cadaver-${UB_VERSION}/
+	http://ftp.debian.org/debian/pool/main/c/cadaver/

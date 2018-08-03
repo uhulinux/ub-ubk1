@@ -1,8 +1,4 @@
 #!/usr/bin/env dl
 
-xfsdump-${UB_VERSION}.tar.gz xfsdump-${UB_VERSION}/
-	ftp://oss.sgi.com/projects/xfs/cmd_tars/
-	ftp://oss.sgi.com/projects/xfs/previous/
-	ftp://oss.sgi.com/projects/xfs/previous/cmd_tars/
-	ftp://oss.sgi.com/projects/xfs/download/cmd_tars/
-	ftp://oss.sgi.com/projects/xfs/download/previous/cmd_tars/
+xfsdump-dev-${UB_VERSION}.tar.gz xfsdump-dev-${UB_VERSION}/
+	https://git.kernel.org/pub/scm/fs/xfs/xfsdump-dev.git/snapshot/

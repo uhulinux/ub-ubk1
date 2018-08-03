@@ -1,7 +1,5 @@
-cmake
 curl-dev
 gtk-dev
 intltool
-libevent-dev
 openssl-dev
 systemd-dev
