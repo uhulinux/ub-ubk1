@@ -5,6 +5,7 @@ python-docutils
 python3-zope.fixers
 sip
 python-bsddb3
+python-certifi
 python-cddb
 python-dip
 python-dnspython

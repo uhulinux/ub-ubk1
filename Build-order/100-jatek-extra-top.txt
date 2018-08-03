@@ -23,7 +23,6 @@ jumpnbump-levels
 openttd-opengfx
 openttd-openmsx
 openttd-opensfx
-simutrans-pak64
 simutrans-pak128
 smc-music
 smokinguns-data
