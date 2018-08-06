@@ -1,4 +1,3 @@
-bzip2-dev
 fluidsynth-dev
 glu-dev
 gtk-dev
@@ -10,4 +9,3 @@ nasm
 openal-dev
 sdl2-dev
 timidity
-zlib-dev

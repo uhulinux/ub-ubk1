@@ -6,7 +6,7 @@ diff -Naur orig/data/synaptic.desktop.in patched/data/synaptic.desktop.in
  _GenericName=Package Manager
  _Comment=Install, remove and upgrade software packages
 -Exec=synaptic-pkexec
-+Exec=synaptic
++Exec=synaptic-start
  Icon=synaptic
  Terminal=false
  Type=Application
