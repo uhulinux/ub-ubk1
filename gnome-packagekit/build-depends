@@ -1,5 +1,6 @@
 dbus-glib-dev
 docbook2man
+fontconfig-dev
 gtk-dev
 gtk-doc
 intltool

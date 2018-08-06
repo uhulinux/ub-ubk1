@@ -1,0 +1,112 @@
+diff -Nur orig/po/hu.po mod/po/hu.po
+--- orig/po/hu.po	2015-05-28 11:28:05.000000000 +0200
++++ mod/po/hu.po	2018-08-05 09:33:45.447557813 +0200
+@@ -2299,7 +2299,7 @@
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1369
+ msgid "Accessibility"
+-msgstr "Akadálymentesítés"
++msgstr "CINNAMON asztali környezet"
+ 
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1373
+@@ -2334,7 +2334,7 @@
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1397 ../src/gpk-task.c:423
+ msgid "Other"
+-msgstr "Egyéb"
++msgstr "Adatok és egyebek"
+ 
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1401
+@@ -2369,7 +2369,7 @@
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1425
+ msgid "Other desktops"
+-msgstr "Egyéb asztali környezetek"
++msgstr "Gyors grafikus környezet"
+ 
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1429
+@@ -2394,27 +2394,27 @@
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1445
+ msgid "Legacy"
+-msgstr "Örökölt programok"
++msgstr "Fejlécek és függvénytárak"
+ 
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1449
+ msgid "Localization"
+-msgstr "Lokalizáció"
++msgstr "MATE környezet"
+ 
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1453
+ msgid "Virtualization"
+-msgstr "Virtualizáció"
++msgstr "Emulátorok"
+ 
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1457
+ msgid "Security"
+-msgstr "Biztonság"
++msgstr "Tömörítők"
+ 
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1461
+ msgid "Power management"
+-msgstr "Energiagazdálkodás"
++msgstr "X grafikus felület"
+ 
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1465
+@@ -2429,7 +2429,7 @@
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1473
+ msgid "Maps"
+-msgstr "Térképek"
++msgstr "Adatbázisok"
+ 
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1477
+@@ -2449,7 +2449,7 @@
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1489
+ msgid "Electronics"
+-msgstr "Elektronika"
++msgstr "LXDE és LXQT"
+ 
+ #. TRANSLATORS: The group type
+ #: ../src/gpk-enum.c:1493
+diff -Nur orig/src/gpk-enum.c mod/src/gpk-enum.c
+--- orig/src/gpk-enum.c	2015-07-09 11:10:02.000000000 +0200
++++ mod/src/gpk-enum.c	2018-08-05 09:09:50.801548355 +0200
+@@ -139,7 +139,7 @@
+ 
+ static const PkEnumMatch enum_group_icon_name[] = {
+ 	{PK_GROUP_ENUM_UNKNOWN,			"help-browser"},	/* fall though value */
+-	{PK_GROUP_ENUM_ACCESSIBILITY,		"preferences-desktop-accessibility"},
++	{PK_GROUP_ENUM_ACCESSIBILITY,		"user-desktop"},
+ 	{PK_GROUP_ENUM_ACCESSORIES,		"applications-accessories"},
+ 	{PK_GROUP_ENUM_ADMIN_TOOLS,		"system-lock-screen"},
+ 	{PK_GROUP_ENUM_COLLECTIONS,		"pk-collection-installed"},
+@@ -155,14 +155,14 @@
+ 	{PK_GROUP_ENUM_GAMES,			"applications-games"},
+ 	{PK_GROUP_ENUM_GRAPHICS,		"applications-graphics"},
+ 	{PK_GROUP_ENUM_INTERNET,		"applications-internet"},
+-	{PK_GROUP_ENUM_LEGACY,			"media-floppy"},
+-	{PK_GROUP_ENUM_LOCALIZATION,		"preferences-desktop-locale"},
+-	{PK_GROUP_ENUM_MAPS,			"applications-multimedia"},
++	{PK_GROUP_ENUM_LEGACY,			"applications-development"},
++	{PK_GROUP_ENUM_LOCALIZATION,		"user-desktop"},
++	{PK_GROUP_ENUM_MAPS,			"applications-office"},
+ 	{PK_GROUP_ENUM_MULTIMEDIA,		"applications-multimedia"},
+ 	{PK_GROUP_ENUM_NETWORK,			"network-wired"},
+ 	{PK_GROUP_ENUM_OFFICE,			"applications-office"},
+ 	{PK_GROUP_ENUM_OTHER,			"applications-other"},
+-	{PK_GROUP_ENUM_POWER_MANAGEMENT,	"battery"},
++	{PK_GROUP_ENUM_POWER_MANAGEMENT,	"user-desktop"},
+ 	{PK_GROUP_ENUM_PROGRAMMING,		"applications-development"},
+ 	{PK_GROUP_ENUM_PUBLISHING,		"accessories-dictionary"},
+ 	{PK_GROUP_ENUM_REPOS,			"system-file-manager"},
