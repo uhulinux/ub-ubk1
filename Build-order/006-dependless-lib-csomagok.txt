@@ -44,3 +44,4 @@ libzip
 libcfitsio
 libnova
 spglib
+cmark
