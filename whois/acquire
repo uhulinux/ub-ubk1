@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-whois_"$UB_VERSION".tar.xz whois-"$UB_VERSION"/
-	http://ftp.debian.org/debian/pool/main/w/whois/
+v${UB_VERSION}.tar.gz whois-${UB_VERSION}/
+	https://github.com/rfc1036/whois/archive/
