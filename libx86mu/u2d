@@ -1,1 +1,1 @@
-u2d https://github.com/wfeldt/libx86emu/releases
+urllist https://github.com/wfeldt/libx86emu/releases | grep -E '^1\.' | grep tar | sed s/\.tar.*//g | sort -V | tail -n 1
