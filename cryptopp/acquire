@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-cryptopp${UB_VERSION}.zip .
-	http://downloads.sourceforge.net/cryptopp/
+CRYPTOPP_${UB_VERSION_MAJOR/1:/}_${UB_VERSION_TAIL2//./_}.tar.gz cryptopp-CRYPTOPP_7_${UB_VERSION_TAIL2//./_}/
+	https://github.com/weidai11/cryptopp/archive/
