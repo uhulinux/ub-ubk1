@@ -1,1 +1,1 @@
-sflist searchmonkey Searchmonkey2 | splitver '^([0-9.]+).+$' | sort -V | tail -n 1
+urllist https://sourceforge.net/projects/searchmonkey/files/kSearchmonkey%20Qt%20%28KDE%29/ | splitver '^v([0-9.]+)$'  | sort -V | tail -n 1

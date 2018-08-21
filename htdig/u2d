@@ -1,1 +1,1 @@
-urllist http://www.htdig.org/files/ | splitver '^htdig-([0-9.b]+).tar.gz$' | sort -V | tail -n 1 | sed s/b/~b/
+urllist http://www.opdenbrouw.nl/mirror/htdigmirror/ftp.htdig.org/pub/files/ | splitver '^htdig-([0-9.b]+).tar.gz$' | sort -V | tail -n 1 | sed s/b/~b/
