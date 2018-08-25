@@ -1,5 +1,24 @@
 #!/bin/sh -eux
 
-rm -rf CMakeLists.txt
-ub_compile \
+rm -f py2/CMakeLists.txt
+cp -a py2 py3
+
+cd py2
+export PYTHON_VERSION=2.7.12
+export PYTHON=/usr/bin/python
+autoreconf -vif
+ub_configure \
 	--enable-python-binding
+
+cd ../py3
+export PYTHON_VERSION=3.5.2
+export PYTHON=/usr/bin/python3
+autoreconf -vif
+ub_configure \
+	--enable-python-binding
+
+cd ../py2
+ub_make
+
+cd ../py3
+ub_make
