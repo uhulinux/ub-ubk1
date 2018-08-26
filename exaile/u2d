@@ -1,1 +1,1 @@
-u2d https://github.com/exaile/exaile/releases/
+urllist https://github.com/exaile/exaile/releases/ | splitver '^exaile-([0-9.rc]+).tar.gz$' | sort -V | tail -n 1 | sed s/r/~r/

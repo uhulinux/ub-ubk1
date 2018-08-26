@@ -3,5 +3,5 @@
 #freerdp-${UB_VERSION/~/-}.tar.gz freerdp-${UB_VERSION/~/-}/
 #	http://pub.freerdp.com/releases/
 
-freerdp-${UB_VERSION/~/-}.tar.gz FreeRDP-df81e84/
-	git://github.com/FreeRDP/FreeRDP.git@df81e84
+${UB_VERSION/~/-}.tar.gz FreeRDP-${UB_VERSION/~/-}/
+	https://github.com/FreeRDP/FreeRDP/archive/
