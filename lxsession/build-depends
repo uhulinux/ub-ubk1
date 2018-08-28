@@ -1,8 +1,8 @@
 alsa-lib-dev
 dbus-glib-dev
+docbook2man
 docbook-dtds
 docbook-xsl
-docbook2man
 gamin-dev
 intltool
 libgee06-dev
