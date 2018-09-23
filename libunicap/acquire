@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-libunicap-${UB_VERSION}.tar.gz libunicap-${UB_VERSION}/
-	http://unicap-imaging.org/downloads/
+unicap_${UB_VERSION}.orig.tar.gz libunicap-${UB_VERSION}/
+	http://ftp.debian.org/debian/pool/main/u/unicap/

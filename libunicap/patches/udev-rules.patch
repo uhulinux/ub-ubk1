@@ -1,0 +1,19 @@
+diff -Nur orig/data/50-euvccam.rules mod/data/50-euvccam.rules
+--- orig/data/50-euvccam.rules	2010-04-29 08:24:24.000000000 +0200
++++ mod/data/50-euvccam.rules	2018-09-23 17:19:26.567372460 +0200
+@@ -1,8 +1,8 @@
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8201", GROUP="video", MODE="0660"
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8202", GROUP="video", MODE="0660"
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8203", GROUP="video", MODE="0660"
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8204", GROUP="video", MODE="0660"
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8205", GROUP="video", MODE="0660"
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8206", GROUP="video", MODE="0660"
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8207", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8201", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8202", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8203", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8204", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8205", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8206", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8207", GROUP="video", MODE="0660"
+ 
