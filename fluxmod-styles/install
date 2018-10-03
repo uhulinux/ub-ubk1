@@ -1,0 +1,27 @@
+#!/bin/sh -eux
+
+find */*.jpg -delete
+rm -f BlueisBlack/.theme.cfg.swp
+rm -f Franbiose/.theme.cfg.swp
+rm -f SmoothPurple/.theme.swp
+
+rm -f delfont.sh
+rm -f Bluesier/COPYING
+rm -f Verbena/COPYING
+rm -f BluesKy/COPYING.gz
+
+rm -rf Emerge
+
+theme="BlueLazer bunker-one CadetBlue Megatron-blue2 Megatron-green2 Megatron-red2 \
+pr0n Qtek-ash Qtek-blue Qtek-brown Qtek-gold Qtek-green Qtek-green1 Qtek-light-yellow \
+Qtek-olive Qtek-orange Qtek-turqouise Qtek-wheat Qtek-yellow"
+
+for theme in $theme;do
+    mv $theme/theme.cfg $theme.cfg
+    rm -rf $theme
+    mv $theme.cfg $theme
+done
+
+mkdir -p $UB_INSTALLDIR/usr/share/fluxbox/styles
+cp -r * $UB_INSTALLDIR/usr/share/fluxbox/styles/
+rm -f $UB_INSTALLDIR/usr/share/fluxbox/styles/License.txt

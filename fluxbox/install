@@ -2,3 +2,14 @@
 
 ub_install
 cp fluxbox-xdg-menu.py ${UB_INSTALLDIR}/usr/bin/fluxbox-xdg-menu
+
+cd $UB_INSTALLDIR/usr/share/fluxbox/styles
+
+theme="bora_black bora_blue bora_green carp green_tea ostrich zimek_bisque \
+zimek_darkblue zimek_green"
+
+for theme in $theme;do
+    mv $theme/theme.cfg $theme.cfg
+    rm -rf $theme
+    mv $theme.cfg $theme
+done
