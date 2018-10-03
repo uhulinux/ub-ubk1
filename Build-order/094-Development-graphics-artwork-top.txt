@@ -103,3 +103,4 @@ hugin
 guvcview
 shotwell
 gtkam
+fluxmod-styles
