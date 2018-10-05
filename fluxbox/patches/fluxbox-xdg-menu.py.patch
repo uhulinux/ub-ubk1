@@ -80,7 +80,7 @@ diff -Nur orig/fluxbox-xdg-menu.py mod/fluxbox-xdg-menu.py
  			checkWm(entry,wm)
  			if entry.Show == False: continue
 +			javitottnev = re.sub(r"\)","\\)",entry.DesktopEntry.getName().encode("utf8"))
-+			javitottexec = re.sub(r"%u.*","",entry.DesktopEntry.getExec())
++			javitottexec = re.sub(r"%.*","",entry.DesktopEntry.getExec())
  			if use_icons:
 -				print "%s[exec] (%s) {%s} <%s> " % ( (depth*"\t"), entry.DesktopEntry.getName().encode("utf8"), entry.DesktopEntry.getExec().split()[0], findIcon(entry.DesktopEntry.getIcon(), theme) )
 +				print "%s[exec] (%s) {%s} <%s> " % ( (depth*"\t"), javitottnev, javitottexec, findIcon(entry.DesktopEntry.getIcon(), theme) )
