@@ -1,12 +1,11 @@
 #!/bin/sh -eux
 
-autoreconf -vif
 ub_compile \
+	--disable-mandoc \
+	--disable-htmldoc \
 	--enable-nls \
 	--enable-iconv \
-	--disable-gtk \
 	--enable-perllib \
 	--enable-rsvg \
 	--enable-xft \
-	--enable-bidi \
 	--with-stroke-library

@@ -10,5 +10,3 @@ libxpm-dev
 libxrandr-dev
 libxslt-dev
 libxt-dev
-ncurses-dev
-readline-dev
