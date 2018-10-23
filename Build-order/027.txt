@@ -5,6 +5,12 @@ opencv
 frei0r
 libquicktime
 mjpegtools
+aom
+libfdk-aac
+srt
+tinyalsa
+wildmidi
+chromaprint
 gst-plugins-bad
 sox
 espeak

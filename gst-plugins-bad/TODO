@@ -1,0 +1,26 @@
+missing plugins:
+
+directsoundsrc  directsound kellene
+wasapi          wasapi kellene
+direct3dsink    direct3d kellene
+winscreencap    direct3d kellene
+winks           winks kellene
+avcsrc
+opensl          opensles kellene
+nvenc           csak nvidia felesleges
+vo-amrwbenc     felesleges
+vo-aacenc       felesleges
+bs2b
+dfbvideosink    felesleges (direktfb)
+daala
+kate
+- srtp          túl sok a verziónk
+mimic
+nassink
+- opencv        túl sok a verziónk
+- openh264      nem akarja
+openni2
+vulkan
+spc
+
+
