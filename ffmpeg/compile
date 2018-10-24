@@ -1,56 +1,73 @@
 #!/bin/sh -eux
 
-# --enable-frei0r kell?
+extlibs="
+  --enable-avisynth \
+  --enable-frei0r \
+  --enable-ladspa \
+  --enable-libbluray \
+  --enable-libcaca \
+  --enable-libcelt \
+  --enable-libcdio \
+  --enable-libfdk-aac \
+  --enable-libflite \
+  --enable-libfontconfig \
+  --enable-libfreetype \
+  --enable-libfribidi \
+  --enable-libgme \
+  --enable-libgsm \
+  --enable-libiec61883 \
+  --enable-libmodplug \
+  --enable-libmp3lame \
+  --enable-libopencore-amrnb \
+  --enable-libopencore-amrwb \
+  --enable-libopenjpeg \
+  --enable-libopus \
+  --enable-libpulse \
+  --enable-libschroedinger \
+  --enable-libsmbclient \
+  --enable-libspeex \
+  --enable-libtesseract \
+  --enable-libtheora \
+  --enable-libv4l2 \
+  --enable-libvpx \
+  --enable-libwavpack \
+  --enable-libwebp \
+  --enable-libx264 \
+  --enable-libx265 \
+  --enable-libzvbi \
+  --enable-openal \
+  --enable-opengl \
+  --enable-openssl \
+  --enable-gnutls \
+  --enable-libvorbis \
+  --enable-libxvid \
+  --enable-libass \
+  --enable-libdc1394 \
+  --enable-x11grab
+  "
+licensing="
+	--enable-gpl \
+	--enable-nonfree \
+	--enable-version3
+"
 
 ./configure \
-    --prefix=/usr \
-    --mandir=/usr/share/man \
+	--prefix=/usr \
+	--mandir=/usr/share/man \
+	--enable-shared \
+	--disable-static \
+    $extlibs \
+    $licensing \
 	--disable-debug \
-    --disable-static \
-    --enable-shared \
 	--enable-avfilter\
-	--enable-avisynth \
 	--enable-avresample \
-	--enable-fontconfig \
-	--enable-gnutls \
-	--enable-gpl \
 	--enable-gray \
-	--enable-libass \
-	--enable-libbluray \
-	--enable-libcdio \
-	--enable-libcaca \
-	--enable-libcelt \
-	--enable-libdc1394 \
-	--enable-libfreetype \
-	--enable-libgsm \
-	--enable-libmodplug \
-	--enable-libmp3lame \
-	--enable-libopencore-amrnb \
-	--enable-libopencore-amrwb \
-	--enable-libopenjpeg \
-	--enable-libpulse \
-	--enable-libschroedinger \
-	--enable-libspeex \
-	--enable-libtheora \
-	--enable-libv4l2 \
-	--enable-libvorbis \
-	--enable-libvpx \
-	--enable-libx264 \
-	--enable-libx265 \
-	--enable-libxvid \
-	--enable-libzvbi \
-	--enable-nonfree \
-	--enable-openal \
-	--enable-opengl \
-	--enable-openssl \
 	--enable-pic \
 	--enable-pthreads \
 	--enable-postproc \
 	--enable-swresample \
-	--enable-swscale \
-	--enable-version3 \
-	--enable-x11grab \
-	--disable-libopencv
+	--enable-swscale
+
 ub_make
 
 extratools="aviocat graph2dot ismindex pktdumper qt-faststart trasher cws2fws"
