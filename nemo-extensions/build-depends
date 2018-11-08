@@ -20,8 +20,10 @@ libmusicbrainz-dev
 libnotify-dev
 libsm-dev
 libxshmfence-dev
+meson
 nemo-dev
-pygobject2-dev
+pygobject-dev
+python3-dev
 webkit2gtk-dev
 xcb-util-dev
 xreader-dev

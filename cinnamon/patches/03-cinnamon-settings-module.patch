@@ -1,6 +1,6 @@
-diff -Nur Cinnamon-3.8.6/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py Cinnamon-3.8.6.patched/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
---- Cinnamon-3.8.6/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py	2018-06-24 17:20:18.000000000 +0200
-+++ Cinnamon-3.8.6.patched/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py	2018-06-29 16:29:53.426533459 +0200
+diff -Nur orig/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py mod/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
+--- orig/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py	2018-05-21 14:01:01.000000000 +0200
++++ mod/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py	2018-06-04 14:41:43.131626699 +0200
 @@ -80,15 +80,13 @@
      [_("Firewall"),                      "firewall-config",                     "cs-firewall",        "admin",          _("firewall, block, filter, programs")],
      [_("Languages"),                     "mintlocale",                          "cs-language",        "prefs",          _("language, install, foreign")],

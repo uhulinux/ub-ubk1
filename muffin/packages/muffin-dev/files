@@ -10,7 +10,6 @@
 	/usr/lib/*/include
 	/usr/lib/**/*.la
 	/usr/lib/pkgconfig
-@	/usr/lib/**/*.so
 	/usr/share/aclocal
 	/usr/share/devhelp
 	/usr/share/gir-1.0
