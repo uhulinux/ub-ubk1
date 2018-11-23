@@ -1,6 +1,6 @@
-diff -Nur TeXmacs-1.99.7-src/CMakeLists.txt TeXmacs-1.99.7-src.patched/CMakeLists.txt
---- TeXmacs-1.99.7-src/CMakeLists.txt	2018-07-04 14:04:31.000000000 +0200
-+++ TeXmacs-1.99.7-src.patched/CMakeLists.txt	2018-07-07 22:00:16.114921033 +0200
+diff -Naur TeXmacs-1.99.7-src-orig/CMakeLists.txt TeXmacs-1.99.7-src/CMakeLists.txt
+--- TeXmacs-1.99.7-src-orig/CMakeLists.txt	2018-07-04 14:04:31.000000000 +0200
++++ TeXmacs-1.99.7-src/CMakeLists.txt	2018-07-18 18:26:10.642333407 +0200
 @@ -191,7 +191,7 @@
  
  IF(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
@@ -10,9 +10,9 @@ diff -Nur TeXmacs-1.99.7-src/CMakeLists.txt TeXmacs-1.99.7-src.patched/CMakeList
  ENDIF(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
  
  IF(${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
-diff -Nur TeXmacs-1.99.7-src/configure TeXmacs-1.99.7-src.patched/configure
---- TeXmacs-1.99.7-src/configure	2018-07-06 10:58:53.000000000 +0200
-+++ TeXmacs-1.99.7-src.patched/configure	2018-07-07 22:02:01.982747383 +0200
+diff -Naur TeXmacs-1.99.7-src-orig/configure TeXmacs-1.99.7-src/configure
+--- TeXmacs-1.99.7-src-orig/configure	2018-07-06 10:58:53.000000000 +0200
++++ TeXmacs-1.99.7-src/configure	2018-07-18 18:28:20.232820902 +0200
 @@ -5613,7 +5613,7 @@
        CONFIG_PACKAGE=GENERIC_PACKAGE
  

@@ -7,7 +7,6 @@ vte2
 libmusicbrainz3
 libbluray
 libgnomecanvas2
-xaw3d
 plotutils
 emacs
 gnuplot
