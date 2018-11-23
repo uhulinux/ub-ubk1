@@ -17,7 +17,6 @@ four-in-a-row
 gnome-calculator
 gnome-characters
 gnome-robots
-gnome-shell-extension-sensors
 gnome-sound-recorder
 gnubiff
 gpx-viewer
