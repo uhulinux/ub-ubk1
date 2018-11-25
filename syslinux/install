@@ -1,6 +1,10 @@
 #!/bin/sh -eux
 
+targets="bios efi32"
+if [ $UB_ARCH="amd64" ];then
+    targets="bios efi32 efi64"
+fi
+
 ub_install \
 	INSTALLROOT="$UB_INSTALLDIR" \
-	MANDIR="/usr/share/man" \
-	bios
+	MANDIR="/usr/share/man" $targets

@@ -65,6 +65,8 @@ polkit
 e2fsprogs
 reiser4progs
 xapian
+efivar
+efibootmgr
 grub
 libarchive
 cmake
