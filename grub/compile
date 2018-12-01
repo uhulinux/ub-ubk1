@@ -1,11 +1,9 @@
 #!/bin/sh -eux
 
 ARCH="x86_64"
-#build=x86_64-linux-gnu
 if [ "$UB_ARCH" != "amd64" ];then
     sed s%version_test_gt_cmp=gt%version_test_gt_cmp=lt% -i grub/util/grub-mkconfig_lib.in
     ARCH="i386"
-#    build=i686-linux-gnu
 fi
 opts=" \
     --prefix=/usr \
@@ -21,12 +19,12 @@ opts=" \
     --with-grubdir=grub \
     --disable-werror \
  "
-#	--build=$build \
-#	--host=$build \
 
 export FREETYPE="pkg-config freetype2"
 export BUILD_FREETYPE="pkg-config freetype2"
 export GRUB_CONTRIB=grub-extras
+
+cp unifont-11.0.02.bdf grub/unifont.bdf
 
 cp -r grub grub-bios
 cp -r grub grub-efi
@@ -36,28 +34,29 @@ cp -r grub-extras grub-bios/
 cd grub-bios
 ./autogen.sh
 ./configure \
-    $opts \
-    --enable-efiemu \
-    --target="i386" \
-    --enable-boot-time \
-    --with-platform="pc"
+	$opts \
+	--enable-efiemu \
+	--target="i386" \
+	--enable-boot-time \
+	--with-platform="pc"
 make -j2
 
 # efi
 cd ../grub-efi
 ./autogen.sh
 ./configure \
-    $opts \
+	$opts \
 	--disable-efiemu \
 	--target=$ARCH \
     --enable-boot-time \
 	--with-platform="efi"
 make -j2
 
-    cd ../grub
-    ./autogen.sh
-    ./configure \
-    $opts \
+# grub-emu
+cd ../grub
+./autogen.sh
+./configure \
+	$opts \
 	--enable-grub-emu-usb=no \
 	--enable-grub-emu-sdl=no \
 	--disable-grub-emu-pci \
