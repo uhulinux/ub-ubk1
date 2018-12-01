@@ -1,51 +1,66 @@
 #!/bin/sh -eux
 
+ARCH="x86_64"
+#build=x86_64-linux-gnu
 if [ "$UB_ARCH" != "amd64" ];then
     sed s%version_test_gt_cmp=gt%version_test_gt_cmp=lt% -i grub/util/grub-mkconfig_lib.in
-    cd grub
-    ./autogen.sh
-    ub_compile \
-        --with-grubdir=grub \
-        --enable-efiemu \
-        --disable-werror
-else
-    cp -r grub grub-bios
-    cp -r grub grub-efi
-    opts=" --prefix=/usr \
+    ARCH="i386"
+#    build=i686-linux-gnu
+fi
+opts=" \
+    --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --mandir=/usr/share/man \
     --infodir=/usr/share/info \
+    --disable-silent-rules \
+    --enable-device-mapper \
+    --enable-grub-mkfont \
+    --enable-nls \
+    --enable-grub-mount
     --with-grubdir=grub \
-	--disable-werror \
-	--disable-silent-rules \
-	--build=x86_64-gnu-linux \
-	--host=x86_64-gnu-linux \
-    "
+    --disable-werror \
+ "
+#	--build=$build \
+#	--host=$build \
 
-    cd grub-bios
-    ./autogen.sh
-    ./configure $opts \
+export FREETYPE="pkg-config freetype2"
+export BUILD_FREETYPE="pkg-config freetype2"
+export GRUB_CONTRIB=grub-extras
+
+cp -r grub grub-bios
+cp -r grub grub-efi
+cp -r grub-extras grub-bios/
+
+#grub-bios
+cd grub-bios
+./autogen.sh
+./configure \
+    $opts \
     --enable-efiemu \
     --target="i386" \
+    --enable-boot-time \
     --with-platform="pc"
-    make -j2
+make -j2
 
-    cd ../grub-efi
-    ./autogen.sh
-    ./configure $opts \
+# efi
+cd ../grub-efi
+./autogen.sh
+./configure \
+    $opts \
 	--disable-efiemu \
-	--target=x86_64 \
+	--target=$ARCH \
+    --enable-boot-time \
 	--with-platform="efi"
-    make -j2
+make -j2
 
     cd ../grub
     ./autogen.sh
-    ./configure $opts \
+    ./configure \
+    $opts \
 	--enable-grub-emu-usb=no \
 	--enable-grub-emu-sdl=no \
 	--disable-grub-emu-pci \
-	--target=x86_64 \
+	--target=$ARCH \
 	--with-platform="emu"
     make -j2
-fi
