@@ -1,6 +1,6 @@
-diff -Naur orig/settings/xfce4-power-manager-settings.desktop.in patched/settings/xfce4-power-manager-settings.desktop.in
---- orig/settings/xfce4-power-manager-settings.desktop.in	2015-04-24 00:58:15.000000000 +0200
-+++ patched/settings/xfce4-power-manager-settings.desktop.in	2015-06-06 22:33:09.950079221 +0200
+diff -Naur xfce4-power-manager-1.6.1-orig/settings/xfce4-power-manager-settings.desktop.in xfce4-power-manager-1.6.1/settings/xfce4-power-manager-settings.desktop.in
+--- xfce4-power-manager-1.6.1-orig/settings/xfce4-power-manager-settings.desktop.in	2017-11-24 00:52:06.000000000 +0100
++++ xfce4-power-manager-1.6.1/settings/xfce4-power-manager-settings.desktop.in	2017-12-30 19:02:43.100294857 +0100
 @@ -8,7 +8,7 @@
  Terminal=false
  Type=Application
@@ -10,13 +10,13 @@ diff -Naur orig/settings/xfce4-power-manager-settings.desktop.in patched/setting
  StartupNotify=true
  X-XfcePluggable=true
  X-XfceHelpComponent=xfce4-power-manager
-diff -Naur orig/src/xfce4-power-manager.desktop.in patched/src/xfce4-power-manager.desktop.in
---- orig/src/xfce4-power-manager.desktop.in	2015-04-24 00:58:15.000000000 +0200
-+++ patched/src/xfce4-power-manager.desktop.in	2015-06-06 22:33:33.358195296 +0200
+diff -Naur xfce4-power-manager-1.6.1-orig/src/xfce4-power-manager.desktop.in xfce4-power-manager-1.6.1/src/xfce4-power-manager.desktop.in
+--- xfce4-power-manager-1.6.1-orig/src/xfce4-power-manager.desktop.in	2017-11-24 00:52:06.000000000 +0100
++++ xfce4-power-manager-1.6.1/src/xfce4-power-manager.desktop.in	2017-12-30 18:55:43.213837242 +0100
 @@ -5,5 +5,5 @@
  Exec=xfce4-power-manager
  Terminal=false
  Type=Application
--NotShowIn=GNOME;KDE;Unity;
+-NotShowIn=GNOME;KDE;Unity;MATE;
 +OnlyShowIn=XFCE;
  StartupNotify=false

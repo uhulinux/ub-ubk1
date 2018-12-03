@@ -6,6 +6,6 @@ iso-codes
 metacity
 polkit-gnome
 uhu-pixmaps
+xkb-utils
 x.org-server
 x.org-server-utils
-xkb-utils

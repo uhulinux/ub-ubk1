@@ -1,7 +1,7 @@
 cairo-dev
 garcon-dev
-gtk-dev
 gtk2-dev
+gtk-dev
 intltool
 libexo-dev
 libwnck2-dev
