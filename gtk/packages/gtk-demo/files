@@ -6,6 +6,6 @@
 	/usr/share/applications/gtk3-widget-factory.desktop
 	/usr/share/glib-2.0/schemas/org.gtk.Demo.gschema.xml
 	/usr/share/glib-2.0/schemas/org.gtk.exampleapp.gschema.xml
-	/usr/share/man/*/*/gtk3-demo-application.1
 	/usr/share/man/*/*/gtk3-demo.1
+	/usr/share/man/*/*/gtk3-demo-application.1
 	/usr/share/man/*/*/gtk3-widget-factory.1

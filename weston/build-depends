@@ -4,6 +4,7 @@ libcap-dev
 libevdev-dev
 libgudev-dev
 libinput-dev
+libpciaccess-dev
 libunwind-dev
 libva-dev
 libwacom-dev
