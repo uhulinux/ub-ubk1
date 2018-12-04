@@ -1,18 +1,8 @@
 #!/bin/sh -eux
 
-make \
-    prefix=/usr \
-    DESTDIR=${UB_INSTALLDIR} \
-    install
-make \
-    prefix=/usr \
-    DESTDIR=${UB_INSTALLDIR} \
-    install-linux-shortcuts
-make \
-    prefix=/usr \
-    DESTDIR=${UB_INSTALLDIR} \
-    install-linux-mime
-make \
-    prefix=/usr \
-    DESTDIR=${UB_INSTALLDIR} \
-    install-linux-appdata
+for i in "install install-linux-shortcuts install-linux-mime install-linux-appdata install-man-page";do
+    make \
+        prefix=/usr \
+        DESTDIR=${UB_INSTALLDIR} \
+        $i
+done
