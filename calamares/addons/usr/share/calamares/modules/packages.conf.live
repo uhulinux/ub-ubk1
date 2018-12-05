@@ -8,3 +8,4 @@ operations:
    - try_remove:
       - calamares
       - uhu-installer
+      - syslinux
