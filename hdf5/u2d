@@ -1,2 +1,1 @@
-dir=$(urllist ftp://ftp.hdfgroup.org/HDF5/releases/ | splitver '^hdf5-([0-9.]+)$' | sort -V | tail -n 1)
-urllist ftp://ftp.hdfgroup.org/HDF5/releases/hdf5-$dir/ | splitver '^hdf5-([0-9.]+)$' | sort -V | tail -n 1
+u2d https://support.hdfgroup.org/ftp/HDF5/current/src/ hdf5-

@@ -1,8 +1,4 @@
 #!/usr/bin/env dl
 
-xfsprogs-${UB_VERSION}.tar.gz xfsprogs-${UB_VERSION}/
-	ftp://oss.sgi.com/projects/xfs/cmd_tars/
-	ftp://oss.sgi.com/projects/xfs/previous/
-	ftp://oss.sgi.com/projects/xfs/previous/cmd_tars/
-	ftp://oss.sgi.com/projects/xfs/download/cmd_tars/
-	ftp://oss.sgi.com/projects/xfs/download/previous/cmd_tars/
+xfsprogs-dev-${UB_VERSION}.tar.gz xfsprogs-dev-${UB_VERSION}/
+	https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/snapshot/
