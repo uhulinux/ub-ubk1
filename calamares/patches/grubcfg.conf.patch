@@ -11,4 +11,4 @@ diff -Nur orig/src/modules/grubcfg/grubcfg.conf mod/src/modules/grubcfg/grubcfg.
 +    GRUB_GFXPAYLOAD_LINUX: "keep"
      GRUB_TERMINAL_OUTPUT: "console"
      GRUB_DISABLE_RECOVERY: true
-+    GRUB_BACKGROUND: "/usr/share/backgrounds/UHU/ubk1-bg.png"
++    GRUB_BACKGROUND: "/usr/share/backgrounds/UHU/uhu-grub-bg.png"
