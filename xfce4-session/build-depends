@@ -11,7 +11,7 @@ polkit-dev
 polkit-gnome
 startup-notification-dev
 systemd-dev
-x.org-server-utils
 xcb-util-dev
 xfce4-panel-dev
 xfconf-dev
+x.org-server-utils
