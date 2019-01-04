@@ -1,0 +1,27 @@
+--- orig/amd64/opt/google/earth/pro/google-earth-pro.desktop	2018-10-31 16:23:39.000000000 +0100
++++ mod/amd64/opt/google/earth/pro/google-earth-pro.desktop	2019-01-03 12:25:18.236620141 +0100
+@@ -3,9 +3,8 @@
+ Name=Google Earth
+ GenericName=3D planet viewer
+ Comment=Explore, search and discover the planet
+-Exec=/opt/google/earth/pro/google-earth-pro %f
++Exec=google-earth %f
+ Terminal=false
+-MultipleArgs=false
+ Icon=google-earth-pro
+ Type=Application
+ Categories=Application;Network
+
+--- orig/i386/opt/google/earth/pro/google-earth-pro.desktop	2018-10-31 16:23:39.000000000 +0100
++++ mod/i386/opt/google/earth/pro/google-earth-pro.desktop	2019-01-03 12:25:18.236620141 +0100
+@@ -3,9 +3,8 @@
+ Name=Google Earth
+ GenericName=3D planet viewer
+ Comment=Explore, search and discover the planet
+-Exec=/opt/google/earth/pro/google-earth-pro %f
++Exec=google-earth %f
+ Terminal=false
+-MultipleArgs=false
+ Icon=google-earth-pro
+ Type=Application
+ Categories=Application;Network

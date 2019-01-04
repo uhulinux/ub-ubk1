@@ -1,0 +1,19 @@
+#!/usr/bin/env dl
+
+google-earth-pro-stable_${UB_VERSION}_amd64.deb . :amd64
+  https://dl.google.com/dl/linux/direct/
+
+google-earth-pro-stable_7.3.0.3832-r0_i386.deb . :i386
+  http://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/
+
+Google-Terms-of-Service.html
+    https://www.google.com/intl/ALL/policies/terms/index.html
+
+Google-Earth-Additional-Terms-of-Service.html
+    https://www.google.com/help/terms_maps.html
+
+Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html
+    https://www.google.com/help/legalnotices_maps.html
+
+Google-Privacy-Policy.html
+    https://www.google.com/intl/ALL/policies/privacy/index.html

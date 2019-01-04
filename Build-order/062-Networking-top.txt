@@ -74,3 +74,4 @@ skypeforlinux
 node
 ghetto-skype
 facebook-messenger
+google-earth
