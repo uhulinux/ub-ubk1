@@ -18,5 +18,9 @@ rm $forras.*
 sed -i 's/__NV_VK_ICD__/libGLX_nvidia.so.0/' nvidia_icd.json.template
 tar -xf nvidia-persistenced-init.tar.bz2
 patch -i "$UB_SRCDIR"/patches/menu.patch.skip
+
 cd kernel
+if [ "$UB_ARCH" == "i386" ];then
+    sed /phys_to_dma/d -i nvidia/nvidia.Kbuild
+fi
 make  IGNORE_CC_MISMATCH=yes SYSSRC=/usr/src/linux-$KVER KERNEL_UNAME="$KVER" MODULE_ROOT=$moduldir module
