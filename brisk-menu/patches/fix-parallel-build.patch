@@ -1,0 +1,12 @@
+--- a/src/session/meson.build
++++ b/src/session/meson.build
+@@ -26,6 +26,9 @@
+     ],
+     dependencies: dep_gio_unix,
+     install: false,
++    include_directories: [
++        include_directories('../..'),
++    ]
+ )
+ 
+ # Allow linking to the stub
