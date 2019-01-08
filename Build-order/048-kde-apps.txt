@@ -40,5 +40,6 @@ digikam
 kdiff3
 calligra
 libkdegames
+freecell-solver
 kdegames
 kde-apps

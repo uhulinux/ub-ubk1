@@ -69,6 +69,7 @@ perl-net-telnet
 perl-number-compare
 perl-ole-storage-lite
 perl-params-util
+perl-path-tiny
 perl-role-tiny
 perl-tie-simple
 perl-algorithm-diff

@@ -5,3 +5,7 @@ for i in *; do
 	ub_install
 	cd ..
 done
+
+# dev fájlok nem kellenek
+rm -Rf "$UB_INSTALLDIR"/usr/include
+rm -Rf "$UB_INSTALLDIR"/usr/lib/libpala
