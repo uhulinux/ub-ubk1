@@ -19,6 +19,7 @@ libfame
 libffcall
 libgsm
 libgssglue
+libgumbo
 libid3tag
 libiptcdata
 liblo
