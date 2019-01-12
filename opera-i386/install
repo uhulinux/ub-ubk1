@@ -1,10 +1,10 @@
 #!/bin/sh -eux
 
 if [ "$UB_ARCH" == "amd64" ];then
-    arch="x86_64"
-else
-    echo "Csak 64 bites csomag készíthető!"
+    echo "Csak 32 bites csomag készíthető!"
     exit 1
+else
+arch="i386"
 fi
 
 dpkg-deb -x opera-stable_${UB_VERSION}_${UB_ARCH}.deb .

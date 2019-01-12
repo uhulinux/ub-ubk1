@@ -52,6 +52,8 @@ pidgin-libnotify
 qupzilla
 google-chrome
 opera
+google-chrome-i386
+opera-i386
 hexchat
 ettercap
 libfilezilla

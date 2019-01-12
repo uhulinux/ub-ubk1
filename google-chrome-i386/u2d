@@ -1,0 +1,1 @@
+urllist https://repo.fdzh.org/chrome/rpm/i386/ | splitver '^google-chrome-stable-([0-9.]+)-1.i386.rpm$' | sort -V | tail -n 1

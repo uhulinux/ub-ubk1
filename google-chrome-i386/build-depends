@@ -1,0 +1,12 @@
+alsa-lib
+cups
+gconf2
+gtk2
+libgcrypt
+libxcomposite
+libxcursor
+libxdamage
+libxi
+libxrandr
+libxscrnsaver
+libxtst

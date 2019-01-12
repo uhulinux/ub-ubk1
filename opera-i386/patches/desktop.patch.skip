@@ -1,6 +1,6 @@
-diff -Nur orig/usr/share/applications/opera.desktop mod/usr/share/applications/opera.desktop
---- orig/usr/share/applications/opera.desktop	2019-01-08 23:22:09.000000000 +0100
-+++ mod/usr/share/applications/opera.desktop	2019-01-12 17:37:00.766505435 +0100
+diff -Naur orig/usr/share/applications/opera.desktop patched/usr/share/applications/opera.desktop
+--- orig/usr/share/applications/opera.desktop	2016-11-19 01:48:25.000000000 +0100
++++ patched/usr/share/applications/opera.desktop	2016-11-19 01:51:57.540908717 +0100
 @@ -10,14 +10,3 @@
  Type=Application
  Categories=Network;WebBrowser;
@@ -16,3 +16,4 @@ diff -Nur orig/usr/share/applications/opera.desktop mod/usr/share/applications/o
 -Name=New Private Window
 -Exec=opera --private
 -TargetEnvironment=Unity
+\ No newline at end of file

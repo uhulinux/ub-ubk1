@@ -1,0 +1,7 @@
+for dir in $(urllist http://get.geo.opera.com/ftp/pub/opera/desktop/ | grep -E '^([0-9.]+)$' | sort -Vr);do
+    van=$(urllist http://get.geo.opera.com/ftp/pub/opera/desktop/$dir/linux/ | grep i386)
+    if [ ! "$van" == "" ];then
+        echo $van | grep deb | sed s/opera-stable_// | sed s/_.*//
+        exit 0
+    fi
+done

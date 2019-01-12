@@ -1,13 +1,14 @@
 #!/bin/sh -eux
 
 if [ "$UB_ARCH" == "amd64" ];then
-arch="x86_64"
+echo "A csomag csak 32 bitre készíthető!"
+exit 1
 else
-    echo "Csak 64 bites csomag készíthető!"
-    exit 1
+arch="i386"
 fi
 rpm2cpio google-chrome-stable-${UB_VERSION}-1.${arch}.rpm | cpio -idmv
 
+mv opt/google/chrome/PepperFlash/ "$UB_INSTALLDIR"/usr/lib/PepperFlash/
 mv opt/google "$UB_INSTALLDIR"/usr/lib
 
 sed -i -e 's|/opt|/usr/lib|g' "$UB_INSTALLDIR"/usr/lib/google/chrome/default-app-block
@@ -26,3 +27,5 @@ cp "$UB_INSTALLDIR"/usr/lib/google/chrome/product_logo_48.png \
 mkdir -p "$UB_INSTALLDIR"/opt/google/chrome
 chmod 4755 "$UB_INSTALLDIR"/usr/lib/google/chrome/chrome-sandbox
 ln -s "$UB_INSTALLDIR"/usr/lib/google/chrome/chrome-sandbox "$UB_INSTALLDIR"/opt/google/chrome/chrome-sandbox
+
+ln -s "$UB_INSTALLDIR"/usr/lib/PepperFlash "$UB_INSTALLDIR"/usr/lib/google/chrome/PepperFlash
