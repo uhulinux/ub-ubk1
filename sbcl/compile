@@ -1,6 +1,7 @@
 #!/bin/sh -eux
 
 export CFLAGS+=" -D_GNU_SOURCE -fno-omit-frame-pointer -DSBCL_HOME=/usr/lib/sbcl"
+ub_replace -O3 -O2 src/runtime/GNUmakefile
 export GNUMAKE="make"
   if [[ ${UB_ARCH} = amd64  ]]; then
     enable_disable_largefile=enable
