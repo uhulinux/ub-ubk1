@@ -1,12 +1,7 @@
-diff -Naur orig/tools/stunnel.service.in patched/tools/stunnel.service.in
---- orig/tools/stunnel.service.in	2016-12-13 12:28:35.134741323 +0100
-+++ patched/tools/stunnel.service.in	2017-05-12 10:51:42.485533340 +0200
-@@ -1,10 +1,11 @@
- [Unit]
- Description=TLS tunnel for network daemons
--After=syslog.target
-+After=network.target
- 
+diff -Nur orig/tools/stunnel.service.in mod/tools/stunnel.service.in
+--- orig/tools/stunnel.service.in	2018-10-09 16:37:38.000000000 +0200
++++ mod/tools/stunnel.service.in	2019-01-14 16:57:16.656006009 +0100
+@@ -5,6 +5,7 @@
  [Service]
  ExecStart=@bindir@/stunnel
  Type=forking
