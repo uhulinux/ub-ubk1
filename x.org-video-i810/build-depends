@@ -1,9 +1,14 @@
 cairo-dev
+libx11-dev
 libxcursor-dev
+libxext-dev
+libxfixes-dev
 libxfont-dev
 libxinerama-dev
 libxrandr-dev
+libxscrnsaver-dev
+libxshmfence-dev
 libxtst-dev
 libxvmc-dev
-x.org-server-dev
 xcb-util-dev
+x.org-server-dev
