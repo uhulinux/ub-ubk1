@@ -153,7 +153,6 @@ perl-glib
 perl-module-build-tiny
 perl-net-dns-resolver-programmable
 perl-package-deprecationmanager
-perl-class-load
 perl-dbd-pg
 perl-pango
 perl-gtk2
