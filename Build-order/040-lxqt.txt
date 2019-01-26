@@ -6,7 +6,6 @@ obconf-qt
 libfm-qt
 pcmanfm-qt
 lximage-qt
-lxqt-l10n
 lxqt-about
 lxqt-notificationd
 lxqt-openssh-askpass

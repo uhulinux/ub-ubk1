@@ -119,6 +119,7 @@ glib-networking #libproxyval
 ghostscript
 libwacom
 libinput
+x.org-input-libinput
 qt5
 poppler
 pinentry
