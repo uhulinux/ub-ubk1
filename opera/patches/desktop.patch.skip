@@ -1,6 +1,6 @@
 diff -Nur orig/usr/share/applications/opera.desktop mod/usr/share/applications/opera.desktop
---- orig/usr/share/applications/opera.desktop	2019-01-08 23:22:09.000000000 +0100
-+++ mod/usr/share/applications/opera.desktop	2019-01-12 17:37:00.766505435 +0100
+--- orig/usr/share/applications/opera.desktop	2019-01-21 23:25:06.000000000 +0100
++++ mod/usr/share/applications/opera.desktop	2019-01-23 18:21:51.039019663 +0100
 @@ -10,14 +10,3 @@
  Type=Application
  Categories=Network;WebBrowser;

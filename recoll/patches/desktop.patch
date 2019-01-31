@@ -1,6 +1,6 @@
-diff -Nur orig/desktop/recoll-searchgui.desktop mod/desktop/recoll-searchgui.desktop
+diff -Naur orig/desktop/recoll-searchgui.desktop patched/desktop/recoll-searchgui.desktop
 --- orig/desktop/recoll-searchgui.desktop	2018-09-24 09:51:00.000000000 +0200
-+++ mod/desktop/recoll-searchgui.desktop	2018-12-03 19:16:32.257518147 +0100
++++ patched/desktop/recoll-searchgui.desktop	2018-12-18 12:11:47.611883098 +0100
 @@ -1,10 +1,8 @@
  [Desktop Entry]
  Categories=Qt;Utility;Filesystem;Database;
