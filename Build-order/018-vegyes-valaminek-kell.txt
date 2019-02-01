@@ -236,7 +236,6 @@ dhcpcd
 dmapi
 cups-filters
 foo2zjs
-lightdm-gtk-greeter
 sdl2-image
 sdl2-ttf
 sdl2-gfx
