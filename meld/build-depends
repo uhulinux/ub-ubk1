@@ -1,4 +1,6 @@
 gtksourceview-dev
 intltool
 itstool
-python-dev
+pygobject-dev
+python3-dev
+python3-setuptools

@@ -3,5 +3,6 @@ gnutls-dev
 gtk-dev
 gtkspell-dev
 intltool
+itstool
 libgnome-keyring-dev
 libnotify-dev

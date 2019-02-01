@@ -1,4 +1,4 @@
 glib >=
 gtk >=
 gtksourceview >=
-pygobject
+py3gobject

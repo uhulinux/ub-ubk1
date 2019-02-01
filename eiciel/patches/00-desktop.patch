@@ -1,7 +1,7 @@
-diff -Naur orig/src/eiciel.desktop.in patched/src/eiciel.desktop.in
---- orig/src/eiciel.desktop.in	2014-07-17 00:39:05.000000000 +0200
-+++ patched/src/eiciel.desktop.in	2016-02-18 23:53:20.194643445 +0100
-@@ -4,12 +4,13 @@
+diff -Nur orig/src/eiciel.desktop.in mod/src/eiciel.desktop.in
+--- orig/src/eiciel.desktop.in	2018-01-16 20:49:23.000000000 +0100
++++ mod/src/eiciel.desktop.in	2018-02-21 16:26:55.459818189 +0100
+@@ -3,13 +3,14 @@
  GenericName=Access control list editor
  GenericName[ca]=Editor de llistes de control d'accés
  GenericName[es]=Editor de listas de control de acceso
@@ -15,5 +15,6 @@ diff -Naur orig/src/eiciel.desktop.in patched/src/eiciel.desktop.in
  Icon=eiciel
  Terminal=false
  Type=Application
- Categories=GNOME;System;FileTools;
+ Categories=GTK;GNOME;System;FileTools;
 -Version=@DSK_VERSION@
+ Keywords=ACL;permissions;editor;
