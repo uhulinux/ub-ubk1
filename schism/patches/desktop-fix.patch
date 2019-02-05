@@ -1,21 +1,20 @@
 diff -Nur orig/sys/fd.org/schism.desktop mod/sys/fd.org/schism.desktop
---- orig/sys/fd.org/schism.desktop	2018-05-14 00:52:45.000000000 +0200
-+++ mod/sys/fd.org/schism.desktop	2018-06-10 15:21:53.392460552 +0200
-@@ -1,6 +1,5 @@
- [Desktop Entry]
- Actions=Play;FontEditor
--Version=1.0
- Name=Schism Tracker
- Comment=Impulse Tracker clone
- Comment[fr]=Clone d'Impulse Tracker
-@@ -8,8 +7,8 @@
- TryExec=schismtracker
+--- orig/sys/fd.org/schism.desktop	2018-12-23 16:56:57.000000000 +0100
++++ mod/sys/fd.org/schism.desktop	2019-02-04 10:31:20.763689297 +0100
+@@ -9,7 +9,7 @@
  Exec=schismtracker %f
  Type=Application
--Icon=schism-icon-128.png
--Categories=Audio;Midi;Sequencer;Player;Music
-+Icon=schism-icon-128
-+Categories=AudioVideo;Audio;Midi;Sequencer;Player;Music
- MimeType=audio/x-it;audio/x-s3m;audio/x-xm;audio/x-mod
- Keywords=impulse;module;midi;music
+ Icon=schism-icon-128
+-Categories=Audio;Midi;Sequencer;Player;Music;
++Categories=AudioVideo;Audio;Midi;Sequencer;Player;Music;
+ MimeType=audio/x-it;audio/x-s3m;audio/x-xm;audio/x-mod;
+ Keywords=impulse;module;midi;music;
  
+@@ -20,7 +20,3 @@
+ [Desktop Action FontEditor]
+ Name=Schism Tracker (font editor)
+ Exec=schismtracker --font-editor
+-
+-[Desktop Action Render WAV]
+-Name=Schism Tracker (render song)
+-Exec=schismtracker --diskwrite=%f.wav %f

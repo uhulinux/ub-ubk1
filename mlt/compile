@@ -1,10 +1,16 @@
 #!/bin/sh -eux
 
+if [ "$UB_ARCH" == "i386" ];then
+opt="--target-arch=i386"
+else
+opt=""
+fi
+
 ub_compile \
 	--enable-gpl \
 	--enable-gpl3 \
 	--qimage-libdir=/usr/lib/qt5/lib \
 	--qimage-includedir=/usr/lib/qt5/include \
 	--avformat-swscale \
-#	--target-arch=i386 \
+	${opt} \
 #	--avformat-vdpau
