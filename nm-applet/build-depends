@@ -5,7 +5,7 @@ gobject-introspection-dev
 gtk-dev
 intltool
 iso-codes
-jansson
+jansson-dev
 libgnome-keyring-dev
 libgudev-dev
 libnotify-dev

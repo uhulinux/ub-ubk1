@@ -29,8 +29,8 @@ json-glib-dev
 krb5-dev
 libcanberra-dev
 libgee-dev
-libgnome-keyring-dev
 libgnomekbd-dev
+libgnome-keyring-dev
 libgtop2-dev
 libgudev-dev
 libjpeg-turbo-dev

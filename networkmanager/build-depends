@@ -1,4 +1,5 @@
 bluez-dev
+curl-dev
 dbus-glib-dev
 dhcp-client
 expat-dev
@@ -6,6 +7,7 @@ gobject-introspection-dev
 gtk-doc
 intltool
 iptables
+jansson-dev
 libgudev-dev
 libndp-dev
 libnl-dev
@@ -15,6 +17,7 @@ modemmanager-dev
 nss-dev
 polkit-dev
 ppp-dev
+pygobject-dev
 systemd-dev
 util-linux-dev
 vala-dev
