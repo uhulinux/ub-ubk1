@@ -3,6 +3,7 @@
 ./configure \
     --prefix=/usr \
     --force \
-    --disable-gtk-update-checks
+    --disable-gtk-update-checks \
+    --arch=$MODE
 cd build
 make
