@@ -27,5 +27,6 @@ CFLAGS="-O2 $opts -mtune=generic -fomit-frame-pointer -I/usr/include/directfb" \
 	--disable-radio-capture \
 	--disable-directfb \
 	--enable-gui \
+	--disable-ffmpeg_a \
 	--extra-ldflags="-lfribidi"
 ub_make
