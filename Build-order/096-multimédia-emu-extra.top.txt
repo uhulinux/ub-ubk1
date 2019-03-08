@@ -83,3 +83,5 @@ blender
 transcode
 qmmp
 dmcradio
+baka-mplayer
+

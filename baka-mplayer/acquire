@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+v${UB_VERSION}.tar.gz Baka-MPlayer-${UB_VERSION}/
+	https://github.com/u8sand/Baka-MPlayer/archive/

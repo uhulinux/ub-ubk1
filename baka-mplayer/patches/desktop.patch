@@ -1,0 +1,17 @@
+diff -Nur orig/etc/baka-mplayer.desktop mod/etc/baka-mplayer.desktop
+--- orig/etc/baka-mplayer.desktop	2015-12-01 17:03:48.000000000 +0100
++++ mod/etc/baka-mplayer.desktop	2019-03-08 13:31:18.876402698 +0100
+@@ -4,10 +4,12 @@
+ Name=Baka-MPlayer
+ Name[hr]=Baka MPlayer
+ GenericName=Media player
++GenericName[hu]=Média lejátszó
+ GenericName[hr]=Medijski reproduktor
+ Comment=Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.
+ Comment[hr]=Baka MPlayer je slobodan i otvorenog kôda, višeplatformski, **libmpv** temeljen reproduktor.
++Comment[hu]=A Baka MPlayer szabad forrású, **libmpv** alapú multimédia lejátszó.
+ Icon=baka-mplayer
+ Exec=baka-mplayer %u
+ Terminal=false
+-Categories=AudioVideo;Video;
++Categories=AudioVideo;Video;Player;

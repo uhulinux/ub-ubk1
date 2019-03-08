@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+mkdir build
+cd build
+qmake ../src \
+    CONFIG+=release \
+    CONFIG+=install_translations \
+    CONFIG+=update_translations \
+    -spec linux-g++
+ub_compile

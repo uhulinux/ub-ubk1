@@ -6,5 +6,6 @@ waf configure \
 	--prefix=/usr \
 	--enable-libarchive \
 	--enable-cdda \
-	--enable-encoding
+	--enable-encoding \
+	--enable-libmpv-shared
 waf build

@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+cd build
+make INSTALL_ROOT=${UB_INSTALLDIR} install
