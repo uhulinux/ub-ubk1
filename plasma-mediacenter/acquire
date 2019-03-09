@@ -1,4 +1,0 @@
-#!/usr/bin/env dl
-
-plasma-mediacenter-${UB_VERSION}.tar.xz plasma-mediacenter-${UB_VERSION}/
-	http://download.kde.org/stable/plasma/${UB_VERSION}/
