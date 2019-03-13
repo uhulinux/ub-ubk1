@@ -3,3 +3,5 @@
 celdir="$UB_INSTALLDIR"/usr/share/backgrounds/UHU/
 mkdir -p "$celdir"
 cp * "$celdir"/
+cd ${UB_INSTALLDIR}/usr/share/backgrounds/UHU/
+ln -s uhu-grub-bg-dark.png ubk1-bg.png
