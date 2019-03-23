@@ -1,3 +1,4 @@
 caja-dev
-pygtk-dev
-python-docutils
+py3gobject
+pygobject-dev
+python3-docutils
