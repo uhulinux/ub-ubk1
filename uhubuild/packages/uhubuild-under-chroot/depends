@@ -4,6 +4,7 @@ diffutils
 dpkg >= 1.15.4
 findutils
 grep
+inetutils
 sed
 tar
 uhubuild-common
