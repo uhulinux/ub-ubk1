@@ -12,3 +12,4 @@ cd "$UB_INSTALLDIR"/bin/
 for progs in chacl getfacl setfacl; do
 	cp $progs "$UB_INSTALLDIR"/usr/bin/
 done
+ln -s $UB_INSTALLDIR/lib/* $UB_INSTALLDIR/usr/lib/
