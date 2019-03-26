@@ -1,6 +1,6 @@
 mate-panel
-pygobject
-python-apt
-python-xlib
-pyxdg
+py3gobject
+python3-pyinotify
+python3-xdg
+python3-xlib
 xdg-utils
