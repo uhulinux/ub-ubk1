@@ -1,0 +1,12 @@
+diff -Nur orig/src/Gtk/PlacesPopover.vala mod/src/Gtk/PlacesPopover.vala
+--- orig/src/Gtk/PlacesPopover.vala	2018-08-12 06:41:58.000000000 +0200
++++ mod/src/Gtk/PlacesPopover.vala	2019-03-24 20:34:31.767941143 +0100
+@@ -468,7 +468,7 @@
+ 				model.get (iter, ColumnItem.BOOKMARK, out bm, -1);
+ 
+ 				GtkBookmark.remove_bookmark(bm.uri);
+-				model.remove(ref iter);
++				model.remove(iter);
+ 			}
+ 		}
+ 		else{
