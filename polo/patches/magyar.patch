@@ -1,7 +1,7 @@
 diff -Nur orig/po/polo-hu.po mod/po/polo-hu.po
 --- orig/po/polo-hu.po	1970-01-01 01:00:00.000000000 +0100
-+++ mod/po/polo-hu.po	2019-03-27 20:38:46.103626887 +0100
-@@ -0,0 +1,4632 @@
++++ mod/po/polo-hu.po	2019-03-28 12:51:54.219359811 +0100
+@@ -0,0 +1,4645 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR Tony George (teejeetech@gmail.com)
 +# This file is distributed under the same license as the polo package.
@@ -12,23 +12,23 @@ diff -Nur orig/po/polo-hu.po mod/po/polo-hu.po
 +"Project-Id-Version: polo 1.6\n"
 +"Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
 +"POT-Creation-Date: 2018-07-08 18:04+0530\n"
-+"PO-Revision-Date: 2019-03-27 20:38+0100\n"
++"PO-Revision-Date: 2019-03-28 12:51+0100\n"
 +"Language-Team: \n"
 +"MIME-Version: 1.0\n"
 +"Content-Type: text/plain; charset=UTF-8\n"
 +"Content-Transfer-Encoding: 8bit\n"
 +"X-Generator: Poedit 2.1.1\n"
-+"Last-Translator: \n"
++"Last-Translator: Kiss Attila <attus@enterpriseforever.com>\n"
 +"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 +"Language: hu\n"
 +
 +#: Gtk/DevicePopover.vala:232
 +msgid " (locked)"
-+msgstr ""
++msgstr " (zárolt)"
 +
 +#: Gtk/ClamScanBox.vala:252
 +msgid " files moved to quarantine"
-+msgstr "fájlok karanténba mozgatva"
++msgstr " fájlok karanténba mozgatva"
 +
 +#: Common/Main.vala:1338
 +msgid ""
@@ -40,7 +40,7 @@ diff -Nur orig/po/polo-hu.po mod/po/polo-hu.po
 +#: Gtk/Sidebar.vala:725 Gtk/Sidebar.vala:727 Utility/Device.vala:2507
 +#: Utility/Device.vala:2509 Utility/Device.vala:2511
 +msgid "(empty)"
-+msgstr ""
++msgstr "(üres)"
 +
 +#: Gtk/FileContextMenu.vala:1156
 +msgid "..."
@@ -75,6 +75,8 @@ diff -Nur orig/po/polo-hu.po mod/po/polo-hu.po
 +"A dynamically allocated disk will be created with specified size. File size "
 +"will increase gradually as disk is modified."
 +msgstr ""
++"Dinamikusan elosztott lemez lesz létrehozva a megadott mérettel. A fájl "
++"mérete fokozatosan nőhet, ha  a lemez módosul."
 +
 +#: Gtk/MainWindow.vala:997
 +msgid "A modern file manager for Linux"
@@ -1155,7 +1157,7 @@ diff -Nur orig/po/polo-hu.po mod/po/polo-hu.po
 +
 +#: Utility/Device.vala:1766
 +msgid "Device name is empty!"
-+msgstr "Lemeznév nincs!"
++msgstr "Lemeznév üres!"
 +
 +#: Gtk/ProgressPanelDeviceWriterTask.vala:249
 +msgid "Device safely ejected and ready for use"
@@ -1193,6 +1195,17 @@ diff -Nur orig/po/polo-hu.po mod/po/polo-hu.po
 +"Thanks,\n"
 +"Tony George"
 +msgstr ""
++"Jól használható ez az alkalmazás?\n"
++"\n"
++"Elfogadok kávét, vagy Pay Pal útján más adományt is.\n"
++"\n"
++"Ennek az alkalmazásnak extra kiterjesztései is vannak, melyek használhatók "
++"némi adomány fejében. 10 dollár, vagy több adomány esetén ezeket az "
++"adományozónak levélhez csatolva elküldöm. Az együttműködés segíthet az "
++"alkalmazás életben tartáshoz és fejlesztéshez.\n"
++"\n"
++"Köszönet,\n"
++"Tony George"
 +
 +#: Utility/TeeJee.FileSystem.vala:959
 +msgid "Dir not found"
