@@ -1,0 +1,19 @@
+#!/bin/sh -eux
+
+if [ "$UB_ARCH" == "amd64" ];then
+    export GOHOSTARCH=amd64
+    installopt="-race"
+else
+    export GOHOSTARCH=386
+    installopt=""
+fi
+export GOARCH=$GOHOSTARCH
+export GOROOT_FINAL=/usr/lib/go
+export GOROOT_BOOTSTRAP=/usr/lib/go
+export GOPATH="$UB_COMPILEDIR"/
+    export GOROOT="$UB_COMPILEDIR"
+    export GOBIN="$GOROOT/bin"
+    cd src
+    ./make.bash --no-clean -v
+    PATH="$GOBIN:$PATH" go install -v -buildmode=shared std
+    PATH="$GOBIN:$PATH" go install -v $installopt std
