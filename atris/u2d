@@ -1,1 +1,1 @@
-u2d http://www.wkiri.com/projects/atris/
+urllist https://launchpad.net/ubuntu/+source/atris/ | grep dfsg | sed 's/\.dfs.*//g' | sort -V | tail -n 1
