@@ -58,3 +58,4 @@ cairo-dock-plugins
 gnome-photos
 rhythmbox
 budgie-desktop
+evolution-ews
