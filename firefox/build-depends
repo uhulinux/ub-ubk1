@@ -1,5 +1,6 @@
 alsa-lib-dev
 autoconf2.13
+cbindgen
 curl-dev
 dbus-glib-dev
 gtk2-dev
@@ -8,14 +9,15 @@ hunspell-dev
 libidl2-dev
 libjpeg-turbo-dev
 libnotify-dev
-libpng-dev
-libvpx-dev
 libx11-dev
 libxext-dev
 libxft-dev
 libxscrnsaver-dev
 libxt-dev
+llvm7
 mesa-dev
+nasm
+node
 nspr-dev
 nss-dev
 pulseaudio-dev
@@ -23,5 +25,6 @@ python-dev
 rust
 sqlite-dev
 startup-notification-dev
+wayland-dev
 yasm
 zip

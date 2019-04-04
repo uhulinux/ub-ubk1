@@ -1,0 +1,3 @@
+	/usr/lib/libfindAllSymbols.so.*
+	/usr/lib/libLLVM*.so.*
+	/usr/lib/LLVM*.so.*

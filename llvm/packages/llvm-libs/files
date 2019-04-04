@@ -1,4 +1,2 @@
-	/usr/lib/LLVMgold.so
 	/usr/lib/libLLVM*.so
 @	/usr/lib/libLLVM*.so
-	/usr/lib/libLTO.so
