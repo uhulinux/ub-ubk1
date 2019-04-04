@@ -1,7 +1,7 @@
-diff -Naur node-v7.10.0-orig/common.gypi node-v7.10.0/common.gypi
---- node-v7.10.0-orig/common.gypi	2017-05-03 03:59:42.000000000 +0200
-+++ node-v7.10.0/common.gypi	2017-05-31 09:08:46.473844863 +0200
-@@ -126,7 +126,7 @@
+diff -Nur orig/common.gypi mod/common.gypi
+--- orig/common.gypi	2017-10-11 14:35:16.000000000 +0200
++++ mod/common.gypi	2017-10-13 22:09:35.618951551 +0200
+@@ -123,7 +123,7 @@
          'variables': {
            'v8_enable_handle_zapping': 0,
          },
@@ -10,9 +10,9 @@ diff -Naur node-v7.10.0-orig/common.gypi node-v7.10.0/common.gypi
          'conditions': [
            ['target_arch=="x64"', {
              'msvs_configuration_platform': 'x64',
-diff -Naur node-v7.10.0-orig/deps/cares/common.gypi node-v7.10.0/deps/cares/common.gypi
---- node-v7.10.0-orig/deps/cares/common.gypi	2017-05-03 03:59:42.000000000 +0200
-+++ node-v7.10.0/deps/cares/common.gypi	2017-05-31 10:03:41.533683995 +0200
+diff -Nur orig/deps/cares/common.gypi mod/deps/cares/common.gypi
+--- orig/deps/cares/common.gypi	2017-10-11 14:35:16.000000000 +0200
++++ mod/deps/cares/common.gypi	2017-10-13 22:09:35.634951526 +0200
 @@ -40,7 +40,7 @@
        'Release': {
          'defines': [ 'NDEBUG' ],
@@ -22,9 +22,9 @@ diff -Naur node-v7.10.0-orig/deps/cares/common.gypi node-v7.10.0/deps/cares/comm
            '-fomit-frame-pointer',
            '-fdata-sections',
            '-ffunction-sections'
-diff -Naur node-v7.10.0-orig/deps/http_parser/http_parser.gyp node-v7.10.0/deps/http_parser/http_parser.gyp
---- node-v7.10.0-orig/deps/http_parser/http_parser.gyp	2017-05-03 03:59:42.000000000 +0200
-+++ node-v7.10.0/deps/http_parser/http_parser.gyp	2017-05-31 10:05:13.331824722 +0200
+diff -Nur orig/deps/http_parser/http_parser.gyp mod/deps/http_parser/http_parser.gyp
+--- orig/deps/http_parser/http_parser.gyp	2017-10-11 14:35:16.000000000 +0200
++++ mod/deps/http_parser/http_parser.gyp	2017-10-13 22:09:35.650951502 +0200
 @@ -21,7 +21,7 @@
        },
        'Release': {
@@ -34,9 +34,9 @@ diff -Naur node-v7.10.0-orig/deps/http_parser/http_parser.gyp node-v7.10.0/deps/
          'msvs_settings': {
            'VCCLCompilerTool': {
              'RuntimeLibrary': 0, # static release
-diff -Naur node-v7.10.0-orig/deps/http_parser/Makefile node-v7.10.0/deps/http_parser/Makefile
---- node-v7.10.0-orig/deps/http_parser/Makefile	2017-05-03 03:59:42.000000000 +0200
-+++ node-v7.10.0/deps/http_parser/Makefile	2017-05-31 10:04:33.446894607 +0200
+diff -Nur orig/deps/http_parser/Makefile mod/deps/http_parser/Makefile
+--- orig/deps/http_parser/Makefile	2017-10-11 14:35:16.000000000 +0200
++++ mod/deps/http_parser/Makefile	2017-10-13 22:09:35.666951478 +0200
 @@ -48,7 +48,7 @@
  
  CFLAGS += -Wall -Wextra -Werror
@@ -46,21 +46,21 @@ diff -Naur node-v7.10.0-orig/deps/http_parser/Makefile node-v7.10.0/deps/http_pa
  CFLAGS_BENCH = $(CFLAGS_FAST) -Wno-unused-parameter
  CFLAGS_LIB = $(CFLAGS_FAST) -fPIC
  
-diff -Naur node-v7.10.0-orig/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp node-v7.10.0/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp
---- node-v7.10.0-orig/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp	2017-05-03 03:59:44.000000000 +0200
-+++ node-v7.10.0/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp	2017-05-31 10:01:16.278296642 +0200
+diff -Nur orig/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp mod/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp
+--- orig/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp	2017-10-11 14:35:19.000000000 +0200
++++ mod/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp	2017-10-13 22:09:35.682951454 +0200
 @@ -557,7 +557,7 @@
                  # gcc on the mac builds horribly unoptimized sse code in debug
                  # mode. Since this is rarely going to be debugged, run with full
                  # optimizations in Debug as well as Release.
 -                'GCC_OPTIMIZATION_LEVEL': '3',  # -O3
-+                'GCC_OPTIMIZATION_LEVEL': '2',  # -O2
++                'GCC_OPTIMIZATION_LEVEL': '3',  # -O2
                 },
               },
            },
-diff -Naur node-v7.10.0-orig/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp.fontified node-v7.10.0/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp.fontified
---- node-v7.10.0-orig/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp.fontified	2017-05-03 03:59:44.000000000 +0200
-+++ node-v7.10.0/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp.fontified	2017-05-31 10:00:31.857260746 +0200
+diff -Nur orig/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp.fontified mod/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp.fontified
+--- orig/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp.fontified	2017-10-11 14:35:19.000000000 +0200
++++ mod/deps/npm/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp.fontified	2017-10-13 22:09:35.698951428 +0200
 @@ -558,7 +558,7 @@
                  # gcc on the mac builds horribly unoptimized sse code in debug
                  # mode. Since this is rarely going to be debugged, run with full
@@ -70,9 +70,9 @@ diff -Naur node-v7.10.0-orig/deps/npm/node_modules/node-gyp/gyp/tools/emacs/test
                 },
               },
            },
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/Configure node-v7.10.0/deps/openssl/openssl/Configure
---- node-v7.10.0-orig/deps/openssl/openssl/Configure	2017-05-03 03:59:45.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/Configure	2017-05-31 09:43:42.466758014 +0200
+diff -Nur orig/deps/openssl/openssl/Configure mod/deps/openssl/openssl/Configure
+--- orig/deps/openssl/openssl/Configure	2017-10-11 14:35:22.000000000 +0200
++++ mod/deps/openssl/openssl/Configure	2017-10-13 22:09:35.718951398 +0200
 @@ -200,18 +200,18 @@
  "debug-ben-openbsd","gcc:-DBN_DEBUG -DREF_CHECK -DCONF_DEBUG -DBN_CTX_DEBUG -DCRYPTO_MDEBUG -DPEDANTIC -DDEBUG_SAFESTACK -DOPENSSL_OPENBSD_DEV_CRYPTO -DOPENSSL_NO_ASM -O2 -pedantic -Wall -Wshadow -Werror -pipe::(unknown)::::",
  "debug-ben-openbsd-debug","gcc:-DBN_DEBUG -DREF_CHECK -DCONF_DEBUG -DBN_CTX_DEBUG -DCRYPTO_MDEBUG -DPEDANTIC -DDEBUG_SAFESTACK -DOPENSSL_OPENBSD_DEV_CRYPTO -DOPENSSL_NO_ASM -g3 -O2 -pedantic -Wall -Wshadow -Werror -pipe::(unknown)::::",
@@ -328,7 +328,7 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/Configure node-v7.10.0/deps/op
 -"debug-BSD-x86-elf",	"gcc:-DL_ENDIAN -O3 -Wall -g::${BSDthreads}:::BN_LLONG ${x86_gcc_des} ${x86_gcc_opts}:${x86_elf_asm}:dlfcn:bsd-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
 -"BSD-sparcv8",	"gcc:-DB_ENDIAN -O3 -mcpu=v8 -Wall::${BSDthreads}:::BN_LLONG RC2_CHAR RC4_INDEX DES_INT DES_UNROLL:${sparcv8_asm}:dlfcn:bsd-gcc-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
 +"BSD-generic32","gcc:-O2 -fomit-frame-pointer -Wall::${BSDthreads}:::BN_LLONG RC2_CHAR RC4_INDEX DES_INT DES_UNROLL:${no_asm}:dlfcn:bsd-gcc-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
-+"BSD-x86",	"gcc:-DL_ENDIAN -2 -fomit-frame-pointer -Wall::${BSDthreads}:::BN_LLONG ${x86_gcc_des} ${x86_gcc_opts}:${x86_asm}:a.out:dlfcn:bsd-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
++"BSD-x86",	"gcc:-DL_ENDIAN -O2 -fomit-frame-pointer -Wall::${BSDthreads}:::BN_LLONG ${x86_gcc_des} ${x86_gcc_opts}:${x86_asm}:a.out:dlfcn:bsd-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
 +"BSD-x86-elf",	"gcc:-DL_ENDIAN -O2 -fomit-frame-pointer -Wall::${BSDthreads}:::BN_LLONG ${x86_gcc_des} ${x86_gcc_opts}:${x86_elf_asm}:dlfcn:bsd-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
 +"debug-BSD-x86-elf",	"gcc:-DL_ENDIAN -O2 -Wall -g::${BSDthreads}:::BN_LLONG ${x86_gcc_des} ${x86_gcc_opts}:${x86_elf_asm}:dlfcn:bsd-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
 +"BSD-sparcv8",	"gcc:-DB_ENDIAN -O2 -mcpu=v8 -Wall::${BSDthreads}:::BN_LLONG RC2_CHAR RC4_INDEX DES_INT DES_UNROLL:${sparcv8_asm}:dlfcn:bsd-gcc-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
@@ -456,9 +456,9 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/Configure node-v7.10.0/deps/op
  
  ##### OS/2 EMX
  "OS2-EMX", "gcc::::::::",
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/aes/asm/aes-mips.pl node-v7.10.0/deps/openssl/openssl/crypto/aes/asm/aes-mips.pl
---- node-v7.10.0-orig/deps/openssl/openssl/crypto/aes/asm/aes-mips.pl	2017-05-03 03:59:46.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/crypto/aes/asm/aes-mips.pl	2017-05-31 09:57:38.365938118 +0200
+diff -Nur orig/deps/openssl/openssl/crypto/aes/asm/aes-mips.pl mod/deps/openssl/openssl/crypto/aes/asm/aes-mips.pl
+--- orig/deps/openssl/openssl/crypto/aes/asm/aes-mips.pl	2017-10-11 14:35:22.000000000 +0200
++++ mod/deps/openssl/openssl/crypto/aes/asm/aes-mips.pl	2017-10-13 22:09:35.734951374 +0200
 @@ -118,7 +118,7 @@
  my ($key0,$cnt)=($gp,$fp);
  
@@ -468,9 +468,9 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/aes/asm/aes-mips.pl nod
  $code.=<<___;
  .align	5
  .ent	_mips_AES_encrypt
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/bn/asm/ppc.pl node-v7.10.0/deps/openssl/openssl/crypto/bn/asm/ppc.pl
---- node-v7.10.0-orig/deps/openssl/openssl/crypto/bn/asm/ppc.pl	2017-05-03 03:59:46.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/crypto/bn/asm/ppc.pl	2017-05-31 09:55:41.191810211 +0200
+diff -Nur orig/deps/openssl/openssl/crypto/bn/asm/ppc.pl mod/deps/openssl/openssl/crypto/bn/asm/ppc.pl
+--- orig/deps/openssl/openssl/crypto/bn/asm/ppc.pl	2017-10-11 14:35:22.000000000 +0200
++++ mod/deps/openssl/openssl/crypto/bn/asm/ppc.pl	2017-10-13 22:09:35.750951350 +0200
 @@ -25,7 +25,7 @@
  #	OpenSSL 0.9.6c 21 dec 2001
  #	built on: Tue Jun 11 11:06:51 EDT 2002
@@ -489,9 +489,9 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/bn/asm/ppc.pl node-v7.1
  #                  sign    verify    sign/s verify/s
  #rsa  512 bits   0.0028s   0.0003s    357.1   3844.4
  #rsa 1024 bits   0.0148s   0.0008s     67.5   1239.7
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/bn/asm/sparcv8plus.S node-v7.10.0/deps/openssl/openssl/crypto/bn/asm/sparcv8plus.S
---- node-v7.10.0-orig/deps/openssl/openssl/crypto/bn/asm/sparcv8plus.S	2017-05-03 03:59:46.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/crypto/bn/asm/sparcv8plus.S	2017-05-31 09:54:55.174974535 +0200
+diff -Nur orig/deps/openssl/openssl/crypto/bn/asm/sparcv8plus.S mod/deps/openssl/openssl/crypto/bn/asm/sparcv8plus.S
+--- orig/deps/openssl/openssl/crypto/bn/asm/sparcv8plus.S	2017-10-11 14:35:22.000000000 +0200
++++ mod/deps/openssl/openssl/crypto/bn/asm/sparcv8plus.S	2017-10-13 22:09:35.766951324 +0200
 @@ -96,13 +96,13 @@
   *
   *	cc-5.0 -xarch=v8plus -xO5 -xdepend	+7-12%
@@ -508,9 +508,9 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/bn/asm/sparcv8plus.S no
   *
   *    As you can see it's damn hard to beat the new Sun C compiler
   *    and it's in first place GNU C users who will appreciate this
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/des/INSTALL node-v7.10.0/deps/openssl/openssl/crypto/des/INSTALL
---- node-v7.10.0-orig/deps/openssl/openssl/crypto/des/INSTALL	2017-05-03 03:59:46.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/crypto/des/INSTALL	2017-05-31 09:51:24.043140338 +0200
+diff -Nur orig/deps/openssl/openssl/crypto/des/INSTALL mod/deps/openssl/openssl/crypto/des/INSTALL
+--- orig/deps/openssl/openssl/crypto/des/INSTALL	2017-10-11 14:35:23.000000000 +0200
++++ mod/deps/openssl/openssl/crypto/des/INSTALL	2017-10-13 22:09:35.782951301 +0200
 @@ -8,7 +8,7 @@
  be 100.0.
  
@@ -520,9 +520,9 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/des/INSTALL node-v7.10.
  In recent times, some system compilers give better performace.
  
  type 'make'
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/des/options.txt node-v7.10.0/deps/openssl/openssl/crypto/des/options.txt
---- node-v7.10.0-orig/deps/openssl/openssl/crypto/des/options.txt	2017-05-03 03:59:46.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/crypto/des/options.txt	2017-05-31 09:52:22.548202802 +0200
+diff -Nur orig/deps/openssl/openssl/crypto/des/options.txt mod/deps/openssl/openssl/crypto/des/options.txt
+--- orig/deps/openssl/openssl/crypto/des/options.txt	2017-10-11 14:35:23.000000000 +0200
++++ mod/deps/openssl/openssl/crypto/des/options.txt	2017-10-13 22:09:35.798951277 +0200
 @@ -4,7 +4,7 @@
  PTR means to use pointers arithmatic instead of arrays.
  
@@ -532,9 +532,9 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/des/options.txt node-v7
  solaris 2.5.1 usparc 167mhz?? - SC4.0 - UNROLL RISC1 PTR [1]	459,400 3672k/s
  FreeBSD - Pentium Pro 200mhz - gcc 2.7.2.2 - UNROLL RISC1	433,000 3468k/s
  solaris 2.5.1 usparc 167mhz?? - gcc 2.7.2 - UNROLL 		380,000 3041k/s
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/des/times/586-100.lnx node-v7.10.0/deps/openssl/openssl/crypto/des/times/586-100.lnx
---- node-v7.10.0-orig/deps/openssl/openssl/crypto/des/times/586-100.lnx	2017-05-03 03:59:46.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/crypto/des/times/586-100.lnx	2017-05-31 09:53:40.197612931 +0200
+diff -Nur orig/deps/openssl/openssl/crypto/des/times/586-100.lnx mod/deps/openssl/openssl/crypto/des/times/586-100.lnx
+--- orig/deps/openssl/openssl/crypto/des/times/586-100.lnx	2017-10-11 14:35:23.000000000 +0200
++++ mod/deps/openssl/openssl/crypto/des/times/586-100.lnx	2017-10-13 22:09:35.814951252 +0200
 @@ -1,6 +1,6 @@
  Pentium 100
  Linux 2 kernel
@@ -543,9 +543,9 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/des/times/586-100.lnx n
  No X server running, just a console, it makes the top speed jump from 151,000
  to 158,000 :-).
  options    des ecb/s
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/des/times/686-200.fre node-v7.10.0/deps/openssl/openssl/crypto/des/times/686-200.fre
---- node-v7.10.0-orig/deps/openssl/openssl/crypto/des/times/686-200.fre	2017-05-03 03:59:46.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/crypto/des/times/686-200.fre	2017-05-31 09:53:30.013427987 +0200
+diff -Nur orig/deps/openssl/openssl/crypto/des/times/686-200.fre mod/deps/openssl/openssl/crypto/des/times/686-200.fre
+--- orig/deps/openssl/openssl/crypto/des/times/686-200.fre	2017-10-11 14:35:23.000000000 +0200
++++ mod/deps/openssl/openssl/crypto/des/times/686-200.fre	2017-10-13 22:09:35.830951227 +0200
 @@ -1,6 +1,6 @@
  Pentium 100
  Free BSD 2.1.5 kernel
@@ -554,9 +554,9 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/crypto/des/times/686-200.fre n
  options    des ecb/s
  assember   578000.00 133.1%
  16 r2 i    434454.80 100.0%
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/Makefile.bak node-v7.10.0/deps/openssl/openssl/Makefile.bak
---- node-v7.10.0-orig/deps/openssl/openssl/Makefile.bak	2017-05-03 03:59:45.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/Makefile.bak	2017-05-31 09:45:10.928364496 +0200
+diff -Nur orig/deps/openssl/openssl/Makefile.bak mod/deps/openssl/openssl/Makefile.bak
+--- orig/deps/openssl/openssl/Makefile.bak	2017-10-11 14:35:22.000000000 +0200
++++ mod/deps/openssl/openssl/Makefile.bak	2017-10-13 22:09:35.846951203 +0200
 @@ -60,7 +60,7 @@
  # PKCS1_CHECK - pkcs1 tests.
  
@@ -566,9 +566,9 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/Makefile.bak node-v7.10.0/deps
  DEPFLAG= -DOPENSSL_NO_EC_NISTP_64_GCC_128 -DOPENSSL_NO_GMP -DOPENSSL_NO_JPAKE -DOPENSSL_NO_LIBUNBOUND -DOPENSSL_NO_MD2 -DOPENSSL_NO_RC5 -DOPENSSL_NO_RFC3779 -DOPENSSL_NO_SCTP -DOPENSSL_NO_SSL_TRACE -DOPENSSL_NO_SSL2 -DOPENSSL_NO_STORE -DOPENSSL_NO_UNIT_TEST -DOPENSSL_NO_WEAK_SSL_CIPHERS
  PEX_LIBS= 
  EX_LIBS= -ldl
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/shlib/sco5-shared-gcc.sh node-v7.10.0/deps/openssl/openssl/shlib/sco5-shared-gcc.sh
---- node-v7.10.0-orig/deps/openssl/openssl/shlib/sco5-shared-gcc.sh	2017-05-03 03:59:47.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/shlib/sco5-shared-gcc.sh	2017-05-31 09:48:47.344294653 +0200
+diff -Nur orig/deps/openssl/openssl/shlib/sco5-shared-gcc.sh mod/deps/openssl/openssl/shlib/sco5-shared-gcc.sh
+--- orig/deps/openssl/openssl/shlib/sco5-shared-gcc.sh	2017-10-11 14:35:24.000000000 +0200
++++ mod/deps/openssl/openssl/shlib/sco5-shared-gcc.sh	2017-10-13 22:09:35.862951179 +0200
 @@ -9,7 +9,7 @@
  clib=libcrypto
  sh_clib=$clib.so.$major.$minor
@@ -578,9 +578,9 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/shlib/sco5-shared-gcc.sh node-
  SHFLAGS="-DPIC -fPIC"
  
  touch $sh_clib
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/shlib/solaris.sh node-v7.10.0/deps/openssl/openssl/shlib/solaris.sh
---- node-v7.10.0-orig/deps/openssl/openssl/shlib/solaris.sh	2017-05-03 03:59:47.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/shlib/solaris.sh	2017-05-31 09:49:27.745028340 +0200
+diff -Nur orig/deps/openssl/openssl/shlib/solaris.sh mod/deps/openssl/openssl/shlib/solaris.sh
+--- orig/deps/openssl/openssl/shlib/solaris.sh	2017-10-11 14:35:24.000000000 +0200
++++ mod/deps/openssl/openssl/shlib/solaris.sh	2017-10-13 22:09:35.878951154 +0200
 @@ -9,7 +9,7 @@
  CC=gcc
  CPP='gcc -E'
@@ -590,18 +590,18 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/shlib/solaris.sh node-v7.10.0/
  FLAGS='-DTERMIO -g2 -ggdb -DL_ENDIAN -Wall -DREF_CHECK -DCRYPTO_MDEBUG'
  INCLUDE='-Iinclude -Icrypto -Issl'
  SHFLAGS='-DPIC -fpic'
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/shlib/sun.sh node-v7.10.0/deps/openssl/openssl/shlib/sun.sh
---- node-v7.10.0-orig/deps/openssl/openssl/shlib/sun.sh	2017-05-03 03:59:47.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/shlib/sun.sh	2017-05-31 09:48:14.979706906 +0200
+diff -Nur orig/deps/openssl/openssl/shlib/sun.sh mod/deps/openssl/openssl/shlib/sun.sh
+--- orig/deps/openssl/openssl/shlib/sun.sh	2017-10-11 14:35:24.000000000 +0200
++++ mod/deps/openssl/openssl/shlib/sun.sh	2017-10-13 22:09:35.894951130 +0200
 @@ -1,4 +1,4 @@
 -FLAGS="-DTERMIO -O3 -DB_ENDIAN -fomit-frame-pointer -mv8 -Wall -Iinclude"
 +FLAGS="-DTERMIO -O2 -DB_ENDIAN -fomit-frame-pointer -mv8 -Wall -Iinclude"
  SHFLAGS="-DPIC -fpic"
  
  gcc -c -Icrypto $SHFLAGS -fpic $FLAGS -o crypto.o crypto/crypto.c
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/util/pl/linux.pl node-v7.10.0/deps/openssl/openssl/util/pl/linux.pl
---- node-v7.10.0-orig/deps/openssl/openssl/util/pl/linux.pl	2017-05-03 03:59:47.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/util/pl/linux.pl	2017-05-31 09:46:03.525319667 +0200
+diff -Nur orig/deps/openssl/openssl/util/pl/linux.pl mod/deps/openssl/openssl/util/pl/linux.pl
+--- orig/deps/openssl/openssl/util/pl/linux.pl	2017-10-11 14:35:24.000000000 +0200
++++ mod/deps/openssl/openssl/util/pl/linux.pl	2017-10-13 22:09:35.910951106 +0200
 @@ -13,9 +13,9 @@
  if ($debug)
  	{ $cflags="-g2 -ggdb -DREF_CHECK -DCRYPTO_MDEBUG"; }
@@ -614,9 +614,9 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/util/pl/linux.pl node-v7.10.0/
  
  if (!$no_asm)
  	{
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/util/pl/Mingw32.pl node-v7.10.0/deps/openssl/openssl/util/pl/Mingw32.pl
---- node-v7.10.0-orig/deps/openssl/openssl/util/pl/Mingw32.pl	2017-05-03 03:59:47.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/util/pl/Mingw32.pl	2017-05-31 09:46:53.222222174 +0200
+diff -Nur orig/deps/openssl/openssl/util/pl/Mingw32.pl mod/deps/openssl/openssl/util/pl/Mingw32.pl
+--- orig/deps/openssl/openssl/util/pl/Mingw32.pl	2017-10-11 14:35:24.000000000 +0200
++++ mod/deps/openssl/openssl/util/pl/Mingw32.pl	2017-10-13 22:09:35.926951081 +0200
 @@ -19,7 +19,7 @@
  if ($debug)
  	{ $cflags="-DL_ENDIAN -DDSO_WIN32 -g2 -ggdb"; }
@@ -626,9 +626,9 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/util/pl/Mingw32.pl node-v7.10.
  
  if ($gaswin and !$no_asm)
  	{
-diff -Naur node-v7.10.0-orig/deps/openssl/openssl/util/pl/unix.pl node-v7.10.0/deps/openssl/openssl/util/pl/unix.pl
---- node-v7.10.0-orig/deps/openssl/openssl/util/pl/unix.pl	2017-05-03 03:59:47.000000000 +0200
-+++ node-v7.10.0/deps/openssl/openssl/util/pl/unix.pl	2017-05-31 09:47:34.230966901 +0200
+diff -Nur orig/deps/openssl/openssl/util/pl/unix.pl mod/deps/openssl/openssl/util/pl/unix.pl
+--- orig/deps/openssl/openssl/util/pl/unix.pl	2017-10-11 14:35:24.000000000 +0200
++++ mod/deps/openssl/openssl/util/pl/unix.pl	2017-10-13 22:09:35.946951051 +0200
 @@ -15,7 +15,7 @@
  	if ($debug)
  		{ $cflags="-g2 -ggdb"; }
@@ -638,22 +638,22 @@ diff -Naur node-v7.10.0-orig/deps/openssl/openssl/util/pl/unix.pl node-v7.10.0/d
  	}
  else
  	{
-diff -Naur node-v7.10.0-orig/deps/uv/common.gypi node-v7.10.0/deps/uv/common.gypi
---- node-v7.10.0-orig/deps/uv/common.gypi	2017-05-03 03:59:47.000000000 +0200
-+++ node-v7.10.0/deps/uv/common.gypi	2017-05-31 10:05:52.324637610 +0200
-@@ -47,7 +47,7 @@
+diff -Nur orig/deps/uv/common.gypi mod/deps/uv/common.gypi
+--- orig/deps/uv/common.gypi	2017-10-11 14:35:25.000000000 +0200
++++ mod/deps/uv/common.gypi	2017-10-13 22:09:35.966951019 +0200
+@@ -46,7 +46,7 @@
        'Release': {
          'defines': [ 'NDEBUG' ],
          'cflags': [
 -          '-O3',
 +          '-O2',
-           '-fstrict-aliasing',
-           '-fomit-frame-pointer',
-           '-fdata-sections',
-diff -Naur node-v7.10.0-orig/deps/v8/gypfiles/toolchain.gypi node-v7.10.0/deps/v8/gypfiles/toolchain.gypi
---- node-v7.10.0-orig/deps/v8/gypfiles/toolchain.gypi	2017-05-03 03:59:48.000000000 +0200
-+++ node-v7.10.0/deps/v8/gypfiles/toolchain.gypi	2017-05-31 09:25:12.906938506 +0200
-@@ -1150,7 +1150,7 @@
+         ],
+         'msvs_settings': {
+           'VCCLCompilerTool': {
+diff -Nur orig/deps/v8/gypfiles/toolchain.gypi mod/deps/v8/gypfiles/toolchain.gypi
+--- orig/deps/v8/gypfiles/toolchain.gypi	2017-10-11 14:35:27.000000000 +0200
++++ mod/deps/v8/gypfiles/toolchain.gypi	2017-10-13 22:09:35.982950996 +0200
+@@ -1128,7 +1128,7 @@
            ['OS=="linux" or OS=="freebsd" or OS=="openbsd" or OS=="netbsd" or \
              OS=="qnx" or OS=="aix"', {
              'cflags!': [
@@ -662,8 +662,12 @@ diff -Naur node-v7.10.0-orig/deps/v8/gypfiles/toolchain.gypi node-v7.10.0/deps/v
                '-O2',
                '-O1',
                '-Os',
-@@ -1216,17 +1216,17 @@
-               # Don't use -O3 with sanitizers.
+@@ -1191,20 +1191,20 @@
+               '-ffunction-sections',
+             ],
+             'conditions': [
+-              # Don't use -O3 with sanitizers.
++              # Don't use -O2 with sanitizers.
                ['asan==0 and msan==0 and lsan==0 \
                  and tsan==0 and ubsan==0 and ubsan_vptr==0', {
 -                'cflags': ['-O3'],
@@ -683,12 +687,12 @@ diff -Naur node-v7.10.0-orig/deps/v8/gypfiles/toolchain.gypi node-v7.10.0/deps/v
                'GCC_STRICT_ALIASING': 'YES',
              },
            }],
-@@ -1331,20 +1331,20 @@
+@@ -1307,20 +1307,20 @@
                '<(wno_array_bounds)',
              ],
              'conditions': [
 -              # Don't use -O3 with sanitizers.
-+              # Don't use 2 with sanitizers.
++              # Don't use -O2 with sanitizers.
                ['asan==0 and msan==0 and lsan==0 \
                  and tsan==0 and ubsan==0 and ubsan_vptr==0', {
 -                'cflags': ['-O3'],
@@ -708,18 +712,18 @@ diff -Naur node-v7.10.0-orig/deps/v8/gypfiles/toolchain.gypi node-v7.10.0/deps/v
                '-Os',
              ],
              'cflags': [
-@@ -1355,7 +1355,7 @@
+@@ -1331,7 +1331,7 @@
            }],
            ['OS=="mac"', {
              'xcode_settings': {
 -              'GCC_OPTIMIZATION_LEVEL': '3',  # -O3
-+              'GCC_OPTIMIZATION_LEVEL': '2',  # -O2
++              'GCC_OPTIMIZATION_LEVEL': '3',  # -O2
  
                # -fstrict-aliasing.  Mainline gcc
                # enables this at -O2 and above,
-diff -Naur node-v7.10.0-orig/deps/v8/tools/gcmole/Makefile node-v7.10.0/deps/v8/tools/gcmole/Makefile
---- node-v7.10.0-orig/deps/v8/tools/gcmole/Makefile	2017-05-03 04:00:08.000000000 +0200
-+++ node-v7.10.0/deps/v8/tools/gcmole/Makefile	2017-05-31 09:27:17.973156974 +0200
+diff -Nur orig/deps/v8/tools/gcmole/Makefile mod/deps/v8/tools/gcmole/Makefile
+--- orig/deps/v8/tools/gcmole/Makefile	2017-10-11 14:35:55.000000000 +0200
++++ mod/deps/v8/tools/gcmole/Makefile	2017-10-13 22:09:35.998950971 +0200
 @@ -33,7 +33,7 @@
  libgcmole.so: gcmole.cc
  	$(CXX) -I$(LLVM_INCLUDE) -I$(CLANG_INCLUDE) -I. -D_DEBUG              \
@@ -729,9 +733,9 @@ diff -Naur node-v7.10.0-orig/deps/v8/tools/gcmole/Makefile node-v7.10.0/deps/v8/
  	-fno-rtti -fPIC -Woverloaded-virtual -Wcast-qual -fno-strict-aliasing \
  	-pedantic -Wno-long-long -Wall -W -Wno-unused-parameter               \
  	-Wwrite-strings -std=c++0x -shared -o libgcmole.so gcmole.cc
-diff -Naur node-v7.10.0-orig/deps/zlib/configure node-v7.10.0/deps/zlib/configure
---- node-v7.10.0-orig/deps/zlib/configure	2017-05-03 04:00:09.000000000 +0200
-+++ node-v7.10.0/deps/zlib/configure	2017-05-31 09:13:57.151228510 +0200
+diff -Nur orig/deps/zlib/configure mod/deps/zlib/configure
+--- orig/deps/zlib/configure	2017-10-11 14:35:55.000000000 +0200
++++ mod/deps/zlib/configure	2017-10-13 22:09:36.014950947 +0200
 @@ -167,8 +167,8 @@
  
  test -z "$CC" && echo Checking for ${CROSS_PREFIX}gcc... | tee -a configure.log
@@ -765,9 +769,9 @@ diff -Naur node-v7.10.0-orig/deps/zlib/configure node-v7.10.0/deps/zlib/configur
               LDSHARED=${LDSHARED-"cc -dy -KPIC -G"} ;;
    SunOS\ 5* | solaris*)
           LDSHARED=${LDSHARED-"cc -G -h libz$shared_ext.$VER1"}
-diff -Naur node-v7.10.0-orig/deps/zlib/crc32.c node-v7.10.0/deps/zlib/crc32.c
---- node-v7.10.0-orig/deps/zlib/crc32.c	2017-05-03 04:00:09.000000000 +0200
-+++ node-v7.10.0/deps/zlib/crc32.c	2017-05-31 09:17:53.803329394 +0200
+diff -Nur orig/deps/zlib/crc32.c mod/deps/zlib/crc32.c
+--- orig/deps/zlib/crc32.c	2017-10-11 14:35:56.000000000 +0200
++++ mod/deps/zlib/crc32.c	2017-10-13 22:09:36.030950922 +0200
 @@ -6,7 +6,7 @@
   * CRC methods: exclusive-oring 32 bits of data at a time, and pre-computing
   * tables for updating the shift register in one step with three exclusive-ors
@@ -777,9 +781,9 @@ diff -Naur node-v7.10.0-orig/deps/zlib/crc32.c node-v7.10.0/deps/zlib/crc32.c
   */
  
  /* @(#) $Id$ */
-diff -Naur node-v7.10.0-orig/deps/zlib/Makefile.in node-v7.10.0/deps/zlib/Makefile.in
---- node-v7.10.0-orig/deps/zlib/Makefile.in	2017-05-03 04:00:09.000000000 +0200
-+++ node-v7.10.0/deps/zlib/Makefile.in	2017-05-31 09:17:03.186452267 +0200
+diff -Nur orig/deps/zlib/Makefile.in mod/deps/zlib/Makefile.in
+--- orig/deps/zlib/Makefile.in	2017-10-11 14:35:55.000000000 +0200
++++ mod/deps/zlib/Makefile.in	2017-10-13 22:09:36.046950898 +0200
 @@ -21,7 +21,7 @@
  CFLAGS=-O
  #CFLAGS=-O -DMAX_WBITS=14 -DMAX_MEM_LEVEL=7
@@ -789,9 +793,9 @@ diff -Naur node-v7.10.0-orig/deps/zlib/Makefile.in node-v7.10.0/deps/zlib/Makefi
  #           -Wstrict-prototypes -Wmissing-prototypes
  
  SFLAGS=-O
-diff -Naur node-v7.10.0-orig/deps/zlib/msdos/Makefile.dj2 node-v7.10.0/deps/zlib/msdos/Makefile.dj2
---- node-v7.10.0-orig/deps/zlib/msdos/Makefile.dj2	2017-05-03 04:00:09.000000000 +0200
-+++ node-v7.10.0/deps/zlib/msdos/Makefile.dj2	2017-05-31 09:20:11.573716781 +0200
+diff -Nur orig/deps/zlib/msdos/Makefile.dj2 mod/deps/zlib/msdos/Makefile.dj2
+--- orig/deps/zlib/msdos/Makefile.dj2	2017-10-11 14:35:56.000000000 +0200
++++ mod/deps/zlib/msdos/Makefile.dj2	2017-10-13 22:09:36.062950874 +0200
 @@ -30,7 +30,7 @@
  #CFLAGS=-MMD -O
  #CFLAGS=-O -DMAX_WBITS=14 -DMAX_MEM_LEVEL=7
@@ -801,9 +805,9 @@ diff -Naur node-v7.10.0-orig/deps/zlib/msdos/Makefile.dj2 node-v7.10.0/deps/zlib
               -Wstrict-prototypes -Wmissing-prototypes
  
  # If cp.exe is available, replace "copy /Y" with "cp -fp" .
-diff -Naur node-v7.10.0-orig/deps/zlib/msdos/Makefile.emx node-v7.10.0/deps/zlib/msdos/Makefile.emx
---- node-v7.10.0-orig/deps/zlib/msdos/Makefile.emx	2017-05-03 04:00:09.000000000 +0200
-+++ node-v7.10.0/deps/zlib/msdos/Makefile.emx	2017-05-31 09:20:43.166264240 +0200
+diff -Nur orig/deps/zlib/msdos/Makefile.emx mod/deps/zlib/msdos/Makefile.emx
+--- orig/deps/zlib/msdos/Makefile.emx	2017-10-11 14:35:56.000000000 +0200
++++ mod/deps/zlib/msdos/Makefile.emx	2017-10-13 22:09:36.094950825 +0200
 @@ -12,7 +12,7 @@
  #CFLAGS=-MMD -O
  #CFLAGS=-O -DMAX_WBITS=14 -DMAX_MEM_LEVEL=7
@@ -813,9 +817,9 @@ diff -Naur node-v7.10.0-orig/deps/zlib/msdos/Makefile.emx node-v7.10.0/deps/zlib
               -Wstrict-prototypes -Wmissing-prototypes
  
  # If cp.exe is available, replace "copy /Y" with "cp -fp" .
-diff -Naur node-v7.10.0-orig/deps/zlib/old/Makefile.emx node-v7.10.0/deps/zlib/old/Makefile.emx
---- node-v7.10.0-orig/deps/zlib/old/Makefile.emx	2017-05-03 04:00:09.000000000 +0200
-+++ node-v7.10.0/deps/zlib/old/Makefile.emx	2017-05-31 09:21:16.846847882 +0200
+diff -Nur orig/deps/zlib/old/Makefile.emx mod/deps/zlib/old/Makefile.emx
+--- orig/deps/zlib/old/Makefile.emx	2017-10-11 14:35:56.000000000 +0200
++++ mod/deps/zlib/old/Makefile.emx	2017-10-13 22:09:36.126950776 +0200
 @@ -12,7 +12,7 @@
  #CFLAGS=-MMD -O
  #CFLAGS=-O -DMAX_WBITS=14 -DMAX_MEM_LEVEL=7
@@ -825,9 +829,9 @@ diff -Naur node-v7.10.0-orig/deps/zlib/old/Makefile.emx node-v7.10.0/deps/zlib/o
               -Wstrict-prototypes -Wmissing-prototypes
  
  # If cp.exe is available, replace "copy /Y" with "cp -fp" .
-diff -Naur node-v7.10.0-orig/deps/zlib/old/os2/Makefile.os2 node-v7.10.0/deps/zlib/old/os2/Makefile.os2
---- node-v7.10.0-orig/deps/zlib/old/os2/Makefile.os2	2017-05-03 04:00:09.000000000 +0200
-+++ node-v7.10.0/deps/zlib/old/os2/Makefile.os2	2017-05-31 09:21:58.643572167 +0200
+diff -Nur orig/deps/zlib/old/os2/Makefile.os2 mod/deps/zlib/old/os2/Makefile.os2
+--- orig/deps/zlib/old/os2/Makefile.os2	2017-10-11 14:35:56.000000000 +0200
++++ mod/deps/zlib/old/os2/Makefile.os2	2017-10-13 22:09:36.142950751 +0200
 @@ -15,7 +15,7 @@
  CFLAGS=-O6 -Wall
  #CFLAGS=-O -DMAX_WBITS=14 -DMAX_MEM_LEVEL=7
@@ -837,9 +841,9 @@ diff -Naur node-v7.10.0-orig/deps/zlib/old/os2/Makefile.os2 node-v7.10.0/deps/zl
  #           -Wstrict-prototypes -Wmissing-prototypes
  
  #################### BUG WARNING: #####################
-diff -Naur node-v7.10.0-orig/deps/zlib/win32/Makefile.gcc node-v7.10.0/deps/zlib/win32/Makefile.gcc
---- node-v7.10.0-orig/deps/zlib/win32/Makefile.gcc	2017-05-03 04:00:09.000000000 +0200
-+++ node-v7.10.0/deps/zlib/win32/Makefile.gcc	2017-05-31 09:19:05.844577777 +0200
+diff -Nur orig/deps/zlib/win32/Makefile.gcc mod/deps/zlib/win32/Makefile.gcc
+--- orig/deps/zlib/win32/Makefile.gcc	2017-10-11 14:35:56.000000000 +0200
++++ mod/deps/zlib/win32/Makefile.gcc	2017-10-13 22:09:36.158950727 +0200
 @@ -43,7 +43,7 @@
  
  PREFIX =
@@ -849,27 +853,27 @@ diff -Naur node-v7.10.0-orig/deps/zlib/win32/Makefile.gcc node-v7.10.0/deps/zlib
  
  AS = $(CC)
  ASFLAGS = $(LOC) -Wall
-diff -Naur node-v7.10.0-orig/tools/gyp/tools/emacs/testdata/media.gyp node-v7.10.0/tools/gyp/tools/emacs/testdata/media.gyp
---- node-v7.10.0-orig/tools/gyp/tools/emacs/testdata/media.gyp	2017-05-03 04:00:16.000000000 +0200
-+++ node-v7.10.0/tools/gyp/tools/emacs/testdata/media.gyp	2017-05-31 09:10:25.015552466 +0200
+diff -Nur orig/tools/gyp/tools/emacs/testdata/media.gyp mod/tools/gyp/tools/emacs/testdata/media.gyp
+--- orig/tools/gyp/tools/emacs/testdata/media.gyp	2017-10-11 14:36:15.000000000 +0200
++++ mod/tools/gyp/tools/emacs/testdata/media.gyp	2017-10-13 22:09:36.174950703 +0200
 @@ -557,7 +557,7 @@
                  # gcc on the mac builds horribly unoptimized sse code in debug
                  # mode. Since this is rarely going to be debugged, run with full
                  # optimizations in Debug as well as Release.
 -                'GCC_OPTIMIZATION_LEVEL': '3',  # -O3
-+                'GCC_OPTIMIZATION_LEVEL': '2',  # -O2
++                'GCC_OPTIMIZATION_LEVEL': '3',  # -O2
                 },
               },
            },
-diff -Naur node-v7.10.0-orig/tools/gyp/tools/emacs/testdata/media.gyp.fontified node-v7.10.0/tools/gyp/tools/emacs/testdata/media.gyp.fontified
---- node-v7.10.0-orig/tools/gyp/tools/emacs/testdata/media.gyp.fontified	2017-05-03 04:00:16.000000000 +0200
-+++ node-v7.10.0/tools/gyp/tools/emacs/testdata/media.gyp.fontified	2017-05-31 09:11:16.312441376 +0200
+diff -Nur orig/tools/gyp/tools/emacs/testdata/media.gyp.fontified mod/tools/gyp/tools/emacs/testdata/media.gyp.fontified
+--- orig/tools/gyp/tools/emacs/testdata/media.gyp.fontified	2017-10-11 14:36:15.000000000 +0200
++++ mod/tools/gyp/tools/emacs/testdata/media.gyp.fontified	2017-10-13 22:09:36.190950679 +0200
 @@ -558,7 +558,7 @@
                  # gcc on the mac builds horribly unoptimized sse code in debug
                  # mode. Since this is rarely going to be debugged, run with full
                  # optimizations in Debug as well as Release.
 -                'GCC_OPTIMIZATION_LEVEL': '3',  # -O3
-+                'GCC_OPTIMIZATION_LEVEL': '2',  # -O2
++                'GCC_OPTIMIZATION_LEVEL': '3',  # -O2
                 },
               },
            },

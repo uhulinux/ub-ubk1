@@ -1,7 +1,7 @@
-	/usr/bin/*gcj
 	/usr/bin/aot-compile
 	/usr/bin/gappletviewer
 	/usr/bin/gc-analyze
+	/usr/bin/*gcj
 	/usr/bin/gcj-dbtool
 	/usr/bin/gcjh
 	/usr/bin/gij
@@ -25,6 +25,8 @@
 	/usr/include/c++/*/javax
 	/usr/include/c++/*/org
 	/usr/include/c++/*/sun
+	/usr/libexec/gcc/*/*/jc1
+	/usr/libexec/gcc/*/*/jvgenmain
 	/usr/lib/gcc/*/*/include/gcj
 	/usr/lib/gcc/*/*/include/jawt.h
 	/usr/lib/gcc/*/*/include/jawt_md.h
@@ -32,25 +34,23 @@
 	/usr/lib/gcc/*/*/include/jni_md.h
 	/usr/lib/gcc/*/*/include/jvmpi.h
 	/usr/lib/gcj-*
-	/usr/lib/libgcj-tools.*
+	/usr/lib/libgcj_bc.so*
 	/usr/lib/libgcj.la
 	/usr/lib/libgcj.so
 	/usr/lib/libgcj.spec
-	/usr/lib/libgcj_bc.so*
+	/usr/lib/libgcj-tools.*
 	/usr/lib/libgij.*
 	/usr/lib/logging.properties
 	/usr/lib/pkgconfig/libgcj-*.pc
 	/usr/lib/security/classpath.security
-	/usr/libexec/gcc/*/*/jc1
-	/usr/libexec/gcc/*/*/jvgenmain
 	/usr/share/gcc-*/python/libjava
 	/usr/share/info/cp-tools.info
 	/usr/share/info/gcj.info
 	/usr/share/man/man1/aot-compile.1
 	/usr/share/man/man1/gappletviewer.1
 	/usr/share/man/man1/gc-analyze.1
-	/usr/share/man/man1/gcj-dbtool.1
 	/usr/share/man/man1/gcj.1
+	/usr/share/man/man1/gcj-dbtool.1
 	/usr/share/man/man1/gcjh.1
 	/usr/share/man/man1/gij.1*
 	/usr/share/man/man1/gjar.1

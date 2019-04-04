@@ -12,15 +12,15 @@ GCJFLAGS="$OPT_FLAGS" \
 
 if [ "$UB_ARCH" == "amd64" ]; then
 	hostflags=(
-	--build=x86_64-gnu-linux
-	--host=x86_64-gnu-linux
-	--target=x86_64-gnu-linux
+	--build=x86_64-linux-gnu
+	--host=x86_64-linux-gnu
+	--target=x86_64-linux-gnu
 	)
 else
 	hostflags=(
-	--build=i686-gnu-linux
-	--host=i686-gnu-linux
-	--target=i686-gnu-linux
+	--build=i686-linux-gnu
+	--host=i686-linux-gnu
+	--target=i686-linux-gnu
 	)
 fi
 
