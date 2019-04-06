@@ -1,8 +1,12 @@
 #!/bin/sh -eux
 
+ub_replace -O3 -O2 lib-src/libvorbis/configure.ac
+ub_replace -O3 -O2 lib-src/soundtouch/source/SoundTouch/Makefile.in
+ub_replace -O3 -O2 lib-src/libflac/configure.ac
+ub_replace -O3 -O2 lib-src/sbsms/configure.ac
 rm -f CMakeLists.txt
 export WX_CONFIG=/usr/bin/wx-config
-autoreconf --no-recursive -ifv
+autoreconf -ifv
 #UB_CONFIGURE_NO_DISABLE_STATIC=yes \
 export WX_CONFIG=/usr/bin/wx-config
 ./configure \
