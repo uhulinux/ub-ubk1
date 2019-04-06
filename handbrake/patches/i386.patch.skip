@@ -1,0 +1,17 @@
+diff -Nur orig/libhb/ports.c mod/libhb/ports.c
+--- orig/libhb/ports.c	2019-02-22 17:23:51.000000000 +0100
++++ mod/libhb/ports.c	2019-04-05 21:27:36.543521252 +0200
+@@ -281,13 +281,8 @@
+     }
+ }
+ 
+-#if ARCH_X86_64
+-#    define REG_b "rbx"
+-#    define REG_S "rsi"
+-#elif ARCH_X86_32
+ #    define REG_b "ebx"
+ #    define REG_S "esi"
+-#endif // ARCH_X86_32
+ 
+ #if ARCH_X86_64 || ARCH_X86_32
+ #define cpuid(index, eax, ebx, ecx, edx)                        \

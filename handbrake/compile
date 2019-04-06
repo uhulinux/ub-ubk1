@@ -1,8 +1,11 @@
 #!/bin/sh -eux
 
+mkdir download
+mv *.tar.* download/
+cd libhb
+patch -i ${UB_SRCDIR}/patches/${UB_ARCH}.patch.skip
+cd ..
 ./configure \
-    --prefix=/usr \
-    --force \
-    --disable-gtk-update-checks
+    --prefix=/usr
 cd build
 make

@@ -1,4 +1,22 @@
 #!/usr/bin/env dl
 
-HandBrake-${UB_VERSION}.tar.bz2 HandBrake-${UB_VERSION}/
-	http://download.handbrake.fr/releases/${UB_VERSION}/
+HandBrake-${UB_VERSION}-source.tar.bz2 HandBrake-${UB_VERSION}/
+    https://download2.handbrake.fr/${UB_VERSION}/
+
+libvpx-1.7.0.tar.gz
+    https://download.handbrake.fr/contrib/
+
+ffmpeg-4.1.tar.bz2
+    https://download.handbrake.fr/contrib/
+
+libdvdread-6.0.0.tar.bz2
+    https://download.handbrake.fr/contrib/
+
+libdvdnav-6.0.0.tar.bz2
+    https://download.handbrake.fr/contrib/
+
+x265_2.9.tar.gz
+    https://download.handbrake.fr/contrib/
+
+libbluray-1.0.2.tar.bz2
+    https://download.handbrake.fr/contrib/
