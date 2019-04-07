@@ -1,10 +1,2 @@
-cmake
-doxygen
+cairo-dev
 gavl-dev
-gstreamer-dev
-gtk2-dev
-libdc1394-dev
-libjpeg-turbo-dev
-libraw1394-dev
-libtiff-dev
-opencv-dev
