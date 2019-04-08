@@ -114,4 +114,5 @@ systemsettings
 user-manager
 phonon-backend-gstreamer
 phonon-backend-vlc
+kchmviewer
 kde

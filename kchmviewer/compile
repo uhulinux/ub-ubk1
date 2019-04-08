@@ -1,0 +1,4 @@
+#!/bin/sh -eux
+
+/usr/lib/qt5/bin/qmake PREFIX=/usr
+ub_make

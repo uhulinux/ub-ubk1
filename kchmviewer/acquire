@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+kchmviewer-${UB_VERSION}.tar.gz kchmviewer-${UB_VERSION}/
+	https://downloads.sourceforge.net/kchmviewer/

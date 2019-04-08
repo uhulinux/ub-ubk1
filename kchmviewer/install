@@ -1,0 +1,8 @@
+#!/bin/sh -eux
+
+make DESTDIR="${UB_INSTALLDIR}" install
+
+cp bin/kchmviewer "${UB_INSTALLDIR}"/usr/bin/kchmviewer
+
+install -Dm644 packages/kchmviewer.png "${UB_INSTALLDIR}"/usr/share/pixmaps/kchmviewer.png
+install -Dm644 packages/kchmviewer.desktop "${UB_INSTALLDIR}"/usr/share/applications/kchmviewer.desktop
