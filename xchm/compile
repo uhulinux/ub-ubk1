@@ -1,0 +1,7 @@
+#!/bin/sh -eux
+
+autoreconf -vif
+
+LIBS="$(wx-config --libs all)"
+export LIBS
+ub_compile

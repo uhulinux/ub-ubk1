@@ -192,3 +192,4 @@ virt-viewer
 roxterm
 bashstyle-ng
 git-extras
+xchm
