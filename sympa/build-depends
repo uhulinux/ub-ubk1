@@ -6,9 +6,9 @@ mysql-common
 mysql-server
 perl-archive-zip
 perl-crypt-ciphersaber
-perl-db-file
 perl-dbd-mysql
 perl-dbd-pg
+perl-db-file
 perl-dbi
 perl-fcgi
 perl-io-socket-ssl

@@ -1,4 +1,4 @@
 avahi-dev
 libgnomeui2-dev
 popt-dev
-python-dev
+python3-dev
