@@ -1,3 +1,5 @@
 #!/bin/sh -eux
 
 ub_install
+mkdir -p ${UB_INSTALLDIR}/usr/share/applications
+mv ${UB_INSTALLDIR}/usr/share/angband/icons/angband-{sdl,x11}.desktop ${UB_INSTALLDIR}/usr/share/applications/

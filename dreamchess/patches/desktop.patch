@@ -1,0 +1,14 @@
+diff -Nur orig/dreamchess/desktop/dreamchess.desktop mod/dreamchess/desktop/dreamchess.desktop
+--- orig/dreamchess/desktop/dreamchess.desktop	2019-03-18 21:19:38.000000000 +0100
++++ mod/dreamchess/desktop/dreamchess.desktop	2019-04-11 12:07:07.263566482 +0200
+@@ -4,8 +4,10 @@
+ Name=DreamChess
+ GenericName=Chess game
+ GenericName[fr]=Jeu d'échec
++GenericName[hu]=Sakkjáték
+ Comment=a 3D chess game
+ Comment[de]=ein Schachspiel in 3D
++Comment[hu]=Térbeli sakk
+ Exec=dreamchess
+ Icon=dreamchess
+ Categories=Game;BoardGame;
