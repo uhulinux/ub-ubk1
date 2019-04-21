@@ -1,0 +1,4 @@
+#!/usr/bin/env dl
+
+twolame-${UB_VERSION}.tar.gz twolame-${UB_VERSION}/
+	http://download.sourceforge.net/twolame/

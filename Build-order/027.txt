@@ -1,3 +1,4 @@
+twolame
 ffmpeg
 libextractor
 xine-lib

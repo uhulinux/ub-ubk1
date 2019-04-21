@@ -1,7 +1,7 @@
 diff -Nur orig/configure mod/configure
---- orig/configure	2016-02-13 22:05:42.000000000 +0100
-+++ mod/configure	2017-06-03 12:38:49.618798877 +0200
-@@ -2831,7 +2831,7 @@
+--- orig/configure	2018-12-15 16:38:24.000000000 +0100
++++ mod/configure	2019-04-21 15:23:48.024344722 +0200
+@@ -2861,7 +2861,7 @@
  fi
  
  CFLAGS="-D_ISOC99_SOURCE -I. -Iffmpeg $CFLAGS"
@@ -10,3 +10,40 @@ diff -Nur orig/configure mod/configure
  
  # On glibc, add some more CPPFLAGS for enabling required functionality.
  cpp_condition_check features.h "defined __GLIBC__" &&
+diff -Nur orig/ffmpeg/configure mod/ffmpeg/configure
+--- orig/ffmpeg/configure	2019-04-18 22:04:08.000000000 +0200
++++ mod/ffmpeg/configure	2019-04-21 15:26:18.911114742 +0200
+@@ -4432,7 +4432,7 @@
+         gcc_extra_ver=$(expr "$($_cc --version 2>/dev/null | head -n1)" : '.*\((.*)\)')
+         _ident="llvm-gcc $($_cc -dumpversion 2>/dev/null) $gcc_extra_ver"
+         _depflags='-MMD -MF $(@:.o=.d) -MT $@'
+-        _cflags_speed='-O3'
++        _cflags_speed='-O2'
+         _cflags_size='-Os'
+     elif $_cc -v 2>&1 | grep -qi ^gcc; then
+         _type=gcc
+@@ -4452,13 +4452,13 @@
+                 warn "gcc 4.2 is outdated and may miscompile FFmpeg. Please use a newer compiler." ;;
+             esac
+         fi
+-        _cflags_speed='-O3'
++        _cflags_speed='-O2'
+         _cflags_size='-Os'
+     elif $_cc --version 2>/dev/null | grep -q ^icc; then
+         _type=icc
+         _ident=$($_cc --version | head -n1)
+         _depflags='-MMD'
+-        _cflags_speed='-O3'
++        _cflags_speed='-O2'
+         _cflags_size='-Os'
+         _cflags_noopt='-O1'
+         _flags_filter=icc_flags
+@@ -4487,7 +4487,7 @@
+         _type=clang
+         _ident=$($_cc --version 2>/dev/null | head -n1)
+         _depflags='-MMD -MF $(@:.o=.d) -MT $@'
+-        _cflags_speed='-O3'
++        _cflags_speed='-O2'
+         _cflags_size='-Oz'
+     elif $_cc -V 2>&1 | grep -q Sun; then
+         _type=suncc

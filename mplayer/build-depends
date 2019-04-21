@@ -3,9 +3,9 @@ alsa-lib-dev
 audiofile-dev
 docbook-dtds
 docbook-xsl
+enca-dev
 esound-dev
 faac-dev
-ffmpeg-dev
 fribidi-dev
 gnutls-dev
 gtk2-dev
@@ -59,7 +59,7 @@ schroedinger-dev
 sdl-dev
 sdl-image-dev
 speex-dev
-toolame
+twolame-dev
 x264-dev
 x265-dev
 xvid-dev
