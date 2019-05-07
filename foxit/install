@@ -2,7 +2,7 @@
 
 if [ "$UB_ARCH" == "amd64" ];then
     echo "Ez a csomag csak 32 bitre készíthető el!"
-    exit 1
+    echo "A csomag 64 biten üres!"
+else
+    cp -r usr "$UB_INSTALLDIR"/
 fi
-
-cp -r usr "$UB_INSTALLDIR"/
