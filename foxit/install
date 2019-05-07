@@ -1,5 +1,8 @@
 #!/bin/sh -eux
 
-mkdir -p "$UB_INSTALLDIR"/usr/share/foxit
-cp -a . "$UB_INSTALLDIR"/usr/share/foxit/
-ln -s ../share/foxit/FoxitReader "$UB_INSTALLDIR"/usr/bin/foxit
+if [ "$UB_ARCH" == "amd64" ];then
+    echo "Ez a csomag csak 32 bitre készíthető el!"
+    exit 1
+fi
+
+cp -r usr "$UB_INSTALLDIR"/
