@@ -1,4 +1,6 @@
 #!/bin/sh -eux
 
+export UB_MAKE_PROCS=1
 lazbuild transgui.lpi \
-    --lazarusdir=/usr/lib/lazarus
+    --lazarusdir=/usr/lib/lazarus/ \
+    --primary-config-path=../build-gtk
