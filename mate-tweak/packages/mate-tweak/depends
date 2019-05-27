@@ -1,4 +1,5 @@
 py3gobject
 python3-configobj
+python3-distro
 python3-psutil
 python3-setproctitle
