@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-ccbuild-$UB_VERSION.tar.gz ccbuild-c117928/
-	git://github.com/bneijt/ccbuild.git@c117928
+ccbuild-$UB_VERSION.tar.gz ccbuild-b7e4b4a/
+	git://github.com/bneijt/ccbuild.git@b7e4b4a
