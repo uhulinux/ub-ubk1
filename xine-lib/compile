@@ -2,8 +2,21 @@
 
 ub_compile \
 	--enable-dvb \
-	--with-wavpack \
-	--enable-musepack \
+	--enable-aalib \
+	--enable-opengl \
+	--enable-glu \
+	--enable-xinerama \
+	--enable-xvmc \
+	--enable-vaapi \
 	--enable-vdpau \
+	--enable-libv4l \
+	--enable-samba \
+	--enable-bluray \
+	--enable-libmpeg2new \
+	--enable-musepack \
+	--enable-vcd \
+	--with-alsa \
+	--with-pulseaudio \
+	--with-wavpack \
 	--with-external-dvdnav \
 	--without-xcb

@@ -1,5 +1,5 @@
 #!/bin/sh -eux
 
+ub_replace -O3 -O2 Make.config.template
 cp Make.config.template Make.config
-
 ub_compile

@@ -1,9 +1,4 @@
 #!/bin/sh -eux
 
-make \
-	VIDEODIR=/var/vdr/video \
-	CONFDIR=/etc/vdr \
-	BINDIR=/usr/bin \
-	VDRINCDIR=/usr/include \
-	LIBDIR=/usr/lib/vdr \
-all i18n
+./configure
+ub_make

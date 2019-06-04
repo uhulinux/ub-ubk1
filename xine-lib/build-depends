@@ -27,10 +27,12 @@ libogg-dev
 libpng-dev
 libsamplerate-dev
 libsm-dev
+libtheora-dev
 libv4l-dev
 libva-dev
 libvdpau-dev
 libvorbis-dev
+libvpx-dev
 libxml2-dev
 libxshmfence-dev
 libxv-dev
@@ -44,3 +46,4 @@ slang-dev
 transfig
 vcdimager-dev
 wavpack-dev
+xmlto
