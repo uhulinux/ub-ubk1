@@ -1,12 +1,26 @@
-#!/bin/sh -eux
+#!/bin/bash
 
 if [ "$UB_ARCH" == "amd64" ];then
-cd amd64
+    arch=64
 else
-cd i386
+    arch=32
 fi
+
+version=${UB_VERSION/~b/}
+version=${version/./_}
+phundir=${UB_INSTALLDIR}/usr/share/Phun
+
+tar -xvzf Phun_beta_${version}_linux${arch}.tgz
+tar xf Phun_beta_${version}_linux_additional.tar.gz
+mkdir -p $phundir
+
+cd Phun
+cp -a {data,lib,materials,scenes,screenshots,textures} $phundir/
+cp -a ../additional/scenes/* $phundir/scenes/
+cp *.cfg $phundir/
+cp phun* $phundir/
+touch $phundir/Logfile.txt
 cp Credits.txt LICENSE.txt README.txt ../
-cp -a . -- "$UB_INSTALLDIR"/usr/share/Phun/
+
 ln -s /usr/lib/libpng16.so.16 "$UB_INSTALLDIR"/usr/share/Phun/lib/libpng.so.3
 ln -sf Magyar.png "$UB_INSTALLDIR"/usr/share/Phun/data/language/Hungarian.png
-rm -rf "$UB_INSTALLDIR"/usr/share/Phun/*.txt

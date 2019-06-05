@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-lilo-${UB_VERSION}.tar.gz lilo-${UB_VERSION}/
-	http://lilo.alioth.debian.org/ftp/sources/
+lilo_${UB_VERSION}.orig.tar.gz lilo-${UB_VERSION}/
+	http://ftp.debian.org/debian/pool/main/l/lilo/
