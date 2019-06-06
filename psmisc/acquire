@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-psmisc-"$UB_VERSION".tar.gz psmisc-"$UB_VERSION"/
+psmisc-"$UB_VERSION".tar.xz psmisc-"$UB_VERSION"/
 	http://downloads.sourceforge.net/psmisc/

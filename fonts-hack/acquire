@@ -1,14 +1,13 @@
 #!/usr/bin/env dl
 
-Hack-v${UB_VERSION/./_}-ttf.tar.xz .
-	https://github.com/chrissimpkins/Hack/releases/download/v${UB_VERSION}/
+v${UB_VERSION}.tar.gz Hack-${UB_VERSION}/build/ttf/
+	https://github.com/source-foundry/Hack/archive/
 
-CHANGELOG.md	
-	https://raw.githubusercontent.com/chrissimpkins/Hack/master/CHANGELOG.md
+CHANGELOG.md
+	https://github.com/source-foundry/Hack/blob/master/
 
-LICENSE.md	
-	https://raw.githubusercontent.com/chrissimpkins/Hack/master/LICENSE.md
-	
-README.md	
-	https://raw.githubusercontent.com/chrissimpkins/Hack/master/README.md
+LICENSE.md
+	https://github.com/source-foundry/Hack/blob/master/
 
+README.md
+	https://github.com/source-foundry/Hack/blob/master/

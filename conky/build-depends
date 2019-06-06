@@ -1,8 +1,6 @@
 alsa-lib-dev
 cmake
 curl-dev
-docbook-dtds
-docbook-xsl
 docbook2x
 glib-dev
 groff
