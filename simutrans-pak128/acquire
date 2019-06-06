@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-pak128-${UB_VERSION_HEAD3}--ST120.zip . :/usr/share/games/simutrans/
-  http://download.sourceforge.net/simutrans/
+pak128.zip . :/usr/share/games/
+    https://sourceforge.net/projects/simutrans/files/pak128/pak128%20for%20ST%20120.2.2%20%28${UB_VERSION}%2C%20minor%20changes%29/
