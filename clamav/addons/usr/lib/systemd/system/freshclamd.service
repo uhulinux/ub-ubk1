@@ -1,6 +1,6 @@
 [Unit]
 Description = clamav db updater daemon
-After = nss-lookup.target network.target
+After = nss-lookup.target network-online.target
 
 [Service]
 ExecStart = /usr/bin/freshclam -d -p /var/run/clamav/freshclam.pid
