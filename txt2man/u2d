@@ -1,2 +1,2 @@
-urllist http://ftp.debian.org/debian/pool/main/t/txt2man/ | splitver '^txt2man_([0-9.]+).orig.tar.gz$' | sort -V | tail -n 1
+u2d https://github.com/mvertes/txt2man/releases/ txt2man-
 
