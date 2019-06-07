@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
 rng-tools-${UB_VERSION}.tar.gz rng-tools-${UB_VERSION}/
-    https://src.fedoraproject.org/repo/pkgs/rng-tools/rng-tools-6.3.1.tar.gz/sha512/cb85674e6448e8152f92b4a82e944a9258dcc9ce68349404c0000c09378ac5f6fb298c50ed2d9a1b18d76c5f35b0a4884d5efd0f4dd434ec0952107e0738b937/
+    https://src.fedoraproject.org/repo/pkgs/rng-tools/rng-tools-${UB_VERSION}.tar.gz/sha512/2f09edacb5448087041257326faf570c303b42f90bb695a1999b2c7543f20a28b15cdf705a2eca55cae8e9cf9fb5205c056fc26cfaf6af958bcda2cde1952b4d/

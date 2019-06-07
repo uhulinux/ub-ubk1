@@ -53,3 +53,4 @@ libmpeg2
 taglib
 libmtp
 libvpx
+libp11
