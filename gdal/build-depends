@@ -11,6 +11,7 @@ openjpeg-dev
 pcre-dev
 poppler-dev
 postgresql-dev
+proj-dev
 sqlite-dev
 swig
 xz-dev

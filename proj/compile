@@ -1,4 +1,5 @@
 #!/bin/sh -eux
 
 rm -f CMakeLists.txt
+export UB_MAKEPROCS=1
 ub_compile
