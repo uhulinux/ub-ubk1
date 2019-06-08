@@ -1,2 +1,1 @@
-urllist http://repository-linux.serverauto.com/slacky/slackware-11.0/multimedia/fmod/ | grep -E '^3' | sort -V | tail -n 1
-
+echo "3.75"
