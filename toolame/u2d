@@ -1,1 +1,2 @@
-sflist toolame toolame%200.2 | grep 'toolame ' | sort -V | tail -n 1 | sed 's/.* 0/0\./'
+dir=$(urllist https://sourceforge.net/projects/toolame/files/ | grep 'toolame ' | sort -V | tail -n 1 | sed 's/ /%20/')
+urllist https://sourceforge.net/projects/toolame/files/$dir/ | grep 'toolame ' | sort -V | tail -n 1 | sed 's/.* 0/0\./'
