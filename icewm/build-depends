@@ -1,6 +1,8 @@
 gdk-pixbuf-dev
+glfw-dev
 libxft-dev
 libxinerama-dev
+libxpm-dev
 libxrandr-dev
 libxt-dev
 linuxdoc-tools
