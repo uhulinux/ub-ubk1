@@ -151,3 +151,4 @@ pdfminer
 python-regex
 python-html5-parser
 python-distro
+python-tinycss

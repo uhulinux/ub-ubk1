@@ -26,7 +26,8 @@ py3gobject
 python3-dbus
 python3-pam
 python3-pexpect
+python3-pillow
 python3-pyinotify
-python-pillow
+python-tinycss
 udisks
 xapps

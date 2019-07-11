@@ -2,9 +2,7 @@ accountsservice-dev
 cinnamon-desktop-dev
 dconf-dev
 exempi-dev
-gnome-common
 gobject-introspection-dev
-gtk-doc
 gvfs
 intltool
 libexif-dev
