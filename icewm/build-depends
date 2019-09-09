@@ -1,5 +1,11 @@
+alsa-lib-dev
+fribidi-dev
 gdk-pixbuf-dev
 glfw-dev
+libao-dev
+libsndfile-dev
+libxcomposite-dev
+libxdamage-dev
 libxft-dev
 libxinerama-dev
 libxpm-dev
