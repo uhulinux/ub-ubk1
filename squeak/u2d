@@ -1,1 +1,2 @@
-urllist http://squeakvm.org/unix/release/ | splitver '^Squeak-([0-9.]+)-src.tar.gz$' | sort -V | tail -n 1
+#urllist http://squeakvm.org/unix/release/ | splitver '^Squeak-([0-9.]+)-src.tar.gz$' | sort -V | tail -n 1
+u2d http://ftp.debian.org/debian/pool/main/s/squeak-vm/ squeak-vm_ .orig

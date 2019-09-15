@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-Squeak-${UB_VERSION}-src.tar.gz Squeak-${UB_VERSION}-src/
-	http://squeakvm.org/unix/release/
+squeak-vm_${UB_VERSION}.orig.tar.gz Squeak-${UB_VERSION}-src/
+    http://ftp.debian.org/debian/pool/main/s/squeak-vm/
