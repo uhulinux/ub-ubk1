@@ -1,5 +1,10 @@
 #!/bin/sh -eux
 
+export LDFLAGS='-lglfw -lXrandr -lXinerama'
+
 ub_compile \
 	-DPREFIX=/usr \
-	-DCFGDIR=/etc/icewm
+	-DCFGDIR=/etc/icewm \
+	-DCONFIG_LIBRSVG=on
+
+cp "$UB_COMPILEDIR"/lib/IceWM.jpg "$UB_COMPILEDIR"/build/lib/

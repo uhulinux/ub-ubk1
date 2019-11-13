@@ -1,13 +1,13 @@
 diff -Nur orig/lib/toolbar.in mod/lib/toolbar.in
---- orig/lib/toolbar.in	2019-06-07 00:39:15.000000000 +0200
-+++ mod/lib/toolbar.in	2019-06-09 16:32:36.564366054 +0200
-@@ -4,6 +4,6 @@
- # since modifications to this file will be discarded when you
- # (re)install icewm.
+--- orig/lib/toolbar.in	2019-09-18 18:52:15.000000000 +0200
++++ mod/lib/toolbar.in	2019-11-13 17:34:03.166189274 +0100
+@@ -3,6 +3,6 @@
+ # Place your variants in @CFGDIR@ or in $HOME/.icewm since
+ # modifications to this file will be overwritten when you reinstall icewm.
  #
--prog xterm utilities-terminal xterm
+-prog "@XTERMCMD@" utilities-terminal @XTERMCMD@
 -prog "Web browser" web-browser xdg-open about:blank
 -
-+prog xterm terminal xterm
++prog "Xterm terminál" utilities-terminal xterm
 +prog "Web böngésző" web-browser xdg-open about:blank
 +prog synaptic synaptic synaptic
