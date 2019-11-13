@@ -18,11 +18,8 @@ blackbox
 jwm
 jwm-settings-manager
 icewm
-icewm-theme-ultrablack
-icewm-theme-nitrogen
 icewm-themes
-icewm-theme-ubuntu
-icewm-theme-winclassic2
+icewm-fun-themepack
 icewm-xdgmenu
 fluxbox
 ftmenu
