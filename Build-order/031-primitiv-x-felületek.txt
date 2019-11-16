@@ -38,3 +38,4 @@ libev
 confuse
 i3status
 i3-wm
+feh
