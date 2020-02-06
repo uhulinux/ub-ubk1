@@ -3,11 +3,13 @@ coreutils
 cpp
 diffutils
 dl
-dpkg >= 1.15.4
+dpkg
 findutils
 gawk
 grep
 gzip
+hunspell
+hunspell-hu
 inetutils
 lynx
 pretendroot
