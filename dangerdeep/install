@@ -1,10 +1,12 @@
 #!/bin/sh -eux
 
-#postinst szkriptbe a verzió
-sed "s/ubversion/$UB_VERSION/" -i $UB_SRCDIR/packages/dangerdeep/postinst
+mkdir -p $UB_INSTALLDIR/usr/share/games/
+unzip -o dangerdeep-data-${UB_VERSION}.zip -d $UB_INSTALLDIR/usr/share/games
+mv $UB_INSTALLDIR/usr/share/games/data $UB_INSTALLDIR/usr/share/games/dangerdeep
 ikonhely=$UB_INSTALLDIR/usr/share/pixmaps
 mandir=$UB_INSTALLDIR/usr/share/man/man6
 mkdir -p $ikonhely $mandir
 scons installbindir=$UB_INSTALLDIR/usr/bin datadir='/usr/share/games/dangerdeep' install
 cp dftd_icon.xpm $ikonhely/
 cp doc/man/dangerdeep.6 $mandir/
+mv $UB_INSTALLDIR/usr/share/games/dangerdeep $UB_INSTALLDIR/usr/share/games/dangerdeep.bin
