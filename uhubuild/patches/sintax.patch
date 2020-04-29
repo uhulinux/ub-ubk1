@@ -1,0 +1,19 @@
+diff -Nur orig/src/build/build mod/src/build/build
+--- orig/src/build/build	2019-12-31 14:38:31.000000000 +0100
++++ mod/src/build/build	2020-04-29 13:42:22.000000000 +0200
+@@ -79,12 +79,12 @@
+ 			export UB_ARCH="amd64"
+ 			shift;;
+ 		-32)
+-            if [ "$UHUBUILD_DISTR_NUM" >= "3" ]; then
+-                redecho " 32 bites fordítás nem lehetséges."
+-            else
++			if [ "$UHUBUILD_DISTR_NUM" == "1" ] || [ "$UHUBUILD_DISTR_NUM" == "2" ]; then
+ 			    yellowecho "32 bites fordítás."
+ 			    echo
+ 			    export UB_ARCH="i386"
++			else
++			    redecho " 32 bites fordítás nem lehetséges."
+ 			fi
+ 			shift;;
+ 		-cc|--create-contents)
