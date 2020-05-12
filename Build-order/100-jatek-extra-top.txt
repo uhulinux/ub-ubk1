@@ -14,6 +14,8 @@ fillets-data
 fortune
 fortune-hu
 golems
+strife-demodata
+hexen1-demodata
 heretic1-demodata
 heroes-data
 heroes-hq-sound-tracks
