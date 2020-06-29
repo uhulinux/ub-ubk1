@@ -1,0 +1,79 @@
+diff -Nur orig/data/SilverXP/default.theme mod/data/SilverXP/default.theme
+--- orig/data/SilverXP/default.theme	2019-09-10 08:34:17.000000000 +0200
++++ mod/data/SilverXP/default.theme	2020-06-19 19:50:16.564391393 +0200
+@@ -468,20 +468,16 @@
+ #            to set the background!
+ #
+ 
+-#  Display desktop background centered and not tiled
+-# DesktopBackgroundCenter=0 # 0/1
+-
+ #  Support for semitransparent terminals like Eterm or gnome-terminal
+ # SupportSemitransparency=1 # 0/1
+ 
+-#  Desktop background scaled to full screen
+-# DesktopBackgroundScaled=0 # 0/1
+-
+ #  Desktop background color
+ # DesktopBackgroundColor="rgb:00/20/40"
+ 
+ #  Desktop background image
+-# DesktopBackgroundImage=""
++DesktopBackgroundImage=winxp.jpg
++DesktopBackgroundScaled=1 # 0/1
++DesktopBackgroundCenter=0 # 0/1
+ 
+ #  Color to announce for semi-transparent windows
+ # DesktopTransparencyColor=""
+diff -Nur orig/data/Windows7ice1/default.theme mod/data/Windows7ice1/default.theme
+--- orig/data/Windows7ice1/default.theme	2016-11-26 13:44:00.000000000 +0100
++++ mod/data/Windows7ice1/default.theme	2020-06-20 14:29:28.573191450 +0200
+@@ -117,7 +117,8 @@
+ InputFontNameXft=	                               SegoeUI:size=8:bold
+ 
+ TaskBarClockLeds=                                      0
+-DesktopBackgroundCenter=                               1
++DesktopBackgroundCenter=                               0
++DesktopBackgroundScaled=1
+ DesktopBackgroundImage=                                'Win2-7.jpg'
+ TaskBarShowNetStatus=                                  0
+ TaskBarShowCPUStatus=                                  0
+diff -Nur orig/data/xp/default.theme mod/data/xp/default.theme
+--- orig/data/xp/default.theme	2019-09-10 08:34:17.000000000 +0200
++++ mod/data/xp/default.theme	2020-06-19 19:51:15.344642466 +0200
+@@ -12,6 +12,10 @@
+ BorderSizeX=4
+ BorderSizeY=4
+ 
++DesktopBackgroundImage=winxp.jpg
++DesktopBackgroundCenter=0 # 0/1
++DesktopBackgroundScaled=1 # 0/1
++
+ CornerSizeX=24
+ CornerSizeY=24
+ DlgBorderSizeX=2
+diff -Nur orig/data/xp-new/default.theme mod/data/xp-new/default.theme
+--- orig/data/xp-new/default.theme	2019-09-10 08:34:17.000000000 +0200
++++ mod/data/xp-new/default.theme	2020-06-19 19:50:50.240535426 +0200
+@@ -17,6 +17,10 @@
+ DlgBorderSizeX=3
+ DlgBorderSizeY=3
+ 
++DesktopBackgroundImage=winxp.jpg
++DesktopBackgroundCenter=0 # 0/1
++DesktopBackgroundScaled=1 # 0/1
++
+ ColorNormalTitleBarText="#b5cbe0"
+ ColorNormalTitleBarShadow="#526570"
+ ColorNormalBorder="#467cc1"
+diff -Nur orig/lib/themes/win95/default.theme mod/lib/themes/win95/default.theme
+--- orig/lib/themes/win95/default.theme	2020-06-03 05:28:09.000000000 +0200
++++ mod/lib/themes/win95/default.theme	2020-06-19 19:49:19.404145714 +0200
+@@ -28,3 +28,7 @@
+ ColorScrollBarSlider="rgb:C0/C0/C0"
+ ColorScrollBarButton="rgb:C0/C0/C0"
+ ColorScrollBarButtonArrow="rgb:00/00/00"
++
++DesktopBackgroundImage=win95.jpg
++DesktopBackgroundCenter=0
++DesktopBackgroundScaled=1

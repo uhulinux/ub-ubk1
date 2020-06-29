@@ -19,8 +19,6 @@ jwm
 jwm-settings-manager
 icewm
 icewm-themes
-icewm-fun-themepack
-icewm-xdgmenu
 fluxbox
 ftmenu
 fbpanel

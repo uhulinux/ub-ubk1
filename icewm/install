@@ -1,3 +1,38 @@
 #!/bin/sh -eux
 
 ub_install
+icewmmappa=${UB_INSTALLDIR}/usr/share/icewm
+
+# Win témák
+cp -r data/{SilverXP,xp,xp-new,Windows7ice1} $icewmmappa/themes/
+# A $icewmmappa/themes/xp taskbar és icons mappában nem lehet link
+rm -rf $icewmmappa/themes/xp/taskbar $icewmmappa/themes/xp/icons
+mkdir -p $icewmmappa/themes/xp/{taskbar,icons}
+cp data/xp-new/taskbar/* $icewmmappa/themes/xp/taskbar/
+cp data/xp-new/icons/* $icewmmappa/themes/xp/icons/
+
+# win95 háttér
+cp Original-Windows-951.jpg $icewmmappa/themes/win95/win95.jpg
+
+# xp hátterek
+cp windows-xp-bliss-4k-lu.jpg $icewmmappa/themes/xp/winxp.jpg
+cp windows-xp-bliss-4k-lu.jpg $icewmmappa/themes/xp-new/winxp.jpg
+cp windows-xp-bliss-4k-lu.jpg $icewmmappa/themes/SilverXP/winxp.jpg
+
+# hiányzó xpm
+rm -f $icewmmappa/themes/xp/icons/folder* $icewmmappa/themes/xp-new/icons/folder*
+cp -r data/CoolSteel/icons/folder_32x32.xpm $icewmmappa/themes/xp/icons/
+cp -r data/CoolSteel/icons/folder_32x32.xpm $icewmmappa/themes/xp-new/icons/
+cp -r data/blueHeart/icons/folder_16x16.xpm $icewmmappa/themes/xp/icons/
+cp -r data/blueHeart/icons/folder_16x16.xpm $icewmmappa/themes/xp-new/icons/
+
+# win95 indítógomb
+cp -r data/fake95/taskbar $icewmmappa/themes/win95/
+
+# nem kell html
+rm -rf ${UB_INSTALLDIR}/usr/share/doc/icewm
+
+# nem kellenek idegenek
+rm -rf $icewmmappa/themes/SilverXP/FreeBSD
+rm -f $icewmmappa/taskbar/xfreeos2.xpm
+rm -f $icewmmappa/taskbar/debian.xpm

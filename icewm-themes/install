@@ -5,3 +5,4 @@ cp -r * $UB_INSTALLDIR/usr/share/icewm/themes/
 cd $UB_INSTALLDIR/usr/share/icewm/themes/
 rm -f Makefile *.spec
 rm -rf ElbergRed/taskbar/.xvpics ElbergBlue/taskbar/.xvpics
+rm -rf $UB_INSTALLDIR/usr/share/icewm/themes/{SilverXP,xp,xp-new}
