@@ -1,0 +1,27 @@
+diff -Nur orig/fvwm/scripts/FvwmMPD/getdir.py mod/fvwm/scripts/FvwmMPD/getdir.py
+--- orig/fvwm/scripts/FvwmMPD/getdir.py	2020-04-04 21:02:50.000000000 +0200
++++ mod/fvwm/scripts/FvwmMPD/getdir.py	2020-04-14 18:24:30.297955153 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import mpd
+ # let sys.argv be available
+ import sys
+diff -Nur orig/fvwm/scripts/FvwmMPD/getfile.py mod/fvwm/scripts/FvwmMPD/getfile.py
+--- orig/fvwm/scripts/FvwmMPD/getfile.py	2020-04-04 21:03:07.000000000 +0200
++++ mod/fvwm/scripts/FvwmMPD/getfile.py	2020-04-14 18:24:53.409936632 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import mpd
+ # let sys.argv be available
+ import sys
+diff -Nur orig/fvwm/scripts/FvwmMPD/getprevdir.py mod/fvwm/scripts/FvwmMPD/getprevdir.py
+--- orig/fvwm/scripts/FvwmMPD/getprevdir.py	2019-08-15 23:54:13.000000000 +0200
++++ mod/fvwm/scripts/FvwmMPD/getprevdir.py	2020-04-14 18:25:08.745924342 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # Return the path to the previous mpd library directory
+ import sys
+ 
