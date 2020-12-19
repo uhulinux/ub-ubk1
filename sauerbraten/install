@@ -3,7 +3,9 @@
 cd src
 mkdir -p ${UB_INSTALLDIR}/usr/share/games/sauerbraten/bin
 install -Dm 755 sauer_client sauer_server ${UB_INSTALLDIR}/usr/share/games/sauerbraten/bin/
-
 cd ..
-mkdir -p "${UB_INSTALLDIR}"/usr/share/games/sauerbraten
-cp -r {data,packages} "${UB_INSTALLDIR}"/usr/share/games/sauerbraten/
+rm -rf src
+cp -r * ${UB_INSTALLDIR}/usr/share/games/sauerbraten/
+if UB_ARCH="i386"; then
+rm ${UB_INSTALLDIR}/usr/share/games/sauerbraten/bin_unix/linux_64*
+fi
