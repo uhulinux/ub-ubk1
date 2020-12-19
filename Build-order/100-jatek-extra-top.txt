@@ -1,3 +1,5 @@
+megaglest
+megaglest-data
 0ad-data
 alephone-marathon
 atris-sounds

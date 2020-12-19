@@ -1,0 +1,5 @@
+#!/bin/sh -eux
+
+ub_compile \
+    -DCMAKE_CXX_FLAGS="-lX11 -Wno-terminate" \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
