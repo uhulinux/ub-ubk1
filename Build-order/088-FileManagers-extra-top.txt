@@ -1,3 +1,5 @@
+vifm
+nnn
 doublecmd
 eaglemode
 emelfm2
