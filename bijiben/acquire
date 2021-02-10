@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-#bijiben-${UB_VERSION}.tar.xz bijiben-${UB_VERSION}/
-#	https://download.gnome.org/sources/bijiben/${UB_VERSION_HEAD2}/
+bijiben-${UB_VERSION}.tar.xz bijiben-${UB_VERSION}/
+	https://download.gnome.org/sources/bijiben/${UB_VERSION_HEAD2}/
 
-bijiben-${UB_VERSION}.tar.gz bijiben-53783a8/
-	git://git.gnome.org/bijiben.git@53783a8
+#bijiben-${UB_VERSION}.tar.gz bijiben-53783a8/
+#	git://git.gnome.org/bijiben.git@53783a8
