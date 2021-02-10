@@ -1,0 +1,12 @@
+diff -Nur orig/Makefile.am mod/Makefile.am
+--- orig/Makefile.am	2020-05-09 10:56:02.000000000 +0200
++++ mod/Makefile.am	2021-02-10 18:11:16.007885099 +0100
+@@ -1,7 +1,7 @@
+ SUBDIRS = gfbgraph docs tests
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-libgfbgraphdocdir = ${prefix}/doc/libgfbgraph
++libgfbgraphdocdir = ${prefix}/share/doc/libgfbgraph
+ libgfbgraphdoc_DATA = \
+ 	README\
+ 	COPYING\
