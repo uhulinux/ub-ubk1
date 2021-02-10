@@ -1,4 +1,5 @@
 #!/bin/sh -eux
 
-./waf --prefix=/usr configure
-./waf build
+autoreconf -vif
+export PYTHON=python
+ub_compile

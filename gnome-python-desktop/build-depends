@@ -3,6 +3,7 @@ gnome-python-dev
 gstreamer-dev
 gtk2-dev
 gtksourceview18-dev
+libarchive-dev
 libcroco-dev
 libgnomeprintui2-dev
 libgnomeui2-dev
@@ -10,6 +11,7 @@ libgsf-dev
 libgtop2-dev
 librsvg-dev
 libsm-dev
+libsoup-dev
 libusb-dev
 metacity-dev
 pygobject2
