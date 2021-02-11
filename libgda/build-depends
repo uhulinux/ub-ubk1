@@ -9,13 +9,16 @@ iso-codes
 itstool
 java-jdk
 json-glib-dev
+libgee-dev
 libsecret-dev
 libsoup-dev
 libxslt-dev
 mdbtools
 mdbtools-dev
+meson
 mysql-dev
 openldap-dev
 postgresql-dev
 sqlite-dev
+vala
 xz-dev

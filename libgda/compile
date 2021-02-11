@@ -1,8 +1,9 @@
 #!/bin/sh -eux
 
-export LD_LIBRARY_PATH=/usr/lib/java/jre/lib/i386/server
+export LD_LIBRARY_PATH="/usr/lib/java/jre/lib/${UB_ARCH}/server"
 ub_compile \
 	--enable-binreloc \
 	--enable-system-sqlite \
 	--enable-gda-gi \
-	--enable-gdaui-gi
+	--enable-gdaui-gi \
+	--enable-vala

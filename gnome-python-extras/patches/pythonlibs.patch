@@ -1,0 +1,30 @@
+diff -Nur orig/configure mod/configure
+--- orig/configure	2009-02-15 23:21:00.000000000 +0100
++++ mod/configure	2021-02-11 11:20:10.540333159 +0100
+@@ -20740,15 +20740,7 @@
+ 		fi
+         done
+ 
+-        python_path=`echo $python_path | sed "s,/libpython.*$,,"`
+-        { $as_echo "$as_me:$LINENO: result: $python_path" >&5
+-$as_echo "$python_path" >&6; }
+-        if test -z "$python_path" ; then
+-                { { $as_echo "$as_me:$LINENO: error: cannot find Python library path" >&5
+-$as_echo "$as_me: error: cannot find Python library path" >&2;}
+-   { (exit 1); exit 1; }; }
+-        fi
+-        PYTHON_LDFLAGS="-L$python_path -l$python_lib"
++        PYTHON_LDFLAGS=" -lpython2.7"
+ 
+ 
+ 
+@@ -24537,7 +24529,8 @@
+ if test -n "$CONFIG_FILES"; then
+ 
+ 
+-ac_cr=''
++ac_cr='
++'
+ ac_cs_awk_cr=`$AWK 'BEGIN { print "a\rb" }' </dev/null 2>/dev/null`
+ if test "$ac_cs_awk_cr" = "a${ac_cr}b"; then
+   ac_cs_awk_cr='\\r'
