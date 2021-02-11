@@ -5,11 +5,14 @@ gtk-dev
 intltool
 itstool
 json-glib-dev
+libgdata-dev
 libgee-dev
 libgphoto2-dev
 libgudev-dev
 libraw-dev
+meson
 rest-dev
 sqlite-dev
+systemd-dev
 vala-dev
 webkit2gtk-dev
