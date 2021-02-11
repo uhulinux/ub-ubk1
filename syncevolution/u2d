@@ -1,1 +1,1 @@
-u2d http://downloads.syncevolution.org/syncevolution/sources/
+urllist http://downloads.syncevolution.org/syncevolution/sources/ | grep -E 'syncevolution-[0-9]\.[0-9]\.[0-9]\.tar' | parsever | sort -V | tail -n 1
