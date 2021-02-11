@@ -1,1 +1,1 @@
-urllist https://bitbucket.org/cegui/cegui/downloads?tab=tags  | splitver '^v([0-9\\-]+).tar.bz2$' | grep '7-' | sed s/-/\./g | sort -V | tail -n 1
+urllist https://github.com/cegui/cegui/releases/ | splitver '^v([0-9\\-]+).tar.gz$' | grep '7-' | sed s/-/\./g | sort -V | tail -n 1

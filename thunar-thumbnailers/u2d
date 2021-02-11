@@ -1,1 +1,8 @@
-u2dsubdir http://archive.xfce.org/src/apps/thunar-thumbnailers/
+url=https://archive.xfce.org/src/archive/thunar-thumbnailers/
+for dir in $(urllist $url | grep '^[0-9]' | sort -Vr);do
+ver=$(u2d $url$dir thunar-thumbnailers-)
+if [ $ver ];then
+echo $ver
+exit 0
+fi
+done

@@ -1,1 +1,1 @@
-urllist https://bitbucket.org/eigen/eigen/downloads?tab=tags | splitver '^(2.[0-9.]+).tar.bz2$'| sort -V | tail -n 1
+urllist https://gitlab.com/libeigen/eigen/-/tags?page=3 | grep -E '^(2.[0-9.]+)$'| sort -V | tail -n 1
