@@ -1,7 +1,6 @@
 dbus-glib-dev
 docbook-dtds
 docbook-xsl
-gtk2-dev
 intltool
 libburn-dev
 libexo-dev
@@ -11,4 +10,3 @@ libxfce4ui-dev
 libxslt
 startup-notification-dev
 xcb-util-dev
-xfce4-dev-tools

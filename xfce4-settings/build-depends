@@ -1,6 +1,5 @@
 dbus-glib-dev
 garcon-dev
-gtk2-dev
 intltool
 libcanberra-dev
 libexo-dev
@@ -19,3 +18,4 @@ startup-notification-dev
 upower-dev
 xcb-util-dev
 xfconf-dev
+x.org-input-libinput-dev

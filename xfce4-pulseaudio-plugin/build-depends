@@ -1,9 +1,8 @@
 dbus-glib-dev
-gtk-dev
 intltool
 keybinder3-dev
+libexo-dev
 libnotify-dev
 pulseaudio-dev
 startup-notification-dev
-xfce4-dev-tools
 xfce4-panel-dev

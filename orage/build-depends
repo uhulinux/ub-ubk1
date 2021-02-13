@@ -1,4 +1,5 @@
 expat-dev
+gtk2-dev
 intltool
 libnotify-dev
 libsm-dev

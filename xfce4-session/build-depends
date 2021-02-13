@@ -1,5 +1,4 @@
 dbus-glib-dev
-gtk-dev
 intltool
 libwnck-dev
 libxfce4ui-dev
