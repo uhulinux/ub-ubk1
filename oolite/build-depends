@@ -7,9 +7,11 @@ gnutls-dev
 icu-dev
 libpng.dev
 libvorbis-dev
+libx11-dev
 libxslt-dev
 nspr-dev
+objc
 openal-dev
-python-dev
+python3-dev
 sdl-mixer-dev
 zip

@@ -1,0 +1,24 @@
+diff -Nur orig/GNUmakefile mod/GNUmakefile
+--- orig/GNUmakefile	2021-02-13 11:51:18.000000000 +0100
++++ mod/GNUmakefile	2021-02-13 12:36:30.638012870 +0100
+@@ -9,7 +9,7 @@
+     GNUSTEP_OBJ_DIR_NAME         := $(GNUSTEP_OBJ_DIR_NAME).win
+ endif
+ GNUSTEP_OBJ_DIR_BASENAME         := $(GNUSTEP_OBJ_DIR_NAME)
+-HOST_ARCH                        := $(shell echo $(GNUSTEP_HOST_CPU) | sed -e s/i.86/x86/ -e s/amd64/x86_64/ )
++HOST_ARCH                        := $(shell echo $(UB_ARCH) | sed -e s/i.86/x86/ -e s/amd64/x86_64/ )
+ 
+ ifeq ($(GNUSTEP_HOST_OS),mingw32)
+ 	vpath %.rc src/SDL/OOResourcesWin
+diff -Nur orig/Makefile mod/Makefile
+--- orig/Makefile	2019-06-09 11:59:04.000000000 +0200
++++ mod/Makefile	2021-02-13 12:37:04.469983862 +0100
+@@ -35,7 +35,7 @@
+ 	DEPS                         =
+ 	DEPS_DBG                     =
+ ifneq ($(GNUSTEP_HOST_OS),mingw32) 
+-    HOST_ARCH                    := $(shell echo $(GNUSTEP_HOST_CPU) | sed -e s/i.86/x86/ -e s/amd64/x86_64/ )
++    HOST_ARCH                    := $(shell echo $(UB_ARCH) | sed -e s/i.86/x86/ -e s/amd64/x86_64/ )
+     APSPEC_FILE                  = installers/autopackage/default.$(HOST_ARCH).apspec
+ # Uncomment the following two variables, if you want to build JS from source. Ensure the relevant changes are performed in GNUmakefile too
+ #     DEPS                         = LIBJS

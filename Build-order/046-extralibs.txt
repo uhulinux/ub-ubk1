@@ -4,8 +4,6 @@ libexif-gtk
 libetonyek
 libodfgen
 freealut
-gnustep-make
-gnustep-base
 plib
 allegro
 dumb

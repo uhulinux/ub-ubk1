@@ -147,6 +147,8 @@ vavoom
 supertuxkart
 opendungeons
 gcompris
+gnustep-make
+gnustep-base
 oolite
 etracer
 hedgewars
