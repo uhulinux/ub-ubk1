@@ -1,0 +1,9 @@
+diff -Nur orig/CMakeLists.txt mod/CMakeLists.txt
+--- orig/CMakeLists.txt	2019-12-23 18:49:15.000000000 +0100
++++ mod/CMakeLists.txt	2021-02-14 15:37:34.936274446 +0100
+@@ -815,4 +815,4 @@
+ 
+ # ############################################################################
+ # New CPACK section, please see the README file inside cpack.d directory.
+-add_subdirectory(cpack.d)
++#add_subdirectory(cpack.d)

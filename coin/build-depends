@@ -1,8 +1,7 @@
-doxygen
+boost-dev
 expat-dev
 fontconfig-dev
 freetype2-dev
+glu-dev
 libxshmfence-dev
-mesa-dev
 openal-dev
-zlib-dev

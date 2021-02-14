@@ -105,6 +105,7 @@ sofia-sip
 sound-theme-freedesktop
 libgnome2
 libbonoboui2
+zstd
 squashfs-tools
 syslinux
 python-twisted

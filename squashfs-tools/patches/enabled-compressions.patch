@@ -1,0 +1,39 @@
+diff -Naur orig/squashfs-tools/Makefile patched/squashfs-tools/Makefile
+--- orig/squashfs-tools/Makefile	2019-08-29 03:58:04.000000000 +0200
++++ patched/squashfs-tools/Makefile	2020-06-22 20:54:27.516789277 +0200
+@@ -30,7 +30,7 @@
+ # To build install the library and uncomment
+ # the XZ_SUPPORT line below.
+ #
+-#XZ_SUPPORT = 1
++XZ_SUPPORT = 1
+ 
+ 
+ ############ Building LZO support ##############
+@@ -44,7 +44,7 @@
+ # To build install the library and uncomment
+ # the XZ_SUPPORT line below.
+ #
+-#LZO_SUPPORT = 1
++LZO_SUPPORT = 1
+ 
+ 
+ ########### Building LZ4 support #############
+@@ -60,7 +60,7 @@
+ # To build install and uncomment
+ # the LZ4_SUPPORT line below.
+ #
+-#LZ4_SUPPORT = 1
++LZ4_SUPPORT = 1
+ 
+ 
+ ########### Building ZSTD support ############
+@@ -76,7 +76,7 @@
+ # To build install the library and uncomment
+ # the XZ_SUPPORT line below.
+ #
+-#ZSTD_SUPPORT = 1
++ZSTD_SUPPORT = 1
+ 
+ 
+ ######## Specifying default compression ########

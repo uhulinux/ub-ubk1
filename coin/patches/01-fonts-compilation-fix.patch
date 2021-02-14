@@ -1,12 +1,11 @@
-diff -Naur orig/src/fonts/freetype.cpp mod/src/fonts/freetype.cpp
---- orig/src/fonts/freetype.cpp	2010-03-02 14:20:09.000000000 +0100
-+++ mod/src/fonts/freetype.cpp	2014-03-23 17:43:04.000000000 +0100
-@@ -32,6 +32,8 @@
+diff -Nur orig/src/fonts/freetype.cpp mod/src/fonts/freetype.cpp
+--- orig/src/fonts/freetype.cpp	2021-02-06 11:41:39.000000000 +0100
++++ mod/src/fonts/freetype.cpp	2021-02-06 11:46:45.563474248 +0100
+@@ -49,6 +49,7 @@
+ #endif /* HAVE_CONFIG_H */
  
-    20050613 mortene. */
- 
-+#include <cstdlib>
+ #include <cstdlib>
 +#include <cmath>
- #include "fonts/freetype.h"
+ #include <cassert>
  
- #ifdef HAVE_CONFIG_H
+ #include "glue/freetype.h"
