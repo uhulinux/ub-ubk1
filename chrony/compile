@@ -1,3 +1,5 @@
 #!/bin/sh -eux
 
-ub_compile
+ub_compile \
+	--chronyrundir=/run/chrony \
+	--with-pidfile=/run/chrony/chronyd.pid
