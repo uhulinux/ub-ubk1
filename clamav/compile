@@ -1,5 +1,6 @@
 #!/bin/sh -eux
 
+rm -rf CMakeLists.txt
 export CXXFLAGS=-std=gnu++98
 ub_compile \
 	--disable-clamav \
