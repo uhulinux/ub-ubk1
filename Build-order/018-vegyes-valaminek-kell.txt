@@ -26,6 +26,7 @@ smartmontools
 t1utils
 babl
 beautifulsoup
+python3-ply
 bind
 bodr
 bsdiff
