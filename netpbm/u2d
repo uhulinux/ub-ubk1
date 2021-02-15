@@ -1,1 +1,1 @@
-u2d http://download.ubk.hu/src/netpbm/
+sflist netpbm super_stable | sort -V | tail -n 1
