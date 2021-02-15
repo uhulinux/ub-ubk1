@@ -4,7 +4,10 @@
 perl -pi.orig -e 's|1.299907080300|1.29990708|' bindings/perl-shared/RRDs.pm bindings/perl-piped/RRDp.pm
 
 ub_configure \
-	--enable-tcl-site
+	--enable-tcl-site \
+	--enable-perl \
+	--enable-perl-site-install \
+	--disable-python
 ub_make LIBS+="-lglib-2.0"
 
 cd bindings/perl-piped
