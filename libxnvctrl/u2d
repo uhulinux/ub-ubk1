@@ -1,1 +1,1 @@
-u2d http://download.nvidia.com/XFree86/nvidia-settings/ nvidia-settings-
+urllist http://download.nvidia.com/XFree86/nvidia-settings/ | grep nvidia-settings-390 | sort -V | tail -n 1 | parsever 
