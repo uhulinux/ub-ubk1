@@ -1,0 +1,4 @@
+#!/bin/bash
+
+systemctl -f enable xdm
+systemctl set-default graphical.target

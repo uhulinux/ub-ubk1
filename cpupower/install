@@ -1,7 +1,7 @@
 #!/bin/sh -eux
 
 cd power/cpupower
-ub_install mandir=/usr/share/man
+ub_install mandir=/usr/share/man libdir=/usr/lib
 
 # install startup scripts
 install -Dm 644 cpupower.default "$UB_INSTALLDIR/etc/default/cpupower"

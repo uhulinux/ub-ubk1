@@ -1,1 +1,2 @@
-u2d http://www.freedesktop.org/software/plymouth/releases/
+echo 0.9.4
+# ok: kernel verzió

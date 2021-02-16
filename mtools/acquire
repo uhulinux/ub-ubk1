@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
 mtools-${UB_VERSION}.tar.gz mtools-${UB_VERSION}/
-	http://mtools.linux.lu/
-
+	https://ftp.gnu.org/gnu/mtools/
