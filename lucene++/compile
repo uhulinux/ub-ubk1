@@ -1,4 +1,8 @@
 #!/bin/sh -eux
 
 ub_compile \
-        -DCMAKE_INSTALL_LIBDIR=/usr/lib
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_INCLUDEDIR=/usr/include \
+        -DCMAKE_INSTALL_FULL_LIBDIR=/usr/lib \
+        -DENABLE_TEST=OFF

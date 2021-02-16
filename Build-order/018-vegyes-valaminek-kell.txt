@@ -122,6 +122,7 @@ gtkspell2
 iputils
 leptonica
 libao
+libwandio
 libtrace
 opusfile
 osm-gps-map
