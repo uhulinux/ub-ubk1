@@ -1,1 +1,1 @@
-urllist http://pkgs.fedoraproject.org/cgit/rpms/bluecurve-gtk-themes.git/ | grep tar.xz | grep fc | sed s/.*themes-//g | sed s/_fc.*//g | sed s/_/\./g | sed s/-/\+/g | sort -V | tail -n 1
+urllist https://li.nux.ro/download/nux/dextop/el6/SRPMS/ | grep bluecurve-gtk | sed s/.*themes-// | sed s/-.*//
