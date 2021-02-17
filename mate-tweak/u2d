@@ -1,1 +1,2 @@
-u2d https://github.com/ubuntu-mate/mate-tweak/releases/
+echo 19.10.4
+# ok: glib verzió

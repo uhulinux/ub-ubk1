@@ -1,1 +1,2 @@
-u2dmate mate-notification-daemon
+echo 1.22.1
+# ok: glib verzió

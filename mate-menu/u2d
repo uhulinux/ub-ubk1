@@ -1,1 +1,2 @@
-u2d https://github.com/ubuntu-mate/mate-menu/releases/
+echo 19.10.2
+# ok: glib verzió

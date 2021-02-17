@@ -1,1 +1,2 @@
-u2dsubdir http://pub.mate-desktop.org/releases/ mate-calc-
+echo 1.23.0
+# ok: glib verzió
