@@ -1,1 +1,1 @@
-urllist ftp://ftp.cs.unipr.it/pub/ppl/releases/ | grep -E '^[0-9]' | sort -V | tail -n 1
+u2d https://www.bugseng.com/external/ppl/download/ftp/releases/1.2/ ppl-

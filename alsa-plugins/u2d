@@ -1,1 +1,2 @@
-u2d ftp://ftp.alsa-project.org/pub/plugins/
+echo 1.1.6
+# ok: alsa-lib verzió
