@@ -1,1 +1,2 @@
-u2d https://github.com/balabit/syslog-ng/releases/ syslog-ng-
+echo 3.21.1
+# ok: bison verzió
