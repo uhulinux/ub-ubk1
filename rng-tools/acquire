@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-rng-tools-${UB_VERSION}.tar.gz rng-tools-${UB_VERSION}/
-    https://src.fedoraproject.org/repo/pkgs/rng-tools/rng-tools-${UB_VERSION}.tar.gz/sha512/2f09edacb5448087041257326faf570c303b42f90bb695a1999b2c7543f20a28b15cdf705a2eca55cae8e9cf9fb5205c056fc26cfaf6af958bcda2cde1952b4d/
+v${UB_VERSION}.tar.gz rng-tools-${UB_VERSION}/
+	https://github.com/nhorman/rng-tools/archive/

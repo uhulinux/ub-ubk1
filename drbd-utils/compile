@@ -7,5 +7,9 @@ ub_compile \
 	--without-rgmanager \
 	--without-pacemaker \
 	--without-heartbeat \
+	--without-83support \
+	--without-84support \
+	--without-xen \
 	--with-initscripttype=systemd \
-	--without-xen
+	--sbindir=/usr/sbin \
+	--libdir=/usr/lib

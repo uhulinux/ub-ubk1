@@ -7,5 +7,4 @@ make samples \
 	DESTDIR="$UB_INSTALLDIR" \
 	ASTETCDIR="/etc/asterisk/samples"
 
-#cd addons
-#ub_install
+rm -rf ${UB_INSTALLDIR}/tmp
