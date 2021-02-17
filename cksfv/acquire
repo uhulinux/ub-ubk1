@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-cksfv-${UB_VERSION}.tar.gz cksfv-${UB_VERSION}/
-	http://www.iki.fi/shd/foss/cksfv/files/
+cksfv-${UB_VERSION}.tar.bz2 cksfv-${UB_VERSION}/
+	http://zakalwe.fi/~shd/foss/cksfv/files/
