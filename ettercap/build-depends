@@ -1,8 +1,9 @@
 cmake
 curl-dev
+geoip-dev
 ghostscript
 groff
-gtk2-dev
+gtk-dev
 libnet
 libpcap-dev
 libx11-dev

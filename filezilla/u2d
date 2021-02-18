@@ -1,1 +1,2 @@
-urllist https://filezilla-project.org/download.php?show_all=1 | grep src.tar.bz2$ | sed s/.*Zilla_//g | sed s/_.*//g
+echo 3.31.0
+#ok : C++17 igény
