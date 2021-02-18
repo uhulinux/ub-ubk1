@@ -4,13 +4,13 @@ if [ ! -f version ]; then
 	echo "echo $UB_VERSION" > version
 fi
 
-NOCONFIGURE=1 ./autogen.sh
+# NOCONFIGURE=1 ./autogen.sh
 
 ub_compile \
     --enable-crash-dialog \
     --disable-alternate-addressbook \
     --disable-ldap \
     --disable-jpilot \
-    --disable-bsfilter-plugin
-
+    --disable-bsfilter-plugin \
+    --disable-python-plugin
 # ub_make -C po claws-mail.pot update-po
