@@ -5,6 +5,5 @@ groff
 libx11-dev
 libxext-dev
 libxt-dev
-python
 slang-dev
 util-linux-dev
