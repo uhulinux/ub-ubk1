@@ -1,0 +1,11 @@
+diff -Nur orig/configure mod/configure
+--- orig/configure	2020-05-24 11:17:53.000000000 +0200
++++ mod/configure	2021-02-19 10:21:18.582292429 +0100
+@@ -367,6 +367,7 @@
+ }
+ 
+ pkgconfig() {
++    PKG_CONFIG=pkg-config
+ 	[ -z "${PKG_CONFIG}" ] && PKG_CONFIG=pkg-config
+ 	if [ -z "${HASPKGCONFIG}" ] ; then
+ 		check_message "Checking for pkg-config... "

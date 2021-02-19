@@ -1,1 +1,1 @@
-urllist http://www.geocities.jp/sakachin2/ | splitver '^V([0-9]+[A-Z])_E.htm$' | sort -V | tail -n 1 | sed 's/V//' | sed 's/_\(.*\)//' | sed 's/\(.\)\(..\)\(.\)/\1.\2+\3/'
+curl -k -s https://raw.githubusercontent.com/sakachin2/XE/master/README.md | grep 'SPF like' | sed 's/.* V//' | sed 's/\(.\)\(..\)\(.\)/\1.\2/'

@@ -10,5 +10,6 @@ sed -i 's/#include <glib.h>//g' src/ulib/utf3.c
 
 autoconf
 
-ub_configure
+ub_configure \
+    --enable-libgnome2=no
 ub_make all

@@ -1,4 +1,17 @@
 #!/usr/bin/env dl
 
-gxe-${UB_VERSION/+*/}.tar.gz gxe-${UB_VERSION/+*/}/
-	http://www.geocities.jp/sakachin2/
+gxe-${UB_VERSION}.tar.gz gxe-${UB_VERSION}/
+    https://github.com/sakachin2/XE/raw/master/
+
+#gxe-XE-ed517cb/gxe-1.29.tar.gz gxe-1.29/
+#	git://github.com/sakachin2/XE.git@ed517cb
+
+# 2020:12:24 129S ed517cb
+# 2020:12:18 129R 6ff68e9
+# 2020:12:16 129Q 3718f2c
+# 2020:12:10 129P2 9625842
+# 2020:10:23 129P 032e772
+# 2020:05:20 129M a667d52
+# 2019:09:19 129L 5175bf2
+
+# 2018:08:28 129K 918d6a7

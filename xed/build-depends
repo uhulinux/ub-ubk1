@@ -9,5 +9,6 @@ itstool
 libpeas-dev
 libsm-dev
 libxml2-dev
+meson
 xapps-dev
 yelp-tools

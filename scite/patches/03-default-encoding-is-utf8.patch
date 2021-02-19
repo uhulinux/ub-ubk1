@@ -1,7 +1,7 @@
-diff -Naur ORIG/scite/src/SciTEGlobal.properties UHU/scite/src/SciTEGlobal.properties
---- ORIG/scite/src/SciTEGlobal.properties	2012-03-08 04:02:05.000000000 +0100
-+++ UHU/scite/src/SciTEGlobal.properties	2012-06-01 09:59:46.505517200 +0200
-@@ -264,8 +264,8 @@
+diff -Nur orig/scite/src/SciTEGlobal.properties mod/scite/src/SciTEGlobal.properties
+--- orig/scite/src/SciTEGlobal.properties	2017-08-16 09:34:20.000000000 +0200
++++ mod/scite/src/SciTEGlobal.properties	2018-01-09 22:04:09.734638237 +0100
+@@ -291,8 +291,8 @@
  #code.page=932
  #character.set=128
  # Unicode
