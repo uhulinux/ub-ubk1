@@ -3,7 +3,7 @@ icon-theme-gnome
 perl-config-tiny
 perl-file-find-rule
 perl-gettext
-perl-gtk2 >=
+perl-gtk3 >=
 perl-http-message
 perl-json
 perl-libwww
