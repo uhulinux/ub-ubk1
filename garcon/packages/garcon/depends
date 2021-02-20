@@ -1,5 +1,4 @@
 glib >=
 gtk >=
-gtk2 >=
 libxfce4ui >=
 libxfce4util >=
