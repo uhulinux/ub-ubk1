@@ -1,7 +1,3 @@
 #!/bin/sh -eux
 
-autoreconf -fi
-./configure \
-	--prefix=/usr \
-	--enable-wallpaper
-ub_make
+ub_compile

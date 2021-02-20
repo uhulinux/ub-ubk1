@@ -1,6 +1,7 @@
 #!/bin/sh -eux
 
 export LDFLAGS='-Wl,--as-needed'
-
+autoreconf -vif
 ub_compile \
-	--enable-lirc
+	--enable-lirc \
+	--disable-gpu-accel

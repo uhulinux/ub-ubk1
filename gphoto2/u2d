@@ -1,1 +1,3 @@
-sflist gphoto gphoto | grep -E '^([0-9.]+)$' | sort -V | tail -n 1
+#sflist gphoto gphoto | grep -E '^([0-9.]+)$' | sort -V | tail -n 1
+# noupdate: libgphoto2 >= 2.5.17
+echo 2.5.11
