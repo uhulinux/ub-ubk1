@@ -12,6 +12,7 @@ recmpeg
 amdtpplay
 youtube-dl
 mp3wrap
+libopusenc
 opus-tools
 cdw
 playmidi

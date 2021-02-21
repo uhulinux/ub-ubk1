@@ -1,1 +1,1 @@
-u2d https://bitbucket.org/Torr_Samaho/zandronum/downloads/?tab=tags ZA_
+urllist https://github.com/ZandronumEx/zandronumex/releases/ | grep ZA_ | sed s/.*ZA_// | sed s/_.*// | sort -V | tail -n 1

@@ -1,1 +1,2 @@
-u2d https://github.com/mpv-player/mpv/releases/ v
+echo 0.27.1
+# noupdate: ffmpeg verziója kevés

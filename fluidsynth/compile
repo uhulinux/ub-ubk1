@@ -1,5 +1,7 @@
 #!/bin/sh -eux
 
-rm CMakeLists.txt
 ub_compile \
-        --enable-ladspa=ON
+    -DFLUID_DAEMON_ENV_FILE=/etc/conf.d/fluidsynth \
+    -Denable-ladspa=ON \
+    -Denable-portaudio=ON \
+    -DLIB_SUFFIX=""

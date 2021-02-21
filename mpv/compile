@@ -1,11 +1,15 @@
 #!/bin/sh -eux
 
-# libass old
+#chmod +x waf-2.0.9
 
 waf configure \
 	--prefix=/usr \
-	--enable-libarchive \
+	--confdir=/etc/mpv \
 	--enable-cdda \
-	--enable-encoding \
-	--enable-libmpv-shared
+	--enable-dvb \
+	--enable-dvdnav \
+	--enable-libarchive \
+	--enable-libmpv-shared \
+	--disable-build-date \
+
 waf build

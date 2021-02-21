@@ -1,0 +1,12 @@
+diff -Nur orig/configure mod/configure
+--- orig/configure	2020-10-13 04:27:41.000000000 +0200
++++ mod/configure	2021-02-20 15:55:02.860780461 +0100
+@@ -7352,7 +7352,7 @@
+ 	< $srcdir/po/POTFILES.in > po/POTFILES
+ 
+ 
+-CFLAGS="$CFLAGS -Wall -pedantic -std=gnu99 -Wundef -Wcast-align -W -Wpointer-arith -Wwrite-strings -Wno-unused-parameter -Wno-format-truncation -Wstringop-overflow=0 -Wno-stringop-truncation"
++CFLAGS="$CFLAGS -Wall -pedantic -std=gnu99 -Wundef -Wcast-align -W -Wpointer-arith -Wwrite-strings -Wno-unused-parameter -Wno-format-truncation -Wstrict-overflow=0 -Wno-stringop-truncation"
+ 
+ # GTK-2.3.1 deprecated the thread API but I am not going to drop support for
+ # everything older than that (pretty much all of GTK2!). Just silence the

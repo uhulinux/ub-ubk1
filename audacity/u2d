@@ -1,1 +1,2 @@
-u2d https://github.com/audacity/audacity/releases/ Audacity-
+echo 2.3.2
+# noupdate: cmake-verzió!

@@ -1,5 +1,5 @@
-COPYING
 ChangeLog
+COPYING
+doc/*
 QuickStart
 README.bindist
-doc/*
