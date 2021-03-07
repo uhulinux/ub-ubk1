@@ -2,6 +2,9 @@
 
 sed -i "/ADDITIONAL_OBJCFLAGS/s/=/= -fobjc-exceptions/" GNUmakefile
 
+rm deps/Linux-deps/include/png.h
+rm deps/Linux-deps/include/pngconf.h
+
 if [ "$UB_ARCH" == "amd64" ]; then
 	export UB_TARGET="x86_64-unknown-linux"
 else
