@@ -40,8 +40,8 @@ tarfile="232"
 fi
 
 # kibontás
-tar -x -f 237
-rm -f 237
+tar -x -f $tarfile
+rm -f $tarfile
 
 # etlegacy fájlok eljhelyezése
 cd etlegacy*
