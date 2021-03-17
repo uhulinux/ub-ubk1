@@ -15,8 +15,8 @@ ub_compile \
     -DCMAKE_BUILD_TYPE=Release \
     -DCROSS_COMPILE32=$cross \
     -DBUNDLED_LIBS=0 \
-    -DCMAKE_LIBRARY_PATH=/usr/lib \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_LIBRARY_PATH=/usr/lib \
     -DINSTALL_DEFAULT_BASEDIR=/usr/lib/etlegacy\
     -DINSTALL_DEFAULT_BINDIR=bin \
     -DINSTALL_DEFAULT_MODDIR=lib/etlegacy \
@@ -25,6 +25,5 @@ ub_compile \
     -DBUILD_MOD=0 \
     -DBUILD_MOD_PK3=0 \
     -DBUILD_PAK3_PK3=0 \
-    -DBUNDLED_LIBS=0 \
     -DFEATURE_AUTOUPDATE=0 \
     -DINSTALL_OMNIBOT=0

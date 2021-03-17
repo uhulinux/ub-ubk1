@@ -1,0 +1,12 @@
+diff -Nur orig/cmake/FindSDL2.cmake mod/cmake/FindSDL2.cmake
+--- orig/cmake/FindSDL2.cmake	2021-02-28 23:58:27.000000000 +0100
++++ mod/cmake/FindSDL2.cmake	2021-03-08 16:29:15.494721068 +0100
+@@ -181,7 +181,7 @@
+ 	STRING(REGEX REPLACE ".*#define SDL_MAJOR_VERSION[ ]+([0-9]+).*" "\\1" SDL_MAJOR_VERSION ${sdl_version_str})
+ 	STRING(REGEX REPLACE ".*#define SDL_MINOR_VERSION[ ]+([0-9]+).*" "\\1" SDL_MINOR_VERSION ${sdl_version_str})
+ 	STRING(REGEX REPLACE ".*#define SDL_PATCHLEVEL[ ]+([0-9]+).*" "\\1" SDL_PATCHLEVEL ${sdl_version_str})
+-	SET(SDL2_VERSION_STRING ${SDL_MAJOR_VERSION}.${SDL_MINOR_VERSION}.${SDL_PATCHLEVEL})
++	SET(SDL2_VERSION_STRING ${SDL_MAJOR_VERSION}.${SDL_MINOR_VERSION}.8)
+ 	UNSET(sdl_version_str)
+ ENDIF()
+ 

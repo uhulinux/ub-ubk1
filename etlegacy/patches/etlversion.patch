@@ -1,0 +1,12 @@
+diff -Nur orig/cmake/ETLVersion.cmake mod/cmake/ETLVersion.cmake
+--- orig/cmake/ETLVersion.cmake	2021-03-17 09:51:48.000000000 +0100
++++ mod/cmake/ETLVersion.cmake	2021-03-17 15:53:33.823479668 +0100
+@@ -38,8 +38,6 @@
+ 
+ 		if(${right_padded})
+ 			string(APPEND str ${_pad})
+-		else()
+-			string(PREPEND str ${_pad})
+ 		endif()
+ 	endif()
+ 
