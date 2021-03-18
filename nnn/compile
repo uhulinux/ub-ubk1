@@ -3,4 +3,5 @@
 export CFLAGS_CURSES='-I/usr/include/ncursesw '
 export LDLIBS_CURSES='-lncursesw '
 PREFIX=/usr
+ub_replace -O3 -O2 Makefile
 ub_compile
