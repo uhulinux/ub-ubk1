@@ -84,7 +84,6 @@ libtool
 libx86
 licenses
 lzip
-lzlib
 m4
 nspr
 openslp
