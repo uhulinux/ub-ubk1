@@ -1,1 +1,1 @@
-u2d http://www.bitchx.com/download.php
+urllist https://sourceforge.net/projects/bitchx/files/ircii-pana/ | grep bitchx- | sed s/bitchx-//

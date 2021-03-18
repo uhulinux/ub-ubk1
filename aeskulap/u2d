@@ -1,1 +1,2 @@
-urllist https://github.com/jenslody/aeskulap/releases/ | grep tar.gz | sed s/.*release-//g | sed s/\.tar.*//g | sort -V | tail -n 1 | sed s/-b/~b/ | sed s/-/\./g
+echo 0.2.2~beta
+

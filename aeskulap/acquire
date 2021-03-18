@@ -1,7 +1,7 @@
 #!/usr/bin/env dl
 
-aeskulap-${UB_VERSION/~/-}.tar.gz aeskulap-e3ef378/
-	git://github.com/jenslody/aeskulap.git@e3ef378
+aeskulap-${UB_VERSION/~/-}.tar.gz aeskulap-e43334e/
+	git://github.com/mikhailnov/aeskulap.git@e43334e
 
 dcmtk-3.6.1_20160216.tar.gz	dcmtk-3.6.1_20160216/ :dcmtk
 	http://dicom.offis.de/download/dcmtk/snapshot/
