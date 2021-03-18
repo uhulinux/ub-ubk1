@@ -1,5 +1,4 @@
 #!/usr/bin/env dl
 
-lzlib-$UB_VERSION.tar.gz lzlib-$UB_VERSION/
-	http://mirror.lihnidos.org/GNU/savannah/lzip/lzlib/
-
+lzip-$UB_VERSION.tar.gz lzip-$UB_VERSION/
+	http://download.savannah.gnu.org/releases/lzip/
