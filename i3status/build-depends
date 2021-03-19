@@ -1,5 +1,7 @@
 alsa-lib-dev
+asciidoc
 confuse-dev
 libnl-dev
 libyajl-dev
 pulseaudio-dev
+xmlto

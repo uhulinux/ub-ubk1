@@ -1,3 +1,11 @@
 #!/bin/sh -eux
 
-ub_compile
+if [ "${UB_ARCH}" == "amd64" ];then
+    mappa=x86_64-pc-linux-gnu
+else
+    mappa=i686-pc-linux-gnu
+fi
+ub_configure
+mv $mappa build
+cd build
+ub_make
