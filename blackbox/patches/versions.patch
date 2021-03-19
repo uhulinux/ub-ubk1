@@ -1,0 +1,21 @@
+diff -Nur orig/configure.ac mod/configure.ac
+--- orig/configure.ac	2020-02-11 13:46:33.000000000 +0100
++++ mod/configure.ac	2021-03-19 10:25:09.629294627 +0100
+@@ -30,7 +30,7 @@
+ AC_SUBST([BRANCH])
+ 
+ # Initialize Automake
+-AM_INIT_AUTOMAKE([gnits 1.16 dist-lzip no-dist-gzip std-options -Wall color-tests silent-rules tar-pax])
++AM_INIT_AUTOMAKE([gnits 1.15.1 dist-lzip no-dist-gzip std-options -Wall color-tests silent-rules tar-pax])
+ AM_MAINTAINER_MODE
+ AM_SILENT_RULES([yes])
+ 
+@@ -88,7 +88,7 @@
+ LT_LANG([C++])
+ AC_SUBST([LIBTOOL_DEPS])
+ 
+-AM_GNU_GETTEXT_VERSION([0.20])
++AM_GNU_GETTEXT_VERSION([0.19.8])
+ AM_GNU_GETTEXT([external])
+ 
+ AC_LANG([C++])
