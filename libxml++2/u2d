@@ -1,1 +1,1 @@
-u2dgnome libxml++
+urllist https://download.gnome.org/sources/libxml++/3.0/ | grep libxml++- | sort -V | tail -n 1 | parsever
