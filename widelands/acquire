@@ -1,4 +1,4 @@
 #!/usr/bin/env dl
 
-widelands-build${UB_VERSION}-src.tar.bz2 widelands-build${UB_VERSION}-src/
-	https://launchpad.net/widelands/build${UB_VERSION}/build${UB_VERSION}/+download/
+build${UB_VERSION}.tar.gz widelands-build${UB_VERSION}/
+    https://github.com/widelands/widelands/archive/

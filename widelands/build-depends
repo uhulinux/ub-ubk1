@@ -1,5 +1,4 @@
 boost-dev
-cmake
 glew-dev
 glu-dev
 icu-dev
@@ -7,7 +6,6 @@ libogg-dev
 libpng-dev
 libtiff-dev
 lua51-dev
-ninja
 python3-dev
 sdl2-gfx-dev
 sdl2-image-dev
