@@ -1,0 +1,23 @@
+#!/bin/sh -eux
+
+mappa=32bit
+if [ "$UB_ARCH" == "amd64" ];then
+echo ez csak 32 bitre fordítható
+exit 1
+fi
+
+export QTDIR=/usr/lib/qt5
+
+mkdir -p build
+cd build
+cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+	-DNOSERVER=1 \
+	-DMINIMAL_FLAGS=1 \
+	-DNOVIDEOREC=0 \
+	-DGHFLAGS=-dynamic \
+	-DFONTS_DIRS="/usr/share/fonts/truetype" \
+	..
+
+ub_make

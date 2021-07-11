@@ -1,5 +1,10 @@
 #!/bin/sh -eux
 
+if [ ! "$UB_ARCH" == "amd64" ];then
+echo ez csak 64 bitre fordítható
+exit 1
+fi
+
 export QTDIR=/usr/lib/qt5
 
 mkdir -p build

@@ -1,6 +1,4 @@
 #!/bin/sh -eux
 
-ub_compile
-
-# generate the docs
-doxygen
+ub_compile \
+    -DPHYSFS_BUILD_TEST=OFF

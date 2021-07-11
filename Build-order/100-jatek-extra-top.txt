@@ -151,6 +151,7 @@ gnustep-make
 gnustep-base
 oolite
 etracer
+hedgewars32
 hedgewars
 0ad
 openmw
