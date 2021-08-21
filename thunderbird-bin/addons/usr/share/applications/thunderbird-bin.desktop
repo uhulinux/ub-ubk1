@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Thunderbird-bin
+Exec=thunderbird-bin
+Icon=thunderbird-bin
+Terminal=false
+Type=Application
+GenericName=E-mail_client
+GenericName[hu]=E-mail_kliens
+Categories=Network;Email;
+MimeType=x-scheme-handler/mailto;

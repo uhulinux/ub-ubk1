@@ -79,3 +79,5 @@ node
 ghetto-skype
 facebook-messenger
 google-earth
+thunderbird-bin
+
